@@ -1,7 +1,7 @@
 """Inspect a thesis PDF or render a bounded selection of its physical pages.
 
 Python is used only for document handling; research models belong in Julia.
-Dependencies: pypdf (inspect), pypdfium2 (render).
+Dependencies: pypdf (inspect), pypdfium2 and Pillow (render).
 """
 
 import argparse

@@ -12,9 +12,9 @@
 
 ## 工程基础
 
-本轮建设 Documenter、Markdown 手册、Julia 1.12.6 环境、VS Code/CodeGroup、
-维护脚本、CI 和 Pages。验证及发布证据见[基础验收](foundation-validation.md)。
-文件配置完成不等于原生钩子已受信任，真实触发状态单独记录。
+已建立 Documenter、Markdown 手册、Julia 1.12.6 环境、VS Code/CodeGroup、
+维护脚本和 Windows/Ubuntu CI，公开仓库已创建。验证及发布证据见[基础验收](foundation-validation.md)。
+三个原生钩子已启用并受信任；真实生命周期触发仍待首个实际任务验收，不能以 fixture 替代。
 
 ## 下一步
 

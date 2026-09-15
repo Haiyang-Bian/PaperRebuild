@@ -5,6 +5,18 @@
 需要 Git、Juliaup、VS Code、Codex，以及 PowerShell 7。
 Windows PowerShell 5.1 也支持维护脚本，可将下文 `pwsh` 换成 `powershell`。
 从仓库根目录运行命令；VS Code 用“打开文件夹”打开整个仓库。
+若 Windows PowerShell 提示禁止执行脚本，可使用已配置的 VS Code 任务，或在该次命令中添加
+`-ExecutionPolicy Bypass`（放在 `-File` 前），无需修改全局执行策略。
+
+如果尚未安装，先按官方说明完成下列准备，再重新打开终端：
+
+| 工具 | 官方安装入口 | 安装后检查 |
+| --- | --- | --- |
+| Git | [Git for Windows](https://git-scm.com/install/windows) | `git --version` |
+| Juliaup | [Julia 官方版本管理器](https://github.com/JuliaLang/juliaup#installation) | `juliaup --version` |
+| VS Code | [Windows 安装说明](https://code.visualstudio.com/docs/setup/windows) | 能打开项目文件夹 |
+| PowerShell 7 | [Microsoft 安装说明](https://learn.microsoft.com/en-us/powershell/scripting/install/install-powershell-on-windows) | `pwsh --version` |
+| Codex | [官方快速开始](https://learn.chatgpt.com/docs/quickstart) | 完成登录并打开本项目 |
 
 ```powershell
 git clone https://github.com/Haiyang-Bian/PaperRebuild.git
@@ -62,7 +74,7 @@ Julia 扩展使用 `+1.12.6` 和工作区环境，测试使用单线程基线。
 
 ## 文献辅助工具
 
-只有处理本地论文时才需要 Python：
+只有处理本地论文时才需要 Python 3.10 或更新版本：
 
 ```powershell
 python -m venv .venv
