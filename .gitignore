@@ -1,3 +1,33 @@
 /tmp/
 __pycache__/
 *.pyc
+
+# Local source documents (do not blanket-ignore future research figures).
+/docs/摘要.pdf
+/docs/摘要.docx
+/data/raw/*
+!/data/raw/README.md
+/data/processed/*
+!/data/processed/README.md
+/results/runs/*
+!/results/runs/README.md
+
+# Rebuildable environments, output, and per-session state.
+/docs/build/
+/.julia/
+/.venv/
+/.codex/.local/
+/.vscode/.local/
+*.jl.cov
+*.jl.mem
+.DS_Store
+Thumbs.db
+
+# Personal settings and credentials.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+*.code-workspace

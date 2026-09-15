@@ -1,0 +1,92 @@
+name: Validate and publish
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validation-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Check (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    env:
+      JULIA_NUM_THREADS: '1'
+      JULIA_PKG_PRECOMPILE_AUTO: '0'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: julia-actions/setup-julia@v2
+        with:
+          version: '1.12.6'
+      - uses: julia-actions/cache@v2
+      - name: Restore environments
+        run: julia --startup-file=no --project=. scripts/bootstrap.jl
+      - name: Julia tests
+        run: julia --startup-file=no --project=. scripts/test.jl
+      - name: Julia format
+        run: julia --startup-file=no --project=tools scripts/format.jl
+      - name: Project checks
+        shell: pwsh
+        run: ./scripts/maintain.ps1 -Action Check
+      - name: Maintenance fixtures (PowerShell 7)
+        shell: pwsh
+        run: ./test/maintenance.tests.ps1
+      - name: Maintenance fixtures (Windows PowerShell 5.1)
+        if: runner.os == 'Windows'
+        shell: powershell
+        run: ./test/maintenance.tests.ps1
+      - name: Environments and tracked files unchanged
+        shell: pwsh
+        run: |
+          git diff --exit-code
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+  docs:
+    name: Build documentation
+    needs: check
+    runs-on: ubuntu-latest
+    env:
+      JULIA_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: julia-actions/setup-julia@v2
+        with:
+          version: '1.12.6'
+      - uses: julia-actions/cache@v2
+      - name: Restore documentation environment
+        run: julia --startup-file=no --project=docs -e 'using Pkg; Pkg.instantiate()'
+      - name: Strict Documenter build
+        run: julia --startup-file=no --project=docs docs/make.jl
+      - uses: actions/configure-pages@v5
+        if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request'
+      - uses: actions/upload-pages-artifact@v3
+        if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request'
+        with:
+          path: docs/build
+
+  deploy:
+    name: Publish GitHub Pages
+    needs: docs
+    if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,164 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "PaperRebuild: bootstrap",
+      "type": "process",
+      "command": "julia",
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/bootstrap.jl"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: test",
+      "type": "process",
+      "command": "julia",
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/test.jl"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "PaperRebuild: smoke",
+      "type": "process",
+      "command": "julia",
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/smoke.jl"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: format check",
+      "type": "process",
+      "command": "julia",
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=tools",
+        "scripts/format.jl"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: project check",
+      "type": "process",
+      "command": "pwsh",
+      "windows": {
+        "command": "powershell.exe"
+      },
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "scripts/maintain.ps1",
+        "-Action",
+        "Check"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: navigation sync",
+      "type": "process",
+      "command": "pwsh",
+      "windows": {
+        "command": "powershell.exe"
+      },
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "scripts/maintain.ps1",
+        "-Action",
+        "Sync"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: maintenance tests",
+      "type": "process",
+      "command": "pwsh",
+      "windows": {
+        "command": "powershell.exe"
+      },
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "test/maintenance.tests.ps1"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: docs build",
+      "type": "process",
+      "command": "julia",
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=docs",
+        "docs/make.jl"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "PaperRebuild: docs preview",
+      "type": "process",
+      "command": "julia",
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=docs",
+        "scripts/preview.jl"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    }
+  ]
+}

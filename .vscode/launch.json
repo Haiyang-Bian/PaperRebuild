@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "PaperRebuild: scaffold smoke",
+      "type": "julia",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/smoke.jl",
+      "cwd": "${workspaceFolder}",
+      "juliaEnv": "${workspaceFolder}",
+      "stopOnEntry": false
+    }
+  ]
+}

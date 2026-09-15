@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "groups": [
+    {
+      "id": "paperrebuild-start",
+      "name": "01 开始",
+      "pattern": "^(README\\.md|AGENTS\\.md|CONTRIBUTING\\.md|LICENSE|NOTICE\\.md)$"
+    },
+    {
+      "id": "paperrebuild-docs",
+      "name": "02 人类文档",
+      "pattern": "^docs/(src/|make\\.jl|Project\\.toml|Manifest\\.toml)"
+    },
+    {
+      "id": "paperrebuild-agents",
+      "name": "03 智能体",
+      "pattern": "^(docs/agent/|\\.codex/)"
+    },
+    {
+      "id": "paperrebuild-code",
+      "name": "04 Julia 代码",
+      "pattern": "^(src/|Project\\.toml|Manifest\\.toml)"
+    },
+    {
+      "id": "paperrebuild-config",
+      "name": "05 配置",
+      "pattern": "^configs/"
+    },
+    {
+      "id": "paperrebuild-data",
+      "name": "06 数据与来源",
+      "pattern": "^(data/|docs/reading/)"
+    },
+    {
+      "id": "paperrebuild-results",
+      "name": "07 结果",
+      "pattern": "^results/"
+    },
+    {
+      "id": "paperrebuild-tests",
+      "name": "08 测试",
+      "pattern": "^test/"
+    },
+    {
+      "id": "paperrebuild-tools",
+      "name": "09 工具与开发",
+      "pattern": "^(scripts/|tools/|\\.vscode/|\\.github/|\\.gitignore$|\\.gitattributes$|\\.editorconfig$|\\.JuliaFormatter\\.toml$|\\.markdownlint\\.json$)"
+    }
+  ]
+}

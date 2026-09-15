@@ -1,0 +1,47 @@
+{
+  "description": "PaperRebuild documentation and navigation maintenance; no research runs or Git mutations.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "pwsh -NoLogo -NoProfile -NonInteractive -File \"$(git rev-parse --show-toplevel)/scripts/maintain.ps1\" -Action Hook",
+            "commandWindows": "powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command \"& ((git rev-parse --show-toplevel) + '/scripts/maintain.ps1') -Action Hook\"",
+            "timeout": 30,
+            "statusMessage": "PaperRebuild: SessionStart",
+            "additionalContextLimit": 2000
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "pwsh -NoLogo -NoProfile -NonInteractive -File \"$(git rev-parse --show-toplevel)/scripts/maintain.ps1\" -Action Hook",
+            "commandWindows": "powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command \"& ((git rev-parse --show-toplevel) + '/scripts/maintain.ps1') -Action Hook\"",
+            "timeout": 30,
+            "statusMessage": "PaperRebuild: UserPromptSubmit",
+            "additionalContextLimit": 2000
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "pwsh -NoLogo -NoProfile -NonInteractive -File \"$(git rev-parse --show-toplevel)/scripts/maintain.ps1\" -Action Hook",
+            "commandWindows": "powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command \"& ((git rev-parse --show-toplevel) + '/scripts/maintain.ps1') -Action Hook\"",
+            "timeout": 30,
+          "statusMessage": "PaperRebuild: Stop"
+          }
+        ]
+      }
+    ]
+  }
+}

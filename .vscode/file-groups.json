@@ -1,0 +1,394 @@
+{
+  "version": 2,
+  "groups": [
+    {
+      "id": "paperrebuild-start",
+      "name": "01 开始",
+      "files": [
+        {
+          "path": "AGENTS.md",
+          "name": "AGENTS.md",
+          "isDirectory": false
+        },
+        {
+          "path": "CONTRIBUTING.md",
+          "name": "CONTRIBUTING.md",
+          "isDirectory": false
+        },
+        {
+          "path": "LICENSE",
+          "name": "LICENSE",
+          "isDirectory": false
+        },
+        {
+          "path": "NOTICE.md",
+          "name": "NOTICE.md",
+          "isDirectory": false
+        },
+        {
+          "path": "README.md",
+          "name": "README.md",
+          "isDirectory": false
+        }
+      ],
+      "order": 0,
+      "createdBy": "PaperRebuild",
+      "collapsed": true,
+      "pinned": false,
+      "isGlobal": false
+    },
+    {
+      "id": "paperrebuild-docs",
+      "name": "02 人类文档",
+      "files": [
+        {
+          "path": "docs/make.jl",
+          "name": "make.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/api.md",
+          "name": "api.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/index.md",
+          "name": "index.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/quality.md",
+          "name": "quality.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/reading.md",
+          "name": "reading.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/structure.md",
+          "name": "structure.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/templates.md",
+          "name": "templates.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/toolchain.md",
+          "name": "toolchain.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/workflow.md",
+          "name": "workflow.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/generated-inventory.md",
+          "name": "generated-inventory.md",
+          "isDirectory": false
+        }
+      ],
+      "order": 1,
+      "createdBy": "PaperRebuild",
+      "collapsed": true,
+      "pinned": false,
+      "isGlobal": false
+    },
+    {
+      "id": "paperrebuild-agents",
+      "name": "03 智能体",
+      "files": [
+        {
+          "path": ".codex/hooks.json",
+          "name": "hooks.json",
+          "isDirectory": false
+        },
+        {
+          "path": ".codex/maintenance-policy.json",
+          "name": "maintenance-policy.json",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/agent/current-state.md",
+          "name": "current-state.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/agent/decisions.md",
+          "name": "decisions.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/agent/foundation-validation.md",
+          "name": "foundation-validation.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/agent/handbook.md",
+          "name": "handbook.md",
+          "isDirectory": false
+        }
+      ],
+      "order": 2,
+      "createdBy": "PaperRebuild",
+      "collapsed": true,
+      "pinned": false,
+      "isGlobal": false
+    },
+    {
+      "id": "paperrebuild-code",
+      "name": "04 Julia 代码",
+      "files": [
+        {
+          "path": "Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        }
+      ],
+      "order": 3,
+      "createdBy": "PaperRebuild",
+      "collapsed": true,
+      "pinned": false,
+      "isGlobal": false
+    },
+    {
+      "id": "paperrebuild-config",
+      "name": "05 配置",
+      "files": [
+        {
+          "path": "configs/README.md",
+          "name": "README.md",
+          "isDirectory": false
+        }
+      ],
+      "order": 4,
+      "createdBy": "PaperRebuild",
+      "collapsed": true,
+      "pinned": false,
+      "isGlobal": false
+    },
+    {
+      "id": "paperrebuild-data",
+      "name": "06 数据与来源",
+      "files": [
+        {
+          "path": "data/processed/README.md",
+          "name": "README.md",
+          "isDirectory": false
+        },
+        {
+          "path": "data/raw/README.md",
+          "name": "README.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/README.md",
+          "name": "README.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/source_manifest.json",
+          "name": "source_manifest.json",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/sources.json",
+          "name": "sources.json",
+          "isDirectory": false
+        }
+      ],
+      "order": 5,
+      "createdBy": "PaperRebuild",
+      "collapsed": true,
+      "pinned": false,
+      "isGlobal": false
+    },
+    {
+      "id": "paperrebuild-results",
+      "name": "07 结果",
+      "files": [
+        {
+          "path": "results/runs/README.md",
+          "name": "README.md",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/README.md",
+          "name": "README.md",
+          "isDirectory": false
+        }
+      ],
+      "order": 6,
+      "createdBy": "PaperRebuild",
+      "collapsed": true,
+      "pinned": false,
+      "isGlobal": false
+    },
+    {
+      "id": "paperrebuild-tests",
+      "name": "08 测试",
+      "files": [
+        {
+          "path": "test/maintenance.tests.ps1",
+          "name": "maintenance.tests.ps1",
+          "isDirectory": false
+        },
+        {
+          "path": "test/runtests.jl",
+          "name": "runtests.jl",
+          "isDirectory": false
+        }
+      ],
+      "order": 7,
+      "createdBy": "PaperRebuild",
+      "collapsed": true,
+      "pinned": false,
+      "isGlobal": false
+    },
+    {
+      "id": "paperrebuild-tools",
+      "name": "09 工具与开发",
+      "files": [
+        {
+          "path": ".editorconfig",
+          "name": ".editorconfig",
+          "isDirectory": false
+        },
+        {
+          "path": ".gitattributes",
+          "name": ".gitattributes",
+          "isDirectory": false
+        },
+        {
+          "path": ".github/workflows/ci.yml",
+          "name": "ci.yml",
+          "isDirectory": false
+        },
+        {
+          "path": ".gitignore",
+          "name": ".gitignore",
+          "isDirectory": false
+        },
+        {
+          "path": ".JuliaFormatter.toml",
+          "name": ".JuliaFormatter.toml",
+          "isDirectory": false
+        },
+        {
+          "path": ".markdownlint.json",
+          "name": ".markdownlint.json",
+          "isDirectory": false
+        },
+        {
+          "path": ".vscode/extensions.json",
+          "name": "extensions.json",
+          "isDirectory": false
+        },
+        {
+          "path": ".vscode/launch.json",
+          "name": "launch.json",
+          "isDirectory": false
+        },
+        {
+          "path": ".vscode/settings.json",
+          "name": "settings.json",
+          "isDirectory": false
+        },
+        {
+          "path": ".vscode/tasks.json",
+          "name": "tasks.json",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/bootstrap.jl",
+          "name": "bootstrap.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/format.jl",
+          "name": "format.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/maintain.ps1",
+          "name": "maintain.ps1",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/maintenance-core.ps1",
+          "name": "maintenance-core.ps1",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/preview.jl",
+          "name": "preview.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/read_thesis.py",
+          "name": "read_thesis.py",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/requirements-reading.txt",
+          "name": "requirements-reading.txt",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/smoke.jl",
+          "name": "smoke.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/test.jl",
+          "name": "test.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "tools/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "tools/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": ".vscode/file-groups.json",
+          "name": "file-groups.json",
+          "isDirectory": false
+        }
+      ],
+      "order": 8,
+      "createdBy": "PaperRebuild",
+      "collapsed": true,
+      "pinned": false,
+      "isGlobal": false
+    }
+  ]
+}

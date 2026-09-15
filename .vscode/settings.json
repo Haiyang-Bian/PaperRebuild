@@ -1,0 +1,30 @@
+{
+  "julia.executablePath": "+1.12.6",
+  "julia.environmentPath": "${workspaceFolder}",
+  "julia.NumThreads": 1,
+  "julia.execution.saveOnEval": true,
+  "files.encoding": "utf8",
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "[julia]": {
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.defaultFormatter": "julialang.language-julia"
+  },
+  "search.exclude": {
+    "**/docs/build": true,
+    "**/.julia": true,
+    "**/.venv": true,
+    "**/.codex/.local": true,
+    "**/tmp": true,
+    "**/results/runs": true
+  },
+  "files.watcherExclude": {
+    "**/docs/build/**": true,
+    "**/.julia/**": true,
+    "**/.venv/**": true,
+    "**/.codex/.local/**": true,
+    "**/tmp/**": true
+  }
+}

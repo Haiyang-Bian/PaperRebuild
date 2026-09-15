@@ -1,39 +1,38 @@
 # PaperRebuild
 
-使用 Julia 逐步复现 `docs/摘要.pdf` 中博士论文的模型、算法和算例。
+使用 Julia 逐步复现博士论文，并沉淀可核查、可接续的研究流程。
+主要智能体为 Codex，IDE 为 VS Code，文件视图使用 CodeGroup。
 
-## 当前状态
+**当前阶段：工程基础。**已有论文初步阅读地图；全文精读、数学模型转录和数值复现尚未完成。
+`src/` 中的函数仅为包骨架，不代表科研能力。
 
-- 原有 Julia 包为起始模板，尚未实现论文模型。
-- 本机 `julia --version` 与现有 `Manifest.toml` 均为 `1.13.0-rc1`。
-- 已完成 PDF 文本层检查、目录索引和部分关键页面的初步阅读，未完成全文精读或数值复现。
-- 原 PDF 是约 70 MiB、157 页的扫描件，存在方向不一致、重复扫描及部分边缘截断。
+## 入口
 
-从 [论文阅读与复现路线](docs/reading/README.md) 继续，原件校验信息见
-[source_manifest.json](docs/reading/source_manifest.json)。
+- [在线手册](https://haiyang-bian.github.io/PaperRebuild/)
+- [本地工具链说明](docs/src/toolchain.md)
+- [论文阅读导航](docs/src/reading.md)
+- [Codex 入口](AGENTS.md)与[当前状态](docs/agent/current-state.md)
+- [参与开发](CONTRIBUTING.md)与[来源及许可](NOTICE.md)
 
-## 按页阅读
+## 第一次运行
 
-`scripts/read_thesis.py` 仅处理文献；科研模型和算法使用 Julia。
-脚本需要 Python、`pypdf` 和 `pypdfium2`，当前 Codex 自带运行环境已提供。
+安装 Git、Juliaup、VS Code 和 PowerShell 7（Windows PowerShell 5.1 也支持维护脚本）。
+从项目根目录执行：
 
 ```powershell
-# 若默认 Python 中已提供上述依赖：
-python scripts/read_thesis.py inspect
-
-# PDF 物理页码从 1 开始；按原页内容方向选择顺时针旋转角度。
-python scripts/read_thesis.py render --pages 30-32 --rotation 270 --dpi 160
-python scripts/read_thesis.py render --pages 55-56 --rotation 90 --dpi 180
+juliaup add 1.12.6
+julia +1.12.6 --startup-file=no --project=. scripts/bootstrap.jl
+julia +1.12.6 --startup-file=no --project=. scripts/test.jl
+pwsh -NoProfile -File scripts/maintain.ps1 -Action Check
+julia +1.12.6 --startup-file=no --project=docs scripts/preview.jl
 ```
 
-本次验证使用的 Python 路径：
-`C:/Users/King/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe`。
+默认预览地址为 <http://127.0.0.1:8000>；端口占用时以终端显示的地址为准，按 Ctrl+C 停止。
+`juliaup add` 安装指定版本，不改变全局默认版本。安装依赖需要网络。
+VS Code 的“任务：运行任务”提供同等入口。
 
-渲染每次最多 12 页，图片写入已忽略的 `tmp/pdfs/reading/`；
-原 PDF 不会被修改。脚本不执行 OCR，也不自动推断扫描内容的方向。
+## 本地文献
 
-## 第一阶段
-
-阅读第 2 章设备与网络模型，以及第 3 章完整建模、算法和算例。
-先建立带页码出处的公式、参数、原始数据需求及结果目标清单，
-再开展 Julia 实现；当前候选为第 3 章的 PDN-33 / DHN-32 热电联合调度算例。
+PDF 与 DOCX 不随仓库分发。合法副本可放入 `docs/摘要.pdf`、`docs/摘要.docx`，
+核对 [来源登记](docs/reading/sources.json) 后按页阅读。
+没有原件也能测试包和构建手册。Python 仅用于文献处理，科研实现使用 Julia。
