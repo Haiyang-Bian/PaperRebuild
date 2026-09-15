@@ -124,6 +124,11 @@ $null = Handle-Hook $fixture $plan
 Assert (!(Test-Path -LiteralPath (Safe-Path $fixture (State-Relative 'plan-session')))) 'plan mode writes no state'
 $start = Handle-Hook $fixture (Event 'SessionStart')
 Assert ($start.hookSpecificOutput.additionalContext -match 'AGENTS.md') 'startup routes context'
+Assert (Test-Path -LiteralPath (Safe-Path $fixture ('.codex/.local/maintenance/startup-' + (Text-Hash 'fixture-session') + '.json'))) 'startup receipt recorded'
+$planStart = Event 'SessionStart' 'plan-start'
+$planStart.permission_mode = 'plan'
+$null = Handle-Hook $fixture $planStart
+Assert (!(Test-Path -LiteralPath (Safe-Path $fixture ('.codex/.local/maintenance/startup-' + (Text-Hash 'plan-start') + '.json')))) 'plan startup records nothing'
 $missing = Handle-Hook $fixture (Event 'Stop' 'missing')
 Assert ($missing.systemMessage -match 'missing/stale') 'missing baseline visible'
 
@@ -172,3 +177,6 @@ Assert ($LASTEXITCODE -ne 0) 'invalid stdin exits nonzero'
 Assert ((ConvertFrom-Json ($badOutput -join "`n")).systemMessage -match 'failed') 'invalid stdin reports failure'
 
 Write-Output "Maintenance tests passed: $script:Assertions assertions. Fixture retained under tmp/."
+# GitHub's PowerShell runner propagates the last native exit code, including
+# the deliberately failing malformed-input test. The suite itself succeeded.
+exit 0

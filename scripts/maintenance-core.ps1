@@ -88,7 +88,7 @@ function Snapshot([string]$Root) {
     $lines.Add((Git-Read $Root @('rev-parse', 'HEAD')))
     foreach ($path in @(Candidate-Paths $Root)) {
         $absolute = Safe-Path $Root $path
-        if ((Get-Item -LiteralPath $absolute).Length -gt 5MB) { throw "File exceeds 5 MiB public-source limit: $path" }
+        if ((Get-Item -Force -LiteralPath $absolute).Length -gt 5MB) { throw "File exceeds 5 MiB public-source limit: $path" }
         $lines.Add($path + '=' + (File-Hash $absolute))
     }
     return Text-Hash ($lines -join "`n")
@@ -234,7 +234,7 @@ function Check-Project([string]$Root) {
     }
     foreach ($relative in $candidates) {
         $path = Safe-Path $Root $relative
-        if ((Get-Item -LiteralPath $path).Length -gt 5MB) { throw "File exceeds 5 MiB: $relative" }
+        if ((Get-Item -Force -LiteralPath $path).Length -gt 5MB) { throw "File exceeds 5 MiB: $relative" }
         if ($relative -match '(^|/)(\.env($|\.)|[^/]+\.(pem|key|pfx)$)' -and $relative -notmatch '\.env.example$') {
             throw "Credential-like file in publication candidates: $relative"
         }
@@ -258,6 +258,10 @@ function Handle-Hook([string]$Root, $Event) {
     $name = [string]$Event.hook_event_name
     if ($Event.permission_mode -eq 'plan') { return @{ systemMessage = 'PaperRebuild maintenance is read-only in plan mode.' } }
     if ($name -eq 'SessionStart') {
+        if (!$Event.session_id) { throw 'SessionStart requires session_id.' }
+        $receipt = '.codex/.local/maintenance/startup-' + (Text-Hash $Event.session_id) + '.json'
+        $record = @{ session_id = $Event.session_id; event = $name; source = $Event['source']; observed_utc = [DateTime]::UtcNow.ToString('o'); script_sha256 = (File-Hash (Safe-Path $Root 'scripts/maintenance-core.ps1')) }
+        Save-State $Root $receipt $record (File-Hash (Safe-Path $Root $receipt))
         return @{ hookSpecificOutput = @{ hookEventName = $name; additionalContext = 'PaperRebuild: read AGENTS.md and docs/agent/current-state.md; follow docs/agent/handbook.md. Julia 1.12.6. Thesis models are not yet implemented.' } }
     }
     if ($name -notin @('UserPromptSubmit', 'Stop')) { throw "Unsupported event: $name" }

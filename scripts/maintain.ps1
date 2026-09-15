@@ -20,8 +20,8 @@ try {
         'Review' { With-WriteLock $root { Review-Project $root $SessionId $TurnId $Note }; Write-Output 'Review recorded for current snapshot.' }
         'Hook' {
             $event = ConvertTo-Map (ConvertFrom-Json ([Console]::In.ReadToEnd().TrimStart([char]0xfeff)))
-            # No lock/state directory creation in plan mode or SessionStart.
-            $result = if ($event.permission_mode -eq 'plan' -or $event.hook_event_name -eq 'SessionStart') {
+            # No lock/state directory creation in plan mode.
+            $result = if ($event.permission_mode -eq 'plan') {
                 Handle-Hook $root $event
             } else { With-WriteLock $root { Handle-Hook $root $event } }
             Write-Output (Json $result)
