@@ -5,6 +5,7 @@ end
 const R2_EXPERIMENT_ROOT = normpath(joinpath(@__DIR__, ".."))
 push!(LOAD_PATH, R2_EXPERIMENT_ROOT)
 using PaperRebuild, JuMP, Clarabel, TOML, Dates, UUIDs
+include("r2_setup.jl")
 budget_arg = findfirst(a -> startswith(a, "--budget="), ARGS)
 budget = isnothing(budget_arg) ? 60.0 : parse(Float64, split(ARGS[budget_arg], '=')[2])
 0 < budget <= 600 || error("每实例预算限于(0,600]秒")
@@ -34,14 +35,9 @@ try
             op
         end
 catch err
-    message = lowercase(sprint(showerror, err))
-    if occursin("license", message)
-        global license_state = "not_run_license"
-    elseif err isa ArgumentError && occursin("package", message)
-        global license_state = "dependency_missing"
-    else
-        rethrow()
-    end
+    state = r2_setup_status(err)
+    isnothing(state) && rethrow()
+    global license_state = state
 end
 jobs = [
     ("single-fixed-open", "single-source", R2Spec(), true, true),
@@ -86,7 +82,17 @@ end
 save_manifest()
 for (name, file, spec, fixed, open_solver) in jobs
     if !open_solver && isnothing(commercial)
-        push!(entries, Dict("name"=>name, "status"=>license_state))
+        c = load_r2_case(joinpath(R2_EXPERIMENT_ROOT, "configs", "r2", file*".toml"))
+        r = r2_setup_failure(c, spec, license_state; fixed_flows = fixed, budget_sec = budget)
+        dir = save_r2_run(c, r; root = joinpath(R2_EXPERIMENT_ROOT, "results", "runs"))
+        push!(
+            entries,
+            Dict(
+                "name"=>name,
+                "status"=>license_state,
+                "directory"=>replace(relpath(dir, R2_EXPERIMENT_ROOT), '\\'=>'/'),
+            ),
+        )
         save_manifest()
         continue
     end

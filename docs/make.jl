@@ -44,6 +44,7 @@ makedocs(;
             "热网与简化公式" => "ch03-heat-equations.md",
             "符号权威表" => "ch03-symbols.md",
             "运行与验收" => "ch03-r2.md",
+            "合成实验结果与图表" => "ch03-r2-results.md",
         ],
         "API 索引与说明" => "api.md",
         "第 2 章模型与首批实现" => [

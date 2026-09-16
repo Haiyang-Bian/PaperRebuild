@@ -7,7 +7,7 @@
 | `configs/` | 显式参数、种子和实验配置 | 提交 |
 | `scripts/` | 运行、阅读、检查及维护入口 | 提交 |
 | `tools/` | 独立开发工具环境 | Project 和 Manifest 提交 |
-| `tools/solvers/` | 可选 Gurobi 能力预检及 R1 本机对照环境 | Project 和 Manifest 提交，不含许可 |
+| `tools/solvers/` | 可选 Gurobi 能力预检及 R1/R2 本机对照环境 | Project 和 Manifest 提交，不含许可 |
 | `tools/data/` | Julia公开数据下载、XLSX导入和初检环境 | Project 和 Manifest 提交 |
 | `data/raw/` | 原始数据，附来源、许可和哈希 | 默认忽略数据 |
 | `data/processed/` | 从原始数据派生的输入 | 默认忽略产物 |
@@ -36,3 +36,8 @@ R1 已增量建立 `src/core/`（输入契约）、`components/`（设备）、`
 `formulations/`（JuMP 约束）、`verification/`（数值独立验算）、`reporting/`（保存重读）。
 `docs/reading/ch02/` 管理机器清单；生成公式/符号/实现索引页有明确标记。
 `scripts/plot_r1.jl` 在 docs 环境提供绘图方法；科学包导入不加载绘图库。
+
+R2沿用以上模块：`networks/water_mass.jl`提供纯数值输运，`formulations/r2.jl`构造优化模型，
+`verification/r2.jl`独立回代。第3章公式/符号/疑点以`docs/reading/ch03/`为权威记录。
+`configs/r2/`冻结合成输入；`experiment_r2.jl`保存独立批次，`report_r2.jl`生成审阅摘要，
+`plot_r2.jl`从已保存解绘图。公开摘要位于`results/summaries/r2-first-batch/`，原始日志不直接发布。

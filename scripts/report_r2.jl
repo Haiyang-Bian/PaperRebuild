@@ -24,6 +24,7 @@ mkpath(dirname(target));
 mkdir(target)
 paths = Dict{String,String}();
 table = NamedTuple[]
+failures = NamedTuple[]
 for entry in study["runs"]
     haskey(entry, "directory") || continue
     source = joinpath(root, entry["directory"])
@@ -47,6 +48,23 @@ for entry in study["runs"]
     end
     model_rows = filter(r -> r.scope == "model", checked.rows)
     physics_rows = filter(r -> r.scope == "physics", checked.rows)
+    for eq in unique(r.equation for r in physics_rows if !r.pass)
+        bad = filter(r -> r.equation == eq, physics_rows)
+        worst = bad[argmax([r.residual/r.tolerance for r in bad])]
+        push!(
+            failures,
+            (
+                name = entry["name"],
+                equation = eq,
+                entity = worst.entity,
+                t = worst.t,
+                residual = worst.residual,
+                unit = worst.unit,
+                tolerance = worst.tolerance,
+                ratio = worst.residual/worst.tolerance,
+            ),
+        )
+    end
     push!(
         table,
         (
@@ -65,6 +83,7 @@ for entry in study["runs"]
     )
 end
 CSV.write(joinpath(target, "model-summary.csv"), table)
+CSV.write(joinpath(target, "physical-failures.csv"), failures)
 pairs = [
     ("single-fixed-open", "single-fixed-gurobi"),
     ("two-fixed-enumeration", "two-fixed-mip"),
@@ -160,6 +179,48 @@ for (name, flows, epsilon) in (
     end
 end
 CSV.write(joinpath(target, "pipe-response.csv"), pipe_rows)
+pipefig = Figure(size = (1100, 730), fontsize = 16)
+Label(pipefig[0, 1:2], "Synthetic single pipe | "*study["batch"], fontsize = 20)
+tempaxis = Axis(pipefig[1, 1], xlabel = "Time (h)", ylabel = "Outlet temperature (K)")
+flowaxis = Axis(pipefig[1, 2], xlabel = "Time (h)", ylabel = "Mass flow (kg/s)")
+for scenario in unique(r.scenario for r in pipe_rows)
+    rows = filter(r -> r.scenario == scenario, pipe_rows)
+    scatterlines!(tempaxis, [r.time_h for r in rows], [r.outlet_K for r in rows]; label = scenario)
+    scatterlines!(flowaxis, [r.time_h for r in rows], [r.flow_kg_s for r in rows]; label = scenario)
+end
+axislegend(tempaxis; position = :lt)
+Label(
+    pipefig[2, 1:2],
+    "Stored mass 5400 kg; inlet step and 340 K history; dt = 1 h; pure cumulative-mass replay (no optimization).",
+    fontsize = 13,
+)
+save(joinpath(target, "F05-single-pipe.svg"), pipefig)
+save(joinpath(target, "F05-single-pipe.png"), pipefig)
+open(
+    io -> TOML.print(
+        io,
+        Dict(
+            "origin"=>"synthetic",
+            "batch"=>study["batch"],
+            "mass_kg"=>5400.0,
+            "dt_h"=>1.0,
+            "area_m2"=>0.01,
+            "rho_kg_m3"=>1000.0,
+            "cp_J_kgK"=>4200.0,
+            "ambient_K"=>293.0,
+            "history_inlet_K"=>fill(340.0, 4),
+            "history_flow_kg_s"=>ones(4),
+            "inlet_K"=>[350.0, 360.0, 350.0, 350.0],
+            "epsilon_W_mK"=>[0.0, 0.2, 0.2],
+            "source_sha256"=>bytes2hex(sha256(read(joinpath(target, "pipe-response.csv")))),
+        );
+        sorted = true,
+    ),
+    joinpath(target, "single-pipe-figure.toml"),
+    "w",
+)
+cp(joinpath(target, "F05-single-pipe.svg"), joinpath(assets, "F05-single-pipe.svg"); force = true)
+pushfirst!(plotted, "F05-single-pipe.svg")
 io = IOBuffer()
 println(io, "# [R2 首批实验结果](@id ch03-r2-results)\n")
 println(
@@ -172,7 +233,11 @@ println(
     study["batch"],
     "`；**全部为合成案例**，每实例预算",
     study["budget_per_instance_sec"],
-    "秒。单线程、种子0；预热与建模包含在运行墙钟内。\n",
+    "秒。单线程、种子0；计时从进入solve_r2_case开始，包含内部建模与求解。进程启动/包加载及验证绘图另计，本批不作速度结论。\n",
+)
+println(
+    io,
+    "成本使用合成计价单位（单价/ MWh × MW × h），不对应实际币种，也不与论文成本直接比较。\n",
 )
 println(
     io,
@@ -204,6 +269,32 @@ println(
     io,
     "\n`false`不被隐藏：literal是原式阻断；有解运行的物理失败必须阅读残差分项，尤其水压锥松弛3-25、WMM回放、热功率乘积与混合温度。\n",
 )
+println(
+    io,
+    "## 默认版本的物理失败定位\n\n| 运行 | 关系 | 节点/管道 | 时段 | 最大残差 | 单位 | A1阈值 |\n| --- | --- | --- | ---: | ---: | --- | ---: |",
+)
+for row in failures
+    row.name in ("single-wmm", "single-schpd", "two-wmm", "two-schpd") || continue
+    println(
+        io,
+        "| ",
+        row.name,
+        " | ",
+        row.equation,
+        " | ",
+        row.entity,
+        " | ",
+        row.t,
+        " | ",
+        round(row.residual; sigdigits = 5),
+        " | ",
+        row.unit,
+        " | ",
+        row.tolerance,
+        " |",
+    )
+end
+println(io, "\n完整失败位置见`physical-failures.csv`及各运行`residuals.csv`。阈值未随结果放宽。\n")
 println(
     io,
     "## 同模型对照与近似分项\n\n| 参考 → 对照 | 同模型 | 成本差 | 温度最大差 S/R (K) | A2 |\n| --- | --- | ---: | ---: | --- |",
@@ -241,7 +332,10 @@ println(
     io,
     "## 结论边界\n\n项目补全模型的求解、独立回代、同模型对照和绘图流程已执行。原式literal及论文数值匹配仍阻断；电/水松弛等式或热近似检查失败时，不能宣布原调度物理可行。R3的可行性恢复和论文规模数据闭合尚未实施。\n",
 )
-summary = String(take!(io))
-write(joinpath(target, "summary.md"), summary)
+summary = rstrip(String(take!(io)))*"\n"
+write(
+    joinpath(target, "summary.md"),
+    replace(summary, "(assets/r2/"=>"(../../../../docs/src/assets/r2/"),
+)
 write(joinpath(root, "docs", "src", "ch03-r2-results.md"), summary)
 println("R2_REPORT=", replace(relpath(target, root), '\\'=>'/'))

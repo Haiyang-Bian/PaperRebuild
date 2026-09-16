@@ -3,9 +3,9 @@
 使用 Julia 逐步复现博士论文，并沉淀可核查、可接续的研究流程。
 主要智能体为 Codex，IDE 为 VS Code，文件视图使用 CodeGroup。
 
-**当前阶段：R0/R1 首批实施。**第 2 章 76 条编号公式已逐条登记，
-已实现设备、建筑、两节点固定电网和恒流热网的可核查特例，并提供公开合成微型案例。
-风电等原式疑点及完整水力/市场/重构仍待后续；这不是全论文数值复现完成。
+**当前阶段：R2 首批模型闭环（合成案例）。**第 2 章 76 条、第 3 章 57 条编号公式已登记。
+在R1设备/建筑/微型网络基础上，实现WMM与SCHPD的项目补全版、独立回代和误差对照。
+原式疑点、作者完整输入及原物理可行性仍未闭合；这不是全论文数值复现完成。
 `hello/domath` 仍只是包骨架，不计入科研进度。本轮实现尚未提交到远程。
 
 ## 入口
@@ -18,6 +18,8 @@
 - [Julia 工具选型与代码设计](docs/src/julia-design.md)
 - [第 2 章模型详解](docs/src/ch02-models.md)、[符号规范](docs/src/ch02-naming.md)
 - [R1 运行教程与范围](docs/src/ch02-status.md)
+- [第 3 章模型与补全边界](docs/src/ch03-models.md)、[R2 运行教程](docs/src/ch03-r2.md)
+- [R2 合成实验结果与 F04/F05](docs/src/ch03-r2-results.md)
 - [Codex 入口](AGENTS.md)与[当前状态](docs/agent/current-state.md)
 - [参与开发](CONTRIBUTING.md)与[来源及许可](NOTICE.md)
 

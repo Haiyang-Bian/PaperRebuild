@@ -1,7 +1,8 @@
 # [API 索引与说明](@id api-reference)
 
 点击索引中的名称可跳到相应条目。每张卡片由当前 Julia 源码中的 **docstring** 自动生成，
-展示调用签名、用途、输入输出、单位和适用限制；详细物理解释见 [第 2 章模型说明](@ref ch02-models)。
+展示调用签名、用途、输入输出、单位和适用限制；详细物理解释见 [第 2 章模型说明](@ref ch02-models)
+与[第 3 章模型及补全](@ref ch03-models)。
 
 ```@index
 Pages = ["api.md"]

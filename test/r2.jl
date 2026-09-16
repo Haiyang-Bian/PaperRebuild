@@ -1,5 +1,6 @@
 using Test, PaperRebuild, JuMP, Clarabel, TOML
 const R2_ROOT = normpath(joinpath(@__DIR__, ".."))
+include(joinpath(R2_ROOT, "scripts", "r2_setup.jl"))
 r2case(name = "single-source") = load_r2_case(joinpath(R2_ROOT, "configs", "r2", name*".toml"))
 function r2_edited_case(f; name = "single-source")
     d = deepcopy(r2case(name).data)
@@ -123,6 +124,12 @@ end
     @test PaperRebuild.r2_status(terms("NUMERICAL_ERROR"), 1, false, false) == "numerical_failure"
     @test PaperRebuild.r2_status(terms("UNSUPPORTED"), 1, false, false) == "unsupported_solver"
     @test PaperRebuild.r2_status(terms("OPTIMAL"), 1, false, false) == "incomplete_no_solution"
+    @test !PaperRebuild.r2_valid_bound(-1e100, "Gurobi")
+    @test !PaperRebuild.r2_valid_bound(Inf, "Clarabel")
+    @test PaperRebuild.r2_valid_bound(0.0, "Gurobi")
+    @test r2_setup_status(ErrorException("No Gurobi license found")) == "not_run_license"
+    @test r2_setup_status(ArgumentError("Package Gurobi not found")) == "dependency_missing"
+    @test isnothing(r2_setup_status(ErrorException("unexpected program error")))
     @test PaperRebuild.r2_status(terms("INFEASIBLE_OR_UNBOUNDED"), 1, false, false) ==
           "incomplete_no_solution"
 end
@@ -150,6 +157,11 @@ end
         solve_r2_case(c; optimizer = Clarabel.Optimizer, fixed_flows = true, budget_sec = 1e-12)
     @test timeout["status"] == "time_limit_no_solution"
     @test !validate_r2_solution(c, timeout).model_pass
+    unsupported = solve_r2_case(c; optimizer = Clarabel.Optimizer, budget_sec = 60.0)
+    @test unsupported["status"] == "unsupported_solver"
+    license_failure =
+        r2_setup_failure(c, R2Spec(), "not_run_license"; fixed_flows = false, budget_sec = 60.0)
+    @test !haskey(license_failure, "values")
     mktempdir() do directory
         path = save_r2_run(c, r; root = directory, run_id = "test")
         loaded = read_r2_run(path)
@@ -157,6 +169,8 @@ end
         @test loaded.result["objective"] == r["objective"]
         @test validate_r2_solution(loaded.case, loaded.result).model_pass
         @test compare_r2_runs(path, path).cost_difference == 0
+        failed_path = save_r2_run(c, license_failure; root = directory, run_id = "missing-license")
+        @test read_r2_run(failed_path).result["status"] == "not_run_license"
         @test_throws Base.IOError save_r2_run(c, r; root = directory, run_id = "test")
         open(io -> write(io, "\n# changed\n"), joinpath(path, "solution.toml"), "a")
         @test_throws ArgumentError read_r2_run(path)

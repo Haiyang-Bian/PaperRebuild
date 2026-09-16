@@ -33,6 +33,7 @@ jobs:
       - name: Restore environments
         run: julia --startup-file=no --project=. scripts/bootstrap.jl
       - name: Julia tests
+        timeout-minutes: 10
         run: julia --startup-file=no --project=. scripts/test.jl
       - name: Chapter 2 source and symbol mapping
         run: julia --startup-file=no --project=. scripts/check_ch02.jl

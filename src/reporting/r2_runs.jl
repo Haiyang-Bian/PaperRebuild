@@ -40,6 +40,10 @@ function r2_status(logs, expected, has_solution, exhausted)
     return has_solution ? "incomplete_with_incumbent" : "incomplete_no_solution"
 end
 
+# Gurobi以±1e100表示无穷；Float64的isfinite不能识别该求解器占位值。
+r2_valid_bound(bound, solver) =
+    isfinite(bound) && !(occursin("Gurobi", solver) && abs(bound) >= 1e100)
+
 # region r2-solve
 """
     solve_r2_case(case; optimizer, spec=R2Spec(), fixed_flows=false, enumerate_mixing=false, budget_sec=600)
@@ -90,17 +94,22 @@ function solve_r2_case(
     for pattern in patterns
         time()-start < budget_sec || break
         buildstart = time()
-        b = build_r2_model(c; spec, optimizer, fixed_flows, choices = pattern)
+        # 先在通用缓存完成模型，避免JuMP在添加非线性式时提前抛出普通ErrorException。
+        # 求解器支持性在optimize!/MOI复制阶段统一转为可保存的UNSUPPORTED状态。
+        b = build_r2_model(c; spec, fixed_flows, choices = pattern)
+        set_optimizer(b.model, optimizer)
         set_silent(b.model)
         if occursin("Clarabel", solver_name(b.model))
             set_optimizer_attribute(b.model, "max_threads", 1)
         elseif occursin("Gurobi", solver_name(b.model))
             set_optimizer_attribute(b.model, "Threads", 1)
             set_optimizer_attribute(b.model, "Seed", 0)
+            b.class == "SOCP" && set_optimizer_attribute(b.model, "QCPDual", 1)
         end
         if !isnothing(solver_log)
             occursin("Gurobi", solver_name(b.model)) ||
                 throw(ArgumentError("原始日志参数仅支持Gurobi"))
+            unset_silent(b.model)
             set_optimizer_attribute(b.model, "LogFile", solver_log)
             set_optimizer_attribute(b.model, "LogToConsole", 0)
             set_optimizer_attribute(b.model, "OutputFlag", 1)
@@ -148,11 +157,19 @@ function solve_r2_case(
         end
         try
             bound = objective_bound(b.model)
-            isfinite(bound) && (entry["bound"] = bound)
+            entry["raw_objective_bound"] = bound
+            if r2_valid_bound(bound, entry["solver"])
+                entry["bound"] = bound
+                entry["bound_source"] = "solver_objective_bound"
+            end
         catch err
             err isa Union{MOI.UnsupportedAttribute,MOI.GetAttributeNotAllowed} || rethrow()
-            if dual_status(b.model) == MOI.FEASIBLE_POINT
-                entry["bound"] = dual_objective_value(b.model)
+        end
+        if !haskey(entry, "bound") && dual_status(b.model) == MOI.FEASIBLE_POINT
+            bound = dual_objective_value(b.model)
+            if r2_valid_bound(bound, entry["solver"])
+                entry["bound"] = bound
+                entry["bound_source"] = "feasible_dual_objective"
             end
         end
         push!(logs, entry)
