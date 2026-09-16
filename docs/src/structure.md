@@ -8,6 +8,7 @@
 | `scripts/` | 运行、阅读、检查及维护入口 | 提交 |
 | `tools/` | 独立开发工具环境 | Project 和 Manifest 提交 |
 | `tools/solvers/` | 可选 Gurobi 能力预检及 R1 本机对照环境 | Project 和 Manifest 提交，不含许可 |
+| `tools/data/` | Julia公开数据下载、XLSX导入和初检环境 | Project 和 Manifest 提交 |
 | `data/raw/` | 原始数据，附来源、许可和哈希 | 默认忽略数据 |
 | `data/processed/` | 从原始数据派生的输入 | 默认忽略产物 |
 | `results/runs/` | 独立运行目录、日志和原始输出 | 默认忽略产物 |

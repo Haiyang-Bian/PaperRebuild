@@ -1,0 +1,222 @@
+created_utc = "2026-09-16T08:44:59.381"
+julia = "1.12.6"
+ready_for_thesis_dispatch = false
+run_id = "ch03-data-20260916T084459-cd427558"
+scope = "source bytes, numeric schemas, topology, dimensions and cross-source comparison only"
+status = "preliminary_checks_passed_with_open_issues"
+
+[author.H]
+minimum_total_MW = 2.6848107890000006
+nodes = 33
+peak_total_MW = 15.287755998999998
+samples = 96
+time_step_status = "unverified; no energy integration"
+
+[author.P]
+minimum_total_MW = 6.693730004
+nodes = 33
+peak_total_MW = 16.378804260000003
+samples = 96
+time_step_status = "unverified; no energy integration"
+
+[author.electric]
+base_MVA = 100.0
+base_kV = [12.66]
+components = 1
+cycles = 0
+edges = 32
+nodes = 33
+open_branches = 5
+radial = true
+unknown_rateA = 37
+
+[author.heat]
+components = 1
+cycles = 1
+edges = 33
+nodes = 33
+pipe_length_sum_m = 4485.3
+radial = false
+reversible_pipe_bounds = 0
+supply_lower_raw = 80.0
+supply_upper_raw = 100.0
+temperature_unit_status = "pending source verification; raw values only"
+
+[code_sha256]
+"scripts/ch03_data.jl" = "461a9b40621b2d44accfbe46f71defbf84eb6439945d34120ae915a94668943a"
+"scripts/validate_ch03_data.jl" = "732ed0ef26e3f29354ab3e6e97b9915eadcffd86b92707c27d3639f02553ca8a"
+"tools/data/Manifest.toml" = "a6bc81fef6a59ff7c13020a6b886a1e3b053eb158021bbf5fb1a1739e34229d5"
+
+[comparison]
+H_series_max_difference_MW = 0.01
+P_series_max_difference_MW = 0.0
+author_branch_equals_matpower = true
+author_static_bus_equals_matpower = false
+author_vs_matpower_bus_changed_cells = 2
+changed_pipe_lower_bounds = 11
+heat_load_changed_cells = 6
+pipe_geometry_max_difference = 0.0
+static_PQ_author_equals_1000_figshare = true
+
+[figshare.H]
+minimum_total_MW = 2.6948107890000004
+nodes = 33
+peak_total_MW = 15.287755998999998
+samples = 96
+time_step_status = "unverified; no energy integration"
+
+[figshare.P]
+minimum_total_MW = 6.693730004
+nodes = 33
+peak_total_MW = 16.378804260000003
+samples = 96
+time_step_status = "unverified; no energy integration"
+
+[figshare.electric]
+base_MVA = 100.0
+base_kV = [12.66]
+components = 1
+cycles = 0
+edges = 32
+nodes = 33
+open_branches = 5
+radial = true
+unknown_rateA = 37
+
+[figshare.heat]
+components = 1
+cycles = 1
+edges = 33
+nodes = 33
+pipe_length_sum_m = 4485.3
+radial = false
+reversible_pipe_bounds = 11
+supply_lower_raw = 80.0
+supply_upper_raw = 100.0
+temperature_unit_status = "pending source verification; raw values only"
+
+[input_sha256]
+thesis_parameters = "c4dda0fc2e3210588ca09431dc5a80ef90efc5816a234e50e68aeab41cef6b0f"
+
+[[issues]]
+detail = "Q01：论文正文3台CHP，表3-3只有2台；保留矛盾"
+id = "D01"
+status = "blocked"
+[[issues]]
+detail = "作者完整输入包缺口：逐节点P/Q/H/PV时序、支路容量、管道修改映射、初始温度和流量历史"
+id = "D02"
+status = "blocked"
+[[issues]]
+detail = "公开Barry为33热节点/33管段含1环；论文图3-2为32节点/31条图示连接，无编号映射"
+id = "D03"
+status = "difference"
+[[issues]]
+detail = "Figshare B8:N40静态Pd/Qd比作者小1000倍但A7仍标kW/kvar；不自动认定为MW"
+id = "D04"
+status = "blocked"
+[[issues]]
+detail = "96个MW负荷样本；时间间隔/时间戳与温度、流量和传热系数单位尚待关联论文确认；不积分MWh"
+id = "D05"
+status = "blocked"
+[[issues]]
+detail = "MATPOWER/公开测试床12.66kV不同于论文10kV；不直接改电压或按峰值缩放负荷"
+id = "D06"
+status = "difference"
+[[issues]]
+detail = "文献[25]PDF的Julia下载收到HTTP403，网页可读不等于本地原件获取成功"
+id = "D07"
+status = "unavailable"
+[[issues]]
+detail = "公开branch表rateA=0表示未给容量；heat压力±Inf表示未设界，不是有效额定值"
+id = "D08"
+status = "blocked"
+[[issues]]
+detail = "公开管长求和是表中单组管段口径；论文12.58km的供回统计口径未核，不能直接据此缩放"
+id = "D09"
+status = "difference"
+
+[matpower]
+P_total_MW = 3.7150000000000007
+Q_total_Mvar = 2.3
+S_aggregate_MVA = 4.369350638252783
+Z_base_ohm = 16.02756
+base_MVA = 10.0
+base_kV = [12.66]
+components = 1
+cycles = 0
+edges = 32
+nodes = 33
+open_branches = 5
+radial = true
+unknown_rateA = 37
+
+[output_sha256]
+"aggregate-loads.csv" = "d4a0d011440b715281fdbb156cb6fa19a9204025a118f4e55b7d4254cc70b565"
+"figshare-14813121-v3/loads.csv" = "7f4c919895486360128b790ce9d431d6b6edd09db0e86a97200b91f7ad687f09"
+"figshare-14813121-v3/pipes.csv" = "6e2de28a781a9f1b9ca440e4aafa8d0eb039b2b794dde1fe76c9ea1d9c5cad82"
+"matpower-branches.csv" = "b86a0e7873e3a54cdcea5b1bd1c2eaa8e92f05307dbc896aa0cee7f74115c57f"
+"matpower-buses.csv" = "9f098771acb3ef3353f78dc1b81aa18908b2710fdf7f4f078c11490d65a1e55c"
+"qin2021-author-workbook/loads.csv" = "f2831cf74e0e1a1395cd1250aaf633cdd0a9a92dc12100aba83d0e0ab0c02697"
+"qin2021-author-workbook/pipes.csv" = "4e3584f51a8edd80d080e2b478e98c5ec62e80407bf646784bd4e2fa09c6b69a"
+"source-differences.csv" = "51e1f5ed9e3499b08c426780a48572d9b5cd4f1ac15aa71fe5ee2cacb78d0645"
+
+[source_ranges.author]
+H = "A127:AG222"
+P = "A105:AG200"
+ambient = "B228:B323"
+branch = "B54:N90"
+bus = "B8:N40"
+node = "B43:I75"
+pipe = "B5:I37"
+
+[source_ranges.figshare]
+H = "A284:AG379"
+P = "A97:AG192"
+ambient = "B384:B479"
+branch = "B54:N90"
+bus = "B8:N40"
+node = "B236:K268"
+pipe = "B198:I230"
+
+[[sources]]
+id = "matpower-case33bw-8.1"
+license = "MATPOWER LICENSE 明确排除 case 数据；本项目仅本地下载，不重新许可"
+sha256 = "b40831eeb444669ae876e2996f0dda9f05cd83e81b314b8dfca51e4890cca95d"
+url = "https://raw.githubusercontent.com/MATPOWER/matpower/1a828c7af590714499284e36ee9c81273388c594/data/case33bw.m"
+[[sources]]
+id = "qin2021-author-workbook"
+license = "作者公开入口，未见明确再分发许可；仅本地保存"
+sha256 = "200fdf2f5af9610d8b817d26febe2d857e7a8980cbd07419152bdb7287845c2b"
+url = "https://docs.google.com/spreadsheets/d/1u0pp2BUgdesQ5lEBuuPDIRMhxS9INvC6/export?format=xlsx"
+[[sources]]
+id = "figshare-14813121-v3"
+license = "CC BY 4.0"
+sha256 = "8603893b874db11d171d08a1de518d1c1d04dfaabdc850ea488cc801ff50fb4d"
+url = "https://ndownloader.figshare.com/files/28961190"
+
+[thesis]
+CHP_count_conflict = true
+CHP_total_MW_interpreted = 6.0
+PV_total_MW = 3.5
+price_USD_per_MWh = [55.9, 204.9, 111.69999999999999, 204.9, 55.9]
+ready_for_dispatch = false
+
+    [[thesis.converters]]
+    H_max_MW = 2.0
+    P_max_MW_derived = 2.1052631578947367
+    id = "EB1"
+    [[thesis.converters]]
+    H_max_MW = 0.8
+    P_max_MW_derived = 0.32
+    id = "HP1"
+    [[thesis.converters]]
+    H_max_MW = 1.5
+    P_max_MW_derived = 0.6
+    id = "HP2"
+
+    [thesis.heat_graph]
+    components = 1
+    cycles = 0
+    edges = 31
+    nodes = 32
+    radial = true

@@ -35,6 +35,7 @@ makedocs(;
         "逐阶段复现计划" => "reproduction-plan.md",
         "验收与科学图表" => "reproduction-acceptance.md",
         "Julia 工具与架构" => "julia-design.md",
+        "第3章数据搜集" => "ch03-data.md",
         "API 索引与说明" => "api.md",
         "第 2 章模型与首批实现" => [
             "模型详解" => "ch02-models.md",

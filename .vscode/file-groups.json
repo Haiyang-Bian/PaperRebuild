@@ -185,6 +185,16 @@
           "path": "docs/src/assets/custom.css",
           "name": "custom.css",
           "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/ch03/public-load-profiles.svg",
+          "name": "public-load-profiles.svg",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch03-data.md",
+          "name": "ch03-data.md",
+          "isDirectory": false
         }
       ],
       "order": 1,
@@ -245,6 +255,11 @@
         {
           "path": "docs/agent/tasks/2026-09-16-docs-presentation.md",
           "name": "2026-09-16-docs-presentation.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/agent/tasks/2026-09-16-ch03-data.md",
+          "name": "2026-09-16-ch03-data.md",
           "isDirectory": false
         }
       ],
@@ -383,6 +398,21 @@
         {
           "path": "docs/reading/ch02/targets.toml",
           "name": "targets.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch03/README.md",
+          "name": "README.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch03/sources.toml",
+          "name": "sources.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch03/thesis-parameters.toml",
+          "name": "thesis-parameters.toml",
           "isDirectory": false
         }
       ],
@@ -580,6 +610,36 @@
           "path": "results/summaries/r1-first-batch/r1-20260916T061409-316ae2bf/validation.toml",
           "name": "validation.toml",
           "isDirectory": false
+        },
+        {
+          "path": "results/summaries/ch03-data/ch03-data-20260916T084459-cd427558/figures/figure-config.toml",
+          "name": "figure-config.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/ch03-data/ch03-data-20260916T084459-cd427558/figures/public-load-profiles.csv",
+          "name": "public-load-profiles.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/ch03-data/ch03-data-20260916T084459-cd427558/figures/public-load-profiles.png",
+          "name": "public-load-profiles.png",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/ch03-data/ch03-data-20260916T084459-cd427558/figures/public-load-profiles.svg",
+          "name": "public-load-profiles.svg",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/ch03-data/ch03-data-20260916T084459-cd427558/source-differences.csv",
+          "name": "source-differences.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/ch03-data/ch03-data-20260916T084459-cd427558/validation.toml",
+          "name": "validation.toml",
+          "isDirectory": false
         }
       ],
       "order": 6,
@@ -605,6 +665,11 @@
         {
           "path": "test/r1.jl",
           "name": "r1.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "test/ch03_data.jl",
+          "name": "ch03_data.jl",
           "isDirectory": false
         }
       ],
@@ -816,6 +881,71 @@
         {
           "path": "scripts/validate_r1.jl",
           "name": "validate_r1.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/bootstrap_data.jl",
+          "name": "bootstrap_data.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/ch03_data.jl",
+          "name": "ch03_data.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/ch03_task.jl",
+          "name": "ch03_task.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/collect_ch03_data.jl",
+          "name": "collect_ch03_data.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/configure_ch03_tasks.jl",
+          "name": "configure_ch03_tasks.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/discover_ch03_sources.jl",
+          "name": "discover_ch03_sources.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/inspect_ch03_workbooks.jl",
+          "name": "inspect_ch03_workbooks.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/plot_ch03_data.jl",
+          "name": "plot_ch03_data.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/report_ch03_data.jl",
+          "name": "report_ch03_data.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/validate_ch03_data.jl",
+          "name": "validate_ch03_data.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "tools/data/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "tools/data/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "tools/data/README.md",
+          "name": "README.md",
           "isDirectory": false
         }
       ],
