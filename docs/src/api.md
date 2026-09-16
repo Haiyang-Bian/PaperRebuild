@@ -74,7 +74,28 @@ PaperRebuild.read_r1_run
 PaperRebuild.plot_r1_run
 ```
 
-## 工程示例
+## 第3章模型与独立回代
+
+模型、补全边界与公式见[第3章解释](@ref ch03-models)，运行见[R2教程](@ref ch03-r2)。
+
+```@docs
+PaperRebuild.R2Case
+PaperRebuild.R2Spec
+PaperRebuild.load_r2_case
+PaperRebuild.water_mass_weights
+PaperRebuild.replay_water_mass
+PaperRebuild.mccormick_bounds
+PaperRebuild.build_r2_model
+PaperRebuild.r2_model_class
+PaperRebuild.solve_r2_case
+PaperRebuild.validate_r2_solution
+PaperRebuild.save_r2_run
+PaperRebuild.read_r2_run
+PaperRebuild.compare_r2_runs
+PaperRebuild.plot_r2_run
+```
+
+## 工程示例函数
 
 以下两个函数保留自初始化模板，只用于验证包加载、测试和 Documenter 集成，不计入论文复现进度。
 

@@ -1,0 +1,51 @@
+schema = "ch03-symbols-v1"
+source = "论文PDF46–52，正文29–35；原符号表PDF14–17"
+verification = "原页视觉核对；同形异义按组作用域区分；实现扩展在julia字段说明"
+index_rule = "类别上标转语义标签，空间/设备/时间/滞后按数组维度顺序索引；物理平方用运算。ASCII配置键与希腊字母代码并存。"
+
+[symbols]
+indices = {latex='t,g,n,(m,n),j,(j,k),\varsigma', meaning="时段、设备、电节点/支路、热节点/管道、历史滞后", kind="索引/集合", unit="1", domain="t=1:T; 状态0:T; 其余显式有限集合", julia="t,g,n,b,j,p,s; 供回方向side为项目索引", dimensions="按空间、时间；α/β为时间、滞后"}
+P_device = {latex='P_{g,t}^{CHP},P_{g,t}^{GT},P_{g,t}^{PV},P_{g,t}^{EB}', meaning="各类设备电功率，EB为耗电幅值", kind="变量", unit="MW", domain="显式上下界；PV另有时变可用量", julia="P_device[g,t]；kind保留类别映射", dimensions="G×T"}
+H_device = {latex='H_{g,t}^{CHP},H_{g,t}^{EB}', meaning="设备供热功率", kind="变量", unit="MW", domain="非负；固定热电比/效率限定", julia="H_device[g,t]", dimensions="G×T"}
+P_grid = {latex='P_t^{Grid}', meaning="购电功率；项目另设根无功Q_grid", kind="变量", unit="MW / Mvar", domain="0..grid_max；无功正负有界", julia="P_grid[t], Q_grid[t]", dimensions="T"}
+cost = {latex='\lambda_t^{Grid},c_g^{CHP},c_g^{GT},c_g^{PV}', meaning="购电及设备运行单价", kind="参数", unit="项目currency/MWh；论文表格USD/kWh须乘1000", domain="合成输入显式给定", julia="grid_price, cost_per_MWh", dimensions="T / G"}
+ratio = {latex='\eta_g^{CHP},COP_g^{EB}', meaning="CHP热电比、电热转换COP，不是燃气效率", kind="参数", unit="1", domain="正值", julia="heat_ratio", dimensions="G"}
+bounds = {latex='\underline x,\overline x', meaning="对应量的上下界；不另发明统一大小写规则", kind="参数", unit="与被限定量相同", domain="有限、有序", julia="*_min, *_max, *_bounds_K", dimensions="对应设备/节点/管道"}
+P_demand = {latex='P_{n,t}^D', meaning="有功负荷", kind="参数", unit="MW", domain="非负", julia="electric.nodes[n].P_MW[t]", dimensions="N×T"}
+Q_demand = {latex='Q_{n,t}^D', meaning="无功负荷", kind="参数", unit="Mvar", domain="首批非负", julia="electric.nodes[n].Q_Mvar[t]", dimensions="N×T"}
+H_demand = {latex='H_{j,t}^D', meaning="热需求幅值", kind="参数", unit="MW", domain="非负", julia="heat.nodes[j].H_MW[t]", dimensions="K×T"}
+P_net = {latex='P_{n,t}^{net}', meaning="有功净注入：发电减耗电", kind="表达式", unit="MW", domain="可正可负", julia="injection（不额外存变量）", dimensions="N×T"}
+Q_net = {latex='Q_{n,t}^{net}', meaning="无功净注入；本批机组无功固定0", kind="表达式", unit="Mvar", domain="可正可负", julia="节点无功平衡表达式", dimensions="N×T"}
+P_branch = {latex='P_{mn,t}', meaning="支路首端有功", kind="变量", unit="pu；乘base_MVA得MW", domain="正负有界", julia="P_branch[b,t]", dimensions="B×T"}
+Q_branch = {latex='Q_{mn,t}', meaning="支路首端无功", kind="变量", unit="pu；乘base_MVA得Mvar", domain="正负有界", julia="Q_branch[b,t]", dimensions="B×T"}
+v = {latex='v_{n,t}', meaning="电压幅值平方", kind="变量", unit="pu²", domain="电压上下界的平方", julia="v[n,t]", dimensions="N×T"}
+ell = {latex='\ell_{mn,t}', meaning="电流幅值平方，不是电流幅值", kind="变量", unit="pu²", domain="0..ell_max_pu", julia="ell[b,t]", dimensions="B×T"}
+impedance = {latex='r_{mn},x_{mn}', meaning="支路电阻、电抗", kind="参数", unit="pu", domain="非负", julia="r_pu,x_pu", dimensions="B"}
+H_net = {latex='H_{j,t}^{net}', meaning="带符号的节点供热净注入", kind="表达式", unit="MW", domain="源正荷负；与端口幅值区分", julia="H_port[j,t]为幅值；role给符号", dimensions="K×T"}
+m_port = {latex='m_{j,t}', meaning="原文节点净注入；项目按角色拆出端口正幅值", kind="变量", unit="kg/s", domain="项目非负、有界；方向见R2-C01", julia="m_port[j,t]", dimensions="K×T"}
+m_pipe = {latex='m_{jk,t}', meaning="管内质量流率，不是体积流量", kind="变量", unit="kg/s", domain="本批严格正下界；供回共用幅值", julia="m_pipe[p,t]", dimensions="E×T"}
+delta_tau = {latex='\Delta\tau_{j,t}', meaning="端口供回水温差", kind="表达式", unit="K", domain="由供回水盒导出，首批正", julia="tau_S_port-tau_R_port", dimensions="K×T"}
+tau_port = {latex='\tau_{j,t}^{S},\tau_{j,t}^{R}', meaning="本地热源或负荷供回水端口温度", kind="变量", unit="K", domain="各侧温度盒；负荷回水显式固定", julia="tau_S_port,tau_R_port", dimensions="K×T"}
+tau_mix = {latex='\tau_{j,t}^{S,mix},\tau_{j,t}^{R,mix}', meaning="供回水节点混合温度", kind="变量", unit="K", domain="各侧温度盒", julia="tau_S_mix,tau_R_mix", dimensions="K×T"}
+tau_pipe = {latex='\tau_{jk,t}^{S/R,in/out}', meaning="管道供回水入口、出口温度", kind="变量", unit="K", domain="各侧温度盒；回水方向反向", julia="tau_S_in,tau_S_out,tau_R_in,tau_R_out", dimensions="E×T"}
+tau_star = {latex='\tau_{jk,t}^{S/R,out*}', meaning="无损出口辅助温度", kind="变量", unit="K", domain="各侧温度盒", julia="star（内部辅助变量）；回放lossless", dimensions="E×T×side"}
+tau_bar = {latex='\overline\tau_{jk,t}^{S/R}', meaning="此处横线是平均温度，不是上界", kind="表达式", unit="K", domain="入口出口平均", julia="avg=(inlet+outlet)/2", dimensions="E×T×side"}
+tau_ambient = {latex='\widehat\tau_t^{AM}', meaning="环境温度", kind="参数", unit="K", domain="有限正温度；初始沿用首时段环境", julia="ambient_K[t]", dimensions="T"}
+tau_ref = {latex='\widehat\tau^{S,ref},\widehat\tau^{R,ref}', meaning="定损耗近似参考温度", kind="参数", unit="K", domain="对应温度盒内", julia="S_reference_K,R_reference_K", dimensions="side"}
+cp = {latex='c_w', meaning="水比热", kind="参数", unit="代码J/(kg K)，论文4.2kJ/(kg K)", domain="正", julia="cp_J_kgK; cp", dimensions="标量"}
+rho = {latex='\rho_w', meaning="水密度", kind="参数", unit="kg/m³", domain="正", julia="rho_kg_m3", dimensions="标量"}
+area = {latex='A_{jk}', meaning="管道内截面积", kind="参数", unit="m²", domain="正", julia="area_m2", dimensions="E"}
+length = {latex='L_{jk}', meaning="单侧管道长度；供回分别计体积", kind="参数", unit="m", domain="正", julia="length_m", dimensions="E"}
+dt = {latex='\Delta T', meaning="时间步长，区别于温度差Delta tau", kind="参数", unit="输入h；输运转换秒", domain="正", julia="dt_h, dt=3600dt_h", dimensions="标量"}
+Td = {latex='T_d', meaning="最大历史滞后", kind="参数", unit="时段数", domain="由管质量/正流量下界计算，额外覆盖beta起点", julia="Td", dimensions="E"}
+alpha = {latex='\alpha_{jk,t,\varsigma}', meaning="时段末管内水质填充比例", kind="变量", unit="1", domain="[0,1]且满足连续填充互补", julia="alpha_p[t,s] / α[t,s]", dimensions="T×(0:Td)，每管一组"}
+beta = {latex='\beta_{jk,t,\varsigma}', meaning="时段初管内水加当期流入水的权重", kind="变量", unit="1", domain="beta0=1，其余[0,1]", julia="beta_p[t,s] / β[t,s]", dimensions="T×(0:Td)，每管一组"}
+epsilon = {latex='\epsilon_{jk}', meaning="单位管长对环境传热系数", kind="参数", unit="W/(m K)", domain="非负", julia="epsilon_W_mK", dimensions="E"}
+Phi = {latex='\Phi_{j,t}^{S/R}', meaning="节点水压（不是压力平方）", kind="变量", unit="项目kPa", domain="0..pressure_max_kPa，供压不低于回压", julia="Phi_S,Phi_R", dimensions="K×T"}
+kappa = {latex='\kappa_{jk,t}', meaning="摩阻损耗辅助变量", kind="变量", unit="kPa", domain="非负，锥松弛可不取等", julia="kappa_S,kappa_R / κ", dimensions="E×T"}
+mu = {latex='\mu_{jk}', meaning="阻力系数（已包含几何/单位转换）", kind="参数", unit="kPa s²/kg²", domain="非负", julia="mu_kPa_s2_kg2", dimensions="E"}
+E = {latex='E_t^{DHN},E_0^{DHN},\overline E^{DHN}', meaning="热网相对最低水温的能量代理状态及界，不是独立储热设备", kind="变量/参数", unit="MWh，J除以3.6e9", domain="0..Emax；不强制终端循环", julia="E_DHN[t]，保存时索引t+1", dimensions="0:T"}
+loss = {latex='H_{jk,t}^{S/R,loss},\overline\epsilon_{jk,t}^{S/R}', meaning="热损耗功率；后者是功率不是epsilon系数", kind="表达式/参数", unit="W计算后除1e6得MW", domain="参考温度或当前均温与环境差决定", julia="loss,losses", dimensions="E×T×side"}
+m_max = {latex='\overline m_{k,t}^S', meaning="主导混合的最大入流幅值，不是参数上界", kind="辅助变量", unit="kg/s", domain="所有候选入流的有限包络", julia="maximum_flow", dimensions="有多入流的节点×时间×side"}
+z = {latex='z_{k,t},z_{jk,t}^{in}', meaning="本地或管道入流主导选择", kind="二进制变量", unit="1", domain="0/1且和为1", julia="z_mix；顺序side,node,time,stream", dimensions="变长向量；枚举时固定"}
+bigM = {latex='\overline M', meaning="最大入流与温度选择的失活常数", kind="参数", unit="分别kg/s和K，不能混用", domain="由候选流量上下界差、侧温度范围导出", julia="Mflow,Mtemp", dimensions="节点×side"}

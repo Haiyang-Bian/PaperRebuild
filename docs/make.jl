@@ -3,6 +3,8 @@ using PaperRebuild
 
 include(joinpath(@__DIR__, "..", "scripts", "ch02_docs.jl"))
 sync_ch02()
+include(joinpath(@__DIR__, "..", "scripts", "ch03_docs.jl"))
+sync_ch03()
 
 makedocs(;
     modules = [PaperRebuild],
@@ -36,6 +38,13 @@ makedocs(;
         "验收与科学图表" => "reproduction-acceptance.md",
         "Julia 工具与架构" => "julia-design.md",
         "第3章数据搜集" => "ch03-data.md",
+        "第3章 R2 模型" => [
+            "模型解释与补全" => "ch03-models.md",
+            "设备、电网与水力公式" => "ch03-equations.md",
+            "热网与简化公式" => "ch03-heat-equations.md",
+            "符号权威表" => "ch03-symbols.md",
+            "运行与验收" => "ch03-r2.md",
+        ],
         "API 索引与说明" => "api.md",
         "第 2 章模型与首批实现" => [
             "模型详解" => "ch02-models.md",

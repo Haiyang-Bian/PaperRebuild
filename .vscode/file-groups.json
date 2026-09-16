@@ -195,6 +195,31 @@
           "path": "docs/src/ch03-data.md",
           "name": "ch03-data.md",
           "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch03-equations.md",
+          "name": "ch03-equations.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch03-heat-equations.md",
+          "name": "ch03-heat-equations.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch03-models.md",
+          "name": "ch03-models.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch03-r2.md",
+          "name": "ch03-r2.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch03-symbols.md",
+          "name": "ch03-symbols.md",
+          "isDirectory": false
         }
       ],
       "order": 1,
@@ -261,6 +286,11 @@
           "path": "docs/agent/tasks/2026-09-16-ch03-data.md",
           "name": "2026-09-16-ch03-data.md",
           "isDirectory": false
+        },
+        {
+          "path": "docs/agent/tasks/2026-09-16-r2.md",
+          "name": "2026-09-16-r2.md",
+          "isDirectory": false
         }
       ],
       "order": 2,
@@ -317,6 +347,31 @@
           "path": "src/verification/r1.jl",
           "name": "r1.jl",
           "isDirectory": false
+        },
+        {
+          "path": "src/core/r2_case.jl",
+          "name": "r2_case.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/formulations/r2.jl",
+          "name": "r2.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/networks/water_mass.jl",
+          "name": "water_mass.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/reporting/r2_runs.jl",
+          "name": "r2_runs.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/verification/r2.jl",
+          "name": "r2.jl",
+          "isDirectory": false
         }
       ],
       "order": 3,
@@ -337,6 +392,16 @@
         {
           "path": "configs/r1/micro.toml",
           "name": "micro.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r2/single-source.toml",
+          "name": "single-source.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r2/two-source.toml",
+          "name": "two-source.toml",
           "isDirectory": false
         }
       ],
@@ -413,6 +478,21 @@
         {
           "path": "docs/reading/ch03/thesis-parameters.toml",
           "name": "thesis-parameters.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch03/formulas.toml",
+          "name": "formulas.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch03/model-issues.toml",
+          "name": "model-issues.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch03/symbols.toml",
+          "name": "symbols.toml",
           "isDirectory": false
         }
       ],
@@ -670,6 +750,11 @@
         {
           "path": "test/ch03_data.jl",
           "name": "ch03_data.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "test/r2.jl",
+          "name": "r2.jl",
           "isDirectory": false
         }
       ],
@@ -946,6 +1031,56 @@
         {
           "path": "tools/data/README.md",
           "name": "README.md",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/ch03_docs.jl",
+          "name": "ch03_docs.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_ch03.jl",
+          "name": "check_ch03.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r2_build.jl",
+          "name": "check_r2_build.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/configure_r2_tasks.jl",
+          "name": "configure_r2_tasks.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/create_r2_fixtures.jl",
+          "name": "create_r2_fixtures.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/experiment_r2.jl",
+          "name": "experiment_r2.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/plot_r2.jl",
+          "name": "plot_r2.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r2_task.jl",
+          "name": "r2_task.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/report_r2.jl",
+          "name": "report_r2.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/run_r2.jl",
+          "name": "run_r2.jl",
           "isDirectory": false
         }
       ],

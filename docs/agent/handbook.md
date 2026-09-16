@@ -23,6 +23,11 @@ R1 微型数据明确为合成，Gurobi 默认容差的失败运行保留；更�
 按来源锁定哈希，XLSX只读明确范围，不执行MATLAB文本或接受未经核验的公式缓存。
 96样本不等于已经确认15分钟；33热节点公开基准不等于论文32热节点。保留D01–D09和Q01。
 
+R2先读[模型解释](../src/ch03-models.md)、`docs/reading/ch03/model-issues.toml`和任务记录。
+公式/符号由`scripts/check_ch03.jl --sync`同步，API仍为原生docstring卡片。
+literal版本blocked不能静默改为checked；模型A1与原关系A1分别报告，压力锥松弛不取等也是结果。
+保存运行前后源码哈希必须一致；开发中早期运行不自动进入正式摘要。
+
 ## 文档更新路由
 
 | 变化 | 审阅位置 |

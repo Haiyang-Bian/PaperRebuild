@@ -468,6 +468,151 @@
       },
       "problemMatcher": [],
       "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/check_ch03.jl"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R2 mapping check",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "test/r2.jl"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R2 tests",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/run_r2.jl",
+        "single-source",
+        "wmm_checked_v1",
+        "--fixed",
+        "--open"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R2 open fixed WMM",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=tools/solvers",
+        "scripts/run_r2.jl",
+        "single-source",
+        "wmm_checked_v1"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R2 variable WMM",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=tools/solvers",
+        "scripts/run_r2.jl",
+        "two-source",
+        "schpd_mc_v1"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R2 SCHPD",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/r2_task.jl",
+        "validate"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R2 validate saved",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=docs",
+        "scripts/r2_task.jl",
+        "plot"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R2 redraw",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=tools/solvers",
+        "scripts/experiment_r2.jl"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R2 comparison experiments",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=docs",
+        "scripts/report_r2.jl"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R2 comparison report",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
     }
   ]
 }

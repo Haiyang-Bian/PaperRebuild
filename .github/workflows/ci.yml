@@ -36,6 +36,8 @@ jobs:
         run: julia --startup-file=no --project=. scripts/test.jl
       - name: Chapter 2 source and symbol mapping
         run: julia --startup-file=no --project=. scripts/check_ch02.jl
+      - name: Chapter 3 source and symbol mapping
+        run: julia --startup-file=no --project=. scripts/check_ch03.jl
       - name: Restore data tools
         run: julia --startup-file=no --project=tools/data scripts/bootstrap_data.jl
       - name: Data parser tests (offline fixtures)
