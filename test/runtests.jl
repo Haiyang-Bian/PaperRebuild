@@ -6,3 +6,5 @@ using PaperRebuild
     @test PaperRebuild.domath(2) == 7
     @test PaperRebuild.domath(1.5) == 6.5
 end
+
+include("r1.jl")

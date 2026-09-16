@@ -5,7 +5,19 @@
 开始读 AGENTS、[当前状态](current-state.md)，按任务读代码、
 [质量规范](../src/quality.md)和[目录规范](../src/structure.md)。
 论文阅读走[阅读导航](../src/reading.md)与来源清单，不一次加载全书。
+研究概览读[论文主线](../src/thesis-overview.md)，具体疑点与续读范围查
+[证据台账](../src/thesis-audit.md)；不得把已建立索引或完成主线审读记成逐式审核完成。
 跨会话以仓库记录为准，旧对话和文件名仅用于定位。
+后续研究按[复现计划](../src/reproduction-plan.md)选阶段，按[验收协议](../src/reproduction-acceptance.md)
+冻结判定条件；工具与模块以[Julia 技术设计](../src/julia-design.md)为准。
+新增科研闭环优先 Julia。允许有边界地自行实现算法，但必须记录与原方法的差异及保证范围。
+
+第 2 章工作先读 [模型详解与 C01–C12 疑点](../src/ch02-models.md)、[符号规则](../src/ch02-naming.md)。
+公式/符号权威数据在 `docs/reading/ch02/`，改动后用 Julia `scripts/check_ch02.jl --sync` 更新生成页。
+不得把 HS 效率方向、风电爬升段、z 的时间范围、水压方向或热核半步项静默改成常见模型。
+R1 微型数据明确为合成，Gurobi 默认容差的失败运行保留；更严容差重跑不得放宽 A1 阈值。
+文档展示按[质量规范](../src/quality.md)：API 读取 Julia docstring，公式有独立排版与编号，
+不再生成整段源码/测试展示页；索引更新不得恢复已取消的展示方式。
 
 ## 文档更新路由
 

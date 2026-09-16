@@ -1,7 +1,82 @@
-# 骨架 API
+# [API 索引与说明](@id api-reference)
 
-以下函数来自初始化模板，仅验证包加载、测试和 Documenter 集成。
-论文模型尚未实现，后续按研究任务增量添加 API。
+点击索引中的名称可跳到相应条目。每张卡片由当前 Julia 源码中的 **docstring** 自动生成，
+展示调用签名、用途、输入输出、单位和适用限制；详细物理解释见 [第 2 章模型说明](@ref ch02-models)。
+
+```@index
+Pages = ["api.md"]
+Modules = [PaperRebuild]
+Order = [:type, :function]
+```
+
+## 案例数据与输入
+
+输入契约与原始参数缺口见 [R1 运行教程](@ref ch02-status)。本批只接收明确标记的合成案例。
+
+```@docs
+PaperRebuild.R1Case
+PaperRebuild.load_case
+```
+
+## 设备模型
+
+对应 [CHP](@ref eq-ch02-001)、[光伏](@ref eq-ch02-005)、[风电原式疑点](@ref eq-ch02-007)、
+[电池](@ref eq-ch02-012) 和 [热储能](@ref eq-ch02-016)。风电诊断函数不代表风电调度模型已经实现。
+
+```@docs
+PaperRebuild.chp_heat
+PaperRebuild.chp_efficiency
+PaperRebuild.pv_available
+PaperRebuild.wind_ramp_paper
+PaperRebuild.battery_step
+PaperRebuild.heat_storage_step_paper
+```
+
+## 建筑温控
+
+对应 [建筑温度状态式](@ref eq-ch02-072)；离散系数必须与时间步长匹配。
+
+```@docs
+PaperRebuild.building_step
+```
+
+## 网络与单位换算
+
+对应 [热交换](@ref eq-ch02-029)、[混合温度](@ref eq-ch02-042)、
+[热传输节点法](@ref eq-ch02-047) 和 [支路潮流](@ref eq-ch02-024)。
+
+```@docs
+PaperRebuild.heat_power
+PaperRebuild.mix_temperature
+PaperRebuild.fixed_flow_kernel
+PaperRebuild.pipe_outlet
+PaperRebuild.electrical_bases
+```
+
+## 建模、求解与独立验证
+
+这三个步骤分别负责建立约束、取得数值结果、重算物理关系；
+公式与验证位置见 [实现与测试映射](@ref ch02-source)。
+
+```@docs
+PaperRebuild.build_r1_model
+PaperRebuild.solve_r1_case
+PaperRebuild.validate_r1_solution
+```
+
+## 运行记录与绘图
+
+运行数据格式和 F01–F04 见 [运行教程与验收状态](@ref ch02-status)。
+
+```@docs
+PaperRebuild.save_r1_run
+PaperRebuild.read_r1_run
+PaperRebuild.plot_r1_run
+```
+
+## 工程示例
+
+以下两个函数保留自初始化模板，只用于验证包加载、测试和 Documenter 集成，不计入论文复现进度。
 
 ```@docs
 PaperRebuild.hello

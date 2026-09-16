@@ -100,6 +100,91 @@
           "path": "docs/src/generated-inventory.md",
           "name": "generated-inventory.md",
           "isDirectory": false
+        },
+        {
+          "path": "docs/src/thesis-audit.md",
+          "name": "thesis-audit.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/thesis-overview.md",
+          "name": "thesis-overview.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/julia-design.md",
+          "name": "julia-design.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/reproduction-acceptance.md",
+          "name": "reproduction-acceptance.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/reproduction-plan.md",
+          "name": "reproduction-plan.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r1/r1-20260916T061313-3e2fc175/F01-topology.svg",
+          "name": "F01-topology.svg",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r1/r1-20260916T061313-3e2fc175/F02-devices.svg",
+          "name": "F02-devices.svg",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r1/r1-20260916T061313-3e2fc175/F03-trajectories.svg",
+          "name": "F03-trajectories.svg",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r1/r1-20260916T061313-3e2fc175/F04-residuals.svg",
+          "name": "F04-residuals.svg",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch02-api.md",
+          "name": "ch02-api.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch02-generated.md",
+          "name": "ch02-generated.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch02-models.md",
+          "name": "ch02-models.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch02-naming.md",
+          "name": "ch02-naming.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch02-source.md",
+          "name": "ch02-source.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch02-status.md",
+          "name": "ch02-status.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch02-symbols.md",
+          "name": "ch02-symbols.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/custom.css",
+          "name": "custom.css",
+          "isDirectory": false
         }
       ],
       "order": 1,
@@ -141,6 +226,26 @@
           "path": "docs/agent/handbook.md",
           "name": "handbook.md",
           "isDirectory": false
+        },
+        {
+          "path": "docs/agent/tasks/2026-09-16-thesis-review.md",
+          "name": "2026-09-16-thesis-review.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/agent/tasks/2026-09-16-reproduction-plan.md",
+          "name": "2026-09-16-reproduction-plan.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/agent/tasks/2026-09-16-r0-r1.md",
+          "name": "2026-09-16-r0-r1.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/agent/tasks/2026-09-16-docs-presentation.md",
+          "name": "2026-09-16-docs-presentation.md",
+          "isDirectory": false
         }
       ],
       "order": 2,
@@ -167,6 +272,36 @@
           "path": "src/PaperRebuild.jl",
           "name": "PaperRebuild.jl",
           "isDirectory": false
+        },
+        {
+          "path": "src/components/devices.jl",
+          "name": "devices.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/core/case.jl",
+          "name": "case.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/formulations/r1.jl",
+          "name": "r1.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/networks/fixed_flow_heat.jl",
+          "name": "fixed_flow_heat.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/reporting/runs.jl",
+          "name": "runs.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/verification/r1.jl",
+          "name": "r1.jl",
+          "isDirectory": false
         }
       ],
       "order": 3,
@@ -182,6 +317,11 @@
         {
           "path": "configs/README.md",
           "name": "README.md",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r1/micro.toml",
+          "name": "micro.toml",
           "isDirectory": false
         }
       ],
@@ -219,6 +359,31 @@
           "path": "docs/reading/sources.json",
           "name": "sources.json",
           "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch02/README.md",
+          "name": "README.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch02/formulas.toml",
+          "name": "formulas.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch02/inputs.toml",
+          "name": "inputs.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch02/symbols.toml",
+          "name": "symbols.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch02/targets.toml",
+          "name": "targets.toml",
+          "isDirectory": false
         }
       ],
       "order": 5,
@@ -240,6 +405,181 @@
           "path": "results/summaries/README.md",
           "name": "README.md",
           "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r1-first-batch.md",
+          "name": "r1-first-batch.md",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r1-first-batch/comparison.toml",
+          "name": "comparison.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r1-first-batch/r1-20260916T055237-75fa9f65/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r1-first-batch/r1-20260916T055237-75fa9f65/metadata.toml",
+          "name": "metadata.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r1-first-batch/r1-20260916T055237-75fa9f65/residuals.csv",
+          "name": "residuals.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r1-first-batch/r1-20260916T055237-75fa9f65/solution.toml",
+          "name": "solution.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r1-first-batch/r1-20260916T055237-75fa9f65/validation.toml",
+          "name": "validation.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r1-first-batch/r1-20260916T061313-3e2fc175/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r1-first-batch/r1-20260916T061313-3e2fc175/figures/F01-edges.csv",
+          "name": "F01-edges.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r1-first-batch/r1-20260916T061313-3e2fc175/figures/F01-topology.png",
+          "name": "F01-topology.png",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r1-first-batch/r1-20260916T061313-3e2fc175/figures/F01-topology.svg",
+          "name": "F01-topology.svg",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r1-first-batch/r1-20260916T061313-3e2fc175/figures/F02-CHP.csv",
+          "name": "F02-CHP.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r1-first-batch/r1-20260916T061313-3e2fc175/figures/F02-converters.csv",
+          "name": "F02-converters.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r1-first-batch/r1-20260916T061313-3e2fc175/figures/F02-devices.png",
+          "name": "F02-devices.png",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r1-first-batch/r1-20260916T061313-3e2fc175/figures/F02-devices.svg",
+          "name": "F02-devices.svg",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r1-first-batch/r1-20260916T061313-3e2fc175/figures/F03-states.csv",
+          "name": "F03-states.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r1-first-batch/r1-20260916T061313-3e2fc175/figures/F03-timeseries.csv",
+          "name": "F03-timeseries.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r1-first-batch/r1-20260916T061313-3e2fc175/figures/F03-trajectories.png",
+          "name": "F03-trajectories.png",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r1-first-batch/r1-20260916T061313-3e2fc175/figures/F03-trajectories.svg",
+          "name": "F03-trajectories.svg",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r1-first-batch/r1-20260916T061313-3e2fc175/figures/F04-grouped.csv",
+          "name": "F04-grouped.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r1-first-batch/r1-20260916T061313-3e2fc175/figures/F04-residuals.csv",
+          "name": "F04-residuals.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r1-first-batch/r1-20260916T061313-3e2fc175/figures/F04-residuals.png",
+          "name": "F04-residuals.png",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r1-first-batch/r1-20260916T061313-3e2fc175/figures/F04-residuals.svg",
+          "name": "F04-residuals.svg",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r1-first-batch/r1-20260916T061313-3e2fc175/figures/figure-config.toml",
+          "name": "figure-config.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r1-first-batch/r1-20260916T061313-3e2fc175/metadata.toml",
+          "name": "metadata.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r1-first-batch/r1-20260916T061313-3e2fc175/residuals.csv",
+          "name": "residuals.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r1-first-batch/r1-20260916T061313-3e2fc175/solution.toml",
+          "name": "solution.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r1-first-batch/r1-20260916T061313-3e2fc175/states.csv",
+          "name": "states.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r1-first-batch/r1-20260916T061313-3e2fc175/timeseries.csv",
+          "name": "timeseries.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r1-first-batch/r1-20260916T061313-3e2fc175/validation.toml",
+          "name": "validation.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r1-first-batch/r1-20260916T061409-316ae2bf/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r1-first-batch/r1-20260916T061409-316ae2bf/metadata.toml",
+          "name": "metadata.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r1-first-batch/r1-20260916T061409-316ae2bf/residuals.csv",
+          "name": "residuals.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r1-first-batch/r1-20260916T061409-316ae2bf/solution.toml",
+          "name": "solution.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r1-first-batch/r1-20260916T061409-316ae2bf/validation.toml",
+          "name": "validation.toml",
+          "isDirectory": false
         }
       ],
       "order": 6,
@@ -260,6 +600,11 @@
         {
           "path": "test/runtests.jl",
           "name": "runtests.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "test/r1.jl",
+          "name": "r1.jl",
           "isDirectory": false
         }
       ],
@@ -381,6 +726,96 @@
         {
           "path": ".vscode/file-groups.json",
           "name": "file-groups.json",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/audit_thesis_tables.jl",
+          "name": "audit_thesis_tables.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/read_docx.py",
+          "name": "read_docx.py",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/bootstrap_solvers.jl",
+          "name": "bootstrap_solvers.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_solvers.jl",
+          "name": "check_solvers.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "tools/solvers/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "tools/solvers/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "tools/solvers/README.md",
+          "name": "README.md",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/ch02_docs.jl",
+          "name": "ch02_docs.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_ch02.jl",
+          "name": "check_ch02.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r1_gurobi.jl",
+          "name": "check_r1_gurobi.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r1_portability.jl",
+          "name": "check_r1_portability.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/compare_r1_runs.jl",
+          "name": "compare_r1_runs.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/plot_r1.jl",
+          "name": "plot_r1.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/prepare_r1_summary.jl",
+          "name": "prepare_r1_summary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r1_task.jl",
+          "name": "r1_task.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/report_r1.jl",
+          "name": "report_r1.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/run_r1.jl",
+          "name": "run_r1.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/validate_r1.jl",
+          "name": "validate_r1.jl",
           "isDirectory": false
         }
       ],

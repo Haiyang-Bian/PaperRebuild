@@ -1,0 +1,59 @@
+schema = "ch02-inputs-v1"
+case = "configs/r1/micro.toml"
+source_relation = "synthetic teaching data, not transcribed thesis parameters"
+
+[[input]]
+id = "time"
+keys = ["time.T", "time.dt_h"]
+meaning = "时段数和每段小时数；建筑及储热系数必须使用同一步长"
+units = ["1", "h"]
+status = "synthetic_explicit"
+missing_author_data = "作者算例时间步长与完整时间序列尚未恢复"
+
+[[input]]
+id = "electric"
+keys = ["electric.nodes", "electric.root", "electric.from", "electric.to", "electric.S_base_MVA", "electric.V_base_kV", "electric.r_pu", "electric.x_pu", "electric.V_min_pu", "electric.V_max_pu", "electric.l_max_pu"]
+meaning = "单支路拓扑、三相基值、标幺阻抗、幅值电压界、电流平方界"
+units = ["1", "MVA", "kV", "pu", "pu²"]
+status = "synthetic_explicit"
+missing_author_data = "完整节点线路数据、额定基值、节点设备连接尚缺"
+
+[[input]]
+id = "heat"
+keys = ["heat.nodes", "heat.supply_from", "heat.return_from", "heat.m", "heat.rho_w", "heat.A", "heat.L", "heat.c_w", "heat.epsilon_W_mK", "heat.tau_AM", "heat.tau_min", "heat.tau_max", "heat.history_S", "heat.history_R"]
+meaning = "固定正流量、两管几何与水物性、每米散热系数、环境、端点温度界和最早至 t=0 的入口历史"
+units = ["kg/s", "kg/m³", "m²", "m", "kJ/(kg K)", "W/(m K)", "K"]
+status = "synthetic_explicit"
+missing_author_data = "管道和水力参数、泵特性、初始管温场、作者节点法实现尚缺"
+
+[[input]]
+id = "devices"
+keys = ["devices.eta_G", "devices.eta_loss", "devices.P_CHP_min", "devices.P_CHP_max", "devices.H_CHP_min", "devices.H_CHP_max", "devices.P_EB_max", "devices.COP_EB", "devices.P_HP_max", "devices.COP_HP", "devices.BS_power_max", "devices.E_BS_max", "devices.E_BS_initial", "devices.eta_BS_ch", "devices.eta_BS_dis", "devices.HS_power_max", "devices.E_HS_max", "devices.E_HS_initial", "devices.eta_HS_ch", "devices.eta_HS_dis", "devices.eta_HS_loss", "devices.storage_reference_dt_h", "devices.storage_mode_scope"]
+meaning = "设备效率比值、电热容量、储能容量与初值、每步存留率、原式全窗口互斥范围"
+units = ["1", "MW", "MWh", "h"]
+status = "synthetic_explicit"
+missing_author_data = "原设备数量及参数尚缺；变效率 CHP、风电、非单位 HS 效率仍有原式疑点"
+
+[[input]]
+id = "building"
+keys = ["building.tau_initial", "building.tau_min", "building.tau_max", "building.eta_H", "building.U", "building.reference_dt_h", "building.eta_DH", "building.P_DH_max"]
+meaning = "建筑初温、舒适界、离散供热及散热系数、标定步长、户用电热效率和容量"
+units = ["K", "K/MW", "1", "h", "MW"]
+status = "synthetic_explicit"
+missing_author_data = "作者真实建筑热容、传热参数、面积和系数标定未恢复"
+
+[[input]]
+id = "demand"
+keys = ["demand.P_D", "demand.Q_D", "demand.P_PV_available", "demand.P_WT_available", "demand.tau_AM"]
+meaning = "基础电负荷、有功无功、光伏可用上限、禁用风电占位、室外温度，均长度 T"
+units = ["MW", "Mvar", "K"]
+status = "synthetic_explicit"
+missing_author_data = "论文原始天气和用能曲线、采样说明尚缺"
+
+[[input]]
+id = "cost"
+keys = ["cost.grid_per_MWh", "cost.CHP_per_MWh"]
+meaning = "教学购电与CHP电出力成本；不是作者市场优化的出清价格"
+units = ["synthetic_currency/MWh"]
+status = "project_teaching_objective"
+missing_author_data = "报价策略、燃料成本、市场清算数据尚未接入"

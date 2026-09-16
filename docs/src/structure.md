@@ -7,6 +7,7 @@
 | `configs/` | 显式参数、种子和实验配置 | 提交 |
 | `scripts/` | 运行、阅读、检查及维护入口 | 提交 |
 | `tools/` | 独立开发工具环境 | Project 和 Manifest 提交 |
+| `tools/solvers/` | 可选 Gurobi 能力预检及 R1 本机对照环境 | Project 和 Manifest 提交，不含许可 |
 | `data/raw/` | 原始数据，附来源、许可和哈希 | 默认忽略数据 |
 | `data/processed/` | 从原始数据派生的输入 | 默认忽略产物 |
 | `results/runs/` | 独立运行目录、日志和原始输出 | 默认忽略产物 |
@@ -28,3 +29,9 @@
 可公开的小型测试数据放 `test/fixtures/` 并注明许可与来源。
 单个提交文件超过 5 MiB 时检查拒绝，先设计外部来源登记。
 目录随任务增量扩展，不预先为每个章节创建空模块。
+未来模型、算法、独立验证与实验入口的职责按 [Julia 模块设计](julia-design.md)实施。
+
+R1 已增量建立 `src/core/`（输入契约）、`components/`（设备）、`networks/`（恒流热核）、
+`formulations/`（JuMP 约束）、`verification/`（数值独立验算）、`reporting/`（保存重读）。
+`docs/reading/ch02/` 管理机器清单；生成公式/符号/实现索引页有明确标记。
+`scripts/plot_r1.jl` 在 docs 环境提供绘图方法；科学包导入不加载绘图库。

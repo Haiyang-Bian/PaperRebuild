@@ -3,14 +3,21 @@
 使用 Julia 逐步复现博士论文，并沉淀可核查、可接续的研究流程。
 主要智能体为 Codex，IDE 为 VS Code，文件视图使用 CodeGroup。
 
-**当前阶段：工程基础。**已有论文初步阅读地图；全文精读、数学模型转录和数值复现尚未完成。
-`src/` 中的函数仅为包骨架，不代表科研能力。
+**当前阶段：R0/R1 首批实施。**第 2 章 76 条编号公式已逐条登记，
+已实现设备、建筑、两节点固定电网和恒流热网的可核查特例，并提供公开合成微型案例。
+风电等原式疑点及完整水力/市场/重构仍待后续；这不是全论文数值复现完成。
+`hello/domath` 仍只是包骨架，不计入科研进度。本轮实现尚未提交到远程。
 
 ## 入口
 
 - [在线手册](https://haiyang-bian.github.io/PaperRebuild/)
 - [本地工具链说明](docs/src/toolchain.md)
 - [论文阅读导航](docs/src/reading.md)
+- [论文主线与研究边界](docs/src/thesis-overview.md)、[审读证据与问题台账](docs/src/thesis-audit.md)
+- [详细复现计划](docs/src/reproduction-plan.md)、[验收与科学图表](docs/src/reproduction-acceptance.md)
+- [Julia 工具选型与代码设计](docs/src/julia-design.md)
+- [第 2 章模型详解](docs/src/ch02-models.md)、[符号规范](docs/src/ch02-naming.md)
+- [R1 运行教程与范围](docs/src/ch02-status.md)
 - [Codex 入口](AGENTS.md)与[当前状态](docs/agent/current-state.md)
 - [参与开发](CONTRIBUTING.md)与[来源及许可](NOTICE.md)
 
