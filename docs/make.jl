@@ -49,6 +49,7 @@ makedocs(;
             "R3稳健性与四模式结果" => "ch03-r3-v2-results.md",
             "R3物理可行性与停止判据" => "ch03-r3-v3.md",
             "R3物理恢复与停止判据结果" => "ch03-r3-v3-results.md",
+            "R3可比基线与差异归因" => "ch03-r3-baseline.md",
             "R3投影梯度结果与图表" => "ch03-r3-pg-results.md",
             "R3可行性运行教程" => "ch03-r3.md",
             "R3可行性结果与图表" => "ch03-r3-results.md",

@@ -14,7 +14,15 @@ function r3_optional_attribute(getter)
     end
 end
 
-function r3_solve(c, builder, optimizer; budget_sec = 60.0, deadline = Inf, sensitivity = false)
+function r3_solve(
+    c,
+    builder,
+    optimizer;
+    budget_sec = 60.0,
+    deadline = Inf,
+    sensitivity = false,
+    sensitivity_witness = false,
+)
     start = r3_clock()
     stop = min(deadline, start+budget_sec)
     result = Dict{String,Any}(
@@ -141,6 +149,8 @@ function r3_solve(c, builder, optimizer; budget_sec = 60.0, deadline = Inf, sens
         end
         if sensitivity && has_solution
             result["sensitivity"] = r3_value_sensitivity(c, b)
+            sensitivity_witness &&
+                (result["sensitivity_primal_order"] = value.(all_variables(b.model)))
         end
     catch err
         if err isa Union{MOI.UnsupportedConstraint,MOI.UnsupportedAttribute}

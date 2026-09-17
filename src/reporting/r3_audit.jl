@@ -6,6 +6,7 @@
 局部KKT从该次局部问题读取，不借用固定流量子问题的乘子。
 """
 function r3_stopping_evidence(c::R2Case, result)
+    get(result, "algorithm", "")=="r3_paper_structure_v1" && return r3_baseline_evidence(c, result)
     rows=Dict{String,Any}[]
     small=0
     previous=nothing

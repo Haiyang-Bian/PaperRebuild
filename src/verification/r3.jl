@@ -66,6 +66,7 @@ function validate_r3_solution(c::R2Case, result)
             end
         end
         get(result, "algorithm", "")=="r3_pg_checked_v3" && r3_validate_v3(c, result)
+        get(result, "algorithm", "")=="r3_paper_structure_v1" && r3_validate_baseline(c, result)
         return (
             status = valid ? "checked_relations_pass" : result["status"],
             model_pass = valid,

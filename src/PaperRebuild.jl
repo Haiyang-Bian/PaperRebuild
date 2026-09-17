@@ -29,6 +29,11 @@ include("reporting/r3_audit.jl")
 include("algorithms/r3_physical.jl")
 include("algorithms/r3_v3.jl")
 include("verification/r3_v3_kkt.jl")
+include("algorithms/r3_baseline.jl")
+include("verification/r3_baseline.jl")
+include("reporting/r3_baseline.jl")
+
+export R3BaselineSpec, solve_r3_baseline, compare_r3_baselines
 
 export audit_r3_failure, r3_stopping_evidence
 export build_r3_physical_step

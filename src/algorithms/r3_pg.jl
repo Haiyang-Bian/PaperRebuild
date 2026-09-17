@@ -372,6 +372,8 @@ end
 返回pass/errors；一步接受不代表物理可行，最终调度仍交给validate_r3_solution。
 """
 function validate_r3_iteration(c::R2Case, record; stages = nothing)
+    get(record, "algorithm", "")=="r3_paper_structure_v1" &&
+        return r3_validate_baseline_iteration(c, record; stages)
     get(record, "algorithm", "") in ("r3_pg_checked_v2", "r3_pg_checked_v3") &&
         return r3_validate_v2_iteration(c, record; stages)
     errors=String[]

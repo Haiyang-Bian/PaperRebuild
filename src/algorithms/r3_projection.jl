@@ -37,6 +37,7 @@ end
 调度辅助变量同时优化；移除3-17、3-27/28/30/31/33/34/35/36热耦合，保留设备、
 电网、水力锥、温度边界和质量守恒。可选局部半空间仅供单次试探，不能永久切除可行域。
 gradient为归一化坐标中的诊断梯度；不求解、不写文件。距离使用二阶锥上图表示。
+geometry默认normalized_euclidean保持旧行为；physical_euclidean直接使用kg/s距离。
 """
 function build_r3_projection(
     c::R2Case,
@@ -47,7 +48,9 @@ function build_r3_projection(
     radius = 0.1,
     optimizer = nothing,
     operation = nothing,
+    geometry = :normalized_euclidean,
 )
+    geometry in (:physical_euclidean, :normalized_euclidean) || throw(ArgumentError("未知投影几何"))
     lo, hi, width = r3_flow_box(c, operation)
     size(target)==size(lo) && all(isfinite, target) ||
         throw(ArgumentError("投影目标形状/有限值错误"))
@@ -65,7 +68,7 @@ function build_r3_projection(
         if width[i]==0
             fix(m[i], lo[i]; force = true)
         else
-            push!(delta, (m[i]-target[i])/width[i])
+            push!(delta, (m[i]-target[i])/(geometry==:physical_euclidean ? 1.0 : width[i]))
         end
     end
     if !isnothing(gradient)
@@ -102,6 +105,7 @@ function build_r3_projection(
             gradient,
             violation,
             radius,
+            geometry,
         ),
     )
 end
@@ -137,10 +141,12 @@ function r3_project(c, target, optimizer; deadline = Inf, kwargs...)
                 out["flow"]=r2_extract(m)
                 out["values"]=Dict(k=>r2_extract(v) for (k, v) in b.variables)
                 out["distance"]=sum(
-                    ((m[i]-target[i])/b.width[i])^2 for i in eachindex(m) if b.width[i]>0;
+                    ((m[i]-target[i])/(b.geometry==:physical_euclidean ? 1.0 : b.width[i]))^2 for
+                    i in eachindex(m) if b.width[i]>0;
                     init = 0.0,
                 )
                 out["constraint_violation"]=0.0
+                out["geometry"]=string(b.geometry)
                 out["removed_equations"]=b.removed
                 out["local_halfspace"]=!isnothing(b.gradient)
                 if !isnothing(b.gradient)

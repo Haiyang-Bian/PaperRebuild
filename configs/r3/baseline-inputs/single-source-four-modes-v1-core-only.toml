@@ -1,0 +1,114 @@
+T = 4
+ambient_K = [293.0, 293.0, 293.0, 293.0]
+description = "合成四模式机制案例：稳态历史、有界负荷回水、共同恢复尾段；不是论文原始输入。 仅核心时段诊断，不作公平周期收益比较。"
+dt_h = 1.0
+grid_price = [100.0, 250.0, 250.0, 100.0]
+id = "single-source-four-modes-v1-core-only"
+origin = "synthetic"
+schema = "r2-case-v1"
+
+[[devices]]
+P_max = 0.3
+P_min = 0.0
+availability = [0.3, 0.3, 0.3, 0.3]
+cost_per_MWh = 90.0
+electric_node = 2
+heat_node = 1
+heat_ratio = 1.5
+kind = "CHP"
+[[devices]]
+P_max = 0.3
+P_min = 0.0
+availability = [0.3, 0.3, 0.3, 0.3]
+cost_per_MWh = 0.0
+electric_node = 2
+heat_node = 1
+heat_ratio = 0.95
+kind = "EB"
+[[devices]]
+P_max = 0.44
+P_min = 0.0
+availability = [0.0, 0.264, 0.44, 0.08800000000000001]
+cost_per_MWh = 1.0
+electric_node = 2
+heat_node = 0
+heat_ratio = 0.0
+kind = "PV"
+
+[electric]
+base_MVA = 1.0
+base_kV = 10.0
+grid_max_MW = 2.0
+v_max_pu = 1.05
+v_min_pu = 0.95
+
+    [[electric.edges]]
+    ell_max_pu = 4.0
+    from = 1
+    r_pu = 0.005
+    to = 2
+    x_pu = 0.002
+
+    [[electric.nodes]]
+    P_MW = [0.0, 0.0, 0.0, 0.0]
+    Q_Mvar = [0.0, 0.0, 0.0, 0.0]
+    [[electric.nodes]]
+    P_MW = [0.2, 0.2, 0.2, 0.2]
+    Q_Mvar = [0.02, 0.02, 0.02, 0.02]
+
+[heat]
+R_bounds_K = [303.0, 323.0]
+R_reference_K = 313.0
+S_bounds_K = [343.0, 363.0]
+S_reference_K = 353.0
+cp_J_kgK = 4200.0
+pressure_max_kPa = 1000.0
+rho_kg_m3 = 1000.0
+
+    [[heat.nodes]]
+    H_MW = [0.0, 0.0, 0.0, 0.0]
+    flow_max = 1.5
+    flow_min = 0.5
+    return_K = 313.0
+    role = "source"
+    [[heat.nodes]]
+    H_MW = [0.15, 0.16, 0.17, 0.16]
+    flow_max = 1.5
+    flow_min = 0.5
+    return_K = 313.0
+    role = "load"
+
+    [[heat.pipes]]
+    R_history_K = [313.0, 313.0, 313.0, 313.0]
+    S_history_K = [353.0, 353.0, 353.0, 353.0]
+    area_m2 = 0.01
+    epsilon_W_mK = 0.2
+    fixed_flow = [1.0, 1.0, 1.0, 1.0]
+    flow_history = [1.0, 1.0, 1.0, 1.0]
+    flow_max = 1.5
+    flow_min = 0.5
+    from = 1
+    length_m = 180.0
+    mu_kPa_s2_kg2 = 0.5
+    to = 2
+
+[r3_mechanism]
+R_steady_out_K = [312.82930402781403]
+S_steady_out_K = [352.4879120834421]
+core_periods = 4
+longest_path_cover = 2
+parent_sha256 = "1edcf60d35079ba126c253525d622dc104b7c8b503d71c153fb76e7a0aef8f4d"
+pipe_cover_steps = [2]
+pv_peak_MW = 0.44
+pv_profile = [0.0, 0.6, 1.0, 0.2]
+schema = "r3-mechanism-v1"
+steady_heat_MW = [0.16871692308318106, 0.1658492307504568]
+tail_periods = 0
+
+[units]
+energy = "MWh"
+flow = "kg/s"
+power = "MW"
+pressure = "kPa"
+temperature = "K"
+time = "h"

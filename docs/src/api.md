@@ -119,6 +119,9 @@ PaperRebuild.solve_r3_projected_gradient
 PaperRebuild.validate_r3_iteration
 PaperRebuild.R3OperationSpec
 PaperRebuild.r3_boundary_case
+PaperRebuild.R3BaselineSpec
+PaperRebuild.solve_r3_baseline
+PaperRebuild.compare_r3_baselines
 PaperRebuild.build_r3_local_step
 PaperRebuild.solve_r3_reference
 PaperRebuild.compare_r3_modes
