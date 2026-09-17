@@ -32,8 +32,10 @@ function solve_r3_projected_gradient(
     local_halfspace = true,
     algorithm = :r3_pg_checked_v1,
     operation = nothing,
+    physical_recovery = true,
+    stationarity_check = true,
 )
-    if Symbol(algorithm)==:r3_pg_checked_v2
+    if Symbol(algorithm) in (:r3_pg_checked_v2, :r3_pg_checked_v3)
         return r3_pg_v2(
             c;
             optimizer,
@@ -44,6 +46,8 @@ function solve_r3_projected_gradient(
             max_iterations,
             local_halfspace,
             operation,
+            v3_options = Symbol(algorithm)==:r3_pg_checked_v3 ?
+                         (; physical_recovery, stationarity_check) : nothing,
         )
     end
     Symbol(algorithm)==:r3_pg_checked_v1 || throw(ArgumentError("未知R3外层算法"))
@@ -364,7 +368,7 @@ end
 返回pass/errors；一步接受不代表物理可行，最终调度仍交给validate_r3_solution。
 """
 function validate_r3_iteration(c::R2Case, record; stages = nothing)
-    get(record, "algorithm", "")=="r3_pg_checked_v2" &&
+    get(record, "algorithm", "") in ("r3_pg_checked_v2", "r3_pg_checked_v3") &&
         return r3_validate_v2_iteration(c, record; stages)
     errors=String[]
     lo, hi, width=r3_flow_box(c)

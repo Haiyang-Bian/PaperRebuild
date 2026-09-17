@@ -53,6 +53,7 @@ function r3_pg_v2(
     max_iterations,
     local_halfspace,
     operation,
+    v3_options = nothing,
 )
     isfinite(budget_sec) && 0<budget_sec<=600 || throw(ArgumentError("预算须在(0,600]秒"))
     1<=max_iterations<=200 || throw(ArgumentError("轮数须在1至200之间"))
@@ -60,6 +61,7 @@ function r3_pg_v2(
     start=r3_clock()
     deadline=start+budget_sec
     outer=deadline-min(60.0, 0.1budget_sec)
+    isnothing(v3_options) || (outer=start+0.7budget_sec)
     lo, hi, width=r3_flow_box(c, operation)
     divisor=ifelse.(width .> 0, width, 1.0)
     stages=Dict{String,Any}[]
@@ -82,6 +84,13 @@ function r3_pg_v2(
         "cost_scale"=>r3_cost_scale(c),
         "local_halfspace"=>local_halfspace,
     )
+    if !isnothing(v3_options)
+        out["algorithm"]="r3_pg_checked_v3"
+        out["trace_schema"]="r3-pg-trace-v3"
+        out["local_stationarity_checked"]=false
+        out["physical_recovery_enabled"]=v3_options.physical_recovery
+        out["stationarity_check_enabled"]=v3_options.stationarity_check
+    end
     if !isnothing(operation)
         out["operation"]=r3_operation_dict(operation)
         out["operation_sha256"]=r3_operation_hash(out["operation"])
@@ -93,6 +102,7 @@ function r3_pg_v2(
         pop!(r, "source_hashes_at_solve", nothing)
         r["source_snapshot"]="parent_run"
         r["stage"]=name
+        isnothing(v3_options) || (r["v3_physical_review"]=true)
         valid=validate_r3_solution(c, r)
         r["model_pass"], r["physics_pass"]=valid.model_pass, valid.physical_pass
         push!(stages, r)
@@ -151,6 +161,19 @@ function r3_pg_v2(
     function finish(reason)
         local i
         out["outer_status"]=reason
+        if !isnothing(v3_options)
+            return r3_v3_finalize!(
+                c,
+                out,
+                pushstage;
+                optimizer,
+                convex_optimizer,
+                operation,
+                start,
+                deadline,
+                options = v3_options,
+            )
+        end
         i=out["best_subproblem_stage"]
         if i>0 && deadline>r3_clock() && !isnothing(optimizer)
             candidate=stages[i]
@@ -225,7 +248,7 @@ function r3_pg_v2(
         i, mode, merit=evaluate(m; sensitivity = true)
         remember(i)
         row=Dict{String,Any}(
-            "algorithm"=>"r3_pg_checked_v2",
+            "algorithm"=>out["algorithm"],
             "iteration"=>k,
             "stage"=>i,
             "mode"=>mode,
@@ -363,6 +386,28 @@ function r3_pg_v2(
                 row["local_direction_norm"]=localresult["direction_norm"]
                 row["local_trust_binding"]=localresult["trust_binding"]
                 row["switches"]=localresult["switches"]
+                if !isnothing(v3_options) &&
+                   v3_options.stationarity_check &&
+                   mode=="dispatch" &&
+                   r3_stationarity_gate(localresult, merit)
+                    check=r3_check_stationarity(
+                        c,
+                        m,
+                        i,
+                        localresult,
+                        evaluate,
+                        stages,
+                        convex_optimizer;
+                        radius,
+                        operation,
+                        deadline = outer,
+                    )
+                    out["stationarity_check"]=check
+                    if check["checked"]
+                        out["local_stationarity_checked"]=true
+                        return finish("local_stationarity_checked")
+                    end
+                end
                 if mode=="dispatch" &&
                    isempty(localresult["switches"]) &&
                    !localresult["trust_binding"] &&

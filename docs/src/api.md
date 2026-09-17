@@ -123,6 +123,7 @@ PaperRebuild.solve_r3_reference
 PaperRebuild.compare_r3_modes
 PaperRebuild.audit_r3_failure
 PaperRebuild.r3_stopping_evidence
+PaperRebuild.build_r3_physical_step
 ```
 
 ## 工程示例函数说明

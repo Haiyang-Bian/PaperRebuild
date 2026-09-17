@@ -65,6 +65,7 @@ function validate_r3_solution(c::R2Case, result)
                 )<=1e-6 || throw(ArgumentError("外层流量链断裂"))
             end
         end
+        get(result, "algorithm", "")=="r3_pg_checked_v3" && r3_validate_v3(c, result)
         return (
             status = valid ? "checked_relations_pass" : result["status"],
             model_pass = valid,
@@ -107,6 +108,25 @@ function validate_r3_solution(c::R2Case, result)
     end
     d, h, v = c.data, c.data["heat"], result["values"]
     V(key, i, t) = v[key][i][t]
+    if get(result, "v3_physical_review", false)
+        # 消去端口辅助热量后直接核查交付负荷，防止两条小残差同向叠加。
+        # 新检查仅属于v3，旧运行沿用其原有判定；仍使用既有MW门槛。
+        for (j, n) in enumerate(h["nodes"]), t in 1:d["T"]
+            n["role"]=="load" || continue
+            delivered=h["cp_J_kgK"]/1e6*V("m_port", j, t)*(
+                V("tau_S_port", j, t)-V("tau_R_port", j, t)
+            )
+            record(
+                "R3-delivered-load",
+                j,
+                t,
+                delivered-n["H_MW"][t],
+                "MW",
+                1e-6*(1+d["electric"]["grid_max_MW"]);
+                scope = "physics",
+            )
+        end
+    end
     if haskey(result, "flow_sha256")
         scheduled = result[result["fixed_flows"] ? "flow_schedule" : "initial_flow"]
         r2_flow_hash(r2_flow_matrix(c, scheduled))==result["flow_sha256"] ||
@@ -216,6 +236,15 @@ function validate_r3_solution(c::R2Case, result)
             total-result["solver_objective"],
             "1",
             1e-6*max(1, abs(total)),
+        )
+    elseif kind=="physical_violation"
+        record(
+            "R3-physical-merit",
+            0,
+            0,
+            r3_physical_merit(c, v).value-result["physical_merit"],
+            "1",
+            1e-8,
         )
     elseif kind=="operating_cost"
         record(
