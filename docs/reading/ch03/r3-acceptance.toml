@@ -1,0 +1,56 @@
+schema = "r3-acceptance-v1"
+delivery = "R3首批可行性闭环"
+origin = "synthetic"
+threshold_source = "docs/src/reproduction-acceptance.md"
+study = "configs/r3/study.toml"
+formal_batch = "r3-study-20260917T045811-7399ae72"
+ci_scope = "Clarabel固定流量/弹性问题及输入、状态、保存、独立回放测试；不申请Gurobi许可"
+local_scope = "Gurobi详细物理求解和流量修正；相同SOCP求解器对照"
+
+[[checks]]
+id = "R3-fixed"
+expected = "保持流量，κ重构保持其余数值和成本，最终物理A1通过"
+case = "single-fixed"
+test = "R3 fixed schedule and reconstruction ch03-060"
+[[checks]]
+id = "R3-schpd"
+expected = "初值、固定流量、诊断、修正、最终调度分别报告，不将近似初值视为可执行"
+cases = ["single-schpd", "two-schpd"]
+[[checks]]
+id = "R3-low-flow"
+expected = "固定流量不可行，诊断定位热冲突，直接修正恢复物理可行"
+case = "single-low-flow"
+test = "R3 elastic diagnostic and workflow"
+[[checks]]
+id = "R3-capacity"
+expected = "负荷10MW超过端口解析上限0.315MW，详细问题不可行；弹性解不算成功"
+case = "single-impossible-heat"
+[[checks]]
+id = "R3-electric"
+expected = "κ重构仍留下电网原等式失败，保持流量进行详细调度后物理通过"
+case = "single-loose-electric"
+[[checks]]
+id = "R3-boundaries"
+expected = "整步/非整步/时延切换独立质量回放一致；历史不足及流量越界被拒绝"
+test = "R3 input history and mass replay boundaries"
+[[checks]]
+id = "R3-evidence"
+expected = "哈希篡改被拒绝，失败初始化可重读；缺许可/不支持求解器/预算不足分别传播"
+test = "R3 elastic diagnostic and workflow"
+[[checks]]
+id = "R3-fallback"
+expected = "最终费用求解故障时保留已验证修正候选，成本优化标记为未完成"
+script = "scripts/check_r3_fallback.jl"
+evidence = "r3-20260917T050654-ac8fbd84"
+note = "显式故障注入，不是本机实际缺许可"
+[[checks]]
+id = "R3-A2"
+expected = "相同固定流量SOCP的目标差和实际间隙均低于1e-4"
+script = "scripts/check_r3_reference.jl"
+evidence = "r3-reference-20260917T050229-5cf368bb"
+
+[remaining]
+author_gradient = "未实现；需核对对偶符号、输运系数链式求导及不可微边界"
+four_modes = "未进入本批"
+paper_scale_and_original_data = "未闭合；合成结果不替代论文同输入数值复现"
+real_solver_timeout = "状态分支有自动测试；本次六例未发生真实时限终止，不宣称观察到所有商用求解器终止路径"

@@ -38,12 +38,15 @@ makedocs(;
         "验收与科学图表" => "reproduction-acceptance.md",
         "Julia 工具与架构" => "julia-design.md",
         "第3章数据搜集" => "ch03-data.md",
-        "第3章 R2 模型" => [
+        "第3章 调度模型与可行性" => [
             "模型解释与补全" => "ch03-models.md",
             "设备、电网与水力公式" => "ch03-equations.md",
             "热网与简化公式" => "ch03-heat-equations.md",
             "算法公式与实现边界" => "ch03-algorithm-equations.md",
             "R3采用解释与推导" => "ch03-r3-theory.md",
+            "R3可行性运行教程" => "ch03-r3.md",
+            "R3可行性结果与图表" => "ch03-r3-results.md",
+            "R3同模型求解器对照" => "ch03-r3-reference.md",
             "符号权威表" => "ch03-symbols.md",
             "运行与验收" => "ch03-r2.md",
             "合成实验结果与图表" => "ch03-r2-results.md",

@@ -22,6 +22,10 @@ if action=="validate"
     end
     loaded.validation.physical_pass || exit(2)
 elseif action=="stages"
+    if !isfile(joinpath(directory, "stages.csv"))
+        println("No stages were executed; inspect initialization status in run.toml.")
+        exit(0)
+    end
     for row in CSV.File(joinpath(directory, "stages.csv"))
         println(
             row.name,

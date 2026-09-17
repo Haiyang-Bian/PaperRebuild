@@ -1,0 +1,6 @@
+run_id,stage,name,variant,status,objective_kind,solver_objective,operating_cost,solver_bound,relative_gap,flow_distance,elapsed_sec,model_pass,physical_pass
+r3-study-20260917T045811-7399ae72_single-schpd,1,initialization,schpd_mc_v1,solver_optimal,operating_cost,72.49939237495148,72.49939237495148,72.49936381359817,3.939530026714601e-7,0.0,1.689000129699707,true,false
+r3-study-20260917T045811-7399ae72_single-schpd,2,fixed_dispatch,r3_sp_checked_v1,infeasible_certified,operating_cost,,,,,,0.01043059999938123,false,false
+r3-study-20260917T045811-7399ae72_single-schpd,3,diagnostic,r3_sp_elastic_v1,solver_optimal,normalized_slack,0.0021278183145210477,193.92855579900805,0.0021278181336233074,1.8089774036361694e-10,0.0,0.6860337000107393,true,false
+r3-study-20260917T045811-7399ae72_single-schpd,4,direct_repair,r3_direct_repair_v1,solver_optimal,flow_distance,0.012130685516758973,212.34376852909017,0.012130572290037556,1.1322672141718393e-7,0.012130684764370958,2.2001459000166506,true,true
+r3-study-20260917T045811-7399ae72_single-schpd,5,repaired_dispatch,r3_fixed_physical_v1,solver_optimal,operating_cost,80.0835522316707,80.0835522316707,80.08355223167068,1.7745035427614347e-16,0.012130684764370958,0.011970399995334446,true,true

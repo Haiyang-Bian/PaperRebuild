@@ -1,0 +1,24 @@
+A2_pass = true
+A2_threshold = 0.0001
+assertions_passed = 8
+batch = "r3-reference-20260917T050229-5cf368bb"
+cost_difference = 1.7413305641866828e-6
+input_sha256 = "1edcf60d35079ba126c253525d622dc104b7c8b503d71c153fb76e7a0aef8f4d"
+origin = "synthetic"
+relative_difference = 2.171699151083387e-8
+schema = "r3-reference-v1"
+scope = "same fixed-flow continuous SOCP; not a global flow-optimization comparison"
+
+[results.clarabel]
+bound = 80.18286340565697
+cost = 80.18286341908787
+directory = "r3-reference-20260917T050229-5cf368bb_clarabel"
+flow_sha256 = "0e9d4da1748a1b374c3e0d4c00c39ec2f393b09e735f5f49bf0043ee92c5d91d"
+gap = 1.6750327166491365e-10
+
+[results.gurobi]
+bound = 80.18285835670929
+cost = 80.18286516041843
+directory = "r3-reference-20260917T050229-5cf368bb_gurobi"
+flow_sha256 = "0e9d4da1748a1b374c3e0d4c00c39ec2f393b09e735f5f49bf0043ee92c5d91d"
+gap = 8.485240739846287e-8

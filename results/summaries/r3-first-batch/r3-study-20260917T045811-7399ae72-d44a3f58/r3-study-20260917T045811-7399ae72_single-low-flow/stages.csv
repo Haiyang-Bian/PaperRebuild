@@ -1,0 +1,5 @@
+run_id,stage,name,variant,status,objective_kind,solver_objective,operating_cost,solver_bound,relative_gap,flow_distance,elapsed_sec,model_pass,physical_pass
+r3-study-20260917T045811-7399ae72_single-low-flow,1,fixed_dispatch,r3_sp_checked_v1,infeasible_certified,operating_cost,,,,,,0.009808900009375066,false,false
+r3-study-20260917T045811-7399ae72_single-low-flow,2,diagnostic,r3_sp_elastic_v1,solver_optimal,normalized_slack,0.2501051989147439,176.03175584319817,0.25010519880594234,1.0880157885750918e-10,0.0,0.010994600015692413,true,false
+r3-study-20260917T045811-7399ae72_single-low-flow,3,direct_repair,r3_direct_repair_v1,solver_optimal,flow_distance,1.193030413476639,215.7932627152254,1.1930298202379452,4.97253621553417e-7,1.193030413476639,0.18895379998139106,true,true
+r3-study-20260917T045811-7399ae72_single-low-flow,4,repaired_dispatch,r3_fixed_physical_v1,solver_optimal,operating_cost,80.97096062998244,80.97096062998244,80.97096062998243,1.755055714374212e-16,1.193030413476639,0.012612699996680021,true,true

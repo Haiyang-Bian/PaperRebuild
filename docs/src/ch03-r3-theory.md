@@ -98,7 +98,7 @@ v_i\ell_{ij}=P_{ij}^2+Q_{ij}^2,\qquad \kappa_p=\mu_pm_p^2.
 [`solve_r3_feasibility`](@ref) 共用600秒截止时间，初始化、首个SP和诊断分别至多60秒，修正至多300秒。
 只有电网原等式失败时，先保持流量求含原等式的详细问题；失败后才进入流量修正。
 Gurobi使用[空间分支定界处理非线性约束](https://docs.gurobi.com/projects/optimizer/en/current/features/nonlinear.html)，记录实际终止状态和界，不预先保证预算内证明最优。
-计时包含每个阶段建模和求解；Julia进程启动、环境加载、独立回代与绘图另计，不据此比较算法速度。
+流程总计时包含阶段建模、求解和流程内验算；Julia进程启动、环境加载、保存后重验与绘图另计，不据此比较算法速度。
 
 [`validate_r3_solution`](@ref) 从数值重算成本、质量守恒、热关系和松弛前等式，并使用独立累计质量回放核对WMM温度。
 A1沿用既有门槛；弹性结果永远不能成为最终成功结果。完整流程、阶段数值和哈希由[`save_r3_run`](@ref)/[`read_r3_run`](@ref)保存与复核。

@@ -1,0 +1,48 @@
+batch = "r3-study-20260917T045811-7399ae72"
+budget_per_instance_sec = 600.0
+configuration_sha256 = "b619a5211a98625ce1f26179496e0f366b077e4f6024c691fa98b3a0d7da54dc"
+license_status = "available"
+origin = "synthetic"
+
+[[runs]]
+case = "single-source"
+directory = "r3-study-20260917T045811-7399ae72_single-fixed"
+id = "single-fixed"
+initialization = "case_fixed"
+physical_pass = true
+status = "feasible_cost_optimized"
+[[runs]]
+case = "single-source"
+directory = "r3-study-20260917T045811-7399ae72_single-schpd"
+id = "single-schpd"
+initialization = "schpd"
+physical_pass = true
+status = "feasible_cost_optimized"
+[[runs]]
+case = "two-source"
+directory = "r3-study-20260917T045811-7399ae72_two-schpd"
+id = "two-schpd"
+initialization = "schpd"
+physical_pass = true
+status = "feasible_cost_optimized"
+[[runs]]
+case = "single-source"
+directory = "r3-study-20260917T045811-7399ae72_single-low-flow"
+id = "single-low-flow"
+initialization = "low_flow"
+physical_pass = true
+status = "feasible_cost_optimized"
+[[runs]]
+case = "single-source"
+directory = "r3-study-20260917T045811-7399ae72_single-impossible-heat"
+id = "single-impossible-heat"
+initialization = "case_fixed"
+physical_pass = false
+status = "infeasible_certified"
+[[runs]]
+case = "single-source"
+directory = "r3-study-20260917T045811-7399ae72_single-loose-electric"
+id = "single-loose-electric"
+initialization = "case_fixed"
+physical_pass = true
+status = "feasible_cost_optimized"

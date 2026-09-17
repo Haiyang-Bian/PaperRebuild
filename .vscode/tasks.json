@@ -1,77 +1,82 @@
 {
-  "version": "2.0.0",
+  "inputs": [
+    {
+      "description": "R3运行目录（包含case.toml/run.toml/metadata.toml）",
+      "id": "r3RunDirectory",
+      "type": "promptString"
+    },
+    {
+      "description": "已保存批次的study.toml路径",
+      "id": "r3StudyManifest",
+      "type": "promptString"
+    }
+  ],
   "tasks": [
     {
-      "label": "PaperRebuild: bootstrap",
-      "type": "process",
-      "command": "julia",
       "args": [
         "+1.12.6",
         "--startup-file=no",
         "--project=.",
         "scripts/bootstrap.jl"
       ],
+      "command": "julia",
+      "label": "PaperRebuild: bootstrap",
       "options": {
         "cwd": "${workspaceFolder}"
       },
-      "problemMatcher": []
+      "problemMatcher": [],
+      "type": "process"
     },
     {
-      "label": "PaperRebuild: test",
-      "type": "process",
-      "command": "julia",
       "args": [
         "+1.12.6",
         "--startup-file=no",
         "--project=.",
         "scripts/test.jl"
       ],
+      "command": "julia",
+      "group": {
+        "isDefault": true,
+        "kind": "test"
+      },
+      "label": "PaperRebuild: test",
       "options": {
         "cwd": "${workspaceFolder}"
       },
       "problemMatcher": [],
-      "group": {
-        "kind": "test",
-        "isDefault": true
-      }
+      "type": "process"
     },
     {
-      "label": "PaperRebuild: smoke",
-      "type": "process",
-      "command": "julia",
       "args": [
         "+1.12.6",
         "--startup-file=no",
         "--project=.",
         "scripts/smoke.jl"
       ],
+      "command": "julia",
+      "label": "PaperRebuild: smoke",
       "options": {
         "cwd": "${workspaceFolder}"
       },
-      "problemMatcher": []
+      "problemMatcher": [],
+      "type": "process"
     },
     {
-      "label": "PaperRebuild: format check",
-      "type": "process",
-      "command": "julia",
       "args": [
         "+1.12.6",
         "--startup-file=no",
         "--project=tools",
         "scripts/format.jl"
       ],
+      "command": "julia",
+      "label": "PaperRebuild: format check",
       "options": {
         "cwd": "${workspaceFolder}"
       },
-      "problemMatcher": []
+      "problemMatcher": [],
+      "type": "process"
     },
     {
-      "label": "PaperRebuild: project check",
-      "type": "process",
-      "command": "pwsh",
-      "windows": {
-        "command": "powershell.exe"
-      },
       "args": [
         "-NoProfile",
         "-ExecutionPolicy",
@@ -81,18 +86,18 @@
         "-Action",
         "Check"
       ],
+      "command": "pwsh",
+      "label": "PaperRebuild: project check",
       "options": {
         "cwd": "${workspaceFolder}"
       },
-      "problemMatcher": []
-    },
-    {
-      "label": "PaperRebuild: navigation sync",
+      "problemMatcher": [],
       "type": "process",
-      "command": "pwsh",
       "windows": {
         "command": "powershell.exe"
-      },
+      }
+    },
+    {
       "args": [
         "-NoProfile",
         "-ExecutionPolicy",
@@ -102,18 +107,18 @@
         "-Action",
         "Sync"
       ],
+      "command": "pwsh",
+      "label": "PaperRebuild: navigation sync",
       "options": {
         "cwd": "${workspaceFolder}"
       },
-      "problemMatcher": []
-    },
-    {
-      "label": "PaperRebuild: maintenance tests",
+      "problemMatcher": [],
       "type": "process",
-      "command": "pwsh",
       "windows": {
         "command": "powershell.exe"
-      },
+      }
+    },
+    {
       "args": [
         "-NoProfile",
         "-ExecutionPolicy",
@@ -121,152 +126,155 @@
         "-File",
         "test/maintenance.tests.ps1"
       ],
+      "command": "pwsh",
+      "label": "PaperRebuild: maintenance tests",
       "options": {
         "cwd": "${workspaceFolder}"
       },
-      "problemMatcher": []
+      "problemMatcher": [],
+      "type": "process",
+      "windows": {
+        "command": "powershell.exe"
+      }
     },
     {
-      "label": "PaperRebuild: docs build",
-      "type": "process",
-      "command": "julia",
       "args": [
         "+1.12.6",
         "--startup-file=no",
         "--project=docs",
         "docs/make.jl"
       ],
+      "command": "julia",
+      "group": {
+        "isDefault": true,
+        "kind": "build"
+      },
+      "label": "PaperRebuild: docs build",
       "options": {
         "cwd": "${workspaceFolder}"
       },
       "problemMatcher": [],
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      }
+      "type": "process"
     },
     {
-      "label": "PaperRebuild: docs preview",
-      "type": "process",
-      "command": "julia",
       "args": [
         "+1.12.6",
         "--startup-file=no",
         "--project=docs",
         "scripts/preview.jl"
       ],
+      "command": "julia",
+      "label": "PaperRebuild: docs preview",
       "options": {
         "cwd": "${workspaceFolder}"
       },
-      "problemMatcher": []
+      "problemMatcher": [],
+      "type": "process"
     },
     {
-      "label": "PaperRebuild: solver bootstrap",
-      "type": "process",
-      "command": "julia",
       "args": [
         "+1.12.6",
         "--startup-file=no",
         "--project=tools/solvers",
         "scripts/bootstrap_solvers.jl"
       ],
+      "command": "julia",
+      "detail": "Agent Bridge: 恢复独立的 Julia 求解器预检环境，不运行论文实验。",
+      "isBackground": false,
+      "label": "PaperRebuild: solver bootstrap",
       "options": {
         "cwd": ".",
         "env": {}
       },
-      "problemMatcher": [],
-      "isBackground": false,
       "presentation": {
-        "reveal": "always",
+        "clear": false,
         "echo": true,
         "focus": false,
         "panel": "shared",
-        "clear": false
+        "reveal": "always"
       },
-      "detail": "Agent Bridge: 恢复独立的 Julia 求解器预检环境，不运行论文实验。"
+      "problemMatcher": [],
+      "type": "process"
     },
     {
-      "label": "PaperRebuild: solver check",
-      "type": "process",
-      "command": "julia",
       "args": [
         "+1.12.6",
         "--startup-file=no",
         "--project=tools/solvers",
         "scripts/check_solvers.jl"
       ],
+      "command": "julia",
+      "detail": "Agent Bridge: 运行 8 个解析求解器能力检查，非论文复现。先执行 solver bootstrap。",
+      "group": "test",
+      "isBackground": false,
+      "label": "PaperRebuild: solver check",
       "options": {
         "cwd": ".",
         "env": {}
       },
-      "problemMatcher": [],
-      "isBackground": false,
       "presentation": {
-        "reveal": "always",
+        "clear": false,
         "echo": true,
         "focus": false,
         "panel": "shared",
-        "clear": false
+        "reveal": "always"
       },
-      "detail": "Agent Bridge: 运行 8 个解析求解器能力检查，非论文复现。先执行 solver bootstrap。",
-      "group": "test"
+      "problemMatcher": [],
+      "type": "process"
     },
     {
-      "label": "PaperRebuild: thesis arithmetic",
-      "type": "process",
-      "command": "julia",
       "args": [
         "+1.12.6",
         "--startup-file=no",
         "--project=.",
         "scripts/audit_thesis_tables.jl"
       ],
+      "command": "julia",
+      "detail": "Agent Bridge: 只核算已转录论文表值，不运行模型。",
+      "group": "test",
+      "isBackground": false,
+      "label": "PaperRebuild: thesis arithmetic",
       "options": {
         "cwd": ".",
         "env": {}
       },
-      "problemMatcher": [],
-      "isBackground": false,
       "presentation": {
-        "reveal": "always",
+        "clear": false,
         "echo": true,
         "focus": false,
         "panel": "shared",
-        "clear": false
+        "reveal": "always"
       },
-      "detail": "Agent Bridge: 只核算已转录论文表值，不运行模型。",
-      "group": "test"
+      "problemMatcher": [],
+      "type": "process"
     },
     {
-      "label": "PaperRebuild: R1 mapping check",
-      "type": "process",
-      "command": "julia",
       "args": [
         "+1.12.6",
         "--startup-file=no",
         "--project=.",
         "scripts/check_ch02.jl"
       ],
+      "command": "julia",
+      "detail": "Generated by VS Code Agent Bridge",
+      "group": "test",
+      "isBackground": false,
+      "label": "PaperRebuild: R1 mapping check",
       "options": {
         "cwd": ".",
         "env": {}
       },
-      "problemMatcher": [],
-      "isBackground": false,
       "presentation": {
-        "reveal": "always",
+        "clear": false,
         "echo": true,
         "focus": false,
         "panel": "shared",
-        "clear": false
+        "reveal": "always"
       },
-      "detail": "Generated by VS Code Agent Bridge",
-      "group": "test"
+      "problemMatcher": [],
+      "type": "process"
     },
     {
-      "label": "PaperRebuild: R1 mapping sync",
-      "type": "process",
-      "command": "julia",
       "args": [
         "+1.12.6",
         "--startup-file=no",
@@ -274,76 +282,76 @@
         "scripts/check_ch02.jl",
         "--sync"
       ],
+      "command": "julia",
+      "detail": "Generated by VS Code Agent Bridge",
+      "isBackground": false,
+      "label": "PaperRebuild: R1 mapping sync",
       "options": {
         "cwd": ".",
         "env": {}
       },
-      "problemMatcher": [],
-      "isBackground": false,
       "presentation": {
-        "reveal": "always",
+        "clear": false,
         "echo": true,
         "focus": false,
         "panel": "shared",
-        "clear": false
+        "reveal": "always"
       },
-      "detail": "Generated by VS Code Agent Bridge"
+      "problemMatcher": [],
+      "type": "process"
     },
     {
-      "label": "PaperRebuild: R1 tests",
-      "type": "process",
-      "command": "julia",
       "args": [
         "+1.12.6",
         "--startup-file=no",
         "--project=.",
         "scripts/test.jl"
       ],
+      "command": "julia",
+      "detail": "Generated by VS Code Agent Bridge",
+      "group": "test",
+      "isBackground": false,
+      "label": "PaperRebuild: R1 tests",
       "options": {
         "cwd": ".",
         "env": {}
       },
-      "problemMatcher": [],
-      "isBackground": false,
       "presentation": {
-        "reveal": "always",
+        "clear": false,
         "echo": true,
         "focus": false,
         "panel": "shared",
-        "clear": false
+        "reveal": "always"
       },
-      "detail": "Generated by VS Code Agent Bridge",
-      "group": "test"
+      "problemMatcher": [],
+      "type": "process"
     },
     {
-      "label": "PaperRebuild: R1 micro case",
-      "type": "process",
-      "command": "julia",
       "args": [
         "+1.12.6",
         "--startup-file=no",
         "--project=.",
         "scripts/run_r1.jl"
       ],
+      "command": "julia",
+      "detail": "Generated by VS Code Agent Bridge",
+      "isBackground": false,
+      "label": "PaperRebuild: R1 micro case",
       "options": {
         "cwd": ".",
         "env": {}
       },
-      "problemMatcher": [],
-      "isBackground": false,
       "presentation": {
-        "reveal": "always",
+        "clear": false,
         "echo": true,
         "focus": false,
         "panel": "shared",
-        "clear": false
+        "reveal": "always"
       },
-      "detail": "Generated by VS Code Agent Bridge"
+      "problemMatcher": [],
+      "type": "process"
     },
     {
-      "label": "PaperRebuild: R1 validate saved",
-      "type": "process",
-      "command": "julia",
       "args": [
         "+1.12.6",
         "--startup-file=no",
@@ -351,26 +359,26 @@
         "scripts/r1_task.jl",
         "validate"
       ],
+      "command": "julia",
+      "detail": "Generated by VS Code Agent Bridge",
+      "group": "test",
+      "isBackground": false,
+      "label": "PaperRebuild: R1 validate saved",
       "options": {
         "cwd": ".",
         "env": {}
       },
-      "problemMatcher": [],
-      "isBackground": false,
       "presentation": {
-        "reveal": "always",
+        "clear": false,
         "echo": true,
         "focus": false,
         "panel": "shared",
-        "clear": false
+        "reveal": "always"
       },
-      "detail": "Generated by VS Code Agent Bridge",
-      "group": "test"
+      "problemMatcher": [],
+      "type": "process"
     },
     {
-      "label": "PaperRebuild: R1 redraw",
-      "type": "process",
-      "command": "julia",
       "args": [
         "+1.12.6",
         "--startup-file=no",
@@ -378,20 +386,23 @@
         "scripts/r1_task.jl",
         "plot"
       ],
+      "command": "julia",
+      "detail": "Generated by VS Code Agent Bridge",
+      "isBackground": false,
+      "label": "PaperRebuild: R1 redraw",
       "options": {
         "cwd": ".",
         "env": {}
       },
-      "problemMatcher": [],
-      "isBackground": false,
       "presentation": {
-        "reveal": "always",
+        "clear": false,
         "echo": true,
         "focus": false,
         "panel": "shared",
-        "clear": false
+        "reveal": "always"
       },
-      "detail": "Generated by VS Code Agent Bridge"
+      "problemMatcher": [],
+      "type": "process"
     },
     {
       "args": [
@@ -613,6 +624,152 @@
       },
       "problemMatcher": [],
       "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/check_ch03.jl"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 mapping check",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/test_r3.jl"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 tests",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/experiment_r3.jl",
+        "single-fixed",
+        "--open"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 open fixed case",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=tools/solvers",
+        "scripts/experiment_r3.jl",
+        "single-schpd"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 single SCHPD feasibility",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=tools/solvers",
+        "scripts/experiment_r3.jl"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 formal experiments",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/r3_task.jl",
+        "validate",
+        "${input:r3RunDirectory}"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 validate saved",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/r3_task.jl",
+        "stages",
+        "${input:r3RunDirectory}"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 stage comparison",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=docs",
+        "scripts/r3_task.jl",
+        "plot",
+        "${input:r3RunDirectory}"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 redraw",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=docs",
+        "scripts/report_r3.jl",
+        "${input:r3StudyManifest}"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 evidence report",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
     }
-  ]
+  ],
+  "version": "2.0.0"
 }

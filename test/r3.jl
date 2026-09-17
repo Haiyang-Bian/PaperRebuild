@@ -108,6 +108,10 @@ end
     failed_init = solve_r3_feasibility(c; optimizer = ()->error("license fixture unavailable"))
     @test failed_init["status"]=="initialization_failed"
     @test failed_init["stages"][1]["status"]=="not_run_license"
+    mktempdir() do dir
+        saved_failure=save_r3_run(c, failed_init; root = dir, run_id = "failed-init")
+        @test !read_r3_run(saved_failure).validation.physical_pass
+    end
     @test_throws ErrorException PaperRebuild.r3_solve(
         c,
         ()->build_r3_subproblem(c, ones(1, 4)),
