@@ -100,3 +100,24 @@ r = solve_r3_baseline(c; initial_flow=m, convex_optimizer=Clarabel.Optimizer,
 正式设计为20项初值/几何、12项尾段/几何、4项步幅及6项独立参考，共42次。
 每次600秒；历史初值生成耗时与当前外层分开，不作作者加速比复现。
 所有图从保存结果重绘；最终结论区分支持、排除和未决，不要求每例变为成功状态。
+
+## 6. Julia与VS Code操作入口
+
+在仓库根目录执行。冻结命令拒绝覆盖内容不同的文件；正式实验会新建运行目录。
+干净克隆可直接使用已提交的baseline-study.toml及baseline-inputs运行实验，无须重新冻结。
+冻结来源审计和历史v3审计需要本地保存的旧运行目录；这些原始运行不随公开仓库分发。
+
+```sh
+julia +1.12.6 --project=. scripts/check_r3_baseline.jl
+julia +1.12.6 --project=. scripts/test_r3_baseline.jl
+julia +1.12.6 --project=. scripts/freeze_r3_baseline.jl
+julia +1.12.6 --project=. scripts/experiment_r3_baseline.jl
+julia +1.12.6 --project=. scripts/compare_r3_baseline.jl <运行批次/study.toml>
+julia +1.12.6 --project=. scripts/report_r3_baseline.jl <运行批次/study.toml>
+julia +1.12.6 --project=docs scripts/plot_r3_baseline.jl <报告目录>
+```
+
+VS Code“运行任务”中的`PaperRebuild: R3 baseline ...`提供对应入口。
+表格摘要可用`scripts/summarize_r3_baseline.jl <报告目录>`重算；
+`audit_r3_baseline_history.jl`只审计已有24项v3主运行，不重新执行历史优化。
+查看[本批正式结果](ch03-r3-baseline-results.md)，从结论链接到具体图源、阶段和哈希。

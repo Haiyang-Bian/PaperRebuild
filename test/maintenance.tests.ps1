@@ -1,4 +1,5 @@
 ﻿# No external testing framework; isolate all Git writes and fault injection under tmp/.
+param([switch]$Compact)
 $ErrorActionPreference = 'Stop'
 [Console]::InputEncoding = [Text.UTF8Encoding]::new($false)
 [Console]::OutputEncoding = [Text.UTF8Encoding]::new($false)
@@ -34,10 +35,25 @@ function Event([string]$Name, [string]$Session = 'fixture-session', [string]$Tur
     return @{ hook_event_name = $Name; session_id = $Session; turn_id = $Turn; permission_mode = 'default'; stop_hook_active = $Active }
 }
 [IO.Directory]::CreateDirectory($fixture) | Out-Null
-foreach ($relative in @(Candidate-Paths $sourceRoot)) {
+$compactFiles = @('README.md', 'AGENTS.md', 'CONTRIBUTING.md', 'LICENSE', 'NOTICE.md',
+    '.gitignore', '.gitattributes', 'Project.toml', 'Manifest.toml', 'src/PaperRebuild.jl',
+    'test/runtests.jl', 'docs/make.jl', 'docs/Project.toml', 'docs/Manifest.toml',
+    'tools/Project.toml', 'tools/Manifest.toml', 'docs/agent/current-state.md',
+    'docs/agent/handbook.md', 'docs/src/quality.md', 'docs/src/generated-inventory.md', 'docs/reading/sources.json',
+    '.codex/hooks.json', '.codex/maintenance-policy.json', '.vscode/file-groups.json',
+    '.vscode/settings.json', '.vscode/tasks.json', '.vscode/extensions.json',
+    '.vscode/launch.json', '.github/workflows/ci.yml', 'scripts/maintenance-core.ps1',
+    'scripts/maintain.ps1')
+$fixturePaths = if ($Compact) { $compactFiles } else { @(Candidate-Paths $sourceRoot) }
+foreach ($relative in $fixturePaths) {
     $destination = Safe-Path $fixture $relative
     [IO.Directory]::CreateDirectory((Split-Path $destination -Parent)) | Out-Null
     [IO.File]::Copy((Safe-Path $sourceRoot $relative), $destination)
+}
+if ($Compact) {
+    # 用代表图源执行同一组状态/竞态断言，避免测试成本随历史研究数据增长。
+    Put 'docs/src/assets/test-batch/run/F04.csv' "value`n1`n"
+    Put 'results/summaries/test-batch/run/F04.csv' "value`n1`n"
 }
 Git-Write @('init', '-q')
 Git-Write @('config', 'user.name', 'Fixture')
@@ -48,6 +64,12 @@ Git-Write @('commit', '-qm', 'fixture baseline')
 Sync-Project $fixture
 Check-Project $fixture
 Assert $true 'clean clone checks without original documents'
+if ($Compact) {
+    $index = Inventory-Text $fixture
+    Assert ($index -match 'docs/src/assets/test-batch/run/') 'artifact batch directory visible'
+    Assert ($index -notmatch 'test-batch/run/F04.csv') 'repeated artifact members summarized'
+    Assert ($index -match 'src/PaperRebuild.jl') 'source entry preserved'
+}
 Assert (!(Test-Path -LiteralPath (Join-Path $fixture 'docs/摘要.pdf'))) 'original PDF absent'
 $snapshot = Snapshot $fixture
 Sync-Project $fixture

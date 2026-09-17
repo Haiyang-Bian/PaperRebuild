@@ -39,6 +39,8 @@ jobs:
         run: julia --startup-file=no --project=. scripts/check_ch02.jl
       - name: Chapter 3 source and symbol mapping
         run: julia --startup-file=no --project=. scripts/check_ch03.jl
+      - name: R3 baseline frozen design and mapping
+        run: julia --startup-file=no --project=. scripts/check_r3_baseline.jl
       - name: Restore data tools
         run: julia --startup-file=no --project=tools/data scripts/bootstrap_data.jl
       - name: Data parser tests (offline fixtures)
@@ -50,11 +52,11 @@ jobs:
         run: ./scripts/maintain.ps1 -Action Check
       - name: Maintenance fixtures (PowerShell 7)
         shell: pwsh
-        run: ./test/maintenance.tests.ps1
+        run: ./test/maintenance.tests.ps1 -Compact
       - name: Maintenance fixtures (Windows PowerShell 5.1)
         if: runner.os == 'Windows'
         shell: powershell
-        run: ./test/maintenance.tests.ps1
+        run: ./test/maintenance.tests.ps1 -Compact
       - name: Environments and tracked files unchanged
         shell: pwsh
         run: |

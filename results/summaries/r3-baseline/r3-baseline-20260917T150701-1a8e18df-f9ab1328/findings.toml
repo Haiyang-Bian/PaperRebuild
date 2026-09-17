@@ -1,0 +1,103 @@
+[[epsilon]]
+epsilon = "1.0e-6"
+hit_runs = 0
+max_remaining_model_improvement = 0.0
+strict_physical_pass = 0
+
+    [epsilon.first_updates]
+[[epsilon]]
+epsilon = "0.0001"
+hit_runs = 0
+max_remaining_model_improvement = 0.0
+strict_physical_pass = 0
+
+    [epsilon.first_updates]
+[[epsilon]]
+epsilon = "0.01"
+hit_runs = 21
+max_remaining_model_improvement = 0.0047761121165308396
+strict_physical_pass = 19
+
+    [epsilon.first_updates]
+    single-source-bounded_return_tail-normalized = 5
+    single-source-bounded_return_tail-physical = 5
+    single-source-box50-normalized = 6
+    single-source-box50-physical = 6
+    single-source-box75-normalized = 7
+    single-source-box75-physical = 7
+    single-source-case_fixed-normalized = 6
+    single-source-case_fixed-physical = 6
+    single-source-core_only-normalized = 5
+    single-source-core_only-physical = 5
+    single-source-schpd-normalized = 9
+    single-source-schpd-physical = 9
+    single-source-schpd-step001 = 5
+    two-source-box25-normalized = 6
+    two-source-box25-physical = 6
+    two-source-box50-normalized = 5
+    two-source-box50-physical = 5
+    two-source-box75-normalized = 7
+    two-source-box75-physical = 7
+    two-source-case_fixed-normalized = 5
+    two-source-case_fixed-physical = 5
+
+[[groups]]
+count = 42
+group = "all"
+model_candidate = 34
+outer_converged = 0
+physical_pass = 38
+selected_cost_complete = 19
+strict_success = 38
+
+    [groups.statuses]
+    line_search_stalled = 28
+    not_applicable_direct_reference = 6
+    untrusted_sensitivity = 8
+[[groups]]
+count = 20
+group = "initialization"
+model_candidate = 20
+outer_converged = 0
+physical_pass = 20
+selected_cost_complete = 10
+strict_success = 20
+
+    [groups.statuses]
+    line_search_stalled = 17
+    untrusted_sensitivity = 3
+[[groups]]
+count = 12
+group = "boundary"
+model_candidate = 10
+outer_converged = 0
+physical_pass = 8
+selected_cost_complete = 3
+strict_success = 8
+
+    [groups.statuses]
+    line_search_stalled = 8
+    untrusted_sensitivity = 4
+[[groups]]
+count = 4
+group = "step"
+model_candidate = 4
+outer_converged = 0
+physical_pass = 4
+selected_cost_complete = 0
+strict_success = 4
+
+    [groups.statuses]
+    line_search_stalled = 3
+    untrusted_sensitivity = 1
+[[groups]]
+count = 6
+group = "reference"
+model_candidate = 0
+outer_converged = 0
+physical_pass = 6
+selected_cost_complete = 6
+strict_success = 6
+
+    [groups.statuses]
+    not_applicable_direct_reference = 6

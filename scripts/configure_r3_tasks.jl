@@ -5,6 +5,28 @@ previous=read(path, String)
 config=JSON.parse(previous; dicttype = Dict{String,Any})
 original=deepcopy(config)
 for (label, env, script, args) in (
+    ("R3 baseline mapping", ".", "scripts/check_r3_baseline.jl", String[]),
+    ("R3 baseline tests", ".", "scripts/test_r3_baseline.jl", String[]),
+    ("R3 baseline freeze", ".", "scripts/freeze_r3_baseline.jl", String[]),
+    (
+        "R3 baseline formal experiments",
+        "tools/solvers",
+        "scripts/experiment_r3_baseline.jl",
+        String[],
+    ),
+    (
+        "R3 baseline validate and compare",
+        ".",
+        "scripts/compare_r3_baseline.jl",
+        ["\${input:r3StudyManifest}"],
+    ),
+    (
+        "R3 baseline evidence report",
+        ".",
+        "scripts/report_r3_baseline.jl",
+        ["\${input:r3StudyManifest}"],
+    ),
+    ("R3 baseline redraw", "docs", "scripts/plot_r3_baseline.jl", ["\${input:r3BaselineReport}"]),
     ("R3 v2 tests", ".", "scripts/test_r3_v2.jl", String[]),
     ("R3 dual minimal examples", "tools/solvers", "scripts/diagnose_r3_duals.jl", String[]),
     ("R3 freeze four modes", ".", "scripts/freeze_r3_modes.jl", String[]),
@@ -59,6 +81,7 @@ for (label, env, script, args) in (
 end
 inputs=get!(config, "inputs", Any[])
 for (id, description) in (
+    ("r3BaselineReport", "R3第五批报告目录（含comparison.csv等图源）"),
     ("r3RunDirectory", "R3运行目录（包含case.toml/run.toml/metadata.toml）"),
     ("r3StudyManifest", "已保存批次的study.toml路径"),
 )

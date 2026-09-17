@@ -52,6 +52,13 @@ R3第四批显式v3见[物理恢复与停止判据](../src/ch03-r3-v3.md)。恢�
 
 ## 文档更新路由
 
+R3第五批见[独立基线](../src/ch03-r3-baseline.md)和[归因结果](../src/ch03-r3-baseline-results.md)。
+显式r3_paper_structure_v1不调用v2/v3恢复；检查源码调用边界和真实阶段记录。
+冻结规则在configs/r3/baseline-study.toml；旧尾段与bounded_return_tail必须显式区分，旧默认不变。
+停止审计仅取初值和接受更新；core_only仅比较共同核心指标，不参与周期总费用排名。
+模型候选、κ重构、A1、原等式检查和所选候选费用完成五项分别报告。
+最终报告目录保留artifact-hashes.toml；绘图只读CSV，图形配置记录生成脚本及输入哈希。
+
 | 变化 | 审阅位置 |
 | --- | --- |
 | 环境、命令、依赖、VS Code | 工具链说明及相关锁文件 |

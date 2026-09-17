@@ -11,9 +11,14 @@
       "type": "promptString"
     },
     {
+      "default": "single-delay-switch",
       "description": "R3 v2冻结实验ID（例如single-delay-switch）",
       "id": "r3V2ReplayId",
-      "default": "single-delay-switch",
+      "type": "promptString"
+    },
+    {
+      "description": "R3第五批报告目录（含comparison.csv等图源）",
+      "id": "r3BaselineReport",
       "type": "promptString"
     }
   ],
@@ -982,56 +987,236 @@
       "type": "process"
     },
     {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/replay_r3_v2_input.jl",
+        "results/summaries/r3-v2/r3-v2-combined-20260917T095056-767e69d2/inputs/manifest.toml",
+        "all",
+        "--check-only"
+      ],
+      "command": "julia",
       "label": "PaperRebuild: R3 v2 check frozen inputs",
-      "type": "process",
-      "command": "julia",
-      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/replay_r3_v2_input.jl", "results/summaries/r3-v2/r3-v2-combined-20260917T095056-767e69d2/inputs/manifest.toml", "all", "--check-only"],
-      "options": {"cwd": "${workspaceFolder}"},
-      "problemMatcher": []
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
     },
     {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=tools/solvers",
+        "scripts/replay_r3_v2_input.jl",
+        "results/summaries/r3-v2/r3-v2-combined-20260917T095056-767e69d2/inputs/manifest.toml",
+        "${input:r3V2ReplayId}"
+      ],
+      "command": "julia",
       "label": "PaperRebuild: R3 v2 replay frozen case",
-      "type": "process",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--project=.",
+        "scripts/audit_r3_v3.jl"
+      ],
       "command": "julia",
-      "args": ["+1.12.6", "--startup-file=no", "--project=tools/solvers", "scripts/replay_r3_v2_input.jl", "results/summaries/r3-v2/r3-v2-combined-20260917T095056-767e69d2/inputs/manifest.toml", "${input:r3V2ReplayId}"],
-      "options": {"cwd": "${workspaceFolder}"},
-      "problemMatcher": []
-    },
-    {
       "label": "PaperRebuild: R3 v3 audit historical failure",
-      "type": "process", "command": "julia",
-      "args": ["+1.12.6", "--project=.", "scripts/audit_r3_v3.jl"],
-      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
     },
     {
+      "args": [
+        "+1.12.6",
+        "--project=.",
+        "scripts/test_r3_v3.jl"
+      ],
+      "command": "julia",
       "label": "PaperRebuild: R3 v3 tests",
-      "type": "process", "command": "julia",
-      "args": ["+1.12.6", "--project=.", "scripts/test_r3_v3.jl"],
-      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
     },
     {
+      "args": [
+        "+1.12.6",
+        "--project=tools/solvers",
+        "scripts/experiment_r3_v3.jl"
+      ],
+      "command": "julia",
       "label": "PaperRebuild: R3 v3 formal experiments",
-      "type": "process", "command": "julia",
-      "args": ["+1.12.6", "--project=tools/solvers", "scripts/experiment_r3_v3.jl"],
-      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
     },
     {
+      "args": [
+        "+1.12.6",
+        "--project=.",
+        "scripts/r3_pg_task.jl",
+        "validate",
+        "${input:r3RunDirectory}"
+      ],
+      "command": "julia",
       "label": "PaperRebuild: R3 v3 validate saved",
-      "type": "process", "command": "julia",
-      "args": ["+1.12.6", "--project=.", "scripts/r3_pg_task.jl", "validate", "${input:r3RunDirectory}"],
-      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
     },
     {
+      "args": [
+        "+1.12.6",
+        "--project=docs",
+        "scripts/report_r3_v3.jl",
+        "${input:r3StudyManifest}"
+      ],
+      "command": "julia",
       "label": "PaperRebuild: R3 v3 compare and figures",
-      "type": "process", "command": "julia",
-      "args": ["+1.12.6", "--project=docs", "scripts/report_r3_v3.jl", "${input:r3StudyManifest}"],
-      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
     },
     {
+      "args": [
+        "+1.12.6",
+        "--project=docs",
+        "scripts/r3_pg_task.jl",
+        "plot",
+        "${input:r3RunDirectory}"
+      ],
+      "command": "julia",
       "label": "PaperRebuild: R3 v3 redraw saved",
-      "type": "process", "command": "julia",
-      "args": ["+1.12.6", "--project=docs", "scripts/r3_pg_task.jl", "plot", "${input:r3RunDirectory}"],
-      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/check_r3_baseline.jl"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 baseline mapping",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/test_r3_baseline.jl"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 baseline tests",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/freeze_r3_baseline.jl"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 baseline freeze",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=tools/solvers",
+        "scripts/experiment_r3_baseline.jl"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 baseline formal experiments",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/compare_r3_baseline.jl",
+        "${input:r3StudyManifest}"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 baseline validate and compare",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/report_r3_baseline.jl",
+        "${input:r3StudyManifest}"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 baseline evidence report",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=docs",
+        "scripts/plot_r3_baseline.jl",
+        "${input:r3BaselineReport}"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 baseline redraw",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
     }
   ],
   "version": "2.0.0"

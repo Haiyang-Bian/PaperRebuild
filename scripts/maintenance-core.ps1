@@ -185,8 +185,22 @@ function Inventory-Text([string]$Root) {
     $lines.Add('')
     $lines.Add('由 `scripts/maintain.ps1 -Action Sync` 生成；仅列入版本控制候选文件，不表示科研完成。')
     $lines.Add('')
+    $assets = [Collections.Generic.SortedSet[string]]::new([StringComparer]::Ordinal)
     foreach ($path in @(Candidate-Paths $Root)) {
+        # 人类入口按批次汇总重复图源；CodeGroup仍维护每个真实文件。
+        if ($path -match '^((?:docs/src/assets|results/summaries)/[^/]+/[^/]+)/') {
+            [void]$assets.Add($Matches[1])
+            continue
+        }
         if ($path -ne 'docs/src/generated-inventory.md') { $lines.Add('- `' + $path + '`') }
+    }
+    if ($assets.Count -gt 0) {
+        $lines.Add('')
+        $lines.Add('## 图表与结果批次')
+        $lines.Add('')
+        $lines.Add('批次内图源和逐式残差见对应结果页、哈希清单及 CodeGroup 文件分组；此处只列目录，避免重复展开全部图源。')
+        $lines.Add('')
+        foreach ($directory in $assets) { $lines.Add('- `' + $directory + '/`') }
     }
     return ($lines -join "`n") + "`n"
 }
@@ -262,7 +276,7 @@ function Handle-Hook([string]$Root, $Event) {
         $receipt = '.codex/.local/maintenance/startup-' + (Text-Hash $Event.session_id) + '.json'
         $record = @{ session_id = $Event.session_id; event = $name; source = $Event['source']; observed_utc = [DateTime]::UtcNow.ToString('o'); script_sha256 = (File-Hash (Safe-Path $Root 'scripts/maintenance-core.ps1')) }
         Save-State $Root $receipt $record (File-Hash (Safe-Path $Root $receipt))
-        return @{ hookSpecificOutput = @{ hookEventName = $name; additionalContext = 'PaperRebuild: read AGENTS.md and docs/agent/current-state.md; follow docs/agent/handbook.md. Julia 1.12.6. Thesis models are not yet implemented.' } }
+        return @{ hookSpecificOutput = @{ hookEventName = $name; additionalContext = 'PaperRebuild: read AGENTS.md and docs/agent/current-state.md; follow docs/agent/handbook.md. Julia 1.12.6. Read current-state.md for implemented scope; distinguish synthetic method validation from thesis-scale reproduction.' } }
     }
     if ($name -notin @('UserPromptSubmit', 'Stop')) { throw "Unsupported event: $name" }
     if (!$Event.session_id -or !$Event.turn_id) { throw 'session_id and turn_id are required; no baseline fabricated.' }
