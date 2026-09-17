@@ -87,6 +87,7 @@ function r3_pg_v2(
     if !isnothing(v3_options)
         out["algorithm"]="r3_pg_checked_v3"
         out["trace_schema"]="r3-pg-trace-v3"
+        out["candidate_policy"]="all_dispatch_v1"
         out["local_stationarity_checked"]=false
         out["physical_recovery_enabled"]=v3_options.physical_recovery
         out["stationarity_check_enabled"]=v3_options.stationarity_check

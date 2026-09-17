@@ -109,6 +109,21 @@ const PR3=PaperRebuild
     @test r["algorithm"]=="r3_pg_checked_v3"
     @test r["elapsed_sec"]<60
     @test !isempty(r["candidate_bank"])
+    # 用真实可行SP构造历史：未接受试探参与前三种角色，recent只来自接受步。
+    other=deepcopy(r["stages"][r["best_subproblem_stage"]])
+    @test validate_r3_solution(c, other).model_pass
+    firsttrial=deepcopy(s)
+    firsttrial["stage"]="v2_dispatch"
+    firsttrial["model_pass"]=true
+    other["stage"]="v2_dispatch"
+    other["model_pass"]=true
+    accepted=PR3.reconstruct_r3_pressure(c, other)
+    accepted["stage"]="pressure_reconstruction"
+    accepted["sensitivity_source_stage"]=2
+    bank=PR3.r3_v3_candidates(c, [firsttrial, other, accepted]; policy = "all_dispatch_v1")
+    @test any(x["stage"]==1 && "first" in x["roles"] for x in bank)
+    @test any(x["stage"]==2 && "recent" in x["roles"] for x in bank)
+    @test_throws ArgumentError PR3.r3_v3_candidates(c, [firsttrial]; policy = "unrecognized")
     @test validate_r3_solution(c, r).physical_pass == (r["final_stage"]>0)
     tamper=deepcopy(r)
     tamper["candidate_bank"][1]["flow_sha256"]="bad"
@@ -170,4 +185,39 @@ end
     altered=deepcopy(r)
     altered["physical_restoration"]["trace"][1]["after"]*=2
     @test_throws ArgumentError PR3.r3_validate_v3(c, altered)
+    # 完整收尾路径：候选池与恢复候选分开，缺末次求解器时仍保留A1合格结果。
+    center["stage"]="v2_dispatch"
+    workflow=Dict{String,Any}(
+        "stages"=>[center, pressure],
+        "operation"=>PR3.r3_operation_dict(o),
+        "candidate_policy"=>"all_dispatch_v1",
+        "budget_sec"=>60.0,
+        "final_stage"=>0,
+        "best_subproblem_stage"=>1,
+        "local_stationarity_checked"=>false,
+    )
+    function keepstage(name, stage)
+        stage["stage"]=name
+        check=validate_r3_solution(c, stage)
+        stage["model_pass"]=check.model_pass
+        stage["physics_pass"]=check.physical_pass
+        push!(workflow["stages"], stage)
+        return length(workflow["stages"])
+    end
+    start=PR3.r3_clock()
+    PR3.r3_v3_finalize!(
+        c,
+        workflow,
+        keepstage;
+        optimizer = nothing,
+        convex_optimizer = Clarabel.Optimizer,
+        operation = o,
+        start,
+        deadline = start+60,
+        options = (physical_recovery = true, stationarity_check = true),
+    )
+    @test workflow["final_stage"]>0
+    @test !workflow["cost_optimization_complete"]
+    @test length(workflow["candidate_bank"])==1
+    @test PR3.r3_validate_v3(c, workflow)
 end

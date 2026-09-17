@@ -206,6 +206,7 @@ function r3_physical_candidate(c, center, b)
 end
 
 function r3_restore_physical(c, center, optimizer; operation, deadline)
+    recovery_start=r3_clock()
     current=deepcopy(center)
     trace=Dict{String,Any}[]
     radius=0.1
@@ -216,6 +217,7 @@ function r3_restore_physical(c, center, optimizer; operation, deadline)
         accepted=false
         for attempt in 1:12
             radius>=1e-6 && r3_clock()<deadline || break
+            trial_start=r3_clock()
             b=build_r3_physical_step(c, current; radius, operation)
             row=Dict{String,Any}(
                 "update"=>k,
@@ -225,6 +227,7 @@ function r3_restore_physical(c, center, optimizer; operation, deadline)
                 "before"=>before,
                 "accepted"=>false,
                 "switches"=>b.partials.switches,
+                "start_elapsed_sec"=>trial_start-recovery_start,
             )
             push!(trace, row)
             if !isempty(b.partials.switches)
@@ -287,6 +290,7 @@ function r3_restore_physical(c, center, optimizer; operation, deadline)
                 return (; candidate = current, trace, status = reason)
             end
             row["termination"]=string(termination_status(b.model))
+            row["build_and_solve_sec"]=r3_clock()-trial_start
             if has_values(b.model)
                 row["primal_violations"]=[
                     Dict("constraint"=>string(cr), "violation"=>z) for

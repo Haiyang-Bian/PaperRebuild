@@ -15,13 +15,13 @@ mkdir(root);
 cp(cfgpath, joinpath(root, "frozen.toml"))
 records=Dict{String,Any}[]
 if !isnothing(resume)
-    path=split(ARGS[resume], '='; limit = 2)[2]
-    prior=TOML.parsefile(path)
+    resume_manifest=split(ARGS[resume], '='; limit = 2)[2]
+    prior=TOML.parsefile(resume_manifest)
     prior["config_sha256"]==bytes2hex(sha256(read(cfgpath))) || error("续跑清单不同")
     for e in prior["runs"]
         row=deepcopy(e)
         row["directory"]=replace(
-            relpath(normpath(joinpath(dirname(path), e["directory"])), root),
+            relpath(normpath(joinpath(dirname(resume_manifest), e["directory"])), root),
             '\\'=>'/',
         )
         push!(records, row)

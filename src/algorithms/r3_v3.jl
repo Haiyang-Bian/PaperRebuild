@@ -1,21 +1,34 @@
 # 四个角色按原始阶段排序，平局保留最早阶段；同流量只尝试一次。
-function r3_v3_candidates(c, stages)
-    ids=Int[]
+function r3_v3_dispatch_ids(stages)
+    return findall(
+        s->get(s, "stage", "") in ("v2_dispatch", "v2_scaled_dispatch") &&
+           get(s, "model_pass", false) &&
+           get(s, "objective_kind", "")=="operating_cost" &&
+           haskey(s, "values") &&
+           r2_spec_from_dict(s["spec"])==R2Spec(),
+        stages,
+    )
+end
+
+# 不复制大型对偶表；原始对偶仍保存在来源阶段，重构只需要数值原始解。
+r3_v3_reconstruct(c, r) = reconstruct_r3_pressure(c, Dict(k=>v for (k, v) in r if k!="sensitivity"))
+
+function r3_v3_candidates(c, stages; policy = "accepted_only")
+    policy in ("accepted_only", "all_dispatch_v1") || throw(ArgumentError("未知候选池范围"))
+    accepted=Int[]
     for s in stages
         get(s, "stage", "")=="pressure_reconstruction" || continue
         i=get(s, "sensitivity_source_stage", 0)
-        i>0 && !(i in ids) && push!(ids, i)
+        i>0 && !(i in accepted) && push!(accepted, i)
     end
-    sort!(ids)
+    sort!(accepted)
+    ids=policy=="all_dispatch_v1" ? r3_v3_dispatch_ids(stages) : accepted
     isempty(ids) && return Dict{String,Any}[]
     cost=ids[argmin(stages[i]["operating_cost"] for i in ids)]
-    score=ids[argmin(r3_physical_score(c, reconstruct_r3_pressure(c, stages[i])) for i in ids)]
-    roles=[
-        "minimum_violation"=>score,
-        "minimum_cost"=>cost,
-        "recent"=>last(ids),
-        "first"=>first(ids),
-    ]
+    score=ids[argmin(r3_physical_score(c, r3_v3_reconstruct(c, stages[i])) for i in ids)]
+    roles=["minimum_violation"=>score, "minimum_cost"=>cost]
+    isempty(accepted) || push!(roles, "recent"=>last(accepted))
+    push!(roles, "first"=>first(ids))
     bank=Dict{String,Any}[]
     for (role, i) in roles
         hash=r2_flow_hash(r3_matrix(stages[i]["values"]["m_pipe"]))
@@ -74,37 +87,60 @@ function r3_v3_finalize!(
     options,
 )
     stages=out["stages"]
-    bank=r3_v3_candidates(c, stages)
+    policy=get(out, "candidate_policy", "accepted_only")
+    bank=r3_v3_candidates(c, stages; policy)
     out["candidate_bank"]=bank
+    bank=deepcopy(bank)
     final=out["final_stage"]
     best=final>0 ? stages[final]["operating_cost"] : Inf
+    if policy=="all_dispatch_v1"
+        ids=r3_v3_dispatch_ids(stages)
+        isempty(ids) ||
+            (out["best_subproblem_stage"]=ids[argmin(stages[i]["operating_cost"] for i in ids)])
+        for i in ids
+            stages[i]["operating_cost"]<best || continue
+            candidate=r3_v3_reconstruct(c, stages[i])
+            if validate_r3_solution(c, candidate).physical_pass
+                candidate["candidate_source_stage"]=i
+                pop!(candidate, "sensitivity_source_stage", nothing)
+                candidate["elapsed_sec"]=0.0
+                j=pushstage("v3_retained_physical_candidate", candidate)
+                out["final_stage"]=j
+                best=stages[j]["operating_cost"]
+            end
+        end
+        final=out["final_stage"]
+    end
     if final==0 && options.physical_recovery && !isempty(bank)
         i=bank[1]["stage"]
-        center=reconstruct_r3_pressure(c, stages[i])
+        center=r3_v3_reconstruct(c, stages[i])
         stop=min(start+0.9out["budget_sec"], r3_clock()+0.2out["budget_sec"])
+        recovery_start=r3_clock()
         recovery=r3_restore_physical(c, center, convex_optimizer; operation, deadline = stop)
+        recovery_elapsed=r3_clock()-recovery_start
         out["physical_restoration"]=Dict(
             "status"=>recovery.status,
             "source_stage"=>i,
             "trace"=>recovery.trace,
+            "elapsed_sec"=>recovery_elapsed,
         )
         if validate_r3_solution(c, recovery.candidate).physical_pass
+            recovery.candidate["elapsed_sec"]=recovery_elapsed
             j=pushstage("v3_restored_physical_candidate", recovery.candidate)
             out["final_stage"]=j
             best=stages[j]["operating_cost"]
+            restored_hash=r2_flow_hash(r3_matrix(stages[j]["values"]["m_pipe"]))
+            filter!(x->x["flow_sha256"]!=restored_hash, bank)
             pushfirst!(
                 bank,
-                Dict(
-                    "roles"=>["restored_physical"],
-                    "stage"=>j,
-                    "flow_sha256"=>r2_flow_hash(r3_matrix(stages[j]["values"]["m_pipe"])),
-                ),
+                Dict("roles"=>["restored_physical"], "stage"=>j, "flow_sha256"=>restored_hash),
             )
         end
     end
     # 最终阶段至多占预算的10%；未用的恢复时间不扩成新的求解预算。
     final_deadline=min(deadline, r3_clock()+0.1out["budget_sec"])
     out["final_attempts"]=Int[]
+    out["final_candidate_order"]=bank
     if !isnothing(optimizer)
         for (k, candidate) in enumerate(bank)
             remaining=final_deadline-r3_clock()
@@ -139,9 +175,18 @@ end
 function r3_validate_v3(c, result)
     stages=result["stages"]
     operation=haskey(result, "operation") ? r3_operation_from_dict(result["operation"]) : nothing
-    expected=r3_v3_candidates(c, stages)
+    expected=r3_v3_candidates(c, stages; policy = get(result, "candidate_policy", "accepted_only"))
     actual=[x for x in result["candidate_bank"] if !("restored_physical" in x["roles"])]
     actual==expected || throw(ArgumentError("v3候选角色/排序不一致"))
+    if haskey(result, "final_candidate_order")
+        order=result["final_candidate_order"]
+        length(unique(x["flow_sha256"] for x in order))==length(order) ||
+            throw(ArgumentError("原等式候选流量重复"))
+        all(
+            r2_flow_hash(r3_matrix(stages[x["stage"]]["values"]["m_pipe"]))==x["flow_sha256"] for
+            x in order
+        ) || throw(ArgumentError("候选流量哈希不一致"))
+    end
     sr=get(result, "stationarity_check", nothing)
     if get(result, "local_stationarity_checked", false)
         !isnothing(sr) && sr["checked"] && length(sr["probes"])==3 ||
