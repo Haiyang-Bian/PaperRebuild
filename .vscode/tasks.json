@@ -996,6 +996,42 @@
       "args": ["+1.12.6", "--startup-file=no", "--project=tools/solvers", "scripts/replay_r3_v2_input.jl", "results/summaries/r3-v2/r3-v2-combined-20260917T095056-767e69d2/inputs/manifest.toml", "${input:r3V2ReplayId}"],
       "options": {"cwd": "${workspaceFolder}"},
       "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R3 v3 audit historical failure",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--project=.", "scripts/audit_r3_v3.jl"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R3 v3 tests",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--project=.", "scripts/test_r3_v3.jl"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R3 v3 formal experiments",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--project=tools/solvers", "scripts/experiment_r3_v3.jl"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R3 v3 validate saved",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--project=.", "scripts/r3_pg_task.jl", "validate", "${input:r3RunDirectory}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R3 v3 compare and figures",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--project=docs", "scripts/report_r3_v3.jl", "${input:r3StudyManifest}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R3 v3 redraw saved",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--project=docs", "scripts/r3_pg_task.jl", "plot", "${input:r3RunDirectory}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
     }
   ],
   "version": "2.0.0"

@@ -1,0 +1,10 @@
+scope = "frozen_v2_failure_audit_only"
+
+[files]
+"conflict.toml" = "12e15007ac7ec543c1fccbd77262c8c11d177de5172f40fe8b371cf7c799ea26"
+"electric-counterexample.toml" = "0066a8d44675b40b06bc9a4e341315a6d13d3fa3bb309c120a2b3d942eda02ad"
+"stopping-threshold-audit.csv" = "9971026b4600e21bd9d0f54ad71372d548ebd743950c44ac4f9b317f5cdd278d"
+
+[sources]
+"conflict.toml" = "results/runs/r3-v3-conflict-20260917T112737/conflict.toml"
+"electric-counterexample.toml" = "results/runs/r3-v3-electric-20260917T113726/counterexample.toml"

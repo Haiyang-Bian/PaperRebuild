@@ -2,16 +2,17 @@ include("r3_setup.jl")
 length(ARGS)>=2 || error("usage: r3_pg_task.jl validate|compare|plot RUN_DIR...")
 action=first(ARGS)
 if action=="plot"
-    include("plot_r3_pg.jl")
+    include("plot_r3.jl")
     for dir in ARGS[2:end]
-        println(plot_r3_pg_run(dir))
+        println(plot_r3_run(dir))
     end
 else
     action in ("validate", "compare") || error("未知操作")
     for dir in ARGS[2:end]
         loaded=read_r3_run(dir)
         r=loaded.result
-        r["algorithm"] in ("r3_pg_checked_v1", "r3_pg_checked_v2", "r3_cost_reference_v1") ||
+        r["algorithm"] in
+        ("r3_pg_checked_v1", "r3_pg_checked_v2", "r3_pg_checked_v3", "r3_cost_reference_v1") ||
             error("非R3算法运行")
         println(
             "run=",

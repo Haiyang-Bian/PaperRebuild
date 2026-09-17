@@ -1,0 +1,7 @@
+scope = "selected_png_visual_review_not_all_plots"
+date = "2026-09-17"
+renderer = "CairoMakie"
+reoptimized = false
+reviewed = ["two-source-schpd/F06-iterations.png", "two-source-schpd/F06-v2-v3.png", "single-loose-electric/F06-restoration.png", "two-source-VF_CT-pg/F04-restoration.png", "two-source-VF_CT-pg/F05-trajectories.png", "two-source-VF_CT-pg/F06-restoration.png"]
+checks = ["合成案例和运行定位可见", "坐标与单位可读", "A1及接受阈值可辨", "局部恢复横轴不冒充外层迭代", "重合版本曲线保留", "F05下游端口含义及费用优化未完成在正文说明"]
+limitations = "未逐张人工查看全部30例PNG/SVG；完整数值图源和生成配置另行核对。"

@@ -1,0 +1,55 @@
+schema = "r3-v3-issues-v1"
+origin = "synthetic"
+prior = "r3-v2-issues.toml"
+
+[[issue]]
+id = "V3-C01"
+status = "fixed_flow_counterexample_explained"
+kind = "thermal_terminal_and_numerical_feasibility"
+description = "冻结双源VF-CT流量的CT供水唯一因果回放在尾段t6与固定负荷/回温产生5.5144e-6 MW差异。未缩放SOCP分摊两个2.7566e-6 MW残差。"
+evidence = "results/summaries/r3-v3/audit/heat-bound.toml"
+action = "原历史判定保留；v3新增消去辅助热量的交付热量检查，保持原A1阈值，不改尾段。"
+
+[[issue]]
+id = "V3-C02"
+status = "supported_for_fixed_device_outputs"
+kind = "electric_relaxation_loss"
+description = "t3三节点电网冻结出力：SOCP可行、非负购电原等式报告不可行，微量反送反事实通过电网A1。损耗差约3.60 W，支持局部松弛吸收机制。"
+evidence = "results/summaries/r3-v3/audit-addendum-v1/electric-counterexample.toml"
+action = "不引入反送到正式输入；PG可以改变调度与流量。该单时段证据不证明模式整体无解。"
+
+[[issue]]
+id = "V3-C03"
+status = "checked_on_four_primary_cases_other_stops_preserved"
+kind = "local_stationarity"
+description = "双源SCHPD第98轮KKT通过、方向1.7747e-8、无预测下降，但三次小变化计数为零。"
+action = "正式四项主实验通过同流量三次原始/KKT核验；双源SCHPD关闭核验后仍停滞且费用相同。九个主要初值仍达200轮，不改判收敛。"
+
+[[issue]]
+id = "V3-C04"
+status = "fixed_with_regression"
+kind = "objective_bound_semantics"
+description = "开发复查发现恢复候选继承原成本界字段；正式运行在相关恢复案例开始前中断，修复清理并验证拒绝混用。"
+action = "恢复目标、成本、状态分开保存；中断快照保留作开发证据，最终30例在候选池修复后统一重跑。"
+
+[[issue]]
+id = "V3-C05"
+status = "fixed_with_regression_before_final_batch"
+kind = "candidate_pool_coverage"
+description = "初版池只扫描接受步，会遗漏已经求解的可行回溯候选。改为首个/最低费用/最小违反扫描全部可行SP，recent仍限接受步。"
+action = "保留旧accepted_only记录；最终30例使用all_dispatch_v1统一重跑，不挑选初值或收益。"
+
+[[issue]]
+id = "V3-C06"
+status = "A1_pass_exact_redispatch_unresolved"
+kind = "physical_recovery_and_economic_quality"
+description = "双源VF-CT恢复4次达到A1，保留费用468.4415658553的恢复候选；两次严格原等式费用求解仍报告不可行。"
+evidence = "results/summaries/r3-v3/r3-v3-20260917T115348-b8a7a604-73ffdff8"
+action = "保留费用优化未完成及对偶不可信停滞状态；优先核对完整因果回放与严格重调度的接口，再改善费用，不放宽A1。"
+
+[[issue]]
+id = "V3-C07"
+status = "local_stationarity_does_not_close_strict_dispatch"
+kind = "stopping_and_physical_redispatch"
+description = "切换例第34轮取得新局部驻点，最低费用流量的严格重求失败；关闭核验多一轮后取得72.22624751的严格原等式候选。"
+action = "保留两种判定及费用来源。后续应连接驻点触发与严格物理重调度，不改写旧outer_converged，不将既有内层cost_optimization_complete当作严格重调度完成。"

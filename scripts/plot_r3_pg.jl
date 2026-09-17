@@ -3,7 +3,8 @@ using PaperRebuild, CairoMakie, CSV, TOML, SHA
 # 只读取保存结果；所有图源CSV与图形配置一起交付，不重新求解。
 function plot_r3_pg_run(dir; output = joinpath(dir, "pg-figures"), loaded = read_r3_run(dir))
     c, r=loaded.case, loaded.result
-    r["algorithm"] in ("r3_pg_checked_v1", "r3_pg_checked_v2", "r3_cost_reference_v1") ||
+    r["algorithm"] in
+    ("r3_pg_checked_v1", "r3_pg_checked_v2", "r3_pg_checked_v3", "r3_cost_reference_v1") ||
         error("需要R3外层或参考运行")
     ispath(output) && error("拒绝覆盖旧图；请使用新输出目录")
     mkdir(output)
