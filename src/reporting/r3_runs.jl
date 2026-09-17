@@ -1,5 +1,19 @@
 r3_clock() = time_ns()/1e9
 
+# 界和对偶是可选证据；属性不可用不应丢弃已有原始解，也不能伪造数值界。
+function r3_optional_attribute(getter)
+    try
+        return (value = getter(), error = nothing)
+    catch err
+        message=sprint(showerror, err)
+        if err isa Union{MOI.UnsupportedAttribute,MOI.GetAttributeNotAllowed} ||
+           occursin("Gurobi Error 10005: Unable to retrieve attribute", message)
+            return (value = nothing, error = message)
+        end
+        rethrow()
+    end
+end
+
 function r3_solve(c, builder, optimizer; budget_sec = 60.0, deadline = Inf, sensitivity = false)
     start = r3_clock()
     stop = min(deadline, start+budget_sec)
@@ -99,19 +113,21 @@ function r3_solve(c, builder, optimizer; budget_sec = 60.0, deadline = Inf, sens
             # objective保留R2兼容意义：始终是运行成本；优化目标另存，不复制目标界。
             result["objective"] = result["operating_cost"]
         end
-        try
-            bound = objective_bound(b.model)
+        available=r3_optional_attribute(()->objective_bound(b.model))
+        isnothing(available.error) || (result["bound_error"]=available.error)
+        if !isnothing(available.value)
+            bound = available.value
             result["raw_solver_bound"] = bound
             if r2_valid_bound(bound, name)
                 result["solver_bound"] = bound
                 result["bound_objective_kind"] = b.objective_kind
             end
-        catch err
-            err isa Union{MOI.UnsupportedAttribute,MOI.GetAttributeNotAllowed} || rethrow()
         end
         if !haskey(result, "solver_bound") && dual_status(b.model)==MOI.FEASIBLE_POINT
-            bound = dual_objective_value(b.model)
-            if r2_valid_bound(bound, name)
+            available=r3_optional_attribute(()->dual_objective_value(b.model))
+            isnothing(available.error) || (result["dual_bound_error"]=available.error)
+            bound=available.value
+            if !isnothing(bound) && r2_valid_bound(bound, name)
                 result["solver_bound"] = bound
                 result["bound_objective_kind"] = b.objective_kind
             end

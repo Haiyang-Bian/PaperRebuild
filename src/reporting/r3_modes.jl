@@ -101,18 +101,18 @@ end
 未通过物理和终端检查的候选不进入公平周期费用排序，不要求四模式严格排序。
 """
 function compare_r3_modes(runs)
-    loaded=[read_r3_run(path) for path in runs]
-    isempty(loaded) && throw(ArgumentError("没有运行"))
-    c=first(loaded).case
-    all(r.case.data==c.data && r.case.sha256==c.sha256 for r in loaded) ||
-        throw(ArgumentError("四模式输入不同"))
+    isempty(runs) && throw(ArgumentError("没有运行"))
+    c=nothing
     rows=Dict{String,Any}[]
-    for r in loaded
+    for path in runs
+        r=read_r3_run(path)
+        isnothing(c) && (c=r.case)
+        r.case.data==c.data && r.case.sha256==c.sha256 || throw(ArgumentError("四模式输入不同"))
         result=r.result
         op=result["operation"]
         n=op["core_periods"]
         row=Dict{String,Any}(
-            "run_id"=>r.metadata["run_id"],
+            "run_id"=>basename(dirname(abspath(path)))*"/"*r.metadata["run_id"],
             "mode"=>op["mode"],
             "method"=>result["algorithm"],
             "status"=>result["status"],
@@ -142,10 +142,15 @@ function compare_r3_modes(runs)
             row["pv_used_MWh"]=c.data["dt_h"]*sum(sum(v["P_device"][k]) for k in pv)
             row["pv_curtailed_MWh"]=row["pv_available_MWh"]-row["pv_used_MWh"]
             if haskey(s, "solver_bound")
-                key=result["algorithm"]=="r3_cost_reference_v1" || startswith(op["mode"], "CF") ?
-                    "same_model_bound" : "fixed_flow_subproblem_bound"
+                key=result["algorithm"]=="r3_cost_reference_v1" ? "same_model_bound" :
+                    startswith(op["mode"], "CF") ?
+                    (s["class"]=="SOCP" ? "relaxation_lower_bound" : "same_model_bound") :
+                    "fixed_flow_subproblem_bound"
                 row[key]=s["solver_bound"]
+                row["reported_gap"]=get(s, "solver_relative_gap", NaN)
+                row["gap_scope"]=key
             end
+            row["termination"]=get(s, "termination", "unavailable")
             embedded=String[]
             for mode in (:CF_CT, :CF_VT, :VF_CT, :VF_VT)
                 target=R3OperationSpec(
