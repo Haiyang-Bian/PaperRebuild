@@ -1,6 +1,6 @@
 r3_clock() = time_ns()/1e9
 
-function r3_solve(c, builder, optimizer; budget_sec = 60.0, deadline = Inf)
+function r3_solve(c, builder, optimizer; budget_sec = 60.0, deadline = Inf, sensitivity = false)
     start = r3_clock()
     stop = min(deadline, start+budget_sec)
     result = Dict{String,Any}(
@@ -111,6 +111,9 @@ function r3_solve(c, builder, optimizer; budget_sec = 60.0, deadline = Inf)
                     1,
                     abs(result["solver_objective"]),
                 )
+        end
+        if sensitivity && has_solution
+            result["sensitivity"] = r3_value_sensitivity(c, b)
         end
     catch err
         if err isa Union{MOI.UnsupportedConstraint,MOI.UnsupportedAttribute}

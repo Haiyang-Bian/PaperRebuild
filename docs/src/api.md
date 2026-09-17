@@ -109,6 +109,13 @@ PaperRebuild.read_r3_run
 PaperRebuild.plot_r3_run
 ```
 
+## 第3章灵敏度与外层
+
+```@docs
+PaperRebuild.r3_transport_jacobian
+PaperRebuild.r3_value_sensitivity
+```
+
 ## 工程示例函数说明
 
 以下两个函数保留自初始化模板，只用于验证包加载、测试和 Documenter 集成，不计入论文复现进度。

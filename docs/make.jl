@@ -44,6 +44,7 @@ makedocs(;
             "热网与简化公式" => "ch03-heat-equations.md",
             "算法公式与实现边界" => "ch03-algorithm-equations.md",
             "R3采用解释与推导" => "ch03-r3-theory.md",
+            "R3灵敏度与投影梯度" => "ch03-r3-gradient.md",
             "R3可行性运行教程" => "ch03-r3.md",
             "R3可行性结果与图表" => "ch03-r3-results.md",
             "R3同模型求解器对照" => "ch03-r3-reference.md",
