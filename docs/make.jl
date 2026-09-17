@@ -5,6 +5,8 @@ include(joinpath(@__DIR__, "..", "scripts", "ch02_docs.jl"))
 sync_ch02()
 include(joinpath(@__DIR__, "..", "scripts", "ch03_docs.jl"))
 sync_ch03()
+include(joinpath(@__DIR__, "..", "scripts", "ch04_docs.jl"))
+sync_ch04()
 
 makedocs(;
     modules = [PaperRebuild],
@@ -58,6 +60,11 @@ makedocs(;
             "符号权威表" => "ch03-symbols.md",
             "运行与验收" => "ch03-r2.md",
             "合成实验结果与图表" => "ch03-r2-results.md",
+        ],
+        "第4章 集中交易与核算" => [
+            "模型与账本解释" => "ch04-models.md",
+            "原式清单" => "ch04-equations.md",
+            "符号与采用解释" => "ch04-symbols.md",
         ],
         "API 索引与说明" => "api.md",
         "第 2 章模型与首批实现" => [

@@ -52,6 +52,12 @@ R3第四批显式v3见[物理恢复与停止判据](../src/ch03-r3-v3.md)。恢�
 
 ## 文档更新路由
 
+2026-09-18起R3阶段归档，优先R4[集中交易与账本](../src/ch04-models.md)。
+R4保留独立输入；不从R2Case或R3OperationSpec继承WMM/尾段。热能流合格不等于动态温度合格。
+合同正向为出售，物理注入正向为注入网络；内部支付不计入社会资源成本。
+AG0先独立求解后冻结聚合商计划；网络校核失败不能悄悄重调聚合商。
+教学结算后的个体损失如实保留，不宣称公平分配或议价已实现。
+
 R3第五批见[独立基线](../src/ch03-r3-baseline.md)和[归因结果](../src/ch03-r3-baseline-results.md)。
 显式r3_paper_structure_v1不调用v2/v3恢复；检查源码调用边界和真实阶段记录。
 冻结规则在configs/r3/baseline-study.toml；旧尾段与bounded_return_tail必须显式区分，旧默认不变。

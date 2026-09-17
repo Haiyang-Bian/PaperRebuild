@@ -1,0 +1,654 @@
+count = 59
+schema = "ch04-formulas-v1"
+source = "docs/摘要.pdf"
+source_sha256 = "20328e2480e773520c19c378e53365fc944c0bafcfca73071f5d8313d5ee7d91"
+
+[[formula]]
+api = "build_r4_model"
+id = "ch04-001"
+issues = ["R4-C02"]
+latex = "\\max U_i^0=-\\sum_t(C_{i,t}^{DER}+C_{i,t}^{Retail}+C_{i,t}^{sat})"
+number = 1
+pdf_page = 64
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "聚合商目标"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "build_r4_model"
+id = "ch04-002"
+issues = ["R4-C02"]
+latex = "C_{i,t}^{DER}=c_i^{CHP}P_{i,t}^{CHP}+c_i^{RE}P_{i,t}^{RE}+c_i^{BS}(P_{i,t}^{BS,ch}+P_{i,t}^{BS,dis})"
+number = 2
+pdf_page = 64
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "设备成本"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "r4_ledger"
+id = "ch04-003"
+issues = ["R4-C02"]
+latex = "C_{i,t}^{Retail}=-\\lambda_{i,t}^{P,sell}P_{i,t}^{sell}+\\lambda_{i,t}^{P,buy}P_{i,t}^{buy}-\\lambda_{i,t}^{H,sell}H_{i,t}^{sell}+\\lambda_{i,t}^{H,buy}H_{i,t}^{buy}"
+number = 3
+pdf_page = 64
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "零售成本"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "build_r4_model"
+id = "ch04-004"
+issues = ["R4-C06", "R4-C02"]
+latex = "C_{i,t}^{sat}=\\rho_i^{P,sat,0}+\\rho_i^{P,sat,1}P_{i,t}^{D}+\\rho_i^{P,sat,2}(P_{i,t}^{D})^2+\\rho_i^{Q,sat,0}+\\rho_i^{H,sat,1}H_{i,t}^{D}+\\rho_i^{H,sat,2}(H_{i,t}^{D})^2"
+number = 4
+pdf_page = 64
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "不满意度"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "build_r4_model"
+id = "ch04-005"
+issues = []
+latex = "P_{i,t}^{sell}-P_{i,t}^{buy}=P_{i,t}^{CHP}+P_{i,t}^{RE}-P_{i,t}^{BS,ch}+P_{i,t}^{BS,dis}-P_{i,t}^{D}-P_{i,t}^{EB/HP}"
+number = 5
+pdf_page = 64
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "AG0电平衡"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "build_r4_model"
+id = "ch04-006"
+issues = []
+latex = "H_{i,t}^{sell}-H_{i,t}^{buy}=H_{i,t}^{CHP}+H_{i,t}^{EB/HP}-H_{i,t}^{D}"
+number = 6
+pdf_page = 64
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "AG0热平衡"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "build_r4_model"
+id = "ch04-007"
+issues = []
+latex = "H_{i,t}^{CHP}=\\eta_i^{CHP}P_{i,t}^{CHP},\\quad H_{i,t}^{EB/HP}=COP_i^{EB/HP}P_{i,t}^{EB/HP}"
+number = 7
+pdf_page = 64
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "热电转换"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "build_r4_model"
+id = "ch04-008"
+issues = ["R4-C06"]
+latex = "P_i^{k,min}\\le P_{i,t}^{k}\\le P_i^{k,max},\\quad k\\in\\{CHP,HP,EB,GT,RE\\}"
+number = 8
+pdf_page = 64
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "设备容量"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "build_r4_model"
+id = "ch04-009"
+issues = []
+latex = "0\\le P_{i,t}^{BS,ch/dis}\\le P_i^{BS,max}"
+number = 9
+pdf_page = 64
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "储能功率"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "build_r4_model"
+id = "ch04-010"
+issues = []
+latex = "E_i^{BS,min}\\le E_{i,t}^{BS}\\le E_i^{BS,max}"
+number = 10
+pdf_page = 64
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "储能能量"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "build_r4_model"
+id = "ch04-011"
+issues = ["R4-C02"]
+latex = "E_{i,t}^{BS}=E_{i,t}^{BS}+\\eta_i^{BS}P_{i,t}^{BS,ch}-P_{i,t}^{BS,dis}/\\eta_i^{BS}"
+number = 11
+pdf_page = 64
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "储能状态原式"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "build_r4_model"
+id = "ch04-012"
+issues = []
+latex = "(1-\\zeta)\\widehat P_{i,t}^{D}\\le P_{i,t}^{D}\\le(1+\\zeta)\\widehat P_{i,t}^{D}"
+number = 12
+pdf_page = 64
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "电负荷边界"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "build_r4_model"
+id = "ch04-013"
+issues = []
+latex = "(1-\\zeta)\\widehat H_{i,t}^{D}\\le H_{i,t}^{D}\\le(1+\\zeta)\\widehat H_{i,t}^{D}"
+number = 13
+pdf_page = 64
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "热负荷边界"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "r4_ledger"
+id = "ch04-014"
+issues = ["R4-C04"]
+latex = "U_i^{P2P}=U_i^0+\\sum_{i'\\ne i}\\phi_{ii'}-\\sum_{i'\\ne i}\\sum_t(\\kappa_{ii'}P_{ii',t}+\\varphi_{ii'}H_{ii',t})"
+number = 14
+pdf_page = 64
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "P2P个体效用"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "r4_ledger"
+id = "ch04-015"
+issues = []
+latex = "\\phi_{ii'}+\\phi_{i'i}=0"
+number = 15
+pdf_page = 65
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "支付互反"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "r4_ledger"
+id = "ch04-016"
+issues = []
+latex = "P_{ii',t}+P_{i'i,t}=0,\\quad H_{ii',t}+H_{i'i,t}=0"
+number = 16
+pdf_page = 65
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "合同互反"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "build_r4_model"
+id = "ch04-017"
+issues = ["R4-C01"]
+latex = "P_{i,t}^{sell}-P_{i,t}^{buy}=P_{i,t}^{CHP}+P_{i,t}^{RE}-P_{i,t}^{BS,ch}+P_{i,t}^{BS,dis}-P_{i,t}^{D}-P_{i,t}^{EB/HP}+\\sum_{i'\\ne i}P_{ii',t}"
+number = 17
+pdf_page = 65
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "P2P电平衡原式"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "build_r4_model"
+id = "ch04-018"
+issues = ["R4-C01"]
+latex = "H_{i,t}^{sell}-H_{i,t}^{buy}=H_{i,t}^{CHP}+H_{i,t}^{EB/HP}-H_{i,t}^{D}+\\sum_{i'\\ne i}H_{ii',t}"
+number = 18
+pdf_page = 65
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "P2P热平衡原式"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "r4_ledger"
+id = "ch04-019"
+issues = []
+latex = "\\max U^{DHSO}=-(C^{EH}+C^{Grid}+C^{NO}-C^{Retail}-C^{NUC})"
+number = 19
+pdf_page = 65
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "运营商目标"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "build_r4_model"
+id = "ch04-020"
+issues = ["R4-C02"]
+latex = "C^{EH}=\\sum_t\\{c^{CHP}P_{n',t}^{CHP}+c^{BS}(P_{n',t}^{BS,dis}+P_{n',t}^{BS,ch})\\}"
+number = 20
+pdf_page = 65
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "能源站成本"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "build_r4_model"
+id = "ch04-021"
+issues = ["R4-C02"]
+latex = "C^{Grid}=\\sum_t\\lambda_t^G P_t^{PCC}"
+number = 21
+pdf_page = 65
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "外部购电"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = ""
+id = "ch04-022"
+issues = []
+latex = "C^{NO}=\\sum_t\\sum_{(m,n)}c^{SA}a_{mn,t}^{SW}+\\sum_{(j,k)}c^{VA}a_{jk}^{VL}"
+number = 22
+pdf_page = 65
+status = "documented_not_implemented"
+test = ""
+title = "网络动作成本"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "r4_ledger"
+id = "ch04-023"
+issues = ["R4-C06"]
+latex = "C^{Retail}=\\sum_t\\sum_i(\\lambda_{i,t}^{P,buy}\\widehat P_{i,t}^{buy}-\\lambda_{i,t}^{P,sell}\\widehat P_{i,t}^{sell}+\\lambda_{i,t}^{H,buy}\\widehat H_{i,t}^{buy}-\\lambda_{i,t}^{H,sell}\\widehat H_{i,t}^{sell})+C^{nonM}"
+number = 23
+pdf_page = 65
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "零售收入"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "r4_ledger"
+id = "ch04-024"
+issues = ["R4-C04"]
+latex = "C^{NUC}=\\sum_{t,i,i'}\\kappa_{ii'}\\widehat P_{ii',t}+\\sum_{t,i,i'}\\varphi_{ii'}\\widehat H_{ii',t}"
+number = 24
+pdf_page = 65
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "网络服务收入"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "build_r4_model"
+id = "ch04-025"
+issues = []
+latex = "P_{n,t}^{net*}=\\sum_hP_{nh,t}-\\sum_m(P_{mn,t}-l_{mn,t}r_{mn})+g_n v_{n,t}"
+number = 25
+pdf_page = 65
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "节点有功"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "build_r4_model"
+id = "ch04-026"
+issues = []
+latex = "Q_{n,t}^{net*}=\\sum_hQ_{nh,t}-\\sum_m(Q_{mn,t}-l_{mn,t}x_{mn})+b_n v_{n,t}"
+number = 26
+pdf_page = 66
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "节点无功"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "build_r4_model"
+id = "ch04-027"
+issues = []
+latex = "v_{n,t}=v_{m,t}-2(r_{mn}P_{mn,t}+x_{mn}Q_{mn,t})+l_{mn,t}(r_{mn}^2+x_{mn}^2)+\\Delta v_{mn,t}"
+number = 27
+pdf_page = 66
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "支路电压降"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "build_r4_model"
+id = "ch04-028"
+issues = []
+latex = "\\underline V^2\\le v_{n,t}\\le\\overline V^2"
+number = 28
+pdf_page = 66
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "电压平方边界"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = ""
+id = "ch04-029"
+issues = ["R4-C05"]
+latex = "|\\Delta v_{mn,t}|\\le(\\overline V^2-\\underline V^2)u_{mn,t}^{SW}"
+number = 29
+pdf_page = 66
+status = "documented_not_implemented"
+test = ""
+title = "开关电压松弛原式"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "build_r4_model"
+id = "ch04-030"
+issues = []
+latex = "-z_{mn,t}P_{mn}^{max}\\le P_{mn,t}\\le z_{mn,t}P_{mn}^{max}"
+number = 30
+pdf_page = 66
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "有功边界"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "build_r4_model"
+id = "ch04-031"
+issues = []
+latex = "-z_{mn,t}Q_{mn}^{max}\\le Q_{mn,t}\\le z_{mn,t}Q_{mn}^{max}"
+number = 31
+pdf_page = 66
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "无功边界"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "build_r4_model"
+id = "ch04-032"
+issues = ["R4-C05"]
+latex = "-z_{mn,t}I_{mn}^{max}\\le l_{mn,t}\\le z_{mn,t}I_{mn}^{max}"
+number = 32
+pdf_page = 66
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "电流平方边界"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "build_r4_model"
+id = "ch04-033"
+issues = []
+latex = "\\|(2P_{mn,t},2Q_{mn,t},l_{mn,t}-v_{m,t})\\|_2\\le l_{mn,t}+v_{m,t}"
+number = 33
+pdf_page = 66
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "电网二阶锥"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = ""
+id = "ch04-034"
+issues = ["R4-C05"]
+latex = "u_{mn,t}^{SW}=z_{mn,t}+z_{nm,t}"
+number = 34
+pdf_page = 66
+status = "documented_not_implemented"
+test = ""
+title = "电开关与方向"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = ""
+id = "ch04-035"
+issues = ["R4-C05"]
+latex = "\\sum_{(m,n)}z_{mn,t}\\le1,\\quad n\\in N^E\\setminus n_0"
+number = 35
+pdf_page = 66
+status = "documented_not_implemented"
+test = ""
+title = "非根入边"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = ""
+id = "ch04-036"
+issues = ["R4-C05"]
+latex = "\\sum_{(n_0,m)}z_{n_0m,t}=0"
+number = 36
+pdf_page = 66
+status = "documented_not_implemented"
+test = ""
+title = "根入边"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = ""
+id = "ch04-037"
+issues = ["R4-C05"]
+latex = "z_{mn,t},z_{nm,t}\\in\\{0,1\\},\\quad0\\le a_{mn,t}^{SW}\\le1"
+number = 37
+pdf_page = 66
+status = "documented_not_implemented"
+test = ""
+title = "拓扑变量"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = ""
+id = "ch04-038"
+issues = ["R4-C05"]
+latex = "\\sum_{t'=t-T^{SA}+1}^{t}u_{mn,t'}^{SW}\\le1-a_{mn,t}^{SW}"
+number = 38
+pdf_page = 66
+status = "documented_not_implemented"
+test = ""
+title = "开关动作窗口一"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = ""
+id = "ch04-039"
+issues = ["R4-C05"]
+latex = "\\sum_{t'=t-T^{SA}+1}^{t}u_{mn,t'}^{SW}\\le1-a_{mn,t-T^{SA}}^{SW}"
+number = 39
+pdf_page = 66
+status = "documented_not_implemented"
+test = ""
+title = "开关动作窗口二"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = ""
+id = "ch04-040"
+issues = ["R4-C05"]
+latex = "z_{mn,t}-z_{mn,t-1}\\le a_{mn,t}^{SW},\\quad z_{mn,t-1}-z_{mn,t}\\le a_{mn,t}^{SW}"
+number = 40
+pdf_page = 66
+status = "documented_not_implemented"
+test = ""
+title = "开关变化"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "build_r4_model"
+id = "ch04-041"
+issues = ["R4-C07"]
+latex = "-v_{jk}M_{jk}^{max}\\le m_{jk,t}\\le v_{jk}M_{jk}^{max}"
+number = 41
+pdf_page = 66
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "热质量流率边界"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "build_r4_model"
+id = "ch04-042"
+issues = ["R4-C07"]
+latex = "m_{j,t}=\\sum_{(j,k)}m_{jk,t}-\\sum_{(l,j)}m_{lj,t}"
+number = 42
+pdf_page = 66
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "热节点质量守恒"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "build_r4_model"
+id = "ch04-043"
+issues = ["R4-C07", "R4-C03"]
+latex = "H_{k,t}^{net*}=\\sum_jH_{jk,t}^{in}-\\sum_lH_{kl,t}^{out}"
+number = 43
+pdf_page = 66
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "热节点能量原式"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "build_r4_model"
+id = "ch04-044"
+issues = ["R4-C07"]
+latex = "H_{jk,t}^{out}=H_{jk,t}^{in}-H_{jk,t}^{loss}"
+number = 44
+pdf_page = 66
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "管道热量差"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "build_r4_model"
+id = "ch04-045"
+issues = ["R4-C07"]
+latex = "-v_{jk,t}H_{jk}^{max}\\le H_{jk,t}^{in/out}\\le v_{jk,t}H_{jk}^{max}"
+number = 45
+pdf_page = 66
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "热支路容量"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "build_r4_model"
+id = "ch04-046"
+issues = ["R4-C07", "R4-C03"]
+latex = "m_{k,t}\\Delta\\tau^{min}\\le H_{k,t}^{net*}\\le m_{k,t}\\Delta\\tau^{max}"
+number = 46
+pdf_page = 66
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "端口热量原式"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "build_r4_model"
+id = "ch04-047"
+issues = ["R4-C07", "R4-C03"]
+latex = "H_{jk,t}^{loss}=u_{jk,t}^{VL}(\\widehat\\tau_{jk}^{S,in}+\\widehat\\tau_{jk}^{R,in}-2\\widehat\\tau_t^{AM})\\frac{\\epsilon_{jk}L_{jk}}{A\\rho_w}"
+number = 47
+pdf_page = 67
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "冻结损耗原式"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = ""
+id = "ch04-048"
+issues = ["R4-C05"]
+latex = "u_{jk}^{VL}=v_{jk}+v_{kj}"
+number = 48
+pdf_page = 67
+status = "documented_not_implemented"
+test = ""
+title = "阀门与方向"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = ""
+id = "ch04-049"
+issues = ["R4-C05"]
+latex = "\\sum_{(j,k)}v_{jk}\\le1,\\quad k\\in N^H\\setminus k_0"
+number = 49
+pdf_page = 67
+status = "documented_not_implemented"
+test = ""
+title = "热网非根入边"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = ""
+id = "ch04-050"
+issues = ["R4-C05"]
+latex = "\\sum_{(k_0,j)}v_{k_0j}=0"
+number = 50
+pdf_page = 67
+status = "documented_not_implemented"
+test = ""
+title = "热网根入边"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = ""
+id = "ch04-051"
+issues = ["R4-C05"]
+latex = "|v_{jk}-\\widehat v_{jk,0}|\\le a_{jk}^{VL},\\quad v_{jk},v_{kj},a_{jk}^{VL}\\in\\{0,1\\}"
+number = 51
+pdf_page = 67
+status = "documented_not_implemented"
+test = ""
+title = "阀门变化"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "build_r4_model"
+id = "ch04-052"
+issues = []
+latex = "P_{n,t}^{net*}=P_{n,t}^{net}"
+number = 52
+pdf_page = 67
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "电计划一致"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "build_r4_model"
+id = "ch04-053"
+issues = []
+latex = "H_{k,t}^{net*}=H_{k,t}^{net}"
+number = 53
+pdf_page = 67
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "热计划一致"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "build_r4_model"
+id = "ch04-054"
+issues = ["R4-C02"]
+latex = "P_{n',t}^{net}=P_{n',t}^{CHP}-P_{n',t}^{EB}+P_{n',t}^{BS,dis}-P_{n',t}^{BS,dis}"
+number = 54
+pdf_page = 67
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "能源站电注入原式"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "build_r4_model"
+id = "ch04-055"
+issues = ["R4-C03"]
+latex = "P_{k',t}^{net}=H_{k',t}^{CHP}+H_{k',t}^{EB}"
+number = 55
+pdf_page = 67
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "能源站热注入原式"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "r4_ledger"
+id = "ch04-056"
+issues = ["R4-C01"]
+latex = "P_{n,t}^{net}=P_{i,t}^{sell}-P_{i,t}^{buy}-\\sum_{i'\\ne i}P_{ii',t}"
+number = 56
+pdf_page = 67
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "聚合商电注入原式"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "r4_ledger"
+id = "ch04-057"
+issues = ["R4-C01"]
+latex = "H_{k,t}^{net}=H_{i,t}^{sell}-H_{i,t}^{buy}-\\sum_{i'\\ne i}H_{ii',t}"
+number = 57
+pdf_page = 67
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "聚合商热注入原式"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "build_r4_model"
+id = "ch04-058"
+issues = []
+latex = "\\min C^{EH}+C^{Grid}+C^{NO}+\\sum_i(C_i^{DER}+C_i^{sat})"
+number = 58
+pdf_page = 67
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "集中资源成本"
+verification = "visual_checked_normalized_transcription"
+[[formula]]
+api = "build_r4_model"
+id = "ch04-059"
+issues = []
+latex = "(4\\!-\\!7)\\text{--}(4\\!-\\!13),\\ (4\\!-\\!16)\\text{--}(4\\!-\\!18),\\ (4\\!-\\!25)\\text{--}(4\\!-\\!57)"
+number = 59
+pdf_page = 67
+status = "adopted_scope"
+test = "R4 model and ledger"
+title = "集中约束集"
+verification = "visual_checked_normalized_transcription"
