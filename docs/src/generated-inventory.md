@@ -26,6 +26,7 @@
 - `configs/r1/micro.toml`
 - `configs/r2/single-source.toml`
 - `configs/r2/two-source.toml`
+- `configs/r3/pg-study.toml`
 - `configs/r3/study.toml`
 - `data/processed/README.md`
 - `data/raw/README.md`
@@ -41,6 +42,7 @@
 - `docs/agent/tasks/2026-09-16-r2.md`
 - `docs/agent/tasks/2026-09-16-reproduction-plan.md`
 - `docs/agent/tasks/2026-09-16-thesis-review.md`
+- `docs/agent/tasks/2026-09-17-r3-pg.md`
 - `docs/agent/tasks/2026-09-17-r3.md`
 - `docs/make.jl`
 - `docs/reading/README.md`
@@ -53,6 +55,7 @@
 - `docs/reading/ch03/formulas.toml`
 - `docs/reading/ch03/model-issues.toml`
 - `docs/reading/ch03/r3-acceptance.toml`
+- `docs/reading/ch03/r3-pg-acceptance.toml`
 - `docs/reading/ch03/sources.toml`
 - `docs/reading/ch03/symbols.toml`
 - `docs/reading/ch03/thesis-parameters.toml`
@@ -106,6 +109,7 @@
 - `docs/src/ch03-models.md`
 - `docs/src/ch03-r2-results.md`
 - `docs/src/ch03-r2.md`
+- `docs/src/ch03-r3-gradient.md`
 - `docs/src/ch03-r3-reference.md`
 - `docs/src/ch03-r3-results.md`
 - `docs/src/ch03-r3-theory.md`
@@ -402,7 +406,9 @@
 - `scripts/check_r2_build.jl`
 - `scripts/check_r3_fallback.jl`
 - `scripts/check_r3_gurobi.jl`
+- `scripts/check_r3_pg_reference.jl`
 - `scripts/check_r3_reference.jl`
+- `scripts/check_r3_sensitivity.jl`
 - `scripts/check_solvers.jl`
 - `scripts/collect_ch03_data.jl`
 - `scripts/compare_r1_runs.jl`
@@ -413,6 +419,7 @@
 - `scripts/discover_ch03_sources.jl`
 - `scripts/experiment_r2.jl`
 - `scripts/experiment_r3.jl`
+- `scripts/experiment_r3_pg.jl`
 - `scripts/format.jl`
 - `scripts/inspect_ch03_workbooks.jl`
 - `scripts/maintain.ps1`
@@ -421,11 +428,13 @@
 - `scripts/plot_r1.jl`
 - `scripts/plot_r2.jl`
 - `scripts/plot_r3.jl`
+- `scripts/plot_r3_pg.jl`
 - `scripts/prepare_r1_summary.jl`
 - `scripts/preview.jl`
 - `scripts/r1_task.jl`
 - `scripts/r2_setup.jl`
 - `scripts/r2_task.jl`
+- `scripts/r3_pg_task.jl`
 - `scripts/r3_setup.jl`
 - `scripts/r3_task.jl`
 - `scripts/read_docx.py`
@@ -434,6 +443,7 @@
 - `scripts/report_r1.jl`
 - `scripts/report_r2.jl`
 - `scripts/report_r3.jl`
+- `scripts/report_r3_pg.jl`
 - `scripts/report_r3_reference.jl`
 - `scripts/requirements-reading.txt`
 - `scripts/run_r1.jl`
@@ -441,9 +451,13 @@
 - `scripts/smoke.jl`
 - `scripts/test.jl`
 - `scripts/test_r3.jl`
+- `scripts/test_r3_pg.jl`
 - `scripts/validate_ch03_data.jl`
 - `scripts/validate_r1.jl`
 - `src/PaperRebuild.jl`
+- `src/algorithms/r3_pg.jl`
+- `src/algorithms/r3_projection.jl`
+- `src/algorithms/r3_sensitivity.jl`
 - `src/components/devices.jl`
 - `src/core/case.jl`
 - `src/core/r2_case.jl`
@@ -464,6 +478,7 @@
 - `test/r1.jl`
 - `test/r2.jl`
 - `test/r3.jl`
+- `test/r3_pg.jl`
 - `test/runtests.jl`
 - `tools/Manifest.toml`
 - `tools/Project.toml`

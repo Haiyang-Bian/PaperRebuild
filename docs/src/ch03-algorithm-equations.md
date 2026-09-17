@@ -26,7 +26,7 @@
 
 出处：PDF 53 / 正文 36；状态：原页视觉核读；采用解释和实现状态另列。
 
-实现状态：已说明、未实现。主问题与割平面留后续；原式h标记含m，展开式却写x，未静默替换。
+实现状态：已说明、未实现。原式h标记含m，展开式却写x。已实现凸投影外松弛域；不实现未经证明的累计全局割主问题。
 
 符号：[alg_x](@ref sym-ch03-alg_x)、[alg_m](@ref sym-ch03-alg_m)、[alg_theta](@ref sym-ch03-alg_theta)、[alg_s](@ref sym-ch03-alg_s)、[alg_lambda](@ref sym-ch03-alg_lambda)、[alg_mu](@ref sym-ch03-alg_mu)、[alg_gamma](@ref sym-ch03-alg_gamma)。
 
@@ -39,7 +39,7 @@
 
 出处：PDF 53 / 正文 36；状态：原页视觉核读；采用解释和实现状态另列。
 
-本批作用：固定流量下的已核查WMM特例；时延由流量和历史计算，保留电网及水力锥松弛。 PDF52–55算法抽象；本批固定流量SP可运行，弹性诊断和直接修正的细节由项目单独定义。MP、梯度及投影未实现。
+本批作用：固定流量下的已核查WMM特例；时延由流量和历史计算，保留电网及水力锥松弛。 PDF52–55算法抽象；固定流量SP与项目弹性诊断可运行。直接修正和核查版投影梯度分别记录，不将局部半空间当全局有效割。
 
 实现入口：[`build_r3_subproblem`](@ref)；源码 `src/formulations/r3.jl`；测试 `R3 fixed schedule and reconstruction ch03-060`。
 
@@ -54,9 +54,11 @@
 
 出处：PDF 54 / 正文 37；状态：原页视觉核读；采用解释和实现状态另列。
 
-实现状态：已说明、未实现。需另核r对m的贡献、时延分段边界及对偶适用条件；本批不计算梯度。
+本批作用：采用解释补全流量相关不等式、固定变量与数值热系数贡献；不是原式逐字实现。 采用式补足全部流量相关项；仅连续凸子问题可信对偶，WMM分段导数与有限差分对照。
 
-符号：[alg_x](@ref sym-ch03-alg_x)、[alg_m](@ref sym-ch03-alg_m)、[alg_theta](@ref sym-ch03-alg_theta)、[alg_s](@ref sym-ch03-alg_s)、[alg_lambda](@ref sym-ch03-alg_lambda)、[alg_mu](@ref sym-ch03-alg_mu)、[alg_gamma](@ref sym-ch03-alg_gamma)。
+实现入口：[`r3_value_sensitivity`](@ref)；源码 `src/algorithms/r3_sensitivity.jl`；测试 `R3 dual signs and complete value sensitivity`。
+
+符号：[alg_x](@ref sym-ch03-alg_x)、[alg_m](@ref sym-ch03-alg_m)、[alg_theta](@ref sym-ch03-alg_theta)、[alg_lambda](@ref sym-ch03-alg_lambda)、[alg_mu](@ref sym-ch03-alg_mu)。
 
 ## [（3-62）成本分支梯度步](@id eq-ch03-062)
 
@@ -67,7 +69,9 @@
 
 出处：PDF 54 / 正文 37；状态：原页视觉核读；采用解释和实现状态另列。
 
-实现状态：已说明、未实现。成本下降分支不在本批。
+本批作用：归一化成本梯度及Armijo回溯为项目数值规则。 r3_pg_checked_v1；尺度、回溯、单侧试探和停止条件为项目补全，不继承参考文献的全局收敛证明。
+
+实现入口：[`solve_r3_projected_gradient`](@ref)；源码 `src/algorithms/r3_pg.jl`；测试 `R3 convex projection and outer trace`。
 
 符号：[alg_x](@ref sym-ch03-alg_x)、[alg_m](@ref sym-ch03-alg_m)、[alg_theta](@ref sym-ch03-alg_theta)、[alg_s](@ref sym-ch03-alg_s)、[alg_lambda](@ref sym-ch03-alg_lambda)、[alg_mu](@ref sym-ch03-alg_mu)、[alg_gamma](@ref sym-ch03-alg_gamma)。
 
@@ -80,9 +84,11 @@
 
 出处：PDF 54 / 正文 37；状态：原页视觉核读；采用解释和实现状态另列。
 
-实现状态：已说明、未实现。后续应明确对x的存在量词、可行域与历史割；本批直接修正不等于该投影。
+本批作用：存在辅助调度变量的凸投影；距离尺度是项目约定。 主问题采用凸外松弛域，辅助调度变量共同优化；项目使用流量跨度归一化距离，原式为未缩放距离。
 
-符号：[alg_x](@ref sym-ch03-alg_x)、[alg_m](@ref sym-ch03-alg_m)、[alg_theta](@ref sym-ch03-alg_theta)、[alg_s](@ref sym-ch03-alg_s)、[alg_lambda](@ref sym-ch03-alg_lambda)、[alg_mu](@ref sym-ch03-alg_mu)、[alg_gamma](@ref sym-ch03-alg_gamma)。
+实现入口：[`build_r3_projection`](@ref)；源码 `src/algorithms/r3_projection.jl`；测试 `R3 convex projection and outer trace`。
+
+符号：[alg_x](@ref sym-ch03-alg_x)、[alg_m](@ref sym-ch03-alg_m)、[alg_gamma](@ref sym-ch03-alg_gamma)。
 
 ## [（3-64）原文可行性割](@id eq-ch03-064)
 
@@ -93,7 +99,7 @@
 
 出处：PDF 54 / 正文 37；状态：原页视觉核读；采用解释和实现状态另列。
 
-实现状态：已说明、未实现。原页写g2(xK)，与3-58的g2(m)不一致；lambda重复乘法和割有效性也需推导。本批不使用该割。
+实现状态：已说明、未实现。原页g2(xK)和lambda重复乘法疑点保留；项目只用诊断值一阶局部试探半空间，经实际求解接受或丢弃，不作为全局有效割。
 
 符号：[alg_x](@ref sym-ch03-alg_x)、[alg_m](@ref sym-ch03-alg_m)、[alg_theta](@ref sym-ch03-alg_theta)、[alg_s](@ref sym-ch03-alg_s)、[alg_lambda](@ref sym-ch03-alg_lambda)、[alg_mu](@ref sym-ch03-alg_mu)、[alg_gamma](@ref sym-ch03-alg_gamma)。
 
@@ -106,7 +112,9 @@
 
 出处：PDF 54 / 正文 37；状态：原页视觉核读；采用解释和实现状态另列。
 
-实现状态：已说明、未实现。本批实现有明确名称的详细模型直接修正，不称作者该更新式已实现。
+本批作用：冻结尺度的弹性诊断梯度；实际诊断目标下降才接受。 r3_pg_checked_v1；尺度、回溯、单侧试探和停止条件为项目补全，不继承参考文献的全局收敛证明。
+
+实现入口：[`solve_r3_projected_gradient`](@ref)；源码 `src/algorithms/r3_pg.jl`；测试 `R3 convex projection and outer trace`。
 
 符号：[alg_x](@ref sym-ch03-alg_x)、[alg_m](@ref sym-ch03-alg_m)、[alg_theta](@ref sym-ch03-alg_theta)、[alg_s](@ref sym-ch03-alg_s)、[alg_lambda](@ref sym-ch03-alg_lambda)、[alg_mu](@ref sym-ch03-alg_mu)、[alg_gamma](@ref sym-ch03-alg_gamma)。
 
@@ -119,6 +127,8 @@
 
 出处：PDF 55 / 正文 38；状态：原页视觉核读；采用解释和实现状态另列。
 
-实现状态：已说明、未实现。梯度与投影外层留后续，当前只提供可行性基准。
+本批作用：可行性分支投影与单次局部半空间试探，不跨轮累积未证明的割。 主问题采用凸外松弛域，辅助调度变量共同优化；项目使用流量跨度归一化距离，原式为未缩放距离。
 
-符号：[alg_x](@ref sym-ch03-alg_x)、[alg_m](@ref sym-ch03-alg_m)、[alg_theta](@ref sym-ch03-alg_theta)、[alg_s](@ref sym-ch03-alg_s)、[alg_lambda](@ref sym-ch03-alg_lambda)、[alg_mu](@ref sym-ch03-alg_mu)、[alg_gamma](@ref sym-ch03-alg_gamma)。
+实现入口：[`build_r3_projection`](@ref)；源码 `src/algorithms/r3_projection.jl`；测试 `R3 convex projection and outer trace`。
+
+符号：[alg_x](@ref sym-ch03-alg_x)、[alg_m](@ref sym-ch03-alg_m)、[alg_gamma](@ref sym-ch03-alg_gamma)。

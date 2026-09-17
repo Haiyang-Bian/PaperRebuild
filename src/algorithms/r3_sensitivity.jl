@@ -11,6 +11,7 @@ function r3_transport_jacobian(flows, mass_kg, dt_s; loss_rate = 0.0)
     isfinite(loss_rate) && loss_rate >= 0 || throw(ArgumentError("损耗率须非负有限"))
     n = length(flows)
     switching = false
+    switch_starts = Int[]
     function differentiate(weights, start)
         J = zeros(n, n)
         cumulative = 0.0
@@ -18,6 +19,7 @@ function r3_transport_jacobian(flows, mass_kg, dt_s; loss_rate = 0.0)
             cumulative += flows[i]*dt_s
             if abs(cumulative-mass_kg) <= 1e-9*max(1, mass_kg)
                 switching = true
+                push!(switch_starts, start)
             end
             if 0 < weights[i] < 1
                 # 部分覆盖段 a_i=(M/dt-Σ前序m)/m_i；饱和段导数为零。
@@ -37,7 +39,19 @@ function r3_transport_jacobian(flows, mass_kg, dt_s; loss_rate = 0.0)
     residence = dt_s/2*(sum(w.α)+sum(w.β[2:end]))
     Jr = dt_s/2*vec(sum(Ja; dims = 1)+sum(Jb[2:end, :]; dims = 1))
     decay = exp(-loss_rate*residence)
-    return (; w..., Ja, Jb, Jq, Jw, residence, Jr, decay, Jdecay = -loss_rate*decay*Jr, switching)
+    return (;
+        w...,
+        Ja,
+        Jb,
+        Jq,
+        Jw,
+        residence,
+        Jr,
+        decay,
+        Jdecay = -loss_rate*decay*Jr,
+        switching,
+        switch_starts,
+    )
 end
 
 # MOI最小化约定 L=c-y'F；包括变量界/固定等式，不能只遍历公式表。
@@ -100,6 +114,9 @@ function r3_kkt(model)
                 "primal_error"=>pe,
                 "dual_error"=>de,
                 "complementarity"=>ce,
+                "active"=>set isa MOI.SecondOrderCone ?
+                          abs(val[1]-nrm(val[2:end]))<=1e-7*max(1, nrm(val)) :
+                          nrm(ss)<=1e-7*max(1, nrm(vals)),
             ),
         )
     end
@@ -119,6 +136,9 @@ function r3_kkt(model)
         "stationarity"=>st,
         "relative_gap"=>gap,
         "rows"=>rows,
+        "active_signature"=>bytes2hex(
+            sha256(join([r["constraint"] for r in rows if r["active"]], ";")),
+        ),
     )
 end
 
@@ -196,7 +216,7 @@ function r3_value_sensitivity(c::R2Case, b)
             dt;
             loss_rate = pipe["epsilon_W_mK"]/(h["cp_J_kgK"]*h["rho_kg_m3"]*pipe["area_m2"]),
         )
-        J.switching && push!(switches, "$p:$t")
+        any(start<=t for start in J.switch_starts) && push!(switches, "$p:$t")
         for (k, side) in enumerate(("S", "R"))
             idx = 2((p-1)*T+t-1)+k
             temps = [

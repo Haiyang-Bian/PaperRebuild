@@ -58,7 +58,75 @@ L(x,y;m)=c(x,m)-\sum_i y_i^\top F_i(x,m),\qquad
 预印本为2016年v1；论文引用2017年期刊版，版本差异保留。
 来源：[作者预印本](https://arxiv.org/pdf/1606.04037)。
 
-## 实施状态
+## 投影为什么还有辅助调度变量
 
-灵敏度核查已通过131项断言：包括三档差分、单源/双源、费用/非零弹性目标和乘子符号。
-这只验证本批光滑小例；外层投影与正式实验在后续节点验收。
+删除热功率、混合和输运耦合后，仍保留设备容量、电网、水力锥、节点质量守恒与边界。
+在这个凸外松弛中，给定流量必须**存在**满足剩余关系的调度x；不能固定上一轮x来投影。
+代码明确删除3-17、3-27/28/30/31/33/34/35/36，保留的关系另用独立数值核回代。
+设D为流量上下界跨度矩阵、z为归一化流量、q为相同尺度下的梯度：
+
+```math
+z=(m-m^{\min})/D,\quad q=D\nabla_m V/C,\quad
+z^*=\arg\min_{z,x\in D_{MP}}\|z-(z^K-q)\|_2^2.
+\tag{R3-PG-3}
+```
+
+式中除法逐分量进行，跨度为零的分量直接固定。C为预先冻结的目标尺度；诊断目标已经无量纲，C=1。
+项目成本尺度由输入电价、购电上限、设备费用及容量给出，取至少1，不按已优化结果调整。
+实现：[`build_r3_projection`](@ref)；二阶锥上图表示距离，因此实际模型仍为连续SOCP。
+
+## 不可行分支和局部半空间
+
+诊断最优值φ(m)大于零说明当前固定流量无法同时满足规定热关系，不意味着所有流量都不可行。
+式（3-64）的原文符号问题保留，本项目只试探：
+
+```math
+\phi(z^K)+q_K^\top(z-z^K)\le0,\qquad \|z-z^K\|_\infty\le0.1.
+\tag{R3-PG-4}
+```
+
+它是局部线性预测，没有全局割证明。每轮仅试一次局部投影，失败则丢弃；
+后续对候选方向最多回溯12次，以实际求解的诊断下降或进入可行分支为准。下一轮不继承该半空间。
+可行分支要求费用下降且子问题仍可行；回溯初始步1、缩减0.5、Armijo系数1e-4。
+实现：[`solve_r3_projected_gradient`](@ref)。不调用`repair_r3_flow`。
+
+## 分段边界与停止
+
+累计质量切换仅在涉及决策流量时标记；纯历史质量恰好命中不算决策空间中的切换。
+切换点先试探归一化全分量正/负方向，再按数组索引试探坐标正/负方向；每轮至多12个候选。
+扰动1e-5，经凸域投影保持守恒；位移不足5e-6不接受为有效单侧探测。
+只接受实际改善，随后在新点重算导数。记录活跃集签名变化，并清零小变化累计次数。
+
+连续三次接受更新的相对费用变化≤1e-6且投影梯度映射≤1e-4，才记录光滑数值停止。
+`line_search_stalled`、`nonsmooth_stalled`、`untrusted_sensitivity`、轮数或时间上限分别保留；
+它们不代表已证明无解或收敛。最好的子问题候选与物理A1候选分开保存。
+最终只在固定候选流量下补做必要的原电网等式调度，不能用直接流量修正冒充外层成功。
+
+## 初学者运行路线
+
+从项目根目录依次执行；也可使用VS Code中`PaperRebuild: R3 PG ...`任务。
+
+```sh
+julia +1.12.6 --project=. scripts/test_r3_pg.jl
+julia +1.12.6 --project=. scripts/experiment_r3_pg.jl single-source-case_fixed --open
+julia +1.12.6 --project=tools/solvers scripts/experiment_r3_pg.jl
+julia +1.12.6 --project=. scripts/r3_pg_task.jl validate RESULTS_RUN_DIRECTORY
+julia +1.12.6 --project=docs scripts/r3_pg_task.jl plot RESULTS_RUN_DIRECTORY
+julia +1.12.6 --project=docs scripts/report_r3_pg.jl RESULTS_STUDY_TOML
+```
+
+将占位参数换成终端实际打印的路径。重绘只读保存结果；已有图目录不会覆盖。
+预算每例600秒，外层共享前540秒，预留60秒物理求解。低预算开发按相同比例预留，建模/回溯计时。
+从box初值开始的预投影也计入该例预算。完整原始对偶/试探/源码在本地保留，公开摘要保留哈希、
+冻结案例、最终数值、逐轮数据与图源CSV。
+
+F04显示残差相对A1阈值，F05比较流量/温度/热功率及独立回放，F06分开画费用与诊断值，
+拒绝试探用红叉标记。费用不能和诊断量相加；诊断阶段的费用不是可执行调度费用。
+
+## 商用求解器对偶的边界
+
+开发对照中Gurobi原始目标接近Clarabel，但水力锥的返回对偶未通过KKT。
+单独收紧`BarQCPConvTol=1e-10`后仍不满足，因此不输出Gurobi梯度，外层使用Clarabel可信对偶。
+这不是已经确认的Gurobi引擎错误；桥接/对偶提取或数值退化的来源尚未完全隔离。
+Gurobi仍用于SCHPD初始化、原始目标对照和非凸最终物理调度。
+依据：[QCP专用容差说明](https://docs.gurobi.com/projects/optimizer/en/current/reference/parameters.html#parameterbarqcpconvtol)。

@@ -58,6 +58,11 @@ function r3_solve(c, builder, optimizer; budget_sec = 60.0, deadline = Inf, sens
                 set_optimizer_attribute(b.model, k, v)
             end
             b.class == "SOCP" && set_optimizer_attribute(b.model, "QCPDual", 1)
+            # 对偶采集额外收紧QCP停止容差；旧调用的默认求解参数保持不变。
+            if sensitivity && b.class=="SOCP"
+                set_optimizer_attribute(b.model, "BarQCPConvTol", 1e-10)
+                result["sensitivity_qcp_tolerance"]=1e-10
+            end
         end
         remaining = stop-r3_clock()
         if remaining <= 0

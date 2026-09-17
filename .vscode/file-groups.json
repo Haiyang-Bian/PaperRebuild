@@ -385,6 +385,11 @@
           "path": "docs/src/ch03-r3.md",
           "name": "ch03-r3.md",
           "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch03-r3-gradient.md",
+          "name": "ch03-r3-gradient.md",
+          "isDirectory": false
         }
       ],
       "order": 1,
@@ -460,6 +465,11 @@
         {
           "path": "docs/agent/tasks/2026-09-17-r3.md",
           "name": "2026-09-17-r3.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/agent/tasks/2026-09-17-r3-pg.md",
+          "name": "2026-09-17-r3-pg.md",
           "isDirectory": false
         }
       ],
@@ -562,6 +572,21 @@
           "path": "src/verification/r3.jl",
           "name": "r3.jl",
           "isDirectory": false
+        },
+        {
+          "path": "src/algorithms/r3_pg.jl",
+          "name": "r3_pg.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/algorithms/r3_projection.jl",
+          "name": "r3_projection.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/algorithms/r3_sensitivity.jl",
+          "name": "r3_sensitivity.jl",
+          "isDirectory": false
         }
       ],
       "order": 3,
@@ -597,6 +622,11 @@
         {
           "path": "configs/r3/study.toml",
           "name": "study.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r3/pg-study.toml",
+          "name": "pg-study.toml",
           "isDirectory": false
         }
       ],
@@ -693,6 +723,11 @@
         {
           "path": "docs/reading/ch03/r3-acceptance.toml",
           "name": "r3-acceptance.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch03/r3-pg-acceptance.toml",
+          "name": "r3-pg-acceptance.toml",
           "isDirectory": false
         }
       ],
@@ -2066,6 +2101,11 @@
           "path": "test/r3.jl",
           "name": "r3.jl",
           "isDirectory": false
+        },
+        {
+          "path": "test/r3_pg.jl",
+          "name": "r3_pg.jl",
+          "isDirectory": false
         }
       ],
       "order": 7,
@@ -2451,6 +2491,41 @@
         {
           "path": "scripts/report_r3_reference.jl",
           "name": "report_r3_reference.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r3_pg_reference.jl",
+          "name": "check_r3_pg_reference.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r3_sensitivity.jl",
+          "name": "check_r3_sensitivity.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/experiment_r3_pg.jl",
+          "name": "experiment_r3_pg.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/plot_r3_pg.jl",
+          "name": "plot_r3_pg.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r3_pg_task.jl",
+          "name": "r3_pg_task.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/report_r3_pg.jl",
+          "name": "report_r3_pg.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/test_r3_pg.jl",
+          "name": "test_r3_pg.jl",
           "isDirectory": false
         }
       ],

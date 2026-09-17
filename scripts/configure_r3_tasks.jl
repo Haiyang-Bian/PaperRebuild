@@ -5,6 +5,29 @@ previous=read(path, String)
 config=JSON.parse(previous; dicttype = Dict{String,Any})
 original=deepcopy(config)
 for (label, env, script, args) in (
+    ("R3 PG sensitivity check", ".", "scripts/test_r3_pg.jl", String[]),
+    (
+        "R3 PG open fixed case",
+        ".",
+        "scripts/experiment_r3_pg.jl",
+        ["single-source-case_fixed", "--open"],
+    ),
+    ("R3 PG formal experiments", "tools/solvers", "scripts/experiment_r3_pg.jl", String[]),
+    ("R3 PG solver reference", "tools/solvers", "scripts/check_r3_pg_reference.jl", String[]),
+    (
+        "R3 PG validate saved",
+        ".",
+        "scripts/r3_pg_task.jl",
+        ["validate", "\${input:r3RunDirectory}"],
+    ),
+    (
+        "R3 PG iteration comparison",
+        ".",
+        "scripts/r3_pg_task.jl",
+        ["compare", "\${input:r3RunDirectory}"],
+    ),
+    ("R3 PG redraw", "docs", "scripts/r3_pg_task.jl", ["plot", "\${input:r3RunDirectory}"]),
+    ("R3 PG evidence report", "docs", "scripts/report_r3_pg.jl", ["\${input:r3StudyManifest}"]),
     ("R3 mapping check", ".", "scripts/check_ch03.jl", String[]),
     ("R3 tests", ".", "scripts/test_r3.jl", String[]),
     ("R3 open fixed case", ".", "scripts/experiment_r3.jl", ["single-fixed", "--open"]),

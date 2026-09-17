@@ -1,0 +1,39 @@
+schema = "r3-pg-study-v1"
+origin = "synthetic"
+budget_per_instance_sec = 600.0
+max_iterations = 200
+initializations = ["schpd", "case_fixed", "box25", "box50", "box75"]
+cases = ["single-source", "two-source"]
+local_halfspace = true
+description = "预先冻结五初值及边界/无局部割对照；不得按结果挑选初值。不是论文原始输入。"
+
+[[extra]]
+id = "single-no-halfspace"
+case = "single-source"
+initialization = "schpd"
+local_halfspace = false
+[[extra]]
+id = "two-no-halfspace"
+case = "two-source"
+initialization = "schpd"
+local_halfspace = false
+[[extra]]
+id = "single-low-flow"
+case = "single-source"
+initialization = "low_flow"
+flow_kg_s = 0.5
+[[extra]]
+id = "single-impossible-heat"
+case = "single-source"
+initialization = "case_fixed"
+heat_demand_MW = 10.0
+[[extra]]
+id = "single-loose-electric"
+case = "single-source"
+initialization = "case_fixed"
+zero_grid_price = true
+[[extra]]
+id = "single-delay-switch"
+case = "single-source"
+initialization = "case_fixed"
+mass_kg = 3600.0

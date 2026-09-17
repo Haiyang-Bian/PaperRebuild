@@ -114,6 +114,9 @@ PaperRebuild.plot_r3_run
 ```@docs
 PaperRebuild.r3_transport_jacobian
 PaperRebuild.r3_value_sensitivity
+PaperRebuild.build_r3_projection
+PaperRebuild.solve_r3_projected_gradient
+PaperRebuild.validate_r3_iteration
 ```
 
 ## 工程示例函数说明

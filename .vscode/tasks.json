@@ -769,6 +769,135 @@
       },
       "problemMatcher": [],
       "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/test_r3_pg.jl"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 PG sensitivity check",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/experiment_r3_pg.jl",
+        "single-source-case_fixed",
+        "--open"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 PG open fixed case",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=tools/solvers",
+        "scripts/experiment_r3_pg.jl"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 PG formal experiments",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=tools/solvers",
+        "scripts/check_r3_pg_reference.jl"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 PG solver reference",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/r3_pg_task.jl",
+        "validate",
+        "${input:r3RunDirectory}"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 PG validate saved",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/r3_pg_task.jl",
+        "compare",
+        "${input:r3RunDirectory}"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 PG iteration comparison",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=docs",
+        "scripts/r3_pg_task.jl",
+        "plot",
+        "${input:r3RunDirectory}"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 PG redraw",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=docs",
+        "scripts/report_r3_pg.jl",
+        "${input:r3StudyManifest}"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 PG evidence report",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
     }
   ],
   "version": "2.0.0"

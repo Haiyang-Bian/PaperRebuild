@@ -43,6 +43,20 @@ function validate_r3_solution(c::R2Case, result)
             r2_flow_hash(m)==result["initial_flow_sha256"] ||
                 throw(ArgumentError("初始流量哈希不一致"))
         end
+        if haskey(result, "iterations")
+            all(
+                validate_r3_iteration(c, row; stages = result["stages"]).pass for
+                row in result["iterations"]
+            ) || throw(ArgumentError("外层迭代证据不一致"))
+            for k in 2:length(result["iterations"])
+                previous=result["iterations"][k-1]
+                previous["accepted"] &&
+                maximum(
+                    abs,
+                    r3_matrix(previous["accepted_flow"])-r3_matrix(result["iterations"][k]["flow"]),
+                )<=1e-6 || throw(ArgumentError("外层流量链断裂"))
+            end
+        end
         return (
             status = valid ? "checked_relations_pass" : result["status"],
             model_pass = valid,

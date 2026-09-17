@@ -19,8 +19,11 @@ include("formulations/r3.jl")
 include("verification/r3.jl")
 include("reporting/r3_runs.jl")
 include("algorithms/r3_sensitivity.jl")
+include("algorithms/r3_projection.jl")
+include("algorithms/r3_pg.jl")
 
 export r3_transport_jacobian, r3_value_sensitivity
+export build_r3_projection, solve_r3_projected_gradient, validate_r3_iteration
 
 export reconstruct_r3_pressure
 export build_r3_subproblem, repair_r3_flow, solve_r3_feasibility, validate_r3_solution
