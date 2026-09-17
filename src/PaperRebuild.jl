@@ -25,6 +25,9 @@ include("algorithms/r3_pg.jl")
 include("algorithms/r3_local.jl")
 include("algorithms/r3_v2.jl")
 include("reporting/r3_modes.jl")
+include("reporting/r3_audit.jl")
+
+export audit_r3_failure, r3_stopping_evidence
 
 export R3OperationSpec, build_r3_local_step
 export solve_r3_reference, compare_r3_modes
