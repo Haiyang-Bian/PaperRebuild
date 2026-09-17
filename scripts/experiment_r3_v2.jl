@@ -63,8 +63,14 @@ function checkpoint()
     )
 end
 checkpoint()
+group_arg=findfirst(a->startswith(a, "--group="), ARGS)
+group=isnothing(group_arg) ? "all" : split(ARGS[group_arg], '='; limit = 2)[2]
+group in ("all", "robustness", "modes") || error("未知实验组")
+selected=filter(a->!startswith(a, "--group="), ARGS)
+all(id->any(e["id"]==id for e in entries), selected) || error("未知实验ID")
 for entry in entries
-    isempty(ARGS)||entry["id"] in ARGS || continue
+    (group=="all" || entry["group"]==group) || continue
+    isempty(selected)||entry["id"] in selected || continue
     println("START ", entry["id"])
     flush(stdout)
     if entry["group"]=="robustness"

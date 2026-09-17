@@ -3,6 +3,9 @@ function r3_local_solve(c, center, optimizer; mode, radius, operation, deadline)
     isnothing(optimizer) && return out
     r3_clock()<deadline || return merge(out, Dict("status"=>"budget_exhausted"))
     b=build_r3_local_step(c, center; mode, radius, operation)
+    out["switches"]=b.partials.switches
+    # 切换点不选择任意一段的Taylor系数；先由真实邻段试探离开边界。
+    isempty(b.partials.switches) || return merge(out, Dict("status"=>"nonsmooth_requires_neighbor"))
     try
         set_optimizer(b.model, optimizer)
         set_silent(b.model)
@@ -86,6 +89,9 @@ function r3_pg_v2(
     bestcost=Inf
     bestphysical=Inf
     function pushstage(name, r)
+        # 子阶段引用根运行的同一源码快照，避免重复数千份哈希表。
+        pop!(r, "source_hashes_at_solve", nothing)
+        r["source_snapshot"]="parent_run"
         r["stage"]=name
         valid=validate_r3_solution(c, r)
         r["model_pass"], r["physics_pass"]=valid.model_pass, valid.physical_pass
@@ -100,6 +106,9 @@ function r3_pg_v2(
                 out["best_subproblem_stage"]=i
             end
             rr=reconstruct_r3_pressure(c, r)
+            # 重构后的κ不再对应原KKT点；原始乘子只保留在来源阶段。
+            pop!(rr, "sensitivity", nothing)
+            rr["sensitivity_source_stage"]=i
             rr["elapsed_sec"]=0.0
             j=pushstage("pressure_reconstruction", rr)
             if rr["physics_pass"] && rr["operating_cost"]<bestphysical
@@ -260,6 +269,7 @@ function r3_pg_v2(
         end
         trusted=get(s, "trusted", false)
         row["trusted_sensitivity"]=trusted
+        fallback=nothing
         if trusted && get(s, "smooth", false)
             row["smooth"]=true
             g=r3_matrix(s["gradient"]) .* width/(mode=="dispatch" ? out["cost_scale"] : 1)
@@ -311,11 +321,16 @@ function r3_pg_v2(
                         )
                         push!(row["trials"], trial)
                         if good
+                            if bt>=8 && row["projected_gradient_norm"]>1e-4
+                                trial["reason"]="boundary_tiny_step_deferred"
+                                fallback=(trial, j, mn, f, tm)
+                                break
+                            end
                             accept!(trial, j, mn, f, tm)
                             break
                         end
                     end
-                    row["accepted"] && break
+                    (row["accepted"] || !isnothing(fallback)) && break
                 end
             end
         end
@@ -338,6 +353,8 @@ function r3_pg_v2(
                     "accepted"=>false,
                 )
                 push!(row["trials"], trial)
+                row["switches"]=get(localresult, "switches", String[])
+                localresult["status"]=="nonsmooth_requires_neighbor" && break
                 if localresult["status"]!="local_checked"
                     radius/=2
                     continue
@@ -409,6 +426,9 @@ function r3_pg_v2(
                     break
                 end
             end
+        end
+        if !row["accepted"] && !isnothing(fallback)
+            accept!(fallback...)
         end
         if row["accepted"]
             m=r2_flow_matrix(c, row["accepted_flow"])

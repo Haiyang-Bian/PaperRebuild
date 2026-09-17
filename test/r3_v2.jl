@@ -102,6 +102,25 @@ end
     )
     @test validate_r3_solution(c, scaled).model_pass
     @test scaled["rescale_cones"]
+    data=deepcopy(c.data)
+    data["heat"]["pipes"][1]["length_m"]=360.0
+    switching=R2Case(data, "switch-fixture")
+    diagnostic=PaperRebuild.r3_solve(
+        switching,
+        ()->build_r3_subproblem(switching, m; mode = :diagnostic),
+        Clarabel.Optimizer,
+    )
+    local_switch=PaperRebuild.r3_local_solve(
+        switching,
+        diagnostic,
+        Clarabel.Optimizer;
+        mode = :diagnostic,
+        radius = 0.1,
+        operation = nothing,
+        deadline = PaperRebuild.r3_clock()+60,
+    )
+    @test local_switch["status"]=="nonsmooth_requires_neighbor"
+    @test !isempty(local_switch["switches"])
 end
 
 @testset "R3 full thermal partials and joint local SOCP" begin
