@@ -1,0 +1,21 @@
+schema = "r3-pg-issues-v1"
+batch = "r3-pg-20260917T071031-7eafbab9"
+
+[[issue]]
+id = "PG-C01"
+kind = "solver_dual_interpretation"
+status = "open"
+description = "Gurobi原始目标接近Clarabel，水力锥返回对偶的互补/KKT残差未通过；QCP专用容差收紧仍未解除。"
+action = "保留原始对偶；外层只使用通过检查的Clarabel对偶。后续隔离最小桥接/退化反例，不归因于论文。"
+[[issue]]
+id = "PG-C02"
+kind = "project_algorithm_limit"
+status = "open"
+description = "费用下降后常在详细SP可行域边界回溯停滞或对偶不可信；凸外松弛投影不保证试探仍在详细SP可行域。"
+action = "保留最好的物理候选；未达到停止条件不宣称收敛。后续研究可行域边界方向及局部步控制。"
+[[issue]]
+id = "PG-C03"
+kind = "project_algorithm_limit"
+status = "open"
+description = "整步时延切换案例停在首时段负荷热功率残差3.846880219721323e-6 MW，超过既有3e-6 MW门槛。"
+action = "保持失败；后续分析切换邻段及可行性恢复精度，不放宽A1，不将局部停滞写成全局无解。"

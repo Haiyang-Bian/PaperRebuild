@@ -1,0 +1,101 @@
+interpretation = "Primal comparison passed; four raw dual sets rejected. No validated Gurobi gradient."
+source_file = "r3-pg-reference-20260917T070742.toml"
+source_sha256 = "f7531d2be952845b253fcd48f471aead839c06e144ad5d373941b31587b17b98"
+
+[[records]]
+case = "single-source"
+clarabel_directional_gradient = -2.4364843075538487
+clarabel_gap = 1.6750327166491365e-10
+gurobi_dual_trusted = false
+gurobi_gap = 6.318573011908152e-8
+interpretation = "primal objective agrees; raw dual rejected; no Gurobi gradient claim"
+mode = "dispatch"
+relative_objective_difference = 5.0312391892528795e-11
+
+    [records.gurobi_kkt]
+    active_signature = "b9ff4bb9d58ee39893dd1d545d2547011a47b58a62caa2a357c422699b5116e7"
+    complementarity = 0.007997382509005183
+    dual = 8.730499656550705e-11
+    primal = 1.833616591895293e-12
+    reason = "kkt_failed"
+    relative_gap = 0.0024015793688092757
+    stationarity = 2.953041017836133e-5
+    trusted = false
+[[records]]
+case = "single-source"
+clarabel_directional_gradient = -0.838503681708398
+clarabel_gap = 2.3171811691646838e-11
+gurobi_dual_trusted = false
+gurobi_gap = 6.568656729655231e-11
+interpretation = "primal objective agrees; raw dual rejected; no Gurobi gradient claim"
+mode = "diagnostic"
+relative_objective_difference = 3.206503118580173e-11
+
+    [records.gurobi_kkt]
+    active_signature = "4a8a2396462562ccbe9e09d7dfc1c01e85a37e8feb4e4046cd778477deb562ff"
+    complementarity = 0.030418713087383455
+    dual = 6.248537444017321e-9
+    primal = 6.557135536490202e-14
+    reason = "kkt_failed"
+    relative_gap = 1.1892571851233225
+    stationarity = 0.0001815795314718961
+    trusted = false
+[[records]]
+case = "two-source"
+clarabel_directional_gradient = -2.7744828897258453
+clarabel_gap = 2.487812253486282e-10
+gurobi_dual_trusted = false
+gurobi_gap = 1.7728791327975473e-7
+interpretation = "primal objective agrees; raw dual rejected; no Gurobi gradient claim"
+mode = "dispatch"
+relative_objective_difference = 1.0945933902832083e-9
+
+    [records.gurobi_kkt]
+    active_signature = "06b2d157d84a4ac8eb33fade9214e217459703420f0eaaad5c021ca23ccbbe1d"
+    complementarity = 0.01005332713272101
+    dual = 2.9903769460659646e-9
+    primal = 1.1130045969509101e-8
+    reason = "kkt_failed"
+    relative_gap = 0.0019754312144928095
+    stationarity = 4.398354921143172e-5
+    trusted = false
+[[records]]
+case = "two-source"
+clarabel_directional_gradient = -0.5694786962200383
+clarabel_gap = 4.700308198213321e-11
+gurobi_dual_trusted = false
+gurobi_gap = 5.214575438117208e-10
+interpretation = "primal objective agrees; raw dual rejected; no Gurobi gradient claim"
+mode = "diagnostic"
+relative_objective_difference = 2.3957011374697856e-10
+
+    [records.gurobi_kkt]
+    active_signature = "6bc45ee9c00a15ca610171b7828d097d81f613acad0a4cb0110ca57989f1580b"
+    complementarity = 0.018064307588541544
+    dual = 6.133856183111863e-10
+    primal = 1.0650791036545571e-13
+    reason = "kkt_failed"
+    relative_gap = 0.5542943298121985
+    stationarity = 6.964128984909577e-5
+    trusted = false
+
+[source_hashes]
+"src/PaperRebuild.jl" = "294c96502b4a8b1e8eb8121f4659cb98c5bc5f3d9bce49c06fa5e59d86c8cf35"
+"src/algorithms/r3_pg.jl" = "71e932a1629600f83c290cdd17d23dfe49341059387ef953f66937759ee8833f"
+"src/algorithms/r3_projection.jl" = "070c3351a857d30510b85b6153d43827d45d5e3da710959cc7bf6bd40cd19b10"
+"src/algorithms/r3_sensitivity.jl" = "801fd46e01438e3375b858cf9fe85556a713de80e2a71a0b717a7c25849dcd0b"
+"src/components/devices.jl" = "01a86d8bb7bbbf0ad27f79acb099427ec18543a0a4b1b916f411f2e1a4053e2d"
+"src/core/case.jl" = "dd5de1049fc740706fa9005f48b60d75e088bc68faa9f6092b9b310e7aaed624"
+"src/core/r2_case.jl" = "11026416169278767a8900e84e5fb65f80113e405a4046a44f6b92dc983498d5"
+"src/core/r3.jl" = "1a29d3ac34ebf6936b9055b737167e59cf746cc6b5fb1055b8f73db2ebd26f15"
+"src/formulations/r1.jl" = "e952963689b39d28dc490066e55c7e5ca2689cd0ce78982a5397b09713466655"
+"src/formulations/r2.jl" = "fa07fdd8c81b2f5ff9b01ca0fdb89cd603d59d6e63433f100610c283ac1a3ecc"
+"src/formulations/r3.jl" = "f13d58bf6d8eada99e5f43145ca423ddf730c8d26b08c7080e43ecf8383b453f"
+"src/networks/fixed_flow_heat.jl" = "620c069f6b3a520d32ee546ec048074f9cbaa3c785f8c2e31ec7fd7bf245a83b"
+"src/networks/water_mass.jl" = "ef76594a25d5a310f8265137e733d811c8dbefcf0aea0b3ff8be5ed7b05bceef"
+"src/reporting/r2_runs.jl" = "c0174b63fb559bd87b66604e80018ab5b4a055a4dfe7c0257884ed1955ea1971"
+"src/reporting/r3_runs.jl" = "f4e16daef71f3697526d949a1dae33ed7365ddcafe4fe512bda11e04dbb1193a"
+"src/reporting/runs.jl" = "7cb0ad0bf0bc5ea77af73e08a8261982510ce869caef95e26b7d51730a43b635"
+"src/verification/r1.jl" = "c81ba065cd5e6e38e37cc385d89b81e0915c26b10edb2dd0321fd91633c202d3"
+"src/verification/r2.jl" = "37aa836106f5ad456f43d6d82e637b0cb0e10488978743b4143a37ad5843114f"
+"src/verification/r3.jl" = "53b1b1d1ec83c0b676390c655bf51625eb7053c62c212e96a7bb04f27951fe8f"

@@ -7,7 +7,7 @@ function plot_r3_pg_run(dir; output = joinpath(dir, "pg-figures"))
     r["algorithm"]=="r3_pg_checked_v1" || error("需要PG运行")
     ispath(output) && error("拒绝覆盖旧图；请使用新输出目录")
     mkdir(output)
-    runid=loaded.metadata["run_id"]
+    runid=basename(dirname(abspath(dir)))*"/"*loaded.metadata["run_id"]
     iterations=r["iterations"]
     curve=NamedTuple[]
     trials=NamedTuple[]
@@ -84,15 +84,32 @@ function plot_r3_pg_run(dir; output = joinpath(dir, "pg-figures"))
                 scale==log10 ? max(getproperty(x, field), 1e-12) : getproperty(x, field) for
                 x in data
             ]
-            scatterlines!(ax, [x.iteration for x in data], ys; color = :steelblue, markersize = 7)
+            # 先固定全体数据的对数范围，避免单点诊断序列触发过窄的自动缩放。
+            if scale==log10
+                ylims!(ax, minimum(ys)/2, maximum(ys)*2)
+                ax.ytickformat=values->string.(round.(values; sigdigits = 3))
+            end
+            for mode in unique(x.mode for x in data)
+                indices=findall(x->x.mode==mode, data)
+                scatterlines!(
+                    ax,
+                    [data[i].iteration for i in indices],
+                    ys[indices];
+                    color = mode=="diagnostic" ? :darkorange : :steelblue,
+                    markersize = 7,
+                    label = mode,
+                )
+            end
+            field in (:step, :projected_gradient) && axislegend(ax; position = :rt, labelsize = 11)
         end
-        if field==:cost
+        if field in (:cost, :diagnostic)
             for tr in trials
-                ismissing(tr.cost) && continue
+                value=field==:cost ? tr.cost : tr.mode=="diagnostic" ? tr.merit : missing
+                ismissing(value) && continue
                 tr.accepted || scatter!(
                     ax,
                     [tr.iteration+0.02tr.trial],
-                    [tr.cost];
+                    [value];
                     color = :firebrick,
                     marker = :x,
                     markersize = 7,
@@ -105,7 +122,7 @@ function plot_r3_pg_run(dir; output = joinpath(dir, "pg-figures"))
     end
     Label(
         fig[3, 1:2],
-        "Red crosses: rejected cost trials. Orange: transport switch or unavailable derivative.\nCost and elastic objective are different quantities; no global optimality claim.",
+        "Red crosses: rejected trials. Orange: transport switch or unavailable derivative.\nCost and elastic objective are different quantities; no global optimality claim.",
         fontsize = 13,
     )
     for ext in ("svg", "png")
@@ -117,7 +134,8 @@ function plot_r3_pg_run(dir; output = joinpath(dir, "pg-figures"))
         ax=Axis(
             fig[1, j];
             title = scope,
-            xlabel = "Outer iterate; last point = final physical candidate",
+            xlabel = r["final_stage"]>0 ? "Outer iterate; last point = verified final" :
+                     "Outer iterate; no verified final candidate",
             ylabel = "Residual / A1 tolerance",
             yscale = log10,
         )
@@ -172,7 +190,7 @@ function plot_r3_pg_run(dir; output = joinpath(dir, "pg-figures"))
     end
     if !isempty(trajectories)
         CSV.write(joinpath(output, "F05-source.csv"), trajectories)
-        fig=Figure(size = (1350, 500), fontsize = 15)
+        fig=Figure(size = (1350, 600), fontsize = 15)
         Label(fig[0, 1:3], "Synthetic PG trajectories | $runid", fontsize = 18)
         for (j, field, unit) in ((1, :flow_kg_s, "kg/s"), (2, :outlet_K, "K"), (3, :heat_MW, "MW"))
             ax=Axis(fig[1, j]; xlabel = "Time (h)", ylabel = unit, title = string(field))
@@ -194,7 +212,7 @@ function plot_r3_pg_run(dir; output = joinpath(dir, "pg-figures"))
                     label = "mass replay p$p",
                 )
             end
-            axislegend(ax; position = :lt, labelsize = 10)
+            Legend(fig[2, j], ax; labelsize = 10, tellwidth = false)
         end
         for ext in ("svg", "png")
             save(joinpath(output, "F05-trajectories."*ext), fig)
@@ -210,6 +228,7 @@ function plot_r3_pg_run(dir; output = joinpath(dir, "pg-figures"))
                 "run_sha256"=>bytes2hex(sha256(read(joinpath(dir, "run.toml")))),
                 "figures"=>["F04", "F05", "F06"],
                 "reoptimized"=>false,
+                "renderer_script_sha256"=>bytes2hex(sha256(read(@__FILE__))),
             );
             sorted = true,
         )

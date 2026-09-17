@@ -10,12 +10,45 @@ mkpath(dest)
 cp(studyfile, joinpath(dest, "study.toml"))
 cp(joinpath(dirname(studyfile), "config.toml"), joinpath(dest, "config.toml"))
 table=NamedTuple[]
+failures=NamedTuple[]
+initials=Dict{String,Any}()
 figures=Pair{String,String}[]
 for entry in study["runs"]
     dir=joinpath(dirname(studyfile), entry["directory"])
     loaded=read_r3_run(dir)
     c, r, meta=loaded.case, loaded.result, loaded.metadata
+    haskey(r, "initial_flow") && (
+        initials[entry["id"]]=(
+            flow = PaperRebuild.r3_matrix(r["initial_flow"]),
+            tolerance = 1e-6*(1+maximum(p["flow_max"] for p in c.data["heat"]["pipes"])),
+        )
+    )
     final=r["final_stage"]>0 ? r["stages"][r["final_stage"]] : nothing
+    if isnothing(final) && !isempty(r["iterations"])
+        row=last(r["iterations"])
+        stage=r["stages"][row["stage"]]
+        if row["mode"]=="diagnostic" && haskey(stage, "values")
+            v=stage["values"]
+            for (i, x) in enumerate(stage["elastic_rows"])
+                residual=x["scale"]*abs(v["elastic_positive"][i]-v["elastic_negative"][i])
+                tolerance=x["unit"]=="MW" ? 1e-6*(1+c.data["electric"]["grid_max_MW"]) : 1e-4
+                push!(
+                    failures,
+                    (
+                        id = entry["id"],
+                        iteration = row["iteration"],
+                        equation = x["equation"],
+                        entity = x["entity"],
+                        time = x["t"],
+                        unit = x["unit"],
+                        residual,
+                        tolerance,
+                        ratio = residual/tolerance,
+                    ),
+                )
+            end
+        end
+    end
     firstdispatch=findfirst(
         x->get(x, "model_pass", false) && get(x, "objective_kind", "")=="operating_cost",
         r["stages"],
@@ -92,6 +125,7 @@ for entry in study["runs"]
     end
 end
 CSV.write(joinpath(dest, "comparison.csv"), table)
+isempty(failures) || CSV.write(joinpath(dest, "failure-diagnostics.csv"), failures)
 io=IOBuffer()
 println(
     io,
@@ -101,7 +135,7 @@ println(
 )
 println(
     io,
-    "初值、局部试探开关和预算在计算前冻结。五初值统计包含重复投影结果；不据此宣称论文同输入复现、全局最优或速度优势。\n",
+    "初值、局部试探开关和预算在计算前冻结。五初值统计包含近似重复投影结果；首例含编译开销、后续为同进程运行，耗时不是受控性能比较。不据此宣称论文同输入复现、全局最优或速度优势。\n",
 )
 println(
     io,
@@ -140,11 +174,18 @@ for name in ("single-source", "two-source")
     costs=sort([x.final_cost for x in rows if x.physical_pass])
     times=sort([x.elapsed_sec for x in rows])
     isempty(rows) && continue
+    representatives=Any[]
+    for row in rows
+        a=initials[row.id]
+        any(maximum(abs, a.flow-b)<=a.tolerance for b in representatives) ||
+            push!(representatives, a.flow)
+    end
     stats=(
         case = name,
         runs = length(rows),
         physical_pass = length(costs),
         distinct_initials = length(unique(x.initial_flow_sha256 for x in rows)),
+        distinct_within_A1 = length(representatives),
         best_cost = isempty(costs) ? missing : first(costs),
         median_cost = isempty(costs) ? missing : median_sorted(costs),
         worst_cost = isempty(costs) ? missing : last(costs),
@@ -163,6 +204,9 @@ for name in ("single-source", "two-source")
         stats.runs,
         "；不同初值哈希 ",
         stats.distinct_initials,
+        "，按原有流量A1区分为 ",
+        stats.distinct_within_A1,
+        " 组（固定初值与box50近似重复）",
         "；费用最好/中位/最坏 ",
         stats.best_cost,
         " / ",
@@ -179,6 +223,37 @@ for name in ("single-source", "two-source")
     )
 end
 CSV.write(joinpath(dest, "statistics.csv"), statistics)
+println(io, "\n## 未恢复案例与局部半空间对照\n")
+for name in unique(x.id for x in failures)
+    rows=filter(x->x.id==name, failures)
+    worst=rows[argmax([x.ratio for x in rows])]
+    println(
+        io,
+        "- **",
+        name,
+        "**：末次诊断最大超限比对应式",
+        worst.equation,
+        "，实体",
+        worst.entity,
+        "，时段",
+        worst.time,
+        "；残差",
+        worst.residual,
+        " ",
+        worst.unit,
+        "，A1阈值",
+        worst.tolerance,
+        "。",
+    )
+end
+println(
+    io,
+    "\n容量反例的10 MW需求超过端口输入上界0.315 MW，这是解析不可行证据；PG本身仅报告停滞。时延切换例未恢复可行，不能由局部停滞推出全局无解，也不能因剩余残差接近阈值就改判通过。\n",
+)
+println(
+    io,
+    "单源、双源有/无局部半空间运行的初始流量已逐元素核对完全相同。费用对照见上表：半空间在本批不表现为一致改善，不能单凭一组结果宣称它总是有效。\n",
+)
 println(
     io,
     "\n## 如何评价\n\n物理可行、费用下降与外层停止条件满足是三项独立事实。`line_search_stalled`、`untrusted_sensitivity`、时限或轮数上限都不等于收敛或已证明无解。费用比较从首个详细子问题可行解开始，不能把不可执行的SCHPD低费用当作基准收益。\n",
@@ -205,5 +280,5 @@ for (name, path) in figures
         ")\n",
     )
 end
-write(joinpath(root, "docs", "src", "ch03-r3-pg-results.md"), String(take!(io)))
+write(joinpath(root, "docs", "src", "ch03-r3-pg-results.md"), rstrip(String(take!(io)))*"\n")
 println(dest)

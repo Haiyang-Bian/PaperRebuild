@@ -130,3 +130,22 @@ F04显示残差相对A1阈值，F05比较流量/温度/热功率及独立回放�
 这不是已经确认的Gurobi引擎错误；桥接/对偶提取或数值退化的来源尚未完全隔离。
 Gurobi仍用于SCHPD初始化、原始目标对照和非凸最终物理调度。
 依据：[QCP专用容差说明](https://docs.gurobi.com/projects/optimizer/en/current/reference/parameters.html#parameterbarqcpconvtol)。
+
+正式对照的原始目标相对差如下。目标相近并不保证乘子可靠；归一化互补残差门槛为1e-6，四组均未通过。
+
+| 案例／目标 | 原始目标相对差 | Gurobi互补残差 | 对偶用于梯度 |
+| --- | --- | --- | --- |
+| 单源／费用 | 5.03e-11 | 0.007997 | 否 |
+| 单源／诊断 | 3.21e-11 | 0.030419 | 否 |
+| 双源／费用 | 1.09e-9 | 0.010053 | 否 |
+| 双源／诊断 | 2.40e-10 | 0.018064 | 否 |
+
+紧凑数值及原始记录SHA见`results/summaries/r3-pg/r3-pg-20260917T071031-7eafbab9-fb56a669/solver-reference.toml`。
+从原件提取使用`scripts/report_r3_pg_reference.jl SOURCE_TOML OUTPUT_TOML`，不重新求解。
+
+## 本批证据与后续入口
+
+[16例正式结果与F04–F06](ch03-r3-pg-results.md)分别报告物理可行、费用和外层停止。
+原始数值均来自保存运行；当前14例通过物理A1，只有免费购电边界例满足数值停止条件。
+容量反例、时延切换残差及未可信的商用对偶保留在`docs/reading/ch03/r3-pg-issues.toml`。
+后续先处理这些边界与乘子质量问题，再扩大到论文规模；本批不继承文献[116]的全局收敛结论。
