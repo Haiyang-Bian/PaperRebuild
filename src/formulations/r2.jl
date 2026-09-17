@@ -76,11 +76,12 @@ end
 
 # region r2-model
 """
-    build_r2_model(case; spec=R2Spec(), optimizer=nothing, fixed_flows=false, choices=nothing)
+    build_r2_model(case; spec=R2Spec(), optimizer=nothing, fixed_flows=false, flow_schedule=nothing, choices=nothing)
 
 建立第3章固定方向径向电热模型。单位与适用范围见 [`load_r2_case`](@ref)。
 返回 model、variables、constraints（式号映射）、class 和 status；不求解或写文件。
-literal 版本返回 blocked 和问题 ID。`fixed_flows` 仅用于公开 CI 与同模型求解器对照；
+literal 版本返回 blocked 和问题 ID。`fixed_flows` 固定流量得到子问题；
+可选 `flow_schedule[p,t]` 使用kg/s且独立于案例来源，只允许在固定模式传入；省略时沿用案例计划。
 `choices` 为最大入流选择的枚举索引，省略时建立二进制变量。
 WMM 保留 α/β 互补和热输运非线性；SCHPD 补全版对剩余乘积逐项建包络。
 """
@@ -89,9 +90,14 @@ function build_r2_model(
     spec = R2Spec(),
     optimizer = nothing,
     fixed_flows = false,
+    flow_schedule = nothing,
     choices = nothing,
 )
     validate_r2_input(c.data)
+    !fixed_flows &&
+        !isnothing(flow_schedule) &&
+        throw(ArgumentError("flow_schedule仅用于固定流量模式"))
+    mf = fixed_flows ? r2_flow_matrix(c, flow_schedule) : nothing
     if spec.formulation in (:wmm_literal, :schpd_literal)
         issues =
             spec.formulation == :wmm_literal ? ["R2-C01", "R2-C02"] :
@@ -217,7 +223,7 @@ function build_r2_model(
         pipe = h["pipes"][p]
         set_lower_bound(m[p, t], pipe["flow_min"])
         set_upper_bound(m[p, t], pipe["flow_max"])
-        fixed_flows && fix(m[p, t], pipe["fixed_flow"][t]; force = true)
+        fixed_flows && fix(m[p, t], mf[p, t]; force = true)
     end
     for j in 1:K, t in 1:T
         node = h["nodes"][j]
@@ -306,13 +312,10 @@ function build_r2_model(
             add(side == "S" ? "3-35" : "3-36", @constraint(model, mix == streams[1][2]))
         elseif spec.mixing == :exact
             # 固定流量时由树的质量守恒唯一确定本地端口幅值，避免伪非线性。
-            ms = fixed_flows ? r2_fixed_port_flows(d) : nothing
+            ms = fixed_flows ? r2_fixed_port_flows(d, mf) : nothing
             fs =
-                fixed_flows ?
-                vcat(
-                    [h["pipes"][p]["fixed_flow"][t] for p in edges],
-                    local_in ? [ms[j, t]] : Float64[],
-                ) : [s[1] for s in streams]
+                fixed_flows ? vcat([mf[p, t] for p in edges], local_in ? [ms[j, t]] : Float64[]) :
+                [s[1] for s in streams]
             add(
                 side == "S" ? "3-35" : "3-36",
                 @constraint(
@@ -345,7 +348,7 @@ function build_r2_model(
     end
     vars["z_mix"] = zvars
     Hport = var("H_port", @variable(model, [1:K, 1:T], lower_bound = 0))
-    fixed_ports = fixed_flows ? r2_fixed_port_flows(d) : nothing
+    fixed_ports = fixed_flows ? r2_fixed_port_flows(d, mf) : nothing
     for j in 1:K, t in 1:T
         node = h["nodes"][j]
         role = node["role"]
@@ -392,8 +395,7 @@ function build_r2_model(
             vars["beta_"*string(p)] = β
             for t in 1:T
                 historical_flow(s) =
-                    t-s > 0 ? (fixed_flows ? pipe["fixed_flow"][t-s] : m[p, t-s]) :
-                    pipe["flow_history"][end+t-s]
+                    t-s > 0 ? (fixed_flows ? mf[p, t-s] : m[p, t-s]) : pipe["flow_history"][end+t-s]
                 fs = [historical_flow(s) for s in 0:Td]
                 if fixed_flows
                     weights = water_mass_weights(fs, M, dt)
@@ -469,7 +471,7 @@ function build_r2_model(
             inlet, outlet = vars["tau_"*side*"_in"], vars["tau_"*side*"_out"]
             avg = (inlet[p, t]+outlet[p, t])/2
             previous = t > 1 ? (inlet[p, t-1]+outlet[p, t-1])/2 : r2_initial_average(d, pipe, side)
-            f = fixed_flows ? pipe["fixed_flow"][t] : m[p, t]
+            f = fixed_flows ? mf[p, t] : m[p, t]
             product = r2_product!(
                 model,
                 cs,
@@ -539,13 +541,20 @@ function build_r2_model(
 end
 # endregion r2-model
 
-function r2_fixed_port_flows(d)
+function r2_fixed_port_flows(d, schedule = nothing)
     h = d["heat"]
     out = zeros(length(h["nodes"]), d["T"])
     for j in eachindex(h["nodes"]), t in 1:d["T"]
         balance =
-            sum(p["fixed_flow"][t] for p in h["pipes"] if p["from"] == j; init = 0.0) -
-            sum(p["fixed_flow"][t] for p in h["pipes"] if p["to"] == j; init = 0.0)
+            sum(
+                isnothing(schedule) ? p["fixed_flow"][t] : schedule[i, t] for
+                (i, p) in enumerate(h["pipes"]) if p["from"] == j;
+                init = 0.0,
+            ) - sum(
+                isnothing(schedule) ? p["fixed_flow"][t] : schedule[i, t] for
+                (i, p) in enumerate(h["pipes"]) if p["to"] == j;
+                init = 0.0,
+            )
         out[j, t] = h["nodes"][j]["role"] == "load" ? -balance : balance
     end
     return out

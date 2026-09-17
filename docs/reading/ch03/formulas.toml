@@ -1,7 +1,8 @@
 schema = "ch03-formulas-v1"
+declared_equation_count = 66
 source = "docs/摘要.pdf"
 source_sha256 = "20328e2480e773520c19c378e53365fc944c0bafcfca73071f5d8313d5ee7d91"
-checked_pdf_pages = [46, 47, 48, 49, 50, 51, 52]
+checked_pdf_pages = [46, 47, 48, 49, 50, 51, 52, 53, 54, 55]
 note = "按PDF图像规范化转录，省略重复全称量词；不静默修正原式。原式与项目补全分别记录。实际源码/符号/测试由group继承，个别式的用途由role覆盖。"
 
 [groups.dispatch]
@@ -10,6 +11,14 @@ api = "build_r2_model"
 test = "R2 saved integration ch03-001:057"
 symbols = ["indices", "P_device", "H_device", "P_grid", "cost", "ratio", "bounds", "P_demand", "Q_demand"]
 assumptions = "合成案例采用常热电比/常COP、设备单位功率因数、显式购电边界；空GT集合允许。MW×h计费。"
+
+[groups.algorithm]
+source = "src/formulations/r2.jl"
+api = "build_r2_model"
+test = "R3 fixed schedule and reconstruction ch03-060"
+test_path = "test/r3.jl"
+symbols = ["alg_x", "alg_m", "alg_theta", "alg_s", "alg_lambda", "alg_mu", "alg_gamma"]
+assumptions = "PDF52–55算法抽象；本批固定流量SP可运行，弹性诊断和直接修正的细节由项目单独定义。MP、梯度及投影未实现。"
 [groups.electric]
 source = "src/formulations/r2.jl"
 api = "build_r2_model"
@@ -413,3 +422,75 @@ page = 52
 group = "dominant"
 meaning = "主导本地端口温度"
 latex = '\tau_{k,t}^{S}+(z_{k,t}-1)\overline M\le\tau_{k,t}^{S,mix}\le\tau_{k,t}^{S}+(1-z_{k,t})\overline M'
+
+[[formula]]
+number = 58
+page = 52
+group = "algorithm"
+meaning = "WMM抽象优化问题"
+latex = '\min c(\mathbf x)\quad\mathrm{s.t.}\ f(\mathbf x,\mathbf m,\boldsymbol\theta)=0,\quad g_1(\mathbf x)=\mathbf a_1^\mathsf T\mathbf x+\mathbf b_1\le0,\quad g_2(\mathbf m)=\mathbf a_2^\mathsf T\mathbf m+\mathbf b_2\le0,\quad r(\mathbf m,\mathbf x)\le0'
+implementation = "documented"
+reason = "抽象表述已说明；原文f/g/r分类不能代替逐项模型核查，采用模型见R2/R3解释。"
+[[formula]]
+number = 59
+page = 53
+group = "algorithm"
+meaning = "含割平面的主问题"
+latex = '\min c(\mathbf x)\quad\mathrm{s.t.}\ g_1(\mathbf x)\le0,\ g_2(\mathbf m)\le0,\ r(\mathbf m,\mathbf x)\le0,\quad h(\mathbf m,\mathbf x^K)=(\mathbf c^K)^\mathsf T\mathbf x+\mathbf d^K\le0,\ K=1,\ldots,N_K'
+implementation = "documented"
+reason = "主问题与割平面留后续；原式h标记含m，展开式却写x，未静默替换。"
+[[formula]]
+number = 60
+page = 53
+group = "algorithm"
+meaning = "固定流量和时延的子问题"
+latex = '\min c(\mathbf x)\quad\mathrm{s.t.}\ f(\mathbf x,\mathbf m^K,\boldsymbol\theta^K)=0,\quad g_1(\mathbf x)=\mathbf a_1^\mathsf T\mathbf x+\mathbf b_1\le0,\quad r(\mathbf m^K,\mathbf x)\le0'
+role = "固定流量下的已核查WMM特例；时延由流量和历史计算，保留电网及水力锥松弛"
+[[formula]]
+number = 61
+page = 54
+group = "algorithm"
+meaning = "拉格朗日灵敏度与时延链式项"
+latex = '\left.\frac{\partial c(\mathbf x)}{\partial\mathbf m}\right|_{\mathbf m^K,\mathbf x^K,\boldsymbol\theta^K}=\frac{\partial L^{Opt}(\mathbf m^K,\mathbf x^K,\boldsymbol\theta^K)}{\partial\mathbf m}=(\boldsymbol\lambda^K)^\mathsf T\left\{\frac{\partial f}{\partial\mathbf m}+\frac{\partial f}{\partial\boldsymbol\theta}\frac{\partial\boldsymbol\theta}{\partial\mathbf m}\right\}'
+implementation = "documented"
+reason = "需另核r对m的贡献、时延分段边界及对偶适用条件；本批不计算梯度。"
+[[formula]]
+number = 62
+page = 54
+group = "algorithm"
+meaning = "成本分支梯度步"
+latex = '\mathbf m^{K+1,*}=\mathbf m^K-\gamma^K\frac{\partial L^{Opt}(\mathbf m^K,\mathbf x^K,\boldsymbol\theta^K)}{\partial\mathbf m}'
+implementation = "documented"
+reason = "成本下降分支不在本批。"
+[[formula]]
+number = 63
+page = 54
+group = "algorithm"
+meaning = "成本分支投影"
+latex = '\mathbf m^{K+1}=\arg\min_{\mathbf m}\left\{\|\mathbf m^{K+1,*}-\mathbf m\|_2^2:(\mathbf m,\mathbf x)\in D_{MP}\right\}'
+implementation = "documented"
+reason = "后续应明确对x的存在量词、可行域与历史割；本批直接修正不等于该投影。"
+[[formula]]
+number = 64
+page = 54
+group = "algorithm"
+meaning = "原文可行性割"
+latex = '(\boldsymbol\lambda^K)^\mathsf T\left[\frac{\partial L^{Feasi}(\mathbf m^K,\mathbf x^K,\boldsymbol\theta^K)}{\partial\mathbf m}(\mathbf m-\mathbf m^K)\right]+(\boldsymbol\mu^K)^\mathsf T g_2(\mathbf x^K)\le0'
+implementation = "documented"
+reason = "原页写g2(xK)，与3-58的g2(m)不一致；lambda重复乘法和割有效性也需推导。本批不使用该割。"
+[[formula]]
+number = 65
+page = 54
+group = "algorithm"
+meaning = "可行性分支梯度步"
+latex = '\mathbf m^{K+1,*}=\mathbf m^K-\gamma^K\frac{\partial L^{Feasi}(\mathbf m^K,\mathbf x^K,\boldsymbol\theta^K)}{\partial\mathbf m}'
+implementation = "documented"
+reason = "本批实现有明确名称的详细模型直接修正，不称作者该更新式已实现。"
+[[formula]]
+number = 66
+page = 55
+group = "algorithm"
+meaning = "可行性分支投影"
+latex = '\mathbf m^{K+1}=\arg\min_{\mathbf m}\left\{\|\mathbf m^{K+1,*}-\mathbf m\|_2^2:(\mathbf m,\mathbf x)\in D_{MP}\right\}'
+implementation = "documented"
+reason = "梯度与投影外层留后续，当前只提供可行性基准。"

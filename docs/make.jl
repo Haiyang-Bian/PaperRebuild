@@ -42,6 +42,8 @@ makedocs(;
             "模型解释与补全" => "ch03-models.md",
             "设备、电网与水力公式" => "ch03-equations.md",
             "热网与简化公式" => "ch03-heat-equations.md",
+            "算法公式与实现边界" => "ch03-algorithm-equations.md",
+            "R3采用解释与推导" => "ch03-r3-theory.md",
             "符号权威表" => "ch03-symbols.md",
             "运行与验收" => "ch03-r2.md",
             "合成实验结果与图表" => "ch03-r2-results.md",

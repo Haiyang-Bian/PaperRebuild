@@ -272,8 +272,18 @@ function validate_r2_solution(c::R2Case, result)
         for t in 1:T
             flow = V("m_pipe", p, t)
             bound("3-23", "m_pipe", p, t, pipe["flow_min"], pipe["flow_max"], "kg/s", flow_tol)
-            result["fixed_flows"] &&
-                record("R2-fixed-flow", "model", p, t, flow-pipe["fixed_flow"][t], "kg/s", flow_tol)
+            result["fixed_flows"] && record(
+                "R2-fixed-flow",
+                "model",
+                p,
+                t,
+                flow-(
+                    haskey(result, "flow_schedule") ? result["flow_schedule"][p][t] :
+                    pipe["fixed_flow"][t]
+                ),
+                "kg/s",
+                flow_tol,
+            )
             if spec.dynamics == :wmm
                 α, β = s["alpha_"*string(p)][t], s["beta_"*string(p)][t]
                 fs = [

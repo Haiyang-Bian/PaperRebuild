@@ -179,3 +179,50 @@ function validate_r2_input(d)
     return nothing
 end
 # endregion r2-input
+
+# 固定计划独立于案例；不改写来源配置或借其哈希标识另一个输入。
+function r2_flow_matrix(c::R2Case, schedule = nothing)
+    pipes = c.data["heat"]["pipes"]
+    E, T = length(pipes), c.data["T"]
+    m = if isnothing(schedule)
+        permutedims(hcat([Float64.(p["fixed_flow"]) for p in pipes]...))
+    elseif schedule isa AbstractMatrix
+        Matrix{Float64}(schedule)
+    elseif schedule isa AbstractVector &&
+           length(schedule) == E &&
+           all(x -> x isa AbstractVector && length(x) == T, schedule)
+        permutedims(hcat([Float64.(row) for row in schedule]...))
+    else
+        throw(ArgumentError("流量计划必须为管道×时段矩阵"))
+    end
+    size(m) == (E, T) && all(isfinite, m) && all(>(0), m) ||
+        throw(ArgumentError("流量计划维度、数值或方向非法"))
+    tol = 1e-6 * (1 + maximum(p["flow_max"] for p in pipes))
+    for (p, pipe) in enumerate(pipes), t in 1:T
+        pipe["flow_min"] - tol <= m[p, t] <= pipe["flow_max"] + tol ||
+            throw(ArgumentError("流量计划超出管道边界"))
+    end
+    ports = r2_fixed_port_flows(c.data, m)
+    for (j, node) in enumerate(c.data["heat"]["nodes"]), t in 1:T
+        node["flow_min"] - tol <= ports[j, t] <= node["flow_max"] + tol ||
+            throw(ArgumentError("流量计划超出端口边界或方向"))
+        node["role"] == "transit" &&
+            abs(ports[j, t]) > tol &&
+            throw(ArgumentError("中转节点流量不守恒"))
+    end
+    return m
+end
+
+function r2_flow_hash(m)
+    io = IOBuffer()
+    TOML.print(
+        io,
+        Dict(
+            "unit" => "kg/s",
+            "shape" => collect(size(m)),
+            "values" => [collect(row) for row in eachrow(m)],
+        );
+        sorted = true,
+    )
+    return bytes2hex(sha256(take!(io)))
+end

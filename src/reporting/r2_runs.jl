@@ -46,23 +46,28 @@ r2_valid_bound(bound, solver) =
 
 # region r2-solve
 """
-    solve_r2_case(case; optimizer, spec=R2Spec(), fixed_flows=false, enumerate_mixing=false, budget_sec=600)
+    solve_r2_case(case; optimizer, spec=R2Spec(), fixed_flows=false, flow_schedule=nothing, enumerate_mixing=false, budget_sec=600)
 
 预算包含建模与所有枚举子问题；有解才读取数值。开放求解器可穷举微型主导入流选择，
 最多64组合；未完成枚举不能报告全局最优。Gurobi许可由调用脚本提供，导入不申领许可。
 返回版本、输入哈希、解/界、原始状态、实际模型类型和耗时；仅显式solver_log时让求解器写原始日志。
+固定模式保存实际flow_schedule及其独立哈希；旧运行没有该字段时仍使用案例固定计划。
 """
 function solve_r2_case(
     c::R2Case;
     optimizer,
     spec = R2Spec(),
     fixed_flows = false,
+    flow_schedule = nothing,
     enumerate_mixing = false,
     budget_sec = 600.0,
     solver_log = nothing,
 )
     isfinite(budget_sec) && budget_sec > 0 || throw(ArgumentError("预算必须为有限正数"))
     start = time()
+    !fixed_flows &&
+        !isnothing(flow_schedule) &&
+        throw(ArgumentError("flow_schedule仅用于固定流量模式"))
     result = Dict{String,Any}(
         "input_sha256" => c.sha256,
         "spec" => r2_spec_dict(spec),
@@ -74,6 +79,11 @@ function solve_r2_case(
         "paper_match" => "blocked",
         "source_hashes_at_solve" => r2_science_hashes(),
     )
+    if fixed_flows
+        schedule = r2_flow_matrix(c, flow_schedule)
+        result["flow_schedule"] = r2_extract(schedule)
+        result["flow_sha256"] = r2_flow_hash(schedule)
+    end
     if spec.formulation in (:wmm_literal, :schpd_literal)
         b = build_r2_model(c; spec)
         merge!(
@@ -96,7 +106,7 @@ function solve_r2_case(
         buildstart = time()
         # 先在通用缓存完成模型，避免JuMP在添加非线性式时提前抛出普通ErrorException。
         # 求解器支持性在optimize!/MOI复制阶段统一转为可保存的UNSUPPORTED状态。
-        b = build_r2_model(c; spec, fixed_flows, choices = pattern)
+        b = build_r2_model(c; spec, fixed_flows, flow_schedule, choices = pattern)
         set_optimizer(b.model, optimizer)
         set_silent(b.model)
         if occursin("Clarabel", solver_name(b.model))

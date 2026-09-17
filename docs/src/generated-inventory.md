@@ -40,6 +40,7 @@
 - `docs/agent/tasks/2026-09-16-r2.md`
 - `docs/agent/tasks/2026-09-16-reproduction-plan.md`
 - `docs/agent/tasks/2026-09-16-thesis-review.md`
+- `docs/agent/tasks/2026-09-17-r3.md`
 - `docs/make.jl`
 - `docs/reading/README.md`
 - `docs/reading/ch02/README.md`
@@ -78,12 +79,14 @@
 - `docs/src/ch02-source.md`
 - `docs/src/ch02-status.md`
 - `docs/src/ch02-symbols.md`
+- `docs/src/ch03-algorithm-equations.md`
 - `docs/src/ch03-data.md`
 - `docs/src/ch03-equations.md`
 - `docs/src/ch03-heat-equations.md`
 - `docs/src/ch03-models.md`
 - `docs/src/ch03-r2-results.md`
 - `docs/src/ch03-r2.md`
+- `docs/src/ch03-r3-theory.md`
 - `docs/src/ch03-symbols.md`
 - `docs/src/index.md`
 - `docs/src/julia-design.md`
@@ -310,6 +313,7 @@
 - `src/components/devices.jl`
 - `src/core/case.jl`
 - `src/core/r2_case.jl`
+- `src/core/r3.jl`
 - `src/formulations/r1.jl`
 - `src/formulations/r2.jl`
 - `src/networks/fixed_flow_heat.jl`
@@ -322,6 +326,7 @@
 - `test/maintenance.tests.ps1`
 - `test/r1.jl`
 - `test/r2.jl`
+- `test/r3.jl`
 - `test/runtests.jl`
 - `tools/Manifest.toml`
 - `tools/Project.toml`

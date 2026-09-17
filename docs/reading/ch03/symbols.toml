@@ -1,9 +1,10 @@
 schema = "ch03-symbols-v1"
-source = "论文PDF46–52，正文29–35；原符号表PDF14–17"
+source = "论文PDF46–55，正文29–38；原符号表PDF14–17；算法符号见3-58至3-66"
 verification = "原页视觉核对；同形异义按组作用域区分；实现扩展在julia字段说明"
 index_rule = "类别上标转语义标签，空间/设备/时间/滞后按数组维度顺序索引；物理平方用运算。ASCII配置键与希腊字母代码并存。"
 
 [symbols]
+
 indices = {latex='t,g,n,(m,n),j,(j,k),\varsigma', meaning="时段、设备、电节点/支路、热节点/管道、历史滞后", kind="索引/集合", unit="1", domain="t=1:T; 状态0:T; 其余显式有限集合", julia="t,g,n,b,j,p,s; 供回方向side为项目索引", dimensions="按空间、时间；α/β为时间、滞后"}
 P_device = {latex='P_{g,t}^{CHP},P_{g,t}^{GT},P_{g,t}^{PV},P_{g,t}^{EB}', meaning="各类设备电功率，EB为耗电幅值", kind="变量", unit="MW", domain="显式上下界；PV另有时变可用量", julia="P_device[g,t]；kind保留类别映射", dimensions="G×T"}
 H_device = {latex='H_{g,t}^{CHP},H_{g,t}^{EB}', meaning="设备供热功率", kind="变量", unit="MW", domain="非负；固定热电比/效率限定", julia="H_device[g,t]", dimensions="G×T"}
@@ -49,3 +50,60 @@ loss = {latex='H_{jk,t}^{S/R,loss},\overline\epsilon_{jk,t}^{S/R}', meaning="热
 m_max = {latex='\overline m_{k,t}^S', meaning="主导混合的最大入流幅值，不是参数上界", kind="辅助变量", unit="kg/s", domain="所有候选入流的有限包络", julia="maximum_flow", dimensions="有多入流的节点×时间×side"}
 z = {latex='z_{k,t},z_{jk,t}^{in}', meaning="本地或管道入流主导选择", kind="二进制变量", unit="1", domain="0/1且和为1", julia="z_mix；顺序side,node,time,stream", dimensions="变长向量；枚举时固定"}
 bigM = {latex='\overline M', meaning="最大入流与温度选择的失活常数", kind="参数", unit="分别kg/s和K，不能混用", domain="由候选流量上下界差、侧温度范围导出", julia="Mflow,Mtemp", dimensions="节点×side"}
+
+[symbols.alg_x]
+latex = '\mathbf x'
+meaning = "除流量和时延外的调度变量向量"
+kind = "变量集合"
+unit = "分量各有单位，不把向量当单一物理量"
+domain = "由各设备、网络约束确定"
+julia = "build_r3_subproblem返回的variables；不强行拼成同单位数组"
+dimensions = "设备/节点/时段；K为算法迭代号，不是时间"
+[symbols.alg_m]
+latex = '\mathbf m^K'
+meaning = "第K轮质量流量计划"
+kind = "外层变量、子问题参数"
+unit = "kg/s"
+domain = "正向有界且满足端口质量守恒"
+julia = "flow_schedule[p,t]；ASCII检索flow_schedule"
+dimensions = "管道×时段，端口由网络守恒导出；实现扩展明确数组顺序"
+[symbols.alg_theta]
+latex = '\boldsymbol\theta(\mathbf m)'
+meaning = "由流量及历史决定的时延辅助量"
+kind = "派生参数"
+unit = "alpha/beta无量纲，residence_s为s"
+domain = "WMM质量覆盖与历史约束"
+julia = "water_mass_weights；权重与停留时间分量分别保存"
+dimensions = "管道×时段×滞后；原文theta为统称"
+[symbols.alg_s]
+latex = '\mathbf s'
+meaning = "可行性问题的松弛量"
+kind = "诊断变量"
+unit = "项目采用无量纲s，另存MW/K物理残差"
+domain = "非负"
+julia = "elastic_slack；松弛范围与尺度为项目补全"
+dimensions = "被松弛的公式×实体×时段"
+[symbols.alg_lambda]
+latex = '\boldsymbol\lambda^K'
+meaning = "耦合约束对应的对偶乘子"
+kind = "对偶变量"
+unit = "目标单位/对应残差单位，取决于缩放"
+domain = "等式乘子符号不受限"
+julia = "未实现灵敏度映射；不可直接用诊断乘子宣称作者梯度"
+dimensions = "约束行；与水力摩阻mu的作用域不同"
+[symbols.alg_mu]
+latex = '\boldsymbol\mu^K'
+meaning = "原文松弛约束的对偶乘子"
+kind = "对偶变量"
+unit = "由拉格朗日函数和松弛缩放决定"
+domain = "依约束方向与求解器约定"
+julia = "未实现；不可与mu_kPa_s2_kg2摩阻系数混同"
+dimensions = "算法约束行"
+[symbols.alg_gamma]
+latex = '\gamma^K'
+meaning = "投影梯度步长"
+kind = "算法参数"
+unit = "需与梯度、流量缩放共同定义"
+domain = "正数"
+julia = "未实现；本批直接修正不设置伪步长"
+dimensions = "算法迭代K"

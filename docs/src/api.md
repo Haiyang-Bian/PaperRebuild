@@ -96,7 +96,13 @@ PaperRebuild.compare_r2_runs
 PaperRebuild.plot_r2_run
 ```
 
-## 工程示例函数
+## 第3章可行性闭环
+
+```@docs
+PaperRebuild.reconstruct_r3_pressure
+```
+
+## 工程示例函数说明
 
 以下两个函数保留自初始化模板，只用于验证包加载、测试和 Documenter 集成，不计入论文复现进度。
 

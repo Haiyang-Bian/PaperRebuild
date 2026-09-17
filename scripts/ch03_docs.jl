@@ -4,15 +4,21 @@ function check_ch03()
     base = joinpath(CH03_ROOT, "docs", "reading", "ch03")
     f = TOML.parsefile(joinpath(base, "formulas.toml"))
     s = TOML.parsefile(joinpath(base, "symbols.toml"))
-    [r["number"] for r in f["formula"]] == collect(1:57) || error("第3章公式编号不完整")
-    tests = read(joinpath(CH03_ROOT, "test", "r2.jl"), String)
+    [r["number"] for r in f["formula"]] == collect(1:66) || error("第3章公式编号不完整")
     for r in f["formula"]
-        !isempty(r["latex"]) && 46 <= r["page"] <= 52 || error("无效公式转录")
+        !isempty(r["latex"]) && 46 <= r["page"] <= 55 || error("无效公式转录")
         g = f["groups"][r["group"]]
         all(id -> haskey(s["symbols"], id), g["symbols"]) || error("未定义符号")
-        occursin(g["test"], tests) || error("映射测试缺失")
-        source = read(joinpath(CH03_ROOT, g["source"]), String)
-        occursin("function "*g["api"], source) || error("API映射失效")
+        state = get(r, "implementation", "implemented")
+        state in ("implemented", "documented") || error("非法实现状态")
+        if state == "implemented"
+            tests = read(joinpath(CH03_ROOT, get(g, "test_path", "test/r2.jl")), String)
+            occursin(g["test"], tests) || error("映射测试缺失")
+            source = read(joinpath(CH03_ROOT, g["source"]), String)
+            occursin("function "*g["api"], source) || error("API映射失效")
+        else
+            !isempty(get(r, "reason", "")) || error("未实现公式缺少说明")
+        end
     end
     for (id, row) in s["symbols"],
         key in ("latex", "meaning", "kind", "unit", "domain", "julia", "dimensions")
@@ -20,7 +26,7 @@ function check_ch03()
         haskey(row, key) && !isempty(row[key]) || error("符号$id 缺$key")
     end
     println(
-        "Chapter 3: 57 equations, ",
+        "Chapter 3: 66 equations, ",
         length(s["symbols"]),
         " symbols; source/API/test mappings checked.",
     )
@@ -44,9 +50,14 @@ function render_ch03()
         "索引分页：[热网与简化式](@ref ch03-heat-equations) · [符号表](@ref ch03-symbols)。\n",
     )
     for r in f["formula"]
-        if r["number"] == 27
-            outputs["ch03-equations.md"] = String(take!(io))
-            println(io, "# [第3章热网与简化式](@id ch03-heat-equations)\n")
+        if r["number"] in (27, 58)
+            outputs[r["number"] == 27 ? "ch03-equations.md" : "ch03-heat-equations.md"] =
+                String(take!(io))
+            println(
+                io,
+                r["number"] == 27 ? "# [第3章热网与简化式](@id ch03-heat-equations)\n" :
+                "# [第3章算法公式](@id ch03-algorithm-equations)\n",
+            )
             println(
                 io,
                 "<!-- GENERATED: scripts/ch03_docs.jl -->\n\n[设备、电网与水力](@ref ch03-equations) · [符号表](@ref ch03-symbols)。\n",
@@ -62,27 +73,31 @@ function render_ch03()
             r["page"],
             " / 正文 ",
             r["page"]-17,
-            "；状态：原页视觉核读，原式literal仍受版本级阻断。\n",
+            "；状态：原页视觉核读；采用解释和实现状态另列。\n",
         )
-        println(
-            io,
-            "本批作用：",
-            get(r, "role", "项目补全版/适用特例中的约束或边界"),
-            "。 ",
-            g["assumptions"],
-            "\n",
-        )
-        haskey(r, "issue") && println(io, "**疑点：", r["issue"], "。**\n")
-        println(
-            io,
-            "实现入口：[`",
-            g["api"],
-            "`](@ref)；源码 `",
-            g["source"],
-            "`；测试 `",
-            g["test"],
-            "`。\n",
-        )
+        if get(r, "implementation", "implemented") == "implemented"
+            println(
+                io,
+                "本批作用：",
+                get(r, "role", "项目补全版/适用特例中的约束或边界"),
+                "。 ",
+                g["assumptions"],
+                "\n",
+            )
+            haskey(r, "issue") && println(io, "**疑点：", r["issue"], "。**\n")
+            println(
+                io,
+                "实现入口：[`",
+                g["api"],
+                "`](@ref)；源码 `",
+                g["source"],
+                "`；测试 `",
+                g["test"],
+                "`。\n",
+            )
+        else
+            println(io, "实现状态：已说明、未实现。", r["reason"], "\n")
+        end
         println(
             io,
             "符号：",
@@ -90,7 +105,7 @@ function render_ch03()
             "。\n",
         )
     end
-    outputs["ch03-heat-equations.md"] = String(take!(io))
+    outputs["ch03-algorithm-equations.md"] = String(take!(io))
     println(
         io,
         "# [第3章符号权威表](@id ch03-symbols)\n<!-- GENERATED: scripts/ch03_docs.jl -->\n",
