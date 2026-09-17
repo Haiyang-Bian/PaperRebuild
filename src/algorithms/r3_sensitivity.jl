@@ -73,11 +73,29 @@ function r3_kkt(model)
     end
 end
 
+# 返回当前原始点处的表达式导数。二次交叉项分别对两个变量求导；平方项自然累加两次。
+# 原有仿射SOCP路径保持原系数，不能把二次约束的linear_terms误当完整梯度。
+function r3_kkt_derivative_terms(expression)
+    expression isa VariableRef && return [(1.0, expression)]
+    expression isa Real && return Tuple{Float64,VariableRef}[]
+    terms=collect(linear_terms(expression))
+    if expression isa GenericQuadExpr
+        for (coefficient, left, right) in JuMP.quad_terms(expression)
+            push!(terms, (coefficient*value(right), left))
+            push!(terms, (coefficient*value(left), right))
+        end
+    end
+    return terms
+end
+
 function r3_kkt_available(model)
     dual_status(model) == MOI.FEASIBLE_POINT ||
         return Dict{String,Any}("trusted"=>false, "reason"=>"dual_unavailable")
     vars = all_variables(model)
-    station = Dict(v=>coefficient(objective_function(model), v) for v in vars)
+    station = Dict(v=>0.0 for v in vars)
+    for (coefficient, v) in r3_kkt_derivative_terms(objective_function(model))
+        station[v]+=coefficient
+    end
     denom = Dict(v=>1+abs(station[v]) for v in vars)
     rows = Dict{String,Any}[]
     primal, dualerr, complement = 0.0, 0.0, 0.0
@@ -91,7 +109,7 @@ function r3_kkt_available(model)
         fs = f isa AbstractVector ? f : [f]
         ys = y isa AbstractVector ? y : [y]
         for (a, yi) in zip(fs, ys)
-            pairs = a isa VariableRef ? [(1.0, a)] : linear_terms(a)
+            pairs = r3_kkt_derivative_terms(a)
             for (coef, v) in pairs
                 station[v] -= yi*coef
                 denom[v] += abs(yi*coef)
