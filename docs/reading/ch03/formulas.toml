@@ -13,8 +13,8 @@ symbols = ["indices", "P_device", "H_device", "P_grid", "cost", "ratio", "bounds
 assumptions = "合成案例采用常热电比/常COP、设备单位功率因数、显式购电边界；空GT集合允许。MW×h计费。"
 
 [groups.algorithm]
-source = "src/formulations/r2.jl"
-api = "build_r2_model"
+source = "src/formulations/r3.jl"
+api = "build_r3_subproblem"
 test = "R3 fixed schedule and reconstruction ch03-060"
 test_path = "test/r3.jl"
 symbols = ["alg_x", "alg_m", "alg_theta", "alg_s", "alg_lambda", "alg_mu", "alg_gamma"]

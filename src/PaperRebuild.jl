@@ -15,8 +15,13 @@ include("formulations/r2.jl")
 include("reporting/r2_runs.jl")
 include("verification/r2.jl")
 include("core/r3.jl")
+include("formulations/r3.jl")
+include("verification/r3.jl")
+include("reporting/r3_runs.jl")
 
 export reconstruct_r3_pressure
+export build_r3_subproblem, repair_r3_flow, solve_r3_feasibility, validate_r3_solution
+export save_r3_run, read_r3_run, plot_r3_run
 
 export R2Case, R2Spec, load_r2_case, water_mass_weights, replay_water_mass, mccormick_bounds
 export build_r2_model, r2_model_class

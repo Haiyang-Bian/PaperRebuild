@@ -332,6 +332,11 @@ function compare_r2_runs(a, b)
         throw(ArgumentError("缺少求解前后源码一致性证据，不能列为正式比较"))
     x.case.sha256 == y.case.sha256 && x.result["fixed_flows"] == y.result["fixed_flows"] ||
         throw(ArgumentError("比较必须使用同一输入与固定流量设置"))
+    if x.result["fixed_flows"]
+        r2_flow_matrix(x.case, get(x.result, "flow_schedule", nothing)) ==
+        r2_flow_matrix(y.case, get(y.result, "flow_schedule", nothing)) ||
+            throw(ArgumentError("不同固定流量计划不是同一个调度问题"))
+    end
     if !haskey(x.result, "values") || !haskey(y.result, "values")
         return (
             status = "no_comparison",

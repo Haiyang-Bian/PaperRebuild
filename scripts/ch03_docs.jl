@@ -4,7 +4,8 @@ function check_ch03()
     base = joinpath(CH03_ROOT, "docs", "reading", "ch03")
     f = TOML.parsefile(joinpath(base, "formulas.toml"))
     s = TOML.parsefile(joinpath(base, "symbols.toml"))
-    [r["number"] for r in f["formula"]] == collect(1:66) || error("第3章公式编号不完整")
+    count = f["declared_equation_count"]
+    count > 0 && [r["number"] for r in f["formula"]] == collect(1:count) || error("第3章声明范围内的公式编号不完整")
     for r in f["formula"]
         !isempty(r["latex"]) && 46 <= r["page"] <= 55 || error("无效公式转录")
         g = f["groups"][r["group"]]
@@ -26,7 +27,9 @@ function check_ch03()
         haskey(row, key) && !isempty(row[key]) || error("符号$id 缺$key")
     end
     println(
-        "Chapter 3: 66 equations, ",
+        "Chapter 3: ",
+        count,
+        " equations, ",
         length(s["symbols"]),
         " symbols; source/API/test mappings checked.",
     )

@@ -100,6 +100,13 @@ PaperRebuild.plot_r2_run
 
 ```@docs
 PaperRebuild.reconstruct_r3_pressure
+PaperRebuild.build_r3_subproblem
+PaperRebuild.repair_r3_flow
+PaperRebuild.solve_r3_feasibility
+PaperRebuild.validate_r3_solution
+PaperRebuild.save_r3_run
+PaperRebuild.read_r3_run
+PaperRebuild.plot_r3_run
 ```
 
 ## 工程示例函数说明

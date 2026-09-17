@@ -2,6 +2,45 @@ schema = "r2-issues-v1"
 source = "docs/摘要.pdf，PDF46–52原页"
 literal_status = "blocked"
 paper_match = "blocked: 原式疑点和作者完整输入均未闭合"
+adopted_model_status = "可在明确假设下验证；原文未获作者解释不阻断已推导的采用模型"
+resolution_document = "docs/src/ch03-r3-theory.md"
+
+[[resolution]]
+id = "R2-C01"
+classification = "符号与方向补全"
+derivation = "质量守恒与正温差热交换同时成立：端口按源/荷拆正幅值，净注入另赋符号；供回水按真实入流混合。"
+status = "adopted_derived"
+evidence = "R2 inputs and class ch03-001:057；R3 fixed schedule and reconstruction ch03-060"
+[[resolution]]
+id = "R2-C02"
+classification = "有依据的损耗表达修正"
+derivation = "线性沿程传热对温差积分得到负指数；量纲无量纲。beta0=1对应当前出流，停留时间项排除该项，采用公开预印本式29。"
+status = "adopted_derived_with_reference_version_limit"
+evidence = "R2 transport ch03-027:034；R3独立累计质量回放"
+[[resolution]]
+id = "R2-C03"
+classification = "包络系数的量纲修正"
+derivation = "先包络w=mDeltaT再乘cp；原印式角点反例足以拒绝缺少cp的写法。"
+status = "adopted_verified_counterexample"
+evidence = "R2 envelopes and literal counterexamples ch03-042:052"
+[[resolution]]
+id = "R2-C04"
+classification = "时间单位恢复及项目能量代理"
+derivation = "P*dt_h产生MWh，rho*A*L*cp*DeltaT/3.6e9按每侧计量；dt未印出可能为1h约定。端点平均温度与独立E递推仍是近似，不能当WMM恒等式。"
+status = "adopted_units_proxy_not_physical_identity"
+evidence = "R2能量反例及energy-temperature-consistency残差；R3最终WMM不使用E代理"
+[[resolution]]
+id = "R2-C05"
+classification = "项目有限体积近似"
+derivation = "单管热量守恒确定三项均为W；均温离散是新增模型假设，不是WMM的等价改写。"
+status = "project_approximation"
+evidence = "R2动态回代；R3最终采用WMM输运"
+[[resolution]]
+id = "Q10"
+classification = "项目额外McCormick松弛"
+derivation = "m和温差皆可变时保留双线性；有界四面包络后检查MOI类型才能称项目MISOCP。"
+status = "project_relaxation_author_handling_unknown"
+evidence = "R2 inputs and class ch03-001:057；SCHPD只作为R3初值"
 
 [[issue]]
 id = "R2-C01"

@@ -41,7 +41,7 @@
 
 本批作用：固定流量下的已核查WMM特例；时延由流量和历史计算，保留电网及水力锥松弛。 PDF52–55算法抽象；本批固定流量SP可运行，弹性诊断和直接修正的细节由项目单独定义。MP、梯度及投影未实现。
 
-实现入口：[`build_r2_model`](@ref)；源码 `src/formulations/r2.jl`；测试 `R3 fixed schedule and reconstruction ch03-060`。
+实现入口：[`build_r3_subproblem`](@ref)；源码 `src/formulations/r3.jl`；测试 `R3 fixed schedule and reconstruction ch03-060`。
 
 符号：[alg_x](@ref sym-ch03-alg_x)、[alg_m](@ref sym-ch03-alg_m)、[alg_theta](@ref sym-ch03-alg_theta)、[alg_s](@ref sym-ch03-alg_s)、[alg_lambda](@ref sym-ch03-alg_lambda)、[alg_mu](@ref sym-ch03-alg_mu)、[alg_gamma](@ref sym-ch03-alg_gamma)。
 

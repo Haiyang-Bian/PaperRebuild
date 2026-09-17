@@ -385,6 +385,9 @@ function build_r2_model(
     end
     # 每根管的 α/β 共用于供回水；回水采用相反的入口历史。
     if spec.dynamics == :wmm
+        for side in ("S", "R")
+            vars["tau_"*side*"_star"] = Matrix{VariableRef}(undef, E, T)
+        end
         for p in 1:E
             pipe = h["pipes"][p]
             M = h["rho_kg_m3"]*pipe["area_m2"]*pipe["length_m"]
@@ -420,6 +423,7 @@ function build_r2_model(
                     temps =
                         [t-s > 0 ? inlet[p, t-s] : pipe[side*"_history_K"][end+t-s] for s in 0:Td]
                     star = @variable(model, lower_bound = lo, upper_bound = hi)
+                    vars["tau_"*side*"_star"][p, t] = star
                     # 分解三因子乘积为有界二因子，保持原等式而非额外松弛。
                     mass_w =
                         fixed_flows ? [(bb[i]-aa[i])*fs[i] for i in 1:(Td+1)] :
