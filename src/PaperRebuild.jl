@@ -34,6 +34,7 @@ export audit_r3_failure, r3_stopping_evidence
 export build_r3_physical_step
 
 export R3OperationSpec, build_r3_local_step
+export r3_boundary_case
 export solve_r3_reference, compare_r3_modes
 
 export r3_transport_jacobian, r3_value_sensitivity

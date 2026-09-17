@@ -19,6 +19,10 @@ function r3_stopping_evidence(c::R2Case, result)
             "original_outer_status"=>result["outer_status"],
             "trusted_sensitivity"=>get(it, "trusted_sensitivity", false),
             "smooth"=>get(it, "smooth", false),
+            "stage"=>it["stage"],
+            "model_pass"=>get(stage, "model_pass", false),
+            "physical_pass"=>get(stage, "physics_pass", false),
+            "objective_kind"=>get(stage, "objective_kind", "unknown"),
         )
         if dispatch
             cost=stage["operating_cost"]
