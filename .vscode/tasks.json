@@ -9,6 +9,12 @@
       "description": "已保存批次的study.toml路径",
       "id": "r3StudyManifest",
       "type": "promptString"
+    },
+    {
+      "description": "R3 v2冻结实验ID（例如single-delay-switch）",
+      "id": "r3V2ReplayId",
+      "default": "single-delay-switch",
+      "type": "promptString"
     }
   ],
   "tasks": [
@@ -974,6 +980,22 @@
       },
       "problemMatcher": [],
       "type": "process"
+    },
+    {
+      "label": "PaperRebuild: R3 v2 check frozen inputs",
+      "type": "process",
+      "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/replay_r3_v2_input.jl", "results/summaries/r3-v2/r3-v2-combined-20260917T095056-767e69d2/inputs/manifest.toml", "all", "--check-only"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R3 v2 replay frozen case",
+      "type": "process",
+      "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=tools/solvers", "scripts/replay_r3_v2_input.jl", "results/summaries/r3-v2/r3-v2-combined-20260917T095056-767e69d2/inputs/manifest.toml", "${input:r3V2ReplayId}"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "problemMatcher": []
     }
   ],
   "version": "2.0.0"

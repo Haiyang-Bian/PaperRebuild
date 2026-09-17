@@ -1,9 +1,9 @@
 include("r3_setup.jl")
-length(ARGS)==2 || error("usage: merge_r3_v2_studies.jl ROBUSTNESS_STUDY MODES_STUDY")
+length(ARGS)>=2 || error("usage: merge_r3_v2_studies.jl STUDY_TOML...")
 studies=TOML.parsefile.(ARGS)
-studies[1]["config_sha256"]==studies[2]["config_sha256"] || error("两组实验配置不同")
+all(s["config_sha256"]==studies[1]["config_sha256"] for s in studies) || error("实验配置不同")
 frozen=[TOML.parsefile(joinpath(dirname(p), "frozen.toml")) for p in ARGS]
-frozen[1]==frozen[2] || error("冻结清单不同")
+all(f==frozen[1] for f in frozen) || error("冻结清单不同")
 records=Dict{String,Any}[]
 root=joinpath("results", "runs", "r3-v2-combined-"*Dates.format(now(UTC), "yyyymmddTHHMMSS"))
 ispath(root) && error("禁止覆盖旧批次")

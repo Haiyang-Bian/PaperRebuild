@@ -1,0 +1,45 @@
+schema = "r3-v2-issues-v1"
+origin = "synthetic"
+prior = "r3-pg-issues.toml"
+
+[[issue]]
+id = "V2-C01"
+status = "partially_isolated"
+kind = "solver_dual_availability"
+description = "最小SOC等价缩放反例中，Gurobi原生Pi/QCPi/RC均返回10005；原始目标正确。其他复杂子问题坏对偶尚未全部解释。"
+action = "保留原始乘子和失败原因；只用通过KKT的对偶。缩放重试与原始变量局部方向单独记录。"
+
+[[issue]]
+id = "V2-C02"
+status = "open"
+kind = "algorithm_stopping"
+description = "旧十个主要初值在v2中均物理可行且费用更低，但没有一个达到事先规定的光滑数值停止条件。"
+action = "保留达到轮数上限与局部停滞；不把有改进的候选写成收敛或一般全局最优。"
+
+[[issue]]
+id = "V2-C03"
+status = "new_evidence_resolved_for_this_case"
+kind = "transport_switch"
+description = "旧切换例在v2中经邻段真实试探后恢复物理A1，随后局部方向停滞。原v1失败证据保留。"
+action = "仅声明该冻结案例恢复；不推断所有切换组合都能恢复。当前邻段探测只考察共同正负归一化扰动经守恒域投影后的方向。"
+
+[[issue]]
+id = "V2-C04"
+status = "open"
+kind = "physical_feasibility_recovery"
+description = "双源VF-CT的PG已有松弛SP候选，κ重构后仍未通过物理A1，固定候选流量的详细求解报告不可行；同输入直接费用参考物理通过。"
+action = "这是PG可行性恢复的负结果，不是模式整体不可行的证据；下一步针对该保存流量分析原等式与可行域边界。"
+
+[[issue]]
+id = "V2-C05"
+status = "fixed_and_retried"
+kind = "evidence_recording"
+description = "可选ObjBound属性不可读曾使模式组中断。已将该错误记录为界不可用，保留原始状态和已有候选。"
+action = "保留原失败记录；只重跑未完成条目，不按收益挑选重复结果。"
+
+[[issue]]
+id = "V2-C06"
+status = "fixed_with_analytic_regression"
+kind = "kkt_checker_derivative"
+description = "直接二次表达式原仅统计linear_terms，漏掉二次导数；解析m^2<=k、m=1例被错误拒绝。"
+action = "补齐约束及目标的二次导数，6项解析回归通过。正式仿射SOCP不走原有缺陷路径，历史运行不重写。"

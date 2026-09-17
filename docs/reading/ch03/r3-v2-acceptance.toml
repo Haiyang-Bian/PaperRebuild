@@ -1,0 +1,61 @@
+schema = "r3-v2-acceptance-v1"
+delivery = "R3稳健性与小系统四模式验证"
+origin = "synthetic"
+threshold_source = "docs/src/reproduction-acceptance.md"
+study = "configs/r3/v2-study.toml"
+algorithm = "r3_pg_checked_v2"
+formal_status = "32_runs_completed_with_negative_results"
+formal_batch = "r3-v2-combined-20260917T095056"
+regression_assertions = 1048
+ci_scope = "Clarabel固定流量、局部方向、导数、模式与证据测试；不申请商业许可"
+local_scope = "Gurobi原生对偶最小例、SCHPD初始化及独立详细物理参考"
+
+[[checks]]
+id = "V2-dual"
+evidence = "scripts/diagnose_r3_duals.jl; test/r3_duals.jl"
+status = "minimal_examples_checked_full_gurobi_issue_open"
+note = "最小例8组，Clarabel4/4、Gurobi3/4可信；缩放失败组原生Pi/QCPi/RC均不可取得。不得修饰乘子。"
+[[checks]]
+id = "V2-jacobian"
+evidence = "R3 full thermal partials and joint local SOCP"
+status = "tests_passed"
+note = "单/双源，调度/非零松弛诊断，三个差分步长；沿用A2的1e-3门槛。"
+[[checks]]
+id = "V2-switch"
+evidence = "R3 v2 trace and failure propagation"
+status = "tests_and_frozen_switch_case_passed"
+note = "切换点拒绝局部Taylor方向；邻段真实子问题判定。历史固定，不以停滞证明不可行。"
+[[checks]]
+id = "V2-operation"
+evidence = "R3 four operation modes and local candidate"
+status = "tests_passed_pg_7_of_8_reference_8_of_8_physical"
+note = "CT只固定源温；新案例才改变负荷回水规则。CF显式错误初值被拒绝。"
+[[checks]]
+id = "V2-recovery"
+evidence = "r3_recovery_rows!; compare_r3_modes"
+status = "all_15_verified_mode_candidates_recovered"
+note = "核心4步；单源尾段6步、双源10步。终端有效记忆入口、流量及独立回放出口须全部通过A1。"
+[[checks]]
+id = "V2-formal"
+evidence = "scripts/experiment_r3_v2.jl"
+status = "32_completed_robustness_15_of_16_modes_15_of_16_physical"
+note = "旧16例初值原样保留，切换例新增恢复、容量反例仍失败；新16例共享案例与尾段，双源VF-CT的PG未物理通过。PG和直接费用参考分别评价。"
+[[checks]]
+id = "V2-figures"
+evidence = "scripts/report_r3_v2.jl"
+status = "F04_F05_F06_F08_F09_generated_from_verified_runs"
+note = "32例图源重读核验；完整F04压缩后逐值一致。已检查代表性图像；CF与直接参考不生成虚构外层迭代。"
+
+[remaining]
+paper_scale = "未进入本批；没有论文规模速度或全文同输入数值复现结论"
+nonconvex_global_convergence = "不承诺；停滞和预算/轮数上限保留为正式结果"
+gurobi_duals = "最小失败例已隔离；原复杂子问题全部坏对偶的成因未完全闭合"
+real_vscode_ui = "本机未发现已注册实例；配置和对应CLI验证不能冒称原生任务UI已运行"
+
+[engineering]
+regression = "1048 assertions passed"
+format = "passed"
+documenter = "strict build and doctest passed; nonblocking inventory/search size warnings retained"
+project_check = "passed after navigation sync"
+frozen_input_check = "all 32 passed; separate loose-electric replay saved and independently validated"
+publication = "local commits only; no remote push or Pages deployment"

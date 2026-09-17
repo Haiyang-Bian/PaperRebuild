@@ -1,5 +1,6 @@
 using PaperRebuild, TOML, CSV, SHA, Dates, UUIDs, CairoMakie
 include("plot_r3_pg.jl")
+include("plot_r3_comparison.jl")
 length(ARGS)==1 || error("usage: report_r3_v2.jl STUDY_TOML")
 studyfile=abspath(only(ARGS));
 study=TOML.parsefile(studyfile)
@@ -19,7 +20,10 @@ end
 summaries=Dict{String,Any}[];
 modes=Dict{String,Any}[];
 inventory=Dict{String,Any}[]
+starts=Dict{String,Vector{Matrix{Float64}}}()
 for e in study["runs"]
+    println("REPORT ", e["id"])
+    flush(stdout)
     dir=joinpath(dirname(studyfile), e["directory"])
     loaded=read_r3_run(dir)
     r=loaded.result
@@ -29,11 +33,13 @@ for e in study["runs"]
         "id"=>e["id"],
         "group"=>e["group"],
         "case"=>e["case"],
-        "run_id"=>study["batch"]*"/"*loaded.metadata["run_id"],
+        "run_id"=>basename(dirname(abspath(dir)))*"/"*loaded.metadata["run_id"],
         "input_sha256"=>c.sha256,
         "physical_pass"=>loaded.validation.physical_pass,
         "outer_status"=>r["outer_status"],
         "outer_converged"=>r["outer_converged"],
+        "cost_optimization_complete"=>r["cost_optimization_complete"],
+        "optional_bound_failures"=>count(s->haskey(s, "bound_error"), r["stages"]),
         "elapsed_sec"=>r["elapsed_sec"],
         "iterations"=>length(get(r, "iterations", Any[])),
         "local_trials"=>sum(
@@ -48,11 +54,39 @@ for e in study["runs"]
         ),
     )
     !isnothing(final) && (row["cost"]=final["operating_cost"])
+    if isnothing(final)
+        k=findlast(s->s["stage"]=="pressure_reconstruction", r["stages"])
+        isnothing(k) && (k=findlast(s->haskey(s, "values"), r["stages"]))
+        if !isnothing(k)
+            residuals=filter(x->x.scope=="physics", loaded.validation.stages[k].rows)
+            if !isempty(residuals)
+                worst=residuals[argmax(x.residual/x.tolerance for x in residuals)]
+                row["failure_stage"]=k
+                row["worst_physics_equation"]=worst.equation
+                row["worst_physics_residual"]=worst.residual
+                row["worst_physics_tolerance"]=worst.tolerance
+                row["worst_physics_unit"]=worst.unit
+            end
+        end
+    end
     if e["group"]=="robustness"
         old=read_r3_run(joinpath(root, e["old_directory"]))
         row["v1_physical_pass"]=old.validation.physical_pass
         row["v1_outer_status"]=old.result["outer_status"]
+        row["v1_elapsed_sec"]=old.result["elapsed_sec"]
+        row["v1_outer_converged"]=old.result["outer_converged"]
         row["same_initial_flow"]=old.result["initial_flow_sha256"]==r["initial_flow_sha256"]
+        if e["id"] in [e["case"]*"-"*s for s in ("schpd", "case_fixed", "box25", "box50", "box75")]
+            m=PaperRebuild.r3_matrix(r["initial_flow"])
+            group=get!(starts, e["case"], Matrix{Float64}[])
+            tolerance=[1e-6+1e-6*p["flow_max"] for p in c.data["heat"]["pipes"]]
+            matched=findfirst(x->all(abs.(x-m) .<= tolerance), group)
+            if isnothing(matched)
+                push!(group, m)
+                matched=length(group)
+            end
+            row["initial_group_A1"]=matched
+        end
         if old.result["final_stage"]>0
             row["v1_cost"]=old.result["stages"][old.result["final_stage"]]["operating_cost"]
             !isnothing(final) && (row["cost_change_v2_minus_v1"]=row["cost"]-row["v1_cost"])
@@ -69,45 +103,43 @@ for e in study["runs"]
             "input_sha256"=>c.sha256,
         ),
     )
-    plot_r3_pg_run(dir; output = joinpath(dest, e["id"]))
+    plot_r3_pg_run(dir; output = joinpath(dest, e["id"]), loaded)
     if e["group"]=="robustness"
-        old=read_r3_run(joinpath(root, e["old_directory"]))
-        fig=Figure(size = (1100, 430))
-        Label(fig[0, 1:2], "Synthetic v1/v2 | "*e["id"])
-        source=NamedTuple[]
-        for (col, field, title) in (
-            (1, "dispatch", "Feasible SP cost (currency)"),
-            (2, "diagnostic", "Diagnostic merit (dimensionless)"),
-        )
-            ax=Axis(fig[1, col]; xlabel = "Outer iteration", ylabel = title)
-            for (label, result) in (("v1", old.result), ("v2", r))
-                rows=filter(x->x["mode"]==field, get(result, "iterations", Any[]))
-                isempty(rows) && continue
-                ys=[
-                    field=="dispatch" ? result["stages"][x["stage"]]["operating_cost"] : x["merit"]
-                    for x in rows
-                ]
-                scatterlines!(ax, [x["iteration"] for x in rows], ys; label)
-                append!(
-                    source,
-                    [
-                        (
-                            id = e["id"],
-                            version = label,
-                            branch = field,
-                            iteration = x["iteration"],
-                            value = y,
-                        ) for (x, y) in zip(rows, ys)
-                    ],
-                )
-            end
-            axislegend(ax; position = :rt)
-        end
-        save(joinpath(dest, e["id"], "F06-v1-v2.png"), fig)
-        CSV.write(joinpath(dest, e["id"], "F06-v1-v2-source.csv"), source)
+        plot_r3_pg_comparison(old.result, r, e["id"], joinpath(dest, e["id"]))
     end
 end
+statistics=Dict{String,Any}[]
+middle(xs) =
+    isodd(length(xs)) ? sort(xs)[(length(xs)+1)÷2] :
+    sum(sort(xs)[(length(xs)÷2):(length(xs)÷2+1)])/2
+for name in sort!(collect(keys(starts))), version in ("v1", "v2")
+    rows=filter(r->r["case"]==name && haskey(r, "initial_group_A1"), summaries)
+    prefix=version=="v1" ? "v1_" : ""
+    valid=filter(r->r[prefix*"physical_pass"], rows)
+    stat=Dict{String,Any}(
+        "case"=>name,
+        "version"=>version,
+        "initial_count"=>length(rows),
+        "distinct_initial_groups_A1"=>length(starts[name]),
+        "physical_pass_count"=>length(valid),
+        "physical_pass_rate"=>length(valid)/length(rows),
+        "numeric_stop_count"=>count(r->r[prefix*"outer_converged"], rows),
+    )
+    for (field, values) in (
+        ("cost", [r[prefix*"cost"] for r in valid]),
+        ("elapsed_sec", [r[prefix*"elapsed_sec"] for r in rows]),
+    )
+        isempty(values) && continue
+        stat[field*"_best"]=minimum(values)
+        stat[field*"_median"]=middle(values)
+        stat[field*"_worst"]=maximum(values)
+    end
+    push!(statistics, stat)
+end
+csvdict(joinpath(dest, "five-initial-statistics.csv"), statistics)
 for name in unique(e["case"] for e in study["runs"] if e["group"]=="modes")
+    println("COMPARE ", name)
+    flush(stdout)
     entries=filter(e->e["group"]=="modes" && e["case"]==name, study["runs"])
     dirs=[joinpath(dirname(studyfile), e["directory"]) for e in entries]
     rows=compare_r3_modes(dirs)
@@ -206,7 +238,7 @@ for name in unique(e["case"] for e in study["runs"] if e["group"]=="modes")
             push!(
                 series,
                 (
-                    run_id = study["batch"]*"/"*entry["id"],
+                    run_id = basename(dirname(abspath(dir)))*"/"*entry["id"],
                     mode = entry["mode"],
                     method = entry["method"],
                     time_h = t*d["dt_h"],

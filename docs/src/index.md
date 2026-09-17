@@ -5,13 +5,15 @@ Codex 为主要智能体，VS Code 为主要 IDE，CodeGroup 按工作目的组�
 
 ## 当前状态
 
-工程基础已建立，研究进入 R2 首批模型闭环。跨章主线见[论文主线与研究边界](thesis-overview.md)。
+工程基础已建立，研究进入 R3 稳健性与小系统四模式验证。跨章主线见[论文主线与研究边界](thesis-overview.md)。
 第2章76条公式已登记，新增[模型详解](ch02-models.md)、[符号规范](ch02-naming.md)
-和[微型耦合案例](ch02-status.md)。第3章57条公式已登记，
+和[微型耦合案例](ch02-status.md)。第3章69条公式已登记，
 [项目补全模型](ch03-models.md)与[合成实验结果](ch03-r2-results.md)可逐式检查。
-完整数据、原式冲突、物理可行性恢复、市场/重构及论文结果复现仍待后续。
+固定流量物理可行性、v1/v2外层和[四模式接口](ch03-r3-robustness.md)可在合成小系统检查。
+第三批[32例报告与图表](ch03-r3-v2-results.md)分别记录恢复成功、物理失败、费用和停止原因。
+作者完整输入、论文规模性能、市场/重构及全文数值结果复现仍待后续。
 包中的 `hello`、`domath` 为工具链示例，测试通过仅说明骨架可用。
-详细状态见仓库中的[当前状态](https://github.com/Haiyang-Bian/PaperRebuild/blob/master/docs/agent/current-state.md)。
+详细状态见本地仓库的 `docs/agent/current-state.md`；未推送的本地进展不会自动出现在在线手册。
 
 ## 建议阅读顺序
 
@@ -24,6 +26,7 @@ Codex 为主要智能体，VS Code 为主要 IDE，CodeGroup 按工作目的组�
    和[Julia 技术设计](julia-design.md)，按阶段启动最小可验证案例。
 7. 从[第2章模型详解](ch02-models.md)进入编号公式、符号、[API 索引与 docstring](api.md)和验证映射，再按[R1教程](ch02-status.md)运行并检查图表。
 8. 按[第3章R2教程](ch03-r2.md)比较WMM与SCHPD，区分求解器状态、模型约束通过和原物理误差。
+9. 阅读[R3稳健性与四模式](ch03-r3-robustness.md)，区分可信梯度、局部方向和独立费用参考，理解恢复尾段如何影响公平比较。
 
 ## 后续内容
 

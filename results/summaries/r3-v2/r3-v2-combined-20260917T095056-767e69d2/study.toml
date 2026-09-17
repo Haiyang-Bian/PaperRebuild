@@ -1,0 +1,342 @@
+batch = "r3-v2-combined-20260917T095056"
+component_batches = ["r3-v2-20260917T090744-b1a0724b", "r3-v2-20260917T090750-c52e2f8d", "r3-v2-20260917T092124-cb7d8099", "r3-v2-20260917T093636-37b7a2ec"]
+config_sha256 = "b9c48345122ea8b860925244f60e99531e0cd63aa97578bc12768215b9ddf63f"
+origin = "synthetic"
+schema = "r3-v2-study-v1"
+
+[[runs]]
+case = "single-source"
+directory = "../r3-v2-20260917T090744-b1a0724b/single-source-schpd"
+elapsed_sec = 65.01735700000427
+frozen_source_sha256 = "bd2a3c9fa12daa0aa83abecf8a01947ece96a4a7f552cd4fcbdfdfa34c0ac4b3"
+group = "robustness"
+id = "single-source-schpd"
+old_directory = "results/runs/r3-pg-20260917T071031-7eafbab9\\single-source-schpd"
+outer_status = "iteration_limit"
+physical_pass = true
+[[runs]]
+case = "single-source"
+directory = "../r3-v2-20260917T090744-b1a0724b/single-source-case_fixed"
+elapsed_sec = 77.8305590999953
+frozen_source_sha256 = "edaaf2d43b65cb5d64d0052c6cbbdd0c4f43fd1157bd3ab9bce747a1ced1841e"
+group = "robustness"
+id = "single-source-case_fixed"
+old_directory = "results/runs/r3-pg-20260917T071031-7eafbab9\\single-source-case_fixed"
+outer_status = "iteration_limit"
+physical_pass = true
+[[runs]]
+case = "single-source"
+directory = "../r3-v2-20260917T090744-b1a0724b/single-source-box25"
+elapsed_sec = 43.81395529999281
+frozen_source_sha256 = "160d04b7ceb3bcffb3e39b83d640525d4e5371587fee79a19cb465794e48e58d"
+group = "robustness"
+id = "single-source-box25"
+old_directory = "results/runs/r3-pg-20260917T071031-7eafbab9\\single-source-box25"
+outer_status = "iteration_limit"
+physical_pass = true
+[[runs]]
+case = "single-source"
+directory = "../r3-v2-20260917T090744-b1a0724b/single-source-box50"
+elapsed_sec = 88.05688180000288
+frozen_source_sha256 = "40b65b0eb519a3cbf8d7af643a0df6eade27b689df1a8f65d04fd6ce2ec14c54"
+group = "robustness"
+id = "single-source-box50"
+old_directory = "results/runs/r3-pg-20260917T071031-7eafbab9\\single-source-box50"
+outer_status = "iteration_limit"
+physical_pass = true
+[[runs]]
+case = "single-source"
+directory = "../r3-v2-20260917T090744-b1a0724b/single-source-box75"
+elapsed_sec = 64.74620150000555
+frozen_source_sha256 = "03307ea7973e97f488158b2c19cc9356b3605d943f93af1b08116679f5e1081f"
+group = "robustness"
+id = "single-source-box75"
+old_directory = "results/runs/r3-pg-20260917T071031-7eafbab9\\single-source-box75"
+outer_status = "iteration_limit"
+physical_pass = true
+[[runs]]
+case = "two-source"
+directory = "../r3-v2-20260917T090744-b1a0724b/two-source-schpd"
+elapsed_sec = 39.21147270000074
+frozen_source_sha256 = "efe24c6d5514b5e934fb0b30f898d3979faf3985a0bc799e4e8fbea25b617930"
+group = "robustness"
+id = "two-source-schpd"
+old_directory = "results/runs/r3-pg-20260917T071031-7eafbab9\\two-source-schpd"
+outer_status = "local_direction_stalled"
+physical_pass = true
+[[runs]]
+case = "two-source"
+directory = "../r3-v2-20260917T090744-b1a0724b/two-source-case_fixed"
+elapsed_sec = 74.08847389998846
+frozen_source_sha256 = "b2ab9651ca9dea31ce512718b34ea07a36d00f385fbfda9b6397fc88d26b451c"
+group = "robustness"
+id = "two-source-case_fixed"
+old_directory = "results/runs/r3-pg-20260917T071031-7eafbab9\\two-source-case_fixed"
+outer_status = "iteration_limit"
+physical_pass = true
+[[runs]]
+case = "two-source"
+directory = "../r3-v2-20260917T090744-b1a0724b/two-source-box25"
+elapsed_sec = 59.99995970001328
+frozen_source_sha256 = "4c3c3e0dcfd22c6692f0899653f1efcfa70e69e85aa78700de0779eec794678c"
+group = "robustness"
+id = "two-source-box25"
+old_directory = "results/runs/r3-pg-20260917T071031-7eafbab9\\two-source-box25"
+outer_status = "iteration_limit"
+physical_pass = true
+[[runs]]
+case = "two-source"
+directory = "../r3-v2-20260917T090744-b1a0724b/two-source-box50"
+elapsed_sec = 75.26390690001426
+frozen_source_sha256 = "47cee35b7e40d159b24651fd59436368b6aebb37011f7c86e5b3b3206906227c"
+group = "robustness"
+id = "two-source-box50"
+old_directory = "results/runs/r3-pg-20260917T071031-7eafbab9\\two-source-box50"
+outer_status = "iteration_limit"
+physical_pass = true
+[[runs]]
+case = "two-source"
+directory = "../r3-v2-20260917T090744-b1a0724b/two-source-box75"
+elapsed_sec = 67.65067249999265
+frozen_source_sha256 = "39722489457f7cd71af125b10c2cae971b35542421229be2b123281c664fd425"
+group = "robustness"
+id = "two-source-box75"
+old_directory = "results/runs/r3-pg-20260917T071031-7eafbab9\\two-source-box75"
+outer_status = "iteration_limit"
+physical_pass = true
+[[runs]]
+case = "single-source"
+directory = "../r3-v2-20260917T090744-b1a0724b/single-no-halfspace"
+elapsed_sec = 51.35135330000776
+frozen_source_sha256 = "a40cb409c05613e825d3d91f646ce66ef51b9d55eddca0a30d1826f2260e7976"
+group = "robustness"
+id = "single-no-halfspace"
+old_directory = "results/runs/r3-pg-20260917T071031-7eafbab9\\single-no-halfspace"
+outer_status = "iteration_limit"
+physical_pass = true
+[[runs]]
+case = "two-source"
+directory = "../r3-v2-20260917T090744-b1a0724b/two-no-halfspace"
+elapsed_sec = 122.64560920000076
+frozen_source_sha256 = "0db43106bc735240642064564601ccb141485a5654669aa731c01239004e59e0"
+group = "robustness"
+id = "two-no-halfspace"
+old_directory = "results/runs/r3-pg-20260917T071031-7eafbab9\\two-no-halfspace"
+outer_status = "iteration_limit"
+physical_pass = true
+[[runs]]
+case = "single-source"
+directory = "../r3-v2-20260917T090744-b1a0724b/single-low-flow"
+elapsed_sec = 49.94906829998945
+frozen_source_sha256 = "c95d59e8c839562dadb0ef7b7b7f29d97003f234a8b0262d09308dba3a106316"
+group = "robustness"
+id = "single-low-flow"
+old_directory = "results/runs/r3-pg-20260917T071031-7eafbab9\\single-low-flow"
+outer_status = "local_direction_stalled"
+physical_pass = true
+[[runs]]
+case = "single-source"
+directory = "../r3-v2-20260917T090744-b1a0724b/single-impossible-heat"
+elapsed_sec = 3.5279931999975815
+frozen_source_sha256 = "d056ec467286b080969280ad1506c035bbe676e187346098bb90ff0b455ba7a6"
+group = "robustness"
+id = "single-impossible-heat"
+old_directory = "results/runs/r3-pg-20260917T071031-7eafbab9\\single-impossible-heat"
+outer_status = "local_direction_stalled"
+physical_pass = false
+[[runs]]
+case = "single-source"
+directory = "../r3-v2-20260917T090744-b1a0724b/single-loose-electric"
+elapsed_sec = 1.90368510002736
+frozen_source_sha256 = "0316bd4e344b686fdd3598952ed68827827f99ad1a88953dd68c0b90da86c4b0"
+group = "robustness"
+id = "single-loose-electric"
+old_directory = "results/runs/r3-pg-20260917T071031-7eafbab9\\single-loose-electric"
+outer_status = "smooth_numeric_stop"
+physical_pass = true
+[[runs]]
+case = "single-source"
+directory = "../r3-v2-20260917T090744-b1a0724b/single-delay-switch"
+elapsed_sec = 10.228633099992294
+frozen_source_sha256 = "a30a977a8b256d83ebf4b0ca7b9a1d5d2c4e8cf5019981606d06ec4e85f621ce"
+group = "robustness"
+id = "single-delay-switch"
+old_directory = "results/runs/r3-pg-20260917T071031-7eafbab9\\single-delay-switch"
+outer_status = "local_direction_stalled"
+physical_pass = true
+[[runs]]
+case = "single-source"
+directory = "../r3-v2-20260917T090750-c52e2f8d/single-source-CF_CT-pg"
+elapsed_sec = 15.898944699991262
+frozen_source_sha256 = "d2a159d9f47cb385dacec0e26f47963f78375536750972761477378280babd1f"
+group = "modes"
+id = "single-source-CF_CT-pg"
+method = "pg"
+mode = "CF_CT"
+outer_status = "fixed_flow_dispatch"
+physical_pass = true
+[[runs]]
+case = "single-source"
+directory = "../r3-v2-20260917T090750-c52e2f8d/single-source-CF_CT-reference"
+elapsed_sec = 1.8276604999846313
+frozen_source_sha256 = "d2a159d9f47cb385dacec0e26f47963f78375536750972761477378280babd1f"
+group = "modes"
+id = "single-source-CF_CT-reference"
+method = "reference"
+mode = "CF_CT"
+outer_status = "not_applicable_direct_reference"
+physical_pass = true
+[[runs]]
+case = "single-source"
+directory = "../r3-v2-20260917T090750-c52e2f8d/single-source-CF_VT-pg"
+elapsed_sec = 0.026790899981278926
+frozen_source_sha256 = "d2a159d9f47cb385dacec0e26f47963f78375536750972761477378280babd1f"
+group = "modes"
+id = "single-source-CF_VT-pg"
+method = "pg"
+mode = "CF_VT"
+outer_status = "fixed_flow_dispatch"
+physical_pass = true
+[[runs]]
+case = "single-source"
+directory = "../r3-v2-20260917T090750-c52e2f8d/single-source-CF_VT-reference"
+elapsed_sec = 0.04661900000064634
+frozen_source_sha256 = "d2a159d9f47cb385dacec0e26f47963f78375536750972761477378280babd1f"
+group = "modes"
+id = "single-source-CF_VT-reference"
+method = "reference"
+mode = "CF_VT"
+outer_status = "not_applicable_direct_reference"
+physical_pass = true
+[[runs]]
+case = "single-source"
+directory = "../r3-v2-20260917T090750-c52e2f8d/single-source-VF_CT-pg"
+elapsed_sec = 35.041403500013985
+frozen_source_sha256 = "d2a159d9f47cb385dacec0e26f47963f78375536750972761477378280babd1f"
+group = "modes"
+id = "single-source-VF_CT-pg"
+method = "pg"
+mode = "VF_CT"
+outer_status = "local_direction_stalled"
+physical_pass = true
+[[runs]]
+case = "single-source"
+directory = "../r3-v2-20260917T090750-c52e2f8d/single-source-VF_CT-reference"
+elapsed_sec = 0.6644238000153564
+frozen_source_sha256 = "d2a159d9f47cb385dacec0e26f47963f78375536750972761477378280babd1f"
+group = "modes"
+id = "single-source-VF_CT-reference"
+method = "reference"
+mode = "VF_CT"
+outer_status = "not_applicable_direct_reference"
+physical_pass = true
+[[runs]]
+case = "single-source"
+directory = "../r3-v2-20260917T090750-c52e2f8d/single-source-VF_VT-pg"
+elapsed_sec = 74.51816739997594
+frozen_source_sha256 = "d2a159d9f47cb385dacec0e26f47963f78375536750972761477378280babd1f"
+group = "modes"
+id = "single-source-VF_VT-pg"
+method = "pg"
+mode = "VF_VT"
+outer_status = "iteration_limit"
+physical_pass = true
+[[runs]]
+case = "single-source"
+directory = "../r3-v2-20260917T090750-c52e2f8d/single-source-VF_VT-reference"
+elapsed_sec = 2.820540399989113
+frozen_source_sha256 = "d2a159d9f47cb385dacec0e26f47963f78375536750972761477378280babd1f"
+group = "modes"
+id = "single-source-VF_VT-reference"
+method = "reference"
+mode = "VF_VT"
+outer_status = "not_applicable_direct_reference"
+physical_pass = true
+[[runs]]
+case = "two-source"
+directory = "../r3-v2-20260917T090750-c52e2f8d/two-source-CF_CT-pg"
+elapsed_sec = 0.17488959999172948
+frozen_source_sha256 = "a31cb0ad4684049b587f1358ff4921299dd148344353c871305e1d3e9b43e186"
+group = "modes"
+id = "two-source-CF_CT-pg"
+method = "pg"
+mode = "CF_CT"
+outer_status = "fixed_flow_dispatch"
+physical_pass = true
+[[runs]]
+case = "two-source"
+directory = "../r3-v2-20260917T090750-c52e2f8d/two-source-CF_CT-reference"
+elapsed_sec = 0.12967560000834055
+frozen_source_sha256 = "a31cb0ad4684049b587f1358ff4921299dd148344353c871305e1d3e9b43e186"
+group = "modes"
+id = "two-source-CF_CT-reference"
+method = "reference"
+mode = "CF_CT"
+outer_status = "not_applicable_direct_reference"
+physical_pass = true
+[[runs]]
+case = "two-source"
+directory = "../r3-v2-20260917T090750-c52e2f8d/two-source-CF_VT-pg"
+elapsed_sec = 0.06912430000375025
+frozen_source_sha256 = "a31cb0ad4684049b587f1358ff4921299dd148344353c871305e1d3e9b43e186"
+group = "modes"
+id = "two-source-CF_VT-pg"
+method = "pg"
+mode = "CF_VT"
+outer_status = "fixed_flow_dispatch"
+physical_pass = true
+[[runs]]
+case = "two-source"
+directory = "../r3-v2-20260917T090750-c52e2f8d/two-source-CF_VT-reference"
+elapsed_sec = 0.25541080001858063
+frozen_source_sha256 = "a31cb0ad4684049b587f1358ff4921299dd148344353c871305e1d3e9b43e186"
+group = "modes"
+id = "two-source-CF_VT-reference"
+method = "reference"
+mode = "CF_VT"
+outer_status = "not_applicable_direct_reference"
+physical_pass = true
+[[runs]]
+case = "two-source"
+directory = "../r3-v2-20260917T092124-cb7d8099/two-source-VF_CT-reference"
+elapsed_sec = 23.07164899999043
+frozen_source_sha256 = "a31cb0ad4684049b587f1358ff4921299dd148344353c871305e1d3e9b43e186"
+group = "modes"
+id = "two-source-VF_CT-reference"
+method = "reference"
+mode = "VF_CT"
+outer_status = "not_applicable_direct_reference"
+physical_pass = true
+[[runs]]
+case = "two-source"
+directory = "../r3-v2-20260917T092124-cb7d8099/two-source-VF_VT-reference"
+elapsed_sec = 600.0117037000018
+frozen_source_sha256 = "a31cb0ad4684049b587f1358ff4921299dd148344353c871305e1d3e9b43e186"
+group = "modes"
+id = "two-source-VF_VT-reference"
+method = "reference"
+mode = "VF_VT"
+outer_status = "not_applicable_direct_reference"
+physical_pass = true
+[[runs]]
+case = "two-source"
+directory = "../r3-v2-20260917T093636-37b7a2ec/two-source-VF_CT-pg"
+elapsed_sec = 301.48031550002634
+frozen_source_sha256 = "a31cb0ad4684049b587f1358ff4921299dd148344353c871305e1d3e9b43e186"
+group = "modes"
+id = "two-source-VF_CT-pg"
+method = "pg"
+mode = "VF_CT"
+outer_status = "untrusted_dual_local_stalled"
+physical_pass = false
+[[runs]]
+case = "two-source"
+directory = "../r3-v2-20260917T093636-37b7a2ec/two-source-VF_VT-pg"
+elapsed_sec = 206.8936260000046
+frozen_source_sha256 = "a31cb0ad4684049b587f1358ff4921299dd148344353c871305e1d3e9b43e186"
+group = "modes"
+id = "two-source-VF_VT-pg"
+method = "pg"
+mode = "VF_VT"
+outer_status = "iteration_limit"
+physical_pass = true

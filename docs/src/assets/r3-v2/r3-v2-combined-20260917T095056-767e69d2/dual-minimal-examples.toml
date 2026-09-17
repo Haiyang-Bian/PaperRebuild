@@ -1,0 +1,421 @@
+[[records]]
+active = true
+cone_dual = [0.9999977619091576, -0.9999977617314019, 2.237878318808816e-6]
+dual_status = "FEASIBLE_POINT"
+objective = 1.000000000018474
+scale = 1.0
+solver = "Clarabel"
+termination = "OPTIMAL"
+
+    [records.kkt]
+    active_signature = "084b883f9a50d1dd49b596aa84dd45f52245ecd221fe0e6b88d47aa0ccfd882c"
+    complementarity = 3.5460598908226803e-10
+    dual = 0.0
+    primal = 7.267519919196275e-13
+    reason = "checked"
+    relative_gap = 9.791967236868552e-10
+    stationarity = 3.427118698352586e-11
+    trusted = true
+
+        [[records.kkt.rows]]
+        active = true
+        complementarity = 9.385997371344574e-11
+        constraint = "MathOptInterface.ConstraintIndex{MathOptInterface.VectorAffineFunction{Float64}, MathOptInterface.SecondOrderCone}(1)"
+        dual_error = 0.0
+        lagrange_multiplier = [-0.9999977619091576, 0.9999977617314019, -2.237878318808816e-6]
+        primal = [2.000000000018474, 1.9999999999985465, 1.847388908515768e-11]
+        primal_error = 0.0
+        raw_dual = [0.9999977619091576, -0.9999977617314019, 2.237878318808816e-6]
+        set = "MathOptInterface.SecondOrderCone"
+        [[records.kkt.rows]]
+        active = true
+        complementarity = 1.4535007305069311e-12
+        constraint = "MathOptInterface.ConstraintIndex{MathOptInterface.VariableIndex, MathOptInterface.EqualTo{Float64}}(1)"
+        dual_error = 0.0
+        lagrange_multiplier = [-1.9999955234628044]
+        primal = [0.9999999999992732]
+        primal_error = 7.267519919196275e-13
+        raw_dual = [1.9999955234628044]
+        set = "MathOptInterface.EqualTo{Float64}"
+        [[records.kkt.rows]]
+        active = false
+        complementarity = 3.5460598908226803e-10
+        constraint = "MathOptInterface.ConstraintIndex{MathOptInterface.VariableIndex, MathOptInterface.GreaterThan{Float64}}(2)"
+        dual_error = 0.0
+        lagrange_multiplier = [-3.5460598907571707e-10]
+        primal = [1.000000000018474]
+        primal_error = 0.0
+        raw_dual = [3.5460598907571707e-10]
+        set = "MathOptInterface.GreaterThan{Float64}"
+        [[records.kkt.rows]]
+        active = false
+        complementarity = 3.534192405679074e-10
+        constraint = "MathOptInterface.ConstraintIndex{MathOptInterface.VariableIndex, MathOptInterface.LessThan{Float64}}(2)"
+        dual_error = 0.0
+        lagrange_multiplier = [3.926880450762587e-11]
+        primal = [1.000000000018474]
+        primal_error = 0.0
+        raw_dual = [-3.926880450762587e-11]
+        set = "MathOptInterface.LessThan{Float64}"
+[[records]]
+active = true
+cone_dual = [0.0010000162145320111, -0.0010000162143685605, -1.6214995010280182e-8]
+dual_status = "FEASIBLE_POINT"
+objective = 1.000000000394481
+scale = 1000.0
+solver = "Clarabel"
+termination = "OPTIMAL"
+
+    [records.kkt]
+    active_signature = "084b883f9a50d1dd49b596aa84dd45f52245ecd221fe0e6b88d47aa0ccfd882c"
+    complementarity = 7.485642472581537e-10
+    dual = 0.0
+    primal = 0.0
+    reason = "checked"
+    relative_gap = 2.0161193817576517e-9
+    stationarity = 6.667564749308095e-11
+    trusted = true
+
+        [[records.kkt.rows]]
+        active = true
+        complementarity = 1.803426583197613e-10
+        constraint = "MathOptInterface.ConstraintIndex{MathOptInterface.VectorAffineFunction{Float64}, MathOptInterface.SecondOrderCone}(1)"
+        dual_error = 0.0
+        lagrange_multiplier = [-0.0010000162145320111, 0.0010000162143685605, 1.6214995010280182e-8]
+        primal = [2000.000000394481, 2000.0, 3.9448093502869597e-7]
+        primal_error = 0.0
+        raw_dual = [0.0010000162145320111, -0.0010000162143685605, -1.6214995010280182e-8]
+        set = "MathOptInterface.SecondOrderCone"
+        [[records.kkt.rows]]
+        active = true
+        complementarity = 0.0
+        constraint = "MathOptInterface.ConstraintIndex{MathOptInterface.VariableIndex, MathOptInterface.EqualTo{Float64}}(1)"
+        dual_error = 0.0
+        lagrange_multiplier = [-2.0000324287371205]
+        primal = [1.0]
+        primal_error = 0.0
+        raw_dual = [2.0000324287371205]
+        set = "MathOptInterface.EqualTo{Float64}"
+        [[records.kkt.rows]]
+        active = false
+        complementarity = 7.462021298123349e-10
+        constraint = "MathOptInterface.ConstraintIndex{MathOptInterface.VariableIndex, MathOptInterface.GreaterThan{Float64}}(2)"
+        dual_error = 0.0
+        lagrange_multiplier = [-7.462021295179724e-10]
+        primal = [1.000000000394481]
+        primal_error = 0.0
+        raw_dual = [7.462021295179724e-10]
+        set = "MathOptInterface.GreaterThan{Float64}"
+        [[records.kkt.rows]]
+        active = false
+        complementarity = 7.485642472581537e-10
+        constraint = "MathOptInterface.ConstraintIndex{MathOptInterface.VariableIndex, MathOptInterface.LessThan{Float64}}(2)"
+        dual_error = 0.0
+        lagrange_multiplier = [8.317380525455157e-11]
+        primal = [1.000000000394481]
+        primal_error = 0.0
+        raw_dual = [-8.317380525455157e-11]
+        set = "MathOptInterface.LessThan{Float64}"
+[[records]]
+active = false
+cone_dual = [4.2543768732125937e-10, -3.0605267736348633e-10, -1.530263386817349e-10]
+dual_status = "FEASIBLE_POINT"
+objective = 1.9999999999999998
+scale = 1.0
+solver = "Clarabel"
+termination = "OPTIMAL"
+
+    [records.kkt]
+    active_signature = "d4611bd1eb865d0e1a078594ceff7e1805f6c39fef75a31a51cff37390a0e427"
+    complementarity = 5.111813685550702e-10
+    dual = 0.0
+    primal = 6.661338147750935e-16
+    reason = "checked"
+    relative_gap = 2.555905487255928e-10
+    stationarity = 4.932447042650342e-11
+    trusted = true
+
+        [[records.kkt.rows]]
+        active = false
+        complementarity = 5.111813685550702e-10
+        constraint = "MathOptInterface.ConstraintIndex{MathOptInterface.VectorAffineFunction{Float64}, MathOptInterface.SecondOrderCone}(1)"
+        dual_error = 0.0
+        lagrange_multiplier = [-4.2543768732125937e-10, 3.0605267736348633e-10, 1.530263386817349e-10]
+        primal = [3.0, 2.0000000000000013, 0.9999999999999998]
+        primal_error = 0.0
+        raw_dual = [4.2543768732125937e-10, -3.0605267736348633e-10, -1.530263386817349e-10]
+        set = "MathOptInterface.SecondOrderCone"
+        [[records.kkt.rows]]
+        active = true
+        complementarity = 4.0774407498851695e-25
+        constraint = "MathOptInterface.ConstraintIndex{MathOptInterface.VariableIndex, MathOptInterface.EqualTo{Float64}}(1)"
+        dual_error = 0.0
+        lagrange_multiplier = [-6.121053547269375e-10]
+        primal = [1.0000000000000007]
+        primal_error = 6.661338147750935e-16
+        raw_dual = [6.121053547269375e-10]
+        set = "MathOptInterface.EqualTo{Float64}"
+        [[records.kkt.rows]]
+        active = true
+        complementarity = 2.2204460489740054e-16
+        constraint = "MathOptInterface.ConstraintIndex{MathOptInterface.VariableIndex, MathOptInterface.EqualTo{Float64}}(2)"
+        dual_error = 0.0
+        lagrange_multiplier = [-0.9999999998755621]
+        primal = [1.9999999999999998]
+        primal_error = 1.1102230246251568e-16
+        raw_dual = [0.9999999998755621]
+        set = "MathOptInterface.EqualTo{Float64}"
+[[records]]
+active = false
+cone_dual = [2.853544075906304e-12, -9.530455831103552e-26, -8.899044228094278e-26]
+dual_status = "FEASIBLE_POINT"
+objective = 2.0
+scale = 1000.0
+solver = "Clarabel"
+termination = "OPTIMAL"
+
+    [records.kkt]
+    active_signature = "d4611bd1eb865d0e1a078594ceff7e1805f6c39fef75a31a51cff37390a0e427"
+    complementarity = 8.560632227718632e-9
+    dual = 0.0
+    primal = 0.0
+    reason = "checked"
+    relative_gap = 4.280316101556991e-9
+    stationarity = 9.511813549968077e-10
+    trusted = true
+
+        [[records.kkt.rows]]
+        active = false
+        complementarity = 8.560632227718632e-9
+        constraint = "MathOptInterface.ConstraintIndex{MathOptInterface.VectorAffineFunction{Float64}, MathOptInterface.SecondOrderCone}(1)"
+        dual_error = 0.0
+        lagrange_multiplier = [-2.853544075906304e-12, 9.530455831103552e-26, 8.899044228094278e-26]
+        primal = [3000.0, 2000.0, 1000.0]
+        primal_error = 0.0
+        raw_dual = [2.853544075906304e-12, -9.530455831103552e-26, -8.899044228094278e-26]
+        set = "MathOptInterface.SecondOrderCone"
+        [[records.kkt.rows]]
+        active = true
+        complementarity = 0.0
+        constraint = "MathOptInterface.ConstraintIndex{MathOptInterface.VariableIndex, MathOptInterface.EqualTo{Float64}}(1)"
+        dual_error = 0.0
+        lagrange_multiplier = [-1.9060940379158338e-22]
+        primal = [1.0]
+        primal_error = 0.0
+        raw_dual = [1.9060940379158338e-22]
+        set = "MathOptInterface.EqualTo{Float64}"
+        [[records.kkt.rows]]
+        active = true
+        complementarity = 0.0
+        constraint = "MathOptInterface.ConstraintIndex{MathOptInterface.VariableIndex, MathOptInterface.EqualTo{Float64}}(2)"
+        dual_error = 0.0
+        lagrange_multiplier = [-1.0]
+        primal = [2.0]
+        primal_error = 0.0
+        raw_dual = [1.0]
+        set = "MathOptInterface.EqualTo{Float64}"
+[[records]]
+active = true
+cone_dual = [1.0000000008013046, -1.0000000017917943, 1.684040982269847e-11]
+dual_status = "FEASIBLE_POINT"
+objective = 0.9999999996737206
+scale = 1.0
+solver = "Gurobi"
+termination = "OPTIMAL"
+
+    [records.kkt]
+    active_signature = "084b883f9a50d1dd49b596aa84dd45f52245ecd221fe0e6b88d47aa0ccfd882c"
+    complementarity = 5.768147064100187e-10
+    dual = 7.003819757749566e-10
+    primal = 1.1535720509684051e-10
+    reason = "checked"
+    relative_gap = 3.125403713610808e-9
+    stationarity = 2.7642785298229334e-10
+    trusted = true
+
+        [[records.kkt.rows]]
+        active = true
+        complementarity = 5.768147064100187e-10
+        constraint = "MathOptInterface.ConstraintIndex{MathOptInterface.VectorAffineFunction{Float64}, MathOptInterface.SecondOrderCone}(1)"
+        dual_error = 7.003819757749566e-10
+        lagrange_multiplier = [-1.0000000008013046, 1.0000000017917943, -1.684040982269847e-11]
+        primal = [1.9999999996737206, 2.0, -3.262794479041986e-10]
+        primal_error = 1.1535720509684051e-10
+        raw_dual = [1.0000000008013046, -1.0000000017917943, 1.684040982269847e-11]
+        set = "MathOptInterface.SecondOrderCone"
+        [[records.kkt.rows]]
+        active = true
+        complementarity = 0.0
+        constraint = "MathOptInterface.ConstraintIndex{MathOptInterface.VariableIndex, MathOptInterface.EqualTo{Float64}}(1)"
+        dual_error = 0.0
+        lagrange_multiplier = [-2.0000000035835885]
+        primal = [1.0]
+        primal_error = 0.0
+        raw_dual = [2.0000000035835885]
+        set = "MathOptInterface.EqualTo{Float64}"
+        [[records.kkt.rows]]
+        active = false
+        complementarity = 1.1138571103552974e-11
+        constraint = "MathOptInterface.ConstraintIndex{MathOptInterface.VariableIndex, MathOptInterface.GreaterThan{Float64}}(2)"
+        dual_error = 0.0
+        lagrange_multiplier = [-1.1138571107187261e-11]
+        primal = [0.9999999996737206]
+        primal_error = 0.0
+        raw_dual = [1.1138571107187261e-11]
+        set = "MathOptInterface.GreaterThan{Float64}"
+        [[records.kkt.rows]]
+        active = false
+        complementarity = 0.0
+        constraint = "MathOptInterface.ConstraintIndex{MathOptInterface.VariableIndex, MathOptInterface.LessThan{Float64}}(2)"
+        dual_error = 0.0
+        lagrange_multiplier = [-0.0]
+        primal = [0.9999999996737206]
+        primal_error = 0.0
+        raw_dual = [0.0]
+        set = "MathOptInterface.LessThan{Float64}"
+
+    [records.native_duals.Pi]
+    values = [1.0000000008013046, -1.0000000017917943, 1.684040982269847e-11]
+
+    [records.native_duals.QCPi]
+    values = [0.25000000044794857]
+
+    [records.native_duals.RC]
+    values = [2.0000000035835885, 1.1138571107187261e-11, 1.933840312305304e-12, 0.0, -2.965581740534625e-13]
+[[records]]
+active = true
+cone_dual = "Gurobi Error 10005: Unable to retrieve attribute 'Pi'"
+dual_status = "NO_SOLUTION"
+objective = 0.9999999999748144
+scale = 1000.0
+solver = "Gurobi"
+termination = "OPTIMAL"
+
+    [records.kkt]
+    reason = "dual_unavailable"
+    trusted = false
+
+    [records.native_duals.Pi]
+    error_code = 10005
+
+    [records.native_duals.QCPi]
+    error_code = 10005
+
+    [records.native_duals.RC]
+    error_code = 10005
+[[records]]
+active = false
+cone_dual = [-0.0, -0.0, -0.0]
+dual_status = "FEASIBLE_POINT"
+objective = 2.0
+scale = 1.0
+solver = "Gurobi"
+termination = "OPTIMAL"
+
+    [records.kkt]
+    active_signature = "d4611bd1eb865d0e1a078594ceff7e1805f6c39fef75a31a51cff37390a0e427"
+    complementarity = 0.0
+    dual = 0.0
+    primal = 0.0
+    reason = "checked"
+    relative_gap = 0.0
+    stationarity = 0.0
+    trusted = true
+
+        [[records.kkt.rows]]
+        active = false
+        complementarity = 0.0
+        constraint = "MathOptInterface.ConstraintIndex{MathOptInterface.VectorAffineFunction{Float64}, MathOptInterface.SecondOrderCone}(1)"
+        dual_error = 0.0
+        lagrange_multiplier = [0.0, 0.0, 0.0]
+        primal = [3.0, 2.0, 1.0]
+        primal_error = 0.0
+        raw_dual = [-0.0, -0.0, -0.0]
+        set = "MathOptInterface.SecondOrderCone"
+        [[records.kkt.rows]]
+        active = true
+        complementarity = 0.0
+        constraint = "MathOptInterface.ConstraintIndex{MathOptInterface.VariableIndex, MathOptInterface.EqualTo{Float64}}(1)"
+        dual_error = 0.0
+        lagrange_multiplier = [-0.0]
+        primal = [1.0]
+        primal_error = 0.0
+        raw_dual = [0.0]
+        set = "MathOptInterface.EqualTo{Float64}"
+        [[records.kkt.rows]]
+        active = true
+        complementarity = 0.0
+        constraint = "MathOptInterface.ConstraintIndex{MathOptInterface.VariableIndex, MathOptInterface.EqualTo{Float64}}(2)"
+        dual_error = 0.0
+        lagrange_multiplier = [-1.0]
+        primal = [2.0]
+        primal_error = 0.0
+        raw_dual = [1.0]
+        set = "MathOptInterface.EqualTo{Float64}"
+
+    [records.native_duals.Pi]
+    values = [-0.0, -0.0, -0.0]
+
+    [records.native_duals.QCPi]
+    values = [0.0]
+
+    [records.native_duals.RC]
+    values = [0.0, 1.0, 0.0, 0.0, 0.0]
+[[records]]
+active = false
+cone_dual = [-0.0, -0.0, -0.0]
+dual_status = "FEASIBLE_POINT"
+objective = 2.0
+scale = 1000.0
+solver = "Gurobi"
+termination = "OPTIMAL"
+
+    [records.kkt]
+    active_signature = "d4611bd1eb865d0e1a078594ceff7e1805f6c39fef75a31a51cff37390a0e427"
+    complementarity = 0.0
+    dual = 0.0
+    primal = 0.0
+    reason = "checked"
+    relative_gap = 0.0
+    stationarity = 0.0
+    trusted = true
+
+        [[records.kkt.rows]]
+        active = false
+        complementarity = 0.0
+        constraint = "MathOptInterface.ConstraintIndex{MathOptInterface.VectorAffineFunction{Float64}, MathOptInterface.SecondOrderCone}(1)"
+        dual_error = 0.0
+        lagrange_multiplier = [0.0, 0.0, 0.0]
+        primal = [3000.0, 2000.0, 1000.0]
+        primal_error = 0.0
+        raw_dual = [-0.0, -0.0, -0.0]
+        set = "MathOptInterface.SecondOrderCone"
+        [[records.kkt.rows]]
+        active = true
+        complementarity = 0.0
+        constraint = "MathOptInterface.ConstraintIndex{MathOptInterface.VariableIndex, MathOptInterface.EqualTo{Float64}}(1)"
+        dual_error = 0.0
+        lagrange_multiplier = [-0.0]
+        primal = [1.0]
+        primal_error = 0.0
+        raw_dual = [0.0]
+        set = "MathOptInterface.EqualTo{Float64}"
+        [[records.kkt.rows]]
+        active = true
+        complementarity = 0.0
+        constraint = "MathOptInterface.ConstraintIndex{MathOptInterface.VariableIndex, MathOptInterface.EqualTo{Float64}}(2)"
+        dual_error = 0.0
+        lagrange_multiplier = [-1.0]
+        primal = [2.0]
+        primal_error = 0.0
+        raw_dual = [1.0]
+        set = "MathOptInterface.EqualTo{Float64}"
+
+    [records.native_duals.Pi]
+    values = [-0.0, -0.0, -0.0]
+
+    [records.native_duals.QCPi]
+    values = [0.0]
+
+    [records.native_duals.RC]
+    values = [0.0, 1.0, 0.0, 0.0, 0.0]

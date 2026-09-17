@@ -1,4 +1,7 @@
 # Julia入口共用；不改变用户全局Julia配置或许可文件。
+let root=normpath(joinpath(@__DIR__, ".."))
+    root in LOAD_PATH || push!(LOAD_PATH, root)
+end
 let depot = normpath(joinpath(@__DIR__, "..", ".julia"))
     isdir(depot) && !(depot in DEPOT_PATH) && pushfirst!(DEPOT_PATH, depot)
 end
