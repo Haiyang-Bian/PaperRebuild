@@ -130,6 +130,22 @@ PaperRebuild.r3_stopping_evidence
 PaperRebuild.build_r3_physical_step
 ```
 
+## 第4章集中交易与核算
+
+```@docs
+PaperRebuild.R4Case
+PaperRebuild.R4Spec
+PaperRebuild.load_r4_case
+PaperRebuild.build_r4_model
+PaperRebuild.solve_r4_case
+PaperRebuild.validate_r4_solution
+PaperRebuild.r4_ledger
+PaperRebuild.save_r4_run
+PaperRebuild.read_r4_run
+PaperRebuild.compare_r4_runs
+PaperRebuild.plot_r4_run
+```
+
 ## 工程示例函数说明
 
 以下两个函数保留自初始化模板，只用于验证包加载、测试和 Documenter 集成，不计入论文复现进度。

@@ -1,5 +1,7 @@
 {
   "inputs": [
+    {"id":"r4RunDirectory","description":"已保存R4运行目录","type":"promptString"},
+    {"id":"r4CompareDirectory","description":"同输入的另一个R4运行目录","type":"promptString"},
     {
       "description": "R3运行目录（包含case.toml/run.toml/metadata.toml）",
       "id": "r3RunDirectory",
@@ -23,6 +25,118 @@
     }
   ],
   "tasks": [
+    {
+      "label": "PaperRebuild: R4 mapping",
+      "type": "process",
+      "command": "julia",
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/check_ch04.jl"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 tests",
+      "type": "process",
+      "command": "julia",
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/test_r4.jl"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 run central",
+      "type": "process",
+      "command": "julia",
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/run_r4.jl",
+        "base",
+        "central_exact",
+        "gurobi"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 validate",
+      "type": "process",
+      "command": "julia",
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/validate_r4.jl",
+        "${input:r4RunDirectory}"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 redraw",
+      "type": "process",
+      "command": "julia",
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=docs",
+        "scripts/plot_r4.jl",
+        "${input:r4RunDirectory}"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 frozen study",
+      "type": "process",
+      "command": "julia",
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/study_r4.jl"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 compare",
+      "type": "process",
+      "command": "julia",
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/compare_r4.jl",
+        "${input:r4RunDirectory}",
+        "${input:r4CompareDirectory}"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
     {
       "args": [
         "+1.12.6",

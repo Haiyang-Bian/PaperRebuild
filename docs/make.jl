@@ -65,6 +65,7 @@ makedocs(;
             "模型与账本解释" => "ch04-models.md",
             "原式清单" => "ch04-equations.md",
             "符号与采用解释" => "ch04-symbols.md",
+            "运行与账本教程" => "ch04-tutorial.md",
         ],
         "API 索引与说明" => "api.md",
         "第 2 章模型与首批实现" => [

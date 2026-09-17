@@ -1645,6 +1645,26 @@
           "path": "docs/src/ch03-r3-baseline.md",
           "name": "ch03-r3-baseline.md",
           "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch04-equations.md",
+          "name": "ch04-equations.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch04-models.md",
+          "name": "ch04-models.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch04-symbols.md",
+          "name": "ch04-symbols.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch04-tutorial.md",
+          "name": "ch04-tutorial.md",
+          "isDirectory": false
         }
       ],
       "order": 1,
@@ -1740,6 +1760,11 @@
         {
           "path": "docs/agent/tasks/2026-09-17-r3-baseline.md",
           "name": "2026-09-17-r3-baseline.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/agent/tasks/2026-09-18-r4-central.md",
+          "name": "2026-09-18-r4-central.md",
           "isDirectory": false
         }
       ],
@@ -1912,6 +1937,26 @@
           "path": "src/verification/r3_baseline.jl",
           "name": "r3_baseline.jl",
           "isDirectory": false
+        },
+        {
+          "path": "src/core/r4.jl",
+          "name": "r4.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/formulations/r4.jl",
+          "name": "r4.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/reporting/r4_runs.jl",
+          "name": "r4_runs.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/verification/r4.jl",
+          "name": "r4.jl",
+          "isDirectory": false
         }
       ],
       "order": 3,
@@ -2007,6 +2052,41 @@
         {
           "path": "configs/r3/baseline-study.toml",
           "name": "baseline-study.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r4/base.toml",
+          "name": "base.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r4/capacity_infeasible.toml",
+          "name": "capacity_infeasible.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r4/electric_bottleneck.toml",
+          "name": "electric_bottleneck.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r4/fixed_load.toml",
+          "name": "fixed_load.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r4/heat_bottleneck.toml",
+          "name": "heat_bottleneck.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r4/no_p2p.toml",
+          "name": "no_p2p.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r4/study.toml",
+          "name": "study.toml",
           "isDirectory": false
         }
       ],
@@ -2143,6 +2223,21 @@
         {
           "path": "docs/reading/ch03/r3-baseline-equations.toml",
           "name": "r3-baseline-equations.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch04/formulas.toml",
+          "name": "formulas.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch04/issues.toml",
+          "name": "issues.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch04/symbols.toml",
+          "name": "symbols.toml",
           "isDirectory": false
         }
       ],
@@ -8571,6 +8666,11 @@
           "path": "test/r3_boundary.jl",
           "name": "r3_boundary.jl",
           "isDirectory": false
+        },
+        {
+          "path": "test/r4.jl",
+          "name": "r4.jl",
+          "isDirectory": false
         }
       ],
       "order": 7,
@@ -9226,6 +9326,61 @@
         {
           "path": "scripts/verify_r3_baseline_report.jl",
           "name": "verify_r3_baseline_report.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/ch04_docs.jl",
+          "name": "ch04_docs.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_ch04.jl",
+          "name": "check_ch04.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/compare_r4.jl",
+          "name": "compare_r4.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/freeze_r4.jl",
+          "name": "freeze_r4.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/plot_r4.jl",
+          "name": "plot_r4.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r4_setup.jl",
+          "name": "r4_setup.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/report_r4.jl",
+          "name": "report_r4.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/run_r4.jl",
+          "name": "run_r4.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/study_r4.jl",
+          "name": "study_r4.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/test_r4.jl",
+          "name": "test_r4.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/validate_r4.jl",
+          "name": "validate_r4.jl",
           "isDirectory": false
         }
       ],

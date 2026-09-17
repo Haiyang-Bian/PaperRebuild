@@ -1,0 +1,30 @@
+bottleneck_factor = 0.25
+budget_sec = 600
+clarabel_tol = 1.0e-9
+freeze_rule = "输入先于任何本批优化；无收益驱动的调参。"
+gurobi_MIPGap = 1.0e-6
+gurobi_feasibility_tol = 1.0e-9
+gurobi_optimality_tol = 1.0e-9
+schema = "r4-study-v1"
+seed = 23
+threads = 1
+variants = ["independent_exact", "central_socp", "central_exact"]
+
+[[case]]
+name = "base"
+sha256 = "ba3e43bababf99b9d5064078e05a969b940c88d6f0a4e63a219c3ff17c90def5"
+[[case]]
+name = "electric_bottleneck"
+sha256 = "c6ab97224140ee02779dddf988e012188cfa561e967404a8be9cb8e59a6062d1"
+[[case]]
+name = "heat_bottleneck"
+sha256 = "a60f2342fccc72b77031d054a044b506ac40603a1e02a8981a67a1522becb848"
+[[case]]
+name = "no_p2p"
+sha256 = "1fce37fe80e6171a7d9e0637889928effd0ea00b2613d6948ae61ec9cc594763"
+[[case]]
+name = "fixed_load"
+sha256 = "d31054989c0a5440e57226af2452df20f2f18c649982a9669365f7b13a7af88a"
+[[case]]
+name = "capacity_infeasible"
+sha256 = "964d2efba927579077dd8e89761248d1dee2d3a218f5913f079a035e8f3469e8"

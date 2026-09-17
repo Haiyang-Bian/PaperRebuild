@@ -98,7 +98,7 @@ function render_ch04()
         )
     end
     outputs["ch04-symbols.md"]=String(take!(io))
-    return root, Dict(k => rstrip(v)*"\n" for (k,v) in outputs)
+    return root, Dict(k => rstrip(v)*"\n" for (k, v) in outputs)
 end
 function sync_ch04(; check = false)
     root, outputs=render_ch04()
