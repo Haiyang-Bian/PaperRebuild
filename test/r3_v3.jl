@@ -22,6 +22,13 @@ const PR3=PaperRebuild
     @test isfinite(PR3.r3_physical_merit(c, candidate["values"]).value)
     @test isfinite(PR3.r3_physical_score(c, candidate))
     @test candidate["status"]=="restoration_candidate"
+    @test all(
+        !haskey(candidate, k) for
+        k in ("solver_bound", "raw_solver_bound", "solver_relative_gap", "bound_objective_kind")
+    )
+    stale=deepcopy(candidate)
+    stale["solver_bound"]=s["operating_cost"]
+    @test_throws ArgumentError validate_r3_solution(c, stale)
     er=first(x for x in b.physical_rows if x.equation=="R3-electric-equality")
     edge=c.data["electric"]["edges"][1]
     t=er.t

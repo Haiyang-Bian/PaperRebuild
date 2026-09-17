@@ -238,6 +238,10 @@ function validate_r3_solution(c::R2Case, result)
             1e-6*max(1, abs(total)),
         )
     elseif kind=="physical_violation"
+        any(
+            haskey(result, k) for
+            k in ("solver_bound", "raw_solver_bound", "solver_relative_gap", "bound_objective_kind")
+        ) && throw(ArgumentError("恢复候选不能沿用原成本界"))
         record(
             "R3-physical-merit",
             0,

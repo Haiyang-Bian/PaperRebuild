@@ -5,13 +5,30 @@ using Gurobi
 cfgpath="configs/r3/v3-study.toml"
 cfg=TOML.parsefile(cfgpath);
 factory=r3_gurobi_factory(Gurobi)
-selected=isempty(ARGS) ? cfg["entries"] : [e for e in cfg["entries"] if e["id"] in ARGS]
+resume=findfirst(a->startswith(a, "--resume="), ARGS)
+requested=filter(a->!startswith(a, "--resume="), ARGS)
+selected=isempty(requested) ? cfg["entries"] : [e for e in cfg["entries"] if e["id"] in requested]
 isempty(selected) && error("未知运行ID")
 batch="r3-v3-"*Dates.format(now(UTC), "yyyymmddTHHMMSS")*"-"*string(uuid4())[1:8]
 root=joinpath("results", "runs", batch);
 mkdir(root);
 cp(cfgpath, joinpath(root, "frozen.toml"))
 records=Dict{String,Any}[]
+if !isnothing(resume)
+    path=split(ARGS[resume], '='; limit = 2)[2]
+    prior=TOML.parsefile(path)
+    prior["config_sha256"]==bytes2hex(sha256(read(cfgpath))) || error("续跑清单不同")
+    for e in prior["runs"]
+        row=deepcopy(e)
+        row["directory"]=replace(
+            relpath(normpath(joinpath(dirname(path), e["directory"])), root),
+            '\\'=>'/',
+        )
+        push!(records, row)
+    end
+    done=Set(e["id"] for e in records)
+    selected=filter(e->!(e["id"] in done), selected)
+end
 function checkpoint()
     open(
         io->TOML.print(

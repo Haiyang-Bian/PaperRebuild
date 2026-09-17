@@ -181,6 +181,9 @@ function r3_physical_candidate(c, center, b)
     r["operating_cost"]=r3_operating_cost(c, r["values"])
     r["objective"]=r["operating_cost"]
     r["solver_objective"]=objective_value(b.model)
+    r["termination"]=string(termination_status(b.model))
+    r["primal"]=string(primal_status(b.model))
+    r["local_optimality_certified"]=termination_status(b.model)==MOI.OPTIMAL
     r["physical_merit"]=r3_physical_merit(c, r["values"]).value
     for key in (
         "bound",
@@ -190,6 +193,12 @@ function r3_physical_candidate(c, center, b)
         "dual_objective",
         "model_pass",
         "physics_pass",
+        "solver_bound",
+        "raw_solver_bound",
+        "solver_relative_gap",
+        "bound_objective_kind",
+        "bound_error",
+        "dual_bound_error",
     )
         pop!(r, key, nothing)
     end
