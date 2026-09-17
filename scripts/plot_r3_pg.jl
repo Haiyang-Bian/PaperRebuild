@@ -4,11 +4,12 @@ using PaperRebuild, CairoMakie, CSV, TOML, SHA
 function plot_r3_pg_run(dir; output = joinpath(dir, "pg-figures"))
     loaded=read_r3_run(dir)
     c, r=loaded.case, loaded.result
-    r["algorithm"]=="r3_pg_checked_v1" || error("需要PG运行")
+    r["algorithm"] in ("r3_pg_checked_v1", "r3_pg_checked_v2", "r3_cost_reference_v1") ||
+        error("需要R3外层或参考运行")
     ispath(output) && error("拒绝覆盖旧图；请使用新输出目录")
     mkdir(output)
     runid=basename(dirname(abspath(dir)))*"/"*loaded.metadata["run_id"]
-    iterations=r["iterations"]
+    iterations=get(r, "iterations", Any[])
     curve=NamedTuple[]
     trials=NamedTuple[]
     residuals=NamedTuple[]
@@ -25,7 +26,12 @@ function plot_r3_pg_run(dir; output = joinpath(dir, "pg-figures"))
                 step = get(row, "step", missing),
                 projected_gradient = get(row, "projected_gradient_norm", missing),
                 accepted = row["accepted"],
-                smooth = get(row, "smooth", false),
+                smooth = get(row, "smooth", isempty(get(row, "switches", String[]))),
+                local_direction = get(row, "local_direction_norm", missing),
+                trust_radius = maximum(
+                    [get(get(tr, "local", Dict()), "radius", 0.0) for tr in row["trials"]];
+                    init = 0.0,
+                ),
                 active_changed = get(row, "active_set_changed", false),
                 elapsed_sec = row["elapsed_sec"],
             ),
@@ -69,13 +75,21 @@ function plot_r3_pg_run(dir; output = joinpath(dir, "pg-figures"))
     isempty(curve) || CSV.write(joinpath(output, "F06-source.csv"), curve)
     isempty(trials) || CSV.write(joinpath(output, "F06-trials.csv"), trials)
     isempty(residuals) || CSV.write(joinpath(output, "F04-source.csv"), residuals)
-    fig=Figure(size = (1300, 900), fontsize = 16)
+    fig=Figure(size = (1300, 1150), fontsize = 16)
     Label(fig[0, 1:2], "Synthetic PG | $runid | stop: $(r["outer_status"])", fontsize = 18)
     for (pos, field, title, unit, scale) in (
         ((1, 1), :cost, "Feasible subproblem cost", "currency", identity),
         ((1, 2), :diagnostic, "Elastic diagnostic objective", "dimensionless", identity),
         ((2, 1), :step, "Accepted backtracking step", "dimensionless", identity),
         ((2, 2), :projected_gradient, "Projected gradient mapping", "dimensionless", log10),
+        (
+            (3, 1),
+            :local_direction,
+            "Primal local direction (separate metric)",
+            "dimensionless",
+            log10,
+        ),
+        ((3, 2), :trust_radius, "Local trust radius", "dimensionless", identity),
     )
         ax=Axis(fig[pos...]; title, xlabel = "Outer iteration", ylabel = unit, yscale = scale)
         data=filter(x->!ismissing(getproperty(x, field)) && isfinite(getproperty(x, field)), curve)
@@ -121,11 +135,11 @@ function plot_r3_pg_run(dir; output = joinpath(dir, "pg-figures"))
         end
     end
     Label(
-        fig[3, 1:2],
+        fig[4, 1:2],
         "Red crosses: rejected trials. Orange: transport switch or unavailable derivative.\nCost and elastic objective are different quantities; no global optimality claim.",
         fontsize = 13,
     )
-    for ext in ("svg", "png")
+    for ext in (isempty(iterations) ? String[] : ["svg", "png"])
         save(joinpath(output, "F06-iterations."*ext), fig)
     end
     fig=Figure(size = (1250, 650), fontsize = 16)

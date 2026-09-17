@@ -11,6 +11,7 @@ include("verification/r1.jl")
 include("reporting/runs.jl")
 include("networks/water_mass.jl")
 include("core/r2_case.jl")
+include("core/r3_operation.jl")
 include("formulations/r2.jl")
 include("reporting/r2_runs.jl")
 include("verification/r2.jl")
@@ -21,6 +22,12 @@ include("reporting/r3_runs.jl")
 include("algorithms/r3_sensitivity.jl")
 include("algorithms/r3_projection.jl")
 include("algorithms/r3_pg.jl")
+include("algorithms/r3_local.jl")
+include("algorithms/r3_v2.jl")
+include("reporting/r3_modes.jl")
+
+export R3OperationSpec, build_r3_local_step
+export solve_r3_reference, compare_r3_modes
 
 export r3_transport_jacobian, r3_value_sensitivity
 export build_r3_projection, solve_r3_projected_gradient, validate_r3_iteration

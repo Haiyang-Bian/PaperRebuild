@@ -30,7 +30,24 @@ function solve_r3_projected_gradient(
     budget_sec = 600.0,
     max_iterations = 200,
     local_halfspace = true,
+    algorithm = :r3_pg_checked_v1,
+    operation = nothing,
 )
+    if Symbol(algorithm)==:r3_pg_checked_v2
+        return r3_pg_v2(
+            c;
+            optimizer,
+            convex_optimizer,
+            initial_flow,
+            initial_run,
+            budget_sec,
+            max_iterations,
+            local_halfspace,
+            operation,
+        )
+    end
+    Symbol(algorithm)==:r3_pg_checked_v1 || throw(ArgumentError("未知R3外层算法"))
+    isnothing(operation) || throw(ArgumentError("四模式须显式选r3_pg_checked_v2，v1历史定义不变"))
     isfinite(budget_sec) && 0<budget_sec<=600 || throw(ArgumentError("预算须在(0,600]秒"))
     1<=max_iterations<=200 || throw(ArgumentError("轮数须在1至200之间"))
     isnothing(initial_flow) || isnothing(initial_run) || throw(ArgumentError("初值入口互斥"))
@@ -347,6 +364,8 @@ end
 返回pass/errors；一步接受不代表物理可行，最终调度仍交给validate_r3_solution。
 """
 function validate_r3_iteration(c::R2Case, record; stages = nothing)
+    get(record, "algorithm", "")=="r3_pg_checked_v2" &&
+        return r3_validate_v2_iteration(c, record; stages)
     errors=String[]
     lo, hi, width=r3_flow_box(c)
     m=r2_flow_matrix(c, record["flow"])

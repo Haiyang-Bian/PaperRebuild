@@ -132,3 +132,48 @@
 实现入口：[`build_r3_projection`](@ref)；源码 `src/algorithms/r3_projection.jl`；测试 `R3 convex projection and outer trace`。
 
 符号：[alg_x](@ref sym-ch03-alg_x)、[alg_m](@ref sym-ch03-alg_m)、[alg_gamma](@ref sym-ch03-alg_gamma)。
+
+## [（3-67）CF-VT固定预设流量](@id eq-ch03-067)
+
+```math
+m_{jk,t}=\hat m_{jk,t},\quad(j,k)\in\mathcal C,\ t\in\mathcal T
+\tag{3-67}
+```
+
+出处：PDF 58 / 正文 41；状态：原页视觉核读；采用解释和实现状态另列。
+
+本批作用：采用预先冻结的恒定流量作为预设计划特例，原文前置优化另行说明。 PDF58四模式原定义；项目冻结恒定参考流量，只固定热源供水端口温度。新输入使用有界负荷回水和共同恢复尾段。
+
+实现入口：[`R3OperationSpec`](@ref)；源码 `src/core/r3_operation.jl`；测试 `R3 four operation modes and local candidate`。
+
+符号：[indices](@ref sym-ch03-indices)、[alg_m](@ref sym-ch03-alg_m)、[bounds](@ref sym-ch03-bounds)、[mode_flow](@ref sym-ch03-mode_flow)、[mode_temperature](@ref sym-ch03-mode_temperature)。
+
+## [（3-68）VF-CT固定热源供水温度](@id eq-ch03-068)
+
+```math
+\tau^S_{k,t}=\hat\tau^S_{k,t},\quad k\in\mathcal J^S,\ t\in\mathcal T
+\tag{3-68}
+```
+
+出处：PDF 58 / 正文 41；状态：原页视觉核读；采用解释和实现状态另列。
+
+本批作用：CT只固定热源供水端口，管道和负荷温度仍有动态。 PDF58四模式原定义；项目冻结恒定参考流量，只固定热源供水端口温度。新输入使用有界负荷回水和共同恢复尾段。
+
+实现入口：[`R3OperationSpec`](@ref)；源码 `src/core/r3_operation.jl`；测试 `R3 four operation modes and local candidate`。
+
+符号：[indices](@ref sym-ch03-indices)、[alg_m](@ref sym-ch03-alg_m)、[bounds](@ref sym-ch03-bounds)、[mode_flow](@ref sym-ch03-mode_flow)、[mode_temperature](@ref sym-ch03-mode_temperature)。
+
+## [（3-69）CF-CT同时固定流量及热源供水温度](@id eq-ch03-069)
+
+```math
+\begin{cases}m_{jk,t}=\hat m_{jk,t},\\ \tau^S_{k,t}=\hat\tau^S_{k,t}.\end{cases}
+\tag{3-69}
+```
+
+出处：PDF 58 / 正文 41；状态：原页视觉核读；采用解释和实现状态另列。
+
+本批作用：四模式共用物理边界与恢复尾段；更自由模式含受限模式可行解。 PDF58四模式原定义；项目冻结恒定参考流量，只固定热源供水端口温度。新输入使用有界负荷回水和共同恢复尾段。
+
+实现入口：[`R3OperationSpec`](@ref)；源码 `src/core/r3_operation.jl`；测试 `R3 four operation modes and local candidate`。
+
+符号：[indices](@ref sym-ch03-indices)、[alg_m](@ref sym-ch03-alg_m)、[bounds](@ref sym-ch03-bounds)、[mode_flow](@ref sym-ch03-mode_flow)、[mode_temperature](@ref sym-ch03-mode_temperature)。

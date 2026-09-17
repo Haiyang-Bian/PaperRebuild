@@ -11,7 +11,8 @@ else
     for dir in ARGS[2:end]
         loaded=read_r3_run(dir)
         r=loaded.result
-        r["algorithm"]=="r3_pg_checked_v1" || error("非PG运行")
+        r["algorithm"] in ("r3_pg_checked_v1", "r3_pg_checked_v2", "r3_cost_reference_v1") ||
+            error("非R3算法运行")
         println(
             "run=",
             loaded.metadata["run_id"],
@@ -20,13 +21,13 @@ else
             " stop=",
             r["outer_status"],
             " iterations=",
-            length(r["iterations"]),
+            length(get(r, "iterations", Any[])),
             " final_stage=",
             r["final_stage"],
             " elapsed=",
             r["elapsed_sec"],
         )
-        for row in r["iterations"]
+        for row in get(r, "iterations", Any[])
             st=r["stages"][row["stage"]]
             kkt=get(get(st, "sensitivity", Dict()), "kkt", Dict())
             println((

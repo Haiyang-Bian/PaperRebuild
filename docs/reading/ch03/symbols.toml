@@ -1,9 +1,13 @@
 schema = "ch03-symbols-v1"
-source = "论文PDF46–55，正文29–38；原符号表PDF14–17；算法符号见3-58至3-66"
+source = "论文PDF46–55、58，正文29–38、41；原符号表PDF14–17；算法/模式符号见3-58至3-69"
 verification = "原页视觉核对；同形异义按组作用域区分；实现扩展在julia字段说明"
 index_rule = "类别上标转语义标签，空间/设备/时间/滞后按数组维度顺序索引；物理平方用运算。ASCII配置键与希腊字母代码并存。"
 
 [symbols]
+
+mode_flow = {latex='\hat m_{jk,t}', meaning="四模式预设管道质量流率", kind="参数", unit="kg/s", domain="流量盒内正值；本批冻结恒定计划", julia="R3OperationSpec.reference_flow[p]", dimensions="原文管道×时段；本批管道向量复制至时段"}
+mode_temperature = {latex='\hat\tau^S_{k,t}', meaning="CT模式热源端口预设供水温度", kind="参数", unit="K", domain="供水温度共同边界内", julia="R3OperationSpec.source_temperature_K", dimensions="本批公共标量；只用于热源端口"}
+local_radius = {latex='\Delta', meaning="项目局部方向信赖域半径", kind="算法参数（项目新增）", unit="1", domain="1e-6至0.2；初始0.1", julia="radius", dimensions="每轮局部试探；流量及温度已按输入跨度归一化"}
 
 indices = {latex='t,g,n,(m,n),j,(j,k),\varsigma', meaning="时段、设备、电节点/支路、热节点/管道、历史滞后", kind="索引/集合", unit="1", domain="t=1:T; 状态0:T; 其余显式有限集合", julia="t,g,n,b,j,p,s; 供回方向side为项目索引", dimensions="按空间、时间；α/β为时间、滞后"}
 P_device = {latex='P_{g,t}^{CHP},P_{g,t}^{GT},P_{g,t}^{PV},P_{g,t}^{EB}', meaning="各类设备电功率，EB为耗电幅值", kind="变量", unit="MW", domain="显式上下界；PV另有时变可用量", julia="P_device[g,t]；kind保留类别映射", dimensions="G×T"}

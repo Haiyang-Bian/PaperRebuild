@@ -92,6 +92,7 @@ function build_r2_model(
     fixed_flows = false,
     flow_schedule = nothing,
     choices = nothing,
+    operation = nothing,
 )
     validate_r2_input(c.data)
     !fixed_flows &&
@@ -280,7 +281,9 @@ function build_r2_model(
         add("3-24", @constraint(model, vars["Phi_S"][j, t] >= vars["Phi_R"][j, t]))
         role = h["nodes"][j]["role"]
         if role == "load"
-            fix(vars["tau_R_port"][j, t], h["nodes"][j]["return_K"]; force = true)
+            if isnothing(operation) || !operation.bounded_return
+                fix(vars["tau_R_port"][j, t], h["nodes"][j]["return_K"]; force = true)
+            end
             add("3-38", @constraint(model, vars["tau_S_port"][j, t] == vars["tau_S_mix"][j, t]))
         elseif role == "source"
             add("3-37", @constraint(model, vars["tau_R_port"][j, t] == vars["tau_R_mix"][j, t]))
@@ -532,12 +535,14 @@ function build_r2_model(
             sum(d["devices"][g]["cost_per_MWh"]*PG[g, t] for g in 1:G, t in 1:T)
         )
     )
+    r3_apply_operation!(c, model, vars, cs, operation)
     return (;
         status = "built",
         model,
         variables = vars,
         constraints = cs,
         class = r2_model_class(model),
+        operation,
         case = c,
         spec,
         fixed_flows,

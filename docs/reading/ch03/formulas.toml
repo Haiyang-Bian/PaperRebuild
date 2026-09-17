@@ -1,8 +1,8 @@
 schema = "ch03-formulas-v1"
-declared_equation_count = 66
+declared_equation_count = 69
 source = "docs/摘要.pdf"
 source_sha256 = "20328e2480e773520c19c378e53365fc944c0bafcfca73071f5d8313d5ee7d91"
-checked_pdf_pages = [46, 47, 48, 49, 50, 51, 52, 53, 54, 55]
+checked_pdf_pages = [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 58]
 note = "按PDF图像规范化转录，省略重复全称量词；不静默修正原式。原式与项目补全分别记录。实际源码/符号/测试由group继承，个别式的用途由role覆盖。"
 
 [groups.dispatch]
@@ -11,6 +11,14 @@ api = "build_r2_model"
 test = "R2 saved integration ch03-001:057"
 symbols = ["indices", "P_device", "H_device", "P_grid", "cost", "ratio", "bounds", "P_demand", "Q_demand"]
 assumptions = "合成案例采用常热电比/常COP、设备单位功率因数、显式购电边界；空GT集合允许。MW×h计费。"
+
+[groups.operation]
+source = "src/core/r3_operation.jl"
+api = "R3OperationSpec"
+test = "R3 four operation modes and local candidate"
+test_path = "test/r3_v2.jl"
+symbols = ["indices", "alg_m", "bounds", "mode_flow", "mode_temperature"]
+assumptions = "PDF58四模式原定义；项目冻结恒定参考流量，只固定热源供水端口温度。新输入使用有界负荷回水和共同恢复尾段。"
 
 [groups.algorithm]
 source = "src/formulations/r3.jl"
@@ -515,3 +523,28 @@ meaning = "可行性分支投影"
 latex = '\mathbf m^{K+1}=\arg\min_{\mathbf m}\left\{\|\mathbf m^{K+1,*}-\mathbf m\|_2^2:(\mathbf m,\mathbf x)\in D_{MP}\right\}'
 implementation = "implemented"
 role = "可行性分支投影与单次局部半空间试探，不跨轮累积未证明的割"
+
+[[formula]]
+number = 67
+page = 58
+group = "operation"
+meaning = "CF-VT固定预设流量"
+latex = 'm_{jk,t}=\hat m_{jk,t},\quad(j,k)\in\mathcal C,\ t\in\mathcal T'
+implementation = "implemented"
+role = "采用预先冻结的恒定流量作为预设计划特例，原文前置优化另行说明"
+[[formula]]
+number = 68
+page = 58
+group = "operation"
+meaning = "VF-CT固定热源供水温度"
+latex = '\tau^S_{k,t}=\hat\tau^S_{k,t},\quad k\in\mathcal J^S,\ t\in\mathcal T'
+implementation = "implemented"
+role = "CT只固定热源供水端口，管道和负荷温度仍有动态"
+[[formula]]
+number = 69
+page = 58
+group = "operation"
+meaning = "CF-CT同时固定流量及热源供水温度"
+latex = '\begin{cases}m_{jk,t}=\hat m_{jk,t},\\ \tau^S_{k,t}=\hat\tau^S_{k,t}.\end{cases}'
+implementation = "implemented"
+role = "四模式共用物理边界与恢复尾段；更自由模式含受限模式可行解"

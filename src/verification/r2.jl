@@ -184,15 +184,17 @@ function validate_r2_solution(c::R2Case, result)
         record("3-19:20", "model", j, t, heat-target, "MW", power_tol)
         if role == "load"
             record("3-38", "model", j, t, V("tau_S_port", j, t)-V("tau_S_mix", j, t), "K", 1e-4)
-            record(
-                "R2-load-return",
-                "model",
-                j,
-                t,
-                V("tau_R_port", j, t)-node["return_K"],
-                "K",
-                1e-4,
-            )
+            if !get(get(result, "operation", Dict()), "bounded_return", false)
+                record(
+                    "R2-load-return",
+                    "model",
+                    j,
+                    t,
+                    V("tau_R_port", j, t)-node["return_K"],
+                    "K",
+                    1e-4,
+                )
+            end
         elseif role == "source"
             record("3-37", "model", j, t, V("tau_R_port", j, t)-V("tau_R_mix", j, t), "K", 1e-4)
         end
@@ -499,6 +501,7 @@ function validate_r2_solution(c::R2Case, result)
             )
         )
     record("3-1", "model", 0, 0, total-result["objective"], "currency", 1e-6*max(1, abs(total)))
+    r3_operation_rows!(record, c, result)
     model_pass = all(row -> row.pass, filter(r -> r.scope == "model", rows))
     physics_pass = model_pass && all(row -> row.pass, filter(r -> r.scope == "physics", rows))
     return (

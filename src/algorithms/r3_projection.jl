@@ -1,12 +1,19 @@
-function r3_flow_box(c)
+function r3_flow_box(c, operation = nothing)
     pipes, T = c.data["heat"]["pipes"], c.data["T"]
     lo = repeat(reshape([p["flow_min"] for p in pipes], :, 1), 1, T)
     hi = repeat(reshape([p["flow_max"] for p in pipes], :, 1), 1, T)
+    if !isnothing(operation)
+        for p in eachindex(pipes), t in 1:T
+            if r3_is_cf(operation) || t>operation.core_periods
+                lo[p, t]=hi[p, t]=operation.reference_flow[p]
+            end
+        end
+    end
     return lo, hi, hi-lo
 end
 
 # 数值回代复用既有独立电/水力核；仅忽略本投影明确删除的热关系。
-function r3_projection_witness(c, values)
+function r3_projection_witness(c, values; operation = nothing)
     result=Dict{String,Any}(
         "input_sha256"=>c.sha256,
         "values"=>values,
@@ -14,6 +21,10 @@ function r3_projection_witness(c, values)
         "fixed_flows"=>false,
         "objective"=>r3_operating_cost(c, values),
     )
+    if !isnothing(operation)
+        result["operation"]=r3_operation_dict(operation)
+        result["operation_sha256"]=r3_operation_hash(result["operation"])
+    end
     report=validate_r2_solution(c, result)
     omitted=("3-17", "3-27", "3-28", "3-30", "3-31", "3-33:34", "3-35:36")
     return all(r.pass for r in report.rows if r.scope=="model" && !(r.equation in omitted))
@@ -35,11 +46,12 @@ function build_r3_projection(
     violation = 0.0,
     radius = 0.1,
     optimizer = nothing,
+    operation = nothing,
 )
-    lo, hi, width = r3_flow_box(c)
+    lo, hi, width = r3_flow_box(c, operation)
     size(target)==size(lo) && all(isfinite, target) ||
         throw(ArgumentError("投影目标形状/有限值错误"))
-    b=build_r2_model(c; optimizer)
+    b=build_r2_model(c; optimizer, operation)
     removed=["3-17", "3-27", "3-28", "3-30", "3-31", "3-33", "3-34", "3-35", "3-36"]
     for id in removed
         for cr in get(b.constraints, id, Any[])

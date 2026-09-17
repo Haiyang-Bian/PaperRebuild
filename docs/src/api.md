@@ -117,6 +117,10 @@ PaperRebuild.r3_value_sensitivity
 PaperRebuild.build_r3_projection
 PaperRebuild.solve_r3_projected_gradient
 PaperRebuild.validate_r3_iteration
+PaperRebuild.R3OperationSpec
+PaperRebuild.build_r3_local_step
+PaperRebuild.solve_r3_reference
+PaperRebuild.compare_r3_modes
 ```
 
 ## 工程示例函数说明

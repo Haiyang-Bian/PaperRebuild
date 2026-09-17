@@ -4,7 +4,9 @@ include("plot_r3_pg.jl")
 # 图形仅依赖保存的数值和独立验证器，不加载Gurobi或重建优化模型。
 function PaperRebuild.plot_r3_run(dir::AbstractString; output = joinpath(dir, "figures"))
     loaded = read_r3_run(dir)
-    get(loaded.result, "algorithm", "")=="r3_pg_checked_v1" && return plot_r3_pg_run(dir; output)
+    get(loaded.result, "algorithm", "") in
+    ("r3_pg_checked_v1", "r3_pg_checked_v2", "r3_cost_reference_v1") &&
+        return plot_r3_pg_run(dir; output)
     c, result, reports = loaded.case, loaded.result, loaded.validation.stages
     ispath(output) && error("拒绝覆盖旧图，请指定新输出目录")
     mkdir(output)

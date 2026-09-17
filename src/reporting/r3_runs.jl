@@ -18,6 +18,12 @@ function r3_solve(c, builder, optimizer; budget_sec = 60.0, deadline = Inf, sens
         return result
     end
     b = builder()
+    result["spec"]=r2_spec_dict(b.spec)
+    result["rescale_cones"]=hasproperty(b, :rescale_cones) && b.rescale_cones
+    if hasproperty(b, :operation) && !isnothing(b.operation)
+        result["operation"]=r3_operation_dict(b.operation)
+        result["operation_sha256"]=r3_operation_hash(result["operation"])
+    end
     merge!(
         result,
         Dict(

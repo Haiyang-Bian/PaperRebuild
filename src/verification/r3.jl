@@ -30,6 +30,14 @@ end
 function validate_r3_solution(c::R2Case, result)
     if get(result, "schema", "")=="r3-run-v1"
         result["input_sha256"]==c.sha256 || throw(ArgumentError("R3运行与输入哈希不同"))
+        if haskey(result, "operation")
+            r3_operation_hash(result["operation"])==result["operation_sha256"] ||
+                throw(ArgumentError("根运行模式哈希不一致"))
+            all(
+                get(stage, "operation", nothing)==result["operation"] for
+                stage in result["stages"] if haskey(stage, "values")
+            ) || throw(ArgumentError("各阶段运行模式不一致"))
+        end
         reports = [validate_r3_solution(c, r) for r in result["stages"]]
         i = result["final_stage"]
         0<=i<=length(reports) || throw(ArgumentError("最终阶段索引非法"))
@@ -221,6 +229,7 @@ function validate_r3_solution(c::R2Case, result)
     else
         throw(ArgumentError("未知目标语义"))
     end
+    r3_recovery_rows!(record, c, result)
     model_pass = all(r.pass for r in rows if r.scope=="model")
     physical_pass = !diagnostic && model_pass && all(r.pass for r in rows if r.scope=="physics")
     return (

@@ -5,6 +5,11 @@ previous=read(path, String)
 config=JSON.parse(previous; dicttype = Dict{String,Any})
 original=deepcopy(config)
 for (label, env, script, args) in (
+    ("R3 v2 tests", ".", "scripts/test_r3_v2.jl", String[]),
+    ("R3 dual minimal examples", "tools/solvers", "scripts/diagnose_r3_duals.jl", String[]),
+    ("R3 freeze four modes", ".", "scripts/freeze_r3_modes.jl", String[]),
+    ("R3 v2 formal experiments", "tools/solvers", "scripts/experiment_r3_v2.jl", String[]),
+    ("R3 v2 evidence report", "docs", "scripts/report_r3_v2.jl", ["\${input:r3StudyManifest}"]),
     ("R3 PG sensitivity check", ".", "scripts/test_r3_pg.jl", String[]),
     (
         "R3 PG open fixed case",

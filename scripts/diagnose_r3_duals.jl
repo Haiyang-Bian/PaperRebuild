@@ -5,6 +5,19 @@ using Clarabel, Gurobi
 # 最小反例只记录原始求解器返回值，不改写乘子、不修改依赖库。
 factory=r3_gurobi_factory(Gurobi)
 records=Dict{String,Any}[]
+function native_duals(model)
+    backend=unsafe_backend(model)
+    out=Dict{String,Any}()
+    for (countname, attribute) in (("NumConstrs", "Pi"), ("NumQConstrs", "QCPi"), ("NumVars", "RC"))
+        n=Ref{Cint}(0)
+        code=Gurobi.GRBgetintattr(backend, countname, n)
+        code==0 || (out[attribute] = Dict("error_code"=>code); continue)
+        values=zeros(Float64, n[])
+        code=Gurobi.GRBgetdblattrarray(backend, attribute, 0, n[], values)
+        out[attribute]=code==0 ? Dict("values"=>values) : Dict("error_code"=>code)
+    end
+    return out
+end
 for (solver, optimizer) in (("Clarabel", Clarabel.Optimizer), ("Gurobi", factory)),
     active in (true, false),
     scale in (1.0, 1000.0)
@@ -51,6 +64,7 @@ for (solver, optimizer) in (("Clarabel", Clarabel.Optimizer), ("Gurobi", factory
             "dual_status"=>string(dual_status(model)),
         ),
     )
+    solver=="Gurobi" && (last(records)["native_duals"]=native_duals(model))
 end
 path=joinpath(
     "results",

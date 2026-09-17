@@ -94,11 +94,13 @@ function build_r3_subproblem(
     mode = :dispatch,
     physical = false,
     optimizer = nothing,
+    operation = nothing,
+    rescale_cones = false,
 )
     mode in (:dispatch, :diagnostic) || throw(ArgumentError("未知R3子问题模式"))
     mode == :diagnostic && physical && throw(ArgumentError("诊断保持作者锥松弛，不能标为物理调度"))
     m = r2_flow_matrix(c, flow)
-    b = build_r2_model(c; fixed_flows = true, flow_schedule = m, optimizer)
+    b = build_r2_model(c; fixed_flows = true, flow_schedule = m, optimizer, operation)
     cost = objective_function(b.model)
     rows = NamedTuple[]
     if mode == :diagnostic
@@ -132,6 +134,20 @@ function build_r3_subproblem(
     elseif physical
         r3_add_physics!(c, b)
     end
+    if rescale_cones
+        # 正常数乘锥不改变可行域；只缩放不参与热系数导数的锥行。
+        for (id, refs) in b.constraints, i in eachindex(refs)
+            cr=refs[i]
+            obj=constraint_object(cr)
+            obj.set isa MOI.SecondOrderCone || continue
+            scale=1/max(
+                1.0,
+                maximum(abs(coef) for f in obj.func for (coef, _) in linear_terms(f); init = 1.0),
+            )
+            delete(b.model, cr)
+            refs[i]=@constraint(b.model, scale .* obj.func in SecondOrderCone())
+        end
+    end
     return merge(
         b,
         (
@@ -139,6 +155,7 @@ function build_r3_subproblem(
             cost_expression = cost,
             elastic_rows = rows,
             flow_schedule = m,
+            rescale_cones,
             objective_kind = mode==:diagnostic ? "normalized_slack" : "operating_cost",
             variant = mode==:diagnostic ? "r3_sp_elastic_v1" :
                       physical ? "r3_fixed_physical_v1" : "r3_sp_checked_v1",

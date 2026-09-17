@@ -7,7 +7,7 @@ function check_ch03()
     count = f["declared_equation_count"]
     count > 0 && [r["number"] for r in f["formula"]] == collect(1:count) || error("第3章声明范围内的公式编号不完整")
     for r in f["formula"]
-        !isempty(r["latex"]) && 46 <= r["page"] <= 55 || error("无效公式转录")
+        !isempty(r["latex"]) && r["page"] in f["checked_pdf_pages"] || error("无效公式转录")
         g = f["groups"][r["group"]]
         all(id -> haskey(s["symbols"], id), g["symbols"]) || error("未定义符号")
         state = get(r, "implementation", "implemented")
