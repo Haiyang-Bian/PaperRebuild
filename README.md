@@ -3,11 +3,10 @@
 使用 Julia 逐步复现博士论文，并沉淀可核查、可接续的研究流程。
 主要智能体为 Codex，IDE 为 VS Code，文件视图使用 CodeGroup。
 
-**当前阶段：R3 物理可行性与停止判据收尾。**第 2 章 76 条、第 3 章 69 条编号公式已登记。
-显式v3增加候选池、局部物理恢复及独立驻点核验，保留v1/v2和历史证据。
-本批24项主实验与6项消融完成；主实验23/24通过A1，4项取得新驻点核验。
-双源VF-CT仅恢复到A1容差内，严格原等式费用重调度仍失败；容量反例与其余停滞保留。
-作者完整输入、论文规模性能及一般非凸算法收敛仍未闭合。
+**当前交付：R4集中式交易与核算基准。**R3阶段归档，保留算法限制和历史判定。
+第4章59式已登记；6组合成输入完成18项正式运行及1项开放求解器对照。
+5个集中原电网等式参考通过本批A1，6个独立自调度计划网络校核不可行，失败证据保留。
+内部支付两两抵消，教学P2P结算不保证各方同时受益。原始论文数据、动态热网、重构和议价尚未完成。
 `hello/domath` 仍只是包骨架，不计入科研进度。本轮实现尚未提交到远程。
 
 ## 入口
@@ -25,7 +24,9 @@
 - [R3 采用解释](docs/src/ch03-r3-theory.md)、[投影梯度](docs/src/ch03-r3-gradient.md)
 - [R3 稳健性与四模式教程](docs/src/ch03-r3-robustness.md)
 - [第三批32例结果与图表](docs/src/ch03-r3-v2-results.md)
-- [v3物理恢复与停止判据](docs/src/ch03-r3-v3.md)、[本批30例结果](docs/src/ch03-r3-v3-results.md)
+- [v3物理恢复与停止判据](docs/src/ch03-r3-v3.md)、[R3第四批30例结果](docs/src/ch03-r3-v3-results.md)
+- [R3差异归因与阶段边界](docs/src/ch03-r3-baseline-results.md)
+- [第4章模型与账本](docs/src/ch04-models.md)、[R4运行教程](docs/src/ch04-tutorial.md)、[首批结果与图表](docs/src/ch04-results.md)
 - [Codex 入口](AGENTS.md)与[当前状态](docs/agent/current-state.md)
 - [参与开发](CONTRIBUTING.md)与[来源及许可](NOTICE.md)
 

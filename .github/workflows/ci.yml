@@ -41,6 +41,8 @@ jobs:
         run: julia --startup-file=no --project=. scripts/check_ch03.jl
       - name: Chapter 4 source and symbol mapping
         run: julia --startup-file=no --project=. scripts/check_ch04.jl
+      - name: R4 immutable evidence
+        run: julia --startup-file=no --project=. scripts/check_r4_artifacts.jl
       - name: R3 baseline frozen design and mapping
         run: julia --startup-file=no --project=. scripts/check_r3_baseline.jl
       - name: Restore data tools

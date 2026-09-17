@@ -1,0 +1,24 @@
+bargaining = "not_performed"
+initial_battery_MWh = 0.1
+input_sha256 = "ba3e43bababf99b9d5064078e05a969b940c88d6f0a4e63a219c3ff17c90def5"
+origin = "synthetic"
+residual_floor_for_log = 1.0e-12
+run_id = "base--central_exact"
+script_sha256 = "0757061811bfd143a6948bd1d65280d493af785df8113c42cd3fa0458d573cf1"
+
+[alternative_settlement]
+H_buy = 160.0
+H_peer = 110.0
+H_sell = 40.0
+P_buy = 200.0
+P_peer = 150.0
+P_sell = 60.0
+fee = 5.0
+
+[units]
+energy = "MWh"
+mass_flow = "kg/s"
+money = "USD_synthetic"
+power = "MW"
+temperature = "K"
+time = "h"

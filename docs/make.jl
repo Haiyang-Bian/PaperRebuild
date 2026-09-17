@@ -66,6 +66,7 @@ makedocs(;
             "原式清单" => "ch04-equations.md",
             "符号与采用解释" => "ch04-symbols.md",
             "运行与账本教程" => "ch04-tutorial.md",
+            "首批实验与收益边界" => "ch04-results.md",
         ],
         "API 索引与说明" => "api.md",
         "第 2 章模型与首批实现" => [
