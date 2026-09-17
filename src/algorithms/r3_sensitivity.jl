@@ -56,6 +56,24 @@ end
 
 # MOI最小化约定 L=c-y'F；包括变量界/固定等式，不能只遍历公式表。
 function r3_kkt(model)
+    try
+        return r3_kkt_available(model)
+    catch err
+        message = sprint(showerror, err)
+        # 返回状态不保证每个桥接约束的属性可读取；保留错误，不替造乘子。
+        if err isa Union{MOI.GetAttributeNotAllowed,MOI.UnsupportedAttribute} ||
+           occursin("Unable to retrieve attribute", message)
+            return Dict{String,Any}(
+                "trusted"=>false,
+                "reason"=>"dual_attribute_unavailable",
+                "error"=>message,
+            )
+        end
+        rethrow()
+    end
+end
+
+function r3_kkt_available(model)
     dual_status(model) == MOI.FEASIBLE_POINT ||
         return Dict{String,Any}("trusted"=>false, "reason"=>"dual_unavailable")
     vars = all_variables(model)
