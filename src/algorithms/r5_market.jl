@@ -28,6 +28,11 @@ function solve_r5_market(c::R5MarketCase; optimizer, budget_sec = 60.0)
         r["model_type"]=built.model_type
         r["model_types"]=built.model_types
         r["solver"]=solver_name(m)
+        try
+            r["solver_version"]=MOI.get(backend(m), MOI.SolverVersion())
+        catch err
+            r["solver_version_unavailable"]=sprint(showerror, err)
+        end
         set_silent(m)
         remaining=budget_sec-(time()-start)
         if remaining<=0

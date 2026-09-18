@@ -10,6 +10,8 @@ function r5_market_science_paths()
         "src/reporting/r5_market.jl"=>R5_MARKET_REPORT_FILE,
         "Project.toml"=>joinpath(root, "Project.toml"),
         "Manifest.toml"=>joinpath(root, "Manifest.toml"),
+        "tools/solvers/Project.toml"=>joinpath(root, "tools", "solvers", "Project.toml"),
+        "tools/solvers/Manifest.toml"=>joinpath(root, "tools", "solvers", "Manifest.toml"),
     )
 end
 
@@ -110,7 +112,7 @@ function save_r5_market_run(c::R5MarketCase, r, directory::AbstractString)
         "run_id"=>r["run_id"],
         "case_sha256"=>c.sha256,
         "origin"=>c.data["origin"],
-        "source_scope"=>"Five market implementation files and Julia root environment",
+        "source_scope"=>"Five market implementation files, root and optional solver environments",
         "module"=>string(@__MODULE__),
         "saved_utc"=>string(now(UTC)),
     )

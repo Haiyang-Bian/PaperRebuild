@@ -16,6 +16,9 @@ function r5_market_optimizer(which::Symbol)
             "tol_gap_rel"=>1e-10,
         )
     elseif which==:gurobi
+        # 可选求解器按项目原有约定安装在本地depot；仅改变当前Julia进程的搜索路径。
+        depot=normpath(joinpath(@__DIR__, "..", ".julia"))
+        isdir(depot) && !(depot in DEPOT_PATH) && pushfirst!(DEPOT_PATH, depot)
         path=normpath(joinpath(@__DIR__, "..", "tools", "solvers"))
         path in LOAD_PATH || push!(LOAD_PATH, path)
         @eval using Gurobi
