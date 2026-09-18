@@ -1,0 +1,48 @@
+A2_pass_pairs = 11
+comparable_pairs = 11
+config_sha256 = "8dc01a4d4735462398cd02281f975ecfbb4155f9f8e4726bd27c4e12e94ae058"
+cost_complete = 20
+max_elapsed_sec = 6.0279998779296875
+max_normalized_residual = 5.592900732325199e-7
+max_relative_gap = 1.7763118683418362e-11
+max_solver_objective_difference = 4.591545146905446e-13
+model_pass = 20
+origin = "synthetic"
+records = 24
+residual_count = 1883
+schema = "r5-dispatch-mechanism-audit-v1"
+script_sha256 = "f3d6c7be2c36d2e12fe791fe99796aef2bb4c2a72a51e24d64a9e6ce45243888"
+study_sha256 = "bab02f6932fa839a75b10530d368db584cd2a7ec33962d96748bbddd7e8ae3cf"
+
+[capacity_denominator]
+allowed_MWh = 0.010000000000000002
+mismatch_MWh = 0.010000000000000057
+model_pass = true
+request_MWh = 0.010000000000000002
+run_id = "r5-dispatch-cdf81e68-a583-4696-b573-24a4f7852b64"
+unmet_fraction_of_request = 1.0000000000000056
+
+[hand_checks]
+district_cost = 14.2
+local_cost = 14.2
+max_temperature_difference_K = 0.0
+quarter_cost = 3.55
+
+[[proofs]]
+capacity_conflict = true
+case = "unavailable"
+case_sha256 = "ad119edbb5c2ca5a471368f4c8bdc40380d8df15d7638aa2b2dc8b00514197cd"
+minimum_import_MW = [0.14200000000000002]
+proof = "Constant source and return temperatures, no loss, only EB/GT and no local heater: required EB electricity plus base load minus maximum GT output bounds PCC import."
+requested_import_MW = [0.04199999999999998]
+run_id = "r5-dispatch-1426aad8-ae37-42f5-8812-b935116b4396"
+source_status = "solver_infeasible"
+[[proofs]]
+capacity_conflict = true
+case = "market_up_full"
+case_sha256 = "d13bb271fdbef681f2ab48e3c348e6b1fb2e80a7509c70bcc72fbc5e80aec0d4"
+minimum_import_MW = [28.042, 28.042, 28.042, 28.042]
+proof = "Constant source and return temperatures, no loss, only EB/GT and no local heater: required EB electricity plus base load minus maximum GT output bounds PCC import."
+requested_import_MW = [15.0, 15.0, 15.0, 15.0]
+run_id = "r5-dispatch-d79c91da-855c-4c87-9d3f-ffc794d7ede4"
+source_status = "solver_infeasible"

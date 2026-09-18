@@ -1,5 +1,7 @@
 {
   "inputs": [
+    {"id":"r5DispatchReport","description":"IES报告新目录；重绘需已有CSV且无旧图","type":"promptString","default":"results/summaries/r5-dispatch-replay"},
+    {"id":"r5DispatchStudy","description":"已完成的IES批次study.toml","type":"promptString","default":"results/runs/r5/r5-dispatch-20260919/study.toml"},
     {"id":"r5DispatchCase","description":"确定性IES输入TOML","type":"promptString","default":"configs/r5/dispatch/hand.toml"},
     {"id":"r5DispatchRun","description":"保存运行的目录；新求解必须使用未存在的路径","type":"promptString","default":"results/runs/r5/dispatch-new"},
     {"id":"r5DispatchBatch","description":"新正式批次名称，不覆盖已有批次","type":"promptString","default":"r5-dispatch-new"},
@@ -49,6 +51,10 @@
     }
   ],
   "tasks": [
+    {"label":"PaperRebuild: R5 dispatch frozen evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_dispatch_artifacts.jl","results/summaries/r5-dispatch"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 dispatch report saved","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/report_r5_dispatch.jl","${input:r5DispatchStudy}","${input:r5DispatchReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 dispatch audit mechanisms","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/audit_r5_dispatch.jl","${input:r5DispatchStudy}","${input:r5DispatchReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 dispatch redraw saved","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r5_dispatch.jl","${input:r5DispatchReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R5 dispatch mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_dispatch.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R5 dispatch tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_dispatch.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R5 dispatch run","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/run_r5_dispatch.jl","${input:r5DispatchCase}","${input:r5DispatchRun}","highs","60"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},

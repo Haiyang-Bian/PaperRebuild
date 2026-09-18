@@ -75,13 +75,7 @@ function plot_r5_dispatch(dir)
         ylabel = "MW",
         xticks = 1:4,
     )
-    temp=Axis(
-        fig[1, 2],
-        title = "Building comfort and fixed-flow transport",
-        xlabel = "Period",
-        ylabel = "K",
-        xticks = 1:4,
-    )
+    temp=Axis(fig[1, 2], title = "Building comfort", xlabel = "Period", ylabel = "K", xticks = 1:4)
     heat=Axis(
         fig[2, 1],
         title = "Heat actually received by the building",

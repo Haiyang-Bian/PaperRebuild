@@ -117,3 +117,4 @@ julia +1.12.6 --startup-file=no --project=. scripts/validate_r5_dispatch.jl resu
 绝对误差上图取等、费用重算和有效界。模型不可行、不支持求解器、许可缺失和无解超时分别保存。
 保存和重读见[`save_r5_dispatch_run`](@ref)、[`read_r5_dispatch_run`](@ref)，不覆盖旧运行。
 本批正式证据须先冻结规则、提交科学源码再运行；测试通过本身不等于已经形成正式研究结论。
+已完成的24项正式证据、解析容量反例和下一步见[交付结果](ch05-dispatch-results.md)。

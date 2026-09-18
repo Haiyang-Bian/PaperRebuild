@@ -60,6 +60,45 @@ for x in CSV.File(joinpath(dir, "solver-comparison.csv"))
     end
 end
 fig=TOML.parsefile(joinpath(dir, "figure-config.toml"))
+audit=TOML.parsefile(joinpath(dir, "mechanism-audit.toml"))
+audit["schema"]=="r5-dispatch-mechanism-audit-v1"&&audit["origin"]=="synthetic"||error(
+    "机制审计身份错误",
+)
+all(
+    audit[k]==meta[k] for
+    k in ("study_sha256", "config_sha256", "records", "model_pass", "cost_complete")
+)||error("机制审计与批次不一致")
+bytes2hex(sha256(read(joinpath(@__DIR__, "audit_r5_dispatch.jl"))))==audit["script_sha256"]||error(
+    "机制审计脚本改变",
+)
+length(residuals)==audit["residual_count"]&&isapprox(
+    maximum(x.normalized for x in residuals),
+    audit["max_normalized_residual"];
+    atol = 1e-12,
+)||error("机制残差汇总不一致")
+solver_pairs=collect(CSV.File(joinpath(dir, "solver-comparison.csv")))
+count(x->x.comparable, solver_pairs)==audit["comparable_pairs"]&&count(x->x.A2_pass, solver_pairs)==audit["A2_pass_pairs"]||error(
+    "机制A2汇总不一致",
+)
+for proof in audit["proofs"]
+    row=only(filter(x->x.record_id==proof["case"]*"--highs", summary))
+    row.run_id==proof["run_id"]&&row.case_sha256==proof["case_sha256"]&&row.status==proof["source_status"]=="solver_infeasible"||error(
+        "容量反例来源不一致",
+    )
+    proof["capacity_conflict"]&&all(
+        proof["minimum_import_MW"] .> proof["requested_import_MW"] .+ 1e-6,
+    )||error("容量矛盾不成立")
+end
+cap=audit["capacity_denominator"]
+caprow=only(filter(x->x.record_id=="capacity_denominator--highs", summary))
+cap["run_id"]==caprow.run_id&&cap["model_pass"]==caprow.model_pass||error("容量分母来源错误")
+isapprox(cap["mismatch_MWh"], caprow.mismatch_MWh; atol = 1e-12)&&isapprox(
+    cap["allowed_MWh"],
+    caprow.mismatch_limit_MWh;
+    atol = 1e-12,
+)&&isapprox(cap["unmet_fraction_of_request"], cap["mismatch_MWh"]/cap["request_MWh"]; atol = 1e-8)||error(
+    "调用误差核算不同",
+)
 !fig["solver_reexecuted"]&&Set(fig["source_run_ids"])==Set(x.run_id for x in summary)||error(
     "图源身份不同",
 )
