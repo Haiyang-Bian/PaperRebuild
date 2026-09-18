@@ -44,6 +44,10 @@ function check_ch05_probability(path)
             maximum(abs.(vec(sum(p; dims = 1))-w)),
             sum(p .* distance)-ρ,
         )
+        # 原97项解析审计的统一比较带宽1e-7不替代A1概率门槛1e-8。
+        worst=vec(sum(p; dims = 2))
+        maximum((primal_residual, abs(sum(worst)-1), max(0.0, -minimum(worst))))<=1e-8 ||
+            error("A1概率/运输守恒验收失败")
         dual_residual=max(0, -λ, maximum(z[i]-λ*distance[i, j]-u[j] for i in 1:n, j in 1:n))
         primal=sum(z[i]*p[i, j] for i in 1:n, j in 1:n)
         dual=λ*ρ+sum(w .* u)
@@ -69,8 +73,11 @@ function check_ch05_probability(path)
     nothing
 end
 
-length(ARGS)<=1 || error("参数：[冻结proof.toml]")
-check_ch05_probability(
-    isempty(ARGS) ?
-    joinpath(@__DIR__, "..", "results", "summaries", "ch05-probability", "proof.toml") : only(ARGS),
-)
+if abspath(PROGRAM_FILE)==@__FILE__
+    length(ARGS)<=1 || error("参数：[冻结proof.toml]")
+    check_ch05_probability(
+        isempty(ARGS) ?
+        joinpath(@__DIR__, "..", "results", "summaries", "ch05-probability", "proof.toml") :
+        only(ARGS),
+    )
+end

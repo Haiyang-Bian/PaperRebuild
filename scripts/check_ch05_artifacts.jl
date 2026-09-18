@@ -1,4 +1,5 @@
 using TOML, SHA
+include("check_ch05_probability.jl")
 # 独立重读第5章概率/条件割冻结证据，核验副本、生产脚本及代数；不重新求解。
 root=normpath(joinpath(@__DIR__, ".."))
 for (folder, script) in
@@ -21,6 +22,47 @@ for (folder, script) in
         end
     end
 end
+proof_path=joinpath(root, "results", "summaries", "ch05-probability", "proof.toml")
+check_ch05_probability(proof_path)
+audit_path=joinpath(root, "results", "summaries", "ch05-probability", "a1-audit.toml")
+audit_copy=joinpath(root, "docs", "src", "assets", "ch05-probability", "a1-audit.toml")
+read(audit_path)==read(audit_copy) || error("A1补证的文档副本变化")
+occursin(r"(?i)[A-Z]:[\\/]|/Users/|/home/", read(audit_path, String)) && error("A1补证含本机路径")
+audit=TOML.parsefile(audit_path)
+audit["schema"]=="r5-q05-a1-audit-v1" && audit["origin"]=="synthetic_analytic" ||
+    error("A1补证身份错误")
+audit["original_algebra_tolerance"]==1e-7 && audit["A1_probability_tolerance"]==1e-8 ||
+    error("A1补证门槛变化")
+for (key, rel) in (
+    ("proof_sha256", "results/summaries/ch05-probability/proof.toml"),
+    ("script_sha256", "scripts/audit_ch05_probability_a1.jl"),
+    ("checker_sha256", "scripts/check_ch05_probability.jl"),
+)
+    audit[key]==bytes2hex(sha256(read(joinpath(root, rel)))) || error("A1补证来源变化：$rel")
+end
+proof=TOML.parsefile(proof_path)
+length(audit["records"])==length(proof["records"])==17 || error("A1补证见证缺失")
+residuals=Float64[]
+for (i, r) in enumerate(proof["records"])
+    transport=reduce(vcat, permutedims.(r["transport"]))
+    distance=reduce(vcat, permutedims.(r["distance"]))
+    worst=vec(sum(transport; dims = 2))
+    residual=max(
+        0.0,
+        -minimum(transport),
+        maximum(abs.(vec(sum(transport; dims = 1))-r["weights"])),
+        sum(transport .* distance)-r["radius"],
+        abs(sum(worst)-1),
+        -minimum(worst),
+    )
+    saved=audit["records"][i]
+    saved["witness"]==i && saved["tolerance"]==1e-8 && saved["pass"]===true ||
+        error("A1见证索引或判定变化")
+    residual<=1e-8 && abs(residual-saved["probability_transport_residual"])<=1e-15 ||
+        error("A1见证独立回算失败")
+    push!(residuals, residual)
+end
+abs(maximum(residuals)-audit["max_residual"])<=1e-15 || error("A1最大残差摘要错误")
 println(
-    "Two frozen proof files: matching public copies, producer hashes and conditional-cut replay checked.",
+    "Two original proofs and the separate A1 supplement: copies, hashes and independent replay passed.",
 )

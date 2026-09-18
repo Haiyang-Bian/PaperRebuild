@@ -66,7 +66,12 @@ julia +1.12.6 --startup-file=no --project=. scripts/check_ch05_probability.jl
 本次正式核查97项通过，17个原对偶数值见证已保存于
 [冻结证据](assets/ch05-probability/proof.toml)，包括输入距离、运输矩阵、乘子、状态和源码/环境哈希。
 第二条命令仅重读数值并独立回算原对偶及解析答案，已经通过，不重新求解。
-该脚本仅使用现有JuMP/Clarabel，
+原97项检查采用1e-7的统一代数比较带宽，不能单凭该数字声明满足A1的1e-8概率门槛。
+因此另存[A1补证](assets/ch05-probability/a1-audit.toml)：不改旧数值，按1e-8重新检查
+17个见证的非负性、概率归一化、运输质量守恒及预算。17/17通过，最大违反为2.95627e-11。
+原证据与新补证分别保存，未放宽既有A1；这仍然只验收有限支持概率侧。
+scripts/check_ch05_artifacts.jl同时核验两份原证明、补证的来源哈希、文档副本和数值回算。
+概率模型求解脚本仅使用现有JuMP/Clarabel，
 未接入市场出清、备用响应、建筑温度或Benders，不计为第5章完整调度实现。
 
 ## 下一步

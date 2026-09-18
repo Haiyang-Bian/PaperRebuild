@@ -134,6 +134,7 @@
 - `docs/src/api.md`
 - `docs/src/assets/ch03/public-load-profiles.svg`
 - `docs/src/assets/ch05-cuts/proof.toml`
+- `docs/src/assets/ch05-probability/a1-audit.toml`
 - `docs/src/assets/ch05-probability/proof.toml`
 - `docs/src/assets/custom.css`
 - `docs/src/assets/r2/F05-single-pipe.svg`
@@ -351,6 +352,7 @@
 - `results/runs/README.md`
 - `results/summaries/README.md`
 - `results/summaries/ch05-cuts/proof.toml`
+- `results/summaries/ch05-probability/a1-audit.toml`
 - `results/summaries/ch05-probability/proof.toml`
 - `results/summaries/r1-first-batch.md`
 - `results/summaries/r1-first-batch/comparison.toml`
@@ -472,6 +474,7 @@
 - `results/summaries/r4-tspa/solver-evidence.csv`
 - `scripts/audit_ch05_cuts.jl`
 - `scripts/audit_ch05_probability.jl`
+- `scripts/audit_ch05_probability_a1.jl`
 - `scripts/audit_r3_baseline_history.jl`
 - `scripts/audit_r3_pg_study.jl`
 - `scripts/audit_r3_v3.jl`
