@@ -2215,6 +2215,16 @@
           "path": "docs/src/ch04-discrete-results.md",
           "name": "ch04-discrete-results.md",
           "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch04-network-equations.md",
+          "name": "ch04-network-equations.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch04-network.md",
+          "name": "ch04-network.md",
+          "isDirectory": false
         }
       ],
       "order": 1,
@@ -2340,6 +2350,11 @@
         {
           "path": "docs/agent/tasks/2026-09-18-r4-discrete.md",
           "name": "2026-09-18-r4-discrete.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/agent/tasks/2026-09-19-r4-network.md",
+          "name": "2026-09-19-r4-network.md",
           "isDirectory": false
         }
       ],
@@ -2607,6 +2622,31 @@
           "path": "src/verification/r4_discrete.jl",
           "name": "r4_discrete.jl",
           "isDirectory": false
+        },
+        {
+          "path": "src/algorithms/r4_reconfiguration.jl",
+          "name": "r4_reconfiguration.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/core/r4_reconfiguration.jl",
+          "name": "r4_reconfiguration.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/formulations/r4_reconfiguration.jl",
+          "name": "r4_reconfiguration.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/reporting/r4_reconfiguration.jl",
+          "name": "r4_reconfiguration.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/verification/r4_reconfiguration.jl",
+          "name": "r4_reconfiguration.jl",
+          "isDirectory": false
         }
       ],
       "order": 3,
@@ -2783,6 +2823,36 @@
           "path": "configs/r4/discrete-study.toml",
           "name": "discrete-study.toml",
           "isDirectory": false
+        },
+        {
+          "path": "configs/r4/reconfiguration/electric_bottleneck.toml",
+          "name": "electric_bottleneck.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r4/reconfiguration/heat_bottleneck.toml",
+          "name": "heat_bottleneck.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r4/reconfiguration/import.toml",
+          "name": "import.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r4/reconfiguration/open.toml",
+          "name": "open.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r4/reconfiguration/oracle.toml",
+          "name": "oracle.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r4/reconfiguration/study.toml",
+          "name": "study.toml",
+          "isDirectory": false
         }
       ],
       "order": 4,
@@ -2958,6 +3028,11 @@
         {
           "path": "docs/reading/ch04/discrete.toml",
           "name": "discrete.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch04/network.toml",
+          "name": "network.toml",
           "isDirectory": false
         }
       ],
@@ -9891,6 +9966,11 @@
           "path": "test/r4_discrete.jl",
           "name": "r4_discrete.jl",
           "isDirectory": false
+        },
+        {
+          "path": "test/r4_reconfiguration.jl",
+          "name": "r4_reconfiguration.jl",
+          "isDirectory": false
         }
       ],
       "order": 7,
@@ -10791,6 +10871,36 @@
         {
           "path": "scripts/test_r4_discrete.jl",
           "name": "test_r4_discrete.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r4_reconfiguration.jl",
+          "name": "check_r4_reconfiguration.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/freeze_r4_reconfiguration.jl",
+          "name": "freeze_r4_reconfiguration.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/probe_r4_reconfiguration.jl",
+          "name": "probe_r4_reconfiguration.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r4_network_docs.jl",
+          "name": "r4_network_docs.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/study_r4_reconfiguration.jl",
+          "name": "study_r4_reconfiguration.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/test_r4_reconfiguration.jl",
+          "name": "test_r4_reconfiguration.jl",
           "isDirectory": false
         }
       ],

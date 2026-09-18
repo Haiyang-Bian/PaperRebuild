@@ -242,7 +242,9 @@ C^{NO}=\sum_t\sum_{(m,n)}c^{SA}a_{mn,t}^{SW}+\sum_{(j,k)}c^{VA}a_{jk}^{VL}
 \tag{4-22}
 ```
 
-PDF 65；documented_not_implemented；疑点：.
+PDF 65；adopted_scope；疑点：.
+
+采用范围对应API：`build_r4_reconfiguration`；测试：`R4 network reconfiguration`。
 
 ## [（4-23）零售收入](@id ch04-023)
 
@@ -317,7 +319,9 @@ PDF 66；adopted_scope；疑点：.
 \tag{4-29}
 ```
 
-PDF 66；documented_not_implemented；疑点：R4-C05.
+PDF 66；adopted_scope；疑点：R4-C05.
+
+采用范围对应API：`build_r4_reconfiguration`；测试：`R4 network reconfiguration`。
 
 ## [（4-30）有功边界](@id ch04-030)
 
@@ -355,11 +359,11 @@ PDF 66；adopted_scope；疑点：R4-C05.
 ## [（4-33）电网二阶锥](@id ch04-033)
 
 ```math
-\|(2P_{mn,t},2Q_{mn,t},l_{mn,t}-v_{m,t})\|_2\le l_{mn,t}+v_{m,t}
+\|(2P_{mn,t},2Q_{mn,t},l_{mn,t}-v_{n,t})\|_2\le l_{mn,t}+v_{n,t}
 \tag{4-33}
 ```
 
-PDF 66；adopted_scope；疑点：.
+PDF 66；adopted_scope；疑点：R4-C05.
 
 采用范围对应API：`build_r4_model`；测试：`R4 model and ledger`。
 
@@ -370,7 +374,9 @@ u_{mn,t}^{SW}=z_{mn,t}+z_{nm,t}
 \tag{4-34}
 ```
 
-PDF 66；documented_not_implemented；疑点：R4-C05.
+PDF 66；adopted_scope；疑点：R4-C05.
+
+采用范围对应API：`build_r4_reconfiguration`；测试：`R4 network reconfiguration`。
 
 ## [（4-35）非根入边](@id ch04-035)
 
@@ -379,7 +385,9 @@ PDF 66；documented_not_implemented；疑点：R4-C05.
 \tag{4-35}
 ```
 
-PDF 66；documented_not_implemented；疑点：R4-C05.
+PDF 66；adopted_scope；疑点：R4-C05.
+
+采用范围对应API：`build_r4_reconfiguration`；测试：`R4 network reconfiguration`。
 
 ## [（4-36）根入边](@id ch04-036)
 
@@ -388,7 +396,9 @@ PDF 66；documented_not_implemented；疑点：R4-C05.
 \tag{4-36}
 ```
 
-PDF 66；documented_not_implemented；疑点：R4-C05.
+PDF 66；adopted_scope；疑点：R4-C05.
+
+采用范围对应API：`build_r4_reconfiguration`；测试：`R4 network reconfiguration`。
 
 ## [（4-37）拓扑变量](@id ch04-037)
 
@@ -397,7 +407,9 @@ z_{mn,t},z_{nm,t}\in\{0,1\},\quad0\le a_{mn,t}^{SW}\le1
 \tag{4-37}
 ```
 
-PDF 66；documented_not_implemented；疑点：R4-C05.
+PDF 66；adopted_scope；疑点：R4-C05.
+
+采用范围对应API：`build_r4_reconfiguration`；测试：`R4 network reconfiguration`。
 
 ## [（4-38）开关动作窗口一](@id ch04-038)
 
@@ -406,7 +418,9 @@ PDF 66；documented_not_implemented；疑点：R4-C05.
 \tag{4-38}
 ```
 
-PDF 66；documented_not_implemented；疑点：R4-C05.
+PDF 66；adopted_scope；疑点：R4-C05.
+
+采用范围对应API：`build_r4_reconfiguration`；测试：`R4 network reconfiguration`。
 
 ## [（4-39）开关动作窗口二](@id ch04-039)
 
@@ -415,7 +429,9 @@ PDF 66；documented_not_implemented；疑点：R4-C05.
 \tag{4-39}
 ```
 
-PDF 66；documented_not_implemented；疑点：R4-C05.
+PDF 66；adopted_scope；疑点：R4-C05.
+
+采用范围对应API：`build_r4_reconfiguration`；测试：`R4 network reconfiguration`。
 
 ## [（4-40）开关变化](@id ch04-040)
 
@@ -424,7 +440,9 @@ z_{mn,t}-z_{mn,t-1}\le a_{mn,t}^{SW},\quad z_{mn,t-1}-z_{mn,t}\le a_{mn,t}^{SW}
 \tag{4-40}
 ```
 
-PDF 66；documented_not_implemented；疑点：R4-C05.
+PDF 66；adopted_scope；疑点：R4-C05.
+
+采用范围对应API：`build_r4_reconfiguration`；测试：`R4 network reconfiguration`。
 
 ## [（4-41）热质量流率边界](@id ch04-041)
 
@@ -510,7 +528,9 @@ u_{jk}^{VL}=v_{jk}+v_{kj}
 \tag{4-48}
 ```
 
-PDF 67；documented_not_implemented；疑点：R4-C05.
+PDF 67；adopted_scope；疑点：R4-C05.
+
+采用范围对应API：`build_r4_reconfiguration`；测试：`R4 network reconfiguration`。
 
 ## [（4-49）热网非根入边](@id ch04-049)
 
@@ -519,7 +539,9 @@ PDF 67；documented_not_implemented；疑点：R4-C05.
 \tag{4-49}
 ```
 
-PDF 67；documented_not_implemented；疑点：R4-C05.
+PDF 67；adopted_scope；疑点：R4-C05.
+
+采用范围对应API：`build_r4_reconfiguration`；测试：`R4 network reconfiguration`。
 
 ## [（4-50）热网根入边](@id ch04-050)
 
@@ -528,7 +550,9 @@ PDF 67；documented_not_implemented；疑点：R4-C05.
 \tag{4-50}
 ```
 
-PDF 67；documented_not_implemented；疑点：R4-C05.
+PDF 67；adopted_scope；疑点：R4-C05.
+
+采用范围对应API：`build_r4_reconfiguration`；测试：`R4 network reconfiguration`。
 
 ## [（4-51）阀门变化](@id ch04-051)
 
@@ -537,7 +561,9 @@ PDF 67；documented_not_implemented；疑点：R4-C05.
 \tag{4-51}
 ```
 
-PDF 67；documented_not_implemented；疑点：R4-C05.
+PDF 67；adopted_scope；疑点：R4-C05.
+
+采用范围对应API：`build_r4_reconfiguration`；测试：`R4 network reconfiguration`。
 
 ## [（4-52）电计划一致](@id ch04-052)
 

@@ -99,6 +99,7 @@ function r4_ledger(
             carrier in ("P", "H"), t in 1:T
         )
         external=i==1 && haskey(s, "P_grid") ? dt*sum(d["grid_price"] .* s["P_grid"]) : 0.0
+        i==1 && (resource+=r4_switch_cost(c, s))
         cost=resource+dissatisfaction+external
         push!(
             costs,
@@ -337,6 +338,7 @@ function validate_r4_solution(c::R4Case, result)
             )
             row("root_voltage", "model", 1, t, V("v", 1, t)-1, "pu²", 1e-6)
             for (p, edge) in enumerate(e["edges"])
+                on=haskey(d, "network_control") ? V("u_E", p, t) : 1.0
                 i=edge["from"]
                 j=edge["to"]
                 r=edge["r"]
@@ -352,8 +354,8 @@ function validate_r4_solution(c::R4Case, result)
                     p,
                     t,
                     P*base,
-                    -edge["P_max"],
-                    edge["P_max"],
+                    -edge["P_max"]*on,
+                    edge["P_max"]*on,
                     "MW",
                     power_tol,
                 )
@@ -363,18 +365,20 @@ function validate_r4_solution(c::R4Case, result)
                     p,
                     t,
                     Q*base,
-                    -edge["Q_max"],
-                    edge["Q_max"],
+                    -edge["Q_max"]*on,
+                    edge["Q_max"]*on,
                     "Mvar",
                     power_tol,
                 )
-                bound("ell", "model", p, t, ell, 0, edge["ell_max"], "pu²", 1e-6)
+                bound("ell", "model", p, t, ell, 0, edge["ell_max"]*on, "pu²", 1e-6)
+                drop=V("v", j, t)-vi+2*(r*P+x*Q)-(r^2+x^2)*ell
                 row(
                     "voltage_drop",
                     "model",
                     p,
                     t,
-                    V("v", j, t)-vi+2*(r*P+x*Q)-(r^2+x^2)*ell,
+                    haskey(d, "network_control") ?
+                    max(0, abs(drop)-(e["v_max"]^2-e["v_min"]^2)*(1-on)) : drop,
                     "pu²",
                     1e-6,
                 )
@@ -459,12 +463,23 @@ function validate_r4_solution(c::R4Case, result)
                 end
             end
             for (p, pipe) in enumerate(h["pipes"])
+                on=haskey(d, "network_control") ? V("u_H_arc", p, t) : 1.0
                 loss=pipe["U_W_mK"]*pipe["length_m"]*(
                     (pipe["S_ref_K"]-pipe["ambient_K"])+(pipe["R_ref_K"]-pipe["ambient_K"])
-                )/1e6
+                )/1e6*on
                 row("R4-P4", "heat", p, t, V("H_in", p, t)-V("H_out", p, t)-loss, "MW", power_tol)
                 for k in ("H_in", "H_out")
-                    bound("pipe_heat", "heat", p, t, V(k, p, t), 0, pipe["H_max"], "MW", power_tol)
+                    bound(
+                        "pipe_heat",
+                        "heat",
+                        p,
+                        t,
+                        V(k, p, t),
+                        0,
+                        pipe["H_max"]*on,
+                        "MW",
+                        power_tol,
+                    )
                 end
                 bound(
                     "pipe_mass",
@@ -473,12 +488,13 @@ function validate_r4_solution(c::R4Case, result)
                     t,
                     V("m_pipe", p, t),
                     0,
-                    pipe["flow_max"],
+                    pipe["flow_max"]*on,
                     "kg/s",
                     flow_tol,
                 )
             end
         end
+        haskey(d, "network_control") && r4_validate_network!(row, bound, c, result)
         for local_run in get(result, "local_stages", Any[])
             haskey(local_run, "values") || continue
             i=local_run["actor"]

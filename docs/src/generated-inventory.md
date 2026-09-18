@@ -53,6 +53,12 @@
 - `configs/r4/fixed_load.toml`
 - `configs/r4/heat_bottleneck.toml`
 - `configs/r4/no_p2p.toml`
+- `configs/r4/reconfiguration/electric_bottleneck.toml`
+- `configs/r4/reconfiguration/heat_bottleneck.toml`
+- `configs/r4/reconfiguration/import.toml`
+- `configs/r4/reconfiguration/open.toml`
+- `configs/r4/reconfiguration/oracle.toml`
+- `configs/r4/reconfiguration/study.toml`
 - `configs/r4/study.toml`
 - `configs/r4/tspa-study.toml`
 - `data/processed/README.md`
@@ -80,6 +86,7 @@
 - `docs/agent/tasks/2026-09-18-r4-discrete.md`
 - `docs/agent/tasks/2026-09-18-r4-distributed.md`
 - `docs/agent/tasks/2026-09-18-r4-tspa.md`
+- `docs/agent/tasks/2026-09-19-r4-network.md`
 - `docs/make.jl`
 - `docs/reading/README.md`
 - `docs/reading/ch02/README.md`
@@ -108,6 +115,7 @@
 - `docs/reading/ch04/distributed.toml`
 - `docs/reading/ch04/formulas.toml`
 - `docs/reading/ch04/issues.toml`
+- `docs/reading/ch04/network.toml`
 - `docs/reading/ch04/symbols.toml`
 - `docs/reading/ch04/tspa.toml`
 - `docs/reading/source_manifest.json`
@@ -267,6 +275,8 @@
 - `docs/src/ch04-distributed.md`
 - `docs/src/ch04-equations.md`
 - `docs/src/ch04-models.md`
+- `docs/src/ch04-network-equations.md`
+- `docs/src/ch04-network.md`
 - `docs/src/ch04-results.md`
 - `docs/src/ch04-symbols.md`
 - `docs/src/ch04-tspa-equations.md`
@@ -411,6 +421,7 @@
 - `scripts/check_r4_discrete_artifacts.jl`
 - `scripts/check_r4_distributed.jl`
 - `scripts/check_r4_distributed_artifacts.jl`
+- `scripts/check_r4_reconfiguration.jl`
 - `scripts/check_r4_tspa.jl`
 - `scripts/check_solvers.jl`
 - `scripts/collect_ch03_data.jl`
@@ -445,6 +456,7 @@
 - `scripts/freeze_r3_v3.jl`
 - `scripts/freeze_r4.jl`
 - `scripts/freeze_r4_baseline.jl`
+- `scripts/freeze_r4_reconfiguration.jl`
 - `scripts/inspect_ch03_workbooks.jl`
 - `scripts/maintain.ps1`
 - `scripts/maintenance-core.ps1`
@@ -469,6 +481,7 @@
 - `scripts/preview.jl`
 - `scripts/probe_r4_discrete.jl`
 - `scripts/probe_r4_distributed.jl`
+- `scripts/probe_r4_reconfiguration.jl`
 - `scripts/publish_r3_v2_report.jl`
 - `scripts/publish_r3_v3_audit_addendum.jl`
 - `scripts/publish_r3_v3_report.jl`
@@ -482,6 +495,7 @@
 - `scripts/r3_v3_heat_counterexample.jl`
 - `scripts/r4_bargaining_docs.jl`
 - `scripts/r4_distributed_docs.jl`
+- `scripts/r4_network_docs.jl`
 - `scripts/r4_setup.jl`
 - `scripts/r4_tspa_docs.jl`
 - `scripts/read_docx.py`
@@ -515,6 +529,7 @@
 - `scripts/study_r4_baseline.jl`
 - `scripts/study_r4_discrete.jl`
 - `scripts/study_r4_distributed.jl`
+- `scripts/study_r4_reconfiguration.jl`
 - `scripts/study_r4_tspa.jl`
 - `scripts/summarize_r3_audit.jl`
 - `scripts/summarize_r3_baseline.jl`
@@ -529,6 +544,7 @@
 - `scripts/test_r4.jl`
 - `scripts/test_r4_discrete.jl`
 - `scripts/test_r4_distributed.jl`
+- `scripts/test_r4_reconfiguration.jl`
 - `scripts/test_r4_tspa.jl`
 - `scripts/tighten_r4_distributed_cost.jl`
 - `scripts/validate_ch03_data.jl`
@@ -547,6 +563,7 @@
 - `src/algorithms/r4_bargaining.jl`
 - `src/algorithms/r4_discrete.jl`
 - `src/algorithms/r4_distributed.jl`
+- `src/algorithms/r4_reconfiguration.jl`
 - `src/algorithms/r4_tspa.jl`
 - `src/components/devices.jl`
 - `src/core/case.jl`
@@ -555,12 +572,14 @@
 - `src/core/r3_operation.jl`
 - `src/core/r4.jl`
 - `src/core/r4_distributed.jl`
+- `src/core/r4_reconfiguration.jl`
 - `src/core/r4_tspa.jl`
 - `src/formulations/r1.jl`
 - `src/formulations/r2.jl`
 - `src/formulations/r3.jl`
 - `src/formulations/r4.jl`
 - `src/formulations/r4_distributed.jl`
+- `src/formulations/r4_reconfiguration.jl`
 - `src/networks/fixed_flow_heat.jl`
 - `src/networks/water_mass.jl`
 - `src/reporting/r2_runs.jl`
@@ -570,6 +589,7 @@
 - `src/reporting/r3_runs.jl`
 - `src/reporting/r4_discrete.jl`
 - `src/reporting/r4_distributed.jl`
+- `src/reporting/r4_reconfiguration.jl`
 - `src/reporting/r4_runs.jl`
 - `src/reporting/r4_tspa.jl`
 - `src/reporting/runs.jl`
@@ -583,6 +603,7 @@
 - `src/verification/r4_baseline.jl`
 - `src/verification/r4_discrete.jl`
 - `src/verification/r4_distributed.jl`
+- `src/verification/r4_reconfiguration.jl`
 - `src/verification/r4_tspa.jl`
 - `test/ch03_data.jl`
 - `test/maintenance.tests.ps1`
@@ -602,6 +623,7 @@
 - `test/r4_baseline.jl`
 - `test/r4_discrete.jl`
 - `test/r4_distributed.jl`
+- `test/r4_reconfiguration.jl`
 - `test/r4_tspa.jl`
 - `test/runtests.jl`
 - `tools/Manifest.toml`

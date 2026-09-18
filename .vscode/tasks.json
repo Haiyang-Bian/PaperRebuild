@@ -34,6 +34,9 @@
     }
   ],
   "tasks": [
+    {"label":"PaperRebuild: R4 network mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r4_reconfiguration.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 network tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r4_reconfiguration.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 network frozen study","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/study_r4_reconfiguration.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R4 discrete mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r4_discrete.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R4 discrete tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r4_discrete.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R4 discrete frozen study","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/study_r4_discrete.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},

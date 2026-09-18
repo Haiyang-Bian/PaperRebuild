@@ -33,8 +33,10 @@ include("algorithms/r3_baseline.jl")
 include("verification/r3_baseline.jl")
 include("reporting/r3_baseline.jl")
 include("core/r4.jl")
+include("core/r4_reconfiguration.jl")
 include("core/r4_tspa.jl")
 include("formulations/r4.jl")
+include("formulations/r4_reconfiguration.jl")
 include("verification/r4.jl")
 include("verification/r4_baseline.jl")
 include("reporting/r4_runs.jl")
@@ -51,6 +53,13 @@ include("reporting/r4_distributed.jl")
 include("algorithms/r4_discrete.jl")
 include("verification/r4_discrete.jl")
 include("reporting/r4_discrete.jl")
+include("verification/r4_reconfiguration.jl")
+include("algorithms/r4_reconfiguration.jl")
+include("reporting/r4_reconfiguration.jl")
+export R4ReconfigurationSpec, r4_is_tree, r4_network_states
+export build_r4_reconfiguration, solve_r4_reconfiguration, validate_r4_reconfiguration
+export enumerate_r4_reconfiguration
+export validate_r4_network_enumeration, read_r4_network_enumeration
 export r4_battery_patterns, reconstruct_r4_cost, solve_r4_discrete
 export validate_r4_discrete, save_r4_discrete_run, read_r4_discrete_run
 export R4DistributedSpec, build_r4_distributed_block, solve_r4_distributed

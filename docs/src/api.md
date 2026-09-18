@@ -170,6 +170,15 @@ PaperRebuild.save_r4_run
 PaperRebuild.read_r4_run
 PaperRebuild.compare_r4_runs
 PaperRebuild.plot_r4_run
+PaperRebuild.R4ReconfigurationSpec
+PaperRebuild.r4_is_tree
+PaperRebuild.r4_network_states
+PaperRebuild.build_r4_reconfiguration
+PaperRebuild.solve_r4_reconfiguration
+PaperRebuild.validate_r4_reconfiguration
+PaperRebuild.enumerate_r4_reconfiguration
+PaperRebuild.validate_r4_network_enumeration
+PaperRebuild.read_r4_network_enumeration
 ```
 
 ## 工程示例函数说明

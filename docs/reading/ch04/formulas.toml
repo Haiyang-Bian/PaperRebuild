@@ -235,14 +235,15 @@ test = "R4 model and ledger"
 title = "外部购电"
 verification = "visual_checked_normalized_transcription"
 [[formula]]
-api = ""
+api = "build_r4_reconfiguration"
 id = "ch04-022"
 issues = []
 latex = "C^{NO}=\\sum_t\\sum_{(m,n)}c^{SA}a_{mn,t}^{SW}+\\sum_{(j,k)}c^{VA}a_{jk}^{VL}"
 number = 22
 pdf_page = 65
-status = "documented_not_implemented"
-test = ""
+scope_note = "r4_reconfiguration_checked_v1；原式与N1–N6补全区别见network.toml。"
+status = "adopted_scope"
+test = "R4 network reconfiguration"
 title = "网络动作成本"
 verification = "visual_checked_normalized_transcription"
 [[formula]]
@@ -312,14 +313,15 @@ test = "R4 model and ledger"
 title = "电压平方边界"
 verification = "visual_checked_normalized_transcription"
 [[formula]]
-api = ""
+api = "build_r4_reconfiguration"
 id = "ch04-029"
 issues = ["R4-C05"]
 latex = "|\\Delta v_{mn,t}|\\le(\\overline V^2-\\underline V^2)u_{mn,t}^{SW}"
 number = 29
 pdf_page = 66
-status = "documented_not_implemented"
-test = ""
+scope_note = "r4_reconfiguration_checked_v1；原式与N1–N6补全区别见network.toml。"
+status = "adopted_scope"
+test = "R4 network reconfiguration"
 title = "开关电压松弛原式"
 verification = "visual_checked_normalized_transcription"
 [[formula]]
@@ -358,89 +360,97 @@ verification = "visual_checked_normalized_transcription"
 [[formula]]
 api = "build_r4_model"
 id = "ch04-033"
-issues = []
-latex = "\\|(2P_{mn,t},2Q_{mn,t},l_{mn,t}-v_{m,t})\\|_2\\le l_{mn,t}+v_{m,t}"
+issues = ["R4-C05"]
+latex = "\\|(2P_{mn,t},2Q_{mn,t},l_{mn,t}-v_{n,t})\\|_2\\le l_{mn,t}+v_{n,t}"
 number = 33
 pdf_page = 66
+scope_note = "PDF66原页为接收端v_n；实现仍采用发送端v_m，差异见R4-NC05，历史数值不改写。"
 status = "adopted_scope"
 test = "R4 model and ledger"
 title = "电网二阶锥"
 verification = "visual_checked_normalized_transcription"
 [[formula]]
-api = ""
+api = "build_r4_reconfiguration"
 id = "ch04-034"
 issues = ["R4-C05"]
 latex = "u_{mn,t}^{SW}=z_{mn,t}+z_{nm,t}"
 number = 34
 pdf_page = 66
-status = "documented_not_implemented"
-test = ""
+scope_note = "r4_reconfiguration_checked_v1；原式与N1–N6补全区别见network.toml。"
+status = "adopted_scope"
+test = "R4 network reconfiguration"
 title = "电开关与方向"
 verification = "visual_checked_normalized_transcription"
 [[formula]]
-api = ""
+api = "build_r4_reconfiguration"
 id = "ch04-035"
 issues = ["R4-C05"]
 latex = "\\sum_{(m,n)}z_{mn,t}\\le1,\\quad n\\in N^E\\setminus n_0"
 number = 35
 pdf_page = 66
-status = "documented_not_implemented"
-test = ""
+scope_note = "r4_reconfiguration_checked_v1；原式与N1–N6补全区别见network.toml。"
+status = "adopted_scope"
+test = "R4 network reconfiguration"
 title = "非根入边"
 verification = "visual_checked_normalized_transcription"
 [[formula]]
-api = ""
+api = "build_r4_reconfiguration"
 id = "ch04-036"
 issues = ["R4-C05"]
 latex = "\\sum_{(n_0,m)}z_{n_0m,t}=0"
 number = 36
 pdf_page = 66
-status = "documented_not_implemented"
-test = ""
+scope_note = "r4_reconfiguration_checked_v1；原式与N1–N6补全区别见network.toml。"
+status = "adopted_scope"
+test = "R4 network reconfiguration"
 title = "根入边"
 verification = "visual_checked_normalized_transcription"
 [[formula]]
-api = ""
+api = "build_r4_reconfiguration"
 id = "ch04-037"
 issues = ["R4-C05"]
 latex = "z_{mn,t},z_{nm,t}\\in\\{0,1\\},\\quad0\\le a_{mn,t}^{SW}\\le1"
 number = 37
 pdf_page = 66
-status = "documented_not_implemented"
-test = ""
+scope_note = "r4_reconfiguration_checked_v1；原式与N1–N6补全区别见network.toml。"
+status = "adopted_scope"
+test = "R4 network reconfiguration"
 title = "拓扑变量"
 verification = "visual_checked_normalized_transcription"
 [[formula]]
-api = ""
+api = "build_r4_reconfiguration"
 id = "ch04-038"
 issues = ["R4-C05"]
 latex = "\\sum_{t'=t-T^{SA}+1}^{t}u_{mn,t'}^{SW}\\le1-a_{mn,t}^{SW}"
 number = 38
 pdf_page = 66
-status = "documented_not_implemented"
-test = ""
+scope_note = "r4_reconfiguration_checked_v1；原式与N1–N6补全区别见network.toml。"
+status = "adopted_scope"
+test = "R4 network reconfiguration"
 title = "开关动作窗口一"
 verification = "visual_checked_normalized_transcription"
 [[formula]]
-api = ""
+api = "build_r4_reconfiguration"
 id = "ch04-039"
 issues = ["R4-C05"]
 latex = "\\sum_{t'=t-T^{SA}+1}^{t}u_{mn,t'}^{SW}\\le1-a_{mn,t-T^{SA}}^{SW}"
 number = 39
 pdf_page = 66
-status = "documented_not_implemented"
-test = ""
+scope_note = "r4_reconfiguration_checked_v1；原式与N1–N6补全区别见network.toml。"
+status = "adopted_scope"
+test = "R4 network reconfiguration"
 title = "开关动作窗口二"
 verification = "visual_checked_normalized_transcription"
 [[formula]]
-api = ""
+api = "build_r4_reconfiguration"
 id = "ch04-040"
 issues = ["R4-C05"]
 latex = "z_{mn,t}-z_{mn,t-1}\\le a_{mn,t}^{SW},\\quad z_{mn,t-1}-z_{mn,t}\\le a_{mn,t}^{SW}"
 number = 40
 pdf_page = 66
-status = "documented_not_implemented"
-test = ""
+scope_note = "r4_reconfiguration_checked_v1；原式与N1–N6补全区别见network.toml。"
+status = "adopted_scope"
+test = "R4 network reconfiguration"
 title = "开关变化"
 verification = "visual_checked_normalized_transcription"
 [[formula]]
@@ -521,47 +531,51 @@ test = "R4 model and ledger"
 title = "冻结损耗原式"
 verification = "visual_checked_normalized_transcription"
 [[formula]]
-api = ""
+api = "build_r4_reconfiguration"
 id = "ch04-048"
 issues = ["R4-C05"]
 latex = "u_{jk}^{VL}=v_{jk}+v_{kj}"
 number = 48
 pdf_page = 67
-status = "documented_not_implemented"
-test = ""
+scope_note = "r4_reconfiguration_checked_v1；原式与N1–N6补全区别见network.toml。"
+status = "adopted_scope"
+test = "R4 network reconfiguration"
 title = "阀门与方向"
 verification = "visual_checked_normalized_transcription"
 [[formula]]
-api = ""
+api = "build_r4_reconfiguration"
 id = "ch04-049"
 issues = ["R4-C05"]
 latex = "\\sum_{(j,k)}v_{jk}\\le1,\\quad k\\in N^H\\setminus k_0"
 number = 49
 pdf_page = 67
-status = "documented_not_implemented"
-test = ""
+scope_note = "r4_reconfiguration_checked_v1；原式与N1–N6补全区别见network.toml。"
+status = "adopted_scope"
+test = "R4 network reconfiguration"
 title = "热网非根入边"
 verification = "visual_checked_normalized_transcription"
 [[formula]]
-api = ""
+api = "build_r4_reconfiguration"
 id = "ch04-050"
 issues = ["R4-C05"]
 latex = "\\sum_{(k_0,j)}v_{k_0j}=0"
 number = 50
 pdf_page = 67
-status = "documented_not_implemented"
-test = ""
+scope_note = "r4_reconfiguration_checked_v1；原式与N1–N6补全区别见network.toml。"
+status = "adopted_scope"
+test = "R4 network reconfiguration"
 title = "热网根入边"
 verification = "visual_checked_normalized_transcription"
 [[formula]]
-api = ""
+api = "build_r4_reconfiguration"
 id = "ch04-051"
 issues = ["R4-C05"]
 latex = "|v_{jk}-\\widehat v_{jk,0}|\\le a_{jk}^{VL},\\quad v_{jk},v_{kj},a_{jk}^{VL}\\in\\{0,1\\}"
 number = 51
 pdf_page = 67
-status = "documented_not_implemented"
-test = ""
+scope_note = "r4_reconfiguration_checked_v1；原式与N1–N6补全区别见network.toml。"
+status = "adopted_scope"
+test = "R4 network reconfiguration"
 title = "阀门变化"
 verification = "visual_checked_normalized_transcription"
 [[formula]]

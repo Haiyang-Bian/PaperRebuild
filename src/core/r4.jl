@@ -135,7 +135,9 @@ function r4_check(d)
         (e["edges"], ("P_max", "Q_max", "ell_max")),
         (h["pipes"], ("flow_max", "H_max", "length_m")),
     )
-        length(rows)==2 && [(x["from"], x["to"]) for x in rows]==[(1, 2), (2, 3)] || error("首批拓扑应为1→2→3")
+        if !haskey(d, "network_control")
+            length(rows)==2 && [(x["from"], x["to"]) for x in rows]==[(1, 2), (2, 3)] || error("首批拓扑应为1→2→3")
+        end
         all(pos(x[k]) for x in rows for k in keys) || error("网络容量错误")
     end
     all(nonneg(x[k]) for x in e["edges"] for k in ("r", "x")) || error("阻抗错误")
@@ -144,6 +146,7 @@ function r4_check(d)
         nonneg(p["U_W_mK"]) &&
         p["S_ref_K"]>=p["R_ref_K"]>=p["ambient_K"] || error("参考热状态错误")
     end
+    haskey(d, "network_control") && r4_network_check(d)
     s=d["settlement"]
     all(nonneg, vcat(collect(values(s)))) || error("结算价格错误")
     s["P_buy"]>s["P_sell"] && s["H_buy"]>s["H_sell"] || error("买卖价须有正价差")

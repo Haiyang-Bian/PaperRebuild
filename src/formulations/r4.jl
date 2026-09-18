@@ -21,6 +21,7 @@ function build_r4_model(
     frozen = nothing,
     modes = nothing,
     balance_penalty = nothing,
+    switching = nothing,
 )
     TOML.parse(c.source_text)==c.data || error("输入被原位改写，请构造新的R4Case")
     stage in (:central, :local, :network, :trading, :agent, :operator) || error("建模阶段错误")
@@ -32,6 +33,9 @@ function build_r4_model(
         error("正的节点平衡罚系数仅适用于冻结网络诊断")
     )
     d=c.data
+    if stage in (:central, :network, :operator)
+        haskey(d, "network_control") == (switching!==nothing) || error("候选网络须显式调用重构接口")
+    end
     T=d["T"]
     dt=d["dt_h"]
     actors=d["actors"]
@@ -272,6 +276,10 @@ function build_r4_model(
         e=d["electric"]
         edges=e["edges"]
         base=e["S_base_MVA"]
+        if switching!==nothing
+            resource+=r4_switching_variables!(model, v, c, switching)
+        end
+        Eon(p, t) = switching===nothing ? 1.0 : v["u_E"][p, t]
         if balance_penalty!==nothing
             scales=r4_tspa_scales(c)
             for carrier in ("P", "Q", "H", "m"), side in ("pos", "neg")
@@ -307,9 +315,9 @@ function build_r4_model(
             base_name="v"
         )
         for k in ("P_branch", "Q_branch")
-            v[k]=@variable(model, [1:2, 1:T], base_name=k)
+            v[k]=@variable(model, [1:length(edges), 1:T], base_name=k)
         end
-        v["ell"]=@variable(model, [1:2, 1:T], lower_bound=0, base_name="ell")
+        v["ell"]=@variable(model, [1:length(edges), 1:T], lower_bound=0, base_name="ell")
         for t in 1:T
             fix(v["v"][1, t], 1; force = true)
             add_to_expression!(external, dt*d["grid_price"][t], v["P_grid"][t])
@@ -327,7 +335,20 @@ function build_r4_model(
                     set_upper_bound(var, cap)
                 end
                 set_upper_bound(ell, edge["ell_max"])
-                @constraint(model, v["v"][j, t]==vi-2*(r*P+x*Q)+(r^2+x^2)*ell)
+                if switching===nothing
+                    @constraint(model, v["v"][j, t]==vi-2*(r*P+x*Q)+(r^2+x^2)*ell)
+                else
+                    # R4-N2：开路时P/Q/ell均零，电压差可取完整边界跨度。
+                    for (var, cap) in ((P, edge["P_max"]/base), (Q, edge["Q_max"]/base))
+                        @constraint(model, var<=cap*Eon(p, t))
+                        @constraint(model, var>=-cap*Eon(p, t))
+                    end
+                    @constraint(model, ell<=edge["ell_max"]*Eon(p, t))
+                    drop=v["v"][j, t]-vi+2*(r*P+x*Q)-(r^2+x^2)*ell
+                    M=e["v_max"]^2-e["v_min"]^2
+                    @constraint(model, drop<=M*(1-Eon(p, t)))
+                    @constraint(model, drop>=-M*(1-Eon(p, t)))
+                end
                 if spec.electric==:socp
                     @constraint(model, [vi+ell, 2P, 2Q, vi-ell] in SecondOrderCone())
                 else
@@ -357,7 +378,7 @@ function build_r4_model(
         h=d["heat"]
         pipes=h["pipes"]
         for k in ("H_in", "H_out", "m_pipe")
-            v[k]=@variable(model, [1:2, 1:T], lower_bound=0, base_name=k)
+            v[k]=@variable(model, [1:length(pipes), 1:T], lower_bound=0, base_name=k)
         end
         for k in ("m_source", "m_load")
             v[k]=@variable(model, [1:3, 1:T], lower_bound=0, base_name=k)
@@ -367,7 +388,13 @@ function build_r4_model(
                 set_upper_bound(v["m_pipe"][p, t], pipe["flow_max"])
                 set_upper_bound(v["H_in"][p, t], pipe["H_max"])
                 set_upper_bound(v["H_out"][p, t], pipe["H_max"])
-                @constraint(model, v["H_out"][p, t]==v["H_in"][p, t]-r4_loss(pipe))
+                Hon=switching===nothing ? 1.0 : v["u_H_arc"][p, t]
+                if switching!==nothing
+                    @constraint(model, v["m_pipe"][p, t]<=pipe["flow_max"]*Hon)
+                    @constraint(model, v["H_in"][p, t]<=pipe["H_max"]*Hon)
+                    @constraint(model, v["H_out"][p, t]<=pipe["H_max"]*Hon)
+                end
+                @constraint(model, v["H_out"][p, t]==v["H_in"][p, t]-r4_loss(pipe)*Hon)
             end
             for i in 1:3
                 ms=v["m_source"][i, t]
@@ -418,6 +445,7 @@ function build_r4_model(
         ),
         model_types = types,
         model_class = spec.electric==:exact && stage in (:central, :network) ?
-                      "nonconvex_quadratic" : b!==nothing && modes===nothing ? "MISOCP" : "SOCP",
+                      "nonconvex_quadratic" :
+                      any(is_binary, all_variables(model)) ? "MISOCP" : "SOCP",
     )
 end

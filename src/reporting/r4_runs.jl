@@ -19,6 +19,9 @@ function r4_science_hashes()
         "configs/r4/distributed-study.toml",
         "scripts/study_r4_discrete.jl",
         "configs/r4/discrete-study.toml",
+        "scripts/freeze_r4_reconfiguration.jl",
+        "scripts/study_r4_reconfiguration.jl",
+        "configs/r4/reconfiguration/study.toml",
     )
         hashes[rel]=bytes2hex(sha256(read(joinpath(root, rel))))
     end
@@ -82,6 +85,8 @@ function r4_solve_stage(
             log["termination"]=string(termination_status(b.model))
             log["primal"]=string(primal_status(b.model))
             log["solver"]=solver_name(b.model)
+            get(build_options, :switching, nothing)!==nothing &&
+                (log["raw_status"]=raw_status(b.model))
             log["model_types"]=b.model_types
             log["model_class"]=b.model_class
             if has_values(b.model) &&

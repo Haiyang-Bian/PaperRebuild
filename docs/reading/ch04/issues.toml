@@ -29,12 +29,12 @@ state = "adopted_derivation"
 topic = "有向服务费"
 validation = "收款方运营商有同额收入，主体效用之和不变。"
 [[issue]]
-adopted = "原开关关系不据此实现。固定树校验；l>=0且上界为Imax平方。"
+adopted = "首批仅固定树、l>=0与Imax平方。重构采用N1–N6的连通、开路和动作解释，详见network.toml。"
 equations = [29, 32, 34, 35, 36, 37, 38, 39, 40, 48, 49, 50, 51]
 id = "R4-C05"
 state = "adopted_derivation"
 topic = "固定拓扑与平方量"
-validation = "拓扑优化未实现；原锥及电网原等式另验。"
+validation = "旧固定拓扑判定保留。新重构含独立图校验与单时段72项穷举；原电网等式另验。"
 [[issue]]
 adopted = "采用凸且递减的二次特例，Q/H混排另记；GT/非市场用户不启用。"
 equations = [4, 8, 23]
