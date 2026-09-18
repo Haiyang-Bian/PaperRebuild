@@ -31,6 +31,7 @@ for (i, name) in enumerate(names)
             markersize = 8,
         )
         bad=filter(x->!x.model_A1, rr)
+        isempty(bad)&&continue
         scatter!(
             ax,
             [x.pattern for x in bad],
@@ -111,19 +112,21 @@ for (i, name) in enumerate(names)
     )
         rr=filter(x->x.case==name&&x.method==method, trace)
         isempty(rr)&&continue
-        lines!(
+        scatterlines!(
             ax,
             [x.iteration for x in rr],
             max.(1e-12, [x.primal for x in rr]);
             color,
             label = method*" primal",
+            markersize = length(rr)==1 ? 8 : 2,
         )
-        lines!(
+        scatterlines!(
             ax,
             [x.iteration for x in rr],
             max.(1e-12, [x.dual for x in rr]);
             color,
             linestyle = :dash,
+            markersize = length(rr)==1 ? 8 : 2,
         )
         scatterlines!(bx, [x.iteration for x in rr], [x.cost for x in rr]; color, markersize = 2)
     end

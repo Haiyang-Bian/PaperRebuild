@@ -27,6 +27,30 @@ using Test, JuMP, Clarabel, TOML
     @test v["accepted_model_count"]==2
     @test v["cost_optimization_complete"]
     @test v["relative_gap"]<=1e-4
+    # 一个模式缺下界就不能认证整个并集；其余模式的好界不能代替缺失项。
+    unbounded_evidence=deepcopy(central)
+    delete!(unbounded_evidence["records"][1]["raw"], "objective_bound")
+    unbounded_evidence["records"][1]["reconstruction"]=reconstruct_r4_cost(
+        tiny,
+        unbounded_evidence["records"][1]["raw"],
+    )
+    uncertain=validate_r4_discrete(tiny, unbounded_evidence)
+    @test !uncertain["cost_optimization_complete"]
+    @test isnan(uncertain["objective_bound"])
+    no_battery=deepcopy(tiny.data)
+    no_battery["actors"][2]["BS_power_max"]=0.0
+    @test r4_battery_patterns(R4Case(no_battery))==[[0]]
+    impossible=deepcopy(tiny.data)
+    impossible["heat"]["pipes"][1]["U_W_mK"]*=1000
+    rejected=solve_r4_discrete(
+        R4Case(impossible);
+        optimizer = opt,
+        method = :central_enumeration,
+        budget_sec = 60,
+    )
+    @test all(x["status"]=="infeasible_certified" for x in rejected["records"])
+    @test rejected["validation"]["best_model_index"]==0
+    @test !rejected["validation"]["cost_optimization_complete"]
     costs=[x["operating_cost"] for x in v["mode_checks"]]
     @test maximum(costs)-minimum(costs)<1e-5
     for row in central["records"]

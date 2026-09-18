@@ -86,6 +86,7 @@ makedocs(;
             "分布协调公式与符号" => "ch04-distributed-equations.md",
             "分布协调正式对照" => "ch04-distributed-results.md",
             "全部电池模式与精度核查" => "ch04-discrete.md",
+            "离散模式正式结果" => "ch04-discrete-results.md",
         ],
         "API 索引与说明" => "api.md",
         "第 2 章模型与首批实现" => [

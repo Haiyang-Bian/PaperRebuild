@@ -39,6 +39,7 @@ modes=NamedTuple[];
 residuals=NamedTuple[];
 trajectory=NamedTuple[]
 dispatch=NamedTuple[];
+precision=NamedTuple[];
 evidence=Dict{String,Any}[]
 function append_candidate!(name, method, id, index, c, candidate)
     for x in candidate["validation"]["rows"]
@@ -204,6 +205,31 @@ for entry in study["records"]
             )
         end
         totaliterations=length(r["trace"])
+        lastinner=isempty(r["inner_trace"]) ? Dict{String,Any}() : last(r["inner_trace"])
+        failures=[
+            get(a, "termination", get(a, "error", "unknown")) for
+            a in get(r, "last_attempt_agents", []) if a["status"]!="solved"
+        ]
+        haskey(r, "last_attempt_operator") &&
+            push!(failures, get(r["last_attempt_operator"], "termination", "unknown"))
+        push!(
+            precision,
+            (
+                run_id = id,
+                case = name,
+                profile = r["precision_profile"],
+                BarQCPConvTol = r["effective_parameters"]["BarQCPConvTol"],
+                status = r["status"],
+                raw_A1 = v["model_pass"],
+                reconstructed_A1 = mp,
+                physical_A1 = pp,
+                outer_iterations = length(r["trace"]),
+                inner_iterations = length(r["inner_trace"]),
+                inner_primal = get(lastinner, "primal", NaN),
+                inner_dual = get(lastinner, "dual", NaN),
+                failed_stage_termination = join(failures, " / "),
+            ),
+        )
     else
         mp=v["model_pass"]
         pp=mp&&v["electric_original_pass"]
@@ -212,7 +238,7 @@ for entry in study["records"]
         physcost=pp ? cost : NaN
         lower=get(r, "objective_bound", NaN)
         gap=get(r, "relative_gap", NaN)
-        certificate=r["cost_optimization_complete"]&&mp
+        certificate=r["cost_optimization_complete"]&&mp&&(method!="central_exact"||pp)
         attempted=1
         accepted=Int(mp)
         phycount=Int(pp)
@@ -271,6 +297,7 @@ for (name, rows) in (
     ("residuals.csv", residuals),
     ("trajectory.csv", trajectory),
     ("dispatch.csv", dispatch),
+    ("precision.csv", precision),
 )
     CSV.write(joinpath(output, name), rows)
 end

@@ -1,0 +1,5 @@
+run_id,case,profile,BarQCPConvTol,status,raw_A1,reconstructed_A1,physical_A1,outer_iterations,inner_iterations,inner_primal,inner_dual,failed_stage_termination
+open_flexible--precision--original,open_flexible,original,1.0e-6,inner_iteration_limit,false,false,false,1,173,1.1271939486779592e-5,3.7135822341938783e-6,""
+open_flexible--precision--qcp_1e9,open_flexible,qcp_1e9,1.0e-9,solver_failure,false,false,false,1,2,1.1477057165797488e-6,1.0643233521323257e-6,LOCALLY_SOLVED
+import_flexible--precision--original,import_flexible,original,1.0e-6,inner_iteration_limit,false,false,false,1,111,5.211683835963971e-6,8.61675355551367e-6,""
+import_flexible--precision--qcp_1e9,import_flexible,qcp_1e9,1.0e-9,solver_failure,false,false,false,14,33,5.705553854361232e-7,5.392482417003343e-7,LOCALLY_SOLVED

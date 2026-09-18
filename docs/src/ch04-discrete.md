@@ -84,4 +84,5 @@ julia +1.12.6 --startup-file=no --project=. scripts/study_r4_discrete.jl
 保存和重读见[save_r4_discrete_run](@ref PaperRebuild.save_r4_discrete_run)、
 [read_r4_discrete_run](@ref PaperRebuild.read_r4_discrete_run)；独立核验见
 [validate_r4_discrete](@ref PaperRebuild.validate_r4_discrete)。
-结果待正式运行，不提前宣布全部模式成功。下一项研究是网络重构，随后进入较大系统和第5章。
+正式20项方法运行及128条逐模式记录见[结果与边界](ch04-discrete-results.md)。
+下一项研究是网络重构，随后进入较大系统和第5章。
