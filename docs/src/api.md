@@ -203,6 +203,20 @@ PaperRebuild.solve_r4_thermal
 PaperRebuild.validate_r4_thermal
 ~~~
 
+## 第5章固定报价市场基准
+
+~~~@docs
+PaperRebuild.R5MarketCase
+PaperRebuild.load_r5_market_case
+PaperRebuild.build_r5_market
+PaperRebuild.build_r5_market_dual
+PaperRebuild.solve_r5_market
+PaperRebuild.validate_r5_market
+PaperRebuild.save_r5_market_run
+PaperRebuild.read_r5_market_run
+PaperRebuild.compare_r5_market_runs
+~~~
+
 ## 工程示例函数说明
 
 以下两个函数保留自初始化模板，只用于验证包加载、测试和 Documenter 集成，不计入论文复现进度。

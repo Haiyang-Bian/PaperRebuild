@@ -2500,6 +2500,16 @@
           "path": "docs/src/ch04-thermal-results.md",
           "name": "ch04-thermal-results.md",
           "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch05-market-equations.md",
+          "name": "ch05-market-equations.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch05-market.md",
+          "name": "ch05-market.md",
+          "isDirectory": false
         }
       ],
       "order": 1,
@@ -2645,6 +2655,11 @@
         {
           "path": "docs/agent/tasks/2026-09-19-ch05-audit.md",
           "name": "2026-09-19-ch05-audit.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/agent/tasks/2026-09-19-r5-market.md",
+          "name": "2026-09-19-r5-market.md",
           "isDirectory": false
         }
       ],
@@ -2982,6 +2997,31 @@
           "path": "src/verification/r4_thermal.jl",
           "name": "r4_thermal.jl",
           "isDirectory": false
+        },
+        {
+          "path": "src/algorithms/r5_market.jl",
+          "name": "r5_market.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/core/r5_market.jl",
+          "name": "r5_market.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/formulations/r5_market.jl",
+          "name": "r5_market.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/reporting/r5_market.jl",
+          "name": "r5_market.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/verification/r5_market.jl",
+          "name": "r5_market.jl",
+          "isDirectory": false
         }
       ],
       "order": 3,
@@ -3198,6 +3238,56 @@
           "path": "configs/r4/thermal-study.toml",
           "name": "thermal-study.toml",
           "isDirectory": false
+        },
+        {
+          "path": "configs/r5/market-base.toml",
+          "name": "market-base.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/market/bid_cap.toml",
+          "name": "bid_cap.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/market/capacity_infeasible.toml",
+          "name": "capacity_infeasible.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/market/hand_hour.toml",
+          "name": "hand_hour.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/market/hand_quarter.toml",
+          "name": "hand_quarter.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/market/no_ies.toml",
+          "name": "no_ies.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/market/ramp_memory.toml",
+          "name": "ramp_memory.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/market/study.toml",
+          "name": "study.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/market/two_bus.toml",
+          "name": "two_bus.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/market/wide_line.toml",
+          "name": "wide_line.toml",
+          "isDirectory": false
         }
       ],
       "order": 4,
@@ -3408,6 +3498,11 @@
         {
           "path": "docs/reading/ch05/inputs.toml",
           "name": "inputs.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch05/market.toml",
+          "name": "market.toml",
           "isDirectory": false
         }
       ],
@@ -10581,6 +10676,11 @@
           "path": "test/r4_thermal.jl",
           "name": "r4_thermal.jl",
           "isDirectory": false
+        },
+        {
+          "path": "test/r5_market.jl",
+          "name": "r5_market.jl",
+          "isDirectory": false
         }
       ],
       "order": 7,
@@ -11646,6 +11746,71 @@
         {
           "path": "scripts/audit_ch05_probability_a1.jl",
           "name": "audit_ch05_probability_a1.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r5_market.jl",
+          "name": "check_r5_market.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r5_market_artifacts.jl",
+          "name": "check_r5_market_artifacts.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/compare_r5_market.jl",
+          "name": "compare_r5_market.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/freeze_r5_market.jl",
+          "name": "freeze_r5_market.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/plot_r5_market.jl",
+          "name": "plot_r5_market.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r5_market_cases.jl",
+          "name": "r5_market_cases.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r5_market_docs.jl",
+          "name": "r5_market_docs.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r5_market_setup.jl",
+          "name": "r5_market_setup.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/report_r5_market.jl",
+          "name": "report_r5_market.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/run_r5_market.jl",
+          "name": "run_r5_market.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/study_r5_market.jl",
+          "name": "study_r5_market.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/test_r5_market.jl",
+          "name": "test_r5_market.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/validate_r5_market.jl",
+          "name": "validate_r5_market.jl",
           "isDirectory": false
         }
       ],

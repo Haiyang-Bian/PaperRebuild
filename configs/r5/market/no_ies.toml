@@ -1,0 +1,53 @@
+T = 4
+description = "Synthetic degeneration: remove IES bids, keep ordinary load and reserve."
+dt_h = 1.0
+ies = []
+load_MW = [[20.0, 20.0, 20.0, 20.0], [40.0, 60.0, 80.0, 50.0]]
+name = "no_ies"
+nodes = 2
+origin = "synthetic"
+reserve_down_MW = [10.0, 10.0, 10.0, 10.0]
+reserve_up_MW = [15.0, 15.0, 15.0, 15.0]
+schema = "r5-market-case-v1"
+
+[[generators]]
+down_bid = [1.0, 1.0, 1.0, 1.0]
+down_max = 30.0
+energy_bid = [20.0, 20.0, 20.0, 20.0]
+id = "G1"
+node = 1
+p_bid_max = 100.0
+p_initial = 50.0
+p_max = 100.0
+p_min = 0.0
+ramp_down_MW_h = 20.0
+ramp_up_MW_h = 20.0
+up_bid = [5.0, 5.0, 5.0, 5.0]
+up_max = 30.0
+[[generators]]
+down_bid = [2.0, 2.0, 2.0, 2.0]
+down_max = 30.0
+energy_bid = [50.0, 50.0, 50.0, 50.0]
+id = "G2"
+node = 2
+p_bid_max = 80.0
+p_initial = 20.0
+p_max = 80.0
+p_min = 0.0
+ramp_down_MW_h = 40.0
+ramp_up_MW_h = 40.0
+up_bid = [7.0, 7.0, 7.0, 7.0]
+up_max = 30.0
+
+[network]
+limit_MW = [70.0]
+ptdf = [[0.0, -1.0]]
+slack_node = 1
+
+[units]
+energy = "MWh"
+energy_price = "USD/MWh"
+power = "MW"
+ramp = "MW/h"
+reserve_price = "USD/(MW*h)"
+time = "h"

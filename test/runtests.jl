@@ -27,3 +27,5 @@ include("r4_discrete.jl")
 include("r4_reconfiguration.jl")
 include("r4_heat_compatibility.jl")
 include("r4_thermal.jl")
+
+include("r5_market.jl")

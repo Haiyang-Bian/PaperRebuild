@@ -1,0 +1,281 @@
+schema = "ch05-market-model-v1"
+source = "docs/摘要.pdf"
+source_sha256 = "20328e2480e773520c19c378e53365fc944c0bafcfca73071f5d8313d5ee7d91"
+pdf_pages = [89, 90]
+scope = "Fixed bids, fixed ordinary demand and PTDF clearing LP; not the bilevel or stochastic dispatch."
+version = "r5_market_clearing_checked_v1"
+
+[[equation]]
+id = "5-34"
+meaning = "最小化报价供给成本减消费效用"
+original = '''\min\ \sum_{g}o^{GC,E}_{gt}P^{GC}_{gt}-\sum_b o^D_{bt}P^D_{bt}-\sum_i o^{IES,E}_{it}P^{IES}_{it}+\sum_g(o^{GC,RU}_{gt}R^{GC,U}_{gt}+o^{GC,RD}_{gt}R^{GC,D}_{gt})+\sum_i(o^{IES,RU}_{it}R^{IES,U}_{it}+o^{IES,RD}_{it}R^{IES,D}_{it})'''
+adopted = "固定普通负荷效用作为常数省略；显式求和全部时段并乘dt_h。该数值不是资源成本。原文主体索引J/l在展示中改记g/b/i。"
+api = "build_r5_market"
+test = "R5 market primal, dual and units"
+
+[[equation]]
+id = "5-35"
+meaning = "PTDF线路容量与净注入"
+original = '''-\overline P_l\le\sum_b\operatorname{PTDF}_{lb}(P^{GC}_{bt}-P^D_{bt}-P^{IES}_{bt})\le\overline P_l'''
+adopted = "按接入节点汇总主体，普通负荷与IES购电为负注入；不采用5-49/50的普通负荷正号。"
+api = "build_r5_market"
+test = "R5 market primal, dual and units"
+
+[[equation]]
+id = "5-36"
+meaning = "上、下备用容量分别平衡"
+original = '''R_t^{Sys,U/D}=\sum_gR_{gt}^{GC,U/D}+\sum_iR_{it}^{IES,U/D}'''
+adopted = "保持等式平衡；备用容量尚不认证激活后的网络与热状态可交付性。"
+api = "build_r5_market"
+test = "R5 market primal, dual and units"
+
+[[equation]]
+id = "5-37"
+meaning = "系统能量平衡"
+original = '''\sum_b(-P_{bt}^{IES}-P_{bt}^{D}+P_{bt}^{GC})=0'''
+adopted = "代码取整行相反数D+IES-GC=0，等式乘子的符号一并转换。"
+api = "build_r5_market"
+test = "R5 market primal, dual and units"
+
+[[equation]]
+id = "5-38"
+meaning = "发电机能量与备用共用物理容量"
+original = '''\underline P_g^{GC}+R_{gt}^{GC,D}\le P_{gt}^{GC}\le\overline P_g^{GC}-R_{gt}^{GC,U}'''
+adopted = "上下容量逐行保留，备用报价上限与物理余量同时生效。"
+api = "build_r5_market"
+test = "R5 market primal, dual and units"
+
+[[equation]]
+id = "5-39"
+meaning = "IES上备用减少购电，下备用增加购电"
+original = '''\underline P_i^{IES}+R_{it}^{IES,U}\le P_{it}^{IES}\le\overline P_i^{IES}-R_{it}^{IES,D}'''
+adopted = "购电为正；本轮只验证日前余量，实时交付符号留待物理补救接口单独验证。"
+api = "build_r5_market"
+test = "R5 market primal, dual and units"
+
+[[equation]]
+id = "5-40"
+meaning = "发电机和IES各自的能量报价容量"
+original = '''0\le P_{jt}^{GC/IES}\le P_j^{Bid}'''
+adopted = "分别使用gen.p_bid_max与ies.purchase_bid_max，不默认为物理容量。"
+api = "build_r5_market"
+test = "R5 market KKT ramp, integrity and statuses"
+
+[[equation]]
+id = "5-41"
+meaning = "备用报价容量"
+original = '''0\le R_{jt}^{GC/IES,U/D}\le R_j^{Bid}'''
+adopted = "为主体和上/下备用分别提供有限非负上限。"
+api = "build_r5_market"
+test = "R5 market primal, dual and units"
+
+[[equation]]
+id = "5-42"
+meaning = "发电机跨时段爬坡"
+original = '''-R_g^{RP}\le P_{gt}^{GC}-P_{g,t-1}^{GC}\le R_g^{RP}'''
+adopted = "显式p_initial与dt_h；可分别指定上/下MW/h边界。末端下一时段乘子置零。"
+api = "build_r5_market_dual"
+test = "R5 market KKT ramp, integrity and statuses"
+
+[[symbol]]
+id = "r5-market-generation"
+latex = '''P_{gt}^{GC}'''
+meaning = "发电机能量中标功率"
+category = "variable"
+unit = "MW"
+julia = "P_G[g,t]"
+dimensions = "发电机×时段"
+domain = "非负，满足物理与报价界"
+source = "5-34, 5-38, 5-40"
+
+[[symbol]]
+id = "r5-market-purchase"
+latex = '''P_{it}^{IES}'''
+meaning = "IES购电中标功率，正号为消费"
+category = "variable"
+unit = "MW"
+julia = "P_IES[i,t]"
+dimensions = "IES×时段"
+domain = "非负，满足物理与报价界"
+source = "5-34, 5-39, 5-40"
+
+[[symbol]]
+id = "r5-market-reserve-g"
+latex = '''R_{gt}^{GC,U},R_{gt}^{GC,D}'''
+meaning = "发电机上/下备用容量"
+category = "variable"
+unit = "MW"
+julia = "R_G_up[g,t], R_G_down[g,t]"
+dimensions = "发电机×时段"
+domain = "非负"
+source = "5-36, 5-38, 5-41"
+
+[[symbol]]
+id = "r5-market-reserve-ies"
+latex = '''R_{it}^{IES,U},R_{it}^{IES,D}'''
+meaning = "IES上/下备用容量"
+category = "variable"
+unit = "MW"
+julia = "R_IES_up[i,t], R_IES_down[i,t]"
+dimensions = "IES×时段"
+domain = "非负；上备用减少购电"
+source = "5-36, 5-39, 5-41"
+
+[[symbol]]
+id = "r5-market-demand"
+latex = '''P_{bt}^{D}'''
+meaning = "普通用户固定负荷"
+category = "parameter"
+unit = "MW"
+julia = "load_MW[b][t]"
+dimensions = "节点×时段"
+domain = "有限非负"
+source = "5-35, 5-37"
+
+[[symbol]]
+id = "r5-market-ptdf"
+latex = '''\operatorname{PTDF}_{lb}'''
+meaning = "给定参考节点下的注入到支路流量系数"
+category = "parameter"
+unit = "1"
+julia = "network.ptdf[l][b]"
+dimensions = "支路×节点"
+domain = "有限实数；参考列零"
+source = "5-35"
+
+[[symbol]]
+id = "r5-market-line-limit"
+latex = '''\overline P_l'''
+meaning = "双向支路容量"
+category = "parameter"
+unit = "MW"
+julia = "network.limit_MW[l]"
+dimensions = "支路"
+domain = "有限正数"
+source = "5-35"
+
+[[symbol]]
+id = "r5-market-energy-bid"
+latex = '''o^{GC,E}_{gt},o^{IES,E}_{it}'''
+meaning = "发电成本报价与IES购电效用报价"
+category = "parameter"
+unit = "USD/MWh"
+julia = "generators[g].energy_bid[t], ies[i].energy_bid[t]"
+dimensions = "主体×时段"
+domain = "固定有限非负，非策略变量"
+source = "5-32, 5-34"
+
+[[symbol]]
+id = "r5-market-reserve-bid"
+latex = '''o^{GC/IES,RU/RD}_{jt}'''
+meaning = "各主体上/下备用单位容量每小时报价"
+category = "parameter"
+unit = "USD/(MW*h)"
+julia = "up_bid[t], down_bid[t]"
+dimensions = "主体×时段"
+domain = "固定有限非负"
+source = "5-34及项目显式时间单位"
+
+[[symbol]]
+id = "r5-market-bid-capacity"
+latex = '''P_j^{Bid},R_j^{Bid}'''
+meaning = "能量与备用报价数量上限"
+category = "parameter"
+unit = "MW"
+julia = "p_bid_max, purchase_bid_max, up_max, down_max"
+dimensions = "主体，跨时段固定"
+domain = "有限非负，独立于物理容量"
+source = "5-40, 5-41"
+
+[[symbol]]
+id = "r5-market-physical-capacity"
+latex = '''\underline P^{GC/IES},\overline P^{GC/IES}'''
+meaning = "发电或购电物理边界"
+category = "parameter"
+unit = "MW"
+julia = "p_min, p_max, q_min, q_max"
+dimensions = "主体"
+domain = "0≤下界≤上界，均有限"
+source = "5-38, 5-39"
+
+[[symbol]]
+id = "r5-market-required-reserve"
+latex = '''R_t^{Sys,U/D}'''
+meaning = "系统上/下备用需求"
+category = "parameter"
+unit = "MW"
+julia = "reserve_up_MW[t], reserve_down_MW[t]"
+dimensions = "时段"
+domain = "有限非负"
+source = "5-36"
+
+[[symbol]]
+id = "r5-market-ramp"
+latex = '''R_g^{RP},P_{g0}^{GC}'''
+meaning = "爬坡速率及给定初始出力"
+category = "parameter"
+unit = "MW/h; MW"
+julia = "ramp_up_MW_h, ramp_down_MW_h, p_initial"
+dimensions = "发电机"
+domain = "有限非负，初始出力在物理范围内"
+source = "5-42与项目显式初始条件"
+
+[[symbol]]
+id = "r5-market-time"
+latex = '''\Delta t'''
+meaning = "时间步"
+category = "project parameter"
+unit = "h"
+julia = "dt_h"
+dimensions = "标量"
+domain = "有限正数"
+source = "原文一小时；项目显式转换"
+
+[[symbol]]
+id = "r5-market-equality-dual"
+latex = '''\pi_t,\sigma_t^U,\sigma_t^D'''
+meaning = "采用平衡行的拉格朗日乘子；π为项目符号，不冒称原λ符号方向相同"
+category = "dual variable"
+unit = "USD/MW"
+julia = "multipliers.energy, multipliers.up, multipliers.down"
+dimensions = "时段"
+domain = "自由实数；原始MOI值另存"
+source = "原5-36/37；R5-MK2项目行方向"
+
+[[symbol]]
+id = "r5-market-inequality-dual"
+latex = '''\mu^{\pm},\rho^{\pm},a,b,c,e,k,\eta'''
+meaning = "线路、爬坡、容量和报价上界的采用乘子"
+category = "dual variable"
+unit = "USD/MW"
+julia = "multipliers各具名行；原始raw_duals另存"
+dimensions = "对应主体或支路×时段"
+domain = "非负；全部不等式按h≤0解释"
+source = "5-35, 5-38至5-42；项目统一拉格朗日记号"
+
+[[symbol]]
+id = "r5-market-lmp"
+latex = '''\lambda_{bt}'''
+meaning = "节点单位能量边际价格"
+category = "derived output"
+unit = "USD/MWh"
+julia = "LMP_USD_MWh[b][t]"
+dimensions = "节点×时段"
+domain = "实数，耦合条件下可为负"
+source = "R5-MK5项目推导"
+
+[[issue]]
+id = "R5-MK-C01"
+decision = "按5-35采用负的普通负荷注入；5-49/50正号保留在原页审计，不复制。"
+[[issue]]
+id = "R5-MK-C02"
+decision = "原5-46已有下一时段项。显式补齐初始出力、时间单位和对偶常数，并测试首末边界；不声称作者漏写全部跨时耦合。"
+[[issue]]
+id = "R5-MK-C03"
+decision = "固定普通负荷效用项是常数，本模型原对偶同时省略；只比较同口径目标。"
+[[issue]]
+id = "R5-MK-C04"
+decision = "发电能量报价上限与物理容量分开；备用报价上限和物理余量也分别约束。"
+[[issue]]
+id = "R5-MK-C05"
+decision = "本批固定报价连续LP不包含策略反馈、备用激活可交付性、IES物理补救或风险；退化价格不要求逐项唯一。"

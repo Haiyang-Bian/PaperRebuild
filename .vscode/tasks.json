@@ -1,5 +1,11 @@
 {
   "inputs": [
+    {"id":"r5MarketReport","description":"市场报告新目录；重绘需已有CSV且没有旧图","type":"promptString","default":"results/summaries/r5-market-replay"},
+    {"id":"r5MarketStudy","description":"市场批次study.toml或单次运行目录","type":"promptString","default":"results/runs/r5/r5-market-20260919/study.toml"},
+    {"id":"r5MarketLeft","description":"同输入市场运行A目录","type":"promptString"},
+    {"id":"r5MarketRight","description":"同输入市场运行B目录","type":"promptString"},
+    {"id":"r5MarketCase","description":"固定报价市场案例TOML","type":"promptString","default":"configs/r5/market-base.toml"},
+    {"id":"r5MarketOutput","description":"单次市场运行的新目录，不得覆盖旧运行","type":"promptString","default":"results/runs/r5/market-local"},
     {"id":"r4ThermalStudy","description":"R4稳态循环热网批次study.toml路径","type":"promptString","default":"results/runs/r4/r4-thermal-20260919/study.toml"},
     {"id":"r4ThermalReport","description":"热调度报告的新目录；重绘时已有表且无旧图","type":"promptString","default":"results/summaries/r4-thermal-replay"},
     {"id":"r4HeatStudy","description":"R4热相容性批次study.toml路径","type":"promptString","default":"results/runs/r4/r4-heat-20260919/study.toml"},
@@ -40,6 +46,15 @@
     }
   ],
   "tasks": [
+    {"label":"PaperRebuild: R5 market report saved","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/report_r5_market.jl","${input:r5MarketStudy}","${input:r5MarketReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 market redraw saved","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r5_market.jl","${input:r5MarketReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 market mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_market.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 market tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_market.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 market freeze once","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/freeze_r5_market.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 market study","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/study_r5_market.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 market run","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/run_r5_market.jl","${input:r5MarketCase}","${input:r5MarketOutput}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 market validate saved","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/validate_r5_market.jl","${input:r5MarketStudy}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 market compare saved","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/compare_r5_market.jl","${input:r5MarketLeft}","${input:r5MarketRight}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R5 frozen artifacts","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_ch05_artifacts.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R5 cut audit","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/audit_ch05_cuts.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R5 input transcription","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_ch05_inputs.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},

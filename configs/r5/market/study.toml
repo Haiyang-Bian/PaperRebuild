@@ -1,0 +1,105 @@
+acceptance = "Unchanged A1 power, KKT 1e-6 and A2 relative objective/duality gap 1e-4."
+budget_sec = 60.0
+independent_dual = "Same total 60-second budget includes primal, separately built dual and modeling."
+objective = "Fixed-bid clearing; fixed ordinary-load utility constant omitted; not system resource cost."
+origin = "synthetic"
+schema = "r5-market-study-v1"
+
+[input_sha256]
+bid_cap = "cab5fac023eeaea4998db0695f340033f6197a89b7ef3a11bbdaa06f601cff6b"
+capacity_infeasible = "c4dcfadcb5cef69aa614de78f012f2724ad84e3f471ae21a046af7ecaa82a94f"
+hand_hour = "955521c4ee8b3de52ec03bce12d5d6037e395d4e119296cd8277fec852bbd3a0"
+hand_quarter = "9cd6b1600bbc9b75117dec81231bb7904df8feff72425b9e60c366f0506998ec"
+no_ies = "d535e3298c68c0af8735e313d3b885f55c2b6d3c9b368e2f7e604a8f4cf59144"
+ramp_memory = "a60e590062b7ae541807da845e6a07ca4786af2a0e9a1a856b12d2f707650483"
+two_bus = "78eb4ce5f464b424ac84f96eda8af6716eed487e983459174987778e04cc7c5b"
+wide_line = "1c3a0de4705a0f7127f49c9cc3ebba08c627dfb567cbad44097ff321d9324aac"
+
+[[records]]
+case = "bid_cap"
+id = "bid_cap--highs"
+solver = "highs"
+[[records]]
+case = "bid_cap"
+id = "bid_cap--clarabel"
+solver = "clarabel"
+[[records]]
+case = "capacity_infeasible"
+id = "capacity_infeasible--highs"
+solver = "highs"
+[[records]]
+case = "capacity_infeasible"
+id = "capacity_infeasible--clarabel"
+solver = "clarabel"
+[[records]]
+case = "hand_hour"
+id = "hand_hour--highs"
+solver = "highs"
+[[records]]
+case = "hand_hour"
+id = "hand_hour--clarabel"
+solver = "clarabel"
+[[records]]
+case = "hand_quarter"
+id = "hand_quarter--highs"
+solver = "highs"
+[[records]]
+case = "hand_quarter"
+id = "hand_quarter--clarabel"
+solver = "clarabel"
+[[records]]
+case = "no_ies"
+id = "no_ies--highs"
+solver = "highs"
+[[records]]
+case = "no_ies"
+id = "no_ies--clarabel"
+solver = "clarabel"
+[[records]]
+case = "ramp_memory"
+id = "ramp_memory--highs"
+solver = "highs"
+[[records]]
+case = "ramp_memory"
+id = "ramp_memory--clarabel"
+solver = "clarabel"
+[[records]]
+case = "two_bus"
+id = "two_bus--highs"
+solver = "highs"
+[[records]]
+case = "two_bus"
+id = "two_bus--clarabel"
+solver = "clarabel"
+[[records]]
+case = "wide_line"
+id = "wide_line--highs"
+solver = "highs"
+[[records]]
+case = "wide_line"
+id = "wide_line--clarabel"
+solver = "clarabel"
+[[records]]
+case = "hand_hour"
+id = "hand_hour--gurobi"
+solver = "gurobi"
+[[records]]
+case = "two_bus"
+id = "two_bus--gurobi"
+solver = "gurobi"
+
+[settings.clarabel]
+tol_feas = 1.0e-10
+tol_gap_abs = 1.0e-10
+tol_gap_rel = 1.0e-10
+
+[settings.gurobi]
+FeasibilityTol = 1.0e-9
+OptimalityTol = 1.0e-9
+Seed = 23
+Threads = 1
+
+[settings.highs]
+dual_feasibility_tolerance = 1.0e-9
+primal_feasibility_tolerance = 1.0e-9
+threads = 1
