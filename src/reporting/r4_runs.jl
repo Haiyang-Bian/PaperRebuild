@@ -15,6 +15,8 @@ function r4_science_hashes()
         "configs/r4/bargaining-study.toml",
         "scripts/study_r4_tspa.jl",
         "configs/r4/tspa-study.toml",
+        "scripts/study_r4_distributed.jl",
+        "configs/r4/distributed-study.toml",
     )
         hashes[rel]=bytes2hex(sha256(read(joinpath(root, rel))))
     end
@@ -38,7 +40,10 @@ function r4_solve_stage(
         i->(stage==:trading ? i>1 : stage!=:local || i==actor)&&c.data["actors"][i]["BS_power_max"]>0,
         1:3,
     )
-    patterns=enumerate_battery && has_battery ? [[(n>>(t-1))&1 for t in 1:T] for n in 0:(2^T-1)] :
+    fixed=get(build_options, :modes, nothing)
+    fixed!==nothing && enumerate_battery && error("固定模式与枚举不能同时指定")
+    patterns=fixed!==nothing ? [fixed] :
+             enumerate_battery && has_battery ? [[(n>>(t-1))&1 for t in 1:T] for n in 0:(2^T-1)] :
              [nothing]
     logs=Dict{String,Any}[]
     best=nothing

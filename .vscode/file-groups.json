@@ -2020,6 +2020,16 @@
           "path": "docs/src/ch04-tspa-results.md",
           "name": "ch04-tspa-results.md",
           "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch04-distributed-equations.md",
+          "name": "ch04-distributed-equations.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch04-distributed.md",
+          "name": "ch04-distributed.md",
+          "isDirectory": false
         }
       ],
       "order": 1,
@@ -2135,6 +2145,11 @@
         {
           "path": "docs/agent/tasks/2026-09-18-r4-tspa.md",
           "name": "2026-09-18-r4-tspa.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/agent/tasks/2026-09-18-r4-distributed.md",
+          "name": "2026-09-18-r4-distributed.md",
           "isDirectory": false
         }
       ],
@@ -2362,6 +2377,31 @@
           "path": "src/verification/r4_tspa.jl",
           "name": "r4_tspa.jl",
           "isDirectory": false
+        },
+        {
+          "path": "src/algorithms/r4_distributed.jl",
+          "name": "r4_distributed.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/core/r4_distributed.jl",
+          "name": "r4_distributed.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/formulations/r4_distributed.jl",
+          "name": "r4_distributed.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/reporting/r4_distributed.jl",
+          "name": "r4_distributed.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/verification/r4_distributed.jl",
+          "name": "r4_distributed.jl",
+          "isDirectory": false
         }
       ],
       "order": 3,
@@ -2528,6 +2568,11 @@
           "path": "configs/r4/tspa-study.toml",
           "name": "tspa-study.toml",
           "isDirectory": false
+        },
+        {
+          "path": "configs/r4/distributed-study.toml",
+          "name": "distributed-study.toml",
+          "isDirectory": false
         }
       ],
       "order": 4,
@@ -2693,6 +2738,11 @@
         {
           "path": "docs/reading/ch04/tspa.toml",
           "name": "tspa.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch04/distributed.toml",
+          "name": "distributed.toml",
           "isDirectory": false
         }
       ],
@@ -9446,6 +9496,11 @@
           "path": "test/r4_tspa.jl",
           "name": "r4_tspa.jl",
           "isDirectory": false
+        },
+        {
+          "path": "test/r4_distributed.jl",
+          "name": "r4_distributed.jl",
+          "isDirectory": false
         }
       ],
       "order": 7,
@@ -10261,6 +10316,46 @@
         {
           "path": "scripts/audit_r4_tspa.jl",
           "name": "audit_r4_tspa.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r4_distributed.jl",
+          "name": "check_r4_distributed.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/plot_r4_distributed.jl",
+          "name": "plot_r4_distributed.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/probe_r4_distributed.jl",
+          "name": "probe_r4_distributed.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r4_distributed_docs.jl",
+          "name": "r4_distributed_docs.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/report_r4_distributed.jl",
+          "name": "report_r4_distributed.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/study_r4_distributed.jl",
+          "name": "study_r4_distributed.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/test_r4_distributed.jl",
+          "name": "test_r4_distributed.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r4_distributed_artifacts.jl",
+          "name": "check_r4_distributed_artifacts.jl",
           "isDirectory": false
         }
       ],

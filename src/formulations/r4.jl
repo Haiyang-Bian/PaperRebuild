@@ -5,6 +5,7 @@
 构建第4章采用模型，不求解/写文件。MW/MWh；电支路内部使用标幺平方量。
 stage=:local为聚合商自调度；:network冻结聚合商全部物理控制；:central联合优化。
 stage=:trading仅联合聚合商、显式匹配合同，忽略网络；用于TSPA第一阶段，不是物理调度。
+stage=:agent仅含单个聚合商资源；:operator仅含DSO资源/网络和明确的边界副本，用于分布接口。
 balance_penalty非nothing时仅在network阶段对节点P/Q/H/质量平衡加入有单位的罚松弛，
 设备、容量、端口、电压降和支路关系仍保持为硬约束；不保证任何输入都可被松弛救活。
 modes可指定逐时电池充电状态，用于16种状态穷举的连续凸对照。
@@ -22,7 +23,8 @@ function build_r4_model(
     balance_penalty = nothing,
 )
     TOML.parse(c.source_text)==c.data || error("输入被原位改写，请构造新的R4Case")
-    stage in (:central, :local, :network, :trading) || error("建模阶段错误")
+    stage in (:central, :local, :network, :trading, :agent, :operator) || error("建模阶段错误")
+    stage==:agent && !(actor in (2, 3)) && error("分布局部主体错误")
     stage==:local && !(actor in (2, 3)) && error("AG0只对聚合商A/B独立调度")
     stage==:network && frozen===nothing && error("网络校核必须提供冻结计划")
     balance_penalty!==nothing && (
@@ -41,7 +43,9 @@ function build_r4_model(
     end
     v=variables
     v["E"]=@variable(model, [1:3, 1:(T+1)], lower_bound=0, base_name="E")
-    active(i) = stage==:trading ? i>1 : stage!=:local || i==actor
+    active(i) =
+        stage==:trading ? i>1 :
+        stage==:operator ? i==1 : stage in (:local, :agent) ? i==actor : true
     b=findfirst(i->active(i) && actors[i]["BS_power_max"]>0, 1:3)
     if modes!==nothing
         length(modes)==T && all(x->x in (0, 1), modes) || error("电池模式错误")
@@ -126,7 +130,7 @@ function build_r4_model(
         fix(v["E"][i, 1], on ? a["BS_initial"] : 0.0; force = true)
         fix(v["E"][i, T+1], on ? a["BS_initial"] : 0.0; force = true)
     end
-    P_net=@expression(
+    P_device=@expression(
         model,
         [i=1:3, t=1:T],
         v["P_CHP"][i, t]+v["P_PV"][i, t]+v["P_dis"][i, t]-v["P_ch"][i, t]-v["P_HP"][i, t]-v["P_EB"][
@@ -134,12 +138,43 @@ function build_r4_model(
             t,
         ]-v["P_D"][i, t]
     )
-    H_net=@expression(model, [i=1:3, t=1:T], v["H_src"][i, t]-v["H_D"][i, t])
+    # R4-D1：运营商只持有边界副本；不在其问题中优化聚合商设备。
+    # Q负荷及热源/热负荷总量分别通信，不能仅从电热净注入猜测。
+    if stage==:operator
+        for key in ("P_interface", "Q_interface", "Hs_interface", "Hd_interface")
+            v[key]=@variable(model, [1:2, 1:T], base_name=key)
+        end
+        for j in 1:2, t in 1:T
+            a=actors[j+1]
+            set_lower_bound(v["P_interface"][j, t], -a["retail_limit"])
+            set_upper_bound(v["P_interface"][j, t], a["retail_limit"])
+            for key in ("Q_interface", "Hs_interface", "Hd_interface")
+                set_lower_bound(v[key][j, t], 0)
+                set_upper_bound(v[key][j, t], a["retail_limit"])
+            end
+            set_upper_bound(v["Q_interface"][j, t], a["Q_ratio"]*a["P_load"][t]*(1+a["flex"]))
+        end
+    end
+    P_net=[
+        stage==:operator && i>1 ? v["P_interface"][i-1, t] : P_device[i, t] for i in 1:3, t in 1:T
+    ]
+    Q_load=[
+        stage==:operator && i>1 ? v["Q_interface"][i-1, t] : actors[i]["Q_ratio"]*v["P_D"][i, t] for
+        i in 1:3, t in 1:T
+    ]
+    H_source=[
+        stage==:operator && i>1 ? v["Hs_interface"][i-1, t] : v["H_src"][i, t] for
+        i in 1:3, t in 1:T
+    ]
+    H_demand=[
+        stage==:operator && i>1 ? v["Hd_interface"][i-1, t] : v["H_D"][i, t] for i in 1:3, t in 1:T
+    ]
+    H_net=H_source-H_demand
     if stage!=:local && get(d, "admission_policy", "unrestricted")=="import_only_v1"
         # R4-B2：预先声明仅购能接入；集中/本地/网络三阶段采用同一边界。
         # 该制度不自动保证网络容量足够，仍须冻结计划并独立校核。
         for i in 2:3, t in 1:T
-            active(i) || continue
+            (active(i) || stage==:operator) || continue
             @constraint(model, P_net[i, t]<=0)
             @constraint(model, H_net[i, t]<=0)
         end
@@ -179,6 +214,8 @@ function build_r4_model(
                 add_to_expression!(settlement, -dt*price[carrier*"_sell"], sell[t])
             end
         end
+    elseif stage==:agent
+        # 资源成本局部问题不含内部支付；合同副本由分布协调接口显式添加。
     elseif stage==:trading
         price=d["settlement"]
         for carrier in ("P", "H")
@@ -310,7 +347,7 @@ function build_r4_model(
                 )
                 @constraint(
                     model,
-                    -actors[i]["Q_ratio"]*v["P_D"][i, t]/base+(i==1 ? v["Q_grid"][t]/base : 0)+sum(
+                    -Q_load[i, t]/base+(i==1 ? v["Q_grid"][t]/base : 0)+sum(
                         v["Q_branch"][p, t]-edges[p]["x"]*v["ell"][p, t] for p in incoming;
                         init = 0,
                     )==sum(v["Q_branch"][p, t] for p in outgoing; init = 0)+slack("Q", i, t)/base
@@ -337,7 +374,7 @@ function build_r4_model(
                 ml=v["m_load"][i, t]
                 set_upper_bound(ms, actors[i]["port_flow_max"])
                 set_upper_bound(ml, actors[i]["port_flow_max"])
-                for (m, H, port) in ((ms, v["H_src"][i, t], "source"), (ml, v["H_D"][i, t], "load"))
+                for (m, H, port) in ((ms, H_source[i, t], "source"), (ml, H_demand[i, t], "load"))
                     @constraint(model, H>=h["cp"]*h[port*"_delta_min"]*m/1e6)
                     @constraint(model, H<=h["cp"]*h[port*"_delta_max"]*m/1e6)
                 end
@@ -352,7 +389,7 @@ function build_r4_model(
                 )
                 @constraint(
                     model,
-                    v["H_src"][i, t]+sum(v["H_out"][p, t] for p in incoming; init = 0)==v["H_D"][
+                    H_source[i, t]+sum(v["H_out"][p, t] for p in incoming; init = 0)==H_demand[
                         i,
                         t,
                     ]+sum(v["H_in"][p, t] for p in outgoing; init = 0)+slack("H", i, t)
@@ -370,6 +407,7 @@ function build_r4_model(
         external,
         settlement,
         penalty,
+        boundary = (; P_net, Q_load, H_source, H_demand),
         stage,
         actor,
         formula_map = Dict(

@@ -154,6 +154,12 @@ PaperRebuild.validate_r4_elastic
 PaperRebuild.validate_r4_tspa
 PaperRebuild.save_r4_tspa_run
 PaperRebuild.read_r4_tspa_run
+PaperRebuild.R4DistributedSpec
+PaperRebuild.build_r4_distributed_block
+PaperRebuild.solve_r4_distributed
+PaperRebuild.validate_r4_distributed
+PaperRebuild.save_r4_distributed_run
+PaperRebuild.read_r4_distributed_run
 PaperRebuild.save_r4_run
 PaperRebuild.read_r4_run
 PaperRebuild.compare_r4_runs

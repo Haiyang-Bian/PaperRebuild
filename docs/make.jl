@@ -11,6 +11,8 @@ include(joinpath(@__DIR__, "..", "scripts", "r4_bargaining_docs.jl"))
 sync_r4_bargaining()
 include(joinpath(@__DIR__, "..", "scripts", "r4_tspa_docs.jl"))
 sync_r4_tspa()
+include(joinpath(@__DIR__, "..", "scripts", "r4_distributed_docs.jl"))
+sync_r4_distributed()
 
 makedocs(;
     modules = [PaperRebuild],
@@ -80,6 +82,8 @@ makedocs(;
             "TSPA两阶段与网络分歧点" => "ch04-tspa.md",
             "TSPA公式与符号" => "ch04-tspa-equations.md",
             "TSPA分歧点与罚项结果" => "ch04-tspa-results.md",
+            "分布协调推导与消息" => "ch04-distributed.md",
+            "分布协调公式与符号" => "ch04-distributed-equations.md",
         ],
         "API 索引与说明" => "api.md",
         "第 2 章模型与首批实现" => [
