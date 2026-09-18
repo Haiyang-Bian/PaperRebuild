@@ -178,10 +178,41 @@ for name in keys(rules["input_sha256"]), loss in ("reference", "exponential")
                 a.operating_cost,
             ) : NaN,
             both_cost_complete = a.cost_optimization_complete&&b.cost_optimization_complete,
+            saving_bound_lower = valid && isfinite(a.objective_bound) ?
+                                 a.objective_bound-b.operating_cost : NaN,
+            saving_bound_upper = valid && isfinite(b.objective_bound) ?
+                                 a.operating_cost-b.objective_bound : NaN,
         ),
     )
 end
 CSV.write(joinpath(output, "policy-comparison.csv"), comparisons)
+legacy=NamedTuple[]
+legacy_hashes=Dict{String,String}()
+for x in summary
+    parent_id=x.case*"--"*x.policy*"--exact"
+    path=joinpath(root, "results", "runs", "r4", rules["parent_batch"], parent_id)
+    parent=read_r4_run(path)
+    parent.case.sha256==rules["input_sha256"][x.case] || error("父运行输入不同")
+    legacy_hashes[parent_id]=bytes2hex(sha256(read(joinpath(path, "result.toml"))))
+    push!(
+        legacy,
+        (;
+            run_id = x.run_id,
+            parent_run_id = parent_id,
+            case = x.case,
+            policy = x.policy,
+            loss = x.loss,
+            legacy_cost = parent.result["operating_cost"],
+            new_cost = x.operating_cost,
+            new_minus_legacy = x.candidate ? x.operating_cost-parent.result["operating_cost"] : NaN,
+            legacy_energy_model_pass = parent.validation["model_pass"],
+            legacy_electric_pass = parent.validation["electric_original_pass"],
+            new_steady_pass = x.adopted_physical_pass,
+            interpretation = "Combined idle-temperature-mixing model change; not a same-model optimality gap",
+        ),
+    )
+end
+CSV.write(joinpath(output, "legacy-comparison.csv"), legacy)
 write(
     joinpath(output, "report.toml"),
     PaperRebuild.r4_text(
@@ -194,6 +225,7 @@ write(
             "study_sha256"=>bytes2hex(sha256(read(manifest))),
             "script_sha256"=>bytes2hex(sha256(read(@__FILE__))),
             "raw_source_hashes"=>source_hashes,
+            "legacy_source_hashes"=>legacy_hashes,
             "cases"=>sort(collect(keys(rules["input_sha256"]))),
             "scope"=>"Decoupled steady operating pipes; no idle cooling, restart, pressure or pump cost.",
             "required"=>length(expected),
