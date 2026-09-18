@@ -37,6 +37,9 @@
     {"label":"PaperRebuild: R4 distributed validate","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r4_distributed.jl","${input:r4DistributedRun}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R4 distributed compare","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/report_r4_distributed.jl","${input:r4DistributedStudy}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R4 distributed redraw","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r4_distributed.jl","${input:r4DistributedReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 distributed cost audit","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/audit_r4_distributed.jl","${input:r4DistributedStudy}","${input:r4DistributedReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 distributed cost tightening audit","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/tighten_r4_distributed_cost.jl","${input:r4DistributedStudy}","${input:r4DistributedReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 distributed artifacts check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r4_distributed_artifacts.jl","${input:r4DistributedReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {
       "label": "PaperRebuild: R4 TSPA mapping",
       "type": "process", "command": "julia",

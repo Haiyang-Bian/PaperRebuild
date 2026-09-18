@@ -84,6 +84,7 @@ makedocs(;
             "TSPA分歧点与罚项结果" => "ch04-tspa-results.md",
             "分布协调推导与消息" => "ch04-distributed.md",
             "分布协调公式与符号" => "ch04-distributed-equations.md",
+            "分布协调正式对照" => "ch04-distributed-results.md",
         ],
         "API 索引与说明" => "api.md",
         "第 2 章模型与首批实现" => [
