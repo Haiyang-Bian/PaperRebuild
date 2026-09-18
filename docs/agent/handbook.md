@@ -52,6 +52,12 @@ R3第四批显式v3见[物理恢复与停止判据](../src/ch03-r3-v3.md)。恢�
 
 ## 文档更新路由
 
+R4稳态循环读[新热模型](../src/ch04-thermal.md)及thermal.toml台账。
+r4_thermal_checked_v1显式区分日阀门与逐时循环，旧模型不迁移。reference/exponential同时有温度和混合。
+停流温度仅占位，无停流储热/重启能量；不能把静态闲置输运为零写成真实停流不散热。
+流水成本不含泵；变量流量模型非凸，只有固定流量/离散且电网SOCP的特例才为连续凸。
+正式16项规则在configs/r4/thermal-study.toml；不注入父解、不按结果调整数据，每项共享600秒。
+
 R4热核查读[相容性说明](../src/ch04-heat-compatibility.md)及heat-compatibility.toml台账。
 必须保留父调度身份、热交付与费用；envelope仅必要条件，mixing才检查双网络温度混合。
 绝对温度带为项目假设，父参考损耗保持冻结。状态重构不等于精确散热、水压或动态认证。

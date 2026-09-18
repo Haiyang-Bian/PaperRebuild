@@ -17,6 +17,8 @@ include(joinpath(@__DIR__, "..", "scripts", "r4_network_docs.jl"))
 sync_r4_network()
 include(joinpath(@__DIR__, "..", "scripts", "r4_heat_docs.jl"))
 sync_r4_heat_docs()
+include(joinpath(@__DIR__, "..", "scripts", "r4_thermal_docs.jl"))
+sync_r4_thermal_docs()
 
 makedocs(;
     modules = [PaperRebuild],
@@ -97,6 +99,8 @@ makedocs(;
             "热状态相容性与重构" => "ch04-heat-compatibility.md",
             "热相容性公式与符号" => "ch04-heat-equations.md",
             "热状态重构与失败原因" => "ch04-heat-results.md",
+            "循环与温度相关散热" => "ch04-thermal.md",
+            "稳态热网采用式与符号" => "ch04-thermal-equations.md",
         ],
         "API 索引与说明" => "api.md",
         "第 2 章模型与首批实现" => [

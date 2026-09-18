@@ -16,6 +16,11 @@ function r4_switching_variables!(model, v, c, options)
     electric_plan=get(options, :electric_schedule, nothing)
     heat_plan=get(options, :heat_open, nothing)
     directions=get(options, :heat_direction, nothing)
+    active_plan=get(options, :heat_active, nothing)
+    allow_idle=get(options, :allow_idle, false)
+    active_plan!==nothing &&
+        (!allow_idle || directions!==nothing) &&
+        error("循环计划只用于明确允许闲置的热网版本")
     function discrete!(vars, plan)
         if plan===nothing
             foreach(set_binary, vars)
@@ -26,7 +31,9 @@ function r4_switching_variables!(model, v, c, options)
     end
     discrete!(u, electric_plan)
     discrete!(h, heat_plan)
-    if directions===nothing
+    if active_plan!==nothing
+        discrete!(dir, active_plan)
+    elseif directions===nothing
         foreach(set_binary, dir)
     else
         size(directions)==(nh, T) && all(x->x in (0, 1), directions) || error("热方向形状/取值错误")
@@ -37,7 +44,11 @@ function r4_switching_variables!(model, v, c, options)
         end
     end
     for p in 1:nh, t in 1:T
-        @constraint(model, dir[p, t]+dir[p+nh, t]==h[p])
+        if allow_idle
+            @constraint(model, dir[p, t]+dir[p+nh, t]<=h[p])
+        else
+            @constraint(model, dir[p, t]+dir[p+nh, t]==h[p])
+        end
     end
     if options.policy in (:fixed, :heat)
         for p in 1:ne, t in 1:T

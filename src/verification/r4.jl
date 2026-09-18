@@ -139,6 +139,8 @@ A1功率/能量/流量为1e-6绝对项加冻结输入尺度的1e-6；无量纲�
 function validate_r4_solution(c::R4Case, result)
     rows=Dict{String,Any}[]
     result["input_sha256"]==c.sha256 || error("结果输入哈希不匹配")
+    thermal=get(result["spec"], "version", "")=="r4_thermal_checked_v1"
+    thermal && r4_thermal_spec(result["thermal"])
     haskey(result, "values") || return Dict(
         "model_pass"=>false,
         "electric_original_pass"=>false,
@@ -467,7 +469,15 @@ function validate_r4_solution(c::R4Case, result)
                 loss=pipe["U_W_mK"]*pipe["length_m"]*(
                     (pipe["S_ref_K"]-pipe["ambient_K"])+(pipe["R_ref_K"]-pipe["ambient_K"])
                 )/1e6*on
-                row("R4-P4", "heat", p, t, V("H_in", p, t)-V("H_out", p, t)-loss, "MW", power_tol)
+                thermal || row(
+                    "R4-P4",
+                    "heat",
+                    p,
+                    t,
+                    V("H_in", p, t)-V("H_out", p, t)-loss,
+                    "MW",
+                    power_tol,
+                )
                 for k in ("H_in", "H_out")
                     bound(
                         "pipe_heat",
@@ -495,6 +505,7 @@ function validate_r4_solution(c::R4Case, result)
             end
         end
         haskey(d, "network_control") && r4_validate_network!(row, bound, c, result)
+        thermal && r4_validate_thermal!(row, bound, c, result)
         for local_run in get(result, "local_stages", Any[])
             haskey(local_run, "values") || continue
             i=local_run["actor"]

@@ -11,6 +11,7 @@ balance_penalty非nothing时仅在network阶段对节点P/Q/H/质量平衡加入
 modes可指定逐时电池充电状态，用于16种状态穷举的连续凸对照。
 式(4-1)–(4-59)的采用范围见第4章台账；R4-P1–P7是显式项目补全。
 返回模型、变量、公式映射、实际MOI类型与成本表达式。热网仅为稳态能量流包络。
+详细温度/循环版本通过build_r4_thermal显式传入thermal；原接口不传时行为保持。
 """
 function build_r4_model(
     c::R4Case;
@@ -22,12 +23,16 @@ function build_r4_model(
     modes = nothing,
     balance_penalty = nothing,
     switching = nothing,
+    thermal = nothing,
 )
     TOML.parse(c.source_text)==c.data || error("输入被原位改写，请构造新的R4Case")
     stage in (:central, :local, :network, :trading, :agent, :operator) || error("建模阶段错误")
     stage==:agent && !(actor in (2, 3)) && error("分布局部主体错误")
     stage==:local && !(actor in (2, 3)) && error("AG0只对聚合商A/B独立调度")
     stage==:network && frozen===nothing && error("网络校核必须提供冻结计划")
+    thermal!==nothing && (
+        stage==:central && switching!==nothing || error("详细稳态热模型目前仅支持显式重构集中调度")
+    )
     balance_penalty!==nothing && (
         stage==:network && isfinite(balance_penalty) && balance_penalty>0 ||
         error("正的节点平衡罚系数仅适用于冻结网络诊断")
@@ -394,7 +399,9 @@ function build_r4_model(
                     @constraint(model, v["H_in"][p, t]<=pipe["H_max"]*Hon)
                     @constraint(model, v["H_out"][p, t]<=pipe["H_max"]*Hon)
                 end
-                @constraint(model, v["H_out"][p, t]==v["H_in"][p, t]-r4_loss(pipe)*Hon)
+                if thermal===nothing
+                    @constraint(model, v["H_out"][p, t]==v["H_in"][p, t]-r4_loss(pipe)*Hon)
+                end
             end
             for i in 1:3
                 ms=v["m_source"][i, t]
@@ -424,6 +431,7 @@ function build_r4_model(
             end
         end
     end
+    thermal===nothing || r4_thermal_constraints!(model, v, c, thermal)
     @objective(model, Min, resource+dissatisfaction+external+settlement+penalty)
     types=string.(list_of_constraint_types(model))
     return (;
@@ -437,14 +445,21 @@ function build_r4_model(
         boundary = (; P_net, Q_load, H_source, H_demand),
         stage,
         actor,
-        formula_map = Dict(
-            "devices"=>"ch04-004:013",
-            "electric"=>"ch04-026:033",
-            "heat"=>"ch04-041:047",
-            "balance"=>"R4-P1:7",
+        formula_map = merge(
+            Dict(
+                "devices"=>"ch04-004:013",
+                "electric"=>"ch04-026:033",
+                "heat"=>"ch04-041:047",
+                "balance"=>"R4-P1:7",
+            ),
+            thermal===nothing ? Dict{String,String}() : Dict("thermal"=>"R4-T1:T6"),
         ),
         model_types = types,
-        model_class = spec.electric==:exact && stage in (:central, :network) ?
+        model_class = thermal!==nothing && thermal.mass_schedule===nothing ?
+                      (
+            thermal.spec.loss==:exponential ? "nonconvex_nonlinear" : "nonconvex_quadratic"
+        ) :
+                      spec.electric==:exact && stage in (:central, :network) ?
                       "nonconvex_quadratic" :
                       any(is_binary, all_variables(model)) ? "MISOCP" : "SOCP",
     )

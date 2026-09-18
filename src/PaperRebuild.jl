@@ -61,6 +61,12 @@ include("formulations/r4_heat_compatibility.jl")
 include("verification/r4_heat_compatibility.jl")
 include("algorithms/r4_heat_compatibility.jl")
 include("reporting/r4_heat_compatibility.jl")
+include("core/r4_thermal.jl")
+include("formulations/r4_thermal.jl")
+include("verification/r4_thermal.jl")
+include("algorithms/r4_thermal.jl")
+export R4ThermalSpec, r4_steady_pipe, r4_thermal_min_flow
+export build_r4_thermal, solve_r4_thermal, validate_r4_thermal
 export R4HeatCompatibilitySpec, build_r4_heat_reconstruction, reconstruct_r4_heat
 export validate_r4_heat_reconstruction, save_r4_heat_run, read_r4_heat_run
 export R4ReconfigurationSpec, r4_is_tree, r4_network_states

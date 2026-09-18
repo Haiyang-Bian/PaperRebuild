@@ -5,6 +5,7 @@ function r4_validate_network!(row, bound, c, result)
     e=c.data["electric"]["edges"]
     h=c.data["heat"]["pipes"][1:3]
     config=get(result, "reconfiguration", Dict{String,Any}())
+    thermal=get(result["spec"], "version", "")=="r4_thermal_checked_v1"
     for key in ("u_E", "u_H_arc", "a_E"), p in eachindex(s[key]), t in 1:T
         x=s[key][p][t]
         row(key*"_binary", "model", p, t, abs(x-round(x)), "1", 1e-6)
@@ -36,6 +37,7 @@ function r4_validate_network!(row, bound, c, result)
                 "model",
                 p,
                 t,
+                thermal ? max(0, s["u_H_arc"][p][t]+s["u_H_arc"][p+3][t]-s["u_H"][p]) :
                 s["u_H_arc"][p][t]+s["u_H_arc"][p+3][t]-s["u_H"][p],
                 "1",
                 1e-6,
@@ -139,6 +141,14 @@ function r4_validate_network!(row, bound, c, result)
                 "1",
                 1e-6,
             )
+        end
+    end
+    if haskey(config, "heat_active")
+        thermal || error("旧版本不能含循环/闲置计划")
+        plan=r4_heat_matrix(config, "heat_active", 6, T)
+        all(x->x in (0, 1), plan) || error("保存循环计划不是二进制")
+        for p in 1:6, t in 1:T
+            row("R4-T1_frozen_active", "heat", p, t, s["u_H_arc"][p][t]-plan[p, t], "1", 1e-6)
         end
     end
 end

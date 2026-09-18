@@ -61,6 +61,7 @@
 - `configs/r4/reconfiguration/oracle.toml`
 - `configs/r4/reconfiguration/study.toml`
 - `configs/r4/study.toml`
+- `configs/r4/thermal-study.toml`
 - `configs/r4/tspa-study.toml`
 - `data/processed/README.md`
 - `data/raw/README.md`
@@ -89,6 +90,7 @@
 - `docs/agent/tasks/2026-09-18-r4-tspa.md`
 - `docs/agent/tasks/2026-09-19-r4-heat.md`
 - `docs/agent/tasks/2026-09-19-r4-network.md`
+- `docs/agent/tasks/2026-09-19-r4-thermal.md`
 - `docs/make.jl`
 - `docs/reading/README.md`
 - `docs/reading/ch02/README.md`
@@ -120,6 +122,7 @@
 - `docs/reading/ch04/issues.toml`
 - `docs/reading/ch04/network.toml`
 - `docs/reading/ch04/symbols.toml`
+- `docs/reading/ch04/thermal.toml`
 - `docs/reading/ch04/tspa.toml`
 - `docs/reading/source_manifest.json`
 - `docs/reading/sources.json`
@@ -316,6 +319,8 @@
 - `docs/src/ch04-network.md`
 - `docs/src/ch04-results.md`
 - `docs/src/ch04-symbols.md`
+- `docs/src/ch04-thermal-equations.md`
+- `docs/src/ch04-thermal.md`
 - `docs/src/ch04-tspa-equations.md`
 - `docs/src/ch04-tspa-results.md`
 - `docs/src/ch04-tspa.md`
@@ -492,6 +497,7 @@
 - `scripts/check_r4_heat_compatibility.jl`
 - `scripts/check_r4_network_artifacts.jl`
 - `scripts/check_r4_reconfiguration.jl`
+- `scripts/check_r4_thermal.jl`
 - `scripts/check_r4_tspa.jl`
 - `scripts/check_solvers.jl`
 - `scripts/collect_ch03_data.jl`
@@ -528,6 +534,7 @@
 - `scripts/freeze_r4_baseline.jl`
 - `scripts/freeze_r4_heat_compatibility.jl`
 - `scripts/freeze_r4_reconfiguration.jl`
+- `scripts/freeze_r4_thermal.jl`
 - `scripts/inspect_ch03_workbooks.jl`
 - `scripts/inspect_r4_heat_results.jl`
 - `scripts/maintain.ps1`
@@ -572,6 +579,7 @@
 - `scripts/r4_heat_docs.jl`
 - `scripts/r4_network_docs.jl`
 - `scripts/r4_setup.jl`
+- `scripts/r4_thermal_docs.jl`
 - `scripts/r4_tspa_docs.jl`
 - `scripts/read_docx.py`
 - `scripts/read_thesis.py`
@@ -595,6 +603,7 @@
 - `scripts/report_r4_distributed.jl`
 - `scripts/report_r4_heat_compatibility.jl`
 - `scripts/report_r4_reconfiguration.jl`
+- `scripts/report_r4_thermal.jl`
 - `scripts/report_r4_tspa.jl`
 - `scripts/requirements-reading.txt`
 - `scripts/run_r1.jl`
@@ -608,6 +617,7 @@
 - `scripts/study_r4_distributed.jl`
 - `scripts/study_r4_heat_compatibility.jl`
 - `scripts/study_r4_reconfiguration.jl`
+- `scripts/study_r4_thermal.jl`
 - `scripts/study_r4_tspa.jl`
 - `scripts/summarize_r3_audit.jl`
 - `scripts/summarize_r3_baseline.jl`
@@ -624,11 +634,13 @@
 - `scripts/test_r4_distributed.jl`
 - `scripts/test_r4_heat_compatibility.jl`
 - `scripts/test_r4_reconfiguration.jl`
+- `scripts/test_r4_thermal.jl`
 - `scripts/test_r4_tspa.jl`
 - `scripts/tighten_r4_distributed_cost.jl`
 - `scripts/validate_ch03_data.jl`
 - `scripts/validate_r1.jl`
 - `scripts/validate_r4.jl`
+- `scripts/validate_r4_thermal.jl`
 - `scripts/verify_r3_baseline_report.jl`
 - `src/PaperRebuild.jl`
 - `src/algorithms/r3_baseline.jl`
@@ -644,6 +656,7 @@
 - `src/algorithms/r4_distributed.jl`
 - `src/algorithms/r4_heat_compatibility.jl`
 - `src/algorithms/r4_reconfiguration.jl`
+- `src/algorithms/r4_thermal.jl`
 - `src/algorithms/r4_tspa.jl`
 - `src/components/devices.jl`
 - `src/core/case.jl`
@@ -654,6 +667,7 @@
 - `src/core/r4_distributed.jl`
 - `src/core/r4_heat_compatibility.jl`
 - `src/core/r4_reconfiguration.jl`
+- `src/core/r4_thermal.jl`
 - `src/core/r4_tspa.jl`
 - `src/formulations/r1.jl`
 - `src/formulations/r2.jl`
@@ -662,6 +676,7 @@
 - `src/formulations/r4_distributed.jl`
 - `src/formulations/r4_heat_compatibility.jl`
 - `src/formulations/r4_reconfiguration.jl`
+- `src/formulations/r4_thermal.jl`
 - `src/networks/fixed_flow_heat.jl`
 - `src/networks/water_mass.jl`
 - `src/reporting/r2_runs.jl`
@@ -688,6 +703,7 @@
 - `src/verification/r4_distributed.jl`
 - `src/verification/r4_heat_compatibility.jl`
 - `src/verification/r4_reconfiguration.jl`
+- `src/verification/r4_thermal.jl`
 - `src/verification/r4_tspa.jl`
 - `test/ch03_data.jl`
 - `test/maintenance.tests.ps1`
@@ -709,6 +725,7 @@
 - `test/r4_distributed.jl`
 - `test/r4_heat_compatibility.jl`
 - `test/r4_reconfiguration.jl`
+- `test/r4_thermal.jl`
 - `test/r4_tspa.jl`
 - `test/runtests.jl`
 - `tools/Manifest.toml`

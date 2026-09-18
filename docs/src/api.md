@@ -192,6 +192,17 @@ PaperRebuild.save_r4_heat_run
 PaperRebuild.read_r4_heat_run
 ~~~
 
+## 稳态循环与温度相关损耗
+
+~~~@docs
+PaperRebuild.R4ThermalSpec
+PaperRebuild.r4_steady_pipe
+PaperRebuild.r4_thermal_min_flow
+PaperRebuild.build_r4_thermal
+PaperRebuild.solve_r4_thermal
+PaperRebuild.validate_r4_thermal
+~~~
+
 ## 工程示例函数说明
 
 以下两个函数保留自初始化模板，只用于验证包加载、测试和 Documenter 集成，不计入论文复现进度。
