@@ -37,8 +37,12 @@ include("formulations/r4.jl")
 include("verification/r4.jl")
 include("verification/r4_baseline.jl")
 include("reporting/r4_runs.jl")
+include("algorithms/r4_bargaining.jl")
+include("verification/r4_bargaining.jl")
 export R4Case, R4Spec, load_r4_case, build_r4_model, solve_r4_case
 export r4_preferred_demand, r4_coordination_surplus
+export r4_nash_allocation, r4_bargaining_weights, r4_allocate_coordination
+export validate_r4_allocation
 export validate_r4_solution, r4_ledger, save_r4_run, read_r4_run, compare_r4_runs, plot_r4_run
 
 export R3BaselineSpec, solve_r3_baseline, compare_r3_baselines

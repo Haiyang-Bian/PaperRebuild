@@ -1,5 +1,6 @@
 {
   "inputs": [
+    {"id":"r4BargainingStudy","description":"R4议价批次study.toml路径","type":"promptString"},
     {"id":"r4BaselineStudy","description":"R4新基线批次study.toml路径","type":"promptString"},
     {"id":"r4RunDirectory","description":"已保存R4运行目录","type":"promptString"},
     {"id":"r4CompareDirectory","description":"同输入的另一个R4运行目录","type":"promptString"},
@@ -26,6 +27,36 @@
     }
   ],
   "tasks": [
+    {
+      "label": "PaperRebuild: R4 bargaining mapping",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/check_r4_bargaining.jl"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 bargaining experiments",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/study_r4_bargaining.jl"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 bargaining report",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/report_r4_bargaining.jl", "${input:r4BargainingStudy}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 bargaining redraw",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=docs", "scripts/plot_r4_bargaining.jl", "results/summaries/r4-bargaining"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 bargaining evidence check",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/check_r4_bargaining.jl", "results/summaries/r4-bargaining"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
     {
       "label": "PaperRebuild: R4 baseline freeze",
       "type": "process", "command": "julia",

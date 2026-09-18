@@ -142,6 +142,10 @@ PaperRebuild.validate_r4_solution
 PaperRebuild.r4_ledger
 PaperRebuild.r4_preferred_demand
 PaperRebuild.r4_coordination_surplus
+PaperRebuild.r4_nash_allocation
+PaperRebuild.validate_r4_allocation
+PaperRebuild.r4_bargaining_weights
+PaperRebuild.r4_allocate_coordination
 PaperRebuild.save_r4_run
 PaperRebuild.read_r4_run
 PaperRebuild.compare_r4_runs

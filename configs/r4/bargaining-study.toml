@@ -1,0 +1,15 @@
+schema = "r4-bargaining-study-v1"
+origin = "synthetic"
+parent_batch = "r4-baseline-20260918"
+parent_directory = "results/runs/r4/r4-baseline-20260918"
+cases = ["import_flexible", "import_fixed"]
+weight_rules = ["capacity_load_v1", "equal_v1"]
+budget_sec_per_certificate = 60.0
+relative_certificate_tolerance = 0.0001
+physical_dispatch = "frozen_original_electric_equation_parent"
+payment_domain = "unrestricted_budget_balanced"
+not_claimed = ["TSPA", "all_coalitions_stable", "thesis_same_input", "full_thermal_physics"]
+
+[input_sha256]
+import_flexible = "fcdb954da900fd878194b0a3d72bf2f130ecf057615bd84ae16436d315b9d5ca"
+import_fixed = "99b92147e9b1b369bd8903e84a7edfea423a55b47320608dd7ed5ff72f640689"

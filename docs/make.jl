@@ -7,6 +7,8 @@ include(joinpath(@__DIR__, "..", "scripts", "ch03_docs.jl"))
 sync_ch03()
 include(joinpath(@__DIR__, "..", "scripts", "ch04_docs.jl"))
 sync_ch04()
+include(joinpath(@__DIR__, "..", "scripts", "r4_bargaining_docs.jl"))
+sync_r4_bargaining()
 
 makedocs(;
     modules = [PaperRebuild],
@@ -70,6 +72,8 @@ makedocs(;
             "首批实验与收益边界" => "ch04-results.md",
             "可实施分歧点与固定效用" => "ch04-baseline.md",
             "同制度协调收益与参与条件" => "ch04-baseline-results.md",
+            "Nash分配与参与条件" => "ch04-bargaining.md",
+            "议价公式与符号" => "ch04-bargaining-equations.md",
         ],
         "API 索引与说明" => "api.md",
         "第 2 章模型与首批实现" => [

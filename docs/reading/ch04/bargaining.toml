@@ -1,0 +1,156 @@
+schema = "ch04-bargaining-v1"
+source = "docs/摘要.pdf"
+source_sha256 = "20328e2480e773520c19c378e53365fc944c0bafcfca73071f5d8313d5ee7d91"
+read_pdf_pages = [70, 71, 72, 73, 74]
+implemented_scope = "fixed_dispatch_single_stage_transfer"
+
+[[formula]]
+id = "ch04-071"
+number = 71
+pdf_page = 70
+latex = '\max \prod_i(u_i+p_i-d_i)^{\alpha_i}'
+meaning = "固定物理效用时的加权Nash乘积"
+status = "adopted_positive_weights_and_surplus"
+api = "r4_nash_allocation"
+test = "R4 Nash allocation and participation"
+[[formula]]
+id = "ch04-072"
+number = 72
+pdf_page = 70
+latex = 'u_i+p_i\ge d_i'
+meaning = "相对指定分歧点的个体理性"
+status = "implemented"
+api = "validate_r4_allocation"
+test = "R4 Nash allocation and participation"
+[[formula]]
+id = "ch04-073"
+number = 73
+pdf_page = 70
+latex = '\sum_i p_i=0'
+meaning = "内部转移预算平衡"
+status = "implemented"
+api = "validate_r4_allocation"
+test = "R4 Nash allocation and participation"
+[[formula]]
+id = "ch04-078"
+number = 78
+pdf_page = 71
+latex = '\max \sum_i\alpha_i\log(u_i+p_i-d_i)'
+meaning = "正增益下的对数等价目标"
+status = "implemented_positive_surplus_only"
+api = "r4_nash_allocation"
+test = "R4 Nash allocation and participation"
+[[formula]]
+id = "ch04-080"
+number = 80
+pdf_page = 71
+latex = 'p_i^*=d_i-u_i^*-\alpha_i/\lambda'
+meaning = "内点分配的一阶条件"
+status = "independently_checked"
+api = "validate_r4_allocation"
+test = "R4 Nash allocation and participation"
+[[formula]]
+id = "ch04-082"
+number = 82
+pdf_page = 71
+latex = 'p_i=d_i-u_i^*+\frac{\alpha_i}{\sum_j\alpha_j}\left(\sum_j u_j^*-\sum_jd_j\right)'
+meaning = "无限额预算平衡转移的解析解"
+status = "adopted_fixed_dispatch"
+api = "r4_nash_allocation"
+test = "R4 Nash allocation and participation"
+[[formula]]
+id = "ch04-087"
+number = 87
+pdf_page = 72
+latex = '\mathcal W_i\ge\mathcal W_i^D,\qquad \sum_{i\in\mathcal A}\phi_i=0'
+meaning = "包含网络运营商的个体理性及预算平衡"
+status = "adopted_scope"
+api = "r4_allocate_coordination"
+test = "R4 Nash allocation and participation"
+[[formula]]
+id = "ch04-094"
+number = 94
+pdf_page = 72
+latex = '\phi_i=\frac{\Lambda_i}{\sum_{j\in\mathcal A}\Lambda_j}\left(\sum_{j\in\mathcal A}\widehat{\mathcal W}^{\prime}_j-\sum_{j\in\mathcal A}\widehat{\mathcal W}_j^D\right)+\widehat{\mathcal W}_i^D-\widehat{\mathcal W}^{\prime}_i'
+meaning = "分配前效用加总支付；不能重复叠加旧零售收支"
+status = "adopted_fixed_dispatch"
+api = "r4_allocate_coordination"
+test = "R4 Nash allocation and participation"
+
+[[symbol]]
+id = "r4-nash-prepayment"
+latex = "u_i"
+meaning = "不含内部支付的固定物理计划效用，采用负资源及不满意度成本"
+unit = "USD_synthetic"
+kind = "derived"
+domain = "finite real"
+dimensions = "actor"
+julia = "prepayment_utility[i]"
+source = "PDF70/72; (4-71), (4-94); project ledger mapping"
+[[symbol]]
+id = "r4-nash-disagreement"
+latex = 'd_i,\widehat{\mathcal W}_i^D'
+meaning = "指定独立运营计划经过结算后的分歧效用"
+unit = "USD_synthetic"
+kind = "parameter"
+domain = "finite real"
+dimensions = "actor"
+julia = "disagreement_utility[i]"
+source = "PDF70/72; (4-71), (4-94)"
+[[symbol]]
+id = "r4-nash-transfer"
+latex = 'p_i,\phi_i'
+meaning = "总内部净支付，正为收款，替代原结算而非追加"
+unit = "USD_synthetic"
+kind = "decision"
+domain = "real; sum zero"
+dimensions = "actor"
+julia = "total_transfer[i]"
+source = "PDF71/72; (4-82), (4-94)"
+[[symbol]]
+id = "r4-nash-weight"
+latex = '\alpha_i,\Lambda_i'
+meaning = "正议价权重；容量与峰荷映射为独立声明的项目规则"
+unit = "relative weight"
+kind = "parameter"
+domain = "strictly positive"
+dimensions = "actor"
+julia = "weights[i]"
+source = "PDF70/72; capacity_load_v1 excludes battery MWh"
+[[symbol]]
+id = "r4-nash-surplus"
+latex = "S"
+meaning = "合作计划相对指定分歧点的总剩余"
+unit = "USD_synthetic"
+kind = "derived"
+domain = "real; may be negative"
+dimensions = "scalar"
+julia = "surplus"
+source = "project R4-N1"
+[[symbol]]
+id = "r4-nash-increment"
+latex = '\Delta\phi_i'
+meaning = "新总支付减旧内部净收支，仅用于与原教学结算比较"
+unit = "USD_synthetic"
+kind = "derived"
+domain = "real; sum zero"
+dimensions = "actor"
+julia = "incremental_compensation[i]"
+source = "project R4-N2"
+
+[[issue]]
+id = "R4-N01"
+topic = "解析分配适用条件"
+adopted = "正权重、正总剩余、无限额预算平衡转移；零剩余退化，负剩余拒绝个体理性成功。固定调度分配不认证上游全局最优。"
+[[issue]]
+id = "R4-N02"
+topic = "市场力到容量键的映射"
+adopted = "原文PDF72未逐设备定义容量汇总；项目只计CHP/PV电功率、HP/EB输入功率、电池功率及参考电热峰荷。运营商权重等于聚合商之和。等权是独立对照。"
+[[issue]]
+id = "R4-N03"
+topic = "TSPA分歧点与稳定性边界"
+adopted = "PDF73的AGNB忽略网络，再以DHSO0-r松弛网络并加罚。PDF74从SW_coordinated>=SW_P2P推出(4-102)，但松弛分歧点不自动属于协调物理可行域；须核对罚项、可行域和总增益。本批未实现TSPA，不宣称所有子联盟稳定。"
+[[issue]]
+id = "R4-N04"
+topic = "ATC/ADMM待核对"
+adopted = "PDF68-69的beta与beta平方、ADMM范数是否平方、辅助贸易更新是否缺rho以及对偶更新须逐项推导。本批不实现分布协调。"

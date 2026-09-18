@@ -39,6 +39,7 @@
 - `configs/r3/two-source-four-modes-v1.toml`
 - `configs/r3/v2-study.toml`
 - `configs/r3/v3-study.toml`
+- `configs/r4/bargaining-study.toml`
 - `configs/r4/base.toml`
 - `configs/r4/baseline/import_fixed.toml`
 - `configs/r4/baseline/import_flexible.toml`
@@ -70,6 +71,7 @@
 - `docs/agent/tasks/2026-09-17-r3-v2.md`
 - `docs/agent/tasks/2026-09-17-r3-v3.md`
 - `docs/agent/tasks/2026-09-17-r3.md`
+- `docs/agent/tasks/2026-09-18-r4-bargaining.md`
 - `docs/agent/tasks/2026-09-18-r4-baseline.md`
 - `docs/agent/tasks/2026-09-18-r4-central.md`
 - `docs/make.jl`
@@ -94,6 +96,7 @@
 - `docs/reading/ch03/sources.toml`
 - `docs/reading/ch03/symbols.toml`
 - `docs/reading/ch03/thesis-parameters.toml`
+- `docs/reading/ch04/bargaining.toml`
 - `docs/reading/ch04/baseline-model.toml`
 - `docs/reading/ch04/formulas.toml`
 - `docs/reading/ch04/issues.toml`
@@ -184,6 +187,8 @@
 - `docs/src/ch03-r3-v3.md`
 - `docs/src/ch03-r3.md`
 - `docs/src/ch03-symbols.md`
+- `docs/src/ch04-bargaining-equations.md`
+- `docs/src/ch04-bargaining.md`
 - `docs/src/ch04-baseline-results.md`
 - `docs/src/ch04-baseline.md`
 - `docs/src/ch04-equations.md`
@@ -262,6 +267,7 @@
 - `scripts/check_r3_sensitivity.jl`
 - `scripts/check_r3_v3_artifacts.jl`
 - `scripts/check_r4_artifacts.jl`
+- `scripts/check_r4_bargaining.jl`
 - `scripts/check_r4_baseline.jl`
 - `scripts/check_solvers.jl`
 - `scripts/collect_ch03_data.jl`
@@ -310,6 +316,7 @@
 - `scripts/plot_r3_pg.jl`
 - `scripts/plot_r3_v3.jl`
 - `scripts/plot_r4.jl`
+- `scripts/plot_r4_bargaining.jl`
 - `scripts/plot_r4_baseline.jl`
 - `scripts/plot_r4_summary.jl`
 - `scripts/prepare_r1_summary.jl`
@@ -325,6 +332,7 @@
 - `scripts/r3_setup.jl`
 - `scripts/r3_task.jl`
 - `scripts/r3_v3_heat_counterexample.jl`
+- `scripts/r4_bargaining_docs.jl`
 - `scripts/r4_setup.jl`
 - `scripts/read_docx.py`
 - `scripts/read_thesis.py`
@@ -342,6 +350,7 @@
 - `scripts/report_r3_v2.jl`
 - `scripts/report_r3_v3.jl`
 - `scripts/report_r4.jl`
+- `scripts/report_r4_bargaining.jl`
 - `scripts/report_r4_baseline.jl`
 - `scripts/requirements-reading.txt`
 - `scripts/run_r1.jl`
@@ -349,6 +358,7 @@
 - `scripts/run_r4.jl`
 - `scripts/smoke.jl`
 - `scripts/study_r4.jl`
+- `scripts/study_r4_bargaining.jl`
 - `scripts/study_r4_baseline.jl`
 - `scripts/summarize_r3_audit.jl`
 - `scripts/summarize_r3_baseline.jl`
@@ -374,6 +384,7 @@
 - `src/algorithms/r3_sensitivity.jl`
 - `src/algorithms/r3_v2.jl`
 - `src/algorithms/r3_v3.jl`
+- `src/algorithms/r4_bargaining.jl`
 - `src/components/devices.jl`
 - `src/core/case.jl`
 - `src/core/r2_case.jl`
@@ -399,6 +410,7 @@
 - `src/verification/r3_baseline.jl`
 - `src/verification/r3_v3_kkt.jl`
 - `src/verification/r4.jl`
+- `src/verification/r4_bargaining.jl`
 - `src/verification/r4_baseline.jl`
 - `test/ch03_data.jl`
 - `test/maintenance.tests.ps1`
@@ -414,6 +426,7 @@
 - `test/r3_v2.jl`
 - `test/r3_v3.jl`
 - `test/r4.jl`
+- `test/r4_bargaining.jl`
 - `test/r4_baseline.jl`
 - `test/runtests.jl`
 - `tools/Manifest.toml`
