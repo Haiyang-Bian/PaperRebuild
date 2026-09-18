@@ -217,6 +217,21 @@ PaperRebuild.read_r5_market_run
 PaperRebuild.compare_r5_market_runs
 ~~~
 
+## 第5章确定性IES补救
+
+~~~@docs
+PaperRebuild.r5_building_coefficients
+PaperRebuild.r5_building_temperature
+PaperRebuild.R5DispatchCase
+PaperRebuild.load_r5_dispatch_case
+PaperRebuild.r5_award_from_market
+PaperRebuild.build_r5_dispatch
+PaperRebuild.solve_r5_dispatch
+PaperRebuild.validate_r5_dispatch
+PaperRebuild.save_r5_dispatch_run
+PaperRebuild.read_r5_dispatch_run
+~~~
+
 ## 工程示例函数说明
 
 以下两个函数保留自初始化模板，只用于验证包加载、测试和 Documenter 集成，不计入论文复现进度。

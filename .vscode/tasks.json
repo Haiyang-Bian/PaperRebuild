@@ -1,5 +1,8 @@
 {
   "inputs": [
+    {"id":"r5DispatchCase","description":"确定性IES输入TOML","type":"promptString","default":"configs/r5/dispatch/hand.toml"},
+    {"id":"r5DispatchRun","description":"保存运行的目录；新求解必须使用未存在的路径","type":"promptString","default":"results/runs/r5/dispatch-new"},
+    {"id":"r5DispatchBatch","description":"新正式批次名称，不覆盖已有批次","type":"promptString","default":"r5-dispatch-new"},
     {"id":"r5MarketReport","description":"市场报告新目录；重绘需已有CSV且没有旧图","type":"promptString","default":"results/summaries/r5-market-replay"},
     {"id":"r5MarketStudy","description":"市场批次study.toml或单次运行目录","type":"promptString","default":"results/runs/r5/r5-market-depot-20260919/study.toml"},
     {"id":"r5MarketLeft","description":"同输入市场运行A目录","type":"promptString"},
@@ -46,6 +49,11 @@
     }
   ],
   "tasks": [
+    {"label":"PaperRebuild: R5 dispatch mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_dispatch.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 dispatch tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_dispatch.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 dispatch run","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/run_r5_dispatch.jl","${input:r5DispatchCase}","${input:r5DispatchRun}","highs","60"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 dispatch validate saved","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/validate_r5_dispatch.jl","${input:r5DispatchRun}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 dispatch frozen study","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/study_r5_dispatch.jl","${input:r5DispatchBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R5 market frozen evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_market_artifacts.jl","results/summaries/r5-market-verified"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R5 market report saved","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/report_r5_market.jl","${input:r5MarketStudy}","${input:r5MarketReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R5 market redraw saved","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r5_market.jl","${input:r5MarketReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},

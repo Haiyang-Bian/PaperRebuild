@@ -2580,6 +2580,16 @@
           "path": "docs/src/ch05-market-results.md",
           "name": "ch05-market-results.md",
           "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch05-dispatch-equations.md",
+          "name": "ch05-dispatch-equations.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch05-dispatch.md",
+          "name": "ch05-dispatch.md",
+          "isDirectory": false
         }
       ],
       "order": 1,
@@ -2730,6 +2740,11 @@
         {
           "path": "docs/agent/tasks/2026-09-19-r5-market.md",
           "name": "2026-09-19-r5-market.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/agent/tasks/2026-09-19-r5-dispatch.md",
+          "name": "2026-09-19-r5-dispatch.md",
           "isDirectory": false
         }
       ],
@@ -3092,6 +3107,31 @@
           "path": "src/verification/r5_market.jl",
           "name": "r5_market.jl",
           "isDirectory": false
+        },
+        {
+          "path": "src/algorithms/r5_dispatch.jl",
+          "name": "r5_dispatch.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/core/r5_dispatch.jl",
+          "name": "r5_dispatch.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/formulations/r5_dispatch.jl",
+          "name": "r5_dispatch.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/reporting/r5_dispatch.jl",
+          "name": "r5_dispatch.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/verification/r5_dispatch.jl",
+          "name": "r5_dispatch.jl",
+          "isDirectory": false
         }
       ],
       "order": 3,
@@ -3358,6 +3398,66 @@
           "path": "configs/r5/market/wide_line.toml",
           "name": "wide_line.toml",
           "isDirectory": false
+        },
+        {
+          "path": "configs/r5/dispatch/capacity_denominator.toml",
+          "name": "capacity_denominator.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/dispatch/down.toml",
+          "name": "down.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/dispatch/four_period.toml",
+          "name": "four_period.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/dispatch/hand.toml",
+          "name": "hand.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/dispatch/local_heat.toml",
+          "name": "local_heat.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/dispatch/market_no_call.toml",
+          "name": "market_no_call.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/dispatch/market_up_10percent.toml",
+          "name": "market_up_10percent.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/dispatch/market_up_full.toml",
+          "name": "market_up_full.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/dispatch/quarter.toml",
+          "name": "quarter.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/dispatch/study.toml",
+          "name": "study.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/dispatch/unavailable.toml",
+          "name": "unavailable.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/dispatch/up.toml",
+          "name": "up.toml",
+          "isDirectory": false
         }
       ],
       "order": 4,
@@ -3573,6 +3673,11 @@
         {
           "path": "docs/reading/ch05/market.toml",
           "name": "market.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch05/dispatch.toml",
+          "name": "dispatch.toml",
           "isDirectory": false
         }
       ],
@@ -10876,6 +10981,11 @@
           "path": "test/r5_market.jl",
           "name": "r5_market.jl",
           "isDirectory": false
+        },
+        {
+          "path": "test/r5_dispatch.jl",
+          "name": "r5_dispatch.jl",
+          "isDirectory": false
         }
       ],
       "order": 7,
@@ -12016,6 +12126,61 @@
         {
           "path": "scripts/inspect_r5_market.jl",
           "name": "inspect_r5_market.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r5_dispatch.jl",
+          "name": "check_r5_dispatch.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r5_dispatch_artifacts.jl",
+          "name": "check_r5_dispatch_artifacts.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/freeze_r5_dispatch.jl",
+          "name": "freeze_r5_dispatch.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/plot_r5_dispatch.jl",
+          "name": "plot_r5_dispatch.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r5_dispatch_cases.jl",
+          "name": "r5_dispatch_cases.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r5_dispatch_docs.jl",
+          "name": "r5_dispatch_docs.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/report_r5_dispatch.jl",
+          "name": "report_r5_dispatch.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/run_r5_dispatch.jl",
+          "name": "run_r5_dispatch.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/study_r5_dispatch.jl",
+          "name": "study_r5_dispatch.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/test_r5_dispatch.jl",
+          "name": "test_r5_dispatch.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/validate_r5_dispatch.jl",
+          "name": "validate_r5_dispatch.jl",
           "isDirectory": false
         }
       ],

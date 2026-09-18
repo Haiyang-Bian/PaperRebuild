@@ -63,6 +63,18 @@
 - `configs/r4/study.toml`
 - `configs/r4/thermal-study.toml`
 - `configs/r4/tspa-study.toml`
+- `configs/r5/dispatch/capacity_denominator.toml`
+- `configs/r5/dispatch/down.toml`
+- `configs/r5/dispatch/four_period.toml`
+- `configs/r5/dispatch/hand.toml`
+- `configs/r5/dispatch/local_heat.toml`
+- `configs/r5/dispatch/market_no_call.toml`
+- `configs/r5/dispatch/market_up_10percent.toml`
+- `configs/r5/dispatch/market_up_full.toml`
+- `configs/r5/dispatch/quarter.toml`
+- `configs/r5/dispatch/study.toml`
+- `configs/r5/dispatch/unavailable.toml`
+- `configs/r5/dispatch/up.toml`
 - `configs/r5/market-base.toml`
 - `configs/r5/market/bid_cap.toml`
 - `configs/r5/market/capacity_infeasible.toml`
@@ -102,6 +114,7 @@
 - `docs/agent/tasks/2026-09-19-r4-heat.md`
 - `docs/agent/tasks/2026-09-19-r4-network.md`
 - `docs/agent/tasks/2026-09-19-r4-thermal.md`
+- `docs/agent/tasks/2026-09-19-r5-dispatch.md`
 - `docs/agent/tasks/2026-09-19-r5-market.md`
 - `docs/make.jl`
 - `docs/reading/README.md`
@@ -137,6 +150,7 @@
 - `docs/reading/ch04/thermal.toml`
 - `docs/reading/ch04/tspa.toml`
 - `docs/reading/ch05/algorithm-audit.toml`
+- `docs/reading/ch05/dispatch.toml`
 - `docs/reading/ch05/inputs.toml`
 - `docs/reading/ch05/market-audit.toml`
 - `docs/reading/ch05/market.toml`
@@ -372,6 +386,8 @@
 - `docs/src/ch04-tspa.md`
 - `docs/src/ch04-tutorial.md`
 - `docs/src/ch05-algorithm-audit.md`
+- `docs/src/ch05-dispatch-equations.md`
+- `docs/src/ch05-dispatch.md`
 - `docs/src/ch05-market-audit.md`
 - `docs/src/ch05-market-equations.md`
 - `docs/src/ch05-market-results.md`
@@ -599,6 +615,8 @@
 - `scripts/check_r4_thermal.jl`
 - `scripts/check_r4_thermal_artifacts.jl`
 - `scripts/check_r4_tspa.jl`
+- `scripts/check_r5_dispatch.jl`
+- `scripts/check_r5_dispatch_artifacts.jl`
 - `scripts/check_r5_market.jl`
 - `scripts/check_r5_market_artifacts.jl`
 - `scripts/check_solvers.jl`
@@ -638,6 +656,7 @@
 - `scripts/freeze_r4_heat_compatibility.jl`
 - `scripts/freeze_r4_reconfiguration.jl`
 - `scripts/freeze_r4_thermal.jl`
+- `scripts/freeze_r5_dispatch.jl`
 - `scripts/freeze_r5_market.jl`
 - `scripts/inspect_ch03_workbooks.jl`
 - `scripts/inspect_r4_heat_results.jl`
@@ -664,6 +683,7 @@
 - `scripts/plot_r4_summary.jl`
 - `scripts/plot_r4_thermal.jl`
 - `scripts/plot_r4_tspa.jl`
+- `scripts/plot_r5_dispatch.jl`
 - `scripts/plot_r5_market.jl`
 - `scripts/prepare_r1_summary.jl`
 - `scripts/preview.jl`
@@ -688,6 +708,8 @@
 - `scripts/r4_setup.jl`
 - `scripts/r4_thermal_docs.jl`
 - `scripts/r4_tspa_docs.jl`
+- `scripts/r5_dispatch_cases.jl`
+- `scripts/r5_dispatch_docs.jl`
 - `scripts/r5_market_cases.jl`
 - `scripts/r5_market_docs.jl`
 - `scripts/r5_market_setup.jl`
@@ -715,11 +737,13 @@
 - `scripts/report_r4_reconfiguration.jl`
 - `scripts/report_r4_thermal.jl`
 - `scripts/report_r4_tspa.jl`
+- `scripts/report_r5_dispatch.jl`
 - `scripts/report_r5_market.jl`
 - `scripts/requirements-reading.txt`
 - `scripts/run_r1.jl`
 - `scripts/run_r2.jl`
 - `scripts/run_r4.jl`
+- `scripts/run_r5_dispatch.jl`
 - `scripts/run_r5_market.jl`
 - `scripts/smoke.jl`
 - `scripts/study_r4.jl`
@@ -731,6 +755,7 @@
 - `scripts/study_r4_reconfiguration.jl`
 - `scripts/study_r4_thermal.jl`
 - `scripts/study_r4_tspa.jl`
+- `scripts/study_r5_dispatch.jl`
 - `scripts/study_r5_market.jl`
 - `scripts/summarize_r3_audit.jl`
 - `scripts/summarize_r3_baseline.jl`
@@ -749,12 +774,14 @@
 - `scripts/test_r4_reconfiguration.jl`
 - `scripts/test_r4_thermal.jl`
 - `scripts/test_r4_tspa.jl`
+- `scripts/test_r5_dispatch.jl`
 - `scripts/test_r5_market.jl`
 - `scripts/tighten_r4_distributed_cost.jl`
 - `scripts/validate_ch03_data.jl`
 - `scripts/validate_r1.jl`
 - `scripts/validate_r4.jl`
 - `scripts/validate_r4_thermal.jl`
+- `scripts/validate_r5_dispatch.jl`
 - `scripts/validate_r5_market.jl`
 - `scripts/verify_r3_baseline_report.jl`
 - `src/PaperRebuild.jl`
@@ -773,6 +800,7 @@
 - `src/algorithms/r4_reconfiguration.jl`
 - `src/algorithms/r4_thermal.jl`
 - `src/algorithms/r4_tspa.jl`
+- `src/algorithms/r5_dispatch.jl`
 - `src/algorithms/r5_market.jl`
 - `src/components/devices.jl`
 - `src/core/case.jl`
@@ -785,6 +813,7 @@
 - `src/core/r4_reconfiguration.jl`
 - `src/core/r4_thermal.jl`
 - `src/core/r4_tspa.jl`
+- `src/core/r5_dispatch.jl`
 - `src/core/r5_market.jl`
 - `src/formulations/r1.jl`
 - `src/formulations/r2.jl`
@@ -794,6 +823,7 @@
 - `src/formulations/r4_heat_compatibility.jl`
 - `src/formulations/r4_reconfiguration.jl`
 - `src/formulations/r4_thermal.jl`
+- `src/formulations/r5_dispatch.jl`
 - `src/formulations/r5_market.jl`
 - `src/networks/fixed_flow_heat.jl`
 - `src/networks/water_mass.jl`
@@ -808,6 +838,7 @@
 - `src/reporting/r4_reconfiguration.jl`
 - `src/reporting/r4_runs.jl`
 - `src/reporting/r4_tspa.jl`
+- `src/reporting/r5_dispatch.jl`
 - `src/reporting/r5_market.jl`
 - `src/reporting/runs.jl`
 - `src/verification/r1.jl`
@@ -824,6 +855,7 @@
 - `src/verification/r4_reconfiguration.jl`
 - `src/verification/r4_thermal.jl`
 - `src/verification/r4_tspa.jl`
+- `src/verification/r5_dispatch.jl`
 - `src/verification/r5_market.jl`
 - `test/ch03_data.jl`
 - `test/maintenance.tests.ps1`
@@ -847,6 +879,7 @@
 - `test/r4_reconfiguration.jl`
 - `test/r4_thermal.jl`
 - `test/r4_tspa.jl`
+- `test/r5_dispatch.jl`
 - `test/r5_market.jl`
 - `test/runtests.jl`
 - `tools/Manifest.toml`

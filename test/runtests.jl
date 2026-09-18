@@ -29,3 +29,4 @@ include("r4_heat_compatibility.jl")
 include("r4_thermal.jl")
 
 include("r5_market.jl")
+include("r5_dispatch.jl")

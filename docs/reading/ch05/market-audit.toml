@@ -11,7 +11,7 @@ equations = ["5-1", "5-2", "5-3", "5-8", "5-13", "5-33", "5-39"]
 pages = [85, 86, 87, 89]
 original = "5-1 actual purchase = day-ahead purchase + deviation; 5-2 upward minus downward reserve; 5-3 absolute difference between request and deviation; 5-8 negative real-time-price times deviation."
 evidence = "5-39 defines reserve headroom as Pmin+RU <= P_DA <= Pmax-RD, and text identifies P_DA as purchased power."
-status = "checked_sign_choice_derived_tests_pending"
+status = "checked_sign_choice_implemented_dispatch_v1"
 adopted = "Keep purchased power positive. Delivery d=P_DA-P_actual, positive for upward reserve. Retain request=alpha_U*RU-alpha_D*RD, mismatch=abs(request-d), real-time cost=-price_RT*d. Preserve the original plus sign separately."
 equivalent = "If actual-minus-day-ahead deviation Delta is used, set Delta=-d, request mismatch=abs(request+Delta), real-time cost=+price_RT*Delta. Never combine the two sign conventions."
 test_target = "P_DA=1 MW, RU call=.2 MW => actual=.8 MW, mismatch=0, real-time credit=.2*price*dt; downward call reverses."
@@ -21,7 +21,7 @@ id = "R5-M02"
 equations = ["5-9", "5-12", "5-14", "5-29", "5-31"]
 pages = [86, 87, 88]
 original = "5-14 places EB electric power on the generation side although 5-12 produces positive heat from COP times EB power."
-status = "conservation_correction_derived_tests_pending"
+status = "conservation_correction_implemented_dispatch_v1"
 adopted = "For a nonnegative EB electrical-consumption variable, generation plus incoming flow equals outgoing flow plus base electrical load plus EB and local-heater consumption. A signed negative EB convention is possible only with explicitly transformed bounds and heat equation."
 test_target = "Zero generation, .1 MW base load and .2 MW EB => .3 MW import, not -.1 MW."
 
@@ -29,7 +29,7 @@ test_target = "Zero generation, .1 MW base load and .2 MW EB => .3 MW import, no
 id = "R5-M03"
 equations = ["5-18", "5-19", "5-20", "5-21", "5-22", "5-23", "5-24", "5-25", "5-26"]
 pages = [87, 88]
-status = "chapter_specific_physics"
+status = "fixed_flow_incidence_implemented_dispatch_v1"
 evidence = "Hat mass flow and K/J delay/loss coefficients are given coefficients; 5-25 explicitly separates initial-history contribution."
 adopted = "Use fixed positive pipe flow and signed nodal source/load convention only after validating conservation. Specify initial temperature history explicitly, and independently check supply/return mixing. Do not inherit R4 idle decisions, variable-flow nonlinearity or steady-only pipe equations."
 remaining = "Several mixing indices in 5-20/21/23 are inconsistent; rebuild incidence-based mass/enthalpy sums and map each adopted equation separately."
@@ -38,9 +38,9 @@ remaining = "Several mixing indices in 5-20/21/23 are inconsistent; rebuild inci
 id = "R5-M04"
 equations = ["5-27", "5-28", "5-29", "5-30", "5-31"]
 pages = [88]
-status = "local_blocking_ambiguity"
+status = "adopted_total_heat_derived_and_tested"
 original = "5-27 uses district-delivered H_D in building dynamics; 5-30 reduces H_D when local heating H_DH increases; text calls hat H_D total demand."
-remaining = "Trace chapter 2 coefficients and decide whether comfort responds to total delivered heat H_D+H_DH or another explicitly defined heating input. Restore heat capacity and time-step units. Do not quietly exclude the local heater from room heating."
+remaining = "PDF43 equation 2-72 and its prose explicitly use total building heat. Checked dispatch uses H_D+H_DH, eta=dt/C and U=dt*G/C from implicit Euler. The original 5-27 is retained. Synthetic C/G are not recovered author parameters; stochastic comfort and data-scale validation remain open."
 
 [[issue]]
 id = "R5-M05"
