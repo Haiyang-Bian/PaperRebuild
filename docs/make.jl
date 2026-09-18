@@ -23,6 +23,8 @@ include(joinpath(@__DIR__, "..", "scripts", "r5_market_docs.jl"))
 sync_r5_market_docs()
 include(joinpath(@__DIR__, "..", "scripts", "r5_dispatch_docs.jl"))
 sync_r5_dispatch_docs()
+include(joinpath(@__DIR__, "..", "scripts", "r5_duality_docs.jl"))
+sync_r5_duality_docs()
 
 makedocs(;
     modules = [PaperRebuild],
@@ -116,6 +118,8 @@ makedocs(;
             "成交与物理交付" => "ch05-dispatch.md",
             "补救原式与符号" => "ch05-dispatch-equations.md",
             "确定性补救与交付结果" => "ch05-dispatch-results.md",
+            "补救最优性与灵敏度" => "ch05-recourse-duality.md",
+            "补救对偶推导与符号" => "ch05-recourse-equations.md",
             "联合机会约束概率方向" => "ch05-probability-audit.md",
             "分解算法与已知输入" => "ch05-algorithm-audit.md",
         ],

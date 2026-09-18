@@ -30,3 +30,4 @@ include("r4_thermal.jl")
 
 include("r5_market.jl")
 include("r5_dispatch.jl")
+include("r5_dispatch_duality.jl")

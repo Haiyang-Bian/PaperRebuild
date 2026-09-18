@@ -230,6 +230,9 @@ PaperRebuild.solve_r5_dispatch
 PaperRebuild.validate_r5_dispatch
 PaperRebuild.save_r5_dispatch_run
 PaperRebuild.read_r5_dispatch_run
+PaperRebuild.validate_r5_dispatch_duals
+PaperRebuild.r5_dispatch_sensitivity
+PaperRebuild.build_r5_dispatch_dual
 ~~~
 
 ## 工程示例函数说明

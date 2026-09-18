@@ -115,6 +115,7 @@
 - `docs/agent/tasks/2026-09-19-r4-network.md`
 - `docs/agent/tasks/2026-09-19-r4-thermal.md`
 - `docs/agent/tasks/2026-09-19-r5-dispatch.md`
+- `docs/agent/tasks/2026-09-19-r5-duality.md`
 - `docs/agent/tasks/2026-09-19-r5-market.md`
 - `docs/make.jl`
 - `docs/reading/README.md`
@@ -155,6 +156,7 @@
 - `docs/reading/ch05/market-audit.toml`
 - `docs/reading/ch05/market.toml`
 - `docs/reading/ch05/probability-audit.toml`
+- `docs/reading/ch05/recourse-duality.toml`
 - `docs/reading/source_manifest.json`
 - `docs/reading/sources.json`
 - `docs/src/api.md`
@@ -407,6 +409,8 @@
 - `docs/src/ch05-market-results.md`
 - `docs/src/ch05-market.md`
 - `docs/src/ch05-probability-audit.md`
+- `docs/src/ch05-recourse-duality.md`
+- `docs/src/ch05-recourse-equations.md`
 - `docs/src/index.md`
 - `docs/src/julia-design.md`
 - `docs/src/quality.md`
@@ -603,6 +607,7 @@
 - `scripts/audit_r4_distributed.jl`
 - `scripts/audit_r4_tspa.jl`
 - `scripts/audit_r5_dispatch.jl`
+- `scripts/audit_r5_dispatch_duality.jl`
 - `scripts/audit_r5_market_replay.jl`
 - `scripts/audit_thesis_tables.jl`
 - `scripts/bootstrap.jl`
@@ -645,6 +650,7 @@
 - `scripts/check_r4_tspa.jl`
 - `scripts/check_r5_dispatch.jl`
 - `scripts/check_r5_dispatch_artifacts.jl`
+- `scripts/check_r5_duality.jl`
 - `scripts/check_r5_market.jl`
 - `scripts/check_r5_market_artifacts.jl`
 - `scripts/check_solvers.jl`
@@ -712,6 +718,7 @@
 - `scripts/plot_r4_thermal.jl`
 - `scripts/plot_r4_tspa.jl`
 - `scripts/plot_r5_dispatch.jl`
+- `scripts/plot_r5_duality.jl`
 - `scripts/plot_r5_market.jl`
 - `scripts/prepare_r1_summary.jl`
 - `scripts/preview.jl`
@@ -738,6 +745,7 @@
 - `scripts/r4_tspa_docs.jl`
 - `scripts/r5_dispatch_cases.jl`
 - `scripts/r5_dispatch_docs.jl`
+- `scripts/r5_duality_docs.jl`
 - `scripts/r5_market_cases.jl`
 - `scripts/r5_market_docs.jl`
 - `scripts/r5_market_setup.jl`
@@ -803,6 +811,7 @@
 - `scripts/test_r4_thermal.jl`
 - `scripts/test_r4_tspa.jl`
 - `scripts/test_r5_dispatch.jl`
+- `scripts/test_r5_dispatch_duality.jl`
 - `scripts/test_r5_market.jl`
 - `scripts/tighten_r4_distributed_cost.jl`
 - `scripts/validate_ch03_data.jl`
@@ -852,6 +861,7 @@
 - `src/formulations/r4_reconfiguration.jl`
 - `src/formulations/r4_thermal.jl`
 - `src/formulations/r5_dispatch.jl`
+- `src/formulations/r5_dispatch_dual.jl`
 - `src/formulations/r5_market.jl`
 - `src/networks/fixed_flow_heat.jl`
 - `src/networks/water_mass.jl`
@@ -884,6 +894,7 @@
 - `src/verification/r4_thermal.jl`
 - `src/verification/r4_tspa.jl`
 - `src/verification/r5_dispatch.jl`
+- `src/verification/r5_dispatch_duality.jl`
 - `src/verification/r5_market.jl`
 - `test/ch03_data.jl`
 - `test/maintenance.tests.ps1`
@@ -908,6 +919,7 @@
 - `test/r4_thermal.jl`
 - `test/r4_tspa.jl`
 - `test/r5_dispatch.jl`
+- `test/r5_dispatch_duality.jl`
 - `test/r5_market.jl`
 - `test/runtests.jl`
 - `tools/Manifest.toml`
