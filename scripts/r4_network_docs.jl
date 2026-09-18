@@ -90,7 +90,10 @@ function sync_r4_network()
             "\n",
         )
     end
-    write(joinpath(root, "docs", "src", "ch04-network-equations.md"), rstrip(String(take!(io)))*"\n")
+    write(
+        joinpath(root, "docs", "src", "ch04-network-equations.md"),
+        rstrip(String(take!(io)))*"\n",
+    )
 end
 if abspath(PROGRAM_FILE)==(@__FILE__)
     "--update-records" in ARGS && update_r4_network_records()

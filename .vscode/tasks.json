@@ -1,5 +1,7 @@
 {
   "inputs": [
+    {"id":"r4NetworkStudy","description":"R4重构批次study.toml路径","type":"promptString","default":"results/runs/r4/r4-network-20260919/study.toml"},
+    {"id":"r4NetworkReport","description":"R4重构报告目录；比较须用新目录，重绘须有数据表且无旧图","type":"promptString","default":"results/summaries/r4-network-replay"},
     {"id":"r4DiscreteRun","description":"R4离散核查运行目录","type":"promptString"},
     {"id":"r4DiscreteStudy","description":"R4离散批次study.toml路径","type":"promptString"},
     {"id":"r4DiscreteReport","description":"R4离散核查报告目录","type":"promptString"},
@@ -34,6 +36,10 @@
     }
   ],
   "tasks": [
+    {"label":"PaperRebuild: R4 network validate","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/validate_r4.jl","${input:r4RunDirectory}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 network compare","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/report_r4_reconfiguration.jl","${input:r4NetworkStudy}","${input:r4NetworkReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 network redraw","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r4_reconfiguration.jl","${input:r4NetworkReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 network evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r4_network_artifacts.jl","results/summaries/r4-network"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R4 network mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r4_reconfiguration.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R4 network tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r4_reconfiguration.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R4 network frozen study","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/study_r4_reconfiguration.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},

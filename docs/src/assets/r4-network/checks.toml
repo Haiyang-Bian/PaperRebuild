@@ -1,0 +1,55 @@
+embedding_count = 40
+heat_mass_screen_count = 59
+heat_mass_screen_max_heat_MW = 0.10280600363138735
+heat_mass_screen_rule = "H_in>1e-6 MW and abs(m)<=1e-6 kg/s; diagnostic outside old A1"
+heat_mass_screen_runs = 20
+integer_count = 34
+model_pass_count = 34
+oracle_A2_pass = true
+oracle_same_model_relative_difference = 2.2156112448969882e-8
+original_pass_count = 28
+
+[oracle]
+best_model_cost = 54.272214044141926
+best_model_index = 8
+best_physical_cost = 54.272214044141926
+best_physical_index = 8
+certificate_A2 = true
+objective_bound = 54.27221404184916
+relative_gap = 4.224565238910599e-11
+
+[raw_source_hashes]
+electric_bottleneck--electric--exact = "56e678ce87ec4a6a3a1df1211fcad9d54fa969252b8239e81ffb55dcae6e9ebe"
+electric_bottleneck--electric--socp = "53054afa4d38d83f5784d4ef32e8a03d19155f307c02d52cf9c50fcb446daa69"
+electric_bottleneck--fixed--exact = "3b6ba57a1e8890608edb3b93cc5c69c9c5446d3fdae5fa28155d0d307d803b7b"
+electric_bottleneck--fixed--socp = "c70c3de61cdac8d37c9fee0d816e4b2f69d405eed9085683a5c6ecd6ad315d4a"
+electric_bottleneck--heat--exact = "8596fa0ba376668d118efce03db0834a016615e84cd468250ae8fafd7a2f21c0"
+electric_bottleneck--heat--socp = "5913b2ec68a28e333efcedc1337e373854a2bb9363208893973d3a54bc988e23"
+electric_bottleneck--joint--exact = "931202711ff824ebbdc681ff67901e8482ea48f901758d29ee71448ea45c3ce8"
+electric_bottleneck--joint--socp = "2b8891d08aebaec13c60bb70579a9925103fe59aaa2c3a7a215b77b9f034c86f"
+heat_bottleneck--electric--exact = "98a1d3b29ab421b5f07ce07fe909997ceffae47f2d6b25f2785ead76ef99c03e"
+heat_bottleneck--electric--socp = "0ebd5725ba5e02ec3ee9a108e2fd0db0d877d45fe43525cf8f92f6f94a4f4780"
+heat_bottleneck--fixed--exact = "4c826705a73a73848f263f2674e6187b007f885b48a64c0d0faafbcd76179aeb"
+heat_bottleneck--fixed--socp = "67163365530ad9ca7c35a85461074c28490e1cb253555e55ed968a82e8f7bd99"
+heat_bottleneck--heat--exact = "621e2e3a3e76339c1d28020e6368569e4f552e31b15fa88d18fd71b0d52dce7f"
+heat_bottleneck--heat--socp = "821c3d551733431176956fc5b182310c04384185f92658ce343da49f1133acbd"
+heat_bottleneck--joint--exact = "d9b7cb2905e5626f18dae4075f040dad5dd2b89dd1708a7d025e154724aa4cf6"
+heat_bottleneck--joint--socp = "3ae9a01de24fb2e9c399039fe93b4278fceca0e74290bdb05dafd540af1dd3c7"
+import--electric--exact = "965446d282571f05cac969b23d2ef4500a917d7002e52b91311ae02d2176ce4d"
+import--electric--socp = "a236fcda081d0bae3860cd8ea584d6ce9ec2a58b72472b63995782a69330f1bd"
+import--fixed--exact = "8f4f0b0b0ac86924d758833ccbd12c3a68fbe60325bca3b777f120bf47db4287"
+import--fixed--socp = "6fa97d4c71c6679e654ef645a0c331a4e131685c2682e062e0cb19b11c3db4f9"
+import--heat--exact = "1cf94a67c8ba7b4378d6917a13ae795922466b3ad961adb4b7015147cbc7dfb9"
+import--heat--socp = "cdf6aed49bddb730649f2f4f062d6444fe9bd131f2a4e3b2671a485b2f979776"
+import--joint--exact = "7160efed4df5e73355caa5903f710fed6d752a1301274b9cf108106bce002873"
+import--joint--socp = "25647f0cf0e2f97a4f7d6cede8f222b3b694694c9f0b9ab6fdc242f705eb6be8"
+open--electric--exact = "0df4557000ac747438af396b6d815f68a0d2bcd844f2cab6fc3004a5f56bffcf"
+open--electric--socp = "a7299e04465e14002d5c6d347f30d09b16d5958e23204f0271687682e37bf44d"
+open--fixed--exact = "c101c3255343a926bdc70ca8ad7588c222dca912613c2775b2299a5f2624c7e4"
+open--fixed--socp = "3049f1ff24654eded2e9132f2fc34262db33bd0186fdee1a66c9b7de572c0ff2"
+open--heat--exact = "63a729643306e4bdfabc183b195f48bdb29bf6908cc521f8052ccc10343d301f"
+open--heat--socp = "1707fdc72f19fc7fb87f787baad56e5358791050f4982ffee99b6bb0175df8cb"
+open--joint--exact = "9f3d3f1d722a3ceed7e89b3afc2ed2dcec6d3ae340f5ab2da0194264fb97d28f"
+open--joint--socp = "53ff410c13dcf8b39c475b0127b323435cdcc78bc76ddcc9d2d3f53f0bdefff9"
+oracle--joint--exact = "c0e5ccb7dcd1dae071012db37d9e88a8c84cb468baf432e1d1d972db5bebddeb"
+oracle--joint--socp = "3ca9cfd4ce9d6f75ec3f2f2d40d46dc3d58d9231780201687009430641c69954"

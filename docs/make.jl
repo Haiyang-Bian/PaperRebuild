@@ -91,6 +91,7 @@ makedocs(;
             "离散模式正式结果" => "ch04-discrete-results.md",
             "网络重构解释与运行" => "ch04-network.md",
             "网络重构采用式与符号" => "ch04-network-equations.md",
+            "重构结果与热模型缺口" => "ch04-network-results.md",
         ],
         "API 索引与说明" => "api.md",
         "第 2 章模型与首批实现" => [
