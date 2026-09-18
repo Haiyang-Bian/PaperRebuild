@@ -79,6 +79,7 @@ makedocs(;
             "收益分配与补证结果" => "ch04-bargaining-results.md",
             "TSPA两阶段与网络分歧点" => "ch04-tspa.md",
             "TSPA公式与符号" => "ch04-tspa-equations.md",
+            "TSPA分歧点与罚项结果" => "ch04-tspa-results.md",
         ],
         "API 索引与说明" => "api.md",
         "第 2 章模型与首批实现" => [

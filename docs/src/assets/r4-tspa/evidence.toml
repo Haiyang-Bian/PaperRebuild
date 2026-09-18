@@ -1,0 +1,2988 @@
+[[records]]
+case = "open_flexible"
+input_sha256 = "7aadd5364225052c196f45a433635d9c412e37ffa3cbf78b0ed1b1791c2231d5"
+penalty = 100.0
+run_id = "open_flexible--penalty-100"
+selected_values_sha256 = "1c70fb87235edf57530912741a10e6c3c0c871dacc87717023b6b0d344418379"
+source_result_sha256 = "92d66bf61f1d35db09e726e9b0f4ed02fd6386a587629f08d41d8b453960aeff"
+
+    [records.economics]
+    coalition_core_certified = false
+    stage1_disagreement = [-71.16625415954087, -216.2800000795306]
+
+        [records.economics.stage1]
+        disagreement_utility = [-71.16625415954087, -216.2800000795306]
+        gain = [14.400118915493858, 11.29421091411283]
+        log_nash = 2.5604469355087525
+        model = "r4_nash_checked_v1"
+        prepayment_utility = [-95.24219926580338, -166.5097251436614]
+        schema = "r4-nash-allocation-v1"
+        status = "allocated"
+        surplus = 25.694329829606687
+        total_transfer = [38.476064021756365, -38.476064021756365]
+        transfer_convention = "positive_receipt_total_internal_payment"
+        transfer_domain = "unrestricted_budget_balanced"
+        unit = "USD_synthetic"
+        utility_after = [-56.766135244047014, -204.98578916541777]
+        weight_fractions = [0.5604395604395604, 0.43956043956043955]
+        weights = [1.02, 0.7999999999999999]
+
+            [records.economics.stage1.validation]
+            allocation_pass = true
+            record_pass = true
+            strict_improvement = true
+
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-surplus"
+                pass = true
+                residual = 2.842170943040401e-14
+                tolerance = 0.00021628000007953058
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-weights"
+                pass = true
+                residual = 0.0
+                tolerance = 1.0e-6
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-status"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+                [[records.economics.stage1.validation.rows]]
+                equation = "4-73-budget"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021628000007953058
+                [[records.economics.stage1.validation.rows]]
+                equation = "4-72-individual-rationality"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021628000007953058
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-gain-identity"
+                pass = true
+                residual = 2.1316282072803006e-14
+                tolerance = 0.00021628000007953058
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-gain-record"
+                pass = true
+                residual = 5.329070518200751e-15
+                tolerance = 0.00021628000007953058
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-utility-record"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021628000007953058
+                [[records.economics.stage1.validation.rows]]
+                equation = "4-80-positive-gain"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+                [[records.economics.stage1.validation.rows]]
+                equation = "4-80-weighted-stationarity"
+                pass = true
+                residual = 5.551115123125783e-16
+                tolerance = 1.0e-6
+                [[records.economics.stage1.validation.rows]]
+                equation = "4-78-objective"
+                pass = true
+                residual = 4.440892098500626e-16
+                tolerance = 2.560446935508752e-6
+
+        [[records.economics.stage2]]
+        central_physical_pass = true
+        disagreement_physical_pass = false
+        included_penalty = 0.0
+        model_total_welfare_premise = false
+        penalty_cost = 37.90403675302596
+        resource_surplus = -53.23474622015189
+        resource_surplus_is_feasible_saving = false
+        variant = "penalty_excluded"
+
+            [records.economics.stage2.allocation]
+            disagreement_utility = [149.93734087066596, -56.766135244047014, -204.98578916541777]
+            model = "r4_nash_checked_v1"
+            prepayment_utility = [-109.74593870742312, -13.5483623742608, -41.755028677266765]
+            schema = "r4-nash-allocation-v1"
+            status = "negative_surplus"
+            surplus = -53.234746220151834
+            transfer_convention = "positive_receipt_total_internal_payment"
+            transfer_domain = "unrestricted_budget_balanced"
+            unit = "USD_synthetic"
+            weight_fractions = [0.5, 0.2802197802197802, 0.21978021978021978]
+            weights = [1.8199999999999998, 1.02, 0.7999999999999999]
+
+            [records.economics.stage2.validation]
+            allocation_pass = false
+            record_pass = true
+            strict_improvement = false
+
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-surplus"
+                pass = true
+                residual = 5.684341886080802e-14
+                tolerance = 0.00020498578916541775
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-weights"
+                pass = true
+                residual = 0.0
+                tolerance = 1.0e-6
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-status"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-no-fictitious-transfer"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+        [[records.economics.stage2]]
+        central_physical_pass = true
+        disagreement_physical_pass = false
+        included_penalty = 37.90403675302596
+        model_total_welfare_premise = false
+        penalty_cost = 37.90403675302596
+        resource_surplus = -53.23474622015189
+        resource_surplus_is_feasible_saving = false
+        variant = "penalty_included"
+
+            [records.economics.stage2.allocation]
+            disagreement_utility = [112.03330411764, -56.766135244047014, -204.98578916541777]
+            model = "r4_nash_checked_v1"
+            prepayment_utility = [-109.74593870742312, -13.5483623742608, -41.755028677266765]
+            schema = "r4-nash-allocation-v1"
+            status = "negative_surplus"
+            surplus = -15.3307094671259
+            transfer_convention = "positive_receipt_total_internal_payment"
+            transfer_domain = "unrestricted_budget_balanced"
+            unit = "USD_synthetic"
+            weight_fractions = [0.5, 0.2802197802197802, 0.21978021978021978]
+            weights = [1.8199999999999998, 1.02, 0.7999999999999999]
+
+            [records.economics.stage2.validation]
+            allocation_pass = false
+            record_pass = true
+            strict_improvement = false
+
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-surplus"
+                pass = true
+                residual = 2.842170943040401e-14
+                tolerance = 0.00020498578916541775
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-weights"
+                pass = true
+                residual = 0.0
+                tolerance = 1.0e-6
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-status"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-no-fictitious-transfer"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+
+        [records.economics.trading_ledger]
+        aggregator_cost = 261.7519244094648
+        operator_income = 149.93734088225253
+        resource_cost = [19.304924980433157, 92.5096585467791]
+        retail_cost = [74.46366554552833, 74.00006659684666]
+        service_fee = [1.4736087398418896, 3.565148176676303e-11]
+        utility_before_peer_transfer = [-95.24219926580338, -166.5097251436614]
+
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "P"
+            peer_export_MW = -5.7482907322992105e-12
+            retail_buy_MW = 0.20989237981438336
+            retail_sell_MW = 8.837252065408446e-11
+            t = 1
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "P"
+            peer_export_MW = 5.7482907322992105e-12
+            retail_buy_MW = 0.1050001153167264
+            retail_sell_MW = 8.837252098018701e-11
+            t = 1
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "P"
+            peer_export_MW = 9.777068044058979e-12
+            retail_buy_MW = 0.037523571096853996
+            retail_sell_MW = 8.837252211484443e-11
+            t = 2
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "P"
+            peer_export_MW = -9.777068044058979e-12
+            retail_buy_MW = 0.16000010544752302
+            retail_sell_MW = 8.837252075684664e-11
+            t = 2
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "P"
+            peer_export_MW = 0.10740133739895441
+            retail_buy_MW = 4.2644206681276225e-10
+            retail_sell_MW = 1.1147339535270832e-10
+            t = 3
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "P"
+            peer_export_MW = -0.10740133739895441
+            retail_buy_MW = 5.152378525156302e-10
+            retail_sell_MW = 1.0666799141618728e-10
+            t = 3
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "P"
+            peer_export_MW = -1.3820056210533949e-12
+            retail_buy_MW = 0.12490237651267182
+            retail_sell_MW = 8.837252087096354e-11
+            t = 4
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "P"
+            peer_export_MW = 1.3820056210533949e-12
+            retail_buy_MW = 0.10500011172605515
+            retail_sell_MW = 8.83725209801836e-11
+            t = 4
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "H"
+            peer_export_MW = 0.03285284881117079
+            retail_buy_MW = 1.325587799640378e-10
+            retail_sell_MW = 4.6395573819509807e-10
+            t = 1
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "H"
+            peer_export_MW = -0.03285284881117079
+            retail_buy_MW = 1.4006209219988848e-10
+            retail_sell_MW = 3.906996843159777e-10
+            t = 1
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "H"
+            peer_export_MW = 0.08783333782801606
+            retail_buy_MW = 1.325587803060645e-10
+            retail_sell_MW = 4.6395573399733234e-10
+            t = 2
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "H"
+            peer_export_MW = -0.08783333782801606
+            retail_buy_MW = 1.4006210359621988e-10
+            retail_sell_MW = 3.9069959543257034e-10
+            t = 2
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "H"
+            peer_export_MW = 0.033800459471517996
+            retail_buy_MW = 1.2011312759553345e-10
+            retail_sell_MW = 7.279521998235812e-10
+            t = 3
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "H"
+            peer_export_MW = -0.033800459471517996
+            retail_buy_MW = 1.262410794924396e-10
+            retail_sell_MW = 5.624773271866533e-10
+            t = 3
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "H"
+            peer_export_MW = 0.032833764448941594
+            retail_buy_MW = 1.3255877990500262e-10
+            retail_sell_MW = 4.639557389215292e-10
+            t = 4
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "H"
+            peer_export_MW = -0.032833764448941594
+            retail_buy_MW = 1.4006209664070484e-10
+            retail_sell_MW = 3.9069964967162206e-10
+            t = 4
+
+    [records.validation]
+    record_pass = true
+    relaxed_network_pass = true
+    relaxed_point_physical_pass = false
+    stage1_allocation_pass = true
+    stage2_allocation_pass = [false, false]
+    strict_network_physical_pass = true
+    trading_model_pass = true
+
+        [[records.validation.rows]]
+        entity = "penalty_excluded"
+        equation = "R4-T3-surplus-accounting"
+        pass = true
+        residual = 5.684341886080802e-14
+        scope = "tspa"
+        t = 0
+        tolerance = 5.323474622015183e-5
+        unit = "USD"
+        [[records.validation.rows]]
+        entity = "penalty_included"
+        equation = "R4-T3-surplus-accounting"
+        pass = true
+        residual = 2.842170943040401e-14
+        scope = "tspa"
+        t = 0
+        tolerance = 1.5330709467125897e-5
+        unit = "USD"
+[[records]]
+case = "open_flexible"
+input_sha256 = "7aadd5364225052c196f45a433635d9c412e37ffa3cbf78b0ed1b1791c2231d5"
+penalty = 10000.0
+run_id = "open_flexible--penalty-10000"
+selected_values_sha256 = "1c70fb87235edf57530912741a10e6c3c0c871dacc87717023b6b0d344418379"
+source_result_sha256 = "419fa46754d325ea6400d805a0ac8ea02f2ab686299f9f8aa781640240fa701a"
+
+    [records.economics]
+    coalition_core_certified = false
+    stage1_disagreement = [-71.16625415954087, -216.2800000795306]
+
+        [records.economics.stage1]
+        disagreement_utility = [-71.16625415954087, -216.2800000795306]
+        gain = [14.400118915493858, 11.29421091411283]
+        log_nash = 2.5604469355087525
+        model = "r4_nash_checked_v1"
+        prepayment_utility = [-95.24219926580338, -166.5097251436614]
+        schema = "r4-nash-allocation-v1"
+        status = "allocated"
+        surplus = 25.694329829606687
+        total_transfer = [38.476064021756365, -38.476064021756365]
+        transfer_convention = "positive_receipt_total_internal_payment"
+        transfer_domain = "unrestricted_budget_balanced"
+        unit = "USD_synthetic"
+        utility_after = [-56.766135244047014, -204.98578916541777]
+        weight_fractions = [0.5604395604395604, 0.43956043956043955]
+        weights = [1.02, 0.7999999999999999]
+
+            [records.economics.stage1.validation]
+            allocation_pass = true
+            record_pass = true
+            strict_improvement = true
+
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-surplus"
+                pass = true
+                residual = 2.842170943040401e-14
+                tolerance = 0.00021628000007953058
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-weights"
+                pass = true
+                residual = 0.0
+                tolerance = 1.0e-6
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-status"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+                [[records.economics.stage1.validation.rows]]
+                equation = "4-73-budget"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021628000007953058
+                [[records.economics.stage1.validation.rows]]
+                equation = "4-72-individual-rationality"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021628000007953058
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-gain-identity"
+                pass = true
+                residual = 2.1316282072803006e-14
+                tolerance = 0.00021628000007953058
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-gain-record"
+                pass = true
+                residual = 5.329070518200751e-15
+                tolerance = 0.00021628000007953058
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-utility-record"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021628000007953058
+                [[records.economics.stage1.validation.rows]]
+                equation = "4-80-positive-gain"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+                [[records.economics.stage1.validation.rows]]
+                equation = "4-80-weighted-stationarity"
+                pass = true
+                residual = 5.551115123125783e-16
+                tolerance = 1.0e-6
+                [[records.economics.stage1.validation.rows]]
+                equation = "4-78-objective"
+                pass = true
+                residual = 4.440892098500626e-16
+                tolerance = 2.560446935508752e-6
+
+        [[records.economics.stage2]]
+        aggregator_gain_vs_original_independent = [19.81246058023507, 15.539184768811793]
+        central_physical_pass = true
+        disagreement_physical_pass = true
+        included_penalty = 0.0
+        model_total_welfare_premise = true
+        penalty_cost = 3.016233869987346e-7
+        resource_surplus = 19.31463103888035
+        resource_surplus_is_feasible_saving = true
+        variant = "penalty_excluded"
+
+            [records.economics.stage2.allocation]
+            disagreement_utility = [77.38796361163371, -56.766135244047014, -204.98578916541777]
+            gain = [9.657315519440203, 5.412341664741213, 4.244973854698991]
+            log_nash = 1.9248040116397291
+            model = "r4_nash_checked_v1"
+            prepayment_utility = [-109.74593870742312, -13.5483623742608, -41.755028677266765]
+            schema = "r4-nash-allocation-v1"
+            status = "allocated"
+            surplus = 19.314631038880407
+            total_transfer = [196.79121783849703, -37.805431205045004, -158.98578663345202]
+            transfer_convention = "positive_receipt_total_internal_payment"
+            transfer_domain = "unrestricted_budget_balanced"
+            unit = "USD_synthetic"
+            utility_after = [87.04527913107391, -51.3537935793058, -200.7408153107188]
+            weight_fractions = [0.5, 0.2802197802197802, 0.21978021978021978]
+            weights = [1.8199999999999998, 1.02, 0.7999999999999999]
+
+            [records.economics.stage2.validation]
+            allocation_pass = true
+            record_pass = true
+            strict_improvement = true
+
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-surplus"
+                pass = true
+                residual = 2.842170943040401e-14
+                tolerance = 0.00020498578916541775
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-weights"
+                pass = true
+                residual = 0.0
+                tolerance = 1.0e-6
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-status"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+                [[records.economics.stage2.validation.rows]]
+                equation = "4-73-budget"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00020498578916541775
+                [[records.economics.stage2.validation.rows]]
+                equation = "4-72-individual-rationality"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00020498578916541775
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-gain-identity"
+                pass = true
+                residual = 7.105427357601002e-15
+                tolerance = 0.00020498578916541775
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-gain-record"
+                pass = true
+                residual = 2.1316282072803006e-14
+                tolerance = 0.00020498578916541775
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-utility-record"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00020498578916541775
+                [[records.economics.stage2.validation.rows]]
+                equation = "4-80-positive-gain"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+                [[records.economics.stage2.validation.rows]]
+                equation = "4-80-weighted-stationarity"
+                pass = true
+                residual = 7.771561172376096e-16
+                tolerance = 1.0e-6
+                [[records.economics.stage2.validation.rows]]
+                equation = "4-78-objective"
+                pass = true
+                residual = 1.1102230246251565e-15
+                tolerance = 1.924804011639728e-6
+        [[records.economics.stage2]]
+        aggregator_gain_vs_original_independent = [19.812460664755903, 15.539184835102645]
+        central_physical_pass = true
+        disagreement_physical_pass = true
+        included_penalty = 3.016233869987346e-7
+        model_total_welfare_premise = true
+        penalty_cost = 3.016233869987346e-7
+        resource_surplus = 19.31463103888035
+        resource_surplus_is_feasible_saving = true
+        variant = "penalty_included"
+
+            [records.economics.stage2.allocation]
+            disagreement_utility = [77.38796331001032, -56.766135244047014, -204.98578916541777]
+            gain = [9.65731567025189, 5.4123417492620485, 4.244973920989842]
+            log_nash = 1.9248040272560445
+            model = "r4_nash_checked_v1"
+            prepayment_utility = [-109.74593870742312, -13.5483623742608, -41.755028677266765]
+            schema = "r4-nash-allocation-v1"
+            status = "allocated"
+            surplus = 19.31463134050378
+            total_transfer = [196.79121768768533, -37.80543112052417, -158.98578656716117]
+            transfer_convention = "positive_receipt_total_internal_payment"
+            transfer_domain = "unrestricted_budget_balanced"
+            unit = "USD_synthetic"
+            utility_after = [87.04527898026221, -51.353793494784966, -200.74081524442795]
+            weight_fractions = [0.5, 0.2802197802197802, 0.21978021978021978]
+            weights = [1.8199999999999998, 1.02, 0.7999999999999999]
+
+            [records.economics.stage2.validation]
+            allocation_pass = true
+            record_pass = true
+            strict_improvement = true
+
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-surplus"
+                pass = true
+                residual = 2.842170943040401e-14
+                tolerance = 0.00020498578916541775
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-weights"
+                pass = true
+                residual = 0.0
+                tolerance = 1.0e-6
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-status"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+                [[records.economics.stage2.validation.rows]]
+                equation = "4-73-budget"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00020498578916541775
+                [[records.economics.stage2.validation.rows]]
+                equation = "4-72-individual-rationality"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00020498578916541775
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-gain-identity"
+                pass = true
+                residual = 7.105427357601002e-15
+                tolerance = 0.00020498578916541775
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-gain-record"
+                pass = true
+                residual = 2.042810365310288e-14
+                tolerance = 0.00020498578916541775
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-utility-record"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00020498578916541775
+                [[records.economics.stage2.validation.rows]]
+                equation = "4-80-positive-gain"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+                [[records.economics.stage2.validation.rows]]
+                equation = "4-80-weighted-stationarity"
+                pass = true
+                residual = 7.771561172376096e-16
+                tolerance = 1.0e-6
+                [[records.economics.stage2.validation.rows]]
+                equation = "4-78-objective"
+                pass = true
+                residual = 1.1102230246251565e-15
+                tolerance = 1.9248040272560433e-6
+
+        [records.economics.trading_ledger]
+        aggregator_cost = 261.7519244094648
+        operator_income = 149.93734088225253
+        resource_cost = [19.304924980433157, 92.5096585467791]
+        retail_cost = [74.46366554552833, 74.00006659684666]
+        service_fee = [1.4736087398418896, 3.565148176676303e-11]
+        utility_before_peer_transfer = [-95.24219926580338, -166.5097251436614]
+
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "P"
+            peer_export_MW = -5.7482907322992105e-12
+            retail_buy_MW = 0.20989237981438336
+            retail_sell_MW = 8.837252065408446e-11
+            t = 1
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "P"
+            peer_export_MW = 5.7482907322992105e-12
+            retail_buy_MW = 0.1050001153167264
+            retail_sell_MW = 8.837252098018701e-11
+            t = 1
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "P"
+            peer_export_MW = 9.777068044058979e-12
+            retail_buy_MW = 0.037523571096853996
+            retail_sell_MW = 8.837252211484443e-11
+            t = 2
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "P"
+            peer_export_MW = -9.777068044058979e-12
+            retail_buy_MW = 0.16000010544752302
+            retail_sell_MW = 8.837252075684664e-11
+            t = 2
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "P"
+            peer_export_MW = 0.10740133739895441
+            retail_buy_MW = 4.2644206681276225e-10
+            retail_sell_MW = 1.1147339535270832e-10
+            t = 3
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "P"
+            peer_export_MW = -0.10740133739895441
+            retail_buy_MW = 5.152378525156302e-10
+            retail_sell_MW = 1.0666799141618728e-10
+            t = 3
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "P"
+            peer_export_MW = -1.3820056210533949e-12
+            retail_buy_MW = 0.12490237651267182
+            retail_sell_MW = 8.837252087096354e-11
+            t = 4
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "P"
+            peer_export_MW = 1.3820056210533949e-12
+            retail_buy_MW = 0.10500011172605515
+            retail_sell_MW = 8.83725209801836e-11
+            t = 4
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "H"
+            peer_export_MW = 0.03285284881117079
+            retail_buy_MW = 1.325587799640378e-10
+            retail_sell_MW = 4.6395573819509807e-10
+            t = 1
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "H"
+            peer_export_MW = -0.03285284881117079
+            retail_buy_MW = 1.4006209219988848e-10
+            retail_sell_MW = 3.906996843159777e-10
+            t = 1
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "H"
+            peer_export_MW = 0.08783333782801606
+            retail_buy_MW = 1.325587803060645e-10
+            retail_sell_MW = 4.6395573399733234e-10
+            t = 2
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "H"
+            peer_export_MW = -0.08783333782801606
+            retail_buy_MW = 1.4006210359621988e-10
+            retail_sell_MW = 3.9069959543257034e-10
+            t = 2
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "H"
+            peer_export_MW = 0.033800459471517996
+            retail_buy_MW = 1.2011312759553345e-10
+            retail_sell_MW = 7.279521998235812e-10
+            t = 3
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "H"
+            peer_export_MW = -0.033800459471517996
+            retail_buy_MW = 1.262410794924396e-10
+            retail_sell_MW = 5.624773271866533e-10
+            t = 3
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "H"
+            peer_export_MW = 0.032833764448941594
+            retail_buy_MW = 1.3255877990500262e-10
+            retail_sell_MW = 4.639557389215292e-10
+            t = 4
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "H"
+            peer_export_MW = -0.032833764448941594
+            retail_buy_MW = 1.4006209664070484e-10
+            retail_sell_MW = 3.9069964967162206e-10
+            t = 4
+
+    [records.validation]
+    record_pass = true
+    relaxed_network_pass = true
+    relaxed_point_physical_pass = true
+    stage1_allocation_pass = true
+    stage2_allocation_pass = [true, true]
+    strict_network_physical_pass = true
+    trading_model_pass = true
+
+        [[records.validation.rows]]
+        entity = "penalty_excluded"
+        equation = "R4-T3-surplus-accounting"
+        pass = true
+        residual = 5.684341886080802e-14
+        scope = "tspa"
+        t = 0
+        tolerance = 1.9314631038880406e-5
+        unit = "USD"
+        [[records.validation.rows]]
+        entity = "penalty_included"
+        equation = "R4-T3-surplus-accounting"
+        pass = true
+        residual = 4.323347721753591e-14
+        scope = "tspa"
+        t = 0
+        tolerance = 1.931463134050378e-5
+        unit = "USD"
+[[records]]
+case = "open_fixed"
+input_sha256 = "ba5e4cbe085086ea8847d397f01d77bf89e12bf2b398c74a0e3bc8a0dce79fd9"
+penalty = 100.0
+run_id = "open_fixed--penalty-100"
+selected_values_sha256 = "fd2553524e7f115ab641c3468abdddb71ff23549c5e94ab5f02be23aace76bf8"
+source_result_sha256 = "62752b955faa179a52bcb94a6bc6766ea6ccaabe8682341ede70f3e6497f565f"
+
+    [records.economics]
+    coalition_core_certified = false
+    stage1_disagreement = [-72.70458333333335, -217.80000672605746]
+
+        [records.economics.stage1]
+        disagreement_utility = [-72.70458333333335, -217.80000672605746]
+        gain = [12.619234538779425, 9.897438853944648]
+        log_nash = 2.428432671600632
+        model = "r4_nash_checked_v1"
+        prepayment_utility = [-90.98791666666668, -177.00000000000006]
+        schema = "r4-nash-allocation-v1"
+        status = "allocated"
+        surplus = 22.516673392724073
+        total_transfer = [30.902567872112755, -30.902567872112755]
+        transfer_convention = "positive_receipt_total_internal_payment"
+        transfer_domain = "unrestricted_budget_balanced"
+        unit = "USD_synthetic"
+        utility_after = [-60.08534879455392, -207.9025678721128]
+        weight_fractions = [0.5604395604395604, 0.43956043956043955]
+        weights = [1.02, 0.7999999999999999]
+
+            [records.economics.stage1.validation]
+            allocation_pass = true
+            record_pass = true
+            strict_improvement = true
+
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-surplus"
+                pass = true
+                residual = 2.842170943040401e-14
+                tolerance = 0.00021780000672605746
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-weights"
+                pass = true
+                residual = 0.0
+                tolerance = 1.0e-6
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-status"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+                [[records.economics.stage1.validation.rows]]
+                equation = "4-73-budget"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021780000672605746
+                [[records.economics.stage1.validation.rows]]
+                equation = "4-72-individual-rationality"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021780000672605746
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-gain-identity"
+                pass = true
+                residual = 1.4210854715202004e-14
+                tolerance = 0.00021780000672605746
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-gain-record"
+                pass = true
+                residual = 1.5987211554602254e-14
+                tolerance = 0.00021780000672605746
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-utility-record"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021780000672605746
+                [[records.economics.stage1.validation.rows]]
+                equation = "4-80-positive-gain"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+                [[records.economics.stage1.validation.rows]]
+                equation = "4-80-weighted-stationarity"
+                pass = true
+                residual = 7.771561172376096e-16
+                tolerance = 1.0e-6
+                [[records.economics.stage1.validation.rows]]
+                equation = "4-78-objective"
+                pass = true
+                residual = 8.881784197001252e-16
+                tolerance = 2.4284326716006327e-6
+
+        [[records.economics.stage2]]
+        central_physical_pass = true
+        disagreement_physical_pass = false
+        included_penalty = 0.0
+        model_total_welfare_premise = false
+        penalty_cost = 37.852632060828896
+        resource_surplus = -50.30536770327291
+        resource_surplus_is_feasible_saving = false
+        variant = "penalty_excluded"
+
+            [records.economics.stage2.allocation]
+            disagreement_utility = [138.56666666666666, -60.08534879455392, -207.9025678721128]
+            model = "r4_nash_checked_v1"
+            prepayment_utility = [-102.82969093567803, -22.5240166226465, -54.37291014494845]
+            schema = "r4-nash-allocation-v1"
+            status = "negative_surplus"
+            surplus = -50.30536770327291
+            transfer_convention = "positive_receipt_total_internal_payment"
+            transfer_domain = "unrestricted_budget_balanced"
+            unit = "USD_synthetic"
+            weight_fractions = [0.5, 0.2802197802197802, 0.21978021978021978]
+            weights = [1.8199999999999998, 1.02, 0.7999999999999999]
+
+            [records.economics.stage2.validation]
+            allocation_pass = false
+            record_pass = true
+            strict_improvement = false
+
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-surplus"
+                pass = true
+                residual = 2.842170943040401e-14
+                tolerance = 0.0002079025678721128
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-weights"
+                pass = true
+                residual = 0.0
+                tolerance = 1.0e-6
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-status"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-no-fictitious-transfer"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+        [[records.economics.stage2]]
+        central_physical_pass = true
+        disagreement_physical_pass = false
+        included_penalty = 37.852632060828896
+        model_total_welfare_premise = false
+        penalty_cost = 37.852632060828896
+        resource_surplus = -50.30536770327291
+        resource_surplus_is_feasible_saving = false
+        variant = "penalty_included"
+
+            [records.economics.stage2.allocation]
+            disagreement_utility = [100.71403460583777, -60.08534879455392, -207.9025678721128]
+            model = "r4_nash_checked_v1"
+            prepayment_utility = [-102.82969093567803, -22.5240166226465, -54.37291014494845]
+            schema = "r4-nash-allocation-v1"
+            status = "negative_surplus"
+            surplus = -12.452735642444026
+            transfer_convention = "positive_receipt_total_internal_payment"
+            transfer_domain = "unrestricted_budget_balanced"
+            unit = "USD_synthetic"
+            weight_fractions = [0.5, 0.2802197802197802, 0.21978021978021978]
+            weights = [1.8199999999999998, 1.02, 0.7999999999999999]
+
+            [records.economics.stage2.validation]
+            allocation_pass = false
+            record_pass = true
+            strict_improvement = false
+
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-surplus"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0002079025678721128
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-weights"
+                pass = true
+                residual = 0.0
+                tolerance = 1.0e-6
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-status"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-no-fictitious-transfer"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+
+        [records.economics.trading_ledger]
+        aggregator_cost = 267.9879166666667
+        operator_income = 138.56666666666666
+        resource_cost = [22.421250000000022, 107.00000000000004]
+        retail_cost = [67.41666666666666, 70.0]
+        service_fee = [1.1500000000000004, 0.0]
+        utility_before_peer_transfer = [-90.98791666666668, -177.00000000000006]
+
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "P"
+            peer_export_MW = 0.0
+            retail_buy_MW = 0.14975
+            retail_sell_MW = 0.0
+            t = 1
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "P"
+            peer_export_MW = -0.0
+            retail_buy_MW = 0.1
+            retail_sell_MW = 0.0
+            t = 1
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "P"
+            peer_export_MW = 0.0
+            retail_buy_MW = 0.04333333333333331
+            retail_sell_MW = 0.0
+            t = 2
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "P"
+            peer_export_MW = -0.0
+            retail_buy_MW = 0.15
+            retail_sell_MW = 0.0
+            t = 2
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "P"
+            peer_export_MW = 0.1
+            retail_buy_MW = 0.0
+            retail_sell_MW = 0.0
+            t = 3
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "P"
+            peer_export_MW = -0.1
+            retail_buy_MW = 0.0
+            retail_sell_MW = 0.0
+            t = 3
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "P"
+            peer_export_MW = 0.0
+            retail_buy_MW = 0.15
+            retail_sell_MW = 0.0
+            t = 4
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "P"
+            peer_export_MW = -0.0
+            retail_buy_MW = 0.1
+            retail_sell_MW = 0.0
+            t = 4
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "H"
+            peer_export_MW = 0.020000000000000018
+            retail_buy_MW = 0.0
+            retail_sell_MW = 0.0
+            t = 1
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "H"
+            peer_export_MW = -0.020000000000000018
+            retail_buy_MW = 0.0
+            retail_sell_MW = 0.0
+            t = 1
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "H"
+            peer_export_MW = 0.07
+            retail_buy_MW = 0.0
+            retail_sell_MW = 0.0
+            t = 2
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "H"
+            peer_export_MW = -0.07
+            retail_buy_MW = 0.0
+            retail_sell_MW = 0.0
+            t = 2
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "H"
+            peer_export_MW = 0.020000000000000018
+            retail_buy_MW = 0.0
+            retail_sell_MW = 0.029999999999999943
+            t = 3
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "H"
+            peer_export_MW = -0.020000000000000018
+            retail_buy_MW = 0.0
+            retail_sell_MW = 0.0
+            t = 3
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "H"
+            peer_export_MW = 0.020000000000000018
+            retail_buy_MW = 0.0
+            retail_sell_MW = 0.0
+            t = 4
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "H"
+            peer_export_MW = -0.020000000000000018
+            retail_buy_MW = 0.0
+            retail_sell_MW = 0.0
+            t = 4
+
+    [records.validation]
+    record_pass = true
+    relaxed_network_pass = true
+    relaxed_point_physical_pass = false
+    stage1_allocation_pass = true
+    stage2_allocation_pass = [false, false]
+    strict_network_physical_pass = false
+    trading_model_pass = true
+
+        [[records.validation.rows]]
+        entity = "penalty_excluded"
+        equation = "R4-T3-surplus-accounting"
+        pass = true
+        residual = 0.0
+        scope = "tspa"
+        t = 0
+        tolerance = 5.030536770327291e-5
+        unit = "USD"
+        [[records.validation.rows]]
+        entity = "penalty_included"
+        equation = "R4-T3-surplus-accounting"
+        pass = true
+        residual = 1.4210854715202004e-14
+        scope = "tspa"
+        t = 0
+        tolerance = 1.2452735642444025e-5
+        unit = "USD"
+[[records]]
+case = "open_fixed"
+input_sha256 = "ba5e4cbe085086ea8847d397f01d77bf89e12bf2b398c74a0e3bc8a0dce79fd9"
+penalty = 10000.0
+run_id = "open_fixed--penalty-10000"
+selected_values_sha256 = "fd2553524e7f115ab641c3468abdddb71ff23549c5e94ab5f02be23aace76bf8"
+source_result_sha256 = "9499bd8ee4533ea687838a469eadf9ab2f28dc2aa8574800c1d50ef5c86a81fa"
+
+    [records.economics]
+    coalition_core_certified = false
+    stage1_disagreement = [-72.70458333333335, -217.80000672605746]
+
+        [records.economics.stage1]
+        disagreement_utility = [-72.70458333333335, -217.80000672605746]
+        gain = [12.619234538779425, 9.897438853944648]
+        log_nash = 2.428432671600632
+        model = "r4_nash_checked_v1"
+        prepayment_utility = [-90.98791666666668, -177.00000000000006]
+        schema = "r4-nash-allocation-v1"
+        status = "allocated"
+        surplus = 22.516673392724073
+        total_transfer = [30.902567872112755, -30.902567872112755]
+        transfer_convention = "positive_receipt_total_internal_payment"
+        transfer_domain = "unrestricted_budget_balanced"
+        unit = "USD_synthetic"
+        utility_after = [-60.08534879455392, -207.9025678721128]
+        weight_fractions = [0.5604395604395604, 0.43956043956043955]
+        weights = [1.02, 0.7999999999999999]
+
+            [records.economics.stage1.validation]
+            allocation_pass = true
+            record_pass = true
+            strict_improvement = true
+
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-surplus"
+                pass = true
+                residual = 2.842170943040401e-14
+                tolerance = 0.00021780000672605746
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-weights"
+                pass = true
+                residual = 0.0
+                tolerance = 1.0e-6
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-status"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+                [[records.economics.stage1.validation.rows]]
+                equation = "4-73-budget"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021780000672605746
+                [[records.economics.stage1.validation.rows]]
+                equation = "4-72-individual-rationality"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021780000672605746
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-gain-identity"
+                pass = true
+                residual = 1.4210854715202004e-14
+                tolerance = 0.00021780000672605746
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-gain-record"
+                pass = true
+                residual = 1.5987211554602254e-14
+                tolerance = 0.00021780000672605746
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-utility-record"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021780000672605746
+                [[records.economics.stage1.validation.rows]]
+                equation = "4-80-positive-gain"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+                [[records.economics.stage1.validation.rows]]
+                equation = "4-80-weighted-stationarity"
+                pass = true
+                residual = 7.771561172376096e-16
+                tolerance = 1.0e-6
+                [[records.economics.stage1.validation.rows]]
+                equation = "4-78-objective"
+                pass = true
+                residual = 8.881784197001252e-16
+                tolerance = 2.4284326716006327e-6
+
+        [[records.economics.stage2]]
+        aggregator_gain_vs_original_independent = [17.626557098032087, 13.82475066512319]
+        central_physical_pass = true
+        disagreement_physical_pass = false
+        included_penalty = 0.0
+        model_total_welfare_premise = true
+        penalty_cost = 250.66666666666595
+        resource_surplus = 17.869268740862452
+        resource_surplus_is_feasible_saving = false
+        variant = "penalty_excluded"
+
+            [records.economics.stage2.allocation]
+            disagreement_utility = [70.39203022253129, -60.08534879455392, -207.9025678721128]
+            gain = [8.934634370431226, 5.007322559252665, 3.9273118111785608]
+            log_nash = 1.8470235252995366
+            model = "r4_nash_checked_v1"
+            prepayment_utility = [-102.82969093567803, -22.5240166226465, -54.37291014494845]
+            schema = "r4-nash-allocation-v1"
+            status = "allocated"
+            surplus = 17.869268740862452
+            total_transfer = [182.15635552864057, -32.55400961265476, -149.6023459159858]
+            transfer_convention = "positive_receipt_total_internal_payment"
+            transfer_domain = "unrestricted_budget_balanced"
+            unit = "USD_synthetic"
+            utility_after = [79.32666459296254, -55.07802623530126, -203.97525606093427]
+            weight_fractions = [0.5, 0.2802197802197802, 0.21978021978021978]
+            weights = [1.8199999999999998, 1.02, 0.7999999999999999]
+
+            [records.economics.stage2.validation]
+            allocation_pass = true
+            record_pass = true
+            strict_improvement = true
+
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-surplus"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0002079025678721128
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-weights"
+                pass = true
+                residual = 0.0
+                tolerance = 1.0e-6
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-status"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+                [[records.economics.stage2.validation.rows]]
+                equation = "4-73-budget"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0002079025678721128
+                [[records.economics.stage2.validation.rows]]
+                equation = "4-72-individual-rationality"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0002079025678721128
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-gain-identity"
+                pass = true
+                residual = 7.105427357601002e-15
+                tolerance = 0.0002079025678721128
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-gain-record"
+                pass = true
+                residual = 3.419486915845482e-14
+                tolerance = 0.0002079025678721128
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-utility-record"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0002079025678721128
+                [[records.economics.stage2.validation.rows]]
+                equation = "4-80-positive-gain"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+                [[records.economics.stage2.validation.rows]]
+                equation = "4-80-weighted-stationarity"
+                pass = true
+                residual = 1.915134717478395e-15
+                tolerance = 1.0e-6
+                [[records.economics.stage2.validation.rows]]
+                equation = "4-78-objective"
+                pass = true
+                residual = 2.220446049250313e-16
+                tolerance = 1.8470235252995362e-6
+        [[records.economics.stage2]]
+        aggregator_gain_vs_original_independent = [87.86831533979014, 68.91632575669814]
+        central_physical_pass = true
+        disagreement_physical_pass = false
+        included_penalty = 250.66666666666595
+        model_total_welfare_premise = true
+        penalty_cost = 250.66666666666595
+        resource_surplus = 17.869268740862452
+        resource_surplus_is_feasible_saving = false
+        variant = "penalty_included"
+
+            [records.economics.stage2.allocation]
+            disagreement_utility = [-180.27463644413467, -60.08534879455392, -207.9025678721128]
+            gain = [134.2679677037642, 75.24908080101072, 59.0188869027535]
+            log_nash = 4.5569258606519245
+            model = "r4_nash_checked_v1"
+            prepayment_utility = [-102.82969093567803, -22.5240166226465, -54.37291014494845]
+            schema = "r4-nash-allocation-v1"
+            status = "allocated"
+            surplus = 268.5359354075284
+            total_transfer = [56.82302219530757, 37.6877486291033, -94.51077082441086]
+            transfer_convention = "positive_receipt_total_internal_payment"
+            transfer_domain = "unrestricted_budget_balanced"
+            unit = "USD_synthetic"
+            utility_after = [-46.00666874037046, 15.163732006456797, -148.88368096935932]
+            weight_fractions = [0.5, 0.2802197802197802, 0.21978021978021978]
+            weights = [1.8199999999999998, 1.02, 0.7999999999999999]
+
+            [records.economics.stage2.validation]
+            allocation_pass = true
+            record_pass = true
+            strict_improvement = true
+
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-surplus"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0002079025678721128
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-weights"
+                pass = true
+                residual = 0.0
+                tolerance = 1.0e-6
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-status"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+                [[records.economics.stage2.validation.rows]]
+                equation = "4-73-budget"
+                pass = true
+                residual = 1.4210854715202004e-14
+                tolerance = 0.0002079025678721128
+                [[records.economics.stage2.validation.rows]]
+                equation = "4-72-individual-rationality"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0002079025678721128
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-gain-identity"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0002079025678721128
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-gain-record"
+                pass = true
+                residual = 2.1316282072803006e-14
+                tolerance = 0.0002079025678721128
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-utility-record"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0002079025678721128
+                [[records.economics.stage2.validation.rows]]
+                equation = "4-80-positive-gain"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+                [[records.economics.stage2.validation.rows]]
+                equation = "4-80-weighted-stationarity"
+                pass = true
+                residual = 8.326672684688674e-17
+                tolerance = 1.0e-6
+                [[records.economics.stage2.validation.rows]]
+                equation = "4-78-objective"
+                pass = true
+                residual = 8.881784197001252e-16
+                tolerance = 4.556925860651924e-6
+
+        [records.economics.trading_ledger]
+        aggregator_cost = 267.9879166666667
+        operator_income = 138.56666666666666
+        resource_cost = [22.421250000000022, 107.00000000000004]
+        retail_cost = [67.41666666666666, 70.0]
+        service_fee = [1.1500000000000004, 0.0]
+        utility_before_peer_transfer = [-90.98791666666668, -177.00000000000006]
+
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "P"
+            peer_export_MW = 0.0
+            retail_buy_MW = 0.14975
+            retail_sell_MW = 0.0
+            t = 1
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "P"
+            peer_export_MW = -0.0
+            retail_buy_MW = 0.1
+            retail_sell_MW = 0.0
+            t = 1
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "P"
+            peer_export_MW = 0.0
+            retail_buy_MW = 0.04333333333333331
+            retail_sell_MW = 0.0
+            t = 2
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "P"
+            peer_export_MW = -0.0
+            retail_buy_MW = 0.15
+            retail_sell_MW = 0.0
+            t = 2
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "P"
+            peer_export_MW = 0.1
+            retail_buy_MW = 0.0
+            retail_sell_MW = 0.0
+            t = 3
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "P"
+            peer_export_MW = -0.1
+            retail_buy_MW = 0.0
+            retail_sell_MW = 0.0
+            t = 3
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "P"
+            peer_export_MW = 0.0
+            retail_buy_MW = 0.15
+            retail_sell_MW = 0.0
+            t = 4
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "P"
+            peer_export_MW = -0.0
+            retail_buy_MW = 0.1
+            retail_sell_MW = 0.0
+            t = 4
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "H"
+            peer_export_MW = 0.020000000000000018
+            retail_buy_MW = 0.0
+            retail_sell_MW = 0.0
+            t = 1
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "H"
+            peer_export_MW = -0.020000000000000018
+            retail_buy_MW = 0.0
+            retail_sell_MW = 0.0
+            t = 1
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "H"
+            peer_export_MW = 0.07
+            retail_buy_MW = 0.0
+            retail_sell_MW = 0.0
+            t = 2
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "H"
+            peer_export_MW = -0.07
+            retail_buy_MW = 0.0
+            retail_sell_MW = 0.0
+            t = 2
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "H"
+            peer_export_MW = 0.020000000000000018
+            retail_buy_MW = 0.0
+            retail_sell_MW = 0.029999999999999943
+            t = 3
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "H"
+            peer_export_MW = -0.020000000000000018
+            retail_buy_MW = 0.0
+            retail_sell_MW = 0.0
+            t = 3
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "H"
+            peer_export_MW = 0.020000000000000018
+            retail_buy_MW = 0.0
+            retail_sell_MW = 0.0
+            t = 4
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "H"
+            peer_export_MW = -0.020000000000000018
+            retail_buy_MW = 0.0
+            retail_sell_MW = 0.0
+            t = 4
+
+    [records.validation]
+    record_pass = true
+    relaxed_network_pass = true
+    relaxed_point_physical_pass = false
+    stage1_allocation_pass = true
+    stage2_allocation_pass = [true, true]
+    strict_network_physical_pass = false
+    trading_model_pass = true
+
+        [[records.validation.rows]]
+        entity = "penalty_excluded"
+        equation = "R4-T3-surplus-accounting"
+        pass = true
+        residual = 0.0
+        scope = "tspa"
+        t = 0
+        tolerance = 1.786926874086245e-5
+        unit = "USD"
+        [[records.validation.rows]]
+        entity = "penalty_included"
+        equation = "R4-T3-surplus-accounting"
+        pass = true
+        residual = 2.842170943040401e-14
+        scope = "tspa"
+        t = 0
+        tolerance = 0.00026853593540752843
+        unit = "USD"
+[[records]]
+case = "import_flexible"
+input_sha256 = "fcdb954da900fd878194b0a3d72bf2f130ecf057615bd84ae16436d315b9d5ca"
+penalty = 100.0
+run_id = "import_flexible--penalty-100"
+selected_values_sha256 = "791c8c36c3710348781acb5d68d4d779d6c1f6e6882a7933a0a60836e36ae7aa"
+source_result_sha256 = "8adef2ba376eacac4bdb4c19fecf3bd45c7f58e3fd5c90d5282827a6c2998854"
+
+    [records.economics]
+    coalition_core_certified = false
+    stage1_disagreement = [-79.65090290472357, -216.2800000521304]
+
+        [records.economics.stage1]
+        disagreement_utility = [-79.65090290472357, -216.2800000521304]
+        gain = [0.0, 0.0]
+        model = "r4_nash_checked_v1"
+        prepayment_utility = [-79.65090290472357, -216.2800000521304]
+        schema = "r4-nash-allocation-v1"
+        status = "zero_surplus_degenerate"
+        surplus = 0.0
+        total_transfer = [0.0, 0.0]
+        transfer_convention = "positive_receipt_total_internal_payment"
+        transfer_domain = "unrestricted_budget_balanced"
+        unit = "USD_synthetic"
+        utility_after = [-79.65090290472357, -216.2800000521304]
+        weight_fractions = [0.5604395604395604, 0.43956043956043955]
+        weights = [1.02, 0.7999999999999999]
+
+            [records.economics.stage1.validation]
+            allocation_pass = true
+            record_pass = true
+            strict_improvement = false
+
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-surplus"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021628000005213037
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-weights"
+                pass = true
+                residual = 0.0
+                tolerance = 1.0e-6
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-status"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+                [[records.economics.stage1.validation.rows]]
+                equation = "4-73-budget"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021628000005213037
+                [[records.economics.stage1.validation.rows]]
+                equation = "4-72-individual-rationality"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021628000005213037
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-gain-identity"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021628000005213037
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-gain-record"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021628000005213037
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-utility-record"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021628000005213037
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-zero-gain"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021628000005213037
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-no-log-zero"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+
+        [[records.economics.stage2]]
+        central_physical_pass = true
+        disagreement_physical_pass = false
+        included_penalty = 0.0
+        model_total_welfare_premise = false
+        penalty_cost = 48.25163775472117
+        resource_surplus = -78.1070178152377
+        resource_surplus_is_feasible_saving = false
+        variant = "penalty_excluded"
+
+            [records.economics.stage2.allocation]
+            disagreement_utility = [182.2451884229837, -79.65090290472357, -216.2800000521304]
+            model = "r4_nash_checked_v1"
+            prepayment_utility = [-93.68736899398004, -10.981659164305789, -87.12370419850008]
+            schema = "r4-nash-allocation-v1"
+            status = "negative_surplus"
+            surplus = -78.10701782291565
+            transfer_convention = "positive_receipt_total_internal_payment"
+            transfer_domain = "unrestricted_budget_balanced"
+            unit = "USD_synthetic"
+            weight_fractions = [0.5, 0.2802197802197802, 0.21978021978021978]
+            weights = [1.8199999999999998, 1.02, 0.7999999999999999]
+
+            [records.economics.stage2.validation]
+            allocation_pass = false
+            record_pass = true
+            strict_improvement = false
+
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-surplus"
+                pass = true
+                residual = 1.4210854715202004e-14
+                tolerance = 0.00021628000005213037
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-weights"
+                pass = true
+                residual = 0.0
+                tolerance = 1.0e-6
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-status"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-no-fictitious-transfer"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+        [[records.economics.stage2]]
+        central_physical_pass = true
+        disagreement_physical_pass = false
+        included_penalty = 48.25163775472117
+        model_total_welfare_premise = false
+        penalty_cost = 48.25163775472117
+        resource_surplus = -78.1070178152377
+        resource_surplus_is_feasible_saving = false
+        variant = "penalty_included"
+
+            [records.economics.stage2.allocation]
+            disagreement_utility = [133.99355066826251, -79.65090290472357, -216.2800000521304]
+            model = "r4_nash_checked_v1"
+            prepayment_utility = [-93.68736899398004, -10.981659164305789, -87.12370419850008]
+            schema = "r4-nash-allocation-v1"
+            status = "negative_surplus"
+            surplus = -29.855380068194478
+            transfer_convention = "positive_receipt_total_internal_payment"
+            transfer_domain = "unrestricted_budget_balanced"
+            unit = "USD_synthetic"
+            weight_fractions = [0.5, 0.2802197802197802, 0.21978021978021978]
+            weights = [1.8199999999999998, 1.02, 0.7999999999999999]
+
+            [records.economics.stage2.validation]
+            allocation_pass = false
+            record_pass = true
+            strict_improvement = false
+
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-surplus"
+                pass = true
+                residual = 2.842170943040401e-14
+                tolerance = 0.00021628000005213037
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-weights"
+                pass = true
+                residual = 0.0
+                tolerance = 1.0e-6
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-status"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-no-fictitious-transfer"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+
+        [records.economics.trading_ledger]
+        aggregator_cost = 295.93090295685397
+        operator_income = 182.2451884229837
+        resource_cost = [16.566312708603206, 97.11940182526705]
+        retail_cost = [63.08459019612036, 119.16059822686333]
+        service_fee = [0.0, 0.0]
+        utility_before_peer_transfer = [-79.65090290472357, -216.2800000521304]
+
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "P"
+            peer_export_MW = 0.0
+            retail_buy_MW = 0.14419730043847664
+            retail_sell_MW = 0.0
+            t = 1
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "P"
+            peer_export_MW = -0.0
+            retail_buy_MW = 0.10499982079780068
+            retail_sell_MW = 0.0
+            t = 1
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "P"
+            peer_export_MW = 0.0
+            retail_buy_MW = 0.026778350092337866
+            retail_sell_MW = 0.0
+            t = 2
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "P"
+            peer_export_MW = -0.0
+            retail_buy_MW = 0.16000150745076905
+            retail_sell_MW = 0.0
+            t = 2
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "P"
+            peer_export_MW = 0.0
+            retail_buy_MW = 0.0
+            retail_sell_MW = 0.0
+            t = 3
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "P"
+            peer_export_MW = -0.0
+            retail_buy_MW = 0.10499982079780062
+            retail_sell_MW = 0.0
+            t = 3
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "P"
+            peer_export_MW = 0.0
+            retail_buy_MW = 0.14444730044978732
+            retail_sell_MW = 0.0
+            t = 4
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "P"
+            peer_export_MW = -0.0
+            retail_buy_MW = 0.10499982079690562
+            retail_sell_MW = 0.0
+            t = 4
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "H"
+            peer_export_MW = 0.0
+            retail_buy_MW = 0.0
+            retail_sell_MW = 0.0
+            t = 1
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "H"
+            peer_export_MW = -0.0
+            retail_buy_MW = 0.024000504941107295
+            retail_sell_MW = 0.0
+            t = 1
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "H"
+            peer_export_MW = 0.0
+            retail_buy_MW = 0.0
+            retail_sell_MW = 0.0
+            t = 2
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "H"
+            peer_export_MW = -0.0
+            retail_buy_MW = 0.07899989565542762
+            retail_sell_MW = 0.0
+            t = 2
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "H"
+            peer_export_MW = 0.0
+            retail_buy_MW = 0.0
+            retail_sell_MW = 0.0
+            t = 3
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "H"
+            peer_export_MW = -0.0
+            retail_buy_MW = 0.024001063008632955
+            retail_sell_MW = 0.0
+            t = 3
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "H"
+            peer_export_MW = 0.0
+            retail_buy_MW = 0.0
+            retail_sell_MW = 0.0
+            t = 4
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "H"
+            peer_export_MW = -0.0
+            retail_buy_MW = 0.024001063008632955
+            retail_sell_MW = 0.0
+            t = 4
+
+    [records.validation]
+    record_pass = true
+    relaxed_network_pass = true
+    relaxed_point_physical_pass = false
+    stage1_allocation_pass = true
+    stage2_allocation_pass = [false, false]
+    strict_network_physical_pass = true
+    trading_model_pass = true
+
+        [[records.validation.rows]]
+        entity = "penalty_excluded"
+        equation = "R4-T3-surplus-accounting"
+        pass = true
+        residual = 7.67795427236706e-9
+        scope = "tspa"
+        t = 0
+        tolerance = 7.810701782291565e-5
+        unit = "USD"
+        [[records.validation.rows]]
+        entity = "penalty_included"
+        equation = "R4-T3-surplus-accounting"
+        pass = true
+        residual = 7.67795427236706e-9
+        scope = "tspa"
+        t = 0
+        tolerance = 2.9855380068194478e-5
+        unit = "USD"
+[[records]]
+case = "import_flexible"
+input_sha256 = "fcdb954da900fd878194b0a3d72bf2f130ecf057615bd84ae16436d315b9d5ca"
+penalty = 10000.0
+run_id = "import_flexible--penalty-10000"
+selected_values_sha256 = "791c8c36c3710348781acb5d68d4d779d6c1f6e6882a7933a0a60836e36ae7aa"
+source_result_sha256 = "fefdd3b9bf15de28a3f41f93cc8c64877171134018c72ea8a3fab49b842435cb"
+
+    [records.economics]
+    coalition_core_certified = false
+    stage1_disagreement = [-79.65090290472357, -216.2800000521304]
+
+        [records.economics.stage1]
+        disagreement_utility = [-79.65090290472357, -216.2800000521304]
+        gain = [0.0, 0.0]
+        model = "r4_nash_checked_v1"
+        prepayment_utility = [-79.65090290472357, -216.2800000521304]
+        schema = "r4-nash-allocation-v1"
+        status = "zero_surplus_degenerate"
+        surplus = 0.0
+        total_transfer = [0.0, 0.0]
+        transfer_convention = "positive_receipt_total_internal_payment"
+        transfer_domain = "unrestricted_budget_balanced"
+        unit = "USD_synthetic"
+        utility_after = [-79.65090290472357, -216.2800000521304]
+        weight_fractions = [0.5604395604395604, 0.43956043956043955]
+        weights = [1.02, 0.7999999999999999]
+
+            [records.economics.stage1.validation]
+            allocation_pass = true
+            record_pass = true
+            strict_improvement = false
+
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-surplus"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021628000005213037
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-weights"
+                pass = true
+                residual = 0.0
+                tolerance = 1.0e-6
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-status"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+                [[records.economics.stage1.validation.rows]]
+                equation = "4-73-budget"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021628000005213037
+                [[records.economics.stage1.validation.rows]]
+                equation = "4-72-individual-rationality"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021628000005213037
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-gain-identity"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021628000005213037
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-gain-record"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021628000005213037
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-utility-record"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021628000005213037
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-zero-gain"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021628000005213037
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-no-log-zero"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+
+        [[records.economics.stage2]]
+        aggregator_gain_vs_original_independent = [2.2153512329091, 1.7375303787522682]
+        central_physical_pass = true
+        disagreement_physical_pass = true
+        included_penalty = 0.0
+        model_total_welfare_premise = true
+        penalty_cost = 0.0
+        resource_surplus = 7.905763231000691
+        resource_surplus_is_feasible_saving = true
+        variant = "penalty_excluded"
+
+            [records.economics.stage2.allocation]
+            disagreement_utility = [96.2324073767453, -79.65090290472357, -216.2800000521304]
+            gain = [3.9528816116613683, 2.2153512329091187, 1.7375303787522498]
+            log_nash = 1.0315331334548161
+            model = "r4_nash_checked_v1"
+            prepayment_utility = [-93.68736899398004, -10.981659164305789, -87.12370419850008]
+            schema = "r4-nash-allocation-v1"
+            status = "allocated"
+            surplus = 7.905763223322737
+            total_transfer = [193.87265798238673, -66.45389250750867, -127.41876547487804]
+            transfer_convention = "positive_receipt_total_internal_payment"
+            transfer_domain = "unrestricted_budget_balanced"
+            unit = "USD_synthetic"
+            utility_after = [100.18528898840668, -77.43555167181447, -214.54246967337812]
+            weight_fractions = [0.5, 0.2802197802197802, 0.21978021978021978]
+            weights = [1.8199999999999998, 1.02, 0.7999999999999999]
+
+            [records.economics.stage2.validation]
+            allocation_pass = true
+            record_pass = true
+            strict_improvement = true
+
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-surplus"
+                pass = true
+                residual = 2.842170943040401e-14
+                tolerance = 0.00021628000005213037
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-weights"
+                pass = true
+                residual = 0.0
+                tolerance = 1.0e-6
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-status"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+                [[records.economics.stage2.validation.rows]]
+                equation = "4-73-budget"
+                pass = true
+                residual = 1.4210854715202004e-14
+                tolerance = 0.00021628000005213037
+                [[records.economics.stage2.validation.rows]]
+                equation = "4-72-individual-rationality"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021628000005213037
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-gain-identity"
+                pass = true
+                residual = 1.4210854715202004e-14
+                tolerance = 0.00021628000005213037
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-gain-record"
+                pass = true
+                residual = 1.865174681370263e-14
+                tolerance = 0.00021628000005213037
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-utility-record"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021628000005213037
+                [[records.economics.stage2.validation.rows]]
+                equation = "4-80-positive-gain"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+                [[records.economics.stage2.validation.rows]]
+                equation = "4-80-weighted-stationarity"
+                pass = true
+                residual = 3.3306690738754696e-15
+                tolerance = 1.0e-6
+                [[records.economics.stage2.validation.rows]]
+                equation = "4-78-objective"
+                pass = true
+                residual = 1.7763568394002505e-15
+                tolerance = 1.031533133454818e-6
+        [[records.economics.stage2]]
+        aggregator_gain_vs_original_independent = [2.2153512329091, 1.7375303787522682]
+        central_physical_pass = true
+        disagreement_physical_pass = true
+        included_penalty = 0.0
+        model_total_welfare_premise = true
+        penalty_cost = 0.0
+        resource_surplus = 7.905763231000691
+        resource_surplus_is_feasible_saving = true
+        variant = "penalty_included"
+
+            [records.economics.stage2.allocation]
+            disagreement_utility = [96.2324073767453, -79.65090290472357, -216.2800000521304]
+            gain = [3.9528816116613683, 2.2153512329091187, 1.7375303787522498]
+            log_nash = 1.0315331334548161
+            model = "r4_nash_checked_v1"
+            prepayment_utility = [-93.68736899398004, -10.981659164305789, -87.12370419850008]
+            schema = "r4-nash-allocation-v1"
+            status = "allocated"
+            surplus = 7.905763223322737
+            total_transfer = [193.87265798238673, -66.45389250750867, -127.41876547487804]
+            transfer_convention = "positive_receipt_total_internal_payment"
+            transfer_domain = "unrestricted_budget_balanced"
+            unit = "USD_synthetic"
+            utility_after = [100.18528898840668, -77.43555167181447, -214.54246967337812]
+            weight_fractions = [0.5, 0.2802197802197802, 0.21978021978021978]
+            weights = [1.8199999999999998, 1.02, 0.7999999999999999]
+
+            [records.economics.stage2.validation]
+            allocation_pass = true
+            record_pass = true
+            strict_improvement = true
+
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-surplus"
+                pass = true
+                residual = 2.842170943040401e-14
+                tolerance = 0.00021628000005213037
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-weights"
+                pass = true
+                residual = 0.0
+                tolerance = 1.0e-6
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-status"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+                [[records.economics.stage2.validation.rows]]
+                equation = "4-73-budget"
+                pass = true
+                residual = 1.4210854715202004e-14
+                tolerance = 0.00021628000005213037
+                [[records.economics.stage2.validation.rows]]
+                equation = "4-72-individual-rationality"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021628000005213037
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-gain-identity"
+                pass = true
+                residual = 1.4210854715202004e-14
+                tolerance = 0.00021628000005213037
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-gain-record"
+                pass = true
+                residual = 1.865174681370263e-14
+                tolerance = 0.00021628000005213037
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-utility-record"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021628000005213037
+                [[records.economics.stage2.validation.rows]]
+                equation = "4-80-positive-gain"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+                [[records.economics.stage2.validation.rows]]
+                equation = "4-80-weighted-stationarity"
+                pass = true
+                residual = 3.3306690738754696e-15
+                tolerance = 1.0e-6
+                [[records.economics.stage2.validation.rows]]
+                equation = "4-78-objective"
+                pass = true
+                residual = 1.7763568394002505e-15
+                tolerance = 1.031533133454818e-6
+
+        [records.economics.trading_ledger]
+        aggregator_cost = 295.93090295685397
+        operator_income = 182.2451884229837
+        resource_cost = [16.566312708603206, 97.11940182526705]
+        retail_cost = [63.08459019612036, 119.16059822686333]
+        service_fee = [0.0, 0.0]
+        utility_before_peer_transfer = [-79.65090290472357, -216.2800000521304]
+
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "P"
+            peer_export_MW = 0.0
+            retail_buy_MW = 0.14419730043847664
+            retail_sell_MW = 0.0
+            t = 1
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "P"
+            peer_export_MW = -0.0
+            retail_buy_MW = 0.10499982079780068
+            retail_sell_MW = 0.0
+            t = 1
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "P"
+            peer_export_MW = 0.0
+            retail_buy_MW = 0.026778350092337866
+            retail_sell_MW = 0.0
+            t = 2
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "P"
+            peer_export_MW = -0.0
+            retail_buy_MW = 0.16000150745076905
+            retail_sell_MW = 0.0
+            t = 2
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "P"
+            peer_export_MW = 0.0
+            retail_buy_MW = 0.0
+            retail_sell_MW = 0.0
+            t = 3
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "P"
+            peer_export_MW = -0.0
+            retail_buy_MW = 0.10499982079780062
+            retail_sell_MW = 0.0
+            t = 3
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "P"
+            peer_export_MW = 0.0
+            retail_buy_MW = 0.14444730044978732
+            retail_sell_MW = 0.0
+            t = 4
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "P"
+            peer_export_MW = -0.0
+            retail_buy_MW = 0.10499982079690562
+            retail_sell_MW = 0.0
+            t = 4
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "H"
+            peer_export_MW = 0.0
+            retail_buy_MW = 0.0
+            retail_sell_MW = 0.0
+            t = 1
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "H"
+            peer_export_MW = -0.0
+            retail_buy_MW = 0.024000504941107295
+            retail_sell_MW = 0.0
+            t = 1
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "H"
+            peer_export_MW = 0.0
+            retail_buy_MW = 0.0
+            retail_sell_MW = 0.0
+            t = 2
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "H"
+            peer_export_MW = -0.0
+            retail_buy_MW = 0.07899989565542762
+            retail_sell_MW = 0.0
+            t = 2
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "H"
+            peer_export_MW = 0.0
+            retail_buy_MW = 0.0
+            retail_sell_MW = 0.0
+            t = 3
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "H"
+            peer_export_MW = -0.0
+            retail_buy_MW = 0.024001063008632955
+            retail_sell_MW = 0.0
+            t = 3
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "H"
+            peer_export_MW = 0.0
+            retail_buy_MW = 0.0
+            retail_sell_MW = 0.0
+            t = 4
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "H"
+            peer_export_MW = -0.0
+            retail_buy_MW = 0.024001063008632955
+            retail_sell_MW = 0.0
+            t = 4
+
+    [records.validation]
+    record_pass = true
+    relaxed_network_pass = true
+    relaxed_point_physical_pass = true
+    stage1_allocation_pass = true
+    stage2_allocation_pass = [true, true]
+    strict_network_physical_pass = true
+    trading_model_pass = true
+
+        [[records.validation.rows]]
+        entity = "penalty_excluded"
+        equation = "R4-T3-surplus-accounting"
+        pass = true
+        residual = 7.67795427236706e-9
+        scope = "tspa"
+        t = 0
+        tolerance = 7.905763223322736e-6
+        unit = "USD"
+        [[records.validation.rows]]
+        entity = "penalty_included"
+        equation = "R4-T3-surplus-accounting"
+        pass = true
+        residual = 7.67795427236706e-9
+        scope = "tspa"
+        t = 0
+        tolerance = 7.905763223322736e-6
+        unit = "USD"
+[[records]]
+case = "import_fixed"
+input_sha256 = "99b92147e9b1b369bd8903e84a7edfea423a55b47320608dd7ed5ff72f640689"
+penalty = 100.0
+run_id = "import_fixed--penalty-100"
+selected_values_sha256 = "58df9f1b0c60bee08dedbc24a0f3ddd08424df3271b036483e8799cd71554fbd"
+source_result_sha256 = "f889aae0f187278a74f850d8024ffdd24639085366747c056d12b4d38868095b"
+
+    [records.economics]
+    coalition_core_certified = false
+    stage1_disagreement = [-82.24625000000002, -217.80000089097484]
+
+        [records.economics.stage1]
+        disagreement_utility = [-82.24625000000002, -217.80000089097484]
+        gain = [4.993375271069554e-7, 3.916372761623179e-7]
+        log_nash = -14.616773091886566
+        model = "r4_nash_checked_v1"
+        prepayment_utility = [-82.24624999999999, -217.80000000000007]
+        schema = "r4-nash-allocation-v1"
+        status = "allocated"
+        surplus = 8.909748032692733e-7
+        total_transfer = [4.99337498685246e-7, -4.99337498685246e-7]
+        transfer_convention = "positive_receipt_total_internal_payment"
+        transfer_domain = "unrestricted_budget_balanced"
+        unit = "USD_synthetic"
+        utility_after = [-82.24624950066249, -217.80000049933756]
+        weight_fractions = [0.5604395604395604, 0.43956043956043955]
+        weights = [1.02, 0.7999999999999999]
+
+            [records.economics.stage1.validation]
+            allocation_pass = true
+            record_pass = true
+            strict_improvement = true
+
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-surplus"
+                pass = true
+                residual = 2.842170943040401e-14
+                tolerance = 0.00021780000089097483
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-weights"
+                pass = true
+                residual = 0.0
+                tolerance = 1.0e-6
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-status"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+                [[records.economics.stage1.validation.rows]]
+                equation = "4-73-budget"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021780000089097483
+                [[records.economics.stage1.validation.rows]]
+                equation = "4-72-individual-rationality"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021780000089097483
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-gain-identity"
+                pass = true
+                residual = 1.4210854715202004e-14
+                tolerance = 0.00021780000089097483
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-gain-record"
+                pass = true
+                residual = 9.994447258849652e-15
+                tolerance = 0.00021780000089097483
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-utility-record"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021780000089097483
+                [[records.economics.stage1.validation.rows]]
+                equation = "4-80-positive-gain"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+                [[records.economics.stage1.validation.rows]]
+                equation = "4-80-weighted-stationarity"
+                pass = true
+                residual = 1.3145425081795281e-8
+                tolerance = 1.0e-6
+                [[records.economics.stage1.validation.rows]]
+                equation = "4-78-objective"
+                pass = true
+                residual = 1.594978193963925e-8
+                tolerance = 1.4616773075936783e-5
+
+        [[records.economics.stage2]]
+        central_physical_pass = true
+        disagreement_physical_pass = false
+        included_penalty = 0.0
+        model_total_welfare_premise = false
+        penalty_cost = 45.444646033806734
+        resource_surplus = -79.72675462142308
+        resource_surplus_is_feasible_saving = false
+        variant = "penalty_excluded"
+
+            [records.economics.stage2.allocation]
+            disagreement_utility = [172.08333333333331, -82.24624950066249, -217.80000049933756]
+            model = "r4_nash_checked_v1"
+            prepayment_utility = [-79.72675462142308, -20.962916666666686, -107.00000000000004]
+            schema = "r4-nash-allocation-v1"
+            status = "negative_surplus"
+            surplus = -79.72675462142307
+            transfer_convention = "positive_receipt_total_internal_payment"
+            transfer_domain = "unrestricted_budget_balanced"
+            unit = "USD_synthetic"
+            weight_fractions = [0.5, 0.2802197802197802, 0.21978021978021978]
+            weights = [1.8199999999999998, 1.02, 0.7999999999999999]
+
+            [records.economics.stage2.validation]
+            allocation_pass = false
+            record_pass = true
+            strict_improvement = false
+
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-surplus"
+                pass = true
+                residual = 1.4210854715202004e-14
+                tolerance = 0.00021780000049933756
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-weights"
+                pass = true
+                residual = 0.0
+                tolerance = 1.0e-6
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-status"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-no-fictitious-transfer"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+        [[records.economics.stage2]]
+        central_physical_pass = true
+        disagreement_physical_pass = false
+        included_penalty = 45.444646033806734
+        model_total_welfare_premise = false
+        penalty_cost = 45.444646033806734
+        resource_surplus = -79.72675462142308
+        resource_surplus_is_feasible_saving = false
+        variant = "penalty_included"
+
+            [records.economics.stage2.allocation]
+            disagreement_utility = [126.63868729952658, -82.24624950066249, -217.80000049933756]
+            model = "r4_nash_checked_v1"
+            prepayment_utility = [-79.72675462142308, -20.962916666666686, -107.00000000000004]
+            schema = "r4-nash-allocation-v1"
+            status = "negative_surplus"
+            surplus = -34.28210858761632
+            transfer_convention = "positive_receipt_total_internal_payment"
+            transfer_domain = "unrestricted_budget_balanced"
+            unit = "USD_synthetic"
+            weight_fractions = [0.5, 0.2802197802197802, 0.21978021978021978]
+            weights = [1.8199999999999998, 1.02, 0.7999999999999999]
+
+            [records.economics.stage2.validation]
+            allocation_pass = false
+            record_pass = true
+            strict_improvement = false
+
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-surplus"
+                pass = true
+                residual = 1.4210854715202004e-14
+                tolerance = 0.00021780000049933756
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-weights"
+                pass = true
+                residual = 0.0
+                tolerance = 1.0e-6
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-status"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-no-fictitious-transfer"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+
+        [records.economics.trading_ledger]
+        aggregator_cost = 300.04625000000004
+        operator_income = 172.08333333333331
+        resource_cost = [20.962916666666686, 107.00000000000004]
+        retail_cost = [61.2833333333333, 110.80000000000001]
+        service_fee = [0.0, 0.0]
+        utility_before_peer_transfer = [-82.24624999999999, -217.80000000000007]
+
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "P"
+            peer_export_MW = 0.0
+            retail_buy_MW = 0.14308333333333323
+            retail_sell_MW = 0.0
+            t = 1
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "P"
+            peer_export_MW = -0.0
+            retail_buy_MW = 0.1
+            retail_sell_MW = 0.0
+            t = 1
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "P"
+            peer_export_MW = 0.0
+            retail_buy_MW = 0.019999999999999976
+            retail_sell_MW = 0.0
+            t = 2
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "P"
+            peer_export_MW = -0.0
+            retail_buy_MW = 0.15
+            retail_sell_MW = 0.0
+            t = 2
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "P"
+            peer_export_MW = 0.0
+            retail_buy_MW = 0.0
+            retail_sell_MW = 0.0
+            t = 3
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "P"
+            peer_export_MW = -0.0
+            retail_buy_MW = 0.1
+            retail_sell_MW = 0.0
+            t = 3
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "P"
+            peer_export_MW = 0.0
+            retail_buy_MW = 0.14333333333333334
+            retail_sell_MW = 0.0
+            t = 4
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "P"
+            peer_export_MW = -0.0
+            retail_buy_MW = 0.1
+            retail_sell_MW = 0.0
+            t = 4
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "H"
+            peer_export_MW = 0.0
+            retail_buy_MW = 0.0
+            retail_sell_MW = 0.0
+            t = 1
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "H"
+            peer_export_MW = -0.0
+            retail_buy_MW = 0.020000000000000018
+            retail_sell_MW = 0.0
+            t = 1
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "H"
+            peer_export_MW = 0.0
+            retail_buy_MW = 0.0
+            retail_sell_MW = 0.0
+            t = 2
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "H"
+            peer_export_MW = -0.0
+            retail_buy_MW = 0.07
+            retail_sell_MW = 0.0
+            t = 2
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "H"
+            peer_export_MW = 0.0
+            retail_buy_MW = 0.0
+            retail_sell_MW = 0.0
+            t = 3
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "H"
+            peer_export_MW = -0.0
+            retail_buy_MW = 0.020000000000000018
+            retail_sell_MW = 0.0
+            t = 3
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "H"
+            peer_export_MW = 0.0
+            retail_buy_MW = 0.0
+            retail_sell_MW = 0.0
+            t = 4
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "H"
+            peer_export_MW = -0.0
+            retail_buy_MW = 0.020000000000000018
+            retail_sell_MW = 0.0
+            t = 4
+
+    [records.validation]
+    record_pass = true
+    relaxed_network_pass = true
+    relaxed_point_physical_pass = false
+    stage1_allocation_pass = true
+    stage2_allocation_pass = [false, false]
+    strict_network_physical_pass = true
+    trading_model_pass = true
+
+        [[records.validation.rows]]
+        entity = "penalty_excluded"
+        equation = "R4-T3-surplus-accounting"
+        pass = true
+        residual = 1.4210854715202004e-14
+        scope = "tspa"
+        t = 0
+        tolerance = 7.972675462142306e-5
+        unit = "USD"
+        [[records.validation.rows]]
+        entity = "penalty_included"
+        equation = "R4-T3-surplus-accounting"
+        pass = true
+        residual = 2.842170943040401e-14
+        scope = "tspa"
+        t = 0
+        tolerance = 3.428210858761632e-5
+        unit = "USD"
+[[records]]
+case = "import_fixed"
+input_sha256 = "99b92147e9b1b369bd8903e84a7edfea423a55b47320608dd7ed5ff72f640689"
+penalty = 10000.0
+run_id = "import_fixed--penalty-10000"
+selected_values_sha256 = "58df9f1b0c60bee08dedbc24a0f3ddd08424df3271b036483e8799cd71554fbd"
+source_result_sha256 = "e5674b201ef40232ff0bae91d38de438ccfa7feb78b65e93ecf22cfd86531271"
+
+    [records.economics]
+    coalition_core_certified = false
+    stage1_disagreement = [-82.24625000000002, -217.80000089097484]
+
+        [records.economics.stage1]
+        disagreement_utility = [-82.24625000000002, -217.80000089097484]
+        gain = [4.993375271069554e-7, 3.916372761623179e-7]
+        log_nash = -14.616773091886566
+        model = "r4_nash_checked_v1"
+        prepayment_utility = [-82.24624999999999, -217.80000000000007]
+        schema = "r4-nash-allocation-v1"
+        status = "allocated"
+        surplus = 8.909748032692733e-7
+        total_transfer = [4.99337498685246e-7, -4.99337498685246e-7]
+        transfer_convention = "positive_receipt_total_internal_payment"
+        transfer_domain = "unrestricted_budget_balanced"
+        unit = "USD_synthetic"
+        utility_after = [-82.24624950066249, -217.80000049933756]
+        weight_fractions = [0.5604395604395604, 0.43956043956043955]
+        weights = [1.02, 0.7999999999999999]
+
+            [records.economics.stage1.validation]
+            allocation_pass = true
+            record_pass = true
+            strict_improvement = true
+
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-surplus"
+                pass = true
+                residual = 2.842170943040401e-14
+                tolerance = 0.00021780000089097483
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-weights"
+                pass = true
+                residual = 0.0
+                tolerance = 1.0e-6
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-status"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+                [[records.economics.stage1.validation.rows]]
+                equation = "4-73-budget"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021780000089097483
+                [[records.economics.stage1.validation.rows]]
+                equation = "4-72-individual-rationality"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021780000089097483
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-gain-identity"
+                pass = true
+                residual = 1.4210854715202004e-14
+                tolerance = 0.00021780000089097483
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-gain-record"
+                pass = true
+                residual = 9.994447258849652e-15
+                tolerance = 0.00021780000089097483
+                [[records.economics.stage1.validation.rows]]
+                equation = "R4-N1-utility-record"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021780000089097483
+                [[records.economics.stage1.validation.rows]]
+                equation = "4-80-positive-gain"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+                [[records.economics.stage1.validation.rows]]
+                equation = "4-80-weighted-stationarity"
+                pass = true
+                residual = 1.3145425081795281e-8
+                tolerance = 1.0e-6
+                [[records.economics.stage1.validation.rows]]
+                equation = "4-78-objective"
+                pass = true
+                residual = 1.594978193963925e-8
+                tolerance = 1.4616773075936783e-5
+
+        [[records.economics.stage2]]
+        aggregator_gain_vs_original_independent = [0.3365086739494956, 0.26392837172511463]
+        central_physical_pass = true
+        disagreement_physical_pass = true
+        included_penalty = 0.0
+        model_total_welfare_premise = true
+        penalty_cost = 0.0
+        resource_surplus = 1.2008723093995854
+        resource_surplus_is_feasible_saving = true
+        variant = "penalty_excluded"
+
+            [records.economics.stage2.allocation]
+            disagreement_utility = [91.15570640251066, -82.24624950066249, -217.80000049933756]
+            gain = [0.6004361546997927, 0.33650817461197174, 0.263927980087821]
+            log_nash = -0.8530106647739977
+            model = "r4_nash_checked_v1"
+            prepayment_utility = [-79.72675462142308, -20.962916666666686, -107.00000000000004]
+            schema = "r4-nash-allocation-v1"
+            status = "allocated"
+            surplus = 1.2008723093995854
+            total_transfer = [171.48289717863352, -60.94682465938383, -110.5360725192497]
+            transfer_convention = "positive_receipt_total_internal_payment"
+            transfer_domain = "unrestricted_budget_balanced"
+            unit = "USD_synthetic"
+            utility_after = [91.75614255721044, -81.90974132605052, -217.53607251924973]
+            weight_fractions = [0.5, 0.2802197802197802, 0.21978021978021978]
+            weights = [1.8199999999999998, 1.02, 0.7999999999999999]
+
+            [records.economics.stage2.validation]
+            allocation_pass = true
+            record_pass = true
+            strict_improvement = true
+
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-surplus"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021780000049933756
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-weights"
+                pass = true
+                residual = 0.0
+                tolerance = 1.0e-6
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-status"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+                [[records.economics.stage2.validation.rows]]
+                equation = "4-73-budget"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021780000049933756
+                [[records.economics.stage2.validation.rows]]
+                equation = "4-72-individual-rationality"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021780000049933756
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-gain-identity"
+                pass = true
+                residual = 1.4210854715202004e-14
+                tolerance = 0.00021780000049933756
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-gain-record"
+                pass = true
+                residual = 1.4210854715202004e-14
+                tolerance = 0.00021780000049933756
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-utility-record"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021780000049933756
+                [[records.economics.stage2.validation.rows]]
+                equation = "4-80-positive-gain"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+                [[records.economics.stage2.validation.rows]]
+                equation = "4-80-weighted-stationarity"
+                pass = true
+                residual = 1.1823875212257917e-14
+                tolerance = 1.0e-6
+                [[records.economics.stage2.validation.rows]]
+                equation = "4-78-objective"
+                pass = true
+                residual = 1.199040866595169e-14
+                tolerance = 1.0e-6
+        [[records.economics.stage2]]
+        aggregator_gain_vs_original_independent = [0.3365086739494956, 0.26392837172511463]
+        central_physical_pass = true
+        disagreement_physical_pass = true
+        included_penalty = 0.0
+        model_total_welfare_premise = true
+        penalty_cost = 0.0
+        resource_surplus = 1.2008723093995854
+        resource_surplus_is_feasible_saving = true
+        variant = "penalty_included"
+
+            [records.economics.stage2.allocation]
+            disagreement_utility = [91.15570640251066, -82.24624950066249, -217.80000049933756]
+            gain = [0.6004361546997927, 0.33650817461197174, 0.263927980087821]
+            log_nash = -0.8530106647739977
+            model = "r4_nash_checked_v1"
+            prepayment_utility = [-79.72675462142308, -20.962916666666686, -107.00000000000004]
+            schema = "r4-nash-allocation-v1"
+            status = "allocated"
+            surplus = 1.2008723093995854
+            total_transfer = [171.48289717863352, -60.94682465938383, -110.5360725192497]
+            transfer_convention = "positive_receipt_total_internal_payment"
+            transfer_domain = "unrestricted_budget_balanced"
+            unit = "USD_synthetic"
+            utility_after = [91.75614255721044, -81.90974132605052, -217.53607251924973]
+            weight_fractions = [0.5, 0.2802197802197802, 0.21978021978021978]
+            weights = [1.8199999999999998, 1.02, 0.7999999999999999]
+
+            [records.economics.stage2.validation]
+            allocation_pass = true
+            record_pass = true
+            strict_improvement = true
+
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-surplus"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021780000049933756
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-weights"
+                pass = true
+                residual = 0.0
+                tolerance = 1.0e-6
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-status"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+                [[records.economics.stage2.validation.rows]]
+                equation = "4-73-budget"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021780000049933756
+                [[records.economics.stage2.validation.rows]]
+                equation = "4-72-individual-rationality"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021780000049933756
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-gain-identity"
+                pass = true
+                residual = 1.4210854715202004e-14
+                tolerance = 0.00021780000049933756
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-gain-record"
+                pass = true
+                residual = 1.4210854715202004e-14
+                tolerance = 0.00021780000049933756
+                [[records.economics.stage2.validation.rows]]
+                equation = "R4-N1-utility-record"
+                pass = true
+                residual = 0.0
+                tolerance = 0.00021780000049933756
+                [[records.economics.stage2.validation.rows]]
+                equation = "4-80-positive-gain"
+                pass = true
+                residual = 0.0
+                tolerance = 0.0
+                [[records.economics.stage2.validation.rows]]
+                equation = "4-80-weighted-stationarity"
+                pass = true
+                residual = 1.1823875212257917e-14
+                tolerance = 1.0e-6
+                [[records.economics.stage2.validation.rows]]
+                equation = "4-78-objective"
+                pass = true
+                residual = 1.199040866595169e-14
+                tolerance = 1.0e-6
+
+        [records.economics.trading_ledger]
+        aggregator_cost = 300.04625000000004
+        operator_income = 172.08333333333331
+        resource_cost = [20.962916666666686, 107.00000000000004]
+        retail_cost = [61.2833333333333, 110.80000000000001]
+        service_fee = [0.0, 0.0]
+        utility_before_peer_transfer = [-82.24624999999999, -217.80000000000007]
+
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "P"
+            peer_export_MW = 0.0
+            retail_buy_MW = 0.14308333333333323
+            retail_sell_MW = 0.0
+            t = 1
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "P"
+            peer_export_MW = -0.0
+            retail_buy_MW = 0.1
+            retail_sell_MW = 0.0
+            t = 1
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "P"
+            peer_export_MW = 0.0
+            retail_buy_MW = 0.019999999999999976
+            retail_sell_MW = 0.0
+            t = 2
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "P"
+            peer_export_MW = -0.0
+            retail_buy_MW = 0.15
+            retail_sell_MW = 0.0
+            t = 2
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "P"
+            peer_export_MW = 0.0
+            retail_buy_MW = 0.0
+            retail_sell_MW = 0.0
+            t = 3
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "P"
+            peer_export_MW = -0.0
+            retail_buy_MW = 0.1
+            retail_sell_MW = 0.0
+            t = 3
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "P"
+            peer_export_MW = 0.0
+            retail_buy_MW = 0.14333333333333334
+            retail_sell_MW = 0.0
+            t = 4
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "P"
+            peer_export_MW = -0.0
+            retail_buy_MW = 0.1
+            retail_sell_MW = 0.0
+            t = 4
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "H"
+            peer_export_MW = 0.0
+            retail_buy_MW = 0.0
+            retail_sell_MW = 0.0
+            t = 1
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "H"
+            peer_export_MW = -0.0
+            retail_buy_MW = 0.020000000000000018
+            retail_sell_MW = 0.0
+            t = 1
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "H"
+            peer_export_MW = 0.0
+            retail_buy_MW = 0.0
+            retail_sell_MW = 0.0
+            t = 2
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "H"
+            peer_export_MW = -0.0
+            retail_buy_MW = 0.07
+            retail_sell_MW = 0.0
+            t = 2
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "H"
+            peer_export_MW = 0.0
+            retail_buy_MW = 0.0
+            retail_sell_MW = 0.0
+            t = 3
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "H"
+            peer_export_MW = -0.0
+            retail_buy_MW = 0.020000000000000018
+            retail_sell_MW = 0.0
+            t = 3
+            [[records.economics.trading_ledger.contracts]]
+            actor = "A"
+            carrier = "H"
+            peer_export_MW = 0.0
+            retail_buy_MW = 0.0
+            retail_sell_MW = 0.0
+            t = 4
+            [[records.economics.trading_ledger.contracts]]
+            actor = "B"
+            carrier = "H"
+            peer_export_MW = -0.0
+            retail_buy_MW = 0.020000000000000018
+            retail_sell_MW = 0.0
+            t = 4
+
+    [records.validation]
+    record_pass = true
+    relaxed_network_pass = true
+    relaxed_point_physical_pass = true
+    stage1_allocation_pass = true
+    stage2_allocation_pass = [true, true]
+    strict_network_physical_pass = true
+    trading_model_pass = true
+
+        [[records.validation.rows]]
+        entity = "penalty_excluded"
+        equation = "R4-T3-surplus-accounting"
+        pass = true
+        residual = 0.0
+        scope = "tspa"
+        t = 0
+        tolerance = 1.2008723093995853e-6
+        unit = "USD"
+        [[records.validation.rows]]
+        entity = "penalty_included"
+        equation = "R4-T3-surplus-accounting"
+        pass = true
+        residual = 0.0
+        scope = "tspa"
+        t = 0
+        tolerance = 1.2008723093995853e-6
+        unit = "USD"

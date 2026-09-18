@@ -22,11 +22,21 @@ for r in records
         ) || error("罚项恒等式不成立")
     end
 end
-for (file, script) in
-    (("report.toml", "report_r4_tspa.jl"), ("figure-config.toml", "plot_r4_tspa.jl"))
+for (file, script) in (
+    ("report.toml", "report_r4_tspa.jl"),
+    ("figure-config.toml", "plot_r4_tspa.jl"),
+    ("audit.toml", "audit_r4_tspa.jl"),
+)
     TOML.parsefile(joinpath(dir, file))["script_sha256"]==bytes2hex(
         sha256(read(joinpath(root, "scripts", script))),
     ) || error("生成脚本变化")
+end
+length(collect(CSV.File(joinpath(dir, "solver-evidence.csv"))))==24 || error("阶段求解器证据缺失")
+cutset=collect(CSV.File(joinpath(dir, "network-necessary-condition.csv")))
+length(cutset)==32 || error("逐时必要条件缺失")
+for row in cutset
+    abs(row.cutset_violation_MW-max(-row.required_H12_out_MW, 0))<=1e-12 ||
+        error("区域守恒证明不一致")
 end
 for (file, hash) in TOML.parsefile(joinpath(dir, "figure-config.toml"))["source_sha256"]
     bytes2hex(sha256(read(joinpath(dir, file))))==hash || error("图源改变")

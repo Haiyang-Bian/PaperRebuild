@@ -1,0 +1,13 @@
+batch = "r4-tspa-20260918"
+figures = ["F04", "F10", "F12"]
+origin = "synthetic"
+plot_contract_floor_MW = 1.0e-6
+scope = "counterfactual network disagreement; not coalition core"
+script_sha256 = "e241dba975cd5582e77f4028f8d5c245b08face45e74da712424151c4a5338cc"
+units = ["dimensionless", "MW", "USD_synthetic"]
+
+[source_sha256]
+"actors.csv" = "89ac37d3be91b60d6b525c97617937159cb2d97341ae28491bfbd82a292823d2"
+"comparison.csv" = "8fe8122f6ee4a7d434968c4eee08ac432e9afcb6e830f2e7582052f34dfcd8b4"
+"contracts.csv" = "fa9fa3435bf6796ac525a4b9192d4ace897552a3252486d78f34b57c31d0144b"
+"residuals.csv" = "5eb8d996059239b3707929954dfd1bc74945ad2c21a80dc6ccbe4cce3ea1f17a"
