@@ -13,6 +13,8 @@ function r4_science_hashes()
         "configs/r4/baseline/study.toml",
         "scripts/study_r4_bargaining.jl",
         "configs/r4/bargaining-study.toml",
+        "scripts/study_r4_tspa.jl",
+        "configs/r4/tspa-study.toml",
     )
         hashes[rel]=bytes2hex(sha256(read(joinpath(root, rel))))
     end
@@ -28,10 +30,14 @@ function r4_solve_stage(
     actor = 0,
     frozen = nothing,
     enumerate_battery = false,
+    build_options = (;),
 )
     start=time()
     T=c.data["T"]
-    has_battery=any(i->(stage!=:local || i==actor)&&c.data["actors"][i]["BS_power_max"]>0, 1:3)
+    has_battery=any(
+        i->(stage==:trading ? i>1 : stage!=:local || i==actor)&&c.data["actors"][i]["BS_power_max"]>0,
+        1:3,
+    )
     patterns=enumerate_battery && has_battery ? [[(n>>(t-1))&1 for t in 1:T] for n in 0:(2^T-1)] :
              [nothing]
     logs=Dict{String,Any}[]
@@ -51,7 +57,16 @@ function r4_solve_stage(
         )
         push!(logs, log)
         try
-            b=build_r4_model(c; spec, optimizer, stage, actor, frozen, modes = pattern)
+            b=build_r4_model(
+                c;
+                spec,
+                optimizer,
+                stage,
+                actor,
+                frozen,
+                modes = pattern,
+                build_options...,
+            )
             remaining=deadline-time()
             remaining<=0 && (log["termination"] = "TIME_LIMIT"; break)
             set_silent(b.model)

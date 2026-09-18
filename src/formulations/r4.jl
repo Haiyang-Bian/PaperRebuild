@@ -4,6 +4,9 @@
 
 构建第4章采用模型，不求解/写文件。MW/MWh；电支路内部使用标幺平方量。
 stage=:local为聚合商自调度；:network冻结聚合商全部物理控制；:central联合优化。
+stage=:trading仅联合聚合商、显式匹配合同，忽略网络；用于TSPA第一阶段，不是物理调度。
+balance_penalty非nothing时仅在network阶段对节点P/Q/H/质量平衡加入有单位的罚松弛，
+设备、容量、端口、电压降和支路关系仍保持为硬约束；不保证任何输入都可被松弛救活。
 modes可指定逐时电池充电状态，用于16种状态穷举的连续凸对照。
 式(4-1)–(4-59)的采用范围见第4章台账；R4-P1–P7是显式项目补全。
 返回模型、变量、公式映射、实际MOI类型与成本表达式。热网仅为稳态能量流包络。
@@ -16,11 +19,16 @@ function build_r4_model(
     actor = 0,
     frozen = nothing,
     modes = nothing,
+    balance_penalty = nothing,
 )
     TOML.parse(c.source_text)==c.data || error("输入被原位改写，请构造新的R4Case")
-    stage in (:central, :local, :network) || error("建模阶段错误")
+    stage in (:central, :local, :network, :trading) || error("建模阶段错误")
     stage==:local && !(actor in (2, 3)) && error("AG0只对聚合商A/B独立调度")
     stage==:network && frozen===nothing && error("网络校核必须提供冻结计划")
+    balance_penalty!==nothing && (
+        stage==:network && isfinite(balance_penalty) && balance_penalty>0 ||
+        error("正的节点平衡罚系数仅适用于冻结网络诊断")
+    )
     d=c.data
     T=d["T"]
     dt=d["dt_h"]
@@ -33,7 +41,7 @@ function build_r4_model(
     end
     v=variables
     v["E"]=@variable(model, [1:3, 1:(T+1)], lower_bound=0, base_name="E")
-    active(i) = stage!=:local || i==actor
+    active(i) = stage==:trading ? i>1 : stage!=:local || i==actor
     b=findfirst(i->active(i) && actors[i]["BS_power_max"]>0, 1:3)
     if modes!==nothing
         length(modes)==T && all(x->x in (0, 1), modes) || error("电池模式错误")
@@ -138,6 +146,7 @@ function build_r4_model(
     end
     external=AffExpr(0.0)
     settlement=AffExpr(0.0)
+    penalty=AffExpr(0.0)
     if stage==:local
         a=actors[actor]
         price=d["settlement"]
@@ -170,6 +179,47 @@ function build_r4_model(
                 add_to_expression!(settlement, -dt*price[carrier*"_sell"], sell[t])
             end
         end
+    elseif stage==:trading
+        price=d["settlement"]
+        for carrier in ("P", "H")
+            buy=@variable(model, [1:3, 1:T], lower_bound=0, base_name=carrier*"_buy")
+            sell=@variable(model, [1:3, 1:T], lower_bound=0, base_name=carrier*"_sell")
+            qmax=d["p2p_enabled"] ? minimum(actors[i]["retail_limit"] for i in 2:3) : 0.0
+            q=@variable(
+                model,
+                [1:T],
+                lower_bound=-qmax,
+                upper_bound=qmax,
+                base_name=carrier*"_peer"
+            )
+            qabs=@variable(
+                model,
+                [1:T],
+                lower_bound=0,
+                upper_bound=qmax,
+                base_name=carrier*"_peer_abs"
+            )
+            v[carrier*"_buy"]=buy
+            v[carrier*"_sell"]=sell
+            v[carrier*"_peer"]=q
+            v[carrier*"_peer_abs"]=qabs
+            net=carrier=="P" ? P_net : H_net
+            for t in 1:T
+                fix(buy[1, t], 0; force = true)
+                fix(sell[1, t], 0; force = true)
+                @constraint(model, qabs[t]>=q[t])
+                @constraint(model, qabs[t]>=-q[t])
+                add_to_expression!(settlement, dt*price["fee"], qabs[t])
+                for i in 2:3
+                    set_upper_bound(buy[i, t], actors[i]["retail_limit"])
+                    set_upper_bound(sell[i, t], actors[i]["retail_limit"])
+                    # R4-T1：q>0为A出售给B；内部双边支付抵消，但卖方网络费只收一次。
+                    @constraint(model, net[i, t]==sell[i, t]-buy[i, t]+(i==2 ? q[t] : -q[t]))
+                    add_to_expression!(settlement, dt*price[carrier*"_buy"], buy[i, t])
+                    add_to_expression!(settlement, -dt*price[carrier*"_sell"], sell[i, t])
+                end
+            end
+        end
     else
         if stage==:network
             for local_run in frozen
@@ -185,6 +235,19 @@ function build_r4_model(
         e=d["electric"]
         edges=e["edges"]
         base=e["S_base_MVA"]
+        if balance_penalty!==nothing
+            scales=r4_tspa_scales(c)
+            for carrier in ("P", "Q", "H", "m"), side in ("pos", "neg")
+                key="slack_"*carrier*"_"*side
+                v[key]=@variable(model, [1:3, 1:T], lower_bound=0, base_name=key)
+                for i in 1:3, t in 1:T
+                    add_to_expression!(penalty, dt*balance_penalty/scales[carrier], v[key][i, t])
+                end
+            end
+        end
+        slack(carrier, i, t) =
+            balance_penalty===nothing ? 0.0 :
+            v["slack_"*carrier*"_pos"][i, t]-v["slack_"*carrier*"_neg"][i, t]
         v["P_grid"]=@variable(
             model,
             [1:T],
@@ -243,14 +306,14 @@ function build_r4_model(
                     P_net[i, t]/base+(i==1 ? v["P_grid"][t]/base : 0)+sum(
                         v["P_branch"][p, t]-edges[p]["r"]*v["ell"][p, t] for p in incoming;
                         init = 0,
-                    )==sum(v["P_branch"][p, t] for p in outgoing; init = 0)
+                    )==sum(v["P_branch"][p, t] for p in outgoing; init = 0)+slack("P", i, t)/base
                 )
                 @constraint(
                     model,
                     -actors[i]["Q_ratio"]*v["P_D"][i, t]/base+(i==1 ? v["Q_grid"][t]/base : 0)+sum(
                         v["Q_branch"][p, t]-edges[p]["x"]*v["ell"][p, t] for p in incoming;
                         init = 0,
-                    )==sum(v["Q_branch"][p, t] for p in outgoing; init = 0)
+                    )==sum(v["Q_branch"][p, t] for p in outgoing; init = 0)+slack("Q", i, t)/base
                 )
             end
         end
@@ -285,19 +348,19 @@ function build_r4_model(
                     ms+sum(v["m_pipe"][p, t] for p in incoming; init = 0)==ml+sum(
                         v["m_pipe"][p, t] for p in outgoing;
                         init = 0,
-                    )
+                    )+slack("m", i, t)
                 )
                 @constraint(
                     model,
                     v["H_src"][i, t]+sum(v["H_out"][p, t] for p in incoming; init = 0)==v["H_D"][
                         i,
                         t,
-                    ]+sum(v["H_in"][p, t] for p in outgoing; init = 0)
+                    ]+sum(v["H_in"][p, t] for p in outgoing; init = 0)+slack("H", i, t)
                 )
             end
         end
     end
-    @objective(model, Min, resource+dissatisfaction+external+settlement)
+    @objective(model, Min, resource+dissatisfaction+external+settlement+penalty)
     types=string.(list_of_constraint_types(model))
     return (;
         model,
@@ -306,6 +369,7 @@ function build_r4_model(
         dissatisfaction,
         external,
         settlement,
+        penalty,
         stage,
         actor,
         formula_map = Dict(
@@ -315,7 +379,7 @@ function build_r4_model(
             "balance"=>"R4-P1:7",
         ),
         model_types = types,
-        model_class = spec.electric==:exact && stage!=:local ? "nonconvex_quadratic" :
-                      b!==nothing && modes===nothing ? "MISOCP" : "SOCP",
+        model_class = spec.electric==:exact && stage in (:central, :network) ?
+                      "nonconvex_quadratic" : b!==nothing && modes===nothing ? "MISOCP" : "SOCP",
     )
 end

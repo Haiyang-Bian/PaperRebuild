@@ -52,6 +52,7 @@
 - `configs/r4/heat_bottleneck.toml`
 - `configs/r4/no_p2p.toml`
 - `configs/r4/study.toml`
+- `configs/r4/tspa-study.toml`
 - `data/processed/README.md`
 - `data/raw/README.md`
 - `docs/Manifest.toml`
@@ -74,6 +75,7 @@
 - `docs/agent/tasks/2026-09-18-r4-bargaining.md`
 - `docs/agent/tasks/2026-09-18-r4-baseline.md`
 - `docs/agent/tasks/2026-09-18-r4-central.md`
+- `docs/agent/tasks/2026-09-18-r4-tspa.md`
 - `docs/make.jl`
 - `docs/reading/README.md`
 - `docs/reading/ch02/README.md`
@@ -101,6 +103,7 @@
 - `docs/reading/ch04/formulas.toml`
 - `docs/reading/ch04/issues.toml`
 - `docs/reading/ch04/symbols.toml`
+- `docs/reading/ch04/tspa.toml`
 - `docs/reading/source_manifest.json`
 - `docs/reading/sources.json`
 - `docs/src/api.md`
@@ -206,6 +209,8 @@
 - `docs/src/ch04-models.md`
 - `docs/src/ch04-results.md`
 - `docs/src/ch04-symbols.md`
+- `docs/src/ch04-tspa-equations.md`
+- `docs/src/ch04-tspa.md`
 - `docs/src/ch04-tutorial.md`
 - `docs/src/index.md`
 - `docs/src/julia-design.md`
@@ -290,6 +295,7 @@
 - `scripts/check_r4_artifacts.jl`
 - `scripts/check_r4_bargaining.jl`
 - `scripts/check_r4_baseline.jl`
+- `scripts/check_r4_tspa.jl`
 - `scripts/check_solvers.jl`
 - `scripts/collect_ch03_data.jl`
 - `scripts/compare_r1_runs.jl`
@@ -340,6 +346,7 @@
 - `scripts/plot_r4_bargaining.jl`
 - `scripts/plot_r4_baseline.jl`
 - `scripts/plot_r4_summary.jl`
+- `scripts/plot_r4_tspa.jl`
 - `scripts/prepare_r1_summary.jl`
 - `scripts/preview.jl`
 - `scripts/publish_r3_v2_report.jl`
@@ -355,6 +362,7 @@
 - `scripts/r3_v3_heat_counterexample.jl`
 - `scripts/r4_bargaining_docs.jl`
 - `scripts/r4_setup.jl`
+- `scripts/r4_tspa_docs.jl`
 - `scripts/read_docx.py`
 - `scripts/read_thesis.py`
 - `scripts/recover_r3_v3_checkpoint.jl`
@@ -373,6 +381,7 @@
 - `scripts/report_r4.jl`
 - `scripts/report_r4_bargaining.jl`
 - `scripts/report_r4_baseline.jl`
+- `scripts/report_r4_tspa.jl`
 - `scripts/requirements-reading.txt`
 - `scripts/run_r1.jl`
 - `scripts/run_r2.jl`
@@ -381,6 +390,7 @@
 - `scripts/study_r4.jl`
 - `scripts/study_r4_bargaining.jl`
 - `scripts/study_r4_baseline.jl`
+- `scripts/study_r4_tspa.jl`
 - `scripts/summarize_r3_audit.jl`
 - `scripts/summarize_r3_baseline.jl`
 - `scripts/summarize_r3_v3.jl`
@@ -392,6 +402,7 @@
 - `scripts/test_r3_v2.jl`
 - `scripts/test_r3_v3.jl`
 - `scripts/test_r4.jl`
+- `scripts/test_r4_tspa.jl`
 - `scripts/validate_ch03_data.jl`
 - `scripts/validate_r1.jl`
 - `scripts/validate_r4.jl`
@@ -406,12 +417,14 @@
 - `src/algorithms/r3_v2.jl`
 - `src/algorithms/r3_v3.jl`
 - `src/algorithms/r4_bargaining.jl`
+- `src/algorithms/r4_tspa.jl`
 - `src/components/devices.jl`
 - `src/core/case.jl`
 - `src/core/r2_case.jl`
 - `src/core/r3.jl`
 - `src/core/r3_operation.jl`
 - `src/core/r4.jl`
+- `src/core/r4_tspa.jl`
 - `src/formulations/r1.jl`
 - `src/formulations/r2.jl`
 - `src/formulations/r3.jl`
@@ -424,6 +437,7 @@
 - `src/reporting/r3_modes.jl`
 - `src/reporting/r3_runs.jl`
 - `src/reporting/r4_runs.jl`
+- `src/reporting/r4_tspa.jl`
 - `src/reporting/runs.jl`
 - `src/verification/r1.jl`
 - `src/verification/r2.jl`
@@ -433,6 +447,7 @@
 - `src/verification/r4.jl`
 - `src/verification/r4_bargaining.jl`
 - `src/verification/r4_baseline.jl`
+- `src/verification/r4_tspa.jl`
 - `test/ch03_data.jl`
 - `test/maintenance.tests.ps1`
 - `test/r1.jl`
@@ -449,6 +464,7 @@
 - `test/r4.jl`
 - `test/r4_bargaining.jl`
 - `test/r4_baseline.jl`
+- `test/r4_tspa.jl`
 - `test/runtests.jl`
 - `tools/Manifest.toml`
 - `tools/Project.toml`

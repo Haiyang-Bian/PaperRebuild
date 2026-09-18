@@ -1,0 +1,128 @@
+schema = "ch04-tspa-v1"
+source = "docs/摘要.pdf"
+source_sha256 = "20328e2480e773520c19c378e53365fc944c0bafcfca73071f5d8313d5ee7d91"
+read_pdf_pages = [73, 74]
+implemented_scope = "two_stage_structure_with_declared_nodal_elasticity"
+
+[[formula]]
+id = "ch04-095"
+number = 95
+pdf_page = 73
+latex = '\max \prod_{i\in\mathcal M}(U_i^{\mathrm{P2P}}-\widehat U_i^0)^{\Lambda_i}'
+meaning = "忽略网络的聚合商Nash交易"
+status = "adopted_aggregate_optimization_then_allocation"
+api = "solve_r4_tspa"
+[[formula]]
+id = "ch04-096"
+number = 96
+pdf_page = 73
+latex = 'U_i^{\mathrm{P2P}}\ge\widehat U_i^0,\quad i\in\mathcal M'
+meaning = "第一阶段相对原AG0的个体理性"
+status = "checked_positive_zero_negative_surplus"
+api = "validate_r4_tspa"
+[[formula]]
+id = "ch04-097"
+number = 97
+pdf_page = 73
+latex = '\text{式}(4\!-\!7)\text{--}(4\!-\!13),\ (4\!-\!15)\text{--}(4\!-\!18)'
+meaning = "AGNB只包含局部设备和交易约束，原文未包含网络"
+status = "adopted_existing_R4_devices_and_explicit_contracts"
+api = "build_r4_model"
+[[formula]]
+id = "ch04-098"
+number = 98
+pdf_page = 73
+latex = '\widehat{\mathcal W}_i^D=\widehat U_i^{\mathrm{P2P}},\quad \widehat{\mathcal W}_0^D=-\widehat C^{\mathrm{DHSO}}+\sum_{i\in\mathcal M}\widehat C_i^{\mathrm{Retail}}+\sum_{i\in\mathcal M}\sum_j\kappa_{ij}\widehat P_{ij,t}+\sum_{i\in\mathcal M}\sum_j\varphi_{ij}\widehat H_{ij,t}'
+meaning = "第二阶段分歧点；原式时间求和及有向收费口径需说明"
+status = "two_penalty_interpretations_and_once_per_trade_fee"
+api = "solve_r4_tspa"
+[[formula]]
+id = "ch04-099"
+number = 99
+pdf_page = 74
+latex = '\delta_i^{\mathrm{SSPA}}=\frac{\Lambda_i}{\sum_{j\in\mathcal A}\Lambda_j}(\mathrm{SW}^{\mathrm{P2P\&NetCo}}-\mathrm{SW}^0)'
+meaning = "单阶段按全体权重分配总增益"
+status = "explained_and_previous_batch_implemented"
+api = "r4_nash_allocation"
+[[formula]]
+id = "ch04-100"
+number = 100
+pdf_page = 74
+latex = '\delta_i^{\mathrm{TSPA}}=\frac{\Lambda_i}{\sum_{j\in\mathcal M}\Lambda_j}\left(\sum_{j\in\mathcal M}\widehat U_j^{\mathrm{P2P}}-\sum_{j\in\mathcal M}\widehat U_j^0\right)+\frac{\Lambda_i}{\sum_{j\in\mathcal A}\Lambda_j}(\mathrm{SW}^{\mathrm{P2P\&NetCo}}-\mathrm{SW}^{\mathrm{P2P}})'
+meaning = "聚合商两个阶段的增益相加"
+status = "adopted_when_each_allocation_exists"
+api = "validate_r4_tspa"
+[[formula]]
+id = "ch04-101"
+number = 101
+pdf_page = 74
+latex = '\frac{\Lambda_i}{\sum_{j\in\mathcal A}\Lambda_j}(\mathrm{SW}^{\mathrm{P2P\&NetCo}}-\mathrm{SW}^0)<\frac{\Lambda_i}{\sum_{j\in\mathcal M}\Lambda_j}\left(\sum_{j\in\mathcal M}\widehat U_j^{\mathrm{P2P}}-\sum_{j\in\mathcal M}\widehat U_j^0\right)'
+meaning = "单阶段所得可能低于指定聚合商联盟的外部选择"
+status = "explained_not_all_coalitions_certified"
+api = "r4_nash_allocation"
+[[formula]]
+id = "ch04-102"
+number = 102
+pdf_page = 74
+latex = '\delta_i^{\mathrm{TSPA}}\ge\frac{\Lambda_i}{\sum_{j\in\mathcal M}\Lambda_j}\left(\sum_{j\in\mathcal M}\widehat U_j^{\mathrm{P2P}}-\sum_{j\in\mathcal M}\widehat U_j^0\right)'
+meaning = "依赖第二阶段总剩余非负的指定外部选择比较"
+status = "premise_audited_not_assumed"
+api = "validate_r4_tspa"
+
+[[symbol]]
+id = "r4-tspa-ag-utility"
+latex = 'U_i^{\mathrm{P2P}}'
+meaning = "第一阶段聚合商结算后效用"
+unit = "USD_synthetic"
+julia = "stage1.utility_after[i]"
+domain = "finite real"
+source = "PDF73 (4-95)/(4-98)"
+[[symbol]]
+id = "r4-tspa-slack"
+latex = 's_b;\ s_b^+,s_b^-'
+meaning = "原文网络松弛；项目用有符号节点平衡的两个非负分量"
+unit = "MW / Mvar / kg/s"
+julia = "slack_P_pos[i,t] and other carrier/side arrays"
+domain = "nonnegative; node x time"
+source = "PDF73 unnumbered; project R4-T2"
+[[symbol]]
+id = "r4-tspa-penalty"
+latex = '\delta_b;\ \delta'
+meaning = "原文逐约束罚系数；项目统一归一化系数"
+unit = "USD_synthetic/h/normalized violation"
+julia = "R4TSPASpec.penalty"
+domain = "positive finite scalar"
+source = "PDF73 unnumbered; project R4-T2"
+[[symbol]]
+id = "r4-tspa-scale"
+latex = '\sigma_P,\sigma_Q,\sigma_H,\sigma_m'
+meaning = "按输入容量预先确定的归一化尺度，不改变A1"
+unit = "MW / Mvar / kg/s"
+julia = "r4_tspa_scales(case)"
+domain = "positive per carrier"
+source = "project R4-T2"
+[[symbol]]
+id = "r4-tspa-peer"
+latex = 'P_{AB,t},H_{AB,t}'
+meaning = "A向B出售为正的合同；不指定物理线路"
+unit = "MW"
+julia = "P_peer[t], H_peer[t]"
+domain = "bounded real; time"
+source = "adopted (4-17)/(4-18); project R4-T1"
+
+[[issue]]
+id = "R4-T01"
+topic = "网络松弛位置"
+adopted = "原文未列逐约束松弛。本批仅四类节点平衡双向松弛，其余全部硬约束。严格网络和弹性网络独立保存，不把弹性解称为物理成功。"
+[[issue]]
+id = "R4-T02"
+topic = "罚项与分歧效用"
+adopted = "原式(4-98)未明确C_DHSO是否含罚项，两种解释并列，实际资源成本和人工罚金分别记录。固定同一AGNB计划对照100/10000罚系数。"
+[[issue]]
+id = "R4-T03"
+topic = "总福利比较及稳定性"
+adopted = "只有相同物理可行域嵌入或独立数值证据才能支持SW协调>=SW_P2P。松弛分歧点不保证此关系；(4-102)不认证所有子联盟或博弈核非空。"
+[[issue]]
+id = "R4-T04"
+topic = "候选、交易、费用与支付"
+adopted = "保留AG0嵌入和求解候选，按独立重算成本选择；负剩余不裁零。第二阶段总支付替代全部旧内部账单，不能再叠加第一阶段转移。服务费卖方每笔一次，双边能量乘Δt。"

@@ -146,6 +146,14 @@ PaperRebuild.r4_nash_allocation
 PaperRebuild.validate_r4_allocation
 PaperRebuild.r4_bargaining_weights
 PaperRebuild.r4_allocate_coordination
+PaperRebuild.R4TSPASpec
+PaperRebuild.r4_tspa_scales
+PaperRebuild.solve_r4_tspa
+PaperRebuild.validate_r4_trading
+PaperRebuild.validate_r4_elastic
+PaperRebuild.validate_r4_tspa
+PaperRebuild.save_r4_tspa_run
+PaperRebuild.read_r4_tspa_run
 PaperRebuild.save_r4_run
 PaperRebuild.read_r4_run
 PaperRebuild.compare_r4_runs

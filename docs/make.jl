@@ -9,6 +9,8 @@ include(joinpath(@__DIR__, "..", "scripts", "ch04_docs.jl"))
 sync_ch04()
 include(joinpath(@__DIR__, "..", "scripts", "r4_bargaining_docs.jl"))
 sync_r4_bargaining()
+include(joinpath(@__DIR__, "..", "scripts", "r4_tspa_docs.jl"))
+sync_r4_tspa()
 
 makedocs(;
     modules = [PaperRebuild],
@@ -75,6 +77,8 @@ makedocs(;
             "Nash分配与参与条件" => "ch04-bargaining.md",
             "议价公式与符号" => "ch04-bargaining-equations.md",
             "收益分配与补证结果" => "ch04-bargaining-results.md",
+            "TSPA两阶段与网络分歧点" => "ch04-tspa.md",
+            "TSPA公式与符号" => "ch04-tspa-equations.md",
         ],
         "API 索引与说明" => "api.md",
         "第 2 章模型与首批实现" => [

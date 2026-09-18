@@ -33,12 +33,19 @@ include("algorithms/r3_baseline.jl")
 include("verification/r3_baseline.jl")
 include("reporting/r3_baseline.jl")
 include("core/r4.jl")
+include("core/r4_tspa.jl")
 include("formulations/r4.jl")
 include("verification/r4.jl")
 include("verification/r4_baseline.jl")
 include("reporting/r4_runs.jl")
 include("algorithms/r4_bargaining.jl")
 include("verification/r4_bargaining.jl")
+include("algorithms/r4_tspa.jl")
+include("verification/r4_tspa.jl")
+include("reporting/r4_tspa.jl")
+export R4TSPASpec, r4_tspa_scales, solve_r4_tspa
+export validate_r4_trading, validate_r4_elastic, validate_r4_tspa
+export save_r4_tspa_run, read_r4_tspa_run
 export R4Case, R4Spec, load_r4_case, build_r4_model, solve_r4_case
 export r4_preferred_demand, r4_coordination_surplus
 export r4_nash_allocation, r4_bargaining_weights, r4_allocate_coordination

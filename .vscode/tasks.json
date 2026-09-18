@@ -1,5 +1,6 @@
 {
   "inputs": [
+    {"id":"r4TSPAStudy","description":"R4两阶段批次study.toml路径","type":"promptString"},
     {"id":"r4BargainingStudy","description":"R4议价批次study.toml路径","type":"promptString"},
     {"id":"r4BaselineStudy","description":"R4新基线批次study.toml路径","type":"promptString"},
     {"id":"r4RunDirectory","description":"已保存R4运行目录","type":"promptString"},
@@ -27,6 +28,42 @@
     }
   ],
   "tasks": [
+    {
+      "label": "PaperRebuild: R4 TSPA mapping",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/check_r4_tspa.jl"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 TSPA tests",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/test_r4_tspa.jl"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 TSPA experiments",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/study_r4_tspa.jl"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 TSPA report",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/report_r4_tspa.jl", "${input:r4TSPAStudy}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 TSPA redraw",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=docs", "scripts/plot_r4_tspa.jl", "results/summaries/r4-tspa"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 TSPA evidence check",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/check_r4_tspa.jl", "results/summaries/r4-tspa"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
     {
       "label": "PaperRebuild: R4 bargaining mapping",
       "type": "process", "command": "julia",
