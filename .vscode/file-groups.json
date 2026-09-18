@@ -2830,6 +2830,16 @@
           "path": "docs/src/assets/r5-duality/witnesses/up--highs.toml",
           "name": "up--highs.toml",
           "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch05-commitment-equations.md",
+          "name": "ch05-commitment-equations.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch05-commitment.md",
+          "name": "ch05-commitment.md",
+          "isDirectory": false
         }
       ],
       "order": 1,
@@ -2990,6 +3000,11 @@
         {
           "path": "docs/agent/tasks/2026-09-19-r5-duality.md",
           "name": "2026-09-19-r5-duality.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/agent/tasks/2026-09-19-r5-commitment.md",
+          "name": "2026-09-19-r5-commitment.md",
           "isDirectory": false
         }
       ],
@@ -3387,6 +3402,31 @@
           "path": "src/verification/r5_dispatch_duality.jl",
           "name": "r5_dispatch_duality.jl",
           "isDirectory": false
+        },
+        {
+          "path": "src/algorithms/r5_commitment.jl",
+          "name": "r5_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/core/r5_commitment.jl",
+          "name": "r5_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/formulations/r5_commitment.jl",
+          "name": "r5_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/reporting/r5_commitment.jl",
+          "name": "r5_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/verification/r5_commitment.jl",
+          "name": "r5_commitment.jl",
+          "isDirectory": false
         }
       ],
       "order": 3,
@@ -3713,6 +3753,61 @@
           "path": "configs/r5/dispatch/up.toml",
           "name": "up.toml",
           "isDirectory": false
+        },
+        {
+          "path": "configs/r5/commitment/capacity_denominator.toml",
+          "name": "capacity_denominator.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/commitment/fixed_feasible.toml",
+          "name": "fixed_feasible.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/commitment/four_period.toml",
+          "name": "four_period.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/commitment/four_period_future.toml",
+          "name": "four_period_future.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/commitment/hand.toml",
+          "name": "hand.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/commitment/no_call_only.toml",
+          "name": "no_call_only.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/commitment/no_reserve.toml",
+          "name": "no_reserve.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/commitment/overcommitted.toml",
+          "name": "overcommitted.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/commitment/quarter.toml",
+          "name": "quarter.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/commitment/study.toml",
+          "name": "study.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/commitment/unequal_weights.toml",
+          "name": "unequal_weights.toml",
+          "isDirectory": false
         }
       ],
       "order": 4,
@@ -3938,6 +4033,11 @@
         {
           "path": "docs/reading/ch05/recourse-duality.toml",
           "name": "recourse-duality.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch05/commitment.toml",
+          "name": "commitment.toml",
           "isDirectory": false
         }
       ],
@@ -11476,6 +11576,11 @@
           "path": "test/r5_dispatch_duality.jl",
           "name": "r5_dispatch_duality.jl",
           "isDirectory": false
+        },
+        {
+          "path": "test/r5_commitment.jl",
+          "name": "r5_commitment.jl",
+          "isDirectory": false
         }
       ],
       "order": 7,
@@ -12706,6 +12811,51 @@
         {
           "path": "scripts/compare_r5_duality_audits.jl",
           "name": "compare_r5_duality_audits.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r5_commitment.jl",
+          "name": "check_r5_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r5_commitment_artifacts.jl",
+          "name": "check_r5_commitment_artifacts.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/freeze_r5_commitment.jl",
+          "name": "freeze_r5_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/plot_r5_commitment.jl",
+          "name": "plot_r5_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r5_commitment_cases.jl",
+          "name": "r5_commitment_cases.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r5_commitment_docs.jl",
+          "name": "r5_commitment_docs.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/report_r5_commitment.jl",
+          "name": "report_r5_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/study_r5_commitment.jl",
+          "name": "study_r5_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/test_r5_commitment.jl",
+          "name": "test_r5_commitment.jl",
           "isDirectory": false
         }
       ],

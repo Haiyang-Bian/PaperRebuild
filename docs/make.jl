@@ -25,6 +25,8 @@ include(joinpath(@__DIR__, "..", "scripts", "r5_dispatch_docs.jl"))
 sync_r5_dispatch_docs()
 include(joinpath(@__DIR__, "..", "scripts", "r5_duality_docs.jl"))
 sync_r5_duality_docs()
+include(joinpath(@__DIR__, "..", "scripts", "r5_commitment_docs.jl"))
+sync_r5_commitment_docs()
 
 makedocs(;
     modules = [PaperRebuild],
@@ -120,6 +122,8 @@ makedocs(;
             "确定性补救与交付结果" => "ch05-dispatch-results.md",
             "补救最优性与灵敏度" => "ch05-recourse-duality.md",
             "补救对偶推导与符号" => "ch05-recourse-equations.md",
+            "共同日前承诺与多情景" => "ch05-commitment.md",
+            "共同承诺推导与符号" => "ch05-commitment-equations.md",
             "联合机会约束概率方向" => "ch05-probability-audit.md",
             "分解算法与已知输入" => "ch05-algorithm-audit.md",
         ],

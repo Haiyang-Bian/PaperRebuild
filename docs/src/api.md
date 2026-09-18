@@ -235,6 +235,18 @@ PaperRebuild.r5_dispatch_sensitivity
 PaperRebuild.build_r5_dispatch_dual
 ~~~
 
+## 第5章共同日前承诺
+
+~~~@docs
+PaperRebuild.R5CommitmentCase
+PaperRebuild.load_r5_commitment_case
+PaperRebuild.build_r5_commitment
+PaperRebuild.solve_r5_commitment
+PaperRebuild.validate_r5_commitment
+PaperRebuild.save_r5_commitment_run
+PaperRebuild.read_r5_commitment_run
+~~~
+
 ## 工程示例函数说明
 
 以下两个函数保留自初始化模板，只用于验证包加载、测试和 Documenter 集成，不计入论文复现进度。

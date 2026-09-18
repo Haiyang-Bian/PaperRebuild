@@ -1,0 +1,113 @@
+budget_sec = 60.0
+origin = "synthetic"
+schema = "r5-commitment-study-v1"
+source_rule = "Derived analytically before optimization; shared full-trajectory recourse, not risk or bidding."
+
+[analytic]
+hand_cost = 2.085
+hand_first_stage = [0.08, 0.08, 0.062]
+no_call_only_cost = -1.8
+no_reserve_cost = 14.2
+overcommitted = "down activation requires 0.16 MW import but demand is 0.142 MW and export is forbidden"
+quarter_cost = 0.52125
+
+[files]
+"capacity_denominator.toml" = "85e8bff60940cde2927cbb1979b423af5d21f54cfaac5e7c0b612109b24e9464"
+"fixed_feasible.toml" = "56e92c756925cb9e96bcb25060c3c726016801a8edb2ae41954c1b4106f526db"
+"four_period.toml" = "346c3c3767de57262ab8ff59f4a4421a826379959aded1ab94c64e242ae437bf"
+"four_period_future.toml" = "67887b872297b4e63551fc470a77746b74539f7ad493284b190693965be5dfaf"
+"hand.toml" = "45916bd87b68387f3354f000f0b5824900de51dd56ab2dccbe6c261205db4b18"
+"no_call_only.toml" = "b492a5bb20164c995b09dd491db501d51d677636fd7b0fd11692aa48c1f73183"
+"no_reserve.toml" = "85b667aeb893e36edd1293598270df4dfb620dc4862cb14b527846692b025c70"
+"overcommitted.toml" = "86bcf7e2a5f5ca8c961154cddd514fcf51df76f9706d48b8f8771cbebfaeb6ef"
+"quarter.toml" = "0174ecd9ec9344ab9e72863b8e0ad669e240b70f9fe5c45541dbc813253d7e1f"
+"unequal_weights.toml" = "6d748d014b4319994211629faba841d298a19cd8d5026b40270c2e7f1370c1e7"
+
+[[runs]]
+case = "capacity_denominator.toml"
+id = "capacity_denominator--highs"
+solver = "highs"
+[[runs]]
+case = "capacity_denominator.toml"
+id = "capacity_denominator--clarabel"
+solver = "clarabel"
+[[runs]]
+case = "fixed_feasible.toml"
+id = "fixed_feasible--highs"
+solver = "highs"
+[[runs]]
+case = "fixed_feasible.toml"
+id = "fixed_feasible--clarabel"
+solver = "clarabel"
+[[runs]]
+case = "four_period.toml"
+id = "four_period--highs"
+solver = "highs"
+[[runs]]
+case = "four_period.toml"
+id = "four_period--clarabel"
+solver = "clarabel"
+[[runs]]
+case = "four_period_future.toml"
+id = "four_period_future--highs"
+solver = "highs"
+[[runs]]
+case = "four_period_future.toml"
+id = "four_period_future--clarabel"
+solver = "clarabel"
+[[runs]]
+case = "hand.toml"
+id = "hand--highs"
+solver = "highs"
+[[runs]]
+case = "hand.toml"
+id = "hand--clarabel"
+solver = "clarabel"
+[[runs]]
+case = "no_call_only.toml"
+id = "no_call_only--highs"
+solver = "highs"
+[[runs]]
+case = "no_call_only.toml"
+id = "no_call_only--clarabel"
+solver = "clarabel"
+[[runs]]
+case = "no_reserve.toml"
+id = "no_reserve--highs"
+solver = "highs"
+[[runs]]
+case = "no_reserve.toml"
+id = "no_reserve--clarabel"
+solver = "clarabel"
+[[runs]]
+case = "overcommitted.toml"
+id = "overcommitted--highs"
+solver = "highs"
+[[runs]]
+case = "overcommitted.toml"
+id = "overcommitted--clarabel"
+solver = "clarabel"
+[[runs]]
+case = "quarter.toml"
+id = "quarter--highs"
+solver = "highs"
+[[runs]]
+case = "quarter.toml"
+id = "quarter--clarabel"
+solver = "clarabel"
+[[runs]]
+case = "unequal_weights.toml"
+id = "unequal_weights--highs"
+solver = "highs"
+[[runs]]
+case = "unequal_weights.toml"
+id = "unequal_weights--clarabel"
+solver = "clarabel"
+[[runs]]
+case = "hand.toml"
+id = "hand--gurobi"
+solver = "gurobi"
+[[runs]]
+case = "four_period.toml"
+id = "four_period--gurobi"
+solver = "gurobi"

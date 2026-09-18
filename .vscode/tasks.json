@@ -1,5 +1,8 @@
 {
   "inputs": [
+    {"id":"r5CommitmentBatch","description":"新的共同承诺批次名；不得覆盖已有批次","type":"promptString","default":"r5-commitment-new"},
+    {"id":"r5CommitmentStudy","description":"已完成的共同承诺study.toml","type":"promptString","default":"results/runs/r5/r5-commitment-20260919/study.toml"},
+    {"id":"r5CommitmentReport","description":"共同承诺报告新目录；重绘需已有CSV且无旧图","type":"promptString","default":"results/summaries/r5-commitment-replay"},
     {"id":"r5DualityReport","description":"新的只读补救对偶审计输出目录","type":"promptString","default":"results/summaries/r5-duality-new"},
     {"id":"r5DispatchReport","description":"IES报告新目录；重绘需已有CSV且无旧图","type":"promptString","default":"results/summaries/r5-dispatch-replay"},
     {"id":"r5DispatchStudy","description":"已完成的IES批次study.toml","type":"promptString","default":"results/runs/r5/r5-dispatch-20260919/study.toml"},
@@ -52,6 +55,13 @@
     }
   ],
   "tasks": [
+    {"label":"PaperRebuild: R5 shared commitment tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_commitment.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 shared commitment mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_commitment.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 shared commitment frozen study","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/study_r5_commitment.jl","${input:r5CommitmentBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 shared commitment report saved","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/report_r5_commitment.jl","${input:r5CommitmentStudy}","${input:r5CommitmentReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 shared commitment redraw","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r5_commitment.jl","${input:r5CommitmentReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 shared commitment seal","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_commitment_artifacts.jl","${input:r5CommitmentReport}","--seal"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 shared commitment frozen evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_commitment_artifacts.jl","results/summaries/r5-commitment"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R5 recourse duality frozen evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_duality.jl","results/summaries/r5-duality-verified"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R5 recourse duality tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_dispatch_duality.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R5 recourse duality mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_duality.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},

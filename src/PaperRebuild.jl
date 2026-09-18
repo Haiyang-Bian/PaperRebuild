@@ -77,6 +77,13 @@ include("algorithms/r5_dispatch.jl")
 include("reporting/r5_dispatch.jl")
 include("verification/r5_dispatch_duality.jl")
 include("formulations/r5_dispatch_dual.jl")
+include("core/r5_commitment.jl")
+include("formulations/r5_commitment.jl")
+include("verification/r5_commitment.jl")
+include("algorithms/r5_commitment.jl")
+include("reporting/r5_commitment.jl")
+export R5CommitmentCase, load_r5_commitment_case, build_r5_commitment, solve_r5_commitment
+export validate_r5_commitment, save_r5_commitment_run, read_r5_commitment_run
 export validate_r5_dispatch_duals, r5_dispatch_sensitivity, build_r5_dispatch_dual
 export r5_building_coefficients, r5_building_temperature, R5DispatchCase, load_r5_dispatch_case
 export r5_award_from_market, build_r5_dispatch, solve_r5_dispatch, validate_r5_dispatch
