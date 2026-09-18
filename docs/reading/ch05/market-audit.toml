@@ -3,7 +3,7 @@ source = "docs/摘要.pdf"
 source_sha256 = "20328e2480e773520c19c378e53365fc944c0bafcfca73071f5d8313d5ee7d91"
 pdf_pages = [84, 85, 86, 87, 88, 89, 90, 91]
 printed_pages = [67, 68, 69, 70, 71, 72, 73, 74]
-status = "bounded original-page review and selected sign/model audit; not a complete formula transcription or implemented market"
+status = "bounded original-page review; fixed-bid clearing separately verified in market.toml; complete physical recourse, bilevel and risk dispatch remain open"
 
 [[issue]]
 id = "R5-M01"
@@ -46,7 +46,7 @@ remaining = "Trace chapter 2 coefficients and decide whether comfort responds to
 id = "R5-M05"
 equations = ["5-34", "5-35", "5-36", "5-37", "5-38", "5-39", "5-40", "5-41", "5-42", "5-43", "5-44", "5-45", "5-46", "5-47", "5-48", "5-49", "5-50", "5-51", "5-52", "5-53", "5-54", "5-55", "5-56", "5-57", "5-58", "5-59", "5-60", "5-61"]
 pages = [89, 90, 91]
-status = "rederive_before_bilevel"
+status = "fixed_bid_primal_dual_checked_bilevel_pending"
 evidence = "5-35 uses generation minus demand minus IES import; 5-49/50 show a different sign on ordinary demand. Re-reading PDF90 confirms 5-46 already contains the next-period ramp multiplier. The remaining audit concerns consistent signs, initial/terminal boundaries and constants in 5-58, not an assertion that the author omitted all intertemporal terms."
 adopted = "Build and independently verify the primal clearing LP first. Derive stationarity and strong duality from this exact LP, including prior/next-hour ramp terms, fixed initial output, and terminal index. Do not copy the printed KKT/linearized payment expression wholesale."
 remaining = "Price-maker versus price-taker scope, bid bounds and valid complementarity constants must be explicit; no claim that KKT alone linearizes arbitrary bilinear products."

@@ -1,0 +1,368 @@
+config_sha256 = "b9e28a4d2c5469b8535c8db3dea953e94bbeb906bed924e4444d1a104b87cc4d"
+model_and_validator_unchanged = true
+new_batch = "r5-market-depot-20260919"
+new_study_sha256 = "c2229563b707798e89f0347f6062647a74ba6a15c7091f5c6f2b262209326597"
+old_batch = "r5-market-20260919"
+old_study_sha256 = "0d7a24af041995e7608be92209cf9298ce6b5eb1ff8b962afb1fe3fbfabbdaef"
+origin = "synthetic"
+rules_unchanged = true
+schema = "r5-market-environment-replay-v1"
+scope = "Loader and engine/environment metadata fix; original statuses preserved. No scientific acceptance threshold change."
+script_sha256 = "9b9e0c0b6740c0b01a95bb1613b4c0b0a23ec0b679972903ae94303b56a90f2e"
+
+[[records]]
+case_sha256 = "cab5fac023eeaea4998db0695f340033f6197a89b7ef3a11bbdaa06f601cff6b"
+new_optimality_pass = true
+new_result_sha256 = "07be3050a8c1b3d1f1966743e5dfea39b8ff8004aa35a61b502dd362ba4deb75"
+new_run_id = "r5-market-6280e9b8-9d57-4a62-9e89-44bd28f72a7e"
+new_solver_version = "0.11.1"
+new_status = "solver_optimal"
+old_optimality_pass = true
+old_result_sha256 = "767533b214a5b1bc430d43bdc4cc27b747a778b94e4dbb877f860518bd22468b"
+old_run_id = "r5-market-969443fd-36ea-455c-afef-fcbc857e5c93"
+old_status = "solver_optimal"
+record_id = "bid_cap--clarabel"
+
+    [records.same_model_comparison]
+    A2_pass = true
+    case_sha256 = "cab5fac023eeaea4998db0695f340033f6197a89b7ef3a11bbdaa06f601cff6b"
+    comparable = true
+    left_run = "r5-market-969443fd-36ea-455c-afef-fcbc857e5c93"
+    relative_objective_difference = 0.0
+    right_run = "r5-market-6280e9b8-9d57-4a62-9e89-44bd28f72a7e"
+[[records]]
+case_sha256 = "cab5fac023eeaea4998db0695f340033f6197a89b7ef3a11bbdaa06f601cff6b"
+new_optimality_pass = true
+new_result_sha256 = "f7aa9c249c7e1b27e00abc0f23915cc4a4009a935bcb8d0b63e9ed7dc561eff4"
+new_run_id = "r5-market-03d6646f-dfec-4313-aa36-f54f73572534"
+new_solver_version = "v1.15.1"
+new_status = "solver_optimal"
+old_optimality_pass = true
+old_result_sha256 = "938330a8415d3fe9bd4a390ff265877143fa72138493209e44107f637fb06767"
+old_run_id = "r5-market-4f705f6e-cab6-4d26-88cc-505a6c6e62cf"
+old_status = "solver_optimal"
+record_id = "bid_cap--highs"
+
+    [records.same_model_comparison]
+    A2_pass = true
+    case_sha256 = "cab5fac023eeaea4998db0695f340033f6197a89b7ef3a11bbdaa06f601cff6b"
+    comparable = true
+    left_run = "r5-market-4f705f6e-cab6-4d26-88cc-505a6c6e62cf"
+    relative_objective_difference = 0.0
+    right_run = "r5-market-03d6646f-dfec-4313-aa36-f54f73572534"
+[[records]]
+case_sha256 = "c4dcfadcb5cef69aa614de78f012f2724ad84e3f471ae21a046af7ecaa82a94f"
+new_optimality_pass = false
+new_result_sha256 = "b2b8bf43ae9d151b4edf663a434bd1964c4533584b3047041015727608bf73d7"
+new_run_id = "r5-market-a2ff021c-240f-4ca2-ab7f-51ed54ad72cd"
+new_solver_version = "0.11.1"
+new_status = "solver_infeasible"
+old_optimality_pass = false
+old_result_sha256 = "16d56a8b65b6a5d2cedf75a643643836abdc77b9c3065b3eb08618c200b16ed1"
+old_run_id = "r5-market-61b62378-7de1-40f5-8830-5ba4e6a1910a"
+old_status = "solver_infeasible"
+record_id = "capacity_infeasible--clarabel"
+
+    [records.same_model_comparison]
+    A2_pass = false
+    case_sha256 = "c4dcfadcb5cef69aa614de78f012f2724ad84e3f471ae21a046af7ecaa82a94f"
+    comparable = false
+    left_run = "r5-market-61b62378-7de1-40f5-8830-5ba4e6a1910a"
+    right_run = "r5-market-a2ff021c-240f-4ca2-ab7f-51ed54ad72cd"
+[[records]]
+case_sha256 = "c4dcfadcb5cef69aa614de78f012f2724ad84e3f471ae21a046af7ecaa82a94f"
+new_optimality_pass = false
+new_result_sha256 = "7be86ced3446703760ca8d7c7402b16c93b96a5ed37ec815c0718ebf444d23a0"
+new_run_id = "r5-market-166ea1a6-85f1-4c17-b49c-86f76197928b"
+new_solver_version = "v1.15.1"
+new_status = "solver_infeasible"
+old_optimality_pass = false
+old_result_sha256 = "c35817bcfab9ce4b2c77958ad3a75c5efde7e185794a3dfe035828c60f19cd4c"
+old_run_id = "r5-market-f3bc159e-8013-436f-a2e4-cfb998b2f520"
+old_status = "solver_infeasible"
+record_id = "capacity_infeasible--highs"
+
+    [records.same_model_comparison]
+    A2_pass = false
+    case_sha256 = "c4dcfadcb5cef69aa614de78f012f2724ad84e3f471ae21a046af7ecaa82a94f"
+    comparable = false
+    left_run = "r5-market-f3bc159e-8013-436f-a2e4-cfb998b2f520"
+    right_run = "r5-market-166ea1a6-85f1-4c17-b49c-86f76197928b"
+[[records]]
+case_sha256 = "955521c4ee8b3de52ec03bce12d5d6037e395d4e119296cd8277fec852bbd3a0"
+new_optimality_pass = true
+new_result_sha256 = "1d04ef175c1913221aba8613f9463ae84477dfc826003b222c0ea80bfd79baaa"
+new_run_id = "r5-market-233ebb7f-8df5-41f0-9d32-fdc42a0fdc35"
+new_solver_version = "0.11.1"
+new_status = "solver_optimal"
+old_optimality_pass = true
+old_result_sha256 = "59027d8d2caafe2d9df5cfbee6005fb7eb7931e38886df499dd6b4791b6dbcaa"
+old_run_id = "r5-market-aeada9dc-e494-4f08-8b53-0230b1a3f3a7"
+old_status = "solver_optimal"
+record_id = "hand_hour--clarabel"
+
+    [records.same_model_comparison]
+    A2_pass = true
+    case_sha256 = "955521c4ee8b3de52ec03bce12d5d6037e395d4e119296cd8277fec852bbd3a0"
+    comparable = true
+    left_run = "r5-market-aeada9dc-e494-4f08-8b53-0230b1a3f3a7"
+    relative_objective_difference = 0.0
+    right_run = "r5-market-233ebb7f-8df5-41f0-9d32-fdc42a0fdc35"
+[[records]]
+case_sha256 = "955521c4ee8b3de52ec03bce12d5d6037e395d4e119296cd8277fec852bbd3a0"
+new_optimality_pass = true
+new_result_sha256 = "d1cdaddbe95d9c1e981049a5c58ba9fb4bb471d6738403a20f537278020ad613"
+new_run_id = "r5-market-fda8845e-bea6-4592-855a-67c897fc151f"
+new_solver_version = "13.0.3"
+new_status = "solver_optimal"
+old_optimality_pass = false
+old_result_sha256 = "1d11293467d2f75dc9e174acb1fe446c4195fffa056d02dafb796b37c9e25302"
+old_run_id = "r5-market-4c50e94f-fb24-4e1f-8c66-30fae0dec484"
+old_status = "execution_error"
+record_id = "hand_hour--gurobi"
+
+    [records.same_model_comparison]
+    A2_pass = false
+    case_sha256 = "955521c4ee8b3de52ec03bce12d5d6037e395d4e119296cd8277fec852bbd3a0"
+    comparable = false
+    left_run = "r5-market-4c50e94f-fb24-4e1f-8c66-30fae0dec484"
+    right_run = "r5-market-fda8845e-bea6-4592-855a-67c897fc151f"
+[[records]]
+case_sha256 = "955521c4ee8b3de52ec03bce12d5d6037e395d4e119296cd8277fec852bbd3a0"
+new_optimality_pass = true
+new_result_sha256 = "fc4eafce90200a716a57e1f61ea8016d860f4a5f3d1c019005dec03213500d8c"
+new_run_id = "r5-market-eee930bd-2084-4495-81af-d037ee692e80"
+new_solver_version = "v1.15.1"
+new_status = "solver_optimal"
+old_optimality_pass = true
+old_result_sha256 = "b7aa695ffdd45dc9768c23172c32d26f3aff97e64ff40d263fe5a41cd9edeedc"
+old_run_id = "r5-market-f049293e-0369-4ae9-a6c5-412ce0ab7d76"
+old_status = "solver_optimal"
+record_id = "hand_hour--highs"
+
+    [records.same_model_comparison]
+    A2_pass = true
+    case_sha256 = "955521c4ee8b3de52ec03bce12d5d6037e395d4e119296cd8277fec852bbd3a0"
+    comparable = true
+    left_run = "r5-market-f049293e-0369-4ae9-a6c5-412ce0ab7d76"
+    relative_objective_difference = 0.0
+    right_run = "r5-market-eee930bd-2084-4495-81af-d037ee692e80"
+[[records]]
+case_sha256 = "9cd6b1600bbc9b75117dec81231bb7904df8feff72425b9e60c366f0506998ec"
+new_optimality_pass = true
+new_result_sha256 = "e73a81a730a42209af3e3aaf67ba946ac129b1c9e5318760d65ca7d58427c970"
+new_run_id = "r5-market-b38157e0-2b1a-4579-a32b-0e6e303f27a2"
+new_solver_version = "0.11.1"
+new_status = "solver_optimal"
+old_optimality_pass = true
+old_result_sha256 = "09f9995e41388793597ecf7ea608d5e6d54fb11f1718219bd1021926b7eff193"
+old_run_id = "r5-market-e2e01c23-e7b8-4d3c-87ec-badb61585842"
+old_status = "solver_optimal"
+record_id = "hand_quarter--clarabel"
+
+    [records.same_model_comparison]
+    A2_pass = true
+    case_sha256 = "9cd6b1600bbc9b75117dec81231bb7904df8feff72425b9e60c366f0506998ec"
+    comparable = true
+    left_run = "r5-market-e2e01c23-e7b8-4d3c-87ec-badb61585842"
+    relative_objective_difference = 0.0
+    right_run = "r5-market-b38157e0-2b1a-4579-a32b-0e6e303f27a2"
+[[records]]
+case_sha256 = "9cd6b1600bbc9b75117dec81231bb7904df8feff72425b9e60c366f0506998ec"
+new_optimality_pass = true
+new_result_sha256 = "fe06e9503ac46ba6a662cfee6f73d63df30e62f14776167a4186cc099f7a8937"
+new_run_id = "r5-market-9ab0ab0e-8c99-4e97-9712-f7307e62097b"
+new_solver_version = "v1.15.1"
+new_status = "solver_optimal"
+old_optimality_pass = true
+old_result_sha256 = "c6b97ba169d1032d7faefed2bd650bb7bbbddecf869bd95275a19fcccc690b2b"
+old_run_id = "r5-market-c918a4a1-cfc1-4ced-8c41-d7bd56290ca0"
+old_status = "solver_optimal"
+record_id = "hand_quarter--highs"
+
+    [records.same_model_comparison]
+    A2_pass = true
+    case_sha256 = "9cd6b1600bbc9b75117dec81231bb7904df8feff72425b9e60c366f0506998ec"
+    comparable = true
+    left_run = "r5-market-c918a4a1-cfc1-4ced-8c41-d7bd56290ca0"
+    relative_objective_difference = 0.0
+    right_run = "r5-market-9ab0ab0e-8c99-4e97-9712-f7307e62097b"
+[[records]]
+case_sha256 = "d535e3298c68c0af8735e313d3b885f55c2b6d3c9b368e2f7e604a8f4cf59144"
+new_optimality_pass = true
+new_result_sha256 = "7e8f7fd57f9460b553b59872614dcf4a2e2d3fadd84d416244b7379c00b22faf"
+new_run_id = "r5-market-b46aa87e-1834-4cbb-9c44-ac4fec66a022"
+new_solver_version = "0.11.1"
+new_status = "solver_optimal"
+old_optimality_pass = true
+old_result_sha256 = "ca93867681c08b172a1f288057b9a70f6f29edabdec6771de24d0a3fa784df2b"
+old_run_id = "r5-market-6d1265bf-900d-4c63-9fe7-37f087d3e8c0"
+old_status = "solver_optimal"
+record_id = "no_ies--clarabel"
+
+    [records.same_model_comparison]
+    A2_pass = true
+    case_sha256 = "d535e3298c68c0af8735e313d3b885f55c2b6d3c9b368e2f7e604a8f4cf59144"
+    comparable = true
+    left_run = "r5-market-6d1265bf-900d-4c63-9fe7-37f087d3e8c0"
+    relative_objective_difference = 0.0
+    right_run = "r5-market-b46aa87e-1834-4cbb-9c44-ac4fec66a022"
+[[records]]
+case_sha256 = "d535e3298c68c0af8735e313d3b885f55c2b6d3c9b368e2f7e604a8f4cf59144"
+new_optimality_pass = true
+new_result_sha256 = "64e68b245d46d01962c4f35d3017f4081f6bb34f2d407ccaf4e9a50b4418ad3e"
+new_run_id = "r5-market-546b1c0d-7da4-4146-8303-589e77ea34b4"
+new_solver_version = "v1.15.1"
+new_status = "solver_optimal"
+old_optimality_pass = true
+old_result_sha256 = "d0aced5f12c60802d90c962f2288b8365dbfce92dafa35a4305e54dff80ece99"
+old_run_id = "r5-market-3146d5d9-37a4-4dd6-9258-6b3b81a79e68"
+old_status = "solver_optimal"
+record_id = "no_ies--highs"
+
+    [records.same_model_comparison]
+    A2_pass = true
+    case_sha256 = "d535e3298c68c0af8735e313d3b885f55c2b6d3c9b368e2f7e604a8f4cf59144"
+    comparable = true
+    left_run = "r5-market-3146d5d9-37a4-4dd6-9258-6b3b81a79e68"
+    relative_objective_difference = 0.0
+    right_run = "r5-market-546b1c0d-7da4-4146-8303-589e77ea34b4"
+[[records]]
+case_sha256 = "a60e590062b7ae541807da845e6a07ca4786af2a0e9a1a856b12d2f707650483"
+new_optimality_pass = true
+new_result_sha256 = "b0aaa9c17d3638715a7bd1628faaaa2196638637b8188d9c82528e6f11f67cd4"
+new_run_id = "r5-market-d70c1755-f8c2-4fe2-9207-e2f1b8702532"
+new_solver_version = "0.11.1"
+new_status = "solver_optimal"
+old_optimality_pass = true
+old_result_sha256 = "183f9e5a8b8be5f78fbbb63c8a406c56b2d3a9d5e3f169ad8ac47c15d3060cd5"
+old_run_id = "r5-market-657dfd59-01e9-42c9-bf77-5d0cecce47b7"
+old_status = "solver_optimal"
+record_id = "ramp_memory--clarabel"
+
+    [records.same_model_comparison]
+    A2_pass = true
+    case_sha256 = "a60e590062b7ae541807da845e6a07ca4786af2a0e9a1a856b12d2f707650483"
+    comparable = true
+    left_run = "r5-market-657dfd59-01e9-42c9-bf77-5d0cecce47b7"
+    relative_objective_difference = 0.0
+    right_run = "r5-market-d70c1755-f8c2-4fe2-9207-e2f1b8702532"
+[[records]]
+case_sha256 = "a60e590062b7ae541807da845e6a07ca4786af2a0e9a1a856b12d2f707650483"
+new_optimality_pass = true
+new_result_sha256 = "c288260baf9eeebc8cbd08a34debe192b0323806c5296485ac566b4d577a3a88"
+new_run_id = "r5-market-983b8245-4a78-4ce0-9e12-176a14540ab1"
+new_solver_version = "v1.15.1"
+new_status = "solver_optimal"
+old_optimality_pass = true
+old_result_sha256 = "2f83bdda0eecc0068189dc6cc5a6b6ea740bcfb1834cc2449f9655b95275dea4"
+old_run_id = "r5-market-cb9f42da-b552-4060-9f0f-ebff0d0e3b41"
+old_status = "solver_optimal"
+record_id = "ramp_memory--highs"
+
+    [records.same_model_comparison]
+    A2_pass = true
+    case_sha256 = "a60e590062b7ae541807da845e6a07ca4786af2a0e9a1a856b12d2f707650483"
+    comparable = true
+    left_run = "r5-market-cb9f42da-b552-4060-9f0f-ebff0d0e3b41"
+    relative_objective_difference = 0.0
+    right_run = "r5-market-983b8245-4a78-4ce0-9e12-176a14540ab1"
+[[records]]
+case_sha256 = "78eb4ce5f464b424ac84f96eda8af6716eed487e983459174987778e04cc7c5b"
+new_optimality_pass = true
+new_result_sha256 = "affa19fa5aa7f6a367758cc6a97e73d507b98bd8e2a8ccf1fb28f78320f0b07c"
+new_run_id = "r5-market-7c5805ec-3995-404a-88dd-6f5eadee5d92"
+new_solver_version = "0.11.1"
+new_status = "solver_optimal"
+old_optimality_pass = true
+old_result_sha256 = "244bcb241ef79668dedbb4dc3e9a8e397d32814f8ea8dd7bd2d4d9daa956eb1e"
+old_run_id = "r5-market-f60961de-0b27-402f-88e7-aad523f05cfa"
+old_status = "solver_optimal"
+record_id = "two_bus--clarabel"
+
+    [records.same_model_comparison]
+    A2_pass = true
+    case_sha256 = "78eb4ce5f464b424ac84f96eda8af6716eed487e983459174987778e04cc7c5b"
+    comparable = true
+    left_run = "r5-market-f60961de-0b27-402f-88e7-aad523f05cfa"
+    relative_objective_difference = 0.0
+    right_run = "r5-market-7c5805ec-3995-404a-88dd-6f5eadee5d92"
+[[records]]
+case_sha256 = "78eb4ce5f464b424ac84f96eda8af6716eed487e983459174987778e04cc7c5b"
+new_optimality_pass = true
+new_result_sha256 = "465a14c782027afb48adb49490b9232bd8ca5c2b04feb7e9c95c6ce8c8c47327"
+new_run_id = "r5-market-316d8759-14b0-40a0-8c3a-05f3350a6715"
+new_solver_version = "13.0.3"
+new_status = "solver_optimal"
+old_optimality_pass = false
+old_result_sha256 = "24e1833e24ee1d1406cf499b7229973067fbed5493af610224e128a77f58ea83"
+old_run_id = "r5-market-584b190a-cb59-41eb-9247-48f8e09b3361"
+old_status = "execution_error"
+record_id = "two_bus--gurobi"
+
+    [records.same_model_comparison]
+    A2_pass = false
+    case_sha256 = "78eb4ce5f464b424ac84f96eda8af6716eed487e983459174987778e04cc7c5b"
+    comparable = false
+    left_run = "r5-market-584b190a-cb59-41eb-9247-48f8e09b3361"
+    right_run = "r5-market-316d8759-14b0-40a0-8c3a-05f3350a6715"
+[[records]]
+case_sha256 = "78eb4ce5f464b424ac84f96eda8af6716eed487e983459174987778e04cc7c5b"
+new_optimality_pass = true
+new_result_sha256 = "4d96ed69f421c593054f0129b9e15eda1d446fc096f03ccd8a1d8f5d8a33e397"
+new_run_id = "r5-market-23857e7b-9507-44ea-baff-241a6968cc36"
+new_solver_version = "v1.15.1"
+new_status = "solver_optimal"
+old_optimality_pass = true
+old_result_sha256 = "221776b1814fa3cd1c608da0ca122177108fadee8127aaeb9fce4f8f3da309bd"
+old_run_id = "r5-market-cf91283e-e1af-4463-841b-36bba1f862d5"
+old_status = "solver_optimal"
+record_id = "two_bus--highs"
+
+    [records.same_model_comparison]
+    A2_pass = true
+    case_sha256 = "78eb4ce5f464b424ac84f96eda8af6716eed487e983459174987778e04cc7c5b"
+    comparable = true
+    left_run = "r5-market-cf91283e-e1af-4463-841b-36bba1f862d5"
+    relative_objective_difference = 0.0
+    right_run = "r5-market-23857e7b-9507-44ea-baff-241a6968cc36"
+[[records]]
+case_sha256 = "1c3a0de4705a0f7127f49c9cc3ebba08c627dfb567cbad44097ff321d9324aac"
+new_optimality_pass = true
+new_result_sha256 = "0ca75a9d1d148b2f236a060dedd09b4934819cac7f1fbf33baa554288090ce99"
+new_run_id = "r5-market-ce0dfaf3-1cfb-440b-bb40-669df217bb8b"
+new_solver_version = "0.11.1"
+new_status = "solver_optimal"
+old_optimality_pass = true
+old_result_sha256 = "5ca6681ed8072be70bfd69adb2e9972453a896053f6ee4ca202dc7eaa37f3454"
+old_run_id = "r5-market-1c555c9b-0c27-454e-a405-574d95c35316"
+old_status = "solver_optimal"
+record_id = "wide_line--clarabel"
+
+    [records.same_model_comparison]
+    A2_pass = true
+    case_sha256 = "1c3a0de4705a0f7127f49c9cc3ebba08c627dfb567cbad44097ff321d9324aac"
+    comparable = true
+    left_run = "r5-market-1c555c9b-0c27-454e-a405-574d95c35316"
+    relative_objective_difference = 0.0
+    right_run = "r5-market-ce0dfaf3-1cfb-440b-bb40-669df217bb8b"
+[[records]]
+case_sha256 = "1c3a0de4705a0f7127f49c9cc3ebba08c627dfb567cbad44097ff321d9324aac"
+new_optimality_pass = true
+new_result_sha256 = "d897bb9012a2ed51b7eb6531be58ac20f9072041890bc2540f84ff9a8c571b64"
+new_run_id = "r5-market-952e7453-b839-4811-9ef9-7584c0111b26"
+new_solver_version = "v1.15.1"
+new_status = "solver_optimal"
+old_optimality_pass = true
+old_result_sha256 = "00f931f16341e7355fb2cca1123bfd165497236c8c41638e4778021a271bd6e8"
+old_run_id = "r5-market-e3d61cbb-da31-49f3-915d-290caebba9d2"
+old_status = "solver_optimal"
+record_id = "wide_line--highs"
+
+    [records.same_model_comparison]
+    A2_pass = true
+    case_sha256 = "1c3a0de4705a0f7127f49c9cc3ebba08c627dfb567cbad44097ff321d9324aac"
+    comparable = true
+    left_run = "r5-market-e3d61cbb-da31-49f3-915d-290caebba9d2"
+    relative_objective_difference = 0.0
+    right_run = "r5-market-952e7453-b839-4811-9ef9-7584c0111b26"

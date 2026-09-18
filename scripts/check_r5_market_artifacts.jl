@@ -77,6 +77,32 @@ for x in CSV.File(joinpath(dir, "solver-comparison.csv"))
     end
 end
 fig=TOML.parsefile(joinpath(dir, "figure-config.toml"))
+replay_path=joinpath(dir, "environment-replay.toml")
+if isfile(replay_path)
+    replay=TOML.parsefile(replay_path)
+    replay["schema"]=="r5-market-environment-replay-v1" &&
+    replay["rules_unchanged"] &&
+    replay["model_and_validator_unchanged"] || error("环境复核口径变化")
+    replay["config_sha256"]==meta["config_sha256"] &&
+    replay["new_study_sha256"]==meta["study_sha256"] || error("复核批次身份变化")
+    replay["script_sha256"]==bytes2hex(
+        sha256(read(joinpath(@__DIR__, "audit_r5_market_replay.jl"))),
+    ) || error("复核生产脚本变化")
+    length(replay["records"])==length(expected) &&
+    Set(x["record_id"] for x in replay["records"])==expected || error("复核配对缺失")
+    for x in replay["records"]
+        r=only(filter(z->z.record_id==x["record_id"], summary))
+        r.run_id==x["new_run_id"] &&
+        r.case_sha256==x["case_sha256"] &&
+        r.status==x["new_status"] &&
+        r.optimality_pass==x["new_optimality_pass"] || error("复核记录与摘要不一致")
+        x["new_result_sha256"]==meta["raw_source_hashes"][x["record_id"]] ||
+            error("复核原值来源变化")
+        x["old_optimality_pass"] &&
+            !x["same_model_comparison"]["A2_pass"] &&
+            error("旧合格目标未通过同模型复核")
+    end
+end
 !fig["solver_reexecuted"] && Set(fig["source_run_ids"])==Set(x.run_id for x in summary) ||
     error("图源身份不一致")
 fig["script_sha256"]==bytes2hex(sha256(read(joinpath(@__DIR__, "plot_r5_market.jl")))) ||

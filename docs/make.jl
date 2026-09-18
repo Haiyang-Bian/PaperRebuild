@@ -110,6 +110,7 @@ makedocs(;
             "市场、备用与物理边界" => "ch05-market-audit.md",
             "固定报价出清与价格" => "ch05-market.md",
             "出清原式与符号" => "ch05-market-equations.md",
+            "出清价格与原对偶结果" => "ch05-market-results.md",
             "联合机会约束概率方向" => "ch05-probability-audit.md",
             "分解算法与已知输入" => "ch05-algorithm-audit.md",
         ],

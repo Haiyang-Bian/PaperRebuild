@@ -1,0 +1,40 @@
+batch_id = "r5-market-depot-20260919"
+config_sha256 = "b9e28a4d2c5469b8535c8db3dea953e94bbeb906bed924e4444d1a104b87cc4d"
+cost_complete = 16
+independent_dual_pass = 16
+kkt_pass = 16
+model_pass = 16
+origin = "synthetic"
+required = 18
+saved = 18
+schema = "r5-market-report-v1"
+scope = "Fixed-bid clearing; fixed ordinary-load utility constant omitted; not system resource cost."
+script_sha256 = "ba8683b179736426fc41dcd7b4957b25dbe720a12d670fa715e971d628216b24"
+source_commit = "c22b423e9afe7c05308a4890edafd930f2f44155"
+study_sha256 = "c2229563b707798e89f0347f6062647a74ba6a15c7091f5c6f2b262209326597"
+
+[producer_sha256]
+"freeze_r5_market.jl" = "ed6bd949148e0743b981ef4657547eaeea1d2687f614eead818f891de0178746"
+"r5_market_cases.jl" = "29eee08e83d655c56576316aabd76d7bf95f3d5dbfc75149ceec5bf9abf3f68d"
+"r5_market_setup.jl" = "13e909e1ef3285da2c9dea8738d49ba376c76b97d5540b84e46f7afbb07ca158"
+"study_r5_market.jl" = "b1a79ab3e30377ad6becaa6152bbae05026e2538f54878e81476ae6732cb9f29"
+
+[raw_source_hashes]
+bid_cap--clarabel = "07be3050a8c1b3d1f1966743e5dfea39b8ff8004aa35a61b502dd362ba4deb75"
+bid_cap--highs = "f7aa9c249c7e1b27e00abc0f23915cc4a4009a935bcb8d0b63e9ed7dc561eff4"
+capacity_infeasible--clarabel = "b2b8bf43ae9d151b4edf663a434bd1964c4533584b3047041015727608bf73d7"
+capacity_infeasible--highs = "7be86ced3446703760ca8d7c7402b16c93b96a5ed37ec815c0718ebf444d23a0"
+hand_hour--clarabel = "1d04ef175c1913221aba8613f9463ae84477dfc826003b222c0ea80bfd79baaa"
+hand_hour--gurobi = "d1cdaddbe95d9c1e981049a5c58ba9fb4bb471d6738403a20f537278020ad613"
+hand_hour--highs = "fc4eafce90200a716a57e1f61ea8016d860f4a5f3d1c019005dec03213500d8c"
+hand_quarter--clarabel = "e73a81a730a42209af3e3aaf67ba946ac129b1c9e5318760d65ca7d58427c970"
+hand_quarter--highs = "fe06e9503ac46ba6a662cfee6f73d63df30e62f14776167a4186cc099f7a8937"
+no_ies--clarabel = "7e8f7fd57f9460b553b59872614dcf4a2e2d3fadd84d416244b7379c00b22faf"
+no_ies--highs = "64e68b245d46d01962c4f35d3017f4081f6bb34f2d407ccaf4e9a50b4418ad3e"
+ramp_memory--clarabel = "b0aaa9c17d3638715a7bd1628faaaa2196638637b8188d9c82528e6f11f67cd4"
+ramp_memory--highs = "c288260baf9eeebc8cbd08a34debe192b0323806c5296485ac566b4d577a3a88"
+two_bus--clarabel = "affa19fa5aa7f6a367758cc6a97e73d507b98bd8e2a8ccf1fb28f78320f0b07c"
+two_bus--gurobi = "465a14c782027afb48adb49490b9232bd8ca5c2b04feb7e9c95c6ce8c8c47327"
+two_bus--highs = "4d96ed69f421c593054f0129b9e15eda1d446fc096f03ccd8a1d8f5d8a33e397"
+wide_line--clarabel = "0ca75a9d1d148b2f236a060dedd09b4934819cac7f1fbf33baa554288090ce99"
+wide_line--highs = "d897bb9012a2ed51b7eb6531be58ac20f9072041890bc2540f84ff9a8c571b64"
