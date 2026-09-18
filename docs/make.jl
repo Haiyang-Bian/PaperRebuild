@@ -96,6 +96,7 @@ makedocs(;
             "重构结果与热模型缺口" => "ch04-network-results.md",
             "热状态相容性与重构" => "ch04-heat-compatibility.md",
             "热相容性公式与符号" => "ch04-heat-equations.md",
+            "热状态重构与失败原因" => "ch04-heat-results.md",
         ],
         "API 索引与说明" => "api.md",
         "第 2 章模型与首批实现" => [

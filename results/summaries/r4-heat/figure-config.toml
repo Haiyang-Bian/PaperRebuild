@@ -1,0 +1,16 @@
+batch_id = "r4-heat-20260919"
+illustration_band = "reference10"
+illustration_parent = "import--fixed--exact"
+origin = "synthetic"
+scope = "Fixed reference losses; reconstructed steady temperatures and mass; no pressure/dynamic certification."
+script_sha256 = "4b88e52c066c1acac7015e0a0cb7d7635f8c218c05a72e5e0b6b77e827ca3afa"
+solver_reexecuted = false
+units = ["kg/s", "K", "MW", "normalized residual", "USD_synthetic"]
+
+[sources]
+"comparison.csv" = "2397dab8938ce381e336f87657b1ca766ef8a04f3cae9e4eba0ecf32ef7ceff4"
+"mass-intervals.csv" = "5f9266aa462b44b045c66ce53e0bb8d4aa533f439b7a1bf39bc689f6664ebe2b"
+"node-intervals.csv" = "4d4ea9612a049365d979046ffccc5818caaff2b4ab5eb5e4338a52392ed2fc0e"
+"residuals-reference10.csv" = "7dba88c6e811ffd657f600df49ba18bc68494b0023d17cd39713138be2497355"
+"residuals-reference20.csv" = "b4520a20154c0b274ba0760bd55b6bbb970be198a374622c84e8b5b69ab87b1a"
+"states.csv" = "717c79e568af77f3235c1433bc44ee069fb292402ab24a9831344c6bf4e91861"

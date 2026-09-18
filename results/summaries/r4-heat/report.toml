@@ -1,0 +1,17 @@
+batch_id = "r4-heat-20260919"
+config_sha256 = "d954ed988ebcb0b206c922ddcd9c54074995b703d2813c30255c879b9a2cd91d"
+origin = "synthetic"
+scope = "Fixed parent heat, controls, topology and reference losses; explicit project temperature bands; no pressure/dynamics certification."
+script_sha256 = "f7d90c27327111e8399789d429596804dce264ef883ef26455c37acbe56716b7"
+source_commit = "60f2eab11bb20845fd8c426eb6f50b8d98ec7633"
+stages = ["fixed_envelope", "free_envelope", "fixed_mixing", "free_mixing"]
+study_sha256 = "58f73a6210a9fe9c4d0635082c1e5d7317f95e8e6258768e1ce135eb8abe3eac"
+
+[[bands]]
+id = "reference10"
+return_K = [303.15, 323.15]
+supply_K = [343.15, 363.15]
+[[bands]]
+id = "reference20"
+return_K = [293.15, 333.15]
+supply_K = [333.15, 373.15]

@@ -76,4 +76,4 @@ julia +1.12.6 --startup-file=no --project=. scripts/check_r4_heat_compatibility.
 julia +1.12.6 --startup-file=no --project=. scripts/study_r4_heat_compatibility.jl
 ~~~
 
-正式结果另存，旧运行与旧验收状态不迁移。
+正式结果另存，旧运行与旧验收状态不迁移。见[272阶段结果与解析反例](ch04-heat-results.md)。

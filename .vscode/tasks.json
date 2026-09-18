@@ -1,5 +1,7 @@
 {
   "inputs": [
+    {"id":"r4HeatStudy","description":"R4热相容性批次study.toml路径","type":"promptString","default":"results/runs/r4/r4-heat-20260919/study.toml"},
+    {"id":"r4HeatReport","description":"R4热核查报告目录；报告生成须用新目录","type":"promptString","default":"results/summaries/r4-heat-replay"},
     {"id":"r4NetworkStudy","description":"R4重构批次study.toml路径","type":"promptString","default":"results/runs/r4/r4-network-20260919/study.toml"},
     {"id":"r4NetworkReport","description":"R4重构报告目录；比较须用新目录，重绘须有数据表且无旧图","type":"promptString","default":"results/summaries/r4-network-replay"},
     {"id":"r4DiscreteRun","description":"R4离散核查运行目录","type":"promptString"},
@@ -36,6 +38,10 @@
     }
   ],
   "tasks": [
+    {"label":"PaperRebuild: R4 heat compare","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/report_r4_heat_compatibility.jl","${input:r4HeatStudy}","${input:r4HeatReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 heat redraw","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r4_heat_compatibility.jl","${input:r4HeatReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 heat evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r4_heat_artifacts.jl","results/summaries/r4-heat"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 heat inspect","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/inspect_r4_heat_results.jl","results/summaries/r4-heat"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R4 heat mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r4_heat_compatibility.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R4 heat tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r4_heat_compatibility.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R4 heat frozen study","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/study_r4_heat_compatibility.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
