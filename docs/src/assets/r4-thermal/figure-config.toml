@@ -1,0 +1,15 @@
+batch_id = "r4-thermal-20260919"
+cost_plot = "only independently accepted candidates; effective bound shown separately"
+flow_plot = "joint strategy for all four frozen inputs; sums over running directed arcs"
+origin = "synthetic"
+script_sha256 = "1a4faf8b6e84a73910429f831d6211170263796a27050797f27e0b3e76e35766"
+solver_reexecuted = false
+source_run_ids = ["open--fixed--reference", "open--fixed--exponential", "open--joint--reference", "open--joint--exponential", "import--fixed--reference", "import--fixed--exponential", "import--joint--reference", "import--joint--exponential", "electric_bottleneck--fixed--reference", "electric_bottleneck--fixed--exponential", "electric_bottleneck--joint--reference", "electric_bottleneck--joint--exponential", "heat_bottleneck--fixed--reference", "heat_bottleneck--fixed--exponential", "heat_bottleneck--joint--reference", "heat_bottleneck--joint--exponential"]
+temperature_plot = "active supply inlet min/max; idle temperatures omitted"
+
+[sources]
+"comparison.csv" = "76505fa072c98a457d647395ff4683ca15b7bae7bf3efdb0a648d7d0a47108c9"
+"nodes.csv" = "3e2ba1314f5a72620a3c55abd8f6aa08bc13baa71ae1c52c2b330120be22a2ee"
+"policy-comparison.csv" = "6471d3f9c5c84231c3ecbe2f31548b1ce3530b5a4810e123e4ec9626d01dbdfe"
+"residuals.csv" = "5bb9d487e753ed9182a05c4a259e037da6a98c8ecc8a0702938b2876d1ce82ca"
+"states.csv" = "5c873c1a29f93859d6ce9843a37e7e100a34300677f49260b88610beec17db67"

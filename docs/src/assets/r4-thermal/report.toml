@@ -1,0 +1,42 @@
+adopted_physical_pass = 16
+batch_id = "r4-thermal-20260919"
+cases = ["electric_bottleneck", "heat_bottleneck", "import", "open"]
+config_sha256 = "77e756e83c3fc100961de538cbc7c44754f9fa65dc5d86f34d5687f02f640844"
+cost_complete = 5
+model_pass = 16
+origin = "synthetic"
+required = 16
+saved = 16
+schema = "r4-thermal-report-v1"
+scope = "Decoupled steady operating pipes; no idle cooling, restart, pressure or pump cost."
+script_sha256 = "695cbc51fe4a6b08f340a79e5c7165f6a82495e4f52511538aa0b7bec80b4173"
+source_commit = "6bc044f511a59b75428a6b1f398c2336632fa667"
+study_sha256 = "fc98bf0b835876f596bab6d78e47d241a73d1a36e03850004415f1ec964a625f"
+
+[legacy_source_hashes]
+electric_bottleneck--fixed--exact = "3b6ba57a1e8890608edb3b93cc5c69c9c5446d3fdae5fa28155d0d307d803b7b"
+electric_bottleneck--joint--exact = "931202711ff824ebbdc681ff67901e8482ea48f901758d29ee71448ea45c3ce8"
+heat_bottleneck--fixed--exact = "4c826705a73a73848f263f2674e6187b007f885b48a64c0d0faafbcd76179aeb"
+heat_bottleneck--joint--exact = "d9b7cb2905e5626f18dae4075f040dad5dd2b89dd1708a7d025e154724aa4cf6"
+import--fixed--exact = "8f4f0b0b0ac86924d758833ccbd12c3a68fbe60325bca3b777f120bf47db4287"
+import--joint--exact = "7160efed4df5e73355caa5903f710fed6d752a1301274b9cf108106bce002873"
+open--fixed--exact = "c101c3255343a926bdc70ca8ad7588c222dca912613c2775b2299a5f2624c7e4"
+open--joint--exact = "9f3d3f1d722a3ceed7e89b3afc2ed2dcec6d3ae340f5ab2da0194264fb97d28f"
+
+[raw_source_hashes]
+electric_bottleneck--fixed--exponential = "462299448320630f94feadd49f8dd80e86b32864035aef0cf6bc1c7404199df3"
+electric_bottleneck--fixed--reference = "a462fb4e47e52263b45364ee1312780eec68519a296c8b4589cb021aa494d8bf"
+electric_bottleneck--joint--exponential = "32901c1a41ba68b3b83071cf70c399bc8eb8a7beaf800b9188fe53ed9c1cb435"
+electric_bottleneck--joint--reference = "cef3f791eeed383388a477e51bb661b39459f0c0aafa005bd58af03f3a1d5409"
+heat_bottleneck--fixed--exponential = "2ffc2d9034341eed480d39496ae7019a0635e81d2732a903638d996963f862d4"
+heat_bottleneck--fixed--reference = "9f85b68259b986f2b07adfa8932f4612f6b7719d61b01ffdd357275d9bac6c7b"
+heat_bottleneck--joint--exponential = "6f16b1d45e413bfb24aaa1f43fa734792b75ba2b499e255adddc80bd0e59ac86"
+heat_bottleneck--joint--reference = "4b31e30a4764a1ea19f9a1b9a6c10ceffb67789b99b78222361d484fbb10dde4"
+import--fixed--exponential = "ef8b78aedbe4e913ecd3969b4f7be5383cdffb520018b60f3176a6df160e94a4"
+import--fixed--reference = "5cd9c3567fbf91ac71f5b8005db277056a5b6d96fd332a8fa21c3cbba4003f38"
+import--joint--exponential = "b7052f58466f043913f330081ae15bfdef504e411962717a7c2c5213897849be"
+import--joint--reference = "50ec72e48394a0a2285081a6a35909a731e8846e072d4b4eecf8e62aad323771"
+open--fixed--exponential = "e2e04b95963e95abd1be316f53c6b061fa41ac4fd4b69dd3e0469655fba4ccbd"
+open--fixed--reference = "61a23ef884ae31d9c416f67b95ace09c1bcf80ebede265225c76479526783b16"
+open--joint--exponential = "2e4c9f23a433138d29524ed09e2875ab2d5cbecd384c1059fbbd8d84420850a7"
+open--joint--reference = "9e0ca3810ee0f98c12821d730d94423abc7323bdc0d130b0d760b6cb7a998e32"

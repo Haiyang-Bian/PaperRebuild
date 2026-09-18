@@ -111,7 +111,9 @@ for (i, name) in enumerate(names)
         xlabel = "Policy / loss",
         ylabel = "Synthetic USD",
         xticks = (1:4, labels),
+        yautolimitmargin = (0.08, 0.18),
     )
+    xlims!(ax, 0.45, 4.55)
     rr=[only(filter(x->x.case==name&&x.policy==p&&x.loss==l, summary)) for (p, l) in combos]
     cost=[x.adopted_physical_pass ? x.operating_cost : NaN for x in rr]
     lower=[x.objective_bound for x in rr]
@@ -145,7 +147,8 @@ for (i, name) in enumerate(names)
             text = !rr[k].adopted_physical_pass ? " no A1" :
                    rr[k].cost_optimization_complete ? " A2" : " incomplete",
             fontsize = 11,
-            align = (:left, :bottom),
+            align = (:center, :bottom),
+            offset = (0, 6),
         )
     end
     i==1 && axislegend(ax; position = :rt, labelsize = 11)

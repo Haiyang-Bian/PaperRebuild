@@ -101,6 +101,7 @@ makedocs(;
             "热状态重构与失败原因" => "ch04-heat-results.md",
             "循环与温度相关散热" => "ch04-thermal.md",
             "稳态热网采用式与符号" => "ch04-thermal-equations.md",
+            "稳态循环与费用证据" => "ch04-thermal-results.md",
         ],
         "API 索引与说明" => "api.md",
         "第5章 市场与风险核查" => [
