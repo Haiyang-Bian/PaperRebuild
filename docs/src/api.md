@@ -181,6 +181,17 @@ PaperRebuild.validate_r4_network_enumeration
 PaperRebuild.read_r4_network_enumeration
 ```
 
+## 热状态相容性核查
+
+~~~@docs
+PaperRebuild.R4HeatCompatibilitySpec
+PaperRebuild.build_r4_heat_reconstruction
+PaperRebuild.reconstruct_r4_heat
+PaperRebuild.validate_r4_heat_reconstruction
+PaperRebuild.save_r4_heat_run
+PaperRebuild.read_r4_heat_run
+~~~
+
 ## 工程示例函数说明
 
 以下两个函数保留自初始化模板，只用于验证包加载、测试和 Documenter 集成，不计入论文复现进度。

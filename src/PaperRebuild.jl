@@ -56,6 +56,13 @@ include("reporting/r4_discrete.jl")
 include("verification/r4_reconfiguration.jl")
 include("algorithms/r4_reconfiguration.jl")
 include("reporting/r4_reconfiguration.jl")
+include("core/r4_heat_compatibility.jl")
+include("formulations/r4_heat_compatibility.jl")
+include("verification/r4_heat_compatibility.jl")
+include("algorithms/r4_heat_compatibility.jl")
+include("reporting/r4_heat_compatibility.jl")
+export R4HeatCompatibilitySpec, build_r4_heat_reconstruction, reconstruct_r4_heat
+export validate_r4_heat_reconstruction, save_r4_heat_run, read_r4_heat_run
 export R4ReconfigurationSpec, r4_is_tree, r4_network_states
 export build_r4_reconfiguration, solve_r4_reconfiguration, validate_r4_reconfiguration
 export enumerate_r4_reconfiguration

@@ -2305,6 +2305,16 @@
           "path": "docs/src/ch04-network-results.md",
           "name": "ch04-network-results.md",
           "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch04-heat-compatibility.md",
+          "name": "ch04-heat-compatibility.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch04-heat-equations.md",
+          "name": "ch04-heat-equations.md",
+          "isDirectory": false
         }
       ],
       "order": 1,
@@ -2435,6 +2445,11 @@
         {
           "path": "docs/agent/tasks/2026-09-19-r4-network.md",
           "name": "2026-09-19-r4-network.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/agent/tasks/2026-09-19-r4-heat.md",
+          "name": "2026-09-19-r4-heat.md",
           "isDirectory": false
         }
       ],
@@ -2727,6 +2742,31 @@
           "path": "src/verification/r4_reconfiguration.jl",
           "name": "r4_reconfiguration.jl",
           "isDirectory": false
+        },
+        {
+          "path": "src/algorithms/r4_heat_compatibility.jl",
+          "name": "r4_heat_compatibility.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/core/r4_heat_compatibility.jl",
+          "name": "r4_heat_compatibility.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/formulations/r4_heat_compatibility.jl",
+          "name": "r4_heat_compatibility.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/reporting/r4_heat_compatibility.jl",
+          "name": "r4_heat_compatibility.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/verification/r4_heat_compatibility.jl",
+          "name": "r4_heat_compatibility.jl",
+          "isDirectory": false
         }
       ],
       "order": 3,
@@ -2933,6 +2973,11 @@
           "path": "configs/r4/reconfiguration/study.toml",
           "name": "study.toml",
           "isDirectory": false
+        },
+        {
+          "path": "configs/r4/heat-compatibility-study.toml",
+          "name": "heat-compatibility-study.toml",
+          "isDirectory": false
         }
       ],
       "order": 4,
@@ -3113,6 +3158,11 @@
         {
           "path": "docs/reading/ch04/network.toml",
           "name": "network.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch04/heat-compatibility.toml",
+          "name": "heat-compatibility.toml",
           "isDirectory": false
         }
       ],
@@ -10126,6 +10176,11 @@
           "path": "test/r4_reconfiguration.jl",
           "name": "r4_reconfiguration.jl",
           "isDirectory": false
+        },
+        {
+          "path": "test/r4_heat_compatibility.jl",
+          "name": "r4_heat_compatibility.jl",
+          "isDirectory": false
         }
       ],
       "order": 7,
@@ -11071,6 +11126,31 @@
         {
           "path": "scripts/report_r4_reconfiguration.jl",
           "name": "report_r4_reconfiguration.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r4_heat_compatibility.jl",
+          "name": "check_r4_heat_compatibility.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/freeze_r4_heat_compatibility.jl",
+          "name": "freeze_r4_heat_compatibility.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r4_heat_docs.jl",
+          "name": "r4_heat_docs.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/study_r4_heat_compatibility.jl",
+          "name": "study_r4_heat_compatibility.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/test_r4_heat_compatibility.jl",
+          "name": "test_r4_heat_compatibility.jl",
           "isDirectory": false
         }
       ],

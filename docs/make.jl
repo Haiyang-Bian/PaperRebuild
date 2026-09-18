@@ -15,6 +15,8 @@ include(joinpath(@__DIR__, "..", "scripts", "r4_distributed_docs.jl"))
 sync_r4_distributed()
 include(joinpath(@__DIR__, "..", "scripts", "r4_network_docs.jl"))
 sync_r4_network()
+include(joinpath(@__DIR__, "..", "scripts", "r4_heat_docs.jl"))
+sync_r4_heat_docs()
 
 makedocs(;
     modules = [PaperRebuild],
@@ -92,6 +94,8 @@ makedocs(;
             "网络重构解释与运行" => "ch04-network.md",
             "网络重构采用式与符号" => "ch04-network-equations.md",
             "重构结果与热模型缺口" => "ch04-network-results.md",
+            "热状态相容性与重构" => "ch04-heat-compatibility.md",
+            "热相容性公式与符号" => "ch04-heat-equations.md",
         ],
         "API 索引与说明" => "api.md",
         "第 2 章模型与首批实现" => [

@@ -22,6 +22,9 @@ function r4_science_hashes()
         "scripts/freeze_r4_reconfiguration.jl",
         "scripts/study_r4_reconfiguration.jl",
         "configs/r4/reconfiguration/study.toml",
+        "scripts/freeze_r4_heat_compatibility.jl",
+        "scripts/study_r4_heat_compatibility.jl",
+        "configs/r4/heat-compatibility-study.toml",
     )
         hashes[rel]=bytes2hex(sha256(read(joinpath(root, rel))))
     end
