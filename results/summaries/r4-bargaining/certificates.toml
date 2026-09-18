@@ -1,0 +1,70 @@
+[[certificates]]
+case = "import_flexible"
+historical_record_rewritten = false
+input_sha256 = "fcdb954da900fd878194b0a3d72bf2f130ecf057615bd84ae16436d315b9d5ca"
+local_certificate_pass = true
+parent_independent = "import_flexible--independent_exact"
+run = "import_flexible--clarabel_certificate"
+scope = "local independent optima only; network original candidate and bound retained"
+
+    [[certificates.local_stages]]
+    actor = "A"
+    certificate_pass = true
+    historical_candidate_gap = 1.043436290132253e-8
+    historical_cost_complete = true
+    historical_objective = 79.65090358767732
+    new_cost_complete = true
+    new_gap = 1.2560879395942432e-10
+    new_lower_bound = 79.65090275657089
+    new_model_pass = true
+    new_objective = 79.65090276657574
+    new_status = "solver_optimal"
+    same_local_model = true
+    [[certificates.local_stages]]
+    actor = "B"
+    certificate_pass = true
+    historical_candidate_gap = 1.2662696811262492e-9
+    historical_cost_complete = false
+    historical_objective = 216.28000008676165
+    new_cost_complete = true
+    new_gap = 5.562889936288348e-10
+    new_lower_bound = 216.27999981289284
+    new_model_pass = true
+    new_objective = 216.27999993320702
+    new_status = "solver_optimal"
+    same_local_model = true
+[[certificates]]
+case = "import_fixed"
+historical_record_rewritten = false
+input_sha256 = "99b92147e9b1b369bd8903e84a7edfea423a55b47320608dd7ed5ff72f640689"
+local_certificate_pass = true
+parent_independent = "import_fixed--independent_exact"
+run = "import_fixed--clarabel_certificate"
+scope = "local independent optima only; network original candidate and bound retained"
+
+    [[certificates.local_stages]]
+    actor = "A"
+    certificate_pass = true
+    historical_candidate_gap = 3.4890601099884004e-8
+    historical_cost_complete = true
+    historical_objective = 82.24625280107352
+    new_cost_complete = true
+    new_gap = 4.688106048468482e-10
+    new_lower_bound = 82.24624993145233
+    new_model_pass = true
+    new_objective = 82.24624997001024
+    new_status = "solver_optimal"
+    same_local_model = true
+    [[certificates.local_stages]]
+    actor = "B"
+    certificate_pass = true
+    historical_candidate_gap = 1.0799912270913328e-8
+    historical_cost_complete = true
+    historical_objective = 217.80000231445086
+    new_cost_complete = true
+    new_gap = 8.984639989180216e-11
+    new_lower_bound = 217.79999996222995
+    new_model_pass = true
+    new_objective = 217.7999999817985
+    new_status = "solver_optimal"
+    same_local_model = true

@@ -74,6 +74,7 @@ makedocs(;
             "同制度协调收益与参与条件" => "ch04-baseline-results.md",
             "Nash分配与参与条件" => "ch04-bargaining.md",
             "议价公式与符号" => "ch04-bargaining-equations.md",
+            "收益分配与补证结果" => "ch04-bargaining-results.md",
         ],
         "API 索引与说明" => "api.md",
         "第 2 章模型与首批实现" => [

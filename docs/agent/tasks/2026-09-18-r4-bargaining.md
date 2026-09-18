@@ -26,4 +26,17 @@
 - 严格Documenter及新增doctest通过，搜索索引574.38 KiB仍有非致命体积提示。
 - maintain.ps1 Sync/Check均通过；test/runtests.jl完整R1–R4回归1412项通过。
 
-后续执行、图表与最终回归证据在完成后补充；不预填通过结果。
+## 正式执行
+
+- 实现节点5a13a69；正式批次r4-bargaining-20260918。
+- 2项Clarabel独立运行保存并重读，4个旧局部候选同模型相对下界差均小于1e-4。
+  旧B未取得Gurobi目标界的原记录false保持不变，补证不作为重写历史的理由。
+- 固定父调度，容量/等权四项分配均通过。灵活容量权重增益为
+  3.952880/2.215351/1.737530；净补偿−10.248804/+4.594332/+5.654472。
+- scripts/report_r4_bargaining.jl验证批次、输入、源码、父记录及分配重算，通过后生成摘要。
+- F04/F12由已存数值重绘并完成视觉检查；没有再求解，也未修改父调度。
+- results/summaries/r4-bargaining已封存哈希，并复制到本地Documenter资源；无远程发布。
+- 封存后只读check_r4_bargaining.jl再次通过；最终格式、严格Documenter/doctest、导航Sync和项目Check通过。
+  更新后的搜索索引581.42 KiB有非致命体积提示，不影响严格链接或doctest验收。
+- 全部原始运行保留，个人.vscode/settings.json未暂存；仅本地提交。本批没有伪造钩子Review凭据。
+- 下一批为原文TSPA分歧点与稳定性条件审计，以及ATC/ADMM一致推导；全文持续目标仍未完成。
