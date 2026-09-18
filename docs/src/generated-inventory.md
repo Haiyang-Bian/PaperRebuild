@@ -333,6 +333,14 @@
 - `docs/src/assets/r5-dispatch/report.toml`
 - `docs/src/assets/r5-dispatch/residuals.csv`
 - `docs/src/assets/r5-dispatch/solver-comparison.csv`
+- `docs/src/assets/r5-duality/F04.png`
+- `docs/src/assets/r5-duality/artifact-hashes.toml`
+- `docs/src/assets/r5-duality/audit.toml`
+- `docs/src/assets/r5-duality/comparison.csv`
+- `docs/src/assets/r5-duality/environment-replay.toml`
+- `docs/src/assets/r5-duality/figure-config.toml`
+- `docs/src/assets/r5-duality/kkt-residuals.csv`
+- `docs/src/assets/r5-duality/sensitivity.csv`
 - `docs/src/assets/r5-market/F04.png`
 - `docs/src/assets/r5-market/F14.png`
 - `docs/src/assets/r5-market/artifact-hashes.toml`
@@ -572,6 +580,14 @@
 - `results/summaries/r5-dispatch/report.toml`
 - `results/summaries/r5-dispatch/residuals.csv`
 - `results/summaries/r5-dispatch/solver-comparison.csv`
+- `results/summaries/r5-duality-verified/F04.png`
+- `results/summaries/r5-duality-verified/artifact-hashes.toml`
+- `results/summaries/r5-duality-verified/audit.toml`
+- `results/summaries/r5-duality-verified/comparison.csv`
+- `results/summaries/r5-duality-verified/environment-replay.toml`
+- `results/summaries/r5-duality-verified/figure-config.toml`
+- `results/summaries/r5-duality-verified/kkt-residuals.csv`
+- `results/summaries/r5-duality-verified/sensitivity.csv`
 - `results/summaries/r5-market-verified/F04.png`
 - `results/summaries/r5-market-verified/F14.png`
 - `results/summaries/r5-market-verified/artifact-hashes.toml`
@@ -658,6 +674,7 @@
 - `scripts/compare_r1_runs.jl`
 - `scripts/compare_r3_baseline.jl`
 - `scripts/compare_r4.jl`
+- `scripts/compare_r5_duality_audits.jl`
 - `scripts/compare_r5_market.jl`
 - `scripts/configure_ch03_tasks.jl`
 - `scripts/configure_r2_tasks.jl`
@@ -941,6 +958,7 @@
 - `docs/src/assets/r3-v2/r3-v2-combined-20260917T095056-767e69d2/`
 - `docs/src/assets/r3-v3/r3-v3-20260917T115348-b8a7a604-73ffdff8/`
 - `docs/src/assets/r4-first-batch/figures/`
+- `docs/src/assets/r5-duality/witnesses/`
 - `results/summaries/ch03-data/ch03-data-20260916T084459-cd427558/`
 - `results/summaries/r1-first-batch/r1-20260916T055237-75fa9f65/`
 - `results/summaries/r1-first-batch/r1-20260916T061313-3e2fc175/`
@@ -955,3 +973,4 @@
 - `results/summaries/r3-v3/audit-addendum-v1/`
 - `results/summaries/r3-v3/r3-v3-20260917T115348-b8a7a604-73ffdff8/`
 - `results/summaries/r4-first-batch/figures/`
+- `results/summaries/r5-duality-verified/witnesses/`

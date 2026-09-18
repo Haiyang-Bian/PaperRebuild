@@ -37,6 +37,9 @@ if !isempty(args)
     Set(x.record_id for x in summary)==Set(keys(parent["raw_source_hashes"]))&&length(summary)==meta["records"]==24||error(
         "运行范围不同",
     )
+    Set(keys(meta["witness_sha256"]))==Set("witnesses/"*x.record_id*".toml" for x in summary)||error(
+        "见证清单不同",
+    )
     for row in summary
         file="witnesses/"*row.record_id*".toml"
         path=joinpath(dir, split(file, '/')...)
@@ -49,24 +52,54 @@ if !isempty(args)
         r=witness["result"]
         c.sha256==row.case_sha256&&r["run_id"]==row.run_id||error("见证身份错误")
         k=validate_r5_dispatch_duals(c, r)
-        k["kkt_pass"]==row.kkt_pass&&k["status"]==row.audit_status||error("原始对偶判定改变")
+        k["kkt_pass"]==row.kkt_pass&&k["status"]==row.audit_status&&k["model_pass"]==row.model_pass&&r["status"]==row.original_status||error(
+            "原始对偶判定改变",
+        )
         rr=filter(x->x.record_id==row.record_id, residuals)
         length(rr)==length(k["rows"])||error("残差行缺失")
         for (old, new) in zip(rr, k["rows"])
-            old.id==new["id"]&&old.kind==new["kind"]&&old.pass==new["pass"]&&isapprox(
-                old.residual,
-                new["residual"];
-                atol = 1e-14,
+            old.run_id==row.run_id&&old.id==new["id"]&&old.kind==new["kind"]&&old.pass==new["pass"]&&old.tolerance==new["tolerance"]&&isapprox(
+                old.normalized,
+                new["normalized"];
+                atol = 1e-12,
                 rtol = 1e-12,
-            )||error("独立KKT残差不同")
+            )&&isapprox(old.residual, new["residual"]; atol = 1e-14, rtol = 1e-12)||error(
+                "独立KKT残差不同",
+            )
         end
         ss=filter(x->x.record_id==row.record_id, sensitivities)
+        if !isempty(k["rows"])
+            isapprox(row.total_relative_gap, k["relative_gap"]; atol = 1e-14, rtol = 1e-12)&&isapprox(
+                row.recourse_relative_gap,
+                k["recourse_relative_gap"];
+                atol = 1e-14,
+                rtol = 1e-12,
+            )&&isapprox(
+                row.max_normalized_residual,
+                maximum(z["normalized"] for z in k["rows"]);
+                atol = 1e-12,
+                rtol = 1e-12,
+            )||error("对偶汇总数值不同")
+        else
+            all(
+                isnan,
+                (row.total_relative_gap, row.recourse_relative_gap, row.max_normalized_residual),
+            )||error("无候选残差伪装为零")
+        end
         if k["kkt_pass"]
             a=r5_dispatch_sensitivity(c, r; objective = :total)
             b=r5_dispatch_sensitivity(c, r)
             length(ss)==3c.data["T"]||error("灵敏度范围不完整")
             for x in ss
-                isapprox(x.total_USD_per_MW, a["gradient"][x.parameter][x.t]; atol = 1e-10)&&isapprox(
+                x.run_id==row.run_id&&isapprox(
+                    x.day_ahead_USD_per_MW,
+                    a["contributions"]["day_ahead"][x.parameter][x.t];
+                    atol = 1e-10,
+                )&&isapprox(
+                    x.capacity_budget_USD_per_MW,
+                    x.parameter=="P_DA_MW" ? 0.0 : a["contributions"]["capacity_budget"][x.t];
+                    atol = 1e-10,
+                )&&isapprox(x.total_USD_per_MW, a["gradient"][x.parameter][x.t]; atol = 1e-10)&&isapprox(
                     x.recourse_USD_per_MW,
                     b["gradient"][x.parameter][x.t];
                     atol = 1e-10,
@@ -86,6 +119,21 @@ if !isempty(args)
     )
     for (file, hash) in fig["sources"]
         bytes2hex(sha256(read(joinpath(dir, file))))==hash||error("对偶绘图输入改变")
+    end
+    replaypath=joinpath(dir, "environment-replay.toml")
+    if isfile(replaypath)
+        replay=TOML.parsefile(replaypath)
+        length(replay["identical_files"])==27&&!replay["rerun_solver_executed"]||error(
+            "环境复核范围改变",
+        )
+        bytes2hex(sha256(read(joinpath(@__DIR__, "compare_r5_duality_audits.jl"))))==replay["script_sha256"]||error(
+            "环境复核入口改变",
+        )
+        for (file, hash) in replay["identical_files"]
+            bytes2hex(sha256(read(joinpath(dir, split(file, '/')...))))==hash||error(
+                "环境复核内容改变",
+            )
+        end
     end
     hashes=Dict{String,String}()
     for (base, _, files) in walkdir(dir), file in files

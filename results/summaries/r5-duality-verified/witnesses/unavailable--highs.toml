@@ -1,0 +1,139 @@
+origin = "synthetic"
+original_validation_sha256 = "f2680d512b1a493af18a9903d5b74ba44523c80b8da98b2bf142467bd00f4166"
+parent_result_sha256 = "46709739c7184260ff8a0dc9779b09df9e5e7e7c988a1514787576c2a9e04557"
+record_id = "unavailable--highs"
+schema = "r5-dispatch-duality-witness-v1"
+
+[case]
+T = 1
+ambient_K = [283.15]
+dt_h = 1.0
+name = "unavailable"
+origin = "synthetic"
+schema = "r5-dispatch-case-v1"
+
+    [case.award]
+    P_DA_MW = [0.142]
+    R_down_MW = [0.0]
+    R_up_MW = [0.1]
+    down_price = [2.0]
+    energy_price = [100.0]
+    origin = "synthetic"
+    up_price = [5.0]
+
+    [[case.buildings]]
+    COP_DH = 1.0
+    C_MWh_K = 0.01
+    G_MW_K = 0.0042
+    P_DH_max_MW = 0.0
+    R_max_K = 320.15
+    R_min_K = 320.15
+    T_initial_K = 293.15
+    T_max_K = 293.15
+    T_min_K = 293.15
+    electric_node = 2
+    heat_node = 2
+    id = "building"
+    m_kg_s = 1.0
+    terminal_rule = "initial"
+
+    [[case.devices]]
+    cost_USD_MWh = 0.0
+    heat_ratio = 1.0
+    id = "EB"
+    kind = "EB"
+    node = 2
+    p_max_MW = 0.1
+    p_min_MW = 0.0
+    q_max_Mvar = 0.0
+    q_min_Mvar = 0.0
+    source_id = "source"
+    [[case.devices]]
+    P_initial_MW = 0.0
+    cost_USD_MWh = 130.0
+    id = "GT"
+    kind = "GT"
+    node = 2
+    p_max_MW = 0.0
+    p_min_MW = 0.0
+    q_max_Mvar = 0.0
+    q_min_Mvar = 0.0
+    ramp_down_MW_h = 1.0
+    ramp_up_MW_h = 1.0
+
+    [case.electric]
+    P_load_MW = [[0.0], [0.1]]
+    Q_load_Mvar = [[0.0], [0.02]]
+    S_base_MVA = 1.0
+    nodes = 2
+    pcc_max_MW = 1.0
+    pcc_min_MW = 0.0
+    qcc_max_Mvar = 1.0
+    qcc_min_Mvar = -1.0
+    root = 1
+    v_max_pu = 1.05
+    v_min_pu = 0.95
+    v_ref_pu = 1.0
+
+        [[case.electric.lines]]
+        P_limit_MW = 1.0
+        Q_limit_Mvar = 1.0
+        from = 1
+        id = "e12"
+        r_pu = 0.01
+        to = 2
+        x_pu = 0.005
+
+    [case.heat]
+    R_max_K = 343.15
+    R_min_K = 293.15
+    S_max_K = 353.15
+    S_min_K = 303.15
+    c_J_kgK = 4200.0
+    nodes = 2
+    terminal_rule = "free"
+
+        [[case.heat.pipes]]
+        area_m2 = 0.01
+        from = 1
+        history_R_K = [320.15]
+        history_S_K = [330.15]
+        id = "h12"
+        length_m = 360.0
+        loss_W_mK = 0.0
+        m_kg_s = 1.0
+        rho_kg_m3 = 1000.0
+        to = 2
+
+        [[case.heat.sources]]
+        T_max_K = 330.15
+        T_min_K = 330.15
+        id = "source"
+        m_kg_s = 1.0
+        node = 1
+
+    [case.realtime]
+    alpha_down = [0.0]
+    alpha_up = [1.0]
+    delta = 0.0
+    penalty_USD_MWh = 1000.0
+    price = [100.0]
+
+    [case.units]
+    energy = "MWh"
+    energy_price = "USD/MWh"
+    flow = "kg/s"
+    heat_capacity = "MWh/K"
+    heat_transfer = "MW/K"
+    power = "MW"
+    reactive = "Mvar"
+    reserve_price = "USD/(MW*h)"
+    temperature = "K"
+    time = "h"
+
+[result]
+case_sha256 = "ad119edbb5c2ca5a471368f4c8bdc40380d8df15d7638aa2b2dc8b00514197cd"
+run_id = "r5-dispatch-1426aad8-ae37-42f5-8812-b935116b4396"
+schema = "r5-dispatch-result-v1"
+status = "solver_infeasible"
+version = "r5_dispatch_checked_v1"

@@ -52,6 +52,7 @@
     }
   ],
   "tasks": [
+    {"label":"PaperRebuild: R5 recourse duality frozen evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_duality.jl","results/summaries/r5-duality-verified"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R5 recourse duality tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_dispatch_duality.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R5 recourse duality mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_duality.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R5 recourse duality audit saved","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/audit_r5_dispatch_duality.jl","${input:r5DispatchStudy}","${input:r5DualityReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},

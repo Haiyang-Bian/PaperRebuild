@@ -1,0 +1,224 @@
+origin = "synthetic"
+original_validation_sha256 = "fd2f5f16e3695f1e079ce0971927c4f72fb12657e300750aa160f282f31bd80d"
+parent_result_sha256 = "f5e3ec5705d7eaedaa4783b6a66a4db9e9fdadeb39579bbd3ba0fa91d2549215"
+record_id = "down--clarabel"
+schema = "r5-dispatch-duality-witness-v1"
+
+[case]
+T = 1
+ambient_K = [283.15]
+dt_h = 1.0
+name = "hand_down"
+origin = "synthetic"
+schema = "r5-dispatch-case-v1"
+
+    [case.award]
+    P_DA_MW = [0.122]
+    R_down_MW = [0.02]
+    R_up_MW = [0.0]
+    down_price = [2.0]
+    energy_price = [100.0]
+    origin = "synthetic"
+    up_price = [5.0]
+
+    [[case.buildings]]
+    COP_DH = 1.0
+    C_MWh_K = 0.01
+    G_MW_K = 0.0042
+    P_DH_max_MW = 0.0
+    R_max_K = 320.15
+    R_min_K = 320.15
+    T_initial_K = 293.15
+    T_max_K = 293.15
+    T_min_K = 293.15
+    electric_node = 2
+    heat_node = 2
+    id = "building"
+    m_kg_s = 1.0
+    terminal_rule = "initial"
+
+    [[case.devices]]
+    cost_USD_MWh = 0.0
+    heat_ratio = 1.0
+    id = "EB"
+    kind = "EB"
+    node = 2
+    p_max_MW = 0.1
+    p_min_MW = 0.0
+    q_max_Mvar = 0.0
+    q_min_Mvar = 0.0
+    source_id = "source"
+    [[case.devices]]
+    P_initial_MW = 0.0
+    cost_USD_MWh = 130.0
+    id = "GT"
+    kind = "GT"
+    node = 2
+    p_max_MW = 0.0
+    p_min_MW = 0.0
+    q_max_Mvar = 0.0
+    q_min_Mvar = 0.0
+    ramp_down_MW_h = 1.0
+    ramp_up_MW_h = 1.0
+
+    [case.electric]
+    P_load_MW = [[0.0], [0.1]]
+    Q_load_Mvar = [[0.0], [0.02]]
+    S_base_MVA = 1.0
+    nodes = 2
+    pcc_max_MW = 1.0
+    pcc_min_MW = 0.0
+    qcc_max_Mvar = 1.0
+    qcc_min_Mvar = -1.0
+    root = 1
+    v_max_pu = 1.05
+    v_min_pu = 0.95
+    v_ref_pu = 1.0
+
+        [[case.electric.lines]]
+        P_limit_MW = 1.0
+        Q_limit_Mvar = 1.0
+        from = 1
+        id = "e12"
+        r_pu = 0.01
+        to = 2
+        x_pu = 0.005
+
+    [case.heat]
+    R_max_K = 343.15
+    R_min_K = 293.15
+    S_max_K = 353.15
+    S_min_K = 303.15
+    c_J_kgK = 4200.0
+    nodes = 2
+    terminal_rule = "free"
+
+        [[case.heat.pipes]]
+        area_m2 = 0.01
+        from = 1
+        history_R_K = [320.15]
+        history_S_K = [330.15]
+        id = "h12"
+        length_m = 360.0
+        loss_W_mK = 0.0
+        m_kg_s = 1.0
+        rho_kg_m3 = 1000.0
+        to = 2
+
+        [[case.heat.sources]]
+        T_max_K = 330.15
+        T_min_K = 330.15
+        id = "source"
+        m_kg_s = 1.0
+        node = 1
+
+    [case.realtime]
+    alpha_down = [1.0]
+    alpha_up = [0.0]
+    delta = 0.0
+    penalty_USD_MWh = 1000.0
+    price = [100.0]
+
+    [case.units]
+    energy = "MWh"
+    energy_price = "USD/MWh"
+    flow = "kg/s"
+    heat_capacity = "MWh/K"
+    heat_transfer = "MW/K"
+    power = "MW"
+    reactive = "Mvar"
+    reserve_price = "USD/(MW*h)"
+    temperature = "K"
+    time = "h"
+
+[result]
+case_sha256 = "f78443a069339606fab46248daf5353def584e486f47d99f9035dc683228b19a"
+run_id = "r5-dispatch-c1013bb4-5790-418d-bba3-d6fb71abd033"
+schema = "r5-dispatch-result-v1"
+solver_objective = 14.160000000000005
+status = "solver_optimal"
+version = "r5_dispatch_checked_v1"
+
+    [result.raw_bound_duals]
+    "H_D/1/1/lower" = 1.5660496962751308e-12
+    "P_DER/1/1/lower" = 2.7999730417036664e-12
+    "P_DER/1/1/upper" = -1.800039676507916e-12
+    "P_DER/2/1/lower" = 228.64372850645356
+    "P_DER/2/1/upper" = -207.80937446290358
+    "P_DH/1/1/lower" = 2059.728808508138
+    "P_DH/1/1/upper" = -2060.677056922623
+    "P_PCC/1/1/lower" = 6.263952661860566e-13
+    "P_PCC/1/1/upper" = -2.5311820071170317e-14
+    "P_line/1/1/lower" = 5.559536935457646e-14
+    "P_line/1/1/upper" = -2.5311820067442835e-14
+    "Q_DER/1/1/lower" = 207.06123229891492
+    "Q_DER/1/1/upper" = -207.06123229891492
+    "Q_DER/2/1/lower" = 207.06123229891492
+    "Q_DER/2/1/upper" = -207.06123229891492
+    "Q_PCC/1/1/lower" = 3.993844368045531e-14
+    "Q_PCC/1/1/upper" = -5.229986926031694e-14
+    "Q_line/1/1/lower" = 3.9938443680461156e-14
+    "Q_line/1/1/upper" = -5.229986926030785e-14
+    "mismatch/1/1/lower" = 328.56403386249184
+    "v/1/1/lower" = 2.190279587368024e-12
+    "v/1/1/upper" = -2.1902795873641578e-12
+    "v/2/1/lower" = 2.2966610013228337e-12
+    "v/2/1/upper" = -2.0930071058922576e-12
+    "τ_IN/1/1/lower" = 225.90782484127922
+    "τ_IN/1/1/upper" = -225.90776306189045
+    "τ_R/1/1/lower" = 4.780975262311124e-15
+    "τ_R/1/1/upper" = -4.92440959858523e-15
+    "τ_R/2/1/lower" = 4.252661648159176e-15
+    "τ_R/2/1/upper" = -5.643533655217684e-15
+    "τ_S/1/1/lower" = 4.290435926832505e-15
+    "τ_S/1/1/upper" = -5.616393317094241e-15
+    "τ_S/2/1/lower" = 4.780975262310799e-15
+    "τ_S/2/1/upper" = -4.924409598586124e-15
+    "τ_load_R/1/1/lower" = 209.07829148427973
+    "τ_load_R/1/1/upper" = -208.6158131279218
+    "τ_src/1/1/lower" = 208.068427302216
+    "τ_src/1/1/upper" = -207.6099315891989
+
+    [result.raw_constraint_duals]
+    "5-10-down/GT/1" = -2.244136111112329e-14
+    "5-10-up/GT/1" = -6.652680499024566e-14
+    "5-14/1/1" = 109.16564595645009
+    "5-14/2/1" = 109.16564595645006
+    "5-15/1/1" = 1.2361425526317388e-14
+    "5-15/2/1" = 2.5741120520744284e-14
+    "5-16/e12/1" = -2.0365389350978779e-13
+    "5-17/root/1" = -2.0365389351157536e-13
+    "5-18/source/1" = 109.16564595644908
+    "5-19/building/1" = -110.11389437093598
+    "5-20/1/1" = 1.325958680904464e-15
+    "5-20/2/1" = -0.46247835635793094
+    "5-21/1/1" = -0.45849571301708597
+    "5-21/2/1" = 1.390872285705047e-15
+    "5-25-26-R/h12/1" = -0.45849571301708597
+    "5-25-26-S/h12/1" = -0.46247835635793094
+    "5-3-minus/PCC/1" = 336.26135231340567
+    "5-3-plus/PCC/1" = 345.4269982698563
+    "5-4/window/0" = -10.252384445753682
+    "R5-D-building/building/1" = -1.1011389437093448
+    "R5-D-delivery/PCC/1" = -109.1656459564507
+    "R5-D-terminal/building/1" = 1.5635555206785057
+
+    [result.values]
+    H_D = [[0.04199999999999997]]
+    P_DER = [[0.04200000000000009], [2.4607174233027746e-17]]
+    P_DH = [[-2.6790196399722264e-17]]
+    P_PCC = [[0.14200000000000002]]
+    P_line = [[0.14200000000000013]]
+    Q_DER = [[-6.592271574620015e-18], [-6.592271574620015e-18]]
+    Q_PCC = [[0.020000000000000018]]
+    Q_line = [[0.020000000000000018]]
+    delivery = [[-0.019999999999999997]]
+    mismatch = [[2.789638819848994e-18]]
+    v = [[1.0], [0.99848]]
+    "τ_IN" = [[293.15]]
+    "τ_R" = [[320.15], [320.15]]
+    "τ_S" = [[330.15], [330.15]]
+    "τ_load_R" = [[320.15]]
+    "τ_pipe_R" = [[320.15]]
+    "τ_pipe_S" = [[330.15]]
+    "τ_src" = [[330.15]]
