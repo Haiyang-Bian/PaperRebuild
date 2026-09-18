@@ -68,13 +68,23 @@ function build_r4_model(
                 set_lower_bound(v[carrier*"_D"][i, t], lo)
                 set_upper_bound(v[carrier*"_D"][i, t], hi)
                 w=v["w_"*carrier][i, t]
-                # (4-4)、(4-21)：选择凸递减不满意度 a(Dmax-D)^2；锥上图保持精确最优值。
+                preferred=on ? r4_preferred_demand(a, carrier, t) : 0.0
+                # (4-4)、R4-B1：显式偏好与可调范围分离；旧输入仍按原上界取锚点。
                 if on && a["sat_"*carrier]>0
+                    # 新版w直接表示每小时不满意度成本，避免5000倍目标系数乘微小平方量。
+                    # a>0下为完全等价的变量缩放，结果元数据保存单位；旧版保持MW²。
+                    cost_scaled=get(d, "preference_model", "")=="explicit_reference_v1"
+                    scale=cost_scaled ? sqrt(a["sat_"*carrier]) : 1.0
                     @constraint(
                         model,
-                        [w, 0.5, hi-v[carrier*"_D"][i, t]] in RotatedSecondOrderCone()
+                        [w, 0.5, scale*(preferred-v[carrier*"_D"][i, t])] in
+                        RotatedSecondOrderCone()
                     )
-                    add_to_expression!(dissatisfaction, dt*a["sat_"*carrier], w)
+                    add_to_expression!(
+                        dissatisfaction,
+                        dt*(cost_scaled ? 1.0 : a["sat_"*carrier]),
+                        w,
+                    )
                 else
                     fix(w, 0; force = true)
                 end
@@ -86,7 +96,7 @@ function build_r4_model(
                     t,
                 ]
             )
-            # R4-P2：t对应时段，E列1对应初态；Δt从MW转为MWh。
+            # R4-P3：t对应时段，E列1对应初态；Δt从MW转为MWh。
             @constraint(
                 model,
                 v["E"][i, t+1]==v["E"][i, t]+dt*(
@@ -117,6 +127,15 @@ function build_r4_model(
         ]-v["P_D"][i, t]
     )
     H_net=@expression(model, [i=1:3, t=1:T], v["H_src"][i, t]-v["H_D"][i, t])
+    if stage!=:local && get(d, "admission_policy", "unrestricted")=="import_only_v1"
+        # R4-B2：预先声明仅购能接入；集中/本地/网络三阶段采用同一边界。
+        # 该制度不自动保证网络容量足够，仍须冻结计划并独立校核。
+        for i in 2:3, t in 1:T
+            active(i) || continue
+            @constraint(model, P_net[i, t]<=0)
+            @constraint(model, H_net[i, t]<=0)
+        end
+    end
     external=AffExpr(0.0)
     settlement=AffExpr(0.0)
     if stage==:local
@@ -139,6 +158,11 @@ function build_r4_model(
             )
             v[carrier*"_buy"]=buy
             v[carrier*"_sell"]=sell
+            if get(d, "admission_policy", "unrestricted")=="import_only_v1"
+                # 买价严格大于卖价：净购能时同时买卖只会增加成本，故可等价消去卖量。
+                # net=-buy与buy>=0已经施加R4-B2，不再重复添加退化的不等式。
+                foreach(x->fix(x, 0.0; force = true), sell)
+            end
             net=carrier=="P" ? P_net : H_net
             for t in 1:T
                 @constraint(model, net[actor, t]==sell[t]-buy[t])

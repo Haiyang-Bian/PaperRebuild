@@ -1780,6 +1780,16 @@
           "path": "docs/src/ch04-results.md",
           "name": "ch04-results.md",
           "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch04-baseline.md",
+          "name": "ch04-baseline.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/reproduction-coverage.md",
+          "name": "reproduction-coverage.md",
+          "isDirectory": false
         }
       ],
       "order": 1,
@@ -1880,6 +1890,11 @@
         {
           "path": "docs/agent/tasks/2026-09-18-r4-central.md",
           "name": "2026-09-18-r4-central.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/agent/tasks/2026-09-18-r4-baseline.md",
+          "name": "2026-09-18-r4-baseline.md",
           "isDirectory": false
         }
       ],
@@ -2072,6 +2087,11 @@
           "path": "src/verification/r4.jl",
           "name": "r4.jl",
           "isDirectory": false
+        },
+        {
+          "path": "src/verification/r4_baseline.jl",
+          "name": "r4_baseline.jl",
+          "isDirectory": false
         }
       ],
       "order": 3,
@@ -2201,6 +2221,31 @@
         },
         {
           "path": "configs/r4/study.toml",
+          "name": "study.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r4/baseline/import_fixed.toml",
+          "name": "import_fixed.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r4/baseline/import_flexible.toml",
+          "name": "import_flexible.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r4/baseline/open_fixed.toml",
+          "name": "open_fixed.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r4/baseline/open_flexible.toml",
+          "name": "open_flexible.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r4/baseline/study.toml",
           "name": "study.toml",
           "isDirectory": false
         }
@@ -2353,6 +2398,11 @@
         {
           "path": "docs/reading/ch04/symbols.toml",
           "name": "symbols.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch04/baseline-model.toml",
+          "name": "baseline-model.toml",
           "isDirectory": false
         }
       ],
@@ -8896,6 +8946,11 @@
           "path": "test/r4.jl",
           "name": "r4.jl",
           "isDirectory": false
+        },
+        {
+          "path": "test/r4_baseline.jl",
+          "name": "r4_baseline.jl",
+          "isDirectory": false
         }
       ],
       "order": 7,
@@ -9621,6 +9676,36 @@
         {
           "path": "scripts/publish_r4_assets.jl",
           "name": "publish_r4_assets.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r4_baseline.jl",
+          "name": "check_r4_baseline.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/diagnose_r4_baseline.jl",
+          "name": "diagnose_r4_baseline.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/freeze_r4_baseline.jl",
+          "name": "freeze_r4_baseline.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/plot_r4_baseline.jl",
+          "name": "plot_r4_baseline.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/report_r4_baseline.jl",
+          "name": "report_r4_baseline.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/study_r4_baseline.jl",
+          "name": "study_r4_baseline.jl",
           "isDirectory": false
         }
       ],

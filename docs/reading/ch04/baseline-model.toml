@@ -1,0 +1,65 @@
+schema = "ch04-project-baseline-v1"
+model = "r4_baseline_checked_v1"
+origin = "project_extension"
+original_basis = ["ch04-004", "ch04-017", "ch04-018", "ch04-056", "ch04-057"]
+not_claimed = ["author_independent_policy", "nash_bargaining", "full_thermal_physics"]
+
+[[equation]]
+id = "R4-B1"
+meaning = "显式固定偏好与负荷可调范围分离"
+formula = 'C_sat=dt*sum(a*(D_preferred-D)^2)'
+api = "r4_preferred_demand"
+source = "src/core/r4.jl"
+test = "R4 fixed preference and implementable baseline"
+status = "implemented"
+
+[[equation]]
+id = "R4-B1a"
+meaning = "不满意度上图等价缩放，费用变量为合成美元每小时"
+formula = '(w,1/2,sqrt(a)*(D_preferred-D)) in rotated_cone; C_sat=dt*w'
+api = "build_r4_model"
+source = "src/formulations/r4.jl"
+test = "R4 fixed preference and implementable baseline"
+status = "implemented"
+
+[[equation]]
+id = "R4-B2"
+meaning = "仅购能接入边界在三个求解阶段一致"
+formula = 'P_net<=0; H_net<=0; i in {A,B}'
+api = "build_r4_model"
+source = "src/formulations/r4.jl"
+test = "R4 fixed preference and implementable baseline"
+status = "implemented"
+
+[[equation]]
+id = "R4-B3"
+meaning = "可实施同输入基线与集中协调的资源节约及效用恒等式"
+formula = 'S=C_AG0-C_SWM=sum(U_SWM-U_AG0)'
+api = "r4_coordination_surplus"
+source = "src/verification/r4_baseline.jl"
+test = "R4 fixed preference and implementable baseline"
+status = "implemented"
+
+[[symbol]]
+id = "r4-preferred-demand"
+latex = '\widehat D^c_{i,t}'
+meaning = "固定的用能偏好，独立于可调边界"
+unit = "MW"
+code = "P_preferred[t], H_preferred[t]"
+category = "parameter"
+
+[[symbol]]
+id = "r4-disagreement-utility"
+latex = 'U_i^{AG0}'
+meaning = "同一接入制度下通过网络校核的独立运营效用"
+unit = "USD_synthetic"
+code = "disagreement_utility"
+category = "derived"
+
+[[symbol]]
+id = "r4-coordination-surplus"
+latex = 'S'
+meaning = "资源成本节约，排除内部转账"
+unit = "USD_synthetic"
+code = "resource_saving"
+category = "derived"

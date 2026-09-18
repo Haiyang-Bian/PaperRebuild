@@ -8,6 +8,9 @@ function r4_science_hashes()
         "scripts/study_r4.jl",
         "scripts/freeze_r4.jl",
         "configs/r4/study.toml",
+        "scripts/freeze_r4_baseline.jl",
+        "scripts/study_r4_baseline.jl",
+        "configs/r4/baseline/study.toml",
     )
         hashes[rel]=bytes2hex(sha256(read(joinpath(root, rel))))
     end
@@ -34,7 +37,7 @@ function r4_solve_stage(
     bestcost=Inf
     result=Dict{String,Any}(
         "input_sha256"=>c.sha256,
-        "spec"=>r4_spec(spec),
+        "spec"=>r4_spec(spec, c),
         "stage"=>String(stage),
         "actor"=>actor,
     )
@@ -173,7 +176,7 @@ function solve_r4_case(
         else
             r=Dict{String,Any}(
                 "input_sha256"=>c.sha256,
-                "spec"=>r4_spec(spec),
+                "spec"=>r4_spec(spec, c),
                 "status"=>"local_stage_failed",
                 "failed_stage_status"=>last(locals)["status"],
                 "cost_optimization_complete"=>false,

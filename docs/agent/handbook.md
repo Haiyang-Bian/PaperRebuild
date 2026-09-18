@@ -61,6 +61,10 @@ R4首批正式证据见[结果与边界](../src/ch04-results.md)。AG0有热过�
 区分同调度支付转移和资源收益；固定负荷退化改变偏好锚点，不作灵活性价值结论。
 R4结果由check_r4_artifacts.jl检查摘要哈希；重绘不写入原运行目录，避免破坏其文件清单。
 
+R4新基线见[可实施分歧点](../src/ch04-baseline.md)。偏好参数与flex分离；仅购能制度须在本地/集中/网络三阶段一致。
+它是项目对照制度，不能冒充作者设置。没有通过网络原关系校核的分歧点不得生成收益率。
+成本、内部支付和个体效用分别核算；完整热网温度可实现性仍未验证。全论文剩余工作见[覆盖清单](../src/reproduction-coverage.md)。
+
 R3第五批见[独立基线](../src/ch03-r3-baseline.md)和[归因结果](../src/ch03-r3-baseline-results.md)。
 显式r3_paper_structure_v1不调用v2/v3恢复；检查源码调用边界和真实阶段记录。
 冻结规则在configs/r3/baseline-study.toml；旧尾段与bounded_return_tail必须显式区分，旧默认不变。

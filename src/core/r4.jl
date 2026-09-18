@@ -62,6 +62,10 @@ function r4_check(d)
         "money"=>"USD_synthetic",
     ) || error("单位错误")
     d["p2p_enabled"] isa Bool || error("交易开关错误")
+    get(d, "preference_model", "legacy_upper_bound") in
+    ("legacy_upper_bound", "explicit_reference_v1") || error("未知负荷偏好规则")
+    get(d, "admission_policy", "unrestricted") in ("unrestricted", "import_only_v1") ||
+        error("未知网络接入制度")
     length(d["grid_price"])==T && all(nonneg, d["grid_price"]) || error("外部电价错误")
     a=d["actors"]
     length(a)==3 && [x["id"] for x in a]==["DSO", "A", "B"] && [x["node"] for x in a]==[1, 2, 3] || error("主体归属错误")
@@ -94,6 +98,15 @@ function r4_check(d)
         0<=x["BS_initial"]<=x["BS_energy_max"] || error("初始能量越界")
         for k in ("P_load", "H_load", "PV_profile")
             length(x[k])==T && all(nonneg, x[k]) || error("时序输入错误")
+        end
+        for carrier in ("P", "H")
+            key=carrier*"_preferred"
+            if get(d, "preference_model", "legacy_upper_bound")=="explicit_reference_v1"
+                haskey(x, key) && length(x[key])==T && all(nonneg, x[key]) ||
+                    error("显式偏好须为完整有限非负时序: "*key)
+            else
+                !haskey(x, key) || error("偏好时序必须显式选择explicit_reference_v1")
+            end
         end
         all(x["PV_profile"] .<= 1) || error("光伏可用比例错误")
         pbound=max(
@@ -137,12 +150,34 @@ function r4_check(d)
     return true
 end
 
-# R4-P4：U按单根管道定义；供回水相对环境的温差各计一次；W显式转换为MW。
+# R4-P5：U按单根管道定义；供回水相对环境的温差各计一次；W显式转换为MW。
 r4_loss(p) = 1e-6*p["U_W_mK"]*p["length_m"]*(p["S_ref_K"]+p["R_ref_K"]-2*p["ambient_K"])
+
+"""
+    r4_preferred_demand(actor, carrier, t)
+
+返回MW单位的负荷偏好锚点，carrier为P或H。显式P_preferred/H_preferred独立于flex；
+旧输入继续使用(1+flex)倍参考负荷，不迁移历史结果。项目式R4-B1与R4基线测试对应。
+偏好允许位于当前可调范围之外；缩小可行域不能同时悄悄改变效用函数。
+"""
+function r4_preferred_demand(actor, carrier, t)
+    carrier in ("P", "H") || error("偏好仅支持P/H负荷")
+    key=carrier*"_preferred"
+    return haskey(actor, key) ? actor[key][t] : (1+actor["flex"])*actor[carrier*"_load"][t]
+end
+
 r4_matrix(x) = reduce(vcat, permutedims.(x))
 r4_rows(x::AbstractMatrix) = [collect(x[i, :]) for i in axes(x, 1)]
-r4_spec(s) = Dict(
-    "operation"=>String(s.operation),
-    "electric"=>String(s.electric),
-    "version"=>"r4_central_checked_v1",
-)
+function r4_spec(s, c = nothing)
+    spec=Dict(
+        "operation"=>String(s.operation),
+        "electric"=>String(s.electric),
+        "version"=>c!==nothing &&
+                   (haskey(c.data, "preference_model") || haskey(c.data, "admission_policy")) ?
+                   "r4_baseline_checked_v1" : "r4_central_checked_v1",
+    )
+    if c!==nothing && get(c.data, "preference_model", "")=="explicit_reference_v1"
+        spec["dissatisfaction_epigraph"]="USD_per_h"
+    end
+    return spec
+end

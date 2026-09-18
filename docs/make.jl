@@ -37,6 +37,7 @@ makedocs(;
         "论文主线与研究边界" => "thesis-overview.md",
         "审读证据与问题台账" => "thesis-audit.md",
         "逐阶段复现计划" => "reproduction-plan.md",
+        "全文完成清单" => "reproduction-coverage.md",
         "验收与科学图表" => "reproduction-acceptance.md",
         "Julia 工具与架构" => "julia-design.md",
         "第3章数据搜集" => "ch03-data.md",
@@ -67,6 +68,7 @@ makedocs(;
             "符号与采用解释" => "ch04-symbols.md",
             "运行与账本教程" => "ch04-tutorial.md",
             "首批实验与收益边界" => "ch04-results.md",
+            "可实施分歧点与固定效用" => "ch04-baseline.md",
         ],
         "API 索引与说明" => "api.md",
         "第 2 章模型与首批实现" => [

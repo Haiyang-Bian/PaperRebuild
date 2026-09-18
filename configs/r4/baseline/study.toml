@@ -1,0 +1,21 @@
+budget_sec = 600
+clarabel_budget_sec = 60
+control = "同偏好/设备/网络/价格；制度与灵活范围分别变化。AG0冻结后仍须网络校核。"
+not_claimed = ["author_data_match", "complete_thermal_physics", "bargaining"]
+origin = "synthetic"
+parent_sha256 = "ba3e43bababf99b9d5064078e05a969b940c88d6f0a4e63a219c3ff17c90def5"
+schema = "r4-baseline-study-v1"
+variants = ["independent_exact", "central_socp", "central_exact"]
+
+[[case]]
+name = "open_flexible"
+sha256 = "7aadd5364225052c196f45a433635d9c412e37ffa3cbf78b0ed1b1791c2231d5"
+[[case]]
+name = "open_fixed"
+sha256 = "ba5e4cbe085086ea8847d397f01d77bf89e12bf2b398c74a0e3bc8a0dce79fd9"
+[[case]]
+name = "import_flexible"
+sha256 = "fcdb954da900fd878194b0a3d72bf2f130ecf057615bd84ae16436d315b9d5ca"
+[[case]]
+name = "import_fixed"
+sha256 = "99b92147e9b1b369bd8903e84a7edfea423a55b47320608dd7ed5ff72f640689"

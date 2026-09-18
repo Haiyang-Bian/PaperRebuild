@@ -95,8 +95,8 @@ function r4_ledger(
             ) for t in 1:T
         )
         dissatisfaction=dt*sum(
-            a[i]["sat_"*carrier]*((1+a[i]["flex"])*a[i][carrier*"_load"][t]-V(carrier*"_D", i, t))^2
-            for carrier in ("P", "H"), t in 1:T
+            a[i]["sat_"*carrier]*(r4_preferred_demand(a[i], carrier, t)-V(carrier*"_D", i, t))^2 for
+            carrier in ("P", "H"), t in 1:T
         )
         external=i==1 && haskey(s, "P_grid") ? dt*sum(d["grid_price"] .* s["P_grid"]) : 0.0
         cost=resource+dissatisfaction+external
@@ -214,12 +214,21 @@ function validate_r4_solution(c::R4Case, result)
                     power_tol,
                 )
                 if x["sat_"*carrier]>0
+                    wscale=get(result["spec"], "dissatisfaction_epigraph", "MW2")=="USD_per_h" ?
+                           x["sat_"*carrier] : 1.0
                     row(
                         "dissatisfaction_epigraph",
                         "model",
                         i,
                         t,
-                        max(((1+x["flex"])*ref-V(carrier*"_D", i, t))^2-V("w_"*carrier, i, t), 0),
+                        max(
+                            (r4_preferred_demand(x, carrier, t)-V(carrier*"_D", i, t))^2-V(
+                                "w_"*carrier,
+                                i,
+                                t,
+                            )/wscale,
+                            0,
+                        ),
                         "MW²",
                         1e-6,
                     )
@@ -279,6 +288,13 @@ function validate_r4_solution(c::R4Case, result)
             t,
         )-V("P_D", i, t)
     Hnet(i, t) = V("H_src", i, t)-V("H_D", i, t)
+    if get(d, "admission_policy", "unrestricted")=="import_only_v1"
+        for i in inds, t in 1:T
+            i==1 && continue
+            row("R4-B2-P", "model", i, t, max(Pnet(i, t), 0.0), "MW", power_tol)
+            row("R4-B2-H", "model", i, t, max(Hnet(i, t), 0.0), "MW", power_tol)
+        end
+    end
     if local_only
         i=only(inds)
         for carrier in ("P", "H"), t in 1:T

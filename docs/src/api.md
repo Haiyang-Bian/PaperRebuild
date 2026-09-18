@@ -140,6 +140,8 @@ PaperRebuild.build_r4_model
 PaperRebuild.solve_r4_case
 PaperRebuild.validate_r4_solution
 PaperRebuild.r4_ledger
+PaperRebuild.r4_preferred_demand
+PaperRebuild.r4_coordination_surplus
 PaperRebuild.save_r4_run
 PaperRebuild.read_r4_run
 PaperRebuild.compare_r4_runs

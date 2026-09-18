@@ -1,5 +1,6 @@
 {
   "inputs": [
+    {"id":"r4BaselineStudy","description":"R4新基线批次study.toml路径","type":"promptString"},
     {"id":"r4RunDirectory","description":"已保存R4运行目录","type":"promptString"},
     {"id":"r4CompareDirectory","description":"同输入的另一个R4运行目录","type":"promptString"},
     {
@@ -25,6 +26,42 @@
     }
   ],
   "tasks": [
+    {
+      "label": "PaperRebuild: R4 baseline freeze",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/freeze_r4_baseline.jl"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 baseline mapping",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/check_r4_baseline.jl"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 baseline experiments",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/study_r4_baseline.jl"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 baseline report",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/report_r4_baseline.jl", "${input:r4BaselineStudy}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 baseline redraw",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=docs", "scripts/plot_r4_baseline.jl", "results/summaries/r4-baseline"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 baseline evidence check",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/check_r4_baseline.jl", "results/summaries/r4-baseline"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
     {
       "label": "PaperRebuild: R4 mapping",
       "type": "process",
