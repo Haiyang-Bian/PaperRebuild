@@ -3,10 +3,12 @@
 使用 Julia 逐步复现博士论文，并沉淀可核查、可接续的研究流程。
 主要智能体为 Codex，IDE 为 VS Code，文件视图使用 CodeGroup。
 
-**当前交付：R4集中式交易与核算基准。**R3阶段归档，保留算法限制和历史判定。
+**当前交付：R4集中核算与可实施运营基线。**R3阶段归档，保留算法限制和历史判定。
 第4章59式已登记；6组合成输入完成18项正式运行及1项开放求解器对照。
 5个集中原电网等式参考通过本批A1，6个独立自调度计划网络校核不可行，失败证据保留。
 内部支付两两抵消，教学P2P结算不保证各方同时受益。原始论文数据、动态热网、重构和议价尚未完成。
+第二批新增13条冻结证据，分离负荷偏好与可调范围；仅购能制度下取得两个可实施AG0，
+灵活例同制度候选节约3.96%，但原零售价下A/B效用下降。该AG0仍缺B局部有效界，不冒称全局策略收益。
 `hello/domath` 仍只是包骨架，不计入科研进度。本轮实现尚未提交到远程。
 
 ## 入口
@@ -27,6 +29,8 @@
 - [v3物理恢复与停止判据](docs/src/ch03-r3-v3.md)、[R3第四批30例结果](docs/src/ch03-r3-v3-results.md)
 - [R3差异归因与阶段边界](docs/src/ch03-r3-baseline-results.md)
 - [第4章模型与账本](docs/src/ch04-models.md)、[R4运行教程](docs/src/ch04-tutorial.md)、[首批结果与图表](docs/src/ch04-results.md)
+- [R4固定效用与可实施基线](docs/src/ch04-baseline.md)、[协调收益与参与条件](docs/src/ch04-baseline-results.md)
+- [全文覆盖与未完成工作](docs/src/reproduction-coverage.md)
 - [Codex 入口](AGENTS.md)与[当前状态](docs/agent/current-state.md)
 - [参与开发](CONTRIBUTING.md)与[来源及许可](NOTICE.md)
 

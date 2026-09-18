@@ -125,6 +125,18 @@ for (col, carrier) in enumerate(("P", "H")), (row, actor) in enumerate(("A", "B"
         )
     end
     hlines!(axis, [0], color = :black, linestyle = :dash)
+    # 同一载能类型共用物理尺度，避免把约1e-10 MW的数值噪声放大成热交易机制。
+    carrier_values=[
+        x.net_MW for x in contracts if startswith(x.run_id, "import_flexible--") &&
+            endswith(x.run_id, "_exact") &&
+            x.carrier==carrier
+    ]
+    span=max(0.01, maximum(abs, carrier_values))
+    ylims!(
+        axis,
+        min(-0.01, minimum(carrier_values)-0.1span),
+        max(0.01, maximum(carrier_values)+0.1span),
+    )
     axislegend(axis, position = :rb, labelsize = 12)
 end
 save(joinpath(dir, "F10.png"), fig)
@@ -143,6 +155,7 @@ write(
             "source_sha256"=>sources,
             "figures"=>["F04", "F10", "F12"],
             "units"=>["residual/A1", "MW", "USD_synthetic"],
+            "F10_y_axes"=>"shared by carrier; saved values not rounded",
         ),
     ),
 )

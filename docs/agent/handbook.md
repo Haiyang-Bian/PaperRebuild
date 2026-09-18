@@ -64,6 +64,8 @@ R4结果由check_r4_artifacts.jl检查摘要哈希；重绘不写入原运行目
 R4新基线见[可实施分歧点](../src/ch04-baseline.md)。偏好参数与flex分离；仅购能制度须在本地/集中/网络三阶段一致。
 它是项目对照制度，不能冒充作者设置。没有通过网络原关系校核的分歧点不得生成收益率。
 成本、内部支付和个体效用分别核算；完整热网温度可实现性仍未验证。全论文剩余工作见[覆盖清单](../src/reproduction-coverage.md)。
+本批13运行见[新基线结果](../src/ch04-baseline-results.md)：两套仅购能AG0网络合格，开放AG0失败保留。
+灵活AG0的B局部OPTIMAL但有效界缺失，不能把完整费用认证改为true。新摘要用check_r4_baseline.jl，旧19记录仍用原检查器。
 
 R3第五批见[独立基线](../src/ch03-r3-baseline.md)和[归因结果](../src/ch03-r3-baseline-results.md)。
 显式r3_paper_structure_v1不调用v2/v3恢复；检查源码调用边界和真实阶段记录。
