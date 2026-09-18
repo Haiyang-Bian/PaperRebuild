@@ -48,6 +48,11 @@ include("formulations/r4_distributed.jl")
 include("algorithms/r4_distributed.jl")
 include("verification/r4_distributed.jl")
 include("reporting/r4_distributed.jl")
+include("algorithms/r4_discrete.jl")
+include("verification/r4_discrete.jl")
+include("reporting/r4_discrete.jl")
+export r4_battery_patterns, reconstruct_r4_cost, solve_r4_discrete
+export validate_r4_discrete, save_r4_discrete_run, read_r4_discrete_run
 export R4DistributedSpec, build_r4_distributed_block, solve_r4_distributed
 export validate_r4_distributed, save_r4_distributed_run, read_r4_distributed_run
 export R4TSPASpec, r4_tspa_scales, solve_r4_tspa

@@ -1,0 +1,38 @@
+schema = "r4-discrete-adoption-v1"
+source = "Project derivation based on adopted R4-P3 storage and R4-D2 distributed model"
+scope = "One battery, finite horizon, fixed topology, steady heat energy flow; not original author algorithm"
+
+[[equation]]
+id = "R4-E1"
+api = "reconstruct_r4_cost"
+meaning = "Cost epigraph closure preserving controls and contracts"
+test = "R4 discrete audit"
+[[equation]]
+id = "R4-E2"
+api = "r4_battery_patterns"
+meaning = "Union of all binary battery mode feasible sets"
+test = "R4 discrete audit"
+[[equation]]
+id = "R4-E3"
+api = "validate_r4_discrete"
+meaning = "Finite mode lower bound and candidate selection"
+test = "R4 discrete audit"
+
+[[symbol]]
+id = "r4-enum-pattern"
+latex = "z_t"
+julia = "modes[t]"
+unit = "dimensionless"
+meaning = "1 permits charging, 0 permits discharging; idle allowed in both"
+[[symbol]]
+id = "r4-enum-bound"
+latex = "L_z"
+julia = "objective_bound"
+unit = "synthetic USD"
+meaning = "Valid same-mode centralized lower bound, never augmented block bound"
+[[symbol]]
+id = "r4-enum-candidate"
+latex = "U_z"
+julia = "operating_cost"
+unit = "synthetic USD"
+meaning = "Independently accepted model candidate cost, not necessarily original-grid feasible"

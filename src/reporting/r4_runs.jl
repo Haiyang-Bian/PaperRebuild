@@ -17,6 +17,8 @@ function r4_science_hashes()
         "configs/r4/tspa-study.toml",
         "scripts/study_r4_distributed.jl",
         "configs/r4/distributed-study.toml",
+        "scripts/study_r4_discrete.jl",
+        "configs/r4/discrete-study.toml",
     )
         hashes[rel]=bytes2hex(sha256(read(joinpath(root, rel))))
     end

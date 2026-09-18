@@ -47,6 +47,7 @@
 - `configs/r4/baseline/open_flexible.toml`
 - `configs/r4/baseline/study.toml`
 - `configs/r4/capacity_infeasible.toml`
+- `configs/r4/discrete-study.toml`
 - `configs/r4/distributed-study.toml`
 - `configs/r4/electric_bottleneck.toml`
 - `configs/r4/fixed_load.toml`
@@ -76,6 +77,7 @@
 - `docs/agent/tasks/2026-09-18-r4-bargaining.md`
 - `docs/agent/tasks/2026-09-18-r4-baseline.md`
 - `docs/agent/tasks/2026-09-18-r4-central.md`
+- `docs/agent/tasks/2026-09-18-r4-discrete.md`
 - `docs/agent/tasks/2026-09-18-r4-distributed.md`
 - `docs/agent/tasks/2026-09-18-r4-tspa.md`
 - `docs/make.jl`
@@ -102,6 +104,7 @@
 - `docs/reading/ch03/thesis-parameters.toml`
 - `docs/reading/ch04/bargaining.toml`
 - `docs/reading/ch04/baseline-model.toml`
+- `docs/reading/ch04/discrete.toml`
 - `docs/reading/ch04/distributed.toml`
 - `docs/reading/ch04/formulas.toml`
 - `docs/reading/ch04/issues.toml`
@@ -242,6 +245,7 @@
 - `docs/src/ch04-bargaining.md`
 - `docs/src/ch04-baseline-results.md`
 - `docs/src/ch04-baseline.md`
+- `docs/src/ch04-discrete.md`
 - `docs/src/ch04-distributed-equations.md`
 - `docs/src/ch04-distributed-results.md`
 - `docs/src/ch04-distributed.md`
@@ -372,6 +376,8 @@
 - `scripts/check_r4_artifacts.jl`
 - `scripts/check_r4_bargaining.jl`
 - `scripts/check_r4_baseline.jl`
+- `scripts/check_r4_discrete.jl`
+- `scripts/check_r4_discrete_artifacts.jl`
 - `scripts/check_r4_distributed.jl`
 - `scripts/check_r4_distributed_artifacts.jl`
 - `scripts/check_r4_tspa.jl`
@@ -424,11 +430,13 @@
 - `scripts/plot_r4.jl`
 - `scripts/plot_r4_bargaining.jl`
 - `scripts/plot_r4_baseline.jl`
+- `scripts/plot_r4_discrete.jl`
 - `scripts/plot_r4_distributed.jl`
 - `scripts/plot_r4_summary.jl`
 - `scripts/plot_r4_tspa.jl`
 - `scripts/prepare_r1_summary.jl`
 - `scripts/preview.jl`
+- `scripts/probe_r4_discrete.jl`
 - `scripts/probe_r4_distributed.jl`
 - `scripts/publish_r3_v2_report.jl`
 - `scripts/publish_r3_v3_audit_addendum.jl`
@@ -463,6 +471,7 @@
 - `scripts/report_r4.jl`
 - `scripts/report_r4_bargaining.jl`
 - `scripts/report_r4_baseline.jl`
+- `scripts/report_r4_discrete.jl`
 - `scripts/report_r4_distributed.jl`
 - `scripts/report_r4_tspa.jl`
 - `scripts/requirements-reading.txt`
@@ -473,6 +482,7 @@
 - `scripts/study_r4.jl`
 - `scripts/study_r4_bargaining.jl`
 - `scripts/study_r4_baseline.jl`
+- `scripts/study_r4_discrete.jl`
 - `scripts/study_r4_distributed.jl`
 - `scripts/study_r4_tspa.jl`
 - `scripts/summarize_r3_audit.jl`
@@ -486,6 +496,7 @@
 - `scripts/test_r3_v2.jl`
 - `scripts/test_r3_v3.jl`
 - `scripts/test_r4.jl`
+- `scripts/test_r4_discrete.jl`
 - `scripts/test_r4_distributed.jl`
 - `scripts/test_r4_tspa.jl`
 - `scripts/tighten_r4_distributed_cost.jl`
@@ -503,6 +514,7 @@
 - `src/algorithms/r3_v2.jl`
 - `src/algorithms/r3_v3.jl`
 - `src/algorithms/r4_bargaining.jl`
+- `src/algorithms/r4_discrete.jl`
 - `src/algorithms/r4_distributed.jl`
 - `src/algorithms/r4_tspa.jl`
 - `src/components/devices.jl`
@@ -525,6 +537,7 @@
 - `src/reporting/r3_baseline.jl`
 - `src/reporting/r3_modes.jl`
 - `src/reporting/r3_runs.jl`
+- `src/reporting/r4_discrete.jl`
 - `src/reporting/r4_distributed.jl`
 - `src/reporting/r4_runs.jl`
 - `src/reporting/r4_tspa.jl`
@@ -537,6 +550,7 @@
 - `src/verification/r4.jl`
 - `src/verification/r4_bargaining.jl`
 - `src/verification/r4_baseline.jl`
+- `src/verification/r4_discrete.jl`
 - `src/verification/r4_distributed.jl`
 - `src/verification/r4_tspa.jl`
 - `test/ch03_data.jl`
@@ -555,6 +569,7 @@
 - `test/r4.jl`
 - `test/r4_bargaining.jl`
 - `test/r4_baseline.jl`
+- `test/r4_discrete.jl`
 - `test/r4_distributed.jl`
 - `test/r4_tspa.jl`
 - `test/runtests.jl`

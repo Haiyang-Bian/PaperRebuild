@@ -160,6 +160,12 @@ PaperRebuild.solve_r4_distributed
 PaperRebuild.validate_r4_distributed
 PaperRebuild.save_r4_distributed_run
 PaperRebuild.read_r4_distributed_run
+PaperRebuild.r4_battery_patterns
+PaperRebuild.reconstruct_r4_cost
+PaperRebuild.solve_r4_discrete
+PaperRebuild.validate_r4_discrete
+PaperRebuild.save_r4_discrete_run
+PaperRebuild.read_r4_discrete_run
 PaperRebuild.save_r4_run
 PaperRebuild.read_r4_run
 PaperRebuild.compare_r4_runs

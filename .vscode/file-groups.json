@@ -2130,6 +2130,11 @@
           "path": "docs/src/ch04-distributed-results.md",
           "name": "ch04-distributed-results.md",
           "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch04-discrete.md",
+          "name": "ch04-discrete.md",
+          "isDirectory": false
         }
       ],
       "order": 1,
@@ -2250,6 +2255,11 @@
         {
           "path": "docs/agent/tasks/2026-09-18-r4-distributed.md",
           "name": "2026-09-18-r4-distributed.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/agent/tasks/2026-09-18-r4-discrete.md",
+          "name": "2026-09-18-r4-discrete.md",
           "isDirectory": false
         }
       ],
@@ -2502,6 +2512,21 @@
           "path": "src/verification/r4_distributed.jl",
           "name": "r4_distributed.jl",
           "isDirectory": false
+        },
+        {
+          "path": "src/algorithms/r4_discrete.jl",
+          "name": "r4_discrete.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/reporting/r4_discrete.jl",
+          "name": "r4_discrete.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/verification/r4_discrete.jl",
+          "name": "r4_discrete.jl",
+          "isDirectory": false
         }
       ],
       "order": 3,
@@ -2673,6 +2698,11 @@
           "path": "configs/r4/distributed-study.toml",
           "name": "distributed-study.toml",
           "isDirectory": false
+        },
+        {
+          "path": "configs/r4/discrete-study.toml",
+          "name": "discrete-study.toml",
+          "isDirectory": false
         }
       ],
       "order": 4,
@@ -2843,6 +2873,11 @@
         {
           "path": "docs/reading/ch04/distributed.toml",
           "name": "distributed.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch04/discrete.toml",
+          "name": "discrete.toml",
           "isDirectory": false
         }
       ],
@@ -9696,6 +9731,11 @@
           "path": "test/r4_distributed.jl",
           "name": "r4_distributed.jl",
           "isDirectory": false
+        },
+        {
+          "path": "test/r4_discrete.jl",
+          "name": "r4_discrete.jl",
+          "isDirectory": false
         }
       ],
       "order": 7,
@@ -10561,6 +10601,41 @@
         {
           "path": "scripts/tighten_r4_distributed_cost.jl",
           "name": "tighten_r4_distributed_cost.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r4_discrete.jl",
+          "name": "check_r4_discrete.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r4_discrete_artifacts.jl",
+          "name": "check_r4_discrete_artifacts.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/plot_r4_discrete.jl",
+          "name": "plot_r4_discrete.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/probe_r4_discrete.jl",
+          "name": "probe_r4_discrete.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/report_r4_discrete.jl",
+          "name": "report_r4_discrete.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/study_r4_discrete.jl",
+          "name": "study_r4_discrete.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/test_r4_discrete.jl",
+          "name": "test_r4_discrete.jl",
           "isDirectory": false
         }
       ],
