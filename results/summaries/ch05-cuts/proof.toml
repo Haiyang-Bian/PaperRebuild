@@ -1,0 +1,68 @@
+julia = "1.12.6"
+lower_bound = -3.0
+origin = "synthetic_analytic"
+schema = "r5-conditional-cut-audit-v1"
+scope = "Negative-recourse conditional-cut algebra and binary product only; no implemented Benders or convergence claim."
+script_sha256 = "50acde838087d31fe0e45ea9da17baddec2d1f38d85dfbc98888d561f2da6bdd"
+source_pages = [95]
+
+[[records]]
+checked = 1.0
+literal = 1.0
+recourse = 1.0
+x = 0.0
+z = 0
+[[records]]
+checked = -2.0
+literal = 0.0
+recourse = -2.0
+x = 0.0
+z = 1
+[[records]]
+checked = 0.75
+literal = 0.75
+recourse = 0.75
+x = 0.25
+z = 0
+[[records]]
+checked = -2.25
+literal = 0.0
+recourse = -2.25
+x = 0.25
+z = 1
+[[records]]
+checked = 0.5
+literal = 0.5
+recourse = 0.5
+x = 0.5
+z = 0
+[[records]]
+checked = -2.5
+literal = 0.0
+recourse = -2.5
+x = 0.5
+z = 1
+[[records]]
+checked = 0.25
+literal = 0.25
+recourse = 0.25
+x = 0.75
+z = 0
+[[records]]
+checked = -2.75
+literal = 0.0
+recourse = -2.75
+x = 0.75
+z = 1
+[[records]]
+checked = 0.0
+literal = 0.0
+recourse = 0.0
+x = 1.0
+z = 0
+[[records]]
+checked = -3.0
+literal = 0.0
+recourse = -3.0
+x = 1.0
+z = 1

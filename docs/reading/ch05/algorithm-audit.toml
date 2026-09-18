@@ -1,0 +1,50 @@
+schema = "ch05-algorithm-audit-v1"
+source = "docs/摘要.pdf"
+source_sha256 = "20328e2480e773520c19c378e53365fc944c0bafcfca73071f5d8313d5ee7d91"
+pdf_pages = [94, 95, 96, 97]
+printed_pages = [77, 78, 79, 80]
+status = "original algorithm structure reviewed; conditional-cut algebra checked separately; no Benders implementation"
+
+[[issue]]
+id = "R5-B01"
+equations = ["5-85", "5-87", "5-88", "5-89", "5-90", "5-91", "5-92"]
+pages = [94, 95]
+status = "conditional_cut_correction_derived"
+original = "For a z=0 branch, (5-91) multiplies its affine lower support by (1-z); (5-92) multiplies the z=1 support by z."
+risk = "Inactive branch imposes theta>=0. Recourse objective includes negative real-time settlement (5-8), so nonnegative recourse is not established. Such deactivation may remove legitimate negative-cost candidates."
+adopted = "Prove a finite scenario lower bound L first. For branch selector b=1 iff z=z_ref, use theta >= L+(ell(x)-L)*b, or a valid bounded indicator equivalent. Retain original forms for comparison. LP subgradients are valid only within their fixed binary comfort branch."
+test_target = "Q0(x)=1-x, Q1(x)=-2-x on [0,1], L=-3. Literal inactive cut rejects negative Q1; lower-bound-shifted cut preserves both branch epigraphs."
+
+[[issue]]
+id = "R5-B02"
+equations = ["5-90", "5-91", "5-92"]
+pages = [95]
+status = "finite_bounds_required"
+adopted = "Binary times bounded affine expression can be linearized exactly. Require finite bounds, inspect four McCormick rows, and test both binary endpoints. Do not apply continuous bilinear relaxation as exact equality."
+remaining = "Production cuts must derive bounds from the actual first-stage domain, not a large unverified constant."
+
+[[issue]]
+id = "R5-B03"
+equations = ["5-85", "5-93"]
+pages = [94, 95, 97]
+status = "bounds_and_distribution_scope"
+evidence = "The master objective uses a current worst distribution, and algorithm step 2 updates it after solving all recourse problems."
+adopted = "Track valid master lower bounds and feasible all-scenario upper bounds separately. A selected-distribution lower approximation is not a verified worst-cost value at an arbitrary candidate. Retain prior valid bounds; a future accumulating distribution-cut or transport-dual master is a project implementation choice to document."
+remaining = "Finite termination and any convergence claim need assumptions for the adopted complete algorithm, not just the probability LP."
+
+[[issue]]
+id = "R5-B04"
+equations = ["5-94", "5-95", "5-96", "5-97", "5-98", "5-99", "5-100", "5-101", "5-102"]
+pages = [95, 96, 97]
+status = "feasibility_screening_requires_audit"
+evidence = "Original ranks scenario elastic objectives, inserts selected full recourse constraints, and later checks all scenarios again; z outside the critical set is fixed zero."
+adopted = "Scenario omission must end with all-scenario recourse and risk verification. Distinguish intended allowed comfort violation at z=1 from hard physical infeasibility. Elastic objectives require explicit frozen unit scales; an elastic optimum is not a physical solution."
+remaining = "Derive the signs of H positive/negative parts in the Big-M bound, ensure finite recourse bounds, and preserve infeasible diagnostic status. Do not infer relatively complete recourse from a few successful scenarios."
+
+[[issue]]
+id = "R5-B05"
+equations = ["5-93"]
+pages = [97]
+status = "stopping_threshold_missing"
+evidence = "Text step 2.c stops at UB <= LB + sigma with sigma described only as a sufficiently small positive number; flowchart omits sigma."
+adopted = "Freeze project absolute/relative tolerances before runs and report them separately from the author statement. No concrete author sigma is inferred."

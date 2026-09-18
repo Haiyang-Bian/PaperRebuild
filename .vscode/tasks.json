@@ -40,6 +40,14 @@
     }
   ],
   "tasks": [
+    {"label":"PaperRebuild: R5 frozen artifacts","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_ch05_artifacts.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 cut audit","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/audit_ch05_cuts.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 input transcription","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_ch05_inputs.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 probability audit","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/audit_ch05_probability.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 probability evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_ch05_probability.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 thermal validate","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/validate_r4_thermal.jl","${input:r4ThermalStudy}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 thermal report","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/report_r4_thermal.jl","${input:r4ThermalStudy}","${input:r4ThermalReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 thermal redraw","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r4_thermal.jl","${input:r4ThermalReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R4 thermal mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r4_thermal.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R4 thermal tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r4_thermal.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R4 thermal Gurobi checks","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r4_thermal.jl","--gurobi"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},

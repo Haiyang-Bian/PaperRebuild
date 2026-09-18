@@ -2405,6 +2405,31 @@
           "path": "docs/src/ch04-thermal.md",
           "name": "ch04-thermal.md",
           "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/ch05-probability/proof.toml",
+          "name": "proof.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch05-market-audit.md",
+          "name": "ch05-market-audit.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch05-probability-audit.md",
+          "name": "ch05-probability-audit.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/ch05-cuts/proof.toml",
+          "name": "proof.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch05-algorithm-audit.md",
+          "name": "ch05-algorithm-audit.md",
+          "isDirectory": false
         }
       ],
       "order": 1,
@@ -2545,6 +2570,11 @@
         {
           "path": "docs/agent/tasks/2026-09-19-r4-thermal.md",
           "name": "2026-09-19-r4-thermal.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/agent/tasks/2026-09-19-ch05-audit.md",
+          "name": "2026-09-19-ch05-audit.md",
           "isDirectory": false
         }
       ],
@@ -3288,6 +3318,26 @@
         {
           "path": "docs/reading/ch04/thermal.toml",
           "name": "thermal.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch05/market-audit.toml",
+          "name": "market-audit.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch05/probability-audit.toml",
+          "name": "probability-audit.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch05/algorithm-audit.toml",
+          "name": "algorithm-audit.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch05/inputs.toml",
+          "name": "inputs.toml",
           "isDirectory": false
         }
       ],
@@ -10260,6 +10310,16 @@
           "path": "results/summaries/r4-heat/residuals-reference20.csv",
           "name": "residuals-reference20.csv",
           "isDirectory": false
+        },
+        {
+          "path": "results/summaries/ch05-probability/proof.toml",
+          "name": "proof.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/ch05-cuts/proof.toml",
+          "name": "proof.toml",
+          "isDirectory": false
         }
       ],
       "order": 6,
@@ -11411,6 +11471,41 @@
         {
           "path": "scripts/validate_r4_thermal.jl",
           "name": "validate_r4_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/audit_ch05_probability.jl",
+          "name": "audit_ch05_probability.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_ch05_probability.jl",
+          "name": "check_ch05_probability.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r4_thermal_artifacts.jl",
+          "name": "check_r4_thermal_artifacts.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/plot_r4_thermal.jl",
+          "name": "plot_r4_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/audit_ch05_cuts.jl",
+          "name": "audit_ch05_cuts.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_ch05_artifacts.jl",
+          "name": "check_ch05_artifacts.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_ch05_inputs.jl",
+          "name": "check_ch05_inputs.jl",
           "isDirectory": false
         }
       ],

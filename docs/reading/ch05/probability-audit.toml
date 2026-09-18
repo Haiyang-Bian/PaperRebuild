@@ -1,0 +1,52 @@
+schema = "ch05-probability-audit-v1"
+source = "docs/摘要.pdf"
+source_sha256 = "20328e2480e773520c19c378e53365fc944c0bafcfca73071f5d8313d5ee7d91"
+pdf_pages = [92, 93, 94]
+printed_pages = [75, 76, 77]
+status = "Q05 adopted probability semantics derived and analytically tested; original author implementation unknown"
+scope = "Joint event/complement and finite fixed-support probability transport only; no completed chapter-5 dispatch or Benders implementation."
+
+[[equation]]
+id = "ch05-070"
+original = '\inf_{\mathbb P\in\mathbb D}\Pr_{\mathbb P}\{\underline\tau^{IN}\le\tau^{IN}_{j,t,\omega}\le\overline\tau^{IN},\ \forall j,t\}\ge1-\varepsilon,\ \forall\omega\in\Omega'
+page = 93
+interpretation = "联合事件在整个情景轨迹上同时满足指定楼宇/时段上下界；概率对omega取。原式末尾forall omega在采用解释中不作第二层逐情景硬约束。"
+[[equation]]
+id = "ch05-075"
+original = '\inf_{\mathbb P\in\mathbb D}\mathbb E_{\mathbb P}[H^j y_\omega-g_\omega^j>0,\ \forall j]\le1-\varepsilon,\ \forall\omega'
+page = 93
+interpretation = "字面上是全部行违反事件的下确界，既不是联合满足事件，也不是联合违约的最坏概率；保留原式，不直接编码。"
+[[equation]]
+id = "ch05-080"
+original = '\sup_{\mathbb P\in\mathbb D}\mathbb E_{\mathbb P}[H^j y_\omega-g_\omega^j>0,\ \exists j]\le\varepsilon,\ \forall\omega'
+page = 94
+interpretation = "将E[事件]明确写为指示函数期望。除原式末尾情景量词外，与5-70的补事件关系一致，作为采用解释的直接原文依据。"
+[[equation]]
+id = "R5-Q05-1"
+original = '\inf_{\mathbb P\in\mathbb D}\mathbb P(A)\ge1-\varepsilon\quad\Longleftrightarrow\quad\sup_{\mathbb P\in\mathbb D}\mathbb P(A^c)\le\varepsilon,\qquad A^c=\{\exists j:g_j(y_\omega)>0\}'
+interpretation = "非空分布集合下由P(Ac)=1-P(A)直接推导；允许等号落在安全集，严格越界才违反。"
+[[equation]]
+id = "R5-Q05-2"
+original = '\max_{\Pi\ge0}\sum_{i,j}z_i\Pi_{ij}\quad s.t.\quad\sum_i\Pi_{ij}=\hat p_j,\quad\sum_{i,j}d_{ij}\Pi_{ij}\le\rho'
+interpretation = "列j为经验来源，行i为扰动后目的；行和即最坏分布，不再误将行列概率同时固定。有限支持。"
+[[equation]]
+id = "R5-Q05-3"
+original = '\min_{\lambda\ge0,\nu\in\mathbb R^N}\lambda\rho+\sum_j\hat p_j\nu_j\quad s.t.\quad\lambda d_{ij}+\nu_j\ge z_i'
+interpretation = "从运输LP独立求拉格朗日对偶；列和乘子nu自由，lambda非负。风险上界用该值<=epsilon，原式5-77至79具有相同结构。"
+
+[[issue]]
+id = "Q05"
+status = "resolved_for_checked_finite_support_model"
+decision = "采用5-70与5-80一致的最坏联合违约解释。逻辑与概率侧阻断解除；作者实际代码/完整模型仍未知。不得把本次解除扩大为Benders割或样本外保证已经验证。"
+[[issue]]
+id = "R5-Q05-C02"
+status = "declared_scope"
+decision = "有限支持质量运输只能扰动冻结情景的概率。连续支持、轨迹遗漏、训练样本代表性及半径选择不由本LP证明。"
+[[issue]]
+id = "R5-Q05-C03"
+status = "derivation_preferred"
+decision = "5-83列和项的距离因子与5-68需在整章台账续核；本次从5-66/68的运输约束重推，不直接复用排版推导。5-77末尾未定义的k不引入额外集合。"
+[[issue]]
+id = "R5-Q05-C04"
+status = "scope_of_equivalence"
+decision = "z必须覆盖实际联合违约事件。存在二进制z且z=0强制全部舒适约束时，可取z为真实违约指示证明存在性等价；不能拿任意未联动的z解释实际风险。"

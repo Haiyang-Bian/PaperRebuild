@@ -88,6 +88,7 @@
 - `docs/agent/tasks/2026-09-18-r4-discrete.md`
 - `docs/agent/tasks/2026-09-18-r4-distributed.md`
 - `docs/agent/tasks/2026-09-18-r4-tspa.md`
+- `docs/agent/tasks/2026-09-19-ch05-audit.md`
 - `docs/agent/tasks/2026-09-19-r4-heat.md`
 - `docs/agent/tasks/2026-09-19-r4-network.md`
 - `docs/agent/tasks/2026-09-19-r4-thermal.md`
@@ -124,10 +125,16 @@
 - `docs/reading/ch04/symbols.toml`
 - `docs/reading/ch04/thermal.toml`
 - `docs/reading/ch04/tspa.toml`
+- `docs/reading/ch05/algorithm-audit.toml`
+- `docs/reading/ch05/inputs.toml`
+- `docs/reading/ch05/market-audit.toml`
+- `docs/reading/ch05/probability-audit.toml`
 - `docs/reading/source_manifest.json`
 - `docs/reading/sources.json`
 - `docs/src/api.md`
 - `docs/src/assets/ch03/public-load-profiles.svg`
+- `docs/src/assets/ch05-cuts/proof.toml`
+- `docs/src/assets/ch05-probability/proof.toml`
 - `docs/src/assets/custom.css`
 - `docs/src/assets/r2/F05-single-pipe.svg`
 - `docs/src/assets/r2/single-schpd-F04-detail.svg`
@@ -325,6 +332,9 @@
 - `docs/src/ch04-tspa-results.md`
 - `docs/src/ch04-tspa.md`
 - `docs/src/ch04-tutorial.md`
+- `docs/src/ch05-algorithm-audit.md`
+- `docs/src/ch05-market-audit.md`
+- `docs/src/ch05-probability-audit.md`
 - `docs/src/index.md`
 - `docs/src/julia-design.md`
 - `docs/src/quality.md`
@@ -340,6 +350,8 @@
 - `docs/src/workflow.md`
 - `results/runs/README.md`
 - `results/summaries/README.md`
+- `results/summaries/ch05-cuts/proof.toml`
+- `results/summaries/ch05-probability/proof.toml`
 - `results/summaries/r1-first-batch.md`
 - `results/summaries/r1-first-batch/comparison.toml`
 - `results/summaries/r4-bargaining/F04-source.csv`
@@ -458,6 +470,8 @@
 - `results/summaries/r4-tspa/report.toml`
 - `results/summaries/r4-tspa/residuals.csv`
 - `results/summaries/r4-tspa/solver-evidence.csv`
+- `scripts/audit_ch05_cuts.jl`
+- `scripts/audit_ch05_probability.jl`
 - `scripts/audit_r3_baseline_history.jl`
 - `scripts/audit_r3_pg_study.jl`
 - `scripts/audit_r3_v3.jl`
@@ -476,6 +490,9 @@
 - `scripts/check_ch02.jl`
 - `scripts/check_ch03.jl`
 - `scripts/check_ch04.jl`
+- `scripts/check_ch05_artifacts.jl`
+- `scripts/check_ch05_inputs.jl`
+- `scripts/check_ch05_probability.jl`
 - `scripts/check_r1_gurobi.jl`
 - `scripts/check_r1_portability.jl`
 - `scripts/check_r2_build.jl`
@@ -498,6 +515,7 @@
 - `scripts/check_r4_network_artifacts.jl`
 - `scripts/check_r4_reconfiguration.jl`
 - `scripts/check_r4_thermal.jl`
+- `scripts/check_r4_thermal_artifacts.jl`
 - `scripts/check_r4_tspa.jl`
 - `scripts/check_solvers.jl`
 - `scripts/collect_ch03_data.jl`
@@ -557,6 +575,7 @@
 - `scripts/plot_r4_heat_compatibility.jl`
 - `scripts/plot_r4_reconfiguration.jl`
 - `scripts/plot_r4_summary.jl`
+- `scripts/plot_r4_thermal.jl`
 - `scripts/plot_r4_tspa.jl`
 - `scripts/prepare_r1_summary.jl`
 - `scripts/preview.jl`

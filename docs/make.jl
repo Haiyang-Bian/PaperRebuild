@@ -103,6 +103,11 @@ makedocs(;
             "稳态热网采用式与符号" => "ch04-thermal-equations.md",
         ],
         "API 索引与说明" => "api.md",
+        "第5章 市场与风险核查" => [
+            "市场、备用与物理边界" => "ch05-market-audit.md",
+            "联合机会约束概率方向" => "ch05-probability-audit.md",
+            "分解算法与已知输入" => "ch05-algorithm-audit.md",
+        ],
         "第 2 章模型与首批实现" => [
             "模型详解" => "ch02-models.md",
             "符号与代码命名" => "ch02-naming.md",
