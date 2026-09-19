@@ -10935,6 +10935,21 @@
           "path": "docs/src/ch05-strategic-benders-results.md",
           "name": "ch05-strategic-benders-results.md",
           "isDirectory": false
+        },
+        {
+          "path": "docs/src/r6-api.md",
+          "name": "r6-api.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/r6-data.md",
+          "name": "r6-data.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/r6-equations.md",
+          "name": "r6-equations.md",
+          "isDirectory": false
         }
       ],
       "order": 1,
@@ -11135,6 +11150,11 @@
         {
           "path": "docs/agent/tasks/2026-09-19-r5-strategic-benders.md",
           "name": "2026-09-19-r5-strategic-benders.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/agent/tasks/2026-09-19-r6-data.md",
+          "name": "2026-09-19-r6-data.md",
           "isDirectory": false
         }
       ],
@@ -11692,6 +11712,26 @@
           "path": "src/verification/r5_strategic_benders.jl",
           "name": "r5_strategic_benders.jl",
           "isDirectory": false
+        },
+        {
+          "path": "src/algorithms/r6_data.jl",
+          "name": "r6_data.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/core/r6_protocol.jl",
+          "name": "r6_protocol.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/reporting/r6_data.jl",
+          "name": "r6_data.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/verification/r6_statistics.jl",
+          "name": "r6_statistics.jl",
+          "isDirectory": false
         }
       ],
       "order": 3,
@@ -12208,6 +12248,11 @@
           "path": "configs/r5/strategic-benders/study.toml",
           "name": "study.toml",
           "isDirectory": false
+        },
+        {
+          "path": "configs/r6/protocol.toml",
+          "name": "protocol.toml",
+          "isDirectory": false
         }
       ],
       "order": 4,
@@ -12468,6 +12513,11 @@
         {
           "path": "docs/reading/ch05/strategic-benders.toml",
           "name": "strategic-benders.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch05/sample-out.toml",
+          "name": "sample-out.toml",
           "isDirectory": false
         }
       ],
@@ -28061,6 +28111,11 @@
           "path": "test/r5_strategic_benders.jl",
           "name": "r5_strategic_benders.jl",
           "isDirectory": false
+        },
+        {
+          "path": "test/r6.jl",
+          "name": "r6.jl",
+          "isDirectory": false
         }
       ],
       "order": 7,
@@ -29751,6 +29806,36 @@
         {
           "path": "scripts/test_r5_strategic_benders_witness.jl",
           "name": "test_r5_strategic_benders_witness.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/add_r6_stdlib.jl",
+          "name": "add_r6_stdlib.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r6.jl",
+          "name": "check_r6.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r6_data.jl",
+          "name": "check_r6_data.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/freeze_r6_data.jl",
+          "name": "freeze_r6_data.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r6_docs.jl",
+          "name": "r6_docs.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/test_r6.jl",
+          "name": "test_r6.jl",
           "isDirectory": false
         }
       ],

@@ -67,6 +67,8 @@ jobs:
         run: julia --startup-file=no --project=tools/data scripts/bootstrap_data.jl
       - name: Data parser tests (offline fixtures)
         run: julia --startup-file=no --project=tools/data test/ch03_data.jl
+      - name: R6 source and statistical mapping
+        run: julia --startup-file=no --project=. scripts/check_r6.jl
       - name: Julia format
         run: julia --startup-file=no --project=tools scripts/format.jl
       - name: Project checks

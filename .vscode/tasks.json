@@ -82,6 +82,38 @@
     }
   ],
   "tasks": [
+    {
+      "label": "PaperRebuild: R6 statistics and data tests",
+      "type": "process",
+      "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/test_r6.jl"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R6 source and statistical mapping",
+      "type": "process",
+      "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/check_r6.jl"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R6 freeze daily data",
+      "type": "process",
+      "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/freeze_r6_data.jl", "results/summaries/r6-data-v1"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R6 verify frozen daily data",
+      "type": "process",
+      "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/check_r6_data.jl", "results/summaries/r6-data-v1"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": []
+    },
     {"label":"PaperRebuild: R5 strategy Benders frozen rules","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_strategic_benders_study.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R5 strategy Benders formal study","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/study_r5_strategic_benders.jl","${input:r5SBBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R5 strategy Benders formal report","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/report_r5_strategic_benders.jl","${input:r5SBStudy}","${input:r5SBReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},

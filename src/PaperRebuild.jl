@@ -1,7 +1,7 @@
 module PaperRebuild
 
 using JuMP
-using TOML, SHA, Dates, UUIDs, CSV
+using TOML, SHA, Dates, UUIDs, CSV, Random
 
 include("components/devices.jl")
 include("networks/fixed_flow_heat.jl")
@@ -106,6 +106,13 @@ include("reporting/r5_strategic_benders.jl")
 export build_r5_strategic_benders_master, solve_r5_strategic_benders
 export validate_r5_strategic_benders, save_r5_strategic_benders_run, read_r5_strategic_benders_run
 export compare_r5_strategic_benders_runs
+include("core/r6_protocol.jl")
+include("algorithms/r6_data.jl")
+include("verification/r6_statistics.jl")
+include("reporting/r6_data.jl")
+export R6Protocol, load_r6_protocol, R6TrajectorySet, r6_generate_trajectories
+export r6_fit_representatives, r6_support_distance, save_r6_dataset, read_r6_dataset
+export r6_binomial_bounds, r6_risk_evidence, r6_paired_costs
 include("algorithms/r5_market_selection.jl")
 include("core/r5_execution.jl")
 include("formulations/r5_execution.jl")
