@@ -162,6 +162,8 @@ makedocs(;
             "开发实验结果与边界" => "r6-pilot-results.md",
             "新日策略与独立诊断" => "r6-evaluation.md",
             "新日公式与采用边界" => "r6-evaluation-equations.md",
+            "正式训练与参数选择" => "r6-study.md",
+            "选择公式与压力边界" => "r6-study-equations.md",
             "六方法推导与符号" => "r6-method-equations.md",
             "统计公式与来源核查" => "r6-equations.md",
             "数据与统计API" => "r6-api.md",

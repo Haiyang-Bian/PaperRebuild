@@ -81,4 +81,10 @@ function sync_r6_docs()
         "R6新日策略与诊断公式",
         "由r6-evaluation.toml生成；R6-E全部为项目推导，主策略与诊断分开。",
     )
+    r6_render_docs(
+        "r6-study.toml",
+        "r6-study-equations.md",
+        "R6正式选择与压力规则",
+        "由r6-study.toml生成；R6-F全部为项目实验约定，不替换作者参数。",
+    )
 end

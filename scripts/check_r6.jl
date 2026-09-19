@@ -37,3 +37,14 @@ for x in ed["equation"]
         error("R6新日API映射缺失")
 end
 println("R6 evaluation: 4 project equations, 4 symbol groups and 4 scope findings checked.")
+fd=TOML.parsefile(joinpath(root, "docs", "reading", "ch05", "r6-study.toml"))
+fp=read(joinpath(root, "docs", "src", "r6-study-equations.md"), String)
+ft=read(joinpath(root, "test", "r6_study.jl"), String)
+for x in fd["equation"]
+    occursin("\\tag{"*x["id"]*"}", fp)&&occursin(x["test"], ft) || error("R6正式规则/测试映射缺失")
+    Base.Docs.hasdoc(PaperRebuild, Symbol(x["api"]))&&occursin("PaperRebuild."*x["api"], api) ||
+        error("R6正式规则API映射缺失")
+end
+study=load_r6_study(joinpath(root, "configs", "r6", "study.toml"))
+length(r6_study_candidates(study))==14 || error("正式候选数量不同")
+println("R6 study: 3 project rules, 4 symbol groups and 14 candidate configurations checked.")

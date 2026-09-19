@@ -127,6 +127,7 @@
 - `configs/r6/physical-rule.toml`
 - `configs/r6/pilot-rule.toml`
 - `configs/r6/protocol.toml`
+- `configs/r6/study.toml`
 - `data/processed/README.md`
 - `data/raw/README.md`
 - `docs/Manifest.toml`
@@ -170,6 +171,7 @@
 - `docs/agent/tasks/2026-09-19-r6-data.md`
 - `docs/agent/tasks/2026-09-19-r6-evaluation.md`
 - `docs/agent/tasks/2026-09-19-r6-methods.md`
+- `docs/agent/tasks/2026-09-19-r6-study.md`
 - `docs/make.jl`
 - `docs/reading/README.md`
 - `docs/reading/ch02/README.md`
@@ -214,6 +216,7 @@
 - `docs/reading/ch05/probability-audit.toml`
 - `docs/reading/ch05/r6-evaluation.toml`
 - `docs/reading/ch05/r6-methods.toml`
+- `docs/reading/ch05/r6-study.toml`
 - `docs/reading/ch05/recourse-duality.toml`
 - `docs/reading/ch05/risk.toml`
 - `docs/reading/ch05/sample-out.toml`
@@ -605,6 +608,8 @@
 - `docs/src/r6-method-equations.md`
 - `docs/src/r6-methods.md`
 - `docs/src/r6-pilot-results.md`
+- `docs/src/r6-study-equations.md`
+- `docs/src/r6-study.md`
 - `docs/src/reading.md`
 - `docs/src/reproduction-acceptance.md`
 - `docs/src/reproduction-coverage.md`
@@ -1150,6 +1155,8 @@
 - `scripts/r6_docs.jl`
 - `scripts/r6_pilot_replay.jl`
 - `scripts/r6_pilot_report.jl`
+- `scripts/r6_study.jl`
+- `scripts/r6_study_io.jl`
 - `scripts/read_docx.py`
 - `scripts/read_thesis.py`
 - `scripts/recover_r3_v3_checkpoint.jl`
@@ -1249,6 +1256,7 @@
 - `scripts/test_r6_freeze_cli.jl`
 - `scripts/test_r6_methods.jl`
 - `scripts/test_r6_pilot_artifacts.jl`
+- `scripts/test_r6_study.jl`
 - `scripts/test_r6_workflow.jl`
 - `scripts/tighten_r4_distributed_cost.jl`
 - `scripts/validate_ch03_data.jl`
@@ -1309,6 +1317,7 @@
 - `src/core/r6_evaluation.jl`
 - `src/core/r6_methods.jl`
 - `src/core/r6_protocol.jl`
+- `src/core/r6_study.jl`
 - `src/formulations/r1.jl`
 - `src/formulations/r2.jl`
 - `src/formulations/r3.jl`
@@ -1377,6 +1386,7 @@
 - `src/verification/r5_strategic_benders.jl`
 - `src/verification/r6_evaluation.jl`
 - `src/verification/r6_statistics.jl`
+- `src/verification/r6_study.jl`
 - `test/ch03_data.jl`
 - `test/maintenance.tests.ps1`
 - `test/r1.jl`
@@ -1416,6 +1426,7 @@
 - `test/r6.jl`
 - `test/r6_evaluation.jl`
 - `test/r6_methods.jl`
+- `test/r6_study.jl`
 - `test/runtests.jl`
 - `tools/Manifest.toml`
 - `tools/Project.toml`

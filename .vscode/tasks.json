@@ -1,5 +1,6 @@
 {
   "inputs": [
+    {"id":"r6StudyRun","type":"promptString","description":"R6正式批次目录：冻结须新目录，后续操作须同目录","default":"results/runs/r6-formal-20260919-v1"},
     {"id":"r6DayRun","type":"promptString","description":"已保存的R6策略日记录目录"},
     {
       "id": "r6PilotRun",
@@ -95,6 +96,14 @@
     }
   ],
   "tasks": [
+    {"label":"PaperRebuild: R6 formal protocol tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r6_study.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R6 formal freeze","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r6_study.jl","freeze","${input:r6StudyRun}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R6 formal training","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r6_study.jl","train","${input:r6StudyRun}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R6 formal validation","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r6_study.jl","validation","${input:r6StudyRun}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R6 lock selection","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r6_study.jl","select","${input:r6StudyRun}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R6 formal held out test","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r6_study.jl","test","${input:r6StudyRun}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R6 deterministic stress","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r6_study.jl","stress","${input:r6StudyRun}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R6 formal evidence verify","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r6_study.jl","check","${input:r6StudyRun}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R6 new day policy tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r6_evaluation.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R6 saved day verify","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r6_evaluation.jl","${input:r6DayRun}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {

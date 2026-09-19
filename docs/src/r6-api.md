@@ -41,4 +41,9 @@ PaperRebuild.evaluate_r6_day
 PaperRebuild.validate_r6_evaluation
 PaperRebuild.save_r6_evaluation
 PaperRebuild.read_r6_evaluation
+PaperRebuild.R6StudySpec
+PaperRebuild.load_r6_study
+PaperRebuild.r6_study_candidates
+PaperRebuild.r6_summarize_days
+PaperRebuild.select_r6_methods
 ```

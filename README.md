@@ -4,8 +4,8 @@
 主要智能体为 Codex，IDE 为 VS Code，文件视图使用 CodeGroup。
 
 **当前进度以[当前状态](docs/agent/current-state.md)和[全文覆盖清单](docs/src/reproduction-coverage.md)为准。**
-最新研究入口为[第5章连续策略报价](docs/src/ch05-strategic-results.md)及
-[市场执行与内部交付对照](docs/src/ch05-execution-results.md)。
+最新研究入口为[R6六方法开发结果](docs/src/r6-pilot-results.md)、
+[新日策略](docs/src/r6-evaluation.md)和[正式实验协议](docs/src/r6-study.md)。
 目前仍是明确标注的合成模型与方法验证，尚未完成全论文、论文规模或样本外复现。
 
 **以下保留R4历史阶段摘要。**热状态相容性核查的34个父调度在两组预先声明温度带下完成272条阶段记录；

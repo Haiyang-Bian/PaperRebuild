@@ -128,6 +128,9 @@ export build_r6_recourse, evaluate_r6_day, validate_r6_evaluation
 export save_r6_evaluation, read_r6_evaluation
 export r6_support_label, evaluate_r6_policy_day, validate_r6_policy_day
 export save_r6_policy_day, read_r6_policy_day
+include("core/r6_study.jl")
+include("verification/r6_study.jl")
+export R6StudySpec, load_r6_study, r6_study_candidates, r6_summarize_days, select_r6_methods
 include("algorithms/r5_market_selection.jl")
 include("core/r5_execution.jl")
 include("formulations/r5_execution.jl")

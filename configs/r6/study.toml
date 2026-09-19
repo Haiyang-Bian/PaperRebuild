@@ -1,0 +1,49 @@
+schema = "r6-study-v1"
+name = "r6_full_support_v1"
+origin = "synthetic"
+physical = "configs/r6/daily-small.toml"
+dataset = "results/summaries/r6-data-v1"
+methods = ["D", "SP", "RO", "DRO", "CCP", "DRJCC"]
+radii = [0.0, 0.0005, 0.001, 0.005, 0.01]
+epsilon = 0.05
+confidence = 0.95
+training_support = 100
+validation_days = 500
+test_days = 1000
+operation = "r6_support_nearest_v1"
+diagnostic = "not_substituted_for_primary_policy"
+primary_claim = "DRJCC_joint_comfort"
+training_candidate = "independent_model_risk_cost_and_market_pass"
+incomplete_training_optimum = "retain_feasible_policy_and_flag"
+selection = "validated_minimum_mean_cost"
+eligible = "risk_upper_at_most_epsilon_and_all_costs_complete"
+fallback = "minimum_risk_upper_then_missing_costs_then_mean_then_radius"
+cost_tie_USD = 1e-8
+unknown = "keep_denominator_upper_counts_all"
+test_gate = "selection_locked_after_all_validation"
+training_budget_sec = 600.0
+day_budget_sec = 60.0
+training_solver = "gurobi"
+recourse_solver = "highs"
+threads = 1
+solver_seed = 23
+source_policy = "committed_and_snapshotted_before_first_solve"
+warm_start = "none"
+rerun = "never_replace_existing_outcome"
+stress_cases = ["zero_pv_sustained_up", "zero_pv_sustained_down", "clear_pv_sustained_up", "clear_pv_sustained_down"]
+stress_statistic = "separate_deterministic_cases_no_iid_probability_claim"
+
+[solver_parameters.gurobi]
+Threads = 1
+Seed = 23
+FeasibilityTol = 1e-9
+OptimalityTol = 1e-9
+IntFeasTol = 1e-9
+MIPGap = 1e-9
+PreSOS1BigM = 0
+DualReductions = 0
+
+[solver_parameters.highs]
+threads = 1
+primal_feasibility_tolerance = 1e-9
+dual_feasibility_tolerance = 1e-9
