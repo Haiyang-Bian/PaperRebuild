@@ -27,6 +27,8 @@ include(joinpath(@__DIR__, "..", "scripts", "r5_duality_docs.jl"))
 sync_r5_duality_docs()
 include(joinpath(@__DIR__, "..", "scripts", "r5_commitment_docs.jl"))
 sync_r5_commitment_docs()
+include(joinpath(@__DIR__, "..", "scripts", "r5_risk_docs.jl"))
+sync_r5_risk_docs()
 
 makedocs(;
     modules = [PaperRebuild],
@@ -125,6 +127,8 @@ makedocs(;
             "共同日前承诺与多情景" => "ch05-commitment.md",
             "共同承诺推导与符号" => "ch05-commitment-equations.md",
             "共同承诺正式结果" => "ch05-commitment-results.md",
+            "有限支持风险调度" => "ch05-risk.md",
+            "风险推导与符号" => "ch05-risk-equations.md",
             "联合机会约束概率方向" => "ch05-probability-audit.md",
             "分解算法与已知输入" => "ch05-algorithm-audit.md",
         ],

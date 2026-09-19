@@ -82,6 +82,14 @@ include("formulations/r5_commitment.jl")
 include("verification/r5_commitment.jl")
 include("algorithms/r5_commitment.jl")
 include("reporting/r5_commitment.jl")
+include("core/r5_risk.jl")
+include("formulations/r5_risk.jl")
+include("verification/r5_risk.jl")
+include("algorithms/r5_risk.jl")
+include("reporting/r5_risk.jl")
+export R5RiskCase, load_r5_risk_case, build_r5_risk, solve_r5_risk
+export r5_worst_distribution, validate_r5_transport, validate_r5_risk
+export save_r5_risk_run, read_r5_risk_run
 export R5CommitmentCase, load_r5_commitment_case, build_r5_commitment, solve_r5_commitment
 export validate_r5_commitment, save_r5_commitment_run, read_r5_commitment_run
 export validate_r5_dispatch_duals, r5_dispatch_sensitivity, build_r5_dispatch_dual

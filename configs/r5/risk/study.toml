@@ -1,0 +1,166 @@
+budget_sec = 60.0
+frozen_before_optimization = true
+origin = "synthetic"
+schema = "r5-risk-study-rules-v1"
+scope = "Fixed-price finite-support DRO and joint indoor-temperature chance constraints; not strategic bidding, online control, continuous support or out-of-sample reliability."
+
+[files]
+"future_e030_r005.toml" = "e3a85ba4778e94f3bb4dbfe4c881e739e06bb66166e7a8de630f3afcf9748acf"
+"future_hard.toml" = "d6dd9ae6bc6503e175464e1cfdaafa4f89acb784d77e425076578e59e7dbcc86"
+"hard_r020.toml" = "be29cde49a9c611dee040f2ac0adde01eb360535264131b48c82bdd21925a18d"
+"hard_r100.toml" = "d54a57fd87353b7bcaf60645027508000db6cf85924965067192940fdd522456"
+"hard_zero.toml" = "1b4689d803cbf0f9db573c8d56b9b7490fb7b62c7af5080d42033e72671f4f2b"
+"physical_infeasible.toml" = "5488be7813db2ff0b32a6e3029dc0e33c590c815d3970022f2aa21422caf7ca3"
+"quarter.toml" = "a9fa178ef996fa31b663ac51797e132c4942a8c231f02dcd62b1e67cb6d144c1"
+"thermal_e000_r005.toml" = "c14883e5dbc9d84c196f14130a904f16f77c1349c77d9c48330520cbdaf492f8"
+"thermal_e025_r000.toml" = "7a641221041941fe218cde5ac56f368bb31f021670a45bb4467893c00817a815"
+"thermal_e025_r005.toml" = "82042252e86e09acf48e0704a59845f900672ef50736977add8eff70d33eac85"
+"thermal_e030_r005.toml" = "118d20de5f5c841e50844b03d0470e8ef7a88bf921ced8fbdc7b8c4b594133a7"
+"thermal_e100_r000.toml" = "325503066e25e3a3d7db5a4c0e7e5320e06a9a1b9ffc44406e5c7692d05f9b12"
+"thermal_hard.toml" = "8442d30b3819ec7c8d87111fcc58f1b2c23e37fbc6ed2df6a0c934dd294e5f39"
+
+[[runs]]
+case = "future_e030_r005.toml"
+id = "future_e030_r005--highs"
+method = "direct"
+solver = "highs"
+[[runs]]
+case = "future_e030_r005.toml"
+id = "future_e030_r005--clarabel"
+method = "enumeration"
+solver = "clarabel"
+[[runs]]
+case = "future_hard.toml"
+id = "future_hard--highs"
+method = "direct"
+solver = "highs"
+[[runs]]
+case = "future_hard.toml"
+id = "future_hard--clarabel"
+method = "enumeration"
+solver = "clarabel"
+[[runs]]
+case = "hard_r020.toml"
+id = "hard_r020--highs"
+method = "direct"
+solver = "highs"
+[[runs]]
+case = "hard_r020.toml"
+id = "hard_r020--clarabel"
+method = "enumeration"
+solver = "clarabel"
+[[runs]]
+case = "hard_r100.toml"
+id = "hard_r100--highs"
+method = "direct"
+solver = "highs"
+[[runs]]
+case = "hard_r100.toml"
+id = "hard_r100--clarabel"
+method = "enumeration"
+solver = "clarabel"
+[[runs]]
+case = "hard_zero.toml"
+id = "hard_zero--highs"
+method = "direct"
+solver = "highs"
+[[runs]]
+case = "hard_zero.toml"
+id = "hard_zero--clarabel"
+method = "enumeration"
+solver = "clarabel"
+[[runs]]
+case = "physical_infeasible.toml"
+id = "physical_infeasible--highs"
+method = "direct"
+solver = "highs"
+[[runs]]
+case = "physical_infeasible.toml"
+id = "physical_infeasible--clarabel"
+method = "enumeration"
+solver = "clarabel"
+[[runs]]
+case = "quarter.toml"
+id = "quarter--highs"
+method = "direct"
+solver = "highs"
+[[runs]]
+case = "quarter.toml"
+id = "quarter--clarabel"
+method = "enumeration"
+solver = "clarabel"
+[[runs]]
+case = "thermal_e000_r005.toml"
+id = "thermal_e000_r005--highs"
+method = "direct"
+solver = "highs"
+[[runs]]
+case = "thermal_e000_r005.toml"
+id = "thermal_e000_r005--clarabel"
+method = "enumeration"
+solver = "clarabel"
+[[runs]]
+case = "thermal_e025_r000.toml"
+id = "thermal_e025_r000--highs"
+method = "direct"
+solver = "highs"
+[[runs]]
+case = "thermal_e025_r000.toml"
+id = "thermal_e025_r000--clarabel"
+method = "enumeration"
+solver = "clarabel"
+[[runs]]
+case = "thermal_e025_r005.toml"
+id = "thermal_e025_r005--highs"
+method = "direct"
+solver = "highs"
+[[runs]]
+case = "thermal_e025_r005.toml"
+id = "thermal_e025_r005--clarabel"
+method = "enumeration"
+solver = "clarabel"
+[[runs]]
+case = "thermal_e030_r005.toml"
+id = "thermal_e030_r005--highs"
+method = "direct"
+solver = "highs"
+[[runs]]
+case = "thermal_e030_r005.toml"
+id = "thermal_e030_r005--clarabel"
+method = "enumeration"
+solver = "clarabel"
+[[runs]]
+case = "thermal_e100_r000.toml"
+id = "thermal_e100_r000--highs"
+method = "direct"
+solver = "highs"
+[[runs]]
+case = "thermal_e100_r000.toml"
+id = "thermal_e100_r000--clarabel"
+method = "enumeration"
+solver = "clarabel"
+[[runs]]
+case = "thermal_hard.toml"
+id = "thermal_hard--highs"
+method = "direct"
+solver = "highs"
+[[runs]]
+case = "thermal_hard.toml"
+id = "thermal_hard--clarabel"
+method = "enumeration"
+solver = "clarabel"
+[[runs]]
+case = "hard_zero.toml"
+id = "hard_zero--gurobi"
+method = "direct"
+solver = "gurobi"
+[[runs]]
+case = "thermal_e030_r005.toml"
+id = "thermal_e030_r005--gurobi"
+method = "direct"
+solver = "gurobi"
+[[runs]]
+case = "future_e030_r005.toml"
+id = "future_e030_r005--gurobi"
+method = "direct"
+solver = "gurobi"

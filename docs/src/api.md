@@ -247,6 +247,20 @@ PaperRebuild.save_r5_commitment_run
 PaperRebuild.read_r5_commitment_run
 ~~~
 
+## 第5章有限支持风险调度
+
+~~~@docs
+PaperRebuild.R5RiskCase
+PaperRebuild.load_r5_risk_case
+PaperRebuild.build_r5_risk
+PaperRebuild.solve_r5_risk
+PaperRebuild.r5_worst_distribution
+PaperRebuild.validate_r5_transport
+PaperRebuild.validate_r5_risk
+PaperRebuild.save_r5_risk_run
+PaperRebuild.read_r5_risk_run
+~~~
+
 ## 工程示例函数说明
 
 以下两个函数保留自初始化模板，只用于验证包加载、测试和 Documenter 集成，不计入论文复现进度。

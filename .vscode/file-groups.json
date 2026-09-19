@@ -3010,6 +3010,16 @@
           "path": "docs/src/ch05-commitment-results.md",
           "name": "ch05-commitment-results.md",
           "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch05-risk-equations.md",
+          "name": "ch05-risk-equations.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch05-risk.md",
+          "name": "ch05-risk.md",
+          "isDirectory": false
         }
       ],
       "order": 1,
@@ -3175,6 +3185,11 @@
         {
           "path": "docs/agent/tasks/2026-09-19-r5-commitment.md",
           "name": "2026-09-19-r5-commitment.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/agent/tasks/2026-09-19-r5-risk.md",
+          "name": "2026-09-19-r5-risk.md",
           "isDirectory": false
         }
       ],
@@ -3597,6 +3612,31 @@
           "path": "src/verification/r5_commitment.jl",
           "name": "r5_commitment.jl",
           "isDirectory": false
+        },
+        {
+          "path": "src/algorithms/r5_risk.jl",
+          "name": "r5_risk.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/core/r5_risk.jl",
+          "name": "r5_risk.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/formulations/r5_risk.jl",
+          "name": "r5_risk.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/reporting/r5_risk.jl",
+          "name": "r5_risk.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/verification/r5_risk.jl",
+          "name": "r5_risk.jl",
+          "isDirectory": false
         }
       ],
       "order": 3,
@@ -3978,6 +4018,76 @@
           "path": "configs/r5/commitment/unequal_weights.toml",
           "name": "unequal_weights.toml",
           "isDirectory": false
+        },
+        {
+          "path": "configs/r5/risk/future_e030_r005.toml",
+          "name": "future_e030_r005.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/risk/future_hard.toml",
+          "name": "future_hard.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/risk/hard_r020.toml",
+          "name": "hard_r020.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/risk/hard_r100.toml",
+          "name": "hard_r100.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/risk/hard_zero.toml",
+          "name": "hard_zero.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/risk/physical_infeasible.toml",
+          "name": "physical_infeasible.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/risk/quarter.toml",
+          "name": "quarter.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/risk/study.toml",
+          "name": "study.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/risk/thermal_e000_r005.toml",
+          "name": "thermal_e000_r005.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/risk/thermal_e025_r000.toml",
+          "name": "thermal_e025_r000.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/risk/thermal_e025_r005.toml",
+          "name": "thermal_e025_r005.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/risk/thermal_e030_r005.toml",
+          "name": "thermal_e030_r005.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/risk/thermal_e100_r000.toml",
+          "name": "thermal_e100_r000.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r5/risk/thermal_hard.toml",
+          "name": "thermal_hard.toml",
+          "isDirectory": false
         }
       ],
       "order": 4,
@@ -4208,6 +4318,11 @@
         {
           "path": "docs/reading/ch05/commitment.toml",
           "name": "commitment.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch05/risk.toml",
+          "name": "risk.toml",
           "isDirectory": false
         }
       ],
@@ -11916,6 +12031,11 @@
           "path": "test/r5_commitment.jl",
           "name": "r5_commitment.jl",
           "isDirectory": false
+        },
+        {
+          "path": "test/r5_risk.jl",
+          "name": "r5_risk.jl",
+          "isDirectory": false
         }
       ],
       "order": 7,
@@ -13191,6 +13311,61 @@
         {
           "path": "scripts/test_r5_commitment.jl",
           "name": "test_r5_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r5_risk.jl",
+          "name": "check_r5_risk.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r5_risk_artifacts.jl",
+          "name": "check_r5_risk_artifacts.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/freeze_r5_risk.jl",
+          "name": "freeze_r5_risk.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/plot_r5_risk.jl",
+          "name": "plot_r5_risk.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r5_risk_cases.jl",
+          "name": "r5_risk_cases.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r5_risk_docs.jl",
+          "name": "r5_risk_docs.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r5_risk_report_tables.jl",
+          "name": "r5_risk_report_tables.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r5_risk_setup.jl",
+          "name": "r5_risk_setup.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/report_r5_risk.jl",
+          "name": "report_r5_risk.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/study_r5_risk.jl",
+          "name": "study_r5_risk.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/test_r5_risk.jl",
+          "name": "test_r5_risk.jl",
           "isDirectory": false
         }
       ],

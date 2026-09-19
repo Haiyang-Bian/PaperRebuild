@@ -1,5 +1,8 @@
 {
   "inputs": [
+    {"id":"r5RiskBatch","description":"新的风险调度批次名；不得覆盖已有批次","type":"promptString","default":"r5-risk-new"},
+    {"id":"r5RiskStudy","description":"已完成的风险study.toml","type":"promptString","default":"results/runs/r5/r5-risk-20260919/study.toml"},
+    {"id":"r5RiskReport","description":"风险报告新目录；重绘需已有CSV且无旧图","type":"promptString","default":"results/summaries/r5-risk-replay"},
     {"id":"r5CommitmentBatch","description":"新的共同承诺批次名；不得覆盖已有批次","type":"promptString","default":"r5-commitment-new"},
     {"id":"r5CommitmentStudy","description":"已完成的共同承诺study.toml","type":"promptString","default":"results/runs/r5/r5-commitment-20260919/study.toml"},
     {"id":"r5CommitmentReport","description":"共同承诺报告新目录；重绘需已有CSV且无旧图","type":"promptString","default":"results/summaries/r5-commitment-replay"},
@@ -55,6 +58,12 @@
     }
   ],
   "tasks": [
+    {"label":"PaperRebuild: R5 risk tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_risk.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 risk mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_risk.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 risk frozen study","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/study_r5_risk.jl","${input:r5RiskBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 risk saved report","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/report_r5_risk.jl","${input:r5RiskStudy}","${input:r5RiskReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 risk redraw","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r5_risk.jl","${input:r5RiskReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 risk seal local report","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_risk_artifacts.jl","${input:r5RiskReport}","--seal"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R5 shared commitment tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_commitment.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R5 shared commitment mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_commitment.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R5 shared commitment frozen study","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/study_r5_commitment.jl","${input:r5CommitmentBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
