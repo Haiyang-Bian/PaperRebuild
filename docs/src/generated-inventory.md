@@ -88,6 +88,7 @@
 - `configs/r5/dispatch/study.toml`
 - `configs/r5/dispatch/unavailable.toml`
 - `configs/r5/dispatch/up.toml`
+- `configs/r5/execution/study.toml`
 - `configs/r5/market-base.toml`
 - `configs/r5/market/bid_cap.toml`
 - `configs/r5/market/capacity_infeasible.toml`
@@ -155,6 +156,7 @@
 - `docs/agent/tasks/2026-09-19-r5-commitment.md`
 - `docs/agent/tasks/2026-09-19-r5-dispatch.md`
 - `docs/agent/tasks/2026-09-19-r5-duality.md`
+- `docs/agent/tasks/2026-09-19-r5-execution.md`
 - `docs/agent/tasks/2026-09-19-r5-market-payment.md`
 - `docs/agent/tasks/2026-09-19-r5-market.md`
 - `docs/agent/tasks/2026-09-19-r5-risk.md`
@@ -196,6 +198,7 @@
 - `docs/reading/ch05/benders.toml`
 - `docs/reading/ch05/commitment.toml`
 - `docs/reading/ch05/dispatch.toml`
+- `docs/reading/ch05/execution.toml`
 - `docs/reading/ch05/inputs.toml`
 - `docs/reading/ch05/market-audit.toml`
 - `docs/reading/ch05/market.toml`
@@ -425,6 +428,16 @@
 - `docs/src/assets/r5-duality/figure-config.toml`
 - `docs/src/assets/r5-duality/kkt-residuals.csv`
 - `docs/src/assets/r5-duality/sensitivity.csv`
+- `docs/src/assets/r5-execution/F04.png`
+- `docs/src/assets/r5-execution/F14.png`
+- `docs/src/assets/r5-execution/F19.png`
+- `docs/src/assets/r5-execution/artifact-hashes.toml`
+- `docs/src/assets/r5-execution/awards.csv`
+- `docs/src/assets/r5-execution/comparison.csv`
+- `docs/src/assets/r5-execution/figure-config.toml`
+- `docs/src/assets/r5-execution/report.toml`
+- `docs/src/assets/r5-execution/residuals.csv`
+- `docs/src/assets/r5-execution/trajectories.csv`
 - `docs/src/assets/r5-market-payment/artifact-hashes.toml`
 - `docs/src/assets/r5-market-payment/comparison.csv`
 - `docs/src/assets/r5-market-payment/components.csv`
@@ -536,6 +549,9 @@
 - `docs/src/ch05-dispatch-equations.md`
 - `docs/src/ch05-dispatch-results.md`
 - `docs/src/ch05-dispatch.md`
+- `docs/src/ch05-execution-equations.md`
+- `docs/src/ch05-execution-results.md`
+- `docs/src/ch05-execution.md`
 - `docs/src/ch05-market-audit.md`
 - `docs/src/ch05-market-equations.md`
 - `docs/src/ch05-market-results.md`
@@ -757,6 +773,16 @@
 - `results/summaries/r5-duality-verified/figure-config.toml`
 - `results/summaries/r5-duality-verified/kkt-residuals.csv`
 - `results/summaries/r5-duality-verified/sensitivity.csv`
+- `results/summaries/r5-execution/F04.png`
+- `results/summaries/r5-execution/F14.png`
+- `results/summaries/r5-execution/F19.png`
+- `results/summaries/r5-execution/artifact-hashes.toml`
+- `results/summaries/r5-execution/awards.csv`
+- `results/summaries/r5-execution/comparison.csv`
+- `results/summaries/r5-execution/figure-config.toml`
+- `results/summaries/r5-execution/report.toml`
+- `results/summaries/r5-execution/residuals.csv`
+- `results/summaries/r5-execution/trajectories.csv`
 - `results/summaries/r5-market-payment/artifact-hashes.toml`
 - `results/summaries/r5-market-payment/comparison.csv`
 - `results/summaries/r5-market-payment/components.csv`
@@ -877,6 +903,8 @@
 - `scripts/check_r5_dispatch.jl`
 - `scripts/check_r5_dispatch_artifacts.jl`
 - `scripts/check_r5_duality.jl`
+- `scripts/check_r5_execution.jl`
+- `scripts/check_r5_execution_artifacts.jl`
 - `scripts/check_r5_market.jl`
 - `scripts/check_r5_market_artifacts.jl`
 - `scripts/check_r5_market_payment.jl`
@@ -928,6 +956,7 @@
 - `scripts/freeze_r5_benders_status.jl`
 - `scripts/freeze_r5_commitment.jl`
 - `scripts/freeze_r5_dispatch.jl`
+- `scripts/freeze_r5_execution.jl`
 - `scripts/freeze_r5_market.jl`
 - `scripts/freeze_r5_risk.jl`
 - `scripts/freeze_r5_strategic.jl`
@@ -963,6 +992,7 @@
 - `scripts/plot_r5_commitment.jl`
 - `scripts/plot_r5_dispatch.jl`
 - `scripts/plot_r5_duality.jl`
+- `scripts/plot_r5_execution.jl`
 - `scripts/plot_r5_market.jl`
 - `scripts/plot_r5_risk.jl`
 - `scripts/plot_r5_strategic.jl`
@@ -1002,6 +1032,7 @@
 - `scripts/r5_dispatch_cases.jl`
 - `scripts/r5_dispatch_docs.jl`
 - `scripts/r5_duality_docs.jl`
+- `scripts/r5_execution_report_tables.jl`
 - `scripts/r5_market_cases.jl`
 - `scripts/r5_market_docs.jl`
 - `scripts/r5_market_payment_docs.jl`
@@ -1044,6 +1075,7 @@
 - `scripts/report_r5_benders_status.jl`
 - `scripts/report_r5_commitment.jl`
 - `scripts/report_r5_dispatch.jl`
+- `scripts/report_r5_execution.jl`
 - `scripts/report_r5_market.jl`
 - `scripts/report_r5_risk.jl`
 - `scripts/report_r5_strategic.jl`
@@ -1067,6 +1099,7 @@
 - `scripts/study_r5_benders_status.jl`
 - `scripts/study_r5_commitment.jl`
 - `scripts/study_r5_dispatch.jl`
+- `scripts/study_r5_execution.jl`
 - `scripts/study_r5_market.jl`
 - `scripts/study_r5_risk.jl`
 - `scripts/study_r5_strategic.jl`
@@ -1096,6 +1129,7 @@
 - `scripts/test_r5_commitment.jl`
 - `scripts/test_r5_dispatch.jl`
 - `scripts/test_r5_dispatch_duality.jl`
+- `scripts/test_r5_execution.jl`
 - `scripts/test_r5_market.jl`
 - `scripts/test_r5_market_payment.jl`
 - `scripts/test_r5_risk.jl`
@@ -1127,6 +1161,7 @@
 - `src/algorithms/r5_benders.jl`
 - `src/algorithms/r5_commitment.jl`
 - `src/algorithms/r5_dispatch.jl`
+- `src/algorithms/r5_execution.jl`
 - `src/algorithms/r5_market.jl`
 - `src/algorithms/r5_market_selection.jl`
 - `src/algorithms/r5_risk.jl`
@@ -1145,6 +1180,7 @@
 - `src/core/r5_benders.jl`
 - `src/core/r5_commitment.jl`
 - `src/core/r5_dispatch.jl`
+- `src/core/r5_execution.jl`
 - `src/core/r5_market.jl`
 - `src/core/r5_risk.jl`
 - `src/core/r5_strategic.jl`
@@ -1160,6 +1196,7 @@
 - `src/formulations/r5_commitment.jl`
 - `src/formulations/r5_dispatch.jl`
 - `src/formulations/r5_dispatch_dual.jl`
+- `src/formulations/r5_execution.jl`
 - `src/formulations/r5_market.jl`
 - `src/formulations/r5_risk.jl`
 - `src/formulations/r5_strategic.jl`
@@ -1179,6 +1216,7 @@
 - `src/reporting/r5_benders.jl`
 - `src/reporting/r5_commitment.jl`
 - `src/reporting/r5_dispatch.jl`
+- `src/reporting/r5_execution.jl`
 - `src/reporting/r5_market.jl`
 - `src/reporting/r5_risk.jl`
 - `src/reporting/r5_strategic.jl`
@@ -1201,6 +1239,7 @@
 - `src/verification/r5_commitment.jl`
 - `src/verification/r5_dispatch.jl`
 - `src/verification/r5_dispatch_duality.jl`
+- `src/verification/r5_execution.jl`
 - `src/verification/r5_market.jl`
 - `src/verification/r5_market_payment.jl`
 - `src/verification/r5_risk.jl`
@@ -1232,6 +1271,8 @@
 - `test/r5_commitment.jl`
 - `test/r5_dispatch.jl`
 - `test/r5_dispatch_duality.jl`
+- `test/r5_execution.jl`
+- `test/r5_execution_scaling.jl`
 - `test/r5_market.jl`
 - `test/r5_market_payment.jl`
 - `test/r5_market_selection.jl`
@@ -1264,6 +1305,7 @@
 - `docs/src/assets/r5-benders/witnesses/`
 - `docs/src/assets/r5-commitment/witnesses/`
 - `docs/src/assets/r5-duality/witnesses/`
+- `docs/src/assets/r5-execution/witnesses/`
 - `docs/src/assets/r5-market-payment/witnesses/`
 - `docs/src/assets/r5-risk/witnesses/`
 - `docs/src/assets/r5-strategic/witnesses/`
@@ -1287,6 +1329,7 @@
 - `results/summaries/r5-benders/witnesses/`
 - `results/summaries/r5-commitment/witnesses/`
 - `results/summaries/r5-duality-verified/witnesses/`
+- `results/summaries/r5-execution/witnesses/`
 - `results/summaries/r5-market-payment/witnesses/`
 - `results/summaries/r5-risk/witnesses/`
 - `results/summaries/r5-strategic/witnesses/`

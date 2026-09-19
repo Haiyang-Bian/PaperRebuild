@@ -1,0 +1,2137 @@
+[record]
+case = "competitive_future_e030_r005"
+case_sha256 = "05d5ce41e6bdaa49005812870c7aefc405febe80f2068a7012959f59724e391b"
+cost_complete = true
+delivery_pass = true
+delivery_status = "solver_optimal"
+elapsed_sec = 1.5210001468658447
+id = "competitive_future_e030_r005-minimum_norm"
+mode = "minimum_norm"
+parent = "results/summaries/r5-strategic/witnesses/competitive_future_e030_r005-sos1.toml"
+parent_sha256 = "2483a53622a085b2d77496a1642fd62b89f7113d3d2a9c7c44353c8905794b46"
+selection_pass = true
+selection_status = "selection_solved"
+stages = ["selection", "delivery"]
+total_cost_USD = 23.365552752457596
+
+    [record.stage_sha256]
+    delivery = "0c7314ab09fd13f8aa2f873846978136e09c52b103da9a8c1639c5717d58884e"
+    selection = "86aaa725094f85e2188769308f59eedabd9fa56e3f01e831b809ce6ab11c2e1f"
+
+[stages.delivery]
+raw_result_sha256 = "0c7314ab09fd13f8aa2f873846978136e09c52b103da9a8c1639c5717d58884e"
+
+    [stages.delivery.payload]
+    kind = "fixed_award_delivery"
+
+        [stages.delivery.payload.case]
+        leader_id = "IES"
+        name = "competitive_future_e030_r005"
+        origin = "synthetic"
+        quantity_rule = "fixed_offer_capacities"
+        schema = "r5-strategic-case-v1"
+        selection = "optimistic_primal_dual"
+
+            [stages.delivery.payload.case.bid_bounds.down_bid]
+            lower = [0.0, 0.0, 0.0, 0.0]
+            upper = [200.0, 200.0, 200.0, 200.0]
+
+            [stages.delivery.payload.case.bid_bounds.energy_bid]
+            lower = [0.0, 0.0, 0.0, 0.0]
+            upper = [200.0, 200.0, 200.0, 200.0]
+
+            [stages.delivery.payload.case.bid_bounds.up_bid]
+            lower = [0.0, 0.0, 0.0, 0.0]
+            upper = [200.0, 200.0, 200.0, 200.0]
+
+            [stages.delivery.payload.case.market]
+            T = 4
+            description = "One exogenous generator, common 100 USD prices, explicit abundant supply."
+            dt_h = 1.0
+            load_MW = [[1.0, 1.0, 1.0, 1.0]]
+            name = "competitive_future_e030_r005"
+            nodes = 1
+            origin = "synthetic"
+            reserve_down_MW = [0.1, 0.1, 0.1, 0.1]
+            reserve_up_MW = [0.1, 0.1, 0.1, 0.1]
+            schema = "r5-market-case-v1"
+
+                [[stages.delivery.payload.case.market.generators]]
+                down_bid = [100.0, 100.0, 100.0, 100.0]
+                down_max = 1.0
+                energy_bid = [100.0, 100.0, 100.0, 100.0]
+                id = "G"
+                node = 1
+                p_bid_max = 5.0
+                p_initial = 1.0
+                p_max = 5.0
+                p_min = 0.0
+                ramp_down_MW_h = 20.0
+                ramp_up_MW_h = 20.0
+                up_bid = [100.0, 100.0, 100.0, 100.0]
+                up_max = 1.0
+
+                [[stages.delivery.payload.case.market.ies]]
+                down_bid = [100.0, 100.0, 100.0, 100.0]
+                down_max = 0.08
+                energy_bid = [100.0, 100.0, 100.0, 100.0]
+                id = "IES"
+                node = 1
+                purchase_bid_max = 1.0
+                q_max = 1.0
+                q_min = 0.0
+                up_bid = [100.0, 100.0, 100.0, 100.0]
+                up_max = 0.08
+
+                [stages.delivery.payload.case.market.network]
+                limit_MW = []
+                ptdf = []
+                slack_node = 1
+
+                [stages.delivery.payload.case.market.units]
+                energy = "MWh"
+                energy_price = "USD/MWh"
+                power = "MW"
+                ramp = "MW/h"
+                reserve_price = "USD/(MW*h)"
+                time = "h"
+
+            [stages.delivery.payload.case.provenance]
+            changes = "External one-node market and explicit zero embedded day-ahead prices; no physical trajectory or risk parameter changes."
+            parent_risk = "configs/r5/risk/future_e030_r005.toml"
+            parent_risk_sha256 = "e3a85ba4778e94f3bb4dbfe4c881e739e06bb66166e7a8de630f3afcf9748acf"
+
+            [stages.delivery.payload.case.risk]
+            epsilon = 0.3
+            event = "any_building_time_comfort_violation"
+            name = "future_e030_r005"
+            objective = "worst_expected_net_cost"
+            origin = "synthetic"
+            schema = "r5-risk-case-v1"
+
+                [stages.delivery.payload.case.risk.ambiguity]
+                distance = [[0.0, 1.0, 1.0], [1.0, 0.0, 1.0], [1.0, 1.0, 0.0]]
+                distance_provenance = "Euclidean distance between one-hot labels of the three frozen full-call regimes, divided by sqrt(2); synthetic categorical trajectory metric, not calibrated from thesis samples."
+                distance_unit = "normalized_trajectory"
+                radius = 0.05
+                support = "fixed_scenarios"
+
+                [stages.delivery.payload.case.risk.commitment]
+                comfort = "hard_each_scenario"
+                name = "four_period_future"
+                objective = "expected_net_cost"
+                origin = "synthetic"
+                recourse_information = "complete_trajectory"
+                schema = "r5-commitment-case-v1"
+                uncertain_fields = ["ambient_K", "devices.available_MW", "electric.P_load_MW", "realtime.alpha_down", "realtime.alpha_up"]
+
+                    [stages.delivery.payload.case.risk.commitment.bounds.P_DA_MW]
+                    lower = [0.0, 0.0, 0.0, 0.0]
+                    upper = [1.0, 1.0, 1.0, 1.0]
+
+                    [stages.delivery.payload.case.risk.commitment.bounds.R_down_MW]
+                    lower = [0.0, 0.0, 0.0, 0.0]
+                    upper = [0.08, 0.08, 0.08, 0.08]
+
+                    [stages.delivery.payload.case.risk.commitment.bounds.R_up_MW]
+                    lower = [0.0, 0.0, 0.0, 0.0]
+                    upper = [0.08, 0.08, 0.08, 0.08]
+
+                    [stages.delivery.payload.case.risk.commitment.day_ahead]
+                    down_price = [0.0, 0.0, 0.0, 0.0]
+                    energy_price = [0.0, 0.0, 0.0, 0.0]
+                    up_price = [0.0, 0.0, 0.0, 0.0]
+
+                    [[stages.delivery.payload.case.risk.commitment.scenarios]]
+                    case_sha256 = "7a5490c6231cebc7ff8c78c3d3151543b20d4d377d4747016802152b011bb624"
+                    id = "none"
+                    probability = 0.5
+
+                        [stages.delivery.payload.case.risk.commitment.scenarios.case]
+                        T = 4
+                        ambient_K = [283.15, 282.15, 283.15, 284.15]
+                        dt_h = 1.0
+                        name = "shared_none"
+                        origin = "synthetic"
+                        schema = "r5-dispatch-case-v1"
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.award]
+                            P_DA_MW = [0.14, 0.14, 0.14, 0.14]
+                            R_down_MW = [0.03, 0.03, 0.03, 0.03]
+                            R_up_MW = [0.03, 0.03, 0.03, 0.03]
+                            down_price = [2.0, 2.0, 2.0, 2.0]
+                            energy_price = [80.0, 100.0, 140.0, 100.0]
+                            origin = "synthetic"
+                            up_price = [5.0, 5.0, 5.0, 5.0]
+
+                            [[stages.delivery.payload.case.risk.commitment.scenarios.case.buildings]]
+                            COP_DH = 0.95
+                            C_MWh_K = 0.02
+                            G_MW_K = 0.003
+                            P_DH_max_MW = 0.05
+                            R_max_K = 343.15
+                            R_min_K = 303.15
+                            T_initial_K = 293.15
+                            T_max_K = 294.15
+                            T_min_K = 292.15
+                            electric_node = 2
+                            heat_node = 2
+                            id = "building"
+                            m_kg_s = 1.0
+                            terminal_rule = "initial"
+
+                            [[stages.delivery.payload.case.risk.commitment.scenarios.case.devices]]
+                            cost_USD_MWh = 0.0
+                            heat_ratio = 0.95
+                            id = "EB"
+                            kind = "EB"
+                            node = 2
+                            p_max_MW = 0.1
+                            p_min_MW = 0.0
+                            q_max_Mvar = 0.0
+                            q_min_Mvar = 0.0
+                            source_id = "source"
+                            [[stages.delivery.payload.case.risk.commitment.scenarios.case.devices]]
+                            P_initial_MW = 0.0
+                            cost_USD_MWh = 130.0
+                            id = "GT"
+                            kind = "GT"
+                            node = 2
+                            p_max_MW = 0.15
+                            p_min_MW = 0.0
+                            q_max_Mvar = 0.0
+                            q_min_Mvar = 0.0
+                            ramp_down_MW_h = 1.0
+                            ramp_up_MW_h = 1.0
+                            [[stages.delivery.payload.case.risk.commitment.scenarios.case.devices]]
+                            P_initial_MW = 0.03
+                            cost_USD_MWh = 90.0
+                            heat_ratio = 1.0
+                            id = "CHP"
+                            kind = "CHP"
+                            node = 2
+                            p_max_MW = 0.08
+                            p_min_MW = 0.0
+                            q_max_Mvar = 0.03
+                            q_min_Mvar = -0.03
+                            ramp_down_MW_h = 0.08
+                            ramp_up_MW_h = 0.08
+                            source_id = "source"
+                            [[stages.delivery.payload.case.risk.commitment.scenarios.case.devices]]
+                            available_MW = [0.0, 0.04, 0.08, 0.02]
+                            cost_USD_MWh = 5.0
+                            id = "PV"
+                            kind = "PV"
+                            node = 2
+                            p_max_MW = 0.08
+                            p_min_MW = 0.0
+                            q_max_Mvar = 0.0
+                            q_min_Mvar = 0.0
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.electric]
+                            P_load_MW = [[0.0, 0.0, 0.0, 0.0], [0.12, 0.14, 0.13, 0.12]]
+                            Q_load_Mvar = [[0.0, 0.0, 0.0, 0.0], [0.02, 0.02, 0.02, 0.02]]
+                            S_base_MVA = 1.0
+                            nodes = 2
+                            pcc_max_MW = 1.0
+                            pcc_min_MW = 0.0
+                            qcc_max_Mvar = 1.0
+                            qcc_min_Mvar = -1.0
+                            root = 1
+                            v_max_pu = 1.05
+                            v_min_pu = 0.95
+                            v_ref_pu = 1.0
+
+                                [[stages.delivery.payload.case.risk.commitment.scenarios.case.electric.lines]]
+                                P_limit_MW = 1.0
+                                Q_limit_Mvar = 1.0
+                                from = 1
+                                id = "e12"
+                                r_pu = 0.01
+                                to = 2
+                                x_pu = 0.005
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.heat]
+                            R_max_K = 343.15
+                            R_min_K = 293.15
+                            S_max_K = 353.15
+                            S_min_K = 303.15
+                            c_J_kgK = 4200.0
+                            nodes = 2
+                            terminal_rule = "free"
+
+                                [[stages.delivery.payload.case.risk.commitment.scenarios.case.heat.pipes]]
+                                area_m2 = 0.01
+                                from = 1
+                                history_R_K = [323.15]
+                                history_S_K = [333.15]
+                                id = "h12"
+                                length_m = 90.0
+                                loss_W_mK = 0.05
+                                m_kg_s = 1.0
+                                rho_kg_m3 = 1000.0
+                                to = 2
+
+                                [[stages.delivery.payload.case.risk.commitment.scenarios.case.heat.sources]]
+                                T_max_K = 353.15
+                                T_min_K = 313.15
+                                id = "source"
+                                m_kg_s = 1.0
+                                node = 1
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.realtime]
+                            alpha_down = [0.0, 0.0, 0.0, 0.0]
+                            alpha_up = [0.0, 0.0, 0.0, 0.0]
+                            delta = 0.1
+                            penalty_USD_MWh = 1000.0
+                            price = [80.0, 120.0, 150.0, 100.0]
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.units]
+                            energy = "MWh"
+                            energy_price = "USD/MWh"
+                            flow = "kg/s"
+                            heat_capacity = "MWh/K"
+                            heat_transfer = "MW/K"
+                            power = "MW"
+                            reactive = "Mvar"
+                            reserve_price = "USD/(MW*h)"
+                            temperature = "K"
+                            time = "h"
+                    [[stages.delivery.payload.case.risk.commitment.scenarios]]
+                    case_sha256 = "c1ca1cf4e38c88bec1967708d1f45560f39a87834722dc4365a53c9ee0943562"
+                    id = "up"
+                    probability = 0.25
+
+                        [stages.delivery.payload.case.risk.commitment.scenarios.case]
+                        T = 4
+                        ambient_K = [282.15, 281.15, 282.15, 283.15]
+                        dt_h = 1.0
+                        name = "shared_up"
+                        origin = "synthetic"
+                        schema = "r5-dispatch-case-v1"
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.award]
+                            P_DA_MW = [0.14, 0.14, 0.14, 0.14]
+                            R_down_MW = [0.03, 0.03, 0.03, 0.03]
+                            R_up_MW = [0.03, 0.03, 0.03, 0.03]
+                            down_price = [2.0, 2.0, 2.0, 2.0]
+                            energy_price = [80.0, 100.0, 140.0, 100.0]
+                            origin = "synthetic"
+                            up_price = [5.0, 5.0, 5.0, 5.0]
+
+                            [[stages.delivery.payload.case.risk.commitment.scenarios.case.buildings]]
+                            COP_DH = 0.95
+                            C_MWh_K = 0.02
+                            G_MW_K = 0.003
+                            P_DH_max_MW = 0.05
+                            R_max_K = 343.15
+                            R_min_K = 303.15
+                            T_initial_K = 293.15
+                            T_max_K = 294.15
+                            T_min_K = 292.15
+                            electric_node = 2
+                            heat_node = 2
+                            id = "building"
+                            m_kg_s = 1.0
+                            terminal_rule = "initial"
+
+                            [[stages.delivery.payload.case.risk.commitment.scenarios.case.devices]]
+                            cost_USD_MWh = 0.0
+                            heat_ratio = 0.95
+                            id = "EB"
+                            kind = "EB"
+                            node = 2
+                            p_max_MW = 0.1
+                            p_min_MW = 0.0
+                            q_max_Mvar = 0.0
+                            q_min_Mvar = 0.0
+                            source_id = "source"
+                            [[stages.delivery.payload.case.risk.commitment.scenarios.case.devices]]
+                            P_initial_MW = 0.0
+                            cost_USD_MWh = 130.0
+                            id = "GT"
+                            kind = "GT"
+                            node = 2
+                            p_max_MW = 0.15
+                            p_min_MW = 0.0
+                            q_max_Mvar = 0.0
+                            q_min_Mvar = 0.0
+                            ramp_down_MW_h = 1.0
+                            ramp_up_MW_h = 1.0
+                            [[stages.delivery.payload.case.risk.commitment.scenarios.case.devices]]
+                            P_initial_MW = 0.03
+                            cost_USD_MWh = 90.0
+                            heat_ratio = 1.0
+                            id = "CHP"
+                            kind = "CHP"
+                            node = 2
+                            p_max_MW = 0.08
+                            p_min_MW = 0.0
+                            q_max_Mvar = 0.03
+                            q_min_Mvar = -0.03
+                            ramp_down_MW_h = 0.08
+                            ramp_up_MW_h = 0.08
+                            source_id = "source"
+                            [[stages.delivery.payload.case.risk.commitment.scenarios.case.devices]]
+                            available_MW = [0.0, 0.032, 0.064, 0.016]
+                            cost_USD_MWh = 5.0
+                            id = "PV"
+                            kind = "PV"
+                            node = 2
+                            p_max_MW = 0.08
+                            p_min_MW = 0.0
+                            q_max_Mvar = 0.0
+                            q_min_Mvar = 0.0
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.electric]
+                            P_load_MW = [[0.0, 0.0, 0.0, 0.0], [0.132, 0.15400000000000003, 0.14300000000000002, 0.132]]
+                            Q_load_Mvar = [[0.0, 0.0, 0.0, 0.0], [0.02, 0.02, 0.02, 0.02]]
+                            S_base_MVA = 1.0
+                            nodes = 2
+                            pcc_max_MW = 1.0
+                            pcc_min_MW = 0.0
+                            qcc_max_Mvar = 1.0
+                            qcc_min_Mvar = -1.0
+                            root = 1
+                            v_max_pu = 1.05
+                            v_min_pu = 0.95
+                            v_ref_pu = 1.0
+
+                                [[stages.delivery.payload.case.risk.commitment.scenarios.case.electric.lines]]
+                                P_limit_MW = 1.0
+                                Q_limit_Mvar = 1.0
+                                from = 1
+                                id = "e12"
+                                r_pu = 0.01
+                                to = 2
+                                x_pu = 0.005
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.heat]
+                            R_max_K = 343.15
+                            R_min_K = 293.15
+                            S_max_K = 353.15
+                            S_min_K = 303.15
+                            c_J_kgK = 4200.0
+                            nodes = 2
+                            terminal_rule = "free"
+
+                                [[stages.delivery.payload.case.risk.commitment.scenarios.case.heat.pipes]]
+                                area_m2 = 0.01
+                                from = 1
+                                history_R_K = [323.15]
+                                history_S_K = [333.15]
+                                id = "h12"
+                                length_m = 90.0
+                                loss_W_mK = 0.05
+                                m_kg_s = 1.0
+                                rho_kg_m3 = 1000.0
+                                to = 2
+
+                                [[stages.delivery.payload.case.risk.commitment.scenarios.case.heat.sources]]
+                                T_max_K = 353.15
+                                T_min_K = 313.15
+                                id = "source"
+                                m_kg_s = 1.0
+                                node = 1
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.realtime]
+                            alpha_down = [0.0, 0.0, 0.0, 0.0]
+                            alpha_up = [1.0, 1.0, 1.0, 1.0]
+                            delta = 0.1
+                            penalty_USD_MWh = 1000.0
+                            price = [80.0, 120.0, 150.0, 100.0]
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.units]
+                            energy = "MWh"
+                            energy_price = "USD/MWh"
+                            flow = "kg/s"
+                            heat_capacity = "MWh/K"
+                            heat_transfer = "MW/K"
+                            power = "MW"
+                            reactive = "Mvar"
+                            reserve_price = "USD/(MW*h)"
+                            temperature = "K"
+                            time = "h"
+                    [[stages.delivery.payload.case.risk.commitment.scenarios]]
+                    case_sha256 = "f9da46d12ffd42b0f3107918127ee07460cab337b89cc793200a67805b13794d"
+                    id = "down"
+                    probability = 0.25
+
+                        [stages.delivery.payload.case.risk.commitment.scenarios.case]
+                        T = 4
+                        ambient_K = [284.15, 283.15, 284.15, 285.15]
+                        dt_h = 1.0
+                        name = "shared_down"
+                        origin = "synthetic"
+                        schema = "r5-dispatch-case-v1"
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.award]
+                            P_DA_MW = [0.14, 0.14, 0.14, 0.14]
+                            R_down_MW = [0.03, 0.03, 0.03, 0.03]
+                            R_up_MW = [0.03, 0.03, 0.03, 0.03]
+                            down_price = [2.0, 2.0, 2.0, 2.0]
+                            energy_price = [80.0, 100.0, 140.0, 100.0]
+                            origin = "synthetic"
+                            up_price = [5.0, 5.0, 5.0, 5.0]
+
+                            [[stages.delivery.payload.case.risk.commitment.scenarios.case.buildings]]
+                            COP_DH = 0.95
+                            C_MWh_K = 0.02
+                            G_MW_K = 0.003
+                            P_DH_max_MW = 0.05
+                            R_max_K = 343.15
+                            R_min_K = 303.15
+                            T_initial_K = 293.15
+                            T_max_K = 294.15
+                            T_min_K = 292.15
+                            electric_node = 2
+                            heat_node = 2
+                            id = "building"
+                            m_kg_s = 1.0
+                            terminal_rule = "initial"
+
+                            [[stages.delivery.payload.case.risk.commitment.scenarios.case.devices]]
+                            cost_USD_MWh = 0.0
+                            heat_ratio = 0.95
+                            id = "EB"
+                            kind = "EB"
+                            node = 2
+                            p_max_MW = 0.1
+                            p_min_MW = 0.0
+                            q_max_Mvar = 0.0
+                            q_min_Mvar = 0.0
+                            source_id = "source"
+                            [[stages.delivery.payload.case.risk.commitment.scenarios.case.devices]]
+                            P_initial_MW = 0.0
+                            cost_USD_MWh = 130.0
+                            id = "GT"
+                            kind = "GT"
+                            node = 2
+                            p_max_MW = 0.15
+                            p_min_MW = 0.0
+                            q_max_Mvar = 0.0
+                            q_min_Mvar = 0.0
+                            ramp_down_MW_h = 1.0
+                            ramp_up_MW_h = 1.0
+                            [[stages.delivery.payload.case.risk.commitment.scenarios.case.devices]]
+                            P_initial_MW = 0.03
+                            cost_USD_MWh = 90.0
+                            heat_ratio = 1.0
+                            id = "CHP"
+                            kind = "CHP"
+                            node = 2
+                            p_max_MW = 0.08
+                            p_min_MW = 0.0
+                            q_max_Mvar = 0.03
+                            q_min_Mvar = -0.03
+                            ramp_down_MW_h = 0.08
+                            ramp_up_MW_h = 0.08
+                            source_id = "source"
+                            [[stages.delivery.payload.case.risk.commitment.scenarios.case.devices]]
+                            available_MW = [0.0, 0.036000000000000004, 0.07200000000000001, 0.018000000000000002]
+                            cost_USD_MWh = 5.0
+                            id = "PV"
+                            kind = "PV"
+                            node = 2
+                            p_max_MW = 0.08
+                            p_min_MW = 0.0
+                            q_max_Mvar = 0.0
+                            q_min_Mvar = 0.0
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.electric]
+                            P_load_MW = [[0.0, 0.0, 0.0, 0.0], [0.108, 0.12600000000000003, 0.117, 0.108]]
+                            Q_load_Mvar = [[0.0, 0.0, 0.0, 0.0], [0.02, 0.02, 0.02, 0.02]]
+                            S_base_MVA = 1.0
+                            nodes = 2
+                            pcc_max_MW = 1.0
+                            pcc_min_MW = 0.0
+                            qcc_max_Mvar = 1.0
+                            qcc_min_Mvar = -1.0
+                            root = 1
+                            v_max_pu = 1.05
+                            v_min_pu = 0.95
+                            v_ref_pu = 1.0
+
+                                [[stages.delivery.payload.case.risk.commitment.scenarios.case.electric.lines]]
+                                P_limit_MW = 1.0
+                                Q_limit_Mvar = 1.0
+                                from = 1
+                                id = "e12"
+                                r_pu = 0.01
+                                to = 2
+                                x_pu = 0.005
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.heat]
+                            R_max_K = 343.15
+                            R_min_K = 293.15
+                            S_max_K = 353.15
+                            S_min_K = 303.15
+                            c_J_kgK = 4200.0
+                            nodes = 2
+                            terminal_rule = "free"
+
+                                [[stages.delivery.payload.case.risk.commitment.scenarios.case.heat.pipes]]
+                                area_m2 = 0.01
+                                from = 1
+                                history_R_K = [323.15]
+                                history_S_K = [333.15]
+                                id = "h12"
+                                length_m = 90.0
+                                loss_W_mK = 0.05
+                                m_kg_s = 1.0
+                                rho_kg_m3 = 1000.0
+                                to = 2
+
+                                [[stages.delivery.payload.case.risk.commitment.scenarios.case.heat.sources]]
+                                T_max_K = 353.15
+                                T_min_K = 313.15
+                                id = "source"
+                                m_kg_s = 1.0
+                                node = 1
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.realtime]
+                            alpha_down = [1.0, 1.0, 1.0, 1.0]
+                            alpha_up = [0.0, 0.0, 0.0, 0.0]
+                            delta = 0.1
+                            penalty_USD_MWh = 1000.0
+                            price = [80.0, 120.0, 150.0, 100.0]
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.units]
+                            energy = "MWh"
+                            energy_price = "USD/MWh"
+                            flow = "kg/s"
+                            heat_capacity = "MWh/K"
+                            heat_transfer = "MW/K"
+                            power = "MW"
+                            reactive = "Mvar"
+                            reserve_price = "USD/(MW*h)"
+                            temperature = "K"
+                            time = "h"
+
+                [stages.delivery.payload.case.risk.temperature_domain.building]
+                lower_K = 291.15
+                upper_K = 295.15
+
+        [stages.delivery.payload.market]
+        case_sha256 = "f5a5669507162aa09455e349bf205b026476c0cf27e8d37006cdfec8029d17a7"
+        multiplier_source = "optimized_minimum_norm_dual_face"
+        run_id = "r5-execution-f16f4145-3b86-452f-b835-91efd8a3bff5/market"
+        schema = "r5-market-result-v1"
+        solver_objective = 480.0
+        status = "unique_minimum_norm_market_selection"
+        version = "r5_market_clearing_checked_v1"
+
+            [stages.delivery.payload.market.multipliers]
+            down = [99.99999999999912, 99.99999999999912, 99.9999999999991, 99.99999999999913]
+            energy = [100.00000000000001, 100.00000000000001, 100.00000000000003, 100.00000000000001]
+            g_cap_down = [[-2.8789240962554433e-14, -2.969552173878449e-14, -2.9357546606276557e-14, -2.653723604778827e-14]]
+            g_cap_up = [[-1.0538717093973031e-14, -7.893285950040822e-15, -1.051325951710555e-14, -8.197065932498613e-15]]
+            gd_bid = [[-3.7608894238831546e-14, -3.37359134953045e-14, -3.481005015093167e-14, -3.4337458483926525e-14]]
+            gu_bid = [[-3.5479948174368957e-14, -3.3957498029898753e-14, -3.864348092975227e-14, -3.088514354871284e-14]]
+            i_cap_down = [[8.17362744177555e-15, 9.390161589882962e-15, 9.115179398918426e-15, 6.242312735770695e-15]]
+            i_cap_up = [[2.2113938638025375e-14, 1.5415938004671153e-14, 2.1537656042562944e-14, 1.6152553691316907e-14]]
+            id_bid = [[1.598059425719724e-12, 1.5938404893537841e-12, 1.5951621272268523e-12, 1.5945769417785666e-12]]
+            iu_bid = [[1.6127243311134832e-12, 1.6112400350196894e-12, 1.6159546674756017e-12, 1.6081808348881132e-12]]
+            line_down = []
+            line_up = []
+            pg_bid = [[-7.992673388385269e-15, -6.202369728867638e-15, -6.819820250774554e-15, -7.825322866697238e-15]]
+            q_bid = [[-8.769175144720068e-15, -4.159560638705172e-15, -5.586816299163446e-15, -7.935242200995112e-15]]
+            ramp_down = [[-4.023246046739128e-15, -5.516090074088981e-15, -5.314799096673106e-15, -5.268371683170802e-15]]
+            ramp_up = [[-5.835685703671841e-15, -5.267814960357827e-15, -5.4697795521972786e-15, -5.516209130426855e-15]]
+            up = [99.99999999999915, 99.99999999999915, 99.99999999999913, 99.99999999999915]
+
+            [stages.delivery.payload.market.values]
+            P_G = [[1.000000000003618, 1.0000000000035727, 1.0000000000035576, 1.0000000000035545]]
+            P_IES = [[3.6177299597186066e-12, 3.57268434864496e-12, 3.557609709513497e-12, 3.554513188133658e-12]]
+            R_G_down = [[0.05000000011120959, 0.05000000010335999, 0.05000000010170093, 0.05000000010139184]]
+            R_G_up = [[0.0999999999982624, 0.09999999999830098, 0.09999999999830757, 0.09999999999830879]]
+            R_IES_down = [[0.04999999988879043, 0.049999999896640036, 0.049999999898299105, 0.049999999898608184]]
+            R_IES_up = [[1.7376306223506402e-12, 1.6990682738210364e-12, 1.6924611118842554e-12, 1.6912301648641332e-12]]
+
+        [stages.delivery.payload.market_case]
+        T = 4
+        description = "One exogenous generator, common 100 USD prices, explicit abundant supply."
+        dt_h = 1.0
+        load_MW = [[1.0, 1.0, 1.0, 1.0]]
+        name = "competitive_future_e030_r005"
+        nodes = 1
+        origin = "synthetic"
+        reserve_down_MW = [0.1, 0.1, 0.1, 0.1]
+        reserve_up_MW = [0.1, 0.1, 0.1, 0.1]
+        schema = "r5-market-case-v1"
+
+            [[stages.delivery.payload.market_case.generators]]
+            down_bid = [100.0, 100.0, 100.0, 100.0]
+            down_max = 1.0
+            energy_bid = [100.0, 100.0, 100.0, 100.0]
+            id = "G"
+            node = 1
+            p_bid_max = 5.0
+            p_initial = 1.0
+            p_max = 5.0
+            p_min = 0.0
+            ramp_down_MW_h = 20.0
+            ramp_up_MW_h = 20.0
+            up_bid = [100.0, 100.0, 100.0, 100.0]
+            up_max = 1.0
+
+            [[stages.delivery.payload.market_case.ies]]
+            down_bid = [100.0, 100.0, 100.0, 100.0]
+            down_max = 0.08
+            energy_bid = [100.0, 100.0, 100.0, 100.0]
+            id = "IES"
+            node = 1
+            purchase_bid_max = 1.0
+            q_max = 1.0
+            q_min = 0.0
+            up_bid = [100.0, 100.0, 100.0, 100.0]
+            up_max = 0.08
+
+            [stages.delivery.payload.market_case.network]
+            limit_MW = []
+            ptdf = []
+            slack_node = 1
+
+            [stages.delivery.payload.market_case.units]
+            energy = "MWh"
+            energy_price = "USD/MWh"
+            power = "MW"
+            ramp = "MW/h"
+            reserve_price = "USD/(MW*h)"
+            time = "h"
+
+    [stages.delivery.result]
+    budget_sec = 599.271999835968
+    case_sha256 = "05d5ce41e6bdaa49005812870c7aefc405febe80f2068a7012959f59724e391b"
+    created_utc = "2026-09-19T07:17:24.804"
+    elapsed_sec = 0.10199999809265137
+    kind = "fixed_award_delivery"
+    market_case_sha256 = "f5a5669507162aa09455e349bf205b026476c0cf27e8d37006cdfec8029d17a7"
+    market_witness_sha256 = "2a5cf0b7e6ae7dd9ddd4eaa36df351409eb636ae584bcf5f19c31523b4a8071b"
+    run_id = "r5-delivery-bca1dcad-e72a-4d40-931b-e3bfb0f0c202"
+    schema = "r5-execution-result-v1"
+    status = "solver_optimal"
+    version = "r5_execution_delivery_v1"
+
+        [stages.delivery.result.awards]
+        P_DA_MW = [3.6177299597186066e-12, 3.57268434864496e-12, 3.557609709513497e-12, 3.554513188133658e-12]
+        R_down_MW = [0.04999999988879043, 0.049999999896640036, 0.049999999898299105, 0.049999999898608184]
+        R_up_MW = [1.7376306223506402e-12, 1.6990682738210364e-12, 1.6924611118842554e-12, 1.6912301648641332e-12]
+
+        [stages.delivery.result.risk]
+        bound_source = "MOI.ObjectiveBound"
+        case_sha256 = "5f8ecd8265053313bc47ad5373190a221ace8c418ac8b591a33315e0336af4ac"
+        commitment_source = "fixed_executed_market_awards"
+        has_candidate = true
+        method = "fixed_executed_awards"
+        primal_status = "FEASIBLE_POINT"
+        raw_status = "kHighsModelStatusOptimal"
+        run_id = "r5-delivery-bca1dcad-e72a-4d40-931b-e3bfb0f0c202/risk"
+        schema = "r5-risk-result-v1"
+        solver = "HiGHS"
+        solver_objective = 43.365552691151166
+        solver_objective_bound = 43.365552691151166
+        solver_version = "v1.15.1"
+        status = "solver_optimal"
+        termination = "OPTIMAL"
+        version = "r5_finite_support_checked_v1"
+        z = [0.0, 1.0, 0.0]
+
+            [stages.delivery.result.risk.embedded_duals.cost]
+            lambda = 15.654903188085775
+            nu = [41.81316348818495, 51.17990316935169, 35.524999981265914]
+
+            [stages.delivery.result.risk.embedded_duals.risk]
+            lambda = 1.0
+            nu = [0.0, 1.0, -5.551115123125783e-17]
+
+            [stages.delivery.result.risk.first_stage]
+            P_DA_MW = [3.6177299597186066e-12, 3.57268434864496e-12, 3.557609709513497e-12, 3.554513188133658e-12]
+            R_down_MW = [0.04999999988879043, 0.049999999896640036, 0.049999999898299105, 0.049999999898608184]
+            R_up_MW = [1.7376306223506402e-12, 1.6990682738210364e-12, 1.6924611118842554e-12, 1.6912301648641332e-12]
+
+            [stages.delivery.result.risk.oracles.actual]
+            budget_sec = 599.204999923706
+            elapsed_sec = 0.003999948501586914
+            lambda = 1.0
+            nu = [-0.0, 1.0, -0.0]
+            quantity = "probability"
+            schema = "r5-transport-witness-v1"
+            status = "solver_optimal"
+            transport = [[0.45, 0.0, 0.0], [0.05, 0.25, 0.0], [0.0, 0.0, 0.25]]
+
+                [stages.delivery.result.risk.oracles.actual.dual_solver]
+                bound_source = "MOI.ObjectiveBound"
+                has_candidate = true
+                primal_status = "FEASIBLE_POINT"
+                raw_status = "kHighsModelStatusOptimal"
+                solver = "HiGHS"
+                solver_objective = 0.3
+                solver_objective_bound = 0.3
+                solver_version = "v1.15.1"
+                status = "solver_optimal"
+                termination = "OPTIMAL"
+
+                [stages.delivery.result.risk.oracles.actual.primal_solver]
+                bound_source = "MOI.ObjectiveBound"
+                has_candidate = true
+                primal_status = "FEASIBLE_POINT"
+                raw_status = "kHighsModelStatusOptimal"
+                solver = "HiGHS"
+                solver_objective = 0.3
+                solver_objective_bound = 0.3
+                solver_version = "v1.15.1"
+                status = "solver_optimal"
+                termination = "OPTIMAL"
+
+            [stages.delivery.result.risk.oracles.cost]
+            budget_sec = 599.2159998416901
+            elapsed_sec = 0.00599980354309082
+            lambda = 15.654903203050061
+            nu = [41.81316351679001, 51.17990318431598, 35.52499998126592]
+            quantity = "cost"
+            schema = "r5-transport-witness-v1"
+            status = "solver_optimal"
+            transport = [[0.5, 0.0, 0.0], [0.0, 0.25, 0.05], [0.0, 0.0, 0.2]]
+
+                [stages.delivery.result.risk.oracles.cost.dual_solver]
+                bound_source = "MOI.ObjectiveBound"
+                has_candidate = true
+                primal_status = "FEASIBLE_POINT"
+                raw_status = "kHighsModelStatusOptimal"
+                solver = "HiGHS"
+                solver_objective = 43.36555270994298
+                solver_objective_bound = 43.36555270994298
+                solver_version = "v1.15.1"
+                status = "solver_optimal"
+                termination = "OPTIMAL"
+
+                [stages.delivery.result.risk.oracles.cost.primal_solver]
+                bound_source = "MOI.ObjectiveBound"
+                has_candidate = true
+                primal_status = "FEASIBLE_POINT"
+                raw_status = "kHighsModelStatusOptimal"
+                solver = "HiGHS"
+                solver_objective = 43.36555270994298
+                solver_objective_bound = 43.36555270994298
+                solver_version = "v1.15.1"
+                status = "solver_optimal"
+                termination = "OPTIMAL"
+
+            [stages.delivery.result.risk.oracles.risk]
+            budget_sec = 599.210000038147
+            elapsed_sec = 0.005000114440917969
+            lambda = 1.0
+            nu = [-0.0, 1.0, -0.0]
+            quantity = "probability"
+            schema = "r5-transport-witness-v1"
+            status = "solver_optimal"
+            transport = [[0.45, 0.0, 0.0], [0.05, 0.25, 0.0], [0.0, 0.0, 0.25]]
+
+                [stages.delivery.result.risk.oracles.risk.dual_solver]
+                bound_source = "MOI.ObjectiveBound"
+                has_candidate = true
+                primal_status = "FEASIBLE_POINT"
+                raw_status = "kHighsModelStatusOptimal"
+                solver = "HiGHS"
+                solver_objective = 0.3
+                solver_objective_bound = 0.3
+                solver_version = "v1.15.1"
+                status = "solver_optimal"
+                termination = "OPTIMAL"
+
+                [stages.delivery.result.risk.oracles.risk.primal_solver]
+                bound_source = "MOI.ObjectiveBound"
+                has_candidate = true
+                primal_status = "FEASIBLE_POINT"
+                raw_status = "kHighsModelStatusOptimal"
+                solver = "HiGHS"
+                solver_objective = 0.3
+                solver_objective_bound = 0.3
+                solver_version = "v1.15.1"
+                status = "solver_optimal"
+                termination = "OPTIMAL"
+
+            [stages.delivery.result.risk.scenarios.down]
+            case_sha256 = "9331e19b9e52ebb1f714f29396f26103b23a16e7cd04c27a3f2c6805b1b99bad"
+            run_id = "r5-delivery-bca1dcad-e72a-4d40-931b-e3bfb0f0c202/risk/down"
+            schema = "r5-dispatch-result-v1"
+            solver_objective = 35.52499998126592
+            status = "embedded_strategic_policy"
+            version = "r5_dispatch_checked_v1"
+
+                [stages.delivery.result.risk.scenarios.down.values]
+                H_D = [[0.049999999999999774, 0.03299999999999972, 0.02999999999999949, 0.003999999999999773]]
+                P_DER = [[0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0], [0.058000000107591834, 0.04000000009978729, 0.0, 0.040000000097837295], [0.0, 0.036000000000000004, 0.06700000009814329, 0.018000000000000002]]
+                P_DH = [[0.0, 0.0, 0.0, 0.0]]
+                P_PCC = [[0.049999999892408165, 0.04999999990021272, 0.04999999990185672, 0.049999999902162695]]
+                P_line = [[0.049999999892408165, 0.04999999990021272, 0.04999999990185672, 0.049999999902162695]]
+                Q_DER = [[0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0], [0.03, 0.03, 0.03, 0.03], [0.0, 0.0, 0.0, 0.0]]
+                Q_PCC = [[-0.009999999999999998, -0.009999999999999998, -0.009999999999999998, -0.009999999999999998]]
+                Q_line = [[-0.009999999999999998, -0.009999999999999998, -0.009999999999999998, -0.009999999999999998]]
+                delivery = [[-0.04999999988879043, -0.049999999896640036, -0.049999999898299105, -0.049999999898608184]]
+                mismatch = [[0.0, 0.0, 0.0, 0.0]]
+                v = [[1.0, 1.0, 1.0, 1.0], [0.999550000001076, 0.9995500000009979, 0.9995500000009815, 0.9995500000009784]]
+                "τ_IN" = [[294.15, 294.15, 294.15, 293.15]]
+                "τ_R" = [[324.39163106832154, 328.9603718299291, 321.30716122757843, 329.83943619657157], [324.9206074565676, 330.4379870670941, 318.36982975990253, 333.790459347713]]
+                "τ_S" = [[338.20115490346257, 338.4841813774975, 321.3071612275785, 339.3632457436757], [336.8253693613295, 338.2951299242369, 325.5126869027596, 334.74284030009386]]
+                "τ_load_R" = [[324.9206074565676, 330.4379870670941, 318.36982975990253, 333.790459347713]]
+                "τ_pipe_R" = [[324.39163106832154, 328.9603718299291, 321.30716122757843, 329.83943619657157]]
+                "τ_pipe_S" = [[336.8253693613295, 338.2951299242369, 325.5126869027596, 334.74284030009386]]
+                "τ_src" = [[338.20115490346257, 338.4841813774975, 321.3071612275785, 339.3632457436757]]
+
+            [stages.delivery.result.risk.scenarios.none]
+            case_sha256 = "c14f458715d522ce7ed5149e2a2b61ff8e8c918cba32cfba54dd403d8374e26a"
+            run_id = "r5-delivery-bca1dcad-e72a-4d40-931b-e3bfb0f0c202/risk/none"
+            schema = "r5-dispatch-result-v1"
+            solver_objective = 41.81316348818494
+            status = "embedded_strategic_policy"
+            version = "r5_dispatch_checked_v1"
+
+                [stages.delivery.result.risk.scenarios.none.values]
+                H_D = [[0.0529999999999996, 0.03599999999999965, 0.03299999999999869, 0.0069999999999993175]]
+                P_DER = [[0.0, 0.0, 0.0, 0.0], [0.039999999999999994, 0.07559636116475246, 0.05000000000000002, 0.02973272643761539], [0.08, 0.024403638835247543, 0.0, 0.0702672735623846], [0.0, 0.04, 0.08, 0.02]]
+                P_DH = [[0.0, 0.0, 0.0, 0.0]]
+                P_PCC = [[0.0, 0.0, 0.0, 0.0]]
+                P_line = [[0.0, 0.0, 0.0, 0.0]]
+                Q_DER = [[0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0], [0.03, 0.03, 0.03, 0.03], [0.0, 0.0, 0.0, 0.0]]
+                Q_PCC = [[-0.009999999999999998, -0.009999999999999998, -0.009999999999999998, -0.009999999999999998]]
+                Q_line = [[-0.009999999999999998, -0.009999999999999998, -0.009999999999999998, -0.009999999999999998]]
+                delivery = [[3.6177299597186066e-12, 3.57268434864496e-12, 3.557609709513497e-12, 3.554513188133658e-12]]
+                mismatch = [[-3.6177299597186066e-12, -3.57268434864496e-12, -3.557609709513497e-12, -3.554513188133658e-12]]
+                v = [[1.0, 1.0, 1.0, 1.0], [1.00005, 1.00005, 1.00005, 1.00005]]
+                "τ_IN" = [[294.15, 294.15, 294.15, 293.15]]
+                "τ_R" = [[329.83715884254974, 331.6707863855704, 320.3372242076955, 336.41969677086075], [332.19974669448794, 331.63610594628324, 316.67729342665314, 343.15]]
+                "τ_S" = [[348.88477789016883, 337.4811765844389, 320.3372242076955, 353.15], [344.8187943135355, 340.20753451771157, 324.5344362837957, 344.8166666666665]]
+                "τ_load_R" = [[332.19974669448794, 331.63610594628324, 316.67729342665314, 343.15]]
+                "τ_pipe_R" = [[329.83715884254974, 331.6707863855704, 320.3372242076955, 336.41969677086075]]
+                "τ_pipe_S" = [[344.8187943135355, 340.20753451771157, 324.5344362837957, 344.8166666666665]]
+                "τ_src" = [[348.88477789016883, 337.4811765844389, 320.3372242076955, 353.15]]
+
+            [stages.delivery.result.risk.scenarios.up]
+            case_sha256 = "11511b4023979b13d1ccf05c2bbf2f3446a958a873a49462b79d1b90edacbbe7"
+            run_id = "r5-delivery-bca1dcad-e72a-4d40-931b-e3bfb0f0c202/risk/up"
+            schema = "r5-dispatch-result-v1"
+            solver_objective = 51.1799031693517
+            status = "embedded_strategic_policy"
+            version = "r5_dispatch_checked_v1"
+
+                [stages.delivery.result.risk.scenarios.up.values]
+                H_D = [[0.07899999999999943, 0.04199999999999857, 0.0275, 0.0]]
+                P_DER = [[0.0, 0.0, 0.0, 0.0], [0.05200000000000002, 0.08441512856842194, 0.07900000000000003, 0.039832450892604634], [0.08, 0.03758487143157807, 0.0, 0.07616754910739537], [0.0, 0.032, 0.064, 0.016]]
+                P_DH = [[0.0, 0.0, 0.0, 0.0]]
+                P_PCC = [[0.0, 0.0, 0.0, 0.0]]
+                P_line = [[0.0, 0.0, 0.0, 0.0]]
+                Q_DER = [[0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0], [0.03, 0.03, 0.03, 0.03], [0.0, 0.0, 0.0, 0.0]]
+                Q_PCC = [[-0.009999999999999998, -0.009999999999999998, -0.009999999999999998, -0.009999999999999998]]
+                Q_line = [[-0.009999999999999998, -0.009999999999999998, -0.009999999999999998, -0.009999999999999998]]
+                delivery = [[3.6177299597186066e-12, 3.57268434864496e-12, 3.557609709513497e-12, 3.554513188133658e-12]]
+                mismatch = [[-1.8800993373679666e-12, -1.8736160748239236e-12, -1.8651485976292418e-12, -1.863283023269525e-12]]
+                v = [[1.0, 1.0, 1.0, 1.0], [1.00005, 1.00005, 1.00005, 1.00005]]
+                "τ_IN" = [[295.15, 295.15, 294.65, 293.15]]
+                "τ_R" = [[319.2970297120734, 320.76942594849186, 313.66483712849066, 335.01486926014394], [318.11895445003637, 321.7662361784646, 311.0545097132332, 343.15]]
+                "τ_S" = [[338.3446487596926, 329.71820486077235, 313.66483712849066, 353.15], [336.92847825956005, 331.76623617846434, 317.6021287608522, 343.15]]
+                "τ_load_R" = [[318.11895445003637, 321.7662361784646, 311.0545097132332, 343.15]]
+                "τ_pipe_R" = [[319.2970297120734, 320.76942594849186, 313.66483712849066, 335.01486926014394]]
+                "τ_pipe_S" = [[336.92847825956005, 331.76623617846434, 317.6021287608522, 343.15]]
+                "τ_src" = [[338.3446487596926, 329.71820486077235, 313.66483712849066, 353.15]]
+
+[stages.selection]
+raw_result_sha256 = "86aaa725094f85e2188769308f59eedabd9fa56e3f01e831b809ce6ab11c2e1f"
+
+    [stages.selection.payload]
+    kind = "market_execution"
+
+        [stages.selection.payload.case]
+        T = 4
+        description = "One exogenous generator, common 100 USD prices, explicit abundant supply."
+        dt_h = 1.0
+        load_MW = [[1.0, 1.0, 1.0, 1.0]]
+        name = "competitive_future_e030_r005"
+        nodes = 1
+        origin = "synthetic"
+        reserve_down_MW = [0.1, 0.1, 0.1, 0.1]
+        reserve_up_MW = [0.1, 0.1, 0.1, 0.1]
+        schema = "r5-market-case-v1"
+
+            [[stages.selection.payload.case.generators]]
+            down_bid = [100.0, 100.0, 100.0, 100.0]
+            down_max = 1.0
+            energy_bid = [100.0, 100.0, 100.0, 100.0]
+            id = "G"
+            node = 1
+            p_bid_max = 5.0
+            p_initial = 1.0
+            p_max = 5.0
+            p_min = 0.0
+            ramp_down_MW_h = 20.0
+            ramp_up_MW_h = 20.0
+            up_bid = [100.0, 100.0, 100.0, 100.0]
+            up_max = 1.0
+
+            [[stages.selection.payload.case.ies]]
+            down_bid = [100.0, 100.0, 100.0, 100.0]
+            down_max = 0.08
+            energy_bid = [100.0, 100.0, 100.0, 100.0]
+            id = "IES"
+            node = 1
+            purchase_bid_max = 1.0
+            q_max = 1.0
+            q_min = 0.0
+            up_bid = [100.0, 100.0, 100.0, 100.0]
+            up_max = 0.08
+
+            [stages.selection.payload.case.network]
+            limit_MW = []
+            ptdf = []
+            slack_node = 1
+
+            [stages.selection.payload.case.units]
+            energy = "MWh"
+            energy_price = "USD/MWh"
+            power = "MW"
+            ramp = "MW/h"
+            reserve_price = "USD/(MW*h)"
+            time = "h"
+
+    [stages.selection.result]
+    budget_sec = 180.0
+    case_sha256 = "f5a5669507162aa09455e349bf205b026476c0cf27e8d37006cdfec8029d17a7"
+    created_utc = "2026-09-19T07:17:24.078"
+    elapsed_sec = 0.053999900817871094
+    kind = "market_execution"
+    run_id = "r5-execution-f16f4145-3b86-452f-b835-91efd8a3bff5"
+    schema = "r5-execution-result-v1"
+    status = "selection_solved"
+    version = "r5_execution_min_norm_v1"
+
+        [stages.selection.result.dual]
+        bound_source = "MOI.DualObjectiveValue"
+        bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+        has_candidate = true
+        primal_status = "FEASIBLE_POINT"
+        raw_status = "SOLVED"
+        solver = "Clarabel"
+        solver_objective = 5.999999999999931
+        solver_objective_bound = 5.999999999936696
+        solver_version = "0.11.1"
+        status = "solver_optimal"
+        termination = "OPTIMAL"
+
+            [stages.selection.result.dual.witness]
+            multiplier_source = "MOI_raw_selector_QP_duals_not_market_prices"
+            raw_duals = [1.8572218066125503, 2.7865512853658947, 2.7846391216321353, 2.7842826180254354, 2.784270843664083, 0.11802127876093041, 0.1181542478981382, 0.11816958485671207, 0.11817087423975246, 0.1209009836242415, 0.12073847676797622, 0.12071655487513813, 0.12071588829692752, 0.939329478753344, 0.9374173150195851, 0.937060811412885, 0.9370490370515326, 0.05770090190040379, 0.057567932763196, 0.05755259580462214, 0.05755130642158175, 0.054821197037092706, 0.054983703893358, 0.05500562578619608, 0.055006292364406704, 6.381536468936066, 6.383315663532617, 6.383656830180744, 6.383667315159055, 2.6656503017416924, 2.663900644864199, 2.663566063150337, 2.663554955367195, 0.8816285768529799, 0.8798493822564287, 0.8795082156083024, 0.8794977306299904, 0.8630711308222323, 0.8648207876997259, 0.865155369413588, 0.8651664771967298, 0.9178923278592854, 0.9198044915930444, 0.9201609951997446, 0.920172769561097, 6.499557747696957, 6.501469911430716, 6.501826415037415, 6.501838189398769, 1.739200527851699, 1.7390675587144913, 1.7390522217559174, 1.7390509323728771, 1.736320822988388, 1.7364833298446534, 1.7365052517374915, 1.7365059183157021, 0.09087684262867948, 0.09100981176588728, 0.09102514872446113, 0.09102643810750152, 0.09375654749199057, 0.09359404063572527, 0.0935721187428872, 0.09357145216467656, 36.2151066534979, 37.14634829598495, 37.1447926358579, 37.14444790661254, 38.07376561100448, 37.14252396851744, 37.14407962864449, 37.14442435788984]
+            solver_objective = 5.999999999999931
+            x = [100.00000000000001, 100.00000000000001, 100.00000000000003, 100.00000000000001, 99.99999999999915, 99.99999999999915, 99.99999999999913, 99.99999999999915, 99.99999999999912, 99.99999999999912, 99.9999999999991, 99.99999999999913, -1.0538717093973031e-14, -7.893285950040822e-15, -1.051325951710555e-14, -8.197065932498613e-15, -2.8789240962554433e-14, -2.969552173878449e-14, -2.9357546606276557e-14, -2.653723604778827e-14, 2.2113938638025375e-14, 1.5415938004671153e-14, 2.1537656042562944e-14, 1.6152553691316907e-14, 8.17362744177555e-15, 9.390161589882962e-15, 9.115179398918426e-15, 6.242312735770695e-15, -8.769175144720068e-15, -4.159560638705172e-15, -5.586816299163446e-15, -7.935242200995112e-15, -7.992673388385269e-15, -6.202369728867638e-15, -6.819820250774554e-15, -7.825322866697238e-15, -3.5479948174368957e-14, -3.3957498029898753e-14, -3.864348092975227e-14, -3.088514354871284e-14, -3.7608894238831546e-14, -3.37359134953045e-14, -3.481005015093167e-14, -3.4337458483926525e-14, 1.6127243311134832e-12, 1.6112400350196894e-12, 1.6159546674756017e-12, 1.6081808348881132e-12, 1.598059425719724e-12, 1.5938404893537841e-12, 1.5951621272268523e-12, 1.5945769417785666e-12, -5.835685703671841e-15, -5.267814960357827e-15, -5.4697795521972786e-15, -5.516209130426855e-15, -4.023246046739128e-15, -5.516090074088981e-15, -5.314799096673106e-15, -5.268371683170802e-15]
+
+                [stages.selection.result.dual.witness.system]
+                h = [0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001]
+                names = ["π[1]", "π[2]", "π[3]", "π[4]", "σ_up[1]", "σ_up[2]", "σ_up[3]", "σ_up[4]", "σ_down[1]", "σ_down[2]", "σ_down[3]", "σ_down[4]", "g_cap_up[1,1]", "g_cap_up[1,2]", "g_cap_up[1,3]", "g_cap_up[1,4]", "g_cap_down[1,1]", "g_cap_down[1,2]", "g_cap_down[1,3]", "g_cap_down[1,4]", "i_cap_up[1,1]", "i_cap_up[1,2]", "i_cap_up[1,3]", "i_cap_up[1,4]", "i_cap_down[1,1]", "i_cap_down[1,2]", "i_cap_down[1,3]", "i_cap_down[1,4]", "q_bid[1,1]", "q_bid[1,2]", "q_bid[1,3]", "q_bid[1,4]", "pg_bid[1,1]", "pg_bid[1,2]", "pg_bid[1,3]", "pg_bid[1,4]", "gu_bid[1,1]", "gu_bid[1,2]", "gu_bid[1,3]", "gu_bid[1,4]", "gd_bid[1,1]", "gd_bid[1,2]", "gd_bid[1,3]", "gd_bid[1,4]", "iu_bid[1,1]", "iu_bid[1,2]", "iu_bid[1,3]", "iu_bid[1,4]", "id_bid[1,1]", "id_bid[1,2]", "id_bid[1,3]", "id_bid[1,4]", "ramp_up[1,1]", "ramp_up[1,2]", "ramp_up[1,3]", "ramp_up[1,4]", "ramp_down[1,1]", "ramp_down[1,2]", "ramp_down[1,3]", "ramp_down[1,4]"]
+
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [1.0, 1.0, 1.0, 1.0, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, -5.0, -5.0, -5.0, -5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -5.0, -5.0, -5.0, -5.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -0.08, -0.08, -0.08, -0.08, -0.08, -0.08, -0.08, -0.08, -21.0, -20.0, -20.0, -20.0, -19.0, -20.0, -20.0, -20.0]
+                    constant = -480.0
+                    equality = true
+                    id = "row/1"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 1.0, 0.0, 0.0, 1.0, -1.0, 0.0, 0.0]
+                    constant = -100.0
+                    equality = false
+                    id = "row/2"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 1.0, 0.0, 0.0, 1.0, -1.0, 0.0]
+                    constant = -100.0
+                    equality = false
+                    id = "row/3"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 1.0, 0.0, 0.0, 1.0, -1.0]
+                    constant = -100.0
+                    equality = false
+                    id = "row/4"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 1.0]
+                    constant = -100.0
+                    equality = false
+                    id = "row/5"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -100.0
+                    equality = false
+                    id = "row/6"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -100.0
+                    equality = false
+                    id = "row/7"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -100.0
+                    equality = false
+                    id = "row/8"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -100.0
+                    equality = false
+                    id = "row/9"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -100.0
+                    equality = false
+                    id = "row/10"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -100.0
+                    equality = false
+                    id = "row/11"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -100.0
+                    equality = false
+                    id = "row/12"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -100.0
+                    equality = false
+                    id = "row/13"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [-1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = 100.0
+                    equality = false
+                    id = "row/14"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = 100.0
+                    equality = false
+                    id = "row/15"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = 100.0
+                    equality = false
+                    id = "row/16"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = 100.0
+                    equality = false
+                    id = "row/17"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -100.0
+                    equality = false
+                    id = "row/18"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -100.0
+                    equality = false
+                    id = "row/19"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -100.0
+                    equality = false
+                    id = "row/20"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -100.0
+                    equality = false
+                    id = "row/21"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -100.0
+                    equality = false
+                    id = "row/22"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -100.0
+                    equality = false
+                    id = "row/23"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -100.0
+                    equality = false
+                    id = "row/24"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -100.0
+                    equality = false
+                    id = "row/25"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/26"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/27"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/28"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/29"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/30"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/31"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/32"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/33"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/34"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/35"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/36"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/37"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/38"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/39"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/40"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/41"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/42"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/43"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/44"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/45"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/46"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/47"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/48"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/49"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/50"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/51"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/52"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/53"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/54"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/55"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/56"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/57"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/58"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/59"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/60"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/61"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/62"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/63"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/64"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/65"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/66"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/67"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/68"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/69"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/70"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/71"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/72"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/73"
+                    moi_to_multiplier = 1.0
+
+        [stages.selection.result.market]
+        case_sha256 = "f5a5669507162aa09455e349bf205b026476c0cf27e8d37006cdfec8029d17a7"
+        multiplier_source = "optimized_minimum_norm_dual_face"
+        run_id = "r5-execution-f16f4145-3b86-452f-b835-91efd8a3bff5/market"
+        schema = "r5-market-result-v1"
+        solver_objective = 480.0
+        status = "unique_minimum_norm_market_selection"
+        version = "r5_market_clearing_checked_v1"
+
+            [stages.selection.result.market.multipliers]
+            down = [99.99999999999912, 99.99999999999912, 99.9999999999991, 99.99999999999913]
+            energy = [100.00000000000001, 100.00000000000001, 100.00000000000003, 100.00000000000001]
+            g_cap_down = [[-2.8789240962554433e-14, -2.969552173878449e-14, -2.9357546606276557e-14, -2.653723604778827e-14]]
+            g_cap_up = [[-1.0538717093973031e-14, -7.893285950040822e-15, -1.051325951710555e-14, -8.197065932498613e-15]]
+            gd_bid = [[-3.7608894238831546e-14, -3.37359134953045e-14, -3.481005015093167e-14, -3.4337458483926525e-14]]
+            gu_bid = [[-3.5479948174368957e-14, -3.3957498029898753e-14, -3.864348092975227e-14, -3.088514354871284e-14]]
+            i_cap_down = [[8.17362744177555e-15, 9.390161589882962e-15, 9.115179398918426e-15, 6.242312735770695e-15]]
+            i_cap_up = [[2.2113938638025375e-14, 1.5415938004671153e-14, 2.1537656042562944e-14, 1.6152553691316907e-14]]
+            id_bid = [[1.598059425719724e-12, 1.5938404893537841e-12, 1.5951621272268523e-12, 1.5945769417785666e-12]]
+            iu_bid = [[1.6127243311134832e-12, 1.6112400350196894e-12, 1.6159546674756017e-12, 1.6081808348881132e-12]]
+            line_down = []
+            line_up = []
+            pg_bid = [[-7.992673388385269e-15, -6.202369728867638e-15, -6.819820250774554e-15, -7.825322866697238e-15]]
+            q_bid = [[-8.769175144720068e-15, -4.159560638705172e-15, -5.586816299163446e-15, -7.935242200995112e-15]]
+            ramp_down = [[-4.023246046739128e-15, -5.516090074088981e-15, -5.314799096673106e-15, -5.268371683170802e-15]]
+            ramp_up = [[-5.835685703671841e-15, -5.267814960357827e-15, -5.4697795521972786e-15, -5.516209130426855e-15]]
+            up = [99.99999999999915, 99.99999999999915, 99.99999999999913, 99.99999999999915]
+
+            [stages.selection.result.market.values]
+            P_G = [[1.000000000003618, 1.0000000000035727, 1.0000000000035576, 1.0000000000035545]]
+            P_IES = [[3.6177299597186066e-12, 3.57268434864496e-12, 3.557609709513497e-12, 3.554513188133658e-12]]
+            R_G_down = [[0.05000000011120959, 0.05000000010335999, 0.05000000010170093, 0.05000000010139184]]
+            R_G_up = [[0.0999999999982624, 0.09999999999830098, 0.09999999999830757, 0.09999999999830879]]
+            R_IES_down = [[0.04999999988879043, 0.049999999896640036, 0.049999999898299105, 0.049999999898608184]]
+            R_IES_up = [[1.7376306223506402e-12, 1.6990682738210364e-12, 1.6924611118842554e-12, 1.6912301648641332e-12]]
+
+        [stages.selection.result.primal]
+        bound_source = "MOI.DualObjectiveValue"
+        bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+        has_candidate = true
+        primal_status = "FEASIBLE_POINT"
+        raw_status = "SOLVED"
+        solver = "Clarabel"
+        solver_objective = 2.0300000000136214
+        solver_objective_bound = 2.0299999999108165
+        solver_version = "0.11.1"
+        status = "solver_optimal"
+        termination = "OPTIMAL"
+
+            [stages.selection.result.primal.witness]
+            multiplier_source = "MOI_raw_selector_QP_duals_not_market_prices"
+            raw_duals = [-0.6459256476327158, -0.6459256476326547, -0.6459256476326362, -0.6459256476326329, 0.2540743523809527, 0.2540743523808226, 0.2540743523808053, 0.2540743523808017, 0.304074352325635, 0.30407435232794106, 0.3040743523284161, 0.304074352328526, 0.0035407435236922097, 1.0700764152172455e-12, 1.0865301894414393e-12, 1.0892755467930648e-12, 1.089764826083761e-12, 0.7047137164521122, 0.6989888511908103, 0.6980323482848476, 0.6978637458603342, -2.615540375187821e-13, -2.619391055620173e-13, -2.6207820001522327e-13, -2.6210696980336594e-13, -1.2009268425137683e-12, -1.2260150312881917e-12, -1.2347702458045726e-12, -1.2365897775073231e-12, -1.0552811728286e-12, -1.0737205143772806e-12, -1.0803344430500881e-12, -1.0817273376987925e-12, -2.531253894872296e-13, -2.5262845194027276e-13, -2.525803183873333e-13, -2.5257340932628243e-13, -1.1453999023093674e-12, -1.1479010821107107e-12, -1.1483262294212172e-12, -1.1484041301085437e-12, -1.023427219412454e-12, -1.0347137605453685e-12, -1.0369494173020367e-12, -1.037365741337186e-12, -1.4196882023576885e-11, -1.4176314859514306e-11, -1.41665884178499e-11, -1.4164840084767401e-11, -1.8170608434781962e-10, -1.668045838735731e-10, -1.6362598443317367e-10, -1.630221356098917e-10, -5.184837991232794e-14, -5.202813852893888e-14, -5.201596608453427e-14, -5.201196170907178e-14, -5.203160712463982e-14, -5.198932566225315e-14, -5.200577219787648e-14, -5.2009939968354083e-14, 1.1256991869472675e-12, 1.125525084366604e-12, 1.1247288610127563e-12, 1.124548898505844e-12, 1.1265812938204277e-11, 1.117625930585499e-11, 1.1165847572224528e-11, 1.1164148660359788e-11, 6.959141298115168e-11, 6.407593298583992e-11, 6.291740059754593e-11, 6.269827448537768e-11, 0.29528628355569714, 0.30101114881693636, 0.30196765172288303, 0.30213625414739265, 0.6047137164796426, 0.5989888512181505, 0.5980323483121539, 0.597863745887635, 2.8018203059683763e-11, 2.331237150326517e-11, 2.2279554539651786e-11, 2.2085527626522666e-11]
+            solver_objective = 2.0300000000136214
+            x = [1.000000000003618, 1.0000000000035727, 1.0000000000035576, 1.0000000000035545, 0.0999999999982624, 0.09999999999830098, 0.09999999999830757, 0.09999999999830879, 0.05000000011120959, 0.05000000010335999, 0.05000000010170093, 0.05000000010139184, 3.6177299597186066e-12, 3.57268434864496e-12, 3.557609709513497e-12, 3.554513188133658e-12, 1.7376306223506402e-12, 1.6990682738210364e-12, 1.6924611118842554e-12, 1.6912301648641332e-12, 0.04999999988879043, 0.049999999896640036, 0.049999999898299105, 0.049999999898608184]
+
+                [stages.selection.result.primal.witness.system]
+                h = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+                names = ["P_G[1,1]", "P_G[1,2]", "P_G[1,3]", "P_G[1,4]", "R_G_up[1,1]", "R_G_up[1,2]", "R_G_up[1,3]", "R_G_up[1,4]", "R_G_down[1,1]", "R_G_down[1,2]", "R_G_down[1,3]", "R_G_down[1,4]", "P_IES[1,1]", "P_IES[1,2]", "P_IES[1,3]", "P_IES[1,4]", "R_IES_up[1,1]", "R_IES_up[1,2]", "R_IES_up[1,3]", "R_IES_up[1,4]", "R_IES_down[1,1]", "R_IES_down[1,2]", "R_IES_down[1,3]", "R_IES_down[1,4]"]
+
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [-1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = 1.0
+                    equality = true
+                    id = "row/1"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = 1.0
+                    equality = true
+                    id = "row/2"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = 1.0
+                    equality = true
+                    id = "row/3"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = 1.0
+                    equality = true
+                    id = "row/4"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = 0.1
+                    equality = true
+                    id = "row/5"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = 0.1
+                    equality = true
+                    id = "row/6"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = 0.1
+                    equality = true
+                    id = "row/7"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = 0.1
+                    equality = true
+                    id = "row/8"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0]
+                    constant = 0.1
+                    equality = true
+                    id = "row/9"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0]
+                    constant = 0.1
+                    equality = true
+                    id = "row/10"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0]
+                    constant = 0.1
+                    equality = true
+                    id = "row/11"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0]
+                    constant = 0.1
+                    equality = true
+                    id = "row/12"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, -100.0, -100.0, -100.0, -100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0]
+                    constant = -480.0
+                    equality = true
+                    id = "row/13"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [-1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/14"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/15"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/16"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/17"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/18"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/19"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/20"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/21"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -5.0
+                    equality = false
+                    id = "row/22"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -5.0
+                    equality = false
+                    id = "row/23"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -5.0
+                    equality = false
+                    id = "row/24"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -5.0
+                    equality = false
+                    id = "row/25"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0]
+                    constant = -1.0
+                    equality = false
+                    id = "row/26"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0]
+                    constant = -1.0
+                    equality = false
+                    id = "row/27"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0]
+                    constant = -1.0
+                    equality = false
+                    id = "row/28"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0]
+                    constant = -1.0
+                    equality = false
+                    id = "row/29"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -1.0
+                    equality = false
+                    id = "row/30"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -1.0
+                    equality = false
+                    id = "row/31"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -1.0
+                    equality = false
+                    id = "row/32"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -1.0
+                    equality = false
+                    id = "row/33"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -5.0
+                    equality = false
+                    id = "row/34"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -5.0
+                    equality = false
+                    id = "row/35"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -5.0
+                    equality = false
+                    id = "row/36"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -5.0
+                    equality = false
+                    id = "row/37"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -1.0
+                    equality = false
+                    id = "row/38"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -1.0
+                    equality = false
+                    id = "row/39"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -1.0
+                    equality = false
+                    id = "row/40"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -1.0
+                    equality = false
+                    id = "row/41"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -1.0
+                    equality = false
+                    id = "row/42"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -1.0
+                    equality = false
+                    id = "row/43"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -1.0
+                    equality = false
+                    id = "row/44"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -1.0
+                    equality = false
+                    id = "row/45"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.08
+                    equality = false
+                    id = "row/46"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.08
+                    equality = false
+                    id = "row/47"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.08
+                    equality = false
+                    id = "row/48"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.08
+                    equality = false
+                    id = "row/49"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0]
+                    constant = -0.08
+                    equality = false
+                    id = "row/50"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0]
+                    constant = -0.08
+                    equality = false
+                    id = "row/51"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0]
+                    constant = -0.08
+                    equality = false
+                    id = "row/52"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0]
+                    constant = -0.08
+                    equality = false
+                    id = "row/53"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -21.0
+                    equality = false
+                    id = "row/54"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [-1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -20.0
+                    equality = false
+                    id = "row/55"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, -1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -20.0
+                    equality = false
+                    id = "row/56"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, -1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -20.0
+                    equality = false
+                    id = "row/57"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [-1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -19.0
+                    equality = false
+                    id = "row/58"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [1.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -20.0
+                    equality = false
+                    id = "row/59"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 1.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -20.0
+                    equality = false
+                    id = "row/60"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 1.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -20.0
+                    equality = false
+                    id = "row/61"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [-1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/62"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/63"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/64"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/65"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/66"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/67"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/68"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/69"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/70"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/71"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/72"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/73"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/74"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/75"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/76"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/77"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/78"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/79"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/80"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/81"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/82"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/83"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/84"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/85"
+                    moi_to_multiplier = 1.0
+
+        [stages.selection.result.primary]
+        budget_sec = 36.0
+        case_sha256 = "f5a5669507162aa09455e349bf205b026476c0cf27e8d37006cdfec8029d17a7"
+        cost_optimization_complete = true
+        created_utc = "2026-09-19T07:17:24.081"
+        dual_status = "FEASIBLE_POINT"
+        elapsed_sec = 0.003999948501586914
+        fixed_load_utility_constant_omitted = true
+        julia_version = "1.12.6"
+        model_type = "continuous_LP"
+        objective_type = "fixed_bid_clearing_cost_not_system_resource_cost"
+        primal_status = "FEASIBLE_POINT"
+        raw_status = "kHighsModelStatusOptimal"
+        run_id = "r5-market-f9b5fb6c-391d-4433-88e0-4d7fcf416631"
+        schema = "r5-market-result-v1"
+        solver = "HiGHS"
+        solver_objective = 480.0
+        solver_objective_bound = 480.0
+        solver_version = "v1.15.1"
+        status = "solver_optimal"
+        termination = "OPTIMAL"
+        version = "r5_market_clearing_checked_v1"
+
+            [stages.selection.result.primary.lower_bound_duals]
+            P_G = [[0.0, 0.0, 0.0, 0.0]]
+            P_IES = [[0.0, 0.0, 0.0, 0.0]]
+            R_G_down = [[0.0, 0.0, 0.0, 0.0]]
+            R_G_up = [[0.0, 0.0, 0.0, 0.0]]
+            R_IES_down = [[0.0, 0.0, 0.0, 0.0]]
+            R_IES_up = [[0.0, 0.0, 0.0, 0.0]]
+
+            [[stages.selection.result.primary.model_types]]
+            count = 12
+            function = "AffExpr"
+            set = "MathOptInterface.EqualTo{Float64}"
+            [[stages.selection.result.primary.model_types]]
+            count = 8
+            function = "AffExpr"
+            set = "MathOptInterface.GreaterThan{Float64}"
+            [[stages.selection.result.primary.model_types]]
+            count = 40
+            function = "AffExpr"
+            set = "MathOptInterface.LessThan{Float64}"
+            [[stages.selection.result.primary.model_types]]
+            count = 24
+            function = "VariableRef"
+            set = "MathOptInterface.GreaterThan{Float64}"
+
+            [stages.selection.result.primary.multipliers]
+            down = [100.0, 100.0, 100.0, 100.0]
+            energy = [100.0, 100.0, 100.0, 100.0]
+            g_cap_down = [[0.0, 0.0, 0.0, 0.0]]
+            g_cap_up = [[0.0, 0.0, 0.0, 0.0]]
+            gd_bid = [[0.0, 0.0, 0.0, 0.0]]
+            gu_bid = [[0.0, 0.0, 0.0, 0.0]]
+            i_cap_down = [[0.0, 0.0, 0.0, 0.0]]
+            i_cap_up = [[0.0, 0.0, 0.0, 0.0]]
+            id_bid = [[0.0, 0.0, 0.0, 0.0]]
+            iu_bid = [[0.0, 0.0, 0.0, 0.0]]
+            line_down = []
+            line_up = []
+            pg_bid = [[0.0, 0.0, 0.0, 0.0]]
+            q_bid = [[0.0, 0.0, 0.0, 0.0]]
+            ramp_down = [[0.0, 0.0, 0.0, 0.0]]
+            ramp_up = [[0.0, 0.0, 0.0, 0.0]]
+            up = [100.0, 100.0, 100.0, 100.0]
+
+            [stages.selection.result.primary.raw_duals]
+            down = [-100.0, -100.0, -100.0, -100.0]
+            energy = [-100.0, -100.0, -100.0, -100.0]
+            g_cap_down = [[0.0, 0.0, 0.0, 0.0]]
+            g_cap_up = [[-0.0, -0.0, -0.0, -0.0]]
+            gd_bid = [[-0.0, -0.0, -0.0, -0.0]]
+            gu_bid = [[-0.0, -0.0, -0.0, -0.0]]
+            i_cap_down = [[-0.0, -0.0, -0.0, -0.0]]
+            i_cap_up = [[0.0, 0.0, 0.0, 0.0]]
+            id_bid = [[-0.0, -0.0, -0.0, -0.0]]
+            iu_bid = [[-0.0, -0.0, -0.0, -0.0]]
+            line_down = []
+            line_up = []
+            pg_bid = [[-0.0, -0.0, -0.0, -0.0]]
+            q_bid = [[-0.0, -0.0, -0.0, -0.0]]
+            ramp_down = [[-0.0, -0.0, -0.0, -0.0]]
+            ramp_up = [[-0.0, -0.0, -0.0, -0.0]]
+            up = [-100.0, -100.0, -100.0, -100.0]
+
+            [stages.selection.result.primary.values]
+            P_G = [[1.0, 1.0, 1.0, 1.0]]
+            P_IES = [[0.0, 0.0, 0.0, 0.0]]
+            R_G_down = [[0.1, 0.1, 0.1, 0.1]]
+            R_G_up = [[0.1, 0.1, 0.1, 0.1]]
+            R_IES_down = [[0.0, 0.0, 0.0, 0.0]]
+            R_IES_up = [[0.0, 0.0, 0.0, 0.0]]
+
+        [stages.selection.result.spec]
+        price_scale_USD_MWh = 100.0
+        quantity_scale_MW = 1.0
+        version = "r5_execution_min_norm_v1"

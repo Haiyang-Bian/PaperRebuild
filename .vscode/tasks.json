@@ -1,5 +1,8 @@
 {
   "inputs": [
+    {"id":"r5ExecutionBatch","description":"执行对照的新批次ID，不覆盖旧运行","type":"promptString","default":"r5-execution-new"},
+    {"id":"r5ExecutionStudy","description":"已完成执行study.toml","type":"promptString","default":"results/runs/r5-execution-20260919/study.toml"},
+    {"id":"r5ExecutionReport","description":"执行报告新目录；重绘读取已有CSV","type":"promptString","default":"results/summaries/r5-execution-replay"},
     {"id":"r5StrategyBatch","description":"连续报价新批次ID，不覆盖旧运行","type":"promptString","default":"r5-strategic-new"},
     {"id":"r5StrategyStudy","description":"已完成的策略study.toml","type":"promptString","default":"results/runs/r5-strategic-20260919/study.toml"},
     {"id":"r5StrategyReport","description":"新策略报告目录；重绘读取其中已保存CSV","type":"promptString","default":"results/summaries/r5-strategic-replay"},
@@ -72,6 +75,12 @@
     }
   ],
   "tasks": [
+    {"label":"PaperRebuild: R5 execution mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_execution.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 execution tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_execution.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 execution study","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/study_r5_execution.jl","${input:r5ExecutionBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 execution report","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/report_r5_execution.jl","${input:r5ExecutionStudy}","${input:r5ExecutionReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 execution artifacts","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_execution_artifacts.jl","${input:r5ExecutionReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 execution redraw","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r5_execution.jl","${input:r5ExecutionReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R5 strategic mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_strategic.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R5 strategic tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_strategic.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R5 strategic freeze inputs","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/freeze_r5_strategic.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},

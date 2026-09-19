@@ -3,11 +3,17 @@
 使用 Julia 逐步复现博士论文，并沉淀可核查、可接续的研究流程。
 主要智能体为 Codex，IDE 为 VS Code，文件视图使用 CodeGroup。
 
-**当前交付：R4保持控制量的热状态相容性核查。**34个父调度在两组预先声明温度带下完成272条阶段记录；
+**当前进度以[当前状态](docs/agent/current-state.md)和[全文覆盖清单](docs/src/reproduction-coverage.md)为准。**
+最新研究入口为[第5章连续策略报价](docs/src/ch05-strategic-results.md)及
+[市场执行与内部交付对照](docs/src/ch05-execution-results.md)。
+目前仍是明确标注的合成模型与方法验证，尚未完成全论文、论文规模或样本外复现。
+
+**以下保留R4历史阶段摘要。**热状态相容性核查的34个父调度在两组预先声明温度带下完成272条阶段记录；
 26个能在设备、热交付和费用不变时重构稳态供回水状态，其中24个同时通过原电网检查。
 8个开放交易调度在两组温度带下都有解析质量流区间冲突，不能只靠调整热状态消除。
 本批仍采用冻结参考损耗，不认证水压、动态或实际温度相关散热。
-下一步补齐闲置支路、循环流和端口边界，再重算收益；见[本轮结果与图表](docs/src/ch04-heat-results.md)。
+当批结论见[相容性结果与图表](docs/src/ch04-heat-results.md)，后续新模型另见
+[稳态循环与温变散热](docs/src/ch04-thermal-results.md)，历史判定保持。
 
 前批网络重构的34项整数运行与72项连续穷举保留：34项采用模型通过，28项原电网通过。
 电瓶颈例0.12011%费用改善得到本批稳态热相容性补证；开放交易0.05684%仍只是旧简化模型费用差，
@@ -57,6 +63,8 @@ R3阶段归档，保留算法限制和历史判定。前批18项分布运行与1
 - [全部电池模式与费用界](docs/src/ch04-discrete.md)、[离散核查正式结果](docs/src/ch04-discrete-results.md)
 - [网络重构采用解释](docs/src/ch04-network.md)、[重构结果与热相容性缺口](docs/src/ch04-network-results.md)
 - [热状态相容性推导](docs/src/ch04-heat-compatibility.md)、[同控制重构与失败原因](docs/src/ch04-heat-results.md)
+- [第5章风险调度](docs/src/ch05-risk-results.md)、[固定价格分解](docs/src/ch05-benders-results.md)
+- [连续策略报价](docs/src/ch05-strategic-results.md)、[执行规则与固定成交交付](docs/src/ch05-execution-results.md)
 - [全文覆盖与未完成工作](docs/src/reproduction-coverage.md)
 - [Codex 入口](AGENTS.md)与[当前状态](docs/agent/current-state.md)
 - [参与开发](CONTRIBUTING.md)与[来源及许可](NOTICE.md)
