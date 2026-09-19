@@ -82,6 +82,8 @@ jobs:
       # R7恢复专项已进入runtests；这里核对独立公式/实际约束覆盖。
       - name: R7 inherited-state recovery mapping
         run: julia --startup-file=no --project=. scripts/check_r7_recovery.jl
+      - name: R7 normal CHP and boundary mapping
+        run: julia --startup-file=no --project=. scripts/check_r7_commitment.jl
       - name: R7 frozen analytic audit mapping
         run: julia --startup-file=no --project=. scripts/check_ch06.jl
       - name: Project checks

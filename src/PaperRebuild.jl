@@ -233,6 +233,11 @@ export R7RecoveryCase, load_r7_recovery_case, r7_faults, build_r7_recovery, solv
 export validate_r7_recovery,
     enumerate_r7_recovery, audit_r7_faults, save_r7_recovery, read_r7_recovery
 
+include("core/r7_commitment.jl")
+include("components/r7_commitment.jl")
+include("verification/r7_commitment.jl")
+export R7CHPSpec, add_r7_chp_commitment!, validate_r7_chp, r7_chp_event_boundary
+
 """
     hello(who::String)
 

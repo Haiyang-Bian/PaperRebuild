@@ -100,6 +100,18 @@
   ],
   "tasks": [
     {
+      "label": "PaperRebuild: R7 normal CHP mapping",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/check_r7_commitment.jl"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R7 normal CHP tests",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/test_r7_commitment.jl"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
       "label": "PaperRebuild: R7 recovery mapping",
       "type": "process",
       "command": "julia",

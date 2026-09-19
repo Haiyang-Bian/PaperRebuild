@@ -128,6 +128,7 @@
 - `configs/r6/pilot-rule.toml`
 - `configs/r6/protocol.toml`
 - `configs/r6/study.toml`
+- `configs/r7/chp-component-hand.toml`
 - `configs/r7/recovery-hand.toml`
 - `data/processed/README.md`
 - `data/raw/README.md`
@@ -175,6 +176,7 @@
 - `docs/agent/tasks/2026-09-19-r6-report-hash.md`
 - `docs/agent/tasks/2026-09-19-r6-study.md`
 - `docs/agent/tasks/2026-09-19-r7-audit.md`
+- `docs/agent/tasks/2026-09-20-r7-commitment.md`
 - `docs/agent/tasks/2026-09-20-r7-recovery.md`
 - `docs/make.jl`
 - `docs/reading/README.md`
@@ -228,6 +230,7 @@
 - `docs/reading/ch05/strategic-model.toml`
 - `docs/reading/ch05/strategic.toml`
 - `docs/reading/ch06/audit.toml`
+- `docs/reading/ch06/normal-prerequisites.toml`
 - `docs/reading/ch06/recovery.toml`
 - `docs/reading/source_manifest.json`
 - `docs/reading/sources.json`
@@ -605,6 +608,8 @@
 - `docs/src/ch05-strategic.md`
 - `docs/src/ch06-audit-equations.md`
 - `docs/src/ch06-audit.md`
+- `docs/src/ch06-commitment-equations.md`
+- `docs/src/ch06-commitment.md`
 - `docs/src/ch06-recovery-equations.md`
 - `docs/src/ch06-recovery.md`
 - `docs/src/index.md`
@@ -620,6 +625,7 @@
 - `docs/src/r6-pilot-results.md`
 - `docs/src/r6-study-equations.md`
 - `docs/src/r6-study.md`
+- `docs/src/r6-test-results.md`
 - `docs/src/reading.md`
 - `docs/src/reproduction-acceptance.md`
 - `docs/src/reproduction-coverage.md`
@@ -1022,6 +1028,7 @@
 - `scripts/check_r6.jl`
 - `scripts/check_r6_data.jl`
 - `scripts/check_r6_evaluation.jl`
+- `scripts/check_r7_commitment.jl`
 - `scripts/check_r7_recovery.jl`
 - `scripts/check_solvers.jl`
 - `scripts/collect_ch03_data.jl`
@@ -1176,6 +1183,7 @@
 - `scripts/r6_study.jl`
 - `scripts/r6_study_io.jl`
 - `scripts/r6_study_tables.jl`
+- `scripts/r7_commitment_docs.jl`
 - `scripts/r7_recovery.jl`
 - `scripts/r7_recovery_docs.jl`
 - `scripts/read_docx.py`
@@ -1286,6 +1294,7 @@
 - `scripts/test_r6_study_report.jl`
 - `scripts/test_r6_study_report_artifacts.jl`
 - `scripts/test_r6_workflow.jl`
+- `scripts/test_r7_commitment.jl`
 - `scripts/test_r7_recovery.jl`
 - `scripts/tighten_r4_distributed_cost.jl`
 - `scripts/validate_ch03_data.jl`
@@ -1326,6 +1335,7 @@
 - `src/algorithms/r6_support_evaluation.jl`
 - `src/algorithms/r7_recovery.jl`
 - `src/components/devices.jl`
+- `src/components/r7_commitment.jl`
 - `src/core/case.jl`
 - `src/core/r2_case.jl`
 - `src/core/r3.jl`
@@ -1348,6 +1358,7 @@
 - `src/core/r6_methods.jl`
 - `src/core/r6_protocol.jl`
 - `src/core/r6_study.jl`
+- `src/core/r7_commitment.jl`
 - `src/core/r7_recovery.jl`
 - `src/formulations/r1.jl`
 - `src/formulations/r2.jl`
@@ -1420,6 +1431,7 @@
 - `src/verification/r6_evaluation.jl`
 - `src/verification/r6_statistics.jl`
 - `src/verification/r6_study.jl`
+- `src/verification/r7_commitment.jl`
 - `src/verification/r7_recovery.jl`
 - `test/ch03_data.jl`
 - `test/ch06_audit.jl`
@@ -1465,6 +1477,7 @@
 - `test/r6_methods.jl`
 - `test/r6_study.jl`
 - `test/r6_study_report.jl`
+- `test/r7_commitment.jl`
 - `test/r7_recovery.jl`
 - `test/runtests.jl`
 - `tools/Manifest.toml`

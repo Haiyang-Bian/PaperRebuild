@@ -20,9 +20,9 @@ end
 r7_digest(x) = bytes2hex(sha256(IOBuffer(r7_text(x))))
 
 function r7_numbers(x, shape, name; lo = -Inf, hi = Inf)
-    x isa AbstractArray || error("$name必须显式提供数组")
+    x isa AbstractArray || error("$(name)必须显式提供数组")
     a = length(shape) == 1 ? Float64.(x) : reduce(vcat, permutedims.(Float64.(v) for v in x))
-    size(a) == shape && all(y -> isfinite(y) && lo <= y <= hi, a) || error("$name形状或边界错误")
+    size(a) == shape && all(y -> isfinite(y) && lo <= y <= hi, a) || error("$(name)形状或边界错误")
     a
 end
 

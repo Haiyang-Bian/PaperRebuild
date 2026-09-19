@@ -52,6 +52,12 @@ R3第四批显式v3见[物理恢复与停止判据](../src/ch03-r3-v3.md)。恢�
 
 ## 文档更新路由
 
+R7灾前准备读[启停与状态继承](../src/ch06-commitment.md)及ch06/normal-prerequisites.toml。
+CHP约束块可嵌入正常模型；min_on/min_off按h计，非整步上取整，窗口前持续时间不能省略。
+carry_obligation与complete_within_horizon是显式项目边界；事件前功率取ts-1的同场景值。
+当前接口只继承CHP，不称完整灾前优化。双水箱的原文适用范围是恢复模型；
+保留正常热网乘积/水力/输运时不自动继承紧凑MILP形式。管温平均状态须另行推导。
+
 R7给定状态恢复读[恢复基准](../src/ch06-recovery.md)及ch06/recovery.toml。
 这是新增采用版，旧ch06/audit.toml与解析见证保持历史范围。恢复初值尚非已认证灾前最优计划。
 电网幅值/平方量不能混用；拓扑跨事件时域和场景共享，流量跨场景共享。全节点森林不支持去电节点。
