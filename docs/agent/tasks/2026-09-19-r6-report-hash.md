@@ -53,3 +53,27 @@ r6-report-hash-format-check、r6-report-hash-mapping、r6-report-hash-docs及r6-
 
 VS Code Bridge实际查询无已注册实例；保留个人settings的A70D6C47…157D86哈希。
 继续codex/r2-models，仅本地提交，不推送。第6/7章、规模和全文交付仍未完成，总目标保持。
+
+## 原值续接与进度报告的实际验收
+
+新冻结批次r6-formal-20260919-v2从a2cd31e建立，freeze.sha256为
+27e6635b041bfca1b11dc0436bab8150fdc7f7143f76f1b1a3b33c033b12419b，归档SHA为
+20a6e52fc3d363e87fafe93ac3d2e8651e64cd80f2a00aac944850a80dee8a16。
+continue_r6_study实际执行成功：D/SP的全部原运行文件逐项一致，两个候选均接受且费用求解完成，
+两项optimized_again=false。D旧策略保持相同；SP父批次没有策略文件，本次首次从保存原值提取，
+因此policy_identical_to_parent=false并非检测到策略不同。
+日志tmp/r6-study-continuation-v2.log，续接证据位于新批次continuation.toml。
+
+快照r6-formal-progress-20260919-v2只包含当时两项训练，明确partial_progress_only。
+新进程test_r6_study_report_artifacts.jl的8项检查通过，耗时3m59s；
+重封CSV哈希和伪造thesis_verified声明均被原值/范围检查拒绝。
+日志tmp/r6-study-report-artifacts-v2.log。未重新优化或写入旧批次。
+
+train已接续新批次，D/SP只重读；剩余训练按原顺序、原600秒预算执行，
+日志tmp/r6-study-training-v2.log。后续新增记录不会改写上述两项快照。
+
+后续实际结果：14项训练记录全部齐备，candidate_accepted与cost_optimization_complete均为true，
+原train进程已退出0。DRJCC-r05最后保存，目标−84.3460688545，求解27.705秒。
+SP/CCP分别−86.6305017467/−86.8406881679；这一差异是训练问题差异，不是样本外费用排名。
+冻结执行目录的两项快照数值重验退出0，随后启动validation，日志tmp/r6-study-validation-v2.log。
+验证/测试/压力摘要尚未齐备，不能将训练通过当总体风险通过。

@@ -1,0 +1,211 @@
+schema = "r7-preimplementation-audit-v1"
+source = "docs/摘要.pdf"
+source_sha256 = "20328e2480e773520c19c378e53365fc944c0bafcfca73071f5d8313d5ee7d91"
+pdf_pages = [107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119]
+status = "selected_relations_audited_dispatch_not_implemented"
+test_script = "scripts/test_ch06_audit.jl"
+proof_script = "scripts/audit_ch06.jl"
+scope = "原页分批审读、选定关系的解析反例与采用推导；不是全部111式核查或R7调度完成"
+
+[[reference]]
+id = "MOI-duality"
+url = "https://jump.dev/MathOptInterface.jl/stable/background/duality/"
+role = "最小化LP不等式方向、自由变量及乘子符号的独立核对"
+accessed = "2026-09-19"
+[[reference]]
+id = "Zhao-Zeng-2012"
+url = "https://optimization-online.org/wp-content/uploads/2012/01/3310.pdf"
+role = "2012年作者预印本，PDF6–9：整数补救、内层上下界及两种重构的条件；未认定其就是论文某条参考文献"
+accessed = "2026-09-19"
+
+[[equation]]
+id = "R7-A1"
+source_equations = ["6-52", "6-53", "6-93"]
+latex = 'Q_s(x)=\max_{\gamma\in\mathcal U_s}\min_{(r,z)\in\mathcal Y_s(x,\gamma)}\sum_{\omega}\pi_\omega\sum_{t\in T_s^C}\left(L^P_{t,\omega,s}+L^H_{t,\omega,s}\right)\Delta t\le\bar L_s'
+meaning = "对规定事件的允许线路故障取最坏，对新能源场景加权。失供为MWh，电热分项保留；期望阈值不保证每条新能源轨迹都达阈值。窗外失供置零是待实施的显式边界。"
+classification = "adopted_quantifier_and_unit_definition"
+test = "R7-quantifiers"
+[[equation]]
+id = "R7-A2"
+source_equations = ["6-56", "6-61", "6-62", "6-70", "6-71", "6-72"]
+latex = 'u_{g,t,s,\omega}^{\rm CHP}=u_{g,t}^{\rm CHP},\quad z_{e,s,\omega}=z_{e,s},\quad m_{p,t,s,\omega}=m_{p,t,s}'
+meaning = "CHP沿用灾前启停但允许灾后调整出力；事件拓扑跨时段/新能源场景共用，流量跨新能源场景共用。场景相关连续调度、储能及热状态分别保存。恢复前状态从同一x和同一omega继承，不能重置或默认满储。"
+classification = "index_based_adopted_information_structure"
+test = "R7-shared-control"
+[[equation]]
+id = "R7-A3"
+source_equations = ["6-76", "6-77", "6-78", "6-79", "6-81", "6-82", "6-87", "6-90"]
+latex = 'C_a=\frac{c_w\rho_w\sum_p A_pL_p}{3.6\times10^9},\quad E_a=C_a(T_a-T_{a,0}),\quad \bar E_a=C_a(T_{a,\max}-T_{a,0}),\quad T_a=T_{a,0}+E_a/C_a'
+meaning = "项目采用相对下限温度的显热，a为供水S或回水R。cw用J/(kg K)、rho用kg/m3、体积用m3，C为MWh/K，E为MWh。此式为单个等温等效水箱；不同管温须先按体积计算初始显热，不把温度偏差当绝对温度。"
+classification = "derived_energy_datum_correction"
+test = "R7-energy-datum"
+[[equation]]
+id = "R7-A4"
+source_equations = ["6-76", "6-77", "6-78", "6-79"]
+latex = 'E^S_{k+1}=E^S_k+\Delta t(H^{\rm src}_k-H^{S,loss}_k-H^{CF}_k),\quad E^R_{k+1}=E^R_k+\Delta t(-H^{D}_k-H^{R,loss}_k+H^{CF}_k)'
+meaning = "功率用MW，时间用h；两箱相加后循环交换项精确抵消。采用区间起点状态k和区间流量/功率，事件首区间从灾前对应边界继承，消除原储能t+1式与t_s-1描述的下标歧义。"
+classification = "derived_time_integral_and_state_convention"
+test = "R7-energy-integration"
+[[equation]]
+id = "R7-A5"
+source_equations = ["6-88", "6-89"]
+latex = 'H^{CF}_{\rm lin}=\frac{c_w}{10^6}\left[m\Delta T^{\rm ref}+\hat m(\Delta T-\Delta T^{\rm ref})\right],\quad H^{CF}-H^{CF}_{\rm lin}=\frac{c_w}{10^6}(m-\hat m)(\Delta T-\Delta T^{\rm ref})'
+meaning = "作者一阶展开的余项可正可负，因此不是天然上界或下界。m用kg/s，DeltaT用K，功率用MW。需要冻结参考点并逐时报告余项，不能把线性代理认证扩大为详细输运认证。"
+classification = "author_approximation_with_derived_error"
+test = "R7-circulation-remainder"
+[[equation]]
+id = "R7-A6"
+source_equations = ["6-64", "6-67", "6-68", "6-69"]
+latex = '\sum_e z_{e,s}=|\mathcal N|-\sum_n\beta_{n,s}'
+meaning = "若保留全部节点且每个连通分量恰有一个计入beta的根，森林边数等于节点数减根数。原6-67另减1需未计入beta的额外根解释，而6-68又对全部节点施加根指示；采用前必须明确根集合和虚拟流关联矩阵。"
+classification = "conditional_graph_identity_not_full_network_implementation"
+test = "R7-forest"
+[[equation]]
+id = "R7-A7"
+source_equations = ["6-95", "6-105", "6-109", "6-110", "6-111"]
+latex = '\min_{r\in\mathbb R^k}\{f^\mathsf Tr:Kr\le b\}=\max_{\lambda\le0}\{b^\mathsf T\lambda:K^\mathsf T\lambda=f\}'
+meaning = "对与原6-95同方向、自由r的可行有界LP重新推导；变量界作为约束行。若改为r非负，对偶驻点须改为K^T lambda<=f。原正乘子/大于号组合不直接复用，也不把MILP整体强对偶。"
+classification = "derived_dual_convention"
+test = "R7-dual"
+[[equation]]
+id = "R7-A8"
+source_equations = ["6-96", "6-105", "6-106", "6-109"]
+latex = '\max_{\gamma\in U_0}\ell_\gamma\le Q_s(x)\le\max_{\gamma\in\mathcal U_s}u_\gamma,\quad \ell_\gamma\le q_\gamma(x)\le u_\gamma'
+meaning = "左侧可用已检查故障的有效最小化下界；右侧要求覆盖全部允许故障的可行恢复上界。漏查故障/缺解不能给有限安全证书。对手主问题若仅含部分恢复模式，是最大化松弛，只有有效求解器上界可用于其上界。"
+classification = "derived_nested_certificate_direction"
+test = "R7-bounds"
+[[equation]]
+id = "R7-A9"
+source_equations = ["6-100", "6-102", "6-103", "6-104", "outer-step-2b", "outer-step-2d"]
+latex = '\operatorname{safe}(x^{(k)})\Longleftrightarrow\bigwedge_s\left[\operatorname{revision}(\operatorname{certificate}_s)=k\ \land\ UB_s(x^{(k)})\le\bar L_s\right]'
+meaning = "外层每次改变x后旧事件通过标志失效。安全认证用每个事件在同一当前x上的有效上界；不能只修正原I的0/1停止条件而沿用旧记录。"
+classification = "derived_Q06_adopted_contract"
+test = "R7-revision"
+
+[[finding]]
+id = "R7-C01"
+location = "PDF107、113；6-2至6-7、6-56至6-61"
+original = "慢启停CHP的日前启停计划在恢复期保持，出力可以调整；事件开始爬坡与灾前相连，电池继承故障前状态且可不约束灾后首末相等。"
+adopted = "区分固定启停与固定出力；存储k为区间起点的采用索引。最低开停机的nu转移及首日历史仍须逐式补齐，不套用其他章边界。"
+status = "interpretation_checked_remaining_inputs_open"
+[[finding]]
+id = "R7-C02"
+location = "PDF108、114；6-23至6-25、6-66"
+original = "6-23以(Vmax-Vmin)z限制电压松弛；6-24/25以z乘容量，6-66文字明确z=0断开。"
+adopted = "关闭支路应施加电压关系，断路应允许电压解耦；原开关因子方向须登记。采用有限电压界导出的M(1-z)，不随意设置大M。当前只作二值逻辑反例，未建电网模型。"
+status = "literal_counterexample_and_correction_pending_model"
+[[finding]]
+id = "R7-C03"
+location = "PDF111–112；6-47至6-50"
+original = "文字gamma=1为断线，而6-47的故障开始窗口和<=1-gamma；6-50另给事件固定故障集合且sum gamma<=K。"
+adopted = "通用6-47在激活开始时与文字冲突。首批采用作者后给的事件窗集合6-50，保留零故障到K故障，不假定故障单调性；即使内部零故障，事件期PCC仍按6-51脱网。"
+status = "eventwise_definition_available_general_set_conflict_preserved"
+[[finding]]
+id = "R7-C04"
+location = "PDF113；6-62"
+original = "扫描式第三行给a_OFF<=0，另有z_base+a_ON<=1；开断动作又被定义为二值动作。"
+adopted = "按此字面约束，健康闭合线路不能主动打开，已开线路遇gamma=1也有身份冲突。后续需明确故障候选仅含哪些线路并建立二值真值表；不静默把<=0替换为常见式。"
+status = "literal_counterexample_not_adopted"
+[[finding]]
+id = "R7-C05"
+location = "PDF114；6-67至6-69"
+original = "文字允许多个独立微网，每个分量选根；边数式为N-1-sum beta，虚拟流对所有节点使用beta。"
+adopted = "采用R7-A6前明确定义全部根是否计入beta；虚拟流是无量纲连通性工具，不直接沿用物理S容量。三节点森林穷举核查边数，当前不认证完整原模型。"
+status = "conditional_identity_proved"
+[[finding]]
+id = "R7-C06"
+location = "PDF109、115–116；6-26、6-28、6-73、6-83、6-84、6-88"
+original = "源端口m为正、荷端口以-m计热；后简化6-84直接用m乘正温差，6-73为入流减出流。"
+adopted = "采用版拟分开非负源注入与负荷取流，并写入流+源=出流+荷；不对负荷有符号m套正向温差包络。源/荷和两网络方向需一同定义，尚未进入调度。"
+status = "port_convention_requires_explicit_adopted_model"
+[[finding]]
+id = "R7-C07"
+location = "PDF115–116；6-76至6-90"
+original = "容量按温差算，E下界为0；6-87用E除热容作绝对平均温度，6-90却由绝对管温初始化；6-78/79未显式写Delta t。"
+adopted = "采用R7-A3/A4统一相对下限显热和MWh；原式继续保留。线性等效水箱不认证各节点温度、停留时间、水压或双向水力。"
+status = "energy_datum_and_units_derived"
+[[finding]]
+id = "R7-C08"
+location = "PDF116；6-88、6-89"
+original = "循环换热以平均供回温差和总循环流量表达，再在参考点作一阶展开。"
+adopted = "分别登记网络集总近似与一阶展开；R7-A5给精确余项。参考温度和流量须来自输入，不能用优化结果倒推参考值。"
+status = "approximation_boundary_derived"
+[[finding]]
+id = "R7-C09"
+location = "PDF118；外层2.b/2.d，既有Q06"
+original = "通过设I_s=1，但全部I_s=0时停止。每次MP更新后未明确旧事件标志失效机制。"
+adopted = "采用R7-A9的版本绑定证书；解析两事件反例证实仅改0/1仍不足。采用逻辑可继续开发，作者实际源码行为未知。"
+status = "adopted_contract_proved_algorithm_pending"
+[[finding]]
+id = "R7-C10"
+location = "PDF117、119；6-95、6-105至6-111"
+original = "紧凑约束Kr<=b且r属于R，所给对偶使用pi>=0及K^T pi>=f。"
+adopted = "从实际原始约束逐行构建R7-A7；min r s.t. -r<=-2的解析值为2，而字面正乘子约束不可行。固定整数后才能用LP对偶，变量界不能漏行。"
+status = "dual_sign_counterexample_and_derivation"
+[[finding]]
+id = "R7-C11"
+location = "PDF119；内层步骤2.a–2.c"
+original = "固定故障的最小恢复目标写入UB；部分恢复模式的最大化主问题写入LB，然后UB<=LB+sigma停止。"
+adopted = "按R7-A8重建界的方向，已求故障最小化下界用于最坏失供下界；受限模式最大化松弛的有效界用于上界。三故障两模式表构造了过早停止的解析反例。"
+status = "bound_direction_proved_nested_algorithm_pending"
+[[finding]]
+id = "R7-C12"
+location = "PDF119；6-109乘积的BigM说明；Zhao-Zeng作者预印本PDF6–9"
+original = "论文提出对二值故障与对偶乘积采用BigM，但本页未提供有限乘子界。"
+adopted = "先做有限故障穷举基准；不能从一次求解得到的乘子最大值定义通用界。逐个固定恢复模式可能不可行，不直接套需要完全补救的KKT重构。后续强对偶、无界射线及SOS1路线各自核查。"
+status = "implementation_prerequisite_open"
+
+[[symbol]]
+id = "r7-first-stage"
+latex = 'x'
+meaning = "灾前决策及场景状态；必须绑定版本"
+unit = "mixed"
+julia = "planned: pre_event"
+[[symbol]]
+id = "r7-event"
+latex = 's,T_s^C,t_s,L^C'
+meaning = "事件、离散时间窗、开始时段和持续步数"
+unit = "index"
+julia = "planned: events"
+[[symbol]]
+id = "r7-fault"
+latex = '\gamma_{e,s}'
+meaning = "1为线路故障，跨事件窗固定"
+unit = "1"
+julia = "planned: γ_fault[e,s]"
+[[symbol]]
+id = "r7-switch"
+latex = 'z_{e,s},\beta_{n,s}'
+meaning = "1为闭合线路、1为被计入的微网根；不同于第5章舒适开关"
+unit = "1"
+julia = "planned: z_line[e,s], β_root[n,s]"
+[[symbol]]
+id = "r7-scenario"
+latex = '\omega,\pi_\omega'
+meaning = "新能源场景及概率，故障对手不选择此概率"
+unit = "index; 1"
+julia = "planned: scenario_weights"
+[[symbol]]
+id = "r7-shed"
+latex = 'L^P,L^H,\bar L_s'
+meaning = "电热失供功率与事件加权失供能量门槛；L^P/L^H为项目清晰别名"
+unit = "MW; MWh"
+julia = "planned: P_shed, H_shed, limit_MWh"
+[[symbol]]
+id = "r7-heat-state"
+latex = 'E^S,E^R,C_S,C_R,T_{a,0}'
+meaning = "两侧相对显热、等效热容及能量零点温度"
+unit = "MWh; MWh/K; K"
+julia = "planned: E_S, E_R, C_MWh_per_K, T_min_K"
+[[symbol]]
+id = "r7-circulation"
+latex = 'm^{CF},H^{CF},\hat m,\Delta T^{ref}'
+meaning = "循环流量、两箱交换功率、冻结流量参考和供回温差参考"
+unit = "kg/s; MW; kg/s; K"
+julia = "planned: m_CF, H_CF, m_reference, ΔT_reference"
+[[symbol]]
+id = "r7-dual"
+latex = '\lambda,\ell_\gamma,u_\gamma'
+meaning = "采用LP方向的乘子、给定故障恢复的有效下界和可行上界"
+unit = "row-dependent; MWh; MWh"
+julia = "planned: raw_duals, recovery_bound, recovery_value"

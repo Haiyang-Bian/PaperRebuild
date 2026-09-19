@@ -173,6 +173,7 @@
 - `docs/agent/tasks/2026-09-19-r6-methods.md`
 - `docs/agent/tasks/2026-09-19-r6-report-hash.md`
 - `docs/agent/tasks/2026-09-19-r6-study.md`
+- `docs/agent/tasks/2026-09-19-r7-audit.md`
 - `docs/make.jl`
 - `docs/reading/README.md`
 - `docs/reading/ch02/README.md`
@@ -224,6 +225,7 @@
 - `docs/reading/ch05/strategic-benders.toml`
 - `docs/reading/ch05/strategic-model.toml`
 - `docs/reading/ch05/strategic.toml`
+- `docs/reading/ch06/audit.toml`
 - `docs/reading/source_manifest.json`
 - `docs/reading/sources.json`
 - `docs/src/api.md`
@@ -598,6 +600,8 @@
 - `docs/src/ch05-strategic-model.md`
 - `docs/src/ch05-strategic-results.md`
 - `docs/src/ch05-strategic.md`
+- `docs/src/ch06-audit-equations.md`
+- `docs/src/ch06-audit.md`
 - `docs/src/index.md`
 - `docs/src/julia-design.md`
 - `docs/src/quality.md`
@@ -626,6 +630,7 @@
 - `results/summaries/ch05-cuts/proof.toml`
 - `results/summaries/ch05-probability/a1-audit.toml`
 - `results/summaries/ch05-probability/proof.toml`
+- `results/summaries/ch06-audit-v1/audit.toml`
 - `results/summaries/r1-first-batch.md`
 - `results/summaries/r1-first-batch/comparison.toml`
 - `results/summaries/r4-bargaining/F04-source.csv`
@@ -935,6 +940,7 @@
 - `scripts/audit_ch05_cuts.jl`
 - `scripts/audit_ch05_probability.jl`
 - `scripts/audit_ch05_probability_a1.jl`
+- `scripts/audit_ch06.jl`
 - `scripts/audit_r3_baseline_history.jl`
 - `scripts/audit_r3_pg_study.jl`
 - `scripts/audit_r3_v3.jl`
@@ -956,12 +962,14 @@
 - `scripts/ch03_docs.jl`
 - `scripts/ch03_task.jl`
 - `scripts/ch04_docs.jl`
+- `scripts/ch06_docs.jl`
 - `scripts/check_ch02.jl`
 - `scripts/check_ch03.jl`
 - `scripts/check_ch04.jl`
 - `scripts/check_ch05_artifacts.jl`
 - `scripts/check_ch05_inputs.jl`
 - `scripts/check_ch05_probability.jl`
+- `scripts/check_ch06.jl`
 - `scripts/check_r1_gurobi.jl`
 - `scripts/check_r1_portability.jl`
 - `scripts/check_r2_build.jl`
@@ -1156,6 +1164,7 @@
 - `scripts/r5_strategic_selection_audit.jl`
 - `scripts/r5_strategic_setup.jl`
 - `scripts/r6_docs.jl`
+- `scripts/r6_frozen_workspace.jl`
 - `scripts/r6_pilot_replay.jl`
 - `scripts/r6_pilot_report.jl`
 - `scripts/r6_study.jl`
@@ -1226,6 +1235,7 @@
 - `scripts/summarize_r5_benders_report.jl`
 - `scripts/summarize_r5_strategic_benders.jl`
 - `scripts/test.jl`
+- `scripts/test_ch06_audit.jl`
 - `scripts/test_r3.jl`
 - `scripts/test_r3_baseline.jl`
 - `scripts/test_r3_boundary.jl`
@@ -1260,6 +1270,7 @@
 - `scripts/test_r6_continuation.jl`
 - `scripts/test_r6_evaluation.jl`
 - `scripts/test_r6_freeze_cli.jl`
+- `scripts/test_r6_frozen_workspace.jl`
 - `scripts/test_r6_hash_io.jl`
 - `scripts/test_r6_methods.jl`
 - `scripts/test_r6_pilot_artifacts.jl`
@@ -1397,6 +1408,7 @@
 - `src/verification/r6_statistics.jl`
 - `src/verification/r6_study.jl`
 - `test/ch03_data.jl`
+- `test/ch06_audit.jl`
 - `test/maintenance.tests.ps1`
 - `test/r1.jl`
 - `test/r2.jl`

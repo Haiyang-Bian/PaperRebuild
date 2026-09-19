@@ -4,7 +4,8 @@
 规则位于`configs/r6/study.toml`，全部输入仍是合成数据。实现节点b27c59b已通过验收，
 正式批次`r6-formal-20260919-v1`的14输入和源码已冻结并独立重验，D/SP原值已保存。
 SP优化约27.43秒，随后策略提取在大文本字符串哈希上耗时；独立探针已定位，原进程经身份核验后结束。
-修复只将同一UTF-8文本送入SHA的载体改为IOBuffer，新批次须按下述续接契约复核原值，不重新求解D/SP。
+修复只将同一UTF-8文本送入SHA的载体改为IOBuffer；新批次r6-formal-20260919-v2已按下述契约续接，
+D/SP全部原值保持，未重新优化。两项进度快照已通过8项独立重验/篡改检查，剩余训练继续。
 完整训练、500验证日及1000测试日尚未完成；不能把接口测试或进程启动当作正式风险或费用结论。
 
 ## 要回答的问题
@@ -55,6 +56,25 @@ SP优化约27.43秒，随后策略提取在大文本字符串哈希上耗时；�
 总净费用含日前支付和实时设备、结算、罚项，可能为负；这不是社会资源成本。
 原论文按备用容量的误差预算与按实际调用量的交付指标分别报告。
 仍使用完整未来轨迹、乐观市场选择、线性电网和固定流量热网，不能称在线控制或完整交流/水力认证。
+
+## 当前训练结果与下一步
+
+本机批次`r6-formal-20260919-v2`的14项训练已完成，候选检查与费用求解完成标志均通过。
+D/SP沿用已保存原值，没有重复优化；其余候选按冻结顺序及原预算执行。
+此前两项快照继续保留其历史范围，不能把后来完成的配置补写进旧快照。
+
+本批使用100个训练代表。SP训练目标为−86.630502合成USD，CCP为−86.840688；
+与前三代表开发例相比，两者不再相等，表明原来的小样本退化不能推广为“机会约束没有作用”。
+这仅证明采用模型在本次输入上给出不同选择，不证明CCP在新日更省钱或更可靠。
+
+同一模型族内，DRO半径从0增至0.01时，训练目标从−86.630502变为−84.343542；
+DRJCC对应从−86.840688变为−84.346069。这与增加分布不确定性约束后更保守的训练目标相容。
+各方法的目标包含不同的期望、最坏费用或风险约束，不能将这些数字直接排列成总体性能名次。
+负值表示本模型的净支付口径，不代表负的社会资源成本。
+
+下一步已经经冻结执行目录启动：14候选先在同一500个验证日评价，按预先冻结的资格和回退规则
+锁定六策略，再做1000个独立测试日及四个单列压力日。需要同时报告违约率上界、未知数、
+费用完整性和同日配对费用；尚未执行的日子不计作成功。
 
 ## Julia 与 VS Code 入口
 
@@ -108,6 +128,34 @@ julia +1.12.6 --startup-file=no --project=. scripts/report_r6_study.jl check <st
 原运行连同旧源码/提交记录完整复制，逐文件哈希核对，已有摘要和策略须保持相同。
 续接另写`continuation.toml`，未尝试配置仍执行原600秒预算；不把文件处理耗时记成优化速度。
 其他模型或配置变化必须另作研究版本，不能使用这个限定入口。
+
+## 长运行与后续章节开发的隔离
+
+正式批次的科学源码必须保持冻结，但后续章节仍需增量开发。
+`r6_frozen_workspace.jl`将原`source.tar`和冻结日数据复制到独立执行目录，
+原模型、14输入、求解器参数、预算和选择规则全部保持。报告程序从同一个冻结提交取出。
+这只隔离执行文件，不改变任何科学方法，不重新生成日轨迹或已有训练结果。
+
+```text
+julia +1.12.6 --startup-file=no --project=. scripts/r6_frozen_workspace.jl prepare <study-directory> <new-frozen-workspace>
+julia +1.12.6 --startup-file=no --project=. scripts/r6_frozen_workspace.jl check <study-directory> <frozen-workspace>
+julia +1.12.6 --startup-file=no --project=. scripts/r6_frozen_workspace.jl run <study-directory> <frozen-workspace> validation
+julia +1.12.6 --startup-file=no --project=. scripts/r6_frozen_workspace.jl run <study-directory> <frozen-workspace> select
+julia +1.12.6 --startup-file=no --project=. scripts/r6_frozen_workspace.jl run <study-directory> <frozen-workspace> test
+julia +1.12.6 --startup-file=no --project=. scripts/r6_frozen_workspace.jl run <study-directory> <frozen-workspace> stress
+julia +1.12.6 --startup-file=no --project=. scripts/r6_frozen_workspace.jl run <study-directory> <frozen-workspace> report-snapshot <new-report>
+julia +1.12.6 --startup-file=no --project=. scripts/r6_frozen_workspace.jl run <study-directory> <frozen-workspace> report-check <report>
+```
+
+执行前后逐文件检查归档身份、数据清单和完整目录；拒绝额外文件、重写源码清单、路径越界和覆盖。
+执行目录的`execution.toml`记录原冻结提交，子进程避免向上识别开发仓库的新HEAD。
+Julia依赖缓存可共用，源文件与输入是独立副本。命令失败保留原退出状态和已有结果，不自动重试。
+`check`只核查文件身份；`run ... check`调用原批次的数值重验，两者证明范围不同。
+
+VS Code提供准备、文件核查、冻结实验动作和报告入口。
+当前v2的隔离目录位于该批次`frozen-workspace/`；首次运行仍须核验对应原值报告。
+旧的主工作区训练进程终止前仍不能修改其科学源码；只有实际切换到已核验的隔离入口后，
+后续章节开发才不会影响这项正式实验。
 
 ### 可追踪的实现
 

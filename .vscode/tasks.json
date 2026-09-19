@@ -1,7 +1,9 @@
 {
   "inputs": [
+    {"id":"r6FrozenWorkspace","type":"promptString","description":"R6冻结执行目录；prepare须新目录，其余操作须已验证目录","default":"results/runs/r6-formal-20260919-v2/frozen-workspace"},
+    {"id":"r6FrozenAction","type":"pickString","description":"按原协议执行：验证完成后锁定选择，再测试与压力评估","options":["check","validation","select","test","stress"],"default":"check"},
     {"id":"r6StudyReport","type":"promptString","description":"R6报告目录；生成须新目录，重验须已有目录","default":"results/runs/r6-formal-report-new"},
-    {"id":"r6StudyRun","type":"promptString","description":"R6正式批次目录：冻结须新目录，后续操作须同目录","default":"results/runs/r6-formal-20260919-v1"},
+    {"id":"r6StudyRun","type":"promptString","description":"R6正式批次目录：冻结须新目录，后续操作须同目录","default":"results/runs/r6-formal-20260919-v2"},
     {"id":"r6DayRun","type":"promptString","description":"已保存的R6策略日记录目录"},
     {
       "id": "r6PilotRun",
@@ -97,6 +99,60 @@
     }
   ],
   "tasks": [
+    {
+      "label": "PaperRebuild: R6 prepare frozen execution",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/r6_frozen_workspace.jl", "prepare", "${input:r6StudyRun}", "${input:r6FrozenWorkspace}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R6 check frozen execution files",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/r6_frozen_workspace.jl", "check", "${input:r6StudyRun}", "${input:r6FrozenWorkspace}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R6 frozen study action",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/r6_frozen_workspace.jl", "run", "${input:r6StudyRun}", "${input:r6FrozenWorkspace}", "${input:r6FrozenAction}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R6 frozen report snapshot",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/r6_frozen_workspace.jl", "run", "${input:r6StudyRun}", "${input:r6FrozenWorkspace}", "report-snapshot", "${input:r6StudyReport}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R6 frozen report recheck",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/r6_frozen_workspace.jl", "run", "${input:r6StudyRun}", "${input:r6FrozenWorkspace}", "report-check", "${input:r6StudyReport}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R7 audit mapping",
+      "type": "process",
+      "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/check_ch06.jl"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R7 analytic audit tests",
+      "type": "process",
+      "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/test_ch06_audit.jl"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R7 replay analytic evidence",
+      "type": "process",
+      "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/audit_ch06.jl", "check", "results/summaries/ch06-audit-v1/audit.toml"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "problemMatcher": []
+    },
     {"label":"PaperRebuild: R6 report tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r6_study_report.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R6 progress snapshot","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/report_r6_study.jl","snapshot","${input:r6StudyRun}","${input:r6StudyReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R6 final evidence tables","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/report_r6_study.jl","create","${input:r6StudyRun}","${input:r6StudyReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},

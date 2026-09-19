@@ -37,6 +37,8 @@ include(joinpath(@__DIR__, "..", "scripts", "r5_strategic_benders_docs.jl"))
 sync_r5_strategic_benders_docs()
 include(joinpath(@__DIR__, "..", "scripts", "r6_docs.jl"))
 sync_r6_docs()
+include(joinpath(@__DIR__, "..", "scripts", "ch06_docs.jl"))
+sync_ch06_docs()
 
 makedocs(;
     modules = [PaperRebuild],
@@ -167,6 +169,10 @@ makedocs(;
             "六方法推导与符号" => "r6-method-equations.md",
             "统计公式与来源核查" => "r6-equations.md",
             "数据与统计API" => "r6-api.md",
+        ],
+        "第6章 灾害与恢复核查" => [
+            "量词、物理与算法证书" => "ch06-audit.md",
+            "选定公式、符号与疑点" => "ch06-audit-equations.md",
         ],
         "第 2 章模型与首批实现" => [
             "模型详解" => "ch02-models.md",

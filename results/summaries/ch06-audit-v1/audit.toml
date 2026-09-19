@@ -1,0 +1,243 @@
+dispatch_implemented = false
+ledger_sha256 = "51949b8a58b58950b85fb03def428b682e69034e19359684640c170d17c0666e"
+origin = "synthetic_analytic"
+schema = "r7-analytic-witness-v1"
+script_sha256 = "cdba309687521b02d10dc04b3fc5ba6e7aabef72930cee0a9c13171b5c5695dc"
+source_sha256 = "20328e2480e773520c19c378e53365fc944c0bafcfca73071f5d8313d5ee7d91"
+
+[[witnesses.circulation_remainder]]
+delta_K = 38.0
+difference_MW = 0.008399999999999963
+exact_MW = 1.4364
+flow_kg_per_s = 9.0
+linear_MW = 1.428
+remainder_MW = 0.0084
+[[witnesses.circulation_remainder]]
+delta_K = 40.0
+difference_MW = 0.0
+exact_MW = 1.512
+flow_kg_per_s = 9.0
+linear_MW = 1.512
+remainder_MW = -0.0
+[[witnesses.circulation_remainder]]
+delta_K = 42.0
+difference_MW = -0.008400000000000185
+exact_MW = 1.5876
+flow_kg_per_s = 9.0
+linear_MW = 1.596
+remainder_MW = -0.0084
+[[witnesses.circulation_remainder]]
+delta_K = 38.0
+difference_MW = 0.0
+exact_MW = 1.596
+flow_kg_per_s = 10.0
+linear_MW = 1.596
+remainder_MW = -0.0
+[[witnesses.circulation_remainder]]
+delta_K = 40.0
+difference_MW = 0.0
+exact_MW = 1.68
+flow_kg_per_s = 10.0
+linear_MW = 1.68
+remainder_MW = 0.0
+[[witnesses.circulation_remainder]]
+delta_K = 42.0
+difference_MW = 0.0
+exact_MW = 1.764
+flow_kg_per_s = 10.0
+linear_MW = 1.764
+remainder_MW = 0.0
+[[witnesses.circulation_remainder]]
+delta_K = 38.0
+difference_MW = -0.008399999999999963
+exact_MW = 1.7556
+flow_kg_per_s = 11.0
+linear_MW = 1.764
+remainder_MW = -0.0084
+[[witnesses.circulation_remainder]]
+delta_K = 40.0
+difference_MW = 0.0
+exact_MW = 1.848
+flow_kg_per_s = 11.0
+linear_MW = 1.848
+remainder_MW = 0.0
+[[witnesses.circulation_remainder]]
+delta_K = 42.0
+difference_MW = 0.008399999999999963
+exact_MW = 1.9404
+flow_kg_per_s = 11.0
+linear_MW = 1.932
+remainder_MW = 0.0084
+
+[witnesses.dual]
+K = -1
+b = -2
+dual_value = 2
+f = 1
+lambda = -1
+literal_nonnegative_multiplier_feasible = false
+primal = 2
+
+[witnesses.energy_datum]
+capacity_MWh_per_K = 0.011666666666666667
+cw_J_per_kg_K = 4200.0
+density_kg_per_m3 = 1000.0
+initial_K = 343.15
+literal_absolute_initial_MWh = 4.003416666666666
+literal_temperature_from_relative_K = 10.0
+lower_K = 333.15
+maximum_energy_MWh = 0.23333333333333334
+reconstructed_K = 343.15
+relative_energy_MWh = 0.11666666666666667
+upper_K = 353.15
+volume_m3 = 10.0
+
+[witnesses.failure_window]
+literal_allowed_gamma = [0]
+onset_sum = 1
+text_fault_gamma = 1
+
+[witnesses.fault_sets]
+K = 2
+includes_zero = true
+line_count = 4
+masks = [0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 12]
+
+[[witnesses.forests]]
+adopted_edge_count = 0
+counted_roots = 3
+edges = 0
+literal_edge_count = -1
+mask = 0
+nodes = 3
+[[witnesses.forests]]
+adopted_edge_count = 1
+counted_roots = 2
+edges = 1
+literal_edge_count = 0
+mask = 1
+nodes = 3
+[[witnesses.forests]]
+adopted_edge_count = 1
+counted_roots = 2
+edges = 1
+literal_edge_count = 0
+mask = 2
+nodes = 3
+[[witnesses.forests]]
+adopted_edge_count = 2
+counted_roots = 1
+edges = 2
+literal_edge_count = 1
+mask = 3
+nodes = 3
+[[witnesses.forests]]
+adopted_edge_count = 1
+counted_roots = 2
+edges = 1
+literal_edge_count = 0
+mask = 4
+nodes = 3
+[[witnesses.forests]]
+adopted_edge_count = 2
+counted_roots = 1
+edges = 2
+literal_edge_count = 1
+mask = 5
+nodes = 3
+[[witnesses.forests]]
+adopted_edge_count = 2
+counted_roots = 1
+edges = 2
+literal_edge_count = 1
+mask = 6
+nodes = 3
+
+[witnesses.inexact_recovery]
+feasible_recovery = 5.0
+limit = 4.0
+lower_bound = 2.0
+safety_proved = false
+violation_proved = false
+
+[witnesses.inner_bounds]
+correct_stop = false
+exact_fault_values = [3, 4, 2]
+exact_worst = 4
+first_fault_value = 3
+literal_stop = true
+restricted_mode_upper = 10
+valid_lower = 3
+valid_upper = 10
+values_by_fault = [[3, 8], [10, 4], [6, 2]]
+
+[[witnesses.integration]]
+direct_balance_MWh = 0.07000000000000003
+dt_h = 1.0
+return_delta_MWh = 0.02999999999999997
+steps = 1
+supply_delta_MWh = 0.040000000000000036
+total_delta_MWh = 0.07
+[[witnesses.integration]]
+direct_balance_MWh = 0.07000000000000003
+dt_h = 0.5
+return_delta_MWh = 0.02999999999999997
+steps = 2
+supply_delta_MWh = 0.040000000000000036
+total_delta_MWh = 0.07
+[[witnesses.integration]]
+direct_balance_MWh = 0.07000000000000003
+dt_h = 0.25
+return_delta_MWh = 0.02999999999999997
+steps = 4
+supply_delta_MWh = 0.040000000000000036
+total_delta_MWh = 0.07
+
+[witnesses.quantifiers]
+every_scenario_pass = false
+expected_MWh = 1.0
+expected_pass = true
+limit_MWh = 1.0
+loss_MWh = [0.0, 2.0]
+weights = [0.5, 0.5]
+
+[witnesses.revision]
+limit = 0.4
+new_event_A_pass = false
+new_event_B_pass = true
+new_x = 0.6
+old_event_A_pass = true
+old_x = 0.0
+same_revision_safe = false
+stale_flags_claim_safe = true
+
+[witnesses.shared_control]
+costs_by_scenario = [[0, 2], [2, 0]]
+scenario_adaptive_value = 0.0
+shared_value = 1.0
+
+[[witnesses.switch_actions]]
+base = 0
+fault = 0
+literal_actions = [[0, 0, 0], [1, 1, 0]]
+[[witnesses.switch_actions]]
+base = 0
+fault = 1
+literal_actions = []
+[[witnesses.switch_actions]]
+base = 1
+fault = 0
+literal_actions = [[1, 0, 0]]
+[[witnesses.switch_actions]]
+base = 1
+fault = 1
+literal_actions = [[0, 0, 0]]
+
+[[witnesses.switch_factor]]
+adopted_allowance = 0.1
+literal_allowance = 0.0
+z = 0
+[[witnesses.switch_factor]]
+adopted_allowance = 0.0
+literal_allowance = 0.1
+z = 1
