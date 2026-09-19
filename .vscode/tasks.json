@@ -1,5 +1,10 @@
 {
   "inputs": [
+    {"id":"r7NormalEvidence","type":"promptString","description":"R7已保存正常/恢复证据包","default":"results/summaries/r7-normal-20260920-v2"},
+    {"id":"r7NormalFigures","type":"promptString","description":"R7新图表目录；不得覆盖旧图","default":"results/runs/r7-normal-redraw"},
+    {"id":"r7NormalCase","type":"promptString","description":"R7给定流量正常案例","default":"configs/r7/normal-hand.toml"},
+    {"id":"r7NormalRun","type":"promptString","description":"正常运行目录；run须新目录，check/event使用已有目录","default":"results/runs/r7-normal-new"},
+    {"id":"r7NormalEvent","type":"promptString","description":"事件目录；event须新目录，check-event使用已有目录","default":"results/runs/r7-event-new"},
     {"id":"r6PublicEvidence","type":"promptString","description":"R6可移植证据目录；导出使用新目录，重验使用已有目录","default":"results/summaries/r6-public-20260920-v1"},
     {"id":"r6FigureOutput","type":"promptString","description":"R6科学图的新输出目录；不得覆盖旧图","default":"results/runs/r6-redraw-local"},
     {"id":"r6SavedFigures","type":"promptString","description":"已有R6图目录；只读核对图源及哈希","default":"results/summaries/r6-figures-20260920-v2"},
@@ -102,6 +107,46 @@
     }
   ],
   "tasks": [
+    {
+      "label": "PaperRebuild: R7 normal evidence checks", "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--depwarn=error", "--project=.", "scripts/test_r7_normal_evidence.jl", "${input:r7NormalEvidence}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R7 normal redraw saved", "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=docs", "scripts/plot_r7_normal.jl", "${input:r7NormalEvidence}", "${input:r7NormalFigures}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R7 normal mapping", "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/check_r7_normal.jl"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R7 normal tests", "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/test_r7_normal.jl"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R7 normal run", "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/r7_normal.jl", "run", "${input:r7NormalCase}", "${input:r7NormalRun}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R7 normal validate saved", "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/r7_normal.jl", "check", "${input:r7NormalRun}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R7 hand-case event (hour 2, derating 0.5, limit 2 MWh)", "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/r7_normal.jl", "event", "${input:r7NormalRun}", "2", "1", "0.5", "2.0", "${input:r7NormalEvent}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R7 event validate saved", "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/r7_normal.jl", "check-event", "${input:r7NormalRun}", "${input:r7NormalEvent}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
     {
       "label": "PaperRebuild: R6 figure source checks",
       "type": "process", "command": "julia",

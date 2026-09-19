@@ -1,0 +1,75 @@
+boundary_adjustments = []
+conditional_cost_complete = true
+detailed_disaster_heat_verified = false
+event_case_sha256 = "0dcda9ae2007b2c3021f95c26ce37b325f2c227e27bbaf9352688081b3674972"
+event_start = 2
+full_preplan_optimality_verified = false
+normal_model_pass = true
+normal_pipe_reference_pass = true
+normal_thermal_model = "plug_flow_reference_v1"
+parent_case_sha256 = "a983f5e316d1415b0657a1833af1705b6b3d682fbf13f726c6317935c08c3101"
+parent_result_sha256 = "e1dbb35a49715759d1885a22d8600e8c470fe25b5c44ad01a7293cc3c9490f84"
+parent_run_id = "fc1bdb39-44a2-4730-969a-97b4e339d967"
+periods = 1
+schema = "r7-normal-event-v1"
+
+[[initial_pipe_profiles]]
+mass_kg = 18000.0
+mean_K = 335.0547619047618
+pipe = 1
+reference_K = 333.15
+relative_heat_MWh = 0.039999999999997995
+scenario = 1
+side = "S"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 41.90476190476181
+    base_K = 293.15
+    from_left = true
+    mass_kg = 18000.0
+    rate_per_kg = 0.0
+[[initial_pipe_profiles]]
+mass_kg = 18000.0
+mean_K = 335.0547619047618
+pipe = 1
+reference_K = 333.15
+relative_heat_MWh = 0.039999999999997995
+scenario = 2
+side = "S"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 41.90476190476181
+    base_K = 293.15
+    from_left = true
+    mass_kg = 18000.0
+    rate_per_kg = 0.0
+[[initial_pipe_profiles]]
+mass_kg = 18000.0
+mean_K = 313.15
+pipe = 1
+reference_K = 303.15
+relative_heat_MWh = 0.21
+scenario = 1
+side = "R"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 20.0
+    base_K = 293.15
+    from_left = true
+    mass_kg = 18000.0
+    rate_per_kg = 0.0
+[[initial_pipe_profiles]]
+mass_kg = 18000.0
+mean_K = 313.15
+pipe = 1
+reference_K = 303.15
+relative_heat_MWh = 0.21
+scenario = 2
+side = "R"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 20.0
+    base_K = 293.15
+    from_left = true
+    mass_kg = 18000.0
+    rate_per_kg = 0.0

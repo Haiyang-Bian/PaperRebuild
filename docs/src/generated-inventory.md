@@ -129,6 +129,7 @@
 - `configs/r6/protocol.toml`
 - `configs/r6/study.toml`
 - `configs/r7/chp-component-hand.toml`
+- `configs/r7/normal-hand.toml`
 - `configs/r7/recovery-hand.toml`
 - `data/processed/README.md`
 - `data/raw/README.md`
@@ -178,6 +179,7 @@
 - `docs/agent/tasks/2026-09-19-r7-audit.md`
 - `docs/agent/tasks/2026-09-20-r6-formal-evidence.md`
 - `docs/agent/tasks/2026-09-20-r7-commitment.md`
+- `docs/agent/tasks/2026-09-20-r7-normal.md`
 - `docs/agent/tasks/2026-09-20-r7-pipe-state.md`
 - `docs/agent/tasks/2026-09-20-r7-recovery.md`
 - `docs/make.jl`
@@ -232,6 +234,7 @@
 - `docs/reading/ch05/strategic-model.toml`
 - `docs/reading/ch05/strategic.toml`
 - `docs/reading/ch06/audit.toml`
+- `docs/reading/ch06/normal-dispatch.toml`
 - `docs/reading/ch06/normal-prerequisites.toml`
 - `docs/reading/ch06/pipe-state.toml`
 - `docs/reading/ch06/recovery.toml`
@@ -530,6 +533,7 @@
 - `docs/src/assets/r6-formal-20260920-v1/F19.pdf`
 - `docs/src/assets/r6-formal-20260920-v1/F19.png`
 - `docs/src/assets/r6-formal-20260920-v1/figure-config.toml`
+- `docs/src/assets/r7-normal-20260920-v2/F20-normal-event.png`
 - `docs/src/ch02-api.md`
 - `docs/src/ch02-generated.md`
 - `docs/src/ch02-models.md`
@@ -620,6 +624,8 @@
 - `docs/src/ch06-audit.md`
 - `docs/src/ch06-commitment-equations.md`
 - `docs/src/ch06-commitment.md`
+- `docs/src/ch06-normal-equations.md`
+- `docs/src/ch06-normal.md`
 - `docs/src/ch06-pipe-equations.md`
 - `docs/src/ch06-pipe-state.md`
 - `docs/src/ch06-recovery-equations.md`
@@ -992,6 +998,17 @@
 - `results/summaries/r6-training-pilot-v1/residuals-008.csv`
 - `results/summaries/r6-training-pilot-v1/risk-scenarios.csv`
 - `results/summaries/r6-training-pilot-v1/trajectories.csv`
+- `results/summaries/r7-normal-20260920-v2/continuation.toml`
+- `results/summaries/r7-normal-20260920-v2/event-summary.csv`
+- `results/summaries/r7-normal-20260920-v2/evidence-files.toml`
+- `results/summaries/r7-normal-20260920-v2/normal-trajectory.csv`
+- `results/summaries/r7-normal-20260920-v2/summary.toml`
+- `results/summaries/r7-normal-figures-20260920-v2/F20-normal-event.png`
+- `results/summaries/r7-normal-figures-20260920-v2/F20-normal-event.svg`
+- `results/summaries/r7-normal-figures-20260920-v2/event-summary.csv`
+- `results/summaries/r7-normal-figures-20260920-v2/figure.toml`
+- `results/summaries/r7-normal-figures-20260920-v2/files.toml`
+- `results/summaries/r7-normal-figures-20260920-v2/normal-trajectory.csv`
 - `scripts/add_r6_stdlib.jl`
 - `scripts/audit_ch05_cuts.jl`
 - `scripts/audit_ch05_probability.jl`
@@ -1075,6 +1092,8 @@
 - `scripts/check_r6_evaluation.jl`
 - `scripts/check_r6_figures.jl`
 - `scripts/check_r7_commitment.jl`
+- `scripts/check_r7_normal.jl`
+- `scripts/check_r7_normal_figures.jl`
 - `scripts/check_r7_pipe_state.jl`
 - `scripts/check_r7_recovery.jl`
 - `scripts/check_solvers.jl`
@@ -1168,6 +1187,7 @@
 - `scripts/plot_r5_strategic.jl`
 - `scripts/plot_r5_strategic_benders.jl`
 - `scripts/plot_r6_study.jl`
+- `scripts/plot_r7_normal.jl`
 - `scripts/prepare_r1_summary.jl`
 - `scripts/preview.jl`
 - `scripts/probe_r4_discrete.jl`
@@ -1233,6 +1253,9 @@
 - `scripts/r6_study_io.jl`
 - `scripts/r6_study_tables.jl`
 - `scripts/r7_commitment_docs.jl`
+- `scripts/r7_normal.jl`
+- `scripts/r7_normal_docs.jl`
+- `scripts/r7_normal_evidence.jl`
 - `scripts/r7_pipe_state_docs.jl`
 - `scripts/r7_recovery.jl`
 - `scripts/r7_recovery_docs.jl`
@@ -1346,6 +1369,9 @@
 - `scripts/test_r6_study_report_artifacts.jl`
 - `scripts/test_r6_workflow.jl`
 - `scripts/test_r7_commitment.jl`
+- `scripts/test_r7_normal.jl`
+- `scripts/test_r7_normal_cli.jl`
+- `scripts/test_r7_normal_evidence.jl`
 - `scripts/test_r7_pipe_state.jl`
 - `scripts/test_r7_recovery.jl`
 - `scripts/tighten_r4_distributed_cost.jl`
@@ -1385,6 +1411,7 @@
 - `src/algorithms/r6_evaluation.jl`
 - `src/algorithms/r6_methods.jl`
 - `src/algorithms/r6_support_evaluation.jl`
+- `src/algorithms/r7_normal.jl`
 - `src/algorithms/r7_recovery.jl`
 - `src/components/devices.jl`
 - `src/components/r7_commitment.jl`
@@ -1411,6 +1438,7 @@
 - `src/core/r6_protocol.jl`
 - `src/core/r6_study.jl`
 - `src/core/r7_commitment.jl`
+- `src/core/r7_normal.jl`
 - `src/core/r7_recovery.jl`
 - `src/formulations/r1.jl`
 - `src/formulations/r2.jl`
@@ -1430,8 +1458,10 @@
 - `src/formulations/r5_strategic.jl`
 - `src/formulations/r5_strategic_benders.jl`
 - `src/formulations/r6_evaluation.jl`
+- `src/formulations/r7_normal.jl`
 - `src/formulations/r7_recovery.jl`
 - `src/networks/fixed_flow_heat.jl`
+- `src/networks/r7_normal_transport.jl`
 - `src/networks/r7_pipe_state.jl`
 - `src/networks/water_mass.jl`
 - `src/reporting/r2_runs.jl`
@@ -1455,6 +1485,7 @@
 - `src/reporting/r5_strategic_benders.jl`
 - `src/reporting/r6_data.jl`
 - `src/reporting/r6_evaluation.jl`
+- `src/reporting/r7_normal.jl`
 - `src/reporting/r7_recovery.jl`
 - `src/reporting/runs.jl`
 - `src/verification/r1.jl`
@@ -1485,6 +1516,7 @@
 - `src/verification/r6_statistics.jl`
 - `src/verification/r6_study.jl`
 - `src/verification/r7_commitment.jl`
+- `src/verification/r7_normal.jl`
 - `src/verification/r7_recovery.jl`
 - `test/ch03_data.jl`
 - `test/ch06_audit.jl`
@@ -1531,6 +1563,7 @@
 - `test/r6_study.jl`
 - `test/r6_study_report.jl`
 - `test/r7_commitment.jl`
+- `test/r7_normal.jl`
 - `test/r7_pipe_state.jl`
 - `test/r7_recovery.jl`
 - `test/runtests.jl`
@@ -1598,3 +1631,6 @@
 - `results/summaries/r6-public-20260920-v1/test/`
 - `results/summaries/r6-public-20260920-v1/validation/`
 - `results/summaries/r6-training-pilot-v1/witnesses/`
+- `results/summaries/r7-normal-20260920-v2/event/`
+- `results/summaries/r7-normal-20260920-v2/normal/`
+- `results/summaries/r7-normal-20260920-v2/workflow/`

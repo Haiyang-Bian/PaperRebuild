@@ -45,6 +45,8 @@ include(joinpath(@__DIR__, "..", "scripts", "r7_commitment_docs.jl"))
 sync_r7_commitment_docs()
 include(joinpath(@__DIR__, "..", "scripts", "r7_pipe_state_docs.jl"))
 sync_r7_pipe_state_docs()
+include(joinpath(@__DIR__, "..", "scripts", "r7_normal_docs.jl"))
+sync_r7_normal_docs()
 
 makedocs(;
     modules = [PaperRebuild],
@@ -186,6 +188,8 @@ makedocs(;
             "灾前启停推导与符号" => "ch06-commitment-equations.md",
             "管内温度与灾前显热" => "ch06-pipe-state.md",
             "管内状态参考推导与符号" => "ch06-pipe-equations.md",
+            "正常调度与恢复状态连接" => "ch06-normal.md",
+            "正常条件调度方程与符号" => "ch06-normal-equations.md",
         ],
         "第 2 章模型与首批实现" => [
             "模型详解" => "ch02-models.md",

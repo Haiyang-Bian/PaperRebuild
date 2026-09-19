@@ -90,6 +90,14 @@ jobs:
         run: julia --startup-file=no --project=. scripts/check_r7_commitment.jl
       - name: R7 pipe state and thermal inventory mapping
         run: julia --startup-file=no --project=. scripts/check_r7_pipe_state.jl
+      - name: R7 conditional normal dispatch and event mapping
+        run: julia --startup-file=no --project=. scripts/check_r7_normal.jl
+      - name: R7 normal event CLI and state tamper checks
+        run: julia --startup-file=no --project=. scripts/test_r7_normal_cli.jl
+      - name: R7 saved normal and inherited-event evidence
+        run: julia --startup-file=no --depwarn=error --project=. scripts/test_r7_normal_evidence.jl results/summaries/r7-normal-20260920-v2
+      - name: R7 normal and event figure sources
+        run: julia --startup-file=no --project=. scripts/check_r7_normal_figures.jl results/summaries/r7-normal-20260920-v2 results/summaries/r7-normal-figures-20260920-v2 docs/src/assets/r7-normal-20260920-v2/F20-normal-event.png
       - name: R7 frozen analytic audit mapping
         run: julia --startup-file=no --project=. scripts/check_ch06.jl
       - name: Project checks
