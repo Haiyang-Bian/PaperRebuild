@@ -1,4 +1,5 @@
 include("r5_strategic_report_tables.jl")
+include("r5_strategic_selection_audit.jl")
 args=filter(x->!startswith(x, "--"), ARGS)
 length(args)==1||error("参数：策略报告目录 [--seal] [--publish]")
 dir=abspath(only(args))
@@ -6,6 +7,7 @@ root=normpath(joinpath(@__DIR__, ".."))
 config=joinpath(root, "configs", "r5", "strategic", "study.toml")
 rules=TOML.parsefile(config)
 meta=TOML.parsefile(joinpath(dir, "report.toml"))
+r5_strategic_check_selection_audit(dir)
 meta["schema"]=="r5-strategic-report-v1" &&
 meta["origin"]=="synthetic" &&
 !meta["solver_reexecuted"] &&
