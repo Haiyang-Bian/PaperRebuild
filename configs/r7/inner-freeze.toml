@@ -1,0 +1,16 @@
+budget_per_method_sec = 600
+created_before_optimization = true
+derivation = ["单故障通过闭合1-3联络线维持含根森林；闭合故障对应自动断开不计主动动作。1-2断线需要2-3反向功率。", "每小时CHP0.4MW+电池0.2MW满足总电负荷0.6MW，CHP热0.4MW，电池两小时共0.4MWh。", "瓶颈配置所有电线容量预设0.3MW，健康基态或1-2故障时CHP可送≤0.3MW，加电池≤0.2MW，至少失供0.1MW/小时。供热缺口共0.2MWh小于初始水箱可用显热7/30MWh；达到下界仍需全模型验证。", "两故障允许1-2及1-3同时断开：CHP孤岛无电力消纳且继承开机P≥0.2MW，完整恢复不可行。"]
+origin = "synthetic"
+schema = "r7-inner-case-freeze-v1"
+scope = "fixed inherited state; three electric nodes, three lines, two hours; not thesis-scale"
+
+[expected]
+inner-tie-bottleneck = 0.2
+inner-tie-two-fault = +inf
+inner-tie-two-hour = 0.0
+
+[files]
+"configs/r7/inner-tie-bottleneck.toml" = "4433a4cec8415761173ac1d45af2591026434ed471d64474ccc3a6d110e398b9"
+"configs/r7/inner-tie-two-fault.toml" = "d3f0a6d9118fae434a75a0e49ad57cbe5317ef3537675b29136b3d143510a57b"
+"configs/r7/inner-tie-two-hour.toml" = "00e5df1306e5edf46bb5dec0027888fff729935af70d162481de760e69dc3850"

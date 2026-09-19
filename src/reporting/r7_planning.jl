@@ -1,5 +1,5 @@
 function r7_planning_science_paths()
-    paths=r7_normal_science_paths()
+    paths=merge(r7_normal_science_paths(), r7_adversary_science_paths())
     root=normpath(joinpath(@__DIR__, "..", ".."))
     for folder in ("core", "formulations", "verification", "algorithms", "reporting")
         p="src/$folder/r7_planning.jl"
@@ -60,6 +60,11 @@ function save_r7_planning(c::R7PlanningCase, r, directory::AbstractString)
         "verification/r7_recovery.jl",
         "algorithms/r7_recovery.jl",
         "reporting/r7_recovery.jl",
+        "core/r7_adversary.jl",
+        "formulations/r7_adversary.jl",
+        "verification/r7_adversary.jl",
+        "algorithms/r7_adversary.jl",
+        "reporting/r7_adversary.jl",
         "core/r7_commitment.jl",
         "components/r7_commitment.jl",
         "verification/r7_commitment.jl",

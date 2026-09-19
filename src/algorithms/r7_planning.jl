@@ -73,6 +73,7 @@ end
 
 给定正常管流/电拓扑的有限故障经济安全规划。extensive一次纳入全部恢复见证；
 finite_fault_ccg以认证反例逐轮添加同一正常决策下的恢复约束，内层逐故障MILP穷举。
+nested_indicator_ccg使用实际LP对偶和原生指示约束的内层拓扑生成；每事件发现认证反例可提前返回。
 每轮重新检查全部事件，不继承旧计划安全标志；无可信反例时保留未决，绝不靠失败候选生成割。
 建模、验证、事件提取和嵌套求解共享截止时间。此有限故障基准不是作者完整内层对偶/Big-M算法。
 """
@@ -83,7 +84,7 @@ function solve_r7_planning(
     budget_sec = 600.0,
 )
     r7_planning_assert(c)
-    method in (:extensive, :finite_fault_ccg) || error("未实现的规划方法")
+    method in (:extensive, :finite_fault_ccg, :nested_indicator_ccg) || error("未实现的规划方法")
     isfinite(budget_sec)&&budget_sec>=0 || error("规划预算错误")
     started=time()
     stop=started+budget_sec
@@ -133,7 +134,15 @@ function solve_r7_planning(
         for s in eachindex(c.specification["events"])
             time()<stop || break
             event=r7_planning_event(c, m["normal"], s)
-            oracle=audit_r7_faults(
+            oracle=method==:nested_indicator_ccg ?
+                   solve_r7_adversary(
+                event.case;
+                optimizer,
+                budget_sec = max(0, stop-time()),
+                deadline = stop,
+                stop_on_violation = true,
+            ) :
+                   audit_r7_faults(
                 event.case;
                 optimizer,
                 budget_sec = max(0, stop-time()),

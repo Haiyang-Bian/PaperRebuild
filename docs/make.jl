@@ -194,6 +194,8 @@ makedocs(;
             "正常条件调度方程与符号" => "ch06-normal-equations.md",
             "有限故障经济安全规划" => "ch06-planning.md",
             "安全规划方程与符号" => "ch06-planning-equations.md",
+            "内层故障搜索与不可行恢复" => "ch06-adversary.md",
+            "内层对偶方程与符号" => "ch06-adversary-equations.md",
         ],
         "第 2 章模型与首批实现" => [
             "模型详解" => "ch02-models.md",

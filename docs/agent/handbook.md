@@ -52,6 +52,14 @@ R3第四批显式v3见[物理恢复与停止判据](../src/ch03-r3-v3.md)。恢�
 
 ## 文档更新路由
 
+R7内层故障对手读[内层搜索](../src/ch06-adversary.md)，权威台账ch06/inner-adversary.toml。
+固定拓扑从实际LP行抽取自由恢复变量/非正乘子，失供零下界给共同可行对偶。
+认证截断C不是乘子大M或物理损失；饱和时最坏上界仍为∞，完整恢复决定缺模式还是硬不可行。
+nested_indicator_ccg使用内层拓扑生成，原finite_fault_ccg仍枚举故障。原生指示不支持时明确失败。
+旧原值标签依赖Main的JuMP导入：使用scripts/r7_adversary.jl或report_r7_inner.jl包装重验；
+不得修改冻结原文件。新LP固定类型标签，audit_r7_lp_identity.jl证明仅旧112行显示名变化。
+三节点故障/拓扑参考和嵌套储备/负例均须保留；不将其认证扩大到正常变流量、详细灾后热网或论文规模。
+
 R7有限故障规划读[安全规划](../src/ch06-planning.md)，权威台账ch06/planning.toml。
 给定正常管流/电拓扑域下，共享正常启停、电池和管库存；每个事件/故障有独立恢复块。
 extensive是全故障存在性参考，finite_fault_ccg的内层仍为全故障MILP审计，不称完整嵌套对偶算法。

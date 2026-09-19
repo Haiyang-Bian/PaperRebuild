@@ -26,5 +26,5 @@ length(b.recovery)==4&&b.model_class=="MILP" || error("实际规划覆盖或模�
 read(joinpath(root, "docs/src/ch06-planning-equations.md"), String)==r7_planning_markdown(root) ||
     error("规划生成页失步")
 println(
-    "R7 finite planning: 4 source formulas, 5 derivations, 4 findings, 4 symbol groups; full normal domain and nested dual oracle remain open.",
+    "R7 finite planning: 4 source formulas, 5 derivations, 4 findings, 4 symbol groups; prescribed normal domain; native-indicator oracle checked separately.",
 )

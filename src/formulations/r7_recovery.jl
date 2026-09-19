@@ -7,6 +7,14 @@ function r7_topology_roots(c, gamma, z)
     all(i->z[i]<=1-gamma[i], eachindex(z)) || return nothing
     sum((abs(z[i]-ls[i]["base_closed"]) for i in eachindex(z) if gamma[i]==0); init = 0) <=
     e["switch_budget"] || return nothing
+    r7_forest_roots(c, z)
+end
+
+# 只检查森林与根资格；符号故障模板的动作限制留在LP行中，不能用零故障预先排除拓扑。
+function r7_forest_roots(c, z)
+    e=c.data["electric"]
+    ls=e["lines"]
+    length(z)==length(ls) && all(x->x in (0, 1), z) || error("固定拓扑不是二值向量")
     ends = [(l["from"], l["to"]) for l in ls]
     groups = r7_connected_components(e["nodes"], ends, z)
     sum(z)==e["nodes"]-length(groups) || return nothing
@@ -20,7 +28,8 @@ function r7_topology_roots(c, gamma, z)
 end
 
 """
-    build_r7_recovery(case, fault; optimizer=nothing, fixed_z=nothing, boundary_variables=false)
+    build_r7_recovery(case, fault; optimizer=nothing, fixed_z=nothing,
+                      boundary_variables=false, fault_variables=false)
 
 构建给定灾前状态/故障的最小加权失供MILP；固定有效森林后为LP。拓扑跨时段与场景共用，
 管流跨新能源场景共用，连续调度按场景变化。不求解、不写文件。采用(6-51)至(6-90)
@@ -28,6 +37,7 @@ end
 固定拓扑仅用于穷举/对照，根取每个分量的最早合格节点；根不改变物理出力能力。
 boundary_variables=true仅供灾前主问题嵌入：将继承量暴露为变量，必须另行绑定同一正常轨迹。
 未绑定的参数化块不是给定状态恢复问题；默认false保持旧行为。
+fault_variables=true仅供固定拓扑LP对偶抽取，故障作为独立参数列；要求fixed_z且不得同时参数化灾前边界。
 """
 function build_r7_recovery(
     c::R7RecoveryCase,
@@ -35,9 +45,13 @@ function build_r7_recovery(
     optimizer = nothing,
     fixed_z = nothing,
     boundary_variables = false,
+    fault_variables = false,
 )
     r7_recovery_assert(c)
     r7_check_fault(c, gamma)
+    fault_variables &&
+        (fixed_z===nothing || boundary_variables) &&
+        error("故障参数模板要求固定拓扑及数值灾前边界")
     d=c.data
     e, h=d["electric"], d["heat"]
     ls, ps, ds=e["lines"], h["pipes"], d["devices"]
@@ -52,6 +66,11 @@ function build_r7_recovery(
     m=optimizer===nothing ? Model() : Model(optimizer)
     cs=Dict{String,Vector{Any}}()
     add(id, con) = (push!(get!(cs, id, Any[]), con); con)
+    fault_parameters=fault_variables ?
+                     [
+        @variable(m, lower_bound=0, upper_bound=1, base_name="fault_$l") for l in 1:L
+    ] : VariableRef[]
+    fault_coefficient=fault_variables ? fault_parameters : gamma
     # R7-M1：仅把灾前继承量参数化，设备、网络、故障与恢复控制边界保持原定义。
     parameters=Dict{String,Any}()
     if boundary_variables
@@ -90,7 +109,7 @@ function build_r7_recovery(
     if fixed_z===nothing
         foreach(set_binary, vcat(z, beta, a_on, a_off))
     else
-        roots=r7_topology_roots(c, gamma, fixed_z)
+        roots=fault_variables ? r7_forest_roots(c, fixed_z) : r7_topology_roots(c, gamma, fixed_z)
         roots===nothing && error("指定拓扑不满足故障/动作/森林规则")
         foreach(i->fix(z[i], fixed_z[i]; force = true), 1:L)
         foreach(i->fix(beta[i], roots[i]; force = true), 1:N)
@@ -100,9 +119,9 @@ function build_r7_recovery(
     for l in 1:L
         base=ls[l]["base_closed"]
         # 自动故障断开不计主动动作；健康线路才可合闸/分闸，修复原6-62的字面冲突。
-        add("R7-R1", @constraint(m, z[l]==base*(1-gamma[l])+a_on[l]-a_off[l]))
-        add("R7-R1", @constraint(m, a_on[l]<=(1-base)*(1-gamma[l])))
-        add("R7-R1", @constraint(m, a_off[l]<=base*(1-gamma[l])))
+        add("R7-R1", @constraint(m, z[l]==base*(1-fault_coefficient[l])+a_on[l]-a_off[l]))
+        add("R7-R1", @constraint(m, a_on[l]<=(1-base)*(1-fault_coefficient[l])))
+        add("R7-R1", @constraint(m, a_off[l]<=base*(1-fault_coefficient[l])))
         add("R7-R2", @constraint(m, virtual[l]<=(N-1)*z[l]))
         add("R7-R2", @constraint(m, virtual[l]>=-(N-1)*z[l]))
     end
@@ -420,5 +439,6 @@ function build_r7_recovery(
         fault = Int.(gamma),
         fixed_z,
         boundary_parameters = parameters,
+        fault_parameters,
     )
 end

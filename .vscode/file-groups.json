@@ -11095,6 +11095,21 @@
           "path": "docs/src/ch06-planning.md",
           "name": "ch06-planning.md",
           "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r7-inner-20260920-v3/F22-inner-faults.png",
+          "name": "F22-inner-faults.png",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch06-adversary-equations.md",
+          "name": "ch06-adversary-equations.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch06-adversary.md",
+          "name": "ch06-adversary.md",
+          "isDirectory": false
         }
       ],
       "order": 1,
@@ -11355,6 +11370,11 @@
         {
           "path": "docs/agent/tasks/2026-09-20-r7-planning.md",
           "name": "2026-09-20-r7-planning.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/agent/tasks/2026-09-20-r7-adversary.md",
+          "name": "2026-09-20-r7-adversary.md",
           "isDirectory": false
         }
       ],
@@ -12082,6 +12102,31 @@
           "path": "src/verification/r7_planning.jl",
           "name": "r7_planning.jl",
           "isDirectory": false
+        },
+        {
+          "path": "src/algorithms/r7_adversary.jl",
+          "name": "r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/core/r7_adversary.jl",
+          "name": "r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/formulations/r7_adversary.jl",
+          "name": "r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/reporting/r7_adversary.jl",
+          "name": "r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/verification/r7_adversary.jl",
+          "name": "r7_adversary.jl",
+          "isDirectory": false
         }
       ],
       "order": 3,
@@ -12658,6 +12703,26 @@
           "path": "configs/r7/reserve-hand-freeze.toml",
           "name": "reserve-hand-freeze.toml",
           "isDirectory": false
+        },
+        {
+          "path": "configs/r7/inner-freeze.toml",
+          "name": "inner-freeze.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r7/inner-tie-bottleneck.toml",
+          "name": "inner-tie-bottleneck.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r7/inner-tie-two-fault.toml",
+          "name": "inner-tie-two-fault.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r7/inner-tie-two-hour.toml",
+          "name": "inner-tie-two-hour.toml",
+          "isDirectory": false
         }
       ],
       "order": 4,
@@ -12968,6 +13033,11 @@
         {
           "path": "docs/reading/ch06/planning.toml",
           "name": "planning.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch06/inner-adversary.toml",
+          "name": "inner-adversary.toml",
           "isDirectory": false
         }
       ],
@@ -30245,6 +30315,686 @@
           "path": "results/summaries/r7-planning-figures-20260920-v2/summary.csv",
           "name": "summary.csv",
           "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-figures-20260920-v3/F22-inner-faults.png",
+          "name": "F22-inner-faults.png",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-figures-20260920-v3/F22-inner-faults.svg",
+          "name": "F22-inner-faults.svg",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-figures-20260920-v3/figure.toml",
+          "name": "figure.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-figures-20260920-v3/rule.toml",
+          "name": "rule.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-figures-20260920-v3/stages.csv",
+          "name": "stages.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-figures-20260920-v3/summary.csv",
+          "name": "summary.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-bottleneck/adversary/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-bottleneck/adversary/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-bottleneck/adversary/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-bottleneck/adversary/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-bottleneck/adversary/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-bottleneck/adversary/code/src/algorithms/r7_adversary.jl",
+          "name": "r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-bottleneck/adversary/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-bottleneck/adversary/code/src/core/r7_adversary.jl",
+          "name": "r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-bottleneck/adversary/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-bottleneck/adversary/code/src/formulations/r7_adversary.jl",
+          "name": "r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-bottleneck/adversary/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-bottleneck/adversary/code/src/reporting/r7_adversary.jl",
+          "name": "r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-bottleneck/adversary/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-bottleneck/adversary/code/src/verification/r7_adversary.jl",
+          "name": "r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-bottleneck/adversary/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-bottleneck/adversary/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-bottleneck/adversary/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-bottleneck/reference.toml",
+          "name": "reference.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-fault/adversary/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-fault/adversary/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-fault/adversary/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-fault/adversary/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-fault/adversary/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-fault/adversary/code/src/algorithms/r7_adversary.jl",
+          "name": "r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-fault/adversary/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-fault/adversary/code/src/core/r7_adversary.jl",
+          "name": "r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-fault/adversary/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-fault/adversary/code/src/formulations/r7_adversary.jl",
+          "name": "r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-fault/adversary/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-fault/adversary/code/src/reporting/r7_adversary.jl",
+          "name": "r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-fault/adversary/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-fault/adversary/code/src/verification/r7_adversary.jl",
+          "name": "r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-fault/adversary/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-fault/adversary/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-fault/adversary/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-fault/reference.toml",
+          "name": "reference.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-hour/adversary/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-hour/adversary/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-hour/adversary/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-hour/adversary/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-hour/adversary/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-hour/adversary/code/src/algorithms/r7_adversary.jl",
+          "name": "r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-hour/adversary/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-hour/adversary/code/src/core/r7_adversary.jl",
+          "name": "r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-hour/adversary/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-hour/adversary/code/src/formulations/r7_adversary.jl",
+          "name": "r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-hour/adversary/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-hour/adversary/code/src/reporting/r7_adversary.jl",
+          "name": "r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-hour/adversary/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-hour/adversary/code/src/verification/r7_adversary.jl",
+          "name": "r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-hour/adversary/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-hour/adversary/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-hour/adversary/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-hour/reference.toml",
+          "name": "reference.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/rule.toml",
+          "name": "rule.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/stages.csv",
+          "name": "stages.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/study-source.jl",
+          "name": "study-source.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/summary.csv",
+          "name": "summary.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-inner-three-node-20260920-v1/transfer.toml",
+          "name": "transfer.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-legacy-20260920-v1/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-legacy-20260920-v1/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-legacy-20260920-v1/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-legacy-20260920-v1/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-legacy-20260920-v1/code/src/algorithms/r7_adversary.jl",
+          "name": "r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-legacy-20260920-v1/code/src/algorithms/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-legacy-20260920-v1/code/src/algorithms/r7_planning.jl",
+          "name": "r7_planning.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-legacy-20260920-v1/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-legacy-20260920-v1/code/src/components/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-legacy-20260920-v1/code/src/core/r7_adversary.jl",
+          "name": "r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-legacy-20260920-v1/code/src/core/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-legacy-20260920-v1/code/src/core/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-legacy-20260920-v1/code/src/core/r7_planning.jl",
+          "name": "r7_planning.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-legacy-20260920-v1/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-legacy-20260920-v1/code/src/formulations/r7_adversary.jl",
+          "name": "r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-legacy-20260920-v1/code/src/formulations/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-legacy-20260920-v1/code/src/formulations/r7_planning.jl",
+          "name": "r7_planning.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-legacy-20260920-v1/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-legacy-20260920-v1/code/src/networks/fixed_flow_heat.jl",
+          "name": "fixed_flow_heat.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-legacy-20260920-v1/code/src/networks/r7_normal_transport.jl",
+          "name": "r7_normal_transport.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-legacy-20260920-v1/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-legacy-20260920-v1/code/src/reporting/r7_adversary.jl",
+          "name": "r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-legacy-20260920-v1/code/src/reporting/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-legacy-20260920-v1/code/src/reporting/r7_planning.jl",
+          "name": "r7_planning.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-legacy-20260920-v1/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-legacy-20260920-v1/code/src/verification/r7_adversary.jl",
+          "name": "r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-legacy-20260920-v1/code/src/verification/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-legacy-20260920-v1/code/src/verification/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-legacy-20260920-v1/code/src/verification/r7_planning.jl",
+          "name": "r7_planning.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-legacy-20260920-v1/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-legacy-20260920-v1/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-legacy-20260920-v1/metadata.toml",
+          "name": "metadata.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-legacy-20260920-v1/normal.toml",
+          "name": "normal.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-legacy-20260920-v1/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-legacy-20260920-v1/specification.toml",
+          "name": "specification.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-reserve-20260920-v1/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-reserve-20260920-v1/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-reserve-20260920-v1/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-reserve-20260920-v1/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-reserve-20260920-v1/code/src/algorithms/r7_adversary.jl",
+          "name": "r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-reserve-20260920-v1/code/src/algorithms/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-reserve-20260920-v1/code/src/algorithms/r7_planning.jl",
+          "name": "r7_planning.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-reserve-20260920-v1/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-reserve-20260920-v1/code/src/components/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-reserve-20260920-v1/code/src/core/r7_adversary.jl",
+          "name": "r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-reserve-20260920-v1/code/src/core/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-reserve-20260920-v1/code/src/core/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-reserve-20260920-v1/code/src/core/r7_planning.jl",
+          "name": "r7_planning.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-reserve-20260920-v1/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-reserve-20260920-v1/code/src/formulations/r7_adversary.jl",
+          "name": "r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-reserve-20260920-v1/code/src/formulations/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-reserve-20260920-v1/code/src/formulations/r7_planning.jl",
+          "name": "r7_planning.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-reserve-20260920-v1/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-reserve-20260920-v1/code/src/networks/fixed_flow_heat.jl",
+          "name": "fixed_flow_heat.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-reserve-20260920-v1/code/src/networks/r7_normal_transport.jl",
+          "name": "r7_normal_transport.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-reserve-20260920-v1/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-reserve-20260920-v1/code/src/reporting/r7_adversary.jl",
+          "name": "r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-reserve-20260920-v1/code/src/reporting/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-reserve-20260920-v1/code/src/reporting/r7_planning.jl",
+          "name": "r7_planning.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-reserve-20260920-v1/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-reserve-20260920-v1/code/src/verification/r7_adversary.jl",
+          "name": "r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-reserve-20260920-v1/code/src/verification/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-reserve-20260920-v1/code/src/verification/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-reserve-20260920-v1/code/src/verification/r7_planning.jl",
+          "name": "r7_planning.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-reserve-20260920-v1/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-reserve-20260920-v1/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-reserve-20260920-v1/metadata.toml",
+          "name": "metadata.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-reserve-20260920-v1/normal.toml",
+          "name": "normal.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-reserve-20260920-v1/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-nested-reserve-20260920-v1/specification.toml",
+          "name": "specification.toml",
+          "isDirectory": false
         }
       ],
       "order": 6,
@@ -30505,6 +31255,11 @@
         {
           "path": "test/r7_planning.jl",
           "name": "r7_planning.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "test/r7_adversary.jl",
+          "name": "r7_adversary.jl",
           "isDirectory": false
         }
       ],
@@ -32516,6 +33271,61 @@
         {
           "path": "scripts/test_r7_planning.jl",
           "name": "test_r7_planning.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/audit_r7_lp_identity.jl",
+          "name": "audit_r7_lp_identity.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r7_adversary.jl",
+          "name": "check_r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r7_adversary_gurobi.jl",
+          "name": "check_r7_adversary_gurobi.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r7_inner_figures.jl",
+          "name": "check_r7_inner_figures.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/freeze_r7_inner_cases.jl",
+          "name": "freeze_r7_inner_cases.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/plot_r7_inner.jl",
+          "name": "plot_r7_inner.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r7_adversary.jl",
+          "name": "r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r7_adversary_docs.jl",
+          "name": "r7_adversary_docs.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r7_inner_study.jl",
+          "name": "r7_inner_study.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/report_r7_inner.jl",
+          "name": "report_r7_inner.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/test_r7_adversary.jl",
+          "name": "test_r7_adversary.jl",
           "isDirectory": false
         }
       ],

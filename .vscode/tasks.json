@@ -1,5 +1,9 @@
 {
   "inputs": [
+    {"id":"r7InnerCase","type":"promptString","description":"内层故障对手的固定灾前输入","default":"configs/r7/inner-tie-two-hour.toml"},
+    {"id":"r7InnerRun","type":"promptString","description":"运行用新目录；重验用已保存目录","default":"results/runs/r7-inner-new"},
+    {"id":"r7InnerEvidence","type":"promptString","description":"已冻结的三节点内层证据","default":"results/summaries/r7-inner-three-node-20260920-v1"},
+    {"id":"r7InnerFigures","type":"promptString","description":"内层图表的新目录，不覆盖旧图","default":"results/runs/r7-inner-redraw"},
     {"id":"r7PlanningNormal","type":"promptString","description":"正常运行输入","default":"configs/r7/normal-reserve-hand.toml"},
     {"id":"r7PlanningSpec","type":"promptString","description":"安全规划事件和门槛","default":"configs/r7/planning-reserve-hand.toml"},
     {"id":"r7PlanningMethod","type":"pickString","description":"有限故障规划方法","options":["finite_fault_ccg","extensive"],"default":"finite_fault_ccg"},
@@ -113,6 +117,13 @@
     }
   ],
   "tasks": [
+    {"label":"PaperRebuild: R7 inner mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r7_adversary.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 inner tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r7_adversary.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 inner solve","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/r7_adversary.jl","run","${input:r7InnerCase}","${input:r7InnerRun}","600"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 nested planning","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/r7_adversary.jl","plan","${input:r7PlanningNormal}","${input:r7PlanningSpec}","${input:r7PlanningRun}","600"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 inner replay saved","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_adversary.jl","check","${input:r7InnerRun}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 inner compare evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_inner_study.jl","check","${input:r7InnerEvidence}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 inner redraw","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r7_inner.jl","${input:r7InnerEvidence}","${input:r7InnerFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"R7: 只读重验规划证据包","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_planning_evidence.jl","check","${input:r7PlanningEvidence}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"R7: 重绘规划图 F21","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r7_planning.jl","${input:r7PlanningEvidence}","${input:r7PlanningFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"R7: 规划公式与输入检查","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r7_planning.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
