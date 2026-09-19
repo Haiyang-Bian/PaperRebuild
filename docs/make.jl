@@ -134,6 +134,7 @@ makedocs(;
             "风险调度结果与机制" => "ch05-risk-results.md",
             "条件分解基础与边界" => "ch05-benders.md",
             "条件分解推导与符号" => "ch05-benders-equations.md",
+            "条件分解正式对照" => "ch05-benders-results.md",
             "联合机会约束概率方向" => "ch05-probability-audit.md",
             "分解算法与已知输入" => "ch05-algorithm-audit.md",
         ],

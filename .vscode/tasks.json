@@ -1,5 +1,8 @@
 {
   "inputs": [
+    {"id":"r5BendersBatch","description":"新分解批次名；不可覆盖旧实验","type":"promptString","default":"r5-benders-new"},
+    {"id":"r5BendersStudy","description":"已完成的分解study.toml","type":"promptString","default":"results/runs/r5/r5-benders-20260919/study.toml"},
+    {"id":"r5BendersReport","description":"新的分解报告目录；绘图读取该目录已有CSV","type":"promptString","default":"results/summaries/r5-benders-replay"},
     {"id":"r5BendersCase","description":"有限支持风险案例路径","type":"promptString","default":"configs/r5/risk/hard_zero.toml"},
     {"id":"r5BendersRun","description":"Benders运行目录；运行需新目录，重读需已有目录","type":"promptString","default":"results/runs/r5/benders-development-new"},
     {"id":"r5BendersRoute","description":"分解路线；paper_critical的域受限制","type":"pickString","options":["cuts","critical","paper_critical"],"default":"cuts"},
@@ -62,6 +65,12 @@
     }
   ],
   "tasks": [
+    {"label":"PaperRebuild: R5 Benders study rules","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_benders_study.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 Benders public witness test","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_benders_witness.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 Benders frozen study","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/study_r5_benders.jl","${input:r5BendersBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 Benders saved report","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/report_r5_benders.jl","${input:r5BendersStudy}","${input:r5BendersReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 Benders saved plots","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r5_benders.jl","${input:r5BendersReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 Benders frozen evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_benders_artifacts.jl","results/summaries/r5-benders"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R5 Benders tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_benders.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R5 Benders outer tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_benders_loop.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R5 Benders run","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r5_benders.jl","run","${input:r5BendersCase}","${input:r5BendersRun}","${input:r5BendersRoute}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},

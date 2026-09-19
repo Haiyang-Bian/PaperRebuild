@@ -27,5 +27,5 @@ println(
     length(d["symbol"]),
     " symbol groups, ",
     length(d["issue"]),
-    " boundaries checked; formal algorithm study pending.",
+    " boundaries checked; formal evidence is verified separately.",
 )

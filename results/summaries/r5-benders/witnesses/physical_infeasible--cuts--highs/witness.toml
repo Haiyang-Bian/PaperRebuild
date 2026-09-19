@@ -1,0 +1,1295 @@
+parent_result_sha256 = "55d1221dd5eaf19e6c868b83ecb6be41e040b95e335624845b5b7651988b3a44"
+raw_result_content_sha256 = "870968f09761331f8a2524620c0052154d19b62d559de23c0966546eab1c82fa"
+schema = "r5-benders-public-witness-v1"
+
+[case]
+epsilon = 1.0
+event = "any_building_time_comfort_violation"
+name = "physical_infeasible"
+objective = "worst_expected_net_cost"
+origin = "synthetic"
+schema = "r5-risk-case-v1"
+
+    [case.ambiguity]
+    distance = [[0.0, 1.0, 1.0], [1.0, 0.0, 1.0], [1.0, 1.0, 0.0]]
+    distance_provenance = "Euclidean distance between one-hot labels of the three frozen full-call regimes, divided by sqrt(2); synthetic categorical trajectory metric, not calibrated from thesis samples."
+    distance_unit = "normalized_trajectory"
+    radius = 0.0
+    support = "fixed_scenarios"
+
+    [case.commitment]
+    comfort = "hard_each_scenario"
+    name = "risk_thermal_hand"
+    objective = "expected_net_cost"
+    origin = "synthetic"
+    recourse_information = "complete_trajectory"
+    schema = "r5-commitment-case-v1"
+    uncertain_fields = ["realtime.alpha_down", "realtime.alpha_up"]
+
+        [case.commitment.bounds.P_DA_MW]
+        lower = [0.0]
+        upper = [1.0]
+
+        [case.commitment.bounds.R_down_MW]
+        lower = [0.0]
+        upper = [0.08]
+
+        [case.commitment.bounds.R_up_MW]
+        lower = [0.0]
+        upper = [0.08]
+
+        [case.commitment.day_ahead]
+        down_price = [100.0]
+        energy_price = [100.0]
+        up_price = [100.0]
+
+        [[case.commitment.scenarios]]
+        case_sha256 = "603460af5e25360e12821c0b1ca6652990bd1c52a97d43105381a1bed6d01934"
+        id = "none"
+        probability = 0.5
+
+            [case.commitment.scenarios.case]
+            T = 1
+            ambient_K = [283.15]
+            dt_h = 1.0
+            name = "shared_none"
+            origin = "synthetic"
+            schema = "r5-dispatch-case-v1"
+
+                [case.commitment.scenarios.case.award]
+                P_DA_MW = [0.142]
+                R_down_MW = [0.0]
+                R_up_MW = [0.0]
+                down_price = [2.0]
+                energy_price = [100.0]
+                origin = "synthetic"
+                up_price = [5.0]
+
+                [[case.commitment.scenarios.case.buildings]]
+                COP_DH = 1.0
+                C_MWh_K = 0.01
+                G_MW_K = 0.0042
+                P_DH_max_MW = 0.0
+                R_max_K = 330.15
+                R_min_K = 303.15
+                T_initial_K = 293.15
+                T_max_K = 293.15
+                T_min_K = 293.15
+                electric_node = 2
+                heat_node = 2
+                id = "building"
+                m_kg_s = 1.0
+                terminal_rule = "free"
+
+                [[case.commitment.scenarios.case.devices]]
+                cost_USD_MWh = 0.0
+                heat_ratio = 1.0
+                id = "EB"
+                kind = "EB"
+                node = 2
+                p_max_MW = 0.1
+                p_min_MW = 0.0
+                q_max_Mvar = 0.0
+                q_min_Mvar = 0.0
+                source_id = "source"
+                [[case.commitment.scenarios.case.devices]]
+                P_initial_MW = 0.05
+                cost_USD_MWh = 130.0
+                id = "GT"
+                kind = "GT"
+                node = 2
+                p_max_MW = 0.2
+                p_min_MW = 0.0
+                q_max_Mvar = 0.0
+                q_min_Mvar = 0.0
+                ramp_down_MW_h = 1.0
+                ramp_up_MW_h = 1.0
+
+                [case.commitment.scenarios.case.electric]
+                P_load_MW = [[0.0], [2.0]]
+                Q_load_Mvar = [[0.0], [0.02]]
+                S_base_MVA = 1.0
+                nodes = 2
+                pcc_max_MW = 1.0
+                pcc_min_MW = 0.0
+                qcc_max_Mvar = 1.0
+                qcc_min_Mvar = -1.0
+                root = 1
+                v_max_pu = 1.05
+                v_min_pu = 0.95
+                v_ref_pu = 1.0
+
+                    [[case.commitment.scenarios.case.electric.lines]]
+                    P_limit_MW = 1.0
+                    Q_limit_Mvar = 1.0
+                    from = 1
+                    id = "e12"
+                    r_pu = 0.01
+                    to = 2
+                    x_pu = 0.005
+
+                [case.commitment.scenarios.case.heat]
+                R_max_K = 343.15
+                R_min_K = 293.15
+                S_max_K = 353.15
+                S_min_K = 303.15
+                c_J_kgK = 4200.0
+                nodes = 2
+                terminal_rule = "free"
+
+                    [[case.commitment.scenarios.case.heat.pipes]]
+                    area_m2 = 0.01
+                    from = 1
+                    history_R_K = [320.15]
+                    history_S_K = [330.15]
+                    id = "h12"
+                    length_m = 36.0
+                    loss_W_mK = 0.0
+                    m_kg_s = 1.0
+                    rho_kg_m3 = 1000.0
+                    to = 2
+
+                    [[case.commitment.scenarios.case.heat.sources]]
+                    T_max_K = 330.15
+                    T_min_K = 330.15
+                    id = "source"
+                    m_kg_s = 1.0
+                    node = 1
+
+                [case.commitment.scenarios.case.realtime]
+                alpha_down = [0.0]
+                alpha_up = [0.0]
+                delta = 0.0
+                penalty_USD_MWh = 1000.0
+                price = [80.0]
+
+                [case.commitment.scenarios.case.units]
+                energy = "MWh"
+                energy_price = "USD/MWh"
+                flow = "kg/s"
+                heat_capacity = "MWh/K"
+                heat_transfer = "MW/K"
+                power = "MW"
+                reactive = "Mvar"
+                reserve_price = "USD/(MW*h)"
+                temperature = "K"
+                time = "h"
+        [[case.commitment.scenarios]]
+        case_sha256 = "25696a0ea055c644be61001f059cb570aa70f3e580df34ab0a92a041971cec80"
+        id = "up"
+        probability = 0.25
+
+            [case.commitment.scenarios.case]
+            T = 1
+            ambient_K = [283.15]
+            dt_h = 1.0
+            name = "shared_up"
+            origin = "synthetic"
+            schema = "r5-dispatch-case-v1"
+
+                [case.commitment.scenarios.case.award]
+                P_DA_MW = [0.142]
+                R_down_MW = [0.0]
+                R_up_MW = [0.0]
+                down_price = [2.0]
+                energy_price = [100.0]
+                origin = "synthetic"
+                up_price = [5.0]
+
+                [[case.commitment.scenarios.case.buildings]]
+                COP_DH = 1.0
+                C_MWh_K = 0.01
+                G_MW_K = 0.0042
+                P_DH_max_MW = 0.0
+                R_max_K = 330.15
+                R_min_K = 303.15
+                T_initial_K = 293.15
+                T_max_K = 293.15
+                T_min_K = 293.15
+                electric_node = 2
+                heat_node = 2
+                id = "building"
+                m_kg_s = 1.0
+                terminal_rule = "free"
+
+                [[case.commitment.scenarios.case.devices]]
+                cost_USD_MWh = 0.0
+                heat_ratio = 1.0
+                id = "EB"
+                kind = "EB"
+                node = 2
+                p_max_MW = 0.1
+                p_min_MW = 0.0
+                q_max_Mvar = 0.0
+                q_min_Mvar = 0.0
+                source_id = "source"
+                [[case.commitment.scenarios.case.devices]]
+                P_initial_MW = 0.05
+                cost_USD_MWh = 130.0
+                id = "GT"
+                kind = "GT"
+                node = 2
+                p_max_MW = 0.2
+                p_min_MW = 0.0
+                q_max_Mvar = 0.0
+                q_min_Mvar = 0.0
+                ramp_down_MW_h = 1.0
+                ramp_up_MW_h = 1.0
+
+                [case.commitment.scenarios.case.electric]
+                P_load_MW = [[0.0], [2.0]]
+                Q_load_Mvar = [[0.0], [0.02]]
+                S_base_MVA = 1.0
+                nodes = 2
+                pcc_max_MW = 1.0
+                pcc_min_MW = 0.0
+                qcc_max_Mvar = 1.0
+                qcc_min_Mvar = -1.0
+                root = 1
+                v_max_pu = 1.05
+                v_min_pu = 0.95
+                v_ref_pu = 1.0
+
+                    [[case.commitment.scenarios.case.electric.lines]]
+                    P_limit_MW = 1.0
+                    Q_limit_Mvar = 1.0
+                    from = 1
+                    id = "e12"
+                    r_pu = 0.01
+                    to = 2
+                    x_pu = 0.005
+
+                [case.commitment.scenarios.case.heat]
+                R_max_K = 343.15
+                R_min_K = 293.15
+                S_max_K = 353.15
+                S_min_K = 303.15
+                c_J_kgK = 4200.0
+                nodes = 2
+                terminal_rule = "free"
+
+                    [[case.commitment.scenarios.case.heat.pipes]]
+                    area_m2 = 0.01
+                    from = 1
+                    history_R_K = [320.15]
+                    history_S_K = [330.15]
+                    id = "h12"
+                    length_m = 36.0
+                    loss_W_mK = 0.0
+                    m_kg_s = 1.0
+                    rho_kg_m3 = 1000.0
+                    to = 2
+
+                    [[case.commitment.scenarios.case.heat.sources]]
+                    T_max_K = 330.15
+                    T_min_K = 330.15
+                    id = "source"
+                    m_kg_s = 1.0
+                    node = 1
+
+                [case.commitment.scenarios.case.realtime]
+                alpha_down = [0.0]
+                alpha_up = [1.0]
+                delta = 0.0
+                penalty_USD_MWh = 1000.0
+                price = [80.0]
+
+                [case.commitment.scenarios.case.units]
+                energy = "MWh"
+                energy_price = "USD/MWh"
+                flow = "kg/s"
+                heat_capacity = "MWh/K"
+                heat_transfer = "MW/K"
+                power = "MW"
+                reactive = "Mvar"
+                reserve_price = "USD/(MW*h)"
+                temperature = "K"
+                time = "h"
+        [[case.commitment.scenarios]]
+        case_sha256 = "9f2b1d8a4ee313827e6e0e6e7d9e87f74d04dcd0ffa097891ae6a9b724707c12"
+        id = "down"
+        probability = 0.25
+
+            [case.commitment.scenarios.case]
+            T = 1
+            ambient_K = [283.15]
+            dt_h = 1.0
+            name = "shared_down"
+            origin = "synthetic"
+            schema = "r5-dispatch-case-v1"
+
+                [case.commitment.scenarios.case.award]
+                P_DA_MW = [0.142]
+                R_down_MW = [0.0]
+                R_up_MW = [0.0]
+                down_price = [2.0]
+                energy_price = [100.0]
+                origin = "synthetic"
+                up_price = [5.0]
+
+                [[case.commitment.scenarios.case.buildings]]
+                COP_DH = 1.0
+                C_MWh_K = 0.01
+                G_MW_K = 0.0042
+                P_DH_max_MW = 0.0
+                R_max_K = 330.15
+                R_min_K = 303.15
+                T_initial_K = 293.15
+                T_max_K = 293.15
+                T_min_K = 293.15
+                electric_node = 2
+                heat_node = 2
+                id = "building"
+                m_kg_s = 1.0
+                terminal_rule = "free"
+
+                [[case.commitment.scenarios.case.devices]]
+                cost_USD_MWh = 0.0
+                heat_ratio = 1.0
+                id = "EB"
+                kind = "EB"
+                node = 2
+                p_max_MW = 0.1
+                p_min_MW = 0.0
+                q_max_Mvar = 0.0
+                q_min_Mvar = 0.0
+                source_id = "source"
+                [[case.commitment.scenarios.case.devices]]
+                P_initial_MW = 0.05
+                cost_USD_MWh = 130.0
+                id = "GT"
+                kind = "GT"
+                node = 2
+                p_max_MW = 0.2
+                p_min_MW = 0.0
+                q_max_Mvar = 0.0
+                q_min_Mvar = 0.0
+                ramp_down_MW_h = 1.0
+                ramp_up_MW_h = 1.0
+
+                [case.commitment.scenarios.case.electric]
+                P_load_MW = [[0.0], [2.0]]
+                Q_load_Mvar = [[0.0], [0.02]]
+                S_base_MVA = 1.0
+                nodes = 2
+                pcc_max_MW = 1.0
+                pcc_min_MW = 0.0
+                qcc_max_Mvar = 1.0
+                qcc_min_Mvar = -1.0
+                root = 1
+                v_max_pu = 1.05
+                v_min_pu = 0.95
+                v_ref_pu = 1.0
+
+                    [[case.commitment.scenarios.case.electric.lines]]
+                    P_limit_MW = 1.0
+                    Q_limit_Mvar = 1.0
+                    from = 1
+                    id = "e12"
+                    r_pu = 0.01
+                    to = 2
+                    x_pu = 0.005
+
+                [case.commitment.scenarios.case.heat]
+                R_max_K = 343.15
+                R_min_K = 293.15
+                S_max_K = 353.15
+                S_min_K = 303.15
+                c_J_kgK = 4200.0
+                nodes = 2
+                terminal_rule = "free"
+
+                    [[case.commitment.scenarios.case.heat.pipes]]
+                    area_m2 = 0.01
+                    from = 1
+                    history_R_K = [320.15]
+                    history_S_K = [330.15]
+                    id = "h12"
+                    length_m = 36.0
+                    loss_W_mK = 0.0
+                    m_kg_s = 1.0
+                    rho_kg_m3 = 1000.0
+                    to = 2
+
+                    [[case.commitment.scenarios.case.heat.sources]]
+                    T_max_K = 330.15
+                    T_min_K = 330.15
+                    id = "source"
+                    m_kg_s = 1.0
+                    node = 1
+
+                [case.commitment.scenarios.case.realtime]
+                alpha_down = [1.0]
+                alpha_up = [0.0]
+                delta = 0.0
+                penalty_USD_MWh = 1000.0
+                price = [80.0]
+
+                [case.commitment.scenarios.case.units]
+                energy = "MWh"
+                energy_price = "USD/MWh"
+                flow = "kg/s"
+                heat_capacity = "MWh/K"
+                heat_transfer = "MW/K"
+                power = "MW"
+                reactive = "Mvar"
+                reserve_price = "USD/(MW*h)"
+                temperature = "K"
+                time = "h"
+
+    [case.temperature_domain.building]
+    lower_K = 292.15
+    upper_K = 294.15
+
+[result]
+budget_overrun_sec = 0.0
+budget_sec = 600.0
+case_sha256 = "5488be7813db2ff0b32a6e3029dc0e33c590c815d3970022f2aa21422caf7ca3"
+cost_optimization_complete = false
+created_utc = "2026-09-19T03:08:09.555"
+cut_order = ["r5-benders-sub-2774e60e-51cd-4a9a-93de-8dc5bb9c9b35", "r5-benders-sub-ea6f62fe-5437-4d4c-aec5-a399215dd1d3", "r5-benders-sub-5cc4901c-a50d-4da1-9070-d49a61986337", "r5-benders-sub-994d0319-1040-4dc8-905b-1416a9364a25", "r5-benders-sub-9aacbb5c-650f-4acd-9c7d-a3725c1eabe2", "r5-benders-sub-5eee10be-74fc-41ea-a79c-1b1e6ad63416"]
+elapsed_sec = 1.562000036239624
+julia_version = "1.12.6"
+objective_type = "worst_expected_IES_net_cost_fixed_prices"
+run_id = "r5-benders-e96ae05a-6f01-4eb9-9dd8-5ace0e248da8"
+schema = "r5-benders-result-v1"
+source_unchanged = true
+status = "full_domain_infeasible"
+version = "r5_benders_checked_v1"
+
+    [result.cuts.r5-benders-sub-2774e60e-51cd-4a9a-93de-8dc5bb9c9b35]
+    arithmetic = "rational_box"
+    branch = 0
+    case_sha256 = "5488be7813db2ff0b32a6e3029dc0e33c590c815d3970022f2aa21422caf7ca3"
+    certificate_scope = "exact_rational_minorant_of_encoded_bounded_LP_outward_float_coefficients"
+    constant = 0.5941935483870956
+    deactivation_M = 0.5941935483870956
+    exact_coefficient_guard = "0//1"
+    exact_raw_constant = "192826830915748993979985095284905//324518553658426726783156020576256"
+    exact_sign_guard = "0//1"
+    exact_stationarity_guard = "173102290223908070136440377511539//182687704666362864775460604089535377456991567872"
+    guard = 1.0320565487569896e-15
+    kind = "feasibility"
+    lower_cost = 0.0
+    productive = true
+    raw_constant = 0.5941935483870966
+    rounding_guard = 8.452540242155524e-17
+    scenario = 1
+    sign_guard = 0.0
+    source_run_id = "r5-benders-sub-2774e60e-51cd-4a9a-93de-8dc5bb9c9b35"
+    source_value = 0.5941935483870956
+    stationarity_guard = 9.475311463354343e-16
+    units = "normalized_violation"
+
+        [result.cuts.r5-benders-sub-2774e60e-51cd-4a9a-93de-8dc5bb9c9b35.exact_gradient]
+        "P_DA_MW/1" = "-5811096293381285//18014398509481984"
+        "R_down_MW/1" = "0//1"
+        "R_up_MW/1" = "0//1"
+
+        [result.cuts.r5-benders-sub-2774e60e-51cd-4a9a-93de-8dc5bb9c9b35.gradient]
+        "P_DA_MW/1" = -0.3225806451612903
+        "R_down_MW/1" = 0.0
+        "R_up_MW/1" = 0.0
+
+        [result.cuts.r5-benders-sub-2774e60e-51cd-4a9a-93de-8dc5bb9c9b35.stationarity_raw]
+        "H_D/1/1" = -1.3877787807814457e-17
+        "P_DER/1/1" = 0.0
+        "P_DER/2/1" = 0.0
+        "P_DH/1/1" = -1.3877787807814457e-17
+        "P_PCC/1/1" = 0.0
+        "P_line/1/1" = 0.0
+        "Q_DER/1/1" = 0.0
+        "Q_DER/2/1" = 0.0
+        "Q_PCC/1/1" = 0.0
+        "Q_line/1/1" = 0.0
+        "delivery/1/1" = 0.0
+        "elastic/5-10-down/GT/1/1" = 0.0
+        "elastic/5-10-up/GT/1/1" = 0.0
+        "elastic/5-14/1/1/1" = 0.0
+        "elastic/5-14/1/1/2" = 5.551115123125783e-17
+        "elastic/5-14/2/1/1" = 0.0
+        "elastic/5-14/2/1/2" = 0.0
+        "elastic/5-15/1/1/1" = 0.0
+        "elastic/5-15/1/1/2" = 0.0
+        "elastic/5-15/2/1/1" = 0.0
+        "elastic/5-15/2/1/2" = 0.0
+        "elastic/5-16/e12/1/1" = 0.0
+        "elastic/5-16/e12/1/2" = 0.0
+        "elastic/5-17/root/1/1" = 0.0
+        "elastic/5-17/root/1/2" = 0.0
+        "elastic/5-18/source/1/1" = -5.551115123125783e-17
+        "elastic/5-18/source/1/2" = 5.551115123125783e-17
+        "elastic/5-19/building/1/1" = 0.0
+        "elastic/5-19/building/1/2" = 0.0
+        "elastic/5-20/1/1/1" = 2.168404344971009e-19
+        "elastic/5-20/1/1/2" = -2.168404344971009e-19
+        "elastic/5-20/2/1/1" = 2.168404344971009e-19
+        "elastic/5-20/2/1/2" = -2.168404344971009e-19
+        "elastic/5-21/1/1/1" = 1.0842021724855044e-18
+        "elastic/5-21/1/1/2" = -1.0842021724855044e-18
+        "elastic/5-21/2/1/1" = 2.168404344971009e-19
+        "elastic/5-21/2/1/2" = -2.168404344971009e-19
+        "elastic/5-25-26-R/h12/1/1" = 1.0842021724855044e-18
+        "elastic/5-25-26-R/h12/1/2" = -1.0842021724855044e-18
+        "elastic/5-25-26-S/h12/1/1" = 2.168404344971009e-19
+        "elastic/5-25-26-S/h12/1/2" = -2.168404344971009e-19
+        "elastic/5-3-minus/PCC/1/1" = 0.0
+        "elastic/5-3-plus/PCC/1/1" = -5.551115123125783e-17
+        "elastic/5-4/window/0/1" = 0.0
+        "elastic/R5-D-building/building/1/1" = -3.469446951953614e-18
+        "elastic/R5-D-building/building/1/2" = 3.469446951953614e-18
+        "elastic/R5-D-delivery/PCC/1/1" = 5.551115123125783e-17
+        "elastic/R5-D-delivery/PCC/1/2" = 0.0
+        "elastic/τ_IN/1/1/lower/1" = -4.5102810375396984e-17
+        "elastic/τ_IN/1/1/upper/1" = 0.0
+        "mismatch/1/1" = 0.0
+        "v/1/1" = 0.0
+        "v/2/1" = 0.0
+        "τ_IN/1/1" = 1.4065809449081622e-19
+        "τ_R/1/1" = -5.3328757180835395e-20
+        "τ_R/2/1" = -9.513559295187644e-20
+        "τ_S/1/1" = -5.391072892761466e-21
+        "τ_S/2/1" = 3.525405773759308e-21
+        "τ_load_R/1/1" = -3.525405773759308e-21
+        "τ_pipe_R/1/1" = 0.0
+        "τ_pipe_S/1/1" = 0.0
+        "τ_src/1/1" = 5.3328757180835395e-20
+
+    [result.cuts.r5-benders-sub-5cc4901c-a50d-4da1-9070-d49a61986337]
+    arithmetic = "rational_box"
+    branch = 0
+    case_sha256 = "5488be7813db2ff0b32a6e3029dc0e33c590c815d3970022f2aa21422caf7ca3"
+    certificate_scope = "exact_rational_minorant_of_encoded_bounded_LP_outward_float_coefficients"
+    constant = 0.5941935483870956
+    deactivation_M = 0.5941935483870956
+    exact_coefficient_guard = "0//1"
+    exact_raw_constant = "192826830915748993979985095284905//324518553658426726783156020576256"
+    exact_sign_guard = "0//1"
+    exact_stationarity_guard = "173913586608865434125247238573683//182687704666362864775460604089535377456991567872"
+    guard = 1.0320565487569896e-15
+    kind = "feasibility"
+    lower_cost = 0.0
+    productive = true
+    raw_constant = 0.5941935483870966
+    rounding_guard = 8.008451031861372e-17
+    scenario = 3
+    sign_guard = 0.0
+    source_run_id = "r5-benders-sub-5cc4901c-a50d-4da1-9070-d49a61986337"
+    source_value = 0.5683870967741924
+    stationarity_guard = 9.519720384383759e-16
+    units = "normalized_violation"
+
+        [result.cuts.r5-benders-sub-5cc4901c-a50d-4da1-9070-d49a61986337.exact_gradient]
+        "P_DA_MW/1" = "-5811096293381285//18014398509481984"
+        "R_down_MW/1" = "-5811096293381285//18014398509481984"
+        "R_up_MW/1" = "0//1"
+
+        [result.cuts.r5-benders-sub-5cc4901c-a50d-4da1-9070-d49a61986337.gradient]
+        "P_DA_MW/1" = -0.3225806451612903
+        "R_down_MW/1" = -0.3225806451612903
+        "R_up_MW/1" = 0.0
+
+        [result.cuts.r5-benders-sub-5cc4901c-a50d-4da1-9070-d49a61986337.stationarity_raw]
+        "H_D/1/1" = -1.3877787807814457e-17
+        "P_DER/1/1" = 0.0
+        "P_DER/2/1" = 0.0
+        "P_DH/1/1" = -1.3877787807814457e-17
+        "P_PCC/1/1" = 0.0
+        "P_line/1/1" = 0.0
+        "Q_DER/1/1" = 0.0
+        "Q_DER/2/1" = 0.0
+        "Q_PCC/1/1" = 0.0
+        "Q_line/1/1" = 0.0
+        "delivery/1/1" = 0.0
+        "elastic/5-10-down/GT/1/1" = 0.0
+        "elastic/5-10-up/GT/1/1" = 0.0
+        "elastic/5-14/1/1/1" = 0.0
+        "elastic/5-14/1/1/2" = 5.551115123125783e-17
+        "elastic/5-14/2/1/1" = 0.0
+        "elastic/5-14/2/1/2" = 0.0
+        "elastic/5-15/1/1/1" = 0.0
+        "elastic/5-15/1/1/2" = 0.0
+        "elastic/5-15/2/1/1" = 0.0
+        "elastic/5-15/2/1/2" = 0.0
+        "elastic/5-16/e12/1/1" = 0.0
+        "elastic/5-16/e12/1/2" = 0.0
+        "elastic/5-17/root/1/1" = 0.0
+        "elastic/5-17/root/1/2" = 0.0
+        "elastic/5-18/source/1/1" = -5.551115123125783e-17
+        "elastic/5-18/source/1/2" = 5.551115123125783e-17
+        "elastic/5-19/building/1/1" = 0.0
+        "elastic/5-19/building/1/2" = 0.0
+        "elastic/5-20/1/1/1" = 2.168404344971009e-19
+        "elastic/5-20/1/1/2" = -2.168404344971009e-19
+        "elastic/5-20/2/1/1" = 2.168404344971009e-19
+        "elastic/5-20/2/1/2" = -2.168404344971009e-19
+        "elastic/5-21/1/1/1" = 1.0842021724855044e-18
+        "elastic/5-21/1/1/2" = -1.0842021724855044e-18
+        "elastic/5-21/2/1/1" = 2.168404344971009e-19
+        "elastic/5-21/2/1/2" = -2.168404344971009e-19
+        "elastic/5-25-26-R/h12/1/1" = 1.0842021724855044e-18
+        "elastic/5-25-26-R/h12/1/2" = -1.0842021724855044e-18
+        "elastic/5-25-26-S/h12/1/1" = 2.168404344971009e-19
+        "elastic/5-25-26-S/h12/1/2" = -2.168404344971009e-19
+        "elastic/5-3-minus/PCC/1/1" = 0.0
+        "elastic/5-3-plus/PCC/1/1" = -5.551115123125783e-17
+        "elastic/5-4/window/0/1" = 0.0
+        "elastic/R5-D-building/building/1/1" = -3.469446951953614e-18
+        "elastic/R5-D-building/building/1/2" = 3.469446951953614e-18
+        "elastic/R5-D-delivery/PCC/1/1" = 5.551115123125783e-17
+        "elastic/R5-D-delivery/PCC/1/2" = 0.0
+        "elastic/τ_IN/1/1/lower/1" = -4.5102810375396984e-17
+        "elastic/τ_IN/1/1/upper/1" = 0.0
+        "mismatch/1/1" = 0.0
+        "v/1/1" = 0.0
+        "v/2/1" = 0.0
+        "τ_IN/1/1" = 1.4065809449081622e-19
+        "τ_R/1/1" = -5.3328757180835395e-20
+        "τ_R/2/1" = -9.513559295187644e-20
+        "τ_S/1/1" = -5.391072892761466e-21
+        "τ_S/2/1" = 3.525405773759308e-21
+        "τ_load_R/1/1" = -3.525405773759308e-21
+        "τ_pipe_R/1/1" = 0.0
+        "τ_pipe_S/1/1" = 0.0
+        "τ_src/1/1" = 5.3328757180835395e-20
+
+    [result.cuts.r5-benders-sub-5eee10be-74fc-41ea-a79c-1b1e6ad63416]
+    arithmetic = "rational_box"
+    branch = 1
+    case_sha256 = "5488be7813db2ff0b32a6e3029dc0e33c590c815d3970022f2aa21422caf7ca3"
+    certificate_scope = "exact_rational_minorant_of_encoded_bounded_LP_outward_float_coefficients"
+    constant = 0.5900709677419343
+    deactivation_M = 0.5900709677419343
+    exact_coefficient_guard = "0//1"
+    exact_raw_constant = "191488977007441028526469191817385//324518553658426726783156020576256"
+    exact_sign_guard = "0//1"
+    exact_stationarity_guard = "165673857699142213432276950388339//182687704666362864775460604089535377456991567872"
+    guard = 9.869537383815926e-16
+    kind = "feasibility"
+    lower_cost = 0.0
+    productive = true
+    raw_constant = 0.5900709677419353
+    rounding_guard = 8.008451036371654e-17
+    scenario = 3
+    sign_guard = 0.0
+    source_run_id = "r5-benders-sub-5eee10be-74fc-41ea-a79c-1b1e6ad63416"
+    source_value = 0.5642645161290312
+    stationarity_guard = 9.06869228017876e-16
+    units = "normalized_violation"
+
+        [result.cuts.r5-benders-sub-5eee10be-74fc-41ea-a79c-1b1e6ad63416.exact_gradient]
+        "P_DA_MW/1" = "-5811096293381285//18014398509481984"
+        "R_down_MW/1" = "-5811096293381285//18014398509481984"
+        "R_up_MW/1" = "0//1"
+
+        [result.cuts.r5-benders-sub-5eee10be-74fc-41ea-a79c-1b1e6ad63416.gradient]
+        "P_DA_MW/1" = -0.3225806451612903
+        "R_down_MW/1" = -0.3225806451612903
+        "R_up_MW/1" = 0.0
+
+        [result.cuts.r5-benders-sub-5eee10be-74fc-41ea-a79c-1b1e6ad63416.stationarity_raw]
+        "H_D/1/1" = -1.3877787807814457e-17
+        "P_DER/1/1" = 0.0
+        "P_DER/2/1" = 0.0
+        "P_DH/1/1" = -1.3877787807814457e-17
+        "P_PCC/1/1" = 0.0
+        "P_line/1/1" = 0.0
+        "Q_DER/1/1" = 0.0
+        "Q_DER/2/1" = 0.0
+        "Q_PCC/1/1" = 0.0
+        "Q_line/1/1" = 0.0
+        "delivery/1/1" = 0.0
+        "elastic/5-10-down/GT/1/1" = 0.0
+        "elastic/5-10-up/GT/1/1" = 0.0
+        "elastic/5-14/1/1/1" = 0.0
+        "elastic/5-14/1/1/2" = 5.551115123125783e-17
+        "elastic/5-14/2/1/1" = 0.0
+        "elastic/5-14/2/1/2" = 0.0
+        "elastic/5-15/1/1/1" = 0.0
+        "elastic/5-15/1/1/2" = 0.0
+        "elastic/5-15/2/1/1" = 0.0
+        "elastic/5-15/2/1/2" = 0.0
+        "elastic/5-16/e12/1/1" = 0.0
+        "elastic/5-16/e12/1/2" = 0.0
+        "elastic/5-17/root/1/1" = 0.0
+        "elastic/5-17/root/1/2" = 0.0
+        "elastic/5-18/source/1/1" = -5.551115123125783e-17
+        "elastic/5-18/source/1/2" = 5.551115123125783e-17
+        "elastic/5-19/building/1/1" = 0.0
+        "elastic/5-19/building/1/2" = 0.0
+        "elastic/5-20/1/1/1" = 2.168404344971009e-19
+        "elastic/5-20/1/1/2" = -2.168404344971009e-19
+        "elastic/5-20/2/1/1" = 2.168404344971009e-19
+        "elastic/5-20/2/1/2" = -2.168404344971009e-19
+        "elastic/5-21/1/1/1" = 1.0842021724855044e-18
+        "elastic/5-21/1/1/2" = -1.0842021724855044e-18
+        "elastic/5-21/2/1/1" = 2.168404344971009e-19
+        "elastic/5-21/2/1/2" = -2.168404344971009e-19
+        "elastic/5-25-26-R/h12/1/1" = 1.0842021724855044e-18
+        "elastic/5-25-26-R/h12/1/2" = -1.0842021724855044e-18
+        "elastic/5-25-26-S/h12/1/1" = 2.168404344971009e-19
+        "elastic/5-25-26-S/h12/1/2" = -2.168404344971009e-19
+        "elastic/5-3-minus/PCC/1/1" = 0.0
+        "elastic/5-3-plus/PCC/1/1" = -5.551115123125783e-17
+        "elastic/5-4/window/0/1" = 0.0
+        "elastic/R5-D-building/building/1/1" = -3.469446951953614e-18
+        "elastic/R5-D-building/building/1/2" = 3.469446951953614e-18
+        "elastic/R5-D-delivery/PCC/1/1" = 5.551115123125783e-17
+        "elastic/R5-D-delivery/PCC/1/2" = 0.0
+        "elastic/τ_IN/1/1/lower/1" = 0.0
+        "elastic/τ_IN/1/1/upper/1" = 0.0
+        "mismatch/1/1" = 0.0
+        "v/1/1" = 0.0
+        "v/2/1" = 0.0
+        "τ_IN/1/1" = 1.4065809449081622e-19
+        "τ_R/1/1" = -5.3328757180835395e-20
+        "τ_R/2/1" = -9.513559295187644e-20
+        "τ_S/1/1" = -5.391072892761466e-21
+        "τ_S/2/1" = 3.525405773759308e-21
+        "τ_load_R/1/1" = -3.525405773759308e-21
+        "τ_pipe_R/1/1" = 0.0
+        "τ_pipe_S/1/1" = 0.0
+        "τ_src/1/1" = 5.3328757180835395e-20
+
+    [result.cuts.r5-benders-sub-994d0319-1040-4dc8-905b-1416a9364a25]
+    arithmetic = "rational_box"
+    branch = 1
+    case_sha256 = "5488be7813db2ff0b32a6e3029dc0e33c590c815d3970022f2aa21422caf7ca3"
+    certificate_scope = "exact_rational_minorant_of_encoded_bounded_LP_outward_float_coefficients"
+    constant = 0.5900709677419343
+    deactivation_M = 0.5900709677419343
+    exact_coefficient_guard = "0//1"
+    exact_raw_constant = "191488977007441028526469191817385//324518553658426726783156020576256"
+    exact_sign_guard = "0//1"
+    exact_stationarity_guard = "164862561314184849443470089326195//182687704666362864775460604089535377456991567872"
+    guard = 9.869537383815926e-16
+    kind = "feasibility"
+    lower_cost = 0.0
+    productive = true
+    raw_constant = 0.5900709677419353
+    rounding_guard = 8.452540246665806e-17
+    scenario = 1
+    sign_guard = 0.0
+    source_run_id = "r5-benders-sub-994d0319-1040-4dc8-905b-1416a9364a25"
+    source_value = 0.5900709677419343
+    stationarity_guard = 9.024283359149345e-16
+    units = "normalized_violation"
+
+        [result.cuts.r5-benders-sub-994d0319-1040-4dc8-905b-1416a9364a25.exact_gradient]
+        "P_DA_MW/1" = "-5811096293381285//18014398509481984"
+        "R_down_MW/1" = "0//1"
+        "R_up_MW/1" = "0//1"
+
+        [result.cuts.r5-benders-sub-994d0319-1040-4dc8-905b-1416a9364a25.gradient]
+        "P_DA_MW/1" = -0.3225806451612903
+        "R_down_MW/1" = 0.0
+        "R_up_MW/1" = 0.0
+
+        [result.cuts.r5-benders-sub-994d0319-1040-4dc8-905b-1416a9364a25.stationarity_raw]
+        "H_D/1/1" = -1.3877787807814457e-17
+        "P_DER/1/1" = 0.0
+        "P_DER/2/1" = 0.0
+        "P_DH/1/1" = -1.3877787807814457e-17
+        "P_PCC/1/1" = 0.0
+        "P_line/1/1" = 0.0
+        "Q_DER/1/1" = 0.0
+        "Q_DER/2/1" = 0.0
+        "Q_PCC/1/1" = 0.0
+        "Q_line/1/1" = 0.0
+        "delivery/1/1" = 0.0
+        "elastic/5-10-down/GT/1/1" = 0.0
+        "elastic/5-10-up/GT/1/1" = 0.0
+        "elastic/5-14/1/1/1" = 0.0
+        "elastic/5-14/1/1/2" = 5.551115123125783e-17
+        "elastic/5-14/2/1/1" = 0.0
+        "elastic/5-14/2/1/2" = 0.0
+        "elastic/5-15/1/1/1" = 0.0
+        "elastic/5-15/1/1/2" = 0.0
+        "elastic/5-15/2/1/1" = 0.0
+        "elastic/5-15/2/1/2" = 0.0
+        "elastic/5-16/e12/1/1" = 0.0
+        "elastic/5-16/e12/1/2" = 0.0
+        "elastic/5-17/root/1/1" = 0.0
+        "elastic/5-17/root/1/2" = 0.0
+        "elastic/5-18/source/1/1" = -5.551115123125783e-17
+        "elastic/5-18/source/1/2" = 5.551115123125783e-17
+        "elastic/5-19/building/1/1" = 0.0
+        "elastic/5-19/building/1/2" = 0.0
+        "elastic/5-20/1/1/1" = 2.168404344971009e-19
+        "elastic/5-20/1/1/2" = -2.168404344971009e-19
+        "elastic/5-20/2/1/1" = 2.168404344971009e-19
+        "elastic/5-20/2/1/2" = -2.168404344971009e-19
+        "elastic/5-21/1/1/1" = 1.0842021724855044e-18
+        "elastic/5-21/1/1/2" = -1.0842021724855044e-18
+        "elastic/5-21/2/1/1" = 2.168404344971009e-19
+        "elastic/5-21/2/1/2" = -2.168404344971009e-19
+        "elastic/5-25-26-R/h12/1/1" = 1.0842021724855044e-18
+        "elastic/5-25-26-R/h12/1/2" = -1.0842021724855044e-18
+        "elastic/5-25-26-S/h12/1/1" = 2.168404344971009e-19
+        "elastic/5-25-26-S/h12/1/2" = -2.168404344971009e-19
+        "elastic/5-3-minus/PCC/1/1" = 0.0
+        "elastic/5-3-plus/PCC/1/1" = -5.551115123125783e-17
+        "elastic/5-4/window/0/1" = 0.0
+        "elastic/R5-D-building/building/1/1" = -3.469446951953614e-18
+        "elastic/R5-D-building/building/1/2" = 3.469446951953614e-18
+        "elastic/R5-D-delivery/PCC/1/1" = 5.551115123125783e-17
+        "elastic/R5-D-delivery/PCC/1/2" = 0.0
+        "elastic/τ_IN/1/1/lower/1" = 0.0
+        "elastic/τ_IN/1/1/upper/1" = 0.0
+        "mismatch/1/1" = 0.0
+        "v/1/1" = 0.0
+        "v/2/1" = 0.0
+        "τ_IN/1/1" = 1.4065809449081622e-19
+        "τ_R/1/1" = -5.3328757180835395e-20
+        "τ_R/2/1" = -9.513559295187644e-20
+        "τ_S/1/1" = -5.391072892761466e-21
+        "τ_S/2/1" = 3.525405773759308e-21
+        "τ_load_R/1/1" = -3.525405773759308e-21
+        "τ_pipe_R/1/1" = 0.0
+        "τ_pipe_S/1/1" = 0.0
+        "τ_src/1/1" = 5.3328757180835395e-20
+
+    [result.cuts.r5-benders-sub-9aacbb5c-650f-4acd-9c7d-a3725c1eabe2]
+    arithmetic = "rational_box"
+    branch = 1
+    case_sha256 = "5488be7813db2ff0b32a6e3029dc0e33c590c815d3970022f2aa21422caf7ca3"
+    certificate_scope = "exact_rational_minorant_of_encoded_bounded_LP_outward_float_coefficients"
+    constant = 0.5900709677419343
+    deactivation_M = 0.6158774193548376
+    exact_coefficient_guard = "0//1"
+    exact_raw_constant = "191488977007441028526469191817385//324518553658426726783156020576256"
+    exact_sign_guard = "0//1"
+    exact_stationarity_guard = "165673857699142213432276950388339//182687704666362864775460604089535377456991567872"
+    guard = 9.869537383815926e-16
+    kind = "feasibility"
+    lower_cost = 0.0
+    productive = true
+    raw_constant = 0.5900709677419353
+    rounding_guard = 8.008451036371654e-17
+    scenario = 2
+    sign_guard = 0.0
+    source_run_id = "r5-benders-sub-9aacbb5c-650f-4acd-9c7d-a3725c1eabe2"
+    source_value = 0.5900709677419343
+    stationarity_guard = 9.06869228017876e-16
+    units = "normalized_violation"
+
+        [result.cuts.r5-benders-sub-9aacbb5c-650f-4acd-9c7d-a3725c1eabe2.exact_gradient]
+        "P_DA_MW/1" = "-5811096293381285//18014398509481984"
+        "R_down_MW/1" = "0//1"
+        "R_up_MW/1" = "5811096293381285//18014398509481984"
+
+        [result.cuts.r5-benders-sub-9aacbb5c-650f-4acd-9c7d-a3725c1eabe2.gradient]
+        "P_DA_MW/1" = -0.3225806451612903
+        "R_down_MW/1" = 0.0
+        "R_up_MW/1" = 0.3225806451612903
+
+        [result.cuts.r5-benders-sub-9aacbb5c-650f-4acd-9c7d-a3725c1eabe2.stationarity_raw]
+        "H_D/1/1" = -1.3877787807814457e-17
+        "P_DER/1/1" = 0.0
+        "P_DER/2/1" = 0.0
+        "P_DH/1/1" = -1.3877787807814457e-17
+        "P_PCC/1/1" = 0.0
+        "P_line/1/1" = 0.0
+        "Q_DER/1/1" = 0.0
+        "Q_DER/2/1" = 0.0
+        "Q_PCC/1/1" = 0.0
+        "Q_line/1/1" = 0.0
+        "delivery/1/1" = 0.0
+        "elastic/5-10-down/GT/1/1" = 0.0
+        "elastic/5-10-up/GT/1/1" = 0.0
+        "elastic/5-14/1/1/1" = 0.0
+        "elastic/5-14/1/1/2" = 5.551115123125783e-17
+        "elastic/5-14/2/1/1" = 0.0
+        "elastic/5-14/2/1/2" = 0.0
+        "elastic/5-15/1/1/1" = 0.0
+        "elastic/5-15/1/1/2" = 0.0
+        "elastic/5-15/2/1/1" = 0.0
+        "elastic/5-15/2/1/2" = 0.0
+        "elastic/5-16/e12/1/1" = 0.0
+        "elastic/5-16/e12/1/2" = 0.0
+        "elastic/5-17/root/1/1" = 0.0
+        "elastic/5-17/root/1/2" = 0.0
+        "elastic/5-18/source/1/1" = -5.551115123125783e-17
+        "elastic/5-18/source/1/2" = 5.551115123125783e-17
+        "elastic/5-19/building/1/1" = 0.0
+        "elastic/5-19/building/1/2" = 0.0
+        "elastic/5-20/1/1/1" = 2.168404344971009e-19
+        "elastic/5-20/1/1/2" = -2.168404344971009e-19
+        "elastic/5-20/2/1/1" = 2.168404344971009e-19
+        "elastic/5-20/2/1/2" = -2.168404344971009e-19
+        "elastic/5-21/1/1/1" = 1.0842021724855044e-18
+        "elastic/5-21/1/1/2" = -1.0842021724855044e-18
+        "elastic/5-21/2/1/1" = 2.168404344971009e-19
+        "elastic/5-21/2/1/2" = -2.168404344971009e-19
+        "elastic/5-25-26-R/h12/1/1" = 1.0842021724855044e-18
+        "elastic/5-25-26-R/h12/1/2" = -1.0842021724855044e-18
+        "elastic/5-25-26-S/h12/1/1" = 2.168404344971009e-19
+        "elastic/5-25-26-S/h12/1/2" = -2.168404344971009e-19
+        "elastic/5-3-minus/PCC/1/1" = 0.0
+        "elastic/5-3-plus/PCC/1/1" = -5.551115123125783e-17
+        "elastic/5-4/window/0/1" = 0.0
+        "elastic/R5-D-building/building/1/1" = -3.469446951953614e-18
+        "elastic/R5-D-building/building/1/2" = 3.469446951953614e-18
+        "elastic/R5-D-delivery/PCC/1/1" = 5.551115123125783e-17
+        "elastic/R5-D-delivery/PCC/1/2" = 0.0
+        "elastic/τ_IN/1/1/lower/1" = 0.0
+        "elastic/τ_IN/1/1/upper/1" = 0.0
+        "mismatch/1/1" = 0.0
+        "v/1/1" = 0.0
+        "v/2/1" = 0.0
+        "τ_IN/1/1" = 1.4065809449081622e-19
+        "τ_R/1/1" = -5.3328757180835395e-20
+        "τ_R/2/1" = -9.513559295187644e-20
+        "τ_S/1/1" = -5.391072892761466e-21
+        "τ_S/2/1" = 3.525405773759308e-21
+        "τ_load_R/1/1" = -3.525405773759308e-21
+        "τ_pipe_R/1/1" = 0.0
+        "τ_pipe_S/1/1" = 0.0
+        "τ_src/1/1" = 5.3328757180835395e-20
+
+    [result.cuts.r5-benders-sub-ea6f62fe-5437-4d4c-aec5-a399215dd1d3]
+    arithmetic = "rational_box"
+    branch = 0
+    case_sha256 = "5488be7813db2ff0b32a6e3029dc0e33c590c815d3970022f2aa21422caf7ca3"
+    certificate_scope = "exact_rational_minorant_of_encoded_bounded_LP_outward_float_coefficients"
+    constant = 0.5941935483870956
+    deactivation_M = 0.6199999999999989
+    exact_coefficient_guard = "0//1"
+    exact_raw_constant = "192826830915748993979985095284905//324518553658426726783156020576256"
+    exact_sign_guard = "0//1"
+    exact_stationarity_guard = "173913586608865434125247238573683//182687704666362864775460604089535377456991567872"
+    guard = 1.0320565487569896e-15
+    kind = "feasibility"
+    lower_cost = 0.0
+    productive = true
+    raw_constant = 0.5941935483870966
+    rounding_guard = 8.008451031861372e-17
+    scenario = 2
+    sign_guard = 0.0
+    source_run_id = "r5-benders-sub-ea6f62fe-5437-4d4c-aec5-a399215dd1d3"
+    source_value = 0.5941935483870956
+    stationarity_guard = 9.519720384383759e-16
+    units = "normalized_violation"
+
+        [result.cuts.r5-benders-sub-ea6f62fe-5437-4d4c-aec5-a399215dd1d3.exact_gradient]
+        "P_DA_MW/1" = "-5811096293381285//18014398509481984"
+        "R_down_MW/1" = "0//1"
+        "R_up_MW/1" = "5811096293381285//18014398509481984"
+
+        [result.cuts.r5-benders-sub-ea6f62fe-5437-4d4c-aec5-a399215dd1d3.gradient]
+        "P_DA_MW/1" = -0.3225806451612903
+        "R_down_MW/1" = 0.0
+        "R_up_MW/1" = 0.3225806451612903
+
+        [result.cuts.r5-benders-sub-ea6f62fe-5437-4d4c-aec5-a399215dd1d3.stationarity_raw]
+        "H_D/1/1" = -1.3877787807814457e-17
+        "P_DER/1/1" = 0.0
+        "P_DER/2/1" = 0.0
+        "P_DH/1/1" = -1.3877787807814457e-17
+        "P_PCC/1/1" = 0.0
+        "P_line/1/1" = 0.0
+        "Q_DER/1/1" = 0.0
+        "Q_DER/2/1" = 0.0
+        "Q_PCC/1/1" = 0.0
+        "Q_line/1/1" = 0.0
+        "delivery/1/1" = 0.0
+        "elastic/5-10-down/GT/1/1" = 0.0
+        "elastic/5-10-up/GT/1/1" = 0.0
+        "elastic/5-14/1/1/1" = 0.0
+        "elastic/5-14/1/1/2" = 5.551115123125783e-17
+        "elastic/5-14/2/1/1" = 0.0
+        "elastic/5-14/2/1/2" = 0.0
+        "elastic/5-15/1/1/1" = 0.0
+        "elastic/5-15/1/1/2" = 0.0
+        "elastic/5-15/2/1/1" = 0.0
+        "elastic/5-15/2/1/2" = 0.0
+        "elastic/5-16/e12/1/1" = 0.0
+        "elastic/5-16/e12/1/2" = 0.0
+        "elastic/5-17/root/1/1" = 0.0
+        "elastic/5-17/root/1/2" = 0.0
+        "elastic/5-18/source/1/1" = -5.551115123125783e-17
+        "elastic/5-18/source/1/2" = 5.551115123125783e-17
+        "elastic/5-19/building/1/1" = 0.0
+        "elastic/5-19/building/1/2" = 0.0
+        "elastic/5-20/1/1/1" = 2.168404344971009e-19
+        "elastic/5-20/1/1/2" = -2.168404344971009e-19
+        "elastic/5-20/2/1/1" = 2.168404344971009e-19
+        "elastic/5-20/2/1/2" = -2.168404344971009e-19
+        "elastic/5-21/1/1/1" = 1.0842021724855044e-18
+        "elastic/5-21/1/1/2" = -1.0842021724855044e-18
+        "elastic/5-21/2/1/1" = 2.168404344971009e-19
+        "elastic/5-21/2/1/2" = -2.168404344971009e-19
+        "elastic/5-25-26-R/h12/1/1" = 1.0842021724855044e-18
+        "elastic/5-25-26-R/h12/1/2" = -1.0842021724855044e-18
+        "elastic/5-25-26-S/h12/1/1" = 2.168404344971009e-19
+        "elastic/5-25-26-S/h12/1/2" = -2.168404344971009e-19
+        "elastic/5-3-minus/PCC/1/1" = 0.0
+        "elastic/5-3-plus/PCC/1/1" = -5.551115123125783e-17
+        "elastic/5-4/window/0/1" = 0.0
+        "elastic/R5-D-building/building/1/1" = -3.469446951953614e-18
+        "elastic/R5-D-building/building/1/2" = 3.469446951953614e-18
+        "elastic/R5-D-delivery/PCC/1/1" = 5.551115123125783e-17
+        "elastic/R5-D-delivery/PCC/1/2" = 0.0
+        "elastic/τ_IN/1/1/lower/1" = -4.5102810375396984e-17
+        "elastic/τ_IN/1/1/upper/1" = 0.0
+        "mismatch/1/1" = 0.0
+        "v/1/1" = 0.0
+        "v/2/1" = 0.0
+        "τ_IN/1/1" = 1.4065809449081622e-19
+        "τ_R/1/1" = -5.3328757180835395e-20
+        "τ_R/2/1" = -9.513559295187644e-20
+        "τ_S/1/1" = -5.391072892761466e-21
+        "τ_S/2/1" = 3.525405773759308e-21
+        "τ_load_R/1/1" = -3.525405773759308e-21
+        "τ_pipe_R/1/1" = 0.0
+        "τ_pipe_S/1/1" = 0.0
+        "τ_src/1/1" = 5.3328757180835395e-20
+
+    [[result.iterations]]
+    critical_after = []
+    elapsed_sec = 0.24099993705749512
+    iteration = 1
+    new_cut_ids = ["r5-benders-sub-2774e60e-51cd-4a9a-93de-8dc5bb9c9b35", "r5-benders-sub-ea6f62fe-5437-4d4c-aec5-a399215dd1d3", "r5-benders-sub-5cc4901c-a50d-4da1-9070-d49a61986337"]
+    unresolved_sources = []
+
+        [result.iterations.cost_source_ids]
+        down = "r5-benders-sub-607ad5c7-f3b8-44f2-916b-457e04bfad6b"
+        none = "r5-benders-sub-603c646e-1916-4b16-be60-2bf7d377fffa"
+        up = "r5-benders-sub-14501803-2973-494c-b280-4de0e4f2daf0"
+
+        [result.iterations.diagnostic_source_ids]
+        down = "r5-benders-sub-5cc4901c-a50d-4da1-9070-d49a61986337"
+        none = "r5-benders-sub-2774e60e-51cd-4a9a-93de-8dc5bb9c9b35"
+        up = "r5-benders-sub-ea6f62fe-5437-4d4c-aec5-a399215dd1d3"
+
+        [result.iterations.gap]
+        a2_pass = false
+        absolute = +inf
+        relative = +inf
+        stopping_pass = false
+        valid = false
+
+        [result.iterations.master]
+        bound_source = "MOI.ObjectiveBound"
+        critical = []
+        cut_source_ids = []
+        has_candidate = true
+        model_type = "MILP"
+        model_types = ["AffExpr in MathOptInterface.GreaterThan{Float64}", "AffExpr in MathOptInterface.LessThan{Float64}", "VariableRef in MathOptInterface.GreaterThan{Float64}", "VariableRef in MathOptInterface.ZeroOne"]
+        primal_status = "FEASIBLE_POINT"
+        raw_status = "kHighsModelStatusOptimal"
+        scope = "full_risk_domain"
+        solver = "HiGHS"
+        solver_objective = -88.0000000106
+        solver_objective_bound = -88.0000000106
+        solver_version = "v1.15.1"
+        status = "solver_optimal"
+        termination = "OPTIMAL"
+        theta = [-80.0000000106, -80.0000000106, -80.0000000106]
+        z = [0.0, 0.0, 0.0]
+
+            [result.iterations.master.critical_values]
+
+            [result.iterations.master.embedded_duals.cost]
+            lambda = 0.0
+            nu = [-80.0000000106, -80.0000000106, -80.0000000106]
+
+            [result.iterations.master.embedded_duals.risk]
+            lambda = 0.0
+            nu = [0.0, 0.0, 0.0]
+
+            [result.iterations.master.first_stage]
+            P_DA_MW = [0.0]
+            R_down_MW = [0.08]
+            R_up_MW = [0.0]
+    [[result.iterations]]
+    critical_after = []
+    elapsed_sec = 0.315000057220459
+    iteration = 2
+    new_cut_ids = ["r5-benders-sub-994d0319-1040-4dc8-905b-1416a9364a25", "r5-benders-sub-9aacbb5c-650f-4acd-9c7d-a3725c1eabe2", "r5-benders-sub-5eee10be-74fc-41ea-a79c-1b1e6ad63416"]
+    unresolved_sources = []
+
+        [result.iterations.cost_source_ids]
+        down = "r5-benders-sub-8aaf7b0c-893b-4d20-b29d-d9cfbffc3a26"
+        none = "r5-benders-sub-9230bba3-3c4a-4bd3-8c48-d9d4851cef06"
+        up = "r5-benders-sub-210c79e7-46d9-4851-8c6e-931d9e0871f7"
+
+        [result.iterations.diagnostic_source_ids]
+        down = "r5-benders-sub-5eee10be-74fc-41ea-a79c-1b1e6ad63416"
+        none = "r5-benders-sub-994d0319-1040-4dc8-905b-1416a9364a25"
+        up = "r5-benders-sub-9aacbb5c-650f-4acd-9c7d-a3725c1eabe2"
+
+        [result.iterations.gap]
+        a2_pass = false
+        absolute = +inf
+        relative = +inf
+        stopping_pass = false
+        valid = false
+
+        [result.iterations.master]
+        bound_source = "MOI.ObjectiveBound"
+        critical = []
+        cut_source_ids = ["r5-benders-sub-2774e60e-51cd-4a9a-93de-8dc5bb9c9b35", "r5-benders-sub-ea6f62fe-5437-4d4c-aec5-a399215dd1d3", "r5-benders-sub-5cc4901c-a50d-4da1-9070-d49a61986337"]
+        has_candidate = true
+        model_type = "MILP"
+        model_types = ["AffExpr in MathOptInterface.GreaterThan{Float64}", "AffExpr in MathOptInterface.LessThan{Float64}", "VariableRef in MathOptInterface.GreaterThan{Float64}", "VariableRef in MathOptInterface.ZeroOne"]
+        primal_status = "FEASIBLE_POINT"
+        raw_status = "kHighsModelStatusOptimal"
+        scope = "full_risk_domain"
+        solver = "HiGHS"
+        solver_objective = -88.0000000106
+        solver_objective_bound = -88.0000000106
+        solver_version = "v1.15.1"
+        status = "solver_optimal"
+        termination = "OPTIMAL"
+        theta = [-80.0000000106, -80.0000000106, -80.0000000106]
+        z = [1.0, 1.0, 1.0]
+
+            [result.iterations.master.critical_values]
+
+            [result.iterations.master.embedded_duals.cost]
+            lambda = 0.0
+            nu = [-80.0000000106, -80.0000000106, -80.0000000106]
+
+            [result.iterations.master.embedded_duals.risk]
+            lambda = 0.0
+            nu = [1.0, 1.0, 1.0]
+
+            [result.iterations.master.first_stage]
+            P_DA_MW = [0.0]
+            R_down_MW = [0.08]
+            R_up_MW = [0.0]
+    [[result.iterations]]
+    critical_after = []
+    elapsed_sec = 0.1419999599456787
+    iteration = 3
+    new_cut_ids = []
+
+        [result.iterations.cost_source_ids]
+
+        [result.iterations.diagnostic_source_ids]
+
+        [result.iterations.master]
+        bound_source = "MOI.ObjectiveBound"
+        critical = []
+        cut_source_ids = ["r5-benders-sub-2774e60e-51cd-4a9a-93de-8dc5bb9c9b35", "r5-benders-sub-ea6f62fe-5437-4d4c-aec5-a399215dd1d3", "r5-benders-sub-5cc4901c-a50d-4da1-9070-d49a61986337", "r5-benders-sub-994d0319-1040-4dc8-905b-1416a9364a25", "r5-benders-sub-9aacbb5c-650f-4acd-9c7d-a3725c1eabe2", "r5-benders-sub-5eee10be-74fc-41ea-a79c-1b1e6ad63416"]
+        has_candidate = false
+        model_type = "MILP"
+        model_types = ["AffExpr in MathOptInterface.GreaterThan{Float64}", "AffExpr in MathOptInterface.LessThan{Float64}", "VariableRef in MathOptInterface.GreaterThan{Float64}", "VariableRef in MathOptInterface.ZeroOne"]
+        primal_status = "NO_SOLUTION"
+        raw_status = "kHighsModelStatusInfeasible"
+        scope = "full_risk_domain"
+        solver = "HiGHS"
+        solver_objective_bound = 0.0
+        solver_version = "v1.15.1"
+        status = "solver_infeasible"
+        termination = "INFEASIBLE"
+
+    [result.source_hashes_at_return]
+    "Manifest.toml" = "6aa68b274431d56e5f78dfe516af70b7a6aefe8529cf58240d882de31c72bb75"
+    "Project.toml" = "b3f905bb91f92e68ff970eedc46e9ed854ca4e08ff124541d68e991818de4a92"
+    "src/algorithms/r5_benders.jl" = "212a004d95e367a3051326198dd0f082141bea927ab335b6c78a83b615d3c1bf"
+    "src/algorithms/r5_commitment.jl" = "5038f22f037bba90a7bb3e2afc79b900fdff2d91ebe0afbde8ff189acd0c04bb"
+    "src/algorithms/r5_dispatch.jl" = "fe48a6db69bf8bbb9b843b1ecc1695ced426a60860e39a586198e15cd77fca03"
+    "src/algorithms/r5_market.jl" = "a5a5bbc1b96743973ea81e79ec8af40e8f18328d00ca7fc14b540aaf9324154a"
+    "src/algorithms/r5_risk.jl" = "44824bcb0093e32b935b3d88b87d292cdf1add9d3afeac133db8e7064b4ae28f"
+    "src/core/r5_benders.jl" = "3522687413059a2eb40c27dbf7d70ec2e8735f63af7ceca71e920a66280308c3"
+    "src/core/r5_commitment.jl" = "5e4a30e71b12c56b8754482163182b93266de454a8b04fb41a5e2f86a98af812"
+    "src/core/r5_dispatch.jl" = "7308945636b363ab412716e0bcd059992a1760567d53d6991cd57739230a15af"
+    "src/core/r5_market.jl" = "b66b34edafb602439fa8c93beb25fc20500b6a4106dee739a1795418cb265222"
+    "src/core/r5_risk.jl" = "691219d10cda283b7c6e3cd19e2467b102c1564fc907427f773ad72627a635c8"
+    "src/formulations/r5_benders.jl" = "aee2c0998eab6aadd29b5a2ebd662b30ef24902ed4019a0f007e7424cb20d539"
+    "src/formulations/r5_commitment.jl" = "8d66f8987a6a2e053416d276080b50644d63b38763fa06625e27fa9899f246ae"
+    "src/formulations/r5_dispatch.jl" = "fef8db84d2be1544c622f8d9891fd4c47eb91dc2ff2e89817bec7a5996622d19"
+    "src/formulations/r5_dispatch_dual.jl" = "9685a38e919580a17abd0f8fee7c90fbdc7f8dd85080831ee36772c3d8d69bdf"
+    "src/formulations/r5_market.jl" = "85ba2ee6e8f84bef53db7949bf4fc425b57476bdaa49f22d9a816bf32bd01713"
+    "src/formulations/r5_risk.jl" = "7b68ae8d7bdd94e8a4d475403962c2e547eac0fb79304f2036da5fb724837f2c"
+    "src/networks/fixed_flow_heat.jl" = "620c069f6b3a520d32ee546ec048074f9cbaa3c785f8c2e31ec7fd7bf245a83b"
+    "src/reporting/r5_benders.jl" = "24dc9c7944e5f9f1dadc04108bf4f27af6baf6088ec6c4814bb639527a00e35a"
+    "src/reporting/r5_commitment.jl" = "7d5faa97dbc2724d33831b319af807381ea13aa763cfde5655a4d7ecea956f2a"
+    "src/reporting/r5_dispatch.jl" = "5d919f4e14dff618d7cc6467ccdcf5ea073b218b2799db0966eb877f4f5d92cb"
+    "src/reporting/r5_market.jl" = "164d47e5922903179225a17c8a681610ae7eb5312068a4f806d85010f16f0796"
+    "src/reporting/r5_risk.jl" = "973e9a81c86ff6b0268992be7c02b0cfeadc49dd04905bbe6a66fa37a827a377"
+    "src/verification/r5_benders.jl" = "4611e873233e4d682c044374cb0a2fa4c4870696b798c4d3fc043af710f33a5c"
+    "src/verification/r5_commitment.jl" = "71c04cdeb804ee48dbfd585e5376cdacd910cc5a507db8d9027b866690cde8ed"
+    "src/verification/r5_dispatch.jl" = "6ad9b1f74949e1345df473bfd778db6e419a57b2e2060cc065a7d5fbae1802f2"
+    "src/verification/r5_dispatch_duality.jl" = "5dbbcbae682b3c738c5506b36254466614d6ff80e835afe7619744c77c7fc96d"
+    "src/verification/r5_market.jl" = "47cf2899d6167974ec406d7b431d06bcd2ca3b16108bdbc67c8805e071e57009"
+    "src/verification/r5_risk.jl" = "a9389a9963ede5a33b8867a9cd8ae9e6a1b608e9995ff0fa62eeb0fed38c2433"
+    "tools/solvers/Manifest.toml" = "4c3bfa7a47e06095c1251dfb555ff155bc7e02241013547c294c2920cedb958e"
+    "tools/solvers/Project.toml" = "be07a40d34ee1e44e61d0e81fc1a71161cc9ba7ef20d57fc7fbe4e70f6e3ba8b"
+
+    [result.source_hashes_at_solve]
+    "Manifest.toml" = "6aa68b274431d56e5f78dfe516af70b7a6aefe8529cf58240d882de31c72bb75"
+    "Project.toml" = "b3f905bb91f92e68ff970eedc46e9ed854ca4e08ff124541d68e991818de4a92"
+    "src/algorithms/r5_benders.jl" = "212a004d95e367a3051326198dd0f082141bea927ab335b6c78a83b615d3c1bf"
+    "src/algorithms/r5_commitment.jl" = "5038f22f037bba90a7bb3e2afc79b900fdff2d91ebe0afbde8ff189acd0c04bb"
+    "src/algorithms/r5_dispatch.jl" = "fe48a6db69bf8bbb9b843b1ecc1695ced426a60860e39a586198e15cd77fca03"
+    "src/algorithms/r5_market.jl" = "a5a5bbc1b96743973ea81e79ec8af40e8f18328d00ca7fc14b540aaf9324154a"
+    "src/algorithms/r5_risk.jl" = "44824bcb0093e32b935b3d88b87d292cdf1add9d3afeac133db8e7064b4ae28f"
+    "src/core/r5_benders.jl" = "3522687413059a2eb40c27dbf7d70ec2e8735f63af7ceca71e920a66280308c3"
+    "src/core/r5_commitment.jl" = "5e4a30e71b12c56b8754482163182b93266de454a8b04fb41a5e2f86a98af812"
+    "src/core/r5_dispatch.jl" = "7308945636b363ab412716e0bcd059992a1760567d53d6991cd57739230a15af"
+    "src/core/r5_market.jl" = "b66b34edafb602439fa8c93beb25fc20500b6a4106dee739a1795418cb265222"
+    "src/core/r5_risk.jl" = "691219d10cda283b7c6e3cd19e2467b102c1564fc907427f773ad72627a635c8"
+    "src/formulations/r5_benders.jl" = "aee2c0998eab6aadd29b5a2ebd662b30ef24902ed4019a0f007e7424cb20d539"
+    "src/formulations/r5_commitment.jl" = "8d66f8987a6a2e053416d276080b50644d63b38763fa06625e27fa9899f246ae"
+    "src/formulations/r5_dispatch.jl" = "fef8db84d2be1544c622f8d9891fd4c47eb91dc2ff2e89817bec7a5996622d19"
+    "src/formulations/r5_dispatch_dual.jl" = "9685a38e919580a17abd0f8fee7c90fbdc7f8dd85080831ee36772c3d8d69bdf"
+    "src/formulations/r5_market.jl" = "85ba2ee6e8f84bef53db7949bf4fc425b57476bdaa49f22d9a816bf32bd01713"
+    "src/formulations/r5_risk.jl" = "7b68ae8d7bdd94e8a4d475403962c2e547eac0fb79304f2036da5fb724837f2c"
+    "src/networks/fixed_flow_heat.jl" = "620c069f6b3a520d32ee546ec048074f9cbaa3c785f8c2e31ec7fd7bf245a83b"
+    "src/reporting/r5_benders.jl" = "24dc9c7944e5f9f1dadc04108bf4f27af6baf6088ec6c4814bb639527a00e35a"
+    "src/reporting/r5_commitment.jl" = "7d5faa97dbc2724d33831b319af807381ea13aa763cfde5655a4d7ecea956f2a"
+    "src/reporting/r5_dispatch.jl" = "5d919f4e14dff618d7cc6467ccdcf5ea073b218b2799db0966eb877f4f5d92cb"
+    "src/reporting/r5_market.jl" = "164d47e5922903179225a17c8a681610ae7eb5312068a4f806d85010f16f0796"
+    "src/reporting/r5_risk.jl" = "973e9a81c86ff6b0268992be7c02b0cfeadc49dd04905bbe6a66fa37a827a377"
+    "src/verification/r5_benders.jl" = "4611e873233e4d682c044374cb0a2fa4c4870696b798c4d3fc043af710f33a5c"
+    "src/verification/r5_commitment.jl" = "71c04cdeb804ee48dbfd585e5376cdacd910cc5a507db8d9027b866690cde8ed"
+    "src/verification/r5_dispatch.jl" = "6ad9b1f74949e1345df473bfd778db6e419a57b2e2060cc065a7d5fbae1802f2"
+    "src/verification/r5_dispatch_duality.jl" = "5dbbcbae682b3c738c5506b36254466614d6ff80e835afe7619744c77c7fc96d"
+    "src/verification/r5_market.jl" = "47cf2899d6167974ec406d7b431d06bcd2ca3b16108bdbc67c8805e071e57009"
+    "src/verification/r5_risk.jl" = "a9389a9963ede5a33b8867a9cd8ae9e6a1b608e9995ff0fa62eeb0fed38c2433"
+    "tools/solvers/Manifest.toml" = "4c3bfa7a47e06095c1251dfb555ff155bc7e02241013547c294c2920cedb958e"
+    "tools/solvers/Project.toml" = "be07a40d34ee1e44e61d0e81fc1a71161cc9ba7ef20d57fc7fbe4e70f6e3ba8b"
+
+    [result.spec]
+    absolute_gap = 1.0e-7
+    critical_count = 1
+    cut_arithmetic = "rational_box"
+    diagnostic_scale = 1024.0
+    feasibility = "cuts"
+    max_iterations = 200
+    relative_gap = 1.0e-6
+
+[source_files_sha256]
+"subproblems/r5-benders-sub-14501803-2973-494c-b280-4de0e4f2daf0.toml" = "bf0537b7cf99ad4c1dae5bb104793b3549dbee3bbe9ac09d9539b595273ebd82"
+"subproblems/r5-benders-sub-210c79e7-46d9-4851-8c6e-931d9e0871f7.toml" = "1273f20ee697c4ed27304385a758fc12e5fb66aa5fdb02b6e652f53bbe94a573"
+"subproblems/r5-benders-sub-2774e60e-51cd-4a9a-93de-8dc5bb9c9b35.toml" = "04259a9bf16b18414e0cc862b92a7f4e66492340e112806b243815627a832caa"
+"subproblems/r5-benders-sub-5cc4901c-a50d-4da1-9070-d49a61986337.toml" = "b7f9a246a3a683027529d310d2c061eb1d90d262e3f77ad018827f6681e00c65"
+"subproblems/r5-benders-sub-5eee10be-74fc-41ea-a79c-1b1e6ad63416.toml" = "eda60acdf7d283631021983533ace2985efc85860f285bbbf50501b3c6bf77da"
+"subproblems/r5-benders-sub-603c646e-1916-4b16-be60-2bf7d377fffa.toml" = "035f2d07e05acd881a8062542b3ff0144c834c7be89dc84903c4cf8480ca7154"
+"subproblems/r5-benders-sub-607ad5c7-f3b8-44f2-916b-457e04bfad6b.toml" = "bef13c7c20dc1f93ee4a5c925efccb1b555f046d305757d295483982ca270185"
+"subproblems/r5-benders-sub-8aaf7b0c-893b-4d20-b29d-d9cfbffc3a26.toml" = "ce4d798e5e459a73edb7b0f4b74300962d6534aee4691166b85d6299f5086d23"
+"subproblems/r5-benders-sub-9230bba3-3c4a-4bd3-8c48-d9d4851cef06.toml" = "21d5bce9072bbba397a148723d0281c205004c2c9cf8cf2e401cbd561b11c68a"
+"subproblems/r5-benders-sub-994d0319-1040-4dc8-905b-1416a9364a25.toml" = "87a50ed78986f1b4010bc4f9a2f8daf8eff7b439414607f1b87d354c58ea21be"
+"subproblems/r5-benders-sub-9aacbb5c-650f-4acd-9c7d-a3725c1eabe2.toml" = "0dd201c5d68be642df4464ba7eab3a2f1f552964acad8f0d6621c7a74fe4f25a"
+"subproblems/r5-benders-sub-ea6f62fe-5437-4d4c-aec5-a399215dd1d3.toml" = "f4e19ce166b63b2eabecff40defe9cd37f2fd0af1ff4167f855e1e2982f33db9"
+
+[validation_sha256]
+"master/1" = "c99d3e1e529df5b175c8a0d4f15d5c12517ecd84fb031ecf948d08fb6d402d1d"
+"master/2" = "5418c2ddb25d6d3b6c0e26670cc779608eec7a0c6a35f1104f4a795abf20861b"
+"master/3" = "86bc49e6b9043a968a8e2d1a1ba082aa35ff6d6bd970e0305eaaf5dd54e438c0"
+r5-benders-sub-14501803-2973-494c-b280-4de0e4f2daf0 = "976fd92c54d9b63289336bf82e34e0de417871699feccc2d321caeca180ee747"
+r5-benders-sub-210c79e7-46d9-4851-8c6e-931d9e0871f7 = "976fd92c54d9b63289336bf82e34e0de417871699feccc2d321caeca180ee747"
+r5-benders-sub-2774e60e-51cd-4a9a-93de-8dc5bb9c9b35 = "d299b9900005951bf5575abe0d744f9d12d62ddce5b28af6efb41c02aeab9af9"
+r5-benders-sub-5cc4901c-a50d-4da1-9070-d49a61986337 = "2f45ed97a03ba7f7edce0abe606840a1cc580eba938477ce5a40559080b5e11d"
+r5-benders-sub-5eee10be-74fc-41ea-a79c-1b1e6ad63416 = "8434811969f570e1825bc00d3a916a002d55e55da4cf26e1d9d4363eff34b2c8"
+r5-benders-sub-603c646e-1916-4b16-be60-2bf7d377fffa = "976fd92c54d9b63289336bf82e34e0de417871699feccc2d321caeca180ee747"
+r5-benders-sub-607ad5c7-f3b8-44f2-916b-457e04bfad6b = "976fd92c54d9b63289336bf82e34e0de417871699feccc2d321caeca180ee747"
+r5-benders-sub-8aaf7b0c-893b-4d20-b29d-d9cfbffc3a26 = "976fd92c54d9b63289336bf82e34e0de417871699feccc2d321caeca180ee747"
+r5-benders-sub-9230bba3-3c4a-4bd3-8c48-d9d4851cef06 = "976fd92c54d9b63289336bf82e34e0de417871699feccc2d321caeca180ee747"
+r5-benders-sub-994d0319-1040-4dc8-905b-1416a9364a25 = "40f0aef2784b0c60dd168adc098f68e5e01c6341f26690360735da641cc248dd"
+r5-benders-sub-9aacbb5c-650f-4acd-9c7d-a3725c1eabe2 = "40f0aef2784b0c60dd168adc098f68e5e01c6341f26690360735da641cc248dd"
+r5-benders-sub-ea6f62fe-5437-4d4c-aec5-a399215dd1d3 = "d299b9900005951bf5575abe0d744f9d12d62ddce5b28af6efb41c02aeab9af9"
+result = "39b1868f29bec02f53e84f25ad797dbc3d6016d2f16c20e3fd9bcf5f7924186f"

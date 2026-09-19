@@ -63,6 +63,7 @@
 - `configs/r4/study.toml`
 - `configs/r4/thermal-study.toml`
 - `configs/r4/tspa-study.toml`
+- `configs/r5/benders/study.toml`
 - `configs/r5/commitment/capacity_denominator.toml`
 - `configs/r5/commitment/fixed_feasible.toml`
 - `configs/r5/commitment/four_period.toml`
@@ -351,6 +352,19 @@
 - `docs/src/assets/r4-tspa/report.toml`
 - `docs/src/assets/r4-tspa/residuals.csv`
 - `docs/src/assets/r4-tspa/solver-evidence.csv`
+- `docs/src/assets/r5-benders/F04.png`
+- `docs/src/assets/r5-benders/F16-progress.png`
+- `docs/src/assets/r5-benders/F16-routes.png`
+- `docs/src/assets/r5-benders/F16.png`
+- `docs/src/assets/r5-benders/artifact-hashes.toml`
+- `docs/src/assets/r5-benders/comparison.csv`
+- `docs/src/assets/r5-benders/cuts.csv`
+- `docs/src/assets/r5-benders/figure-config.toml`
+- `docs/src/assets/r5-benders/iterations.csv`
+- `docs/src/assets/r5-benders/report.toml`
+- `docs/src/assets/r5-benders/residuals.csv`
+- `docs/src/assets/r5-benders/selected-residuals.csv`
+- `docs/src/assets/r5-benders/subproblems.csv`
 - `docs/src/assets/r5-commitment/F04.png`
 - `docs/src/assets/r5-commitment/F19.png`
 - `docs/src/assets/r5-commitment/artifact-hashes.toml`
@@ -465,6 +479,7 @@
 - `docs/src/ch04-tutorial.md`
 - `docs/src/ch05-algorithm-audit.md`
 - `docs/src/ch05-benders-equations.md`
+- `docs/src/ch05-benders-results.md`
 - `docs/src/ch05-benders.md`
 - `docs/src/ch05-commitment-equations.md`
 - `docs/src/ch05-commitment-results.md`
@@ -630,6 +645,19 @@
 - `results/summaries/r4-tspa/report.toml`
 - `results/summaries/r4-tspa/residuals.csv`
 - `results/summaries/r4-tspa/solver-evidence.csv`
+- `results/summaries/r5-benders/F04.png`
+- `results/summaries/r5-benders/F16-progress.png`
+- `results/summaries/r5-benders/F16-routes.png`
+- `results/summaries/r5-benders/F16.png`
+- `results/summaries/r5-benders/artifact-hashes.toml`
+- `results/summaries/r5-benders/comparison.csv`
+- `results/summaries/r5-benders/cuts.csv`
+- `results/summaries/r5-benders/figure-config.toml`
+- `results/summaries/r5-benders/iterations.csv`
+- `results/summaries/r5-benders/report.toml`
+- `results/summaries/r5-benders/residuals.csv`
+- `results/summaries/r5-benders/selected-residuals.csv`
+- `results/summaries/r5-benders/subproblems.csv`
 - `results/summaries/r5-commitment/F04.png`
 - `results/summaries/r5-commitment/F19.png`
 - `results/summaries/r5-commitment/artifact-hashes.toml`
@@ -753,6 +781,7 @@
 - `scripts/check_r4_thermal_artifacts.jl`
 - `scripts/check_r4_tspa.jl`
 - `scripts/check_r5_benders.jl`
+- `scripts/check_r5_benders_artifacts.jl`
 - `scripts/check_r5_commitment.jl`
 - `scripts/check_r5_commitment_artifacts.jl`
 - `scripts/check_r5_dispatch.jl`
@@ -800,6 +829,7 @@
 - `scripts/freeze_r4_heat_compatibility.jl`
 - `scripts/freeze_r4_reconfiguration.jl`
 - `scripts/freeze_r4_thermal.jl`
+- `scripts/freeze_r5_benders.jl`
 - `scripts/freeze_r5_commitment.jl`
 - `scripts/freeze_r5_dispatch.jl`
 - `scripts/freeze_r5_market.jl`
@@ -807,6 +837,7 @@
 - `scripts/inspect_ch03_workbooks.jl`
 - `scripts/inspect_r4_heat_results.jl`
 - `scripts/inspect_r5_benders_boundary.jl`
+- `scripts/inspect_r5_benders_study.jl`
 - `scripts/inspect_r5_market.jl`
 - `scripts/maintain.ps1`
 - `scripts/maintenance-core.ps1`
@@ -830,6 +861,7 @@
 - `scripts/plot_r4_summary.jl`
 - `scripts/plot_r4_thermal.jl`
 - `scripts/plot_r4_tspa.jl`
+- `scripts/plot_r5_benders.jl`
 - `scripts/plot_r5_commitment.jl`
 - `scripts/plot_r5_dispatch.jl`
 - `scripts/plot_r5_duality.jl`
@@ -861,6 +893,9 @@
 - `scripts/r4_tspa_docs.jl`
 - `scripts/r5_benders.jl`
 - `scripts/r5_benders_docs.jl`
+- `scripts/r5_benders_report_tables.jl`
+- `scripts/r5_benders_study_rules.jl`
+- `scripts/r5_benders_witness.jl`
 - `scripts/r5_commitment_cases.jl`
 - `scripts/r5_commitment_docs.jl`
 - `scripts/r5_dispatch_cases.jl`
@@ -898,6 +933,7 @@
 - `scripts/report_r4_reconfiguration.jl`
 - `scripts/report_r4_thermal.jl`
 - `scripts/report_r4_tspa.jl`
+- `scripts/report_r5_benders.jl`
 - `scripts/report_r5_commitment.jl`
 - `scripts/report_r5_dispatch.jl`
 - `scripts/report_r5_market.jl`
@@ -918,6 +954,7 @@
 - `scripts/study_r4_reconfiguration.jl`
 - `scripts/study_r4_thermal.jl`
 - `scripts/study_r4_tspa.jl`
+- `scripts/study_r5_benders.jl`
 - `scripts/study_r5_commitment.jl`
 - `scripts/study_r5_dispatch.jl`
 - `scripts/study_r5_market.jl`
@@ -925,6 +962,7 @@
 - `scripts/summarize_r3_audit.jl`
 - `scripts/summarize_r3_baseline.jl`
 - `scripts/summarize_r3_v3.jl`
+- `scripts/summarize_r5_benders_report.jl`
 - `scripts/test.jl`
 - `scripts/test_r3.jl`
 - `scripts/test_r3_baseline.jl`
@@ -941,6 +979,8 @@
 - `scripts/test_r4_tspa.jl`
 - `scripts/test_r5_benders.jl`
 - `scripts/test_r5_benders_loop.jl`
+- `scripts/test_r5_benders_study.jl`
+- `scripts/test_r5_benders_witness.jl`
 - `scripts/test_r5_commitment.jl`
 - `scripts/test_r5_dispatch.jl`
 - `scripts/test_r5_dispatch_duality.jl`
@@ -1094,6 +1134,8 @@
 - `docs/src/assets/r3-v2/r3-v2-combined-20260917T095056-767e69d2/`
 - `docs/src/assets/r3-v3/r3-v3-20260917T115348-b8a7a604-73ffdff8/`
 - `docs/src/assets/r4-first-batch/figures/`
+- `docs/src/assets/r5-benders/references/`
+- `docs/src/assets/r5-benders/witnesses/`
 - `docs/src/assets/r5-commitment/witnesses/`
 - `docs/src/assets/r5-duality/witnesses/`
 - `docs/src/assets/r5-risk/witnesses/`
@@ -1111,6 +1153,8 @@
 - `results/summaries/r3-v3/audit-addendum-v1/`
 - `results/summaries/r3-v3/r3-v3-20260917T115348-b8a7a604-73ffdff8/`
 - `results/summaries/r4-first-batch/figures/`
+- `results/summaries/r5-benders/references/`
+- `results/summaries/r5-benders/witnesses/`
 - `results/summaries/r5-commitment/witnesses/`
 - `results/summaries/r5-duality-verified/witnesses/`
 - `results/summaries/r5-risk/witnesses/`
