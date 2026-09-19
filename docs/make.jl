@@ -160,6 +160,8 @@ makedocs(;
             "数据与统计教程" => "r6-data.md",
             "统一日模型与六方法" => "r6-methods.md",
             "开发实验结果与边界" => "r6-pilot-results.md",
+            "新日策略与独立诊断" => "r6-evaluation.md",
+            "新日公式与采用边界" => "r6-evaluation-equations.md",
             "六方法推导与符号" => "r6-method-equations.md",
             "统计公式与来源核查" => "r6-equations.md",
             "数据与统计API" => "r6-api.md",

@@ -117,6 +117,17 @@ include("core/r6_methods.jl")
 include("algorithms/r6_methods.jl")
 export R6PhysicalCase, load_r6_physical_case, R6MethodSpec, r6_dispatch_day
 export r6_training_case, build_r6_model, solve_r6_training
+include("core/r6_evaluation.jl")
+include("formulations/r6_evaluation.jl")
+include("verification/r6_evaluation.jl")
+include("algorithms/r6_evaluation.jl")
+include("algorithms/r6_support_evaluation.jl")
+include("reporting/r6_evaluation.jl")
+export R6EvaluationSpec, R6Policy, r6_policy_from_training, r6_evaluation_day
+export build_r6_recourse, evaluate_r6_day, validate_r6_evaluation
+export save_r6_evaluation, read_r6_evaluation
+export r6_support_label, evaluate_r6_policy_day, validate_r6_policy_day
+export save_r6_policy_day, read_r6_policy_day
 include("algorithms/r5_market_selection.jl")
 include("core/r5_execution.jl")
 include("formulations/r5_execution.jl")

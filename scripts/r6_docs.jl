@@ -75,4 +75,10 @@ function sync_r6_docs()
         "R6六方法推导与符号",
         "由r6-methods.toml生成；R6-M全部为项目推导编号，不替换论文式号。",
     )
+    r6_render_docs(
+        "r6-evaluation.toml",
+        "r6-evaluation-equations.md",
+        "R6新日策略与诊断公式",
+        "由r6-evaluation.toml生成；R6-E全部为项目推导，主策略与诊断分开。",
+    )
 end

@@ -83,9 +83,11 @@ DRJCC的概率集合包含名义分布，也不能放松任一场景。
 ## 只读重验
 
 ~~~powershell
-julia +1.12.6 --startup-file=no --project=. scripts/r6_pilot_report.jl check results/summaries/r6-training-pilot-v1
-julia +1.12.6 --startup-file=no --project=. scripts/test_r6_pilot_artifacts.jl
+julia +1.12.6 --startup-file=no --project=. scripts/r6_pilot_replay.jl check results/summaries/r6-pilot-replay-v2
 ~~~
 
-这些命令读取已保存见证，不重新优化或重新抽样。正式样本外图F17–F19留给后续独立测试，
+该入口校验12feb05源码归档及全部旧输入，在隔离目录执行原八项见证/篡改检查。
+原报告脚本仍保留，要求其原源码版本；后续新增API不能通过删掉哈希检查来冒充原版。
+首次归档遗漏报告依赖的失败包保留本地，v2补齐依赖后8项全部通过。
+只读重验不重新优化或重新抽样。正式样本外图F17–F19留给后续独立测试，
 不以开发子集费用表替代。

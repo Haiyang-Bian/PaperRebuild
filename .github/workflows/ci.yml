@@ -76,7 +76,7 @@ jobs:
       - name: R6 frozen independent daily inputs
         run: julia --startup-file=no --project=. scripts/check_r6_data.jl results/summaries/r6-data-v1
       - name: R6 six-method development evidence and tamper rejection
-        run: julia --startup-file=no --project=. scripts/test_r6_pilot_artifacts.jl
+        run: julia --startup-file=no --project=. scripts/r6_pilot_replay.jl check results/summaries/r6-pilot-replay-v2
       - name: Julia format
         run: julia --startup-file=no --project=tools scripts/format.jl
       - name: Project checks

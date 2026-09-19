@@ -27,3 +27,13 @@ end
 c=load_r6_physical_case(joinpath(root, "configs", "r6", "daily-small.toml"))
 c.data["dispatch"]["T"]==p.data["T"] || error("R6时域不符")
 println("R6 methods: 3 derivations, 4 symbol groups, common daily input checked.")
+ed=TOML.parsefile(joinpath(root, "docs", "reading", "ch05", "r6-evaluation.toml"))
+ep=read(joinpath(root, "docs", "src", "r6-evaluation-equations.md"), String)
+et=read(joinpath(root, "test", "r6_evaluation.jl"), String)
+for x in ed["equation"]
+    occursin("\\tag{"*x["id"]*"}", ep) && occursin(x["test"], et) ||
+        error("R6新日公式/测试映射缺失")
+    Base.Docs.hasdoc(PaperRebuild, Symbol(x["api"])) && occursin("PaperRebuild."*x["api"], api) ||
+        error("R6新日API映射缺失")
+end
+println("R6 evaluation: 4 project equations, 4 symbol groups and 4 scope findings checked.")

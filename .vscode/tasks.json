@@ -1,5 +1,6 @@
 {
   "inputs": [
+    {"id":"r6DayRun","type":"promptString","description":"已保存的R6策略日记录目录"},
     {
       "id": "r6PilotRun",
       "type": "promptString",
@@ -94,6 +95,8 @@
     }
   ],
   "tasks": [
+    {"label":"PaperRebuild: R6 new day policy tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r6_evaluation.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R6 saved day verify","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r6_evaluation.jl","${input:r6DayRun}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {
       "label": "PaperRebuild: R6 six method tests",
       "type": "process",
@@ -122,7 +125,7 @@
       "label": "PaperRebuild: R6 pilot evidence verify",
       "type": "process",
       "command": "julia",
-      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/r6_pilot_report.jl", "check", "${input:r6PilotReport}"],
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/r6_pilot_replay.jl", "check", "results/summaries/r6-pilot-replay-v2"],
       "options": { "cwd": "${workspaceFolder}" },
       "problemMatcher": []
     },
@@ -130,7 +133,7 @@
       "label": "PaperRebuild: R6 pilot replay and tamper tests",
       "type": "process",
       "command": "julia",
-      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/test_r6_pilot_artifacts.jl", "${input:r6PilotReport}"],
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/r6_pilot_replay.jl", "check", "results/summaries/r6-pilot-replay-v2"],
       "options": { "cwd": "${workspaceFolder}" },
       "problemMatcher": []
     },
