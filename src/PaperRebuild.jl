@@ -238,6 +238,9 @@ include("components/r7_commitment.jl")
 include("verification/r7_commitment.jl")
 export R7CHPSpec, add_r7_chp_commitment!, validate_r7_chp, r7_chp_event_boundary
 
+include("networks/r7_pipe_state.jl")
+export R7PipeState, r7_pipe_state, r7_pipe_temperature, r7_pipe_inventory, r7_pipe_step
+
 """
     hello(who::String)
 

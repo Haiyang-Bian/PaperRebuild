@@ -1,0 +1,81 @@
+schema = "r7-pipe-state-reference-v1"
+version = "r7_plug_flow_reference_v1"
+source = "docs/摘要.pdf"
+source_sha256 = "20328e2480e773520c19c378e53365fc944c0bafcfca73071f5d8313d5ee7d91"
+pdf_pages = [116]
+scope = "整管相对显热的独立输运参考；尚未连接完整灾前网络或认证灾后可回收量"
+classification = "project_continuous_advection_reference_not_literal_node_method"
+assumptions = ["不可压缩水和恒定比热密度", "均匀截面及沿管均匀传热系数", "每步流率、环境与入口温度恒定", "无管壁热容和轴向导热", "给定流量，不求水力与网络混合"]
+
+[[original_equation]]
+id = "6-90"
+latex = 'E^{S/R}_{t^\prime,\omega,s}=c_w\rho_w\sum_{(j,k)\in\mathcal C}\left(A_{jk}L_{jk}\tau^{S/R}_{jk,\omega,t^\prime}\right),\quad t^\prime=t_s-1'
+note = "PDF116按原式保留。式中单一管温怎样由沿管分布得到未在本页闭合。前文平均温度/体积关系和能量守恒支持使用空间质量平均；项目相对下限的能量零点另作显式转换。"
+
+[[equation]]
+id = "R7-P1"
+latex = '\partial_t\tau+m\partial_y\tau=-k(\tau-\tau^{\rm AM}),\quad 0\le y\le M,\quad M=\rho AL,\quad k=\frac{UA}{c_wM}'
+meaning = "以从左端累计水质量y作为空间坐标，流率m可正、负或零。t使用秒，UA为整根管道的W/K，不是单位长度传热系数。由局部热守恒推导的项目参考；不将其称为论文离散散热式。"
+api = "r7_pipe_step"
+test = "R7-P3/P4 exact advection and independently integrated heat loss"
+[[equation]]
+id = "R7-P2"
+latex = '\bar\tau=\frac1M\int_0^M\tau(y)\,\mathrm dy,\qquad E^{\rm ref}=\frac{c_w}{3.6\times10^9}\int_0^M[\tau(y)-\tau^{\rm ref}]\,\mathrm dy'
+meaning = "质量kg、比热J/(kg K)、温度K，E单位MWh。供回水各自计算、各计一次；参考温度显式。这个显热积分不保证全量可用于满足灾后热负荷。"
+api = "r7_pipe_inventory"
+test = "R7-P1/P2 spatial state and inventory"
+[[equation]]
+id = "R7-P3"
+latex = '\tau(a)=\tau^{\rm AM}+[\tau(0)-\tau^{\rm AM}]e^{-ka},\qquad \bar\tau^{\rm out}=\frac1{|m|\Delta t_s}\int_{\rm out}\tau_{\rm exit}\,\mathrm dM'
+meaning = "沿水团轨迹解析冷却，按实际迁移质量切割温度段。出口为本时间步流出质量的平均温度，不是步末端点值。新进入水团的留管时间各异，不能一律乘全步衰减。停流没有流出平均温度，返回nothing。"
+api = "r7_pipe_step"
+test = "R7-P3/P4 exact advection and independently integrated heat loss"
+[[equation]]
+id = "R7-P4"
+latex = 'E_{t+1}-E_t=E^{\rm in}-E^{\rm out}-E^{\rm loss},\quad E^{\rm loss}=\frac{c_w}{3.6\times10^9}\int_{\rm parcels}(\tau_{\rm enter}-\tau^{\rm AM})(1-e^{-ka})\,\mathrm dM'
+meaning = "损耗逐水团按实际留管时间独立积分，再检查总能量平衡，避免用平衡式倒推损耗后自证。环境较热时允许负损耗。常边界下整步与分步应得到相同状态、出口积分和散热。"
+api = "r7_pipe_step"
+test = "R7-P3/P4 exact advection and independently integrated heat loss"
+
+[[symbol]]
+id = "R7-P-y"
+latex = 'y,M'
+meaning = "空间累计水质量、总管存水质量；项目坐标"
+unit = "kg"
+julia = "mass_coordinate_kg / mass_kg"
+[[symbol]]
+id = "R7-P-temperature"
+latex = '\tau(y,t),\bar\tau,\tau^{\rm ref}'
+meaning = "沿管温度、质量平均温度、显热参考温度"
+unit = "K"
+julia = "r7_pipe_temperature / mean_K / reference_K"
+[[symbol]]
+id = "R7-P-flow"
+latex = 'm'
+meaning = "以左到右为正的质量流率；反向能力仅属于本参考核"
+unit = "kg/s"
+julia = "mass_flow_kg_s"
+[[symbol]]
+id = "R7-P-time"
+latex = '\Delta t_s,a'
+meaning = "时间步秒数、水团本次留管时长；输入dt_h先乘3600"
+unit = "s"
+julia = "D / transit"
+[[symbol]]
+id = "R7-P-heat-coefficients"
+latex = 'c_w,UA,k'
+meaning = "水比热、整管传热、指数冷却率；原kJ须先转换J"
+unit = "J/(kg K); W/K; 1/s"
+julia = "cp_J_kgK / UA_W_K / k"
+[[symbol]]
+id = "R7-P-energy"
+latex = 'E^{\rm ref},E^{\rm in},E^{\rm out},E^{\rm loss}'
+meaning = "相对显热及本时间步能量积分"
+unit = "MWh"
+julia = "relative_heat_MWh / input_heat_MWh / output_heat_MWh / loss_MWh"
+
+[[reference]]
+url = "https://arxiv.org/pdf/1711.02274"
+version = "作者预印本v2，非论文所引期刊版"
+role = "第3节按流出水质量平均温度，以及离散节点法/WMM散热区别的对照；未将本项目连续参考冒称该算法等价实现"
+accessed = "2026-09-20"

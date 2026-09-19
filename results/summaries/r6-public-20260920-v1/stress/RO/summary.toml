@@ -1,0 +1,95 @@
+schema = "r6-split-candidate-v1"
+set_sha256 = "d0543a40868955f5f8774223cdb7797150c6e2b7e305e7e4ec75439183e125fd"
+split = "stress"
+training_candidate_accepted = true
+training_result_sha256 = "9a354e550927b75a15d24a5152199b7abfc45838075eca3d2064ea19b78c22e5"
+
+[candidate]
+epsilon = 0.05
+id = "RO"
+method = "RO"
+order = 3
+radius = 0.0
+
+[days]
+clear_pv_sustained_down = "23ce0382bcd8b8584fbb8b201e7b690ea8383d318f2efffe08494a0cd442f4ec"
+clear_pv_sustained_up = "bcd054790fd01cc5d84c04533ff3ecf01597b7f80b54177fd8287764cb17bc32"
+zero_pv_sustained_down = "a2f51f462ecd7862ee7587625e5a77017f0df857bd71b9104429f179824dfca9"
+zero_pv_sustained_up = "8869e64882c8477b62aca360c2899f0ab20423c21dbbbb2fc43a429484776642"
+
+[summary]
+n = 4
+schema = "r6-stress-summary-v1"
+scope = "deterministic_cases_no_probability_claim"
+
+    [summary.cases.clear_pv_sustained_down]
+    call_relative_mismatch = 0.015609780767296104
+    called_energy_MWh = 1.9200000000000004
+    comfort_outcome = "pass"
+    cost_complete = true
+    day_ahead_cost = -195.48582876535838
+    delivery_budget_pass = true
+    delivery_penalty = 29.970779073208526
+    device_cost = 3.854654954357041
+    mismatch_MWh = 0.029970779073208526
+    mismatch_limit_MWh = 0.3789440594505416
+    model_pass = true
+    operating_net_cost = 25.43651991763668
+    peak_excess_K = 0.0
+    policy_complete = true
+    real_time_settlement = 187.0969146554295
+    trained_label = 0
+
+    [summary.cases.clear_pv_sustained_up]
+    call_relative_mismatch = 0.0
+    called_energy_MWh = 1.8694405945054156
+    comfort_outcome = "pass"
+    cost_complete = true
+    day_ahead_cost = -195.48582876535838
+    delivery_budget_pass = true
+    delivery_penalty = 0.0
+    device_cost = 308.8298838767405
+    mismatch_MWh = 0.0
+    mismatch_limit_MWh = 0.3789440594505416
+    model_pass = true
+    operating_net_cost = -70.11417557380102
+    peak_excess_K = 0.0
+    policy_complete = true
+    real_time_settlement = -183.45823068518314
+    trained_label = 0
+
+    [summary.cases.zero_pv_sustained_down]
+    call_relative_mismatch = 0.015609780767295989
+    called_energy_MWh = 1.9200000000000004
+    comfort_outcome = "pass"
+    cost_complete = true
+    day_ahead_cost = -195.48582876535838
+    delivery_budget_pass = true
+    delivery_penalty = 29.970779073208302
+    device_cost = 7.250346494512641
+    mismatch_MWh = 0.029970779073208303
+    mismatch_limit_MWh = 0.3789440594505416
+    model_pass = true
+    operating_net_cost = 28.832211457792067
+    peak_excess_K = 0.0
+    policy_complete = true
+    real_time_settlement = 187.09691465542952
+    trained_label = 0
+
+    [summary.cases.zero_pv_sustained_up]
+    call_relative_mismatch = 0.0
+    called_energy_MWh = 1.8694405945054156
+    comfort_outcome = "pass"
+    cost_complete = true
+    day_ahead_cost = -195.48582876535838
+    delivery_budget_pass = true
+    delivery_penalty = 0.0
+    device_cost = 378.3298838767404
+    mismatch_MWh = 0.0
+    mismatch_limit_MWh = 0.3789440594505416
+    model_pass = true
+    operating_net_cost = -0.6141755738011341
+    peak_excess_K = 0.0
+    policy_complete = true
+    real_time_settlement = -183.45823068518314
+    trained_label = 0

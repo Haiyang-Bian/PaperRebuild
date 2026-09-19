@@ -1,0 +1,306 @@
+day_ahead_net_payment_USD = -183.01603504475173
+evaluation_version = "r6_support_nearest_v1"
+physical_sha256 = "d64a84223d501be13728e899b842ee3959ca0ca1aa3c80c50fcdca9fa59d5ca1"
+schema = "r6-policy-v1"
+training_cost_complete = true
+
+[award]
+P_DA_MW = [0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08688444907194372, 0.08, 0.08, 0.08, 0.08, 0.11461583552244212, 0.09222775294641405, 0.12, 0.11]
+R_down_MW = [0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08]
+R_up_MW = [0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08]
+down_price = [100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0]
+dt_h = 1.0
+energy_price = [70.0, 65.0, 65.0, 65.0, 70.0, 80.0, 100.0, 120.0, 110.0, 100.0, 95.0, 90.0, 90.0, 90.0, 95.0, 110.0, 130.0, 150.0, 150.0, 140.0, 120.0, 100.0, 85.0, 75.0]
+ies_id = "IES"
+origin = "verified_market"
+parent_case_sha256 = "e2593c6952d320ce54ca4af44065b315a66a663af49bf12f4029f019ee152673"
+parent_result_sha256 = "ddc3af48a1d49a1a25a0214501c1d6848ba3cefb4eee5f0dbaa510ea09670cc3"
+parent_run_id = "r5-strategic-7aa42965-190c-47bf-8814-4d0de27d8bbc"
+up_price = [100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0]
+
+[method]
+comfort_rule = "hard_all_support"
+cost_rule = "empirical_expectation"
+deterministic_rule = "training_mean_pv_zero_call"
+epsilon = 0.05
+method = "D"
+radius = 0.0
+schema = "r6-method-v1"
+
+[physical]
+leader_id = "IES"
+name = "r6_daily_small_v1"
+origin = "synthetic"
+schema = "r6-physical-case-v1"
+selection = "optimistic_primal_dual"
+
+    [physical.bid_bounds.down_bid]
+    lower = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    upper = [200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0]
+
+    [physical.bid_bounds.energy_bid]
+    lower = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    upper = [200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0]
+
+    [physical.bid_bounds.up_bid]
+    lower = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    upper = [200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0]
+
+    [physical.bounds.P_DA_MW]
+    lower = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    upper = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+
+    [physical.bounds.R_down_MW]
+    lower = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    upper = [0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08]
+
+    [physical.bounds.R_up_MW]
+    lower = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    upper = [0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08]
+
+    [physical.dispatch]
+    T = 24
+    ambient_K = [282.15, 281.65, 281.15, 280.65, 280.15, 280.65, 281.15, 282.15, 283.15, 284.15, 285.15, 286.15, 287.15, 287.65, 287.15, 286.15, 285.15, 284.15, 283.15, 282.65, 282.15, 282.15, 282.15, 282.15]
+    dt_h = 1.0
+    name = "r6_daily_small_v1"
+    origin = "synthetic"
+    schema = "r5-dispatch-case-v1"
+
+        [physical.dispatch.award]
+        P_DA_MW = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        R_down_MW = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        R_up_MW = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        down_price = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        energy_price = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        origin = "synthetic"
+        up_price = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+        [[physical.dispatch.buildings]]
+        COP_DH = 0.95
+        C_MWh_K = 0.02
+        G_MW_K = 0.003
+        P_DH_max_MW = 0.05
+        R_max_K = 343.15
+        R_min_K = 303.15
+        T_initial_K = 293.15
+        T_max_K = 294.15
+        T_min_K = 292.15
+        electric_node = 2
+        heat_node = 2
+        id = "building"
+        m_kg_s = 1.0
+        terminal_rule = "initial"
+
+        [[physical.dispatch.devices]]
+        cost_USD_MWh = 0.0
+        heat_ratio = 0.95
+        id = "EB"
+        kind = "EB"
+        node = 2
+        p_max_MW = 0.1
+        p_min_MW = 0.0
+        q_max_Mvar = 0.0
+        q_min_Mvar = 0.0
+        source_id = "source"
+        [[physical.dispatch.devices]]
+        P_initial_MW = 0.0
+        cost_USD_MWh = 130.0
+        id = "GT"
+        kind = "GT"
+        node = 2
+        p_max_MW = 0.15
+        p_min_MW = 0.0
+        q_max_Mvar = 0.0
+        q_min_Mvar = 0.0
+        ramp_down_MW_h = 1.0
+        ramp_up_MW_h = 1.0
+        [[physical.dispatch.devices]]
+        P_initial_MW = 0.03
+        cost_USD_MWh = 90.0
+        heat_ratio = 1.0
+        id = "CHP"
+        kind = "CHP"
+        node = 2
+        p_max_MW = 0.08
+        p_min_MW = 0.0
+        q_max_Mvar = 0.03
+        q_min_Mvar = -0.03
+        ramp_down_MW_h = 0.08
+        ramp_up_MW_h = 0.08
+        source_id = "source"
+        [[physical.dispatch.devices]]
+        available_MW = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        cost_USD_MWh = 5.0
+        id = "PV"
+        kind = "PV"
+        node = 2
+        p_max_MW = 0.08
+        p_min_MW = 0.0
+        q_max_Mvar = 0.0
+        q_min_Mvar = 0.0
+
+        [physical.dispatch.electric]
+        P_load_MW = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.1, 0.1, 0.1, 0.1, 0.1, 0.11, 0.13, 0.15, 0.14, 0.13, 0.13, 0.14, 0.14, 0.13, 0.13, 0.14, 0.16, 0.18, 0.18, 0.17, 0.15, 0.13, 0.12, 0.11]]
+        Q_load_Mvar = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02]]
+        S_base_MVA = 1.0
+        nodes = 2
+        pcc_max_MW = 1.0
+        pcc_min_MW = 0.0
+        qcc_max_Mvar = 1.0
+        qcc_min_Mvar = -1.0
+        root = 1
+        v_max_pu = 1.05
+        v_min_pu = 0.95
+        v_ref_pu = 1.0
+
+            [[physical.dispatch.electric.lines]]
+            P_limit_MW = 1.0
+            Q_limit_Mvar = 1.0
+            from = 1
+            id = "e12"
+            r_pu = 0.01
+            to = 2
+            x_pu = 0.005
+
+        [physical.dispatch.heat]
+        R_max_K = 343.15
+        R_min_K = 293.15
+        S_max_K = 353.15
+        S_min_K = 303.15
+        c_J_kgK = 4200.0
+        nodes = 2
+        terminal_rule = "free"
+
+            [[physical.dispatch.heat.pipes]]
+            area_m2 = 0.01
+            from = 1
+            history_R_K = [323.15]
+            history_S_K = [333.15]
+            id = "h12"
+            length_m = 90.0
+            loss_W_mK = 0.05
+            m_kg_s = 1.0
+            rho_kg_m3 = 1000.0
+            to = 2
+
+            [[physical.dispatch.heat.sources]]
+            T_max_K = 353.15
+            T_min_K = 313.15
+            id = "source"
+            m_kg_s = 1.0
+            node = 1
+
+        [physical.dispatch.realtime]
+        alpha_down = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        alpha_up = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        delta = 0.1
+        penalty_USD_MWh = 1000.0
+        price = [70.0, 65.0, 65.0, 65.0, 70.0, 80.0, 100.0, 120.0, 110.0, 100.0, 95.0, 90.0, 90.0, 90.0, 95.0, 110.0, 130.0, 150.0, 150.0, 140.0, 120.0, 100.0, 85.0, 75.0]
+
+        [physical.dispatch.units]
+        energy = "MWh"
+        energy_price = "USD/MWh"
+        flow = "kg/s"
+        heat_capacity = "MWh/K"
+        heat_transfer = "MW/K"
+        power = "MW"
+        reactive = "Mvar"
+        reserve_price = "USD/(MW*h)"
+        temperature = "K"
+        time = "h"
+
+    [physical.market]
+    T = 24
+    description = "Synthetic daily abundant-supply market; physical-rule.toml fixes hourly offers before optimization."
+    dt_h = 1.0
+    load_MW = [[1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]]
+    name = "r6_daily_small_v1"
+    nodes = 1
+    origin = "synthetic"
+    reserve_down_MW = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+    reserve_up_MW = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+    schema = "r5-market-case-v1"
+
+        [[physical.market.generators]]
+        down_bid = [100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0]
+        down_max = 1.0
+        energy_bid = [70.0, 65.0, 65.0, 65.0, 70.0, 80.0, 100.0, 120.0, 110.0, 100.0, 95.0, 90.0, 90.0, 90.0, 95.0, 110.0, 130.0, 150.0, 150.0, 140.0, 120.0, 100.0, 85.0, 75.0]
+        id = "G"
+        node = 1
+        p_bid_max = 5.0
+        p_initial = 1.0
+        p_max = 5.0
+        p_min = 0.0
+        ramp_down_MW_h = 20.0
+        ramp_up_MW_h = 20.0
+        up_bid = [100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0]
+        up_max = 1.0
+
+        [[physical.market.ies]]
+        down_bid = [100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0]
+        down_max = 0.08
+        energy_bid = [70.0, 65.0, 65.0, 65.0, 70.0, 80.0, 100.0, 120.0, 110.0, 100.0, 95.0, 90.0, 90.0, 90.0, 95.0, 110.0, 130.0, 150.0, 150.0, 140.0, 120.0, 100.0, 85.0, 75.0]
+        id = "IES"
+        node = 1
+        purchase_bid_max = 1.0
+        q_max = 1.0
+        q_min = 0.0
+        up_bid = [100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0]
+        up_max = 0.08
+
+        [physical.market.network]
+        limit_MW = []
+        ptdf = []
+        slack_node = 1
+
+        [physical.market.units]
+        energy = "MWh"
+        energy_price = "USD/MWh"
+        power = "MW"
+        ramp = "MW/h"
+        reserve_price = "USD/(MW*h)"
+        time = "h"
+
+    [physical.provenance]
+    changes = "Keep all parent equipment, network, ramps, initial temperatures, pipe histories, physical temperature domain, building terminal=initial and pipe terminal=free. Replace the four-hour future by explicit daily ambient/load/price arrays. PV and activation are filled only by frozen R6 trajectories. External market retains one abundant generator and optimistic selection."
+    hour_convention = "entry t covers [t-1,t) hours from 00:00"
+    parent = "configs/r5/strategic/competitive_future_e030_r005.toml"
+    parent_file_sha256 = "05d5ce41e6bdaa49005812870c7aefc405febe80f2068a7012959f59724e391b"
+    parent_sha256 = "05d5ce41e6bdaa49005812870c7aefc405febe80f2068a7012959f59724e391b"
+    rule = "configs/r6/physical-rule.toml"
+    rule_file_sha256 = "10a381f81ffb5f375862947bc1e1d8b4afe1971fb5d56d42e635257d1ad850f2"
+
+    [physical.temperature_domain.building]
+    lower_K = 291.15
+    upper_K = 295.15
+
+[[support]]
+activation_signed = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+id = "training_mean_zero_call"
+label = 0
+probability = 1.0
+pv_fraction = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.06108536226143202, 0.1908729538659704, 0.34382092533653735, 0.49666937391174265, 0.6260791549539837, 0.7244491153245789, 0.762410298099382, 0.7021034011945158, 0.5955870858912471, 0.4427469794969828, 0.2674828765645833, 0.09162389326651613, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+raw_z = 0.0
+
+[training_provenance]
+effective_epsilon = 0.0
+effective_radius = 0.0
+method_sha256 = "a3b8c569ed52996a6753dacb520dc8c0ef23688f942d5864cc3449b3e82499e8"
+physical_sha256 = "d64a84223d501be13728e899b842ee3959ca0ca1aa3c80c50fcdca9fa59d5ca1"
+protocol_sha256 = "02c5987cab99c924ca494ffae7a30bf258e41e1fe213d32558862ed6d9ee5d3b"
+representatives_sha256 = "749b4cf85bc794e3c5f4acad3d92d8b8fd0926787c583b6fba89f6fb7a844037"
+schema = "r6-training-provenance-v1"
+scope = "full_training_support"
+selected_cluster_mass = 1.0
+selected_training_ids = ["train_000001", "train_000002", "train_000003", "train_000004", "train_000005", "train_000006", "train_000007", "train_000008", "train_000009", "train_000010", "train_000011", "train_000012", "train_000013", "train_000014", "train_000015", "train_000016", "train_000017", "train_000018", "train_000019", "train_000020", "train_000021", "train_000022", "train_000023", "train_000024", "train_000025", "train_000026", "train_000027", "train_000028", "train_000029", "train_000030", "train_000031", "train_000032", "train_000033", "train_000034", "train_000035", "train_000036", "train_000037", "train_000038", "train_000039", "train_000040", "train_000041", "train_000042", "train_000043", "train_000044", "train_000045", "train_000046", "train_000047", "train_000048", "train_000049", "train_000050", "train_000051", "train_000052", "train_000053", "train_000054", "train_000055", "train_000056", "train_000057", "train_000058", "train_000059", "train_000060", "train_000061", "train_000062", "train_000063", "train_000064", "train_000065", "train_000066", "train_000067", "train_000068", "train_000069", "train_000070", "train_000071", "train_000072", "train_000073", "train_000074", "train_000075", "train_000076", "train_000077", "train_000078", "train_000079", "train_000080", "train_000081", "train_000082", "train_000083", "train_000084", "train_000085", "train_000086", "train_000087", "train_000088", "train_000089", "train_000090", "train_000091", "train_000092", "train_000093", "train_000094", "train_000095", "train_000096", "train_000097", "train_000098", "train_000099", "train_000100", "train_000101", "train_000102", "train_000103", "train_000104", "train_000105", "train_000106", "train_000107", "train_000108", "train_000109", "train_000110", "train_000111", "train_000112", "train_000113", "train_000114", "train_000115", "train_000116", "train_000117", "train_000118", "train_000119", "train_000120", "train_000121", "train_000122", "train_000123", "train_000124", "train_000125", "train_000126", "train_000127", "train_000128", "train_000129", "train_000130", "train_000131", "train_000132", "train_000133", "train_000134", "train_000135", "train_000136", "train_000137", "train_000138", "train_000139", "train_000140", "train_000141", "train_000142", "train_000143", "train_000144", "train_000145", "train_000146", "train_000147", "train_000148", "train_000149", "train_000150", "train_000151", "train_000152", "train_000153", "train_000154", "train_000155", "train_000156", "train_000157", "train_000158", "train_000159", "train_000160", "train_000161", "train_000162", "train_000163", "train_000164", "train_000165", "train_000166", "train_000167", "train_000168", "train_000169", "train_000170", "train_000171", "train_000172", "train_000173", "train_000174", "train_000175", "train_000176", "train_000177", "train_000178", "train_000179", "train_000180", "train_000181", "train_000182", "train_000183", "train_000184", "train_000185", "train_000186", "train_000187", "train_000188", "train_000189", "train_000190", "train_000191", "train_000192", "train_000193", "train_000194", "train_000195", "train_000196", "train_000197", "train_000198", "train_000199", "train_000200", "train_000201", "train_000202", "train_000203", "train_000204", "train_000205", "train_000206", "train_000207", "train_000208", "train_000209", "train_000210", "train_000211", "train_000212", "train_000213", "train_000214", "train_000215", "train_000216", "train_000217", "train_000218", "train_000219", "train_000220", "train_000221", "train_000222", "train_000223", "train_000224", "train_000225", "train_000226", "train_000227", "train_000228", "train_000229", "train_000230", "train_000231", "train_000232", "train_000233", "train_000234", "train_000235", "train_000236", "train_000237", "train_000238", "train_000239", "train_000240", "train_000241", "train_000242", "train_000243", "train_000244", "train_000245", "train_000246", "train_000247", "train_000248", "train_000249", "train_000250", "train_000251", "train_000252", "train_000253", "train_000254", "train_000255", "train_000256", "train_000257", "train_000258", "train_000259", "train_000260", "train_000261", "train_000262", "train_000263", "train_000264", "train_000265", "train_000266", "train_000267", "train_000268", "train_000269", "train_000270", "train_000271", "train_000272", "train_000273", "train_000274", "train_000275", "train_000276", "train_000277", "train_000278", "train_000279", "train_000280", "train_000281", "train_000282", "train_000283", "train_000284", "train_000285", "train_000286", "train_000287", "train_000288", "train_000289", "train_000290", "train_000291", "train_000292", "train_000293", "train_000294", "train_000295", "train_000296", "train_000297", "train_000298", "train_000299", "train_000300", "train_000301", "train_000302", "train_000303", "train_000304", "train_000305", "train_000306", "train_000307", "train_000308", "train_000309", "train_000310", "train_000311", "train_000312", "train_000313", "train_000314", "train_000315", "train_000316", "train_000317", "train_000318", "train_000319", "train_000320", "train_000321", "train_000322", "train_000323", "train_000324", "train_000325", "train_000326", "train_000327", "train_000328", "train_000329", "train_000330", "train_000331", "train_000332", "train_000333", "train_000334", "train_000335", "train_000336", "train_000337", "train_000338", "train_000339", "train_000340", "train_000341", "train_000342", "train_000343", "train_000344", "train_000345", "train_000346", "train_000347", "train_000348", "train_000349", "train_000350", "train_000351", "train_000352", "train_000353", "train_000354", "train_000355", "train_000356", "train_000357", "train_000358", "train_000359", "train_000360", "train_000361", "train_000362", "train_000363", "train_000364", "train_000365", "train_000366", "train_000367", "train_000368", "train_000369", "train_000370", "train_000371", "train_000372", "train_000373", "train_000374", "train_000375", "train_000376", "train_000377", "train_000378", "train_000379", "train_000380", "train_000381", "train_000382", "train_000383", "train_000384", "train_000385", "train_000386", "train_000387", "train_000388", "train_000389", "train_000390", "train_000391", "train_000392", "train_000393", "train_000394", "train_000395", "train_000396", "train_000397", "train_000398", "train_000399", "train_000400", "train_000401", "train_000402", "train_000403", "train_000404", "train_000405", "train_000406", "train_000407", "train_000408", "train_000409", "train_000410", "train_000411", "train_000412", "train_000413", "train_000414", "train_000415", "train_000416", "train_000417", "train_000418", "train_000419", "train_000420", "train_000421", "train_000422", "train_000423", "train_000424", "train_000425", "train_000426", "train_000427", "train_000428", "train_000429", "train_000430", "train_000431", "train_000432", "train_000433", "train_000434", "train_000435", "train_000436", "train_000437", "train_000438", "train_000439", "train_000440", "train_000441", "train_000442", "train_000443", "train_000444", "train_000445", "train_000446", "train_000447", "train_000448", "train_000449", "train_000450", "train_000451", "train_000452", "train_000453", "train_000454", "train_000455", "train_000456", "train_000457", "train_000458", "train_000459", "train_000460", "train_000461", "train_000462", "train_000463", "train_000464", "train_000465", "train_000466", "train_000467", "train_000468", "train_000469", "train_000470", "train_000471", "train_000472", "train_000473", "train_000474", "train_000475", "train_000476", "train_000477", "train_000478", "train_000479", "train_000480", "train_000481", "train_000482", "train_000483", "train_000484", "train_000485", "train_000486", "train_000487", "train_000488", "train_000489", "train_000490", "train_000491", "train_000492", "train_000493", "train_000494", "train_000495", "train_000496", "train_000497", "train_000498", "train_000499", "train_000500", "train_000501", "train_000502", "train_000503", "train_000504", "train_000505", "train_000506", "train_000507", "train_000508", "train_000509", "train_000510", "train_000511", "train_000512", "train_000513", "train_000514", "train_000515", "train_000516", "train_000517", "train_000518", "train_000519", "train_000520", "train_000521", "train_000522", "train_000523", "train_000524", "train_000525", "train_000526", "train_000527", "train_000528", "train_000529", "train_000530", "train_000531", "train_000532", "train_000533", "train_000534", "train_000535", "train_000536", "train_000537", "train_000538", "train_000539", "train_000540", "train_000541", "train_000542", "train_000543", "train_000544", "train_000545", "train_000546", "train_000547", "train_000548", "train_000549", "train_000550", "train_000551", "train_000552", "train_000553", "train_000554", "train_000555", "train_000556", "train_000557", "train_000558", "train_000559", "train_000560", "train_000561", "train_000562", "train_000563", "train_000564", "train_000565", "train_000566", "train_000567", "train_000568", "train_000569", "train_000570", "train_000571", "train_000572", "train_000573", "train_000574", "train_000575", "train_000576", "train_000577", "train_000578", "train_000579", "train_000580", "train_000581", "train_000582", "train_000583", "train_000584", "train_000585", "train_000586", "train_000587", "train_000588", "train_000589", "train_000590", "train_000591", "train_000592", "train_000593", "train_000594", "train_000595", "train_000596", "train_000597", "train_000598", "train_000599", "train_000600", "train_000601", "train_000602", "train_000603", "train_000604", "train_000605", "train_000606", "train_000607", "train_000608", "train_000609", "train_000610", "train_000611", "train_000612", "train_000613", "train_000614", "train_000615", "train_000616", "train_000617", "train_000618", "train_000619", "train_000620", "train_000621", "train_000622", "train_000623", "train_000624", "train_000625", "train_000626", "train_000627", "train_000628", "train_000629", "train_000630", "train_000631", "train_000632", "train_000633", "train_000634", "train_000635", "train_000636", "train_000637", "train_000638", "train_000639", "train_000640", "train_000641", "train_000642", "train_000643", "train_000644", "train_000645", "train_000646", "train_000647", "train_000648", "train_000649", "train_000650", "train_000651", "train_000652", "train_000653", "train_000654", "train_000655", "train_000656", "train_000657", "train_000658", "train_000659", "train_000660", "train_000661", "train_000662", "train_000663", "train_000664", "train_000665", "train_000666", "train_000667", "train_000668", "train_000669", "train_000670", "train_000671", "train_000672", "train_000673", "train_000674", "train_000675", "train_000676", "train_000677", "train_000678", "train_000679", "train_000680", "train_000681", "train_000682", "train_000683", "train_000684", "train_000685", "train_000686", "train_000687", "train_000688", "train_000689", "train_000690", "train_000691", "train_000692", "train_000693", "train_000694", "train_000695", "train_000696", "train_000697", "train_000698", "train_000699", "train_000700", "train_000701", "train_000702", "train_000703", "train_000704", "train_000705", "train_000706", "train_000707", "train_000708", "train_000709", "train_000710", "train_000711", "train_000712", "train_000713", "train_000714", "train_000715", "train_000716", "train_000717", "train_000718", "train_000719", "train_000720", "train_000721", "train_000722", "train_000723", "train_000724", "train_000725", "train_000726", "train_000727", "train_000728", "train_000729", "train_000730", "train_000731", "train_000732", "train_000733", "train_000734", "train_000735", "train_000736", "train_000737", "train_000738", "train_000739", "train_000740", "train_000741", "train_000742", "train_000743", "train_000744", "train_000745", "train_000746", "train_000747", "train_000748", "train_000749", "train_000750", "train_000751", "train_000752", "train_000753", "train_000754", "train_000755", "train_000756", "train_000757", "train_000758", "train_000759", "train_000760", "train_000761", "train_000762", "train_000763", "train_000764", "train_000765", "train_000766", "train_000767", "train_000768", "train_000769", "train_000770", "train_000771", "train_000772", "train_000773", "train_000774", "train_000775", "train_000776", "train_000777", "train_000778", "train_000779", "train_000780", "train_000781", "train_000782", "train_000783", "train_000784", "train_000785", "train_000786", "train_000787", "train_000788", "train_000789", "train_000790", "train_000791", "train_000792", "train_000793", "train_000794", "train_000795", "train_000796", "train_000797", "train_000798", "train_000799", "train_000800", "train_000801", "train_000802", "train_000803", "train_000804", "train_000805", "train_000806", "train_000807", "train_000808", "train_000809", "train_000810", "train_000811", "train_000812", "train_000813", "train_000814", "train_000815", "train_000816", "train_000817", "train_000818", "train_000819", "train_000820", "train_000821", "train_000822", "train_000823", "train_000824", "train_000825", "train_000826", "train_000827", "train_000828", "train_000829", "train_000830", "train_000831", "train_000832", "train_000833", "train_000834", "train_000835", "train_000836", "train_000837", "train_000838", "train_000839", "train_000840", "train_000841", "train_000842", "train_000843", "train_000844", "train_000845", "train_000846", "train_000847", "train_000848", "train_000849", "train_000850", "train_000851", "train_000852", "train_000853", "train_000854", "train_000855", "train_000856", "train_000857", "train_000858", "train_000859", "train_000860", "train_000861", "train_000862", "train_000863", "train_000864", "train_000865", "train_000866", "train_000867", "train_000868", "train_000869", "train_000870", "train_000871", "train_000872", "train_000873", "train_000874", "train_000875", "train_000876", "train_000877", "train_000878", "train_000879", "train_000880", "train_000881", "train_000882", "train_000883", "train_000884", "train_000885", "train_000886", "train_000887", "train_000888", "train_000889", "train_000890", "train_000891", "train_000892", "train_000893", "train_000894", "train_000895", "train_000896", "train_000897", "train_000898", "train_000899", "train_000900", "train_000901", "train_000902", "train_000903", "train_000904", "train_000905", "train_000906", "train_000907", "train_000908", "train_000909", "train_000910", "train_000911", "train_000912", "train_000913", "train_000914", "train_000915", "train_000916", "train_000917", "train_000918", "train_000919", "train_000920", "train_000921", "train_000922", "train_000923", "train_000924", "train_000925", "train_000926", "train_000927", "train_000928", "train_000929", "train_000930", "train_000931", "train_000932", "train_000933", "train_000934", "train_000935", "train_000936", "train_000937", "train_000938", "train_000939", "train_000940", "train_000941", "train_000942", "train_000943", "train_000944", "train_000945", "train_000946", "train_000947", "train_000948", "train_000949", "train_000950", "train_000951", "train_000952", "train_000953", "train_000954", "train_000955", "train_000956", "train_000957", "train_000958", "train_000959", "train_000960", "train_000961", "train_000962", "train_000963", "train_000964", "train_000965", "train_000966", "train_000967", "train_000968", "train_000969", "train_000970", "train_000971", "train_000972", "train_000973", "train_000974", "train_000975", "train_000976", "train_000977", "train_000978", "train_000979", "train_000980", "train_000981", "train_000982", "train_000983", "train_000984", "train_000985", "train_000986", "train_000987", "train_000988", "train_000989", "train_000990", "train_000991", "train_000992", "train_000993", "train_000994", "train_000995", "train_000996", "train_000997", "train_000998", "train_000999", "train_001000", "train_001001", "train_001002", "train_001003", "train_001004", "train_001005", "train_001006", "train_001007", "train_001008", "train_001009", "train_001010", "train_001011", "train_001012", "train_001013", "train_001014", "train_001015", "train_001016", "train_001017", "train_001018", "train_001019", "train_001020", "train_001021", "train_001022", "train_001023", "train_001024", "train_001025", "train_001026", "train_001027", "train_001028", "train_001029", "train_001030", "train_001031", "train_001032", "train_001033", "train_001034", "train_001035", "train_001036", "train_001037", "train_001038", "train_001039", "train_001040", "train_001041", "train_001042", "train_001043", "train_001044", "train_001045", "train_001046", "train_001047", "train_001048", "train_001049", "train_001050", "train_001051", "train_001052", "train_001053", "train_001054", "train_001055", "train_001056", "train_001057", "train_001058", "train_001059", "train_001060", "train_001061", "train_001062", "train_001063", "train_001064", "train_001065", "train_001066", "train_001067", "train_001068", "train_001069", "train_001070", "train_001071", "train_001072", "train_001073", "train_001074", "train_001075", "train_001076", "train_001077", "train_001078", "train_001079", "train_001080", "train_001081", "train_001082", "train_001083", "train_001084", "train_001085", "train_001086", "train_001087", "train_001088", "train_001089", "train_001090", "train_001091", "train_001092", "train_001093", "train_001094", "train_001095", "train_001096", "train_001097", "train_001098", "train_001099", "train_001100", "train_001101", "train_001102", "train_001103", "train_001104", "train_001105", "train_001106", "train_001107", "train_001108", "train_001109", "train_001110", "train_001111", "train_001112", "train_001113", "train_001114", "train_001115", "train_001116", "train_001117", "train_001118", "train_001119", "train_001120", "train_001121", "train_001122", "train_001123", "train_001124", "train_001125", "train_001126", "train_001127", "train_001128", "train_001129", "train_001130", "train_001131", "train_001132", "train_001133", "train_001134", "train_001135", "train_001136", "train_001137", "train_001138", "train_001139", "train_001140", "train_001141", "train_001142", "train_001143", "train_001144", "train_001145", "train_001146", "train_001147", "train_001148", "train_001149", "train_001150", "train_001151", "train_001152", "train_001153", "train_001154", "train_001155", "train_001156", "train_001157", "train_001158", "train_001159", "train_001160", "train_001161", "train_001162", "train_001163", "train_001164", "train_001165", "train_001166", "train_001167", "train_001168", "train_001169", "train_001170", "train_001171", "train_001172", "train_001173", "train_001174", "train_001175", "train_001176", "train_001177", "train_001178", "train_001179", "train_001180", "train_001181", "train_001182", "train_001183", "train_001184", "train_001185", "train_001186", "train_001187", "train_001188", "train_001189", "train_001190", "train_001191", "train_001192", "train_001193", "train_001194", "train_001195", "train_001196", "train_001197", "train_001198", "train_001199", "train_001200", "train_001201", "train_001202", "train_001203", "train_001204", "train_001205", "train_001206", "train_001207", "train_001208", "train_001209", "train_001210", "train_001211", "train_001212", "train_001213", "train_001214", "train_001215", "train_001216", "train_001217", "train_001218", "train_001219", "train_001220", "train_001221", "train_001222", "train_001223", "train_001224", "train_001225", "train_001226", "train_001227", "train_001228", "train_001229", "train_001230", "train_001231", "train_001232", "train_001233", "train_001234", "train_001235", "train_001236", "train_001237", "train_001238", "train_001239", "train_001240", "train_001241", "train_001242", "train_001243", "train_001244", "train_001245", "train_001246", "train_001247", "train_001248", "train_001249", "train_001250", "train_001251", "train_001252", "train_001253", "train_001254", "train_001255", "train_001256", "train_001257", "train_001258", "train_001259", "train_001260", "train_001261", "train_001262", "train_001263", "train_001264", "train_001265", "train_001266", "train_001267", "train_001268", "train_001269", "train_001270", "train_001271", "train_001272", "train_001273", "train_001274", "train_001275", "train_001276", "train_001277", "train_001278", "train_001279", "train_001280", "train_001281", "train_001282", "train_001283", "train_001284", "train_001285", "train_001286", "train_001287", "train_001288", "train_001289", "train_001290", "train_001291", "train_001292", "train_001293", "train_001294", "train_001295", "train_001296", "train_001297", "train_001298", "train_001299", "train_001300", "train_001301", "train_001302", "train_001303", "train_001304", "train_001305", "train_001306", "train_001307", "train_001308", "train_001309", "train_001310", "train_001311", "train_001312", "train_001313", "train_001314", "train_001315", "train_001316", "train_001317", "train_001318", "train_001319", "train_001320", "train_001321", "train_001322", "train_001323", "train_001324", "train_001325", "train_001326", "train_001327", "train_001328", "train_001329", "train_001330", "train_001331", "train_001332", "train_001333", "train_001334", "train_001335", "train_001336", "train_001337", "train_001338", "train_001339", "train_001340", "train_001341", "train_001342", "train_001343", "train_001344", "train_001345", "train_001346", "train_001347", "train_001348", "train_001349", "train_001350", "train_001351", "train_001352", "train_001353", "train_001354", "train_001355", "train_001356", "train_001357", "train_001358", "train_001359", "train_001360", "train_001361", "train_001362", "train_001363", "train_001364", "train_001365", "train_001366", "train_001367", "train_001368", "train_001369", "train_001370", "train_001371", "train_001372", "train_001373", "train_001374", "train_001375", "train_001376", "train_001377", "train_001378", "train_001379", "train_001380", "train_001381", "train_001382", "train_001383", "train_001384", "train_001385", "train_001386", "train_001387", "train_001388", "train_001389", "train_001390", "train_001391", "train_001392", "train_001393", "train_001394", "train_001395", "train_001396", "train_001397", "train_001398", "train_001399", "train_001400", "train_001401", "train_001402", "train_001403", "train_001404", "train_001405", "train_001406", "train_001407", "train_001408", "train_001409", "train_001410", "train_001411", "train_001412", "train_001413", "train_001414", "train_001415", "train_001416", "train_001417", "train_001418", "train_001419", "train_001420", "train_001421", "train_001422", "train_001423", "train_001424", "train_001425", "train_001426", "train_001427", "train_001428", "train_001429", "train_001430", "train_001431", "train_001432", "train_001433", "train_001434", "train_001435", "train_001436", "train_001437", "train_001438", "train_001439", "train_001440", "train_001441", "train_001442", "train_001443", "train_001444", "train_001445", "train_001446", "train_001447", "train_001448", "train_001449", "train_001450", "train_001451", "train_001452", "train_001453", "train_001454", "train_001455", "train_001456", "train_001457", "train_001458", "train_001459", "train_001460", "train_001461", "train_001462", "train_001463", "train_001464", "train_001465", "train_001466", "train_001467", "train_001468", "train_001469", "train_001470", "train_001471", "train_001472", "train_001473", "train_001474", "train_001475", "train_001476", "train_001477", "train_001478", "train_001479", "train_001480", "train_001481", "train_001482", "train_001483", "train_001484", "train_001485", "train_001486", "train_001487", "train_001488", "train_001489", "train_001490", "train_001491", "train_001492", "train_001493", "train_001494", "train_001495", "train_001496", "train_001497", "train_001498", "train_001499", "train_001500", "train_001501", "train_001502", "train_001503", "train_001504", "train_001505", "train_001506", "train_001507", "train_001508", "train_001509", "train_001510", "train_001511", "train_001512", "train_001513", "train_001514", "train_001515", "train_001516", "train_001517", "train_001518", "train_001519", "train_001520", "train_001521", "train_001522", "train_001523", "train_001524", "train_001525", "train_001526", "train_001527", "train_001528", "train_001529", "train_001530", "train_001531", "train_001532", "train_001533", "train_001534", "train_001535", "train_001536", "train_001537", "train_001538", "train_001539", "train_001540", "train_001541", "train_001542", "train_001543", "train_001544", "train_001545", "train_001546", "train_001547", "train_001548", "train_001549", "train_001550", "train_001551", "train_001552", "train_001553", "train_001554", "train_001555", "train_001556", "train_001557", "train_001558", "train_001559", "train_001560", "train_001561", "train_001562", "train_001563", "train_001564", "train_001565", "train_001566", "train_001567", "train_001568", "train_001569", "train_001570", "train_001571", "train_001572", "train_001573", "train_001574", "train_001575", "train_001576", "train_001577", "train_001578", "train_001579", "train_001580", "train_001581", "train_001582", "train_001583", "train_001584", "train_001585", "train_001586", "train_001587", "train_001588", "train_001589", "train_001590", "train_001591", "train_001592", "train_001593", "train_001594", "train_001595", "train_001596", "train_001597", "train_001598", "train_001599", "train_001600", "train_001601", "train_001602", "train_001603", "train_001604", "train_001605", "train_001606", "train_001607", "train_001608", "train_001609", "train_001610", "train_001611", "train_001612", "train_001613", "train_001614", "train_001615", "train_001616", "train_001617", "train_001618", "train_001619", "train_001620", "train_001621", "train_001622", "train_001623", "train_001624", "train_001625", "train_001626", "train_001627", "train_001628", "train_001629", "train_001630", "train_001631", "train_001632", "train_001633", "train_001634", "train_001635", "train_001636", "train_001637", "train_001638", "train_001639", "train_001640", "train_001641", "train_001642", "train_001643", "train_001644", "train_001645", "train_001646", "train_001647", "train_001648", "train_001649", "train_001650", "train_001651", "train_001652", "train_001653", "train_001654", "train_001655", "train_001656", "train_001657", "train_001658", "train_001659", "train_001660", "train_001661", "train_001662", "train_001663", "train_001664", "train_001665", "train_001666", "train_001667", "train_001668", "train_001669", "train_001670", "train_001671", "train_001672", "train_001673", "train_001674", "train_001675", "train_001676", "train_001677", "train_001678", "train_001679", "train_001680", "train_001681", "train_001682", "train_001683", "train_001684", "train_001685", "train_001686", "train_001687", "train_001688", "train_001689", "train_001690", "train_001691", "train_001692", "train_001693", "train_001694", "train_001695", "train_001696", "train_001697", "train_001698", "train_001699", "train_001700", "train_001701", "train_001702", "train_001703", "train_001704", "train_001705", "train_001706", "train_001707", "train_001708", "train_001709", "train_001710", "train_001711", "train_001712", "train_001713", "train_001714", "train_001715", "train_001716", "train_001717", "train_001718", "train_001719", "train_001720", "train_001721", "train_001722", "train_001723", "train_001724", "train_001725", "train_001726", "train_001727", "train_001728", "train_001729", "train_001730", "train_001731", "train_001732", "train_001733", "train_001734", "train_001735", "train_001736", "train_001737", "train_001738", "train_001739", "train_001740", "train_001741", "train_001742", "train_001743", "train_001744", "train_001745", "train_001746", "train_001747", "train_001748", "train_001749", "train_001750", "train_001751", "train_001752", "train_001753", "train_001754", "train_001755", "train_001756", "train_001757", "train_001758", "train_001759", "train_001760", "train_001761", "train_001762", "train_001763", "train_001764", "train_001765", "train_001766", "train_001767", "train_001768", "train_001769", "train_001770", "train_001771", "train_001772", "train_001773", "train_001774", "train_001775", "train_001776", "train_001777", "train_001778", "train_001779", "train_001780", "train_001781", "train_001782", "train_001783", "train_001784", "train_001785", "train_001786", "train_001787", "train_001788", "train_001789", "train_001790", "train_001791", "train_001792", "train_001793", "train_001794", "train_001795", "train_001796", "train_001797", "train_001798", "train_001799", "train_001800", "train_001801", "train_001802", "train_001803", "train_001804", "train_001805", "train_001806", "train_001807", "train_001808", "train_001809", "train_001810", "train_001811", "train_001812", "train_001813", "train_001814", "train_001815", "train_001816", "train_001817", "train_001818", "train_001819", "train_001820", "train_001821", "train_001822", "train_001823", "train_001824", "train_001825", "train_001826", "train_001827", "train_001828", "train_001829", "train_001830", "train_001831", "train_001832", "train_001833", "train_001834", "train_001835", "train_001836", "train_001837", "train_001838", "train_001839", "train_001840", "train_001841", "train_001842", "train_001843", "train_001844", "train_001845", "train_001846", "train_001847", "train_001848", "train_001849", "train_001850", "train_001851", "train_001852", "train_001853", "train_001854", "train_001855", "train_001856", "train_001857", "train_001858", "train_001859", "train_001860", "train_001861", "train_001862", "train_001863", "train_001864", "train_001865", "train_001866", "train_001867", "train_001868", "train_001869", "train_001870", "train_001871", "train_001872", "train_001873", "train_001874", "train_001875", "train_001876", "train_001877", "train_001878", "train_001879", "train_001880", "train_001881", "train_001882", "train_001883", "train_001884", "train_001885", "train_001886", "train_001887", "train_001888", "train_001889", "train_001890", "train_001891", "train_001892", "train_001893", "train_001894", "train_001895", "train_001896", "train_001897", "train_001898", "train_001899", "train_001900", "train_001901", "train_001902", "train_001903", "train_001904", "train_001905", "train_001906", "train_001907", "train_001908", "train_001909", "train_001910", "train_001911", "train_001912", "train_001913", "train_001914", "train_001915", "train_001916", "train_001917", "train_001918", "train_001919", "train_001920", "train_001921", "train_001922", "train_001923", "train_001924", "train_001925", "train_001926", "train_001927", "train_001928", "train_001929", "train_001930", "train_001931", "train_001932", "train_001933", "train_001934", "train_001935", "train_001936", "train_001937", "train_001938", "train_001939", "train_001940", "train_001941", "train_001942", "train_001943", "train_001944", "train_001945", "train_001946", "train_001947", "train_001948", "train_001949", "train_001950", "train_001951", "train_001952", "train_001953", "train_001954", "train_001955", "train_001956", "train_001957", "train_001958", "train_001959", "train_001960", "train_001961", "train_001962", "train_001963", "train_001964", "train_001965", "train_001966", "train_001967", "train_001968", "train_001969", "train_001970", "train_001971", "train_001972", "train_001973", "train_001974", "train_001975", "train_001976", "train_001977", "train_001978", "train_001979", "train_001980", "train_001981", "train_001982", "train_001983", "train_001984", "train_001985", "train_001986", "train_001987", "train_001988", "train_001989", "train_001990", "train_001991", "train_001992", "train_001993", "train_001994", "train_001995", "train_001996", "train_001997", "train_001998", "train_001999", "train_002000"]
+selection_rule = "all_training_mean_pv_zero_call"
+training_sha256 = "61f4ad3a320d1b79bcb1a68b22b3211010c234f3d1c9fb12238233c76b847b27"
+
+    [training_provenance.method]
+    comfort_rule = "hard_all_support"
+    cost_rule = "empirical_expectation"
+    deterministic_rule = "training_mean_pv_zero_call"
+    epsilon = 0.05
+    method = "D"
+    radius = 0.0
+    schema = "r6-method-v1"

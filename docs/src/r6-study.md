@@ -149,7 +149,26 @@ julia +1.12.6 --startup-file=no --project=. scripts/report_r6_study.jl check <st
 
 报告绑定其生成时已完成记录的哈希；后续追加其他配置不会改写旧快照。
 `check`重新执行对应训练与逐日数值验算，再逐字节核对CSV，不能只靠报告自己的哈希声明通过。
-当前入口是依赖本地原始批次及其冻结科学源码的重验；独立公开见证和F17–F19仍须在正式结果后交付。
+此入口依赖本地原始批次及其冻结科学源码，逐日重算完整物理原值。
+正式结果及公开统计/压力证据入口见[测试与压力结果](r6-test-results.md)。
+
+### 可移植统计与压力证据
+
+`r6_public_report.jl`从完整报告导出新包，不重新求解。它包含全部13000条随机日统计源表、
+15组配对费用、14候选策略及24压力日完整原值和科学源码归档。
+随机日公开重验仅认证由日记录重算统计，不含随机日全部调度/KKT原值；
+这些完整原值仍由本地原报告入口重验。压力日则在临时目录加载原科学源码进行完整回代。
+
+```text
+julia +1.12.6 --startup-file=no --project=. scripts/r6_public_report.jl create <study-directory> <report> <new-public>
+julia +1.12.6 --startup-file=no --project=. scripts/r6_public_report.jl check results/summaries/r6-public-20260920-v1
+julia +1.12.6 --startup-file=no --project=. scripts/test_r6_public_report.jl results/summaries/r6-public-20260920-v1
+julia +1.12.6 --startup-file=no --project=docs scripts/plot_r6_study.jl results/summaries/r6-public-20260920-v1 <new-figure-directory>
+```
+
+后两项分别做重封哈希后的数值篡改拒绝、只读图表重绘；不重选参数、不重跑优化。
+F17保留共同日费用和配对区间；F18注明各自单侧概率界；F19保留全部四压力日，
+建筑相对初温显热不能称为电池或管网储热量。图源、运行ID和生成配置与图一同保存。
 
 ### 原值续接的边界
 

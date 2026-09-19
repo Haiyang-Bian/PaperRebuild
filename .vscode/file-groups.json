@@ -11020,6 +11020,51 @@
           "path": "docs/src/r6-test-results.md",
           "name": "r6-test-results.md",
           "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r6-formal-20260920-v1/F17.pdf",
+          "name": "F17.pdf",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r6-formal-20260920-v1/F17.png",
+          "name": "F17.png",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r6-formal-20260920-v1/F18.pdf",
+          "name": "F18.pdf",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r6-formal-20260920-v1/F18.png",
+          "name": "F18.png",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r6-formal-20260920-v1/F19.pdf",
+          "name": "F19.pdf",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r6-formal-20260920-v1/F19.png",
+          "name": "F19.png",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r6-formal-20260920-v1/figure-config.toml",
+          "name": "figure-config.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch06-pipe-equations.md",
+          "name": "ch06-pipe-equations.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch06-pipe-state.md",
+          "name": "ch06-pipe-state.md",
+          "isDirectory": false
         }
       ],
       "order": 1,
@@ -11260,6 +11305,16 @@
         {
           "path": "docs/agent/tasks/2026-09-20-r7-commitment.md",
           "name": "2026-09-20-r7-commitment.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/agent/tasks/2026-09-20-r6-formal-evidence.md",
+          "name": "2026-09-20-r6-formal-evidence.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/agent/tasks/2026-09-20-r7-pipe-state.md",
+          "name": "2026-09-20-r7-pipe-state.md",
           "isDirectory": false
         }
       ],
@@ -11926,6 +11981,11 @@
         {
           "path": "src/verification/r7_commitment.jl",
           "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
           "isDirectory": false
         }
       ],
@@ -12773,6 +12833,11 @@
         {
           "path": "docs/reading/ch06/normal-prerequisites.toml",
           "name": "normal-prerequisites.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch06/pipe-state.toml",
+          "name": "pipe-state.toml",
           "isDirectory": false
         }
       ],
@@ -28395,6 +28460,546 @@
           "path": "results/summaries/ch06-audit-v1/audit.toml",
           "name": "audit.toml",
           "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-figures-20260920-v2/F17.pdf",
+          "name": "F17.pdf",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-figures-20260920-v2/F17.png",
+          "name": "F17.png",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-figures-20260920-v2/F18.pdf",
+          "name": "F18.pdf",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-figures-20260920-v2/F18.png",
+          "name": "F18.png",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-figures-20260920-v2/F19.pdf",
+          "name": "F19.pdf",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-figures-20260920-v2/F19.png",
+          "name": "F19.png",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-figures-20260920-v2/figure-config.toml",
+          "name": "figure-config.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-figures-20260920-v2/hourly.csv",
+          "name": "hourly.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-figures-20260920-v2/paired-cost.csv",
+          "name": "paired-cost.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-figures-20260920-v2/plot_r6_study.jl",
+          "name": "plot_r6_study.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-figures-20260920-v2/risk.csv",
+          "name": "risk.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-figures-20260920-v2/temperatures.csv",
+          "name": "temperatures.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-figures-20260920-v2/test-costs.csv",
+          "name": "test-costs.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-formal-20260920-v1/days-001.csv",
+          "name": "days-001.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-formal-20260920-v1/days-002.csv",
+          "name": "days-002.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-formal-20260920-v1/days-003.csv",
+          "name": "days-003.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-formal-20260920-v1/paired-cost.csv",
+          "name": "paired-cost.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-formal-20260920-v1/report.sha256",
+          "name": "report.sha256",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-formal-20260920-v1/report.toml",
+          "name": "report.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-formal-20260920-v1/risk-cost.csv",
+          "name": "risk-cost.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-formal-20260920-v1/stress.csv",
+          "name": "stress.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-formal-20260920-v1/training.csv",
+          "name": "training.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/code/r6_public_report.jl",
+          "name": "r6_public_report.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/code/r6_study_tables.jl",
+          "name": "r6_study_tables.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/devices.csv",
+          "name": "devices.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/freeze.sha256",
+          "name": "freeze.sha256",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/freeze.toml",
+          "name": "freeze.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/hourly.csv",
+          "name": "hourly.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/policies/CCP.toml",
+          "name": "CCP.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/policies/D.toml",
+          "name": "D.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/policies/DRJCC-r01.toml",
+          "name": "DRJCC-r01.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/policies/DRJCC-r02.toml",
+          "name": "DRJCC-r02.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/policies/DRJCC-r03.toml",
+          "name": "DRJCC-r03.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/policies/DRJCC-r04.toml",
+          "name": "DRJCC-r04.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/policies/DRJCC-r05.toml",
+          "name": "DRJCC-r05.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/policies/DRO-r01.toml",
+          "name": "DRO-r01.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/policies/DRO-r02.toml",
+          "name": "DRO-r02.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/policies/DRO-r03.toml",
+          "name": "DRO-r03.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/policies/DRO-r04.toml",
+          "name": "DRO-r04.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/policies/DRO-r05.toml",
+          "name": "DRO-r05.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/policies/RO.toml",
+          "name": "RO.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/policies/SP.toml",
+          "name": "SP.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/protocol.toml",
+          "name": "protocol.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/public.sha256",
+          "name": "public.sha256",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/public.toml",
+          "name": "public.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/selection.sha256",
+          "name": "selection.sha256",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/selection.toml",
+          "name": "selection.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/source.tar",
+          "name": "source.tar",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/stress/CCP/days/clear_pv_sustained_down.toml",
+          "name": "clear_pv_sustained_down.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/stress/CCP/days/clear_pv_sustained_up.toml",
+          "name": "clear_pv_sustained_up.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/stress/CCP/days/zero_pv_sustained_down.toml",
+          "name": "zero_pv_sustained_down.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/stress/CCP/days/zero_pv_sustained_up.toml",
+          "name": "zero_pv_sustained_up.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/stress/CCP/summary.toml",
+          "name": "summary.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/stress/D/days/clear_pv_sustained_down.toml",
+          "name": "clear_pv_sustained_down.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/stress/D/days/clear_pv_sustained_up.toml",
+          "name": "clear_pv_sustained_up.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/stress/D/days/zero_pv_sustained_down.toml",
+          "name": "zero_pv_sustained_down.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/stress/D/days/zero_pv_sustained_up.toml",
+          "name": "zero_pv_sustained_up.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/stress/D/summary.toml",
+          "name": "summary.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/stress/DRJCC-r04/days/clear_pv_sustained_down.toml",
+          "name": "clear_pv_sustained_down.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/stress/DRJCC-r04/days/clear_pv_sustained_up.toml",
+          "name": "clear_pv_sustained_up.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/stress/DRJCC-r04/days/zero_pv_sustained_down.toml",
+          "name": "zero_pv_sustained_down.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/stress/DRJCC-r04/days/zero_pv_sustained_up.toml",
+          "name": "zero_pv_sustained_up.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/stress/DRJCC-r04/summary.toml",
+          "name": "summary.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/stress/DRO-r02/days/clear_pv_sustained_down.toml",
+          "name": "clear_pv_sustained_down.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/stress/DRO-r02/days/clear_pv_sustained_up.toml",
+          "name": "clear_pv_sustained_up.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/stress/DRO-r02/days/zero_pv_sustained_down.toml",
+          "name": "zero_pv_sustained_down.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/stress/DRO-r02/days/zero_pv_sustained_up.toml",
+          "name": "zero_pv_sustained_up.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/stress/DRO-r02/summary.toml",
+          "name": "summary.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/stress/RO/days/clear_pv_sustained_down.toml",
+          "name": "clear_pv_sustained_down.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/stress/RO/days/clear_pv_sustained_up.toml",
+          "name": "clear_pv_sustained_up.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/stress/RO/days/zero_pv_sustained_down.toml",
+          "name": "zero_pv_sustained_down.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/stress/RO/days/zero_pv_sustained_up.toml",
+          "name": "zero_pv_sustained_up.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/stress/RO/summary.toml",
+          "name": "summary.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/stress/SP/days/clear_pv_sustained_down.toml",
+          "name": "clear_pv_sustained_down.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/stress/SP/days/clear_pv_sustained_up.toml",
+          "name": "clear_pv_sustained_up.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/stress/SP/days/zero_pv_sustained_down.toml",
+          "name": "zero_pv_sustained_down.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/stress/SP/days/zero_pv_sustained_up.toml",
+          "name": "zero_pv_sustained_up.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/stress/SP/summary.toml",
+          "name": "summary.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/tables/days-001.csv",
+          "name": "days-001.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/tables/days-002.csv",
+          "name": "days-002.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/tables/days-003.csv",
+          "name": "days-003.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/tables/paired-cost.csv",
+          "name": "paired-cost.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/tables/report.sha256",
+          "name": "report.sha256",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/tables/report.toml",
+          "name": "report.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/tables/risk-cost.csv",
+          "name": "risk-cost.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/tables/stress.csv",
+          "name": "stress.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/tables/training.csv",
+          "name": "training.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/temperatures.csv",
+          "name": "temperatures.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/test/CCP/summary.toml",
+          "name": "summary.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/test/D/summary.toml",
+          "name": "summary.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/test/DRJCC-r04/summary.toml",
+          "name": "summary.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/test/DRO-r02/summary.toml",
+          "name": "summary.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/test/RO/summary.toml",
+          "name": "summary.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/test/SP/summary.toml",
+          "name": "summary.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/validation/CCP/summary.toml",
+          "name": "summary.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/validation/D/summary.toml",
+          "name": "summary.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/validation/DRJCC-r01/summary.toml",
+          "name": "summary.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/validation/DRJCC-r02/summary.toml",
+          "name": "summary.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/validation/DRJCC-r03/summary.toml",
+          "name": "summary.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/validation/DRJCC-r04/summary.toml",
+          "name": "summary.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/validation/DRJCC-r05/summary.toml",
+          "name": "summary.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/validation/DRO-r01/summary.toml",
+          "name": "summary.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/validation/DRO-r02/summary.toml",
+          "name": "summary.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/validation/DRO-r03/summary.toml",
+          "name": "summary.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/validation/DRO-r04/summary.toml",
+          "name": "summary.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/validation/DRO-r05/summary.toml",
+          "name": "summary.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/validation/RO/summary.toml",
+          "name": "summary.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r6-public-20260920-v1/validation/SP/summary.toml",
+          "name": "summary.toml",
+          "isDirectory": false
         }
       ],
       "order": 6,
@@ -28640,6 +29245,11 @@
         {
           "path": "test/r7_commitment.jl",
           "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "test/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
           "isDirectory": false
         }
       ],
@@ -30531,6 +31141,41 @@
         {
           "path": "scripts/test_r7_commitment.jl",
           "name": "test_r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r6_figures.jl",
+          "name": "check_r6_figures.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r7_pipe_state.jl",
+          "name": "check_r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/plot_r6_study.jl",
+          "name": "plot_r6_study.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r6_public_report.jl",
+          "name": "r6_public_report.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r7_pipe_state_docs.jl",
+          "name": "r7_pipe_state_docs.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/test_r6_public_report.jl",
+          "name": "test_r6_public_report.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/test_r7_pipe_state.jl",
+          "name": "test_r7_pipe_state.jl",
           "isDirectory": false
         }
       ],

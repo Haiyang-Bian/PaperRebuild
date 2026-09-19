@@ -6,10 +6,10 @@
 **当前进度以[当前状态](docs/agent/current-state.md)和[全文覆盖清单](docs/src/reproduction-coverage.md)为准。**
 最新研究入口为[R6六方法开发结果](docs/src/r6-pilot-results.md)、
 [新日策略](docs/src/r6-evaluation.md)和[正式实验协议](docs/src/r6-study.md)。
-R6的14×500验证与六策略各1000日[独立测试](docs/src/r6-test-results.md)已完成，压力测试正在执行；
+R6的14×500验证、六策略各1000日独立测试与24项压力测试已完成，[正式证据与F17–F19](docs/src/r6-test-results.md)已封存；
 [R7恢复子问题](docs/src/ch06-recovery.md)已与解析/LP小例对照，尚无灾前优化或嵌套算法。
-新增[灾前CHP启停块](docs/src/ch06-commitment.md)与事件边界提取；完整正常热网及状态连接继续推进。
-目前仍是明确标注的合成模型与方法验证，尚未完成全论文、论文规模或样本外复现。
+新增[灾前CHP启停块](docs/src/ch06-commitment.md)与[管内温度/显热参考](docs/src/ch06-pipe-state.md)；完整正常热网及状态连接继续推进。
+目前仍是明确标注的合成模型与方法验证，尚未完成全论文、论文规模或作者同输入数值复现。
 
 **以下保留R4历史阶段摘要。**热状态相容性核查的34个父调度在两组预先声明温度带下完成272条阶段记录；
 26个能在设备、热交付和费用不变时重构稳态供回水状态，其中24个同时通过原电网检查。

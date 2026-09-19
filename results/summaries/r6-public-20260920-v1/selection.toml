@@ -1,0 +1,252 @@
+schema = "r6-selection-v1"
+source_split = "validation"
+spec_sha256 = "6e2cd6076778f00af6960975543c0f5f38f925b7ac17ab4cd342b9686feaebb5"
+test_used = false
+validation_records_sha256 = "bdabdf9e7185f6136f883e50d1aa7a977265f5cca912bf1f1b4a5fc8b56ce009"
+
+[[selected]]
+candidate_id = "D"
+method = "D"
+radius = 0.0
+status = "validation_eligible_minimum_cost"
+validated = true
+
+    [selected.validation_summary]
+    all_costs_complete = true
+    complete_cost_days = 500
+    ids_sha256 = "159e2f713511648584185a1e95577e3e948af74d9554a20c74157c09c4123a19"
+    mean_net_cost_USD = -84.27079897130496
+    missing_cost_days = 0
+    model_days_called_MWh = 449.0727821083316
+    model_days_mismatch_MWh = 0.005053918755981305
+    model_days_relative_mismatch = 1.1254119504312617e-5
+    model_max_excess_K = 0.0
+    model_pass_days = 500
+    n = 500
+    observed_mean_net_cost_USD = -84.27079897130496
+    schema = "r6-day-summary-v1"
+    scope = "fixed_policy_complete_future_synthetic_days"
+
+        [selected.validation_summary.observed_cost_quantiles_USD]
+        q05 = -105.64043321582919
+        q50 = -85.55279764440306
+        q95 = -56.43102824366536
+
+        [selected.validation_summary.risk]
+        conservative_violation_fraction = 0.0
+        epsilon = 0.05
+        known_violation_fraction = 0.0
+        lower = 0.0
+        n = 500
+        one_sided_confidence = 0.95
+        passed = 500
+        sample_unit = "complete_trajectory"
+        status = "supported"
+        unknown = 0
+        upper = 0.005973551516349557
+        violations = 0
+[[selected]]
+candidate_id = "SP"
+method = "SP"
+radius = 0.0
+status = "validation_eligible_minimum_cost"
+validated = true
+
+    [selected.validation_summary]
+    all_costs_complete = true
+    complete_cost_days = 500
+    ids_sha256 = "159e2f713511648584185a1e95577e3e948af74d9554a20c74157c09c4123a19"
+    mean_net_cost_USD = -85.69707841269047
+    missing_cost_days = 0
+    model_days_called_MWh = 449.0727821083316
+    model_days_mismatch_MWh = 0.14934597853757006
+    model_days_relative_mismatch = 0.0003325651976421558
+    model_max_excess_K = 0.0
+    model_pass_days = 500
+    n = 500
+    observed_mean_net_cost_USD = -85.69707841269047
+    schema = "r6-day-summary-v1"
+    scope = "fixed_policy_complete_future_synthetic_days"
+
+        [selected.validation_summary.observed_cost_quantiles_USD]
+        q05 = -105.42596284311664
+        q50 = -87.55698311119916
+        q95 = -60.45517601722879
+
+        [selected.validation_summary.risk]
+        conservative_violation_fraction = 0.0
+        epsilon = 0.05
+        known_violation_fraction = 0.0
+        lower = 0.0
+        n = 500
+        one_sided_confidence = 0.95
+        passed = 500
+        sample_unit = "complete_trajectory"
+        status = "supported"
+        unknown = 0
+        upper = 0.005973551516349557
+        violations = 0
+[[selected]]
+candidate_id = "RO"
+method = "RO"
+radius = 0.0
+status = "validation_eligible_minimum_cost"
+validated = true
+
+    [selected.validation_summary]
+    all_costs_complete = true
+    complete_cost_days = 500
+    ids_sha256 = "159e2f713511648584185a1e95577e3e948af74d9554a20c74157c09c4123a19"
+    mean_net_cost_USD = -81.62134105522549
+    missing_cost_days = 0
+    model_days_called_MWh = 442.66899031022405
+    model_days_mismatch_MWh = 0.00505391875597818
+    model_days_relative_mismatch = 1.141692521185271e-5
+    model_max_excess_K = 0.0
+    model_pass_days = 500
+    n = 500
+    observed_mean_net_cost_USD = -81.62134105522549
+    schema = "r6-day-summary-v1"
+    scope = "fixed_policy_complete_future_synthetic_days"
+
+        [selected.validation_summary.observed_cost_quantiles_USD]
+        q05 = -100.21058987443568
+        q50 = -83.01489174023126
+        q95 = -57.62671186554295
+
+        [selected.validation_summary.risk]
+        conservative_violation_fraction = 0.0
+        epsilon = 0.05
+        known_violation_fraction = 0.0
+        lower = 0.0
+        n = 500
+        one_sided_confidence = 0.95
+        passed = 500
+        sample_unit = "complete_trajectory"
+        status = "supported"
+        unknown = 0
+        upper = 0.005973551516349557
+        violations = 0
+[[selected]]
+candidate_id = "DRO-r02"
+method = "DRO"
+radius = 0.0005
+status = "validation_eligible_minimum_cost"
+validated = true
+
+    [selected.validation_summary]
+    all_costs_complete = true
+    complete_cost_days = 500
+    ids_sha256 = "159e2f713511648584185a1e95577e3e948af74d9554a20c74157c09c4123a19"
+    mean_net_cost_USD = -85.71740972868771
+    missing_cost_days = 0
+    model_days_called_MWh = 449.0727821083316
+    model_days_mismatch_MWh = 0.14129537611804455
+    model_days_relative_mismatch = 0.0003146380314003517
+    model_max_excess_K = 0.0
+    model_pass_days = 500
+    n = 500
+    observed_mean_net_cost_USD = -85.71740972868771
+    schema = "r6-day-summary-v1"
+    scope = "fixed_policy_complete_future_synthetic_days"
+
+        [selected.validation_summary.observed_cost_quantiles_USD]
+        q05 = -105.43005829523462
+        q50 = -87.641151203697
+        q95 = -60.46043565870294
+
+        [selected.validation_summary.risk]
+        conservative_violation_fraction = 0.0
+        epsilon = 0.05
+        known_violation_fraction = 0.0
+        lower = 0.0
+        n = 500
+        one_sided_confidence = 0.95
+        passed = 500
+        sample_unit = "complete_trajectory"
+        status = "supported"
+        unknown = 0
+        upper = 0.005973551516349557
+        violations = 0
+[[selected]]
+candidate_id = "CCP"
+method = "CCP"
+radius = 0.0
+status = "fallback_not_validation_supported"
+validated = false
+
+    [selected.validation_summary]
+    all_costs_complete = true
+    complete_cost_days = 500
+    ids_sha256 = "159e2f713511648584185a1e95577e3e948af74d9554a20c74157c09c4123a19"
+    mean_net_cost_USD = -85.86317538438202
+    missing_cost_days = 0
+    model_days_called_MWh = 449.0727821083316
+    model_days_mismatch_MWh = 0.13278549813374704
+    model_days_relative_mismatch = 0.00029568814549467545
+    model_max_excess_K = 1.0
+    model_pass_days = 500
+    n = 500
+    observed_mean_net_cost_USD = -85.86317538438202
+    schema = "r6-day-summary-v1"
+    scope = "fixed_policy_complete_future_synthetic_days"
+
+        [selected.validation_summary.observed_cost_quantiles_USD]
+        q05 = -105.45058092363416
+        q50 = -87.63253140529173
+        q95 = -60.50570668949043
+
+        [selected.validation_summary.risk]
+        conservative_violation_fraction = 0.046
+        epsilon = 0.05
+        known_violation_fraction = 0.046
+        lower = 0.031639755999506636
+        n = 500
+        one_sided_confidence = 0.95
+        passed = 477
+        sample_unit = "complete_trajectory"
+        status = "inconclusive"
+        unknown = 0
+        upper = 0.06454329632416766
+        violations = 23
+[[selected]]
+candidate_id = "DRJCC-r04"
+method = "DRJCC"
+radius = 0.005
+status = "validation_eligible_minimum_cost"
+validated = true
+
+    [selected.validation_summary]
+    all_costs_complete = true
+    complete_cost_days = 500
+    ids_sha256 = "159e2f713511648584185a1e95577e3e948af74d9554a20c74157c09c4123a19"
+    mean_net_cost_USD = -85.6020560268376
+    missing_cost_days = 0
+    model_days_called_MWh = 449.0727821083316
+    model_days_mismatch_MWh = 0.191194114976645
+    model_days_relative_mismatch = 0.00042575306853160055
+    model_max_excess_K = 1.0
+    model_pass_days = 500
+    n = 500
+    observed_mean_net_cost_USD = -85.6020560268376
+    schema = "r6-day-summary-v1"
+    scope = "fixed_policy_complete_future_synthetic_days"
+
+        [selected.validation_summary.observed_cost_quantiles_USD]
+        q05 = -105.24086704621138
+        q50 = -87.60695157173915
+        q95 = -59.938949856227055
+
+        [selected.validation_summary.risk]
+        conservative_violation_fraction = 0.012
+        epsilon = 0.05
+        known_violation_fraction = 0.012
+        lower = 0.005238564057382988
+        n = 500
+        one_sided_confidence = 0.95
+        passed = 494
+        sample_unit = "complete_trajectory"
+        status = "supported"
+        unknown = 0
+        upper = 0.023546585483971323
+        violations = 6

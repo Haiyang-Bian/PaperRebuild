@@ -52,6 +52,18 @@ R3第四批显式v3见[物理恢复与停止判据](../src/ch03-r3-v3.md)。恢�
 
 ## 文档更新路由
 
+R7管内状态读[温度与显热](../src/ch06-pipe-state.md)，权威台账ch06/pipe-state.toml。
+r7_plug_flow_reference_v1是给定流量的一维平流散热参考，不是原节点法/WMM逐字实现。
+出口步平均、端点瞬时温度和整管质量平均分别处理；供回水各计一次、显热参考温度显式。
+停流仍换热、反向保留空间状态；新能力不改变既有恢复模型方向边界。
+显热积分不自动等于灾后可回收量，未连接完整正常网络时normal_dispatch_verified保持false。
+
+R6正式测试结论见[统计与压力结果](../src/r6-test-results.md)。参数不因测试排名再选。
+r6_public_report.jl保留随机日统计源表与24压力日原值；公开包只重算随机日统计，
+不冒称包含13000日全部物理原值。压力日用原科学归档完整回放，所有重验不重新求解。
+完整本地report-create已逐日回代；其范围与轻量公开重验分开。重新绘图须使用新目录。
+DRJCC压力越界与SP/DRO本批更好表现均保留；不得换操作分支制造通过。
+
 R7灾前准备读[启停与状态继承](../src/ch06-commitment.md)及ch06/normal-prerequisites.toml。
 CHP约束块可嵌入正常模型；min_on/min_off按h计，非整步上取整，窗口前持续时间不能省略。
 carry_obligation与complete_within_horizon是显式项目边界；事件前功率取ts-1的同场景值。

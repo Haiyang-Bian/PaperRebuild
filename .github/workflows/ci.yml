@@ -77,6 +77,10 @@ jobs:
         run: julia --startup-file=no --project=. scripts/check_r6_data.jl results/summaries/r6-data-v1
       - name: R6 six-method development evidence and tamper rejection
         run: julia --startup-file=no --project=. scripts/r6_pilot_replay.jl check results/summaries/r6-pilot-replay-v2
+      - name: R6 public statistics, frozen stress replay and tamper checks
+        run: julia --startup-file=no --project=. scripts/test_r6_public_report.jl results/summaries/r6-public-20260920-v1
+      - name: R6 scientific figure sources and hashes
+        run: julia --startup-file=no --project=. scripts/check_r6_figures.jl results/summaries/r6-public-20260920-v1 results/summaries/r6-figures-20260920-v2
       - name: Julia format
         run: julia --startup-file=no --project=tools scripts/format.jl
       # R7恢复专项已进入runtests；这里核对独立公式/实际约束覆盖。
@@ -84,6 +88,8 @@ jobs:
         run: julia --startup-file=no --project=. scripts/check_r7_recovery.jl
       - name: R7 normal CHP and boundary mapping
         run: julia --startup-file=no --project=. scripts/check_r7_commitment.jl
+      - name: R7 pipe state and thermal inventory mapping
+        run: julia --startup-file=no --project=. scripts/check_r7_pipe_state.jl
       - name: R7 frozen analytic audit mapping
         run: julia --startup-file=no --project=. scripts/check_ch06.jl
       - name: Project checks

@@ -1,5 +1,8 @@
 {
   "inputs": [
+    {"id":"r6PublicEvidence","type":"promptString","description":"R6可移植证据目录；导出使用新目录，重验使用已有目录","default":"results/summaries/r6-public-20260920-v1"},
+    {"id":"r6FigureOutput","type":"promptString","description":"R6科学图的新输出目录；不得覆盖旧图","default":"results/runs/r6-redraw-local"},
+    {"id":"r6SavedFigures","type":"promptString","description":"已有R6图目录；只读核对图源及哈希","default":"results/summaries/r6-figures-20260920-v2"},
     {"id":"r6FrozenWorkspace","type":"promptString","description":"R6冻结执行目录；prepare须新目录，其余操作须已验证目录","default":"results/runs/r6-formal-20260919-v2/frozen-workspace"},
     {"id":"r6FrozenAction","type":"pickString","description":"按原协议执行：验证完成后锁定选择，再测试与压力评估","options":["check","validation","select","test","stress"],"default":"check"},
     {"id":"r6StudyReport","type":"promptString","description":"R6报告目录；生成须新目录，重验须已有目录","default":"results/runs/r6-formal-report-new"},
@@ -100,6 +103,28 @@
   ],
   "tasks": [
     {
+      "label": "PaperRebuild: R6 figure source checks",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/check_r6_figures.jl", "${input:r6PublicEvidence}", "${input:r6SavedFigures}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R7 pipe state tests",
+      "type": "process",
+      "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/test_r7_pipe_state.jl"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R7 pipe state mapping",
+      "type": "process",
+      "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/check_r7_pipe_state.jl"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "problemMatcher": []
+    },
+    {
       "label": "PaperRebuild: R7 normal CHP mapping",
       "type": "process", "command": "julia",
       "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/check_r7_commitment.jl"],
@@ -126,6 +151,36 @@
       "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/test_r7_recovery.jl"],
       "options": {"cwd": "${workspaceFolder}"},
       "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R6 public evidence export",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/r6_public_report.jl", "create", "${input:r6StudyRun}", "${input:r6StudyReport}", "${input:r6PublicEvidence}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R6 public evidence replay",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/r6_public_report.jl", "check", "${input:r6PublicEvidence}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R6 public evidence tests",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/test_r6_public_report.jl", "${input:r6PublicEvidence}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R6 redraw F17 F18 F19",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=docs", "scripts/plot_r6_study.jl", "${input:r6PublicEvidence}", "${input:r6FigureOutput}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R6 frozen final report",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/r6_frozen_workspace.jl", "run", "${input:r6StudyRun}", "${input:r6FrozenWorkspace}", "report-create", "${input:r6StudyReport}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
     },
     {
       "label": "PaperRebuild: R6 prepare frozen execution",
