@@ -1,0 +1,915 @@
+parent_result_sha256 = "96b4164ce47069226804ba41e44c8caed44965ca53ca039aa718f09e948574fb"
+
+[case]
+comfort = "hard_each_scenario"
+name = "shared_hand"
+objective = "expected_net_cost"
+origin = "synthetic"
+recourse_information = "complete_trajectory"
+schema = "r5-commitment-case-v1"
+uncertain_fields = ["realtime.alpha_down", "realtime.alpha_up"]
+
+    [case.bounds.P_DA_MW]
+    lower = [0.0]
+    upper = [1.0]
+
+    [case.bounds.R_down_MW]
+    lower = [0.0]
+    upper = [0.08]
+
+    [case.bounds.R_up_MW]
+    lower = [0.0]
+    upper = [0.08]
+
+    [case.day_ahead]
+    down_price = [100.0]
+    energy_price = [100.0]
+    up_price = [100.0]
+
+    [[case.scenarios]]
+    case_sha256 = "d39ca0ad367685e74249f83f59fc7853d0be975097cf7f5d83c7be7839dd4ea1"
+    id = "none"
+    probability = 0.5
+
+        [case.scenarios.case]
+        T = 1
+        ambient_K = [283.15]
+        dt_h = 0.25
+        name = "shared_none"
+        origin = "synthetic"
+        schema = "r5-dispatch-case-v1"
+
+            [case.scenarios.case.award]
+            P_DA_MW = [0.142]
+            R_down_MW = [0.0]
+            R_up_MW = [0.0]
+            down_price = [2.0]
+            energy_price = [100.0]
+            origin = "synthetic"
+            up_price = [5.0]
+
+            [[case.scenarios.case.buildings]]
+            COP_DH = 1.0
+            C_MWh_K = 0.01
+            G_MW_K = 0.0042
+            P_DH_max_MW = 0.0
+            R_max_K = 320.15
+            R_min_K = 320.15
+            T_initial_K = 293.15
+            T_max_K = 293.15
+            T_min_K = 293.15
+            electric_node = 2
+            heat_node = 2
+            id = "building"
+            m_kg_s = 1.0
+            terminal_rule = "initial"
+
+            [[case.scenarios.case.devices]]
+            cost_USD_MWh = 0.0
+            heat_ratio = 1.0
+            id = "EB"
+            kind = "EB"
+            node = 2
+            p_max_MW = 0.1
+            p_min_MW = 0.0
+            q_max_Mvar = 0.0
+            q_min_Mvar = 0.0
+            source_id = "source"
+            [[case.scenarios.case.devices]]
+            P_initial_MW = 0.05
+            cost_USD_MWh = 130.0
+            id = "GT"
+            kind = "GT"
+            node = 2
+            p_max_MW = 0.2
+            p_min_MW = 0.0
+            q_max_Mvar = 0.0
+            q_min_Mvar = 0.0
+            ramp_down_MW_h = 1.0
+            ramp_up_MW_h = 1.0
+
+            [case.scenarios.case.electric]
+            P_load_MW = [[0.0], [0.1]]
+            Q_load_Mvar = [[0.0], [0.02]]
+            S_base_MVA = 1.0
+            nodes = 2
+            pcc_max_MW = 1.0
+            pcc_min_MW = 0.0
+            qcc_max_Mvar = 1.0
+            qcc_min_Mvar = -1.0
+            root = 1
+            v_max_pu = 1.05
+            v_min_pu = 0.95
+            v_ref_pu = 1.0
+
+                [[case.scenarios.case.electric.lines]]
+                P_limit_MW = 1.0
+                Q_limit_Mvar = 1.0
+                from = 1
+                id = "e12"
+                r_pu = 0.01
+                to = 2
+                x_pu = 0.005
+
+            [case.scenarios.case.heat]
+            R_max_K = 343.15
+            R_min_K = 293.15
+            S_max_K = 353.15
+            S_min_K = 303.15
+            c_J_kgK = 4200.0
+            nodes = 2
+            terminal_rule = "free"
+
+                [[case.scenarios.case.heat.pipes]]
+                area_m2 = 0.01
+                from = 1
+                history_R_K = [320.15, 320.15, 320.15, 320.15]
+                history_S_K = [330.15, 330.15, 330.15, 330.15]
+                id = "h12"
+                length_m = 360.0
+                loss_W_mK = 0.0
+                m_kg_s = 1.0
+                rho_kg_m3 = 1000.0
+                to = 2
+
+                [[case.scenarios.case.heat.sources]]
+                T_max_K = 330.15
+                T_min_K = 330.15
+                id = "source"
+                m_kg_s = 1.0
+                node = 1
+
+            [case.scenarios.case.realtime]
+            alpha_down = [0.0]
+            alpha_up = [0.0]
+            delta = 0.0
+            penalty_USD_MWh = 1000.0
+            price = [80.0]
+
+            [case.scenarios.case.units]
+            energy = "MWh"
+            energy_price = "USD/MWh"
+            flow = "kg/s"
+            heat_capacity = "MWh/K"
+            heat_transfer = "MW/K"
+            power = "MW"
+            reactive = "Mvar"
+            reserve_price = "USD/(MW*h)"
+            temperature = "K"
+            time = "h"
+    [[case.scenarios]]
+    case_sha256 = "2e3bfbf561fc8197540964227d6f6b3f5e8a95cb2fbba4f5371325ad3cb76383"
+    id = "up"
+    probability = 0.25
+
+        [case.scenarios.case]
+        T = 1
+        ambient_K = [283.15]
+        dt_h = 0.25
+        name = "shared_up"
+        origin = "synthetic"
+        schema = "r5-dispatch-case-v1"
+
+            [case.scenarios.case.award]
+            P_DA_MW = [0.142]
+            R_down_MW = [0.0]
+            R_up_MW = [0.0]
+            down_price = [2.0]
+            energy_price = [100.0]
+            origin = "synthetic"
+            up_price = [5.0]
+
+            [[case.scenarios.case.buildings]]
+            COP_DH = 1.0
+            C_MWh_K = 0.01
+            G_MW_K = 0.0042
+            P_DH_max_MW = 0.0
+            R_max_K = 320.15
+            R_min_K = 320.15
+            T_initial_K = 293.15
+            T_max_K = 293.15
+            T_min_K = 293.15
+            electric_node = 2
+            heat_node = 2
+            id = "building"
+            m_kg_s = 1.0
+            terminal_rule = "initial"
+
+            [[case.scenarios.case.devices]]
+            cost_USD_MWh = 0.0
+            heat_ratio = 1.0
+            id = "EB"
+            kind = "EB"
+            node = 2
+            p_max_MW = 0.1
+            p_min_MW = 0.0
+            q_max_Mvar = 0.0
+            q_min_Mvar = 0.0
+            source_id = "source"
+            [[case.scenarios.case.devices]]
+            P_initial_MW = 0.05
+            cost_USD_MWh = 130.0
+            id = "GT"
+            kind = "GT"
+            node = 2
+            p_max_MW = 0.2
+            p_min_MW = 0.0
+            q_max_Mvar = 0.0
+            q_min_Mvar = 0.0
+            ramp_down_MW_h = 1.0
+            ramp_up_MW_h = 1.0
+
+            [case.scenarios.case.electric]
+            P_load_MW = [[0.0], [0.1]]
+            Q_load_Mvar = [[0.0], [0.02]]
+            S_base_MVA = 1.0
+            nodes = 2
+            pcc_max_MW = 1.0
+            pcc_min_MW = 0.0
+            qcc_max_Mvar = 1.0
+            qcc_min_Mvar = -1.0
+            root = 1
+            v_max_pu = 1.05
+            v_min_pu = 0.95
+            v_ref_pu = 1.0
+
+                [[case.scenarios.case.electric.lines]]
+                P_limit_MW = 1.0
+                Q_limit_Mvar = 1.0
+                from = 1
+                id = "e12"
+                r_pu = 0.01
+                to = 2
+                x_pu = 0.005
+
+            [case.scenarios.case.heat]
+            R_max_K = 343.15
+            R_min_K = 293.15
+            S_max_K = 353.15
+            S_min_K = 303.15
+            c_J_kgK = 4200.0
+            nodes = 2
+            terminal_rule = "free"
+
+                [[case.scenarios.case.heat.pipes]]
+                area_m2 = 0.01
+                from = 1
+                history_R_K = [320.15, 320.15, 320.15, 320.15]
+                history_S_K = [330.15, 330.15, 330.15, 330.15]
+                id = "h12"
+                length_m = 360.0
+                loss_W_mK = 0.0
+                m_kg_s = 1.0
+                rho_kg_m3 = 1000.0
+                to = 2
+
+                [[case.scenarios.case.heat.sources]]
+                T_max_K = 330.15
+                T_min_K = 330.15
+                id = "source"
+                m_kg_s = 1.0
+                node = 1
+
+            [case.scenarios.case.realtime]
+            alpha_down = [0.0]
+            alpha_up = [1.0]
+            delta = 0.0
+            penalty_USD_MWh = 1000.0
+            price = [80.0]
+
+            [case.scenarios.case.units]
+            energy = "MWh"
+            energy_price = "USD/MWh"
+            flow = "kg/s"
+            heat_capacity = "MWh/K"
+            heat_transfer = "MW/K"
+            power = "MW"
+            reactive = "Mvar"
+            reserve_price = "USD/(MW*h)"
+            temperature = "K"
+            time = "h"
+    [[case.scenarios]]
+    case_sha256 = "bf6d27a22d0621f58b0a6c4d48ea60a5c1a1f7dfe523c87149edf0807a42a593"
+    id = "down"
+    probability = 0.25
+
+        [case.scenarios.case]
+        T = 1
+        ambient_K = [283.15]
+        dt_h = 0.25
+        name = "shared_down"
+        origin = "synthetic"
+        schema = "r5-dispatch-case-v1"
+
+            [case.scenarios.case.award]
+            P_DA_MW = [0.142]
+            R_down_MW = [0.0]
+            R_up_MW = [0.0]
+            down_price = [2.0]
+            energy_price = [100.0]
+            origin = "synthetic"
+            up_price = [5.0]
+
+            [[case.scenarios.case.buildings]]
+            COP_DH = 1.0
+            C_MWh_K = 0.01
+            G_MW_K = 0.0042
+            P_DH_max_MW = 0.0
+            R_max_K = 320.15
+            R_min_K = 320.15
+            T_initial_K = 293.15
+            T_max_K = 293.15
+            T_min_K = 293.15
+            electric_node = 2
+            heat_node = 2
+            id = "building"
+            m_kg_s = 1.0
+            terminal_rule = "initial"
+
+            [[case.scenarios.case.devices]]
+            cost_USD_MWh = 0.0
+            heat_ratio = 1.0
+            id = "EB"
+            kind = "EB"
+            node = 2
+            p_max_MW = 0.1
+            p_min_MW = 0.0
+            q_max_Mvar = 0.0
+            q_min_Mvar = 0.0
+            source_id = "source"
+            [[case.scenarios.case.devices]]
+            P_initial_MW = 0.05
+            cost_USD_MWh = 130.0
+            id = "GT"
+            kind = "GT"
+            node = 2
+            p_max_MW = 0.2
+            p_min_MW = 0.0
+            q_max_Mvar = 0.0
+            q_min_Mvar = 0.0
+            ramp_down_MW_h = 1.0
+            ramp_up_MW_h = 1.0
+
+            [case.scenarios.case.electric]
+            P_load_MW = [[0.0], [0.1]]
+            Q_load_Mvar = [[0.0], [0.02]]
+            S_base_MVA = 1.0
+            nodes = 2
+            pcc_max_MW = 1.0
+            pcc_min_MW = 0.0
+            qcc_max_Mvar = 1.0
+            qcc_min_Mvar = -1.0
+            root = 1
+            v_max_pu = 1.05
+            v_min_pu = 0.95
+            v_ref_pu = 1.0
+
+                [[case.scenarios.case.electric.lines]]
+                P_limit_MW = 1.0
+                Q_limit_Mvar = 1.0
+                from = 1
+                id = "e12"
+                r_pu = 0.01
+                to = 2
+                x_pu = 0.005
+
+            [case.scenarios.case.heat]
+            R_max_K = 343.15
+            R_min_K = 293.15
+            S_max_K = 353.15
+            S_min_K = 303.15
+            c_J_kgK = 4200.0
+            nodes = 2
+            terminal_rule = "free"
+
+                [[case.scenarios.case.heat.pipes]]
+                area_m2 = 0.01
+                from = 1
+                history_R_K = [320.15, 320.15, 320.15, 320.15]
+                history_S_K = [330.15, 330.15, 330.15, 330.15]
+                id = "h12"
+                length_m = 360.0
+                loss_W_mK = 0.0
+                m_kg_s = 1.0
+                rho_kg_m3 = 1000.0
+                to = 2
+
+                [[case.scenarios.case.heat.sources]]
+                T_max_K = 330.15
+                T_min_K = 330.15
+                id = "source"
+                m_kg_s = 1.0
+                node = 1
+
+            [case.scenarios.case.realtime]
+            alpha_down = [1.0]
+            alpha_up = [0.0]
+            delta = 0.0
+            penalty_USD_MWh = 1000.0
+            price = [80.0]
+
+            [case.scenarios.case.units]
+            energy = "MWh"
+            energy_price = "USD/MWh"
+            flow = "kg/s"
+            heat_capacity = "MWh/K"
+            heat_transfer = "MW/K"
+            power = "MW"
+            reactive = "Mvar"
+            reserve_price = "USD/(MW*h)"
+            temperature = "K"
+            time = "h"
+
+[result]
+case_sha256 = "0174ecd9ec9344ab9e72863b8e0ad669e240b70f9fe5c45541dbc813253d7e1f"
+cost_optimization_complete = true
+elapsed_sec = 0.019999980926513672
+run_id = "r5-commitment-949a7833-e1e5-4509-9108-bafbb6348f7f"
+schema = "r5-commitment-result-v1"
+solver_objective = 0.5212500000010769
+solver_objective_bound = 0.5212499999680987
+status = "solver_optimal"
+version = "r5_shared_commitment_checked_v1"
+
+    [result.first_stage]
+    P_DA_MW = [0.07999999999968935]
+    R_down_MW = [0.06200000000030902]
+    R_up_MW = [0.07999999999967913]
+
+    [result.raw_first_stage_duals]
+    "PCC-down/1" = -3.8693283188475077e-13
+    "PCC-up/1" = 11.07345930306352
+    "P_DA_MW/1/lower" = 5.167860295292487e-12
+    "P_DA_MW/1/upper" = -3.3653561784899795e-13
+    "R_down_MW/1/lower" = 2.8582134478480547e-12
+    "R_down_MW/1/upper" = -1.4537894955772833e-11
+    "R_up_MW/1/lower" = 5.331636966894182e-12
+    "R_up_MW/1/upper" = -1.2500000000170697
+
+    [result.scenarios.down]
+    case_sha256 = "c9a019284ffdad239686a8427bac82f63e868f4841b8561fdd98b15f28c15c01"
+    dual_probability_divisor = 0.25
+    parent_run_id = "r5-commitment-949a7833-e1e5-4509-9108-bafbb6348f7f"
+    run_id = "r5-commitment-949a7833-e1e5-4509-9108-bafbb6348f7f/down"
+    schema = "r5-dispatch-result-v1"
+    solver_objective = -0.3100000000007299
+    status = "embedded_shared_commitment_candidate"
+    version = "r5_dispatch_checked_v1"
+
+        [result.scenarios.down.raw_bound_duals]
+        "H_D/1/1/lower" = 4.192405804646385e-11
+        "P_DER/1/1/lower" = 3.331954780302413e-11
+        "P_DER/1/1/upper" = -2.5454600412317546e-11
+        "P_DER/2/1/lower" = 112.49999999996848
+        "P_DER/2/1/upper" = -8.925069680993112e-12
+        "P_DH/1/1/lower" = 661.3155680752373
+        "P_DH/1/1/upper" = -661.3970307836203
+        "P_PCC/1/1/lower" = 1.2148304454497767e-11
+        "P_PCC/1/1/upper" = -1.8180192956741402e-12
+        "P_line/1/1/lower" = 1.5241006266617401e-12
+        "P_line/1/1/upper" = -1.818019295668335e-12
+        "Q_DER/1/1/lower" = 132.7085370271168
+        "Q_DER/1/1/upper" = -132.70853702711707
+        "Q_DER/2/1/lower" = 132.7085370271168
+        "Q_DER/2/1/upper" = -132.70853702711707
+        "Q_PCC/1/1/lower" = 1.5955021829245725e-12
+        "Q_PCC/1/1/upper" = -1.730787504639676e-12
+        "Q_line/1/1/lower" = 1.5955021829245309e-12
+        "Q_line/1/1/upper" = -1.7307875046396552e-12
+        "mismatch/1/1/lower" = 126.51384165656061
+        "v/1/1/lower" = 2.879454731951072e-11
+        "v/1/1/upper" = -2.8794547319521708e-11
+        "v/2/1/lower" = 2.953155462929518e-11
+        "v/2/1/upper" = -2.8097579241304275e-11
+        "τ_IN/1/1/lower" = 136.0414655935669
+        "τ_IN/1/1/upper" = -136.0411833095047
+        "τ_R/1/1/lower" = 1.6045408861413322e-13
+        "τ_R/1/1/upper" = -1.6900226536090778e-13
+        "τ_R/2/1/lower" = 1.520859556572627e-13
+        "τ_R/2/1/upper" = -1.7989954620529893e-13
+        "τ_S/1/1/lower" = 1.5230212915313984e-13
+        "τ_S/1/1/upper" = -1.7972931837764364e-13
+        "τ_S/2/1/lower" = 1.6045408861412022e-13
+        "τ_S/2/1/upper" = -1.6900226536090778e-13
+        "τ_load_R/1/1/lower" = 133.0277979666185
+        "τ_load_R/1/1/upper" = -133.36345582324293
+        "τ_src/1/1/lower" = 132.81702478553106
+        "τ_src/1/1/upper" = -133.15302478553093
+
+        [result.scenarios.down.raw_constraint_duals]
+        "5-10-down/GT/1" = -8.598171192055764e-12
+        "5-10-up/GT/1" = -6.066867889833925e-12
+        "5-14/1/1" = -79.9999999999624
+        "5-14/2/1" = -79.99999999996209
+        "5-15/1/1" = 1.3528532163494735e-13
+        "5-15/2/1" = 2.777405210473577e-13
+        "5-16/e12/1" = -1.4339755472181609e-12
+        "5-17/root/1" = -1.4339755472071745e-12
+        "5-18/source/1" = -79.99999999996994
+        "5-19/building/1" = 79.91853729153878
+        "5-20/1/1" = 2.742719972803661e-14
+        "5-20/2/1" = 0.33565785662447134
+        "5-21/1/1" = 0.33599999999988234
+        "5-21/2/1" = 2.781359502522351e-14
+        "5-25-26-R/h12/1" = 0.33599999999988234
+        "5-25-26-S/h12/1" = 0.33565785662447134
+        "5-3-minus/PCC/1" = 196.6265080420641
+        "5-3-plus/PCC/1" = 96.62650804211204
+        "5-4/window/0" = -679.0674309629445
+        "R5-D-building/building/1" = 3.196741491663165
+        "R5-D-delivery/PCC/1" = 79.99999999995207
+        "R5-D-terminal/building/1" = -3.5326816323499517
+
+        [result.scenarios.down.values]
+        H_D = [[0.04200000000000051]]
+        P_DER = [[0.04199999999999998], [4.227284141668839e-15]]
+        P_DH = [[8.536461842967835e-17]]
+        P_PCC = [[0.1419999999999959]]
+        P_line = [[0.14199999999999588]]
+        Q_DER = [[-3.4624323912742644e-18], [-3.4624323912742644e-18]]
+        Q_PCC = [[0.020000000000000007]]
+        Q_line = [[0.020000000000000007]]
+        delivery = [[-0.06200000000030659]]
+        mismatch = [[1.8842794465926952e-15]]
+        v = [[1.0], [0.99848]]
+        "τ_IN" = [[293.15]]
+        "τ_R" = [[320.15000000000003], [320.15000000000003]]
+        "τ_S" = [[330.15], [330.15]]
+        "τ_load_R" = [[320.15000000000003]]
+        "τ_pipe_R" = [[320.15000000000003]]
+        "τ_pipe_S" = [[330.15]]
+        "τ_src" = [[330.15]]
+
+    [result.scenarios.none]
+    case_sha256 = "c75cbe2345f121be607dd8f2b2af38e743fe8002723e376255ef87dbb160fc8e"
+    dual_probability_divisor = 0.5
+    parent_run_id = "r5-commitment-949a7833-e1e5-4509-9108-bafbb6348f7f"
+    run_id = "r5-commitment-949a7833-e1e5-4509-9108-bafbb6348f7f/none"
+    schema = "r5-dispatch-result-v1"
+    solver_objective = 0.46500000000296193
+    status = "embedded_shared_commitment_candidate"
+    version = "r5_dispatch_checked_v1"
+
+        [result.scenarios.none.raw_bound_duals]
+        "H_D/1/1/lower" = 2.0962034136236517e-11
+        "P_DER/1/1/lower" = 1.66597509284197e-11
+        "P_DER/1/1/upper" = -1.2727315384827784e-11
+        "P_DER/2/1/lower" = 2.4837714311247928e-11
+        "P_DER/2/1/upper" = -6.035005165758491e-12
+        "P_DH/1/1/lower" = 330.65685756586595
+        "P_DH/1/1/upper" = -330.69951504825843
+        "P_PCC/1/1/lower" = 9.950462407430905e-12
+        "P_PCC/1/1/upper" = -8.303842506700409e-13
+        "P_line/1/1/lower" = 8.147630406838665e-13
+        "P_line/1/1/upper" = -8.303842506700201e-13
+        "Q_DER/1/1/lower" = 66.35427537567888
+        "Q_DER/1/1/upper" = -66.35427537567901
+        "Q_DER/2/1/lower" = 66.35427537567888
+        "Q_DER/2/1/upper" = -66.35427537567901
+        "Q_PCC/1/1/lower" = 7.977489026808636e-13
+        "Q_PCC/1/1/upper" = -8.65395975982727e-13
+        "Q_line/1/1/lower" = 7.977489026809364e-13
+        "Q_line/1/1/upper" = -8.653959759826854e-13
+        "mismatch/1/1/lower" = 93.4813167862552
+        "v/1/1/lower" = 1.4397273659755193e-11
+        "v/1/1/upper" = -1.4397273659762185e-11
+        "v/2/1/lower" = 1.46262565550964e-11
+        "v/2/1/upper" = -1.4176342043787646e-11
+        "τ_IN/1/1/lower" = 68.02061652638827
+        "τ_IN/1/1/upper" = -68.02070517510387
+        "τ_R/1/1/lower" = 8.022704430706921e-14
+        "τ_R/1/1/upper" = -8.450113268045389e-14
+        "τ_R/2/1/lower" = 7.60643535232545e-14
+        "τ_R/2/1/upper" = -8.992440895899075e-14
+        "τ_S/1/1/lower" = 7.617248521759646e-14
+        "τ_S/1/1/upper" = -8.983931608562361e-14
+        "τ_S/2/1/lower" = 8.022704430706921e-14
+        "τ_S/2/1/upper" = -8.450113268044479e-14
+        "τ_load_R/1/1/lower" = 66.68415166103563
+        "τ_load_R/1/1/upper" = -66.54747249960957
+        "τ_src/1/1/lower" = 66.580136998136
+        "τ_src/1/1/upper" = -66.44363699813609
+
+        [result.scenarios.none.raw_constraint_duals]
+        "5-10-down/GT/1" = -3.5115441386559128e-12
+        "5-10-up/GT/1" = -3.673916050046783e-12
+        "5-14/1/1" = 32.49999999998134
+        "5-14/2/1" = 32.499999999981355
+        "5-15/1/1" = 6.76470732619168e-14
+        "5-15/2/1" = 1.3754371931245923e-13
+        "5-16/e12/1" = -4.499145546126157e-13
+        "5-17/root/1" = -4.4991455460465163e-13
+        "5-18/source/1" = 32.499999999977426
+        "5-19/building/1" = -32.542657482393984
+        "5-20/1/1" = 1.36668273144948e-14
+        "5-20/2/1" = -0.1366791614260504
+        "5-21/1/1" = -0.13649999999990092
+        "5-21/2/1" = 1.3860055023504554e-14
+        "5-25-26-R/h12/1" = -0.13649999999990092
+        "5-25-26-S/h12/1" = -0.1366791614260504
+        "5-3-minus/PCC/1" = 86.30439842100165
+        "5-3-plus/PCC/1" = 98.80439842099211
+        "5-4/window/0" = -114.36045451299464
+        "R5-D-building/building/1" = -1.301706299294952
+        "R5-D-delivery/PCC/1" = -32.49999999999046
+        "R5-D-terminal/building/1" = 1.4384741094365328
+
+        [result.scenarios.none.values]
+        H_D = [[0.04200000000000071]]
+        P_DER = [[0.04199999999999983], [0.0620000000003112]]
+        P_DH = [[3.366955753348885e-16]]
+        P_PCC = [[0.07999999999968892]]
+        P_line = [[0.07999999999968894]]
+        Q_DER = [[-3.4572518974390455e-18], [-3.4572518974390455e-18]]
+        Q_PCC = [[0.02000000000000001]]
+        Q_line = [[0.02000000000000001]]
+        delivery = [[4.497764301113518e-16]]
+        mismatch = [[1.306823429177946e-15]]
+        v = [[1.0], [0.9991000000000032]]
+        "τ_IN" = [[293.15]]
+        "τ_R" = [[320.15000000000003], [320.15000000000003]]
+        "τ_S" = [[330.15], [330.15]]
+        "τ_load_R" = [[320.15000000000003]]
+        "τ_pipe_R" = [[320.15000000000003]]
+        "τ_pipe_S" = [[330.15]]
+        "τ_src" = [[330.15]]
+
+    [result.scenarios.up]
+    case_sha256 = "6ef0a25d95c5e96d9b15b5a6c2264913efe0e1ecf76b6ea6010646716cb64090"
+    dual_probability_divisor = 0.25
+    parent_run_id = "r5-commitment-949a7833-e1e5-4509-9108-bafbb6348f7f"
+    run_id = "r5-commitment-949a7833-e1e5-4509-9108-bafbb6348f7f/up"
+    schema = "r5-dispatch-result-v1"
+    solver_objective = 1.4649999999991143
+    status = "embedded_shared_commitment_candidate"
+    version = "r5_dispatch_checked_v1"
+
+        [result.scenarios.up.raw_bound_duals]
+        "H_D/1/1/lower" = 4.192412667565251e-11
+        "P_DER/1/1/lower" = 3.331945643537461e-11
+        "P_DER/1/1/upper" = -2.5454659507100688e-11
+        "P_DER/2/1/lower" = 1.0056207761043141e-11
+        "P_DER/2/1/upper" = -3.315927945931927e-11
+        "P_DH/1/1/lower" = 661.3128829776063
+        "P_DH/1/1/upper" = -661.3998325305624
+        "P_PCC/1/1/lower" = 38.2061627876707
+        "P_PCC/1/1/upper" = -1.508036909178703e-12
+        "P_line/1/1/lower" = 1.7990891307343168e-12
+        "P_line/1/1/upper" = -1.5080369091799722e-12
+        "Q_DER/1/1/lower" = 132.70855934734396
+        "Q_DER/1/1/upper" = -132.70855934734425
+        "Q_DER/2/1/lower" = 132.70855934734396
+        "Q_DER/2/1/upper" = -132.70855934734425
+        "Q_PCC/1/1/lower" = 1.5954958761532988e-12
+        "Q_PCC/1/1/upper" = -1.7307942350360706e-12
+        "Q_line/1/1/lower" = 1.5954958761534445e-12
+        "Q_line/1/1/upper" = -1.7307942350359666e-12
+        "mismatch/1/1/lower" = 127.32485769533828
+        "v/1/1/lower" = 2.8794547319510053e-11
+        "v/1/1/upper" = -2.879454731952071e-11
+        "v/2/1/lower" = 2.8740153275194085e-11
+        "v/2/1/upper" = -2.884945671656761e-11
+        "τ_IN/1/1/lower" = 136.04126950244458
+        "τ_IN/1/1/upper" = -136.04138587877574
+        "τ_R/1/1/lower" = 1.6045408861413842e-13
+        "τ_R/1/1/upper" = -1.6900226536091298e-13
+        "τ_R/2/1/lower" = 1.5213031356275678e-13
+        "τ_R/2/1/upper" = -1.7985201677550942e-13
+        "τ_S/1/1/lower" = 1.5234626666302386e-13
+        "τ_S/1/1/upper" = -1.79682161483643e-13
+        "τ_S/2/1/lower" = 1.6045408861413322e-13
+        "τ_S/2/1/upper" = -1.6900226536091558e-13
+        "τ_load_R/1/1/lower" = 133.29024346303743
+        "τ_load_R/1/1/upper" = -133.1533782749147
+        "τ_src/1/1/lower" = 133.0816090728663
+        "τ_src/1/1/upper" = -132.94510907286622
+
+        [result.scenarios.up.raw_constraint_duals]
+        "5-10-down/GT/1" = -5.2126803768697684e-12
+        "5-10-up/GT/1" = -1.1905605874813183e-11
+        "5-14/1/1" = 32.50000000003009
+        "5-14/2/1" = 32.5000000000298
+        "5-15/1/1" = 1.3529835880289162e-13
+        "5-15/2/1" = 2.700502005096367e-13
+        "5-16/e12/1" = 1.0930342878697793e-13
+        "5-17/root/1" = 1.093034287984351e-13
+        "5-18/source/1" = 32.500000000021934
+        "5-19/building/1" = -32.58694955302626
+        "5-20/1/1" = 2.7335893474184913e-14
+        "5-20/2/1" = -0.13686518812270168
+        "5-21/1/1" = -0.13650000000008355
+        "5-21/2/1" = 2.772170318218143e-14
+        "5-25-26-R/h12/1" = -0.13650000000008355
+        "5-25-26-S/h12/1" = -0.13686518812270168
+        "5-3-minus/PCC/1" = 113.53394922324644
+        "5-3-plus/PCC/1" = 164.24011201094572
+        "5-4/window/0" = -620.3956757181192
+        "R5-D-building/building/1" = -1.3034779821194353
+        "R5-D-delivery/PCC/1" = -70.70616278769928
+        "R5-D-terminal/building/1" = 1.4404595465731722
+
+        [result.scenarios.up.values]
+        H_D = [[0.04200000000000077]]
+        P_DER = [[0.041999999999999885], [0.14199999999998927]]
+        P_DH = [[2.8813708760215637e-16]]
+        P_PCC = [[1.0930509080704505e-14]]
+        P_line = [[1.0907327089007836e-14]]
+        Q_DER = [[-3.453669766018817e-18], [-3.453669766018817e-18]]
+        Q_PCC = [[0.02000000000000001]]
+        Q_line = [[0.02000000000000001]]
+        delivery = [[0.07999999999967826]]
+        mismatch = [[1.9957181426766807e-15]]
+        v = [[1.0], [0.9999]]
+        "τ_IN" = [[293.15]]
+        "τ_R" = [[320.15000000000003], [320.15000000000003]]
+        "τ_S" = [[330.15], [330.15]]
+        "τ_load_R" = [[320.15000000000003]]
+        "τ_pipe_R" = [[320.15000000000003]]
+        "τ_pipe_S" = [[330.15]]
+        "τ_src" = [[330.15]]
+
+    [result.weighted_raw_scenario_duals.down]
+    "5-10-down/GT/1" = -2.149542798013941e-12
+    "5-10-up/GT/1" = -1.5167169724584812e-12
+    "5-14/1/1" = -19.9999999999906
+    "5-14/2/1" = -19.99999999999052
+    "5-15/1/1" = 3.382133040873684e-14
+    "5-15/2/1" = 6.943513026183943e-14
+    "5-16/e12/1" = -3.584938868045402e-13
+    "5-17/root/1" = -3.584938868017936e-13
+    "5-18/source/1" = -19.999999999992486
+    "5-19/building/1" = 19.979634322884696
+    "5-20/1/1" = 6.856799932009153e-15
+    "5-20/2/1" = 0.08391446415611784
+    "5-21/1/1" = 0.08399999999997058
+    "5-21/2/1" = 6.953398756305877e-15
+    "5-25-26-R/h12/1" = 0.08399999999997058
+    "5-25-26-S/h12/1" = 0.08391446415611784
+    "5-3-minus/PCC/1" = 49.156627010516026
+    "5-3-plus/PCC/1" = 24.15662701052801
+    "5-4/window/0" = -169.76685774073613
+    "H_D/1/1/lower" = 1.0481014511615963e-11
+    "P_DER/1/1/lower" = 8.329886950756033e-12
+    "P_DER/1/1/upper" = -6.3636501030793865e-12
+    "P_DER/2/1/lower" = 28.12499999999212
+    "P_DER/2/1/upper" = -2.231267420248278e-12
+    "P_DH/1/1/lower" = 165.3288920188093
+    "P_DH/1/1/upper" = -165.34925769590507
+    "P_PCC/1/1/lower" = 3.0370761136244418e-12
+    "P_PCC/1/1/upper" = -4.5450482391853505e-13
+    "P_line/1/1/lower" = 3.8102515666543503e-13
+    "P_line/1/1/upper" = -4.5450482391708375e-13
+    "Q_DER/1/1/lower" = 33.1771342567792
+    "Q_DER/1/1/upper" = -33.17713425677927
+    "Q_DER/2/1/lower" = 33.1771342567792
+    "Q_DER/2/1/upper" = -33.17713425677927
+    "Q_PCC/1/1/lower" = 3.988755457311431e-13
+    "Q_PCC/1/1/upper" = -4.32696876159919e-13
+    "Q_line/1/1/lower" = 3.988755457311327e-13
+    "Q_line/1/1/upper" = -4.326968761599138e-13
+    "R5-D-building/building/1" = 0.7991853729157913
+    "R5-D-delivery/PCC/1" = 19.999999999988017
+    "R5-D-terminal/building/1" = -0.8831704080874879
+    "mismatch/1/1/lower" = 31.628460414140154
+    "v/1/1/lower" = 7.19863682987768e-12
+    "v/1/1/upper" = -7.198636829880427e-12
+    "v/2/1/lower" = 7.382888657323796e-12
+    "v/2/1/upper" = -7.024394810326069e-12
+    "τ_IN/1/1/lower" = 34.010366398391724
+    "τ_IN/1/1/upper" = -34.010295827376176
+    "τ_R/1/1/lower" = 4.0113522153533306e-14
+    "τ_R/1/1/upper" = -4.2250566340226945e-14
+    "τ_R/2/1/lower" = 3.802148891431567e-14
+    "τ_R/2/1/upper" = -4.497488655132473e-14
+    "τ_S/1/1/lower" = 3.807553228828496e-14
+    "τ_S/1/1/upper" = -4.493232959441091e-14
+    "τ_S/2/1/lower" = 4.0113522153530055e-14
+    "τ_S/2/1/upper" = -4.2250566340226945e-14
+    "τ_load_R/1/1/lower" = 33.25694949165462
+    "τ_load_R/1/1/upper" = -33.34086395581073
+    "τ_src/1/1/lower" = 33.204256196382765
+    "τ_src/1/1/upper" = -33.28825619638273
+
+    [result.weighted_raw_scenario_duals.none]
+    "5-10-down/GT/1" = -1.7557720693279564e-12
+    "5-10-up/GT/1" = -1.8369580250233916e-12
+    "5-14/1/1" = 16.24999999999067
+    "5-14/2/1" = 16.249999999990678
+    "5-15/1/1" = 3.38235366309584e-14
+    "5-15/2/1" = 6.877185965622961e-14
+    "5-16/e12/1" = -2.2495727730630786e-13
+    "5-17/root/1" = -2.2495727730232582e-13
+    "5-18/source/1" = 16.249999999988713
+    "5-19/building/1" = -16.271328741196992
+    "5-20/1/1" = 6.8334136572474e-15
+    "5-20/2/1" = -0.0683395807130252
+    "5-21/1/1" = -0.06824999999995046
+    "5-21/2/1" = 6.930027511752277e-15
+    "5-25-26-R/h12/1" = -0.06824999999995046
+    "5-25-26-S/h12/1" = -0.0683395807130252
+    "5-3-minus/PCC/1" = 43.152199210500825
+    "5-3-plus/PCC/1" = 49.40219921049606
+    "5-4/window/0" = -57.18022725649732
+    "H_D/1/1/lower" = 1.0481017068118258e-11
+    "P_DER/1/1/lower" = 8.32987546420985e-12
+    "P_DER/1/1/upper" = -6.363657692413892e-12
+    "P_DER/2/1/lower" = 1.2418857155623964e-11
+    "P_DER/2/1/upper" = -3.0175025828792454e-12
+    "P_DH/1/1/lower" = 165.32842878293297
+    "P_DH/1/1/upper" = -165.34975752412922
+    "P_PCC/1/1/lower" = 4.9752312037154525e-12
+    "P_PCC/1/1/upper" = -4.1519212533502045e-13
+    "P_line/1/1/lower" = 4.0738152034193327e-13
+    "P_line/1/1/upper" = -4.1519212533501005e-13
+    "Q_DER/1/1/lower" = 33.17713768783944
+    "Q_DER/1/1/upper" = -33.177137687839505
+    "Q_DER/2/1/lower" = 33.17713768783944
+    "Q_DER/2/1/upper" = -33.177137687839505
+    "Q_PCC/1/1/lower" = 3.988744513404318e-13
+    "Q_PCC/1/1/upper" = -4.326979879913635e-13
+    "Q_line/1/1/lower" = 3.988744513404682e-13
+    "Q_line/1/1/upper" = -4.326979879913427e-13
+    "R5-D-building/building/1" = -0.650853149647476
+    "R5-D-delivery/PCC/1" = -16.24999999999523
+    "R5-D-terminal/building/1" = 0.7192370547182664
+    "mismatch/1/1/lower" = 46.7406583931276
+    "v/1/1/lower" = 7.198636829877596e-12
+    "v/1/1/upper" = -7.1986368298810925e-12
+    "v/2/1/lower" = 7.3131282775482e-12
+    "v/2/1/upper" = -7.088171021893823e-12
+    "τ_IN/1/1/lower" = 34.01030826319413
+    "τ_IN/1/1/upper" = -34.010352587551935
+    "τ_R/1/1/lower" = 4.0113522153534606e-14
+    "τ_R/1/1/upper" = -4.2250566340226945e-14
+    "τ_R/2/1/lower" = 3.803217676162725e-14
+    "τ_R/2/1/upper" = -4.4962204479495374e-14
+    "τ_S/1/1/lower" = 3.808624260879823e-14
+    "τ_S/1/1/upper" = -4.491965804281181e-14
+    "τ_S/2/1/lower" = 4.0113522153534606e-14
+    "τ_S/2/1/upper" = -4.2250566340222395e-14
+    "τ_load_R/1/1/lower" = 33.342075830517814
+    "τ_load_R/1/1/upper" = -33.273736249804784
+    "τ_src/1/1/lower" = 33.290068499068
+    "τ_src/1/1/upper" = -33.22181849906804
+
+    [result.weighted_raw_scenario_duals.up]
+    "5-10-down/GT/1" = -1.3031700942174421e-12
+    "5-10-up/GT/1" = -2.9764014687032958e-12
+    "5-14/1/1" = 8.125000000007523
+    "5-14/2/1" = 8.12500000000745
+    "5-15/1/1" = 3.3824589700722904e-14
+    "5-15/2/1" = 6.751255012740918e-14
+    "5-16/e12/1" = 2.732585719674448e-14
+    "5-17/root/1" = 2.7325857199608775e-14
+    "5-18/source/1" = 8.125000000005484
+    "5-19/building/1" = -8.146737388256565
+    "5-20/1/1" = 6.833973368546228e-15
+    "5-20/2/1" = -0.03421629703067542
+    "5-21/1/1" = -0.03412500000002089
+    "5-21/2/1" = 6.930425795545358e-15
+    "5-25-26-R/h12/1" = -0.03412500000002089
+    "5-25-26-S/h12/1" = -0.03421629703067542
+    "5-3-minus/PCC/1" = 28.38348730581161
+    "5-3-plus/PCC/1" = 41.06002800273643
+    "5-4/window/0" = -155.0989189295298
+    "H_D/1/1/lower" = 1.0481031668913128e-11
+    "P_DER/1/1/lower" = 8.329864108843652e-12
+    "P_DER/1/1/upper" = -6.363664876775172e-12
+    "P_DER/2/1/lower" = 2.5140519402607853e-12
+    "P_DER/2/1/upper" = -8.289819864829817e-12
+    "P_DH/1/1/lower" = 165.32822074440156
+    "P_DH/1/1/upper" = -165.3499581326406
+    "P_PCC/1/1/lower" = 9.551540696917675
+    "P_PCC/1/1/upper" = -3.7700922729467574e-13
+    "P_line/1/1/lower" = 4.497722826835792e-13
+    "P_line/1/1/upper" = -3.7700922729499305e-13
+    "Q_DER/1/1/lower" = 33.17713983683599
+    "Q_DER/1/1/upper" = -33.17713983683606
+    "Q_DER/2/1/lower" = 33.17713983683599
+    "Q_DER/2/1/upper" = -33.17713983683606
+    "Q_PCC/1/1/lower" = 3.988739690383247e-13
+    "Q_PCC/1/1/upper" = -4.3269855875901766e-13
+    "Q_line/1/1/lower" = 3.988739690383611e-13
+    "Q_line/1/1/upper" = -4.3269855875899166e-13
+    "R5-D-building/building/1" = -0.32586949552985883
+    "R5-D-delivery/PCC/1" = -17.67654069692482
+    "R5-D-terminal/building/1" = 0.36011488664329305
+    "mismatch/1/1/lower" = 31.83121442383457
+    "v/1/1/lower" = 7.198636829877513e-12
+    "v/1/1/upper" = -7.198636829880177e-12
+    "v/2/1/lower" = 7.185038318798521e-12
+    "v/2/1/upper" = -7.212364179141902e-12
+    "τ_IN/1/1/lower" = 34.010317375611145
+    "τ_IN/1/1/upper" = -34.010346469693935
+    "τ_R/1/1/lower" = 4.0113522153534606e-14
+    "τ_R/1/1/upper" = -4.2250566340228245e-14
+    "τ_R/2/1/lower" = 3.8032578390689194e-14
+    "τ_R/2/1/upper" = -4.4963004193877354e-14
+    "τ_S/1/1/lower" = 3.8086566665755966e-14
+    "τ_S/1/1/upper" = -4.492054037091075e-14
+    "τ_S/2/1/lower" = 4.0113522153533306e-14
+    "τ_S/2/1/upper" = -4.2250566340228895e-14
+    "τ_load_R/1/1/lower" = 33.32256086575936
+    "τ_load_R/1/1/upper" = -33.288344568728675
+    "τ_src/1/1/lower" = 33.27040226821658
+    "τ_src/1/1/upper" = -33.236277268216554

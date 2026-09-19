@@ -333,6 +333,17 @@
 - `docs/src/assets/r4-tspa/report.toml`
 - `docs/src/assets/r4-tspa/residuals.csv`
 - `docs/src/assets/r4-tspa/solver-evidence.csv`
+- `docs/src/assets/r5-commitment/F04.png`
+- `docs/src/assets/r5-commitment/F19.png`
+- `docs/src/assets/r5-commitment/artifact-hashes.toml`
+- `docs/src/assets/r5-commitment/commitments.csv`
+- `docs/src/assets/r5-commitment/comparison.csv`
+- `docs/src/assets/r5-commitment/figure-config.toml`
+- `docs/src/assets/r5-commitment/report.toml`
+- `docs/src/assets/r5-commitment/residuals.csv`
+- `docs/src/assets/r5-commitment/scenarios.csv`
+- `docs/src/assets/r5-commitment/solver-comparison.csv`
+- `docs/src/assets/r5-commitment/trajectories.csv`
 - `docs/src/assets/r5-dispatch/F04.png`
 - `docs/src/assets/r5-dispatch/F19.png`
 - `docs/src/assets/r5-dispatch/artifact-hashes.toml`
@@ -423,6 +434,7 @@
 - `docs/src/ch04-tutorial.md`
 - `docs/src/ch05-algorithm-audit.md`
 - `docs/src/ch05-commitment-equations.md`
+- `docs/src/ch05-commitment-results.md`
 - `docs/src/ch05-commitment.md`
 - `docs/src/ch05-dispatch-equations.md`
 - `docs/src/ch05-dispatch-results.md`
@@ -582,6 +594,17 @@
 - `results/summaries/r4-tspa/report.toml`
 - `results/summaries/r4-tspa/residuals.csv`
 - `results/summaries/r4-tspa/solver-evidence.csv`
+- `results/summaries/r5-commitment/F04.png`
+- `results/summaries/r5-commitment/F19.png`
+- `results/summaries/r5-commitment/artifact-hashes.toml`
+- `results/summaries/r5-commitment/commitments.csv`
+- `results/summaries/r5-commitment/comparison.csv`
+- `results/summaries/r5-commitment/figure-config.toml`
+- `results/summaries/r5-commitment/report.toml`
+- `results/summaries/r5-commitment/residuals.csv`
+- `results/summaries/r5-commitment/scenarios.csv`
+- `results/summaries/r5-commitment/solver-comparison.csv`
+- `results/summaries/r5-commitment/trajectories.csv`
 - `results/summaries/r5-dispatch/F04.png`
 - `results/summaries/r5-dispatch/F19.png`
 - `results/summaries/r5-dispatch/artifact-hashes.toml`
@@ -988,6 +1011,7 @@
 - `docs/src/assets/r3-v2/r3-v2-combined-20260917T095056-767e69d2/`
 - `docs/src/assets/r3-v3/r3-v3-20260917T115348-b8a7a604-73ffdff8/`
 - `docs/src/assets/r4-first-batch/figures/`
+- `docs/src/assets/r5-commitment/witnesses/`
 - `docs/src/assets/r5-duality/witnesses/`
 - `results/summaries/ch03-data/ch03-data-20260916T084459-cd427558/`
 - `results/summaries/r1-first-batch/r1-20260916T055237-75fa9f65/`
@@ -1003,4 +1027,5 @@
 - `results/summaries/r3-v3/audit-addendum-v1/`
 - `results/summaries/r3-v3/r3-v3-20260917T115348-b8a7a604-73ffdff8/`
 - `results/summaries/r4-first-batch/figures/`
+- `results/summaries/r5-commitment/witnesses/`
 - `results/summaries/r5-duality-verified/witnesses/`
