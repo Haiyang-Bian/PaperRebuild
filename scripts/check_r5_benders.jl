@@ -5,7 +5,9 @@ root=normpath(joinpath(@__DIR__, ".."))
 d=TOML.parsefile(joinpath(root, "docs", "reading", "ch05", "benders.toml"))
 page=read(joinpath(root, "docs", "src", "ch05-benders-equations.md"), String)
 api=read(joinpath(root, "docs", "src", "api.md"), String)
-tests=read(joinpath(root, "test", "r5_benders.jl"), String)
+tests=join(
+    read(joinpath(root, "test", file), String) for file in ("r5_benders.jl", "r5_benders_loop.jl")
+)
 for x in d["equation"]
     occursin("\\tag{"*x["id"]*"}", page)&&occursin(x["test"], tests)||error(
         "Benders公式/测试映射缺失",
@@ -19,5 +21,11 @@ for name in ("equation", "symbol", "issue")
     length(ids)==length(unique(ids))||error("Benders台账ID重复")
 end
 println(
-    "Benders foundation: 6 derivations, 6 symbol groups, 5 boundaries checked; full iteration pending.",
+    "Benders: ",
+    length(d["equation"]),
+    " derivations, ",
+    length(d["symbol"]),
+    " symbol groups, ",
+    length(d["issue"]),
+    " boundaries checked; formal algorithm study pending.",
 )

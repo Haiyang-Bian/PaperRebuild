@@ -261,7 +261,7 @@ PaperRebuild.save_r5_risk_run
 PaperRebuild.read_r5_risk_run
 ~~~
 
-## 第5章条件Benders基础
+## 第5章条件Benders与关键情景
 
 ~~~@docs
 PaperRebuild.R5BendersSpec
@@ -270,6 +270,12 @@ PaperRebuild.build_r5_benders_subproblem
 PaperRebuild.solve_r5_benders_subproblem
 PaperRebuild.validate_r5_benders_subproblem
 PaperRebuild.r5_benders_cut
+PaperRebuild.build_r5_benders_master
+PaperRebuild.solve_r5_benders
+PaperRebuild.validate_r5_benders
+PaperRebuild.save_r5_benders_run
+PaperRebuild.read_r5_benders_run
+PaperRebuild.compare_r5_benders_runs
 ~~~
 
 ## 工程示例函数说明

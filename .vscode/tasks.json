@@ -1,5 +1,9 @@
 {
   "inputs": [
+    {"id":"r5BendersCase","description":"有限支持风险案例路径","type":"promptString","default":"configs/r5/risk/hard_zero.toml"},
+    {"id":"r5BendersRun","description":"Benders运行目录；运行需新目录，重读需已有目录","type":"promptString","default":"results/runs/r5/benders-development-new"},
+    {"id":"r5BendersRoute","description":"分解路线；paper_critical的域受限制","type":"pickString","options":["cuts","critical","paper_critical"],"default":"cuts"},
+    {"id":"r5BendersReference","description":"同输入的已保存直接参考或另一分解运行","type":"promptString","default":"results/runs/r5/r5-risk-20260919/hard_zero--highs"},
     {"id":"r5RiskBatch","description":"新的风险调度批次名；不得覆盖已有批次","type":"promptString","default":"r5-risk-new"},
     {"id":"r5RiskStudy","description":"已完成的风险study.toml","type":"promptString","default":"results/runs/r5/r5-risk-20260919/study.toml"},
     {"id":"r5RiskReport","description":"风险报告新目录；重绘需已有CSV且无旧图","type":"promptString","default":"results/summaries/r5-risk-replay"},
@@ -59,6 +63,10 @@
   ],
   "tasks": [
     {"label":"PaperRebuild: R5 Benders tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_benders.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 Benders outer tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_benders_loop.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 Benders run","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r5_benders.jl","run","${input:r5BendersCase}","${input:r5BendersRun}","${input:r5BendersRoute}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 Benders verify saved","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r5_benders.jl","verify","${input:r5BendersRun}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 Benders compare saved","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r5_benders.jl","compare","${input:r5BendersRun}","${input:r5BendersReference}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R5 Benders mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_benders.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R5 risk frozen evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_risk_artifacts.jl","results/summaries/r5-risk"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R5 risk tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_risk.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},

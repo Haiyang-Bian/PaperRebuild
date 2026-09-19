@@ -2,11 +2,14 @@ const R5_BENDERS_CORE_FILE = @__FILE__
 
 """
     R5BendersSpec(; feasibility=:cuts, critical_count=1, max_iterations=200,
-                  absolute_gap=1e-7, relative_gap=1e-6)
+                  absolute_gap=1e-7, relative_gap=1e-6,
+                  cut_arithmetic=:float_box, diagnostic_scale=1.0)
 
 第5章有限支持条件Benders规则。cuts使用弹性可行性割，critical插入关键情景完整物理约束。
 paper_critical另实施原(5-102)的外集z=0；其受限域界不作为完整风险模型的全局下界。
 间隙规则是预先声明的项目数值设置，不冒称作者给出了同一σ；不改变A1/A2/KKT。
+float_box保留原浮点保护模式；rational_box对已编码的有限盒LP计算有理数误差界。
+diagnostic_scale指定u=scale*y的二次幂表示；外层默认显式采用rational_box和1024倍诊断表示。
 """
 struct R5BendersSpec
     feasibility::Symbol
@@ -14,19 +17,33 @@ struct R5BendersSpec
     max_iterations::Int
     absolute_gap::Float64
     relative_gap::Float64
+    cut_arithmetic::Symbol
+    diagnostic_scale::Float64
     function R5BendersSpec(;
         feasibility = :cuts,
         critical_count = 1,
         max_iterations = 200,
         absolute_gap = 1e-7,
         relative_gap = 1e-6,
+        cut_arithmetic = :float_box,
+        diagnostic_scale = 1.0,
     )
         feasibility in (:cuts, :critical, :paper_critical) || error("未知Benders可行性路线")
         critical_count isa Integer && critical_count>0 || error("关键情景个数必须为正整数")
         max_iterations isa Integer && 1<=max_iterations<=200 || error("外层次数必须为1至200")
         all(isfinite, (absolute_gap, relative_gap)) && absolute_gap>=0 && 0<=relative_gap<=1e-4 ||
             error("分解间隙规则非法")
-        new(feasibility, critical_count, max_iterations, absolute_gap, relative_gap)
+        cut_arithmetic in (:float_box, :rational_box)||error("未知割算术模式")
+        r5_benders_check_scale(diagnostic_scale)
+        new(
+            feasibility,
+            critical_count,
+            max_iterations,
+            absolute_gap,
+            relative_gap,
+            cut_arithmetic,
+            diagnostic_scale,
+        )
     end
 end
 r5_benders_spec(s::R5BendersSpec) = Dict(
@@ -35,6 +52,8 @@ r5_benders_spec(s::R5BendersSpec) = Dict(
     "max_iterations"=>s.max_iterations,
     "absolute_gap"=>s.absolute_gap,
     "relative_gap"=>s.relative_gap,
+    "cut_arithmetic"=>string(s.cut_arithmetic),
+    "diagnostic_scale"=>s.diagnostic_scale,
 )
 r5_benders_spec(d::AbstractDict) = R5BendersSpec(;
     feasibility = Symbol(d["feasibility"]),
@@ -42,7 +61,32 @@ r5_benders_spec(d::AbstractDict) = R5BendersSpec(;
     max_iterations = d["max_iterations"],
     absolute_gap = d["absolute_gap"],
     relative_gap = d["relative_gap"],
+    cut_arithmetic = Symbol(get(d, "cut_arithmetic", "float_box")),
+    diagnostic_scale = get(d, "diagnostic_scale", 1.0),
 )
+
+function r5_benders_check_scale(scale)
+    isfinite(scale)&&1<=scale<=2.0^20&&isinteger(log2(scale))||error("数值缩放须为1至2^20的二次幂")
+    Float64(scale)
+end
+
+r5_benders_rational(x) = Rational{BigInt}(Float64(x))
+function r5_benders_outward(x, side)
+    f=Float64(x)
+    isfinite(f)||error("有限盒或割发生浮点溢出")
+    side==:down ? (r5_benders_rational(f)>x ? prevfloat(f) : f) :
+    (r5_benders_rational(f)<x ? nextfloat(f) : f)
+end
+function r5_benders_exact_range(a, box; constant = 0.0)
+    lo=hi=r5_benders_rational(constant)
+    for (k, v) in a
+        l, u=r5_benders_rational.(box[k])
+        q=r5_benders_rational(v)
+        lo+=min(q*l, q*u)
+        hi+=max(q*l, q*u)
+    end
+    lo, hi
+end
 
 function r5_benders_xbox(c)
     Dict(
@@ -124,32 +168,48 @@ function r5_benders_bounds(c::R5RiskCase, scenario::Integer)
     d=view.data
     e=d["electric"]
     h=d["heat"]
-    mismatch=d["realtime"]["delta"]*sum(
-        xb["$k/$t"][2] for k in ("R_up_MW", "R_down_MW") for t in 1:d["T"]
+    ratio=r5_benders_rational(d["realtime"]["delta"]*d["dt_h"])/r5_benders_rational(d["dt_h"])
+    mismatch=r5_benders_outward(
+        ratio*sum(
+            r5_benders_rational(xb["$k/$t"][2]) for k in ("R_up_MW", "R_down_MW") for t in 1:d["T"]
+        ),
+        :up,
     )
     for t in 1:d["T"]
         box["delivery/1/$t"]=(
-            xb["P_DA_MW/$t"][1]-e["pcc_max_MW"],
-            xb["P_DA_MW/$t"][2]-e["pcc_min_MW"],
+            r5_benders_outward(
+                r5_benders_rational(xb["P_DA_MW/$t"][1])-r5_benders_rational(e["pcc_max_MW"]),
+                :down,
+            ),
+            r5_benders_outward(
+                r5_benders_rational(xb["P_DA_MW/$t"][2])-r5_benders_rational(e["pcc_min_MW"]),
+                :up,
+            ),
         )
         box["mismatch/1/$t"]=(0.0, mismatch)
         for (j, b) in enumerate(d["buildings"])
-            box["H_D/$j/$t"]=(
-                0.0,
-                max(0.0, h["c_J_kgK"]/1e6*b["m_kg_s"]*(h["S_max_K"]-b["R_min_K"])),
+            key="H_D/$j/$t"
+            row=sys.rows["5-19/$(b["id"])/$t"]
+            _, hi=r5_benders_exact_range(
+                Dict(k=>-a for (k, a) in row.coefficients if k!=key),
+                box;
+                constant = row.rhs,
             )
+            box[key]=(0.0, max(0.0, r5_benders_outward(hi, :up)))
         end
         for (p, pipe) in enumerate(h["pipes"]), side in ("S", "R")
             key="τ_pipe_$side/$p/$t"
             row=sys.rows["5-25-26-$side/$(pipe["id"])/$t"]
             terms=Dict(k=>-a for (k, a) in row.coefficients if k!=key)
-            lo, hi=r5_benders_range(terms, box; constant = row.rhs)
+            lr, hr=r5_benders_exact_range(terms, box; constant = row.rhs)
+            lo, hi=r5_benders_outward(lr, :down), r5_benders_outward(hr, :up)
             pad=1e-12*max(1.0, abs(lo), abs(hi))
             box[key]=(lo-pad, hi+pad)
         end
     end
     all(isfinite(l)&&isfinite(u)&&l<=u for (l, u) in values(box)) || error("未取得完整有效补救盒")
-    lo, hi=r5_benders_range(sys.cost, box)
+    lr, hr=r5_benders_exact_range(sys.cost, box)
+    lo, hi=r5_benders_outward(lr, :down), r5_benders_outward(hr, :up)
     margin=1e-10*max(1.0, abs(lo), abs(hi))
     (;
         box,
@@ -253,10 +313,40 @@ function r5_benders_rhs_value(row, x)
 end
 
 function r5_benders_science_hashes()
-    out=r5_risk_science_hashes()
-    for path in
-        (R5_BENDERS_CORE_FILE, R5_BENDERS_MODEL_FILE, R5_BENDERS_VERIFY_FILE, R5_BENDERS_SOLVE_FILE)
-        out["src/"*basename(dirname(path))*"/"*basename(path)]=bytes2hex(sha256(read(path)))
-    end
-    out
+    Dict(rel=>bytes2hex(sha256(read(path))) for (rel, path) in r5_benders_science_paths())
+end
+
+function r5_benders_critical(c, spec, critical)
+    ids=Int.(critical)
+    length(unique(ids))==length(ids)&&all(
+        1<=s<=length(c.data["commitment"]["scenarios"]) for s in ids
+    )||error("关键情景索引错误")
+    spec.feasibility==:cuts&&!isempty(ids)&&error("纯割路线不插入关键情景")
+    sort(ids)
+end
+r5_benders_scope(c, spec, critical) =
+    spec.feasibility==:paper_critical&&length(critical)<length(c.data["commitment"]["scenarios"]) ?
+    "restricted_comfort_domain" : "full_risk_domain"
+r5_benders_dot(a, x) = sum(v*x[k] for (k, v) in a; init = 0.0)
+r5_benders_affine(cut, x) = cut["constant"]+r5_benders_dot(cut["gradient"], x)
+function r5_benders_cut_key(cut)
+    fields=("kind", "scenario", "branch", "constant", "gradient", "deactivation_M", "lower_cost")
+    bytes2hex(sha256(r5_market_text(Dict(k=>cut[k] for k in fields))))
+end
+
+function r5_benders_gap(upper, lower, spec)
+    valid=isfinite(upper)&&isfinite(lower)&&lower<=upper+1e-6*max(1, abs(upper))
+    absolute=valid ? max(0.0, upper-lower) : Inf
+    relative=valid ? absolute/max(1.0, abs(upper), abs(lower)) : Inf
+    Dict(
+        "valid"=>valid,
+        "absolute"=>absolute,
+        "relative"=>relative,
+        "stopping_pass"=>valid&&absolute<=spec.absolute_gap+spec.relative_gap*max(
+            1.0,
+            abs(upper),
+            abs(lower),
+        ),
+        "a2_pass"=>valid&&relative<=1e-4,
+    )
 end

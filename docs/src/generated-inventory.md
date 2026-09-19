@@ -709,6 +709,7 @@
 - `scripts/audit_r3_v3_dispatch.jl`
 - `scripts/audit_r4_distributed.jl`
 - `scripts/audit_r4_tspa.jl`
+- `scripts/audit_r5_benders_boundary.jl`
 - `scripts/audit_r5_dispatch.jl`
 - `scripts/audit_r5_dispatch_duality.jl`
 - `scripts/audit_r5_market_replay.jl`
@@ -805,6 +806,7 @@
 - `scripts/freeze_r5_risk.jl`
 - `scripts/inspect_ch03_workbooks.jl`
 - `scripts/inspect_r4_heat_results.jl`
+- `scripts/inspect_r5_benders_boundary.jl`
 - `scripts/inspect_r5_market.jl`
 - `scripts/maintain.ps1`
 - `scripts/maintenance-core.ps1`
@@ -838,6 +840,7 @@
 - `scripts/probe_r4_discrete.jl`
 - `scripts/probe_r4_distributed.jl`
 - `scripts/probe_r4_reconfiguration.jl`
+- `scripts/probe_r5_benders_scaling.jl`
 - `scripts/publish_r3_v2_report.jl`
 - `scripts/publish_r3_v3_audit_addendum.jl`
 - `scripts/publish_r3_v3_report.jl`
@@ -856,6 +859,7 @@
 - `scripts/r4_setup.jl`
 - `scripts/r4_thermal_docs.jl`
 - `scripts/r4_tspa_docs.jl`
+- `scripts/r5_benders.jl`
 - `scripts/r5_benders_docs.jl`
 - `scripts/r5_commitment_cases.jl`
 - `scripts/r5_commitment_docs.jl`
@@ -936,6 +940,7 @@
 - `scripts/test_r4_thermal.jl`
 - `scripts/test_r4_tspa.jl`
 - `scripts/test_r5_benders.jl`
+- `scripts/test_r5_benders_loop.jl`
 - `scripts/test_r5_commitment.jl`
 - `scripts/test_r5_dispatch.jl`
 - `scripts/test_r5_dispatch_duality.jl`
@@ -1013,6 +1018,7 @@
 - `src/reporting/r4_reconfiguration.jl`
 - `src/reporting/r4_runs.jl`
 - `src/reporting/r4_tspa.jl`
+- `src/reporting/r5_benders.jl`
 - `src/reporting/r5_commitment.jl`
 - `src/reporting/r5_dispatch.jl`
 - `src/reporting/r5_market.jl`
@@ -1061,6 +1067,7 @@
 - `test/r4_thermal.jl`
 - `test/r4_tspa.jl`
 - `test/r5_benders.jl`
+- `test/r5_benders_loop.jl`
 - `test/r5_commitment.jl`
 - `test/r5_dispatch.jl`
 - `test/r5_dispatch_duality.jl`

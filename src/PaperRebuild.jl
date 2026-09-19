@@ -91,8 +91,11 @@ include("core/r5_benders.jl")
 include("formulations/r5_benders.jl")
 include("verification/r5_benders.jl")
 include("algorithms/r5_benders.jl")
+include("reporting/r5_benders.jl")
 export R5BendersSpec, r5_benders_bounds, build_r5_benders_subproblem
 export solve_r5_benders_subproblem, validate_r5_benders_subproblem, r5_benders_cut
+export build_r5_benders_master, solve_r5_benders, validate_r5_benders
+export save_r5_benders_run, read_r5_benders_run, compare_r5_benders_runs
 export R5RiskCase, load_r5_risk_case, build_r5_risk, solve_r5_risk
 export r5_worst_distribution, validate_r5_transport, validate_r5_risk
 export save_r5_risk_run, read_r5_risk_run
