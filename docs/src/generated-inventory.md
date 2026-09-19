@@ -139,6 +139,7 @@
 - `docs/agent/tasks/2026-09-19-r4-heat.md`
 - `docs/agent/tasks/2026-09-19-r4-network.md`
 - `docs/agent/tasks/2026-09-19-r4-thermal.md`
+- `docs/agent/tasks/2026-09-19-r5-benders.md`
 - `docs/agent/tasks/2026-09-19-r5-commitment.md`
 - `docs/agent/tasks/2026-09-19-r5-dispatch.md`
 - `docs/agent/tasks/2026-09-19-r5-duality.md`
@@ -178,6 +179,7 @@
 - `docs/reading/ch04/thermal.toml`
 - `docs/reading/ch04/tspa.toml`
 - `docs/reading/ch05/algorithm-audit.toml`
+- `docs/reading/ch05/benders.toml`
 - `docs/reading/ch05/commitment.toml`
 - `docs/reading/ch05/dispatch.toml`
 - `docs/reading/ch05/inputs.toml`
@@ -462,6 +464,8 @@
 - `docs/src/ch04-tspa.md`
 - `docs/src/ch04-tutorial.md`
 - `docs/src/ch05-algorithm-audit.md`
+- `docs/src/ch05-benders-equations.md`
+- `docs/src/ch05-benders.md`
 - `docs/src/ch05-commitment-equations.md`
 - `docs/src/ch05-commitment-results.md`
 - `docs/src/ch05-commitment.md`
@@ -747,6 +751,7 @@
 - `scripts/check_r4_thermal.jl`
 - `scripts/check_r4_thermal_artifacts.jl`
 - `scripts/check_r4_tspa.jl`
+- `scripts/check_r5_benders.jl`
 - `scripts/check_r5_commitment.jl`
 - `scripts/check_r5_commitment_artifacts.jl`
 - `scripts/check_r5_dispatch.jl`
@@ -851,6 +856,7 @@
 - `scripts/r4_setup.jl`
 - `scripts/r4_thermal_docs.jl`
 - `scripts/r4_tspa_docs.jl`
+- `scripts/r5_benders_docs.jl`
 - `scripts/r5_commitment_cases.jl`
 - `scripts/r5_commitment_docs.jl`
 - `scripts/r5_dispatch_cases.jl`
@@ -929,6 +935,7 @@
 - `scripts/test_r4_reconfiguration.jl`
 - `scripts/test_r4_thermal.jl`
 - `scripts/test_r4_tspa.jl`
+- `scripts/test_r5_benders.jl`
 - `scripts/test_r5_commitment.jl`
 - `scripts/test_r5_dispatch.jl`
 - `scripts/test_r5_dispatch_duality.jl`
@@ -958,6 +965,7 @@
 - `src/algorithms/r4_reconfiguration.jl`
 - `src/algorithms/r4_thermal.jl`
 - `src/algorithms/r4_tspa.jl`
+- `src/algorithms/r5_benders.jl`
 - `src/algorithms/r5_commitment.jl`
 - `src/algorithms/r5_dispatch.jl`
 - `src/algorithms/r5_market.jl`
@@ -973,6 +981,7 @@
 - `src/core/r4_reconfiguration.jl`
 - `src/core/r4_thermal.jl`
 - `src/core/r4_tspa.jl`
+- `src/core/r5_benders.jl`
 - `src/core/r5_commitment.jl`
 - `src/core/r5_dispatch.jl`
 - `src/core/r5_market.jl`
@@ -985,6 +994,7 @@
 - `src/formulations/r4_heat_compatibility.jl`
 - `src/formulations/r4_reconfiguration.jl`
 - `src/formulations/r4_thermal.jl`
+- `src/formulations/r5_benders.jl`
 - `src/formulations/r5_commitment.jl`
 - `src/formulations/r5_dispatch.jl`
 - `src/formulations/r5_dispatch_dual.jl`
@@ -1022,6 +1032,7 @@
 - `src/verification/r4_reconfiguration.jl`
 - `src/verification/r4_thermal.jl`
 - `src/verification/r4_tspa.jl`
+- `src/verification/r5_benders.jl`
 - `src/verification/r5_commitment.jl`
 - `src/verification/r5_dispatch.jl`
 - `src/verification/r5_dispatch_duality.jl`
@@ -1049,6 +1060,7 @@
 - `test/r4_reconfiguration.jl`
 - `test/r4_thermal.jl`
 - `test/r4_tspa.jl`
+- `test/r5_benders.jl`
 - `test/r5_commitment.jl`
 - `test/r5_dispatch.jl`
 - `test/r5_dispatch_duality.jl`

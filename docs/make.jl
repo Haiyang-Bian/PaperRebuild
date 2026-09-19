@@ -29,6 +29,8 @@ include(joinpath(@__DIR__, "..", "scripts", "r5_commitment_docs.jl"))
 sync_r5_commitment_docs()
 include(joinpath(@__DIR__, "..", "scripts", "r5_risk_docs.jl"))
 sync_r5_risk_docs()
+include(joinpath(@__DIR__, "..", "scripts", "r5_benders_docs.jl"))
+sync_r5_benders_docs()
 
 makedocs(;
     modules = [PaperRebuild],
@@ -130,6 +132,8 @@ makedocs(;
             "有限支持风险调度" => "ch05-risk.md",
             "风险推导与符号" => "ch05-risk-equations.md",
             "风险调度结果与机制" => "ch05-risk-results.md",
+            "条件分解基础与边界" => "ch05-benders.md",
+            "条件分解推导与符号" => "ch05-benders-equations.md",
             "联合机会约束概率方向" => "ch05-probability-audit.md",
             "分解算法与已知输入" => "ch05-algorithm-audit.md",
         ],

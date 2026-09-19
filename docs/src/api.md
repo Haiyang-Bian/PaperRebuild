@@ -261,6 +261,17 @@ PaperRebuild.save_r5_risk_run
 PaperRebuild.read_r5_risk_run
 ~~~
 
+## 第5章条件Benders基础
+
+~~~@docs
+PaperRebuild.R5BendersSpec
+PaperRebuild.r5_benders_bounds
+PaperRebuild.build_r5_benders_subproblem
+PaperRebuild.solve_r5_benders_subproblem
+PaperRebuild.validate_r5_benders_subproblem
+PaperRebuild.r5_benders_cut
+~~~
+
 ## 工程示例函数说明
 
 以下两个函数保留自初始化模板，只用于验证包加载、测试和 Documenter 集成，不计入论文复现进度。
