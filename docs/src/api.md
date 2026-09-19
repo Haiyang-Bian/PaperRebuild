@@ -305,6 +305,17 @@ PaperRebuild.save_r5_execution_run
 PaperRebuild.read_r5_execution_run
 ~~~
 
+## 连续报价与条件Benders连接
+
+~~~@docs
+PaperRebuild.build_r5_strategic_benders_master
+PaperRebuild.solve_r5_strategic_benders
+PaperRebuild.validate_r5_strategic_benders
+PaperRebuild.save_r5_strategic_benders_run
+PaperRebuild.read_r5_strategic_benders_run
+PaperRebuild.compare_r5_strategic_benders_runs
+~~~
+
 ## 工程示例函数说明
 
 以下两个函数保留自初始化模板，只用于验证包加载、测试和 Documenter 集成，不计入论文复现进度。

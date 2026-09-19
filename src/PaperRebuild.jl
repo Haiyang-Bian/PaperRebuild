@@ -98,6 +98,14 @@ include("formulations/r5_strategic.jl")
 include("verification/r5_strategic.jl")
 include("algorithms/r5_strategic.jl")
 include("reporting/r5_strategic.jl")
+include("core/r5_strategic_benders.jl")
+include("formulations/r5_strategic_benders.jl")
+include("verification/r5_strategic_benders.jl")
+include("algorithms/r5_strategic_benders.jl")
+include("reporting/r5_strategic_benders.jl")
+export build_r5_strategic_benders_master, solve_r5_strategic_benders
+export validate_r5_strategic_benders, save_r5_strategic_benders_run, read_r5_strategic_benders_run
+export compare_r5_strategic_benders_runs
 include("algorithms/r5_market_selection.jl")
 include("core/r5_execution.jl")
 include("formulations/r5_execution.jl")

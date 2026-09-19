@@ -33,6 +33,8 @@ include(joinpath(@__DIR__, "..", "scripts", "r5_benders_docs.jl"))
 sync_r5_benders_docs()
 include(joinpath(@__DIR__, "..", "scripts", "r5_market_payment_docs.jl"))
 sync_r5_market_payment_docs()
+include(joinpath(@__DIR__, "..", "scripts", "r5_strategic_benders_docs.jl"))
+sync_r5_strategic_benders_docs()
 
 makedocs(;
     modules = [PaperRebuild],
@@ -146,6 +148,8 @@ makedocs(;
             "市场执行与实际交付" => "ch05-execution.md",
             "执行规则公式与符号" => "ch05-execution-equations.md",
             "成交执行与交付对照结果" => "ch05-execution-results.md",
+            "连续报价与Benders连接" => "ch05-strategic-benders.md",
+            "策略分解公式与符号" => "ch05-strategic-benders-equations.md",
             "联合机会约束概率方向" => "ch05-probability-audit.md",
             "分解算法与已知输入" => "ch05-algorithm-audit.md",
         ],

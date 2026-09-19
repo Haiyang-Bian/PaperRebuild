@@ -160,6 +160,7 @@
 - `docs/agent/tasks/2026-09-19-r5-market-payment.md`
 - `docs/agent/tasks/2026-09-19-r5-market.md`
 - `docs/agent/tasks/2026-09-19-r5-risk.md`
+- `docs/agent/tasks/2026-09-19-r5-strategic-benders.md`
 - `docs/agent/tasks/2026-09-19-r5-strategic.md`
 - `docs/make.jl`
 - `docs/reading/README.md`
@@ -205,6 +206,7 @@
 - `docs/reading/ch05/probability-audit.toml`
 - `docs/reading/ch05/recourse-duality.toml`
 - `docs/reading/ch05/risk.toml`
+- `docs/reading/ch05/strategic-benders.toml`
 - `docs/reading/ch05/strategic-model.toml`
 - `docs/reading/ch05/strategic.toml`
 - `docs/reading/source_manifest.json`
@@ -562,6 +564,8 @@
 - `docs/src/ch05-risk-equations.md`
 - `docs/src/ch05-risk-results.md`
 - `docs/src/ch05-risk.md`
+- `docs/src/ch05-strategic-benders-equations.md`
+- `docs/src/ch05-strategic-benders.md`
 - `docs/src/ch05-strategic-equations.md`
 - `docs/src/ch05-strategic-model-equations.md`
 - `docs/src/ch05-strategic-model.md`
@@ -913,6 +917,7 @@
 - `scripts/check_r5_risk_artifacts.jl`
 - `scripts/check_r5_strategic.jl`
 - `scripts/check_r5_strategic_artifacts.jl`
+- `scripts/check_r5_strategic_benders.jl`
 - `scripts/check_solvers.jl`
 - `scripts/collect_ch03_data.jl`
 - `scripts/compare_r1_runs.jl`
@@ -1043,6 +1048,8 @@
 - `scripts/r5_risk_docs.jl`
 - `scripts/r5_risk_report_tables.jl`
 - `scripts/r5_risk_setup.jl`
+- `scripts/r5_strategic_benders_docs.jl`
+- `scripts/r5_strategic_benders_task.jl`
 - `scripts/r5_strategic_cases.jl`
 - `scripts/r5_strategic_report_tables.jl`
 - `scripts/r5_strategic_selection_audit.jl`
@@ -1134,6 +1141,8 @@
 - `scripts/test_r5_market_payment.jl`
 - `scripts/test_r5_risk.jl`
 - `scripts/test_r5_strategic.jl`
+- `scripts/test_r5_strategic_benders.jl`
+- `scripts/test_r5_strategic_benders_gurobi.jl`
 - `scripts/tighten_r4_distributed_cost.jl`
 - `scripts/validate_ch03_data.jl`
 - `scripts/validate_r1.jl`
@@ -1166,6 +1175,7 @@
 - `src/algorithms/r5_market_selection.jl`
 - `src/algorithms/r5_risk.jl`
 - `src/algorithms/r5_strategic.jl`
+- `src/algorithms/r5_strategic_benders.jl`
 - `src/components/devices.jl`
 - `src/core/case.jl`
 - `src/core/r2_case.jl`
@@ -1184,6 +1194,7 @@
 - `src/core/r5_market.jl`
 - `src/core/r5_risk.jl`
 - `src/core/r5_strategic.jl`
+- `src/core/r5_strategic_benders.jl`
 - `src/formulations/r1.jl`
 - `src/formulations/r2.jl`
 - `src/formulations/r3.jl`
@@ -1200,6 +1211,7 @@
 - `src/formulations/r5_market.jl`
 - `src/formulations/r5_risk.jl`
 - `src/formulations/r5_strategic.jl`
+- `src/formulations/r5_strategic_benders.jl`
 - `src/networks/fixed_flow_heat.jl`
 - `src/networks/water_mass.jl`
 - `src/reporting/r2_runs.jl`
@@ -1220,6 +1232,7 @@
 - `src/reporting/r5_market.jl`
 - `src/reporting/r5_risk.jl`
 - `src/reporting/r5_strategic.jl`
+- `src/reporting/r5_strategic_benders.jl`
 - `src/reporting/runs.jl`
 - `src/verification/r1.jl`
 - `src/verification/r2.jl`
@@ -1244,6 +1257,7 @@
 - `src/verification/r5_market_payment.jl`
 - `src/verification/r5_risk.jl`
 - `src/verification/r5_strategic.jl`
+- `src/verification/r5_strategic_benders.jl`
 - `test/ch03_data.jl`
 - `test/maintenance.tests.ps1`
 - `test/r1.jl`
@@ -1279,6 +1293,7 @@
 - `test/r5_risk.jl`
 - `test/r5_risk_artifacts.jl`
 - `test/r5_strategic.jl`
+- `test/r5_strategic_benders.jl`
 - `test/runtests.jl`
 - `tools/Manifest.toml`
 - `tools/Project.toml`
