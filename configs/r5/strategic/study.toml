@@ -1,0 +1,316 @@
+budget_sec = 600.0
+construction_sha256 = "75945e3cf5c079bf63f1083dc2a0d1006321c402a3f4ff47fe227ecae113eaf2"
+fixture_sha256 = "3f8ee4f039c877706fa55da1778bdaf39a766281b29b0e72f12bb10c27f74a1d"
+gurobi_DualReductions = 0
+gurobi_PreSOS1BigM = 0
+origin = "synthetic"
+price_caps_imposed = false
+reference_injected = false
+schema = "r5-strategic-study-v1"
+scope = "Synthetic continuous bid/risk connection; fixed-complementarity bounds are branch-only; no out-of-sample or thesis-scale claim."
+selection = "optimistic_primal_dual"
+solver_seed = 23
+
+[analytic_expectations]
+competitive_hard_zero = 2.085
+competitive_quarter = 0.52125
+merit_fixed_bid = 14.2
+merit_strategic = 7.46
+
+[files]
+"competitive_future_e030_r005.toml" = "05d5ce41e6bdaa49005812870c7aefc405febe80f2068a7012959f59724e391b"
+"competitive_hard_zero.toml" = "791191f19bedcd27e54b0615f892bdfc19051f9097afdbbf94dd0b3889b2bd4f"
+"competitive_physical_infeasible.toml" = "0ef0c1af0ba24e02f85dd96d511579ec234d5d54220fdbcc49ece53b6285f782"
+"competitive_quarter.toml" = "caf4e19e0645b3af812276b1ab059197dddb67aabd221ce5a2897a2f349e5b31"
+"competitive_thermal_e030_r005.toml" = "b2dcbdfcf5d68eec21513c4196706620b9a9ed37b0128ea06c521f7514925972"
+"merit_fixed_bid.toml" = "0bc9966677f31592e03066ad70b93a671a7ee10ad829add4f08561e59e21b0ec"
+"merit_strategic.toml" = "a7b03af509302bba32324826025bee6a40241fe97ff0e2488caa83d62ac23bf4"
+"scarcity_unbounded_price.toml" = "fa3479d433f778fa087f6fa6b52ddf1bda73b920c9f928d60596c25323b8762d"
+
+[[runs]]
+budget_sec = 600.0
+case = "competitive_hard_zero.toml"
+id = "competitive_hard_zero-sos1"
+method = "sos1"
+solver = "gurobi"
+[[runs]]
+budget_sec = 600.0
+case = "competitive_hard_zero.toml"
+id = "competitive_hard_zero-branch"
+method = "fixed_complementarity"
+solver = "highs"
+
+    [runs.complementarity_pattern]
+    "g_cap_down/1/1" = 0
+    "g_cap_up/1/1" = 0
+    "gd_bid/1/1" = 0
+    "gu_bid/1/1" = 0
+    "i_cap_down/1/1" = 0
+    "i_cap_up/1/1" = 0
+    "id_bid/1/1" = 0
+    "iu_bid/1/1" = 0
+    "lower/P_G/1/1" = 0
+    "lower/P_IES/1/1" = 0
+    "lower/R_G_down/1/1" = 0
+    "lower/R_G_up/1/1" = 0
+    "lower/R_IES_down/1/1" = 0
+    "lower/R_IES_up/1/1" = 0
+    "pg_bid/1/1" = 0
+    "q_bid/1/1" = 0
+    "ramp_down/1/1" = 0
+    "ramp_up/1/1" = 0
+[[runs]]
+budget_sec = 600.0
+case = "competitive_quarter.toml"
+id = "competitive_quarter-sos1"
+method = "sos1"
+solver = "gurobi"
+[[runs]]
+budget_sec = 600.0
+case = "competitive_quarter.toml"
+id = "competitive_quarter-branch"
+method = "fixed_complementarity"
+solver = "highs"
+
+    [runs.complementarity_pattern]
+    "g_cap_down/1/1" = 0
+    "g_cap_up/1/1" = 0
+    "gd_bid/1/1" = 0
+    "gu_bid/1/1" = 0
+    "i_cap_down/1/1" = 0
+    "i_cap_up/1/1" = 0
+    "id_bid/1/1" = 0
+    "iu_bid/1/1" = 0
+    "lower/P_G/1/1" = 0
+    "lower/P_IES/1/1" = 0
+    "lower/R_G_down/1/1" = 0
+    "lower/R_G_up/1/1" = 0
+    "lower/R_IES_down/1/1" = 0
+    "lower/R_IES_up/1/1" = 0
+    "pg_bid/1/1" = 0
+    "q_bid/1/1" = 0
+    "ramp_down/1/1" = 0
+    "ramp_up/1/1" = 0
+[[runs]]
+budget_sec = 600.0
+case = "competitive_thermal_e030_r005.toml"
+id = "competitive_thermal_e030_r005-sos1"
+method = "sos1"
+solver = "gurobi"
+[[runs]]
+budget_sec = 600.0
+case = "competitive_thermal_e030_r005.toml"
+id = "competitive_thermal_e030_r005-branch"
+method = "fixed_complementarity"
+solver = "highs"
+
+    [runs.complementarity_pattern]
+    "g_cap_down/1/1" = 0
+    "g_cap_up/1/1" = 0
+    "gd_bid/1/1" = 0
+    "gu_bid/1/1" = 0
+    "i_cap_down/1/1" = 0
+    "i_cap_up/1/1" = 0
+    "id_bid/1/1" = 0
+    "iu_bid/1/1" = 0
+    "lower/P_G/1/1" = 0
+    "lower/P_IES/1/1" = 0
+    "lower/R_G_down/1/1" = 0
+    "lower/R_G_up/1/1" = 0
+    "lower/R_IES_down/1/1" = 0
+    "lower/R_IES_up/1/1" = 0
+    "pg_bid/1/1" = 0
+    "q_bid/1/1" = 0
+    "ramp_down/1/1" = 0
+    "ramp_up/1/1" = 0
+[[runs]]
+budget_sec = 600.0
+case = "competitive_future_e030_r005.toml"
+id = "competitive_future_e030_r005-sos1"
+method = "sos1"
+solver = "gurobi"
+[[runs]]
+budget_sec = 600.0
+case = "competitive_future_e030_r005.toml"
+id = "competitive_future_e030_r005-branch"
+method = "fixed_complementarity"
+solver = "highs"
+
+    [runs.complementarity_pattern]
+    "g_cap_down/1/1" = 0
+    "g_cap_down/1/2" = 0
+    "g_cap_down/1/3" = 0
+    "g_cap_down/1/4" = 0
+    "g_cap_up/1/1" = 0
+    "g_cap_up/1/2" = 0
+    "g_cap_up/1/3" = 0
+    "g_cap_up/1/4" = 0
+    "gd_bid/1/1" = 0
+    "gd_bid/1/2" = 0
+    "gd_bid/1/3" = 0
+    "gd_bid/1/4" = 0
+    "gu_bid/1/1" = 0
+    "gu_bid/1/2" = 0
+    "gu_bid/1/3" = 0
+    "gu_bid/1/4" = 0
+    "i_cap_down/1/1" = 0
+    "i_cap_down/1/2" = 0
+    "i_cap_down/1/3" = 0
+    "i_cap_down/1/4" = 0
+    "i_cap_up/1/1" = 0
+    "i_cap_up/1/2" = 0
+    "i_cap_up/1/3" = 0
+    "i_cap_up/1/4" = 0
+    "id_bid/1/1" = 0
+    "id_bid/1/2" = 0
+    "id_bid/1/3" = 0
+    "id_bid/1/4" = 0
+    "iu_bid/1/1" = 0
+    "iu_bid/1/2" = 0
+    "iu_bid/1/3" = 0
+    "iu_bid/1/4" = 0
+    "lower/P_G/1/1" = 0
+    "lower/P_G/1/2" = 0
+    "lower/P_G/1/3" = 0
+    "lower/P_G/1/4" = 0
+    "lower/P_IES/1/1" = 0
+    "lower/P_IES/1/2" = 0
+    "lower/P_IES/1/3" = 0
+    "lower/P_IES/1/4" = 0
+    "lower/R_G_down/1/1" = 0
+    "lower/R_G_down/1/2" = 0
+    "lower/R_G_down/1/3" = 0
+    "lower/R_G_down/1/4" = 0
+    "lower/R_G_up/1/1" = 0
+    "lower/R_G_up/1/2" = 0
+    "lower/R_G_up/1/3" = 0
+    "lower/R_G_up/1/4" = 0
+    "lower/R_IES_down/1/1" = 0
+    "lower/R_IES_down/1/2" = 0
+    "lower/R_IES_down/1/3" = 0
+    "lower/R_IES_down/1/4" = 0
+    "lower/R_IES_up/1/1" = 0
+    "lower/R_IES_up/1/2" = 0
+    "lower/R_IES_up/1/3" = 0
+    "lower/R_IES_up/1/4" = 0
+    "pg_bid/1/1" = 0
+    "pg_bid/1/2" = 0
+    "pg_bid/1/3" = 0
+    "pg_bid/1/4" = 0
+    "q_bid/1/1" = 0
+    "q_bid/1/2" = 0
+    "q_bid/1/3" = 0
+    "q_bid/1/4" = 0
+    "ramp_down/1/1" = 0
+    "ramp_down/1/2" = 0
+    "ramp_down/1/3" = 0
+    "ramp_down/1/4" = 0
+    "ramp_up/1/1" = 0
+    "ramp_up/1/2" = 0
+    "ramp_up/1/3" = 0
+    "ramp_up/1/4" = 0
+[[runs]]
+budget_sec = 600.0
+case = "competitive_physical_infeasible.toml"
+id = "competitive_physical_infeasible-sos1"
+method = "sos1"
+solver = "gurobi"
+[[runs]]
+budget_sec = 600.0
+case = "merit_strategic.toml"
+id = "merit_strategic-sos1"
+method = "sos1"
+solver = "gurobi"
+[[runs]]
+budget_sec = 600.0
+case = "merit_strategic.toml"
+id = "merit_strategic-branch"
+method = "fixed_complementarity"
+solver = "highs"
+
+    [runs.complementarity_pattern]
+    "g_cap_down/1/1" = 0
+    "g_cap_down/2/1" = 0
+    "g_cap_up/1/1" = 1
+    "g_cap_up/2/1" = 0
+    "gd_bid/1/1" = 0
+    "gd_bid/2/1" = 0
+    "gu_bid/1/1" = 0
+    "gu_bid/2/1" = 0
+    "i_cap_down/1/1" = 0
+    "i_cap_up/1/1" = 0
+    "id_bid/1/1" = 0
+    "iu_bid/1/1" = 0
+    "lower/P_G/1/1" = 0
+    "lower/P_G/2/1" = 1
+    "lower/P_IES/1/1" = 0
+    "lower/R_G_down/1/1" = 1
+    "lower/R_G_down/2/1" = 1
+    "lower/R_G_up/1/1" = 1
+    "lower/R_G_up/2/1" = 1
+    "lower/R_IES_down/1/1" = 1
+    "lower/R_IES_up/1/1" = 1
+    "pg_bid/1/1" = 0
+    "pg_bid/2/1" = 0
+    "q_bid/1/1" = 0
+    "ramp_down/1/1" = 0
+    "ramp_down/2/1" = 0
+    "ramp_up/1/1" = 0
+    "ramp_up/2/1" = 0
+[[runs]]
+budget_sec = 600.0
+case = "merit_fixed_bid.toml"
+id = "merit_fixed_bid-sos1"
+method = "sos1"
+solver = "gurobi"
+[[runs]]
+budget_sec = 600.0
+case = "merit_fixed_bid.toml"
+id = "merit_fixed_bid-branch"
+method = "fixed_complementarity"
+solver = "highs"
+
+    [runs.complementarity_pattern]
+    "g_cap_down/1/1" = 0
+    "g_cap_down/2/1" = 0
+    "g_cap_up/1/1" = 1
+    "g_cap_up/2/1" = 0
+    "gd_bid/1/1" = 0
+    "gd_bid/2/1" = 0
+    "gu_bid/1/1" = 0
+    "gu_bid/2/1" = 0
+    "i_cap_down/1/1" = 0
+    "i_cap_up/1/1" = 0
+    "id_bid/1/1" = 0
+    "iu_bid/1/1" = 0
+    "lower/P_G/1/1" = 0
+    "lower/P_G/2/1" = 0
+    "lower/P_IES/1/1" = 0
+    "lower/R_G_down/1/1" = 1
+    "lower/R_G_down/2/1" = 1
+    "lower/R_G_up/1/1" = 1
+    "lower/R_G_up/2/1" = 1
+    "lower/R_IES_down/1/1" = 1
+    "lower/R_IES_up/1/1" = 1
+    "pg_bid/1/1" = 0
+    "pg_bid/2/1" = 0
+    "q_bid/1/1" = 0
+    "ramp_down/1/1" = 0
+    "ramp_down/2/1" = 0
+    "ramp_up/1/1" = 0
+    "ramp_up/2/1" = 0
+[[runs]]
+budget_sec = 600.0
+case = "scarcity_unbounded_price.toml"
+id = "scarcity_unbounded_price-sos1"
+method = "sos1"
+solver = "gurobi"
+
+[[selection_cases]]
+case = "configs/r5/market/hand_hour.toml"
+id = "hand_hour"
+sha256 = "955521c4ee8b3de52ec03bce12d5d6037e395d4e119296cd8277fec852bbd3a0"
+[[selection_cases]]
+case = "configs/r5/market/wide_line.toml"
+id = "wide_line"
+sha256 = "1c3a0de4705a0f7127f49c9cc3ebba08c627dfb567cbad44097ff321d9324aac"

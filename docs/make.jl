@@ -140,6 +140,8 @@ makedocs(;
             "求解器状态消歧与归因" => "ch05-benders-status.md",
             "策略报价准备与支付核算" => "ch05-strategic.md",
             "支付推导与符号" => "ch05-strategic-equations.md",
+            "连续报价与风险连接" => "ch05-strategic-model.md",
+            "策略模型公式与符号" => "ch05-strategic-model-equations.md",
             "联合机会约束概率方向" => "ch05-probability-audit.md",
             "分解算法与已知输入" => "ch05-algorithm-audit.md",
         ],

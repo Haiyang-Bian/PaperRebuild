@@ -279,6 +279,19 @@ PaperRebuild.read_r5_benders_run
 PaperRebuild.compare_r5_benders_runs
 ~~~
 
+## 第5章连续策略报价与价格选择
+
+~~~@docs
+PaperRebuild.R5StrategicCase
+PaperRebuild.load_r5_strategic_case
+PaperRebuild.build_r5_strategic
+PaperRebuild.solve_r5_strategic
+PaperRebuild.validate_r5_strategic
+PaperRebuild.save_r5_strategic_run
+PaperRebuild.read_r5_strategic_run
+PaperRebuild.r5_market_settlement_range
+~~~
+
 ## 工程示例函数说明
 
 以下两个函数保留自初始化模板，只用于验证包加载、测试和 Documenter 集成，不计入论文复现进度。

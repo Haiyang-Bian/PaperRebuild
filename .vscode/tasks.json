@@ -1,5 +1,8 @@
 {
   "inputs": [
+    {"id":"r5StrategyBatch","description":"连续报价新批次ID，不覆盖旧运行","type":"promptString","default":"r5-strategic-new"},
+    {"id":"r5StrategyStudy","description":"已完成的策略study.toml","type":"promptString","default":"results/runs/r5-strategic-20260919/study.toml"},
+    {"id":"r5StrategyReport","description":"新策略报告目录；重绘读取其中已保存CSV","type":"promptString","default":"results/summaries/r5-strategic-replay"},
     {"id":"r5StatusBatch","description":"状态复核的新批次名，不覆盖旧运行","type":"promptString","default":"r5-benders-status-new"},
     {"id":"r5StatusStudy","description":"已完成的状态复核study.toml","type":"promptString","default":"results/runs/r5/r5-benders-status-20260919/study.toml"},
     {"id":"r5StatusReport","description":"状态报告新目录；重绘读取已有CSV","type":"promptString","default":"results/summaries/r5-benders-status-replay"},
@@ -69,6 +72,13 @@
     }
   ],
   "tasks": [
+    {"label":"PaperRebuild: R5 strategic mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_strategic.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 strategic tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_strategic.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 strategic freeze inputs","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/freeze_r5_strategic.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 strategic frozen study","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/study_r5_strategic.jl","${input:r5StrategyBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 strategic saved report","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/report_r5_strategic.jl","${input:r5StrategyStudy}","${input:r5StrategyReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 strategic saved plots","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r5_strategic.jl","${input:r5StrategyReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 strategic public verification","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_strategic_artifacts.jl","results/summaries/r5-strategic"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R5 status frozen rules","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_benders_status.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R5 status frozen study","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/study_r5_benders_status.jl","${input:r5StatusBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R5 status saved report","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/report_r5_benders_status.jl","${input:r5StatusStudy}","${input:r5StatusReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},

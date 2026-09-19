@@ -93,6 +93,16 @@ include("formulations/r5_benders.jl")
 include("verification/r5_benders.jl")
 include("algorithms/r5_benders.jl")
 include("reporting/r5_benders.jl")
+include("core/r5_strategic.jl")
+include("formulations/r5_strategic.jl")
+include("verification/r5_strategic.jl")
+include("algorithms/r5_strategic.jl")
+include("reporting/r5_strategic.jl")
+include("algorithms/r5_market_selection.jl")
+export R5StrategicCase, load_r5_strategic_case, build_r5_strategic
+export solve_r5_strategic, validate_r5_strategic
+export save_r5_strategic_run, read_r5_strategic_run
+export r5_market_settlement_range
 export R5BendersSpec, r5_benders_bounds, build_r5_benders_subproblem
 export solve_r5_benders_subproblem, validate_r5_benders_subproblem, r5_benders_cut
 export build_r5_benders_master, solve_r5_benders, validate_r5_benders
