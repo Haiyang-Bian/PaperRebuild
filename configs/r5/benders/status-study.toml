@@ -1,0 +1,98 @@
+frozen_before_optimization = true
+frozen_utc = "2026-09-19T04:05:17.743"
+master_DualReductions = 1
+method_budget_sec = 600.0
+origin = "synthetic"
+parent_rules_sha256 = "fcda2950892e44cb76a90fd555946d0102fdd1f70b4ebd05ad81d364b1bf5a48"
+probe_budget_sec = 60.0
+probe_values = [1, 0]
+schema = "r5-benders-status-rules-v1"
+scope = "Five saved ambiguous LP points: fresh models with DualReductions 1 then 0; phase-I only after definite infeasibility. Three full methods change only subproblem DualReductions. No tolerance/model changes, no reference injection, no automatic further retries."
+source_url = "https://support.gurobi.com/hc/en-us/articles/4402704428177-How-do-I-resolve-the-error-Model-is-infeasible-or-unbounded"
+subproblem_DualReductions = 0
+
+[[probes]]
+branch = 0
+case = "hard_zero.toml"
+id = "hard_zero--saved-1"
+scenario = 3
+source_id = "r5-benders-sub-37958be3-f584-481d-a66e-4f2e3a6bd662"
+source_sha256 = "242eac5fdce81b8de585366dc2c1e42936f0dd7a782f98718e799c516601fd22"
+[[probes]]
+branch = 0
+case = "thermal_e030_r005.toml"
+id = "thermal_e030_r005--saved-1"
+scenario = 3
+source_id = "r5-benders-sub-a4c9ccc5-2a44-4fe3-b19a-c168bc0a5d51"
+source_sha256 = "6fbc9b820829548f6b9318f981e10b87c50a65c1b4d653d215bf4898a5482f70"
+[[probes]]
+branch = 0
+case = "future_e030_r005.toml"
+id = "future_e030_r005--saved-1"
+scenario = 1
+source_id = "r5-benders-sub-a858f31b-3f52-4fd5-a77c-6ce294087314"
+source_sha256 = "31c38b7a74e69b46562575d1fe1a83dc724bf6da2b0206a180c5b00443653cb0"
+[[probes]]
+branch = 0
+case = "future_e030_r005.toml"
+id = "future_e030_r005--saved-2"
+scenario = 2
+source_id = "r5-benders-sub-e4cec6cd-fb2c-4dd1-8bbd-54b4f174ff3e"
+source_sha256 = "6a0a73b950ffc41ac396b8cf7a345bc3b74eb36f65772799457ca6a8a719b775"
+[[probes]]
+branch = 1
+case = "future_e030_r005.toml"
+id = "future_e030_r005--saved-3"
+scenario = 3
+source_id = "r5-benders-sub-abd8102a-6a5b-4c46-ab5e-a40a177cdedf"
+source_sha256 = "e99b4f59364d4066dc5760ca37700408ba725badd8ea14239f9d8d67d2380a41"
+
+[[runs]]
+case = "hard_zero.toml"
+id = "hard_zero--critical--gurobi--dr0"
+parent_id = "hard_zero--critical--gurobi"
+parent_sha256 = "1171379fe5578f1dcc9ae24eb75eb6dcaf9debbb3771efe66ccb6248261627d9"
+[[runs]]
+case = "thermal_e030_r005.toml"
+id = "thermal_e030_r005--critical--gurobi--dr0"
+parent_id = "thermal_e030_r005--critical--gurobi"
+parent_sha256 = "04f44914ade61411e851ab6d4c46a498d50fa725150ffab23a8c0b188af2652c"
+[[runs]]
+case = "future_e030_r005.toml"
+id = "future_e030_r005--critical--gurobi--dr0"
+parent_id = "future_e030_r005--critical--gurobi"
+parent_sha256 = "9c4632c8b180514e527967e09f378f1c6dba0f1510f1a6138de1773bd3d1e8ad"
+
+[science_sha256]
+"Manifest.toml" = "6aa68b274431d56e5f78dfe516af70b7a6aefe8529cf58240d882de31c72bb75"
+"Project.toml" = "b3f905bb91f92e68ff970eedc46e9ed854ca4e08ff124541d68e991818de4a92"
+"src/algorithms/r5_benders.jl" = "212a004d95e367a3051326198dd0f082141bea927ab335b6c78a83b615d3c1bf"
+"src/algorithms/r5_commitment.jl" = "5038f22f037bba90a7bb3e2afc79b900fdff2d91ebe0afbde8ff189acd0c04bb"
+"src/algorithms/r5_dispatch.jl" = "fe48a6db69bf8bbb9b843b1ecc1695ced426a60860e39a586198e15cd77fca03"
+"src/algorithms/r5_market.jl" = "a5a5bbc1b96743973ea81e79ec8af40e8f18328d00ca7fc14b540aaf9324154a"
+"src/algorithms/r5_risk.jl" = "44824bcb0093e32b935b3d88b87d292cdf1add9d3afeac133db8e7064b4ae28f"
+"src/core/r5_benders.jl" = "3522687413059a2eb40c27dbf7d70ec2e8735f63af7ceca71e920a66280308c3"
+"src/core/r5_commitment.jl" = "5e4a30e71b12c56b8754482163182b93266de454a8b04fb41a5e2f86a98af812"
+"src/core/r5_dispatch.jl" = "7308945636b363ab412716e0bcd059992a1760567d53d6991cd57739230a15af"
+"src/core/r5_market.jl" = "b66b34edafb602439fa8c93beb25fc20500b6a4106dee739a1795418cb265222"
+"src/core/r5_risk.jl" = "691219d10cda283b7c6e3cd19e2467b102c1564fc907427f773ad72627a635c8"
+"src/formulations/r5_benders.jl" = "aee2c0998eab6aadd29b5a2ebd662b30ef24902ed4019a0f007e7424cb20d539"
+"src/formulations/r5_commitment.jl" = "8d66f8987a6a2e053416d276080b50644d63b38763fa06625e27fa9899f246ae"
+"src/formulations/r5_dispatch.jl" = "fef8db84d2be1544c622f8d9891fd4c47eb91dc2ff2e89817bec7a5996622d19"
+"src/formulations/r5_dispatch_dual.jl" = "9685a38e919580a17abd0f8fee7c90fbdc7f8dd85080831ee36772c3d8d69bdf"
+"src/formulations/r5_market.jl" = "85ba2ee6e8f84bef53db7949bf4fc425b57476bdaa49f22d9a816bf32bd01713"
+"src/formulations/r5_risk.jl" = "7b68ae8d7bdd94e8a4d475403962c2e547eac0fb79304f2036da5fb724837f2c"
+"src/networks/fixed_flow_heat.jl" = "620c069f6b3a520d32ee546ec048074f9cbaa3c785f8c2e31ec7fd7bf245a83b"
+"src/reporting/r5_benders.jl" = "24dc9c7944e5f9f1dadc04108bf4f27af6baf6088ec6c4814bb639527a00e35a"
+"src/reporting/r5_commitment.jl" = "7d5faa97dbc2724d33831b319af807381ea13aa763cfde5655a4d7ecea956f2a"
+"src/reporting/r5_dispatch.jl" = "5d919f4e14dff618d7cc6467ccdcf5ea073b218b2799db0966eb877f4f5d92cb"
+"src/reporting/r5_market.jl" = "164d47e5922903179225a17c8a681610ae7eb5312068a4f806d85010f16f0796"
+"src/reporting/r5_risk.jl" = "973e9a81c86ff6b0268992be7c02b0cfeadc49dd04905bbe6a66fa37a827a377"
+"src/verification/r5_benders.jl" = "4611e873233e4d682c044374cb0a2fa4c4870696b798c4d3fc043af710f33a5c"
+"src/verification/r5_commitment.jl" = "71c04cdeb804ee48dbfd585e5376cdacd910cc5a507db8d9027b866690cde8ed"
+"src/verification/r5_dispatch.jl" = "6ad9b1f74949e1345df473bfd778db6e419a57b2e2060cc065a7d5fbae1802f2"
+"src/verification/r5_dispatch_duality.jl" = "5dbbcbae682b3c738c5506b36254466614d6ff80e835afe7619744c77c7fc96d"
+"src/verification/r5_market.jl" = "47cf2899d6167974ec406d7b431d06bcd2ca3b16108bdbc67c8805e071e57009"
+"src/verification/r5_risk.jl" = "a9389a9963ede5a33b8867a9cd8ae9e6a1b608e9995ff0fa62eeb0fed38c2433"
+"tools/solvers/Manifest.toml" = "4c3bfa7a47e06095c1251dfb555ff155bc7e02241013547c294c2920cedb958e"
+"tools/solvers/Project.toml" = "be07a40d34ee1e44e61d0e81fc1a71161cc9ba7ef20d57fc7fbe4e70f6e3ba8b"
