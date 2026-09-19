@@ -1,0 +1,86 @@
+schema = "ch05-strategic-derivation-v1"
+source = "docs/摘要.pdf"
+source_sha256 = "20328e2480e773520c19c378e53365fc944c0bafcfca73071f5d8313d5ee7d91"
+pdf_pages = [85, 86, 89, 90, 91]
+status = "Price-maker scope and payment algebra rechecked; payment API implemented; strategic optimization pending."
+
+[[equation]]
+id = "R5-SP1"
+source_equations = ["5-6", "5-33"]
+latex = '\Pi^{\rm IES}=\Delta t\sum_{i,t}(\lambda_{b(i)t}q_{it}-\lambda_t^U u_{it}-\lambda_t^D d_{it})'
+meaning = "全部IES在全时域的净支付；购电支出减去备用容量收入。"
+api = "r5_market_payment_identity"
+test = "R5-SP 全时域支付与强对偶线性式"
+
+[[equation]]
+id = "R5-SP2"
+source_equations = ["5-34", "5-59"]
+latex = '-\Delta t\sum_{i,t}(v_{it}q_{it}-b_{it}^Uu_{it}-b_{it}^Dd_{it})=Z-C_G,\quad C_G=\Delta t\sum_{g,t}(c_{gt}p_{gt}+b_{gt}^Uu_{gt}+b_{gt}^Dd_{gt})'
+meaning = "从出清目标移项时，发电机的三类报价成本都必须被减去。固定普通负荷效用已在两侧一致省略。"
+api = "r5_market_payment_identity"
+test = "R5-SP 全时域支付与强对偶线性式"
+
+[[equation]]
+id = "R5-SP3"
+source_equations = ["5-58", "5-60", "5-61"]
+latex = '\Pi^{\rm IES}=C_G+\mathcal R_G^{\rm cap}+\mathcal R_G^{\rm bid}+\mathcal R^{\rm ramp}+\mathcal R^{\rm line}-\Delta t\sum_{b,t}\lambda_{bt}D_{bt}-\sum_t(\sigma_t^UR_t^{\rm sys,U}+\sigma_t^DR_t^{\rm sys,D})'
+meaning = "发电机驻点、互补及系统守恒给出的净支付线性表达；适用于全部IES合计，不保证逐时成立。"
+api = "r5_market_payment_identity"
+test = "R5-SP 全时域支付与强对偶线性式"
+
+[[symbol]]
+id = "R5-SP-S01"
+latex = '\Pi^{\rm IES}'
+meaning = "全部IES合计日前净支付"
+unit = "USD"
+julia = "direct_payment_USD / affine_payment_USD"
+scope = "全时域标量；含备用收入，非纯资源成本"
+[[symbol]]
+id = "R5-SP-S02"
+latex = '\lambda_{bt},\lambda_t^U,\lambda_t^D'
+meaning = "节点电能价及上/下备用容量价"
+unit = "USD/MWh；USD/(MW h)"
+julia = "energy / up / down multipliers divided by dt_h; energy also subtracts PTDF congestion"
+scope = "节点×时段或时段；原始乘子符号沿用R5-MK5"
+[[symbol]]
+id = "R5-SP-S03"
+latex = '\pi_t,\sigma_t^U,\sigma_t^D'
+meaning = "包含时间步的能量及备用平衡拉格朗日乘子"
+unit = "USD/MW"
+julia = "multipliers[energy / up / down]"
+scope = "时段向量；乘功率即费用，不再乘dt_h"
+[[symbol]]
+id = "R5-SP-S04"
+latex = 'k_{gt}^p,k_{gt}^U,k_{gt}^D'
+meaning = "发电机能量及备用报价容量上界乘子"
+unit = "USD/MW"
+julia = "pg_bid / gu_bid / gd_bid"
+scope = "发电机×时段；与物理容量乘子分开"
+[[symbol]]
+id = "R5-SP-S05"
+latex = '\rho_{gt}^+,\rho_{gt}^-,p_{g0}'
+meaning = "爬坡上下界乘子与已知初始出力"
+unit = "USD/MW；MW"
+julia = "ramp_up / ramp_down / p_initial"
+scope = "全时域伸缩求和含首时段乘子差乘p_initial"
+
+[[issue]]
+id = "R5-SP-C01"
+original = "PDF90原(5-59)右侧印为Upsilon减去发电能量报价成本减上/下备用报价成本的括号，与(5-34)的三类成本同为正不一致。"
+adopted = "由已经独立核查的出清原问题重新移项：Z-C_G，C_G三项均为正相加。保留印刷式，不假定作者实际程序也使用该符号。"
+evidence = "一小时教学例Z=-1280、发电能量1600、上备用100、下备用20；左侧-3000，采用移项-3000，印刷移项-2760，相差240 USD。"
+[[issue]]
+id = "R5-SP-C02"
+original = "5-61给出了线性净支付形式；采用市场还显式区分报价容量和物理容量，并给定非零初始出力。"
+adopted = "保留发电报价上界、线路租金、普通负荷节点价及初始爬坡项。先验算全时域恒等式，再作为策略报价构建依据。"
+evidence = "首时段负荷100、廉价机组初始30、上升20 MW，初始爬坡项为900 USD；省略会破坏恒等式。"
+[[issue]]
+id = "R5-SP-C03"
+original = "PDF85明确price maker；PDF86说明在不能影响市场价时退化为price taker；(5-32)约束策略报价。"
+adopted = "旧固定价风险模型是价格接受者基准。接入原(5-32)连续报价及出清KKT才可评价价格制定；不把菜单搜索替代连续报价后称原双层问题完成。"
+evidence = "本批仅实现支付恒等式；双层决策、互补处理及报价边界仍须单独实施与验证。"
+[[issue]]
+id = "R5-SP-C04"
+original = "原文未在上述原页完整说明下层多最优解和价格不唯一的选择规则。"
+adopted = "上层同时选择有利出清量和价格是乐观双层解释，应明确标注。恒等式通过不证明价格唯一；不得用任意大M或隐式价格截断制造有界最优。"
+evidence = "后续用退化解析例、独立下层重解和价格范围检查区分报价能力与价格选择收益。"

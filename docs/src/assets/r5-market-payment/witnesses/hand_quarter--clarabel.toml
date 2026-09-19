@@ -1,0 +1,828 @@
+parent_result_sha256 = "e73a81a730a42209af3e3aaf67ba946ac129b1c9e5318760d65ca7d58427c970"
+record_id = "hand_quarter--clarabel"
+result_content_sha256 = "e73a81a730a42209af3e3aaf67ba946ac129b1c9e5318760d65ca7d58427c970"
+schema = "r5-market-payment-witness-v1"
+
+[case]
+T = 1
+description = "Same synthetic powers and per-hour prices; duration 0.25 h."
+dt_h = 0.25
+load_MW = [[50.0]]
+name = "hand_quarter"
+nodes = 1
+origin = "synthetic"
+reserve_down_MW = [10.0]
+reserve_up_MW = [20.0]
+schema = "r5-market-case-v1"
+
+    [[case.generators]]
+    down_bid = [2.0]
+    down_max = 100.0
+    energy_bid = [20.0]
+    id = "G1"
+    node = 1
+    p_bid_max = 200.0
+    p_initial = 80.0
+    p_max = 200.0
+    p_min = 0.0
+    ramp_down_MW_h = 200.0
+    ramp_up_MW_h = 200.0
+    up_bid = [5.0]
+    up_max = 100.0
+
+    [[case.ies]]
+    down_bid = [3.0]
+    down_max = 0.0
+    energy_bid = [100.0]
+    id = "IES1"
+    node = 1
+    purchase_bid_max = 30.0
+    q_max = 100.0
+    q_min = 0.0
+    up_bid = [2.0]
+    up_max = 0.0
+
+    [case.network]
+    limit_MW = []
+    ptdf = []
+    slack_node = 1
+
+    [case.units]
+    energy = "MWh"
+    energy_price = "USD/MWh"
+    power = "MW"
+    ramp = "MW/h"
+    reserve_price = "USD/(MW*h)"
+    time = "h"
+
+[payment]
+affine_payment_USD = 150.00000000888915
+case_sha256 = "9cd6b1600bbc9b75117dec81231bb7904df8feff72425b9e60c366f0506998ec"
+direct_payment_USD = 150.0000000006469
+identity_pass = true
+identity_residual_USD = 8.242238891398301e-9
+identity_tolerance_USD = 0.00015000000000888914
+market_kkt_pass = true
+market_model_pass = true
+payment_by_IES_USD = [[150.0000000006469]]
+run_id = "r5-market-b38157e0-2b1a-4579-a32b-0e6e303f27a2"
+schema = "r5-market-payment-check-v1"
+scope = "all_IES_whole_horizon"
+status = "payment_identity_verified"
+unit = "USD"
+valid_for_reformulation = true
+
+    [payment.linear_terms_USD]
+    generator_bid_capacity = 4.39864894149636e-9
+    generator_capacity = 1.577457617555482e-9
+    generator_down = 4.99999999998186
+    generator_energy = 400.00000000034
+    generator_up = 24.99999999991266
+    line_capacity = 0.0
+    ordinary_load_payment = -250.00000000068724
+    ramp_capacity = 1.6135413338842757e-9
+    ramp_initial = 7.778389016042611e-10
+    system_reserve_payment = -29.999999999025626
+
+[result]
+bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+budget_sec = 60.0
+case_sha256 = "9cd6b1600bbc9b75117dec81231bb7904df8feff72425b9e60c366f0506998ec"
+cost_optimization_complete = true
+created_utc = "2026-09-18T21:30:05.890"
+dual_status = "FEASIBLE_POINT"
+elapsed_sec = 0.00599980354309082
+fixed_load_utility_constant_omitted = true
+julia_version = "1.12.6"
+model_type = "continuous_LP"
+objective_type = "fixed_bid_clearing_cost_not_system_resource_cost"
+primal_status = "FEASIBLE_POINT"
+raw_status = "SOLVED"
+run_id = "r5-market-b38157e0-2b1a-4579-a32b-0e6e303f27a2"
+schema = "r5-market-result-v1"
+solver = "Clarabel"
+solver_objective = -320.00000000140346
+solver_version = "0.11.1"
+status = "solver_optimal"
+termination = "OPTIMAL"
+total_method_elapsed_sec = 0.009999990463256836
+version = "r5_market_clearing_checked_v1"
+
+    [result.independent_dual]
+    dual_value_recomputed = -320.0000000008876
+    objective = -320.00000000088744
+    relative_gap = 1.612576738800474e-12
+    status = "OPTIMAL"
+    verified = true
+
+        [result.independent_dual.multipliers]
+        down = [0.49999999995089434]
+        energy = [5.000000000013744]
+        g_cap_down = [[-1.4336342746054038e-12]]
+        g_cap_up = [[-3.819184429901202e-12]]
+        gd_bid = [[-1.7197729049632815e-12]]
+        gu_bid = [[-4.219739365276734e-12]]
+        i_cap_down = [[2.340428688775062e-12]]
+        i_cap_up = [[1.1870973915722324e-11]]
+        id_bid = [[4.678257812477803]]
+        iu_bid = [[6.97796847896364]]
+        line_down = []
+        line_up = []
+        pg_bid = [[1.5500152958527022e-12]]
+        q_bid = [[20.000000000006445]]
+        ramp_down = [[-4.3242329698055835e-13]]
+        ramp_up = [[9.290288101511614e-12]]
+        up = [1.2499999999758344]
+
+    [result.lower_bound_duals]
+    P_G = [[6.849279241262206e-12]]
+    P_IES = [[2.2367351965987227e-11]]
+    R_G_down = [[5.7658858921763615e-11]]
+    R_G_up = [[2.7833203509781172e-11]]
+    R_IES_down = [[4.928259017177511]]
+    R_IES_up = [[6.2279700425942]]
+
+    [[result.model_types]]
+    count = 3
+    function = "AffExpr"
+    set = "MathOptInterface.EqualTo{Float64}"
+    [[result.model_types]]
+    count = 2
+    function = "AffExpr"
+    set = "MathOptInterface.GreaterThan{Float64}"
+    [[result.model_types]]
+    count = 10
+    function = "AffExpr"
+    set = "MathOptInterface.LessThan{Float64}"
+    [[result.model_types]]
+    count = 6
+    function = "VariableRef"
+    set = "MathOptInterface.GreaterThan{Float64}"
+
+    [result.multipliers]
+    down = [0.499999999950894]
+    energy = [5.000000000013745]
+    g_cap_down = [[1.0272636816342959e-11]]
+    g_cap_up = [[7.88728808777741e-12]]
+    gd_bid = [[9.986632673668722e-12]]
+    gu_bid = [[7.486598271254568e-12]]
+    i_cap_down = [[1.4047114916785428e-11]]
+    i_cap_up = [[2.3577462810219652e-11]]
+    id_bid = [[4.678259017126064]]
+    iu_bid = [[6.977970042558164]]
+    line_down = []
+    line_up = []
+    pg_bid = [[1.3256629235020152e-11]]
+    q_bid = [[20.000000000018154]]
+    ramp_down = [[1.1273920203816126e-11]]
+    ramp_up = [[2.099690647386939e-11]]
+    up = [1.2499999999758342]
+
+    [result.raw_duals]
+    down = [-0.499999999950894]
+    energy = [-5.000000000013745]
+    g_cap_down = [[1.0272636816342959e-11]]
+    g_cap_up = [[-7.88728808777741e-12]]
+    gd_bid = [[-9.986632673668722e-12]]
+    gu_bid = [[-7.486598271254568e-12]]
+    i_cap_down = [[-1.4047114916785428e-11]]
+    i_cap_up = [[2.3577462810219652e-11]]
+    id_bid = [[-4.678259017126064]]
+    iu_bid = [[-6.977970042558164]]
+    line_down = []
+    line_up = []
+    pg_bid = [[-1.3256629235020152e-11]]
+    q_bid = [[-20.000000000018154]]
+    ramp_down = [[-1.1273920203816126e-11]]
+    ramp_up = [[-2.099690647386939e-11]]
+    up = [-1.2499999999758342]
+
+    [result.source_hashes_at_solve]
+    "Manifest.toml" = "6aa68b274431d56e5f78dfe516af70b7a6aefe8529cf58240d882de31c72bb75"
+    "Project.toml" = "b3f905bb91f92e68ff970eedc46e9ed854ca4e08ff124541d68e991818de4a92"
+    "src/algorithms/r5_market.jl" = "a5a5bbc1b96743973ea81e79ec8af40e8f18328d00ca7fc14b540aaf9324154a"
+    "src/core/r5_market.jl" = "b66b34edafb602439fa8c93beb25fc20500b6a4106dee739a1795418cb265222"
+    "src/formulations/r5_market.jl" = "85ba2ee6e8f84bef53db7949bf4fc425b57476bdaa49f22d9a816bf32bd01713"
+    "src/reporting/r5_market.jl" = "164d47e5922903179225a17c8a681610ae7eb5312068a4f806d85010f16f0796"
+    "src/verification/r5_market.jl" = "47cf2899d6167974ec406d7b431d06bcd2ca3b16108bdbc67c8805e071e57009"
+    "tools/solvers/Manifest.toml" = "4c3bfa7a47e06095c1251dfb555ff155bc7e02241013547c294c2920cedb958e"
+    "tools/solvers/Project.toml" = "be07a40d34ee1e44e61d0e81fc1a71161cc9ba7ef20d57fc7fbe4e70f6e3ba8b"
+
+    [result.validation]
+    LMP_USD_MWh = [[20.00000000005498]]
+    clearing_objective = -320.00000000140363
+    dual_record_complete = true
+    dual_value = -320.000000010604
+    flow_MW = []
+    kkt_pass = true
+    model_pass = true
+    optimality_pass = true
+    power_scale_MW = 200.0
+    price_scale_USD_MWh = 100.0
+    relative_gap = 2.875122362398664e-11
+    reserve_down_price = [1.999999999803576]
+    reserve_up_price = [4.999999999903337]
+    status = "primal_dual_evaluated"
+
+        [[result.validation.rows]]
+        entity = "energy"
+        id = "5-37"
+        pass = true
+        residual = 1.4210854715202004e-14
+        scope = "primal"
+        t = 1
+        tolerance = 0.00020099999999999998
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "up"
+        id = "5-36"
+        pass = true
+        residual = 0.0
+        scope = "primal"
+        t = 1
+        tolerance = 0.00020099999999999998
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "down"
+        id = "5-36"
+        pass = true
+        residual = 0.0
+        scope = "primal"
+        t = 1
+        tolerance = 0.00020099999999999998
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "i_cap_down1"
+        id = "R5-MK_bounds"
+        pass = true
+        residual = 0.0
+        scope = "primal"
+        t = 1
+        tolerance = 0.00020099999999999998
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "gu_bid1"
+        id = "R5-MK_bounds"
+        pass = true
+        residual = 0.0
+        scope = "primal"
+        t = 1
+        tolerance = 0.00020099999999999998
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "ramp_down1"
+        id = "R5-MK_bounds"
+        pass = true
+        residual = 0.0
+        scope = "primal"
+        t = 1
+        tolerance = 0.00020099999999999998
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "iu_bid1"
+        id = "R5-MK_bounds"
+        pass = true
+        residual = 6.987169257274428e-11
+        scope = "primal"
+        t = 1
+        tolerance = 0.00020099999999999998
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "ramp_up1"
+        id = "R5-MK_bounds"
+        pass = true
+        residual = 0.0
+        scope = "primal"
+        t = 1
+        tolerance = 0.00020099999999999998
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "g_cap_down1"
+        id = "R5-MK_bounds"
+        pass = true
+        residual = 0.0
+        scope = "primal"
+        t = 1
+        tolerance = 0.00020099999999999998
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "id_bid1"
+        id = "R5-MK_bounds"
+        pass = true
+        residual = 3.628082055230924e-11
+        scope = "primal"
+        t = 1
+        tolerance = 0.00020099999999999998
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "i_cap_up1"
+        id = "R5-MK_bounds"
+        pass = true
+        residual = 0.0
+        scope = "primal"
+        t = 1
+        tolerance = 0.00020099999999999998
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "g_cap_up1"
+        id = "R5-MK_bounds"
+        pass = true
+        residual = 0.0
+        scope = "primal"
+        t = 1
+        tolerance = 0.00020099999999999998
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "gd_bid1"
+        id = "R5-MK_bounds"
+        pass = true
+        residual = 0.0
+        scope = "primal"
+        t = 1
+        tolerance = 0.00020099999999999998
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "q_bid1"
+        id = "R5-MK_bounds"
+        pass = true
+        residual = 6.800959795327799e-11
+        scope = "primal"
+        t = 1
+        tolerance = 0.00020099999999999998
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "pg_bid1"
+        id = "R5-MK_bounds"
+        pass = true
+        residual = 0.0
+        scope = "primal"
+        t = 1
+        tolerance = 0.00020099999999999998
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "R_G_down1"
+        id = "R5-MK_nonnegative"
+        pass = true
+        residual = 0.0
+        scope = "primal"
+        t = 1
+        tolerance = 0.00020099999999999998
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "P_G1"
+        id = "R5-MK_nonnegative"
+        pass = true
+        residual = 0.0
+        scope = "primal"
+        t = 1
+        tolerance = 0.00020099999999999998
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "R_IES_up1"
+        id = "R5-MK_nonnegative"
+        pass = true
+        residual = 0.0
+        scope = "primal"
+        t = 1
+        tolerance = 0.00020099999999999998
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "R_IES_down1"
+        id = "R5-MK_nonnegative"
+        pass = true
+        residual = 0.0
+        scope = "primal"
+        t = 1
+        tolerance = 0.00020099999999999998
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "R_G_up1"
+        id = "R5-MK_nonnegative"
+        pass = true
+        residual = 0.0
+        scope = "primal"
+        t = 1
+        tolerance = 0.00020099999999999998
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "P_IES1"
+        id = "R5-MK_nonnegative"
+        pass = true
+        residual = 0.0
+        scope = "primal"
+        t = 1
+        tolerance = 0.00020099999999999998
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "objective"
+        id = "5-34"
+        pass = true
+        residual = 1.7053025658242404e-13
+        scope = "cost"
+        t = 0
+        tolerance = 0.00032000000000140363
+        unit = "USD"
+        [[result.validation.rows]]
+        entity = "i_cap_down1"
+        id = "R5-MK_dual_sign"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "i_cap_down1"
+        id = "R5-MK_complementarity"
+        pass = true
+        residual = 1.96659608834703e-13
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "gu_bid1"
+        id = "R5-MK_dual_sign"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "gu_bid1"
+        id = "R5-MK_complementarity"
+        pass = true
+        residual = 1.1978557234017773e-13
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "ramp_down1"
+        id = "R5-MK_dual_sign"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "ramp_down1"
+        id = "R5-MK_complementarity"
+        pass = true
+        residual = 1.1273920203831456e-13
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "iu_bid1"
+        id = "R5-MK_dual_sign"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "iu_bid1"
+        id = "R5-MK_complementarity"
+        pass = true
+        residual = 9.751251551908868e-14
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "ramp_up1"
+        id = "R5-MK_dual_sign"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "ramp_up1"
+        id = "R5-MK_complementarity"
+        pass = true
+        residual = 2.0996906473840835e-13
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "g_cap_down1"
+        id = "R5-MK_dual_sign"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "g_cap_down1"
+        id = "R5-MK_complementarity"
+        pass = true
+        residual = 1.4381691542901567e-13
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "id_bid1"
+        id = "R5-MK_dual_sign"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "id_bid1"
+        id = "R5-MK_complementarity"
+        pass = true
+        residual = 3.394621517951467e-14
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "i_cap_up1"
+        id = "R5-MK_dual_sign"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "i_cap_up1"
+        id = "R5-MK_complementarity"
+        pass = true
+        residual = 1.4146477686130914e-13
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "g_cap_up1"
+        id = "R5-MK_dual_sign"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "g_cap_up1"
+        id = "R5-MK_complementarity"
+        pass = true
+        residual = 1.5774576175555114e-13
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "gd_bid1"
+        id = "R5-MK_dual_sign"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "gd_bid1"
+        id = "R5-MK_complementarity"
+        pass = true
+        residual = 1.7975938812610947e-13
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "q_bid1"
+        id = "R5-MK_dual_sign"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "q_bid1"
+        id = "R5-MK_complementarity"
+        pass = true
+        residual = 2.720383918133589e-13
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "pg_bid1"
+        id = "R5-MK_dual_sign"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "pg_bid1"
+        id = "R5-MK_complementarity"
+        pass = true
+        residual = 3.1815910164030336e-13
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "R_G_down1"
+        id = "R5-MK_reduced_cost"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "R_G_down1"
+        id = "R5-MK_variable_complementarity"
+        pass = true
+        residual = 1.3873053307239835e-13
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "R_G_down1"
+        id = "R5-MK_stationarity"
+        pass = true
+        residual = 4.682563045874887e-13
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "P_G1"
+        id = "R5-MK_reduced_cost"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "P_G1"
+        id = "R5-MK_variable_complementarity"
+        pass = true
+        residual = 1.09595291706468e-13
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "P_G1"
+        id = "R5-MK_stationarity"
+        pass = true
+        residual = 1.7059615448896166e-17
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "R_IES_up1"
+        id = "R5-MK_reduced_cost"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "R_IES_up1"
+        id = "R5-MK_variable_complementarity"
+        pass = true
+        residual = 8.703176163384421e-14
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "R_IES_up1"
+        id = "R5-MK_stationarity"
+        pass = true
+        residual = 4.68283190002694e-13
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "R_IES_down1"
+        id = "R5-MK_reduced_cost"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "R_IES_down1"
+        id = "R5-MK_variable_complementarity"
+        pass = true
+        residual = 3.5760256207588377e-14
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "R_IES_down1"
+        id = "R5-MK_stationarity"
+        pass = true
+        residual = 4.682476628659061e-13
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "R_G_up1"
+        id = "R5-MK_reduced_cost"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "R_G_up1"
+        id = "R5-MK_variable_complementarity"
+        pass = true
+        residual = 1.5815866738679912e-13
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "R_G_up1"
+        id = "R5-MK_stationarity"
+        pass = true
+        residual = 4.682585334822697e-13
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "P_IES1"
+        id = "R5-MK_reduced_cost"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "P_IES1"
+        id = "R5-MK_variable_complementarity"
+        pass = true
+        residual = 1.3422862821274482e-13
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "P_IES1"
+        id = "R5-MK_stationarity"
+        pass = true
+        residual = 1.6344277678107853e-16
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "all"
+        id = "R5-MK_gap"
+        pass = true
+        residual = 2.875122362398664e-11
+        scope = "dual"
+        t = 0
+        tolerance = 0.0001
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "all"
+        id = "R5-MK_MOI_conversion"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 0
+        tolerance = 1.0e-12
+        unit = "1"
+
+    [result.values]
+    P_G = [[80.000000000068]]
+    P_IES = [[30.00000000006801]]
+    R_G_down = [[9.99999999996372]]
+    R_G_up = [[19.99999999993013]]
+    R_IES_down = [[3.628082055230924e-11]]
+    R_IES_up = [[6.987169257274428e-11]]

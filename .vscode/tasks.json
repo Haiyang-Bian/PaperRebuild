@@ -1,5 +1,9 @@
 {
   "inputs": [
+    {"id":"r5StatusBatch","description":"状态复核的新批次名，不覆盖旧运行","type":"promptString","default":"r5-benders-status-new"},
+    {"id":"r5StatusStudy","description":"已完成的状态复核study.toml","type":"promptString","default":"results/runs/r5/r5-benders-status-20260919/study.toml"},
+    {"id":"r5StatusReport","description":"状态报告新目录；重绘读取已有CSV","type":"promptString","default":"results/summaries/r5-benders-status-replay"},
+    {"id":"r5PaymentReport","description":"支付只读审计的新目录，不覆盖封存证据","type":"promptString","default":"results/summaries/r5-market-payment-replay"},
     {"id":"r5BendersBatch","description":"新分解批次名；不可覆盖旧实验","type":"promptString","default":"r5-benders-new"},
     {"id":"r5BendersStudy","description":"已完成的分解study.toml","type":"promptString","default":"results/runs/r5/r5-benders-20260919/study.toml"},
     {"id":"r5BendersReport","description":"新的分解报告目录；绘图读取该目录已有CSV","type":"promptString","default":"results/summaries/r5-benders-replay"},
@@ -65,6 +69,17 @@
     }
   ],
   "tasks": [
+    {"label":"PaperRebuild: R5 status frozen rules","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_benders_status.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 status frozen study","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/study_r5_benders_status.jl","${input:r5StatusBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 status saved report","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/report_r5_benders_status.jl","${input:r5StatusStudy}","${input:r5StatusReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 status saved plots","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r5_benders_status.jl","${input:r5StatusReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 status seal local report","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_benders_status_artifacts.jl","${input:r5StatusReport}","--seal"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 status frozen evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_benders_status_artifacts.jl","results/summaries/r5-benders-status"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 payment mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_market_payment.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 payment tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_market_payment.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 payment audit saved market","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/audit_r5_market_payment.jl","${input:r5MarketStudy}","${input:r5PaymentReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 payment seal local report","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_market_payment_artifacts.jl","${input:r5PaymentReport}","--seal"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 payment frozen evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_market_payment_artifacts.jl","results/summaries/r5-market-payment"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R5 Benders study rules","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_benders_study.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R5 Benders public witness test","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_benders_witness.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R5 Benders frozen study","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/study_r5_benders.jl","${input:r5BendersBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},

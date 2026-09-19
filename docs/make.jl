@@ -31,6 +31,8 @@ include(joinpath(@__DIR__, "..", "scripts", "r5_risk_docs.jl"))
 sync_r5_risk_docs()
 include(joinpath(@__DIR__, "..", "scripts", "r5_benders_docs.jl"))
 sync_r5_benders_docs()
+include(joinpath(@__DIR__, "..", "scripts", "r5_market_payment_docs.jl"))
+sync_r5_market_payment_docs()
 
 makedocs(;
     modules = [PaperRebuild],
@@ -135,6 +137,9 @@ makedocs(;
             "条件分解基础与边界" => "ch05-benders.md",
             "条件分解推导与符号" => "ch05-benders-equations.md",
             "条件分解正式对照" => "ch05-benders-results.md",
+            "求解器状态消歧与归因" => "ch05-benders-status.md",
+            "策略报价准备与支付核算" => "ch05-strategic.md",
+            "支付推导与符号" => "ch05-strategic-equations.md",
             "联合机会约束概率方向" => "ch05-probability-audit.md",
             "分解算法与已知输入" => "ch05-algorithm-audit.md",
         ],

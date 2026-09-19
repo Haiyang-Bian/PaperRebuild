@@ -215,6 +215,7 @@ PaperRebuild.validate_r5_market
 PaperRebuild.save_r5_market_run
 PaperRebuild.read_r5_market_run
 PaperRebuild.compare_r5_market_runs
+PaperRebuild.r5_market_payment_identity
 ~~~
 
 ## 第5章确定性IES补救

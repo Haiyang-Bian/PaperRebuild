@@ -103,6 +103,9 @@ Gurobi官方说明建议对该合并状态设`DualReductions=0`再求解以取�
 这应作为后续单因素复核，不能回写本批冻结参数或删除失败。
 参见[官方状态码说明](https://docs.gurobi.com/projects/optimizer/en/current/reference/numericcodes/statuscodes.html)。
 
+后续已完成独立的[状态单因素复核](ch05-benders-status.md)：原五个条件点明确不可行，
+三个完整方法均恢复并通过同模型A2。本页保留原42项历史状态。
+
 ![F04全部阶段及候选残差](assets/r5-benders/F04.png)
 
 图中的每个点汇总对应阶段/情景/类别的最大残差与原验收阈值之比，合格线为1。
