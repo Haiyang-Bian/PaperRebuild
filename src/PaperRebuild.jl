@@ -70,6 +70,7 @@ include("formulations/r5_market.jl")
 include("verification/r5_market.jl")
 include("algorithms/r5_market.jl")
 include("reporting/r5_market.jl")
+include("verification/r5_market_payment.jl")
 include("core/r5_dispatch.jl")
 include("formulations/r5_dispatch.jl")
 include("verification/r5_dispatch.jl")
@@ -106,6 +107,7 @@ export r5_building_coefficients, r5_building_temperature, R5DispatchCase, load_r
 export r5_award_from_market, build_r5_dispatch, solve_r5_dispatch, validate_r5_dispatch
 export save_r5_dispatch_run, read_r5_dispatch_run
 export R5MarketCase, load_r5_market_case, build_r5_market, build_r5_market_dual
+export r5_market_payment_identity
 export solve_r5_market,
     validate_r5_market, save_r5_market_run, read_r5_market_run, compare_r5_market_runs
 export R4ThermalSpec, r4_steady_pipe, r4_thermal_min_flow
