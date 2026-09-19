@@ -1,0 +1,241 @@
+budget_sec = 600.0
+frozen_before_optimization = true
+frozen_utc = "2026-09-19T08:46:09.051"
+initialization = "empty_cuts_and_critical_set"
+market_domain = "full_SOS1"
+master_solver = "gurobi"
+oracle_solver = "highs"
+origin = "synthetic"
+parent_rules_sha256 = "dc1cef2827aef371706e83249df75f92ccfce7830569d761185841c20873c16a"
+price_caps_imposed = false
+reference_injected = false
+schema = "r5-strategic-benders-study-rules-v1"
+science_commit = "e98c14e96667883f535fdc8f832c0ede4d52dcd3"
+scope = "Synthetic eight inputs times three routes; full market SOS1. Restricted comfort bounds are separate. No out-of-sample or thesis-scale speed claim."
+selection = "optimistic_primal_dual"
+subproblem_solver = "highs"
+
+[files]
+"competitive_future_e030_r005.toml" = "05d5ce41e6bdaa49005812870c7aefc405febe80f2068a7012959f59724e391b"
+"competitive_hard_zero.toml" = "791191f19bedcd27e54b0615f892bdfc19051f9097afdbbf94dd0b3889b2bd4f"
+"competitive_physical_infeasible.toml" = "0ef0c1af0ba24e02f85dd96d511579ec234d5d54220fdbcc49ece53b6285f782"
+"competitive_quarter.toml" = "caf4e19e0645b3af812276b1ab059197dddb67aabd221ce5a2897a2f349e5b31"
+"competitive_thermal_e030_r005.toml" = "b2dcbdfcf5d68eec21513c4196706620b9a9ed37b0128ea06c521f7514925972"
+"merit_fixed_bid.toml" = "0bc9966677f31592e03066ad70b93a671a7ee10ad829add4f08561e59e21b0ec"
+"merit_strategic.toml" = "a7b03af509302bba32324826025bee6a40241fe97ff0e2488caa83d62ac23bf4"
+"scarcity_unbounded_price.toml" = "fa3479d433f778fa087f6fa6b52ddf1bda73b920c9f928d60596c25323b8762d"
+
+[producer_sha256]
+"freeze_r5_strategic_benders.jl" = "25c25deb3eb4826c313e185906887eef2dfb4858889da99de6be3e0575512558"
+"r5_market_setup.jl" = "13e909e1ef3285da2c9dea8738d49ba376c76b97d5540b84e46f7afbb07ca158"
+"r5_risk_setup.jl" = "78e69990881b8ee17d0e1c305c16aefda1d705cafd27887e0566f77d2cf66eee"
+"r5_strategic_benders_study_rules.jl" = "333502a5e9d2410240ed0354936b9b3909809206f67c8e7063e5bdfbfc97e854"
+"r5_strategic_setup.jl" = "86d17dc514afd09e6d3ad88e795e5fc53d430b0578b360fdc847b54492d01272"
+"study_r5_strategic_benders.jl" = "359b021c46c215907dbae133413f6660f7c820a0fd52c32b3a803e931444fe3f"
+
+[references."competitive_future_e030_r005.toml"]
+case_sha256 = "05d5ce41e6bdaa49005812870c7aefc405febe80f2068a7012959f59724e391b"
+parent_result_sha256 = "7c65c6b2d35e090a143ba4fc28583efaa8883a26ddb587834b16b61e050b7e70"
+run_id = "r5-strategic-4ae82280-25a1-4acd-a245-7b59575cdf2a"
+witness = "results/summaries/r5-strategic/witnesses/competitive_future_e030_r005-sos1.toml"
+witness_sha256 = "2483a53622a085b2d77496a1642fd62b89f7113d3d2a9c7c44353c8905794b46"
+
+[references."competitive_hard_zero.toml"]
+case_sha256 = "791191f19bedcd27e54b0615f892bdfc19051f9097afdbbf94dd0b3889b2bd4f"
+parent_result_sha256 = "8fff45f4de6abd5f08e093368e0872c92a36342aeebcef7905b7cf89adb465c2"
+run_id = "r5-strategic-db21a41d-7d57-4f76-8ddb-95187c41628d"
+witness = "results/summaries/r5-strategic/witnesses/competitive_hard_zero-sos1.toml"
+witness_sha256 = "aca70d583cc2f50bb2f5a56bd0b380f2b76528c4d2cb71c06114b11e81987c44"
+
+[references."competitive_physical_infeasible.toml"]
+case_sha256 = "0ef0c1af0ba24e02f85dd96d511579ec234d5d54220fdbcc49ece53b6285f782"
+parent_result_sha256 = "cb7e1824e7d6aabcea6557d96f7d6294cc4e736820d41dcdd70941de5f6e275b"
+run_id = "r5-strategic-c8569610-de9a-4e69-a471-8284e954b375"
+witness = "results/summaries/r5-strategic/witnesses/competitive_physical_infeasible-sos1.toml"
+witness_sha256 = "af14e1fee3065a5ee3faa3f0386f68d7de75dd0e0ef152fa7a4025b157dae0f0"
+
+[references."competitive_quarter.toml"]
+case_sha256 = "caf4e19e0645b3af812276b1ab059197dddb67aabd221ce5a2897a2f349e5b31"
+parent_result_sha256 = "9f59b9191a9beca46965c3821982e5d09cd4f6ba77b2b7da1c40d1e8415b2a5b"
+run_id = "r5-strategic-1958dce7-9460-4c76-a23b-d6c4080947af"
+witness = "results/summaries/r5-strategic/witnesses/competitive_quarter-sos1.toml"
+witness_sha256 = "aecfbd0d912a9e48dac0adc2c9c7d823f06796196cdc48dd634ceb3214fec4a6"
+
+[references."competitive_thermal_e030_r005.toml"]
+case_sha256 = "b2dcbdfcf5d68eec21513c4196706620b9a9ed37b0128ea06c521f7514925972"
+parent_result_sha256 = "9f5ddc99e7bd8195116e0dd1e2f09d6cba89da45ffe76532ba229d195bb90c71"
+run_id = "r5-strategic-34589db1-3375-4776-b049-46aeb980c9c0"
+witness = "results/summaries/r5-strategic/witnesses/competitive_thermal_e030_r005-sos1.toml"
+witness_sha256 = "a410919c7611d503b314978afa66c4cc0f4717ec9c13d68ada91e8fb1a6e3389"
+
+[references."merit_fixed_bid.toml"]
+case_sha256 = "0bc9966677f31592e03066ad70b93a671a7ee10ad829add4f08561e59e21b0ec"
+parent_result_sha256 = "d9ff2b11e1a27794a7126c4a6fb6ca8f5bce59c62931c8ae7c9ca7530f1c14fb"
+run_id = "r5-strategic-17f63035-b818-4eb6-9185-928c9cca9ebe"
+witness = "results/summaries/r5-strategic/witnesses/merit_fixed_bid-sos1.toml"
+witness_sha256 = "c36195b7d5c244a1171d014e0b68d57633ce7a4b3c95443ffb1da101b3cead67"
+
+[references."merit_strategic.toml"]
+case_sha256 = "a7b03af509302bba32324826025bee6a40241fe97ff0e2488caa83d62ac23bf4"
+parent_result_sha256 = "0c0145a3e64ea902f2aeebf6b5fa37d1c44a1172b1d4f0f0ee1ede4febdcb59b"
+run_id = "r5-strategic-cc4a0e90-3c71-4796-bf73-f06bb983aab4"
+witness = "results/summaries/r5-strategic/witnesses/merit_strategic-sos1.toml"
+witness_sha256 = "7841fa268dc5b0fcc01b55ee0ed5dab30b4da96d14b3257de8ad60e2ae3abff3"
+
+[references."scarcity_unbounded_price.toml"]
+case_sha256 = "fa3479d433f778fa087f6fa6b52ddf1bda73b920c9f928d60596c25323b8762d"
+parent_result_sha256 = "ee6807152a4f3a57864b12a62148c9891436e789f848c75f471416984e67a7e1"
+run_id = "r5-strategic-fef90626-9762-4e54-ab38-fdb4d2a24174"
+witness = "results/summaries/r5-strategic/witnesses/scarcity_unbounded_price-sos1.toml"
+witness_sha256 = "e205f63cc997dd2a545ce39d085a4d1bbf88d855d61e9786dff6c6651d06b711"
+
+[[runs]]
+case = "competitive_future_e030_r005.toml"
+id = "competitive_future_e030_r005--cuts"
+route = "cuts"
+[[runs]]
+case = "competitive_future_e030_r005.toml"
+id = "competitive_future_e030_r005--critical"
+route = "critical"
+[[runs]]
+case = "competitive_future_e030_r005.toml"
+id = "competitive_future_e030_r005--paper_critical"
+route = "paper_critical"
+[[runs]]
+case = "competitive_hard_zero.toml"
+id = "competitive_hard_zero--cuts"
+route = "cuts"
+[[runs]]
+case = "competitive_hard_zero.toml"
+id = "competitive_hard_zero--critical"
+route = "critical"
+[[runs]]
+case = "competitive_hard_zero.toml"
+id = "competitive_hard_zero--paper_critical"
+route = "paper_critical"
+[[runs]]
+case = "competitive_physical_infeasible.toml"
+id = "competitive_physical_infeasible--cuts"
+route = "cuts"
+[[runs]]
+case = "competitive_physical_infeasible.toml"
+id = "competitive_physical_infeasible--critical"
+route = "critical"
+[[runs]]
+case = "competitive_physical_infeasible.toml"
+id = "competitive_physical_infeasible--paper_critical"
+route = "paper_critical"
+[[runs]]
+case = "competitive_quarter.toml"
+id = "competitive_quarter--cuts"
+route = "cuts"
+[[runs]]
+case = "competitive_quarter.toml"
+id = "competitive_quarter--critical"
+route = "critical"
+[[runs]]
+case = "competitive_quarter.toml"
+id = "competitive_quarter--paper_critical"
+route = "paper_critical"
+[[runs]]
+case = "competitive_thermal_e030_r005.toml"
+id = "competitive_thermal_e030_r005--cuts"
+route = "cuts"
+[[runs]]
+case = "competitive_thermal_e030_r005.toml"
+id = "competitive_thermal_e030_r005--critical"
+route = "critical"
+[[runs]]
+case = "competitive_thermal_e030_r005.toml"
+id = "competitive_thermal_e030_r005--paper_critical"
+route = "paper_critical"
+[[runs]]
+case = "merit_fixed_bid.toml"
+id = "merit_fixed_bid--cuts"
+route = "cuts"
+[[runs]]
+case = "merit_fixed_bid.toml"
+id = "merit_fixed_bid--critical"
+route = "critical"
+[[runs]]
+case = "merit_fixed_bid.toml"
+id = "merit_fixed_bid--paper_critical"
+route = "paper_critical"
+[[runs]]
+case = "merit_strategic.toml"
+id = "merit_strategic--cuts"
+route = "cuts"
+[[runs]]
+case = "merit_strategic.toml"
+id = "merit_strategic--critical"
+route = "critical"
+[[runs]]
+case = "merit_strategic.toml"
+id = "merit_strategic--paper_critical"
+route = "paper_critical"
+[[runs]]
+case = "scarcity_unbounded_price.toml"
+id = "scarcity_unbounded_price--cuts"
+route = "cuts"
+[[runs]]
+case = "scarcity_unbounded_price.toml"
+id = "scarcity_unbounded_price--critical"
+route = "critical"
+[[runs]]
+case = "scarcity_unbounded_price.toml"
+id = "scarcity_unbounded_price--paper_critical"
+route = "paper_critical"
+
+[science_sha256]
+"Manifest.toml" = "6aa68b274431d56e5f78dfe516af70b7a6aefe8529cf58240d882de31c72bb75"
+"Project.toml" = "b3f905bb91f92e68ff970eedc46e9ed854ca4e08ff124541d68e991818de4a92"
+"src/algorithms/r5_benders.jl" = "212a004d95e367a3051326198dd0f082141bea927ab335b6c78a83b615d3c1bf"
+"src/algorithms/r5_commitment.jl" = "5038f22f037bba90a7bb3e2afc79b900fdff2d91ebe0afbde8ff189acd0c04bb"
+"src/algorithms/r5_dispatch.jl" = "fe48a6db69bf8bbb9b843b1ecc1695ced426a60860e39a586198e15cd77fca03"
+"src/algorithms/r5_market.jl" = "a5a5bbc1b96743973ea81e79ec8af40e8f18328d00ca7fc14b540aaf9324154a"
+"src/algorithms/r5_market_selection.jl" = "d80d8adf5b1c3662a6d559dca81b88131e9ea55c708f4ce234bb0c37a0f877cc"
+"src/algorithms/r5_risk.jl" = "44824bcb0093e32b935b3d88b87d292cdf1add9d3afeac133db8e7064b4ae28f"
+"src/algorithms/r5_strategic.jl" = "b1ffb61adbc615052da4d64fcd9dcf79984078aabb903c958203fa0a13a16bda"
+"src/algorithms/r5_strategic_benders.jl" = "718c9dfdfdbf133fd914b53eaf7522e1b09bb025f233425887dfaae1ab2b43b7"
+"src/core/r5_benders.jl" = "3522687413059a2eb40c27dbf7d70ec2e8735f63af7ceca71e920a66280308c3"
+"src/core/r5_commitment.jl" = "5e4a30e71b12c56b8754482163182b93266de454a8b04fb41a5e2f86a98af812"
+"src/core/r5_dispatch.jl" = "7308945636b363ab412716e0bcd059992a1760567d53d6991cd57739230a15af"
+"src/core/r5_market.jl" = "b66b34edafb602439fa8c93beb25fc20500b6a4106dee739a1795418cb265222"
+"src/core/r5_risk.jl" = "691219d10cda283b7c6e3cd19e2467b102c1564fc907427f773ad72627a635c8"
+"src/core/r5_strategic.jl" = "0932c0cb3573fe5a2dd1c88c2e2d0bdc0bf3a234813ff4fbb987e43f9b4175cd"
+"src/core/r5_strategic_benders.jl" = "795d72b6aa02b38410d5fc5802efa2a21399c2f9e6dbc3144af562db67582795"
+"src/formulations/r5_benders.jl" = "aee2c0998eab6aadd29b5a2ebd662b30ef24902ed4019a0f007e7424cb20d539"
+"src/formulations/r5_commitment.jl" = "8d66f8987a6a2e053416d276080b50644d63b38763fa06625e27fa9899f246ae"
+"src/formulations/r5_dispatch.jl" = "fef8db84d2be1544c622f8d9891fd4c47eb91dc2ff2e89817bec7a5996622d19"
+"src/formulations/r5_dispatch_dual.jl" = "9685a38e919580a17abd0f8fee7c90fbdc7f8dd85080831ee36772c3d8d69bdf"
+"src/formulations/r5_market.jl" = "85ba2ee6e8f84bef53db7949bf4fc425b57476bdaa49f22d9a816bf32bd01713"
+"src/formulations/r5_risk.jl" = "7b68ae8d7bdd94e8a4d475403962c2e547eac0fb79304f2036da5fb724837f2c"
+"src/formulations/r5_strategic.jl" = "1ac16f750fe5f382c3152ab9c9c6dccd898dd264fb69a8903638de7d04572f97"
+"src/formulations/r5_strategic_benders.jl" = "66dd95920cac91a3b1ce667f0a3e1636b0a52f39b170066eb242b3aa7b010029"
+"src/networks/fixed_flow_heat.jl" = "620c069f6b3a520d32ee546ec048074f9cbaa3c785f8c2e31ec7fd7bf245a83b"
+"src/reporting/r5_benders.jl" = "24dc9c7944e5f9f1dadc04108bf4f27af6baf6088ec6c4814bb639527a00e35a"
+"src/reporting/r5_commitment.jl" = "7d5faa97dbc2724d33831b319af807381ea13aa763cfde5655a4d7ecea956f2a"
+"src/reporting/r5_dispatch.jl" = "5d919f4e14dff618d7cc6467ccdcf5ea073b218b2799db0966eb877f4f5d92cb"
+"src/reporting/r5_market.jl" = "164d47e5922903179225a17c8a681610ae7eb5312068a4f806d85010f16f0796"
+"src/reporting/r5_risk.jl" = "973e9a81c86ff6b0268992be7c02b0cfeadc49dd04905bbe6a66fa37a827a377"
+"src/reporting/r5_strategic.jl" = "df33ac903b2ecf16f573294f4a32f47ed81ea80886b4d531eb38dd44f42769cf"
+"src/reporting/r5_strategic_benders.jl" = "8bb9c0a1a348f8a78c24e52c08ffe23f32da74a769b405be16e69f01699a4e91"
+"src/verification/r5_benders.jl" = "4611e873233e4d682c044374cb0a2fa4c4870696b798c4d3fc043af710f33a5c"
+"src/verification/r5_commitment.jl" = "71c04cdeb804ee48dbfd585e5376cdacd910cc5a507db8d9027b866690cde8ed"
+"src/verification/r5_dispatch.jl" = "6ad9b1f74949e1345df473bfd778db6e419a57b2e2060cc065a7d5fbae1802f2"
+"src/verification/r5_dispatch_duality.jl" = "5dbbcbae682b3c738c5506b36254466614d6ff80e835afe7619744c77c7fc96d"
+"src/verification/r5_market.jl" = "47cf2899d6167974ec406d7b431d06bcd2ca3b16108bdbc67c8805e071e57009"
+"src/verification/r5_market_payment.jl" = "fdcefbd1530785534bcab392753ea5b62da033fce24a223278e4b2ff33fe32e1"
+"src/verification/r5_risk.jl" = "a9389a9963ede5a33b8867a9cd8ae9e6a1b608e9995ff0fa62eeb0fed38c2433"
+"src/verification/r5_strategic.jl" = "89965480ecc6e0c1bac0f19996b4edc481444fdc3774b71dfe56e3ebe642bbc5"
+"src/verification/r5_strategic_benders.jl" = "bdc842e26c3c20e837453d1aad220729e80ea5f629052b436cf9145794a6e4bc"
+"tools/solvers/Manifest.toml" = "4c3bfa7a47e06095c1251dfb555ff155bc7e02241013547c294c2920cedb958e"
+"tools/solvers/Project.toml" = "be07a40d34ee1e44e61d0e81fc1a71161cc9ba7ef20d57fc7fbe4e70f6e3ba8b"
+
+[spec]
+absolute_gap = 1.0e-7
+critical_count = 1
+cut_arithmetic = "rational_box"
+diagnostic_scale = 1024.0
+max_iterations = 200
+relative_gap = 1.0e-6
