@@ -1,4 +1,5 @@
 include("r5_risk_report_tables.jl")
+include("r5_risk_artifact_paths.jl")
 args=filter(x->!startswith(x, "--"), ARGS)
 length(args)==1||error("参数：风险报告目录 [--seal] [--publish]")
 dir=abspath(only(args));
@@ -68,9 +69,7 @@ for (base, _, files) in walkdir(dir), file in files
     rel=replace(relpath(path, dir), '\\'=>'/')
     filesize(path)<5*1024^2||error("风险公共文件过大：$rel")
     if endswith(file, ".toml")||endswith(file, ".csv")
-        occursin(r"(?i)[A-Z]:[\\/]|/Users/|/home/", read(path, String))&&error(
-            "风险公开文件包含本机路径",
-        )
+        r5_risk_has_host_path(read(path, String))&&error("风险公开文件包含本机路径：$rel")
     end
     hashes[rel]=bytes2hex(sha256(read(path)))
 end

@@ -129,6 +129,7 @@ makedocs(;
             "共同承诺正式结果" => "ch05-commitment-results.md",
             "有限支持风险调度" => "ch05-risk.md",
             "风险推导与符号" => "ch05-risk-equations.md",
+            "风险调度结果与机制" => "ch05-risk-results.md",
             "联合机会约束概率方向" => "ch05-probability-audit.md",
             "分解算法与已知输入" => "ch05-algorithm-audit.md",
         ],

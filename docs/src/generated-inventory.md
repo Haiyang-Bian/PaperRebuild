@@ -394,6 +394,19 @@
 - `docs/src/assets/r5-market/report.toml`
 - `docs/src/assets/r5-market/residuals.csv`
 - `docs/src/assets/r5-market/solver-comparison.csv`
+- `docs/src/assets/r5-risk/F04.png`
+- `docs/src/assets/r5-risk/F15.png`
+- `docs/src/assets/r5-risk/F19.png`
+- `docs/src/assets/r5-risk/artifact-hashes.toml`
+- `docs/src/assets/r5-risk/branches.csv`
+- `docs/src/assets/r5-risk/commitments.csv`
+- `docs/src/assets/r5-risk/comparison.csv`
+- `docs/src/assets/r5-risk/figure-config.toml`
+- `docs/src/assets/r5-risk/method-comparison.csv`
+- `docs/src/assets/r5-risk/report.toml`
+- `docs/src/assets/r5-risk/residuals.csv`
+- `docs/src/assets/r5-risk/scenarios.csv`
+- `docs/src/assets/r5-risk/trajectories.csv`
 - `docs/src/ch02-api.md`
 - `docs/src/ch02-generated.md`
 - `docs/src/ch02-models.md`
@@ -463,6 +476,7 @@
 - `docs/src/ch05-recourse-duality.md`
 - `docs/src/ch05-recourse-equations.md`
 - `docs/src/ch05-risk-equations.md`
+- `docs/src/ch05-risk-results.md`
 - `docs/src/ch05-risk.md`
 - `docs/src/index.md`
 - `docs/src/julia-design.md`
@@ -669,6 +683,19 @@
 - `results/summaries/r5-market/report.toml`
 - `results/summaries/r5-market/residuals.csv`
 - `results/summaries/r5-market/solver-comparison.csv`
+- `results/summaries/r5-risk/F04.png`
+- `results/summaries/r5-risk/F15.png`
+- `results/summaries/r5-risk/F19.png`
+- `results/summaries/r5-risk/artifact-hashes.toml`
+- `results/summaries/r5-risk/branches.csv`
+- `results/summaries/r5-risk/commitments.csv`
+- `results/summaries/r5-risk/comparison.csv`
+- `results/summaries/r5-risk/figure-config.toml`
+- `results/summaries/r5-risk/method-comparison.csv`
+- `results/summaries/r5-risk/report.toml`
+- `results/summaries/r5-risk/residuals.csv`
+- `results/summaries/r5-risk/scenarios.csv`
+- `results/summaries/r5-risk/trajectories.csv`
 - `scripts/audit_ch05_cuts.jl`
 - `scripts/audit_ch05_probability.jl`
 - `scripts/audit_ch05_probability_a1.jl`
@@ -832,6 +859,7 @@
 - `scripts/r5_market_cases.jl`
 - `scripts/r5_market_docs.jl`
 - `scripts/r5_market_setup.jl`
+- `scripts/r5_risk_artifact_paths.jl`
 - `scripts/r5_risk_cases.jl`
 - `scripts/r5_risk_docs.jl`
 - `scripts/r5_risk_report_tables.jl`
@@ -1026,6 +1054,7 @@
 - `test/r5_dispatch_duality.jl`
 - `test/r5_market.jl`
 - `test/r5_risk.jl`
+- `test/r5_risk_artifacts.jl`
 - `test/runtests.jl`
 - `tools/Manifest.toml`
 - `tools/Project.toml`
@@ -1048,6 +1077,7 @@
 - `docs/src/assets/r4-first-batch/figures/`
 - `docs/src/assets/r5-commitment/witnesses/`
 - `docs/src/assets/r5-duality/witnesses/`
+- `docs/src/assets/r5-risk/witnesses/`
 - `results/summaries/ch03-data/ch03-data-20260916T084459-cd427558/`
 - `results/summaries/r1-first-batch/r1-20260916T055237-75fa9f65/`
 - `results/summaries/r1-first-batch/r1-20260916T061313-3e2fc175/`
@@ -1064,3 +1094,4 @@
 - `results/summaries/r4-first-batch/figures/`
 - `results/summaries/r5-commitment/witnesses/`
 - `results/summaries/r5-duality-verified/witnesses/`
+- `results/summaries/r5-risk/witnesses/`

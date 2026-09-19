@@ -1,0 +1,743 @@
+parent_result_sha256 = "3f38af2a164abda11e36510666bc15f29be3871b3278b33ee245db865114d88d"
+
+[case]
+epsilon = 0.3
+event = "any_building_time_comfort_violation"
+name = "future_e030_r005"
+objective = "worst_expected_net_cost"
+origin = "synthetic"
+schema = "r5-risk-case-v1"
+
+    [case.ambiguity]
+    distance = [[0.0, 1.0, 1.0], [1.0, 0.0, 1.0], [1.0, 1.0, 0.0]]
+    distance_provenance = "Euclidean distance between one-hot labels of the three frozen full-call regimes, divided by sqrt(2); synthetic categorical trajectory metric, not calibrated from thesis samples."
+    distance_unit = "normalized_trajectory"
+    radius = 0.05
+    support = "fixed_scenarios"
+
+    [case.commitment]
+    comfort = "hard_each_scenario"
+    name = "four_period_future"
+    objective = "expected_net_cost"
+    origin = "synthetic"
+    recourse_information = "complete_trajectory"
+    schema = "r5-commitment-case-v1"
+    uncertain_fields = ["ambient_K", "devices.available_MW", "electric.P_load_MW", "realtime.alpha_down", "realtime.alpha_up"]
+
+        [case.commitment.bounds.P_DA_MW]
+        lower = [0.0, 0.0, 0.0, 0.0]
+        upper = [1.0, 1.0, 1.0, 1.0]
+
+        [case.commitment.bounds.R_down_MW]
+        lower = [0.0, 0.0, 0.0, 0.0]
+        upper = [0.08, 0.08, 0.08, 0.08]
+
+        [case.commitment.bounds.R_up_MW]
+        lower = [0.0, 0.0, 0.0, 0.0]
+        upper = [0.08, 0.08, 0.08, 0.08]
+
+        [case.commitment.day_ahead]
+        down_price = [2.0, 2.0, 2.0, 2.0]
+        energy_price = [80.0, 100.0, 140.0, 100.0]
+        up_price = [5.0, 5.0, 5.0, 5.0]
+
+        [[case.commitment.scenarios]]
+        case_sha256 = "7a5490c6231cebc7ff8c78c3d3151543b20d4d377d4747016802152b011bb624"
+        id = "none"
+        probability = 0.5
+
+            [case.commitment.scenarios.case]
+            T = 4
+            ambient_K = [283.15, 282.15, 283.15, 284.15]
+            dt_h = 1.0
+            name = "shared_none"
+            origin = "synthetic"
+            schema = "r5-dispatch-case-v1"
+
+                [case.commitment.scenarios.case.award]
+                P_DA_MW = [0.14, 0.14, 0.14, 0.14]
+                R_down_MW = [0.03, 0.03, 0.03, 0.03]
+                R_up_MW = [0.03, 0.03, 0.03, 0.03]
+                down_price = [2.0, 2.0, 2.0, 2.0]
+                energy_price = [80.0, 100.0, 140.0, 100.0]
+                origin = "synthetic"
+                up_price = [5.0, 5.0, 5.0, 5.0]
+
+                [[case.commitment.scenarios.case.buildings]]
+                COP_DH = 0.95
+                C_MWh_K = 0.02
+                G_MW_K = 0.003
+                P_DH_max_MW = 0.05
+                R_max_K = 343.15
+                R_min_K = 303.15
+                T_initial_K = 293.15
+                T_max_K = 294.15
+                T_min_K = 292.15
+                electric_node = 2
+                heat_node = 2
+                id = "building"
+                m_kg_s = 1.0
+                terminal_rule = "initial"
+
+                [[case.commitment.scenarios.case.devices]]
+                cost_USD_MWh = 0.0
+                heat_ratio = 0.95
+                id = "EB"
+                kind = "EB"
+                node = 2
+                p_max_MW = 0.1
+                p_min_MW = 0.0
+                q_max_Mvar = 0.0
+                q_min_Mvar = 0.0
+                source_id = "source"
+                [[case.commitment.scenarios.case.devices]]
+                P_initial_MW = 0.0
+                cost_USD_MWh = 130.0
+                id = "GT"
+                kind = "GT"
+                node = 2
+                p_max_MW = 0.15
+                p_min_MW = 0.0
+                q_max_Mvar = 0.0
+                q_min_Mvar = 0.0
+                ramp_down_MW_h = 1.0
+                ramp_up_MW_h = 1.0
+                [[case.commitment.scenarios.case.devices]]
+                P_initial_MW = 0.03
+                cost_USD_MWh = 90.0
+                heat_ratio = 1.0
+                id = "CHP"
+                kind = "CHP"
+                node = 2
+                p_max_MW = 0.08
+                p_min_MW = 0.0
+                q_max_Mvar = 0.03
+                q_min_Mvar = -0.03
+                ramp_down_MW_h = 0.08
+                ramp_up_MW_h = 0.08
+                source_id = "source"
+                [[case.commitment.scenarios.case.devices]]
+                available_MW = [0.0, 0.04, 0.08, 0.02]
+                cost_USD_MWh = 5.0
+                id = "PV"
+                kind = "PV"
+                node = 2
+                p_max_MW = 0.08
+                p_min_MW = 0.0
+                q_max_Mvar = 0.0
+                q_min_Mvar = 0.0
+
+                [case.commitment.scenarios.case.electric]
+                P_load_MW = [[0.0, 0.0, 0.0, 0.0], [0.12, 0.14, 0.13, 0.12]]
+                Q_load_Mvar = [[0.0, 0.0, 0.0, 0.0], [0.02, 0.02, 0.02, 0.02]]
+                S_base_MVA = 1.0
+                nodes = 2
+                pcc_max_MW = 1.0
+                pcc_min_MW = 0.0
+                qcc_max_Mvar = 1.0
+                qcc_min_Mvar = -1.0
+                root = 1
+                v_max_pu = 1.05
+                v_min_pu = 0.95
+                v_ref_pu = 1.0
+
+                    [[case.commitment.scenarios.case.electric.lines]]
+                    P_limit_MW = 1.0
+                    Q_limit_Mvar = 1.0
+                    from = 1
+                    id = "e12"
+                    r_pu = 0.01
+                    to = 2
+                    x_pu = 0.005
+
+                [case.commitment.scenarios.case.heat]
+                R_max_K = 343.15
+                R_min_K = 293.15
+                S_max_K = 353.15
+                S_min_K = 303.15
+                c_J_kgK = 4200.0
+                nodes = 2
+                terminal_rule = "free"
+
+                    [[case.commitment.scenarios.case.heat.pipes]]
+                    area_m2 = 0.01
+                    from = 1
+                    history_R_K = [323.15]
+                    history_S_K = [333.15]
+                    id = "h12"
+                    length_m = 90.0
+                    loss_W_mK = 0.05
+                    m_kg_s = 1.0
+                    rho_kg_m3 = 1000.0
+                    to = 2
+
+                    [[case.commitment.scenarios.case.heat.sources]]
+                    T_max_K = 353.15
+                    T_min_K = 313.15
+                    id = "source"
+                    m_kg_s = 1.0
+                    node = 1
+
+                [case.commitment.scenarios.case.realtime]
+                alpha_down = [0.0, 0.0, 0.0, 0.0]
+                alpha_up = [0.0, 0.0, 0.0, 0.0]
+                delta = 0.1
+                penalty_USD_MWh = 1000.0
+                price = [80.0, 120.0, 150.0, 100.0]
+
+                [case.commitment.scenarios.case.units]
+                energy = "MWh"
+                energy_price = "USD/MWh"
+                flow = "kg/s"
+                heat_capacity = "MWh/K"
+                heat_transfer = "MW/K"
+                power = "MW"
+                reactive = "Mvar"
+                reserve_price = "USD/(MW*h)"
+                temperature = "K"
+                time = "h"
+        [[case.commitment.scenarios]]
+        case_sha256 = "c1ca1cf4e38c88bec1967708d1f45560f39a87834722dc4365a53c9ee0943562"
+        id = "up"
+        probability = 0.25
+
+            [case.commitment.scenarios.case]
+            T = 4
+            ambient_K = [282.15, 281.15, 282.15, 283.15]
+            dt_h = 1.0
+            name = "shared_up"
+            origin = "synthetic"
+            schema = "r5-dispatch-case-v1"
+
+                [case.commitment.scenarios.case.award]
+                P_DA_MW = [0.14, 0.14, 0.14, 0.14]
+                R_down_MW = [0.03, 0.03, 0.03, 0.03]
+                R_up_MW = [0.03, 0.03, 0.03, 0.03]
+                down_price = [2.0, 2.0, 2.0, 2.0]
+                energy_price = [80.0, 100.0, 140.0, 100.0]
+                origin = "synthetic"
+                up_price = [5.0, 5.0, 5.0, 5.0]
+
+                [[case.commitment.scenarios.case.buildings]]
+                COP_DH = 0.95
+                C_MWh_K = 0.02
+                G_MW_K = 0.003
+                P_DH_max_MW = 0.05
+                R_max_K = 343.15
+                R_min_K = 303.15
+                T_initial_K = 293.15
+                T_max_K = 294.15
+                T_min_K = 292.15
+                electric_node = 2
+                heat_node = 2
+                id = "building"
+                m_kg_s = 1.0
+                terminal_rule = "initial"
+
+                [[case.commitment.scenarios.case.devices]]
+                cost_USD_MWh = 0.0
+                heat_ratio = 0.95
+                id = "EB"
+                kind = "EB"
+                node = 2
+                p_max_MW = 0.1
+                p_min_MW = 0.0
+                q_max_Mvar = 0.0
+                q_min_Mvar = 0.0
+                source_id = "source"
+                [[case.commitment.scenarios.case.devices]]
+                P_initial_MW = 0.0
+                cost_USD_MWh = 130.0
+                id = "GT"
+                kind = "GT"
+                node = 2
+                p_max_MW = 0.15
+                p_min_MW = 0.0
+                q_max_Mvar = 0.0
+                q_min_Mvar = 0.0
+                ramp_down_MW_h = 1.0
+                ramp_up_MW_h = 1.0
+                [[case.commitment.scenarios.case.devices]]
+                P_initial_MW = 0.03
+                cost_USD_MWh = 90.0
+                heat_ratio = 1.0
+                id = "CHP"
+                kind = "CHP"
+                node = 2
+                p_max_MW = 0.08
+                p_min_MW = 0.0
+                q_max_Mvar = 0.03
+                q_min_Mvar = -0.03
+                ramp_down_MW_h = 0.08
+                ramp_up_MW_h = 0.08
+                source_id = "source"
+                [[case.commitment.scenarios.case.devices]]
+                available_MW = [0.0, 0.032, 0.064, 0.016]
+                cost_USD_MWh = 5.0
+                id = "PV"
+                kind = "PV"
+                node = 2
+                p_max_MW = 0.08
+                p_min_MW = 0.0
+                q_max_Mvar = 0.0
+                q_min_Mvar = 0.0
+
+                [case.commitment.scenarios.case.electric]
+                P_load_MW = [[0.0, 0.0, 0.0, 0.0], [0.132, 0.15400000000000003, 0.14300000000000002, 0.132]]
+                Q_load_Mvar = [[0.0, 0.0, 0.0, 0.0], [0.02, 0.02, 0.02, 0.02]]
+                S_base_MVA = 1.0
+                nodes = 2
+                pcc_max_MW = 1.0
+                pcc_min_MW = 0.0
+                qcc_max_Mvar = 1.0
+                qcc_min_Mvar = -1.0
+                root = 1
+                v_max_pu = 1.05
+                v_min_pu = 0.95
+                v_ref_pu = 1.0
+
+                    [[case.commitment.scenarios.case.electric.lines]]
+                    P_limit_MW = 1.0
+                    Q_limit_Mvar = 1.0
+                    from = 1
+                    id = "e12"
+                    r_pu = 0.01
+                    to = 2
+                    x_pu = 0.005
+
+                [case.commitment.scenarios.case.heat]
+                R_max_K = 343.15
+                R_min_K = 293.15
+                S_max_K = 353.15
+                S_min_K = 303.15
+                c_J_kgK = 4200.0
+                nodes = 2
+                terminal_rule = "free"
+
+                    [[case.commitment.scenarios.case.heat.pipes]]
+                    area_m2 = 0.01
+                    from = 1
+                    history_R_K = [323.15]
+                    history_S_K = [333.15]
+                    id = "h12"
+                    length_m = 90.0
+                    loss_W_mK = 0.05
+                    m_kg_s = 1.0
+                    rho_kg_m3 = 1000.0
+                    to = 2
+
+                    [[case.commitment.scenarios.case.heat.sources]]
+                    T_max_K = 353.15
+                    T_min_K = 313.15
+                    id = "source"
+                    m_kg_s = 1.0
+                    node = 1
+
+                [case.commitment.scenarios.case.realtime]
+                alpha_down = [0.0, 0.0, 0.0, 0.0]
+                alpha_up = [1.0, 1.0, 1.0, 1.0]
+                delta = 0.1
+                penalty_USD_MWh = 1000.0
+                price = [80.0, 120.0, 150.0, 100.0]
+
+                [case.commitment.scenarios.case.units]
+                energy = "MWh"
+                energy_price = "USD/MWh"
+                flow = "kg/s"
+                heat_capacity = "MWh/K"
+                heat_transfer = "MW/K"
+                power = "MW"
+                reactive = "Mvar"
+                reserve_price = "USD/(MW*h)"
+                temperature = "K"
+                time = "h"
+        [[case.commitment.scenarios]]
+        case_sha256 = "f9da46d12ffd42b0f3107918127ee07460cab337b89cc793200a67805b13794d"
+        id = "down"
+        probability = 0.25
+
+            [case.commitment.scenarios.case]
+            T = 4
+            ambient_K = [284.15, 283.15, 284.15, 285.15]
+            dt_h = 1.0
+            name = "shared_down"
+            origin = "synthetic"
+            schema = "r5-dispatch-case-v1"
+
+                [case.commitment.scenarios.case.award]
+                P_DA_MW = [0.14, 0.14, 0.14, 0.14]
+                R_down_MW = [0.03, 0.03, 0.03, 0.03]
+                R_up_MW = [0.03, 0.03, 0.03, 0.03]
+                down_price = [2.0, 2.0, 2.0, 2.0]
+                energy_price = [80.0, 100.0, 140.0, 100.0]
+                origin = "synthetic"
+                up_price = [5.0, 5.0, 5.0, 5.0]
+
+                [[case.commitment.scenarios.case.buildings]]
+                COP_DH = 0.95
+                C_MWh_K = 0.02
+                G_MW_K = 0.003
+                P_DH_max_MW = 0.05
+                R_max_K = 343.15
+                R_min_K = 303.15
+                T_initial_K = 293.15
+                T_max_K = 294.15
+                T_min_K = 292.15
+                electric_node = 2
+                heat_node = 2
+                id = "building"
+                m_kg_s = 1.0
+                terminal_rule = "initial"
+
+                [[case.commitment.scenarios.case.devices]]
+                cost_USD_MWh = 0.0
+                heat_ratio = 0.95
+                id = "EB"
+                kind = "EB"
+                node = 2
+                p_max_MW = 0.1
+                p_min_MW = 0.0
+                q_max_Mvar = 0.0
+                q_min_Mvar = 0.0
+                source_id = "source"
+                [[case.commitment.scenarios.case.devices]]
+                P_initial_MW = 0.0
+                cost_USD_MWh = 130.0
+                id = "GT"
+                kind = "GT"
+                node = 2
+                p_max_MW = 0.15
+                p_min_MW = 0.0
+                q_max_Mvar = 0.0
+                q_min_Mvar = 0.0
+                ramp_down_MW_h = 1.0
+                ramp_up_MW_h = 1.0
+                [[case.commitment.scenarios.case.devices]]
+                P_initial_MW = 0.03
+                cost_USD_MWh = 90.0
+                heat_ratio = 1.0
+                id = "CHP"
+                kind = "CHP"
+                node = 2
+                p_max_MW = 0.08
+                p_min_MW = 0.0
+                q_max_Mvar = 0.03
+                q_min_Mvar = -0.03
+                ramp_down_MW_h = 0.08
+                ramp_up_MW_h = 0.08
+                source_id = "source"
+                [[case.commitment.scenarios.case.devices]]
+                available_MW = [0.0, 0.036000000000000004, 0.07200000000000001, 0.018000000000000002]
+                cost_USD_MWh = 5.0
+                id = "PV"
+                kind = "PV"
+                node = 2
+                p_max_MW = 0.08
+                p_min_MW = 0.0
+                q_max_Mvar = 0.0
+                q_min_Mvar = 0.0
+
+                [case.commitment.scenarios.case.electric]
+                P_load_MW = [[0.0, 0.0, 0.0, 0.0], [0.108, 0.12600000000000003, 0.117, 0.108]]
+                Q_load_Mvar = [[0.0, 0.0, 0.0, 0.0], [0.02, 0.02, 0.02, 0.02]]
+                S_base_MVA = 1.0
+                nodes = 2
+                pcc_max_MW = 1.0
+                pcc_min_MW = 0.0
+                qcc_max_Mvar = 1.0
+                qcc_min_Mvar = -1.0
+                root = 1
+                v_max_pu = 1.05
+                v_min_pu = 0.95
+                v_ref_pu = 1.0
+
+                    [[case.commitment.scenarios.case.electric.lines]]
+                    P_limit_MW = 1.0
+                    Q_limit_Mvar = 1.0
+                    from = 1
+                    id = "e12"
+                    r_pu = 0.01
+                    to = 2
+                    x_pu = 0.005
+
+                [case.commitment.scenarios.case.heat]
+                R_max_K = 343.15
+                R_min_K = 293.15
+                S_max_K = 353.15
+                S_min_K = 303.15
+                c_J_kgK = 4200.0
+                nodes = 2
+                terminal_rule = "free"
+
+                    [[case.commitment.scenarios.case.heat.pipes]]
+                    area_m2 = 0.01
+                    from = 1
+                    history_R_K = [323.15]
+                    history_S_K = [333.15]
+                    id = "h12"
+                    length_m = 90.0
+                    loss_W_mK = 0.05
+                    m_kg_s = 1.0
+                    rho_kg_m3 = 1000.0
+                    to = 2
+
+                    [[case.commitment.scenarios.case.heat.sources]]
+                    T_max_K = 353.15
+                    T_min_K = 313.15
+                    id = "source"
+                    m_kg_s = 1.0
+                    node = 1
+
+                [case.commitment.scenarios.case.realtime]
+                alpha_down = [1.0, 1.0, 1.0, 1.0]
+                alpha_up = [0.0, 0.0, 0.0, 0.0]
+                delta = 0.1
+                penalty_USD_MWh = 1000.0
+                price = [80.0, 120.0, 150.0, 100.0]
+
+                [case.commitment.scenarios.case.units]
+                energy = "MWh"
+                energy_price = "USD/MWh"
+                flow = "kg/s"
+                heat_capacity = "MWh/K"
+                heat_transfer = "MW/K"
+                power = "MW"
+                reactive = "Mvar"
+                reserve_price = "USD/(MW*h)"
+                temperature = "K"
+                time = "h"
+
+    [case.temperature_domain.building]
+    lower_K = 291.15
+    upper_K = 295.15
+
+[result]
+bound_source = "MOI.ObjectiveBound"
+budget_sec = 60.0
+case_sha256 = "e3a85ba4778e94f3bb4dbfe4c881e739e06bb66166e7a8de630f3afcf9748acf"
+cost_optimization_complete = true
+created_utc = "2026-09-19T00:53:36.769"
+elapsed_sec = 11.204999923706055
+has_candidate = true
+julia_version = "1.12.6"
+method = "direct"
+model_type = "MILP"
+model_types = ["AffExpr in MathOptInterface.EqualTo{Float64}", "AffExpr in MathOptInterface.GreaterThan{Float64}", "AffExpr in MathOptInterface.LessThan{Float64}", "VariableRef in MathOptInterface.GreaterThan{Float64}", "VariableRef in MathOptInterface.ZeroOne"]
+objective_type = "worst_expected_IES_net_cost_fixed_prices"
+primal_status = "FEASIBLE_POINT"
+raw_status = "kHighsModelStatusOptimal"
+run_id = "r5-risk-3946ad7a-6184-4d39-9a7f-653eeba8b5c5"
+schema = "r5-risk-result-v1"
+solver = "HiGHS"
+solver_objective = 35.66961485068751
+solver_objective_bound = 35.66961485068751
+solver_version = "v1.15.1"
+status = "solver_optimal"
+termination = "OPTIMAL"
+version = "r5_finite_support_checked_v1"
+z = [0.0, 1.0, 0.0]
+
+    [result.embedded_duals.cost]
+    lambda = 9.025742931720062
+    nu = [7.702972259456658, 14.408715191176732, 5.38297225945667]
+
+    [result.embedded_duals.risk]
+    lambda = 1.0
+    nu = [0.0, 1.0, -5.551115123125783e-17]
+
+    [result.first_stage]
+    P_DA_MW = [0.12, 0.09000000000000002, 0.0, 0.08218919711714823]
+    R_down_MW = [0.0, 0.0, 0.0, 0.0]
+    R_up_MW = [0.0, 0.08, -0.0, 0.0]
+
+    [result.oracles.actual]
+    budget_sec = 49.46000003814697
+    elapsed_sec = 0.004999876022338867
+    lambda = 1.0000000008025742
+    nu = [-1.8585997565050143e-11, 1.0000000000095608, -8.455444403925345e-12]
+    quantity = "probability"
+    schema = "r5-transport-witness-v1"
+    status = "solver_optimal"
+    transport = [[0.4684921249647737, -1.745343213119978e-11, -1.963988902880889e-14], [0.03150787503143505, 0.25000000003490686, 0.018492124961887575], [3.791318805734678e-12, -1.745343213119978e-11, 0.2315078750381321]]
+
+        [result.oracles.actual.dual_solver]
+        bound_source = "MOI.DualObjectiveValue"
+        bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+        has_candidate = true
+        primal_status = "FEASIBLE_POINT"
+        raw_status = "SOLVED"
+        solver = "Clarabel"
+        solver_objective = 0.3000000000311121
+        solver_objective_bound = 0.30000000009547245
+        solver_version = "0.11.1"
+        status = "solver_optimal"
+        termination = "OPTIMAL"
+
+        [result.oracles.actual.primal_solver]
+        bound_source = "MOI.DualObjectiveValue"
+        bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+        has_candidate = true
+        primal_status = "FEASIBLE_POINT"
+        raw_status = "SOLVED"
+        solver = "Clarabel"
+        solver_objective = 0.30000000002822946
+        solver_objective_bound = 0.30000000003266
+        solver_version = "0.11.1"
+        status = "solver_optimal"
+        termination = "OPTIMAL"
+
+    [result.oracles.cost]
+    budget_sec = 55.259000062942505
+    elapsed_sec = 5.236999988555908
+    lambda = 9.025742932863535
+    nu = [7.702972259460642, 14.408715191218969, 5.382972259546206]
+    quantity = "cost"
+    schema = "r5-transport-witness-v1"
+    status = "solver_optimal"
+    transport = [[0.49999999999702366, -2.6855867826373495e-12, 6.924707416252055e-13], [3.4749164711215507e-12, 0.25000000000544675, 0.05000000000364639], [-4.985342346445234e-13, -2.7612051711763517e-12, 0.199999999995661]]
+
+        [result.oracles.cost.dual_solver]
+        bound_source = "MOI.DualObjectiveValue"
+        bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+        has_candidate = true
+        primal_status = "FEASIBLE_POINT"
+        raw_status = "SOLVED"
+        solver = "Clarabel"
+        solver_objective = 9.25069513906479
+        solver_objective_bound = 9.250695139396202
+        solver_version = "0.11.1"
+        status = "solver_optimal"
+        termination = "OPTIMAL"
+
+        [result.oracles.cost.primal_solver]
+        bound_source = "MOI.DualObjectiveValue"
+        bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+        has_candidate = true
+        primal_status = "FEASIBLE_POINT"
+        raw_status = "SOLVED"
+        solver = "Clarabel"
+        solver_objective = 9.250695139074812
+        solver_objective_bound = 9.25069513906579
+        solver_version = "0.11.1"
+        status = "solver_optimal"
+        termination = "OPTIMAL"
+
+    [result.oracles.risk]
+    budget_sec = 49.46600008010864
+    elapsed_sec = 0.006000041961669922
+    lambda = 1.0000000008025742
+    nu = [-1.8585997565050143e-11, 1.0000000000095608, -8.455444403925345e-12]
+    quantity = "probability"
+    schema = "r5-transport-witness-v1"
+    status = "solver_optimal"
+    transport = [[0.4684921249647737, -1.745343213119978e-11, -1.963988902880889e-14], [0.03150787503143505, 0.25000000003490686, 0.018492124961887575], [3.791318805734678e-12, -1.745343213119978e-11, 0.2315078750381321]]
+
+        [result.oracles.risk.dual_solver]
+        bound_source = "MOI.DualObjectiveValue"
+        bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+        has_candidate = true
+        primal_status = "FEASIBLE_POINT"
+        raw_status = "SOLVED"
+        solver = "Clarabel"
+        solver_objective = 0.3000000000311121
+        solver_objective_bound = 0.30000000009547245
+        solver_version = "0.11.1"
+        status = "solver_optimal"
+        termination = "OPTIMAL"
+
+        [result.oracles.risk.primal_solver]
+        bound_source = "MOI.DualObjectiveValue"
+        bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+        has_candidate = true
+        primal_status = "FEASIBLE_POINT"
+        raw_status = "SOLVED"
+        solver = "Clarabel"
+        solver_objective = 0.30000000002822946
+        solver_objective_bound = 0.30000000003266
+        solver_version = "0.11.1"
+        status = "solver_optimal"
+        termination = "OPTIMAL"
+
+    [result.scenarios.down]
+    case_sha256 = "df505a88e161f0ffbccacc8e0564130a17ff164216529cf30753b96f54f2254d"
+    run_id = "r5-risk-3946ad7a-6184-4d39-9a7f-653eeba8b5c5/down"
+    schema = "r5-dispatch-result-v1"
+    solver_objective = 31.801891971171493
+    status = "embedded_risk_policy"
+    version = "r5_dispatch_checked_v1"
+
+        [result.scenarios.down.values]
+        H_D = [[0.0, 0.026999999999999698, 0.024000000000002242, 0.043999999999997395]]
+        P_DER = [[0.007789473684210766, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.045, 0.0078108028828506315], [0.0, 0.036000000000000004, 0.07200000000000001, 0.018000000000000002]]
+        P_DH = [[0.004210526315789231, 0.0, 0.0, 0.0]]
+        P_PCC = [[0.12, 0.09000000000000002, 0.0, 0.08218919711714937]]
+        P_line = [[0.12, 0.09000000000000002, -0.0, 0.08218919711714937]]
+        Q_DER = [[0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0], [0.03, 0.03, 0.03, 0.03], [0.0, 0.0, 0.0, 0.0]]
+        Q_PCC = [[-0.009999999999999998, -0.009999999999999998, -0.009999999999999998, -0.009999999999999998]]
+        Q_line = [[-0.009999999999999998, -0.009999999999999998, -0.009999999999999998, -0.009999999999999998]]
+        delivery = [[0.0, 0.0, 0.0, -1.1379786002407855e-15]]
+        mismatch = [[0.0, 0.0, 0.0, 0.0]]
+        v = [[1.0, 1.0, 1.0, 1.0], [0.99885, 0.99915, 1.00005, 0.9992281080288286]]
+        "τ_IN" = [[292.15, 292.15, 292.1500000000001, 293.15]]
+        "τ_R" = [[329.3055375266121, 319.9607586958031, 321.45718809262405, 311.2902850278927], [331.4865375203476, 316.22411878375783, 323.3082507821888, 307.3590630502478]]
+        "τ_S" = [[331.067442288517, 319.9607586958031, 332.1714738069098, 313.15], [331.48653752034744, 322.6526902123292, 329.02253649647497, 317.83525352643767]]
+        "τ_load_R" = [[331.4865375203476, 316.22411878375783, 323.3082507821888, 307.3590630502478]]
+        "τ_pipe_R" = [[329.3055375266121, 319.9607586958031, 321.45718809262405, 311.2902850278927]]
+        "τ_pipe_S" = [[331.48653752034744, 322.6526902123292, 329.02253649647497, 317.83525352643767]]
+        "τ_src" = [[331.067442288517, 319.9607586958031, 332.1714738069098, 313.15]]
+
+    [result.scenarios.none]
+    case_sha256 = "33a11c5d9113e0182594ac1e0230fa237f8b28fc708707c3c6b99efb24c80056"
+    run_id = "r5-risk-3946ad7a-6184-4d39-9a7f-653eeba8b5c5/none"
+    schema = "r5-dispatch-result-v1"
+    solver_objective = 34.12189197117148
+    status = "embedded_risk_policy"
+    version = "r5_dispatch_checked_v1"
+
+        [result.scenarios.none.values]
+        H_D = [[0.033818103531240366, 0.008763463996480871, 0.02518821389247948, 0.04699999999999932]]
+        P_DER = [[0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0], [0.0, 0.009999999999999981, 0.05, 0.017810802882851764], [0.0, 0.04, 0.08, 0.02]]
+        P_DH = [[0.0, 0.0, 0.0, 0.0]]
+        P_PCC = [[0.12, 0.09000000000000002, 0.0, 0.08218919711714823]]
+        P_line = [[0.12, 0.09000000000000002, 0.0, 0.08218919711714823]]
+        Q_DER = [[0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0], [0.03, 0.03, 0.03, 0.03], [0.0, 0.0, 0.0, 0.0]]
+        Q_PCC = [[-0.009999999999999998, -0.009999999999999998, -0.009999999999999998, -0.009999999999999998]]
+        Q_line = [[-0.009999999999999998, -0.009999999999999998, -0.009999999999999998, -0.009999999999999998]]
+        delivery = [[-0.0, -0.0, -0.0, -0.0]]
+        mismatch = [[0.0, 0.0, 0.0, 0.0]]
+        v = [[1.0, 1.0, 1.0, 1.0], [0.99885, 0.99915, 1.00005, 0.9992281080288286]]
+        "τ_IN" = [[293.31600450135824, 292.2405893053759, 292.15, 293.15]]
+        "τ_R" = [[313.3553049438326, 310.7690476190477, 316.6574617244745, 308.90933264694], [310.17679999434614, 311.04831987337224, 318.6230139269377, 305.74225568540356]]
+        "τ_S" = [[313.3553049438326, 313.15, 328.5622236292362, 313.15], [318.2287294065462, 313.13485892015336, 324.6202077108614, 316.9327318758796]]
+        "τ_load_R" = [[310.17679999434614, 311.04831987337224, 318.6230139269377, 305.74225568540356]]
+        "τ_pipe_R" = [[313.3553049438326, 310.7690476190477, 316.6574617244745, 308.90933264694]]
+        "τ_pipe_S" = [[318.2287294065462, 313.13485892015336, 324.6202077108614, 316.9327318758796]]
+        "τ_src" = [[313.3553049438326, 313.15, 328.5622236292362, 313.15]]
+
+    [result.scenarios.up]
+    case_sha256 = "91955b3c0a429a5ca9053778bdd8a523ad1e946d6fad97b37ee0dfcd340d53b7"
+    run_id = "r5-risk-3946ad7a-6184-4d39-9a7f-653eeba8b5c5/up"
+    schema = "r5-dispatch-result-v1"
+    solver_objective = 40.82763490289156
+    status = "embedded_risk_policy"
+    version = "r5_dispatch_checked_v1"
+
+        [result.scenarios.up.values]
+        H_D = [[0.05033827051398854, 0.06692324303131247, 0.0, 0.023913043478260874]]
+        P_DER = [[0.0, 0.0, 0.0, 0.0], [0.0, 0.032, 0.02139357329300179, 0.0], [0.01200000000000001, 0.08, 0.057606426706998226, 0.03381080288285178], [0.0, 0.032, 0.064, 0.016]]
+        P_DH = [[0.0, 0.0, 0.0, 0.0]]
+        P_PCC = [[0.12, 0.010000000000000023, 0.0, 0.08218919711714823]]
+        P_line = [[0.12, 0.010000000000000023, 0.0, 0.08218919711714823]]
+        Q_DER = [[0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0], [0.03, 0.03, 0.03, 0.03], [0.0, 0.0, 0.0, 0.0]]
+        Q_PCC = [[-0.009999999999999998, -0.009999999999999998, -0.009999999999999998, -0.009999999999999998]]
+        Q_line = [[-0.009999999999999998, -0.009999999999999998, -0.009999999999999998, -0.009999999999999998]]
+        delivery = [[0.0, 0.08, 0.0, 0.0]]
+        mismatch = [[0.0, 0.0, 0.0, 0.0]]
+        v = [[1.0, 1.0, 1.0, 1.0], [0.99885, 0.99995, 1.00005, 0.9992281080288286]]
+        "τ_IN" = [[293.9038378484343, 295.15, 293.4543478260869, 293.15]]
+        "τ_R" = [[310.2928571428571, 306.0164110101214, 331.3873253279616, 342.2281013357415], [306.08763723358146, 306.0637920003031, 339.96933201043896, 343.15]]
+        "τ_S" = [[313.15, 325.0640300577404, 345.10314121058025, 350.27829249832524], [318.0729397369121, 321.997897483949, 339.969332010439, 348.8435817805383]]
+        "τ_load_R" = [[306.08763723358146, 306.0637920003031, 339.96933201043896, 343.15]]
+        "τ_pipe_R" = [[310.2928571428571, 306.0164110101214, 331.3873253279616, 342.2281013357415]]
+        "τ_pipe_S" = [[318.0729397369121, 321.997897483949, 339.969332010439, 348.8435817805383]]
+        "τ_src" = [[313.15, 325.0640300577404, 345.10314121058025, 350.27829249832524]]

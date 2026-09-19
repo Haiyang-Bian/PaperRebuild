@@ -47,6 +47,8 @@ jobs:
         run: julia --startup-file=no --project=. scripts/check_r5_risk.jl
       - name: R5 shared commitment immutable evidence
         run: julia --startup-file=no --project=. scripts/check_r5_commitment_artifacts.jl results/summaries/r5-commitment
+      - name: R5 finite-support risk immutable evidence
+        run: julia --startup-file=no --project=. scripts/check_r5_risk_artifacts.jl results/summaries/r5-risk
       - name: R4 immutable evidence
         run: julia --startup-file=no --project=. scripts/check_r4_artifacts.jl
       - name: R3 baseline frozen design and mapping
