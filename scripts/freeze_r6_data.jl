@@ -1,5 +1,8 @@
 using PaperRebuild, TOML, SHA, Dates
 
+# Julia 1.12的dir关键字接受Cmd对象；不能直接传Vector{String}。
+r6_git_cmd(root, args...) = Cmd(Cmd(["git", args...]); dir = root)
+
 function freeze_r6_main()
     VERSION == v"1.12.6" || error("冻结生成器使用Julia 1.12.6")
     root = normpath(joinpath(@__DIR__, ".."))
@@ -20,11 +23,11 @@ function freeze_r6_main()
         "Manifest.toml",
     ]
     hashes = Dict(s => bytes2hex(sha256(read(joinpath(root, s)))) for s in sources)
-    status = readchomp(Cmd(["git", "status", "--porcelain"]; dir = root))
+    status = readchomp(r6_git_cmd(root, "status", "--porcelain"))
     # 个人编辑器设置与科学输入分开；科学文件有未提交修改时不能宣称正式冻结。
-    changed = readchomp(Cmd(["git", "diff", "HEAD", "--name-only", "--", sources...]; dir = root))
+    changed = readchomp(r6_git_cmd(root, "diff", "HEAD", "--name-only", "--", sources...))
     isempty(changed) || error("科学源码尚未提交，不进行正式数据冻结")
-    run(Cmd(["git", "ls-files", "--error-unmatch", "--", sources...]; dir = root))
+    run(r6_git_cmd(root, "ls-files", "--error-unmatch", "--", sources...))
     sets = Dict(s => r6_generate_trajectories(p, s) for s in ("train", "validation", "test"))
     reps = r6_fit_representatives(sets["train"], p)
     reps["converged"] || error("聚类达到预算仍未收敛")
@@ -36,7 +39,7 @@ function freeze_r6_main()
         sets,
         reps;
         provenance = Dict(
-            "commit" => readchomp(Cmd(["git", "rev-parse", "HEAD"]; dir = root)),
+            "commit" => readchomp(r6_git_cmd(root, "rev-parse", "HEAD")),
             "working_tree_status" => status,
             "source_files" => hashes,
             "created_utc" => string(Dates.now(Dates.UTC)),
@@ -56,4 +59,6 @@ function freeze_r6_main()
     println("No method optimization or out-of-sample performance has been claimed.")
 end
 
-freeze_r6_main()
+if abspath(PROGRAM_FILE) == (@__FILE__)
+    freeze_r6_main()
+end

@@ -69,6 +69,8 @@ jobs:
         run: julia --startup-file=no --project=tools/data test/ch03_data.jl
       - name: R6 source and statistical mapping
         run: julia --startup-file=no --project=. scripts/check_r6.jl
+      - name: R6 freeze CLI
+        run: julia --startup-file=no --project=. scripts/test_r6_freeze_cli.jl
       - name: Julia format
         run: julia --startup-file=no --project=tools scripts/format.jl
       - name: Project checks
