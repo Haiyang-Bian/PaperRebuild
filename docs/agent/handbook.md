@@ -52,6 +52,13 @@ R3第四批显式v3见[物理恢复与停止判据](../src/ch03-r3-v3.md)。恢�
 
 ## 文档更新路由
 
+R7有限故障规划读[安全规划](../src/ch06-planning.md)，权威台账ch06/planning.toml。
+给定正常管流/电拓扑域下，共享正常启停、电池和管库存；每个事件/故障有独立恢复块。
+extensive是全故障存在性参考，finite_fault_ccg的内层仍为全故障MILP审计，不称完整嵌套对偶算法。
+恢复见证没有失供最优界；安全规划费用界不得放进无灾害正常子记录。新x必须重查全部事件。
+reserve-hand是先冻结解析下界的新配置，旧normal-hand的不可行性不改判；两事件不重复累计耗能。
+只读证据入口r7_planning_evidence.jl check使用各记录冻结源码，不能将当前验证器冒充历史实现。
+
 R7正常条件调度读[正常与事件连接](../src/ch06-normal.md)，权威台账ch06/normal-dispatch.toml。
 开发证据r7-normal-20260920-v2通过冻结源码回代，检查用test_r7_normal_evidence.jl。
 内部线健康时的零失供与断线后的继承CHP孤岛冲突分开；不可行缺失失供值不能填零。

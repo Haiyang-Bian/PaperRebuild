@@ -1,0 +1,27 @@
+module FrozenR7Planning
+using JuMP,TOML,SHA,Dates,UUIDs
+const MOI=JuMP.MOI
+include("src/core/r7_recovery.jl")
+include("src/formulations/r7_recovery.jl")
+include("src/verification/r7_recovery.jl")
+include("src/algorithms/r7_recovery.jl")
+include("src/reporting/r7_recovery.jl")
+include("src/core/r7_commitment.jl")
+include("src/components/r7_commitment.jl")
+include("src/verification/r7_commitment.jl")
+include("src/networks/r7_pipe_state.jl")
+include("src/networks/fixed_flow_heat.jl")
+include("src/core/r7_normal.jl")
+include("src/networks/r7_normal_transport.jl")
+include("src/formulations/r7_normal.jl")
+include("src/verification/r7_normal.jl")
+include("src/algorithms/r7_normal.jl")
+include("src/reporting/r7_normal.jl")
+include("src/core/r7_planning.jl")
+include("src/formulations/r7_planning.jl")
+include("src/verification/r7_planning.jl")
+include("src/algorithms/r7_planning.jl")
+include("src/reporting/r7_planning.jl")
+end
+x=FrozenR7Planning.read_r7_planning(joinpath(@__DIR__,".."))
+println(x.result["status"]," robust=",x.validation["robust_model_pass"])

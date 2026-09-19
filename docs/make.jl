@@ -47,6 +47,8 @@ include(joinpath(@__DIR__, "..", "scripts", "r7_pipe_state_docs.jl"))
 sync_r7_pipe_state_docs()
 include(joinpath(@__DIR__, "..", "scripts", "r7_normal_docs.jl"))
 sync_r7_normal_docs()
+include(joinpath(@__DIR__, "..", "scripts", "r7_planning_docs.jl"))
+sync_r7_planning_docs()
 
 makedocs(;
     modules = [PaperRebuild],
@@ -190,6 +192,8 @@ makedocs(;
             "管内状态参考推导与符号" => "ch06-pipe-equations.md",
             "正常调度与恢复状态连接" => "ch06-normal.md",
             "正常条件调度方程与符号" => "ch06-normal-equations.md",
+            "有限故障经济安全规划" => "ch06-planning.md",
+            "安全规划方程与符号" => "ch06-planning-equations.md",
         ],
         "第 2 章模型与首批实现" => [
             "模型详解" => "ch02-models.md",

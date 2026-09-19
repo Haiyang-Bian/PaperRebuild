@@ -130,7 +130,11 @@
 - `configs/r6/study.toml`
 - `configs/r7/chp-component-hand.toml`
 - `configs/r7/normal-hand.toml`
+- `configs/r7/normal-reserve-hand.toml`
+- `configs/r7/planning-hand.toml`
+- `configs/r7/planning-reserve-hand.toml`
 - `configs/r7/recovery-hand.toml`
+- `configs/r7/reserve-hand-freeze.toml`
 - `data/processed/README.md`
 - `data/raw/README.md`
 - `docs/Manifest.toml`
@@ -181,6 +185,7 @@
 - `docs/agent/tasks/2026-09-20-r7-commitment.md`
 - `docs/agent/tasks/2026-09-20-r7-normal.md`
 - `docs/agent/tasks/2026-09-20-r7-pipe-state.md`
+- `docs/agent/tasks/2026-09-20-r7-planning.md`
 - `docs/agent/tasks/2026-09-20-r7-recovery.md`
 - `docs/make.jl`
 - `docs/reading/README.md`
@@ -237,6 +242,7 @@
 - `docs/reading/ch06/normal-dispatch.toml`
 - `docs/reading/ch06/normal-prerequisites.toml`
 - `docs/reading/ch06/pipe-state.toml`
+- `docs/reading/ch06/planning.toml`
 - `docs/reading/ch06/recovery.toml`
 - `docs/reading/source_manifest.json`
 - `docs/reading/sources.json`
@@ -534,6 +540,7 @@
 - `docs/src/assets/r6-formal-20260920-v1/F19.png`
 - `docs/src/assets/r6-formal-20260920-v1/figure-config.toml`
 - `docs/src/assets/r7-normal-20260920-v2/F20-normal-event.png`
+- `docs/src/assets/r7-planning-20260920-v2/F21-finite-planning.png`
 - `docs/src/ch02-api.md`
 - `docs/src/ch02-generated.md`
 - `docs/src/ch02-models.md`
@@ -628,6 +635,8 @@
 - `docs/src/ch06-normal.md`
 - `docs/src/ch06-pipe-equations.md`
 - `docs/src/ch06-pipe-state.md`
+- `docs/src/ch06-planning-equations.md`
+- `docs/src/ch06-planning.md`
 - `docs/src/ch06-recovery-equations.md`
 - `docs/src/ch06-recovery.md`
 - `docs/src/index.md`
@@ -1009,6 +1018,19 @@
 - `results/summaries/r7-normal-figures-20260920-v2/figure.toml`
 - `results/summaries/r7-normal-figures-20260920-v2/files.toml`
 - `results/summaries/r7-normal-figures-20260920-v2/normal-trajectory.csv`
+- `results/summaries/r7-planning-20260920-v2/battery.csv`
+- `results/summaries/r7-planning-20260920-v2/continuation.toml`
+- `results/summaries/r7-planning-20260920-v2/files.toml`
+- `results/summaries/r7-planning-20260920-v2/rule.toml`
+- `results/summaries/r7-planning-20260920-v2/stages.csv`
+- `results/summaries/r7-planning-20260920-v2/summary.csv`
+- `results/summaries/r7-planning-figures-20260920-v2/F21-finite-planning.png`
+- `results/summaries/r7-planning-figures-20260920-v2/F21-finite-planning.svg`
+- `results/summaries/r7-planning-figures-20260920-v2/battery.csv`
+- `results/summaries/r7-planning-figures-20260920-v2/figure.toml`
+- `results/summaries/r7-planning-figures-20260920-v2/rule.toml`
+- `results/summaries/r7-planning-figures-20260920-v2/stages.csv`
+- `results/summaries/r7-planning-figures-20260920-v2/summary.csv`
 - `scripts/add_r6_stdlib.jl`
 - `scripts/audit_ch05_cuts.jl`
 - `scripts/audit_ch05_probability.jl`
@@ -1095,6 +1117,8 @@
 - `scripts/check_r7_normal.jl`
 - `scripts/check_r7_normal_figures.jl`
 - `scripts/check_r7_pipe_state.jl`
+- `scripts/check_r7_planning.jl`
+- `scripts/check_r7_planning_figures.jl`
 - `scripts/check_r7_recovery.jl`
 - `scripts/check_solvers.jl`
 - `scripts/collect_ch03_data.jl`
@@ -1148,6 +1172,7 @@
 - `scripts/freeze_r5_strategic_benders.jl`
 - `scripts/freeze_r6_data.jl`
 - `scripts/freeze_r6_physical.jl`
+- `scripts/freeze_r7_reserve_hand.jl`
 - `scripts/inspect_ch03_workbooks.jl`
 - `scripts/inspect_r4_heat_results.jl`
 - `scripts/inspect_r5_benders_boundary.jl`
@@ -1188,6 +1213,7 @@
 - `scripts/plot_r5_strategic_benders.jl`
 - `scripts/plot_r6_study.jl`
 - `scripts/plot_r7_normal.jl`
+- `scripts/plot_r7_planning.jl`
 - `scripts/prepare_r1_summary.jl`
 - `scripts/preview.jl`
 - `scripts/probe_r4_discrete.jl`
@@ -1257,6 +1283,9 @@
 - `scripts/r7_normal_docs.jl`
 - `scripts/r7_normal_evidence.jl`
 - `scripts/r7_pipe_state_docs.jl`
+- `scripts/r7_planning.jl`
+- `scripts/r7_planning_docs.jl`
+- `scripts/r7_planning_evidence.jl`
 - `scripts/r7_recovery.jl`
 - `scripts/r7_recovery_docs.jl`
 - `scripts/read_docx.py`
@@ -1373,6 +1402,7 @@
 - `scripts/test_r7_normal_cli.jl`
 - `scripts/test_r7_normal_evidence.jl`
 - `scripts/test_r7_pipe_state.jl`
+- `scripts/test_r7_planning.jl`
 - `scripts/test_r7_recovery.jl`
 - `scripts/tighten_r4_distributed_cost.jl`
 - `scripts/validate_ch03_data.jl`
@@ -1412,6 +1442,7 @@
 - `src/algorithms/r6_methods.jl`
 - `src/algorithms/r6_support_evaluation.jl`
 - `src/algorithms/r7_normal.jl`
+- `src/algorithms/r7_planning.jl`
 - `src/algorithms/r7_recovery.jl`
 - `src/components/devices.jl`
 - `src/components/r7_commitment.jl`
@@ -1439,6 +1470,7 @@
 - `src/core/r6_study.jl`
 - `src/core/r7_commitment.jl`
 - `src/core/r7_normal.jl`
+- `src/core/r7_planning.jl`
 - `src/core/r7_recovery.jl`
 - `src/formulations/r1.jl`
 - `src/formulations/r2.jl`
@@ -1459,6 +1491,7 @@
 - `src/formulations/r5_strategic_benders.jl`
 - `src/formulations/r6_evaluation.jl`
 - `src/formulations/r7_normal.jl`
+- `src/formulations/r7_planning.jl`
 - `src/formulations/r7_recovery.jl`
 - `src/networks/fixed_flow_heat.jl`
 - `src/networks/r7_normal_transport.jl`
@@ -1486,6 +1519,7 @@
 - `src/reporting/r6_data.jl`
 - `src/reporting/r6_evaluation.jl`
 - `src/reporting/r7_normal.jl`
+- `src/reporting/r7_planning.jl`
 - `src/reporting/r7_recovery.jl`
 - `src/reporting/runs.jl`
 - `src/verification/r1.jl`
@@ -1517,6 +1551,7 @@
 - `src/verification/r6_study.jl`
 - `src/verification/r7_commitment.jl`
 - `src/verification/r7_normal.jl`
+- `src/verification/r7_planning.jl`
 - `src/verification/r7_recovery.jl`
 - `test/ch03_data.jl`
 - `test/ch06_audit.jl`
@@ -1565,6 +1600,7 @@
 - `test/r7_commitment.jl`
 - `test/r7_normal.jl`
 - `test/r7_pipe_state.jl`
+- `test/r7_planning.jl`
 - `test/r7_recovery.jl`
 - `test/runtests.jl`
 - `tools/Manifest.toml`
@@ -1634,3 +1670,8 @@
 - `results/summaries/r7-normal-20260920-v2/event/`
 - `results/summaries/r7-normal-20260920-v2/normal/`
 - `results/summaries/r7-normal-20260920-v2/workflow/`
+- `results/summaries/r7-planning-20260920-v2/legacy_extensive/`
+- `results/summaries/r7-planning-20260920-v2/legacy_finite_fault_ccg/`
+- `results/summaries/r7-planning-20260920-v2/reserve_extensive/`
+- `results/summaries/r7-planning-20260920-v2/reserve_finite_fault_ccg/`
+- `results/summaries/r7-planning-20260920-v2/reserve_normal/`
