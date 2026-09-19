@@ -52,6 +52,12 @@ R3第四批显式v3见[物理恢复与停止判据](../src/ch03-r3-v3.md)。恢�
 
 ## 文档更新路由
 
+市场执行读[唯一选择与固定交付](../src/ch05-execution.md)及execution.toml。
+r5_execution_min_norm_v1在原始/对偶最优面分别最小化范数，不能当作者市场规则。
+QP原始乘子与被选市场价格分开；给定报价的执行评价不是该制度下策略重优化。
+固定成交补救追加等式并保留容量界；有界价格或可信市场KKT不代表内部能交付。
+公开结果须同时保留选择、条件交付、风险和费用完成的状态；条件界不能当策略全局界。
+
 连续报价读[策略模型](../src/ch05-strategic-model.md)和strategic-model.toml。
 r5_strategic_checked_v1显式单IES、连续价格、固定容量与optimistic_primal_dual选择。
 SOS1无任意乘子大M；所选乘子是优化变量，不能伪造raw_duals；独立市场另存原始MOI对偶。

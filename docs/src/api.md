@@ -292,6 +292,19 @@ PaperRebuild.read_r5_strategic_run
 PaperRebuild.r5_market_settlement_range
 ~~~
 
+## 市场执行选择与固定成交交付
+
+~~~@docs
+PaperRebuild.R5MarketExecutionSpec
+PaperRebuild.build_r5_execution_selector
+PaperRebuild.solve_r5_market_execution
+PaperRebuild.validate_r5_market_execution
+PaperRebuild.evaluate_r5_execution_delivery
+PaperRebuild.validate_r5_execution_delivery
+PaperRebuild.save_r5_execution_run
+PaperRebuild.read_r5_execution_run
+~~~
+
 ## 工程示例函数说明
 
 以下两个函数保留自初始化模板，只用于验证包加载、测试和 Documenter 集成，不计入论文复现进度。

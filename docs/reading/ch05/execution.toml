@@ -1,0 +1,80 @@
+schema = "ch05-execution-v1"
+source = "docs/摘要.pdf"
+source_sha256 = "20328e2480e773520c19c378e53365fc944c0bafcfca73071f5d8313d5ee7d91"
+pdf_pages = [89,90]
+version = "r5_execution_min_norm_v1"
+scope = "Project execution rule for fixed bids and conditional delivery; no strategic reoptimization or author tie-break claim."
+
+[[equation]]
+id = "R5-EX1"
+source_equations = ["5-34至5-42"]
+latex = 'y^\dagger=\arg\min_{y\in Y,\ c(o)^\mathsf Ty=f^\star(o)}\frac12\sum_k(y_k/s_P)^2'
+meaning = "先保持原市场最优值，再对全部成交作严格凸最小范数选择；不是给原福利目标加epsilon。"
+api = "build_r5_execution_selector"
+test = "R5-EX 市场唯一选择与固定交付"
+[[equation]]
+id = "R5-EX2"
+source_equations = ["5-43至5-58"]
+latex = '\xi^\dagger=\arg\min_{\xi\in\mathcal D(o),\ D(\xi)=f^\star(o)}\frac12\sum_j(\xi_j/(\Delta t\,s_\pi))^2'
+meaning = "对原独立对偶的全部显式乘子采用统一正权重，选出唯一价格；不隐式设置乘子界。规则依赖声明的对偶表示。"
+api = "solve_r5_market_execution"
+test = "R5-EX 单位尺度与选择证书"
+[[equation]]
+id = "R5-EX3"
+source_equations = ["项目选择问题KKT"]
+latex = 'Hx+A^\mathsf T\mu=0,\quad d(\mu)=b^\mathsf T\mu-\tfrac12(A^\mathsf T\mu)^\mathsf TH^{-1}(A^\mathsf T\mu)'
+meaning = "选择QP行按Ax+b<=0或=0保存；H正对角。由原始MOI乘子独立核验驻点、符号、互补与原对偶差。"
+api = "validate_r5_market_execution"
+test = "R5-EX 严格凸选择与原始乘子"
+[[equation]]
+id = "R5-EX4"
+source_equations = ["5-33", "5-66", "5-68"]
+latex = '(P_t^{DA},R_t^U,R_t^D)=(P_t^{IES,\dagger},R_t^{IES,U,\dagger},R_t^{IES,D,\dagger}),\quad C_{\rm exec}=\Pi(y^\dagger,\xi^\dagger)+\min_{\text{recourse}}\sup_{p\in\mathcal P}\sum_s p_sQ_s'
+meaning = "固定市场实际成交，在原风险/设备/历史边界下重新求补救；原变量界保持，条件最优界不作为策略报价全局界。"
+api = "evaluate_r5_execution_delivery"
+test = "R5-EX 市场唯一选择与固定交付"
+
+[[symbol]]
+id = "R5-EX-S01"
+latex = 'f^\star(o)'
+meaning = "给定报价的原市场LP最优目标"
+unit = "USD"
+julia = "primary / clearing_objective"
+scope = "由独立原始/对偶见证认证；固定普通负荷效用常数仍省略"
+[[symbol]]
+id = "R5-EX-S02"
+latex = 'y^\dagger,\xi^\dagger'
+meaning = "唯一选择的成交向量与完整显式市场乘子"
+unit = "MW；USD/MW"
+julia = "market[values / multipliers]"
+scope = "乘子除以dt才为USD/MWh；不是选择QP的原始MOI对偶"
+[[symbol]]
+id = "R5-EX-S03"
+latex = 's_P,s_\pi'
+meaning = "统一数量和价格参考尺度"
+unit = "MW；USD/MWh"
+julia = "R5MarketExecutionSpec"
+scope = "预声明1MW和100USD/MWh，统一缩放不改变数学最优选择"
+[[symbol]]
+id = "R5-EX-S04"
+latex = 'H,\mu'
+meaning = "严格凸选择QP的正对角Hessian和规范方向乘子"
+unit = "按选择问题归一化"
+julia = "witness[system][h] / raw_duals"
+scope = "原始MOI乘子保持；不裁剪；独立对偶值检验"
+
+[[issue]]
+id = "R5-EX-C01"
+original = "已核读原式定义市场福利与KKT，没有给出多最优选择的完整执行细则。"
+adopted = "选择最小范数制度作为单独项目对照；不冒称作者规则、现实市场制度或悲观策略解。"
+evidence = "原最优值、唯一选择证书和内部交付分别保存。"
+[[issue]]
+id = "R5-EX-C02"
+original = "原始成交与对偶价格都可能多解；有限报价不保证有限价格面。"
+adopted = "严格凸且强制的平方范数在非空闭最优面上取得唯一最小值；即使原面无界也不需要价格截断。"
+evidence = "解析QP、原始乘子、单位尺度和稀缺价格反例；价格选择依赖完整声明的对偶表示。"
+[[issue]]
+id = "R5-EX-C03"
+original = "旧策略最优解依赖乐观原始/对偶选择。"
+adopted = "旧报价在新制度下只作执行评价，不能把固定报价/成交后的条件补救界称策略全局界。"
+evidence = "旧选定、旧独立和新选择成交分别固定；不调整成交制造可交付性，不覆盖历史结果。"

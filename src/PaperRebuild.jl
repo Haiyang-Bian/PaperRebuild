@@ -99,6 +99,14 @@ include("verification/r5_strategic.jl")
 include("algorithms/r5_strategic.jl")
 include("reporting/r5_strategic.jl")
 include("algorithms/r5_market_selection.jl")
+include("core/r5_execution.jl")
+include("formulations/r5_execution.jl")
+include("verification/r5_execution.jl")
+include("algorithms/r5_execution.jl")
+include("reporting/r5_execution.jl")
+export R5MarketExecutionSpec, build_r5_execution_selector, solve_r5_market_execution
+export validate_r5_market_execution, evaluate_r5_execution_delivery, validate_r5_execution_delivery
+export save_r5_execution_run, read_r5_execution_run
 export R5StrategicCase, load_r5_strategic_case, build_r5_strategic
 export solve_r5_strategic, validate_r5_strategic
 export save_r5_strategic_run, read_r5_strategic_run

@@ -143,6 +143,8 @@ makedocs(;
             "连续报价与风险连接" => "ch05-strategic-model.md",
             "策略模型公式与符号" => "ch05-strategic-model-equations.md",
             "策略收益与市场选择结果" => "ch05-strategic-results.md",
+            "市场执行与实际交付" => "ch05-execution.md",
+            "执行规则公式与符号" => "ch05-execution-equations.md",
             "联合机会约束概率方向" => "ch05-probability-audit.md",
             "分解算法与已知输入" => "ch05-algorithm-audit.md",
         ],
