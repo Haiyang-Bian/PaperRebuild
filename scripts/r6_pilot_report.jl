@@ -1,5 +1,23 @@
 include("r5_strategic_report_tables.jl")
 
+# 只分块，不聚合或删除残差。每块保留表头，顺序与独立验算输出完全一致。
+function r6_pilot_csv_chunks(tables)
+    chunks=Dict{String,Vector{NamedTuple}}()
+    for (file, rows) in tables
+        if file=="residuals.csv"
+            for (part, firstrow) in enumerate(1:5000:length(rows))
+                chunks["residuals-"*lpad(part, 3, '0')*".csv"]=rows[firstrow:min(
+                    firstrow+4999,
+                    length(rows),
+                )]
+            end
+        else
+            chunks[file]=rows
+        end
+    end
+    chunks
+end
+
 function r6_pilot_tables(dir, meta)
     root=normpath(joinpath(@__DIR__, ".."))
     meta["schema"]=="r6-pilot-result-v1" &&
@@ -75,7 +93,7 @@ function r6_pilot_report(source, output)
     end
     write(joinpath(output, "pilot.toml"), PaperRebuild.r5_market_text(meta))
     tables=r6_pilot_tables(output, meta)
-    for (file, rows) in tables
+    for (file, rows) in r6_pilot_csv_chunks(tables)
         CSV.write(joinpath(output, file), rows)
     end
     hashes=Dict(
@@ -100,7 +118,7 @@ function r6_check_pilot_report(dir)
     for (file, h) in meta["reporter_hashes"]
         bytes2hex(sha256(read(joinpath(@__DIR__, file))))==h || error("报告生成器版本不同")
     end
-    for (file, rows) in r6_pilot_tables(dir, meta)
+    for (file, rows) in r6_pilot_csv_chunks(r6_pilot_tables(dir, meta))
         io=IOBuffer()
         CSV.write(io, rows)
         take!(io)==read(joinpath(dir, file)) || error("独立重算CSV不一致")

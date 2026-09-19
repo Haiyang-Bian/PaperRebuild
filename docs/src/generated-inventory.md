@@ -600,6 +600,7 @@
 - `docs/src/r6-equations.md`
 - `docs/src/r6-method-equations.md`
 - `docs/src/r6-methods.md`
+- `docs/src/r6-pilot-results.md`
 - `docs/src/reading.md`
 - `docs/src/reproduction-acceptance.md`
 - `docs/src/reproduction-coverage.md`
@@ -904,6 +905,20 @@
 - `results/summaries/r6-data-v1/validation-001.csv`
 - `results/summaries/r6-data-v1/validation-002.csv`
 - `results/summaries/r6-data-v1/validation-003.csv`
+- `results/summaries/r6-training-pilot-v1/bids-awards.csv`
+- `results/summaries/r6-training-pilot-v1/comparison.csv`
+- `results/summaries/r6-training-pilot-v1/hashes.toml`
+- `results/summaries/r6-training-pilot-v1/pilot.toml`
+- `results/summaries/r6-training-pilot-v1/residuals-001.csv`
+- `results/summaries/r6-training-pilot-v1/residuals-002.csv`
+- `results/summaries/r6-training-pilot-v1/residuals-003.csv`
+- `results/summaries/r6-training-pilot-v1/residuals-004.csv`
+- `results/summaries/r6-training-pilot-v1/residuals-005.csv`
+- `results/summaries/r6-training-pilot-v1/residuals-006.csv`
+- `results/summaries/r6-training-pilot-v1/residuals-007.csv`
+- `results/summaries/r6-training-pilot-v1/residuals-008.csv`
+- `results/summaries/r6-training-pilot-v1/risk-scenarios.csv`
+- `results/summaries/r6-training-pilot-v1/trajectories.csv`
 - `scripts/add_r6_stdlib.jl`
 - `scripts/audit_ch05_cuts.jl`
 - `scripts/audit_ch05_probability.jl`
@@ -1224,6 +1239,8 @@
 - `scripts/test_r6.jl`
 - `scripts/test_r6_freeze_cli.jl`
 - `scripts/test_r6_methods.jl`
+- `scripts/test_r6_pilot_artifacts.jl`
+- `scripts/test_r6_workflow.jl`
 - `scripts/tighten_r4_distributed_cost.jl`
 - `scripts/validate_ch03_data.jl`
 - `scripts/validate_r1.jl`
@@ -1441,3 +1458,4 @@
 - `results/summaries/r5-strategic-benders/references/`
 - `results/summaries/r5-strategic-benders/witnesses/`
 - `results/summaries/r5-strategic/witnesses/`
+- `results/summaries/r6-training-pilot-v1/witnesses/`

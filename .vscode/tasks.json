@@ -127,6 +127,14 @@
       "problemMatcher": []
     },
     {
+      "label": "PaperRebuild: R6 pilot replay and tamper tests",
+      "type": "process",
+      "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/test_r6_pilot_artifacts.jl", "${input:r6PilotReport}"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": []
+    },
+    {
       "label": "PaperRebuild: R6 statistics and data tests",
       "type": "process",
       "command": "julia",

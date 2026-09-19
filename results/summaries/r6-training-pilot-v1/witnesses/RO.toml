@@ -1,0 +1,989 @@
+parent_result_sha256 = "22444e313dce5eb2e629ad560160f9bcf50346f69caf6c38cd8775126ef118cd"
+
+[case]
+leader_id = "IES"
+name = "r6_daily_small_v1_RO"
+origin = "synthetic"
+quantity_rule = "fixed_offer_capacities"
+schema = "r5-strategic-case-v1"
+selection = "optimistic_primal_dual"
+
+    [case.bid_bounds.down_bid]
+    lower = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    upper = [200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0]
+
+    [case.bid_bounds.energy_bid]
+    lower = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    upper = [200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0]
+
+    [case.bid_bounds.up_bid]
+    lower = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    upper = [200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0]
+
+    [case.market]
+    T = 24
+    description = "Synthetic daily abundant-supply market; physical-rule.toml fixes hourly offers before optimization."
+    dt_h = 1.0
+    load_MW = [[1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]]
+    name = "r6_daily_small_v1"
+    nodes = 1
+    origin = "synthetic"
+    reserve_down_MW = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+    reserve_up_MW = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+    schema = "r5-market-case-v1"
+
+        [[case.market.generators]]
+        down_bid = [100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0]
+        down_max = 1.0
+        energy_bid = [70.0, 65.0, 65.0, 65.0, 70.0, 80.0, 100.0, 120.0, 110.0, 100.0, 95.0, 90.0, 90.0, 90.0, 95.0, 110.0, 130.0, 150.0, 150.0, 140.0, 120.0, 100.0, 85.0, 75.0]
+        id = "G"
+        node = 1
+        p_bid_max = 5.0
+        p_initial = 1.0
+        p_max = 5.0
+        p_min = 0.0
+        ramp_down_MW_h = 20.0
+        ramp_up_MW_h = 20.0
+        up_bid = [100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0]
+        up_max = 1.0
+
+        [[case.market.ies]]
+        down_bid = [100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0]
+        down_max = 0.08
+        energy_bid = [70.0, 65.0, 65.0, 65.0, 70.0, 80.0, 100.0, 120.0, 110.0, 100.0, 95.0, 90.0, 90.0, 90.0, 95.0, 110.0, 130.0, 150.0, 150.0, 140.0, 120.0, 100.0, 85.0, 75.0]
+        id = "IES"
+        node = 1
+        purchase_bid_max = 1.0
+        q_max = 1.0
+        q_min = 0.0
+        up_bid = [100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0]
+        up_max = 0.08
+
+        [case.market.network]
+        limit_MW = []
+        ptdf = []
+        slack_node = 1
+
+        [case.market.units]
+        energy = "MWh"
+        energy_price = "USD/MWh"
+        power = "MW"
+        ramp = "MW/h"
+        reserve_price = "USD/(MW*h)"
+        time = "h"
+
+    [case.provenance.r6]
+    effective_epsilon = 0.0
+    effective_radius = 0.38923485349469844
+    method_sha256 = "0235beb66a75433e604831f449791704d99baf7ac3c6cdfc3ed70b9f61e4dae7"
+    physical_sha256 = "d64a84223d501be13728e899b842ee3959ca0ca1aa3c80c50fcdca9fa59d5ca1"
+    protocol_sha256 = "02c5987cab99c924ca494ffae7a30bf258e41e1fe213d32558862ed6d9ee5d3b"
+    representatives_sha256 = "749b4cf85bc794e3c5f4acad3d92d8b8fd0926787c583b6fba89f6fb7a844037"
+    schema = "r6-training-provenance-v1"
+    scope = "development_subset"
+    selected_cluster_mass = 0.0395
+    selected_training_ids = ["train_001897", "train_000495", "train_000371"]
+    selection_rule = "first_representatives_in_frozen_order"
+    training_sha256 = "61f4ad3a320d1b79bcb1a68b22b3211010c234f3d1c9fb12238233c76b847b27"
+
+        [case.provenance.r6.method]
+        comfort_rule = "hard_all_support"
+        cost_rule = "finite_support_maximum"
+        deterministic_rule = "training_mean_pv_zero_call"
+        epsilon = 0.05
+        method = "RO"
+        radius = 0.0
+        schema = "r6-method-v1"
+
+    [case.risk]
+    epsilon = 0.0
+    event = "any_building_time_comfort_violation"
+    name = "r6_daily_small_v1_RO"
+    objective = "worst_expected_net_cost"
+    origin = "synthetic"
+    schema = "r5-risk-case-v1"
+
+        [case.risk.ambiguity]
+        distance = [[0.0, 0.2782132382193271, 0.2773572974729036], [0.2782132382193271, 0.0, 0.38923485349469844], [0.2773572974729036, 0.38923485349469844, 0.0]]
+        distance_provenance = "R6-S6 full PV/signed-call day RMS; RO uses maximum distance (R6-M3)"
+        distance_unit = "normalized_trajectory"
+        radius = 0.38923485349469844
+        support = "fixed_scenarios"
+
+        [case.risk.commitment]
+        comfort = "hard_each_scenario"
+        name = "r6_daily_small_v1_RO"
+        objective = "expected_net_cost"
+        origin = "synthetic"
+        recourse_information = "complete_trajectory"
+        schema = "r5-commitment-case-v1"
+        uncertain_fields = ["devices.available_MW", "realtime.alpha_down", "realtime.alpha_up"]
+
+            [case.risk.commitment.bounds.P_DA_MW]
+            lower = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+            upper = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+
+            [case.risk.commitment.bounds.R_down_MW]
+            lower = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+            upper = [0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08]
+
+            [case.risk.commitment.bounds.R_up_MW]
+            lower = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+            upper = [0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08]
+
+            [case.risk.commitment.day_ahead]
+            down_price = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+            energy_price = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+            up_price = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+            [[case.risk.commitment.scenarios]]
+            case_sha256 = "ec1e453e7302253a5efa03fa4db4e171b3a428d80a4a88a493bda755bba49f6b"
+            id = "train_001897"
+            probability = 0.4050632911392405
+
+                [case.risk.commitment.scenarios.case]
+                T = 24
+                ambient_K = [282.15, 281.65, 281.15, 280.65, 280.15, 280.65, 281.15, 282.15, 283.15, 284.15, 285.15, 286.15, 287.15, 287.65, 287.15, 286.15, 285.15, 284.15, 283.15, 282.65, 282.15, 282.15, 282.15, 282.15]
+                dt_h = 1.0
+                name = "train_001897"
+                origin = "synthetic"
+                schema = "r5-dispatch-case-v1"
+
+                    [case.risk.commitment.scenarios.case.award]
+                    P_DA_MW = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    R_down_MW = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    R_up_MW = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    down_price = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    energy_price = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    origin = "synthetic"
+                    up_price = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+                    [[case.risk.commitment.scenarios.case.buildings]]
+                    COP_DH = 0.95
+                    C_MWh_K = 0.02
+                    G_MW_K = 0.003
+                    P_DH_max_MW = 0.05
+                    R_max_K = 343.15
+                    R_min_K = 303.15
+                    T_initial_K = 293.15
+                    T_max_K = 294.15
+                    T_min_K = 292.15
+                    electric_node = 2
+                    heat_node = 2
+                    id = "building"
+                    m_kg_s = 1.0
+                    terminal_rule = "initial"
+
+                    [[case.risk.commitment.scenarios.case.devices]]
+                    cost_USD_MWh = 0.0
+                    heat_ratio = 0.95
+                    id = "EB"
+                    kind = "EB"
+                    node = 2
+                    p_max_MW = 0.1
+                    p_min_MW = 0.0
+                    q_max_Mvar = 0.0
+                    q_min_Mvar = 0.0
+                    source_id = "source"
+                    [[case.risk.commitment.scenarios.case.devices]]
+                    P_initial_MW = 0.0
+                    cost_USD_MWh = 130.0
+                    id = "GT"
+                    kind = "GT"
+                    node = 2
+                    p_max_MW = 0.15
+                    p_min_MW = 0.0
+                    q_max_Mvar = 0.0
+                    q_min_Mvar = 0.0
+                    ramp_down_MW_h = 1.0
+                    ramp_up_MW_h = 1.0
+                    [[case.risk.commitment.scenarios.case.devices]]
+                    P_initial_MW = 0.03
+                    cost_USD_MWh = 90.0
+                    heat_ratio = 1.0
+                    id = "CHP"
+                    kind = "CHP"
+                    node = 2
+                    p_max_MW = 0.08
+                    p_min_MW = 0.0
+                    q_max_Mvar = 0.03
+                    q_min_Mvar = -0.03
+                    ramp_down_MW_h = 0.08
+                    ramp_up_MW_h = 0.08
+                    source_id = "source"
+                    [[case.risk.commitment.scenarios.case.devices]]
+                    available_MW = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0052152478478417535, 0.018299869403988235, 0.03132671454721414, 0.045064536921115395, 0.057192028859330446, 0.06862386254853868, 0.0712949764189727, 0.06806474291748163, 0.051614159174555425, 0.03452083912798767, 0.019937515407055472, 0.006774396684911868, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    cost_USD_MWh = 5.0
+                    id = "PV"
+                    kind = "PV"
+                    node = 2
+                    p_max_MW = 0.08
+                    p_min_MW = 0.0
+                    q_max_Mvar = 0.0
+                    q_min_Mvar = 0.0
+
+                    [case.risk.commitment.scenarios.case.electric]
+                    P_load_MW = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.1, 0.1, 0.1, 0.1, 0.1, 0.11, 0.13, 0.15, 0.14, 0.13, 0.13, 0.14, 0.14, 0.13, 0.13, 0.14, 0.16, 0.18, 0.18, 0.17, 0.15, 0.13, 0.12, 0.11]]
+                    Q_load_Mvar = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02]]
+                    S_base_MVA = 1.0
+                    nodes = 2
+                    pcc_max_MW = 1.0
+                    pcc_min_MW = 0.0
+                    qcc_max_Mvar = 1.0
+                    qcc_min_Mvar = -1.0
+                    root = 1
+                    v_max_pu = 1.05
+                    v_min_pu = 0.95
+                    v_ref_pu = 1.0
+
+                        [[case.risk.commitment.scenarios.case.electric.lines]]
+                        P_limit_MW = 1.0
+                        Q_limit_Mvar = 1.0
+                        from = 1
+                        id = "e12"
+                        r_pu = 0.01
+                        to = 2
+                        x_pu = 0.005
+
+                    [case.risk.commitment.scenarios.case.heat]
+                    R_max_K = 343.15
+                    R_min_K = 293.15
+                    S_max_K = 353.15
+                    S_min_K = 303.15
+                    c_J_kgK = 4200.0
+                    nodes = 2
+                    terminal_rule = "free"
+
+                        [[case.risk.commitment.scenarios.case.heat.pipes]]
+                        area_m2 = 0.01
+                        from = 1
+                        history_R_K = [323.15]
+                        history_S_K = [333.15]
+                        id = "h12"
+                        length_m = 90.0
+                        loss_W_mK = 0.05
+                        m_kg_s = 1.0
+                        rho_kg_m3 = 1000.0
+                        to = 2
+
+                        [[case.risk.commitment.scenarios.case.heat.sources]]
+                        T_max_K = 353.15
+                        T_min_K = 313.15
+                        id = "source"
+                        m_kg_s = 1.0
+                        node = 1
+
+                    [case.risk.commitment.scenarios.case.realtime]
+                    alpha_down = [0.02320024015385483, 0.2377014000810099, 0.5542052597523742, 0.2497810138307923, 0.0, 0.0, 0.0, 0.0, 0.11617154890491312, 0.03446844688584301, 0.028343642922381874, 0.0, 0.0, 0.0, 0.4599692066348648, 0.0009322221560786749, 0.0, 0.37991523069046207, 0.0, 0.0, 0.0, 0.5348279841003949, 0.03675137487853023, 0.18022997475606387]
+                    alpha_up = [0.0, 0.0, 0.0, 0.0, 0.6483898913128594, 0.2544238888548859, 0.04634908565102683, 0.3290396414134907, 0.0, 0.0, 0.0, 0.47205049422228473, 0.05523808510173397, 0.06316464313894297, 0.0, 0.0, 0.015461253112405036, 0.0, 0.02909452070127912, 0.0020025901281961016, 0.1828729544374788, 0.0, 0.0, 0.0]
+                    delta = 0.1
+                    penalty_USD_MWh = 1000.0
+                    price = [70.0, 65.0, 65.0, 65.0, 70.0, 80.0, 100.0, 120.0, 110.0, 100.0, 95.0, 90.0, 90.0, 90.0, 95.0, 110.0, 130.0, 150.0, 150.0, 140.0, 120.0, 100.0, 85.0, 75.0]
+
+                    [case.risk.commitment.scenarios.case.units]
+                    energy = "MWh"
+                    energy_price = "USD/MWh"
+                    flow = "kg/s"
+                    heat_capacity = "MWh/K"
+                    heat_transfer = "MW/K"
+                    power = "MW"
+                    reactive = "Mvar"
+                    reserve_price = "USD/(MW*h)"
+                    temperature = "K"
+                    time = "h"
+            [[case.risk.commitment.scenarios]]
+            case_sha256 = "36b009e70245c5d467d6e3dfc766ad276b8ce270518f85fa534f991ceff4b7b7"
+            id = "train_000495"
+            probability = 0.3670886075949367
+
+                [case.risk.commitment.scenarios.case]
+                T = 24
+                ambient_K = [282.15, 281.65, 281.15, 280.65, 280.15, 280.65, 281.15, 282.15, 283.15, 284.15, 285.15, 286.15, 287.15, 287.65, 287.15, 286.15, 285.15, 284.15, 283.15, 282.65, 282.15, 282.15, 282.15, 282.15]
+                dt_h = 1.0
+                name = "train_000495"
+                origin = "synthetic"
+                schema = "r5-dispatch-case-v1"
+
+                    [case.risk.commitment.scenarios.case.award]
+                    P_DA_MW = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    R_down_MW = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    R_up_MW = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    down_price = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    energy_price = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    origin = "synthetic"
+                    up_price = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+                    [[case.risk.commitment.scenarios.case.buildings]]
+                    COP_DH = 0.95
+                    C_MWh_K = 0.02
+                    G_MW_K = 0.003
+                    P_DH_max_MW = 0.05
+                    R_max_K = 343.15
+                    R_min_K = 303.15
+                    T_initial_K = 293.15
+                    T_max_K = 294.15
+                    T_min_K = 292.15
+                    electric_node = 2
+                    heat_node = 2
+                    id = "building"
+                    m_kg_s = 1.0
+                    terminal_rule = "initial"
+
+                    [[case.risk.commitment.scenarios.case.devices]]
+                    cost_USD_MWh = 0.0
+                    heat_ratio = 0.95
+                    id = "EB"
+                    kind = "EB"
+                    node = 2
+                    p_max_MW = 0.1
+                    p_min_MW = 0.0
+                    q_max_Mvar = 0.0
+                    q_min_Mvar = 0.0
+                    source_id = "source"
+                    [[case.risk.commitment.scenarios.case.devices]]
+                    P_initial_MW = 0.0
+                    cost_USD_MWh = 130.0
+                    id = "GT"
+                    kind = "GT"
+                    node = 2
+                    p_max_MW = 0.15
+                    p_min_MW = 0.0
+                    q_max_Mvar = 0.0
+                    q_min_Mvar = 0.0
+                    ramp_down_MW_h = 1.0
+                    ramp_up_MW_h = 1.0
+                    [[case.risk.commitment.scenarios.case.devices]]
+                    P_initial_MW = 0.03
+                    cost_USD_MWh = 90.0
+                    heat_ratio = 1.0
+                    id = "CHP"
+                    kind = "CHP"
+                    node = 2
+                    p_max_MW = 0.08
+                    p_min_MW = 0.0
+                    q_max_Mvar = 0.03
+                    q_min_Mvar = -0.03
+                    ramp_down_MW_h = 0.08
+                    ramp_up_MW_h = 0.08
+                    source_id = "source"
+                    [[case.risk.commitment.scenarios.case.devices]]
+                    available_MW = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.005055933156690062, 0.015269842605240535, 0.028252705095260854, 0.04368194963877937, 0.05326185019127547, 0.05988533382364149, 0.05967682018622694, 0.060689660484718896, 0.052552565494388664, 0.03846959697013911, 0.022995009614107338, 0.0084766373728756, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    cost_USD_MWh = 5.0
+                    id = "PV"
+                    kind = "PV"
+                    node = 2
+                    p_max_MW = 0.08
+                    p_min_MW = 0.0
+                    q_max_Mvar = 0.0
+                    q_min_Mvar = 0.0
+
+                    [case.risk.commitment.scenarios.case.electric]
+                    P_load_MW = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.1, 0.1, 0.1, 0.1, 0.1, 0.11, 0.13, 0.15, 0.14, 0.13, 0.13, 0.14, 0.14, 0.13, 0.13, 0.14, 0.16, 0.18, 0.18, 0.17, 0.15, 0.13, 0.12, 0.11]]
+                    Q_load_Mvar = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02]]
+                    S_base_MVA = 1.0
+                    nodes = 2
+                    pcc_max_MW = 1.0
+                    pcc_min_MW = 0.0
+                    qcc_max_Mvar = 1.0
+                    qcc_min_Mvar = -1.0
+                    root = 1
+                    v_max_pu = 1.05
+                    v_min_pu = 0.95
+                    v_ref_pu = 1.0
+
+                        [[case.risk.commitment.scenarios.case.electric.lines]]
+                        P_limit_MW = 1.0
+                        Q_limit_Mvar = 1.0
+                        from = 1
+                        id = "e12"
+                        r_pu = 0.01
+                        to = 2
+                        x_pu = 0.005
+
+                    [case.risk.commitment.scenarios.case.heat]
+                    R_max_K = 343.15
+                    R_min_K = 293.15
+                    S_max_K = 353.15
+                    S_min_K = 303.15
+                    c_J_kgK = 4200.0
+                    nodes = 2
+                    terminal_rule = "free"
+
+                        [[case.risk.commitment.scenarios.case.heat.pipes]]
+                        area_m2 = 0.01
+                        from = 1
+                        history_R_K = [323.15]
+                        history_S_K = [333.15]
+                        id = "h12"
+                        length_m = 90.0
+                        loss_W_mK = 0.05
+                        m_kg_s = 1.0
+                        rho_kg_m3 = 1000.0
+                        to = 2
+
+                        [[case.risk.commitment.scenarios.case.heat.sources]]
+                        T_max_K = 353.15
+                        T_min_K = 313.15
+                        id = "source"
+                        m_kg_s = 1.0
+                        node = 1
+
+                    [case.risk.commitment.scenarios.case.realtime]
+                    alpha_down = [0.16745111842276394, 0.579563682977516, 0.6382567567044789, 0.8702944740976923, 0.8849089376629593, 0.8743764929771152, 0.722884764496639, 0.33093467702637697, 0.6417407527994838, 0.5590369987726029, 0.8220459674684878, 0.8142268832403227, 0.5823589815962068, 0.3675820453494962, 0.7415583204661295, 0.05236504352307878, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    alpha_up = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.30306426012822973, 0.5399346456848149, 0.9204411598504314, 0.6714452593564141, 0.8575686609806272, 0.8587536474097323, 0.7427507466890242, 0.7064592310943063]
+                    delta = 0.1
+                    penalty_USD_MWh = 1000.0
+                    price = [70.0, 65.0, 65.0, 65.0, 70.0, 80.0, 100.0, 120.0, 110.0, 100.0, 95.0, 90.0, 90.0, 90.0, 95.0, 110.0, 130.0, 150.0, 150.0, 140.0, 120.0, 100.0, 85.0, 75.0]
+
+                    [case.risk.commitment.scenarios.case.units]
+                    energy = "MWh"
+                    energy_price = "USD/MWh"
+                    flow = "kg/s"
+                    heat_capacity = "MWh/K"
+                    heat_transfer = "MW/K"
+                    power = "MW"
+                    reactive = "Mvar"
+                    reserve_price = "USD/(MW*h)"
+                    temperature = "K"
+                    time = "h"
+            [[case.risk.commitment.scenarios]]
+            case_sha256 = "28f18399ab592d9f7d777b9c87a69c560e5497b231dc15f65650b261a7870e46"
+            id = "train_000371"
+            probability = 0.22784810126582278
+
+                [case.risk.commitment.scenarios.case]
+                T = 24
+                ambient_K = [282.15, 281.65, 281.15, 280.65, 280.15, 280.65, 281.15, 282.15, 283.15, 284.15, 285.15, 286.15, 287.15, 287.65, 287.15, 286.15, 285.15, 284.15, 283.15, 282.65, 282.15, 282.15, 282.15, 282.15]
+                dt_h = 1.0
+                name = "train_000371"
+                origin = "synthetic"
+                schema = "r5-dispatch-case-v1"
+
+                    [case.risk.commitment.scenarios.case.award]
+                    P_DA_MW = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    R_down_MW = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    R_up_MW = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    down_price = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    energy_price = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    origin = "synthetic"
+                    up_price = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+                    [[case.risk.commitment.scenarios.case.buildings]]
+                    COP_DH = 0.95
+                    C_MWh_K = 0.02
+                    G_MW_K = 0.003
+                    P_DH_max_MW = 0.05
+                    R_max_K = 343.15
+                    R_min_K = 303.15
+                    T_initial_K = 293.15
+                    T_max_K = 294.15
+                    T_min_K = 292.15
+                    electric_node = 2
+                    heat_node = 2
+                    id = "building"
+                    m_kg_s = 1.0
+                    terminal_rule = "initial"
+
+                    [[case.risk.commitment.scenarios.case.devices]]
+                    cost_USD_MWh = 0.0
+                    heat_ratio = 0.95
+                    id = "EB"
+                    kind = "EB"
+                    node = 2
+                    p_max_MW = 0.1
+                    p_min_MW = 0.0
+                    q_max_Mvar = 0.0
+                    q_min_Mvar = 0.0
+                    source_id = "source"
+                    [[case.risk.commitment.scenarios.case.devices]]
+                    P_initial_MW = 0.0
+                    cost_USD_MWh = 130.0
+                    id = "GT"
+                    kind = "GT"
+                    node = 2
+                    p_max_MW = 0.15
+                    p_min_MW = 0.0
+                    q_max_Mvar = 0.0
+                    q_min_Mvar = 0.0
+                    ramp_down_MW_h = 1.0
+                    ramp_up_MW_h = 1.0
+                    [[case.risk.commitment.scenarios.case.devices]]
+                    P_initial_MW = 0.03
+                    cost_USD_MWh = 90.0
+                    heat_ratio = 1.0
+                    id = "CHP"
+                    kind = "CHP"
+                    node = 2
+                    p_max_MW = 0.08
+                    p_min_MW = 0.0
+                    q_max_Mvar = 0.03
+                    q_min_Mvar = -0.03
+                    ramp_down_MW_h = 0.08
+                    ramp_up_MW_h = 0.08
+                    source_id = "source"
+                    [[case.risk.commitment.scenarios.case.devices]]
+                    available_MW = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.004586055384752, 0.014692555133100867, 0.02329052851193854, 0.03499235189203045, 0.041278731367637454, 0.04465101072156191, 0.056578967387957015, 0.051590469684044245, 0.044242218581743896, 0.03218290130718553, 0.02026108088813357, 0.0072940304916287845, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    cost_USD_MWh = 5.0
+                    id = "PV"
+                    kind = "PV"
+                    node = 2
+                    p_max_MW = 0.08
+                    p_min_MW = 0.0
+                    q_max_Mvar = 0.0
+                    q_min_Mvar = 0.0
+
+                    [case.risk.commitment.scenarios.case.electric]
+                    P_load_MW = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.1, 0.1, 0.1, 0.1, 0.1, 0.11, 0.13, 0.15, 0.14, 0.13, 0.13, 0.14, 0.14, 0.13, 0.13, 0.14, 0.16, 0.18, 0.18, 0.17, 0.15, 0.13, 0.12, 0.11]]
+                    Q_load_Mvar = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02]]
+                    S_base_MVA = 1.0
+                    nodes = 2
+                    pcc_max_MW = 1.0
+                    pcc_min_MW = 0.0
+                    qcc_max_Mvar = 1.0
+                    qcc_min_Mvar = -1.0
+                    root = 1
+                    v_max_pu = 1.05
+                    v_min_pu = 0.95
+                    v_ref_pu = 1.0
+
+                        [[case.risk.commitment.scenarios.case.electric.lines]]
+                        P_limit_MW = 1.0
+                        Q_limit_Mvar = 1.0
+                        from = 1
+                        id = "e12"
+                        r_pu = 0.01
+                        to = 2
+                        x_pu = 0.005
+
+                    [case.risk.commitment.scenarios.case.heat]
+                    R_max_K = 343.15
+                    R_min_K = 293.15
+                    S_max_K = 353.15
+                    S_min_K = 303.15
+                    c_J_kgK = 4200.0
+                    nodes = 2
+                    terminal_rule = "free"
+
+                        [[case.risk.commitment.scenarios.case.heat.pipes]]
+                        area_m2 = 0.01
+                        from = 1
+                        history_R_K = [323.15]
+                        history_S_K = [333.15]
+                        id = "h12"
+                        length_m = 90.0
+                        loss_W_mK = 0.05
+                        m_kg_s = 1.0
+                        rho_kg_m3 = 1000.0
+                        to = 2
+
+                        [[case.risk.commitment.scenarios.case.heat.sources]]
+                        T_max_K = 353.15
+                        T_min_K = 313.15
+                        id = "source"
+                        m_kg_s = 1.0
+                        node = 1
+
+                    [case.risk.commitment.scenarios.case.realtime]
+                    alpha_down = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    alpha_up = [0.9299073227392197, 0.8624899222420588, 0.6598185019063003, 0.9547984286088408, 0.7493368329035592, 0.7398033181531413, 0.406150556684065, 0.7234971619782484, 0.8055626121279966, 0.010789062508233497, 0.6851019855347937, 0.8915779161465025, 0.7407056393766056, 0.7510919102809537, 0.4392919467215416, 0.6541764458577521, 0.19572266282531103, 0.48510434547167736, 0.8156224644197643, 0.6680154323757952, 0.5499008039940148, 0.5808419647293619, 0.6834865558260859, 0.6941498223040229]
+                    delta = 0.1
+                    penalty_USD_MWh = 1000.0
+                    price = [70.0, 65.0, 65.0, 65.0, 70.0, 80.0, 100.0, 120.0, 110.0, 100.0, 95.0, 90.0, 90.0, 90.0, 95.0, 110.0, 130.0, 150.0, 150.0, 140.0, 120.0, 100.0, 85.0, 75.0]
+
+                    [case.risk.commitment.scenarios.case.units]
+                    energy = "MWh"
+                    energy_price = "USD/MWh"
+                    flow = "kg/s"
+                    heat_capacity = "MWh/K"
+                    heat_transfer = "MW/K"
+                    power = "MW"
+                    reactive = "Mvar"
+                    reserve_price = "USD/(MW*h)"
+                    temperature = "K"
+                    time = "h"
+
+        [case.risk.temperature_domain.building]
+        lower_K = 291.15
+        upper_K = 295.15
+
+[result]
+bound_source = "MOI.ObjectiveBound"
+budget_sec = 120.0
+case_sha256 = "f6cdf7feab70af1ab49d6eaae5eb79c96e086521ed996cb9f3b65b9d4841be69"
+complementarity_count = 432
+cost_optimization_complete = true
+created_utc = "2026-09-19T11:12:04.695"
+elapsed_sec = 0.17799997329711914
+has_candidate = true
+julia_version = "1.12.6"
+model_type = "linear_MPEC_SOS1_with_risk_branches"
+model_types = ["AffExpr in MathOptInterface.EqualTo{Float64}", "AffExpr in MathOptInterface.GreaterThan{Float64}", "AffExpr in MathOptInterface.LessThan{Float64}", "VariableRef in MathOptInterface.GreaterThan{Float64}", "VariableRef in MathOptInterface.LessThan{Float64}", "Vector{VariableRef} in MathOptInterface.SOS1{Float64}"]
+objective_type = "market_net_payment_plus_worst_recourse"
+primal_status = "FEASIBLE_POINT"
+raw_status = "Model was solved to optimality (subject to tolerances), and an optimal solution is available."
+risk_pattern = [0, 0, 0]
+run_id = "r5-strategic-51e79424-a4a7-4607-8001-577e73c2f109"
+schema = "r5-strategic-result-v1"
+selection = "optimistic_primal_dual"
+solver = "Gurobi"
+solver_objective = -73.71926062804306
+solver_objective_bound = -73.71926062804319
+solver_version = "13.0.3"
+status = "solver_optimal"
+termination = "OPTIMAL"
+version = "r5_strategic_checked_v1"
+
+    [result.bids]
+    down_bid = [100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0]
+    energy_bid = [70.0, 65.0, 65.0, 65.0, 70.0, 80.0, 100.0, 120.0, 110.0, 100.0, 95.0, 90.0, 90.0, 90.0, 95.0, 110.0, 130.0, 150.0, 150.0, 140.0, 120.0, 100.0, 85.0, 75.0]
+    up_bid = [100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0]
+
+    [result.independent_market]
+    budget_sec = 119.8899998664856
+    case_sha256 = "079ccbc648563e82b93831906fd90b2d1315a69bf4e2a07879b97c4b6ae00423"
+    cost_optimization_complete = true
+    created_utc = "2026-09-19T11:12:04.805"
+    dual_status = "FEASIBLE_POINT"
+    elapsed_sec = 0.006999969482421875
+    fixed_load_utility_constant_omitted = true
+    julia_version = "1.12.6"
+    model_type = "continuous_LP"
+    objective_type = "fixed_bid_clearing_cost_not_system_resource_cost"
+    primal_status = "FEASIBLE_POINT"
+    raw_status = "kHighsModelStatusOptimal"
+    run_id = "r5-market-4c9bb58f-bcf1-487a-91de-4fc84d2e6e25"
+    schema = "r5-market-result-v1"
+    solver = "HiGHS"
+    solver_objective = 2845.0
+    solver_objective_bound = 2845.0
+    solver_version = "v1.15.1"
+    status = "solver_optimal"
+    termination = "OPTIMAL"
+    version = "r5_market_clearing_checked_v1"
+
+        [result.independent_market.lower_bound_duals]
+        P_G = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+        P_IES = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+        R_G_down = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+        R_G_up = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+        R_IES_down = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+        R_IES_up = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+
+        [[result.independent_market.model_types]]
+        count = 72
+        function = "AffExpr"
+        set = "MathOptInterface.EqualTo{Float64}"
+        [[result.independent_market.model_types]]
+        count = 48
+        function = "AffExpr"
+        set = "MathOptInterface.GreaterThan{Float64}"
+        [[result.independent_market.model_types]]
+        count = 240
+        function = "AffExpr"
+        set = "MathOptInterface.LessThan{Float64}"
+        [[result.independent_market.model_types]]
+        count = 144
+        function = "VariableRef"
+        set = "MathOptInterface.GreaterThan{Float64}"
+
+        [result.independent_market.multipliers]
+        down = [100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0]
+        energy = [70.0, 65.0, 65.0, 65.0, 70.0, 80.0, 100.0, 120.0, 110.0, 100.0, 95.0, 90.0, 90.0, 90.0, 95.0, 110.0, 130.0, 150.0, 150.0, 140.0, 120.0, 100.0, 85.0, 75.0]
+        g_cap_down = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+        g_cap_up = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+        gd_bid = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+        gu_bid = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+        i_cap_down = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+        i_cap_up = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+        id_bid = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+        iu_bid = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+        line_down = []
+        line_up = []
+        pg_bid = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+        q_bid = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+        ramp_down = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+        ramp_up = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+        up = [100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0]
+
+        [result.independent_market.raw_duals]
+        down = [-100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0]
+        energy = [-70.0, -65.0, -65.0, -65.0, -70.0, -80.0, -100.0, -120.0, -110.0, -100.0, -95.0, -90.0, -90.0, -90.0, -95.0, -110.0, -130.0, -150.0, -150.0, -140.0, -120.0, -100.0, -85.0, -75.0]
+        g_cap_down = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+        g_cap_up = [[-0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0]]
+        gd_bid = [[-0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0]]
+        gu_bid = [[-0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0]]
+        i_cap_down = [[-0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0]]
+        i_cap_up = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+        id_bid = [[-0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0]]
+        iu_bid = [[-0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0]]
+        line_down = []
+        line_up = []
+        pg_bid = [[-0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0]]
+        q_bid = [[-0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0]]
+        ramp_down = [[-0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0]]
+        ramp_up = [[-0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0]]
+        up = [-100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0]
+
+        [result.independent_market.values]
+        P_G = [[1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]]
+        P_IES = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+        R_G_down = [[0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]]
+        R_G_up = [[0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]]
+        R_IES_down = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+        R_IES_up = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+
+    [result.risk_policy]
+    case_sha256 = "4b630169ddc913c7fd7dd025073167fb7ce26f49b78589e7c540db0be8e4a22c"
+    commitment_source = "selected_market_awards"
+    method = "embedded_strategic_policy"
+    pattern = [0, 0, 0]
+    run_id = "r5-strategic-51e79424-a4a7-4607-8001-577e73c2f109/risk"
+    schema = "r5-risk-result-v1"
+    solver_objective = 85.11036834170777
+    status = "embedded_strategic_policy"
+    version = "r5_finite_support_checked_v1"
+    z = [0, 0, 0]
+
+        [result.risk_policy.embedded_duals.cost]
+        lambda = 0.0
+        nu = [85.11036834170773, 85.11036834170784, 85.11036834170773]
+
+        [result.risk_policy.embedded_duals.risk]
+        lambda = 0.0
+        nu = [0.0, 0.0, 0.0]
+
+        [result.risk_policy.first_stage]
+        P_DA_MW = [0.08660391052617888, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.07267558918393549, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08125013119615104, 0.08, 0.08, 0.08, 0.18322132840089228, 0.16092804473919264, 0.17942005973512193, 0.1665167384875445]
+        R_down_MW = [0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08]
+        R_up_MW = [0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.07267558918393549, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08]
+
+        [result.risk_policy.oracles.actual]
+        budget_sec = 119.85699987411499
+        elapsed_sec = 0.0019998550415039062
+        lambda = 0.0
+        nu = [-0.0, -0.0, -0.0]
+        quantity = "probability"
+        schema = "r5-transport-witness-v1"
+        status = "solver_optimal"
+        transport = [[0.4050632911392405, 0.0, 0.0], [0.0, 0.3670886075949367, 0.0], [0.0, 0.0, 0.22784810126582278]]
+
+            [result.risk_policy.oracles.actual.dual_solver]
+            bound_source = "MOI.ObjectiveBound"
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "kHighsModelStatusOptimal"
+            solver = "HiGHS"
+            solver_objective = 0.0
+            solver_objective_bound = 0.0
+            solver_version = "v1.15.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+            [result.risk_policy.oracles.actual.primal_solver]
+            bound_source = "MOI.ObjectiveBound"
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "kHighsModelStatusOptimal"
+            solver = "HiGHS"
+            solver_objective = 0.0
+            solver_objective_bound = 0.0
+            solver_version = "v1.15.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+        [result.risk_policy.oracles.cost]
+        budget_sec = 119.86199998855591
+        elapsed_sec = 0.003000020980834961
+        lambda = 0.0
+        nu = [85.11036834170794, 85.11036834170791, 85.11036834170784]
+        quantity = "cost"
+        schema = "r5-transport-witness-v1"
+        status = "solver_optimal"
+        transport = [[0.4050632911392405, 0.0, 0.0], [0.0, 0.3670886075949367, 0.0], [0.0, 0.0, 0.22784810126582278]]
+
+            [result.risk_policy.oracles.cost.dual_solver]
+            bound_source = "MOI.ObjectiveBound"
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "kHighsModelStatusOptimal"
+            solver = "HiGHS"
+            solver_objective = 85.1103683417079
+            solver_objective_bound = 85.1103683417079
+            solver_version = "v1.15.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+            [result.risk_policy.oracles.cost.primal_solver]
+            bound_source = "MOI.ObjectiveBound"
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "kHighsModelStatusOptimal"
+            solver = "HiGHS"
+            solver_objective = 85.1103683417079
+            solver_objective_bound = 85.1103683417079
+            solver_version = "v1.15.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+        [result.risk_policy.oracles.risk]
+        budget_sec = 119.85899996757507
+        elapsed_sec = 0.002000093460083008
+        lambda = 0.0
+        nu = [-0.0, -0.0, -0.0]
+        quantity = "probability"
+        schema = "r5-transport-witness-v1"
+        status = "solver_optimal"
+        transport = [[0.4050632911392405, 0.0, 0.0], [0.0, 0.3670886075949367, 0.0], [0.0, 0.0, 0.22784810126582278]]
+
+            [result.risk_policy.oracles.risk.dual_solver]
+            bound_source = "MOI.ObjectiveBound"
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "kHighsModelStatusOptimal"
+            solver = "HiGHS"
+            solver_objective = 0.0
+            solver_objective_bound = 0.0
+            solver_version = "v1.15.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+            [result.risk_policy.oracles.risk.primal_solver]
+            bound_source = "MOI.ObjectiveBound"
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "kHighsModelStatusOptimal"
+            solver = "HiGHS"
+            solver_objective = 0.0
+            solver_objective_bound = 0.0
+            solver_version = "v1.15.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+        [result.risk_policy.scenarios.train_000371]
+        case_sha256 = "76a2146016c1389b3723f6065da44e3c1988b5cd8cc3d80c3c925fff81e95db5"
+        run_id = "r5-strategic-51e79424-a4a7-4607-8001-577e73c2f109/risk/train_000371"
+        schema = "r5-dispatch-result-v1"
+        solver_objective = 85.11036834170775
+        status = "embedded_strategic_policy"
+        version = "r5_dispatch_checked_v1"
+
+            [result.risk_policy.scenarios.train_000371.values]
+            H_D = [[0.041893175936874055, 0.04171680353315177, 0.0, 0.07590000000000031, 0.0, 0.08050000000000068, 0.03242050647755718, 0.04172129871516528, 0.0, 0.017033322180129096, 0.02328880093656438, 0.058729836610005325, 0.010362499999998817, 0.0, 0.0, 0.06399999999999864, 0.008197995517191192, 0.046349569115484573, 0.032999999999999544, 0.034499999999999316, 0.03599999999999909, 0.013824844473692588, 0.009282743935918714, 0.05299999999999955]]
+            P_DER = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0020320819280029642, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.012459002269539554, 0.0047411352690350655, 0.000984752703222666], [0.08210893828392113, 0.05199057177133996, 0.0, 0.08716770687233728, 0.0, 0.0891842654522513, 0.0446219798792043, 0.07353927946264915, 0.022578619765078238, 0.0, 0.03557490951340228, 0.0866752225701583, 0.06267748376217146, 0.03246347623236014, 0.0, 0.07581071944240267, 0.0, 0.1315143171461054, 0.08847775846294459, 0.10561715654267728, 0.0, 0.0, 0.0, 0.0], [0.0056797370090375665, 0.03700862200802474, 0.07278548015250402, 0.009216167416369991, 0.07994694663228474, 0.0, 0.03328400927076891, 0.03964793836250985, 0.08, 0.015870773108628222, 0.027954517961743752, 0.0, 0.0, 0.02603340690607192, 0.04293321908398239, 0.00434049491903199, 0.07414660094174026, 0.0, 0.07677203869063653, 0.037824078047386356, 0.010770735918628899, 0.027998314708695876, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.004586055384752, 0.014692555133100867, 0.02329052851193854, 0.03499235189203045, 0.041278731367637454, 0.04465101072156191, 0.056578967387957015, 0.051590469684044245, 0.044242218581743896, 0.03218290130718553, 0.02026108088813357, 0.0072940304916287845, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+            P_DH = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+            P_PCC = [[0.01221132470704131, 0.011000806220635304, 0.027214519847495976, 0.003616125711292731, 0.020053053367715262, 0.020815734547748696, 0.0475079554652748, 0.022120227041740124, 0.014130851722983236, 0.07913687499934133, 0.025191841157216503, 0.008673766708279795, 0.02074354884987155, 0.019912647177523703, 0.044856644262276674, 0.027665884331379828, 0.06559231817012616, 0.04119165236226581, 0.014750202846418856, 0.02655876540993639, 0.1392292640813711, 0.11446068756084368, 0.12474113526903506, 0.11098475270322267]]
+            P_line = [[0.01221132470704131, 0.011000806220635304, 0.027214519847495976, 0.003616125711292731, 0.020053053367715262, 0.020815734547748696, 0.0475079554652748, 0.022120227041740124, 0.014130851722983236, 0.07913687499934133, 0.025191841157216503, 0.008673766708279795, 0.02074354884987155, 0.019912647177523703, 0.044856644262276674, 0.027665884331379828, 0.06559231817012616, 0.04119165236226581, 0.014750202846418856, 0.02655876540993639, 0.1392292640813711, 0.11446068756084368, 0.12474113526903506, 0.11098475270322267]]
+            Q_DER = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+            Q_PCC = [[-0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231]]
+            Q_line = [[-0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231]]
+            delivery = [[0.07439258581913755, 0.0689991937793647, 0.052785480152504005, 0.0763838742887073, 0.059946946632284726, 0.059184265452251306, 0.032492044534725206, 0.057879772958259856, 0.058544737460952234, 0.0008631250006586599, 0.054808158842783505, 0.07132623329172022, 0.05925645115012845, 0.06008735282247629, 0.035143355737723314, 0.052334115668620174, 0.01565781302602487, 0.03880834763773422, 0.06524979715358115, 0.05344123459006361, 0.043992064319521185, 0.046467357178348934, 0.05467892446608685, 0.055531985784321836]]
+            mismatch = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+            v = [[1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], [0.9999278867529297, 0.9999399919377937, 0.9997778548015251, 1.0000138387428872, 0.9998494694663229, 0.9998418426545226, 0.9995749204453473, 0.9998287977295827, 0.9999086914827703, 0.9992586312500067, 0.999798081588428, 0.9999632623329173, 0.9998425645115014, 0.9998508735282249, 0.9996014335573773, 0.9997733411566863, 0.9993940768182988, 0.9996380834763774, 0.999902497971536, 0.9997844123459008, 0.9986577073591864, 0.9989053931243916, 0.9988025886473098, 0.9989401524729679]]
+            "τ_IN" = [[293.53665982334235, 293.8, 292.15, 293.95, 292.15, 294.15, 293.8639350642417, 294.15, 292.71521739130435, 292.33859434809636, 292.41350816949966, 294.15, 293.68749999999994, 292.9, 292.15, 294.15, 293.3325215442257, 294.15, 294.15, 294.15, 294.15, 293.18586280320403, 292.15, 293.15]]
+            "τ_R" = [[311.79768166451487, 304.3384233314227, 329.2715450758412, 313.2781787566035, 333.52103759092734, 314.00271805811803, 305.22523588791216, 303.71001467559284, 331.4756165965931, 342.5012550376406, 343.0258473539139, 321.6478994119029, 313.15, 320.5964612628566, 338.0800417926078, 320.43858803950684, 335.4960473948237, 328.1176351012032, 334.8709431688961, 341.9598517814189, 334.63087453003766, 340.2232419535614, 343.01942566532324, 321.84604343492373], [308.0983740376563, 303.15, 338.11636431270705, 305.0921068926742, 343.15, 304.3823530641152, 305.57505696980155, 303.15, 341.0557100270194, 343.15, 343.15, 314.5820638636521, 312.7470107417868, 323.30717844493824, 343.15, 312.9661898204884, 343.15, 323.23260330717113, 338.89832235538165, 343.15, 331.9412721664043, 343.15, 343.15, 314.858263452201]]
+            "τ_S" = [[313.15, 313.15, 346.6014213026278, 315.4725043319297, 352.55602488432845, 314.00271805811803, 313.15, 313.15, 350.52323564421215, 346.280010539695, 349.6816849638529, 321.64789941190287, 313.15, 326.79489147858806, 348.7618743915566, 321.47203921070496, 353.15, 328.1176351012032, 353.15, 350.96558464984423, 337.19533546304456, 349.7076150165991, 344.0918253095097, 322.0687851177955], [318.0729397369121, 313.08257226979805, 338.116364312707, 323.16353546410284, 343.15, 323.549019730782, 313.2942251787437, 313.0836425512298, 341.05571002701936, 347.20555290003074, 348.6949526039439, 328.5653582946058, 315.21427264654847, 323.30717844493824, 343.15, 328.2042850585833, 345.1019036945693, 334.26821500133417, 346.75546521252437, 351.3642857142857, 340.51270073783263, 346.4416296365934, 345.3601771275997, 327.4773110712485]]
+            "τ_load_R" = [[308.0983740376563, 303.15, 338.11636431270705, 305.0921068926742, 343.15, 304.3823530641152, 305.57505696980155, 303.15, 341.0557100270194, 343.15, 343.15, 314.5820638636521, 312.7470107417868, 323.30717844493824, 343.15, 312.9661898204884, 343.15, 323.23260330717113, 338.89832235538165, 343.15, 331.9412721664043, 343.15, 343.15, 314.858263452201]]
+            "τ_pipe_R" = [[311.79768166451487, 304.3384233314227, 329.2715450758412, 313.2781787566035, 333.52103759092734, 314.00271805811803, 305.22523588791216, 303.71001467559284, 331.4756165965931, 342.5012550376406, 343.0258473539139, 321.6478994119029, 313.15, 320.5964612628566, 338.0800417926078, 320.43858803950684, 335.4960473948237, 328.1176351012032, 334.8709431688961, 341.9598517814189, 334.63087453003766, 340.2232419535614, 343.01942566532324, 321.84604343492373]]
+            "τ_pipe_S" = [[318.0729397369121, 313.08257226979805, 338.116364312707, 323.16353546410284, 343.15, 323.549019730782, 313.2942251787437, 313.0836425512298, 341.05571002701936, 347.20555290003074, 348.6949526039439, 328.5653582946058, 315.21427264654847, 323.30717844493824, 343.15, 328.2042850585833, 345.1019036945693, 334.26821500133417, 346.75546521252437, 351.3642857142857, 340.51270073783263, 346.4416296365934, 345.3601771275997, 327.4773110712485]]
+            "τ_src" = [[313.15, 313.15, 346.6014213026278, 315.4725043319297, 352.55602488432845, 314.00271805811803, 313.15, 313.15, 350.52323564421215, 346.280010539695, 349.6816849638529, 321.64789941190287, 313.15, 326.79489147858806, 348.7618743915566, 321.47203921070496, 353.15, 328.1176351012032, 353.15, 350.96558464984423, 337.19533546304456, 349.7076150165991, 344.0918253095097, 322.0687851177955]]
+
+        [result.risk_policy.scenarios.train_000495]
+        case_sha256 = "cbc804a053bf02e17d80c76b2287356aad35922841f006fa6721ecedc5b35eee"
+        run_id = "r5-strategic-51e79424-a4a7-4607-8001-577e73c2f109/risk/train_000495"
+        schema = "r5-dispatch-result-v1"
+        solver_objective = 85.11036834170775
+        status = "embedded_strategic_policy"
+        version = "r5_dispatch_checked_v1"
+
+            [result.risk_policy.scenarios.train_000495.values]
+            H_D = [[0.01, 0.006453160093708563, 0.032999999999999544, 0.0, 0.036000000000000226, 0.0, 0.032999999999999544, 0.03, 0.027000000000000454, 0.02399999999999977, 0.021000000000000227, 0.017999999999999544, 0.015, 0.013500000000000227, 0.013578585291328604, 0.017999999999999544, 0.06699999999999932, 0.029999999999998864, 0.032999999999999544, 0.034499999999999316, 0.03599999999999909, 0.03599999999999909, 0.008327197795584329, 0.03706330626470731]]
+            P_DER = [[0.0, 0.0, 0.031060540536358316, 0.013307768454130703, 0.050792715013036754, 0.0036343299644845256, 0.012886714316421188, 0.0, 0.012267554503155047, 0.024085829295759496, 0.02337748113560029, 0.020207439246101286, 0.017037397356602455, 0.01505730411830126, 0.014732413043473159, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.05471813428190958, 0.13477511072138398, 0.0963555010782099, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.02825538323264931, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.017341199548014608, 0.08, 0.08, 0.03886018206665054, 0.047360119670303236, 0.03538416447755788, 0.03777224705358595, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.005055933156690062, 0.015269842605240535, 0.028252705095260854, 0.029362869393951267, 0.007613803738121261, 0.01506928858687549, 0.030448678828905926, 0.035650740490341566, 0.006903973415310601, 0.03846959697013911, 0.022995009614107338, 0.0084766373728756, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+            P_DH = [[0.0, 0.026365094638201275, 0.0, 0.03631578947368469, 0.0, 0.03631578947368469, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.001496226009127785, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+            P_PCC = [[0.1, 0.12636509463820128, 0.13106054053635832, 0.1496235579278154, 0.15079271501303676, 0.14995011943816922, 0.13783078115973113, 0.10647477416211015, 0.1240148494078942, 0.12472295990180823, 0.14576367739747903, 0.1451381506592258, 0.12658871852769654, 0.1094065636279597, 0.13932466563729035, 0.0841892034818463, 0.057004990385892663, 0.03680522834521481, 0.006364707211965484, 0.026284379251486877, 0.11461583552244212, 0.09222775294641405, 0.12, 0.11]]
+            P_line = [[0.1, 0.12636509463820128, 0.13106054053635832, 0.1496235579278154, 0.15079271501303676, 0.14995011943816922, 0.13783078115973113, 0.10647477416211015, 0.1240148494078942, 0.12472295990180823, 0.14576367739747903, 0.1451381506592258, 0.12658871852769654, 0.1094065636279597, 0.13932466563729035, 0.0841892034818463, 0.057004990385892663, 0.03680522834521481, 0.006364707211965484, 0.026284379251486877, 0.11461583552244212, 0.09222775294641405, 0.12, 0.11]]
+            Q_DER = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+            Q_PCC = [[-0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231]]
+            Q_line = [[-0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231]]
+            delivery = [[-0.013396089473821121, -0.04636509463820129, -0.051060540536358306, -0.06962355792781538, -0.07079271501303674, -0.0699501194381692, -0.057830781159731115, -0.026474774162110137, -0.05133926022395871, -0.044722959901808246, -0.06576367739747901, -0.06513815065922582, -0.046588718527696554, -0.02940656362795968, -0.05932466563729036, -0.004189203481846315, 0.02424514081025836, 0.04319477165478519, 0.07363529278803449, 0.053715620748513104, 0.06860549287845019, 0.06870029179277859, 0.05942005973512193, 0.056516738487544516]]
+            mismatch = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+            v = [[1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], [0.9990500000000001, 0.9987863490536181, 0.9987393945946366, 0.998553764420722, 0.9985420728498697, 0.9985504988056184, 0.9986716921884028, 0.998985252258379, 0.9988098515059212, 0.998802770400982, 0.9985923632260253, 0.9985986184934078, 0.9987841128147231, 0.9989559343637205, 0.9986567533436272, 0.9992081079651817, 0.9994799500961412, 0.999681947716548, 0.9999863529278804, 0.9997871562074853, 0.9989038416447756, 0.9991277224705359, 0.9988500000000001, 0.9989500000000001]]
+            "τ_IN" = [[292.15, 292.15, 292.15, 292.15, 292.15, 292.15, 292.15, 292.15, 292.15, 292.15, 292.15, 292.15, 292.15, 292.15, 292.15, 292.15, 294.15, 294.15, 294.15, 294.15, 294.15, 294.15, 292.94683468676453, 293.15]]
+            "τ_R" = [[322.99461469225787, 320.06581527756117, 314.8091643635129, 320.5615487736752, 322.949915370345, 328.56377713132065, 319.97529978933494, 315.369777938102, 310.37519600523876, 307.7020148021496, 307.8622364098047, 308.5792696943343, 309.2963029788637, 309.7441812113366, 309.817668478262, 309.0211429647585, 307.56117732425196, 327.34670753682633, 337.3443296479492, 341.87378103088014, 343.01942566532324, 343.01942566532324, 343.01942566532324, 327.5626683593582], [323.05964361269093, 319.17774965488536, 313.44924141932376, 323.046473153816, 323.0401460287932, 330.5420307845712, 316.56410449012475, 315.0666845045542, 308.8892361817666, 307.3736379626713, 308.09006423982044, 308.80649051696986, 309.52291679411906, 309.88112993269357, 309.8613488676122, 308.80649051696986, 307.21017351656667, 334.1824370372935, 338.5533008129258, 343.15, 343.15, 343.15, 343.15, 322.49678074456233]]
+            "τ_S" = [[322.99461469225787, 320.06581527756117, 321.8347628181653, 323.57163925734756, 334.438743766151, 329.38582795662074, 322.8901518370969, 322.0972501363518, 313.15, 313.15, 313.15, 313.15, 313.15, 313.15, 313.15, 313.15, 326.608796371871, 346.3943265844453, 346.5967539495327, 353.15, 351.44422673140843, 352.01281782093895, 343.01942566532324, 327.56266835935827], [325.4405959936433, 320.7142163438636, 321.3063842764665, 323.04647315381595, 331.61157460022184, 330.54203078457124, 324.4212473472675, 322.20954164741136, 315.31780761033815, 313.08792367695696, 313.0900642398205, 313.092204802684, 313.0943453655476, 313.0954156469794, 313.0943453655476, 313.092204802684, 323.1625544689474, 341.32529418015037, 346.41044367006856, 351.3642857142857, 351.7214285714286, 351.7214285714286, 345.13266614180577, 331.3213774742546]]
+            "τ_load_R" = [[323.05964361269093, 319.17774965488536, 313.44924141932376, 323.046473153816, 323.0401460287932, 330.5420307845712, 316.56410449012475, 315.0666845045542, 308.8892361817666, 307.3736379626713, 308.09006423982044, 308.80649051696986, 309.52291679411906, 309.88112993269357, 309.8613488676122, 308.80649051696986, 307.21017351656667, 334.1824370372935, 338.5533008129258, 343.15, 343.15, 343.15, 343.15, 322.49678074456233]]
+            "τ_pipe_R" = [[322.99461469225787, 320.06581527756117, 314.8091643635129, 320.5615487736752, 322.949915370345, 328.56377713132065, 319.97529978933494, 315.369777938102, 310.37519600523876, 307.7020148021496, 307.8622364098047, 308.5792696943343, 309.2963029788637, 309.7441812113366, 309.817668478262, 309.0211429647585, 307.56117732425196, 327.34670753682633, 337.3443296479492, 341.87378103088014, 343.01942566532324, 343.01942566532324, 343.01942566532324, 327.5626683593582]]
+            "τ_pipe_S" = [[325.4405959936433, 320.7142163438636, 321.3063842764665, 323.04647315381595, 331.61157460022184, 330.54203078457124, 324.4212473472675, 322.20954164741136, 315.31780761033815, 313.08792367695696, 313.0900642398205, 313.092204802684, 313.0943453655476, 313.0954156469794, 313.0943453655476, 313.092204802684, 323.1625544689474, 341.32529418015037, 346.41044367006856, 351.3642857142857, 351.7214285714286, 351.7214285714286, 345.13266614180577, 331.3213774742546]]
+            "τ_src" = [[322.99461469225787, 320.06581527756117, 321.8347628181653, 323.57163925734756, 334.438743766151, 329.38582795662074, 322.8901518370969, 322.0972501363518, 313.15, 313.15, 313.15, 313.15, 313.15, 313.15, 313.15, 313.15, 326.608796371871, 346.3943265844453, 346.5967539495327, 353.15, 351.44422673140843, 352.01281782093895, 343.01942566532324, 327.56266835935827]]
+
+        [result.risk_policy.scenarios.train_001897]
+        case_sha256 = "e09d69b920ed4b61af2d3095cc50dee67309add1eb1001a84bd8a46064e0c78c"
+        run_id = "r5-strategic-51e79424-a4a7-4607-8001-577e73c2f109/risk/train_001897"
+        schema = "r5-dispatch-result-v1"
+        solver_objective = 85.11036834170781
+        status = "embedded_strategic_policy"
+        version = "r5_dispatch_checked_v1"
+
+            [result.risk_policy.scenarios.train_001897.values]
+            H_D = [[0.01, 0.03149999999999977, 0.032999999999999544, 0.034500000000000454, 0.06524968915108653, 0.0090654876947076, 0.032999999999997275, 0.07600000000000023, 0.0, 0.012695652173912322, 0.021000000000000227, 0.01916680914106267, 0.013985383355596782, 0.013500000000000227, 0.05059944526195338, 0.0, 0.05573387881893721, 0.0, 0.04586195652173842, 0.0, 0.03, 0.028499999999999092, 0.03599999999999909, 0.012999999999999545]]
+            P_DER = [[0.001022751745613679, 0.0, 0.024336420780189938, 0.017280428306101606, 0.0, 0.0, 0.0, 0.0, 0.022492371247273678, 0.0, 0.0, 0.013536590752262968, 0.0, 0.0, 0.0, 0.0, 0.0, 0.00783626159330399, 0.0, 0.0, 0.02030824218041919, 0.027222708054660212, 0.06436693359341926, 0.07093513646802961], [0.0, 0.0, 0.0, 0.0, 0.0, 0.005237548021191522, 0.0484926790042404, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.018025182299402656, 0.00961691571718655, 0.07066864645315514, 0.05450820516243152, 0.0901602072102557, 0.0, 0.0, 0.0, 0.0], [0.01256282200712642, 0.000983887993519214, 0.0, 0.017297947199638234, 0.07187119130502875, 0.04511636308719935, 0.0, 0.07802330190909101, 0.049196343603731006, 0.0021779873280171613, 0.0, 0.04424231256150416, 0.0, 0.0, 0.0, 0.007379400800123392, 0.05043233792859936, 0.0, 0.047819356493670806, 0.0, 0.001716750134525219, 0.0035084245874359766, 0.002006763868014919, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0052152478478417535, 0.018299869403988235, 0.03132671454721414, 0.045064536921115395, 0.04773250856620945, 0.0670583177285416, 0.06441904680813873, 0.055053171451115435, 0.01320246346921082, 0.03452083912798767, 0.019937515407055472, 0.006774396684911868, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+            P_DH = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.05, 0.0, 0.0]]
+            P_PCC = [[0.08845992973848726, 0.09901611200648079, 0.12433642078018994, 0.09998248110646338, 0.028128808694971245, 0.05964608889160913, 0.07629207314791786, 0.053676828686920745, 0.08196931309632854, 0.08275747575086745, 0.08226749143379056, 0.04223596046221722, 0.07558095319186128, 0.07494682854888457, 0.11679753653078918, 0.08007457777248629, 0.08001323094715863, 0.11039321845523697, 0.07767243834389767, 0.07983979278974432, 0.16859149204589396, 0.20371428346722423, 0.18236016972540434, 0.1809351364680296]]
+            P_line = [[0.08845992973848726, 0.09901611200648079, 0.12433642078018994, 0.09998248110646338, 0.028128808694971245, 0.05964608889160913, 0.07629207314791786, 0.053676828686920745, 0.08196931309632854, 0.08275747575086745, 0.08226749143379056, 0.04223596046221722, 0.07558095319186128, 0.07494682854888457, 0.11679753653078918, 0.08007457777248629, 0.08001323094715863, 0.11039321845523697, 0.07767243834389767, 0.07983979278974432, 0.16859149204589396, 0.20371428346722423, 0.18236016972540434, 0.1809351364680296]]
+            Q_DER = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023, 0.03000000000000023], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+            Q_PCC = [[-0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231]]
+            Q_line = [[-0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231, -0.010000000000000231]]
+            delivery = [[-0.0018560192123083796, -0.01901611200648079, -0.044336420780189956, -0.01998248110646339, 0.05187119130502876, 0.020353911108390854, 0.003707926852082155, 0.026323171313079263, -0.009293723912393026, -0.002757475750867433, -0.0022674914337905694, 0.03776403953778279, 0.004419046808138705, 0.005053171451115446, -0.03679753653078918, -7.457777248631725e-5, 0.001236900248992423, -0.03039321845523696, 0.002327561656102317, 0.00016020721025566953, 0.014629836354998316, -0.042786238728031584, -0.0029401099902824357, -0.01441839798048511]]
+            mismatch = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+            v = [[1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], [0.9991654007026153, 0.9990598388799353, 0.9988066357921982, 0.9990501751889355, 0.9997687119130504, 0.999453539111084, 0.9992870792685209, 0.9995132317131309, 0.9992303068690368, 0.9992224252424914, 0.9992273250856623, 0.9996276403953779, 0.9992941904680815, 0.9993005317145113, 0.9988820246346922, 0.9992492542222753, 0.9992498676905285, 0.9989460678154477, 0.9992732756165611, 0.9992516020721026, 0.9983640850795412, 0.9980128571653278, 0.9982263983027461, 0.9982406486353198]]
+            "τ_IN" = [[292.15, 292.15, 292.15, 292.15, 293.4217256152646, 292.15, 292.15, 294.15, 292.71521739130435, 292.15, 292.15, 292.20073083222013, 292.15, 292.15, 293.697801967911, 292.7133060590531, 294.15, 292.84565217391304, 293.575, 292.15, 292.15, 294.15, 294.15, 293.15]]
+            "τ_R" = [[327.097531351591, 316.43642026192555, 307.6453333949571, 305.12277283561076, 303.5288851727054, 320.38665758114723, 314.5674268035646, 305.0060189925444, 333.0429718568223, 341.00671392201946, 331.93235709284215, 339.55426814853473, 341.25267160869623, 335.0574021332435, 313.15, 311.3929998094944, 305.59170059053145, 311.3775122586574, 309.4083349828538, 313.15, 308.1477189985896, 306.15714351443734, 313.5636178979282, 336.2652553727153], [328.54193434642025, 312.5007452377502, 306.1026448993786, 304.8661459926487, 303.15, 326.2458651453346, 310.7701947566252, 303.15, 343.15, 340.4549071589762, 329.22531426185145, 343.15, 340.7749736121211, 333.2871399224148, 306.5119853888659, 313.092204802684, 303.15, 314.19789264613877, 307.88692001610053, 314.9915962858496, 305.9407854083727, 306.2979282655158, 316.07536386892167, 343.15]]
+            "τ_S" = [[330.32001615289084, 316.6706793080015, 313.15, 313.15, 320.6410735786646, 331.1286487923852, 314.56742680356456, 323.5829956375661, 349.8439471636416, 341.5252823334522, 331.9323570928422, 353.15, 341.25267160869623, 335.05740213324356, 313.15, 313.15, 317.5994000973408, 313.15, 320.7938960527753, 313.15, 313.15, 313.15, 328.6006061793004, 352.31010766905536], [330.9228867273726, 320.00074523775015, 313.9597877565214, 313.0804317069345, 318.6856402740682, 328.4043145964555, 318.6273376137674, 321.2452380952381, 343.15, 343.4776814860982, 334.22531426185157, 347.7135259859673, 344.10482679202505, 336.50142563670056, 318.5594723559976, 313.092204802684, 316.419971147366, 314.19789264613877, 318.8064334736573, 314.9915962858496, 313.0836425512298, 313.0836425512298, 324.64679244035005, 346.2452380952381]]
+            "τ_load_R" = [[328.54193434642025, 312.5007452377502, 306.1026448993786, 304.8661459926487, 303.15, 326.2458651453346, 310.7701947566252, 303.15, 343.15, 340.4549071589762, 329.22531426185145, 343.15, 340.7749736121211, 333.2871399224148, 306.5119853888659, 313.092204802684, 303.15, 314.19789264613877, 307.88692001610053, 314.9915962858496, 305.9407854083727, 306.2979282655158, 316.07536386892167, 343.15]]
+            "τ_pipe_R" = [[327.097531351591, 316.43642026192555, 307.6453333949571, 305.12277283561076, 303.5288851727054, 320.38665758114723, 314.5674268035646, 305.0060189925444, 333.0429718568223, 341.00671392201946, 331.93235709284215, 339.55426814853473, 341.25267160869623, 335.0574021332435, 313.15, 311.3929998094944, 305.59170059053145, 311.3775122586574, 309.4083349828538, 313.15, 308.1477189985896, 306.15714351443734, 313.5636178979282, 336.2652553727153]]
+            "τ_pipe_S" = [[330.9228867273726, 320.00074523775015, 313.9597877565214, 313.0804317069345, 318.6856402740682, 328.4043145964555, 318.6273376137674, 321.2452380952381, 343.15, 343.4776814860982, 334.22531426185157, 347.7135259859673, 344.10482679202505, 336.50142563670056, 318.5594723559976, 313.092204802684, 316.419971147366, 314.19789264613877, 318.8064334736573, 314.9915962858496, 313.0836425512298, 313.0836425512298, 324.64679244035005, 346.2452380952381]]
+            "τ_src" = [[330.32001615289084, 316.6706793080015, 313.15, 313.15, 320.6410735786646, 331.1286487923852, 314.56742680356456, 323.5829956375661, 349.8439471636416, 341.5252823334522, 331.9323570928422, 353.15, 341.25267160869623, 335.05740213324356, 313.15, 313.15, 317.5994000973408, 313.15, 320.7938960527753, 313.15, 313.15, 313.15, 328.6006061793004, 352.31010766905536]]
+
+    [result.selected_market]
+    case_sha256 = "079ccbc648563e82b93831906fd90b2d1315a69bf4e2a07879b97c4b6ae00423"
+    multiplier_source = "optimized_KKT_variables"
+    objective_source = "recomputed_selected_lower_objective"
+    run_id = "r5-strategic-51e79424-a4a7-4607-8001-577e73c2f109/selected-market"
+    schema = "r5-market-result-v1"
+    solver_objective = 2845.0
+    status = "selected_lower_optimum"
+    version = "r5_market_clearing_checked_v1"
+
+        [result.selected_market.lower_bound_duals]
+        P_G = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+        P_IES = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+        R_G_down = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+        R_G_up = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+        R_IES_down = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+        R_IES_up = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+
+        [result.selected_market.multipliers]
+        down = [100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0]
+        energy = [70.0, 65.0, 65.0, 65.0, 70.0, 80.0, 100.0, 120.0, 110.0, 100.0, 95.0, 90.0, 90.0, 90.0, 95.0, 110.0, 130.0, 150.0, 150.0, 140.0, 120.0, 100.0, 85.0, 75.0]
+        g_cap_down = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+        g_cap_up = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+        gd_bid = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+        gu_bid = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+        i_cap_down = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+        i_cap_up = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+        id_bid = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+        iu_bid = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+        line_down = []
+        line_up = []
+        pg_bid = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+        q_bid = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+        ramp_down = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+        ramp_up = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+        up = [100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0]
+
+        [result.selected_market.values]
+        P_G = [[1.0866039105261789, 1.08, 1.08, 1.08, 1.08, 1.08, 1.08, 1.08, 1.0726755891839355, 1.08, 1.08, 1.08, 1.08, 1.08, 1.08, 1.08, 1.081250131196151, 1.08, 1.08, 1.08, 1.1832213284008923, 1.1609280447391925, 1.1794200597351219, 1.1665167384875446]]
+        P_IES = [[0.08660391052617888, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.07267558918393549, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08125013119615104, 0.08, 0.08, 0.08, 0.18322132840089228, 0.16092804473919264, 0.17942005973512193, 0.1665167384875445]]
+        R_G_down = [[0.020000000000000004, 0.020000000000000004, 0.020000000000000004, 0.020000000000000004, 0.020000000000000004, 0.020000000000000004, 0.020000000000000004, 0.020000000000000004, 0.020000000000000004, 0.020000000000000004, 0.020000000000000004, 0.020000000000000004, 0.020000000000000004, 0.020000000000000004, 0.020000000000000004, 0.020000000000000004, 0.020000000000000004, 0.020000000000000004, 0.020000000000000004, 0.020000000000000004, 0.020000000000000004, 0.020000000000000004, 0.020000000000000004, 0.020000000000000004]]
+        R_G_up = [[0.020000000000000004, 0.020000000000000004, 0.020000000000000004, 0.020000000000000004, 0.020000000000000004, 0.020000000000000004, 0.020000000000000004, 0.020000000000000004, 0.027324410816064515, 0.020000000000000004, 0.020000000000000004, 0.020000000000000004, 0.020000000000000004, 0.020000000000000004, 0.020000000000000004, 0.020000000000000004, 0.020000000000000004, 0.020000000000000004, 0.020000000000000004, 0.020000000000000004, 0.020000000000000004, 0.020000000000000004, 0.020000000000000004, 0.020000000000000004]]
+        R_IES_down = [[0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08]]
+        R_IES_up = [[0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.07267558918393549, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08]]

@@ -2,7 +2,7 @@ schema = "r6-method-audit-v1"
 source = "docs/摘要.pdf"
 source_sha256 = "20328e2480e773520c19c378e53365fc944c0bafcfca73071f5d8313d5ee7d91"
 pdf_pages = [100, 101]
-status = "daily_template_and_six_method_interfaces_implemented_evaluation_pending"
+status = "six_method_development_solved_formal_evaluation_pending"
 
 [[equation]]
 id = "R6-M1"
@@ -66,3 +66,4 @@ location = "项目configs/r6/pilot-rule.toml"
 classification = "development_cost_measurement_only"
 original = "正式输入有100代表；开发先取冻结顺序的前三个，权重按所选簇质量条件归一。"
 adopted = "六方法每项120秒，rho=0.01为预声明开发值，不是验证选出的半径；D始终取全部训练PV均值。另只构建100场景SP记录规模，未优化测试集。前三代表可能没有可释放的5%概率质量，不能以此试运行评价机会约束收益。"
+evidence = "r6-training-pilot-v1六项开发求解已通过独立验算；三个条件概率均高于0.05，SP=CCP、DRO=DRJCC。公开见证results/summaries/r6-training-pilot-v1，解释docs/src/r6-pilot-results.md；正式样本外尚未执行。"

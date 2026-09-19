@@ -1,0 +1,147 @@
+git_commit = "ec4c19898d5bc0a58acf6132ece5def6cf055c16"
+physical_sha256 = "d64a84223d501be13728e899b842ee3959ca0ca1aa3c80c50fcdca9fa59d5ca1"
+protocol_sha256 = "02c5987cab99c924ca494ffae7a30bf258e41e1fe213d32558862ed6d9ee5d3b"
+purpose = "Development only: measure six 24-hour model solves on the first three training representatives, and full 100-scenario SP build size. Not a radius selection, formal comparison or out-of-sample test. No held-out trajectory is optimized."
+schema = "r6-pilot-result-v1"
+status = "pilot_completed_not_sample_out_validation"
+
+[full_build]
+case_sha256 = "e51d0da08b9cb947e7d9b95f0fc28582da25cc7ed475e0fa765ce929a69b6e4a"
+constraints = 190411
+elapsed_sec = 12.200999975204468
+method = "SP"
+model_types = ["AffExpr in MathOptInterface.EqualTo{Float64}", "AffExpr in MathOptInterface.GreaterThan{Float64}", "AffExpr in MathOptInterface.LessThan{Float64}", "VariableRef in MathOptInterface.GreaterThan{Float64}", "VariableRef in MathOptInterface.LessThan{Float64}", "Vector{VariableRef} in MathOptInterface.SOS1{Float64}"]
+optimized = false
+scenarios = 100
+sos1_count = 432
+variables = 66082
+
+[[records]]
+case_sha256 = "89955e918a896b904496a571813f111cb3ef2ad0602af2793dfeff7d64373140"
+cost_complete = true
+elapsed_sec = 12.891999959945679
+method = "D"
+model_pass = true
+result_sha256 = "aace57ff8fd0a356189828747fa0b6964a546762c1eb79b297aa0c60a9aeeba1"
+risk_pass = true
+run_id = "r5-strategic-0d626953-1d6d-4194-b6fc-74a71cbcfb83"
+status = "solver_optimal"
+training_cost_USD = -110.16834679285621
+[[records]]
+case_sha256 = "226df5d1628751fce90af00c1f72b9c3a6a7dbb5b21ab6837da2720dbc5e9ac2"
+cost_complete = true
+elapsed_sec = 0.17599987983703613
+method = "SP"
+model_pass = true
+result_sha256 = "2b92c22ceaee0bd018df5967858ddf169b1cf83d3b71353bc4e66e00bd94f4dc"
+risk_pass = true
+run_id = "r5-strategic-15f4a107-2a5b-4422-898b-3fc979c6928f"
+status = "solver_optimal"
+training_cost_USD = -85.2571643271981
+[[records]]
+case_sha256 = "f6cdf7feab70af1ab49d6eaae5eb79c96e086521ed996cb9f3b65b9d4841be69"
+cost_complete = true
+elapsed_sec = 0.17799997329711914
+method = "RO"
+model_pass = true
+result_sha256 = "22444e313dce5eb2e629ad560160f9bcf50346f69caf6c38cd8775126ef118cd"
+risk_pass = true
+run_id = "r5-strategic-51e79424-a4a7-4607-8001-577e73c2f109"
+status = "solver_optimal"
+training_cost_USD = -73.71926062804309
+[[records]]
+case_sha256 = "c5530da9741105773ca7480cfb3402fcddda3ec6454f52bd218701abf91858b8"
+cost_complete = true
+elapsed_sec = 0.1659998893737793
+method = "DRO"
+model_pass = true
+result_sha256 = "5a151916d2ca4d568dff6e87cf1b06811e043b7ac8cffb6077a45ea71cd835b6"
+risk_pass = true
+run_id = "r5-strategic-ec421d3c-a08b-4704-af7e-196e2a419188"
+status = "solver_optimal"
+training_cost_USD = -83.93802756001725
+[[records]]
+case_sha256 = "f82ced01d84ff8237a35d0a71bbd25fd4634200af26c95e30c73791bca1df3a2"
+cost_complete = true
+elapsed_sec = 0.6729998588562012
+method = "CCP"
+model_pass = true
+result_sha256 = "7b2d7e5f541eb50b20875e17ac9b1b9e81278dbca130f53f0c77245a01a37f23"
+risk_pass = true
+run_id = "r5-strategic-17b93155-77ea-49e5-9523-6946727556f0"
+status = "solver_optimal"
+training_cost_USD = -85.25716432719811
+[[records]]
+case_sha256 = "55260b78a6b62363ba6eb4988f1c768bb9d0b619460fbb4859cbb23c87481c6b"
+cost_complete = true
+elapsed_sec = 0.15799999237060547
+method = "DRJCC"
+model_pass = true
+result_sha256 = "1f02cec211087bb7c855c51fbfe58a58688b80f34b7d7b04177b70e7f52d5349"
+risk_pass = true
+run_id = "r5-strategic-67fab578-c396-41a9-90af-77590ce3979a"
+status = "solver_optimal"
+training_cost_USD = -83.93802756001725
+
+[reporter_hashes]
+"r5_strategic_report_tables.jl" = "9d986524694c7241f271d7ec3ebe94a34eb1d05fc12b068ebde3f8d38482ab7d"
+"r6_pilot_report.jl" = "9f3b318fe95dc736321cfbba7e8893808c27f91bc585c63df1bce6417fa0b9a1"
+
+[rule]
+budget_sec = 120.0
+dataset = "results/summaries/r6-data-v1"
+development_count = 3
+epsilon = 0.05
+full_build_method = "SP"
+methods = ["D", "SP", "RO", "DRO", "CCP", "DRJCC"]
+physical = "configs/r6/daily-small.toml"
+purpose = "Development only: measure six 24-hour model solves on the first three training representatives, and full 100-scenario SP build size. Not a radius selection, formal comparison or out-of-sample test. No held-out trajectory is optimized."
+radius = 0.01
+schema = "r6-training-pilot-v1"
+selection = "first_representatives_in_frozen_order"
+
+[source_hashes]
+"Manifest.toml" = "948f0f5c5a4bc8381a3d9ad413fb0f8e78ee1a3bad52606dea9b9b6f144e5450"
+"Project.toml" = "313f8c54dfa9a7a276832e48cc8d7e3e9b63c29aab765bf7fa541f2fb68f40a9"
+"configs/r6/daily-small.toml" = "d64a84223d501be13728e899b842ee3959ca0ca1aa3c80c50fcdca9fa59d5ca1"
+"configs/r6/physical-rule.toml" = "10a381f81ffb5f375862947bc1e1d8b4afe1971fb5d56d42e635257d1ad850f2"
+"configs/r6/pilot-rule.toml" = "30a387dcfa53748acc2a1f3a181580e0fc84b0627aba2a2dc5e211ff6376cef1"
+"scripts/pilot_r6_training.jl" = "98cb38c7b6185a6cb1c133ebda2288e0c43644aa703844be6ce8315da1fda9ae"
+"src/PaperRebuild.jl" = "1dbbc064482bafab9353e9173c89d00b0da6ed860a793ae6f13414e93f6b724d"
+"src/algorithms/r5_commitment.jl" = "5038f22f037bba90a7bb3e2afc79b900fdff2d91ebe0afbde8ff189acd0c04bb"
+"src/algorithms/r5_dispatch.jl" = "fe48a6db69bf8bbb9b843b1ecc1695ced426a60860e39a586198e15cd77fca03"
+"src/algorithms/r5_market.jl" = "a5a5bbc1b96743973ea81e79ec8af40e8f18328d00ca7fc14b540aaf9324154a"
+"src/algorithms/r5_market_selection.jl" = "d80d8adf5b1c3662a6d559dca81b88131e9ea55c708f4ce234bb0c37a0f877cc"
+"src/algorithms/r5_risk.jl" = "44824bcb0093e32b935b3d88b87d292cdf1add9d3afeac133db8e7064b4ae28f"
+"src/algorithms/r5_strategic.jl" = "b1ffb61adbc615052da4d64fcd9dcf79984078aabb903c958203fa0a13a16bda"
+"src/algorithms/r6_data.jl" = "f2ed119e36dd8609d167823f30ab0257d3e9b191c04bfb18efbd0e76a8fd4a59"
+"src/algorithms/r6_methods.jl" = "97a1e8add94a092a37a3725bcd7073934dcb03b0d77a3a0a241076e6a802ef14"
+"src/core/r5_commitment.jl" = "5e4a30e71b12c56b8754482163182b93266de454a8b04fb41a5e2f86a98af812"
+"src/core/r5_dispatch.jl" = "7308945636b363ab412716e0bcd059992a1760567d53d6991cd57739230a15af"
+"src/core/r5_market.jl" = "b66b34edafb602439fa8c93beb25fc20500b6a4106dee739a1795418cb265222"
+"src/core/r5_risk.jl" = "691219d10cda283b7c6e3cd19e2467b102c1564fc907427f773ad72627a635c8"
+"src/core/r5_strategic.jl" = "0932c0cb3573fe5a2dd1c88c2e2d0bdc0bf3a234813ff4fbb987e43f9b4175cd"
+"src/core/r6_methods.jl" = "b027ddcdeb5bf4b645d8ac10a41edf7f2c6ef71b12ead08edc1e1a07106e737a"
+"src/core/r6_protocol.jl" = "9ac99624a3f7e8f6f703ea621c26ca0c581c8161bebe3544ccb85f8439d1c288"
+"src/formulations/r5_commitment.jl" = "8d66f8987a6a2e053416d276080b50644d63b38763fa06625e27fa9899f246ae"
+"src/formulations/r5_dispatch.jl" = "fef8db84d2be1544c622f8d9891fd4c47eb91dc2ff2e89817bec7a5996622d19"
+"src/formulations/r5_dispatch_dual.jl" = "9685a38e919580a17abd0f8fee7c90fbdc7f8dd85080831ee36772c3d8d69bdf"
+"src/formulations/r5_market.jl" = "85ba2ee6e8f84bef53db7949bf4fc425b57476bdaa49f22d9a816bf32bd01713"
+"src/formulations/r5_risk.jl" = "7b68ae8d7bdd94e8a4d475403962c2e547eac0fb79304f2036da5fb724837f2c"
+"src/formulations/r5_strategic.jl" = "1ac16f750fe5f382c3152ab9c9c6dccd898dd264fb69a8903638de7d04572f97"
+"src/networks/fixed_flow_heat.jl" = "620c069f6b3a520d32ee546ec048074f9cbaa3c785f8c2e31ec7fd7bf245a83b"
+"src/reporting/r5_commitment.jl" = "7d5faa97dbc2724d33831b319af807381ea13aa763cfde5655a4d7ecea956f2a"
+"src/reporting/r5_dispatch.jl" = "5d919f4e14dff618d7cc6467ccdcf5ea073b218b2799db0966eb877f4f5d92cb"
+"src/reporting/r5_market.jl" = "164d47e5922903179225a17c8a681610ae7eb5312068a4f806d85010f16f0796"
+"src/reporting/r5_risk.jl" = "973e9a81c86ff6b0268992be7c02b0cfeadc49dd04905bbe6a66fa37a827a377"
+"src/reporting/r5_strategic.jl" = "df33ac903b2ecf16f573294f4a32f47ed81ea80886b4d531eb38dd44f42769cf"
+"src/reporting/r6_data.jl" = "0c7336645ead1ce9524e1bd01e33cda1e2f3dbd7848f8489b5ccde366ec394e4"
+"src/verification/r5_commitment.jl" = "71c04cdeb804ee48dbfd585e5376cdacd910cc5a507db8d9027b866690cde8ed"
+"src/verification/r5_dispatch.jl" = "6ad9b1f74949e1345df473bfd778db6e419a57b2e2060cc065a7d5fbae1802f2"
+"src/verification/r5_dispatch_duality.jl" = "5dbbcbae682b3c738c5506b36254466614d6ff80e835afe7619744c77c7fc96d"
+"src/verification/r5_market.jl" = "47cf2899d6167974ec406d7b431d06bcd2ca3b16108bdbc67c8805e071e57009"
+"src/verification/r5_market_payment.jl" = "fdcefbd1530785534bcab392753ea5b62da033fce24a223278e4b2ff33fe32e1"
+"src/verification/r5_risk.jl" = "a9389a9963ede5a33b8867a9cd8ae9e6a1b608e9995ff0fa62eeb0fed38c2433"
+"src/verification/r5_strategic.jl" = "89965480ecc6e0c1bac0f19996b4edc481444fdc3774b71dfe56e3ebe642bbc5"
+"tools/solvers/Manifest.toml" = "22cb571f15112ccc21408903f229e25b49ee0d59333c14d251ab4b83a8abbf54"
+"tools/solvers/Project.toml" = "be07a40d34ee1e44e61d0e81fc1a71161cc9ba7ef20d57fc7fbe4e70f6e3ba8b"
