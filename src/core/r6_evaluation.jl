@@ -73,7 +73,7 @@ function r6_policy_from_training(p::R6PhysicalCase, c::R5StrategicCase, r)
         "dt_h"=>p.data["dispatch"]["dt_h"],
         "parent_run_id"=>r["run_id"],
         "parent_case_sha256"=>c.sha256,
-        "parent_result_sha256"=>bytes2hex(sha256(r5_market_text(r))),
+        "parent_result_sha256"=>bytes2hex(sha256(IOBuffer(r5_market_text(r)))),
         "ies_id"=>c.data["leader_id"],
     )
     for k in ("P_DA_MW", "R_up_MW", "R_down_MW")

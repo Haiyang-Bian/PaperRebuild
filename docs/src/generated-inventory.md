@@ -171,6 +171,7 @@
 - `docs/agent/tasks/2026-09-19-r6-data.md`
 - `docs/agent/tasks/2026-09-19-r6-evaluation.md`
 - `docs/agent/tasks/2026-09-19-r6-methods.md`
+- `docs/agent/tasks/2026-09-19-r6-report-hash.md`
 - `docs/agent/tasks/2026-09-19-r6-study.md`
 - `docs/make.jl`
 - `docs/reading/README.md`
@@ -1019,6 +1020,7 @@
 - `scripts/configure_r2_tasks.jl`
 - `scripts/configure_r3_tasks.jl`
 - `scripts/conflict_r3_v3.jl`
+- `scripts/continue_r6_study.jl`
 - `scripts/create_r2_fixtures.jl`
 - `scripts/dev_r3_v2.jl`
 - `scripts/dev_r3_v3.jl`
@@ -1026,6 +1028,7 @@
 - `scripts/diagnose_r3_duals.jl`
 - `scripts/diagnose_r3_v3.jl`
 - `scripts/diagnose_r4_baseline.jl`
+- `scripts/diagnose_r6_digest.jl`
 - `scripts/discover_ch03_sources.jl`
 - `scripts/electric_counterexample_r3_v3.jl`
 - `scripts/experiment_r2.jl`
@@ -1157,6 +1160,7 @@
 - `scripts/r6_pilot_report.jl`
 - `scripts/r6_study.jl`
 - `scripts/r6_study_io.jl`
+- `scripts/r6_study_tables.jl`
 - `scripts/read_docx.py`
 - `scripts/read_thesis.py`
 - `scripts/recover_r3_v3_checkpoint.jl`
@@ -1190,6 +1194,7 @@
 - `scripts/report_r5_risk.jl`
 - `scripts/report_r5_strategic.jl`
 - `scripts/report_r5_strategic_benders.jl`
+- `scripts/report_r6_study.jl`
 - `scripts/requirements-reading.txt`
 - `scripts/run_r1.jl`
 - `scripts/run_r2.jl`
@@ -1252,11 +1257,15 @@
 - `scripts/test_r5_strategic_benders_study.jl`
 - `scripts/test_r5_strategic_benders_witness.jl`
 - `scripts/test_r6.jl`
+- `scripts/test_r6_continuation.jl`
 - `scripts/test_r6_evaluation.jl`
 - `scripts/test_r6_freeze_cli.jl`
+- `scripts/test_r6_hash_io.jl`
 - `scripts/test_r6_methods.jl`
 - `scripts/test_r6_pilot_artifacts.jl`
 - `scripts/test_r6_study.jl`
+- `scripts/test_r6_study_report.jl`
+- `scripts/test_r6_study_report_artifacts.jl`
 - `scripts/test_r6_workflow.jl`
 - `scripts/tighten_r4_distributed_cost.jl`
 - `scripts/validate_ch03_data.jl`
@@ -1424,9 +1433,12 @@
 - `test/r5_strategic.jl`
 - `test/r5_strategic_benders.jl`
 - `test/r6.jl`
+- `test/r6_continuation.jl`
 - `test/r6_evaluation.jl`
+- `test/r6_hash_io.jl`
 - `test/r6_methods.jl`
 - `test/r6_study.jl`
+- `test/r6_study_report.jl`
 - `test/runtests.jl`
 - `tools/Manifest.toml`
 - `tools/Project.toml`
