@@ -71,6 +71,8 @@ jobs:
         run: julia --startup-file=no --project=. scripts/check_r6.jl
       - name: R6 freeze CLI
         run: julia --startup-file=no --project=. scripts/test_r6_freeze_cli.jl
+      - name: R6 daily model construction and entry points
+        run: julia --startup-file=no --project=. scripts/test_r6_workflow.jl
       - name: R6 frozen independent daily inputs
         run: julia --startup-file=no --project=. scripts/check_r6_data.jl results/summaries/r6-data-v1
       - name: Julia format

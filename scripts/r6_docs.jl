@@ -1,10 +1,10 @@
 using TOML
 
-function sync_r6_docs()
+function r6_render_docs(source, target, title, intro)
     root = normpath(joinpath(@__DIR__, ".."))
-    d = TOML.parsefile(joinpath(root, "docs", "reading", "ch05", "sample-out.toml"))
+    d = TOML.parsefile(joinpath(root, "docs", "reading", "ch05", source))
     io = IOBuffer()
-    println(io, "# R6统计公式与符号\n\n由sample-out.toml生成；R6-S全部为项目推导编号。\n")
+    println(io, "# ", title, "\n\n", intro, "\n")
     for x in d["equation"]
         println(
             io,
@@ -58,6 +58,21 @@ function sync_r6_docs()
         )
     end
     text = rstrip(String(take!(io))) * "\n"
-    path = joinpath(root, "docs", "src", "r6-equations.md")
+    path = joinpath(root, "docs", "src", target)
     (!isfile(path) || read(path, String) != text) && write(path, text)
+end
+
+function sync_r6_docs()
+    r6_render_docs(
+        "sample-out.toml",
+        "r6-equations.md",
+        "R6统计公式与符号",
+        "由sample-out.toml生成；R6-S全部为项目推导编号。",
+    )
+    r6_render_docs(
+        "r6-methods.toml",
+        "r6-method-equations.md",
+        "R6六方法推导与符号",
+        "由r6-methods.toml生成；R6-M全部为项目推导编号，不替换论文式号。",
+    )
 end

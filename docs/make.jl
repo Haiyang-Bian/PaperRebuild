@@ -158,6 +158,8 @@ makedocs(;
         ],
         "R6 样本外评估" => [
             "数据与统计教程" => "r6-data.md",
+            "统一日模型与六方法" => "r6-methods.md",
+            "六方法推导与符号" => "r6-method-equations.md",
             "统计公式与来源核查" => "r6-equations.md",
             "数据与统计API" => "r6-api.md",
         ],

@@ -123,6 +123,9 @@
 - `configs/r5/strategic/merit_strategic.toml`
 - `configs/r5/strategic/scarcity_unbounded_price.toml`
 - `configs/r5/strategic/study.toml`
+- `configs/r6/daily-small.toml`
+- `configs/r6/physical-rule.toml`
+- `configs/r6/pilot-rule.toml`
 - `configs/r6/protocol.toml`
 - `data/processed/README.md`
 - `data/raw/README.md`
@@ -165,6 +168,7 @@
 - `docs/agent/tasks/2026-09-19-r5-strategic-benders.md`
 - `docs/agent/tasks/2026-09-19-r5-strategic.md`
 - `docs/agent/tasks/2026-09-19-r6-data.md`
+- `docs/agent/tasks/2026-09-19-r6-methods.md`
 - `docs/make.jl`
 - `docs/reading/README.md`
 - `docs/reading/ch02/README.md`
@@ -207,6 +211,7 @@
 - `docs/reading/ch05/market-audit.toml`
 - `docs/reading/ch05/market.toml`
 - `docs/reading/ch05/probability-audit.toml`
+- `docs/reading/ch05/r6-methods.toml`
 - `docs/reading/ch05/recourse-duality.toml`
 - `docs/reading/ch05/risk.toml`
 - `docs/reading/ch05/sample-out.toml`
@@ -593,6 +598,8 @@
 - `docs/src/r6-api.md`
 - `docs/src/r6-data.md`
 - `docs/src/r6-equations.md`
+- `docs/src/r6-method-equations.md`
+- `docs/src/r6-methods.md`
 - `docs/src/reading.md`
 - `docs/src/reproduction-acceptance.md`
 - `docs/src/reproduction-coverage.md`
@@ -1023,6 +1030,7 @@
 - `scripts/freeze_r5_strategic.jl`
 - `scripts/freeze_r5_strategic_benders.jl`
 - `scripts/freeze_r6_data.jl`
+- `scripts/freeze_r6_physical.jl`
 - `scripts/inspect_ch03_workbooks.jl`
 - `scripts/inspect_r4_heat_results.jl`
 - `scripts/inspect_r5_benders_boundary.jl`
@@ -1032,6 +1040,7 @@
 - `scripts/maintenance-core.ps1`
 - `scripts/merge_r3_v2_studies.jl`
 - `scripts/pack_r3_v2_report.jl`
+- `scripts/pilot_r6_training.jl`
 - `scripts/plot_ch03_data.jl`
 - `scripts/plot_r1.jl`
 - `scripts/plot_r2.jl`
@@ -1117,6 +1126,7 @@
 - `scripts/r5_strategic_selection_audit.jl`
 - `scripts/r5_strategic_setup.jl`
 - `scripts/r6_docs.jl`
+- `scripts/r6_pilot_report.jl`
 - `scripts/read_docx.py`
 - `scripts/read_thesis.py`
 - `scripts/recover_r3_v3_checkpoint.jl`
@@ -1213,6 +1223,7 @@
 - `scripts/test_r5_strategic_benders_witness.jl`
 - `scripts/test_r6.jl`
 - `scripts/test_r6_freeze_cli.jl`
+- `scripts/test_r6_methods.jl`
 - `scripts/tighten_r4_distributed_cost.jl`
 - `scripts/validate_ch03_data.jl`
 - `scripts/validate_r1.jl`
@@ -1247,6 +1258,7 @@
 - `src/algorithms/r5_strategic.jl`
 - `src/algorithms/r5_strategic_benders.jl`
 - `src/algorithms/r6_data.jl`
+- `src/algorithms/r6_methods.jl`
 - `src/components/devices.jl`
 - `src/core/case.jl`
 - `src/core/r2_case.jl`
@@ -1266,6 +1278,7 @@
 - `src/core/r5_risk.jl`
 - `src/core/r5_strategic.jl`
 - `src/core/r5_strategic_benders.jl`
+- `src/core/r6_methods.jl`
 - `src/core/r6_protocol.jl`
 - `src/formulations/r1.jl`
 - `src/formulations/r2.jl`
@@ -1369,6 +1382,7 @@
 - `test/r5_strategic.jl`
 - `test/r5_strategic_benders.jl`
 - `test/r6.jl`
+- `test/r6_methods.jl`
 - `test/runtests.jl`
 - `tools/Manifest.toml`
 - `tools/Project.toml`

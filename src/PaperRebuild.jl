@@ -113,6 +113,10 @@ include("reporting/r6_data.jl")
 export R6Protocol, load_r6_protocol, R6TrajectorySet, r6_generate_trajectories
 export r6_fit_representatives, r6_support_distance, save_r6_dataset, read_r6_dataset
 export r6_binomial_bounds, r6_risk_evidence, r6_paired_costs
+include("core/r6_methods.jl")
+include("algorithms/r6_methods.jl")
+export R6PhysicalCase, load_r6_physical_case, R6MethodSpec, r6_dispatch_day
+export r6_training_case, build_r6_model, solve_r6_training
 include("algorithms/r5_market_selection.jl")
 include("core/r5_execution.jl")
 include("formulations/r5_execution.jl")

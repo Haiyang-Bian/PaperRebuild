@@ -1,5 +1,17 @@
 {
   "inputs": [
+    {
+      "id": "r6PilotRun",
+      "type": "promptString",
+      "description": "R6开发运行目录（已有目录不可重新求解覆盖）",
+      "default": "results/runs/r6-training-pilot-v1"
+    },
+    {
+      "id": "r6PilotReport",
+      "type": "promptString",
+      "description": "R6开发证据目录（创建报告时须为新目录）",
+      "default": "results/summaries/r6-training-pilot-v1"
+    },
     {"id":"r5SBBatch","description":"策略分解新批次编号，不覆盖旧结果","type":"promptString","default":"r5-strategic-benders-new"},
     {"id":"r5SBStudy","description":"已完成的策略分解study.toml","type":"promptString","default":"results/runs/r5/r5-strategic-benders-20260919/study.toml"},
     {"id":"r5SBReport","description":"策略分解报告目录；生成须新目录，重绘只读已有表","type":"promptString","default":"results/summaries/r5-strategic-benders-replay"},
@@ -82,6 +94,38 @@
     }
   ],
   "tasks": [
+    {
+      "label": "PaperRebuild: R6 six method tests",
+      "type": "process",
+      "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/test_r6_methods.jl"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R6 training pilot",
+      "type": "process",
+      "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/pilot_r6_training.jl", "${input:r6PilotRun}"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R6 pilot evidence report",
+      "type": "process",
+      "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/r6_pilot_report.jl", "create", "${input:r6PilotRun}", "${input:r6PilotReport}"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R6 pilot evidence verify",
+      "type": "process",
+      "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/r6_pilot_report.jl", "check", "${input:r6PilotReport}"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": []
+    },
     {
       "label": "PaperRebuild: R6 statistics and data tests",
       "type": "process",
