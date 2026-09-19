@@ -79,6 +79,11 @@ jobs:
         run: julia --startup-file=no --project=. scripts/r6_pilot_replay.jl check results/summaries/r6-pilot-replay-v2
       - name: Julia format
         run: julia --startup-file=no --project=tools scripts/format.jl
+      # R7恢复专项已进入runtests；这里核对独立公式/实际约束覆盖。
+      - name: R7 inherited-state recovery mapping
+        run: julia --startup-file=no --project=. scripts/check_r7_recovery.jl
+      - name: R7 frozen analytic audit mapping
+        run: julia --startup-file=no --project=. scripts/check_ch06.jl
       - name: Project checks
         shell: pwsh
         run: ./scripts/maintain.ps1 -Action Check

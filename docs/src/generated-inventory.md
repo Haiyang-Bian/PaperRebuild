@@ -128,6 +128,7 @@
 - `configs/r6/pilot-rule.toml`
 - `configs/r6/protocol.toml`
 - `configs/r6/study.toml`
+- `configs/r7/recovery-hand.toml`
 - `data/processed/README.md`
 - `data/raw/README.md`
 - `docs/Manifest.toml`
@@ -174,6 +175,7 @@
 - `docs/agent/tasks/2026-09-19-r6-report-hash.md`
 - `docs/agent/tasks/2026-09-19-r6-study.md`
 - `docs/agent/tasks/2026-09-19-r7-audit.md`
+- `docs/agent/tasks/2026-09-20-r7-recovery.md`
 - `docs/make.jl`
 - `docs/reading/README.md`
 - `docs/reading/ch02/README.md`
@@ -226,6 +228,7 @@
 - `docs/reading/ch05/strategic-model.toml`
 - `docs/reading/ch05/strategic.toml`
 - `docs/reading/ch06/audit.toml`
+- `docs/reading/ch06/recovery.toml`
 - `docs/reading/source_manifest.json`
 - `docs/reading/sources.json`
 - `docs/src/api.md`
@@ -602,6 +605,8 @@
 - `docs/src/ch05-strategic.md`
 - `docs/src/ch06-audit-equations.md`
 - `docs/src/ch06-audit.md`
+- `docs/src/ch06-recovery-equations.md`
+- `docs/src/ch06-recovery.md`
 - `docs/src/index.md`
 - `docs/src/julia-design.md`
 - `docs/src/quality.md`
@@ -1017,6 +1022,7 @@
 - `scripts/check_r6.jl`
 - `scripts/check_r6_data.jl`
 - `scripts/check_r6_evaluation.jl`
+- `scripts/check_r7_recovery.jl`
 - `scripts/check_solvers.jl`
 - `scripts/collect_ch03_data.jl`
 - `scripts/compare_r1_runs.jl`
@@ -1170,6 +1176,8 @@
 - `scripts/r6_study.jl`
 - `scripts/r6_study_io.jl`
 - `scripts/r6_study_tables.jl`
+- `scripts/r7_recovery.jl`
+- `scripts/r7_recovery_docs.jl`
 - `scripts/read_docx.py`
 - `scripts/read_thesis.py`
 - `scripts/recover_r3_v3_checkpoint.jl`
@@ -1278,6 +1286,7 @@
 - `scripts/test_r6_study_report.jl`
 - `scripts/test_r6_study_report_artifacts.jl`
 - `scripts/test_r6_workflow.jl`
+- `scripts/test_r7_recovery.jl`
 - `scripts/tighten_r4_distributed_cost.jl`
 - `scripts/validate_ch03_data.jl`
 - `scripts/validate_r1.jl`
@@ -1315,6 +1324,7 @@
 - `src/algorithms/r6_evaluation.jl`
 - `src/algorithms/r6_methods.jl`
 - `src/algorithms/r6_support_evaluation.jl`
+- `src/algorithms/r7_recovery.jl`
 - `src/components/devices.jl`
 - `src/core/case.jl`
 - `src/core/r2_case.jl`
@@ -1338,6 +1348,7 @@
 - `src/core/r6_methods.jl`
 - `src/core/r6_protocol.jl`
 - `src/core/r6_study.jl`
+- `src/core/r7_recovery.jl`
 - `src/formulations/r1.jl`
 - `src/formulations/r2.jl`
 - `src/formulations/r3.jl`
@@ -1356,6 +1367,7 @@
 - `src/formulations/r5_strategic.jl`
 - `src/formulations/r5_strategic_benders.jl`
 - `src/formulations/r6_evaluation.jl`
+- `src/formulations/r7_recovery.jl`
 - `src/networks/fixed_flow_heat.jl`
 - `src/networks/water_mass.jl`
 - `src/reporting/r2_runs.jl`
@@ -1379,6 +1391,7 @@
 - `src/reporting/r5_strategic_benders.jl`
 - `src/reporting/r6_data.jl`
 - `src/reporting/r6_evaluation.jl`
+- `src/reporting/r7_recovery.jl`
 - `src/reporting/runs.jl`
 - `src/verification/r1.jl`
 - `src/verification/r2.jl`
@@ -1407,6 +1420,7 @@
 - `src/verification/r6_evaluation.jl`
 - `src/verification/r6_statistics.jl`
 - `src/verification/r6_study.jl`
+- `src/verification/r7_recovery.jl`
 - `test/ch03_data.jl`
 - `test/ch06_audit.jl`
 - `test/maintenance.tests.ps1`
@@ -1451,6 +1465,7 @@
 - `test/r6_methods.jl`
 - `test/r6_study.jl`
 - `test/r6_study_report.jl`
+- `test/r7_recovery.jl`
 - `test/runtests.jl`
 - `tools/Manifest.toml`
 - `tools/Project.toml`

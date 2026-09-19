@@ -224,6 +224,15 @@ export chp_efficiency,
     read_r1_run,
     plot_r1_run
 
+include("core/r7_recovery.jl")
+include("formulations/r7_recovery.jl")
+include("verification/r7_recovery.jl")
+include("algorithms/r7_recovery.jl")
+include("reporting/r7_recovery.jl")
+export R7RecoveryCase, load_r7_recovery_case, r7_faults, build_r7_recovery, solve_r7_recovery
+export validate_r7_recovery,
+    enumerate_r7_recovery, audit_r7_faults, save_r7_recovery, read_r7_recovery
+
 """
     hello(who::String)
 

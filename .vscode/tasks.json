@@ -100,6 +100,22 @@
   ],
   "tasks": [
     {
+      "label": "PaperRebuild: R7 recovery mapping",
+      "type": "process",
+      "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/check_r7_recovery.jl"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R7 recovery tests",
+      "type": "process",
+      "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/test_r7_recovery.jl"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "problemMatcher": []
+    },
+    {
       "label": "PaperRebuild: R6 prepare frozen execution",
       "type": "process", "command": "julia",
       "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/r6_frozen_workspace.jl", "prepare", "${input:r6StudyRun}", "${input:r6FrozenWorkspace}"],

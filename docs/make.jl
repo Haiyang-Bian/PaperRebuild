@@ -39,6 +39,8 @@ include(joinpath(@__DIR__, "..", "scripts", "r6_docs.jl"))
 sync_r6_docs()
 include(joinpath(@__DIR__, "..", "scripts", "ch06_docs.jl"))
 sync_ch06_docs()
+include(joinpath(@__DIR__, "..", "scripts", "r7_recovery_docs.jl"))
+sync_r7_recovery_docs()
 
 makedocs(;
     modules = [PaperRebuild],
@@ -173,6 +175,8 @@ makedocs(;
         "第6章 灾害与恢复核查" => [
             "量词、物理与算法证书" => "ch06-audit.md",
             "选定公式、符号与疑点" => "ch06-audit-equations.md",
+            "给定灾前状态的恢复基准" => "ch06-recovery.md",
+            "恢复采用式与符号" => "ch06-recovery-equations.md",
         ],
         "第 2 章模型与首批实现" => [
             "模型详解" => "ch02-models.md",

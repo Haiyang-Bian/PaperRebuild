@@ -1,0 +1,151 @@
+schema = "r7-recovery-mapping-v1"
+version = "r7_recovery_checked_v1"
+scope = "given_preplan_state_fixed_fault_linear_electric_two_tank_proxy"
+source = "local thesis PDF 107-116, printed 90-99"
+source_sha256 = "20328e2480e773520c19c378e53365fc944c0bafcfca73071f5d8313d5ee7d91"
+not_implemented = ["optimized normal plan", "detailed heat reconstruction", "nested C&CG", "all 111 equations", "thesis-scale inputs"]
+
+[[equation]]
+id = "R7-R1"
+latex = 'z_l=z_l^0(1-\gamma_l)+a_l^{\rm on}-a_l^{\rm off},\quad 0\le a_l^{\rm on}\le(1-z_l^0)(1-\gamma_l),\quad 0\le a_l^{\rm off}\le z_l^0(1-\gamma_l)'
+source_equations = ["6-62", "6-63"]
+classification = "project correction with binary truth table, see audit Q03"
+meaning = "自动故障断开不占主动操作预算；仅健康线路可以操作。原式中的关闭动作符号冲突另存于实施前审计。"
+api = "build_r7_recovery"
+test = "R7-network-direction and R7-hard-failure"
+
+[[equation]]
+id = "R7-R2"
+latex = '\sum_lz_l=N-\sum_n\beta_n,\quad \sum_{l\in\delta^+(n)}f_l-\sum_{l\in\delta^-(n)}f_l=q_n-1,\quad |f_l|\le(N-1)z_l,\quad 0\le q_n\le N\beta_n'
+source_equations = ["6-67", "6-68", "6-69"]
+classification = "project root/forest interpretation"
+meaning = "所有节点均进入森林，每个分量一个具备显式成网资格的根；虚拟商品流无MW单位。没有合格根的孤立负荷节点在采用模型中不可行，未实现去电节点选择。根电压不额外固定。"
+api = "build_r7_recovery"
+test = "R7-network-direction and R7-hard-failure"
+
+[[equation]]
+id = "R7-R3"
+latex = '\left|v_i-v_j-\frac{r_lP_l+x_lQ_l}{S_{\rm base}v_{\rm ref}}\right|\le (v^{\max}-v^{\min})(1-z_l)'
+source_equations = ["6-21", "6-23", "6-24", "6-25"]
+classification = "project unit conversion and switch correction"
+meaning = "v是电压幅值，绝非R4的平方量；断开后P/Q为零，两端电压不再被迫相等。M由已知电压范围推得。默认保留原文给定方向的非负P/Q；signed仅为显式项目扩展。"
+api = "build_r7_recovery"
+test = "R7-network-direction and R7-hard-failure"
+
+[[equation]]
+id = "R7-R4"
+latex = 'm_j^{\rm src}-m_j^{\rm load}=\sum_{a\in\delta^+(j)}m_a-\sum_{a\in\delta^-(j)}m_a,\qquad m_j^{\rm src},m_j^{\rm load}\ge0'
+source_equations = ["6-72", "6-73", "6-74", "6-75", "6-83", "6-84"]
+classification = "project source/load port interpretation"
+meaning = "源与荷取流使用不同非负变量，管道流允许反向且受灾前参考流变化界限制。热端口的比热系数采用J/(kg K)除以一百万得到MW。管流和端口流跨新能源场景共用。"
+api = "build_r7_recovery"
+test = "R7-recovery-integration and R7-shared-scenarios"
+
+[[equation]]
+id = "R7-R5"
+latex = 'L_{\rm e}\ge0.6-0.2=0.4,\quad L_{\rm h}\ge0.4-7/30=1/6,\quad L\ge17/30\ {\rm MWh}'
+source_equations = ["6-53", "project synthetic hand case"]
+classification = "synthetic analytic lower bound with attainable proxy-model witness"
+meaning = "唯一电线断开后CHP电出力为零，电池最多供0.2MWh，两箱初始显热共7/30MWh。存在达到下界的采用模型候选；不证明详细热网状态可实现。"
+api = "solve_r7_recovery"
+test = "R7-recovery-hand and R7-fault-certificates"
+
+[[mapping]]
+id = "R7R-devices"
+constraints = ["6-56", "6-3", "6-4:5/57:58", "6-8/56/60", "6-3/9", "6-11", "6-12", "6-14", "6-13", "6-61"]
+source_equations = "6-2:15, 6-56:61"
+meaning = "CHP继承启停并调整出力；PV按灾害系数降额；储能继承初值、显式小时积分、恢复末值自由。保留原6-12充放功率和式界，不增加互斥；同时充放另列检查。正常运行最短启停和经济目标不在本接口。"
+test = "R7-proxy-boundaries"
+
+[[mapping]]
+id = "R7R-electric"
+constraints = ["R7-R1", "R7-R2", "R7-R3", "6-63", "6-24:25", "6-54", "6-19", "6-20"]
+source_equations = "6-19:25, 6-50:54, 6-62:69"
+meaning = "事件期PCC断开，包括零内部故障。电网采用线性、无损、独立P/Q容量边界，不认证交流潮流。拓扑是事件级跨时段/场景共享。"
+test = "R7-network-direction and R7-hard-failure"
+
+[[mapping]]
+id = "R7R-heat"
+constraints = ["6-74", "6-72", "R7-R4", "6-75", "6-55", "6-83", "6-84", "6-80:82", "R7-A3/90", "6-89", "6-85", "6-86", "R7-A4/76:78", "R7-A4/77:79"]
+source_equations = "6-55, 6-72:90; prior adopted R7-A3/A4/A5"
+meaning = "沿用已审计的相对显热零点、时间积分和Taylor交换。供回水体积分开计量，两个集总水箱只用于同一连通热网；不支持热网自身故障。原6-88乘积误差单列，不强制归零。"
+test = "R7-recovery-integration and R7-shared-scenarios"
+
+[[mapping]]
+id = "R7R-loss"
+constraints = []
+source_equations = "6-53; prior adopted R7-A7/A8/A9"
+meaning = "目标为期望电热失供MWh。固定故障最小化可行值是该故障上界；完全故障覆盖的上界才能用于安全，单故障有效下界可用于反例。缺界保留未决，不以OPTIMAL字符串替代界。"
+test = "R7-recovery-hand and R7-fault-certificates"
+
+[[symbol]]
+id = "R7R-index"
+latex = 'l,n,a,j,g,t,k,\omega'
+meaning = "电支路/节点、热管/节点、设备、时段、状态边界、新能源场景"
+kind = "index"
+unit = "1"
+julia = "l,n,a,j,g,t,k,w"
+shape = "k=1:T+1; t=1:T; w=1:W"
+
+[[symbol]]
+id = "R7R-graph"
+latex = '\gamma_l,z_l,\beta_n,a_l^{\rm on},a_l^{\rm off},f_l,q_n'
+meaning = "给定故障、恢复通断、根、健康线路动作、虚拟商品流与供给"
+kind = "fault parameter; integer and continuous variables"
+unit = "1"
+julia = "gamma,z,beta,a_on,a_off,virtual,root_supply"
+shape = "line or node; no time/scenario dimension"
+
+[[symbol]]
+id = "R7R-grid"
+latex = 'P_{lt\omega},Q_{lt\omega},v_{nt\omega},P_{t\omega}^{\rm PCC},Q_{t\omega}^{\rm PCC}'
+meaning = "线性电支路有功、无功、电压幅值与断开的外部接入"
+kind = "variable"
+unit = "MW / Mvar / pu"
+julia = "P_line,Q_line,v,P_PCC,Q_PCC"
+shape = "line or node x time x scenario; PCC=time x scenario"
+
+[[symbol]]
+id = "R7R-resource"
+latex = 'P_{gt\omega},Q_{gt\omega},H_{gt\omega},P_{gt\omega}^{\rm ch},P_{gt\omega}^{\rm dis},E_{gk\omega}^{\rm BES}'
+meaning = "设备电热出力、充放电与电池边界能量；EB的P为耗电，注入时取负"
+kind = "variable"
+unit = "MW / Mvar / MWh"
+julia = "P,Q,H,P_ch,P_dis,E_BES"
+shape = "device x time/state boundary x scenario"
+
+[[symbol]]
+id = "R7R-shed"
+latex = 'P_{nt\omega}^{\rm shed},H_{jt\omega}^{\rm shed}'
+meaning = "由原失供比例乘名义负荷等价改写的失供功率"
+kind = "variable"
+unit = "MW"
+julia = "P_shed,H_shed"
+shape = "electric/heat node x time x scenario"
+
+[[symbol]]
+id = "R7R-flow"
+latex = 'm_{at},m_{jt}^{\rm src},m_{jt}^{\rm load}'
+meaning = "有向管流、非负源和负荷端口质量流率"
+kind = "variable"
+unit = "kg/s"
+julia = "m_pipe,m_source,m_load"
+shape = "pipe or heat node x time; shared across scenarios"
+
+[[symbol]]
+id = "R7R-tanks"
+latex = 'E_{k\omega}^{S},E_{k\omega}^{R},H_{t\omega}^{\rm CF},H_{t\omega}^{\rm loss,S},H_{t\omega}^{\rm loss,R}'
+meaning = "相对各侧温度下限的显热、循环交换、供回水散热"
+kind = "variable"
+unit = "MWh / MW"
+julia = "E_S,E_R,H_CF,H_loss_S,H_loss_R"
+shape = "state boundary/time x scenario"
+
+[[symbol]]
+id = "R7R-parameters"
+latex = '\pi_\omega,\Delta t,c_w,\rho,V_a^S,V_a^R,UA_a^S,UA_a^R'
+meaning = "正概率、时间步、比热、密度、分别给定的供回水体积与传热能力"
+kind = "parameter"
+unit = "1 / h / J/(kg K) / kg/m3 / m3 / W/K"
+julia = "probabilities,dt_h,c_J_kgK,rho_kg_m3,volume_S_m3,volume_R_m3,UA_S_W_K,UA_R_W_K"
+shape = "scenario/scalar/pipe; input keys are ASCII"
