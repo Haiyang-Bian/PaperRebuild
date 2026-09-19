@@ -1,0 +1,108 @@
+critical_after = []
+elapsed_sec = 0.440000057220459
+iteration = 2
+new_cut_ids = ["r5-benders-sub-3a417083-53ac-4ab8-b490-edde0982049b", "r5-benders-sub-33efe3ee-faa9-4bb1-afb2-97934b533d92", "r5-benders-sub-5cdee4b6-ea74-4bdd-944c-e3f887006d0d"]
+unresolved_sources = []
+
+[cost_source_ids]
+down = "r5-benders-sub-cf35218e-5ae1-4af3-b158-7c996e7300b6"
+none = "r5-benders-sub-4596033a-f632-4046-9fb8-0997e377d5a8"
+up = "r5-benders-sub-d348864c-000e-43de-a3bc-65b6c563f6e9"
+
+[diagnostic_source_ids]
+down = "r5-benders-sub-5cdee4b6-ea74-4bdd-944c-e3f887006d0d"
+none = "r5-benders-sub-3a417083-53ac-4ab8-b490-edde0982049b"
+up = "r5-benders-sub-33efe3ee-faa9-4bb1-afb2-97934b533d92"
+
+[gap]
+a2_pass = false
+absolute = 22.72153846398461
+relative = 1.230852571180098
+stopping_pass = false
+valid = true
+
+[master]
+bound_scope = "full_optimistic_MPEC"
+bound_source = "MOI.ObjectiveBound"
+critical = []
+cut_source_ids = ["r5-benders-sub-10537963-9571-4cb7-bf45-6770a7d830f0", "r5-benders-sub-2c6e197b-e8f7-478e-b54d-1997e52390eb", "r5-benders-sub-2b57a0ca-13b9-4561-998d-021ac881f69c"]
+has_candidate = true
+model_type = "linear_MPEC_SOS1_Benders_master"
+model_types = ["AffExpr in MathOptInterface.EqualTo{Float64}", "AffExpr in MathOptInterface.GreaterThan{Float64}", "AffExpr in MathOptInterface.LessThan{Float64}", "VariableRef in MathOptInterface.GreaterThan{Float64}", "VariableRef in MathOptInterface.LessThan{Float64}", "VariableRef in MathOptInterface.ZeroOne", "Vector{VariableRef} in MathOptInterface.SOS1{Float64}"]
+objective_type = "market_payment_plus_recourse_epigraph"
+primal_status = "FEASIBLE_POINT"
+raw_status = "Model was solved to optimality (subject to tolerances), and an optimal solution is available."
+scope = "full_risk_domain"
+solver = "Gurobi"
+solver_objective = -4.261538463984607
+solver_objective_bound = -4.261538463984607
+solver_version = "13.0.3"
+status = "solver_optimal"
+termination = "OPTIMAL"
+theta = [-80.00000001059999, -80.00000001059999, -80.00000001059999]
+z = [0.0, 0.0, 0.0]
+
+    [master.bids]
+    down_bid = [0.0]
+    energy_bid = [100.0]
+    up_bid = [0.0]
+
+    [master.critical_values]
+
+    [master.embedded_duals.cost]
+    lambda = 0.0
+    nu = [-80.00000001059999, -80.00000001059999, -80.00000001059999]
+
+    [master.embedded_duals.risk]
+    lambda = 0.0
+    nu = [0.0, 0.0, 0.0]
+
+    [master.first_stage]
+    P_DA_MW = [0.7573846154661537]
+    R_down_MW = [0.0]
+    R_up_MW = [0.0]
+
+    [master.selected_market]
+    case_sha256 = "5fb27ac89576865ff373ed75801f34f0087e71f8ee6cf01b877a656ad3c778e0"
+    multiplier_source = "optimized_KKT_variables"
+    objective_source = "recomputed_selected_lower_objective"
+    run_id = "r5-strategic-benders-48363754-fbf5-4949-9a2d-9a9aa11cd1ab/2/selected-market"
+    schema = "r5-market-result-v1"
+    solver_objective = -5.999999999999986
+    status = "selected_lower_optimum"
+    version = "r5_market_clearing_checked_v1"
+
+        [master.selected_market.lower_bound_duals]
+        P_G = [[0.0], [0.0]]
+        P_IES = [[0.0]]
+        R_G_down = [[0.0], [0.0]]
+        R_G_up = [[80.0], [0.0]]
+        R_IES_down = [[0.0]]
+        R_IES_up = [[0.0]]
+
+        [master.selected_market.multipliers]
+        down = [100.0]
+        energy = [100.0]
+        g_cap_down = [[0.0], [0.0]]
+        g_cap_up = [[80.0], [0.0]]
+        gd_bid = [[0.0], [0.0]]
+        gu_bid = [[0.0], [0.0]]
+        i_cap_down = [[0.0]]
+        i_cap_up = [[0.0]]
+        id_bid = [[100.0]]
+        iu_bid = [[100.0]]
+        line_down = []
+        line_up = []
+        pg_bid = [[0.0], [0.0]]
+        q_bid = [[0.0]]
+        ramp_down = [[0.0], [0.0]]
+        ramp_up = [[0.0], [0.0]]
+        up = [100.0]
+
+        [master.selected_market.values]
+        P_G = [[0.2], [0.6573846154661538]]
+        P_IES = [[0.7573846154661537]]
+        R_G_down = [[0.0], [0.0]]
+        R_G_up = [[0.0], [0.0]]
+        R_IES_down = [[0.0]]
+        R_IES_up = [[0.0]]

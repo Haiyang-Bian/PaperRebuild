@@ -55,6 +55,10 @@ jobs:
         run: julia --startup-file=no --project=. scripts/check_r5_strategic_artifacts.jl results/summaries/r5-strategic
       - name: R5 strategic Benders mapping
         run: julia --startup-file=no --project=. scripts/check_r5_strategic_benders.jl
+      - name: R5 strategic Benders frozen design
+        run: julia --startup-file=no --project=. scripts/test_r5_strategic_benders_study.jl
+      - name: R5 strategic Benders immutable evidence
+        run: julia --startup-file=no --project=. scripts/check_r5_strategic_benders_artifacts.jl results/summaries/r5-strategic-benders
       - name: R4 immutable evidence
         run: julia --startup-file=no --project=. scripts/check_r4_artifacts.jl
       - name: R3 baseline frozen design and mapping

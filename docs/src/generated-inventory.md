@@ -113,6 +113,7 @@
 - `configs/r5/risk/thermal_e030_r005.toml`
 - `configs/r5/risk/thermal_e100_r000.toml`
 - `configs/r5/risk/thermal_hard.toml`
+- `configs/r5/strategic-benders/study.toml`
 - `configs/r5/strategic/competitive_future_e030_r005.toml`
 - `configs/r5/strategic/competitive_hard_zero.toml`
 - `configs/r5/strategic/competitive_physical_infeasible.toml`
@@ -471,6 +472,17 @@
 - `docs/src/assets/r5-risk/residuals.csv`
 - `docs/src/assets/r5-risk/scenarios.csv`
 - `docs/src/assets/r5-risk/trajectories.csv`
+- `docs/src/assets/r5-strategic-benders/F04.png`
+- `docs/src/assets/r5-strategic-benders/F16-routes.png`
+- `docs/src/assets/r5-strategic-benders/F16.png`
+- `docs/src/assets/r5-strategic-benders/artifact-hashes.toml`
+- `docs/src/assets/r5-strategic-benders/comparison.csv`
+- `docs/src/assets/r5-strategic-benders/figure-config.toml`
+- `docs/src/assets/r5-strategic-benders/iterations.csv`
+- `docs/src/assets/r5-strategic-benders/report.toml`
+- `docs/src/assets/r5-strategic-benders/residuals.csv`
+- `docs/src/assets/r5-strategic-benders/selected-residuals.csv`
+- `docs/src/assets/r5-strategic-benders/subproblems.csv`
 - `docs/src/assets/r5-strategic/F04.png`
 - `docs/src/assets/r5-strategic/F14.png`
 - `docs/src/assets/r5-strategic/F19.png`
@@ -565,6 +577,7 @@
 - `docs/src/ch05-risk-results.md`
 - `docs/src/ch05-risk.md`
 - `docs/src/ch05-strategic-benders-equations.md`
+- `docs/src/ch05-strategic-benders-results.md`
 - `docs/src/ch05-strategic-benders.md`
 - `docs/src/ch05-strategic-equations.md`
 - `docs/src/ch05-strategic-model-equations.md`
@@ -830,6 +843,17 @@
 - `results/summaries/r5-risk/residuals.csv`
 - `results/summaries/r5-risk/scenarios.csv`
 - `results/summaries/r5-risk/trajectories.csv`
+- `results/summaries/r5-strategic-benders/F04.png`
+- `results/summaries/r5-strategic-benders/F16-routes.png`
+- `results/summaries/r5-strategic-benders/F16.png`
+- `results/summaries/r5-strategic-benders/artifact-hashes.toml`
+- `results/summaries/r5-strategic-benders/comparison.csv`
+- `results/summaries/r5-strategic-benders/figure-config.toml`
+- `results/summaries/r5-strategic-benders/iterations.csv`
+- `results/summaries/r5-strategic-benders/report.toml`
+- `results/summaries/r5-strategic-benders/residuals.csv`
+- `results/summaries/r5-strategic-benders/selected-residuals.csv`
+- `results/summaries/r5-strategic-benders/subproblems.csv`
 - `results/summaries/r5-strategic/F04.png`
 - `results/summaries/r5-strategic/F14.png`
 - `results/summaries/r5-strategic/F19.png`
@@ -918,6 +942,7 @@
 - `scripts/check_r5_strategic.jl`
 - `scripts/check_r5_strategic_artifacts.jl`
 - `scripts/check_r5_strategic_benders.jl`
+- `scripts/check_r5_strategic_benders_artifacts.jl`
 - `scripts/check_solvers.jl`
 - `scripts/collect_ch03_data.jl`
 - `scripts/compare_r1_runs.jl`
@@ -965,6 +990,7 @@
 - `scripts/freeze_r5_market.jl`
 - `scripts/freeze_r5_risk.jl`
 - `scripts/freeze_r5_strategic.jl`
+- `scripts/freeze_r5_strategic_benders.jl`
 - `scripts/inspect_ch03_workbooks.jl`
 - `scripts/inspect_r4_heat_results.jl`
 - `scripts/inspect_r5_benders_boundary.jl`
@@ -1001,6 +1027,7 @@
 - `scripts/plot_r5_market.jl`
 - `scripts/plot_r5_risk.jl`
 - `scripts/plot_r5_strategic.jl`
+- `scripts/plot_r5_strategic_benders.jl`
 - `scripts/prepare_r1_summary.jl`
 - `scripts/preview.jl`
 - `scripts/probe_r4_discrete.jl`
@@ -1049,7 +1076,10 @@
 - `scripts/r5_risk_report_tables.jl`
 - `scripts/r5_risk_setup.jl`
 - `scripts/r5_strategic_benders_docs.jl`
+- `scripts/r5_strategic_benders_report_tables.jl`
+- `scripts/r5_strategic_benders_study_rules.jl`
 - `scripts/r5_strategic_benders_task.jl`
+- `scripts/r5_strategic_benders_witness.jl`
 - `scripts/r5_strategic_cases.jl`
 - `scripts/r5_strategic_report_tables.jl`
 - `scripts/r5_strategic_selection_audit.jl`
@@ -1086,6 +1116,7 @@
 - `scripts/report_r5_market.jl`
 - `scripts/report_r5_risk.jl`
 - `scripts/report_r5_strategic.jl`
+- `scripts/report_r5_strategic_benders.jl`
 - `scripts/requirements-reading.txt`
 - `scripts/run_r1.jl`
 - `scripts/run_r2.jl`
@@ -1110,10 +1141,12 @@
 - `scripts/study_r5_market.jl`
 - `scripts/study_r5_risk.jl`
 - `scripts/study_r5_strategic.jl`
+- `scripts/study_r5_strategic_benders.jl`
 - `scripts/summarize_r3_audit.jl`
 - `scripts/summarize_r3_baseline.jl`
 - `scripts/summarize_r3_v3.jl`
 - `scripts/summarize_r5_benders_report.jl`
+- `scripts/summarize_r5_strategic_benders.jl`
 - `scripts/test.jl`
 - `scripts/test_r3.jl`
 - `scripts/test_r3_baseline.jl`
@@ -1143,6 +1176,8 @@
 - `scripts/test_r5_strategic.jl`
 - `scripts/test_r5_strategic_benders.jl`
 - `scripts/test_r5_strategic_benders_gurobi.jl`
+- `scripts/test_r5_strategic_benders_study.jl`
+- `scripts/test_r5_strategic_benders_witness.jl`
 - `scripts/tighten_r4_distributed_cost.jl`
 - `scripts/validate_ch03_data.jl`
 - `scripts/validate_r1.jl`
@@ -1323,6 +1358,8 @@
 - `docs/src/assets/r5-execution/witnesses/`
 - `docs/src/assets/r5-market-payment/witnesses/`
 - `docs/src/assets/r5-risk/witnesses/`
+- `docs/src/assets/r5-strategic-benders/references/`
+- `docs/src/assets/r5-strategic-benders/witnesses/`
 - `docs/src/assets/r5-strategic/witnesses/`
 - `results/summaries/ch03-data/ch03-data-20260916T084459-cd427558/`
 - `results/summaries/r1-first-batch/r1-20260916T055237-75fa9f65/`
@@ -1347,4 +1384,6 @@
 - `results/summaries/r5-execution/witnesses/`
 - `results/summaries/r5-market-payment/witnesses/`
 - `results/summaries/r5-risk/witnesses/`
+- `results/summaries/r5-strategic-benders/references/`
+- `results/summaries/r5-strategic-benders/witnesses/`
 - `results/summaries/r5-strategic/witnesses/`

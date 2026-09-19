@@ -1,5 +1,8 @@
 {
   "inputs": [
+    {"id":"r5SBBatch","description":"策略分解新批次编号，不覆盖旧结果","type":"promptString","default":"r5-strategic-benders-new"},
+    {"id":"r5SBStudy","description":"已完成的策略分解study.toml","type":"promptString","default":"results/runs/r5/r5-strategic-benders-20260919/study.toml"},
+    {"id":"r5SBReport","description":"策略分解报告目录；生成须新目录，重绘只读已有表","type":"promptString","default":"results/summaries/r5-strategic-benders-replay"},
     {"id":"r5StrategicBendersCase","description":"策略报价输入TOML","type":"promptString","default":"configs/r5/strategic/competitive_hard_zero.toml"},
     {"id":"r5StrategicBendersRoute","description":"分解路线；paper_critical单列受限域","type":"pickString","options":["critical","cuts","paper_critical"],"default":"critical"},
     {"id":"r5StrategicBendersRun","description":"已保存的策略分解运行目录","type":"promptString"},
@@ -79,6 +82,11 @@
     }
   ],
   "tasks": [
+    {"label":"PaperRebuild: R5 strategy Benders frozen rules","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_strategic_benders_study.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 strategy Benders formal study","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/study_r5_strategic_benders.jl","${input:r5SBBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 strategy Benders formal report","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/report_r5_strategic_benders.jl","${input:r5SBStudy}","${input:r5SBReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 strategy Benders evidence replay","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_strategic_benders_artifacts.jl","${input:r5SBReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 strategy Benders redraw","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r5_strategic_benders.jl","${input:r5SBReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R5 strategic Benders mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_strategic_benders.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R5 strategic Benders tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_strategic_benders.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R5 strategic Benders run","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r5_strategic_benders_task.jl","run","${input:r5StrategicBendersCase}","${input:r5StrategicBendersRoute}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
