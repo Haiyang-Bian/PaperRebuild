@@ -1,0 +1,118 @@
+case_sha256 = "ab345ac2407f8830eb2686f3984623860bed99e138e3235ad5a51df338178582"
+fault = [1]
+objective_kind = "expected_unserved_energy_MWh"
+preplan_id = "r7-planning-cec5b94b-a711-4ce2-be02-8e4a7e835adf_normal_2"
+preplan_optimality_verified = false
+run_id = "r7-planning-cec5b94b-a711-4ce2-be02-8e4a7e835adf_witness_2"
+schema = "r7-recovery-result-v1"
+solver_objective_MWh = 0.0
+status = "feasibility_witness"
+version = "r7_recovery_checked_v1"
+
+[values.E_BES]
+data = [0.0, 0.8, 0.0, 0.0, 0.0, 0.8, 0.0, 0.0]
+shape = [2, 2, 2]
+
+[values.E_R]
+data = [0.4200000000000017, 0.14698412698412797, 0.4200000000000035, 0.14698412698412797]
+shape = [2, 2]
+
+[values.E_S]
+data = [0.19000000000000217, 0.06301587301587475, 0.19000000000000217, 0.06301587301587652]
+shape = [2, 2]
+
+[values.H]
+data = [0.0, 0.0, 0.0, 0.0]
+shape = [2, 1, 2]
+
+[values.H_CF]
+data = [0.12698412698412698, 0.12698412698412698]
+shape = [1, 2]
+
+[values.H_loss_R]
+data = [0.0, 0.0]
+shape = [1, 2]
+
+[values.H_loss_S]
+data = [0.0, 0.0]
+shape = [1, 2]
+
+[values.H_shed]
+data = [0.0, 0.0, 0.0, 0.0]
+shape = [2, 1, 2]
+
+[values.P]
+data = [0.0, 0.0, 0.0, 0.0]
+shape = [2, 1, 2]
+
+[values.P_PCC]
+data = [0.0, 0.0]
+shape = [1, 2]
+
+[values.P_ch]
+data = [0.0, 0.0, 0.0, 0.0]
+shape = [2, 1, 2]
+
+[values.P_dis]
+data = [0.0, 0.8, 0.0, 0.8]
+shape = [2, 1, 2]
+
+[values.P_line]
+data = [0.0, 0.0]
+shape = [1, 1, 2]
+
+[values.P_shed]
+data = [0.0, 0.0, 0.0, 0.0]
+shape = [2, 1, 2]
+
+[values.Q]
+data = [0.0, 0.0, 0.0, 0.0]
+shape = [2, 1, 2]
+
+[values.Q_PCC]
+data = [0.0, 0.0]
+shape = [1, 2]
+
+[values.Q_line]
+data = [0.0, 0.0]
+shape = [1, 1, 2]
+
+[values.a_off]
+data = [0.0]
+shape = [1]
+
+[values.a_on]
+data = [0.0]
+shape = [1]
+
+[values.beta]
+data = [1.0, 1.0]
+shape = [2]
+
+[values.m_load]
+data = [0.0, 1.5873015873015872]
+shape = [2, 1]
+
+[values.m_pipe]
+data = [1.5873015873015872]
+shape = [1, 1]
+
+[values.m_source]
+data = [1.5873015873015872, 0.0]
+shape = [2, 1]
+
+[values.root_supply]
+data = [1.0, 1.0]
+shape = [2]
+
+[values.v]
+data = [0.95, 0.95, 0.95, 0.95]
+shape = [2, 1, 2]
+
+[values.virtual]
+data = [0.0]
+shape = [1]
+
+[values.z]
+data = [0.0]
+shape = [1]

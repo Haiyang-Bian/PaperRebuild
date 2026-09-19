@@ -139,6 +139,9 @@
 - `configs/r7/planning-reserve-hand.toml`
 - `configs/r7/recovery-hand.toml`
 - `configs/r7/reserve-hand-freeze.toml`
+- `configs/r7/thermal-freeze.toml`
+- `configs/r7/thermal-front.toml`
+- `configs/r7/thermal-steady.toml`
 - `data/processed/README.md`
 - `data/raw/README.md`
 - `docs/Manifest.toml`
@@ -192,6 +195,7 @@
 - `docs/agent/tasks/2026-09-20-r7-pipe-state.md`
 - `docs/agent/tasks/2026-09-20-r7-planning.md`
 - `docs/agent/tasks/2026-09-20-r7-recovery.md`
+- `docs/agent/tasks/2026-09-20-r7-thermal.md`
 - `docs/make.jl`
 - `docs/reading/README.md`
 - `docs/reading/ch02/README.md`
@@ -250,6 +254,7 @@
 - `docs/reading/ch06/pipe-state.toml`
 - `docs/reading/ch06/planning.toml`
 - `docs/reading/ch06/recovery.toml`
+- `docs/reading/ch06/thermal-reconstruction.toml`
 - `docs/reading/source_manifest.json`
 - `docs/reading/sources.json`
 - `docs/src/api.md`
@@ -548,6 +553,7 @@
 - `docs/src/assets/r7-inner-20260920-v3/F22-inner-faults.png`
 - `docs/src/assets/r7-normal-20260920-v2/F20-normal-event.png`
 - `docs/src/assets/r7-planning-20260920-v2/F21-finite-planning.png`
+- `docs/src/assets/r7-thermal-20260920-v1/F23-thermal-delivery.png`
 - `docs/src/ch02-api.md`
 - `docs/src/ch02-generated.md`
 - `docs/src/ch02-models.md`
@@ -648,6 +654,8 @@
 - `docs/src/ch06-planning.md`
 - `docs/src/ch06-recovery-equations.md`
 - `docs/src/ch06-recovery.md`
+- `docs/src/ch06-thermal-equations.md`
+- `docs/src/ch06-thermal.md`
 - `docs/src/index.md`
 - `docs/src/julia-design.md`
 - `docs/src/quality.md`
@@ -1062,6 +1070,23 @@
 - `results/summaries/r7-planning-figures-20260920-v2/rule.toml`
 - `results/summaries/r7-planning-figures-20260920-v2/stages.csv`
 - `results/summaries/r7-planning-figures-20260920-v2/summary.csv`
+- `results/summaries/r7-thermal-20260920-v1/files.toml`
+- `results/summaries/r7-thermal-20260920-v1/port-audit.csv`
+- `results/summaries/r7-thermal-20260920-v1/profiles.csv`
+- `results/summaries/r7-thermal-20260920-v1/report-source.jl`
+- `results/summaries/r7-thermal-20260920-v1/rule.toml`
+- `results/summaries/r7-thermal-20260920-v1/solver-comparison.csv`
+- `results/summaries/r7-thermal-20260920-v1/summary.csv`
+- `results/summaries/r7-thermal-20260920-v1/trajectory.csv`
+- `results/summaries/r7-thermal-figures-20260920-v1/F23-thermal-delivery.png`
+- `results/summaries/r7-thermal-figures-20260920-v1/F23-thermal-delivery.svg`
+- `results/summaries/r7-thermal-figures-20260920-v1/figure.toml`
+- `results/summaries/r7-thermal-figures-20260920-v1/port-audit.csv`
+- `results/summaries/r7-thermal-figures-20260920-v1/profiles.csv`
+- `results/summaries/r7-thermal-figures-20260920-v1/rule.toml`
+- `results/summaries/r7-thermal-figures-20260920-v1/solver-comparison.csv`
+- `results/summaries/r7-thermal-figures-20260920-v1/summary.csv`
+- `results/summaries/r7-thermal-figures-20260920-v1/trajectory.csv`
 - `scripts/add_r6_stdlib.jl`
 - `scripts/audit_ch05_cuts.jl`
 - `scripts/audit_ch05_probability.jl`
@@ -1155,6 +1180,8 @@
 - `scripts/check_r7_planning.jl`
 - `scripts/check_r7_planning_figures.jl`
 - `scripts/check_r7_recovery.jl`
+- `scripts/check_r7_thermal.jl`
+- `scripts/check_r7_thermal_figures.jl`
 - `scripts/check_solvers.jl`
 - `scripts/collect_ch03_data.jl`
 - `scripts/compare_r1_runs.jl`
@@ -1209,6 +1236,7 @@
 - `scripts/freeze_r6_physical.jl`
 - `scripts/freeze_r7_inner_cases.jl`
 - `scripts/freeze_r7_reserve_hand.jl`
+- `scripts/freeze_r7_thermal_cases.jl`
 - `scripts/inspect_ch03_workbooks.jl`
 - `scripts/inspect_r4_heat_results.jl`
 - `scripts/inspect_r5_benders_boundary.jl`
@@ -1251,6 +1279,7 @@
 - `scripts/plot_r7_inner.jl`
 - `scripts/plot_r7_normal.jl`
 - `scripts/plot_r7_planning.jl`
+- `scripts/plot_r7_thermal.jl`
 - `scripts/prepare_r1_summary.jl`
 - `scripts/preview.jl`
 - `scripts/probe_r4_discrete.jl`
@@ -1328,6 +1357,8 @@
 - `scripts/r7_planning_evidence.jl`
 - `scripts/r7_recovery.jl`
 - `scripts/r7_recovery_docs.jl`
+- `scripts/r7_thermal_docs.jl`
+- `scripts/r7_thermal_study.jl`
 - `scripts/read_docx.py`
 - `scripts/read_thesis.py`
 - `scripts/recover_r3_v3_checkpoint.jl`
@@ -1363,6 +1394,7 @@
 - `scripts/report_r5_strategic_benders.jl`
 - `scripts/report_r6_study.jl`
 - `scripts/report_r7_inner.jl`
+- `scripts/report_r7_thermal.jl`
 - `scripts/requirements-reading.txt`
 - `scripts/run_r1.jl`
 - `scripts/run_r2.jl`
@@ -1446,6 +1478,7 @@
 - `scripts/test_r7_pipe_state.jl`
 - `scripts/test_r7_planning.jl`
 - `scripts/test_r7_recovery.jl`
+- `scripts/test_r7_thermal.jl`
 - `scripts/tighten_r4_distributed_cost.jl`
 - `scripts/validate_ch03_data.jl`
 - `scripts/validate_r1.jl`
@@ -1487,6 +1520,7 @@
 - `src/algorithms/r7_normal.jl`
 - `src/algorithms/r7_planning.jl`
 - `src/algorithms/r7_recovery.jl`
+- `src/algorithms/r7_thermal.jl`
 - `src/components/devices.jl`
 - `src/components/r7_commitment.jl`
 - `src/core/case.jl`
@@ -1516,6 +1550,7 @@
 - `src/core/r7_normal.jl`
 - `src/core/r7_planning.jl`
 - `src/core/r7_recovery.jl`
+- `src/core/r7_thermal.jl`
 - `src/formulations/r1.jl`
 - `src/formulations/r2.jl`
 - `src/formulations/r3.jl`
@@ -1538,6 +1573,7 @@
 - `src/formulations/r7_normal.jl`
 - `src/formulations/r7_planning.jl`
 - `src/formulations/r7_recovery.jl`
+- `src/formulations/r7_thermal.jl`
 - `src/networks/fixed_flow_heat.jl`
 - `src/networks/r7_normal_transport.jl`
 - `src/networks/r7_pipe_state.jl`
@@ -1567,6 +1603,7 @@
 - `src/reporting/r7_normal.jl`
 - `src/reporting/r7_planning.jl`
 - `src/reporting/r7_recovery.jl`
+- `src/reporting/r7_thermal.jl`
 - `src/reporting/runs.jl`
 - `src/verification/r1.jl`
 - `src/verification/r2.jl`
@@ -1600,6 +1637,7 @@
 - `src/verification/r7_normal.jl`
 - `src/verification/r7_planning.jl`
 - `src/verification/r7_recovery.jl`
+- `src/verification/r7_thermal.jl`
 - `test/ch03_data.jl`
 - `test/ch06_audit.jl`
 - `test/maintenance.tests.ps1`
@@ -1650,6 +1688,7 @@
 - `test/r7_pipe_state.jl`
 - `test/r7_planning.jl`
 - `test/r7_recovery.jl`
+- `test/r7_thermal.jl`
 - `test/runtests.jl`
 - `tools/Manifest.toml`
 - `tools/Project.toml`
@@ -1728,3 +1767,4 @@
 - `results/summaries/r7-planning-20260920-v2/reserve_extensive/`
 - `results/summaries/r7-planning-20260920-v2/reserve_finite_fault_ccg/`
 - `results/summaries/r7-planning-20260920-v2/reserve_normal/`
+- `results/summaries/r7-thermal-20260920-v1/evidence/`

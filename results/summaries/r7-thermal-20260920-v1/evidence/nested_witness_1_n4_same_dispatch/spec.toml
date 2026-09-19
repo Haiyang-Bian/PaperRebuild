@@ -1,0 +1,148 @@
+case_sha256 = "1dac55a5d2caba8664a783d497f9d273c541cc5a5826da37044f30f13ed7867a"
+mode = "same_dispatch"
+normal_archive_result_sha256 = "0330a4a630c71bcd815d7b143288f299677d061a524b2e322119efee0c451d76"
+parent_result_sha256 = "8df8882ef5e54f446449c2c0e7587164ddda6cfe7ae31d2aa14d23ee8ce51330"
+parent_run_id = "r7-planning-cec5b94b-a711-4ce2-be02-8e4a7e835adf_witness_1"
+profile_origin = "frozen nested reserve plan, exact inherited segment profiles"
+schema = "r7-thermal-spec-v1"
+substeps = 4
+uniform_assumption = false
+version = "r7_thermal_reconstruction_v1"
+
+[normal_event_evidence]
+boundary_adjustments = []
+conditional_cost_complete = false
+detailed_disaster_heat_verified = false
+event_case_sha256 = "1dac55a5d2caba8664a783d497f9d273c541cc5a5826da37044f30f13ed7867a"
+event_start = 2
+full_preplan_optimality_verified = false
+normal_model_pass = true
+normal_pipe_reference_pass = true
+normal_thermal_model = "plug_flow_reference_v1"
+parent_case_sha256 = "ac0d554e1c8a8f4ab722d0fa9d001492c2b180cf94158fbf5daea571dcf328bd"
+parent_result_sha256 = "063bfa3db36480fa26f2c20e726c26e71f2e23b976b7f82b43d16b991c21d98a"
+parent_run_id = "r7-planning-cec5b94b-a711-4ce2-be02-8e4a7e835adf_normal_2"
+periods = 1
+schema = "r7-normal-event-v1"
+
+    [[normal_event_evidence.initial_pipe_profiles]]
+    mass_kg = 18000.0
+    mean_K = 342.19761904761907
+    pipe = 1
+    reference_K = 333.15
+    relative_heat_MWh = 0.19000000000000092
+    scenario = 1
+    side = "S"
+
+        [[normal_event_evidence.initial_pipe_profiles.segments]]
+        amplitude_K = 49.047619047619094
+        base_K = 293.15
+        from_left = true
+        mass_kg = 18000.0
+        rate_per_kg = 0.0
+    [[normal_event_evidence.initial_pipe_profiles]]
+    mass_kg = 18000.0
+    mean_K = 342.19761904761907
+    pipe = 1
+    reference_K = 333.15
+    relative_heat_MWh = 0.19000000000000092
+    scenario = 2
+    side = "S"
+
+        [[normal_event_evidence.initial_pipe_profiles.segments]]
+        amplitude_K = 49.047619047619094
+        base_K = 293.15
+        from_left = true
+        mass_kg = 18000.0
+        rate_per_kg = 0.0
+    [[normal_event_evidence.initial_pipe_profiles]]
+    mass_kg = 18000.0
+    mean_K = 323.10238095238094
+    pipe = 1
+    reference_K = 303.15
+    relative_heat_MWh = 0.41900000000000026
+    scenario = 1
+    side = "R"
+
+        [[normal_event_evidence.initial_pipe_profiles.segments]]
+        amplitude_K = 29.952380952380963
+        base_K = 293.15
+        from_left = true
+        mass_kg = 18000.0
+        rate_per_kg = 0.0
+    [[normal_event_evidence.initial_pipe_profiles]]
+    mass_kg = 18000.0
+    mean_K = 323.10238095238094
+    pipe = 1
+    reference_K = 303.15
+    relative_heat_MWh = 0.41900000000000026
+    scenario = 2
+    side = "R"
+
+        [[normal_event_evidence.initial_pipe_profiles.segments]]
+        amplitude_K = 29.952380952380963
+        base_K = 293.15
+        from_left = true
+        mass_kg = 18000.0
+        rate_per_kg = 0.0
+
+[[profiles]]
+mass_kg = 18000.0
+mean_K = 342.19761904761907
+pipe = 1
+reference_K = 333.15
+relative_heat_MWh = 0.19000000000000092
+scenario = 1
+side = "S"
+
+    [[profiles.segments]]
+    amplitude_K = 49.047619047619094
+    base_K = 293.15
+    from_left = true
+    mass_kg = 18000.0
+    rate_per_kg = 0.0
+[[profiles]]
+mass_kg = 18000.0
+mean_K = 342.19761904761907
+pipe = 1
+reference_K = 333.15
+relative_heat_MWh = 0.19000000000000092
+scenario = 2
+side = "S"
+
+    [[profiles.segments]]
+    amplitude_K = 49.047619047619094
+    base_K = 293.15
+    from_left = true
+    mass_kg = 18000.0
+    rate_per_kg = 0.0
+[[profiles]]
+mass_kg = 18000.0
+mean_K = 323.10238095238094
+pipe = 1
+reference_K = 303.15
+relative_heat_MWh = 0.41900000000000026
+scenario = 1
+side = "R"
+
+    [[profiles.segments]]
+    amplitude_K = 29.952380952380963
+    base_K = 293.15
+    from_left = true
+    mass_kg = 18000.0
+    rate_per_kg = 0.0
+[[profiles]]
+mass_kg = 18000.0
+mean_K = 323.10238095238094
+pipe = 1
+reference_K = 303.15
+relative_heat_MWh = 0.41900000000000026
+scenario = 2
+side = "R"
+
+    [[profiles.segments]]
+    amplitude_K = 29.952380952380963
+    base_K = 293.15
+    from_left = true
+    mass_kg = 18000.0
+    rate_per_kg = 0.0

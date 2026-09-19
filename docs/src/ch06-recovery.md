@@ -1,6 +1,8 @@
 # R7：给定灾前状态的恢复基准
 
 本节点在[实施前核查](ch06-audit.md)之后，新增`r7_recovery_checked_v1`。
+本页保留该首批恢复接口的历史范围；后续已有[正常与事件连接](ch06-normal.md)、
+[嵌套故障搜索](ch06-adversary.md)及[固定控制逐管热核查](ch06-thermal.md)。
 给定灾前启停、储能和管温边界及一个线路故障，求使期望电热失供最小的恢复计划。
 **这是恢复子问题的开发基准，尚无灾前最优计划、嵌套C&CG或论文规模结果。**
 合成输入固定在`configs/r7/recovery-hand.toml`；公式及符号见[采用台账](ch06-recovery-equations.md)。

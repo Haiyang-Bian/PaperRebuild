@@ -1,5 +1,8 @@
 {
   "inputs": [
+    {"id":"r7ThermalRun","type":"promptString","description":"热重构批次：运行须新目录，核查须已有目录","default":"results/runs/r7-thermal-new"},
+    {"id":"r7ThermalEvidence","type":"promptString","description":"已冻结热重构报告","default":"results/summaries/r7-thermal-20260920-v1"},
+    {"id":"r7ThermalFigures","type":"promptString","description":"热重构图的新输出目录，不覆盖旧图","default":"results/runs/r7-thermal-redraw"},
     {"id":"r7InnerCase","type":"promptString","description":"内层故障对手的固定灾前输入","default":"configs/r7/inner-tie-two-hour.toml"},
     {"id":"r7InnerRun","type":"promptString","description":"运行用新目录；重验用已保存目录","default":"results/runs/r7-inner-new"},
     {"id":"r7InnerEvidence","type":"promptString","description":"已冻结的三节点内层证据","default":"results/summaries/r7-inner-three-node-20260920-v1"},
@@ -117,6 +120,12 @@
     }
   ],
   "tasks": [
+    {"label":"R7: 热重构公式与输入检查","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r7_thermal.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 热重构解析和边界测试","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r7_thermal.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 执行冻结热重构协议","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_thermal_study.jl","run","${input:r7ThermalRun}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 只读核验热重构批次","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_thermal_study.jl","check","${input:r7ThermalRun}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 核验热重构报告和对照","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/report_r7_thermal.jl","check","${input:r7ThermalEvidence}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 重绘热重构图 F23","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r7_thermal.jl","${input:r7ThermalEvidence}","${input:r7ThermalFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R7 inner mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r7_adversary.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R7 inner tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r7_adversary.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R7 inner solve","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/r7_adversary.jl","run","${input:r7InnerCase}","${input:r7InnerRun}","600"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},

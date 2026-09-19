@@ -1,0 +1,69 @@
+elapsed_sec = 0.02500009536743164
+formula_ids = ["R7-T-bound", "R7-T-control", "R7-T-idle", "R7-T-port", "R7-T1-transport", "R7-T2-load", "R7-T2-source", "R7-T3-mix", "R7-T4-inventory", "R7-T4-spatial"]
+julia_version = "1.12.6"
+lower_bound_MWh = 0.0
+model_class = "LP"
+objective_kind = "conditional_heat_unserved_MWh"
+optimizer_request = "MathOptInterface.OptimizerWithAttributes(HiGHS.Optimizer, Pair{MathOptInterface.AbstractOptimizerAttribute, Any}[MathOptInterface.RawOptimizerAttribute(\"threads\") => 1])"
+parent_result_sha256 = "4117d6043f0707e06aeef1bd7577010d568fdf826ecd71ea306df93fc2084e86"
+primal_status = "NO_SOLUTION"
+raw_status = "kHighsModelStatusInfeasible"
+requested_budget_sec = 600.0
+run_id = "r7-thermal-bce6cb33-2424-43fb-a9a5-a969bb6b404f"
+schema = "r7-thermal-result-v1"
+solver = "HiGHS"
+spec_sha256 = "c624d9059c61beb1675a12b1fea40a1d6dbf0b78b0e78c19b329135ee65bf72e"
+status = "infeasible_certified"
+termination_status = "INFEASIBLE"
+utc = "2026-09-19T22:51:52.530"
+
+[source_hashes_at_solve]
+"Manifest.toml" = "948f0f5c5a4bc8381a3d9ad413fb0f8e78ee1a3bad52606dea9b9b6f144e5450"
+"Project.toml" = "313f8c54dfa9a7a276832e48cc8d7e3e9b63c29aab765bf7fa541f2fb68f40a9"
+"src/PaperRebuild.jl" = "8f86529ef3e427c1f012bf7f1b41e5d53fa64d12773a5d535f88a34b96b625e8"
+"src/algorithms/r7_recovery.jl" = "9f3f45283b154e3cd6d17af2d8682790948526a7ea5d7cf0a0d739e80588e044"
+"src/algorithms/r7_thermal.jl" = "ebe1e98f8c3806ba7e0de8611b659859d8a90abb7908e7471648160aa6e6200a"
+"src/core/r7_recovery.jl" = "40ad22ac1c87a582eb7d4a1c32f29937c68e0bc687ca005f0541974b87b30dce"
+"src/core/r7_thermal.jl" = "149ff6ef258b4fae02340d182a02a702a6b931da8f24744d2bdc329793bc65e4"
+"src/formulations/r7_recovery.jl" = "b9c11352859e9c34533a7ff5145e79eac38dfc2006e6a3ca44ad63c7188947df"
+"src/formulations/r7_thermal.jl" = "707d249a8e3c5a0b4a69cddaebd3fc7d737b1cd449eb30f845161046213c84c3"
+"src/networks/r7_pipe_state.jl" = "2d8b4b01dbcdfc276ac15bf40d715b1d23f3dc56271ef4b0736f6fae2403f8a8"
+"src/reporting/r7_recovery.jl" = "f3617abd6cb02602bf8d2cf67784a78ffcd150daace84cbe23f4011a35212924"
+"src/reporting/r7_thermal.jl" = "9351abc1a68b588bd0d636103667e580dc3cc1e59586fcf42a927b7d972c4ad8"
+"src/verification/r7_recovery.jl" = "916b3b525d2877013f9bbd4f47a77355ad1b6cc075194fc5fe8696d2deda1962"
+"src/verification/r7_thermal.jl" = "30ae2ab71590c526518964bf218dbe050da306a280b5b9f1bf509fad11566bfa"
+
+[validation]
+ac_grid_validated = false
+conditional_heat_optimality_pass = false
+continuous_node_dynamics_verified = false
+hydraulic_verified = false
+rows = []
+same_dispatch_pass = false
+thermal_model_pass = false
+whole_recovery_certified = false
+
+    [[validation.port_witness]]
+    gap_MW = 0.06666666666666667
+    kind = "source_minimum_heat"
+    node = 1
+    scenario = 1
+    time = 1
+    [[validation.port_witness]]
+    gap_MW = 0.06666666666666667
+    kind = "source_minimum_heat"
+    node = 1
+    scenario = 2
+    time = 1
+    [[validation.port_witness]]
+    gap_MW = 0.06666666666666671
+    kind = "load_maximum_heat"
+    node = 2
+    scenario = 1
+    time = 1
+    [[validation.port_witness]]
+    gap_MW = 0.06666666666666671
+    kind = "load_maximum_heat"
+    node = 2
+    scenario = 2
+    time = 1

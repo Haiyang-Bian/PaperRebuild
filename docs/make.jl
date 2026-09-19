@@ -49,6 +49,8 @@ include(joinpath(@__DIR__, "..", "scripts", "r7_normal_docs.jl"))
 sync_r7_normal_docs()
 include(joinpath(@__DIR__, "..", "scripts", "r7_planning_docs.jl"))
 sync_r7_planning_docs()
+include(joinpath(@__DIR__, "..", "scripts", "r7_thermal_docs.jl"))
+write(joinpath(@__DIR__, "src", "ch06-thermal-equations.md"), r7_thermal_markdown())
 
 makedocs(;
     modules = [PaperRebuild],
@@ -196,6 +198,8 @@ makedocs(;
             "安全规划方程与符号" => "ch06-planning-equations.md",
             "内层故障搜索与不可行恢复" => "ch06-adversary.md",
             "内层对偶方程与符号" => "ch06-adversary-equations.md",
+            "储热量与灾后热交付" => "ch06-thermal.md",
+            "逐管热重构方程与符号" => "ch06-thermal-equations.md",
         ],
         "第 2 章模型与首批实现" => [
             "模型详解" => "ch02-models.md",

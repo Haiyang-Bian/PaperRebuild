@@ -11110,6 +11110,21 @@
           "path": "docs/src/ch06-adversary.md",
           "name": "ch06-adversary.md",
           "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r7-thermal-20260920-v1/F23-thermal-delivery.png",
+          "name": "F23-thermal-delivery.png",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch06-thermal-equations.md",
+          "name": "ch06-thermal-equations.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch06-thermal.md",
+          "name": "ch06-thermal.md",
+          "isDirectory": false
         }
       ],
       "order": 1,
@@ -11375,6 +11390,11 @@
         {
           "path": "docs/agent/tasks/2026-09-20-r7-adversary.md",
           "name": "2026-09-20-r7-adversary.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/agent/tasks/2026-09-20-r7-thermal.md",
+          "name": "2026-09-20-r7-thermal.md",
           "isDirectory": false
         }
       ],
@@ -12127,6 +12147,31 @@
           "path": "src/verification/r7_adversary.jl",
           "name": "r7_adversary.jl",
           "isDirectory": false
+        },
+        {
+          "path": "src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
         }
       ],
       "order": 3,
@@ -12723,6 +12768,21 @@
           "path": "configs/r7/inner-tie-two-hour.toml",
           "name": "inner-tie-two-hour.toml",
           "isDirectory": false
+        },
+        {
+          "path": "configs/r7/thermal-freeze.toml",
+          "name": "thermal-freeze.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r7/thermal-front.toml",
+          "name": "thermal-front.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r7/thermal-steady.toml",
+          "name": "thermal-steady.toml",
+          "isDirectory": false
         }
       ],
       "order": 4,
@@ -13038,6 +13098,11 @@
         {
           "path": "docs/reading/ch06/inner-adversary.toml",
           "name": "inner-adversary.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch06/thermal-reconstruction.toml",
+          "name": "thermal-reconstruction.toml",
           "isDirectory": false
         }
       ],
@@ -30995,6 +31060,4021 @@
           "path": "results/summaries/r7-nested-reserve-20260920-v1/specification.toml",
           "name": "specification.toml",
           "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_clarabel/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_clarabel/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_clarabel/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_clarabel/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_clarabel/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_clarabel/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_clarabel/code/src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_clarabel/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_clarabel/code/src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_clarabel/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_clarabel/code/src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_clarabel/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_clarabel/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_clarabel/code/src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_clarabel/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_clarabel/code/src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_clarabel/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_clarabel/parent.toml",
+          "name": "parent.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_clarabel/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_clarabel/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n16_curtail_heat/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n16_curtail_heat/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n16_curtail_heat/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n16_curtail_heat/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n16_curtail_heat/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n16_curtail_heat/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n16_curtail_heat/code/src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n16_curtail_heat/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n16_curtail_heat/code/src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n16_curtail_heat/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n16_curtail_heat/code/src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n16_curtail_heat/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n16_curtail_heat/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n16_curtail_heat/code/src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n16_curtail_heat/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n16_curtail_heat/code/src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n16_curtail_heat/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n16_curtail_heat/parent.toml",
+          "name": "parent.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n16_curtail_heat/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n16_curtail_heat/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n16_same_dispatch/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n16_same_dispatch/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n16_same_dispatch/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n16_same_dispatch/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n16_same_dispatch/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n16_same_dispatch/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n16_same_dispatch/code/src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n16_same_dispatch/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n16_same_dispatch/code/src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n16_same_dispatch/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n16_same_dispatch/code/src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n16_same_dispatch/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n16_same_dispatch/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n16_same_dispatch/code/src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n16_same_dispatch/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n16_same_dispatch/code/src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n16_same_dispatch/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n16_same_dispatch/parent.toml",
+          "name": "parent.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n16_same_dispatch/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n16_same_dispatch/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n1_curtail_heat/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n1_curtail_heat/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n1_curtail_heat/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n1_curtail_heat/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n1_curtail_heat/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n1_curtail_heat/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n1_curtail_heat/code/src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n1_curtail_heat/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n1_curtail_heat/code/src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n1_curtail_heat/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n1_curtail_heat/code/src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n1_curtail_heat/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n1_curtail_heat/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n1_curtail_heat/code/src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n1_curtail_heat/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n1_curtail_heat/code/src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n1_curtail_heat/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n1_curtail_heat/parent.toml",
+          "name": "parent.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n1_curtail_heat/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n1_curtail_heat/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n1_same_dispatch/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n1_same_dispatch/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n1_same_dispatch/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n1_same_dispatch/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n1_same_dispatch/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n1_same_dispatch/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n1_same_dispatch/code/src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n1_same_dispatch/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n1_same_dispatch/code/src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n1_same_dispatch/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n1_same_dispatch/code/src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n1_same_dispatch/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n1_same_dispatch/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n1_same_dispatch/code/src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n1_same_dispatch/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n1_same_dispatch/code/src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n1_same_dispatch/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n1_same_dispatch/parent.toml",
+          "name": "parent.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n1_same_dispatch/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n1_same_dispatch/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n4_curtail_heat/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n4_curtail_heat/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n4_curtail_heat/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n4_curtail_heat/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n4_curtail_heat/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n4_curtail_heat/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n4_curtail_heat/code/src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n4_curtail_heat/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n4_curtail_heat/code/src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n4_curtail_heat/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n4_curtail_heat/code/src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n4_curtail_heat/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n4_curtail_heat/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n4_curtail_heat/code/src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n4_curtail_heat/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n4_curtail_heat/code/src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n4_curtail_heat/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n4_curtail_heat/parent.toml",
+          "name": "parent.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n4_curtail_heat/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n4_curtail_heat/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n4_same_dispatch/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n4_same_dispatch/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n4_same_dispatch/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n4_same_dispatch/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n4_same_dispatch/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n4_same_dispatch/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n4_same_dispatch/code/src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n4_same_dispatch/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n4_same_dispatch/code/src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n4_same_dispatch/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n4_same_dispatch/code/src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n4_same_dispatch/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n4_same_dispatch/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n4_same_dispatch/code/src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n4_same_dispatch/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n4_same_dispatch/code/src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n4_same_dispatch/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n4_same_dispatch/parent.toml",
+          "name": "parent.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n4_same_dispatch/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/cold_outlet_n4_same_dispatch/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_clarabel/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_clarabel/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_clarabel/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_clarabel/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_clarabel/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_clarabel/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_clarabel/code/src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_clarabel/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_clarabel/code/src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_clarabel/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_clarabel/code/src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_clarabel/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_clarabel/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_clarabel/code/src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_clarabel/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_clarabel/code/src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_clarabel/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_clarabel/parent.toml",
+          "name": "parent.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_clarabel/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_clarabel/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n16_curtail_heat/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n16_curtail_heat/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n16_curtail_heat/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n16_curtail_heat/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n16_curtail_heat/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n16_curtail_heat/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n16_curtail_heat/code/src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n16_curtail_heat/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n16_curtail_heat/code/src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n16_curtail_heat/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n16_curtail_heat/code/src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n16_curtail_heat/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n16_curtail_heat/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n16_curtail_heat/code/src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n16_curtail_heat/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n16_curtail_heat/code/src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n16_curtail_heat/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n16_curtail_heat/parent.toml",
+          "name": "parent.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n16_curtail_heat/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n16_curtail_heat/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n16_same_dispatch/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n16_same_dispatch/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n16_same_dispatch/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n16_same_dispatch/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n16_same_dispatch/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n16_same_dispatch/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n16_same_dispatch/code/src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n16_same_dispatch/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n16_same_dispatch/code/src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n16_same_dispatch/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n16_same_dispatch/code/src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n16_same_dispatch/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n16_same_dispatch/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n16_same_dispatch/code/src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n16_same_dispatch/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n16_same_dispatch/code/src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n16_same_dispatch/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n16_same_dispatch/parent.toml",
+          "name": "parent.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n16_same_dispatch/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n16_same_dispatch/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n1_curtail_heat/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n1_curtail_heat/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n1_curtail_heat/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n1_curtail_heat/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n1_curtail_heat/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n1_curtail_heat/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n1_curtail_heat/code/src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n1_curtail_heat/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n1_curtail_heat/code/src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n1_curtail_heat/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n1_curtail_heat/code/src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n1_curtail_heat/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n1_curtail_heat/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n1_curtail_heat/code/src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n1_curtail_heat/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n1_curtail_heat/code/src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n1_curtail_heat/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n1_curtail_heat/parent.toml",
+          "name": "parent.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n1_curtail_heat/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n1_curtail_heat/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n1_same_dispatch/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n1_same_dispatch/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n1_same_dispatch/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n1_same_dispatch/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n1_same_dispatch/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n1_same_dispatch/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n1_same_dispatch/code/src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n1_same_dispatch/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n1_same_dispatch/code/src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n1_same_dispatch/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n1_same_dispatch/code/src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n1_same_dispatch/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n1_same_dispatch/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n1_same_dispatch/code/src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n1_same_dispatch/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n1_same_dispatch/code/src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n1_same_dispatch/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n1_same_dispatch/parent.toml",
+          "name": "parent.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n1_same_dispatch/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n1_same_dispatch/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n4_curtail_heat/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n4_curtail_heat/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n4_curtail_heat/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n4_curtail_heat/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n4_curtail_heat/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n4_curtail_heat/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n4_curtail_heat/code/src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n4_curtail_heat/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n4_curtail_heat/code/src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n4_curtail_heat/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n4_curtail_heat/code/src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n4_curtail_heat/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n4_curtail_heat/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n4_curtail_heat/code/src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n4_curtail_heat/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n4_curtail_heat/code/src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n4_curtail_heat/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n4_curtail_heat/parent.toml",
+          "name": "parent.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n4_curtail_heat/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n4_curtail_heat/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n4_same_dispatch/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n4_same_dispatch/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n4_same_dispatch/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n4_same_dispatch/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n4_same_dispatch/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n4_same_dispatch/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n4_same_dispatch/code/src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n4_same_dispatch/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n4_same_dispatch/code/src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n4_same_dispatch/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n4_same_dispatch/code/src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n4_same_dispatch/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n4_same_dispatch/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n4_same_dispatch/code/src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n4_same_dispatch/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n4_same_dispatch/code/src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n4_same_dispatch/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n4_same_dispatch/parent.toml",
+          "name": "parent.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n4_same_dispatch/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/hot_outlet_n4_same_dispatch/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/inputs.toml",
+          "name": "inputs.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n16_curtail_heat/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n16_curtail_heat/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n16_curtail_heat/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n16_curtail_heat/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n16_curtail_heat/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n16_curtail_heat/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n16_curtail_heat/code/src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n16_curtail_heat/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n16_curtail_heat/code/src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n16_curtail_heat/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n16_curtail_heat/code/src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n16_curtail_heat/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n16_curtail_heat/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n16_curtail_heat/code/src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n16_curtail_heat/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n16_curtail_heat/code/src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n16_curtail_heat/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n16_curtail_heat/parent.toml",
+          "name": "parent.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n16_curtail_heat/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n16_curtail_heat/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n16_same_dispatch/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n16_same_dispatch/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n16_same_dispatch/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n16_same_dispatch/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n16_same_dispatch/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n16_same_dispatch/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n16_same_dispatch/code/src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n16_same_dispatch/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n16_same_dispatch/code/src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n16_same_dispatch/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n16_same_dispatch/code/src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n16_same_dispatch/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n16_same_dispatch/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n16_same_dispatch/code/src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n16_same_dispatch/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n16_same_dispatch/code/src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n16_same_dispatch/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n16_same_dispatch/parent.toml",
+          "name": "parent.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n16_same_dispatch/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n16_same_dispatch/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n1_curtail_heat/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n1_curtail_heat/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n1_curtail_heat/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n1_curtail_heat/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n1_curtail_heat/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n1_curtail_heat/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n1_curtail_heat/code/src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n1_curtail_heat/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n1_curtail_heat/code/src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n1_curtail_heat/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n1_curtail_heat/code/src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n1_curtail_heat/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n1_curtail_heat/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n1_curtail_heat/code/src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n1_curtail_heat/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n1_curtail_heat/code/src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n1_curtail_heat/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n1_curtail_heat/parent.toml",
+          "name": "parent.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n1_curtail_heat/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n1_curtail_heat/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n1_same_dispatch/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n1_same_dispatch/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n1_same_dispatch/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n1_same_dispatch/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n1_same_dispatch/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n1_same_dispatch/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n1_same_dispatch/code/src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n1_same_dispatch/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n1_same_dispatch/code/src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n1_same_dispatch/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n1_same_dispatch/code/src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n1_same_dispatch/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n1_same_dispatch/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n1_same_dispatch/code/src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n1_same_dispatch/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n1_same_dispatch/code/src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n1_same_dispatch/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n1_same_dispatch/parent.toml",
+          "name": "parent.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n1_same_dispatch/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n1_same_dispatch/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n4_curtail_heat/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n4_curtail_heat/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n4_curtail_heat/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n4_curtail_heat/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n4_curtail_heat/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n4_curtail_heat/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n4_curtail_heat/code/src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n4_curtail_heat/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n4_curtail_heat/code/src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n4_curtail_heat/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n4_curtail_heat/code/src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n4_curtail_heat/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n4_curtail_heat/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n4_curtail_heat/code/src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n4_curtail_heat/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n4_curtail_heat/code/src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n4_curtail_heat/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n4_curtail_heat/parent.toml",
+          "name": "parent.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n4_curtail_heat/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n4_curtail_heat/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n4_same_dispatch/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n4_same_dispatch/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n4_same_dispatch/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n4_same_dispatch/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n4_same_dispatch/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n4_same_dispatch/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n4_same_dispatch/code/src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n4_same_dispatch/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n4_same_dispatch/code/src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n4_same_dispatch/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n4_same_dispatch/code/src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n4_same_dispatch/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n4_same_dispatch/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n4_same_dispatch/code/src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n4_same_dispatch/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n4_same_dispatch/code/src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n4_same_dispatch/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n4_same_dispatch/parent.toml",
+          "name": "parent.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n4_same_dispatch/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_1_n4_same_dispatch/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n16_curtail_heat/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n16_curtail_heat/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n16_curtail_heat/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n16_curtail_heat/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n16_curtail_heat/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n16_curtail_heat/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n16_curtail_heat/code/src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n16_curtail_heat/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n16_curtail_heat/code/src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n16_curtail_heat/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n16_curtail_heat/code/src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n16_curtail_heat/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n16_curtail_heat/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n16_curtail_heat/code/src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n16_curtail_heat/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n16_curtail_heat/code/src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n16_curtail_heat/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n16_curtail_heat/parent.toml",
+          "name": "parent.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n16_curtail_heat/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n16_curtail_heat/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n16_same_dispatch/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n16_same_dispatch/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n16_same_dispatch/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n16_same_dispatch/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n16_same_dispatch/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n16_same_dispatch/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n16_same_dispatch/code/src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n16_same_dispatch/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n16_same_dispatch/code/src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n16_same_dispatch/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n16_same_dispatch/code/src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n16_same_dispatch/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n16_same_dispatch/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n16_same_dispatch/code/src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n16_same_dispatch/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n16_same_dispatch/code/src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n16_same_dispatch/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n16_same_dispatch/parent.toml",
+          "name": "parent.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n16_same_dispatch/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n16_same_dispatch/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n1_curtail_heat/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n1_curtail_heat/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n1_curtail_heat/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n1_curtail_heat/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n1_curtail_heat/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n1_curtail_heat/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n1_curtail_heat/code/src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n1_curtail_heat/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n1_curtail_heat/code/src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n1_curtail_heat/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n1_curtail_heat/code/src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n1_curtail_heat/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n1_curtail_heat/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n1_curtail_heat/code/src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n1_curtail_heat/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n1_curtail_heat/code/src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n1_curtail_heat/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n1_curtail_heat/parent.toml",
+          "name": "parent.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n1_curtail_heat/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n1_curtail_heat/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n1_same_dispatch/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n1_same_dispatch/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n1_same_dispatch/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n1_same_dispatch/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n1_same_dispatch/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n1_same_dispatch/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n1_same_dispatch/code/src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n1_same_dispatch/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n1_same_dispatch/code/src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n1_same_dispatch/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n1_same_dispatch/code/src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n1_same_dispatch/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n1_same_dispatch/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n1_same_dispatch/code/src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n1_same_dispatch/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n1_same_dispatch/code/src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n1_same_dispatch/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n1_same_dispatch/parent.toml",
+          "name": "parent.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n1_same_dispatch/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n1_same_dispatch/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n4_curtail_heat/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n4_curtail_heat/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n4_curtail_heat/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n4_curtail_heat/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n4_curtail_heat/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n4_curtail_heat/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n4_curtail_heat/code/src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n4_curtail_heat/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n4_curtail_heat/code/src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n4_curtail_heat/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n4_curtail_heat/code/src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n4_curtail_heat/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n4_curtail_heat/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n4_curtail_heat/code/src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n4_curtail_heat/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n4_curtail_heat/code/src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n4_curtail_heat/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n4_curtail_heat/parent.toml",
+          "name": "parent.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n4_curtail_heat/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n4_curtail_heat/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n4_same_dispatch/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n4_same_dispatch/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n4_same_dispatch/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n4_same_dispatch/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n4_same_dispatch/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n4_same_dispatch/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n4_same_dispatch/code/src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n4_same_dispatch/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n4_same_dispatch/code/src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n4_same_dispatch/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n4_same_dispatch/code/src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n4_same_dispatch/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n4_same_dispatch/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n4_same_dispatch/code/src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n4_same_dispatch/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n4_same_dispatch/code/src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n4_same_dispatch/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n4_same_dispatch/parent.toml",
+          "name": "parent.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n4_same_dispatch/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/nested_witness_2_n4_same_dispatch/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n16_curtail_heat/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n16_curtail_heat/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n16_curtail_heat/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n16_curtail_heat/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n16_curtail_heat/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n16_curtail_heat/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n16_curtail_heat/code/src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n16_curtail_heat/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n16_curtail_heat/code/src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n16_curtail_heat/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n16_curtail_heat/code/src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n16_curtail_heat/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n16_curtail_heat/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n16_curtail_heat/code/src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n16_curtail_heat/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n16_curtail_heat/code/src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n16_curtail_heat/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n16_curtail_heat/parent.toml",
+          "name": "parent.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n16_curtail_heat/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n16_curtail_heat/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n16_same_dispatch/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n16_same_dispatch/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n16_same_dispatch/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n16_same_dispatch/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n16_same_dispatch/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n16_same_dispatch/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n16_same_dispatch/code/src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n16_same_dispatch/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n16_same_dispatch/code/src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n16_same_dispatch/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n16_same_dispatch/code/src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n16_same_dispatch/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n16_same_dispatch/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n16_same_dispatch/code/src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n16_same_dispatch/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n16_same_dispatch/code/src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n16_same_dispatch/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n16_same_dispatch/parent.toml",
+          "name": "parent.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n16_same_dispatch/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n16_same_dispatch/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n1_curtail_heat/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n1_curtail_heat/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n1_curtail_heat/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n1_curtail_heat/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n1_curtail_heat/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n1_curtail_heat/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n1_curtail_heat/code/src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n1_curtail_heat/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n1_curtail_heat/code/src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n1_curtail_heat/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n1_curtail_heat/code/src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n1_curtail_heat/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n1_curtail_heat/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n1_curtail_heat/code/src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n1_curtail_heat/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n1_curtail_heat/code/src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n1_curtail_heat/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n1_curtail_heat/parent.toml",
+          "name": "parent.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n1_curtail_heat/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n1_curtail_heat/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n1_same_dispatch/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n1_same_dispatch/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n1_same_dispatch/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n1_same_dispatch/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n1_same_dispatch/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n1_same_dispatch/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n1_same_dispatch/code/src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n1_same_dispatch/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n1_same_dispatch/code/src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n1_same_dispatch/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n1_same_dispatch/code/src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n1_same_dispatch/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n1_same_dispatch/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n1_same_dispatch/code/src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n1_same_dispatch/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n1_same_dispatch/code/src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n1_same_dispatch/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n1_same_dispatch/parent.toml",
+          "name": "parent.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n1_same_dispatch/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n1_same_dispatch/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n4_curtail_heat/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n4_curtail_heat/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n4_curtail_heat/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n4_curtail_heat/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n4_curtail_heat/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n4_curtail_heat/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n4_curtail_heat/code/src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n4_curtail_heat/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n4_curtail_heat/code/src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n4_curtail_heat/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n4_curtail_heat/code/src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n4_curtail_heat/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n4_curtail_heat/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n4_curtail_heat/code/src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n4_curtail_heat/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n4_curtail_heat/code/src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n4_curtail_heat/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n4_curtail_heat/parent.toml",
+          "name": "parent.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n4_curtail_heat/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n4_curtail_heat/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n4_same_dispatch/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n4_same_dispatch/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n4_same_dispatch/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n4_same_dispatch/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n4_same_dispatch/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n4_same_dispatch/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n4_same_dispatch/code/src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n4_same_dispatch/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n4_same_dispatch/code/src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n4_same_dispatch/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n4_same_dispatch/code/src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n4_same_dispatch/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n4_same_dispatch/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n4_same_dispatch/code/src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n4_same_dispatch/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n4_same_dispatch/code/src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n4_same_dispatch/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n4_same_dispatch/parent.toml",
+          "name": "parent.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n4_same_dispatch/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/recovery-hand_n4_same_dispatch/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/rule.toml",
+          "name": "rule.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/study-source.jl",
+          "name": "study-source.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/summary.csv",
+          "name": "summary.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_clarabel/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_clarabel/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_clarabel/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_clarabel/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_clarabel/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_clarabel/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_clarabel/code/src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_clarabel/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_clarabel/code/src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_clarabel/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_clarabel/code/src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_clarabel/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_clarabel/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_clarabel/code/src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_clarabel/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_clarabel/code/src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_clarabel/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_clarabel/parent.toml",
+          "name": "parent.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_clarabel/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_clarabel/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n16_curtail_heat/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n16_curtail_heat/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n16_curtail_heat/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n16_curtail_heat/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n16_curtail_heat/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n16_curtail_heat/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n16_curtail_heat/code/src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n16_curtail_heat/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n16_curtail_heat/code/src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n16_curtail_heat/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n16_curtail_heat/code/src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n16_curtail_heat/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n16_curtail_heat/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n16_curtail_heat/code/src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n16_curtail_heat/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n16_curtail_heat/code/src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n16_curtail_heat/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n16_curtail_heat/parent.toml",
+          "name": "parent.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n16_curtail_heat/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n16_curtail_heat/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n16_same_dispatch/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n16_same_dispatch/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n16_same_dispatch/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n16_same_dispatch/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n16_same_dispatch/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n16_same_dispatch/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n16_same_dispatch/code/src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n16_same_dispatch/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n16_same_dispatch/code/src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n16_same_dispatch/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n16_same_dispatch/code/src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n16_same_dispatch/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n16_same_dispatch/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n16_same_dispatch/code/src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n16_same_dispatch/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n16_same_dispatch/code/src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n16_same_dispatch/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n16_same_dispatch/parent.toml",
+          "name": "parent.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n16_same_dispatch/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n16_same_dispatch/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n1_curtail_heat/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n1_curtail_heat/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n1_curtail_heat/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n1_curtail_heat/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n1_curtail_heat/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n1_curtail_heat/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n1_curtail_heat/code/src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n1_curtail_heat/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n1_curtail_heat/code/src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n1_curtail_heat/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n1_curtail_heat/code/src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n1_curtail_heat/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n1_curtail_heat/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n1_curtail_heat/code/src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n1_curtail_heat/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n1_curtail_heat/code/src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n1_curtail_heat/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n1_curtail_heat/parent.toml",
+          "name": "parent.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n1_curtail_heat/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n1_curtail_heat/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n1_same_dispatch/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n1_same_dispatch/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n1_same_dispatch/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n1_same_dispatch/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n1_same_dispatch/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n1_same_dispatch/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n1_same_dispatch/code/src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n1_same_dispatch/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n1_same_dispatch/code/src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n1_same_dispatch/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n1_same_dispatch/code/src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n1_same_dispatch/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n1_same_dispatch/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n1_same_dispatch/code/src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n1_same_dispatch/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n1_same_dispatch/code/src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n1_same_dispatch/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n1_same_dispatch/parent.toml",
+          "name": "parent.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n1_same_dispatch/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n1_same_dispatch/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n4_curtail_heat/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n4_curtail_heat/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n4_curtail_heat/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n4_curtail_heat/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n4_curtail_heat/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n4_curtail_heat/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n4_curtail_heat/code/src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n4_curtail_heat/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n4_curtail_heat/code/src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n4_curtail_heat/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n4_curtail_heat/code/src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n4_curtail_heat/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n4_curtail_heat/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n4_curtail_heat/code/src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n4_curtail_heat/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n4_curtail_heat/code/src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n4_curtail_heat/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n4_curtail_heat/parent.toml",
+          "name": "parent.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n4_curtail_heat/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n4_curtail_heat/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n4_same_dispatch/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n4_same_dispatch/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n4_same_dispatch/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n4_same_dispatch/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n4_same_dispatch/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n4_same_dispatch/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n4_same_dispatch/code/src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n4_same_dispatch/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n4_same_dispatch/code/src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n4_same_dispatch/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n4_same_dispatch/code/src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n4_same_dispatch/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n4_same_dispatch/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n4_same_dispatch/code/src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n4_same_dispatch/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n4_same_dispatch/code/src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n4_same_dispatch/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n4_same_dispatch/parent.toml",
+          "name": "parent.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n4_same_dispatch/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/thermal-steady_n4_same_dispatch/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/evidence/trajectory.csv",
+          "name": "trajectory.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/port-audit.csv",
+          "name": "port-audit.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/profiles.csv",
+          "name": "profiles.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/report-source.jl",
+          "name": "report-source.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/rule.toml",
+          "name": "rule.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/solver-comparison.csv",
+          "name": "solver-comparison.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/summary.csv",
+          "name": "summary.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-20260920-v1/trajectory.csv",
+          "name": "trajectory.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-figures-20260920-v1/F23-thermal-delivery.png",
+          "name": "F23-thermal-delivery.png",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-figures-20260920-v1/F23-thermal-delivery.svg",
+          "name": "F23-thermal-delivery.svg",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-figures-20260920-v1/figure.toml",
+          "name": "figure.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-figures-20260920-v1/port-audit.csv",
+          "name": "port-audit.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-figures-20260920-v1/profiles.csv",
+          "name": "profiles.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-figures-20260920-v1/rule.toml",
+          "name": "rule.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-figures-20260920-v1/solver-comparison.csv",
+          "name": "solver-comparison.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-figures-20260920-v1/summary.csv",
+          "name": "summary.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-thermal-figures-20260920-v1/trajectory.csv",
+          "name": "trajectory.csv",
+          "isDirectory": false
         }
       ],
       "order": 6,
@@ -31260,6 +35340,11 @@
         {
           "path": "test/r7_adversary.jl",
           "name": "r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "test/r7_thermal.jl",
+          "name": "r7_thermal.jl",
           "isDirectory": false
         }
       ],
@@ -33326,6 +37411,46 @@
         {
           "path": "scripts/test_r7_adversary.jl",
           "name": "test_r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r7_thermal.jl",
+          "name": "check_r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r7_thermal_figures.jl",
+          "name": "check_r7_thermal_figures.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/freeze_r7_thermal_cases.jl",
+          "name": "freeze_r7_thermal_cases.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/plot_r7_thermal.jl",
+          "name": "plot_r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r7_thermal_docs.jl",
+          "name": "r7_thermal_docs.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r7_thermal_study.jl",
+          "name": "r7_thermal_study.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/report_r7_thermal.jl",
+          "name": "report_r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/test_r7_thermal.jl",
+          "name": "test_r7_thermal.jl",
           "isDirectory": false
         }
       ],

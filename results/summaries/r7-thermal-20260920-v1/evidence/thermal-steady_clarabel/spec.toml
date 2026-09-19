@@ -1,0 +1,32 @@
+case_sha256 = "d345a51df72f0f55dccc51bb038be016cc441a7f42ff45a2cfcd3b35bbfa4ecb"
+mode = "curtail_heat"
+parent_result_sha256 = "ff9f5a6cead6e889b32c47f0fb162da32bdbd43e3d2ef104c0c65eec55c7ed22"
+parent_run_id = "r7-recovery-e758f4df-2c29-4bde-bed7-12d2e0ec26cd"
+profile_origin = "explicit uniform assumption, not inferred original spatial history"
+schema = "r7-thermal-spec-v1"
+substeps = 16
+uniform_assumption = true
+version = "r7_thermal_reconstruction_v1"
+
+[[profiles]]
+pipe = 1
+scenario = 1
+side = "S"
+
+    [[profiles.segments]]
+    amplitude_K = 0.0
+    base_K = 343.15
+    from_left = true
+    mass_kg = 10000.0
+    rate_per_kg = 0.0
+[[profiles]]
+pipe = 1
+scenario = 1
+side = "R"
+
+    [[profiles.segments]]
+    amplitude_K = 0.0
+    base_K = 313.15
+    from_left = true
+    mass_kg = 10000.0
+    rate_per_kg = 0.0

@@ -1,0 +1,2002 @@
+elapsed_sec = 0.007999897003173828
+formula_ids = ["R7-T-bound", "R7-T-control", "R7-T-idle", "R7-T-port", "R7-T1-transport", "R7-T2-load", "R7-T2-source", "R7-T3-mix", "R7-T4-inventory", "R7-T4-spatial"]
+julia_version = "1.12.6"
+lower_bound_MWh = 1.3877787807814457e-17
+model_class = "LP"
+objective_kind = "conditional_heat_unserved_MWh"
+optimizer_request = "MathOptInterface.OptimizerWithAttributes(HiGHS.Optimizer, Pair{MathOptInterface.AbstractOptimizerAttribute, Any}[MathOptInterface.RawOptimizerAttribute(\"threads\") => 1])"
+parent_result_sha256 = "508a0ee3ab0033e76ab122c07c5861bf450f71de9904c6ad869b6570f5afece6"
+primal_status = "FEASIBLE_POINT"
+raw_status = "kHighsModelStatusOptimal"
+requested_budget_sec = 600.0
+run_id = "r7-thermal-2762ed3a-8d54-4950-ac2e-61ec0f0de17b"
+schema = "r7-thermal-result-v1"
+solver = "HiGHS"
+solver_objective_MWh = 1.3877787807814457e-17
+spec_sha256 = "1619f2033b92e82228f9cc0af3bf2669fa9ada487760fea7ff5d707ccbeb4584"
+status = "solver_optimal"
+termination_status = "OPTIMAL"
+utc = "2026-09-19T22:51:50.562"
+
+[source_hashes_at_solve]
+"Manifest.toml" = "948f0f5c5a4bc8381a3d9ad413fb0f8e78ee1a3bad52606dea9b9b6f144e5450"
+"Project.toml" = "313f8c54dfa9a7a276832e48cc8d7e3e9b63c29aab765bf7fa541f2fb68f40a9"
+"src/PaperRebuild.jl" = "8f86529ef3e427c1f012bf7f1b41e5d53fa64d12773a5d535f88a34b96b625e8"
+"src/algorithms/r7_recovery.jl" = "9f3f45283b154e3cd6d17af2d8682790948526a7ea5d7cf0a0d739e80588e044"
+"src/algorithms/r7_thermal.jl" = "ebe1e98f8c3806ba7e0de8611b659859d8a90abb7908e7471648160aa6e6200a"
+"src/core/r7_recovery.jl" = "40ad22ac1c87a582eb7d4a1c32f29937c68e0bc687ca005f0541974b87b30dce"
+"src/core/r7_thermal.jl" = "149ff6ef258b4fae02340d182a02a702a6b931da8f24744d2bdc329793bc65e4"
+"src/formulations/r7_recovery.jl" = "b9c11352859e9c34533a7ff5145e79eac38dfc2006e6a3ca44ad63c7188947df"
+"src/formulations/r7_thermal.jl" = "707d249a8e3c5a0b4a69cddaebd3fc7d737b1cd449eb30f845161046213c84c3"
+"src/networks/r7_pipe_state.jl" = "2d8b4b01dbcdfc276ac15bf40d715b1d23f3dc56271ef4b0736f6fae2403f8a8"
+"src/reporting/r7_recovery.jl" = "f3617abd6cb02602bf8d2cf67784a78ffcd150daace84cbe23f4011a35212924"
+"src/reporting/r7_thermal.jl" = "9351abc1a68b588bd0d636103667e580dc3cc1e59586fcf42a927b7d972c4ad8"
+"src/verification/r7_recovery.jl" = "916b3b525d2877013f9bbd4f47a77355ad1b6cc075194fc5fe8696d2deda1962"
+"src/verification/r7_thermal.jl" = "30ae2ab71590c526518964bf218dbe050da306a280b5b9f1bf509fad11566bfa"
+
+[validation]
+ac_grid_validated = false
+conditional_heat_optimality_pass = true
+continuous_node_dynamics_verified = false
+heat_unserved_MWh = 0.0
+hydraulic_verified = false
+loss_to_environment_MWh = 1.1035202381511529e-16
+max_normalized_residual = 8.084397349092695e-9
+port_witness = []
+same_dispatch_pass = true
+thermal_model_pass = true
+whole_recovery_certified = false
+
+    [[validation.rows]]
+    id = "R7-T1-transport"
+    object = "S/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 1
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-bound"
+    object = "S/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 1
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-pipe-energy"
+    object = "S/1"
+    pass = true
+    residual = 1.0778341182534254e-17
+    scenario = 1
+    step = 1
+    tolerance = 6.25e-8
+    unit = "MWh"
+    [[validation.rows]]
+    id = "R7-T4-pipe-mass"
+    object = "S/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 1
+    tolerance = 1.0e-6
+    unit = "kg/s"
+    [[validation.rows]]
+    id = "R7-T1-transport"
+    object = "S/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 2
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-bound"
+    object = "S/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 2
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-pipe-energy"
+    object = "S/1"
+    pass = true
+    residual = 2.465612899034871e-17
+    scenario = 1
+    step = 2
+    tolerance = 6.25e-8
+    unit = "MWh"
+    [[validation.rows]]
+    id = "R7-T4-pipe-mass"
+    object = "S/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 2
+    tolerance = 1.0e-6
+    unit = "kg/s"
+    [[validation.rows]]
+    id = "R7-T1-transport"
+    object = "S/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 3
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-bound"
+    object = "S/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 3
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-pipe-energy"
+    object = "S/1"
+    pass = true
+    residual = 3.1595022894255936e-17
+    scenario = 1
+    step = 3
+    tolerance = 6.25e-8
+    unit = "MWh"
+    [[validation.rows]]
+    id = "R7-T4-pipe-mass"
+    object = "S/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 3
+    tolerance = 1.0e-6
+    unit = "kg/s"
+    [[validation.rows]]
+    id = "R7-T1-transport"
+    object = "S/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-bound"
+    object = "S/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-pipe-energy"
+    object = "S/1"
+    pass = true
+    residual = 3.839447278627026e-18
+    scenario = 1
+    step = 4
+    tolerance = 6.25e-8
+    unit = "MWh"
+    [[validation.rows]]
+    id = "R7-T4-pipe-mass"
+    object = "S/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 1.0e-6
+    unit = "kg/s"
+    [[validation.rows]]
+    id = "R7-T4-inventory"
+    object = "S/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 1
+    tolerance = 6.25e-8
+    unit = "MWh"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "S/1/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 1
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "S/1/2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 1
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "S/1/3"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 1
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "S/1/4"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 1
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-inventory"
+    object = "S/1"
+    pass = true
+    residual = 1.3877787807814457e-17
+    scenario = 1
+    step = 2
+    tolerance = 6.25e-8
+    unit = "MWh"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "S/1/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 2
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "S/1/2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 2
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "S/1/3"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 2
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "S/1/4"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 2
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "S/1/5"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 2
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "S/1/6"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 2
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-inventory"
+    object = "S/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 3
+    tolerance = 6.25e-8
+    unit = "MWh"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "S/1/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 3
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "S/1/2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 3
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "S/1/3"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 3
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "S/1/4"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 3
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "S/1/5"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 3
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "S/1/6"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 3
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "S/1/7"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 3
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "S/1/8"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 3
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-inventory"
+    object = "S/1"
+    pass = true
+    residual = 9.71445146547012e-17
+    scenario = 1
+    step = 4
+    tolerance = 6.25e-8
+    unit = "MWh"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "S/1/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "S/1/2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "S/1/3"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "S/1/4"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "S/1/5"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "S/1/6"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "S/1/7"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "S/1/8"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "S/1/9"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "S/1/10"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-inventory"
+    object = "S/1"
+    pass = true
+    residual = 5.551115123125783e-17
+    scenario = 1
+    step = 5
+    tolerance = 6.25e-8
+    unit = "MWh"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "S/1/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 5
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "S/1/2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 5
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "S/1/3"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 5
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "S/1/4"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 5
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "S/1/5"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 5
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "S/1/6"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 5
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "S/1/7"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 5
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "S/1/8"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 5
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "S/1/9"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 5
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "S/1/10"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 5
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "S/1/11"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 5
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "S/1/12"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 5
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T1-transport"
+    object = "R/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 1
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-bound"
+    object = "R/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 1
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-pipe-energy"
+    object = "R/1"
+    pass = true
+    residual = 1.0038340529187431e-17
+    scenario = 1
+    step = 1
+    tolerance = 6.25e-8
+    unit = "MWh"
+    [[validation.rows]]
+    id = "R7-T4-pipe-mass"
+    object = "R/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 1
+    tolerance = 1.0e-6
+    unit = "kg/s"
+    [[validation.rows]]
+    id = "R7-T1-transport"
+    object = "R/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 2
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-bound"
+    object = "R/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 2
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-pipe-energy"
+    object = "R/1"
+    pass = true
+    residual = 3.011502158756229e-17
+    scenario = 1
+    step = 2
+    tolerance = 6.25e-8
+    unit = "MWh"
+    [[validation.rows]]
+    id = "R7-T4-pipe-mass"
+    object = "R/1"
+    pass = true
+    residual = 8.084397349092695e-15
+    scenario = 1
+    step = 2
+    tolerance = 1.0e-6
+    unit = "kg/s"
+    [[validation.rows]]
+    id = "R7-T1-transport"
+    object = "R/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 3
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-bound"
+    object = "R/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 3
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-pipe-energy"
+    object = "R/1"
+    pass = true
+    residual = 2.5095851322968577e-18
+    scenario = 1
+    step = 3
+    tolerance = 6.25e-8
+    unit = "MWh"
+    [[validation.rows]]
+    id = "R7-T4-pipe-mass"
+    object = "R/1"
+    pass = true
+    residual = 8.084397349092695e-15
+    scenario = 1
+    step = 3
+    tolerance = 1.0e-6
+    unit = "kg/s"
+    [[validation.rows]]
+    id = "R7-T1-transport"
+    object = "R/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-bound"
+    object = "R/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-pipe-energy"
+    object = "R/1"
+    pass = true
+    residual = 2.5245990483332055e-17
+    scenario = 1
+    step = 4
+    tolerance = 6.25e-8
+    unit = "MWh"
+    [[validation.rows]]
+    id = "R7-T4-pipe-mass"
+    object = "R/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 1.0e-6
+    unit = "kg/s"
+    [[validation.rows]]
+    id = "R7-T4-inventory"
+    object = "R/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 1
+    tolerance = 6.25e-8
+    unit = "MWh"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "R/1/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 1
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "R/1/2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 1
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-inventory"
+    object = "R/1"
+    pass = true
+    residual = 1.3877787807814457e-17
+    scenario = 1
+    step = 2
+    tolerance = 6.25e-8
+    unit = "MWh"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "R/1/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 2
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "R/1/2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 2
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "R/1/3"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 2
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "R/1/4"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 2
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-inventory"
+    object = "R/1"
+    pass = true
+    residual = 1.3877787807814457e-17
+    scenario = 1
+    step = 3
+    tolerance = 6.25e-8
+    unit = "MWh"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "R/1/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 3
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "R/1/2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 3
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "R/1/3"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 3
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "R/1/4"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 3
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "R/1/5"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 3
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "R/1/6"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 3
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-inventory"
+    object = "R/1"
+    pass = true
+    residual = 2.7755575615628914e-17
+    scenario = 1
+    step = 4
+    tolerance = 6.25e-8
+    unit = "MWh"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "R/1/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "R/1/2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "R/1/3"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "R/1/4"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "R/1/5"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "R/1/6"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "R/1/7"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "R/1/8"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-inventory"
+    object = "R/1"
+    pass = true
+    residual = 4.163336342344337e-17
+    scenario = 1
+    step = 5
+    tolerance = 6.25e-8
+    unit = "MWh"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "R/1/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 5
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "R/1/2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 5
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "R/1/3"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 5
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "R/1/4"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 5
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "R/1/5"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 5
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "R/1/6"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 5
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "R/1/7"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 5
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "R/1/8"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 5
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "R/1/9"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 5
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-spatial"
+    object = "R/1/10"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 5
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-bound"
+    object = "S/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 1
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-bound"
+    object = "R/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 1
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-bound"
+    object = "T_source/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 1
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-bound"
+    object = "T_load/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 1
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T2-source"
+    object = "1"
+    pass = true
+    residual = 7.771561172376096e-16
+    scenario = 1
+    step = 1
+    tolerance = 1.0e-6
+    unit = "MW"
+    [[validation.rows]]
+    id = "R7-T2-load"
+    object = "1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 1
+    tolerance = 1.0e-6
+    unit = "MW"
+    [[validation.rows]]
+    id = "R7-T-control"
+    object = "1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 1
+    tolerance = 1.0e-6
+    unit = "MW"
+    [[validation.rows]]
+    id = "R7-T-port-source"
+    object = "1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 1
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-idle-load"
+    object = "1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 1
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-mass"
+    object = "1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 1
+    tolerance = 1.0e-6
+    unit = "kg/s"
+    [[validation.rows]]
+    id = "R7-T3-mix"
+    object = "S/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 1
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T3-mix"
+    object = "R/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 1
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-bound"
+    object = "S/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 2
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-bound"
+    object = "R/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 2
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-bound"
+    object = "T_source/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 2
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-bound"
+    object = "T_load/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 2
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T2-source"
+    object = "1"
+    pass = true
+    residual = 7.771561172376096e-16
+    scenario = 1
+    step = 2
+    tolerance = 1.0e-6
+    unit = "MW"
+    [[validation.rows]]
+    id = "R7-T2-load"
+    object = "1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 2
+    tolerance = 1.0e-6
+    unit = "MW"
+    [[validation.rows]]
+    id = "R7-T-control"
+    object = "1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 2
+    tolerance = 1.0e-6
+    unit = "MW"
+    [[validation.rows]]
+    id = "R7-T-port-source"
+    object = "1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 2
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-idle-load"
+    object = "1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 2
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-mass"
+    object = "1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 2
+    tolerance = 1.0e-6
+    unit = "kg/s"
+    [[validation.rows]]
+    id = "R7-T3-mix"
+    object = "S/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 2
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T3-mix"
+    object = "R/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 2
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-bound"
+    object = "S/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 3
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-bound"
+    object = "R/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 3
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-bound"
+    object = "T_source/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 3
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-bound"
+    object = "T_load/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 3
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T2-source"
+    object = "1"
+    pass = true
+    residual = 7.771561172376096e-16
+    scenario = 1
+    step = 3
+    tolerance = 1.0e-6
+    unit = "MW"
+    [[validation.rows]]
+    id = "R7-T2-load"
+    object = "1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 3
+    tolerance = 1.0e-6
+    unit = "MW"
+    [[validation.rows]]
+    id = "R7-T-control"
+    object = "1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 3
+    tolerance = 1.0e-6
+    unit = "MW"
+    [[validation.rows]]
+    id = "R7-T-port-source"
+    object = "1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 3
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-idle-load"
+    object = "1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 3
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-mass"
+    object = "1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 3
+    tolerance = 1.0e-6
+    unit = "kg/s"
+    [[validation.rows]]
+    id = "R7-T3-mix"
+    object = "S/1"
+    pass = true
+    residual = 5.684341886080802e-14
+    scenario = 1
+    step = 3
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T3-mix"
+    object = "R/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 3
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-bound"
+    object = "S/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-bound"
+    object = "R/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-bound"
+    object = "T_source/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-bound"
+    object = "T_load/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T2-source"
+    object = "1"
+    pass = true
+    residual = 7.771561172376096e-16
+    scenario = 1
+    step = 4
+    tolerance = 1.0e-6
+    unit = "MW"
+    [[validation.rows]]
+    id = "R7-T2-load"
+    object = "1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 1.0e-6
+    unit = "MW"
+    [[validation.rows]]
+    id = "R7-T-control"
+    object = "1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 1.0e-6
+    unit = "MW"
+    [[validation.rows]]
+    id = "R7-T-port-source"
+    object = "1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-idle-load"
+    object = "1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-mass"
+    object = "1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 1.0e-6
+    unit = "kg/s"
+    [[validation.rows]]
+    id = "R7-T3-mix"
+    object = "S/1"
+    pass = true
+    residual = 5.684341886080802e-14
+    scenario = 1
+    step = 4
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T3-mix"
+    object = "R/1"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-bound"
+    object = "S/2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 1
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-bound"
+    object = "R/2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 1
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-bound"
+    object = "T_source/2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 1
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-bound"
+    object = "T_load/2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 1
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T2-source"
+    object = "2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 1
+    tolerance = 1.0e-6
+    unit = "MW"
+    [[validation.rows]]
+    id = "R7-T2-load"
+    object = "2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 1
+    tolerance = 1.0e-6
+    unit = "MW"
+    [[validation.rows]]
+    id = "R7-T-control"
+    object = "2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 1
+    tolerance = 1.0e-6
+    unit = "MW"
+    [[validation.rows]]
+    id = "R7-T-idle-source"
+    object = "2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 1
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-port-load"
+    object = "2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 1
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-mass"
+    object = "2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 1
+    tolerance = 1.0e-6
+    unit = "kg/s"
+    [[validation.rows]]
+    id = "R7-T3-mix"
+    object = "S/2"
+    pass = true
+    residual = 5.684341886080802e-14
+    scenario = 1
+    step = 1
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T3-mix"
+    object = "R/2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 1
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-bound"
+    object = "S/2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 2
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-bound"
+    object = "R/2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 2
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-bound"
+    object = "T_source/2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 2
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-bound"
+    object = "T_load/2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 2
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T2-source"
+    object = "2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 2
+    tolerance = 1.0e-6
+    unit = "MW"
+    [[validation.rows]]
+    id = "R7-T2-load"
+    object = "2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 2
+    tolerance = 1.0e-6
+    unit = "MW"
+    [[validation.rows]]
+    id = "R7-T-control"
+    object = "2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 2
+    tolerance = 1.0e-6
+    unit = "MW"
+    [[validation.rows]]
+    id = "R7-T-idle-source"
+    object = "2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 2
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-port-load"
+    object = "2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 2
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-mass"
+    object = "2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 2
+    tolerance = 1.0e-6
+    unit = "kg/s"
+    [[validation.rows]]
+    id = "R7-T3-mix"
+    object = "S/2"
+    pass = true
+    residual = 5.684341886080802e-14
+    scenario = 1
+    step = 2
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T3-mix"
+    object = "R/2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 2
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-bound"
+    object = "S/2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 3
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-bound"
+    object = "R/2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 3
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-bound"
+    object = "T_source/2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 3
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-bound"
+    object = "T_load/2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 3
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T2-source"
+    object = "2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 3
+    tolerance = 1.0e-6
+    unit = "MW"
+    [[validation.rows]]
+    id = "R7-T2-load"
+    object = "2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 3
+    tolerance = 1.0e-6
+    unit = "MW"
+    [[validation.rows]]
+    id = "R7-T-control"
+    object = "2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 3
+    tolerance = 1.0e-6
+    unit = "MW"
+    [[validation.rows]]
+    id = "R7-T-idle-source"
+    object = "2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 3
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-port-load"
+    object = "2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 3
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-mass"
+    object = "2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 3
+    tolerance = 1.0e-6
+    unit = "kg/s"
+    [[validation.rows]]
+    id = "R7-T3-mix"
+    object = "S/2"
+    pass = true
+    residual = 5.684341886080802e-14
+    scenario = 1
+    step = 3
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T3-mix"
+    object = "R/2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 3
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-bound"
+    object = "S/2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-bound"
+    object = "R/2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-bound"
+    object = "T_source/2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-bound"
+    object = "T_load/2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T2-source"
+    object = "2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 1.0e-6
+    unit = "MW"
+    [[validation.rows]]
+    id = "R7-T2-load"
+    object = "2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 1.0e-6
+    unit = "MW"
+    [[validation.rows]]
+    id = "R7-T-control"
+    object = "2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 1.0e-6
+    unit = "MW"
+    [[validation.rows]]
+    id = "R7-T-idle-source"
+    object = "2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-port-load"
+    object = "2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T-mass"
+    object = "2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 1.0e-6
+    unit = "kg/s"
+    [[validation.rows]]
+    id = "R7-T3-mix"
+    object = "S/2"
+    pass = true
+    residual = 5.684341886080802e-14
+    scenario = 1
+    step = 4
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T3-mix"
+    object = "R/2"
+    pass = true
+    residual = 0.0
+    scenario = 1
+    step = 4
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    id = "R7-T4-total"
+    object = "network"
+    pass = true
+    residual = 2.7755575615628914e-17
+    scenario = 1
+    step = 1
+    tolerance = 6.25e-8
+    unit = "MWh"
+    [[validation.rows]]
+    id = "R7-T4-total"
+    object = "network"
+    pass = true
+    residual = 6.790893773237864e-17
+    scenario = 1
+    step = 2
+    tolerance = 6.25e-8
+    unit = "MWh"
+    [[validation.rows]]
+    id = "R7-T4-total"
+    object = "network"
+    pass = true
+    residual = 1.0448826988825507e-16
+    scenario = 1
+    step = 3
+    tolerance = 6.25e-8
+    unit = "MWh"
+    [[validation.rows]]
+    id = "R7-T4-total"
+    object = "network"
+    pass = true
+    residual = 2.285786374992919e-16
+    scenario = 1
+    step = 4
+    tolerance = 6.25e-8
+    unit = "MWh"
+    [[validation.rows]]
+    id = "objective"
+    object = "network"
+    pass = true
+    residual = 1.3877787807814457e-17
+    scenario = 0
+    step = 0
+    tolerance = 6.25e-8
+    unit = "MWh"
+
+[values.E_R]
+data = [0.11666666666666665, 0.11666666666666661, 0.11666666666666659, 0.11666666666666659, 0.11666666666666647]
+shape = [1, 5, 1]
+
+[values.E_S]
+data = [0.11666666666666665, 0.10833333333333339, 0.10000000000000009, 0.09166666666666684, 0.08333333333333337]
+shape = [1, 5, 1]
+
+[values.H_delivered]
+data = [-0.0, 0.5333333333333333, -0.0, 0.5333333333333333, -0.0, 0.5333333333333333, -0.0, 0.5333333333333333]
+shape = [2, 4, 1]
+
+[values.R]
+data = [313.15, 313.1499999999999, 313.15, 313.1499999999999, 313.1499999999999, 313.1499999999999, 313.1499999999999, 313.1499999999999]
+shape = [2, 4, 1]
+
+[values.S]
+data = [343.15000000000003, 353.1499999999999, 343.15000000000003, 353.1499999999999, 343.15, 353.1499999999999, 343.15, 353.1499999999999]
+shape = [2, 4, 1]
+
+[values.T_load]
+data = [313.15, 313.1499999999999, 313.15, 313.1499999999999, 313.1499999999999, 313.1499999999999, 313.1499999999999, 313.1499999999999]
+shape = [2, 4, 1]
+
+[values.T_source]
+data = [343.15000000000003, 353.1499999999999, 343.15000000000003, 353.1499999999999, 343.15, 353.1499999999999, 343.15, 353.1499999999999]
+shape = [2, 4, 1]
+
+[values.out_R]
+data = [313.15, 313.15, 313.1499999999999, 313.1499999999999]
+shape = [1, 4, 1]
+
+[values.out_S]
+data = [353.1499999999999, 353.1499999999999, 353.1499999999999, 353.1499999999999]
+shape = [1, 4, 1]
