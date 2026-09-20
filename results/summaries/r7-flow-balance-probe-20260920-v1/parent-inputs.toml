@@ -1,0 +1,1638 @@
+[[records]]
+case_sha256 = "a983f5e316d1415b0657a1833af1705b6b3d682fbf13f726c6317935c08c3101"
+control = "prescribed"
+group = "original_hand"
+id = "original_hand_prescribed_highs"
+solver = "HiGHS"
+spec_sha256 = "9e0246d2013643d368d3342ea38b5a7a3235884d6aa25cd944931fdaeac49676"
+
+    [records.case]
+    battery_rule = "paper_sum_bound"
+    dt_h = 1.0
+    flow_control = "prescribed_positive"
+    heat_terminal_rule = "pipe_inventory_initial"
+    name = "synthetic_r7_normal_cycle_hand_v1"
+    origin = "synthetic"
+    periods = 4
+    probabilities = [0.25, 0.75]
+    scenario_information = "full_trajectory_after_shared_commitment"
+    schema = "r7-normal-case-v1"
+    thermal_model = "plug_flow_reference_v1"
+
+        [[records.case.devices]]
+        P_max_MW = 0.8
+        P_min_MW = 0.2
+        Q_max_Mvar = 0.5
+        Q_min_Mvar = 0.0
+        cost_P_USD_MWh = 20.0
+        cost_basis = "electric_equivalent"
+        electric_node = 1
+        heat_node = 1
+        heat_ratio = 1.0
+        id = "CHP1"
+        kind = "CHP"
+        min_off_h = 1.0
+        min_on_h = 2.0
+        previous_P_MW = [0.63, 0.63]
+        previous_commitment = 1
+        previous_duration_h = 3.0
+        ramp_MW_h = 1.0
+        shutdown_MW = 0.8
+        startup_MW = 0.8
+        startup_cost_USD = 30.0
+        terminal_rule = "carry_obligation"
+        [[records.case.devices]]
+        E_max_MWh = 0.3
+        E_min_MWh = 0.0
+        P_max_MW = 0.1
+        cost_P_USD_MWh = 1.0
+        electric_node = 2
+        eta_ch = 1.0
+        eta_dis = 1.0
+        id = "BES2"
+        initial_MWh = [0.2, 0.15]
+        kind = "BES"
+
+        [records.case.electric]
+        S_base_MVA = 1.0
+        fault_budget = 1
+        flow_domain = "forward_only"
+        load_MW = [[0.0, 0.0, 0.0, 0.0], [0.8, 0.8, 0.8, 0.8]]
+        nodes = 2
+        pcc_max_MW = 2.0
+        pcc_min_MW = 0.0
+        pcc_node = 1
+        price_USD_MWh = [100.0, 100.0, 100.0, 100.0]
+        qcc_max_Mvar = 1.0
+        qcc_min_Mvar = 0.0
+        root_eligible = [1, 1]
+        shed_fraction_max = [1.0, 1.0]
+        switch_budget = 1
+        tan_phi = [0.0, 0.0]
+        v_max_pu = 1.05
+        v_min_pu = 0.95
+        v_ref_pu = 1.0
+
+            [[records.case.electric.lines]]
+            P_max_MW = 2.0
+            Q_max_Mvar = 1.0
+            base_closed = 1
+            from = 1
+            r_pu = 0.01
+            to = 2
+            vulnerable = true
+            x_pu = 0.01
+
+        [records.case.heat]
+        R_max_K = 323.15
+        R_min_K = 303.15
+        R_reference_K = 313.15
+        S_max_K = 353.15
+        S_min_K = 333.15
+        S_reference_K = 343.15
+        ambient_K = [293.15, 293.15, 293.15, 293.15]
+        available = true
+        c_J_kgK = 4200.0
+        delta_pressure_max_Pa = 80000.0
+        delta_pressure_min_Pa = 5000.0
+        load_MW = [[0.0, 0.0, 0.0, 0.0], [0.63, 0.63, 0.63, 0.63]]
+        load_delta_max = [0.0, 60.0]
+        load_delta_min = [0.0, 0.0]
+        load_flow_kg_s = [[0.0, 0.0, 0.0, 0.0], [5.0, 5.0, 5.0, 5.0]]
+        load_flow_max = [0.0, 10.0]
+        nodes = 2
+        pressure_max_Pa = 100000.0
+        rho_kg_m3 = 1000.0
+        shed_fraction_max = [1.0, 1.0]
+        source_delta_max = [80.0, 0.0]
+        source_delta_min = [0.0, 0.0]
+        source_flow_kg_s = [[5.0, 5.0, 5.0, 5.0], [0.0, 0.0, 0.0, 0.0]]
+        source_flow_max = [10.0, 0.0]
+
+            [[records.case.heat.pipes]]
+            UA_R_W_K = 0.0
+            UA_S_W_K = 0.0
+            flow_change_max_kg_s = 5.0
+            flow_max_kg_s = 10.0
+            from = 1
+            history_R_K = [[313.15, 313.15]]
+            history_S_K = [[343.15, 343.15]]
+            mu_R_Pa_s2_kg2 = 100.0
+            mu_S_Pa_s2_kg2 = 100.0
+            normal_flow_kg_s = [5.0, 5.0, 5.0, 5.0]
+            to = 2
+            valve_max_Pa = 10000.0
+            volume_R_m3 = 18.0
+            volume_S_m3 = 18.0
+
+                [[records.case.heat.pipes.initial_R_profiles]]
+                mass_kg = [18000.0]
+                temperature_K = [313.15]
+                [[records.case.heat.pipes.initial_R_profiles]]
+                mass_kg = [18000.0]
+                temperature_K = [313.15]
+
+                [[records.case.heat.pipes.initial_S_profiles]]
+                mass_kg = [18000.0]
+                temperature_K = [343.15]
+                [[records.case.heat.pipes.initial_S_profiles]]
+                mass_kg = [18000.0]
+                temperature_K = [343.15]
+
+        [records.case.units]
+        energy = "MWh"
+        flow = "kg/s"
+        power = "MW"
+        pressure = "Pa"
+        price = "USD/MWh"
+        reactive = "Mvar"
+        temperature = "K"
+        time = "h"
+
+    [records.spec]
+    case_sha256 = "a983f5e316d1415b0657a1833af1705b6b3d682fbf13f726c6317935c08c3101"
+    flow_unit = "kg/s"
+    scenario_rule = "shared_flows"
+    schema = "r7-normal-flow-spec-v1"
+    thermal_rule = "exact_mass_overlap_zero_UA"
+    version = "r7_continuous_positive_lossless_v1"
+
+        [records.spec.load_max]
+        data = [0.0, 5.0, 0.0, 5.0, 0.0, 5.0, 0.0, 5.0]
+        shape = [2, 4]
+
+        [records.spec.load_min]
+        data = [0.0, 5.0, 0.0, 5.0, 0.0, 5.0, 0.0, 5.0]
+        shape = [2, 4]
+
+        [records.spec.pipe_max]
+        data = [5.0, 5.0, 5.0, 5.0]
+        shape = [1, 4]
+
+        [records.spec.pipe_min]
+        data = [5.0, 5.0, 5.0, 5.0]
+        shape = [1, 4]
+
+        [records.spec.source_max]
+        data = [5.0, 0.0, 5.0, 0.0, 5.0, 0.0, 5.0, 0.0]
+        shape = [2, 4]
+
+        [records.spec.source_min]
+        data = [5.0, 0.0, 5.0, 0.0, 5.0, 0.0, 5.0, 0.0]
+        shape = [2, 4]
+[[records]]
+case_sha256 = "a983f5e316d1415b0657a1833af1705b6b3d682fbf13f726c6317935c08c3101"
+control = "prescribed"
+group = "original_hand"
+id = "original_hand_prescribed_gurobi"
+solver = "Gurobi"
+spec_sha256 = "9e0246d2013643d368d3342ea38b5a7a3235884d6aa25cd944931fdaeac49676"
+
+    [records.case]
+    battery_rule = "paper_sum_bound"
+    dt_h = 1.0
+    flow_control = "prescribed_positive"
+    heat_terminal_rule = "pipe_inventory_initial"
+    name = "synthetic_r7_normal_cycle_hand_v1"
+    origin = "synthetic"
+    periods = 4
+    probabilities = [0.25, 0.75]
+    scenario_information = "full_trajectory_after_shared_commitment"
+    schema = "r7-normal-case-v1"
+    thermal_model = "plug_flow_reference_v1"
+
+        [[records.case.devices]]
+        P_max_MW = 0.8
+        P_min_MW = 0.2
+        Q_max_Mvar = 0.5
+        Q_min_Mvar = 0.0
+        cost_P_USD_MWh = 20.0
+        cost_basis = "electric_equivalent"
+        electric_node = 1
+        heat_node = 1
+        heat_ratio = 1.0
+        id = "CHP1"
+        kind = "CHP"
+        min_off_h = 1.0
+        min_on_h = 2.0
+        previous_P_MW = [0.63, 0.63]
+        previous_commitment = 1
+        previous_duration_h = 3.0
+        ramp_MW_h = 1.0
+        shutdown_MW = 0.8
+        startup_MW = 0.8
+        startup_cost_USD = 30.0
+        terminal_rule = "carry_obligation"
+        [[records.case.devices]]
+        E_max_MWh = 0.3
+        E_min_MWh = 0.0
+        P_max_MW = 0.1
+        cost_P_USD_MWh = 1.0
+        electric_node = 2
+        eta_ch = 1.0
+        eta_dis = 1.0
+        id = "BES2"
+        initial_MWh = [0.2, 0.15]
+        kind = "BES"
+
+        [records.case.electric]
+        S_base_MVA = 1.0
+        fault_budget = 1
+        flow_domain = "forward_only"
+        load_MW = [[0.0, 0.0, 0.0, 0.0], [0.8, 0.8, 0.8, 0.8]]
+        nodes = 2
+        pcc_max_MW = 2.0
+        pcc_min_MW = 0.0
+        pcc_node = 1
+        price_USD_MWh = [100.0, 100.0, 100.0, 100.0]
+        qcc_max_Mvar = 1.0
+        qcc_min_Mvar = 0.0
+        root_eligible = [1, 1]
+        shed_fraction_max = [1.0, 1.0]
+        switch_budget = 1
+        tan_phi = [0.0, 0.0]
+        v_max_pu = 1.05
+        v_min_pu = 0.95
+        v_ref_pu = 1.0
+
+            [[records.case.electric.lines]]
+            P_max_MW = 2.0
+            Q_max_Mvar = 1.0
+            base_closed = 1
+            from = 1
+            r_pu = 0.01
+            to = 2
+            vulnerable = true
+            x_pu = 0.01
+
+        [records.case.heat]
+        R_max_K = 323.15
+        R_min_K = 303.15
+        R_reference_K = 313.15
+        S_max_K = 353.15
+        S_min_K = 333.15
+        S_reference_K = 343.15
+        ambient_K = [293.15, 293.15, 293.15, 293.15]
+        available = true
+        c_J_kgK = 4200.0
+        delta_pressure_max_Pa = 80000.0
+        delta_pressure_min_Pa = 5000.0
+        load_MW = [[0.0, 0.0, 0.0, 0.0], [0.63, 0.63, 0.63, 0.63]]
+        load_delta_max = [0.0, 60.0]
+        load_delta_min = [0.0, 0.0]
+        load_flow_kg_s = [[0.0, 0.0, 0.0, 0.0], [5.0, 5.0, 5.0, 5.0]]
+        load_flow_max = [0.0, 10.0]
+        nodes = 2
+        pressure_max_Pa = 100000.0
+        rho_kg_m3 = 1000.0
+        shed_fraction_max = [1.0, 1.0]
+        source_delta_max = [80.0, 0.0]
+        source_delta_min = [0.0, 0.0]
+        source_flow_kg_s = [[5.0, 5.0, 5.0, 5.0], [0.0, 0.0, 0.0, 0.0]]
+        source_flow_max = [10.0, 0.0]
+
+            [[records.case.heat.pipes]]
+            UA_R_W_K = 0.0
+            UA_S_W_K = 0.0
+            flow_change_max_kg_s = 5.0
+            flow_max_kg_s = 10.0
+            from = 1
+            history_R_K = [[313.15, 313.15]]
+            history_S_K = [[343.15, 343.15]]
+            mu_R_Pa_s2_kg2 = 100.0
+            mu_S_Pa_s2_kg2 = 100.0
+            normal_flow_kg_s = [5.0, 5.0, 5.0, 5.0]
+            to = 2
+            valve_max_Pa = 10000.0
+            volume_R_m3 = 18.0
+            volume_S_m3 = 18.0
+
+                [[records.case.heat.pipes.initial_R_profiles]]
+                mass_kg = [18000.0]
+                temperature_K = [313.15]
+                [[records.case.heat.pipes.initial_R_profiles]]
+                mass_kg = [18000.0]
+                temperature_K = [313.15]
+
+                [[records.case.heat.pipes.initial_S_profiles]]
+                mass_kg = [18000.0]
+                temperature_K = [343.15]
+                [[records.case.heat.pipes.initial_S_profiles]]
+                mass_kg = [18000.0]
+                temperature_K = [343.15]
+
+        [records.case.units]
+        energy = "MWh"
+        flow = "kg/s"
+        power = "MW"
+        pressure = "Pa"
+        price = "USD/MWh"
+        reactive = "Mvar"
+        temperature = "K"
+        time = "h"
+
+    [records.spec]
+    case_sha256 = "a983f5e316d1415b0657a1833af1705b6b3d682fbf13f726c6317935c08c3101"
+    flow_unit = "kg/s"
+    scenario_rule = "shared_flows"
+    schema = "r7-normal-flow-spec-v1"
+    thermal_rule = "exact_mass_overlap_zero_UA"
+    version = "r7_continuous_positive_lossless_v1"
+
+        [records.spec.load_max]
+        data = [0.0, 5.0, 0.0, 5.0, 0.0, 5.0, 0.0, 5.0]
+        shape = [2, 4]
+
+        [records.spec.load_min]
+        data = [0.0, 5.0, 0.0, 5.0, 0.0, 5.0, 0.0, 5.0]
+        shape = [2, 4]
+
+        [records.spec.pipe_max]
+        data = [5.0, 5.0, 5.0, 5.0]
+        shape = [1, 4]
+
+        [records.spec.pipe_min]
+        data = [5.0, 5.0, 5.0, 5.0]
+        shape = [1, 4]
+
+        [records.spec.source_max]
+        data = [5.0, 0.0, 5.0, 0.0, 5.0, 0.0, 5.0, 0.0]
+        shape = [2, 4]
+
+        [records.spec.source_min]
+        data = [5.0, 0.0, 5.0, 0.0, 5.0, 0.0, 5.0, 0.0]
+        shape = [2, 4]
+[[records]]
+case_sha256 = "a983f5e316d1415b0657a1833af1705b6b3d682fbf13f726c6317935c08c3101"
+control = "continuous"
+group = "original_hand"
+id = "original_hand_continuous_gurobi"
+solver = "Gurobi"
+spec_sha256 = "cb25fa343e6737b21121c1173ec78c45f6c9500741595c1aa2b743f09c30d59f"
+
+    [records.case]
+    battery_rule = "paper_sum_bound"
+    dt_h = 1.0
+    flow_control = "prescribed_positive"
+    heat_terminal_rule = "pipe_inventory_initial"
+    name = "synthetic_r7_normal_cycle_hand_v1"
+    origin = "synthetic"
+    periods = 4
+    probabilities = [0.25, 0.75]
+    scenario_information = "full_trajectory_after_shared_commitment"
+    schema = "r7-normal-case-v1"
+    thermal_model = "plug_flow_reference_v1"
+
+        [[records.case.devices]]
+        P_max_MW = 0.8
+        P_min_MW = 0.2
+        Q_max_Mvar = 0.5
+        Q_min_Mvar = 0.0
+        cost_P_USD_MWh = 20.0
+        cost_basis = "electric_equivalent"
+        electric_node = 1
+        heat_node = 1
+        heat_ratio = 1.0
+        id = "CHP1"
+        kind = "CHP"
+        min_off_h = 1.0
+        min_on_h = 2.0
+        previous_P_MW = [0.63, 0.63]
+        previous_commitment = 1
+        previous_duration_h = 3.0
+        ramp_MW_h = 1.0
+        shutdown_MW = 0.8
+        startup_MW = 0.8
+        startup_cost_USD = 30.0
+        terminal_rule = "carry_obligation"
+        [[records.case.devices]]
+        E_max_MWh = 0.3
+        E_min_MWh = 0.0
+        P_max_MW = 0.1
+        cost_P_USD_MWh = 1.0
+        electric_node = 2
+        eta_ch = 1.0
+        eta_dis = 1.0
+        id = "BES2"
+        initial_MWh = [0.2, 0.15]
+        kind = "BES"
+
+        [records.case.electric]
+        S_base_MVA = 1.0
+        fault_budget = 1
+        flow_domain = "forward_only"
+        load_MW = [[0.0, 0.0, 0.0, 0.0], [0.8, 0.8, 0.8, 0.8]]
+        nodes = 2
+        pcc_max_MW = 2.0
+        pcc_min_MW = 0.0
+        pcc_node = 1
+        price_USD_MWh = [100.0, 100.0, 100.0, 100.0]
+        qcc_max_Mvar = 1.0
+        qcc_min_Mvar = 0.0
+        root_eligible = [1, 1]
+        shed_fraction_max = [1.0, 1.0]
+        switch_budget = 1
+        tan_phi = [0.0, 0.0]
+        v_max_pu = 1.05
+        v_min_pu = 0.95
+        v_ref_pu = 1.0
+
+            [[records.case.electric.lines]]
+            P_max_MW = 2.0
+            Q_max_Mvar = 1.0
+            base_closed = 1
+            from = 1
+            r_pu = 0.01
+            to = 2
+            vulnerable = true
+            x_pu = 0.01
+
+        [records.case.heat]
+        R_max_K = 323.15
+        R_min_K = 303.15
+        R_reference_K = 313.15
+        S_max_K = 353.15
+        S_min_K = 333.15
+        S_reference_K = 343.15
+        ambient_K = [293.15, 293.15, 293.15, 293.15]
+        available = true
+        c_J_kgK = 4200.0
+        delta_pressure_max_Pa = 80000.0
+        delta_pressure_min_Pa = 5000.0
+        load_MW = [[0.0, 0.0, 0.0, 0.0], [0.63, 0.63, 0.63, 0.63]]
+        load_delta_max = [0.0, 60.0]
+        load_delta_min = [0.0, 0.0]
+        load_flow_kg_s = [[0.0, 0.0, 0.0, 0.0], [5.0, 5.0, 5.0, 5.0]]
+        load_flow_max = [0.0, 10.0]
+        nodes = 2
+        pressure_max_Pa = 100000.0
+        rho_kg_m3 = 1000.0
+        shed_fraction_max = [1.0, 1.0]
+        source_delta_max = [80.0, 0.0]
+        source_delta_min = [0.0, 0.0]
+        source_flow_kg_s = [[5.0, 5.0, 5.0, 5.0], [0.0, 0.0, 0.0, 0.0]]
+        source_flow_max = [10.0, 0.0]
+
+            [[records.case.heat.pipes]]
+            UA_R_W_K = 0.0
+            UA_S_W_K = 0.0
+            flow_change_max_kg_s = 5.0
+            flow_max_kg_s = 10.0
+            from = 1
+            history_R_K = [[313.15, 313.15]]
+            history_S_K = [[343.15, 343.15]]
+            mu_R_Pa_s2_kg2 = 100.0
+            mu_S_Pa_s2_kg2 = 100.0
+            normal_flow_kg_s = [5.0, 5.0, 5.0, 5.0]
+            to = 2
+            valve_max_Pa = 10000.0
+            volume_R_m3 = 18.0
+            volume_S_m3 = 18.0
+
+                [[records.case.heat.pipes.initial_R_profiles]]
+                mass_kg = [18000.0]
+                temperature_K = [313.15]
+                [[records.case.heat.pipes.initial_R_profiles]]
+                mass_kg = [18000.0]
+                temperature_K = [313.15]
+
+                [[records.case.heat.pipes.initial_S_profiles]]
+                mass_kg = [18000.0]
+                temperature_K = [343.15]
+                [[records.case.heat.pipes.initial_S_profiles]]
+                mass_kg = [18000.0]
+                temperature_K = [343.15]
+
+        [records.case.units]
+        energy = "MWh"
+        flow = "kg/s"
+        power = "MW"
+        pressure = "Pa"
+        price = "USD/MWh"
+        reactive = "Mvar"
+        temperature = "K"
+        time = "h"
+
+    [records.spec]
+    case_sha256 = "a983f5e316d1415b0657a1833af1705b6b3d682fbf13f726c6317935c08c3101"
+    flow_unit = "kg/s"
+    scenario_rule = "shared_flows"
+    schema = "r7-normal-flow-spec-v1"
+    thermal_rule = "exact_mass_overlap_zero_UA"
+    version = "r7_continuous_positive_lossless_v1"
+
+        [records.spec.load_max]
+        data = [0.0, 10.0, 0.0, 10.0, 0.0, 10.0, 0.0, 10.0]
+        shape = [2, 4]
+
+        [records.spec.load_min]
+        data = [0.0, 0.05, 0.0, 0.05, 0.0, 0.05, 0.0, 0.05]
+        shape = [2, 4]
+
+        [records.spec.pipe_max]
+        data = [10.0, 10.0, 10.0, 10.0]
+        shape = [1, 4]
+
+        [records.spec.pipe_min]
+        data = [0.05, 0.05, 0.05, 0.05]
+        shape = [1, 4]
+
+        [records.spec.source_max]
+        data = [10.0, 0.0, 10.0, 0.0, 10.0, 0.0, 10.0, 0.0]
+        shape = [2, 4]
+
+        [records.spec.source_min]
+        data = [0.05, 0.0, 0.05, 0.0, 0.05, 0.0, 0.05, 0.0]
+        shape = [2, 4]
+[[records]]
+case_sha256 = "ac0d554e1c8a8f4ab722d0fa9d001492c2b180cf94158fbf5daea571dcf328bd"
+control = "prescribed"
+group = "reserve"
+id = "reserve_prescribed_highs"
+solver = "HiGHS"
+spec_sha256 = "4e14e0c7ca5387609108ed59919bc9e100550bc68cce320b92f1302de1e22015"
+
+    [records.case]
+    battery_rule = "paper_sum_bound"
+    dt_h = 1.0
+    flow_control = "prescribed_positive"
+    heat_terminal_rule = "pipe_inventory_initial"
+    name = "synthetic_r7_anticipatory_battery_hand_v1"
+    origin = "synthetic"
+    periods = 4
+    probabilities = [0.25, 0.75]
+    scenario_information = "full_trajectory_after_shared_commitment"
+    schema = "r7-normal-case-v1"
+    thermal_model = "plug_flow_reference_v1"
+
+        [[records.case.devices]]
+        P_max_MW = 0.8
+        P_min_MW = 0.0
+        Q_max_Mvar = 0.5
+        Q_min_Mvar = 0.0
+        cost_P_USD_MWh = 20.0
+        cost_basis = "electric_equivalent"
+        electric_node = 1
+        heat_node = 1
+        heat_ratio = 1.0
+        id = "CHP1"
+        kind = "CHP"
+        min_off_h = 1.0
+        min_on_h = 2.0
+        previous_P_MW = [0.4, 0.4]
+        previous_commitment = 1
+        previous_duration_h = 3.0
+        ramp_MW_h = 1.0
+        shutdown_MW = 0.8
+        startup_MW = 0.8
+        startup_cost_USD = 30.0
+        terminal_rule = "carry_obligation"
+        [[records.case.devices]]
+        E_max_MWh = 1.0
+        E_min_MWh = 0.0
+        P_max_MW = 1.0
+        cost_P_USD_MWh = 1.0
+        electric_node = 2
+        eta_ch = 1.0
+        eta_dis = 1.0
+        id = "BES2"
+        initial_MWh = [0.2, 0.15]
+        kind = "BES"
+
+        [records.case.electric]
+        S_base_MVA = 1.0
+        fault_budget = 1
+        flow_domain = "forward_only"
+        load_MW = [[0.0, 0.0, 0.0, 0.0], [0.8, 0.8, 0.8, 0.8]]
+        nodes = 2
+        pcc_max_MW = 2.0
+        pcc_min_MW = 0.0
+        pcc_node = 1
+        price_USD_MWh = [100.0, 100.0, 100.0, 100.0]
+        qcc_max_Mvar = 1.0
+        qcc_min_Mvar = 0.0
+        root_eligible = [1, 1]
+        shed_fraction_max = [1.0, 1.0]
+        switch_budget = 1
+        tan_phi = [0.0, 0.0]
+        v_max_pu = 1.05
+        v_min_pu = 0.95
+        v_ref_pu = 1.0
+
+            [[records.case.electric.lines]]
+            P_max_MW = 2.0
+            Q_max_Mvar = 1.0
+            base_closed = 1
+            from = 1
+            r_pu = 0.01
+            to = 2
+            vulnerable = true
+            x_pu = 0.01
+
+        [records.case.heat]
+        R_max_K = 323.15
+        R_min_K = 303.15
+        R_reference_K = 323.10238095238094
+        S_max_K = 353.15
+        S_min_K = 333.15
+        S_reference_K = 342.15
+        ambient_K = [293.15, 293.15, 293.15, 293.15]
+        available = true
+        c_J_kgK = 4200.0
+        delta_pressure_max_Pa = 80000.0
+        delta_pressure_min_Pa = 5000.0
+        load_MW = [[0.0, 0.0, 0.0, 0.0], [0.4, 0.4, 0.4, 0.4]]
+        load_delta_max = [0.0, 60.0]
+        load_delta_min = [0.0, 0.0]
+        load_flow_kg_s = [[0.0, 0.0, 0.0, 0.0], [5.0, 5.0, 5.0, 5.0]]
+        load_flow_max = [0.0, 10.0]
+        nodes = 2
+        pressure_max_Pa = 100000.0
+        rho_kg_m3 = 1000.0
+        shed_fraction_max = [1.0, 1.0]
+        source_delta_max = [80.0, 0.0]
+        source_delta_min = [0.0, 0.0]
+        source_flow_kg_s = [[5.0, 5.0, 5.0, 5.0], [0.0, 0.0, 0.0, 0.0]]
+        source_flow_max = [10.0, 0.0]
+
+            [[records.case.heat.pipes]]
+            UA_R_W_K = 0.0
+            UA_S_W_K = 0.0
+            flow_change_max_kg_s = 5.0
+            flow_max_kg_s = 10.0
+            from = 1
+            history_R_K = [[323.10238095238094, 323.10238095238094]]
+            history_S_K = [[342.15, 342.15]]
+            mu_R_Pa_s2_kg2 = 100.0
+            mu_S_Pa_s2_kg2 = 100.0
+            normal_flow_kg_s = [5.0, 5.0, 5.0, 5.0]
+            to = 2
+            valve_max_Pa = 10000.0
+            volume_R_m3 = 18.0
+            volume_S_m3 = 18.0
+
+                [[records.case.heat.pipes.initial_R_profiles]]
+                mass_kg = [18000.0]
+                temperature_K = [323.10238095238094]
+                [[records.case.heat.pipes.initial_R_profiles]]
+                mass_kg = [18000.0]
+                temperature_K = [323.10238095238094]
+
+                [[records.case.heat.pipes.initial_S_profiles]]
+                mass_kg = [18000.0]
+                temperature_K = [342.15]
+                [[records.case.heat.pipes.initial_S_profiles]]
+                mass_kg = [18000.0]
+                temperature_K = [342.15]
+
+        [records.case.units]
+        energy = "MWh"
+        flow = "kg/s"
+        power = "MW"
+        pressure = "Pa"
+        price = "USD/MWh"
+        reactive = "Mvar"
+        temperature = "K"
+        time = "h"
+
+    [records.spec]
+    case_sha256 = "ac0d554e1c8a8f4ab722d0fa9d001492c2b180cf94158fbf5daea571dcf328bd"
+    flow_unit = "kg/s"
+    scenario_rule = "shared_flows"
+    schema = "r7-normal-flow-spec-v1"
+    thermal_rule = "exact_mass_overlap_zero_UA"
+    version = "r7_continuous_positive_lossless_v1"
+
+        [records.spec.load_max]
+        data = [0.0, 5.0, 0.0, 5.0, 0.0, 5.0, 0.0, 5.0]
+        shape = [2, 4]
+
+        [records.spec.load_min]
+        data = [0.0, 5.0, 0.0, 5.0, 0.0, 5.0, 0.0, 5.0]
+        shape = [2, 4]
+
+        [records.spec.pipe_max]
+        data = [5.0, 5.0, 5.0, 5.0]
+        shape = [1, 4]
+
+        [records.spec.pipe_min]
+        data = [5.0, 5.0, 5.0, 5.0]
+        shape = [1, 4]
+
+        [records.spec.source_max]
+        data = [5.0, 0.0, 5.0, 0.0, 5.0, 0.0, 5.0, 0.0]
+        shape = [2, 4]
+
+        [records.spec.source_min]
+        data = [5.0, 0.0, 5.0, 0.0, 5.0, 0.0, 5.0, 0.0]
+        shape = [2, 4]
+[[records]]
+case_sha256 = "ac0d554e1c8a8f4ab722d0fa9d001492c2b180cf94158fbf5daea571dcf328bd"
+control = "prescribed"
+group = "reserve"
+id = "reserve_prescribed_gurobi"
+solver = "Gurobi"
+spec_sha256 = "4e14e0c7ca5387609108ed59919bc9e100550bc68cce320b92f1302de1e22015"
+
+    [records.case]
+    battery_rule = "paper_sum_bound"
+    dt_h = 1.0
+    flow_control = "prescribed_positive"
+    heat_terminal_rule = "pipe_inventory_initial"
+    name = "synthetic_r7_anticipatory_battery_hand_v1"
+    origin = "synthetic"
+    periods = 4
+    probabilities = [0.25, 0.75]
+    scenario_information = "full_trajectory_after_shared_commitment"
+    schema = "r7-normal-case-v1"
+    thermal_model = "plug_flow_reference_v1"
+
+        [[records.case.devices]]
+        P_max_MW = 0.8
+        P_min_MW = 0.0
+        Q_max_Mvar = 0.5
+        Q_min_Mvar = 0.0
+        cost_P_USD_MWh = 20.0
+        cost_basis = "electric_equivalent"
+        electric_node = 1
+        heat_node = 1
+        heat_ratio = 1.0
+        id = "CHP1"
+        kind = "CHP"
+        min_off_h = 1.0
+        min_on_h = 2.0
+        previous_P_MW = [0.4, 0.4]
+        previous_commitment = 1
+        previous_duration_h = 3.0
+        ramp_MW_h = 1.0
+        shutdown_MW = 0.8
+        startup_MW = 0.8
+        startup_cost_USD = 30.0
+        terminal_rule = "carry_obligation"
+        [[records.case.devices]]
+        E_max_MWh = 1.0
+        E_min_MWh = 0.0
+        P_max_MW = 1.0
+        cost_P_USD_MWh = 1.0
+        electric_node = 2
+        eta_ch = 1.0
+        eta_dis = 1.0
+        id = "BES2"
+        initial_MWh = [0.2, 0.15]
+        kind = "BES"
+
+        [records.case.electric]
+        S_base_MVA = 1.0
+        fault_budget = 1
+        flow_domain = "forward_only"
+        load_MW = [[0.0, 0.0, 0.0, 0.0], [0.8, 0.8, 0.8, 0.8]]
+        nodes = 2
+        pcc_max_MW = 2.0
+        pcc_min_MW = 0.0
+        pcc_node = 1
+        price_USD_MWh = [100.0, 100.0, 100.0, 100.0]
+        qcc_max_Mvar = 1.0
+        qcc_min_Mvar = 0.0
+        root_eligible = [1, 1]
+        shed_fraction_max = [1.0, 1.0]
+        switch_budget = 1
+        tan_phi = [0.0, 0.0]
+        v_max_pu = 1.05
+        v_min_pu = 0.95
+        v_ref_pu = 1.0
+
+            [[records.case.electric.lines]]
+            P_max_MW = 2.0
+            Q_max_Mvar = 1.0
+            base_closed = 1
+            from = 1
+            r_pu = 0.01
+            to = 2
+            vulnerable = true
+            x_pu = 0.01
+
+        [records.case.heat]
+        R_max_K = 323.15
+        R_min_K = 303.15
+        R_reference_K = 323.10238095238094
+        S_max_K = 353.15
+        S_min_K = 333.15
+        S_reference_K = 342.15
+        ambient_K = [293.15, 293.15, 293.15, 293.15]
+        available = true
+        c_J_kgK = 4200.0
+        delta_pressure_max_Pa = 80000.0
+        delta_pressure_min_Pa = 5000.0
+        load_MW = [[0.0, 0.0, 0.0, 0.0], [0.4, 0.4, 0.4, 0.4]]
+        load_delta_max = [0.0, 60.0]
+        load_delta_min = [0.0, 0.0]
+        load_flow_kg_s = [[0.0, 0.0, 0.0, 0.0], [5.0, 5.0, 5.0, 5.0]]
+        load_flow_max = [0.0, 10.0]
+        nodes = 2
+        pressure_max_Pa = 100000.0
+        rho_kg_m3 = 1000.0
+        shed_fraction_max = [1.0, 1.0]
+        source_delta_max = [80.0, 0.0]
+        source_delta_min = [0.0, 0.0]
+        source_flow_kg_s = [[5.0, 5.0, 5.0, 5.0], [0.0, 0.0, 0.0, 0.0]]
+        source_flow_max = [10.0, 0.0]
+
+            [[records.case.heat.pipes]]
+            UA_R_W_K = 0.0
+            UA_S_W_K = 0.0
+            flow_change_max_kg_s = 5.0
+            flow_max_kg_s = 10.0
+            from = 1
+            history_R_K = [[323.10238095238094, 323.10238095238094]]
+            history_S_K = [[342.15, 342.15]]
+            mu_R_Pa_s2_kg2 = 100.0
+            mu_S_Pa_s2_kg2 = 100.0
+            normal_flow_kg_s = [5.0, 5.0, 5.0, 5.0]
+            to = 2
+            valve_max_Pa = 10000.0
+            volume_R_m3 = 18.0
+            volume_S_m3 = 18.0
+
+                [[records.case.heat.pipes.initial_R_profiles]]
+                mass_kg = [18000.0]
+                temperature_K = [323.10238095238094]
+                [[records.case.heat.pipes.initial_R_profiles]]
+                mass_kg = [18000.0]
+                temperature_K = [323.10238095238094]
+
+                [[records.case.heat.pipes.initial_S_profiles]]
+                mass_kg = [18000.0]
+                temperature_K = [342.15]
+                [[records.case.heat.pipes.initial_S_profiles]]
+                mass_kg = [18000.0]
+                temperature_K = [342.15]
+
+        [records.case.units]
+        energy = "MWh"
+        flow = "kg/s"
+        power = "MW"
+        pressure = "Pa"
+        price = "USD/MWh"
+        reactive = "Mvar"
+        temperature = "K"
+        time = "h"
+
+    [records.spec]
+    case_sha256 = "ac0d554e1c8a8f4ab722d0fa9d001492c2b180cf94158fbf5daea571dcf328bd"
+    flow_unit = "kg/s"
+    scenario_rule = "shared_flows"
+    schema = "r7-normal-flow-spec-v1"
+    thermal_rule = "exact_mass_overlap_zero_UA"
+    version = "r7_continuous_positive_lossless_v1"
+
+        [records.spec.load_max]
+        data = [0.0, 5.0, 0.0, 5.0, 0.0, 5.0, 0.0, 5.0]
+        shape = [2, 4]
+
+        [records.spec.load_min]
+        data = [0.0, 5.0, 0.0, 5.0, 0.0, 5.0, 0.0, 5.0]
+        shape = [2, 4]
+
+        [records.spec.pipe_max]
+        data = [5.0, 5.0, 5.0, 5.0]
+        shape = [1, 4]
+
+        [records.spec.pipe_min]
+        data = [5.0, 5.0, 5.0, 5.0]
+        shape = [1, 4]
+
+        [records.spec.source_max]
+        data = [5.0, 0.0, 5.0, 0.0, 5.0, 0.0, 5.0, 0.0]
+        shape = [2, 4]
+
+        [records.spec.source_min]
+        data = [5.0, 0.0, 5.0, 0.0, 5.0, 0.0, 5.0, 0.0]
+        shape = [2, 4]
+[[records]]
+case_sha256 = "ac0d554e1c8a8f4ab722d0fa9d001492c2b180cf94158fbf5daea571dcf328bd"
+control = "continuous"
+group = "reserve"
+id = "reserve_continuous_gurobi"
+solver = "Gurobi"
+spec_sha256 = "224d20a1c08aec0de5146fc8b70551b297253475b1a02e83e02a666606edf14b"
+
+    [records.case]
+    battery_rule = "paper_sum_bound"
+    dt_h = 1.0
+    flow_control = "prescribed_positive"
+    heat_terminal_rule = "pipe_inventory_initial"
+    name = "synthetic_r7_anticipatory_battery_hand_v1"
+    origin = "synthetic"
+    periods = 4
+    probabilities = [0.25, 0.75]
+    scenario_information = "full_trajectory_after_shared_commitment"
+    schema = "r7-normal-case-v1"
+    thermal_model = "plug_flow_reference_v1"
+
+        [[records.case.devices]]
+        P_max_MW = 0.8
+        P_min_MW = 0.0
+        Q_max_Mvar = 0.5
+        Q_min_Mvar = 0.0
+        cost_P_USD_MWh = 20.0
+        cost_basis = "electric_equivalent"
+        electric_node = 1
+        heat_node = 1
+        heat_ratio = 1.0
+        id = "CHP1"
+        kind = "CHP"
+        min_off_h = 1.0
+        min_on_h = 2.0
+        previous_P_MW = [0.4, 0.4]
+        previous_commitment = 1
+        previous_duration_h = 3.0
+        ramp_MW_h = 1.0
+        shutdown_MW = 0.8
+        startup_MW = 0.8
+        startup_cost_USD = 30.0
+        terminal_rule = "carry_obligation"
+        [[records.case.devices]]
+        E_max_MWh = 1.0
+        E_min_MWh = 0.0
+        P_max_MW = 1.0
+        cost_P_USD_MWh = 1.0
+        electric_node = 2
+        eta_ch = 1.0
+        eta_dis = 1.0
+        id = "BES2"
+        initial_MWh = [0.2, 0.15]
+        kind = "BES"
+
+        [records.case.electric]
+        S_base_MVA = 1.0
+        fault_budget = 1
+        flow_domain = "forward_only"
+        load_MW = [[0.0, 0.0, 0.0, 0.0], [0.8, 0.8, 0.8, 0.8]]
+        nodes = 2
+        pcc_max_MW = 2.0
+        pcc_min_MW = 0.0
+        pcc_node = 1
+        price_USD_MWh = [100.0, 100.0, 100.0, 100.0]
+        qcc_max_Mvar = 1.0
+        qcc_min_Mvar = 0.0
+        root_eligible = [1, 1]
+        shed_fraction_max = [1.0, 1.0]
+        switch_budget = 1
+        tan_phi = [0.0, 0.0]
+        v_max_pu = 1.05
+        v_min_pu = 0.95
+        v_ref_pu = 1.0
+
+            [[records.case.electric.lines]]
+            P_max_MW = 2.0
+            Q_max_Mvar = 1.0
+            base_closed = 1
+            from = 1
+            r_pu = 0.01
+            to = 2
+            vulnerable = true
+            x_pu = 0.01
+
+        [records.case.heat]
+        R_max_K = 323.15
+        R_min_K = 303.15
+        R_reference_K = 323.10238095238094
+        S_max_K = 353.15
+        S_min_K = 333.15
+        S_reference_K = 342.15
+        ambient_K = [293.15, 293.15, 293.15, 293.15]
+        available = true
+        c_J_kgK = 4200.0
+        delta_pressure_max_Pa = 80000.0
+        delta_pressure_min_Pa = 5000.0
+        load_MW = [[0.0, 0.0, 0.0, 0.0], [0.4, 0.4, 0.4, 0.4]]
+        load_delta_max = [0.0, 60.0]
+        load_delta_min = [0.0, 0.0]
+        load_flow_kg_s = [[0.0, 0.0, 0.0, 0.0], [5.0, 5.0, 5.0, 5.0]]
+        load_flow_max = [0.0, 10.0]
+        nodes = 2
+        pressure_max_Pa = 100000.0
+        rho_kg_m3 = 1000.0
+        shed_fraction_max = [1.0, 1.0]
+        source_delta_max = [80.0, 0.0]
+        source_delta_min = [0.0, 0.0]
+        source_flow_kg_s = [[5.0, 5.0, 5.0, 5.0], [0.0, 0.0, 0.0, 0.0]]
+        source_flow_max = [10.0, 0.0]
+
+            [[records.case.heat.pipes]]
+            UA_R_W_K = 0.0
+            UA_S_W_K = 0.0
+            flow_change_max_kg_s = 5.0
+            flow_max_kg_s = 10.0
+            from = 1
+            history_R_K = [[323.10238095238094, 323.10238095238094]]
+            history_S_K = [[342.15, 342.15]]
+            mu_R_Pa_s2_kg2 = 100.0
+            mu_S_Pa_s2_kg2 = 100.0
+            normal_flow_kg_s = [5.0, 5.0, 5.0, 5.0]
+            to = 2
+            valve_max_Pa = 10000.0
+            volume_R_m3 = 18.0
+            volume_S_m3 = 18.0
+
+                [[records.case.heat.pipes.initial_R_profiles]]
+                mass_kg = [18000.0]
+                temperature_K = [323.10238095238094]
+                [[records.case.heat.pipes.initial_R_profiles]]
+                mass_kg = [18000.0]
+                temperature_K = [323.10238095238094]
+
+                [[records.case.heat.pipes.initial_S_profiles]]
+                mass_kg = [18000.0]
+                temperature_K = [342.15]
+                [[records.case.heat.pipes.initial_S_profiles]]
+                mass_kg = [18000.0]
+                temperature_K = [342.15]
+
+        [records.case.units]
+        energy = "MWh"
+        flow = "kg/s"
+        power = "MW"
+        pressure = "Pa"
+        price = "USD/MWh"
+        reactive = "Mvar"
+        temperature = "K"
+        time = "h"
+
+    [records.spec]
+    case_sha256 = "ac0d554e1c8a8f4ab722d0fa9d001492c2b180cf94158fbf5daea571dcf328bd"
+    flow_unit = "kg/s"
+    scenario_rule = "shared_flows"
+    schema = "r7-normal-flow-spec-v1"
+    thermal_rule = "exact_mass_overlap_zero_UA"
+    version = "r7_continuous_positive_lossless_v1"
+
+        [records.spec.load_max]
+        data = [0.0, 10.0, 0.0, 10.0, 0.0, 10.0, 0.0, 10.0]
+        shape = [2, 4]
+
+        [records.spec.load_min]
+        data = [0.0, 0.05, 0.0, 0.05, 0.0, 0.05, 0.0, 0.05]
+        shape = [2, 4]
+
+        [records.spec.pipe_max]
+        data = [10.0, 10.0, 10.0, 10.0]
+        shape = [1, 4]
+
+        [records.spec.pipe_min]
+        data = [0.05, 0.05, 0.05, 0.05]
+        shape = [1, 4]
+
+        [records.spec.source_max]
+        data = [10.0, 0.0, 10.0, 0.0, 10.0, 0.0, 10.0, 0.0]
+        shape = [2, 4]
+
+        [records.spec.source_min]
+        data = [0.05, 0.0, 0.05, 0.0, 0.05, 0.0, 0.05, 0.0]
+        shape = [2, 4]
+[[records]]
+case_sha256 = "a3cfb5027b58176bb87acfe1fe4c8a1187ecf2ec525d38320f27a9472ae85eef"
+control = "prescribed"
+group = "varying_prices"
+id = "varying_prices_prescribed_highs"
+solver = "HiGHS"
+spec_sha256 = "e43868f256e839a3217e7b280c3c324e623ccf4cf7d66dcf009ff7742ad0dd7b"
+
+    [records.case]
+    battery_rule = "paper_sum_bound"
+    dt_h = 1.0
+    flow_control = "prescribed_positive"
+    heat_terminal_rule = "pipe_inventory_initial"
+    name = "synthetic_r7_normal_cycle_hand_v1_varying_prices_v1"
+    origin = "synthetic"
+    periods = 4
+    probabilities = [0.25, 0.75]
+    scenario_information = "full_trajectory_after_shared_commitment"
+    schema = "r7-normal-case-v1"
+    thermal_model = "plug_flow_reference_v1"
+
+        [[records.case.devices]]
+        P_max_MW = 0.8
+        P_min_MW = 0.2
+        Q_max_Mvar = 0.5
+        Q_min_Mvar = 0.0
+        cost_P_USD_MWh = 20.0
+        cost_basis = "electric_equivalent"
+        electric_node = 1
+        heat_node = 1
+        heat_ratio = 1.0
+        id = "CHP1"
+        kind = "CHP"
+        min_off_h = 1.0
+        min_on_h = 2.0
+        previous_P_MW = [0.63, 0.63]
+        previous_commitment = 1
+        previous_duration_h = 3.0
+        ramp_MW_h = 1.0
+        shutdown_MW = 0.8
+        startup_MW = 0.8
+        startup_cost_USD = 30.0
+        terminal_rule = "carry_obligation"
+        [[records.case.devices]]
+        E_max_MWh = 0.3
+        E_min_MWh = 0.0
+        P_max_MW = 0.1
+        cost_P_USD_MWh = 1.0
+        electric_node = 2
+        eta_ch = 1.0
+        eta_dis = 1.0
+        id = "BES2"
+        initial_MWh = [0.2, 0.15]
+        kind = "BES"
+
+        [records.case.electric]
+        S_base_MVA = 1.0
+        fault_budget = 1
+        flow_domain = "forward_only"
+        load_MW = [[0.0, 0.0, 0.0, 0.0], [0.8, 0.8, 0.8, 0.8]]
+        nodes = 2
+        pcc_max_MW = 2.0
+        pcc_min_MW = 0.0
+        pcc_node = 1
+        price_USD_MWh = [30.0, 120.0, 60.0, 150.0]
+        qcc_max_Mvar = 1.0
+        qcc_min_Mvar = 0.0
+        root_eligible = [1, 1]
+        shed_fraction_max = [1.0, 1.0]
+        switch_budget = 1
+        tan_phi = [0.0, 0.0]
+        v_max_pu = 1.05
+        v_min_pu = 0.95
+        v_ref_pu = 1.0
+
+            [[records.case.electric.lines]]
+            P_max_MW = 2.0
+            Q_max_Mvar = 1.0
+            base_closed = 1
+            from = 1
+            r_pu = 0.01
+            to = 2
+            vulnerable = true
+            x_pu = 0.01
+
+        [records.case.heat]
+        R_max_K = 323.15
+        R_min_K = 303.15
+        R_reference_K = 313.15
+        S_max_K = 353.15
+        S_min_K = 333.15
+        S_reference_K = 343.15
+        ambient_K = [293.15, 293.15, 293.15, 293.15]
+        available = true
+        c_J_kgK = 4200.0
+        delta_pressure_max_Pa = 80000.0
+        delta_pressure_min_Pa = 5000.0
+        load_MW = [[0.0, 0.0, 0.0, 0.0], [0.63, 0.63, 0.63, 0.63]]
+        load_delta_max = [0.0, 60.0]
+        load_delta_min = [0.0, 0.0]
+        load_flow_kg_s = [[0.0, 0.0, 0.0, 0.0], [5.0, 5.0, 5.0, 5.0]]
+        load_flow_max = [0.0, 10.0]
+        nodes = 2
+        pressure_max_Pa = 100000.0
+        rho_kg_m3 = 1000.0
+        shed_fraction_max = [1.0, 1.0]
+        source_delta_max = [80.0, 0.0]
+        source_delta_min = [0.0, 0.0]
+        source_flow_kg_s = [[5.0, 5.0, 5.0, 5.0], [0.0, 0.0, 0.0, 0.0]]
+        source_flow_max = [10.0, 0.0]
+
+            [[records.case.heat.pipes]]
+            UA_R_W_K = 0.0
+            UA_S_W_K = 0.0
+            flow_change_max_kg_s = 5.0
+            flow_max_kg_s = 10.0
+            from = 1
+            history_R_K = [[313.15, 313.15]]
+            history_S_K = [[343.15, 343.15]]
+            mu_R_Pa_s2_kg2 = 100.0
+            mu_S_Pa_s2_kg2 = 100.0
+            normal_flow_kg_s = [5.0, 5.0, 5.0, 5.0]
+            to = 2
+            valve_max_Pa = 10000.0
+            volume_R_m3 = 18.0
+            volume_S_m3 = 18.0
+
+                [[records.case.heat.pipes.initial_R_profiles]]
+                mass_kg = [18000.0]
+                temperature_K = [313.15]
+                [[records.case.heat.pipes.initial_R_profiles]]
+                mass_kg = [18000.0]
+                temperature_K = [313.15]
+
+                [[records.case.heat.pipes.initial_S_profiles]]
+                mass_kg = [18000.0]
+                temperature_K = [343.15]
+                [[records.case.heat.pipes.initial_S_profiles]]
+                mass_kg = [18000.0]
+                temperature_K = [343.15]
+
+        [records.case.units]
+        energy = "MWh"
+        flow = "kg/s"
+        power = "MW"
+        pressure = "Pa"
+        price = "USD/MWh"
+        reactive = "Mvar"
+        temperature = "K"
+        time = "h"
+
+    [records.spec]
+    case_sha256 = "a3cfb5027b58176bb87acfe1fe4c8a1187ecf2ec525d38320f27a9472ae85eef"
+    flow_unit = "kg/s"
+    scenario_rule = "shared_flows"
+    schema = "r7-normal-flow-spec-v1"
+    thermal_rule = "exact_mass_overlap_zero_UA"
+    version = "r7_continuous_positive_lossless_v1"
+
+        [records.spec.load_max]
+        data = [0.0, 5.0, 0.0, 5.0, 0.0, 5.0, 0.0, 5.0]
+        shape = [2, 4]
+
+        [records.spec.load_min]
+        data = [0.0, 5.0, 0.0, 5.0, 0.0, 5.0, 0.0, 5.0]
+        shape = [2, 4]
+
+        [records.spec.pipe_max]
+        data = [5.0, 5.0, 5.0, 5.0]
+        shape = [1, 4]
+
+        [records.spec.pipe_min]
+        data = [5.0, 5.0, 5.0, 5.0]
+        shape = [1, 4]
+
+        [records.spec.source_max]
+        data = [5.0, 0.0, 5.0, 0.0, 5.0, 0.0, 5.0, 0.0]
+        shape = [2, 4]
+
+        [records.spec.source_min]
+        data = [5.0, 0.0, 5.0, 0.0, 5.0, 0.0, 5.0, 0.0]
+        shape = [2, 4]
+[[records]]
+case_sha256 = "a3cfb5027b58176bb87acfe1fe4c8a1187ecf2ec525d38320f27a9472ae85eef"
+control = "prescribed"
+group = "varying_prices"
+id = "varying_prices_prescribed_gurobi"
+solver = "Gurobi"
+spec_sha256 = "e43868f256e839a3217e7b280c3c324e623ccf4cf7d66dcf009ff7742ad0dd7b"
+
+    [records.case]
+    battery_rule = "paper_sum_bound"
+    dt_h = 1.0
+    flow_control = "prescribed_positive"
+    heat_terminal_rule = "pipe_inventory_initial"
+    name = "synthetic_r7_normal_cycle_hand_v1_varying_prices_v1"
+    origin = "synthetic"
+    periods = 4
+    probabilities = [0.25, 0.75]
+    scenario_information = "full_trajectory_after_shared_commitment"
+    schema = "r7-normal-case-v1"
+    thermal_model = "plug_flow_reference_v1"
+
+        [[records.case.devices]]
+        P_max_MW = 0.8
+        P_min_MW = 0.2
+        Q_max_Mvar = 0.5
+        Q_min_Mvar = 0.0
+        cost_P_USD_MWh = 20.0
+        cost_basis = "electric_equivalent"
+        electric_node = 1
+        heat_node = 1
+        heat_ratio = 1.0
+        id = "CHP1"
+        kind = "CHP"
+        min_off_h = 1.0
+        min_on_h = 2.0
+        previous_P_MW = [0.63, 0.63]
+        previous_commitment = 1
+        previous_duration_h = 3.0
+        ramp_MW_h = 1.0
+        shutdown_MW = 0.8
+        startup_MW = 0.8
+        startup_cost_USD = 30.0
+        terminal_rule = "carry_obligation"
+        [[records.case.devices]]
+        E_max_MWh = 0.3
+        E_min_MWh = 0.0
+        P_max_MW = 0.1
+        cost_P_USD_MWh = 1.0
+        electric_node = 2
+        eta_ch = 1.0
+        eta_dis = 1.0
+        id = "BES2"
+        initial_MWh = [0.2, 0.15]
+        kind = "BES"
+
+        [records.case.electric]
+        S_base_MVA = 1.0
+        fault_budget = 1
+        flow_domain = "forward_only"
+        load_MW = [[0.0, 0.0, 0.0, 0.0], [0.8, 0.8, 0.8, 0.8]]
+        nodes = 2
+        pcc_max_MW = 2.0
+        pcc_min_MW = 0.0
+        pcc_node = 1
+        price_USD_MWh = [30.0, 120.0, 60.0, 150.0]
+        qcc_max_Mvar = 1.0
+        qcc_min_Mvar = 0.0
+        root_eligible = [1, 1]
+        shed_fraction_max = [1.0, 1.0]
+        switch_budget = 1
+        tan_phi = [0.0, 0.0]
+        v_max_pu = 1.05
+        v_min_pu = 0.95
+        v_ref_pu = 1.0
+
+            [[records.case.electric.lines]]
+            P_max_MW = 2.0
+            Q_max_Mvar = 1.0
+            base_closed = 1
+            from = 1
+            r_pu = 0.01
+            to = 2
+            vulnerable = true
+            x_pu = 0.01
+
+        [records.case.heat]
+        R_max_K = 323.15
+        R_min_K = 303.15
+        R_reference_K = 313.15
+        S_max_K = 353.15
+        S_min_K = 333.15
+        S_reference_K = 343.15
+        ambient_K = [293.15, 293.15, 293.15, 293.15]
+        available = true
+        c_J_kgK = 4200.0
+        delta_pressure_max_Pa = 80000.0
+        delta_pressure_min_Pa = 5000.0
+        load_MW = [[0.0, 0.0, 0.0, 0.0], [0.63, 0.63, 0.63, 0.63]]
+        load_delta_max = [0.0, 60.0]
+        load_delta_min = [0.0, 0.0]
+        load_flow_kg_s = [[0.0, 0.0, 0.0, 0.0], [5.0, 5.0, 5.0, 5.0]]
+        load_flow_max = [0.0, 10.0]
+        nodes = 2
+        pressure_max_Pa = 100000.0
+        rho_kg_m3 = 1000.0
+        shed_fraction_max = [1.0, 1.0]
+        source_delta_max = [80.0, 0.0]
+        source_delta_min = [0.0, 0.0]
+        source_flow_kg_s = [[5.0, 5.0, 5.0, 5.0], [0.0, 0.0, 0.0, 0.0]]
+        source_flow_max = [10.0, 0.0]
+
+            [[records.case.heat.pipes]]
+            UA_R_W_K = 0.0
+            UA_S_W_K = 0.0
+            flow_change_max_kg_s = 5.0
+            flow_max_kg_s = 10.0
+            from = 1
+            history_R_K = [[313.15, 313.15]]
+            history_S_K = [[343.15, 343.15]]
+            mu_R_Pa_s2_kg2 = 100.0
+            mu_S_Pa_s2_kg2 = 100.0
+            normal_flow_kg_s = [5.0, 5.0, 5.0, 5.0]
+            to = 2
+            valve_max_Pa = 10000.0
+            volume_R_m3 = 18.0
+            volume_S_m3 = 18.0
+
+                [[records.case.heat.pipes.initial_R_profiles]]
+                mass_kg = [18000.0]
+                temperature_K = [313.15]
+                [[records.case.heat.pipes.initial_R_profiles]]
+                mass_kg = [18000.0]
+                temperature_K = [313.15]
+
+                [[records.case.heat.pipes.initial_S_profiles]]
+                mass_kg = [18000.0]
+                temperature_K = [343.15]
+                [[records.case.heat.pipes.initial_S_profiles]]
+                mass_kg = [18000.0]
+                temperature_K = [343.15]
+
+        [records.case.units]
+        energy = "MWh"
+        flow = "kg/s"
+        power = "MW"
+        pressure = "Pa"
+        price = "USD/MWh"
+        reactive = "Mvar"
+        temperature = "K"
+        time = "h"
+
+    [records.spec]
+    case_sha256 = "a3cfb5027b58176bb87acfe1fe4c8a1187ecf2ec525d38320f27a9472ae85eef"
+    flow_unit = "kg/s"
+    scenario_rule = "shared_flows"
+    schema = "r7-normal-flow-spec-v1"
+    thermal_rule = "exact_mass_overlap_zero_UA"
+    version = "r7_continuous_positive_lossless_v1"
+
+        [records.spec.load_max]
+        data = [0.0, 5.0, 0.0, 5.0, 0.0, 5.0, 0.0, 5.0]
+        shape = [2, 4]
+
+        [records.spec.load_min]
+        data = [0.0, 5.0, 0.0, 5.0, 0.0, 5.0, 0.0, 5.0]
+        shape = [2, 4]
+
+        [records.spec.pipe_max]
+        data = [5.0, 5.0, 5.0, 5.0]
+        shape = [1, 4]
+
+        [records.spec.pipe_min]
+        data = [5.0, 5.0, 5.0, 5.0]
+        shape = [1, 4]
+
+        [records.spec.source_max]
+        data = [5.0, 0.0, 5.0, 0.0, 5.0, 0.0, 5.0, 0.0]
+        shape = [2, 4]
+
+        [records.spec.source_min]
+        data = [5.0, 0.0, 5.0, 0.0, 5.0, 0.0, 5.0, 0.0]
+        shape = [2, 4]
+[[records]]
+case_sha256 = "a3cfb5027b58176bb87acfe1fe4c8a1187ecf2ec525d38320f27a9472ae85eef"
+control = "continuous"
+group = "varying_prices"
+id = "varying_prices_continuous_gurobi"
+solver = "Gurobi"
+spec_sha256 = "e59c3cc1a5cb7a304c479b3400d898a8401456ffb0d742d93890e85888a5a857"
+
+    [records.case]
+    battery_rule = "paper_sum_bound"
+    dt_h = 1.0
+    flow_control = "prescribed_positive"
+    heat_terminal_rule = "pipe_inventory_initial"
+    name = "synthetic_r7_normal_cycle_hand_v1_varying_prices_v1"
+    origin = "synthetic"
+    periods = 4
+    probabilities = [0.25, 0.75]
+    scenario_information = "full_trajectory_after_shared_commitment"
+    schema = "r7-normal-case-v1"
+    thermal_model = "plug_flow_reference_v1"
+
+        [[records.case.devices]]
+        P_max_MW = 0.8
+        P_min_MW = 0.2
+        Q_max_Mvar = 0.5
+        Q_min_Mvar = 0.0
+        cost_P_USD_MWh = 20.0
+        cost_basis = "electric_equivalent"
+        electric_node = 1
+        heat_node = 1
+        heat_ratio = 1.0
+        id = "CHP1"
+        kind = "CHP"
+        min_off_h = 1.0
+        min_on_h = 2.0
+        previous_P_MW = [0.63, 0.63]
+        previous_commitment = 1
+        previous_duration_h = 3.0
+        ramp_MW_h = 1.0
+        shutdown_MW = 0.8
+        startup_MW = 0.8
+        startup_cost_USD = 30.0
+        terminal_rule = "carry_obligation"
+        [[records.case.devices]]
+        E_max_MWh = 0.3
+        E_min_MWh = 0.0
+        P_max_MW = 0.1
+        cost_P_USD_MWh = 1.0
+        electric_node = 2
+        eta_ch = 1.0
+        eta_dis = 1.0
+        id = "BES2"
+        initial_MWh = [0.2, 0.15]
+        kind = "BES"
+
+        [records.case.electric]
+        S_base_MVA = 1.0
+        fault_budget = 1
+        flow_domain = "forward_only"
+        load_MW = [[0.0, 0.0, 0.0, 0.0], [0.8, 0.8, 0.8, 0.8]]
+        nodes = 2
+        pcc_max_MW = 2.0
+        pcc_min_MW = 0.0
+        pcc_node = 1
+        price_USD_MWh = [30.0, 120.0, 60.0, 150.0]
+        qcc_max_Mvar = 1.0
+        qcc_min_Mvar = 0.0
+        root_eligible = [1, 1]
+        shed_fraction_max = [1.0, 1.0]
+        switch_budget = 1
+        tan_phi = [0.0, 0.0]
+        v_max_pu = 1.05
+        v_min_pu = 0.95
+        v_ref_pu = 1.0
+
+            [[records.case.electric.lines]]
+            P_max_MW = 2.0
+            Q_max_Mvar = 1.0
+            base_closed = 1
+            from = 1
+            r_pu = 0.01
+            to = 2
+            vulnerable = true
+            x_pu = 0.01
+
+        [records.case.heat]
+        R_max_K = 323.15
+        R_min_K = 303.15
+        R_reference_K = 313.15
+        S_max_K = 353.15
+        S_min_K = 333.15
+        S_reference_K = 343.15
+        ambient_K = [293.15, 293.15, 293.15, 293.15]
+        available = true
+        c_J_kgK = 4200.0
+        delta_pressure_max_Pa = 80000.0
+        delta_pressure_min_Pa = 5000.0
+        load_MW = [[0.0, 0.0, 0.0, 0.0], [0.63, 0.63, 0.63, 0.63]]
+        load_delta_max = [0.0, 60.0]
+        load_delta_min = [0.0, 0.0]
+        load_flow_kg_s = [[0.0, 0.0, 0.0, 0.0], [5.0, 5.0, 5.0, 5.0]]
+        load_flow_max = [0.0, 10.0]
+        nodes = 2
+        pressure_max_Pa = 100000.0
+        rho_kg_m3 = 1000.0
+        shed_fraction_max = [1.0, 1.0]
+        source_delta_max = [80.0, 0.0]
+        source_delta_min = [0.0, 0.0]
+        source_flow_kg_s = [[5.0, 5.0, 5.0, 5.0], [0.0, 0.0, 0.0, 0.0]]
+        source_flow_max = [10.0, 0.0]
+
+            [[records.case.heat.pipes]]
+            UA_R_W_K = 0.0
+            UA_S_W_K = 0.0
+            flow_change_max_kg_s = 5.0
+            flow_max_kg_s = 10.0
+            from = 1
+            history_R_K = [[313.15, 313.15]]
+            history_S_K = [[343.15, 343.15]]
+            mu_R_Pa_s2_kg2 = 100.0
+            mu_S_Pa_s2_kg2 = 100.0
+            normal_flow_kg_s = [5.0, 5.0, 5.0, 5.0]
+            to = 2
+            valve_max_Pa = 10000.0
+            volume_R_m3 = 18.0
+            volume_S_m3 = 18.0
+
+                [[records.case.heat.pipes.initial_R_profiles]]
+                mass_kg = [18000.0]
+                temperature_K = [313.15]
+                [[records.case.heat.pipes.initial_R_profiles]]
+                mass_kg = [18000.0]
+                temperature_K = [313.15]
+
+                [[records.case.heat.pipes.initial_S_profiles]]
+                mass_kg = [18000.0]
+                temperature_K = [343.15]
+                [[records.case.heat.pipes.initial_S_profiles]]
+                mass_kg = [18000.0]
+                temperature_K = [343.15]
+
+        [records.case.units]
+        energy = "MWh"
+        flow = "kg/s"
+        power = "MW"
+        pressure = "Pa"
+        price = "USD/MWh"
+        reactive = "Mvar"
+        temperature = "K"
+        time = "h"
+
+    [records.spec]
+    case_sha256 = "a3cfb5027b58176bb87acfe1fe4c8a1187ecf2ec525d38320f27a9472ae85eef"
+    flow_unit = "kg/s"
+    scenario_rule = "shared_flows"
+    schema = "r7-normal-flow-spec-v1"
+    thermal_rule = "exact_mass_overlap_zero_UA"
+    version = "r7_continuous_positive_lossless_v1"
+
+        [records.spec.load_max]
+        data = [0.0, 10.0, 0.0, 10.0, 0.0, 10.0, 0.0, 10.0]
+        shape = [2, 4]
+
+        [records.spec.load_min]
+        data = [0.0, 0.05, 0.0, 0.05, 0.0, 0.05, 0.0, 0.05]
+        shape = [2, 4]
+
+        [records.spec.pipe_max]
+        data = [10.0, 10.0, 10.0, 10.0]
+        shape = [1, 4]
+
+        [records.spec.pipe_min]
+        data = [0.05, 0.05, 0.05, 0.05]
+        shape = [1, 4]
+
+        [records.spec.source_max]
+        data = [10.0, 0.0, 10.0, 0.0, 10.0, 0.0, 10.0, 0.0]
+        shape = [2, 4]
+
+        [records.spec.source_min]
+        data = [0.05, 0.0, 0.05, 0.0, 0.05, 0.0, 0.05, 0.0]
+        shape = [2, 4]

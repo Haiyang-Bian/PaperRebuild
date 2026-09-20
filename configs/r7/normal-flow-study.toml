@@ -1,0 +1,16 @@
+schema = "r7-normal-flow-study-v1"
+origin = "synthetic"
+budget_sec = 600.0
+record_count = 9
+groups = ["original_hand", "reserve", "varying_prices"]
+positive_floor_kg_s = 0.05
+upper_rule = "original declared pipe and port capacity"
+normal_hand = "configs/r7/normal-hand.toml"
+normal_reserve = "configs/r7/normal-reserve-hand.toml"
+varying_prices_USD_MWh = [30.0, 120.0, 60.0, 150.0]
+price_rule = "varying_prices copies original_hand and changes only the explicitly declared price vector"
+scope = "continuous positive lossless normal flow; fixed electrical topology; no disaster guarantee"
+controls = ["prescribed", "continuous"]
+primary_solver = "Gurobi"
+fixed_reference_solver = "HiGHS"
+no_initial_solution_injection = true

@@ -59,6 +59,8 @@ include(joinpath(@__DIR__, "..", "scripts", "r7_battery_docs.jl"))
 write(joinpath(@__DIR__, "src", "ch06-battery-equations.md"), r7_battery_markdown())
 include(joinpath(@__DIR__, "..", "scripts", "r7_linked_docs.jl"))
 write(joinpath(@__DIR__, "src", "ch06-linked-equations.md"), r7_linked_markdown())
+include(joinpath(@__DIR__, "..", "scripts", "r7_normal_flow_docs.jl"))
+write(joinpath(@__DIR__, "src", "ch06-normal-flow-equations.md"), r7_normal_flow_markdown())
 
 makedocs(;
     modules = [PaperRebuild],
@@ -216,6 +218,8 @@ makedocs(;
             "电池原式、推导与符号" => "ch06-battery-equations.md",
             "共同空间热状态与安全规划" => "ch06-linked-planning.md",
             "空间状态连接方程与符号" => "ch06-linked-equations.md",
+            "连续流量正常调度" => "ch06-normal-flow.md",
+            "连续流量推导与符号" => "ch06-normal-flow-equations.md",
         ],
         "第 2 章模型与首批实现" => [
             "模型详解" => "ch02-models.md",

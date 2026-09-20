@@ -11185,6 +11185,21 @@
           "path": "docs/src/ch06-linked-planning.md",
           "name": "ch06-linked-planning.md",
           "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r7-normal-flow-20260920-v1/F28-normal-flow.png",
+          "name": "F28-normal-flow.png",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch06-normal-flow-equations.md",
+          "name": "ch06-normal-flow-equations.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch06-normal-flow.md",
+          "name": "ch06-normal-flow.md",
+          "isDirectory": false
         }
       ],
       "order": 1,
@@ -11475,6 +11490,11 @@
         {
           "path": "docs/agent/tasks/2026-09-20-r7-linked-planning.md",
           "name": "2026-09-20-r7-linked-planning.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/agent/tasks/2026-09-20-r7-normal-flow.md",
+          "name": "2026-09-20-r7-normal-flow.md",
           "isDirectory": false
         }
       ],
@@ -12307,6 +12327,36 @@
           "path": "src/verification/r7_linked_planning.jl",
           "name": "r7_linked_planning.jl",
           "isDirectory": false
+        },
+        {
+          "path": "src/algorithms/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/core/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/formulations/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/networks/r7_mass_overlap.jl",
+          "name": "r7_mass_overlap.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/reporting/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/verification/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
         }
       ],
       "order": 3,
@@ -12938,6 +12988,11 @@
           "path": "configs/r7/linked-study.toml",
           "name": "linked-study.toml",
           "isDirectory": false
+        },
+        {
+          "path": "configs/r7/normal-flow-study.toml",
+          "name": "normal-flow-study.toml",
+          "isDirectory": false
         }
       ],
       "order": 4,
@@ -13278,6 +13333,11 @@
         {
           "path": "docs/reading/ch06/linked-planning.toml",
           "name": "linked-planning.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch06/normal-flow.toml",
+          "name": "normal-flow.toml",
           "isDirectory": false
         }
       ],
@@ -55380,6 +55440,1741 @@
           "path": "results/summaries/r7-linked-public-20260920-v2/transport-study-source.jl",
           "name": "transport-study-source.jl",
           "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-flow-balance-probe-20260920-v1/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-flow-balance-probe-20260920-v1/parent-inputs.toml",
+          "name": "parent-inputs.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-flow-balance-probe-20260920-v1/probe-source.jl",
+          "name": "probe-source.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-flow-balance-probe-20260920-v1/record/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-flow-balance-probe-20260920-v1/record/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-flow-balance-probe-20260920-v1/record/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-flow-balance-probe-20260920-v1/record/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-flow-balance-probe-20260920-v1/record/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-flow-balance-probe-20260920-v1/record/code/src/algorithms/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-flow-balance-probe-20260920-v1/record/code/src/algorithms/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-flow-balance-probe-20260920-v1/record/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-flow-balance-probe-20260920-v1/record/code/src/components/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-flow-balance-probe-20260920-v1/record/code/src/core/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-flow-balance-probe-20260920-v1/record/code/src/core/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-flow-balance-probe-20260920-v1/record/code/src/core/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-flow-balance-probe-20260920-v1/record/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-flow-balance-probe-20260920-v1/record/code/src/formulations/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-flow-balance-probe-20260920-v1/record/code/src/formulations/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-flow-balance-probe-20260920-v1/record/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-flow-balance-probe-20260920-v1/record/code/src/networks/fixed_flow_heat.jl",
+          "name": "fixed_flow_heat.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-flow-balance-probe-20260920-v1/record/code/src/networks/r7_mass_overlap.jl",
+          "name": "r7_mass_overlap.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-flow-balance-probe-20260920-v1/record/code/src/networks/r7_normal_transport.jl",
+          "name": "r7_normal_transport.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-flow-balance-probe-20260920-v1/record/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-flow-balance-probe-20260920-v1/record/code/src/reporting/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-flow-balance-probe-20260920-v1/record/code/src/reporting/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-flow-balance-probe-20260920-v1/record/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-flow-balance-probe-20260920-v1/record/code/src/verification/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-flow-balance-probe-20260920-v1/record/code/src/verification/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-flow-balance-probe-20260920-v1/record/code/src/verification/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-flow-balance-probe-20260920-v1/record/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-flow-balance-probe-20260920-v1/record/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-flow-balance-probe-20260920-v1/record/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-flow-balance-probe-20260920-v1/record/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/code/src/algorithms/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/code/src/algorithms/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/code/src/components/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/code/src/core/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/code/src/core/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/code/src/core/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/code/src/formulations/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/code/src/formulations/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/code/src/networks/fixed_flow_heat.jl",
+          "name": "fixed_flow_heat.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/code/src/networks/r7_mass_overlap.jl",
+          "name": "r7_mass_overlap.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/code/src/networks/r7_normal_transport.jl",
+          "name": "r7_normal_transport.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/code/src/reporting/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/code/src/reporting/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/code/src/verification/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/code/src/verification/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/code/src/verification/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/environment.toml",
+          "name": "environment.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/freeze.toml",
+          "name": "freeze.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/inputs.toml",
+          "name": "inputs.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_continuous_gurobi/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_continuous_gurobi/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_continuous_gurobi/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_continuous_gurobi/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_continuous_gurobi/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_continuous_gurobi/code/src/algorithms/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_continuous_gurobi/code/src/algorithms/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_continuous_gurobi/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_continuous_gurobi/code/src/components/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_continuous_gurobi/code/src/core/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_continuous_gurobi/code/src/core/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_continuous_gurobi/code/src/core/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_continuous_gurobi/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_continuous_gurobi/code/src/formulations/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_continuous_gurobi/code/src/formulations/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_continuous_gurobi/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_continuous_gurobi/code/src/networks/fixed_flow_heat.jl",
+          "name": "fixed_flow_heat.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_continuous_gurobi/code/src/networks/r7_mass_overlap.jl",
+          "name": "r7_mass_overlap.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_continuous_gurobi/code/src/networks/r7_normal_transport.jl",
+          "name": "r7_normal_transport.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_continuous_gurobi/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_continuous_gurobi/code/src/reporting/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_continuous_gurobi/code/src/reporting/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_continuous_gurobi/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_continuous_gurobi/code/src/verification/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_continuous_gurobi/code/src/verification/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_continuous_gurobi/code/src/verification/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_continuous_gurobi/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_continuous_gurobi/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_continuous_gurobi/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_continuous_gurobi/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_gurobi/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_gurobi/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_gurobi/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_gurobi/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_gurobi/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_gurobi/code/src/algorithms/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_gurobi/code/src/algorithms/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_gurobi/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_gurobi/code/src/components/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_gurobi/code/src/core/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_gurobi/code/src/core/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_gurobi/code/src/core/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_gurobi/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_gurobi/code/src/formulations/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_gurobi/code/src/formulations/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_gurobi/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_gurobi/code/src/networks/fixed_flow_heat.jl",
+          "name": "fixed_flow_heat.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_gurobi/code/src/networks/r7_mass_overlap.jl",
+          "name": "r7_mass_overlap.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_gurobi/code/src/networks/r7_normal_transport.jl",
+          "name": "r7_normal_transport.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_gurobi/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_gurobi/code/src/reporting/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_gurobi/code/src/reporting/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_gurobi/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_gurobi/code/src/verification/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_gurobi/code/src/verification/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_gurobi/code/src/verification/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_gurobi/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_gurobi/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_gurobi/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_gurobi/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_highs/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_highs/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_highs/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_highs/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_highs/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_highs/code/src/algorithms/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_highs/code/src/algorithms/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_highs/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_highs/code/src/components/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_highs/code/src/core/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_highs/code/src/core/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_highs/code/src/core/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_highs/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_highs/code/src/formulations/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_highs/code/src/formulations/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_highs/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_highs/code/src/networks/fixed_flow_heat.jl",
+          "name": "fixed_flow_heat.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_highs/code/src/networks/r7_mass_overlap.jl",
+          "name": "r7_mass_overlap.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_highs/code/src/networks/r7_normal_transport.jl",
+          "name": "r7_normal_transport.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_highs/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_highs/code/src/reporting/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_highs/code/src/reporting/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_highs/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_highs/code/src/verification/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_highs/code/src/verification/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_highs/code/src/verification/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_highs/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_highs/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_highs/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/original_hand_prescribed_highs/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_continuous_gurobi/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_continuous_gurobi/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_continuous_gurobi/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_continuous_gurobi/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_continuous_gurobi/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_continuous_gurobi/code/src/algorithms/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_continuous_gurobi/code/src/algorithms/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_continuous_gurobi/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_continuous_gurobi/code/src/components/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_continuous_gurobi/code/src/core/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_continuous_gurobi/code/src/core/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_continuous_gurobi/code/src/core/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_continuous_gurobi/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_continuous_gurobi/code/src/formulations/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_continuous_gurobi/code/src/formulations/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_continuous_gurobi/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_continuous_gurobi/code/src/networks/fixed_flow_heat.jl",
+          "name": "fixed_flow_heat.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_continuous_gurobi/code/src/networks/r7_mass_overlap.jl",
+          "name": "r7_mass_overlap.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_continuous_gurobi/code/src/networks/r7_normal_transport.jl",
+          "name": "r7_normal_transport.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_continuous_gurobi/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_continuous_gurobi/code/src/reporting/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_continuous_gurobi/code/src/reporting/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_continuous_gurobi/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_continuous_gurobi/code/src/verification/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_continuous_gurobi/code/src/verification/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_continuous_gurobi/code/src/verification/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_continuous_gurobi/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_continuous_gurobi/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_continuous_gurobi/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_continuous_gurobi/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_gurobi/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_gurobi/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_gurobi/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_gurobi/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_gurobi/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_gurobi/code/src/algorithms/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_gurobi/code/src/algorithms/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_gurobi/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_gurobi/code/src/components/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_gurobi/code/src/core/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_gurobi/code/src/core/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_gurobi/code/src/core/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_gurobi/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_gurobi/code/src/formulations/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_gurobi/code/src/formulations/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_gurobi/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_gurobi/code/src/networks/fixed_flow_heat.jl",
+          "name": "fixed_flow_heat.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_gurobi/code/src/networks/r7_mass_overlap.jl",
+          "name": "r7_mass_overlap.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_gurobi/code/src/networks/r7_normal_transport.jl",
+          "name": "r7_normal_transport.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_gurobi/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_gurobi/code/src/reporting/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_gurobi/code/src/reporting/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_gurobi/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_gurobi/code/src/verification/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_gurobi/code/src/verification/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_gurobi/code/src/verification/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_gurobi/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_gurobi/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_gurobi/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_gurobi/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_highs/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_highs/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_highs/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_highs/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_highs/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_highs/code/src/algorithms/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_highs/code/src/algorithms/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_highs/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_highs/code/src/components/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_highs/code/src/core/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_highs/code/src/core/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_highs/code/src/core/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_highs/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_highs/code/src/formulations/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_highs/code/src/formulations/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_highs/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_highs/code/src/networks/fixed_flow_heat.jl",
+          "name": "fixed_flow_heat.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_highs/code/src/networks/r7_mass_overlap.jl",
+          "name": "r7_mass_overlap.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_highs/code/src/networks/r7_normal_transport.jl",
+          "name": "r7_normal_transport.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_highs/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_highs/code/src/reporting/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_highs/code/src/reporting/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_highs/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_highs/code/src/verification/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_highs/code/src/verification/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_highs/code/src/verification/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_highs/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_highs/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_highs/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/reserve_prescribed_highs/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_continuous_gurobi/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_continuous_gurobi/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_continuous_gurobi/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_continuous_gurobi/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_continuous_gurobi/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_continuous_gurobi/code/src/algorithms/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_continuous_gurobi/code/src/algorithms/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_continuous_gurobi/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_continuous_gurobi/code/src/components/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_continuous_gurobi/code/src/core/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_continuous_gurobi/code/src/core/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_continuous_gurobi/code/src/core/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_continuous_gurobi/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_continuous_gurobi/code/src/formulations/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_continuous_gurobi/code/src/formulations/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_continuous_gurobi/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_continuous_gurobi/code/src/networks/fixed_flow_heat.jl",
+          "name": "fixed_flow_heat.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_continuous_gurobi/code/src/networks/r7_mass_overlap.jl",
+          "name": "r7_mass_overlap.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_continuous_gurobi/code/src/networks/r7_normal_transport.jl",
+          "name": "r7_normal_transport.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_continuous_gurobi/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_continuous_gurobi/code/src/reporting/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_continuous_gurobi/code/src/reporting/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_continuous_gurobi/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_continuous_gurobi/code/src/verification/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_continuous_gurobi/code/src/verification/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_continuous_gurobi/code/src/verification/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_continuous_gurobi/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_continuous_gurobi/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_continuous_gurobi/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_continuous_gurobi/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_gurobi/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_gurobi/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_gurobi/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_gurobi/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_gurobi/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_gurobi/code/src/algorithms/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_gurobi/code/src/algorithms/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_gurobi/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_gurobi/code/src/components/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_gurobi/code/src/core/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_gurobi/code/src/core/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_gurobi/code/src/core/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_gurobi/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_gurobi/code/src/formulations/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_gurobi/code/src/formulations/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_gurobi/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_gurobi/code/src/networks/fixed_flow_heat.jl",
+          "name": "fixed_flow_heat.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_gurobi/code/src/networks/r7_mass_overlap.jl",
+          "name": "r7_mass_overlap.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_gurobi/code/src/networks/r7_normal_transport.jl",
+          "name": "r7_normal_transport.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_gurobi/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_gurobi/code/src/reporting/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_gurobi/code/src/reporting/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_gurobi/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_gurobi/code/src/verification/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_gurobi/code/src/verification/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_gurobi/code/src/verification/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_gurobi/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_gurobi/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_gurobi/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_gurobi/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_highs/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_highs/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_highs/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_highs/code/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_highs/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_highs/code/src/algorithms/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_highs/code/src/algorithms/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_highs/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_highs/code/src/components/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_highs/code/src/core/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_highs/code/src/core/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_highs/code/src/core/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_highs/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_highs/code/src/formulations/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_highs/code/src/formulations/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_highs/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_highs/code/src/networks/fixed_flow_heat.jl",
+          "name": "fixed_flow_heat.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_highs/code/src/networks/r7_mass_overlap.jl",
+          "name": "r7_mass_overlap.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_highs/code/src/networks/r7_normal_transport.jl",
+          "name": "r7_normal_transport.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_highs/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_highs/code/src/reporting/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_highs/code/src/reporting/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_highs/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_highs/code/src/verification/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_highs/code/src/verification/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_highs/code/src/verification/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_highs/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_highs/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_highs/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/records/varying_prices_prescribed_highs/spec.toml",
+          "name": "spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/report-hashes.toml",
+          "name": "report-hashes.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/rule.toml",
+          "name": "rule.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/study-source.jl",
+          "name": "study-source.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/summary.csv",
+          "name": "summary.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-20260920-v1/trajectories.csv",
+          "name": "trajectories.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-audit-20260920-v1/audit-source.jl",
+          "name": "audit-source.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-audit-20260920-v1/audit.toml",
+          "name": "audit.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-audit-20260920-v1/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-audit-20260920-v1/inputs.toml",
+          "name": "inputs.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-figures-20260920-v2/F28-normal-flow.png",
+          "name": "F28-normal-flow.png",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-figures-20260920-v2/F28-normal-flow.svg",
+          "name": "F28-normal-flow.svg",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-figures-20260920-v2/figure-config.toml",
+          "name": "figure-config.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-figures-20260920-v2/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-figures-20260920-v2/rule.toml",
+          "name": "rule.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-figures-20260920-v2/summary.csv",
+          "name": "summary.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r7-normal-flow-figures-20260920-v2/trajectories.csv",
+          "name": "trajectories.csv",
+          "isDirectory": false
         }
       ],
       "order": 6,
@@ -55670,6 +57465,11 @@
         {
           "path": "test/r7_linked_planning.jl",
           "name": "r7_linked_planning.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "test/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
           "isDirectory": false
         }
       ],
@@ -57921,6 +59721,66 @@
         {
           "path": "scripts/test_r7_linked_planning.jl",
           "name": "test_r7_linked_planning.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/audit_r7_normal_flow.jl",
+          "name": "audit_r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r7_flow_balance_probe.jl",
+          "name": "check_r7_flow_balance_probe.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r7_normal_flow.jl",
+          "name": "check_r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r7_normal_flow_audit.jl",
+          "name": "check_r7_normal_flow_audit.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r7_normal_flow_figures.jl",
+          "name": "check_r7_normal_flow_figures.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r7_normal_flow_results.jl",
+          "name": "check_r7_normal_flow_results.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/plot_r7_normal_flow.jl",
+          "name": "plot_r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/probe_r7_flow_balance.jl",
+          "name": "probe_r7_flow_balance.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r7_normal_flow_docs.jl",
+          "name": "r7_normal_flow_docs.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r7_normal_flow_study.jl",
+          "name": "r7_normal_flow_study.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/test_r7_normal_flow.jl",
+          "name": "test_r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/test_r7_normal_flow_gurobi.jl",
+          "name": "test_r7_normal_flow_gurobi.jl",
           "isDirectory": false
         }
       ],

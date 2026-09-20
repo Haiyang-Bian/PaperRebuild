@@ -1,0 +1,63 @@
+formula = "price * electric_load + (chp_cost - price) * heat_load / heat_ratio"
+origin = "synthetic"
+proof = "periodic lossless heat fixes CHP total; ideal cyclic BES has zero net energy; startup and throughput costs are nonnegative"
+schema = "r7-normal-flow-cost-audit-v1"
+scope = "same declared positive lossless normal domain, no disaster or original full-domain claim"
+
+[[records]]
+analytic_lower_bound_USD = 118.4
+bound_kind = "analytic_conservation_not_solver_bound"
+case_sha256 = "a983f5e316d1415b0657a1833af1705b6b3d682fbf13f726c6317935c08c3101"
+electric_load_MWh = 3.2
+feasible_upper_bound_USD = 118.40000000000038
+fixed_candidate_pass = true
+fixed_record_sha256 = "ce92ca12385796d10b195624a3c50e7e535cfc200aa276f0bd7668967ddd89cf"
+fixed_run_id = "r7-normal-flow-a3161cbf-a5aa-4153-b7b5-7132767b97a6"
+group = "original_hand"
+heat_load_MWh = 2.52
+relative_gap = 3.1206268800274572e-15
+status = "declared_continuous_domain_closed_by_embedding_A2"
+
+    [records.hypotheses]
+    constant_price = true
+    ideal_batteries = true
+    periodic_pipe_inventory = true
+    same_input = true
+    single_chp_and_batteries = true
+    zero_heat_loss = true
+[[records]]
+analytic_lower_bound_USD = 192.0
+bound_kind = "analytic_conservation_not_solver_bound"
+case_sha256 = "ac0d554e1c8a8f4ab722d0fa9d001492c2b180cf94158fbf5daea571dcf328bd"
+electric_load_MWh = 3.2
+feasible_upper_bound_USD = 192.00000000000017
+fixed_candidate_pass = true
+fixed_record_sha256 = "b4226737781d58ab773bf9e100f6a3bde6a1ecf444a5ec58c11a67ad90cf7471"
+fixed_run_id = "r7-normal-flow-0dd892b7-d2e0-4fd0-a738-47a3dbc815a1"
+group = "reserve"
+heat_load_MWh = 1.6
+relative_gap = 8.881784197001244e-16
+status = "declared_continuous_domain_closed_by_embedding_A2"
+
+    [records.hypotheses]
+    constant_price = true
+    ideal_batteries = true
+    periodic_pipe_inventory = true
+    same_input = true
+    single_chp_and_batteries = true
+    zero_heat_loss = true
+[[records]]
+bound_kind = "analytic_conservation_not_solver_bound"
+case_sha256 = "a3cfb5027b58176bb87acfe1fe4c8a1187ecf2ec525d38320f27a9472ae85eef"
+fixed_record_sha256 = "dd7092a9b0be4b2a1aaed88d3e65a2f6890455bd526ea8f69c798c3ee83a30d4"
+fixed_run_id = "r7-normal-flow-ca6d38d5-5291-4f76-93c2-815f80c03bc3"
+group = "varying_prices"
+status = "not_applicable"
+
+    [records.hypotheses]
+    constant_price = false
+    ideal_batteries = true
+    periodic_pipe_inventory = true
+    same_input = true
+    single_chp_and_batteries = true
+    zero_heat_loss = true

@@ -1,5 +1,10 @@
 {
   "inputs": [
+    {"id":"r7NormalFlowBatch","type":"promptString","description":"连续正常流量：冻结用新目录，运行用已冻结目录","default":"results/runs/r7-normal-flow-new"},
+    {"id":"r7NormalFlowReport","type":"promptString","description":"连续正常流量报告：生成须新目录，核查使用已有目录","default":"results/summaries/r7-normal-flow-20260920-v1"},
+    {"id":"r7NormalFlowFigures","type":"promptString","description":"连续正常流量新图目录，不覆盖旧图","default":"results/runs/r7-normal-flow-redraw"},
+    {"id":"r7NormalFlowAudit","type":"promptString","description":"连续正常流量费用审计：生成用新目录，核查用已有目录","default":"results/summaries/r7-normal-flow-audit-20260920-v1"},
+    {"id":"r7FlowBalanceProbe","type":"promptString","description":"整网能量等价探针：运行用新目录，核查用已有目录","default":"results/runs/r7-flow-balance-new"},
     {"id":"r7LinkedBatch","type":"promptString","description":"同一灾前状态规划：冻结须新目录，运行须已冻结目录","default":"results/runs/r7-linked-new"},
     {"id":"r7LinkedReport","type":"promptString","description":"详细状态规划报告：生成须新目录，重验使用已有目录","default":"results/summaries/r7-linked-20260920-v2"},
     {"id":"r7LinkedFigures","type":"promptString","description":"详细状态规划新图目录，不覆盖旧图","default":"results/runs/r7-linked-redraw"},
@@ -135,6 +140,20 @@
     }
   ],
   "tasks": [
+    {"label":"PaperRebuild: R7 continuous normal flow mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r7_normal_flow.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 continuous normal flow tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r7_normal_flow.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 continuous normal flow Gurobi analytic tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/test_r7_normal_flow_gurobi.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 continuous normal flow freeze","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_normal_flow_study.jl","freeze","${input:r7NormalFlowBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 continuous normal flow open reference","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_normal_flow_study.jl","run","${input:r7NormalFlowBatch}","HiGHS"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 continuous normal flow Gurobi study","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/r7_normal_flow_study.jl","run","${input:r7NormalFlowBatch}","Gurobi"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 continuous normal flow report","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_normal_flow_study.jl","report","${input:r7NormalFlowBatch}","${input:r7NormalFlowReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 continuous normal flow verify and compare","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r7_normal_flow_results.jl","${input:r7NormalFlowReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 continuous normal flow redraw","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r7_normal_flow.jl","${input:r7NormalFlowReport}","${input:r7NormalFlowFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 continuous normal flow cost audit","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/audit_r7_normal_flow.jl","${input:r7NormalFlowReport}","${input:r7NormalFlowAudit}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 continuous normal flow audit verify","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r7_normal_flow_audit.jl","${input:r7NormalFlowReport}","${input:r7NormalFlowAudit}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 continuous normal flow figure verify","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/check_r7_normal_flow_figures.jl","${input:r7NormalFlowReport}","${input:r7NormalFlowFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 flow redundant energy probe","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/probe_r7_flow_balance.jl","${input:r7NormalFlowReport}","${input:r7FlowBalanceProbe}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 flow redundant energy probe verify","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r7_flow_balance_probe.jl","${input:r7FlowBalanceProbe}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"R7: 同一灾前状态规划映射","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r7_linked_planning.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"R7: 同一灾前状态规划测试","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r7_linked_planning.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"R7: 冻结详细状态规划","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_linked_study.jl","freeze","${input:r7LinkedBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},

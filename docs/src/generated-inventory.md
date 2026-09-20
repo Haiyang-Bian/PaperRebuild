@@ -135,6 +135,7 @@
 - `configs/r7/inner-tie-two-fault.toml`
 - `configs/r7/inner-tie-two-hour.toml`
 - `configs/r7/linked-study.toml`
+- `configs/r7/normal-flow-study.toml`
 - `configs/r7/normal-hand.toml`
 - `configs/r7/normal-reserve-hand.toml`
 - `configs/r7/planning-hand.toml`
@@ -197,6 +198,7 @@
 - `docs/agent/tasks/2026-09-20-r7-battery.md`
 - `docs/agent/tasks/2026-09-20-r7-commitment.md`
 - `docs/agent/tasks/2026-09-20-r7-linked-planning.md`
+- `docs/agent/tasks/2026-09-20-r7-normal-flow.md`
 - `docs/agent/tasks/2026-09-20-r7-normal.md`
 - `docs/agent/tasks/2026-09-20-r7-pipe-state.md`
 - `docs/agent/tasks/2026-09-20-r7-planning.md`
@@ -261,6 +263,7 @@
 - `docs/reading/ch06/inner-adversary.toml`
 - `docs/reading/ch06/linked-planning.toml`
 - `docs/reading/ch06/normal-dispatch.toml`
+- `docs/reading/ch06/normal-flow.toml`
 - `docs/reading/ch06/normal-prerequisites.toml`
 - `docs/reading/ch06/pipe-state.toml`
 - `docs/reading/ch06/planning.toml`
@@ -566,6 +569,7 @@
 - `docs/src/assets/r7-inner-20260920-v3/F22-inner-faults.png`
 - `docs/src/assets/r7-linked-20260920-v2/F27-linked-planning.png`
 - `docs/src/assets/r7-normal-20260920-v2/F20-normal-event.png`
+- `docs/src/assets/r7-normal-flow-20260920-v1/F28-normal-flow.png`
 - `docs/src/assets/r7-planning-20260920-v2/F21-finite-planning.png`
 - `docs/src/assets/r7-ports-20260920-v1/F24-compatible-ports.png`
 - `docs/src/assets/r7-thermal-20260920-v1/F23-thermal-delivery.png`
@@ -667,6 +671,8 @@
 - `docs/src/ch06-linked-equations.md`
 - `docs/src/ch06-linked-planning.md`
 - `docs/src/ch06-normal-equations.md`
+- `docs/src/ch06-normal-flow-equations.md`
+- `docs/src/ch06-normal-flow.md`
 - `docs/src/ch06-normal.md`
 - `docs/src/ch06-pipe-equations.md`
 - `docs/src/ch06-pipe-state.md`
@@ -1065,6 +1071,9 @@
 - `results/summaries/r7-battery-public-20260920-v1/study-source.jl`
 - `results/summaries/r7-battery-public-20260920-v1/summary.csv`
 - `results/summaries/r7-battery-public-20260920-v1/transport-study-source.jl`
+- `results/summaries/r7-flow-balance-probe-20260920-v1/files.toml`
+- `results/summaries/r7-flow-balance-probe-20260920-v1/parent-inputs.toml`
+- `results/summaries/r7-flow-balance-probe-20260920-v1/probe-source.jl`
 - `results/summaries/r7-inner-figures-20260920-v3/F22-inner-faults.png`
 - `results/summaries/r7-inner-figures-20260920-v3/F22-inner-faults.svg`
 - `results/summaries/r7-inner-figures-20260920-v3/figure.toml`
@@ -1123,6 +1132,25 @@
 - `results/summaries/r7-normal-figures-20260920-v2/figure.toml`
 - `results/summaries/r7-normal-figures-20260920-v2/files.toml`
 - `results/summaries/r7-normal-figures-20260920-v2/normal-trajectory.csv`
+- `results/summaries/r7-normal-flow-20260920-v1/environment.toml`
+- `results/summaries/r7-normal-flow-20260920-v1/freeze.toml`
+- `results/summaries/r7-normal-flow-20260920-v1/inputs.toml`
+- `results/summaries/r7-normal-flow-20260920-v1/report-hashes.toml`
+- `results/summaries/r7-normal-flow-20260920-v1/rule.toml`
+- `results/summaries/r7-normal-flow-20260920-v1/study-source.jl`
+- `results/summaries/r7-normal-flow-20260920-v1/summary.csv`
+- `results/summaries/r7-normal-flow-20260920-v1/trajectories.csv`
+- `results/summaries/r7-normal-flow-audit-20260920-v1/audit-source.jl`
+- `results/summaries/r7-normal-flow-audit-20260920-v1/audit.toml`
+- `results/summaries/r7-normal-flow-audit-20260920-v1/files.toml`
+- `results/summaries/r7-normal-flow-audit-20260920-v1/inputs.toml`
+- `results/summaries/r7-normal-flow-figures-20260920-v2/F28-normal-flow.png`
+- `results/summaries/r7-normal-flow-figures-20260920-v2/F28-normal-flow.svg`
+- `results/summaries/r7-normal-flow-figures-20260920-v2/figure-config.toml`
+- `results/summaries/r7-normal-flow-figures-20260920-v2/files.toml`
+- `results/summaries/r7-normal-flow-figures-20260920-v2/rule.toml`
+- `results/summaries/r7-normal-flow-figures-20260920-v2/summary.csv`
+- `results/summaries/r7-normal-flow-figures-20260920-v2/trajectories.csv`
 - `results/summaries/r7-planning-20260920-v2/battery.csv`
 - `results/summaries/r7-planning-20260920-v2/continuation.toml`
 - `results/summaries/r7-planning-20260920-v2/files.toml`
@@ -1221,6 +1249,7 @@
 - `scripts/audit_r5_market_replay.jl`
 - `scripts/audit_r5_strategic_selection.jl`
 - `scripts/audit_r7_lp_identity.jl`
+- `scripts/audit_r7_normal_flow.jl`
 - `scripts/audit_r7_transport.jl`
 - `scripts/audit_thesis_tables.jl`
 - `scripts/bootstrap.jl`
@@ -1292,11 +1321,16 @@
 - `scripts/check_r7_battery.jl`
 - `scripts/check_r7_battery_figures.jl`
 - `scripts/check_r7_commitment.jl`
+- `scripts/check_r7_flow_balance_probe.jl`
 - `scripts/check_r7_inner_figures.jl`
 - `scripts/check_r7_linked_figures.jl`
 - `scripts/check_r7_linked_planning.jl`
 - `scripts/check_r7_normal.jl`
 - `scripts/check_r7_normal_figures.jl`
+- `scripts/check_r7_normal_flow.jl`
+- `scripts/check_r7_normal_flow_audit.jl`
+- `scripts/check_r7_normal_flow_figures.jl`
+- `scripts/check_r7_normal_flow_results.jl`
 - `scripts/check_r7_pipe_state.jl`
 - `scripts/check_r7_planning.jl`
 - `scripts/check_r7_planning_figures.jl`
@@ -1408,6 +1442,7 @@
 - `scripts/plot_r7_inner.jl`
 - `scripts/plot_r7_linked.jl`
 - `scripts/plot_r7_normal.jl`
+- `scripts/plot_r7_normal_flow.jl`
 - `scripts/plot_r7_planning.jl`
 - `scripts/plot_r7_ports.jl`
 - `scripts/plot_r7_thermal.jl`
@@ -1418,6 +1453,7 @@
 - `scripts/probe_r4_distributed.jl`
 - `scripts/probe_r4_reconfiguration.jl`
 - `scripts/probe_r5_benders_scaling.jl`
+- `scripts/probe_r7_flow_balance.jl`
 - `scripts/publish_r3_v2_report.jl`
 - `scripts/publish_r3_v3_audit_addendum.jl`
 - `scripts/publish_r3_v3_report.jl`
@@ -1487,6 +1523,8 @@
 - `scripts/r7_normal.jl`
 - `scripts/r7_normal_docs.jl`
 - `scripts/r7_normal_evidence.jl`
+- `scripts/r7_normal_flow_docs.jl`
+- `scripts/r7_normal_flow_study.jl`
 - `scripts/r7_pipe_state_docs.jl`
 - `scripts/r7_planning.jl`
 - `scripts/r7_planning_docs.jl`
@@ -1618,6 +1656,8 @@
 - `scripts/test_r7_normal.jl`
 - `scripts/test_r7_normal_cli.jl`
 - `scripts/test_r7_normal_evidence.jl`
+- `scripts/test_r7_normal_flow.jl`
+- `scripts/test_r7_normal_flow_gurobi.jl`
 - `scripts/test_r7_pipe_state.jl`
 - `scripts/test_r7_planning.jl`
 - `scripts/test_r7_ports.jl`
@@ -1664,6 +1704,7 @@
 - `src/algorithms/r7_adversary.jl`
 - `src/algorithms/r7_linked_planning.jl`
 - `src/algorithms/r7_normal.jl`
+- `src/algorithms/r7_normal_flow.jl`
 - `src/algorithms/r7_planning.jl`
 - `src/algorithms/r7_recovery.jl`
 - `src/algorithms/r7_thermal.jl`
@@ -1696,6 +1737,7 @@
 - `src/core/r7_commitment.jl`
 - `src/core/r7_linked_planning.jl`
 - `src/core/r7_normal.jl`
+- `src/core/r7_normal_flow.jl`
 - `src/core/r7_planning.jl`
 - `src/core/r7_recovery.jl`
 - `src/core/r7_thermal.jl`
@@ -1721,12 +1763,14 @@
 - `src/formulations/r7_adversary.jl`
 - `src/formulations/r7_linked_planning.jl`
 - `src/formulations/r7_normal.jl`
+- `src/formulations/r7_normal_flow.jl`
 - `src/formulations/r7_planning.jl`
 - `src/formulations/r7_recovery.jl`
 - `src/formulations/r7_thermal.jl`
 - `src/formulations/r7_transport.jl`
 - `src/networks/fixed_flow_heat.jl`
 - `src/networks/r7_linked_state.jl`
+- `src/networks/r7_mass_overlap.jl`
 - `src/networks/r7_normal_transport.jl`
 - `src/networks/r7_pipe_state.jl`
 - `src/networks/water_mass.jl`
@@ -1754,6 +1798,7 @@
 - `src/reporting/r7_adversary.jl`
 - `src/reporting/r7_linked_planning.jl`
 - `src/reporting/r7_normal.jl`
+- `src/reporting/r7_normal_flow.jl`
 - `src/reporting/r7_planning.jl`
 - `src/reporting/r7_recovery.jl`
 - `src/reporting/r7_thermal.jl`
@@ -1790,6 +1835,7 @@
 - `src/verification/r7_commitment.jl`
 - `src/verification/r7_linked_planning.jl`
 - `src/verification/r7_normal.jl`
+- `src/verification/r7_normal_flow.jl`
 - `src/verification/r7_planning.jl`
 - `src/verification/r7_recovery.jl`
 - `src/verification/r7_thermal.jl`
@@ -1843,6 +1889,7 @@
 - `test/r7_commitment.jl`
 - `test/r7_linked_planning.jl`
 - `test/r7_normal.jl`
+- `test/r7_normal_flow.jl`
 - `test/r7_pipe_state.jl`
 - `test/r7_planning.jl`
 - `test/r7_ports.jl`
@@ -1917,6 +1964,7 @@
 - `results/summaries/r7-battery-public-20260920-v1/code/`
 - `results/summaries/r7-battery-public-20260920-v1/input-parts/`
 - `results/summaries/r7-battery-public-20260920-v1/records/`
+- `results/summaries/r7-flow-balance-probe-20260920-v1/record/`
 - `results/summaries/r7-inner-three-node-20260920-v1/inner-tie-bottleneck/`
 - `results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-fault/`
 - `results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-hour/`
@@ -1928,6 +1976,8 @@
 - `results/summaries/r7-normal-20260920-v2/event/`
 - `results/summaries/r7-normal-20260920-v2/normal/`
 - `results/summaries/r7-normal-20260920-v2/workflow/`
+- `results/summaries/r7-normal-flow-20260920-v1/code/`
+- `results/summaries/r7-normal-flow-20260920-v1/records/`
 - `results/summaries/r7-planning-20260920-v2/legacy_extensive/`
 - `results/summaries/r7-planning-20260920-v2/legacy_finite_fault_ccg/`
 - `results/summaries/r7-planning-20260920-v2/reserve_extensive/`
