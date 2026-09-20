@@ -251,6 +251,7 @@ makedocs(;
             "24小时固定模式基准" => "ch07-pv.md",
             "固定模式采用式与符号" => "ch07-pv-generated.md",
             "固定模式结果与数值边界" => "ch07-pv-results.md",
+            "前向表示与终端数值解释" => "ch07-numerics.md",
         ],
         "第 2 章模型与首批实现" => [
             "模型详解" => "ch02-models.md",

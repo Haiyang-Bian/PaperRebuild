@@ -1,5 +1,5 @@
 schema = "r9-migration-route-v1"
-status = "partial_72_fixed_modes_with_numerical_gaps"
+status = "partial_72_reference_anchored_fixed_modes_validated"
 scope = "Preserve chapter-7 source connectivity and scenario-specific modifications; freeze separately labelled replacements for missing fields before optimization."
 source_input_status = "partial_original_input_not_runnable"
 ref157_doi = "10.1016/j.apenergy.2021.117224"
@@ -15,7 +15,7 @@ required_change = "44 electrical / 38 thermal nodes; 24 h; PV at E22 becomes 6 M
 must_not_inherit = "7.3 load factor, R3 synthetic recovery tail, or unrecorded transformer equivalence"
 known_interface_gap = "第3章目标(3-1)不含启停项，表7-2却列启动费。先确认7.2实际费用口径和初始开机状态；不能仅凭设备表引入二元变量、改变连续梯度子问题。若另研究启停，须命名独立版本。"
 acceptance = "Capacity and units; fixed-mode feasible witness; original grid residuals and thermal replay; common initial/terminal assumptions; separate feasible cost and solver bound."
-stage = "fixed_modes_executed_on_declared_replacement; VF and numerical closure outstanding"
+stage = "fixed_modes_reference_anchored_v1_pass_A1_energy_and_same_SOCP_A2; literal_failures_preserved; VF_and_flow_dependent_terminal_outstanding"
 
 [[route]]
 section = "7.3"

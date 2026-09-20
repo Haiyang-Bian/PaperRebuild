@@ -1,0 +1,18 @@
+factors_not_separated = "source allocation, time shifting, thermal loss"
+input_sha256 = "d514c3c2e94f962feb65717da43920559b4bcbca8613d2abcef2e1ed292d51b0"
+origin = "synthetic"
+parent_manifest_sha256 = "263c2c37b3b2b2e8e3ea8f368942af82d81ec167c80db2c15d819a9f785003f8"
+schema = "r9-numerics-cost-v1"
+
+[files]
+"audit-source.jl" = "9ea04cd428b5a3afaed7e3592a1c8d55003bcce9dce74a3b9b6910ecc8028946"
+"comparisons.csv" = "9f0edee26a7d632b235557359b791cd6c209d59e04bc0d8fe6f227c7431d8f54"
+"cost-energy.csv" = "8b240496a2949f2cbaa6b7512dc1382930012409ae3fb987457e27bb823629b5"
+
+[run_hashes]
+cf_ct_clarabel_socp = "05b3767e4f8b93226f485421724d5c456032d10020d220a6f8fa98f09cefe7a3"
+cf_ct_gurobi_original = "0d9340ddf097560449a75b9ab486e6cac79aa41ed97df72d472f05451a758c49"
+cf_ct_gurobi_socp = "b63b9811d0874bf7fc6839058f1a7382929dd3a206fd171b607127dcb1f74988"
+cf_vt_clarabel_socp = "e62883b28780af1ec228107264b40a5a902dde9db923e93e1dfb74b2ce468fc7"
+cf_vt_gurobi_original = "71e0198425ca3cc1f4980e6aa80ffc3db80ca76f764ea9a573ebf9e32d407f17"
+cf_vt_gurobi_socp = "1032f32331953321b64c1bac712755b648e779fa6b64c503a1ab3ca92f289bd6"

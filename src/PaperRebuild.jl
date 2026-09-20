@@ -341,6 +341,11 @@ include("formulations/r9_pv.jl")
 include("reporting/r9_pv.jl")
 export r9_pv_case, load_r9_pv_case, audit_r9_pv_input
 export build_r9_pv_model, solve_r9_pv_case, validate_r9_pv_solution
+include("formulations/r9_reduced.jl")
+include("reporting/r9_reduced.jl")
+include("verification/r9_reduced.jl")
+export build_r9_reduced_model, solve_r9_reduced_case, r9_daily_heat_balance
+export validate_r9_reduced_solution
 
 """
     hello(who::String)

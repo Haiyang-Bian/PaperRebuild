@@ -1,0 +1,7 @@
+run_id,mode,solver,physical_model,status,termination,cost_CNY,bound_CNY,relative_gap,model_pass,physical_pass,terminal_pass,adopted_terminal_pass,daily_energy_pass,energy_residual_MWh,elapsed_sec,wall_budget_pass
+cf_ct_clarabel_socp,CF_CT,Clarabel,false,solver_optimal,OPTIMAL,504129.23363391357,504129.23325585574,7.499224426745556e-10,true,true,true,true,true,1.7763568394002505e-14,44.41479710000567,true
+cf_vt_clarabel_socp,CF_VT,Clarabel,false,solver_optimal,OPTIMAL,502206.74593403476,502206.74581437523,2.3826757602201783e-10,true,true,true,true,true,4.796163466380676e-14,7.855154799995944,true
+cf_ct_gurobi_socp,CF_CT,Gurobi,false,solver_optimal,OPTIMAL,504129.2375370292,504129.230134555,1.4683683519796324e-8,true,true,true,true,true,1.7763568394002505e-14,41.18655420001596,true
+cf_vt_gurobi_socp,CF_VT,Gurobi,false,solver_optimal,OPTIMAL,502206.750988876,502206.74127809977,1.9336212014351517e-8,true,true,true,true,true,5.5067062021407764e-14,7.417088499991223,true
+cf_ct_gurobi_original,CF_CT,Gurobi,true,solver_optimal,OPTIMAL,504129.18533062434,504129.18533062434,0.0,true,true,true,true,true,1.7763568394002505e-14,30.14966250001453,true
+cf_vt_gurobi_original,CF_VT,Gurobi,true,solver_optimal,OPTIMAL,502206.7058047338,502206.6928092683,2.5876726207688885e-8,true,true,true,true,true,2.1316282072803006e-14,14.418532799987588,true

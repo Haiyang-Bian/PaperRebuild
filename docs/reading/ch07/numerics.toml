@@ -1,0 +1,68 @@
+schema = "r9-numerics-adoption-v1"
+model = "r9_forward_v1 / r9_reference_anchored_v1"
+source = "derived from checked chapter3 WMM and frozen R9 synthetic replacement"
+original_input_reproduction = false
+test_file = "test/r9_reduced.jl"
+test = "R9-N1:N4 forward thermal substitution and bounded arithmetic"
+
+[[equations]]
+id = "R9-N1"
+meaning = "固定流量端口热功率与质量加权混合的前向关系"
+status = "derived_fixed_positive_flow"
+api = "build_r9_reduced_model"
+[[equations]]
+id = "R9-N2"
+meaning = "相对温度与浮点权重和的平移修正"
+status = "numerical_coordinate_transformation"
+api = "build_r9_reduced_model"
+[[equations]]
+id = "R9-N3"
+meaning = "无泵目标树水压辅助变量的存在性与构造"
+status = "derived_for_declared_tree_model"
+api = "build_r9_reduced_model"
+[[equations]]
+id = "R9-N4"
+meaning = "源、荷与管道净热差的整日恒等式；沿用R9-A1"
+status = "independent_energy_accounting"
+api = "r9_daily_heat_balance"
+[[equations]]
+id = "R9-N5"
+meaning = "冻结二进制系数的精确线性不相容证书"
+status = "exact_binary_certificate_not_physical_infeasibility"
+api = "build_r9_pv_model"
+[[equations]]
+id = "R9-N6"
+meaning = "参考锚定、完整零空间与有界基底转换；显式项目数值解释"
+status = "project_terminal_interpretation"
+api = "validate_r9_reduced_solution"
+
+[[symbols]]
+id = "r9.theta"
+latex = '\theta=T-T_c'
+meaning = "相对温度，源坐标按热源节点再按时段排列"
+unit = "K"
+code = "temperature_centre_K; tau_S_port"
+[[symbols]]
+id = "r9.terminal_matrix"
+latex = 'A'
+meaning = "源温到终端记忆的仿射系数矩阵"
+unit = "1"
+code = "terminal_certificate.terminal_matrix"
+[[symbols]]
+id = "r9.terminal_basis"
+latex = 'U'
+meaning = "完整精确零空间的Float64正交表示"
+unit = "1"
+code = "terminal_certificate.basis"
+[[symbols]]
+id = "r9.terminal_coordinates"
+latex = 'y'
+meaning = "源温偏移的零空间坐标，与证书乘子y按作用域区分"
+unit = "K"
+code = "r9_terminal_coordinates"
+[[symbols]]
+id = "r9.daily_energy"
+latex = '\Delta E'
+meaning = "整日供需及管道净热差核算残差"
+unit = "MWh"
+code = "daily_heat.residual_MWh"

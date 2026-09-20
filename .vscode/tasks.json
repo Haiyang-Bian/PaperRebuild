@@ -1,5 +1,8 @@
 {
   "inputs": [
+    {"id":"r9NumericsBatch","type":"promptString","description":"R9数值批次；freeze须使用新目录，其他任务选择已有目录","default":"results/summaries/r9-numerics-20260921-v2"},
+    {"id":"r9NumericsReport","type":"promptString","description":"R9数值报告；生成须新目录，检查使用已有目录","default":"results/summaries/r9-numerics-report-20260921-v1"},
+    {"id":"r9NumericsFigures","type":"promptString","description":"R9 F35重绘的新目录，不覆盖旧图","default":"results/runs/r9-numerics-redraw"},
     {"id":"r9PVAttribution","type":"promptString","description":"R9费用/热量归因目录","default":"results/summaries/r9-pv-attribution-20260920-v1"},
     {"id":"r9PVFigures","type":"promptString","description":"R9科学图重绘新目录","default":"results/runs/r9-pv-redraw"},
     {"id":"r9PVBatch","type":"promptString","description":"R9固定模式冻结目录；freeze须使用新目录","default":"results/runs/r9-pv-new"},
@@ -161,6 +164,14 @@
     }
   ],
   "tasks": [
+    {"label":"PaperRebuild: R9 numerical mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_pv.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 numerical tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_reduced.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 numerical freeze","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_numerics_study.jl","freeze","results/summaries/r9-pv-batch-20260920-v4","${input:r9NumericsBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 numerical Clarabel run","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_numerics_study.jl","run","${input:r9NumericsBatch}","Clarabel"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 numerical Gurobi run","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/run_r9_numerics_gurobi.jl","${input:r9NumericsBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 numerical report","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_numerics_study.jl","report","${input:r9NumericsBatch}","${input:r9NumericsReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 numerical saved-value checks","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_numerics_results.jl","${input:r9NumericsBatch}","${input:r9NumericsReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 numerical redraw F35","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r9_numerics.jl","${input:r9NumericsReport}","${input:r9NumericsFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 PV mapping check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_pv.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 PV original-value verification","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_pv_results.jl","${input:r9PVBatch}","${input:r9PVReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 PV redraw scientific figure","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r9_pv.jl","${input:r9PVReport}","${input:r9PVAttribution}","${input:r9PVFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
