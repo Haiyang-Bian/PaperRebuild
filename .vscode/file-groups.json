@@ -11270,6 +11270,21 @@
           "path": "docs/src/ch06-r8-energy.md",
           "name": "ch06-r8-energy.md",
           "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r9-inputs-20260920-v1/F33-r9-topology.png",
+          "name": "F33-r9-topology.png",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch07-inputs-generated.md",
+          "name": "ch07-inputs-generated.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch07-inputs.md",
+          "name": "ch07-inputs.md",
+          "isDirectory": false
         }
       ],
       "order": 1,
@@ -11585,6 +11600,11 @@
         {
           "path": "docs/agent/tasks/2026-09-20-r8-energy.md",
           "name": "2026-09-20-r8-energy.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/agent/tasks/2026-09-20-r9-inputs.md",
+          "name": "2026-09-20-r9-inputs.md",
           "isDirectory": false
         }
       ],
@@ -12526,6 +12546,16 @@
         {
           "path": "src/verification/r8_energy_flow.jl",
           "name": "r8_energy_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/core/r9_inputs.jl",
+          "name": "r9_inputs.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/verification/r9_sources.jl",
+          "name": "r9_sources.jl",
           "isDirectory": false
         }
       ],
@@ -13548,6 +13578,26 @@
         {
           "path": "docs/reading/ch06/r8-energy-flow.toml",
           "name": "r8-energy-flow.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch07/inputs.toml",
+          "name": "inputs.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch07/migration.toml",
+          "name": "migration.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch07/reported-results.toml",
+          "name": "reported-results.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch07/topology.toml",
+          "name": "topology.toml",
           "isDirectory": false
         }
       ],
@@ -71390,6 +71440,76 @@
           "path": "results/summaries/r8-energy-figures-20260920-v2/summary.csv",
           "name": "summary.csv",
           "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-input-figures-20260920-v1/F33-r9-topology.png",
+          "name": "F33-r9-topology.png",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-input-figures-20260920-v1/F33-r9-topology.svg",
+          "name": "F33-r9-topology.svg",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-input-figures-20260920-v1/edges.csv",
+          "name": "edges.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-input-figures-20260920-v1/figure-config.toml",
+          "name": "figure-config.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-input-figures-20260920-v1/nodes.csv",
+          "name": "nodes.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-input-figures-20260920-v1/plot_r9_inputs.jl",
+          "name": "plot_r9_inputs.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-inputs-20260920-v1/arithmetic.csv",
+          "name": "arithmetic.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-inputs-20260920-v1/audit.toml",
+          "name": "audit.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-inputs-20260920-v1/code/src/core/r9_inputs.jl",
+          "name": "r9_inputs.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-inputs-20260920-v1/code/src/verification/r9_sources.jl",
+          "name": "r9_sources.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-inputs-20260920-v1/inputs.toml",
+          "name": "inputs.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-inputs-20260920-v1/manifest.toml",
+          "name": "manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-inputs-20260920-v1/reported-results.toml",
+          "name": "reported-results.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-inputs-20260920-v1/topology.toml",
+          "name": "topology.toml",
+          "isDirectory": false
         }
       ],
       "order": 6,
@@ -71720,6 +71840,11 @@
         {
           "path": "test/r8_energy_flow.jl",
           "name": "r8_energy_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "test/r9_sources.jl",
+          "name": "r9_sources.jl",
           "isDirectory": false
         }
       ],
@@ -74261,6 +74386,46 @@
         {
           "path": "scripts/test_r8_energy_study.jl",
           "name": "test_r8_energy_study.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/audit_r9_inputs.jl",
+          "name": "audit_r9_inputs.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r9_figures.jl",
+          "name": "check_r9_figures.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r9_inputs.jl",
+          "name": "check_r9_inputs.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/plot_r9_inputs.jl",
+          "name": "plot_r9_inputs.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r9_docs.jl",
+          "name": "r9_docs.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r9_source_report.jl",
+          "name": "r9_source_report.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/test_r9_report.jl",
+          "name": "test_r9_report.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/test_r9_sources.jl",
+          "name": "test_r9_sources.jl",
           "isDirectory": false
         }
       ],

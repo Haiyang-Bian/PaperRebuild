@@ -332,6 +332,10 @@ include("reporting/r8_energy_flow.jl")
 export r8_energy_spec, build_r8_energy_model, solve_r8_energy_case, validate_r8_energy_solution
 export save_r8_energy_run, read_r8_energy_run
 
+include("core/r9_inputs.jl")
+include("verification/r9_sources.jl")
+export load_r9_sources, r9_tariff, r9_original_input_gate, audit_r9_sources
+
 """
     hello(who::String)
 

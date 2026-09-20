@@ -214,6 +214,7 @@
 - `docs/agent/tasks/2026-09-20-r7-transport.md`
 - `docs/agent/tasks/2026-09-20-r8-energy.md`
 - `docs/agent/tasks/2026-09-20-r8-tradeoff.md`
+- `docs/agent/tasks/2026-09-20-r9-inputs.md`
 - `docs/make.jl`
 - `docs/reading/README.md`
 - `docs/reading/ch02/README.md`
@@ -282,6 +283,10 @@
 - `docs/reading/ch06/recovery.toml`
 - `docs/reading/ch06/thermal-reconstruction.toml`
 - `docs/reading/ch06/transport-recovery.toml`
+- `docs/reading/ch07/inputs.toml`
+- `docs/reading/ch07/migration.toml`
+- `docs/reading/ch07/reported-results.toml`
+- `docs/reading/ch07/topology.toml`
 - `docs/reading/source_manifest.json`
 - `docs/reading/sources.json`
 - `docs/src/api.md`
@@ -590,6 +595,7 @@
 - `docs/src/assets/r7-transport-20260920-v1/F25-transport-redispatch.png`
 - `docs/src/assets/r8-energy-20260920-v1/F32-r8-energy.png`
 - `docs/src/assets/r8-tradeoff-20260920-v1/F31-r8-tradeoff.png`
+- `docs/src/assets/r9-inputs-20260920-v1/F33-r9-topology.png`
 - `docs/src/ch02-api.md`
 - `docs/src/ch02-generated.md`
 - `docs/src/ch02-models.md`
@@ -712,6 +718,8 @@
 - `docs/src/ch06-thermal.md`
 - `docs/src/ch06-transport-equations.md`
 - `docs/src/ch06-transport.md`
+- `docs/src/ch07-inputs-generated.md`
+- `docs/src/ch07-inputs.md`
 - `docs/src/index.md`
 - `docs/src/julia-design.md`
 - `docs/src/quality.md`
@@ -1402,6 +1410,18 @@
 - `results/summaries/r8-tradeoff-figures-20260920-v3/plot-source.jl`
 - `results/summaries/r8-tradeoff-figures-20260920-v3/residual-points.csv`
 - `results/summaries/r8-tradeoff-figures-20260920-v3/summary.csv`
+- `results/summaries/r9-input-figures-20260920-v1/F33-r9-topology.png`
+- `results/summaries/r9-input-figures-20260920-v1/F33-r9-topology.svg`
+- `results/summaries/r9-input-figures-20260920-v1/edges.csv`
+- `results/summaries/r9-input-figures-20260920-v1/figure-config.toml`
+- `results/summaries/r9-input-figures-20260920-v1/nodes.csv`
+- `results/summaries/r9-input-figures-20260920-v1/plot_r9_inputs.jl`
+- `results/summaries/r9-inputs-20260920-v1/arithmetic.csv`
+- `results/summaries/r9-inputs-20260920-v1/audit.toml`
+- `results/summaries/r9-inputs-20260920-v1/inputs.toml`
+- `results/summaries/r9-inputs-20260920-v1/manifest.toml`
+- `results/summaries/r9-inputs-20260920-v1/reported-results.toml`
+- `results/summaries/r9-inputs-20260920-v1/topology.toml`
 - `scripts/add_r6_stdlib.jl`
 - `scripts/audit_ch05_cuts.jl`
 - `scripts/audit_ch05_probability.jl`
@@ -1425,6 +1445,7 @@
 - `scripts/audit_r7_transport.jl`
 - `scripts/audit_r8_energy.jl`
 - `scripts/audit_r8_results.jl`
+- `scripts/audit_r9_inputs.jl`
 - `scripts/audit_thesis_tables.jl`
 - `scripts/bootstrap.jl`
 - `scripts/bootstrap_data.jl`
@@ -1528,6 +1549,8 @@
 - `scripts/check_r8_energy_results.jl`
 - `scripts/check_r8_figures.jl`
 - `scripts/check_r8_results.jl`
+- `scripts/check_r9_figures.jl`
+- `scripts/check_r9_inputs.jl`
 - `scripts/check_solvers.jl`
 - `scripts/collect_ch03_data.jl`
 - `scripts/compare_r1_runs.jl`
@@ -1638,6 +1661,7 @@
 - `scripts/plot_r7_transport.jl`
 - `scripts/plot_r8_energy.jl`
 - `scripts/plot_r8_tradeoff.jl`
+- `scripts/plot_r9_inputs.jl`
 - `scripts/prepare_r1_summary.jl`
 - `scripts/preview.jl`
 - `scripts/probe_r4_discrete.jl`
@@ -1739,6 +1763,8 @@
 - `scripts/r8_energy_cases.jl`
 - `scripts/r8_energy_study.jl`
 - `scripts/r8_tradeoff_study.jl`
+- `scripts/r9_docs.jl`
+- `scripts/r9_source_report.jl`
 - `scripts/read_docx.py`
 - `scripts/read_thesis.py`
 - `scripts/recheck_r7_transport.jl`
@@ -1881,6 +1907,8 @@
 - `scripts/test_r8_heat_boundary.jl`
 - `scripts/test_r8_study.jl`
 - `scripts/test_r8_tradeoff.jl`
+- `scripts/test_r9_report.jl`
+- `scripts/test_r9_sources.jl`
 - `scripts/tighten_r4_distributed_cost.jl`
 - `scripts/validate_ch03_data.jl`
 - `scripts/validate_r1.jl`
@@ -1965,6 +1993,7 @@
 - `src/core/r7_transport.jl`
 - `src/core/r8_energy_flow.jl`
 - `src/core/r8_tradeoff.jl`
+- `src/core/r9_inputs.jl`
 - `src/formulations/r1.jl`
 - `src/formulations/r2.jl`
 - `src/formulations/r3.jl`
@@ -2073,6 +2102,7 @@
 - `src/verification/r7_transport.jl`
 - `src/verification/r8_energy_flow.jl`
 - `src/verification/r8_tradeoff.jl`
+- `src/verification/r9_sources.jl`
 - `test/ch03_data.jl`
 - `test/ch06_audit.jl`
 - `test/maintenance.tests.ps1`
@@ -2136,6 +2166,7 @@
 - `test/r7_transport.jl`
 - `test/r8_energy_flow.jl`
 - `test/r8_tradeoff.jl`
+- `test/r9_sources.jl`
 - `test/runtests.jl`
 - `tools/Manifest.toml`
 - `tools/Project.toml`
@@ -2241,3 +2272,4 @@
 - `results/summaries/r8-energy-20260920-v1/records/`
 - `results/summaries/r8-tradeoff-20260920-v1/code/`
 - `results/summaries/r8-tradeoff-20260920-v1/records/`
+- `results/summaries/r9-inputs-20260920-v1/code/`

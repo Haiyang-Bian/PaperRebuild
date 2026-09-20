@@ -1,0 +1,40 @@
+id,label,derived,reported,difference,rounding_tolerance,unit,meaning,status
+R9-C01,base electric capacity,16.5,16.5,0.0,0.05,MW,arithmetic,consistent_with_printed_rounding
+R9-C02,base renewable capacity,8.0,8.0,0.0,0.05,MW,arithmetic,consistent_with_printed_rounding
+R9-Q01,H/P times CHP electricity plus rated EB heat,9.0,8.1,0.9000000000000004,0.05,MW,arithmetic,difference_requires_interpretation
+R9-C03,disaster electric capacity,24.5,24.5,0.0,0.05,MW,arithmetic,consistent_with_printed_rounding
+7-10-stage1-A1,disagreement plus first payment,8115.83,8115.82,0.010000000000218279,0.015000000000000003,CNY,arithmetic,consistent_with_printed_rounding
+7-10-stage2-A1,first utility plus second payment,8681.36,8681.36,0.0,0.015000000000000003,CNY,arithmetic,consistent_with_printed_rounding
+7-10-stage1-A2,disagreement plus first payment,9502.11,9502.11,0.0,0.015000000000000003,CNY,arithmetic,consistent_with_printed_rounding
+7-10-stage2-A2,first utility plus second payment,10295.79,10295.79,0.0,0.015000000000000003,CNY,arithmetic,consistent_with_printed_rounding
+7-10-stage1-A3,disagreement plus first payment,13576.0,13576.0,0.0,0.015000000000000003,CNY,arithmetic,consistent_with_printed_rounding
+7-10-stage2-A3,first utility plus second payment,14172.06,14172.06,0.0,0.015000000000000003,CNY,arithmetic,consistent_with_printed_rounding
+7-10-stage1-A4,disagreement plus first payment,8844.7,8844.7,0.0,0.015000000000000003,CNY,arithmetic,consistent_with_printed_rounding
+7-10-stage2-A4,first utility plus second payment,9398.990000000002,9398.99,1.8189894035458565e-12,0.015000000000000003,CNY,arithmetic,consistent_with_printed_rounding
+7-10-stage1-A5,disagreement plus first payment,8691.73,8691.73,0.0,0.015000000000000003,CNY,arithmetic,consistent_with_printed_rounding
+7-10-stage2-A5,first utility plus second payment,9199.43,9199.42,0.010000000000218279,0.015000000000000003,CNY,arithmetic,consistent_with_printed_rounding
+7-10-stage1-A6,disagreement plus first payment,8187.36,8187.36,0.0,0.015000000000000003,CNY,arithmetic,consistent_with_printed_rounding
+7-10-stage2-A6,first utility plus second payment,8704.699999999999,8704.7,-1.8189894035458565e-12,0.015000000000000003,CNY,arithmetic,consistent_with_printed_rounding
+7-10-stage1-A7,disagreement plus first payment,7991.8099999999995,7991.81,-9.094947017729282e-13,0.015000000000000003,CNY,arithmetic,consistent_with_printed_rounding
+7-10-stage2-A7,first utility plus second payment,8502.720000000001,8502.72,1.8189894035458565e-12,0.015000000000000003,CNY,arithmetic,consistent_with_printed_rounding
+7-10-stage1-A8,disagreement plus first payment,2533.5299999999997,2533.53,-4.547473508864641e-13,0.015000000000000003,CNY,arithmetic,consistent_with_printed_rounding
+7-10-stage2-A8,first utility plus second payment,2753.6400000000003,2753.64,4.547473508864641e-13,0.015000000000000003,CNY,arithmetic,consistent_with_printed_rounding
+7-10-sum-disagreement,eight actor sum,53619.83,53619.83,0.0,0.04500000000000001,CNY,arithmetic,consistent_with_printed_rounding
+7-10-sum-stage1_payment,eight actor sum,13823.239999999998,13823.24,-1.8189894035458565e-12,0.04500000000000001,CNY,arithmetic,consistent_with_printed_rounding
+7-10-sum-stage1_utility,eight actor sum,67443.06,67443.06,0.0,0.04500000000000001,CNY,arithmetic,consistent_with_printed_rounding
+7-10-sum-stage2_payment,eight actor sum,4265.629999999999,4265.63,-9.094947017729282e-13,0.04500000000000001,CNY,arithmetic,consistent_with_printed_rounding
+7-10-sum-stage2_utility,eight actor sum,71708.68,71708.69,-0.010000000009313226,0.04500000000000001,CNY,arithmetic,consistent_with_printed_rounding
+7-10-sum-sspa_utility,eight actor sum,60164.92,60164.92,0.0,0.04500000000000001,CNY,arithmetic,consistent_with_printed_rounding
+7-10-system-stage1,operator plus aggregator printed total,137447.36,137447.36,0.0,0.015000000000000003,CNY,arithmetic,consistent_with_printed_rounding
+7-10-system-stage2,operator plus aggregator printed total,145978.62,145978.62,0.0,0.015000000000000003,CNY,arithmetic,consistent_with_printed_rounding
+7-10-system-sspa,operator plus aggregator printed total,145978.62,145978.62,0.0,0.015000000000000003,CNY,arithmetic,consistent_with_printed_rounding
+7-11-2A,operator plus aggregators,132670.32,132670.32,0.0,0.015000000000000003,CNY,arithmetic,consistent_with_printed_rounding
+7-11-2B,operator plus aggregators,137594.47,137594.47,0.0,0.015000000000000003,CNY,arithmetic,consistent_with_printed_rounding
+7-11-2C,operator plus aggregators,145978.62,145978.62,0.0,0.015000000000000003,CNY,arithmetic,consistent_with_printed_rounding
+7-10-vs-7-11,printed first-cooperation aggregator totals,67443.06,67048.62,394.4400000000023,0.010000000000000002,CNY,cross_table_comparability_unresolved,difference_requires_interpretation
+7-19-cost-4A,normal cost components,405372.0,405373.0,-1.0,2.0,CNY,arithmetic,consistent_with_printed_rounding
+7-19-cost-4B,normal cost components,418616.0,418616.0,0.0,2.0,CNY,arithmetic,consistent_with_printed_rounding
+Q08-4B,cost increase versus 4A,3.2668677982993444,4.31,-1.0431322017006552,0.005000000000000001,percent,arithmetic,difference_requires_interpretation
+7-19-cost-4C,normal cost components,409662.0,409662.0,0.0,2.0,CNY,arithmetic,consistent_with_printed_rounding
+Q08-4C,cost increase versus 4A,1.058037905829945,1.68,-0.621962094170055,0.005000000000000001,percent,arithmetic,difference_requires_interpretation
+Q08-unserved,unserved reduction 4C versus 4A,82.9112739017483,82.91,0.0012739017483056614,0.005000000000000001,percent,arithmetic,consistent_with_printed_rounding

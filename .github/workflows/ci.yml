@@ -102,6 +102,14 @@ jobs:
         run: julia --startup-file=no --project=. scripts/check_r7_lossy_flow.jl
       - name: R7 lossy exclusive-battery frozen evidence
         run: julia --startup-file=no --project=. scripts/check_r7_lossy_flow_results.jl results/summaries/r7-lossy-flow-20260920-v1 results/summaries/r7-flow-planning-20260920-v2
+      - name: R9 original input and migration mapping
+        run: julia --startup-file=no --project=. scripts/check_r9_inputs.jl
+      - name: R9 source audit replay and tamper checks
+        run: julia --startup-file=no --project=. scripts/test_r9_report.jl
+      - name: R9 frozen original-input evidence
+        run: julia --startup-file=no --project=. scripts/audit_r9_inputs.jl check results/summaries/r9-inputs-20260920-v1
+      - name: R9 source connectivity figure
+        run: julia --startup-file=no --project=. scripts/check_r9_figures.jl results/summaries/r9-inputs-20260920-v1 results/summaries/r9-input-figures-20260920-v1 docs/src/assets/r9-inputs-20260920-v1/F33-r9-topology.png
       - name: R8 objective and symbol mapping
         run: julia --startup-file=no --project=. scripts/check_r8.jl
       - name: R8 steady energy-flow mapping

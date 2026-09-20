@@ -1,5 +1,7 @@
 {
   "inputs": [
+    {"id":"r9SourceReport","type":"promptString","description":"R9来源审计：创建须新目录，检查用已有报告","default":"results/summaries/r9-inputs-20260920-v1"},
+    {"id":"r9SourceFigures","type":"promptString","description":"R9连接图新目录，拒绝覆盖","default":"results/runs/r9-source-redraw"},
     {"id":"r8EnergyBatch","type":"promptString","description":"R8能流对照：冻结用新目录，运行用已冻结目录","default":"results/runs/r8-energy-new"},
     {"id":"r8EnergyReport","type":"promptString","description":"R8能流原值报告，创建不得覆盖","default":"results/summaries/r8-energy-20260920-v1"},
     {"id":"r8EnergyAudit","type":"promptString","description":"R8能流配对和独立回放审计","default":"results/summaries/r8-energy-audit-20260920-v2"},
@@ -155,6 +157,11 @@
     }
   ],
   "tasks": [
+    {"label":"PaperRebuild: R9 source tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_sources.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 source mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_inputs.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 audit source tables to new directory","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/audit_r9_inputs.jl","write","${input:r9SourceReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 recheck frozen source audit","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/audit_r9_inputs.jl","check","${input:r9SourceReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 redraw source connections","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r9_inputs.jl","${input:r9SourceReport}","${input:r9SourceFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"R8 energy: mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r8_energy.jl"],"problemMatcher":[]},
     {"label":"R8 energy: tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r8_energy_flow.jl"],"problemMatcher":[]},
     {"label":"R8 energy: analytic four-hour witness","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r8_energy_cases.jl"],"problemMatcher":[]},

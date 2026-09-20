@@ -71,6 +71,8 @@ write(
     joinpath(@__DIR__, "src", "ch06-r8-energy-equations.md"),
     r8_markdown(; ledger = "r8-energy-flow.toml"),
 )
+include(joinpath(@__DIR__, "..", "scripts", "r9_docs.jl"))
+write(joinpath(@__DIR__, "src", "ch07-inputs-generated.md"), r9_markdown())
 
 makedocs(;
     modules = [PaperRebuild],
@@ -241,6 +243,8 @@ makedocs(;
             "R8储热机制结果" => "ch06-r8-energy-results.md",
             "R8能流推导与符号" => "ch06-r8-energy-equations.md",
         ],
+        "第 7 章示范区迁移" =>
+            ["输入与后续顺序" => "ch07-inputs.md", "来源与核查索引" => "ch07-inputs-generated.md"],
         "第 2 章模型与首批实现" => [
             "模型详解" => "ch02-models.md",
             "符号与代码命名" => "ch02-naming.md",
