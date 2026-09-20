@@ -93,7 +93,7 @@ C\ge\lambda L^{\mathrm e}+(c_{\mathrm{CHP}}-\lambda)L^{\mathrm h}/r_{\mathrm{CHP
 \tag{R7-F6}
 ~~~
 
-无损各管显热收支相加，内部节点质量与焓流两两抵消，得到每时段整网能量恒等式。基准非线性模型已隐含该式，但松弛中未必保留强度。scripts/probe_r7_flow_balance.jl在独立60秒探针中显式添加；默认build接口本批仍保留原表示。此行不是新物理假设，不能把单例关闭界缺口写成论文规模速度优势。
+无损各管显热收支相加，内部节点质量与焓流两两抵消，得到每时段整网能量恒等式。基准非线性模型已隐含该式，但松弛中未必保留强度。scripts/probe_r7_flow_balance.jl在独立60秒探针中显式添加；后续共同流量节点提供energy_balance=true显式选项，旧调用仍默认false，原九项记录不改写。此行不是新物理假设，不能把单例关闭界缺口写成论文规模速度优势。
 
 分类：derived_redundant_energy_identity_independent_probe。API：[`build_r7_normal_flow`](@ref)。测试：`scripts/check_r7_flow_balance_probe.jl` / `R7-F6 redundant conservation formulation witness`。
 

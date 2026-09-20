@@ -96,6 +96,12 @@ jobs:
         run: julia --startup-file=no --project=. scripts/check_r7_normal_flow.jl
       - name: R7 source-frozen continuous flow evidence
         run: julia --startup-file=no --project=. scripts/check_r7_normal_flow_results.jl results/summaries/r7-normal-flow-20260920-v1
+      - name: R7 shared normal and recovery flow mapping
+        run: julia --startup-file=no --project=. scripts/check_r7_flow_planning.jl
+      - name: R7 shared flow frozen planning evidence
+        run: julia --startup-file=no --project=. scripts/check_r7_flow_planning_results.jl results/summaries/r7-flow-planning-20260920-v2
+      - name: R7 shared flow figure provenance
+        run: julia --startup-file=no --project=. scripts/check_r7_flow_planning_figures.jl results/summaries/r7-flow-planning-20260920-v2 results/summaries/r7-flow-planning-figures-20260920-v3 docs/src/assets/r7-flow-planning-20260920-v2/F29-shared-flow.png
       - name: R7 analytic normal cost bound and embedded witness
         run: julia --startup-file=no --project=. scripts/check_r7_normal_flow_audit.jl results/summaries/r7-normal-flow-20260920-v1 results/summaries/r7-normal-flow-audit-20260920-v1
       - name: R7 equivalent network energy formulation probe

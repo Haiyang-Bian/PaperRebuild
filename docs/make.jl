@@ -61,6 +61,8 @@ include(joinpath(@__DIR__, "..", "scripts", "r7_linked_docs.jl"))
 write(joinpath(@__DIR__, "src", "ch06-linked-equations.md"), r7_linked_markdown())
 include(joinpath(@__DIR__, "..", "scripts", "r7_normal_flow_docs.jl"))
 write(joinpath(@__DIR__, "src", "ch06-normal-flow-equations.md"), r7_normal_flow_markdown())
+include(joinpath(@__DIR__, "..", "scripts", "r7_flow_planning_docs.jl"))
+write(joinpath(@__DIR__, "src", "ch06-flow-planning-equations.md"), r7_flow_planning_markdown())
 
 makedocs(;
     modules = [PaperRebuild],
@@ -220,6 +222,8 @@ makedocs(;
             "空间状态连接方程与符号" => "ch06-linked-equations.md",
             "连续流量正常调度" => "ch06-normal-flow.md",
             "连续流量推导与符号" => "ch06-normal-flow-equations.md",
+            "灾前灾后共同流量" => "ch06-flow-planning.md",
+            "共同流量推导与符号" => "ch06-flow-planning-equations.md",
         ],
         "第 2 章模型与首批实现" => [
             "模型详解" => "ch02-models.md",

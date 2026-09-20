@@ -66,7 +66,7 @@ test = "R7-F5 conservation lower bound and independent witness"
 [[equation]]
 id = "R7-F6"
 latex = '\Delta t[\sum_gH_{g,t,\omega}-\sum_jH^{\mathrm D}_{j,t}]=\sum_{p,s\in\{\mathrm S,\mathrm R\}}(E_{p,t+1,\omega}^{s}-E_{p,t,\omega}^{s})'
-meaning = "无损各管显热收支相加，内部节点质量与焓流两两抵消，得到每时段整网能量恒等式。基准非线性模型已隐含该式，但松弛中未必保留强度。scripts/probe_r7_flow_balance.jl在独立60秒探针中显式添加；默认build接口本批仍保留原表示。此行不是新物理假设，不能把单例关闭界缺口写成论文规模速度优势。"
+meaning = "无损各管显热收支相加，内部节点质量与焓流两两抵消，得到每时段整网能量恒等式。基准非线性模型已隐含该式，但松弛中未必保留强度。scripts/probe_r7_flow_balance.jl在独立60秒探针中显式添加；后续共同流量节点提供energy_balance=true显式选项，旧调用仍默认false，原九项记录不改写。此行不是新物理假设，不能把单例关闭界缺口写成论文规模速度优势。"
 classification = "derived_redundant_energy_identity_independent_probe"
 api = "build_r7_normal_flow"
 test_file = "scripts/check_r7_flow_balance_probe.jl"

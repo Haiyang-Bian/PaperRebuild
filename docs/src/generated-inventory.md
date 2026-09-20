@@ -130,6 +130,7 @@
 - `configs/r6/study.toml`
 - `configs/r7/battery-study.toml`
 - `configs/r7/chp-component-hand.toml`
+- `configs/r7/flow-planning-study.toml`
 - `configs/r7/inner-freeze.toml`
 - `configs/r7/inner-tie-bottleneck.toml`
 - `configs/r7/inner-tie-two-fault.toml`
@@ -197,6 +198,7 @@
 - `docs/agent/tasks/2026-09-20-r7-adversary.md`
 - `docs/agent/tasks/2026-09-20-r7-battery.md`
 - `docs/agent/tasks/2026-09-20-r7-commitment.md`
+- `docs/agent/tasks/2026-09-20-r7-flow-planning.md`
 - `docs/agent/tasks/2026-09-20-r7-linked-planning.md`
 - `docs/agent/tasks/2026-09-20-r7-normal-flow.md`
 - `docs/agent/tasks/2026-09-20-r7-normal.md`
@@ -260,6 +262,7 @@
 - `docs/reading/ch06/audit.toml`
 - `docs/reading/ch06/battery-domain.toml`
 - `docs/reading/ch06/compatible-ports.toml`
+- `docs/reading/ch06/flow-planning.toml`
 - `docs/reading/ch06/inner-adversary.toml`
 - `docs/reading/ch06/linked-planning.toml`
 - `docs/reading/ch06/normal-dispatch.toml`
@@ -566,6 +569,7 @@
 - `docs/src/assets/r6-formal-20260920-v1/F19.png`
 - `docs/src/assets/r6-formal-20260920-v1/figure-config.toml`
 - `docs/src/assets/r7-battery-20260920-v1/F26-battery-domain.png`
+- `docs/src/assets/r7-flow-planning-20260920-v2/F29-shared-flow.png`
 - `docs/src/assets/r7-inner-20260920-v3/F22-inner-faults.png`
 - `docs/src/assets/r7-linked-20260920-v2/F27-linked-planning.png`
 - `docs/src/assets/r7-normal-20260920-v2/F20-normal-event.png`
@@ -668,6 +672,8 @@
 - `docs/src/ch06-battery.md`
 - `docs/src/ch06-commitment-equations.md`
 - `docs/src/ch06-commitment.md`
+- `docs/src/ch06-flow-planning-equations.md`
+- `docs/src/ch06-flow-planning.md`
 - `docs/src/ch06-linked-equations.md`
 - `docs/src/ch06-linked-planning.md`
 - `docs/src/ch06-normal-equations.md`
@@ -1074,6 +1080,25 @@
 - `results/summaries/r7-flow-balance-probe-20260920-v1/files.toml`
 - `results/summaries/r7-flow-balance-probe-20260920-v1/parent-inputs.toml`
 - `results/summaries/r7-flow-balance-probe-20260920-v1/probe-source.jl`
+- `results/summaries/r7-flow-planning-20260920-v2/environment.toml`
+- `results/summaries/r7-flow-planning-20260920-v2/events.csv`
+- `results/summaries/r7-flow-planning-20260920-v2/freeze.toml`
+- `results/summaries/r7-flow-planning-20260920-v2/inputs.toml`
+- `results/summaries/r7-flow-planning-20260920-v2/report-hashes.toml`
+- `results/summaries/r7-flow-planning-20260920-v2/residuals.csv`
+- `results/summaries/r7-flow-planning-20260920-v2/rule.toml`
+- `results/summaries/r7-flow-planning-20260920-v2/study-source.jl`
+- `results/summaries/r7-flow-planning-20260920-v2/summary.csv`
+- `results/summaries/r7-flow-planning-20260920-v2/trajectories.csv`
+- `results/summaries/r7-flow-planning-figures-20260920-v3/F29-shared-flow.png`
+- `results/summaries/r7-flow-planning-figures-20260920-v3/F29-shared-flow.svg`
+- `results/summaries/r7-flow-planning-figures-20260920-v3/events.csv`
+- `results/summaries/r7-flow-planning-figures-20260920-v3/figure.toml`
+- `results/summaries/r7-flow-planning-figures-20260920-v3/plot-source.jl`
+- `results/summaries/r7-flow-planning-figures-20260920-v3/residuals.csv`
+- `results/summaries/r7-flow-planning-figures-20260920-v3/rule.toml`
+- `results/summaries/r7-flow-planning-figures-20260920-v3/summary.csv`
+- `results/summaries/r7-flow-planning-figures-20260920-v3/trajectories.csv`
 - `results/summaries/r7-inner-figures-20260920-v3/F22-inner-faults.png`
 - `results/summaries/r7-inner-figures-20260920-v3/F22-inner-faults.svg`
 - `results/summaries/r7-inner-figures-20260920-v3/figure.toml`
@@ -1322,6 +1347,9 @@
 - `scripts/check_r7_battery_figures.jl`
 - `scripts/check_r7_commitment.jl`
 - `scripts/check_r7_flow_balance_probe.jl`
+- `scripts/check_r7_flow_planning.jl`
+- `scripts/check_r7_flow_planning_figures.jl`
+- `scripts/check_r7_flow_planning_results.jl`
 - `scripts/check_r7_inner_figures.jl`
 - `scripts/check_r7_linked_figures.jl`
 - `scripts/check_r7_linked_planning.jl`
@@ -1439,6 +1467,7 @@
 - `scripts/plot_r5_strategic_benders.jl`
 - `scripts/plot_r6_study.jl`
 - `scripts/plot_r7_battery.jl`
+- `scripts/plot_r7_flow_planning.jl`
 - `scripts/plot_r7_inner.jl`
 - `scripts/plot_r7_linked.jl`
 - `scripts/plot_r7_normal.jl`
@@ -1517,6 +1546,8 @@
 - `scripts/r7_battery_docs.jl`
 - `scripts/r7_battery_study.jl`
 - `scripts/r7_commitment_docs.jl`
+- `scripts/r7_flow_planning_docs.jl`
+- `scripts/r7_flow_planning_study.jl`
 - `scripts/r7_inner_study.jl`
 - `scripts/r7_linked_docs.jl`
 - `scripts/r7_linked_study.jl`
@@ -1652,6 +1683,8 @@
 - `scripts/test_r7_adversary.jl`
 - `scripts/test_r7_battery.jl`
 - `scripts/test_r7_commitment.jl`
+- `scripts/test_r7_flow_planning.jl`
+- `scripts/test_r7_flow_planning_gurobi.jl`
 - `scripts/test_r7_linked_planning.jl`
 - `scripts/test_r7_normal.jl`
 - `scripts/test_r7_normal_cli.jl`
@@ -1702,6 +1735,7 @@
 - `src/algorithms/r6_methods.jl`
 - `src/algorithms/r6_support_evaluation.jl`
 - `src/algorithms/r7_adversary.jl`
+- `src/algorithms/r7_flow_planning.jl`
 - `src/algorithms/r7_linked_planning.jl`
 - `src/algorithms/r7_normal.jl`
 - `src/algorithms/r7_normal_flow.jl`
@@ -1735,6 +1769,7 @@
 - `src/core/r6_study.jl`
 - `src/core/r7_adversary.jl`
 - `src/core/r7_commitment.jl`
+- `src/core/r7_flow_planning.jl`
 - `src/core/r7_linked_planning.jl`
 - `src/core/r7_normal.jl`
 - `src/core/r7_normal_flow.jl`
@@ -1761,6 +1796,7 @@
 - `src/formulations/r5_strategic_benders.jl`
 - `src/formulations/r6_evaluation.jl`
 - `src/formulations/r7_adversary.jl`
+- `src/formulations/r7_flow_planning.jl`
 - `src/formulations/r7_linked_planning.jl`
 - `src/formulations/r7_normal.jl`
 - `src/formulations/r7_normal_flow.jl`
@@ -1796,6 +1832,7 @@
 - `src/reporting/r6_data.jl`
 - `src/reporting/r6_evaluation.jl`
 - `src/reporting/r7_adversary.jl`
+- `src/reporting/r7_flow_planning.jl`
 - `src/reporting/r7_linked_planning.jl`
 - `src/reporting/r7_normal.jl`
 - `src/reporting/r7_normal_flow.jl`
@@ -1833,6 +1870,7 @@
 - `src/verification/r6_study.jl`
 - `src/verification/r7_adversary.jl`
 - `src/verification/r7_commitment.jl`
+- `src/verification/r7_flow_planning.jl`
 - `src/verification/r7_linked_planning.jl`
 - `src/verification/r7_normal.jl`
 - `src/verification/r7_normal_flow.jl`
@@ -1887,6 +1925,8 @@
 - `test/r7_adversary.jl`
 - `test/r7_battery.jl`
 - `test/r7_commitment.jl`
+- `test/r7_flow_planning.jl`
+- `test/r7_flow_planning_fixtures.jl`
 - `test/r7_linked_planning.jl`
 - `test/r7_normal.jl`
 - `test/r7_normal_flow.jl`
@@ -1965,6 +2005,8 @@
 - `results/summaries/r7-battery-public-20260920-v1/input-parts/`
 - `results/summaries/r7-battery-public-20260920-v1/records/`
 - `results/summaries/r7-flow-balance-probe-20260920-v1/record/`
+- `results/summaries/r7-flow-planning-20260920-v2/code/`
+- `results/summaries/r7-flow-planning-20260920-v2/records/`
 - `results/summaries/r7-inner-three-node-20260920-v1/inner-tie-bottleneck/`
 - `results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-fault/`
 - `results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-hour/`

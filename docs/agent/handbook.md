@@ -52,6 +52,14 @@ R3第四批显式v3见[物理恢复与停止判据](../src/ch03-r3-v3.md)。恢�
 
 ## 文档更新路由
 
+R7共同连续流量读[灾前灾后连接](../src/ch06-flow-planning.md)，台账ch06/flow-planning.toml。
+r7_shared_continuous_flow_v1将正常质量标签/入口温度前缀接入每个恢复分支，不自由重设空间初温。
+正常严格正向、恢复非负可停流、零UA；停流出口不可观测但仍保留有界占位和库存，不能凭占位输热。
+全量故障参考通常为非凸MIQCP；旧给定流量LP/内层对偶不自动适用。正常费用界与恢复存在性见证分开。
+冻结前控制规则在configs/r7/flow-planning-study.toml；报告由冻结源码原值回放，不用重新优化代替检查。
+同边界内比较三种流量域，不能把健康内部线零失供和全断线容许全热失供混成收益；电池和式/互斥另报。
+build/solve_r7_normal_flow新增energy_balance显式选项，旧默认false；不改写原九项及探针记录。
+
 R7连续正常流量读[累计质量与无损参考](../src/ch06-normal-flow.md)，台账ch06/normal-flow.toml。
 r7_continuous_positive_lossless_v1保留跨场景共同流量，精确区间交集与非凸乘积；
 只支持正向、零UA和原端口活动集合，不将分支范围冒充原6-31全有符号域。

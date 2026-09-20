@@ -98,6 +98,9 @@ C\geq\lambda L^{\mathrm e}+
 只读入口为`scripts/check_r7_flow_balance_probe.jl <探针目录>`。
 默认建模接口本批仍保留基准表示，后续纳入强化时需新证据，原限时状态不改写。
 
+后续[共同流量规划](ch06-flow-planning.md)已增加显式`energy_balance=true`选项；
+旧调用仍默认为`false`，原九项证据保留原表示。联合规划的新记录明确采用该等价守恒行。
+
 ### 九项正式结果
 
 原值与冻结源码在`results/summaries/r7-normal-flow-20260920-v1`。九项均通过声明正常模型与
