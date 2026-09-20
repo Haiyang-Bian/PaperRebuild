@@ -1,0 +1,1818 @@
+bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+candidate_accepted = true
+case_sha256 = "03cb35d2eea9b5aea050bc4ea0ff6ea5b0534163f2a87835d7c86d1554e3290a"
+elapsed_sec = 0.00800013542175293
+fault = [1]
+fixed_z = [0]
+formula_ids = ["6-11", "6-12", "6-13", "6-14", "6-19", "6-20", "6-24:25", "6-3", "6-3/9", "6-4:5/57:58", "6-54", "6-55", "6-56", "6-61", "6-63", "6-72", "6-74", "6-75", "6-8/56/60", "6-80:82", "6-83", "6-84", "6-85", "6-86", "6-89", "R7-A3/90", "R7-A4/76:78", "R7-A4/77:79", "R7-C1-load", "R7-C1-source", "R7-R1", "R7-R2", "R7-R3", "R7-R4"]
+julia_version = "1.12.6"
+loss_optimization_complete = false
+model_class = "LP"
+objective_kind = "expected_unserved_energy_MWh"
+optimizer_request = "Clarabel.MOIwrapper.Optimizer"
+preplan_id = "r7-planning-cec5b94b-a711-4ce2-be02-8e4a7e835adf_normal_2"
+preplan_optimality_verified = false
+primal_status = "FEASIBLE_POINT"
+raw_status = "SOLVED"
+requested_budget_sec = 599.9990000724792
+run_id = "r7-recovery-71b78d93-7183-4d6c-8d9f-c1b5927c242d"
+schema = "r7-recovery-result-v1"
+solver = "Clarabel"
+solver_objective_MWh = 0.39999999988545226
+status = "solver_optimal"
+termination_status = "OPTIMAL"
+utc = "2026-09-19T23:50:02.995"
+version = "r7_recovery_port_checked_v1"
+
+[source_hashes_at_solve]
+"Manifest.toml" = "948f0f5c5a4bc8381a3d9ad413fb0f8e78ee1a3bad52606dea9b9b6f144e5450"
+"Project.toml" = "313f8c54dfa9a7a276832e48cc8d7e3e9b63c29aab765bf7fa541f2fb68f40a9"
+"src/PaperRebuild.jl" = "203a4e3d5746ebc0b0325bfdc27b562f12b9d0e268197972ac01220be24cef18"
+"src/algorithms/r7_recovery.jl" = "c3f6492938ea5d4f77f1a82da42175284671f6ae8aade5b7c5ec0af4ff4977c4"
+"src/core/r7_recovery.jl" = "1e99a5b4c5efc9f1fdeb6a414e63151f46f76d5b91612aeed275b2b1638442aa"
+"src/formulations/r7_recovery.jl" = "e837daef00c52dd4cec54c4b47eba3a7c24fe454f5fb9f93489c075d7c7f8914"
+"src/reporting/r7_recovery.jl" = "2118f6326e9709e079567a2513af8b52b29a3f83b1d9a239d634deba5825ffd9"
+"src/verification/r7_recovery.jl" = "9929c57bfcec13dec1a67ce383edb10d26105ee0e48ffcbaec166dd08dd6b339"
+
+[validation]
+ac_grid_validated = false
+detailed_heat_validated = false
+exchange_exact_pass = false
+loss_MWh = 0.3999999998854523
+loss_electric_MWh = -3.5128489738748394e-12
+loss_heat_MWh = 0.3999999998889652
+loss_pass = true
+max_simultaneous_charge_discharge_MW = 0.05101010448692619
+model_pass = true
+mutual_exclusivity_pass = false
+optimality_pass = false
+
+    [[validation.rows]]
+    entity = "1"
+    id = "fixed-topology"
+    normalized = 2.294580576550082e-9
+    pass = true
+    residual = 2.294580576550082e-15
+    scenario = 0
+    scope = "adopted"
+    t = 0
+    tolerance = 1.0e-6
+    unit = "1"
+    [[validation.rows]]
+    entity = "1"
+    id = "binary-z"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 0
+    scope = "adopted"
+    t = 0
+    tolerance = 1.0e-6
+    unit = "1"
+    [[validation.rows]]
+    entity = "1"
+    id = "integer-z"
+    normalized = 2.294580576550082e-9
+    pass = true
+    residual = 2.294580576550082e-15
+    scenario = 0
+    scope = "adopted"
+    t = 0
+    tolerance = 1.0e-6
+    unit = "1"
+    [[validation.rows]]
+    entity = "1"
+    id = "binary-beta"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 0
+    scope = "adopted"
+    t = 0
+    tolerance = 1.0e-6
+    unit = "1"
+    [[validation.rows]]
+    entity = "1"
+    id = "integer-beta"
+    normalized = 7.771561172376096e-10
+    pass = true
+    residual = 7.771561172376096e-16
+    scenario = 0
+    scope = "adopted"
+    t = 0
+    tolerance = 1.0e-6
+    unit = "1"
+    [[validation.rows]]
+    entity = "2"
+    id = "binary-beta"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 0
+    scope = "adopted"
+    t = 0
+    tolerance = 1.0e-6
+    unit = "1"
+    [[validation.rows]]
+    entity = "2"
+    id = "integer-beta"
+    normalized = 7.771561172376096e-10
+    pass = true
+    residual = 7.771561172376096e-16
+    scenario = 0
+    scope = "adopted"
+    t = 0
+    tolerance = 1.0e-6
+    unit = "1"
+    [[validation.rows]]
+    entity = "1"
+    id = "binary-a_on"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 0
+    scope = "adopted"
+    t = 0
+    tolerance = 1.0e-6
+    unit = "1"
+    [[validation.rows]]
+    entity = "1"
+    id = "integer-a_on"
+    normalized = 5.4347655484867365e-8
+    pass = true
+    residual = 5.434765548486736e-14
+    scenario = 0
+    scope = "adopted"
+    t = 0
+    tolerance = 1.0e-6
+    unit = "1"
+    [[validation.rows]]
+    entity = "1"
+    id = "binary-a_off"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 0
+    scope = "adopted"
+    t = 0
+    tolerance = 1.0e-6
+    unit = "1"
+    [[validation.rows]]
+    entity = "1"
+    id = "integer-a_off"
+    normalized = 5.203100000379194e-8
+    pass = true
+    residual = 5.203100000379194e-14
+    scenario = 0
+    scope = "adopted"
+    t = 0
+    tolerance = 1.0e-6
+    unit = "1"
+    [[validation.rows]]
+    entity = "1"
+    id = "R7-R1"
+    normalized = 2.2074904525346228e-11
+    pass = true
+    residual = 2.2074904525346225e-17
+    scenario = 0
+    scope = "adopted"
+    t = 0
+    tolerance = 1.0e-6
+    unit = "1"
+    [[validation.rows]]
+    entity = "1"
+    id = "on-action"
+    normalized = 5.4347655484867365e-8
+    pass = true
+    residual = 5.434765548486736e-14
+    scenario = 0
+    scope = "adopted"
+    t = 0
+    tolerance = 1.0e-6
+    unit = "1"
+    [[validation.rows]]
+    entity = "1"
+    id = "off-action"
+    normalized = 5.203100000379194e-8
+    pass = true
+    residual = 5.203100000379194e-14
+    scenario = 0
+    scope = "adopted"
+    t = 0
+    tolerance = 1.0e-6
+    unit = "1"
+    [[validation.rows]]
+    entity = "1"
+    id = "virtual-arc"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 0
+    scope = "adopted"
+    t = 0
+    tolerance = 1.0e-6
+    unit = "1"
+    [[validation.rows]]
+    entity = "network"
+    id = "6-63"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 0
+    scope = "adopted"
+    t = 0
+    tolerance = 1.0e-6
+    unit = "1"
+    [[validation.rows]]
+    entity = "network"
+    id = "forest-edges"
+    normalized = 6.661338147750939e-10
+    pass = true
+    residual = 6.661338147750939e-16
+    scenario = 0
+    scope = "adopted"
+    t = 0
+    tolerance = 1.0e-6
+    unit = "1"
+    [[validation.rows]]
+    entity = "network"
+    id = "forest-independent"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 0
+    scope = "adopted"
+    t = 0
+    tolerance = 1.0e-6
+    unit = "1"
+    [[validation.rows]]
+    entity = "1"
+    id = "one-root-per-component"
+    normalized = 7.771561172376096e-10
+    pass = true
+    residual = 7.771561172376096e-16
+    scenario = 0
+    scope = "adopted"
+    t = 0
+    tolerance = 1.0e-6
+    unit = "1"
+    [[validation.rows]]
+    entity = "2"
+    id = "one-root-per-component"
+    normalized = 7.771561172376096e-10
+    pass = true
+    residual = 7.771561172376096e-16
+    scenario = 0
+    scope = "adopted"
+    t = 0
+    tolerance = 1.0e-6
+    unit = "1"
+    [[validation.rows]]
+    entity = "1"
+    id = "root-eligible"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 0
+    scope = "adopted"
+    t = 0
+    tolerance = 1.0e-6
+    unit = "1"
+    [[validation.rows]]
+    entity = "1"
+    id = "root-supply"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 0
+    scope = "adopted"
+    t = 0
+    tolerance = 1.0e-6
+    unit = "1"
+    [[validation.rows]]
+    entity = "1"
+    id = "virtual-node"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 0
+    scope = "adopted"
+    t = 0
+    tolerance = 1.0e-6
+    unit = "1"
+    [[validation.rows]]
+    entity = "2"
+    id = "root-eligible"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 0
+    scope = "adopted"
+    t = 0
+    tolerance = 1.0e-6
+    unit = "1"
+    [[validation.rows]]
+    entity = "2"
+    id = "root-supply"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 0
+    scope = "adopted"
+    t = 0
+    tolerance = 1.0e-6
+    unit = "1"
+    [[validation.rows]]
+    entity = "2"
+    id = "virtual-node"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 0
+    scope = "adopted"
+    t = 0
+    tolerance = 1.0e-6
+    unit = "1"
+    [[validation.rows]]
+    entity = "1"
+    id = "6-8/56/60"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "1"
+    id = "6-3/9"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "Mvar"
+    [[validation.rows]]
+    entity = "1"
+    id = "6-11"
+    normalized = 4.644437513206334e-10
+    pass = true
+    residual = 1.3004425036977735e-15
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "1"
+    id = "6-4/57"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "1"
+    id = "6-5/58"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "1"
+    id = "inactive-charge"
+    normalized = 4.993050665303389e-10
+    pass = true
+    residual = 1.3980541862849488e-15
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "1"
+    id = "inactive-discharge"
+    normalized = 4.993050665303389e-10
+    pass = true
+    residual = 1.3980541862849488e-15
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "1"
+    id = "6-8/56/60"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "1"
+    id = "6-3/9"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "Mvar"
+    [[validation.rows]]
+    entity = "1"
+    id = "6-11"
+    normalized = 4.719329015737614e-10
+    pass = true
+    residual = 1.321412124406532e-15
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "1"
+    id = "6-4/57"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "1"
+    id = "6-5/58"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "1"
+    id = "inactive-charge"
+    normalized = 5.103276430516687e-10
+    pass = true
+    residual = 1.4289174005446724e-15
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "1"
+    id = "inactive-discharge"
+    normalized = 5.103276430516687e-10
+    pass = true
+    residual = 1.4289174005446724e-15
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "2"
+    id = "6-8/56/60"
+    normalized = 4.680621948327214e-7
+    pass = true
+    residual = 1.31057414553162e-12
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "2"
+    id = "6-3/9"
+    normalized = 1.6535643357515074e-6
+    pass = true
+    residual = 4.62998014010422e-12
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "Mvar"
+    [[validation.rows]]
+    entity = "2"
+    id = "6-11"
+    normalized = 5.056656113005725e-12
+    pass = true
+    residual = 1.415863711641603e-17
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "2"
+    id = "battery-charge"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "2"
+    id = "battery-discharge"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "2"
+    id = "6-12"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "2"
+    id = "6-14"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.0e-6
+    unit = "MWh"
+    [[validation.rows]]
+    entity = "2"
+    id = "6-8/56/60"
+    normalized = 1.2861069095977783e-6
+    pass = true
+    residual = 3.6010993468737792e-12
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "2"
+    id = "6-3/9"
+    normalized = 1.6535727941646038e-6
+    pass = true
+    residual = 4.630003823660891e-12
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "Mvar"
+    [[validation.rows]]
+    entity = "2"
+    id = "6-11"
+    normalized = 2.3180005000186187e-12
+    pass = true
+    residual = 6.490401400052132e-18
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "2"
+    id = "battery-charge"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "2"
+    id = "battery-discharge"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "2"
+    id = "6-12"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "2"
+    id = "6-14"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.0e-6
+    unit = "MWh"
+    [[validation.rows]]
+    entity = "1"
+    id = "inactive-energy"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.0e-6
+    unit = "MWh"
+    [[validation.rows]]
+    entity = "1"
+    id = "inactive-energy"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.0e-6
+    unit = "MWh"
+    [[validation.rows]]
+    entity = "1"
+    id = "inactive-energy"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 1
+    scope = "adopted"
+    t = 2
+    tolerance = 2.0e-6
+    unit = "MWh"
+    [[validation.rows]]
+    entity = "1"
+    id = "inactive-energy"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 2
+    scope = "adopted"
+    t = 2
+    tolerance = 2.0e-6
+    unit = "MWh"
+    [[validation.rows]]
+    entity = "2"
+    id = "6-13"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.0e-6
+    unit = "MWh"
+    [[validation.rows]]
+    entity = "2"
+    id = "6-61"
+    normalized = 1.1102230246251565e-10
+    pass = true
+    residual = 2.220446049250313e-16
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.0e-6
+    unit = "MWh"
+    [[validation.rows]]
+    entity = "2"
+    id = "6-13"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.0e-6
+    unit = "MWh"
+    [[validation.rows]]
+    entity = "2"
+    id = "6-61"
+    normalized = 1.1102230246251565e-10
+    pass = true
+    residual = 2.220446049250313e-16
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.0e-6
+    unit = "MWh"
+    [[validation.rows]]
+    entity = "2"
+    id = "6-13"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 1
+    scope = "adopted"
+    t = 2
+    tolerance = 2.0e-6
+    unit = "MWh"
+    [[validation.rows]]
+    entity = "2"
+    id = "6-13"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 2
+    scope = "adopted"
+    t = 2
+    tolerance = 2.0e-6
+    unit = "MWh"
+    [[validation.rows]]
+    entity = "PCC"
+    id = "6-51-P"
+    normalized = 4.993050665303389e-10
+    pass = true
+    residual = 1.3980541862849488e-15
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "PCC"
+    id = "6-51-Q"
+    normalized = 5.68111986948509e-12
+    pass = true
+    residual = 1.5907135634558252e-17
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "Mvar"
+    [[validation.rows]]
+    entity = "1"
+    id = "6-24:25-P_line"
+    normalized = 5.0033917663533095e-6
+    pass = true
+    residual = 1.4009496945789267e-11
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "1"
+    id = "6-24:25-Q_line"
+    normalized = 1.6527462459837477e-6
+    pass = true
+    residual = 4.6276894887544935e-12
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "Mvar"
+    [[validation.rows]]
+    entity = "1"
+    id = "R7-R3"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 1.0e-6
+    unit = "pu"
+    [[validation.rows]]
+    entity = "1"
+    id = "6-22"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 1.0e-6
+    unit = "pu"
+    [[validation.rows]]
+    entity = "1"
+    id = "6-54"
+    normalized = 3.6004173070778682e-6
+    pass = true
+    residual = 1.0081168459818031e-11
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "1"
+    id = "6-19"
+    normalized = 4.993050659975759e-10
+    pass = true
+    residual = 1.3980541847932127e-15
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "1"
+    id = "6-20"
+    normalized = 5.681119840819118e-12
+    pass = true
+    residual = 1.590713555429353e-17
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "Mvar"
+    [[validation.rows]]
+    entity = "2"
+    id = "6-22"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 1.0e-6
+    unit = "pu"
+    [[validation.rows]]
+    entity = "2"
+    id = "6-54"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "2"
+    id = "6-19"
+    normalized = 2.640500228705824e-11
+    pass = true
+    residual = 7.393400640376306e-17
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "2"
+    id = "6-20"
+    normalized = 1.4032952940365302e-12
+    pass = true
+    residual = 3.9292268233022845e-18
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "Mvar"
+    [[validation.rows]]
+    entity = "PCC"
+    id = "6-51-P"
+    normalized = 5.103276430516687e-10
+    pass = true
+    residual = 1.4289174005446724e-15
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "PCC"
+    id = "6-51-Q"
+    normalized = 5.681100454495171e-12
+    pass = true
+    residual = 1.5907081272586478e-17
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "Mvar"
+    [[validation.rows]]
+    entity = "1"
+    id = "6-24:25-P_line"
+    normalized = 3.984061344188043e-6
+    pass = true
+    residual = 1.115537176372652e-11
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "1"
+    id = "6-24:25-Q_line"
+    normalized = 1.6527547044802407e-6
+    pass = true
+    residual = 4.6277131725446736e-12
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "Mvar"
+    [[validation.rows]]
+    entity = "1"
+    id = "R7-R3"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 1.0e-6
+    unit = "pu"
+    [[validation.rows]]
+    entity = "1"
+    id = "6-22"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 1.0e-6
+    unit = "pu"
+    [[validation.rows]]
+    entity = "1"
+    id = "6-54"
+    normalized = 3.5084679799811157e-6
+    pass = true
+    residual = 9.823710343947123e-12
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "1"
+    id = "6-19"
+    normalized = 5.103276431994271e-10
+    pass = true
+    residual = 1.4289174009583958e-15
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "1"
+    id = "6-20"
+    normalized = 5.681100379052606e-12
+    pass = true
+    residual = 1.5907081061347296e-17
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "Mvar"
+    [[validation.rows]]
+    entity = "2"
+    id = "6-22"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 1.0e-6
+    unit = "pu"
+    [[validation.rows]]
+    entity = "2"
+    id = "6-54"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "2"
+    id = "6-19"
+    normalized = 3.997891246989729e-11
+    pass = true
+    residual = 1.119409549157124e-16
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "2"
+    id = "6-20"
+    normalized = 1.4033786903558842e-12
+    pass = true
+    residual = 3.929460332996475e-18
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "Mvar"
+    [[validation.rows]]
+    entity = "1"
+    id = "6-74"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 0
+    scope = "adopted"
+    t = 1
+    tolerance = 1.1e-5
+    unit = "kg/s"
+    [[validation.rows]]
+    entity = "1"
+    id = "6-72"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 0
+    scope = "adopted"
+    t = 1
+    tolerance = 1.1e-5
+    unit = "kg/s"
+    [[validation.rows]]
+    entity = "1"
+    id = "source-port"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 0
+    scope = "adopted"
+    t = 1
+    tolerance = 1.1e-5
+    unit = "kg/s"
+    [[validation.rows]]
+    entity = "1"
+    id = "load-port"
+    normalized = 1.3020697709685532e-7
+    pass = true
+    residual = 1.4322767480654085e-12
+    scenario = 0
+    scope = "adopted"
+    t = 1
+    tolerance = 1.1e-5
+    unit = "kg/s"
+    [[validation.rows]]
+    entity = "1"
+    id = "R7-R4"
+    normalized = 9.189689395195768e-12
+    pass = true
+    residual = 1.0108658334715344e-16
+    scenario = 0
+    scope = "adopted"
+    t = 1
+    tolerance = 1.1e-5
+    unit = "kg/s"
+    [[validation.rows]]
+    entity = "1"
+    id = "6-55"
+    normalized = 4.794349765932919e-7
+    pass = true
+    residual = 1.3424179344612172e-12
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "1"
+    id = "6-83"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "1"
+    id = "6-84"
+    normalized = 4.794349765932919e-7
+    pass = true
+    residual = 1.3424179344612172e-12
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "1"
+    id = "R7-C1-source"
+    normalized = 5.962424560913878e-7
+    pass = true
+    residual = 1.669478877055886e-12
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "1"
+    id = "R7-C1-load"
+    normalized = 3.7201422048838624e-7
+    pass = true
+    residual = 1.0416398173674814e-12
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "1"
+    id = "6-55"
+    normalized = 1.0328800391836024e-6
+    pass = true
+    residual = 2.8920641097140864e-12
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "1"
+    id = "6-83"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "1"
+    id = "6-84"
+    normalized = 1.0328800391836024e-6
+    pass = true
+    residual = 2.8920641097140864e-12
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "1"
+    id = "R7-C1-source"
+    normalized = 1.707470625896389e-6
+    pass = true
+    residual = 4.780917752509889e-12
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "1"
+    id = "R7-C1-load"
+    normalized = 9.254592830786967e-7
+    pass = true
+    residual = 2.5912859926203506e-12
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "2"
+    id = "source-port"
+    normalized = 5.0764379931051464e-8
+    pass = true
+    residual = 5.584081792415661e-13
+    scenario = 0
+    scope = "adopted"
+    t = 1
+    tolerance = 1.1e-5
+    unit = "kg/s"
+    [[validation.rows]]
+    entity = "2"
+    id = "load-port"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 0
+    scope = "adopted"
+    t = 1
+    tolerance = 1.1e-5
+    unit = "kg/s"
+    [[validation.rows]]
+    entity = "2"
+    id = "R7-R4"
+    normalized = 8.94616728186346e-12
+    pass = true
+    residual = 9.840784010049807e-17
+    scenario = 0
+    scope = "adopted"
+    t = 1
+    tolerance = 1.1e-5
+    unit = "kg/s"
+    [[validation.rows]]
+    entity = "2"
+    id = "6-55"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "2"
+    id = "6-83"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "2"
+    id = "6-84"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "2"
+    id = "R7-C1-source"
+    normalized = 8.376122688623492e-9
+    pass = true
+    residual = 2.3453143528145774e-14
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "2"
+    id = "R7-C1-load"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "2"
+    id = "6-55"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "2"
+    id = "6-83"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "2"
+    id = "6-84"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "2"
+    id = "R7-C1-source"
+    normalized = 8.376122688623492e-9
+    pass = true
+    residual = 2.3453143528145774e-14
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "2"
+    id = "R7-C1-load"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "S"
+    id = "6-81:82-temperature"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    entity = "S"
+    id = "6-80:82"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.0e-6
+    unit = "MWh"
+    [[validation.rows]]
+    entity = "S"
+    id = "R7-A3/90"
+    normalized = 9.71445146547012e-11
+    pass = true
+    residual = 1.942890293094024e-16
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.0e-6
+    unit = "MWh"
+    [[validation.rows]]
+    entity = "S"
+    id = "6-81:82-temperature"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    entity = "S"
+    id = "6-80:82"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.0e-6
+    unit = "MWh"
+    [[validation.rows]]
+    entity = "S"
+    id = "R7-A3/90"
+    normalized = 6.938893903907228e-11
+    pass = true
+    residual = 1.3877787807814457e-16
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.0e-6
+    unit = "MWh"
+    [[validation.rows]]
+    entity = "S"
+    id = "6-81:82-temperature"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 1
+    scope = "adopted"
+    t = 2
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    entity = "S"
+    id = "6-80:82"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 1
+    scope = "adopted"
+    t = 2
+    tolerance = 2.0e-6
+    unit = "MWh"
+    [[validation.rows]]
+    entity = "S"
+    id = "6-81:82-temperature"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 2
+    scope = "adopted"
+    t = 2
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    entity = "S"
+    id = "6-80:82"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 2
+    scope = "adopted"
+    t = 2
+    tolerance = 2.0e-6
+    unit = "MWh"
+    [[validation.rows]]
+    entity = "R"
+    id = "6-81:82-temperature"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    entity = "R"
+    id = "6-80:82"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.0e-6
+    unit = "MWh"
+    [[validation.rows]]
+    entity = "R"
+    id = "R7-A3/90"
+    normalized = 8.85125306382406e-8
+    pass = true
+    residual = 1.770250612764812e-13
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.0e-6
+    unit = "MWh"
+    [[validation.rows]]
+    entity = "R"
+    id = "6-81:82-temperature"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    entity = "R"
+    id = "6-80:82"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.0e-6
+    unit = "MWh"
+    [[validation.rows]]
+    entity = "R"
+    id = "R7-A3/90"
+    normalized = 8.85125306382406e-8
+    pass = true
+    residual = 1.770250612764812e-13
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.0e-6
+    unit = "MWh"
+    [[validation.rows]]
+    entity = "R"
+    id = "6-81:82-temperature"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 1
+    scope = "adopted"
+    t = 2
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    entity = "R"
+    id = "6-80:82"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 1
+    scope = "adopted"
+    t = 2
+    tolerance = 2.0e-6
+    unit = "MWh"
+    [[validation.rows]]
+    entity = "R"
+    id = "6-81:82-temperature"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 2
+    scope = "adopted"
+    t = 2
+    tolerance = 0.0001
+    unit = "K"
+    [[validation.rows]]
+    entity = "R"
+    id = "6-80:82"
+    normalized = 0.0
+    pass = true
+    residual = 0.0
+    scenario = 2
+    scope = "adopted"
+    t = 2
+    tolerance = 2.0e-6
+    unit = "MWh"
+    [[validation.rows]]
+    entity = "circulation"
+    id = "6-89"
+    normalized = 3.2611252488117566e-10
+    pass = true
+    residual = 9.131150696672918e-16
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "circulation"
+    id = "6-88"
+    normalized = 357.14285703591077
+    pass = false
+    residual = 0.00099999999970055
+    scenario = 1
+    scope = "exact_exchange"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "S"
+    id = "6-85:86"
+    normalized = 5.056656113005725e-12
+    pass = true
+    residual = 1.415863711641603e-17
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "R"
+    id = "6-85:86"
+    normalized = 5.6824145975182914e-11
+    pass = true
+    residual = 1.5910760873051215e-16
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "tank"
+    id = "R7-A4-S"
+    normalized = 7.43762690325056e-11
+    pass = true
+    residual = 1.487525380650112e-16
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.0e-6
+    unit = "MWh"
+    [[validation.rows]]
+    entity = "tank"
+    id = "R7-A4-R"
+    normalized = 3.3393426912553537e-11
+    pass = true
+    residual = 6.678685382510707e-17
+    scenario = 1
+    scope = "adopted"
+    t = 1
+    tolerance = 2.0e-6
+    unit = "MWh"
+    [[validation.rows]]
+    entity = "circulation"
+    id = "6-89"
+    normalized = 2.99781900692242e-10
+    pass = true
+    residual = 8.393893219382775e-16
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "circulation"
+    id = "6-88"
+    normalized = 357.1428570359371
+    pass = false
+    residual = 0.0009999999997006238
+    scenario = 2
+    scope = "exact_exchange"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "S"
+    id = "6-85:86"
+    normalized = 2.3180005000186187e-12
+    pass = true
+    residual = 6.490401400052132e-18
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "R"
+    id = "6-85:86"
+    normalized = 4.832367324394162e-11
+    pass = true
+    residual = 1.3530628508303654e-16
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.8e-6
+    unit = "MW"
+    [[validation.rows]]
+    entity = "tank"
+    id = "R7-A4-S"
+    normalized = 1.491862189340054e-10
+    pass = true
+    residual = 2.983724378680108e-16
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.0e-6
+    unit = "MWh"
+    [[validation.rows]]
+    entity = "tank"
+    id = "R7-A4-R"
+    normalized = 4.466912950640278e-11
+    pass = true
+    residual = 8.933825901280557e-17
+    scenario = 2
+    scope = "adopted"
+    t = 1
+    tolerance = 2.0e-6
+    unit = "MWh"
+    [[validation.rows]]
+    entity = "objective"
+    id = "6-53"
+    normalized = 5.551115123125783e-11
+    pass = true
+    residual = 5.551115123125783e-17
+    scenario = 0
+    scope = "adopted"
+    t = 0
+    tolerance = 1.0e-6
+    unit = "MWh"
+
+[values.E_BES]
+data = [0.0, 0.8000000000000003, 0.0, 3.692312178856103e-11, 0.0, 0.8000000000000003, 0.0, 1.6062208236479717e-11]
+shape = [2, 2, 2]
+
+[values.E_R]
+data = [0.4190000000001773, 0.4199999999233933, 0.4190000000001773, 0.41999999994300113]
+shape = [2, 2]
+
+[values.E_S]
+data = [0.19000000000000078, 0.18899999997514594, 0.19000000000000083, 0.18899999997203432]
+shape = [2, 2]
+
+[values.H]
+data = [2.4102147226007743e-11, 1.415863711641603e-17, 2.099070835055374e-11, 6.490401400052132e-18]
+shape = [2, 1, 2]
+
+[values.H_CF]
+data = [0.001000000048956868, 0.0010000000489569418]
+shape = [1, 2]
+
+[values.H_loss_R]
+data = [1.5910760873051215e-16, 1.3530628508303654e-16]
+shape = [1, 2]
+
+[values.H_loss_S]
+data = [-1.415863711641603e-17, -6.490401400052132e-18]
+shape = [1, 2]
+
+[values.H_shed]
+data = [-1.3424179344612172e-12, 0.3999999998756017, -2.8920641097140864e-12, 0.3999999998967592]
+shape = [2, 1, 2]
+
+[values.P]
+data = [2.4100846783504045e-11, 1.31057414553162e-12, 2.0989386938429333e-11, 3.6010993468737792e-12]
+shape = [2, 1, 2]
+
+[values.P_PCC]
+data = [-1.3980541862849488e-15, -1.4289174005446724e-15]
+shape = [1, 2]
+
+[values.P_ch]
+data = [1.3980541862849488e-15, 0.05007125633228559, 1.4289174005446724e-15, 0.05101010448692619]
+shape = [2, 1, 2]
+
+[values.P_dis]
+data = [-1.3980541862849488e-15, 0.8500712562953627, -1.4289174005446724e-15, 0.8510101044708642]
+shape = [2, 1, 2]
+
+[values.P_line]
+data = [1.4014086106942367e-11, 1.115996092487962e-11]
+shape = [1, 1, 2]
+
+[values.P_shed]
+data = [-1.0081168459818031e-11, 2.1598276415606448e-11, -9.823710343947123e-12, 1.300875726851198e-12]
+shape = [2, 1, 2]
+
+[values.Q]
+data = [4.630015883602232e-12, -4.62998014010422e-12, 4.630039567283558e-12, -4.630003823660891e-12]
+shape = [2, 1, 2]
+
+[values.Q_PCC]
+data = [-1.5907135634558252e-17, -1.5907081272586478e-17]
+shape = [1, 2]
+
+[values.Q_line]
+data = [4.629984069331044e-12, 4.630007753121224e-12]
+shape = [1, 1, 2]
+
+[values.a_off]
+data = [5.203100000379194e-14]
+shape = [1]
+
+[values.a_on]
+data = [5.434765548486736e-14]
+shape = [1]
+
+[values.beta]
+data = [0.9999999999999992, 0.9999999999999992]
+shape = [2]
+
+[values.m_load]
+data = [1.4322767480654085e-12, 6.127364762366383e-10]
+shape = [2, 1]
+
+[values.m_pipe]
+data = [6.121779696495567e-10]
+shape = [1, 1]
+
+[values.m_source]
+data = [6.136101453110388e-10, 5.584081792415661e-13]
+shape = [2, 1]
+
+[values.root_supply]
+data = [1.0, 1.0]
+shape = [2]
+
+[values.v]
+data = [0.9999973204866333, 1.000002679513129, 0.9999922679171181, 1.0000077320826442]
+shape = [2, 1, 2]
+
+[values.virtual]
+data = [0.0]
+shape = [1]
+
+[values.z]
+data = [2.294580576550082e-15]
+shape = [1]

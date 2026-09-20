@@ -1,0 +1,32 @@
+case_sha256 = "ff995ba2e746ec870aee4d71857b8023ad8b32f2d8bb7bae65a5d4c3d3828cd7"
+mode = "same_dispatch"
+parent_result_sha256 = "d3f385ee7c2f1f64113c0ad3c9045c05f2b70f877b187b1d33afd04b864327ba"
+parent_run_id = "r7-recovery-8ab820fe-6be1-434c-a334-f865ff1d0c99"
+profile_origin = "frozen original thermal study spatial state"
+schema = "r7-thermal-spec-v1"
+substeps = 16
+uniform_assumption = false
+version = "r7_thermal_reconstruction_v1"
+
+[[profiles]]
+pipe = 1
+scenario = 1
+side = "S"
+
+    [[profiles.segments]]
+    amplitude_K = 0.0
+    base_K = 343.15
+    from_left = true
+    mass_kg = 10000.0
+    rate_per_kg = 0.0
+[[profiles]]
+pipe = 1
+scenario = 1
+side = "R"
+
+    [[profiles.segments]]
+    amplitude_K = 0.0
+    base_K = 313.15
+    from_left = true
+    mass_kg = 10000.0
+    rate_per_kg = 0.0

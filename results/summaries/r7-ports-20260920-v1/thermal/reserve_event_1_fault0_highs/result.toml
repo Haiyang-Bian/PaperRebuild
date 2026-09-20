@@ -1,0 +1,45 @@
+elapsed_sec = 0.06599998474121094
+formula_ids = ["R7-T-bound", "R7-T-control", "R7-T-idle", "R7-T-port", "R7-T1-transport", "R7-T2-load", "R7-T2-source", "R7-T3-mix", "R7-T4-inventory", "R7-T4-spatial"]
+julia_version = "1.12.6"
+lower_bound_MWh = 0.0
+model_class = "LP"
+objective_kind = "conditional_heat_unserved_MWh"
+optimizer_request = "MathOptInterface.OptimizerWithAttributes(HiGHS.Optimizer, Pair{MathOptInterface.AbstractOptimizerAttribute, Any}[MathOptInterface.RawOptimizerAttribute(\"threads\") => 1, MathOptInterface.RawOptimizerAttribute(\"primal_feasibility_tolerance\") => 1.0e-9, MathOptInterface.RawOptimizerAttribute(\"dual_feasibility_tolerance\") => 1.0e-9, MathOptInterface.RawOptimizerAttribute(\"mip_feasibility_tolerance\") => 1.0e-9, MathOptInterface.RawOptimizerAttribute(\"mip_rel_gap\") => 1.0e-9])"
+parent_result_sha256 = "6498138d56f1fab79208cb565a3e66fa8f3c83162a86b00259058d0e927d0b44"
+primal_status = "NO_SOLUTION"
+raw_status = "kHighsModelStatusInfeasible"
+requested_budget_sec = 599.7430000305176
+run_id = "r7-thermal-074d00b6-2683-4ed8-926b-290fede6ac99"
+schema = "r7-thermal-result-v1"
+solver = "HiGHS"
+spec_sha256 = "70a7075bdd5ad726e57f6ce451f1f48a1b5604dbe88a60fcb0e69fdad7978b3d"
+status = "infeasible_certified"
+termination_status = "INFEASIBLE"
+utc = "2026-09-19T23:50:02.288"
+
+[source_hashes_at_solve]
+"Manifest.toml" = "948f0f5c5a4bc8381a3d9ad413fb0f8e78ee1a3bad52606dea9b9b6f144e5450"
+"Project.toml" = "313f8c54dfa9a7a276832e48cc8d7e3e9b63c29aab765bf7fa541f2fb68f40a9"
+"src/PaperRebuild.jl" = "203a4e3d5746ebc0b0325bfdc27b562f12b9d0e268197972ac01220be24cef18"
+"src/algorithms/r7_recovery.jl" = "c3f6492938ea5d4f77f1a82da42175284671f6ae8aade5b7c5ec0af4ff4977c4"
+"src/algorithms/r7_thermal.jl" = "b7f212109ebab47ddfb1d184a2d325dee66aad518bc6b83c6227b53453b3a039"
+"src/core/r7_recovery.jl" = "1e99a5b4c5efc9f1fdeb6a414e63151f46f76d5b91612aeed275b2b1638442aa"
+"src/core/r7_thermal.jl" = "25113b37fb824e4d7021b572179f50d559ce0f68d84aee6b18425c53586976e4"
+"src/formulations/r7_recovery.jl" = "e837daef00c52dd4cec54c4b47eba3a7c24fe454f5fb9f93489c075d7c7f8914"
+"src/formulations/r7_thermal.jl" = "707d249a8e3c5a0b4a69cddaebd3fc7d737b1cd449eb30f845161046213c84c3"
+"src/networks/r7_pipe_state.jl" = "2d8b4b01dbcdfc276ac15bf40d715b1d23f3dc56271ef4b0736f6fae2403f8a8"
+"src/reporting/r7_recovery.jl" = "2118f6326e9709e079567a2513af8b52b29a3f83b1d9a239d634deba5825ffd9"
+"src/reporting/r7_thermal.jl" = "9351abc1a68b588bd0d636103667e580dc3cc1e59586fcf42a927b7d972c4ad8"
+"src/verification/r7_recovery.jl" = "9929c57bfcec13dec1a67ce383edb10d26105ee0e48ffcbaec166dd08dd6b339"
+"src/verification/r7_thermal.jl" = "6e3ac2ef7e204e81a6c07bada4e5b13481faf433a48f17761f60a91668da8d02"
+
+[validation]
+ac_grid_validated = false
+conditional_heat_optimality_pass = false
+continuous_node_dynamics_verified = false
+hydraulic_verified = false
+port_witness = []
+rows = []
+same_dispatch_pass = false
+thermal_model_pass = false
+whole_recovery_certified = false

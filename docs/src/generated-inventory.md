@@ -137,6 +137,7 @@
 - `configs/r7/normal-reserve-hand.toml`
 - `configs/r7/planning-hand.toml`
 - `configs/r7/planning-reserve-hand.toml`
+- `configs/r7/ports-study.toml`
 - `configs/r7/recovery-hand.toml`
 - `configs/r7/reserve-hand-freeze.toml`
 - `configs/r7/thermal-freeze.toml`
@@ -194,6 +195,7 @@
 - `docs/agent/tasks/2026-09-20-r7-normal.md`
 - `docs/agent/tasks/2026-09-20-r7-pipe-state.md`
 - `docs/agent/tasks/2026-09-20-r7-planning.md`
+- `docs/agent/tasks/2026-09-20-r7-ports.md`
 - `docs/agent/tasks/2026-09-20-r7-recovery.md`
 - `docs/agent/tasks/2026-09-20-r7-thermal.md`
 - `docs/make.jl`
@@ -248,6 +250,7 @@
 - `docs/reading/ch05/strategic-model.toml`
 - `docs/reading/ch05/strategic.toml`
 - `docs/reading/ch06/audit.toml`
+- `docs/reading/ch06/compatible-ports.toml`
 - `docs/reading/ch06/inner-adversary.toml`
 - `docs/reading/ch06/normal-dispatch.toml`
 - `docs/reading/ch06/normal-prerequisites.toml`
@@ -553,6 +556,7 @@
 - `docs/src/assets/r7-inner-20260920-v3/F22-inner-faults.png`
 - `docs/src/assets/r7-normal-20260920-v2/F20-normal-event.png`
 - `docs/src/assets/r7-planning-20260920-v2/F21-finite-planning.png`
+- `docs/src/assets/r7-ports-20260920-v1/F24-compatible-ports.png`
 - `docs/src/assets/r7-thermal-20260920-v1/F23-thermal-delivery.png`
 - `docs/src/ch02-api.md`
 - `docs/src/ch02-generated.md`
@@ -652,6 +656,8 @@
 - `docs/src/ch06-pipe-state.md`
 - `docs/src/ch06-planning-equations.md`
 - `docs/src/ch06-planning.md`
+- `docs/src/ch06-ports-equations.md`
+- `docs/src/ch06-ports.md`
 - `docs/src/ch06-recovery-equations.md`
 - `docs/src/ch06-recovery.md`
 - `docs/src/ch06-thermal-equations.md`
@@ -1070,6 +1076,26 @@
 - `results/summaries/r7-planning-figures-20260920-v2/rule.toml`
 - `results/summaries/r7-planning-figures-20260920-v2/stages.csv`
 - `results/summaries/r7-planning-figures-20260920-v2/summary.csv`
+- `results/summaries/r7-ports-20260920-v1/files.toml`
+- `results/summaries/r7-ports-20260920-v1/freeze.toml`
+- `results/summaries/r7-ports-20260920-v1/gurobi-complete.toml`
+- `results/summaries/r7-ports-20260920-v1/inputs.toml`
+- `results/summaries/r7-ports-20260920-v1/island-bound.csv`
+- `results/summaries/r7-ports-20260920-v1/open-complete.toml`
+- `results/summaries/r7-ports-20260920-v1/rule.toml`
+- `results/summaries/r7-ports-20260920-v1/solver-pairs.csv`
+- `results/summaries/r7-ports-20260920-v1/study-source.jl`
+- `results/summaries/r7-ports-20260920-v1/summary.csv`
+- `results/summaries/r7-ports-20260920-v1/thermal.csv`
+- `results/summaries/r7-ports-figures-20260920-v1/F24-compatible-ports.png`
+- `results/summaries/r7-ports-figures-20260920-v1/F24-compatible-ports.svg`
+- `results/summaries/r7-ports-figures-20260920-v1/figure.toml`
+- `results/summaries/r7-ports-figures-20260920-v1/inputs.toml`
+- `results/summaries/r7-ports-figures-20260920-v1/island-bound.csv`
+- `results/summaries/r7-ports-figures-20260920-v1/rule.toml`
+- `results/summaries/r7-ports-figures-20260920-v1/solver-pairs.csv`
+- `results/summaries/r7-ports-figures-20260920-v1/summary.csv`
+- `results/summaries/r7-ports-figures-20260920-v1/thermal.csv`
 - `results/summaries/r7-thermal-20260920-v1/files.toml`
 - `results/summaries/r7-thermal-20260920-v1/port-audit.csv`
 - `results/summaries/r7-thermal-20260920-v1/profiles.csv`
@@ -1179,6 +1205,8 @@
 - `scripts/check_r7_pipe_state.jl`
 - `scripts/check_r7_planning.jl`
 - `scripts/check_r7_planning_figures.jl`
+- `scripts/check_r7_ports.jl`
+- `scripts/check_r7_ports_figures.jl`
 - `scripts/check_r7_recovery.jl`
 - `scripts/check_r7_thermal.jl`
 - `scripts/check_r7_thermal_figures.jl`
@@ -1279,6 +1307,7 @@
 - `scripts/plot_r7_inner.jl`
 - `scripts/plot_r7_normal.jl`
 - `scripts/plot_r7_planning.jl`
+- `scripts/plot_r7_ports.jl`
 - `scripts/plot_r7_thermal.jl`
 - `scripts/prepare_r1_summary.jl`
 - `scripts/preview.jl`
@@ -1355,6 +1384,8 @@
 - `scripts/r7_planning.jl`
 - `scripts/r7_planning_docs.jl`
 - `scripts/r7_planning_evidence.jl`
+- `scripts/r7_ports_docs.jl`
+- `scripts/r7_ports_study.jl`
 - `scripts/r7_recovery.jl`
 - `scripts/r7_recovery_docs.jl`
 - `scripts/r7_thermal_docs.jl`
@@ -1477,6 +1508,7 @@
 - `scripts/test_r7_normal_evidence.jl`
 - `scripts/test_r7_pipe_state.jl`
 - `scripts/test_r7_planning.jl`
+- `scripts/test_r7_ports.jl`
 - `scripts/test_r7_recovery.jl`
 - `scripts/test_r7_thermal.jl`
 - `scripts/tighten_r4_distributed_cost.jl`
@@ -1687,6 +1719,7 @@
 - `test/r7_normal.jl`
 - `test/r7_pipe_state.jl`
 - `test/r7_planning.jl`
+- `test/r7_ports.jl`
 - `test/r7_recovery.jl`
 - `test/r7_thermal.jl`
 - `test/runtests.jl`
@@ -1767,4 +1800,7 @@
 - `results/summaries/r7-planning-20260920-v2/reserve_extensive/`
 - `results/summaries/r7-planning-20260920-v2/reserve_finite_fault_ccg/`
 - `results/summaries/r7-planning-20260920-v2/reserve_normal/`
+- `results/summaries/r7-ports-20260920-v1/code/`
+- `results/summaries/r7-ports-20260920-v1/records/`
+- `results/summaries/r7-ports-20260920-v1/thermal/`
 - `results/summaries/r7-thermal-20260920-v1/evidence/`

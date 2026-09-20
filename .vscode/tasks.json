@@ -1,5 +1,8 @@
 {
   "inputs": [
+    {"id":"r7PortsBatch","type":"promptString","description":"端口研究：冻结用新目录，运行用已冻结目录","default":"results/runs/r7-ports-new"},
+    {"id":"r7PortsReport","type":"promptString","description":"端口研究报告（生成时必须是新目录）","default":"results/summaries/r7-ports-20260920-v1"},
+    {"id":"r7PortsFigures","type":"promptString","description":"端口图件的新输出目录","default":"results/runs/r7-ports-redraw"},
     {"id":"r7ThermalRun","type":"promptString","description":"热重构批次：运行须新目录，核查须已有目录","default":"results/runs/r7-thermal-new"},
     {"id":"r7ThermalEvidence","type":"promptString","description":"已冻结热重构报告","default":"results/summaries/r7-thermal-20260920-v1"},
     {"id":"r7ThermalFigures","type":"promptString","description":"热重构图的新输出目录，不覆盖旧图","default":"results/runs/r7-thermal-redraw"},
@@ -120,6 +123,14 @@
     }
   ],
   "tasks": [
+    {"label":"R7: 相容端口公式映射","type":"process","command":"julia","args":["+1.12.6","--project=.","scripts/check_r7_ports.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 相容端口测试","type":"process","command":"julia","args":["+1.12.6","--project=.","scripts/test_r7_ports.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 冻结端口对照","type":"process","command":"julia","args":["+1.12.6","--project=.","scripts/r7_ports_study.jl","freeze","${input:r7PortsBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 端口对照开放求解器","type":"process","command":"julia","args":["+1.12.6","--project=.","scripts/r7_ports_study.jl","run","${input:r7PortsBatch}","open"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 端口对照Gurobi","type":"process","command":"julia","args":["+1.12.6","--project=tools/solvers","scripts/r7_ports_study.jl","run","${input:r7PortsBatch}","gurobi"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 冻结端口报告","type":"process","command":"julia","args":["+1.12.6","--project=.","scripts/r7_ports_study.jl","report","${input:r7PortsBatch}","${input:r7PortsReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 核验端口报告","type":"process","command":"julia","args":["+1.12.6","--project=.","scripts/r7_ports_study.jl","check","${input:r7PortsReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 重绘相容端口F24","type":"process","command":"julia","args":["+1.12.6","--project=docs","scripts/plot_r7_ports.jl","${input:r7PortsReport}","${input:r7PortsFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"R7: 热重构公式与输入检查","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r7_thermal.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"R7: 热重构解析和边界测试","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r7_thermal.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"R7: 执行冻结热重构协议","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_thermal_study.jl","run","${input:r7ThermalRun}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
