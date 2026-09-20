@@ -6,3 +6,4 @@
 *.zip binary
 # These immutable chunks reassemble one exact input; an EOF blank can be a split boundary.
 results/summaries/r7-battery-public-20260920-v1/input-parts/*.part -text whitespace=-blank-at-eof
+results/summaries/r7-linked-public-20260920-v2/parts/**/*.part -text whitespace=-blank-at-eof

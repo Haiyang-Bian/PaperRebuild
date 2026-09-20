@@ -134,6 +134,7 @@
 - `configs/r7/inner-tie-bottleneck.toml`
 - `configs/r7/inner-tie-two-fault.toml`
 - `configs/r7/inner-tie-two-hour.toml`
+- `configs/r7/linked-study.toml`
 - `configs/r7/normal-hand.toml`
 - `configs/r7/normal-reserve-hand.toml`
 - `configs/r7/planning-hand.toml`
@@ -195,6 +196,7 @@
 - `docs/agent/tasks/2026-09-20-r7-adversary.md`
 - `docs/agent/tasks/2026-09-20-r7-battery.md`
 - `docs/agent/tasks/2026-09-20-r7-commitment.md`
+- `docs/agent/tasks/2026-09-20-r7-linked-planning.md`
 - `docs/agent/tasks/2026-09-20-r7-normal.md`
 - `docs/agent/tasks/2026-09-20-r7-pipe-state.md`
 - `docs/agent/tasks/2026-09-20-r7-planning.md`
@@ -257,6 +259,7 @@
 - `docs/reading/ch06/battery-domain.toml`
 - `docs/reading/ch06/compatible-ports.toml`
 - `docs/reading/ch06/inner-adversary.toml`
+- `docs/reading/ch06/linked-planning.toml`
 - `docs/reading/ch06/normal-dispatch.toml`
 - `docs/reading/ch06/normal-prerequisites.toml`
 - `docs/reading/ch06/pipe-state.toml`
@@ -561,6 +564,7 @@
 - `docs/src/assets/r6-formal-20260920-v1/figure-config.toml`
 - `docs/src/assets/r7-battery-20260920-v1/F26-battery-domain.png`
 - `docs/src/assets/r7-inner-20260920-v3/F22-inner-faults.png`
+- `docs/src/assets/r7-linked-20260920-v2/F27-linked-planning.png`
 - `docs/src/assets/r7-normal-20260920-v2/F20-normal-event.png`
 - `docs/src/assets/r7-planning-20260920-v2/F21-finite-planning.png`
 - `docs/src/assets/r7-ports-20260920-v1/F24-compatible-ports.png`
@@ -660,6 +664,8 @@
 - `docs/src/ch06-battery.md`
 - `docs/src/ch06-commitment-equations.md`
 - `docs/src/ch06-commitment.md`
+- `docs/src/ch06-linked-equations.md`
+- `docs/src/ch06-linked-planning.md`
 - `docs/src/ch06-normal-equations.md`
 - `docs/src/ch06-normal.md`
 - `docs/src/ch06-pipe-equations.md`
@@ -1071,6 +1077,31 @@
 - `results/summaries/r7-inner-three-node-20260920-v1/study-source.jl`
 - `results/summaries/r7-inner-three-node-20260920-v1/summary.csv`
 - `results/summaries/r7-inner-three-node-20260920-v1/transfer.toml`
+- `results/summaries/r7-linked-figures-20260920-v3/F27-linked-planning.png`
+- `results/summaries/r7-linked-figures-20260920-v3/F27-linked-planning.svg`
+- `results/summaries/r7-linked-figures-20260920-v3/event-state.csv`
+- `results/summaries/r7-linked-figures-20260920-v3/events.csv`
+- `results/summaries/r7-linked-figures-20260920-v3/figure.toml`
+- `results/summaries/r7-linked-figures-20260920-v3/iterations.csv`
+- `results/summaries/r7-linked-figures-20260920-v3/normal-state.csv`
+- `results/summaries/r7-linked-figures-20260920-v3/paired.csv`
+- `results/summaries/r7-linked-figures-20260920-v3/rule.toml`
+- `results/summaries/r7-linked-figures-20260920-v3/summary.csv`
+- `results/summaries/r7-linked-public-20260920-v2/environment.toml`
+- `results/summaries/r7-linked-public-20260920-v2/event-state.csv`
+- `results/summaries/r7-linked-public-20260920-v2/events.csv`
+- `results/summaries/r7-linked-public-20260920-v2/files.toml`
+- `results/summaries/r7-linked-public-20260920-v2/freeze.toml`
+- `results/summaries/r7-linked-public-20260920-v2/inputs.toml`
+- `results/summaries/r7-linked-public-20260920-v2/iterations.csv`
+- `results/summaries/r7-linked-public-20260920-v2/normal-state.csv`
+- `results/summaries/r7-linked-public-20260920-v2/original-files.toml`
+- `results/summaries/r7-linked-public-20260920-v2/packing.toml`
+- `results/summaries/r7-linked-public-20260920-v2/paired.csv`
+- `results/summaries/r7-linked-public-20260920-v2/rule.toml`
+- `results/summaries/r7-linked-public-20260920-v2/study-source.jl`
+- `results/summaries/r7-linked-public-20260920-v2/summary.csv`
+- `results/summaries/r7-linked-public-20260920-v2/transport-study-source.jl`
 - `results/summaries/r7-nested-legacy-20260920-v1/files.toml`
 - `results/summaries/r7-nested-legacy-20260920-v1/metadata.toml`
 - `results/summaries/r7-nested-legacy-20260920-v1/normal.toml`
@@ -1262,6 +1293,8 @@
 - `scripts/check_r7_battery_figures.jl`
 - `scripts/check_r7_commitment.jl`
 - `scripts/check_r7_inner_figures.jl`
+- `scripts/check_r7_linked_figures.jl`
+- `scripts/check_r7_linked_planning.jl`
 - `scripts/check_r7_normal.jl`
 - `scripts/check_r7_normal_figures.jl`
 - `scripts/check_r7_pipe_state.jl`
@@ -1339,6 +1372,7 @@
 - `scripts/merge_r3_v2_studies.jl`
 - `scripts/pack_r3_v2_report.jl`
 - `scripts/pack_r7_battery.jl`
+- `scripts/pack_r7_linked.jl`
 - `scripts/pack_r7_transport_audit.jl`
 - `scripts/pilot_r6_training.jl`
 - `scripts/plot_ch03_data.jl`
@@ -1372,6 +1406,7 @@
 - `scripts/plot_r6_study.jl`
 - `scripts/plot_r7_battery.jl`
 - `scripts/plot_r7_inner.jl`
+- `scripts/plot_r7_linked.jl`
 - `scripts/plot_r7_normal.jl`
 - `scripts/plot_r7_planning.jl`
 - `scripts/plot_r7_ports.jl`
@@ -1447,6 +1482,8 @@
 - `scripts/r7_battery_study.jl`
 - `scripts/r7_commitment_docs.jl`
 - `scripts/r7_inner_study.jl`
+- `scripts/r7_linked_docs.jl`
+- `scripts/r7_linked_study.jl`
 - `scripts/r7_normal.jl`
 - `scripts/r7_normal_docs.jl`
 - `scripts/r7_normal_evidence.jl`
@@ -1577,6 +1614,7 @@
 - `scripts/test_r7_adversary.jl`
 - `scripts/test_r7_battery.jl`
 - `scripts/test_r7_commitment.jl`
+- `scripts/test_r7_linked_planning.jl`
 - `scripts/test_r7_normal.jl`
 - `scripts/test_r7_normal_cli.jl`
 - `scripts/test_r7_normal_evidence.jl`
@@ -1624,6 +1662,7 @@
 - `src/algorithms/r6_methods.jl`
 - `src/algorithms/r6_support_evaluation.jl`
 - `src/algorithms/r7_adversary.jl`
+- `src/algorithms/r7_linked_planning.jl`
 - `src/algorithms/r7_normal.jl`
 - `src/algorithms/r7_planning.jl`
 - `src/algorithms/r7_recovery.jl`
@@ -1655,6 +1694,7 @@
 - `src/core/r6_study.jl`
 - `src/core/r7_adversary.jl`
 - `src/core/r7_commitment.jl`
+- `src/core/r7_linked_planning.jl`
 - `src/core/r7_normal.jl`
 - `src/core/r7_planning.jl`
 - `src/core/r7_recovery.jl`
@@ -1679,12 +1719,14 @@
 - `src/formulations/r5_strategic_benders.jl`
 - `src/formulations/r6_evaluation.jl`
 - `src/formulations/r7_adversary.jl`
+- `src/formulations/r7_linked_planning.jl`
 - `src/formulations/r7_normal.jl`
 - `src/formulations/r7_planning.jl`
 - `src/formulations/r7_recovery.jl`
 - `src/formulations/r7_thermal.jl`
 - `src/formulations/r7_transport.jl`
 - `src/networks/fixed_flow_heat.jl`
+- `src/networks/r7_linked_state.jl`
 - `src/networks/r7_normal_transport.jl`
 - `src/networks/r7_pipe_state.jl`
 - `src/networks/water_mass.jl`
@@ -1710,6 +1752,7 @@
 - `src/reporting/r6_data.jl`
 - `src/reporting/r6_evaluation.jl`
 - `src/reporting/r7_adversary.jl`
+- `src/reporting/r7_linked_planning.jl`
 - `src/reporting/r7_normal.jl`
 - `src/reporting/r7_planning.jl`
 - `src/reporting/r7_recovery.jl`
@@ -1745,6 +1788,7 @@
 - `src/verification/r6_study.jl`
 - `src/verification/r7_adversary.jl`
 - `src/verification/r7_commitment.jl`
+- `src/verification/r7_linked_planning.jl`
 - `src/verification/r7_normal.jl`
 - `src/verification/r7_planning.jl`
 - `src/verification/r7_recovery.jl`
@@ -1797,6 +1841,7 @@
 - `test/r7_adversary.jl`
 - `test/r7_battery.jl`
 - `test/r7_commitment.jl`
+- `test/r7_linked_planning.jl`
 - `test/r7_normal.jl`
 - `test/r7_pipe_state.jl`
 - `test/r7_planning.jl`
@@ -1875,6 +1920,9 @@
 - `results/summaries/r7-inner-three-node-20260920-v1/inner-tie-bottleneck/`
 - `results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-fault/`
 - `results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-hour/`
+- `results/summaries/r7-linked-public-20260920-v2/code/`
+- `results/summaries/r7-linked-public-20260920-v2/parts/`
+- `results/summaries/r7-linked-public-20260920-v2/records/`
 - `results/summaries/r7-nested-legacy-20260920-v1/code/`
 - `results/summaries/r7-nested-reserve-20260920-v1/code/`
 - `results/summaries/r7-normal-20260920-v2/event/`

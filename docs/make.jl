@@ -57,6 +57,8 @@ include(joinpath(@__DIR__, "..", "scripts", "r7_transport_docs.jl"))
 write(joinpath(@__DIR__, "src", "ch06-transport-equations.md"), r7_transport_markdown())
 include(joinpath(@__DIR__, "..", "scripts", "r7_battery_docs.jl"))
 write(joinpath(@__DIR__, "src", "ch06-battery-equations.md"), r7_battery_markdown())
+include(joinpath(@__DIR__, "..", "scripts", "r7_linked_docs.jl"))
+write(joinpath(@__DIR__, "src", "ch06-linked-equations.md"), r7_linked_markdown())
 
 makedocs(;
     modules = [PaperRebuild],
@@ -212,6 +214,8 @@ makedocs(;
             "联合恢复方程与符号" => "ch06-transport-equations.md",
             "电池运行域与原值重构" => "ch06-battery.md",
             "电池原式、推导与符号" => "ch06-battery-equations.md",
+            "共同空间热状态与安全规划" => "ch06-linked-planning.md",
+            "空间状态连接方程与符号" => "ch06-linked-equations.md",
         ],
         "第 2 章模型与首批实现" => [
             "模型详解" => "ch02-models.md",

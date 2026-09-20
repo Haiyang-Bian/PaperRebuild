@@ -1,0 +1,70 @@
+schema = "r7-linked-planning-audit-v1"
+source = "docs/摘要.pdf"
+source_sha256 = "20328e2480e773520c19c378e53365fc944c0bafcfca73071f5d8313d5ee7d91"
+source_pages = [114,117,118]
+scope = "共同正常空间状态到逐管灾后恢复的条件安全规划；正常/恢复流量显式给定，不宣称完整正常控制域"
+
+[[original_equation]]
+id = "6-70"
+pdf_page = 114
+latex = '\tau_{jk,t^\prime,\omega,s}^{\mathrm{S/R}}=\tau_{jk,t^\prime,\omega}^{\mathrm{S/R}},\qquad t^\prime=t_s-1'
+note = "原灾时管温与事件前正常管温关联。本项目管状态以动作前的空间分布表示，事件t_s继承正常states[t_s]，不是独立选择的初温。完整空间分布是项目参考状态，不能说原式已经显式给出了它。"
+[[original_equation]]
+id = "6-71"
+pdf_page = 114
+latex = '\tau_{k,t^\prime,\omega,s}^{\mathrm{S/R,mix}}=\tau_{k,t^\prime,\omega}^{\mathrm{S/R,mix}},\qquad t^\prime=t_s-1'
+note = "原节点混合温度初态继承。项目采用零节点容积、子步平均混合：保存事件前正常温度，事件后按新的源荷与来水混合；不把整段事件平均温度固定成前时段平均温度，也不宣称认证了有限节点热容或连续节点动态。"
+[[original_equation]]
+id = "6-72"
+pdf_page = 114
+latex = '|m_{ij,t}-m_{ij,t,s}|\leq\Delta\overline m'
+note = "恢复管流相对正常计划的偏差上界保留。当前两条流量计划均显式给定；这不是对原连续流量可行域的完整优化。"
+[[original_equation]]
+id = "6-103"
+pdf_page = 118
+latex = 'F x+H\gamma_\nu^{s*}+K r_\nu^s+J z_\nu^s\leq g,\qquad1\leq\nu\leq l,\ \forall s'
+note = "所有故障恢复块链接同一个本轮正常决策x。详细输运版保留这一结构；改变的是采用的恢复热块，历史双水箱结果不改判。"
+
+[[equation]]
+id = "R7-L1"
+latex = '\xi_{p,s,\omega}=\mathcal T_{p,1:t_s-1}(\xi_{p,1,\omega},\theta^{\mathrm{N}}_{p,1:t_s-1,\omega}),\qquad y_{p,s,\omega}=b_{p,s,\omega}+A_{p,s,\omega}\begin{bmatrix}\theta^{\mathrm{N}}_{p,1:t_s-1,\omega}\\\theta^{\mathrm{D}}_{p,s,\omega}\end{bmatrix}'
+meaning = "给定管流后平流散热对入口温度为仿射；y包括事件出口均温、每步库存、全部空间段端温。几何由流量和时间决定，正常历史列来自同一个规划变量。没有自由初温或仅库存相等的替代。"
+classification = "项目详细塞流状态连接，替换双水箱/Taylor近似"
+api = "r7_linked_pipe_map"
+test = "R7-L1 affine history and spatial memory"
+[[equation]]
+id = "R7-L2"
+latex = '\min_{x\in\mathcal X_{\bar m}} C(x)\quad\mathrm{s.t.}\quad\forall(s,\gamma)\in\mathcal A:\ \exists y_{s,\gamma}\in\mathcal Y^{\mathrm{pipe}}_{\bar m_{s,\gamma}}(x,\gamma),\quad\ell_s(y_{s,\gamma})\leq L_s'
+meaning = "共同正常计划连接每个已加入故障的逐管恢复。恢复见证不必自身最小化失供；主问题只最小化正常费用。电池/CHP继承保持原约束，管道空间状态保留所有灾前入口的作用。"
+classification = "给定流量的有限故障全量基准与外层C&CG"
+api = "build_r7_linked_planning"
+test = "R7-L2 shared planning and independent fault witnesses"
+[[equation]]
+id = "R7-L3"
+latex = '\underline C_k\leq C^\star_{\mathrm{declared}}\leq C(\hat x),\qquad\hat x\text{通过全部声明故障的独立输运回放}'
+meaning = "部分故障主问题界属于相同给定流量安全规划；所有故障可交付的正常候选才给上界。任一认证超门槛故障可以加入主问题；旧轮状态不能沿用。条件费用界不等于完整变流量界。"
+classification = "目标与证书范围、独立原值验证"
+api = "validate_r7_linked_planning"
+test = "R7-L3 provenance failures and original value replay"
+
+[[symbol]]
+id = "R7L-spatial"
+latex = '\xi_{p,s,\omega}'
+meaning = "事件前管道空间质量段温度状态，项目符号"
+unit = "kg; K"
+julia = "initial_pipe_profiles / states"
+shape = "pipe × side × scenario × segment"
+[[symbol]]
+id = "R7L-history"
+latex = '\theta^{\mathrm N},\theta^{\mathrm D}'
+meaning = "正常入口历史与灾后子步入口温度，项目语义标签"
+unit = "K"
+julia = "normal_inlets / S / R"
+shape = "pipe × side × scenario × time/substep"
+[[symbol]]
+id = "R7L-map"
+latex = 'A,b,y'
+meaning = "已知流量下的仿射算子、常量与输出；只在管道作用域使用"
+unit = "输出为K或MWh；系数按相应行单位/K"
+julia = "r7_linked_pipe_map.A / .b"
+shape = "sample × (normal history + event substeps)"

@@ -1,5 +1,9 @@
 {
   "inputs": [
+    {"id":"r7LinkedBatch","type":"promptString","description":"同一灾前状态规划：冻结须新目录，运行须已冻结目录","default":"results/runs/r7-linked-new"},
+    {"id":"r7LinkedReport","type":"promptString","description":"详细状态规划报告：生成须新目录，重验使用已有目录","default":"results/summaries/r7-linked-20260920-v2"},
+    {"id":"r7LinkedFigures","type":"promptString","description":"详细状态规划新图目录，不覆盖旧图","default":"results/runs/r7-linked-redraw"},
+    {"id":"r7LinkedPublic","type":"promptString","description":"详细状态规划公开分片证据，仅重验或重绘","default":"results/summaries/r7-linked-public-20260920-v2"},
     {"id":"r7BatteryBatch","type":"promptString","description":"电池域研究：冻结须新目录，运行须已冻结目录","default":"results/runs/r7-battery-new"},
     {"id":"r7BatteryPublic","type":"promptString","description":"电池域公开原值包，仅重读不优化","default":"results/summaries/r7-battery-public-20260920-v1"},
     {"id":"r7BatteryFigures","type":"promptString","description":"电池域重绘的新目录，不覆盖旧图","default":"results/runs/r7-battery-redraw"},
@@ -131,6 +135,15 @@
     }
   ],
   "tasks": [
+    {"label":"R7: 同一灾前状态规划映射","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r7_linked_planning.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 同一灾前状态规划测试","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r7_linked_planning.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 冻结详细状态规划","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_linked_study.jl","freeze","${input:r7LinkedBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 详细状态规划开放运行","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_linked_study.jl","run","${input:r7LinkedBatch}","open"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 详细状态规划Gurobi运行","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/r7_linked_study.jl","run","${input:r7LinkedBatch}","gurobi"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 详细状态规划报告","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_linked_study.jl","report","${input:r7LinkedBatch}","${input:r7LinkedReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 详细状态规划证据重验","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_linked_study.jl","check","${input:r7LinkedReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 详细状态规划公开证据重验","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/pack_r7_linked.jl","check","${input:r7LinkedPublic}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 详细状态规划科学图重绘","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r7_linked.jl","${input:r7LinkedPublic}","${input:r7LinkedFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"R7: 电池域科学图重绘","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r7_battery.jl","${input:r7BatteryPublic}","${input:r7BatteryFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"R7: 电池运行域映射","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r7_battery.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"R7: 电池运行域测试","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r7_battery.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},

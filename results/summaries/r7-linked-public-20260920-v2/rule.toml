@@ -1,0 +1,19 @@
+budget_sec = 600.0
+cases_hand = "configs/r7/normal-hand.toml"
+cases_reserve = "configs/r7/normal-reserve-hand.toml"
+events_hand = "configs/r7/planning-hand.toml"
+events_reserve = "configs/r7/planning-reserve-hand.toml"
+flow_rule = "normal schedule on internally healthy network; zero pipe and port flows on disconnected network"
+groups = ["original_hand", "reserve_zero", "reserve_heat_limit", "healthy_diagnostic"]
+healthy_rule = "healthy_diagnostic only: fault_budget=0, zero loss limit; cannot certify internal line failures"
+heat_limit_rule = "reserve_heat_limit only: sum of event heat demand times dt; allows complete heat shedding, not zero-loss resilience"
+main_solvers = ["HiGHS", "Gurobi"]
+methods = ["extensive", "finite_fault_ccg"]
+normal_rule = "all normal initial profiles, loads, prices, capacities, efficiencies and original battery rule preserved"
+origin = "synthetic"
+record_count = 24
+refinement_groups = ["reserve_heat_limit", "healthy_diagnostic"]
+refinement_substeps = [1, 16]
+schema = "r7-linked-study-v1"
+scope = "shared normal spatial state, prescribed flows, complete declared fault set; no full variable-flow or author-scale certificate"
+substeps = 4
