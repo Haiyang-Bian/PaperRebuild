@@ -22,6 +22,17 @@ for row in numerics["equations"]
     occursin("\\tag{"*row["id"]*"}", npage) || error("数值编号公式缺失")
 end
 isfile(joinpath(root, numerics["test_file"])) || error("数值测试缺失")
+flow=TOML.parsefile(joinpath(root, "docs/reading/ch07/flow.toml"))
+flow["schema"]=="r9-flow-adoption-v1" && !flow["original_input_reproduction"] ||
+    error("变流量解释身份错误")
+Set(x["id"] for x in flow["equations"])==Set("R9-V$i" for i in 1:4) || error("变流量推导缺失")
+fpage=read(joinpath(root, "docs/src/ch07-flow.md"), String)
+for row in flow["equations"]
+    isdefined(PaperRebuild, Symbol(row["api"])) || error("变流量API缺失")
+    occursin("\\tag{"*row["id"]*"}", fpage) || error("变流量编号公式缺失")
+end
+occursin(flow["test"], read(joinpath(root, flow["test_file"]), String)) ||
+    error("变流量测试映射缺失")
 c=r9_pv_case(joinpath(root, "docs/reading/ch07"), joinpath(root, "configs/r9/pv-protocol.toml"))
 audit_r9_pv_input(c).pass || error("输入核查未通过")
 expected=r9_pv_markdown(root)

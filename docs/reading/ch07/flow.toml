@@ -1,0 +1,62 @@
+schema = "r9-flow-adoption-v1"
+model = "r9_short_pipe_literal_v1"
+source = "第3章核查版WMM 3-27至3-34；第7章冻结替代输入"
+input_sha256 = "d514c3c2e94f962feb65717da43920559b4bcbca8613d2abcef2e1ed292d51b0"
+original_input_reproduction = false
+terminal_interpretation = "literal"
+scope = "whole declared positive-flow box; one-step WMM segment only"
+test_file = "test/r9_flow.jl"
+test = "R9-V1:V4 full flow box, derivatives and terminal memory"
+optimization_status = "development_probes_no_candidate"
+
+[[equations]]
+id = "R9-V1"
+meaning = "当本步与前步质量覆盖均大于管存量时，解析消去alpha、beta；完整盒先行核验"
+status = "derived_from_checked_WMM"
+api = "r9_transport_coefficients"
+[[equations]]
+id = "R9-V2"
+meaning = "保留本步与前步入口温度的连续流量热输运；不取整时延"
+status = "derived_from_checked_WMM"
+api = "build_r9_flow_model"
+[[equations]]
+id = "R9-V3"
+meaning = "损耗衰减对本步和前步流量的依赖及解析导数"
+status = "derived_from_checked_WMM"
+api = "r9_transport_coefficients"
+[[equations]]
+id = "R9-V4"
+meaning = "同时恢复入口温度与管流记忆；只认证采用WMM离散状态"
+status = "project_periodic_boundary"
+api = "r9_flow_terminal_rows"
+
+[[symbols]]
+id = "r9.pipe_mass"
+latex = 'M_p=\rho A_pL_p'
+meaning = "管内水质量"
+unit = "kg"
+code = "mass_kg"
+[[symbols]]
+id = "r9.mass_per_step"
+latex = 'q_p=M_p/\Delta t_s'
+meaning = "管内质量与时间步的比值，须小于本步与前步流量"
+unit = "kg/s"
+code = "q"
+[[symbols]]
+id = "r9.loss_constant"
+latex = 'C_p=\epsilon_pL_p/(2c_p)'
+meaning = "单步WMM损耗指数的质量流量系数"
+unit = "kg/s"
+code = "C"
+[[symbols]]
+id = "r9.inverse_relative"
+latex = 'u_{p,t}=m_p^{ref}/m_{p,t}'
+meaning = "无量纲相对倒数流量，仅作为精确等式辅助量"
+unit = "1"
+code = "r9_inverse_relative"
+[[symbols]]
+id = "r9.attenuation"
+latex = 'a_{p,t}'
+meaning = "相对于环境温差的衰减系数"
+unit = "1"
+code = "attenuation"

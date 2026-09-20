@@ -1,6 +1,6 @@
-# R9固定模式采用式与符号索引
+# R9采用式与符号索引
 
-<!-- generated from docs/reading/ch07/{pv-adoption,numerics}.toml; edit those ledgers -->
+<!-- generated from docs/reading/ch07/{pv-adoption,numerics,flow}.toml; edit those ledgers -->
 
 推导和边界见[固定模式基准](ch07-pv.md)，结果见[数值边界报告](ch07-pv-results.md)。
 
@@ -18,6 +18,10 @@
 | R9-N4 | 源、荷与管道净热差的整日恒等式；沿用R9-A1 | `independent_energy_accounting` | [`r9_daily_heat_balance`](@ref) |
 | R9-N5 | 冻结二进制系数的精确线性不相容证书 | `exact_binary_certificate_not_physical_infeasibility` | [`build_r9_pv_model`](@ref) |
 | R9-N6 | 参考锚定、完整零空间与有界基底转换；显式项目数值解释 | `project_terminal_interpretation` | [`validate_r9_reduced_solution`](@ref) |
+| R9-V1 | 当本步与前步质量覆盖均大于管存量时，解析消去alpha、beta；完整盒先行核验 | `derived_from_checked_WMM` | [`r9_transport_coefficients`](@ref) |
+| R9-V2 | 保留本步与前步入口温度的连续流量热输运；不取整时延 | `derived_from_checked_WMM` | [`build_r9_flow_model`](@ref) |
+| R9-V3 | 损耗衰减对本步和前步流量的依赖及解析导数 | `derived_from_checked_WMM` | [`r9_transport_coefficients`](@ref) |
+| R9-V4 | 同时恢复入口温度与管流记忆；只认证采用WMM离散状态 | `project_periodic_boundary` | [`r9_flow_terminal_rows`](@ref) |
 
 ## 符号
 
@@ -32,7 +36,14 @@
 | `r9.terminal_basis` | ``U`` | 完整精确零空间的Float64正交表示 | 1 | `terminal_certificate.basis` |
 | `r9.terminal_coordinates` | ``y`` | 源温偏移的零空间坐标，与证书乘子y按作用域区分 | K | `r9_terminal_coordinates` |
 | `r9.daily_energy` | ``\Delta E`` | 整日供需及管道净热差核算残差 | MWh | `daily_heat.residual_MWh` |
+| `r9.pipe_mass` | ``M_p=\rho A_pL_p`` | 管内水质量 | kg | `mass_kg` |
+| `r9.mass_per_step` | ``q_p=M_p/\Delta t_s`` | 管内质量与时间步的比值，须小于本步与前步流量 | kg/s | `q` |
+| `r9.loss_constant` | ``C_p=\epsilon_pL_p/(2c_p)`` | 单步WMM损耗指数的质量流量系数 | kg/s | `C` |
+| `r9.inverse_relative` | ``u_{p,t}=m_p^{ref}/m_{p,t}`` | 无量纲相对倒数流量，仅作为精确等式辅助量 | 1 | `r9_inverse_relative` |
+| `r9.attenuation` | ``a_{p,t}`` | 相对于环境温差的衰减系数 | 1 | `attenuation` |
 
 测试：`test/r9_pv.jl` / **R9-P1:P6 44/38 periodic input and fixed-mode model**。冻结重读及求解验证另见`scripts/test_r9_pv_evidence.jl`。
 
 数值推导见[前向与终端解释](ch07-numerics.md)。R9-N1–N6对应`test/r9_reduced.jl`、`scripts/check_r9_affine_certificate.jl`及`scripts/check_r9_numerics_results.jl`。
+
+连续流量推导见[输运与周期记忆](ch07-flow.md)。R9-V1–V4对应`test/r9_flow.jl`；尚无变流量优化结果。

@@ -164,6 +164,14 @@
     }
   ],
   "tasks": [
+    {
+      "label": "PaperRebuild: R9 flow transport tests",
+      "type": "process",
+      "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/test_r9_flow.jl"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "problemMatcher": []
+    },
     {"label":"PaperRebuild: R9 numerical mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_pv.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 numerical tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_reduced.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 numerical freeze","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_numerics_study.jl","freeze","results/summaries/r9-pv-batch-20260920-v4","${input:r9NumericsBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},

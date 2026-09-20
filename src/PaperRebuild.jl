@@ -347,6 +347,12 @@ include("verification/r9_reduced.jl")
 export build_r9_reduced_model, solve_r9_reduced_case, r9_daily_heat_balance
 export validate_r9_reduced_solution
 
+include("networks/r9_short_pipe.jl")
+include("formulations/r9_flow.jl")
+include("verification/r9_flow.jl")
+export r9_transport_coefficients, audit_r9_flow_domain, build_r9_flow_model
+export r9_flow_terminal_rows
+
 """
     hello(who::String)
 

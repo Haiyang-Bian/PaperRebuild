@@ -216,6 +216,7 @@
 - `docs/agent/tasks/2026-09-20-r8-energy.md`
 - `docs/agent/tasks/2026-09-20-r8-tradeoff.md`
 - `docs/agent/tasks/2026-09-20-r9-inputs.md`
+- `docs/agent/tasks/2026-09-21-r9-flow.md`
 - `docs/agent/tasks/2026-09-21-r9-numerics.md`
 - `docs/agent/tasks/2026-09-21-r9-pv.md`
 - `docs/make.jl`
@@ -286,6 +287,7 @@
 - `docs/reading/ch06/recovery.toml`
 - `docs/reading/ch06/thermal-reconstruction.toml`
 - `docs/reading/ch06/transport-recovery.toml`
+- `docs/reading/ch07/flow.toml`
 - `docs/reading/ch07/inputs.toml`
 - `docs/reading/ch07/migration.toml`
 - `docs/reading/ch07/numerics.toml`
@@ -725,6 +727,7 @@
 - `docs/src/ch06-thermal.md`
 - `docs/src/ch06-transport-equations.md`
 - `docs/src/ch06-transport.md`
+- `docs/src/ch07-flow.md`
 - `docs/src/ch07-inputs-generated.md`
 - `docs/src/ch07-inputs.md`
 - `docs/src/ch07-numerics.md`
@@ -2062,6 +2065,7 @@
 - `scripts/test_r8_heat_boundary.jl`
 - `scripts/test_r8_study.jl`
 - `scripts/test_r8_tradeoff.jl`
+- `scripts/test_r9_flow.jl`
 - `scripts/test_r9_numerics_evidence.jl`
 - `scripts/test_r9_pv.jl`
 - `scripts/test_r9_pv_evidence.jl`
@@ -2183,6 +2187,7 @@
 - `src/formulations/r7_transport.jl`
 - `src/formulations/r8_energy_flow.jl`
 - `src/formulations/r8_tradeoff.jl`
+- `src/formulations/r9_flow.jl`
 - `src/formulations/r9_pv.jl`
 - `src/formulations/r9_reduced.jl`
 - `src/networks/fixed_flow_heat.jl`
@@ -2191,6 +2196,7 @@
 - `src/networks/r7_mass_overlap.jl`
 - `src/networks/r7_normal_transport.jl`
 - `src/networks/r7_pipe_state.jl`
+- `src/networks/r9_short_pipe.jl`
 - `src/networks/water_mass.jl`
 - `src/reporting/r2_runs.jl`
 - `src/reporting/r3_audit.jl`
@@ -2266,6 +2272,7 @@
 - `src/verification/r7_transport.jl`
 - `src/verification/r8_energy_flow.jl`
 - `src/verification/r8_tradeoff.jl`
+- `src/verification/r9_flow.jl`
 - `src/verification/r9_pv.jl`
 - `src/verification/r9_reduced.jl`
 - `src/verification/r9_sources.jl`
@@ -2332,6 +2339,7 @@
 - `test/r7_transport.jl`
 - `test/r8_energy_flow.jl`
 - `test/r8_tradeoff.jl`
+- `test/r9_flow.jl`
 - `test/r9_pv.jl`
 - `test/r9_reduced.jl`
 - `test/r9_sources.jl`

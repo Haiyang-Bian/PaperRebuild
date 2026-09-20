@@ -4,11 +4,14 @@ function r9_pv_markdown(root = normpath(joinpath(@__DIR__, "..")))
     n=TOML.parsefile(joinpath(root, "docs/reading/ch07/numerics.toml"))
     append!(d["equations"], n["equations"])
     append!(d["symbols"], n["symbols"])
+    f=TOML.parsefile(joinpath(root, "docs/reading/ch07/flow.toml"))
+    append!(d["equations"], f["equations"])
+    append!(d["symbols"], f["symbols"])
     io=IOBuffer()
-    println(io, "# R9固定模式采用式与符号索引\n")
+    println(io, "# R9采用式与符号索引\n")
     println(
         io,
-        "<!-- generated from docs/reading/ch07/{pv-adoption,numerics}.toml; edit those ledgers -->\n",
+        "<!-- generated from docs/reading/ch07/{pv-adoption,numerics,flow}.toml; edit those ledgers -->\n",
     )
     println(
         io,
@@ -58,6 +61,10 @@ function r9_pv_markdown(root = normpath(joinpath(@__DIR__, "..")))
     println(
         io,
         "\n数值推导见[前向与终端解释](ch07-numerics.md)。R9-N1–N6对应`test/r9_reduced.jl`、`scripts/check_r9_affine_certificate.jl`及`scripts/check_r9_numerics_results.jl`。",
+    )
+    println(
+        io,
+        "\n连续流量推导见[输运与周期记忆](ch07-flow.md)。R9-V1–V4对应`test/r9_flow.jl`；尚无变流量优化结果。",
     )
     return String(take!(io))
 end
