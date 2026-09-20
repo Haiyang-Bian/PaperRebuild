@@ -1,0 +1,6 @@
+id,solver_policy,representation,termination,primal,elapsed_sec,budget_sec,budget_pass,warm_start_loaded,warm_start_incomplete,warm_start_ignored,solver_last_iteration,solver_last_primal,candidate_saved,model_pass,physical_pass,terminal_pass
+r9-flow-probe-vf-vt-physical-v1,legacy_optimizer_default,keep,TIME_LIMIT,NO_SOLUTION,111.67160470003728,120.0,true,false,false,false,0,NaN,false,false,false,false
+r9-flow-probe-vf-vt-local-v1,local,keep,ITERATION_LIMIT,NO_SOLUTION,36.145728099974804,120.0,true,false,false,true,1000,0.0288,false,false,false,false
+r9-flow-probe-vf-vt-local-v2,local,keep,ITERATION_LIMIT,NO_SOLUTION,35.769007600029,120.0,true,false,true,false,1000,0.0347,false,false,false,false
+r9-flow-probe-vf-vt-local-v3,local,keep,ITERATION_LIMIT,NO_SOLUTION,37.720910000032745,120.0,true,true,false,false,1000,0.00883,false,false,false,false
+r9-flow-probe-vf-vt-local-minimal-v1,local,drop_implied_cones,ITERATION_LIMIT,NO_SOLUTION,29.908274899993557,120.0,true,true,false,false,1000,1.07e-9,false,false,false,false

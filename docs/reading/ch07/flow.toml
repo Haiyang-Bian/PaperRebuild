@@ -60,3 +60,11 @@ latex = 'a_{p,t}'
 meaning = "相对于环境温差的衰减系数"
 unit = "1"
 code = "attenuation"
+
+[[diagnostics]]
+id = "R9-D1"
+meaning = "保留原等式与非负边界时删除被蕴含锥；另界定sqrt系数舍入"
+implementation = "scripts/r9_flow_probe.jl"
+test_file = "scripts/test_r9_gurobi_start.jl"
+test = "R9 implied physical cones and their retained sign conditions"
+status = "diagnostic_representation_no_accepted_candidate"

@@ -1,0 +1,27 @@
+input_sha256 = "d514c3c2e94f962feb65717da43920559b4bcbca8613d2abcef2e1ed292d51b0"
+origin = "synthetic"
+probe_ids = ["r9-flow-probe-vf-vt-physical-v1", "r9-flow-probe-vf-vt-local-v1", "r9-flow-probe-vf-vt-local-v2", "r9-flow-probe-vf-vt-local-v3", "r9-flow-probe-vf-vt-local-minimal-v1"]
+schema = "r9-flow-diagnostics-v1"
+scope = "development diagnostics; no accepted variable-flow schedule"
+uses_projected_gradient = false
+
+[[log_redactions]]
+id = "r9-flow-probe-vf-vt-local-v1"
+original_sha256 = "14350552889bdf5deb15f2d6e029a92305d3344cd9f9bb0a5317317c6415e773"
+public_sha256 = "d2f058c95b0e1c0c45a2a181bae3d196fceb05207b56f28dbd22e29c20dee61e"
+transformation = "workspace paths and license metadata redacted only"
+[[log_redactions]]
+id = "r9-flow-probe-vf-vt-local-v2"
+original_sha256 = "cfadc7c851ff1446ffdc5a0a7761d306263d67890c0bc77f92b39e6203bf211a"
+public_sha256 = "68bd21fb9a7d859a678cd756c3c82e28bc16323911b8067f57cd4a2891556ded"
+transformation = "workspace paths and license metadata redacted only"
+[[log_redactions]]
+id = "r9-flow-probe-vf-vt-local-v3"
+original_sha256 = "c6ac59a134fe6f0adf5c238bdd0fcc4f051efb981816d7a2c536723e3b0847d5"
+public_sha256 = "4b454d24764a4377401cf31146c7f287406159f9e2858ac47b0ab07fb46c6a95"
+transformation = "workspace paths and license metadata redacted only"
+[[log_redactions]]
+id = "r9-flow-probe-vf-vt-local-minimal-v1"
+original_sha256 = "9e6237039f52fc50f6c019471abdb446e051798b52c678d097f4dd8194116855"
+public_sha256 = "26e1f50fafe7c8aaaba612121bf3b46e1f33761c5597bee7ace2e43969013976"
+transformation = "workspace paths and license metadata redacted only"

@@ -1424,6 +1424,11 @@
 - `results/summaries/r8-tradeoff-figures-20260920-v3/plot-source.jl`
 - `results/summaries/r8-tradeoff-figures-20260920-v3/residual-points.csv`
 - `results/summaries/r8-tradeoff-figures-20260920-v3/summary.csv`
+- `results/summaries/r9-flow-diagnostics-20260921-v2/README.md`
+- `results/summaries/r9-flow-diagnostics-20260921-v2/archive-script.jl`
+- `results/summaries/r9-flow-diagnostics-20260921-v2/artifact-hashes.toml`
+- `results/summaries/r9-flow-diagnostics-20260921-v2/index.toml`
+- `results/summaries/r9-flow-diagnostics-20260921-v2/probes.csv`
 - `results/summaries/r9-input-figures-20260920-v1/F33-r9-topology.png`
 - `results/summaries/r9-input-figures-20260920-v1/F33-r9-topology.svg`
 - `results/summaries/r9-input-figures-20260920-v1/edges.csv`
@@ -1754,6 +1759,7 @@
 - `scripts/freeze_r7_inner_cases.jl`
 - `scripts/freeze_r7_reserve_hand.jl`
 - `scripts/freeze_r7_thermal_cases.jl`
+- `scripts/gurobi_primal_start.jl`
 - `scripts/inspect_ch03_workbooks.jl`
 - `scripts/inspect_r4_heat_results.jl`
 - `scripts/inspect_r5_benders_boundary.jl`
@@ -1915,6 +1921,8 @@
 - `scripts/r8_energy_study.jl`
 - `scripts/r8_tradeoff_study.jl`
 - `scripts/r9_docs.jl`
+- `scripts/r9_flow_diagnostics.jl`
+- `scripts/r9_flow_probe.jl`
 - `scripts/r9_numerics_study.jl`
 - `scripts/r9_presolve_check.jl`
 - `scripts/r9_pv_attribution.jl`
@@ -2066,6 +2074,7 @@
 - `scripts/test_r8_study.jl`
 - `scripts/test_r8_tradeoff.jl`
 - `scripts/test_r9_flow.jl`
+- `scripts/test_r9_gurobi_start.jl`
 - `scripts/test_r9_numerics_evidence.jl`
 - `scripts/test_r9_pv.jl`
 - `scripts/test_r9_pv_evidence.jl`
@@ -2448,6 +2457,7 @@
 - `results/summaries/r8-energy-20260920-v1/records/`
 - `results/summaries/r8-tradeoff-20260920-v1/code/`
 - `results/summaries/r8-tradeoff-20260920-v1/records/`
+- `results/summaries/r9-flow-diagnostics-20260921-v2/runs/`
 - `results/summaries/r9-inputs-20260920-v1/code/`
 - `results/summaries/r9-numerics-20260921-v2/code/`
 - `results/summaries/r9-numerics-20260921-v2/runs/`

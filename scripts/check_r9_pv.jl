@@ -33,6 +33,12 @@ for row in flow["equations"]
 end
 occursin(flow["test"], read(joinpath(root, flow["test_file"]), String)) ||
     error("变流量测试映射缺失")
+for row in get(flow, "diagnostics", [])
+    isfile(joinpath(root, row["implementation"])) || error("诊断实现缺失")
+    occursin(row["test"], read(joinpath(root, row["test_file"]), String)) ||
+        error("诊断测试映射缺失")
+    occursin("\\tag{"*row["id"]*"}", fpage) || error("诊断编号公式缺失")
+end
 c=r9_pv_case(joinpath(root, "docs/reading/ch07"), joinpath(root, "configs/r9/pv-protocol.toml"))
 audit_r9_pv_input(c).pass || error("输入核查未通过")
 expected=r9_pv_markdown(root)

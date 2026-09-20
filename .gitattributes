@@ -7,3 +7,5 @@
 # These immutable chunks reassemble one exact input; an EOF blank can be a split boundary.
 results/summaries/r7-battery-public-20260920-v1/input-parts/*.part -text whitespace=-blank-at-eof
 results/summaries/r7-linked-public-20260920-v2/parts/**/*.part -text whitespace=-blank-at-eof
+# Frozen solver-log copies retain their hashed native line endings; no checkout conversion.
+results/summaries/r9-flow-diagnostics-20260921-v2/runs/*/solver-local.log -text whitespace=cr-at-eol,-blank-at-eof
