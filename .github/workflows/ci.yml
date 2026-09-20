@@ -102,6 +102,16 @@ jobs:
         run: julia --startup-file=no --project=. scripts/check_r7_lossy_flow.jl
       - name: R7 lossy exclusive-battery frozen evidence
         run: julia --startup-file=no --project=. scripts/check_r7_lossy_flow_results.jl results/summaries/r7-lossy-flow-20260920-v1 results/summaries/r7-flow-planning-20260920-v2
+      - name: R8 objective and symbol mapping
+        run: julia --startup-file=no --project=. scripts/check_r8.jl
+      - name: R8 frozen protocol tests
+        run: julia --startup-file=no --project=. scripts/test_r8_study.jl
+      - name: R8 normal heat boundary certificate
+        run: julia --startup-file=no --project=. scripts/test_r8_heat_boundary.jl
+      - name: R8 frozen values and comparison audit
+        run: julia --startup-file=no --project=. scripts/check_r8_results.jl results/summaries/r8-tradeoff-20260920-v1 results/summaries/r8-tradeoff-audit-20260920-v1
+      - name: R8 tradeoff figure provenance
+        run: julia --startup-file=no --project=. scripts/check_r8_figures.jl results/summaries/r8-tradeoff-20260920-v1 results/summaries/r8-tradeoff-audit-20260920-v1 results/summaries/r8-tradeoff-figures-20260920-v3 docs/src/assets/r8-tradeoff-20260920-v1/F31-r8-tradeoff.png
       - name: R7 lossy normal energy and cost attribution
         run: julia --startup-file=no --project=. scripts/check_r7_lossy_flow_audit.jl results/summaries/r7-lossy-flow-20260920-v1 results/summaries/r7-lossy-flow-audit-20260920-v1
       - name: R7 lossy figure provenance

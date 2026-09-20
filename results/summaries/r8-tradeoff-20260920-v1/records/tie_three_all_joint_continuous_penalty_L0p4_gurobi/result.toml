@@ -1,0 +1,116 @@
+budget_overrun_sec = 0.0
+budget_sec = 600.0
+case_sha256 = "ed4db2d3e35784296b52445e4da0900a74d1155bce1355359b0858187091285c"
+elapsed_sec = 480.0680000782013
+flow_sha256 = "6492dff7684431cbd26f0299e02c8edd1f974600e25b2ba9059b6f12c6804442"
+full_thesis_domain_verified = false
+julia_version = "1.12.6"
+run_id = "r8-4530cf42-83e9-47d9-b86d-79871d129cd7"
+schema = "r8-tradeoff-result-v1"
+spec_sha256 = "a41b25849eb4b9bf9a207f8b0a475cc36ca602b797015af27cd61b6f46d8822e"
+version = "r8_detailed_tradeoff_v1"
+wall_budget_pass = true
+
+[primary]
+build_sec = 0.869999885559082
+elapsed_sec = 480.05800008773804
+evaluation = false
+model_class = "nonconvex_MINLP"
+model_types = ["NonlinearExpr in MathOptInterface.EqualTo{Float64}", "AffExpr in MathOptInterface.EqualTo{Float64}", "AffExpr in MathOptInterface.GreaterThan{Float64}", "AffExpr in MathOptInterface.LessThan{Float64}", "QuadExpr in MathOptInterface.EqualTo{Float64}", "QuadExpr in MathOptInterface.GreaterThan{Float64}", "VariableRef in MathOptInterface.EqualTo{Float64}", "VariableRef in MathOptInterface.GreaterThan{Float64}", "VariableRef in MathOptInterface.LessThan{Float64}", "VariableRef in MathOptInterface.ZeroOne"]
+objective_kind = "normal_cost_plus_event_unserved_penalty_USD"
+objective_lower_bound = 78.1096569380993
+primal_status = "NO_SOLUTION"
+raw_status = "Optimization terminated because the time expended exceeded the value specified in the TimeLimit parameter."
+run_id = "r8-stage-a4c23453-855b-43f7-8e70-77c224df397a"
+solver_name = "Gurobi"
+solver_version = "13.0.3"
+status = "time_limit_no_solution"
+termination_status = "TIME_LIMIT"
+
+    [primary.validation]
+    model_pass = false
+    normal_pass = false
+    objective_complete = false
+    rows = []
+    threshold_pass = false
+    witness_checks = []
+
+[source_hashes_at_solve]
+"Manifest.toml" = "948f0f5c5a4bc8381a3d9ad413fb0f8e78ee1a3bad52606dea9b9b6f144e5450"
+"Project.toml" = "313f8c54dfa9a7a276832e48cc8d7e3e9b63c29aab765bf7fa541f2fb68f40a9"
+"src/PaperRebuild.jl" = "460a937a60a928a749d2f5d47ef67f81e356ec8f8546949f4e690a195017cc68"
+"src/algorithms/r7_adversary.jl" = "815b0df17b4c506230834e2d25a85c348e5ee67637671c558b2b7fa53c71bf7e"
+"src/algorithms/r7_flow_planning.jl" = "6ccea7b8614cacd7e24f9085d66d0f386dcf727bad66e2c645bbccdaf24d9dc4"
+"src/algorithms/r7_linked_planning.jl" = "88400fb7cba1e563511476e72d0bf34d7b2a3d84084fbc240fbe3c9596f45471"
+"src/algorithms/r7_normal.jl" = "e11db0c1b8cf319580b3e2e78bccca624909d62d0b4f813fe39a19c09797e1ae"
+"src/algorithms/r7_normal_flow.jl" = "915b8cc8180b7f7963d097998db8ab84aefb17f74581ee0cd2f5a10f1af6b564"
+"src/algorithms/r7_planning.jl" = "5bde63d66c5dd0c785aa4a0344b5df468aecc4daadb9a8602bf806b816d28d9a"
+"src/algorithms/r7_recovery.jl" = "cd38f5a89d37c7e28279c76fe2a861d7266b46e1b54ad389063bd47e7afa0b52"
+"src/algorithms/r7_thermal.jl" = "b7f212109ebab47ddfb1d184a2d325dee66aad518bc6b83c6227b53453b3a039"
+"src/algorithms/r7_transport.jl" = "fa48010acb52bbefb6abfe221f6ec18245ede76a2469ad27073de58be4d4c17f"
+"src/algorithms/r8_tradeoff.jl" = "57d51782da741848b3620bbefce062998efcffb6a2a64ffb6281458de592ecc8"
+"src/components/r7_commitment.jl" = "e1a1341d9f9c723a2b90f7050a2625553bd00f500342d8380e30d280162222ab"
+"src/core/r7_adversary.jl" = "5a4e3faeaa9e06890732cf0ea16a2c38bcf323f8979c3a87adcfc231515d7beb"
+"src/core/r7_commitment.jl" = "6f256c307ee685b090cc1c54590d52d936d022cd56e3158705e076a72897c130"
+"src/core/r7_flow_planning.jl" = "ab3c1f639caee9262ce28f80655779f4e995183df0e2f2130aeac8edc0fc9edd"
+"src/core/r7_linked_planning.jl" = "2feb93019ba96cfaa5955003e5f812548fd897b3bdc7cc20d2b2dd42aa8a3351"
+"src/core/r7_normal.jl" = "863d8846197a6a3d0791827de5ef21b24ca44b7484a1ccc0f2efc70acb24fef8"
+"src/core/r7_normal_flow.jl" = "85dd933bcf978b4de641efa25e14aae8faedc1849a625963a238d914622014dc"
+"src/core/r7_planning.jl" = "6cc0a17206ff31401d5bab643a9b105e83ee27353535985db3c93d8212d558aa"
+"src/core/r7_recovery.jl" = "67216c11c389f8e46a752f8b0169d7fbb4361919d4c3f8db222104fcd4acff58"
+"src/core/r7_thermal.jl" = "0a640358ca33e27b03784d755132e21432c90e89be0bc1c3a2ded52bfbc7ef09"
+"src/core/r7_transport.jl" = "20e45ae6a72fffd4db5fba556824b69607a66a3f03324762e7cb093c0bcfb686"
+"src/core/r8_tradeoff.jl" = "a190ca8db81c1fa8dd36d7e33c0bbd0b46c57a0c1bb7bf129a3109710778491c"
+"src/formulations/r7_adversary.jl" = "4abeba43339276980bd4931220a7f3113f9ec7c77f3dc594578f58af8aeca546"
+"src/formulations/r7_flow_planning.jl" = "a543fea5b8f81cdfb8a2d4fa5e6651d20ca1b6f02b99da91271bc9cca784578e"
+"src/formulations/r7_linked_planning.jl" = "3846fb305e040168373f1920a364c3dc5dc42a1b57ef4a27cfa1ecdb7ebe1e22"
+"src/formulations/r7_normal.jl" = "374d65f6061f273542028d36d2fba6e8594d0d065301cd6088657d4f6930c69e"
+"src/formulations/r7_normal_flow.jl" = "efbe4a212cb4ba96318c33d845b791deb7bc40e2d66cfc29a06afad4bcf0ad8f"
+"src/formulations/r7_planning.jl" = "0c97f7eb4a0108ea046fb2446b06a6d8f8dc764da31ff71073e847d4aaecfe54"
+"src/formulations/r7_recovery.jl" = "b377e9a2122f8bf8de55cfc1d84cfc797bb161fd42afc724181ce3ffb8454dd9"
+"src/formulations/r7_thermal.jl" = "ed9008fe0904e1a980c3bf9629e1a3ff6bfa9e2ab8a54a153dd020ce94d8b126"
+"src/formulations/r7_transport.jl" = "fb8eaff4ecf6cfa919acda41c0a70ff41dc7c032a852e94216993c0a344a092d"
+"src/formulations/r8_tradeoff.jl" = "03c1d1b22210b4dd345aeeb1a010eb03754651dee0a5cf526d071ee33e054902"
+"src/networks/fixed_flow_heat.jl" = "620c069f6b3a520d32ee546ec048074f9cbaa3c785f8c2e31ec7fd7bf245a83b"
+"src/networks/r7_linked_state.jl" = "084c7487e1ccc2865848a1aa415c7a346b065a0a55360e16c73f8a7ba644acf3"
+"src/networks/r7_lossy_mass.jl" = "1ddc8faa6ce099ccdac23ba55075288f243c0c4ca3db4e7e761e2ec1dbbdc1bf"
+"src/networks/r7_mass_overlap.jl" = "432ad1ca7b408df978c27a20ef96a1beb0e48ec5c7517bdda7656c878109969d"
+"src/networks/r7_normal_transport.jl" = "23872aef95bf80b5d61ac41147c83dbc3eaa8dace5fe7a931f2ecc5656178b77"
+"src/networks/r7_pipe_state.jl" = "2d8b4b01dbcdfc276ac15bf40d715b1d23f3dc56271ef4b0736f6fae2403f8a8"
+"src/reporting/r7_adversary.jl" = "2bc9e6d8426bb0c89e840afb5f8f76f6d07d554d3703e56a86a29dd487ef3a19"
+"src/reporting/r7_flow_planning.jl" = "357eb0c90539d513f0750674af8c8e619b62ea7df05e2ed47fe48c6de42a0d33"
+"src/reporting/r7_linked_planning.jl" = "dbc1b7049270da12ca09ff75657ceda106f7abe08c3351cbe1ebc8b79a6cc3bd"
+"src/reporting/r7_normal.jl" = "d201a85e73e1dff2aeb6a7d561bcb3311b2fd055d4e3a344792a5733c608a5b4"
+"src/reporting/r7_normal_flow.jl" = "c069e53bd6f1ccb882fba252bd752d1816ca6689dbc553c86e79d54373f07322"
+"src/reporting/r7_planning.jl" = "37de208118e098b7d2b25fa195562478ad948ab6000683d2600e4f5db7276291"
+"src/reporting/r7_recovery.jl" = "2118f6326e9709e079567a2513af8b52b29a3f83b1d9a239d634deba5825ffd9"
+"src/reporting/r7_thermal.jl" = "9351abc1a68b588bd0d636103667e580dc3cc1e59586fcf42a927b7d972c4ad8"
+"src/reporting/r7_transport.jl" = "df498ea0813eaf0d79e1e2b1330818eb4818b16e2e61e0d5779bccc17f0ca64e"
+"src/reporting/r8_tradeoff.jl" = "4a640490132a956a84076a29f268101bb75b4af64b765b0b4092ac3c64678af3"
+"src/verification/r7_adversary.jl" = "0b6d24bd6460391c483519f990d4d9c05880b6330e4eee3199dc9bb7d67080a4"
+"src/verification/r7_commitment.jl" = "db12022c34a1e5ba8183e88131f4c85a79ef206a49277688d217f9fdb8ba7c72"
+"src/verification/r7_flow_planning.jl" = "b6303f503543ffed9f78f746ae1b0e05d59bc01715059fe515a82e8eb6280f20"
+"src/verification/r7_linked_planning.jl" = "ebcf4bbfe0a8785f4f7cb7980c633122ebe69bd7ffb0f9bee6e1e74461045fb6"
+"src/verification/r7_normal.jl" = "e398c439b57136d9e1d4c11cc5880903f7d499c835f9b00a402aa6259c12a5f9"
+"src/verification/r7_normal_flow.jl" = "3808e0f5e8bedf0a2522c530ed0acae81931714ef2db128d1d92cab1763dd801"
+"src/verification/r7_planning.jl" = "7ed99b7fe2eafbd123b1713f421915d4f8517d6a0e5967a24544007d81c223a2"
+"src/verification/r7_recovery.jl" = "acd45c5de04376d680365ae135db2ea1e60aedcef82041ef1830e1f83c4a8e81"
+"src/verification/r7_thermal.jl" = "3e2ebbc202ba307027f0ebd7ff3d8c7f8c72d07a70757fe0d2a3862a82d5cccb"
+"src/verification/r7_transport.jl" = "c20c503a0ad1cdfe95f14c59f1030d5ae14c3d88abef711ff2f0a0412244153d"
+"src/verification/r8_tradeoff.jl" = "b0639bbfa2ec20d3b0aeff645f7235f6df723024d7014bf77aba0d69e66e795b"
+
+[validation]
+full_thesis_domain_verified = false
+normal_plan_pass = false
+planning_objective_complete = false
+primary_model_pass = false
+recovery_verified = false
+threshold_pass = false
+
+    [validation.primary]
+    model_pass = false
+    normal_pass = false
+    objective_complete = false
+    rows = []
+    threshold_pass = false
+    witness_checks = []

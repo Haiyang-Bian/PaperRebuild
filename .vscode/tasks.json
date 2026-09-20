@@ -1,5 +1,9 @@
 {
   "inputs": [
+    {"id":"r8Batch","type":"promptString","description":"R8冻结用新目录，运行使用已冻结目录","default":"results/runs/r8-tradeoff-new"},
+    {"id":"r8Report","type":"promptString","description":"R8报告：生成用新目录，核查用已有目录","default":"results/summaries/r8-tradeoff-20260920-v1"},
+    {"id":"r8Audit","type":"promptString","description":"R8审计用新目录或已保存审计","default":"results/summaries/r8-tradeoff-audit-20260920-v1"},
+    {"id":"r8Figures","type":"promptString","description":"R8只读重绘的新图件目录","default":"results/runs/r8-tradeoff-redraw"},
     {"id":"r7LossyBatch","type":"promptString","description":"有损共同流量：冻结用新目录，运行用已冻结目录","default":"results/runs/r7-lossy-flow-new"},
     {"id":"r7LossyReport","type":"promptString","description":"有损共同流量报告：生成用新目录，核查用已有目录","default":"results/summaries/r7-lossy-flow-20260920-v1"},
     {"id":"r7LossyAudit","type":"promptString","description":"有损费用归因：生成用新目录，核查用已有目录","default":"results/summaries/r7-lossy-flow-audit-20260920-v1"},
@@ -147,6 +151,19 @@
     }
   ],
   "tasks": [
+    {"label":"R8: mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r8.jl"],"problemMatcher":[]},
+    {"label":"R8: tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r8_tradeoff.jl"],"problemMatcher":[]},
+    {"label":"R8: protocol tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r8_study.jl"],"problemMatcher":[]},
+    {"label":"R8: heat boundary certificate","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r8_heat_boundary.jl"],"problemMatcher":[]},
+    {"label":"R8: freeze study","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r8_tradeoff_study.jl","freeze","${input:r8Batch}"],"problemMatcher":[]},
+    {"label":"R8: run HiGHS","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r8_tradeoff_study.jl","run","${input:r8Batch}","HiGHS"],"problemMatcher":[]},
+    {"label":"R8: run Gurobi","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/run_r8_gurobi.jl","${input:r8Batch}"],"problemMatcher":[]},
+    {"label":"R8: report","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r8_tradeoff_study.jl","report","${input:r8Batch}","${input:r8Report}"],"problemMatcher":[]},
+    {"label":"R8: verify saved runs","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r8_tradeoff_study.jl","check","${input:r8Report}"],"problemMatcher":[]},
+    {"label":"R8: comparison audit","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/audit_r8_results.jl","${input:r8Report}","${input:r8Audit}"],"problemMatcher":[]},
+    {"label":"R8: verify comparison audit","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r8_results.jl","${input:r8Report}","${input:r8Audit}"],"problemMatcher":[]},
+    {"label":"R8: redraw F31","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r8_tradeoff.jl","${input:r8Report}","${input:r8Audit}","${input:r8Figures}"],"problemMatcher":[]},
+    {"label":"R8: verify F31","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r8_figures.jl","${input:r8Report}","${input:r8Audit}","${input:r8Figures}","docs/src/assets/r8-tradeoff-20260920-v1/F31-r8-tradeoff.png"],"problemMatcher":[]},
     {"label":"PaperRebuild: R7 lossy flow mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r7_lossy_flow.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R7 lossy kernel tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r7_lossy_mass.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R7 lossy integration tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r7_lossy_flow.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},

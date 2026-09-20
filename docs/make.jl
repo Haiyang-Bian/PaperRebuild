@@ -65,6 +65,8 @@ include(joinpath(@__DIR__, "..", "scripts", "r7_flow_planning_docs.jl"))
 write(joinpath(@__DIR__, "src", "ch06-flow-planning-equations.md"), r7_flow_planning_markdown())
 include(joinpath(@__DIR__, "..", "scripts", "r7_lossy_flow_docs.jl"))
 write(joinpath(@__DIR__, "src", "ch06-lossy-flow-equations.md"), r7_lossy_flow_markdown())
+include(joinpath(@__DIR__, "..", "scripts", "r8_docs.jl"))
+write(joinpath(@__DIR__, "src", "ch06-r8-equations.md"), r8_markdown())
 
 makedocs(;
     modules = [PaperRebuild],
@@ -228,6 +230,9 @@ makedocs(;
             "共同流量推导与符号" => "ch06-flow-planning-equations.md",
             "有损连续流量" => "ch06-lossy-flow.md",
             "有损输运推导与符号" => "ch06-lossy-flow-equations.md",
+            "R8成本与保供比较" => "ch06-r8.md",
+            "R8首批机制结果" => "ch06-r8-results.md",
+            "R8目标与符号" => "ch06-r8-equations.md",
         ],
         "第 2 章模型与首批实现" => [
             "模型详解" => "ch02-models.md",
