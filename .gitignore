@@ -68,3 +68,14 @@ Thumbs.db
 
 # Failed first archival attempt is retained locally; scientific runs were not repeated.
 /results/summaries/r9-flow-reference-20260921-v1/
+# First fixed-flow summary used physical instead of physics for the residual scope.
+# Retain locally; v2 rebuilds the same saved values without optimization.
+/results/summaries/r9-fixed-20260921-v1/
+# v2 retained full validation but omitted temperature rows in a plot aggregation.
+/results/summaries/r9-fixed-20260921-v2/
+/results/summaries/r9-fixed-figures-20260921-v1/
+# Figure v2 included its own still-empty metadata file in its hash list; data unchanged.
+/results/summaries/r9-fixed-figures-20260921-v2/
+# Complete v3 preserved locally; v4 only shards byte-identical raw records to satisfy 5 MiB.
+/results/summaries/r9-fixed-20260921-v3/
+/results/summaries/r9-fixed-figures-20260921-v3/

@@ -11330,6 +11330,56 @@
           "path": "docs/src/ch07-flow-results.md",
           "name": "ch07-flow-results.md",
           "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r9-fixed/F37-fixed-flow.png",
+          "name": "F37-fixed-flow.png",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r9-fixed/F37-fixed-flow.svg",
+          "name": "F37-fixed-flow.svg",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r9-fixed/diagnostics.csv",
+          "name": "diagnostics.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r9-fixed/figure.toml",
+          "name": "figure.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r9-fixed/plot-source.jl",
+          "name": "plot-source.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r9-fixed/ratios.csv",
+          "name": "ratios.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r9-fixed/summary.csv",
+          "name": "summary.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r9-fixed/trajectories.csv",
+          "name": "trajectories.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch07-fixed-generated.md",
+          "name": "ch07-fixed-generated.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch07-fixed.md",
+          "name": "ch07-fixed.md",
+          "isDirectory": false
         }
       ],
       "order": 1,
@@ -11670,6 +11720,11 @@
         {
           "path": "docs/agent/tasks/2026-09-21-r9-flow-reference.md",
           "name": "2026-09-21-r9-flow-reference.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/agent/tasks/2026-09-21-r9-fixed.md",
+          "name": "2026-09-21-r9-fixed.md",
           "isDirectory": false
         }
       ],
@@ -12671,6 +12726,21 @@
         {
           "path": "src/verification/r9_flow.jl",
           "name": "r9_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/formulations/r9_terminal.jl",
+          "name": "r9_terminal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/reporting/r9_fixed.jl",
+          "name": "r9_fixed.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/verification/r9_fixed.jl",
+          "name": "r9_fixed.jl",
           "isDirectory": false
         }
       ],
@@ -13738,6 +13808,11 @@
         {
           "path": "docs/reading/ch07/flow.toml",
           "name": "flow.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch07/fixed.toml",
+          "name": "fixed.toml",
           "isDirectory": false
         }
       ],
@@ -74595,6 +74670,856 @@
           "path": "results/summaries/r9-flow-reference-20260921-v2/trajectories.csv",
           "name": "trajectories.csv",
           "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/artifact-hashes.toml",
+          "name": "artifact-hashes.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/diagnostics.csv",
+          "name": "diagnostics.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/index.toml",
+          "name": "index.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/kktrows-001.csv",
+          "name": "kktrows-001.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/kktrows-002.csv",
+          "name": "kktrows-002.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/kktrows-003.csv",
+          "name": "kktrows-003.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/kktrows-004.csv",
+          "name": "kktrows-004.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/kktrows-005.csv",
+          "name": "kktrows-005.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/kktrows-006.csv",
+          "name": "kktrows-006.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/kktrows-007.csv",
+          "name": "kktrows-007.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/kktrows-008.csv",
+          "name": "kktrows-008.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/kktrows-009.csv",
+          "name": "kktrows-009.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/kktrows-010.csv",
+          "name": "kktrows-010.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/kktrows-011.csv",
+          "name": "kktrows-011.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/kktrows-012.csv",
+          "name": "kktrows-012.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/kktrows-013.csv",
+          "name": "kktrows-013.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/kktrows-014.csv",
+          "name": "kktrows-014.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/kktrows-015.csv",
+          "name": "kktrows-015.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/kktrows-016.csv",
+          "name": "kktrows-016.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/kktrows-017.csv",
+          "name": "kktrows-017.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/kktrows-018.csv",
+          "name": "kktrows-018.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/kktrows-019.csv",
+          "name": "kktrows-019.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/kktrows-020.csv",
+          "name": "kktrows-020.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/kktrows-021.csv",
+          "name": "kktrows-021.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/kktrows-022.csv",
+          "name": "kktrows-022.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/kktrows-023.csv",
+          "name": "kktrows-023.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/kktrows-024.csv",
+          "name": "kktrows-024.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/kktrows-025.csv",
+          "name": "kktrows-025.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/kktrows-026.csv",
+          "name": "kktrows-026.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/object-chunks.toml",
+          "name": "object-chunks.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/01a86d8bb7bbbf0ad27f79acb099427ec18543a0a4b1b916f411f2e1a4053e2d",
+          "name": "01a86d8bb7bbbf0ad27f79acb099427ec18543a0a4b1b916f411f2e1a4053e2d",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/03d07197643132e25d4592fba0709f6ba29dbb6667d81f3bb132803601ca804a",
+          "name": "03d07197643132e25d4592fba0709f6ba29dbb6667d81f3bb132803601ca804a",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/03e6b5e650379c6b9c68193ecede35249f14f987e282d9750b3f8fd5ccc40268",
+          "name": "03e6b5e650379c6b9c68193ecede35249f14f987e282d9750b3f8fd5ccc40268",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/0441fb21d82d45d5092aece80c7337a1a85fa52ee8120566a04e16374a369f89",
+          "name": "0441fb21d82d45d5092aece80c7337a1a85fa52ee8120566a04e16374a369f89",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/048a873bca2c11d9e1e2e4cc70d996b5bc1a1e1e452c4c0a5008b47ea12acdef",
+          "name": "048a873bca2c11d9e1e2e4cc70d996b5bc1a1e1e452c4c0a5008b47ea12acdef",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/04ff16b92a8760546f4eefd6f866a298e707f7b56b23bc9e39298e148eaa9e5f",
+          "name": "04ff16b92a8760546f4eefd6f866a298e707f7b56b23bc9e39298e148eaa9e5f",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/05614f70b105efe61b7e2481e07c82d431b5d6caab4bf5734101f392acc5e8f3",
+          "name": "05614f70b105efe61b7e2481e07c82d431b5d6caab4bf5734101f392acc5e8f3",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/05bdff61e581ea0c5ea21574fe12c8f357fe4c1491ebcc6fe4288cf4a2486d0a",
+          "name": "05bdff61e581ea0c5ea21574fe12c8f357fe4c1491ebcc6fe4288cf4a2486d0a",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/0766d65a9c5772e8ac51b06142ef33a58b2a07041783ff0902756ce6c55c40b3",
+          "name": "0766d65a9c5772e8ac51b06142ef33a58b2a07041783ff0902756ce6c55c40b3",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/0bb013cba5b75dbca31d81b86780c18951b0823ae4a653073ce02c3e7e3a057f",
+          "name": "0bb013cba5b75dbca31d81b86780c18951b0823ae4a653073ce02c3e7e3a057f",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/0bef73b52536ab4ec0c52e6acfe589e0a997e79b59bd841f716da95af05ca65a",
+          "name": "0bef73b52536ab4ec0c52e6acfe589e0a997e79b59bd841f716da95af05ca65a",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/0cc5a5132fd19527ae2a16012c44513b876f1604eeaee74f3a6041a46e2266be",
+          "name": "0cc5a5132fd19527ae2a16012c44513b876f1604eeaee74f3a6041a46e2266be",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/0ee801a551b60e412f98526f72676aba08d661f7139bfe67ee78f43952422d40",
+          "name": "0ee801a551b60e412f98526f72676aba08d661f7139bfe67ee78f43952422d40",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/11026416169278767a8900e84e5fb65f80113e405a4046a44f6b92dc983498d5",
+          "name": "11026416169278767a8900e84e5fb65f80113e405a4046a44f6b92dc983498d5",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/1235be1c1b19f87202f82b97dbd94d0d38bcf8cda73d722fb624577bb71b8364",
+          "name": "1235be1c1b19f87202f82b97dbd94d0d38bcf8cda73d722fb624577bb71b8364",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/1434aa99546eb8dad20da7479443cfb4882b85e95471e95e265322deff48b5a9",
+          "name": "1434aa99546eb8dad20da7479443cfb4882b85e95471e95e265322deff48b5a9",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/16f4417db65bdbe4a24b8e07d7ad506bb0aa3fc1bc7ce83a8c3dc4506e3777ca",
+          "name": "16f4417db65bdbe4a24b8e07d7ad506bb0aa3fc1bc7ce83a8c3dc4506e3777ca",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/19676e6bfba28a238962ee812ac9f9431277c202c88878967ae72b06360fbaa4",
+          "name": "19676e6bfba28a238962ee812ac9f9431277c202c88878967ae72b06360fbaa4",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/1a29d3ac34ebf6936b9055b737167e59cf746cc6b5fb1055b8f73db2ebd26f15",
+          "name": "1a29d3ac34ebf6936b9055b737167e59cf746cc6b5fb1055b8f73db2ebd26f15",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/1b65bc9360e1b1a3816800ecffb442d39336da92db4d11ed7ac055e5fcbeeb60",
+          "name": "1b65bc9360e1b1a3816800ecffb442d39336da92db4d11ed7ac055e5fcbeeb60",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/1ceb50b3be13589e423094e0d434f262600549f925595d4c23055ee6c1e014d1",
+          "name": "1ceb50b3be13589e423094e0d434f262600549f925595d4c23055ee6c1e014d1",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/22cb571f15112ccc21408903f229e25b49ee0d59333c14d251ab4b83a8abbf54",
+          "name": "22cb571f15112ccc21408903f229e25b49ee0d59333c14d251ab4b83a8abbf54",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/24f9d411b6852f8015c0ea4ce7c8871037f921c8ca4ab168480e3b73cbf9d376",
+          "name": "24f9d411b6852f8015c0ea4ce7c8871037f921c8ca4ab168480e3b73cbf9d376",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/259dd3c47b7e61b9436ad61616ed856a61ef6f20d12484d54bf0bfe291ab8b36",
+          "name": "259dd3c47b7e61b9436ad61616ed856a61ef6f20d12484d54bf0bfe291ab8b36",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/25c6b88d6a79bac78e5f5ffd1f9722d58b1ea2c93305755b1a438f6e6d1f9e94",
+          "name": "25c6b88d6a79bac78e5f5ffd1f9722d58b1ea2c93305755b1a438f6e6d1f9e94",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/26df30dd9cec8722d43c00c91779d4be86b454fb96ad4bc4c56609269b4a94ea",
+          "name": "26df30dd9cec8722d43c00c91779d4be86b454fb96ad4bc4c56609269b4a94ea",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/295c774afa177f87f0e16fe6bd064e288e7e341f25f2f4e0645cdf876fc9448a",
+          "name": "295c774afa177f87f0e16fe6bd064e288e7e341f25f2f4e0645cdf876fc9448a",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/2cc0ad5eae37166aa50d0d830d525f077efb9eb3d8bf9a0fa149f537491aabc1",
+          "name": "2cc0ad5eae37166aa50d0d830d525f077efb9eb3d8bf9a0fa149f537491aabc1",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/313f8c54dfa9a7a276832e48cc8d7e3e9b63c29aab765bf7fa541f2fb68f40a9",
+          "name": "313f8c54dfa9a7a276832e48cc8d7e3e9b63c29aab765bf7fa541f2fb68f40a9",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/330695c66d9b989ccb97201ced0967230956b806923eac10ff8f92a41e8d57e9",
+          "name": "330695c66d9b989ccb97201ced0967230956b806923eac10ff8f92a41e8d57e9",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/345d74bc66c0977a01d7cd1423c01841b13f854999e7e4bf987cdd8953c64da0",
+          "name": "345d74bc66c0977a01d7cd1423c01841b13f854999e7e4bf987cdd8953c64da0",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/352162a6dbb073a7e620fcd8ed5fbc9d49298d3224e95fff7c2174ae6d8272c0",
+          "name": "352162a6dbb073a7e620fcd8ed5fbc9d49298d3224e95fff7c2174ae6d8272c0",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/394ded61d86b90e6e270d66d1ae5c080275f6c14ec864370cd43c927e14ed932",
+          "name": "394ded61d86b90e6e270d66d1ae5c080275f6c14ec864370cd43c927e14ed932",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/39db6cf0c2226628f47e171a0cdb4f547b81ff0857edc3bf100b65191b564d16",
+          "name": "39db6cf0c2226628f47e171a0cdb4f547b81ff0857edc3bf100b65191b564d16",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/3d7ced8075b6778baed1394e1c6e47d9da366a51ca2b2a9d786c9ac3e2d0cc5c",
+          "name": "3d7ced8075b6778baed1394e1c6e47d9da366a51ca2b2a9d786c9ac3e2d0cc5c",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/3df89088e79f08b54ca140c45df40aa5d53dd60ee18e068038e67bf205216e42",
+          "name": "3df89088e79f08b54ca140c45df40aa5d53dd60ee18e068038e67bf205216e42",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/3e3f2b5ac9497653dd11551b563e095bba6480d2a3f6e3cdc4aefa06d65b4989",
+          "name": "3e3f2b5ac9497653dd11551b563e095bba6480d2a3f6e3cdc4aefa06d65b4989",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/4289e33cdae925640a20f115bc3559213254d0b7d21dc6214f86cfa224a538b3",
+          "name": "4289e33cdae925640a20f115bc3559213254d0b7d21dc6214f86cfa224a538b3",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/4314f0d85ea257e10315da3d85a567e9b30f58f9c2f9de6492306648e319c445",
+          "name": "4314f0d85ea257e10315da3d85a567e9b30f58f9c2f9de6492306648e319c445",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/43d920c64a0a191f7547d3530e08df9ac10666c2e421257cab87e51ea3befc21",
+          "name": "43d920c64a0a191f7547d3530e08df9ac10666c2e421257cab87e51ea3befc21",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/44b2ff806c86dd866e1cfdc69e4db6cdefc65bcf9ad6fabe854e7b3a1a2290fa",
+          "name": "44b2ff806c86dd866e1cfdc69e4db6cdefc65bcf9ad6fabe854e7b3a1a2290fa",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/47fec7dc944afd8d2e5ac99d6885994fa7ce2465c36dfdcf6984d50466391783",
+          "name": "47fec7dc944afd8d2e5ac99d6885994fa7ce2465c36dfdcf6984d50466391783",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/49a9086590a70bb992c0da414c315978d3606529ce181cd50635fa1026198058",
+          "name": "49a9086590a70bb992c0da414c315978d3606529ce181cd50635fa1026198058",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/4a63526e641d342aa7892fd5657ceaecdb354bddd8e1174bfe0dc0af324587e3",
+          "name": "4a63526e641d342aa7892fd5657ceaecdb354bddd8e1174bfe0dc0af324587e3",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/4d4db79aca6f49bee815fdd5c5b834795c0cc334d6b07ccb579c76dea9a698f9",
+          "name": "4d4db79aca6f49bee815fdd5c5b834795c0cc334d6b07ccb579c76dea9a698f9",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/4dbbc7d0d0816dfa433f010209faddaac90ba5fa65fddbb83d0b1f9dcdf5be18",
+          "name": "4dbbc7d0d0816dfa433f010209faddaac90ba5fa65fddbb83d0b1f9dcdf5be18",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/4eaef0955b984d783665ebecc5e82cb1e9520f719f6e066b4c3862b950be3c0b",
+          "name": "4eaef0955b984d783665ebecc5e82cb1e9520f719f6e066b4c3862b950be3c0b",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/4ecab07b995a8009ef83fe58ff46ea2de63faca04a0a48f9485371d0bcf9b998",
+          "name": "4ecab07b995a8009ef83fe58ff46ea2de63faca04a0a48f9485371d0bcf9b998",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/5462dd78f7a41449bbd7f0a7db3792019eaa7390dcf594d4e0a8cc29df82e4c4",
+          "name": "5462dd78f7a41449bbd7f0a7db3792019eaa7390dcf594d4e0a8cc29df82e4c4",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/5dc0a10ffd7561c4df34c78ddae79fe5bbd18c79fdcbd9f9b45b336a0508e595",
+          "name": "5dc0a10ffd7561c4df34c78ddae79fe5bbd18c79fdcbd9f9b45b336a0508e595",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/5e6168c0ca1fb06f89843ed3ebe46aad2ec558a46e6336ee4622fea2d0ec1ba0",
+          "name": "5e6168c0ca1fb06f89843ed3ebe46aad2ec558a46e6336ee4622fea2d0ec1ba0",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/61da7725513a620c3e51c72735b290cec041b961cf15d81bac7967b029f56997",
+          "name": "61da7725513a620c3e51c72735b290cec041b961cf15d81bac7967b029f56997",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/620c069f6b3a520d32ee546ec048074f9cbaa3c785f8c2e31ec7fd7bf245a83b",
+          "name": "620c069f6b3a520d32ee546ec048074f9cbaa3c785f8c2e31ec7fd7bf245a83b",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/63a9d19d7972b0653912364d8e4e6104810acc1d468e501479db1867a0a7210d",
+          "name": "63a9d19d7972b0653912364d8e4e6104810acc1d468e501479db1867a0a7210d",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/6656f7f785571153e6f53d353e302a49bc4b2394543a4d51a8dc313582c07c93",
+          "name": "6656f7f785571153e6f53d353e302a49bc4b2394543a4d51a8dc313582c07c93",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/6ad966300b7c2c99f1aa4db24be826038cd84163c86ab8281de9fde3a66ba67d",
+          "name": "6ad966300b7c2c99f1aa4db24be826038cd84163c86ab8281de9fde3a66ba67d",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/6b5dfe933af07ca62910d011966a3a4628eb942a76bded7cf94387910b1d02ff",
+          "name": "6b5dfe933af07ca62910d011966a3a4628eb942a76bded7cf94387910b1d02ff",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/6dbff74c95869dce717ff98782d34d80b9f7730f6920969b39b2fe0cfc71cbc5",
+          "name": "6dbff74c95869dce717ff98782d34d80b9f7730f6920969b39b2fe0cfc71cbc5",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/70c6be5c698e8e94fb08dfe5f9581fa86d95a7c560f58449a84be8074e67704f",
+          "name": "70c6be5c698e8e94fb08dfe5f9581fa86d95a7c560f58449a84be8074e67704f",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/70fcff5c7ef4b152dbf7f5c05ffe1b94fccebc2dd7bad448b03845b13d7f5313",
+          "name": "70fcff5c7ef4b152dbf7f5c05ffe1b94fccebc2dd7bad448b03845b13d7f5313",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/7118267881dc2f362004c14da042ad1e208a87657144538a8e2ec6ce82619c12",
+          "name": "7118267881dc2f362004c14da042ad1e208a87657144538a8e2ec6ce82619c12",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/72040866aa0e1d3b99ed9ff65d3c949059bbf5e0f795beaa8fd9ef97bf692d54",
+          "name": "72040866aa0e1d3b99ed9ff65d3c949059bbf5e0f795beaa8fd9ef97bf692d54",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/739b8864ab391b219780f9f7d9d80cf699d3b82b3db79fb800026c2f6f405038",
+          "name": "739b8864ab391b219780f9f7d9d80cf699d3b82b3db79fb800026c2f6f405038",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/771141ae007d6f76f051285c0ba3faf370a5e0864f243368835e85e0af5ee598",
+          "name": "771141ae007d6f76f051285c0ba3faf370a5e0864f243368835e85e0af5ee598",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/77e4908d9c55f09210552ac9dc06d7595225f082584abbdcc1d18cea67ca8ae0",
+          "name": "77e4908d9c55f09210552ac9dc06d7595225f082584abbdcc1d18cea67ca8ae0",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/7930024a4b68d128645af73a112ef0cbd5bff7062d7e399548c7991f91a57aea",
+          "name": "7930024a4b68d128645af73a112ef0cbd5bff7062d7e399548c7991f91a57aea",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/7a0ed247c282e59c08b32fa9cc487d28de3f4267a2e708f039d232d629858caf",
+          "name": "7a0ed247c282e59c08b32fa9cc487d28de3f4267a2e708f039d232d629858caf",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/7ba80a313d9537ca939fd093f984e3fe8ce2bd1e1741a2e8005da4b8e8aad657",
+          "name": "7ba80a313d9537ca939fd093f984e3fe8ce2bd1e1741a2e8005da4b8e8aad657",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/7ba8b25c350733ff5d522e73d6cedcf98772d42d6e5bee09e33287e9a932f1f8",
+          "name": "7ba8b25c350733ff5d522e73d6cedcf98772d42d6e5bee09e33287e9a932f1f8",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/7cb0ad0bf0bc5ea77af73e08a8261982510ce869caef95e26b7d51730a43b635",
+          "name": "7cb0ad0bf0bc5ea77af73e08a8261982510ce869caef95e26b7d51730a43b635",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/7eda1c1ad7a138c850eb9c6834aab36aa7fa2f6d70bcbc50ad2b976c3ffb0fa0",
+          "name": "7eda1c1ad7a138c850eb9c6834aab36aa7fa2f6d70bcbc50ad2b976c3ffb0fa0",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/828d7f6f23864800343c89dd6df2174ddb45c7fd38b15752eb3aa556468c8e86",
+          "name": "828d7f6f23864800343c89dd6df2174ddb45c7fd38b15752eb3aa556468c8e86",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/82afeb350db18fca6ada3179f87c3d266e21f13bb922ae6841619811ca8dfddb",
+          "name": "82afeb350db18fca6ada3179f87c3d266e21f13bb922ae6841619811ca8dfddb",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/82d55b2de691aa02d7ae073b393a8bb8b54c5a4689f0281e26be6e262a98fdb1",
+          "name": "82d55b2de691aa02d7ae073b393a8bb8b54c5a4689f0281e26be6e262a98fdb1",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/8383f5c30b69e3e5ce65b8741ee44eab5e1c6fa56bd0669dfa856939ae48557a",
+          "name": "8383f5c30b69e3e5ce65b8741ee44eab5e1c6fa56bd0669dfa856939ae48557a",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/83cdc6ee3335dc8e785b5f45b6a7ca129613f00c530adce533622f76572d37ac",
+          "name": "83cdc6ee3335dc8e785b5f45b6a7ca129613f00c530adce533622f76572d37ac",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/83e7255d85dc0a607a0cf37a232c1e329da070fb9f787f9295380e9ab8495578",
+          "name": "83e7255d85dc0a607a0cf37a232c1e329da070fb9f787f9295380e9ab8495578",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/84b26f4d53d9d55510989dc1e958224386f71d1e82ca7de15e59958b55575245",
+          "name": "84b26f4d53d9d55510989dc1e958224386f71d1e82ca7de15e59958b55575245",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/88e3197d4f82fb0bdeea20df83c57c71062e1b2d580da309a07bd609d23af226",
+          "name": "88e3197d4f82fb0bdeea20df83c57c71062e1b2d580da309a07bd609d23af226",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/89bb0b4c880e66b6d6669b2b34cc61d8e16da21be0b61a2b4cbfa62a810db408",
+          "name": "89bb0b4c880e66b6d6669b2b34cc61d8e16da21be0b61a2b4cbfa62a810db408",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/8f4e6f87745ba4e9474a1884e4b358dcd5357e03e02296dced3527cfc4949785",
+          "name": "8f4e6f87745ba4e9474a1884e4b358dcd5357e03e02296dced3527cfc4949785",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/910949c4082ec2c8d440b6946cf91da0d39a8ba0d86d36e5bfdd26d0201847f5",
+          "name": "910949c4082ec2c8d440b6946cf91da0d39a8ba0d86d36e5bfdd26d0201847f5",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/91825798ba424cc59573ee468c3aa4e88a499c62b1da995797d90d6297404023",
+          "name": "91825798ba424cc59573ee468c3aa4e88a499c62b1da995797d90d6297404023",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/9257bd8f2c21ffadd0cf8264ebf8888b7df376d7048393d6823082a2b8eff5b6",
+          "name": "9257bd8f2c21ffadd0cf8264ebf8888b7df376d7048393d6823082a2b8eff5b6",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/948f0f5c5a4bc8381a3d9ad413fb0f8e78ee1a3bad52606dea9b9b6f144e5450",
+          "name": "948f0f5c5a4bc8381a3d9ad413fb0f8e78ee1a3bad52606dea9b9b6f144e5450",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/95aad5ef5acc69dc02129a0d850e52d989180eac42c3476dc3df16ffe1156af6",
+          "name": "95aad5ef5acc69dc02129a0d850e52d989180eac42c3476dc3df16ffe1156af6",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/98d9a0621c5d2f0885b0c1afeaf050f832e93e804a486e52e233dcfe5336b472",
+          "name": "98d9a0621c5d2f0885b0c1afeaf050f832e93e804a486e52e233dcfe5336b472",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/a266e700237ed0596b95ad9350b8ff5fce66f634b6b9d53415b0e79e981e1fcf",
+          "name": "a266e700237ed0596b95ad9350b8ff5fce66f634b6b9d53415b0e79e981e1fcf",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/aac06e895ef20077396d849ef90b0c1d0e8cc00414cea5333237dead84082443",
+          "name": "aac06e895ef20077396d849ef90b0c1d0e8cc00414cea5333237dead84082443",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/b09147b1ef65bf007e7872175ce205f8b3ba2b69e9617975ce5d3cee76b79c73",
+          "name": "b09147b1ef65bf007e7872175ce205f8b3ba2b69e9617975ce5d3cee76b79c73",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/b3abbfe09c1533ecdcd60c47bce09646d0e90f8446761a5e49b54ab217f604bb",
+          "name": "b3abbfe09c1533ecdcd60c47bce09646d0e90f8446761a5e49b54ab217f604bb",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/b5db6312c26f10621d6208109e750ac0d68279cbad2281922925df44ef7ee588",
+          "name": "b5db6312c26f10621d6208109e750ac0d68279cbad2281922925df44ef7ee588",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/b81d92847ee9db51da59e2dd466d8f3882634624f10bdc2efff04c1296136177",
+          "name": "b81d92847ee9db51da59e2dd466d8f3882634624f10bdc2efff04c1296136177",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/b84f0fe953db0239ab6aadc552d83aca030689a57616729d226d5594e20dae20",
+          "name": "b84f0fe953db0239ab6aadc552d83aca030689a57616729d226d5594e20dae20",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/b998d1f5f9a77c9572fc1b2f444f7d6b8ec58bc655217853d9c8e80c4f36a8b5",
+          "name": "b998d1f5f9a77c9572fc1b2f444f7d6b8ec58bc655217853d9c8e80c4f36a8b5",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/ba1adcd3d190f59943cf44b844587e52eb3b1346016af8653baf31a3a8129282",
+          "name": "ba1adcd3d190f59943cf44b844587e52eb3b1346016af8653baf31a3a8129282",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/bc5f5eeb1173ed024b91b0b58d5697e9a8d20a56c718aa326d5442bf2862fff1",
+          "name": "bc5f5eeb1173ed024b91b0b58d5697e9a8d20a56c718aa326d5442bf2862fff1",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/bdd1212ab763844bd21f4867de1a472a4b33c4f75c56433aa371af62c1cfd50e",
+          "name": "bdd1212ab763844bd21f4867de1a472a4b33c4f75c56433aa371af62c1cfd50e",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/be07a40d34ee1e44e61d0e81fc1a71161cc9ba7ef20d57fc7fbe4e70f6e3ba8b",
+          "name": "be07a40d34ee1e44e61d0e81fc1a71161cc9ba7ef20d57fc7fbe4e70f6e3ba8b",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/be2d4335404b883d81cde43135e352ab399985ef73ee70e6537eb35c23c72cf7",
+          "name": "be2d4335404b883d81cde43135e352ab399985ef73ee70e6537eb35c23c72cf7",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/bee4cde90b439ceafc90acfd66165f9afa3385927eb1c8502c8ffdbd2e2bde96",
+          "name": "bee4cde90b439ceafc90acfd66165f9afa3385927eb1c8502c8ffdbd2e2bde96",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/c0174b63fb559bd87b66604e80018ab5b4a055a4dfe7c0257884ed1955ea1971",
+          "name": "c0174b63fb559bd87b66604e80018ab5b4a055a4dfe7c0257884ed1955ea1971",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/c24332e133ecb225a48ea18554f1f9326a64e96bdc1300895a109c34524bc7b4",
+          "name": "c24332e133ecb225a48ea18554f1f9326a64e96bdc1300895a109c34524bc7b4",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/c2cd6e902daf860328fce270474760b5a752f51522afc9aba9450ab69c5a22fc",
+          "name": "c2cd6e902daf860328fce270474760b5a752f51522afc9aba9450ab69c5a22fc",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/c5809cba1d3b9fbea0ccb6df56c023fc6fba0d7d5821d194ac2af57a6cb7a555",
+          "name": "c5809cba1d3b9fbea0ccb6df56c023fc6fba0d7d5821d194ac2af57a6cb7a555",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/c81513e4ee63f88ee804817892f0d317d8a794016301f8e88a679331e8c8b677",
+          "name": "c81513e4ee63f88ee804817892f0d317d8a794016301f8e88a679331e8c8b677",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/c81ba065cd5e6e38e37cc385d89b81e0915c26b10edb2dd0321fd91633c202d3",
+          "name": "c81ba065cd5e6e38e37cc385d89b81e0915c26b10edb2dd0321fd91633c202d3",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/cae6e7b6210be6a25268ac3266535a9c12d38a4b64208cb2096e76bf3b02090c",
+          "name": "cae6e7b6210be6a25268ac3266535a9c12d38a4b64208cb2096e76bf3b02090c",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/cd030ef454dcda3287722095c0a824fe02a3cddbbc56eec868c8a1e8e220a04f",
+          "name": "cd030ef454dcda3287722095c0a824fe02a3cddbbc56eec868c8a1e8e220a04f",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/ce83a55df6b7c6ff36eb627205c7726a3f89340beaabac79b1747db4a410e85e",
+          "name": "ce83a55df6b7c6ff36eb627205c7726a3f89340beaabac79b1747db4a410e85e",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/d514c3c2e94f962feb65717da43920559b4bcbca8613d2abcef2e1ed292d51b0",
+          "name": "d514c3c2e94f962feb65717da43920559b4bcbca8613d2abcef2e1ed292d51b0",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/d58b4c7d4e89bbcae9252d04e531d964e9897f79d8c7cc277c130902f6843416",
+          "name": "d58b4c7d4e89bbcae9252d04e531d964e9897f79d8c7cc277c130902f6843416",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/d658b5d1fcdf3a7c59a4a2ed64d328e01b91d4d50bcd43ed5ef7bb36fff90ddd",
+          "name": "d658b5d1fcdf3a7c59a4a2ed64d328e01b91d4d50bcd43ed5ef7bb36fff90ddd",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/d8baa61a330a4cdad34af558d44a46da0d5cb3ed211cdcfb7bb62a8269f18455",
+          "name": "d8baa61a330a4cdad34af558d44a46da0d5cb3ed211cdcfb7bb62a8269f18455",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/dd5de1049fc740706fa9005f48b60d75e088bc68faa9f6092b9b310e7aaed624",
+          "name": "dd5de1049fc740706fa9005f48b60d75e088bc68faa9f6092b9b310e7aaed624",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/ddf93e37f7e1524b5ca19738b554e8e57f89b9161d49f2838ab7609602a83f14",
+          "name": "ddf93e37f7e1524b5ca19738b554e8e57f89b9161d49f2838ab7609602a83f14",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/dece52a2ebdf8c18d14a82f502507009a6e36294bd224f565b04fda0077bf4f1",
+          "name": "dece52a2ebdf8c18d14a82f502507009a6e36294bd224f565b04fda0077bf4f1",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/dffa958bc8cc4489f9aaef684b7fd9d63306a9c7a2d4fd2e22eb748bc861fbbb",
+          "name": "dffa958bc8cc4489f9aaef684b7fd9d63306a9c7a2d4fd2e22eb748bc861fbbb",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/e0392b5fb13d58df6c3961ac10e2acae602ed4d2d5fb45e4b4a75145a0c55c60",
+          "name": "e0392b5fb13d58df6c3961ac10e2acae602ed4d2d5fb45e4b4a75145a0c55c60",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/e235369b2ebb9de91d6112be10ba88c7780f41f1a8272c97da828e7e355b3350",
+          "name": "e235369b2ebb9de91d6112be10ba88c7780f41f1a8272c97da828e7e355b3350",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "name": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/e914f0ea7f36b748c355105e529fc2d4d417dd3ee121ccd9c7245f37bedbafac",
+          "name": "e914f0ea7f36b748c355105e529fc2d4d417dd3ee121ccd9c7245f37bedbafac",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/e952963689b39d28dc490066e55c7e5ca2689cd0ce78982a5397b09713466655",
+          "name": "e952963689b39d28dc490066e55c7e5ca2689cd0ce78982a5397b09713466655",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/ed681e45108816f0ca1eb46ba2b926eeffb782d429ec7fc6da900626c8574ce6",
+          "name": "ed681e45108816f0ca1eb46ba2b926eeffb782d429ec7fc6da900626c8574ce6",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/ef76594a25d5a310f8265137e733d811c8dbefcf0aea0b3ff8be5ed7b05bceef",
+          "name": "ef76594a25d5a310f8265137e733d811c8dbefcf0aea0b3ff8be5ed7b05bceef",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/ef87aa2b509dd9077ca41276efde57db8d8fb4cbbc9a2c5037ee6ebe0e309b05",
+          "name": "ef87aa2b509dd9077ca41276efde57db8d8fb4cbbc9a2c5037ee6ebe0e309b05",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/f106842c758d291179c246a1b62e4fbd8fc34ac684e24042d603ae282ee136d5",
+          "name": "f106842c758d291179c246a1b62e4fbd8fc34ac684e24042d603ae282ee136d5",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/f2a29bee463f1e602ac5738d4bef67465ec94bd495ee9cdfb8ee86ff537c4ee0",
+          "name": "f2a29bee463f1e602ac5738d4bef67465ec94bd495ee9cdfb8ee86ff537c4ee0",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/objects/f6fef567965a4b9a061fb2649a52c6c1d59bfc5e31aa10115e5aafeeba174e31",
+          "name": "f6fef567965a4b9a061fb2649a52c6c1d59bfc5e31aa10115e5aafeeba174e31",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/ratios.csv",
+          "name": "ratios.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/summary.csv",
+          "name": "summary.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-20260921-v4/trajectories.csv",
+          "name": "trajectories.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-figures-20260921-v4/F37-fixed-flow.png",
+          "name": "F37-fixed-flow.png",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-figures-20260921-v4/F37-fixed-flow.svg",
+          "name": "F37-fixed-flow.svg",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-figures-20260921-v4/diagnostics.csv",
+          "name": "diagnostics.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-figures-20260921-v4/figure.toml",
+          "name": "figure.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-figures-20260921-v4/plot-source.jl",
+          "name": "plot-source.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-figures-20260921-v4/ratios.csv",
+          "name": "ratios.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-figures-20260921-v4/summary.csv",
+          "name": "summary.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-fixed-figures-20260921-v4/trajectories.csv",
+          "name": "trajectories.csv",
+          "isDirectory": false
         }
       ],
       "order": 6,
@@ -74950,6 +75875,11 @@
         {
           "path": "test/r9_heat_memory.jl",
           "name": "r9_heat_memory.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "test/r9_fixed.jl",
+          "name": "r9_fixed.jl",
           "isDirectory": false
         }
       ],
@@ -77716,6 +78646,56 @@
         {
           "path": "scripts/r9_flow_reference.jl",
           "name": "r9_flow_reference.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/audit_r9_fixed_flow.jl",
+          "name": "audit_r9_fixed_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/audit_r9_fixed_terminal.jl",
+          "name": "audit_r9_fixed_terminal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r9_fixed.jl",
+          "name": "check_r9_fixed.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r9_fixed_delivery.jl",
+          "name": "check_r9_fixed_delivery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r9_fixed_scaling.jl",
+          "name": "check_r9_fixed_scaling.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/plot_r9_fixed.jl",
+          "name": "plot_r9_fixed.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/probe_r9_fixed_scaling.jl",
+          "name": "probe_r9_fixed_scaling.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r9_fixed_evidence.jl",
+          "name": "r9_fixed_evidence.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r9_fixed_study.jl",
+          "name": "r9_fixed_study.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/test_r9_fixed.jl",
+          "name": "test_r9_fixed.jl",
           "isDirectory": false
         }
       ],

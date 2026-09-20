@@ -72,9 +72,9 @@
 
 ### 7.3
 
-复用：R4Case, centralized independent reference, settlement and reconfiguration interfaces。
+复用：R4 theory, network/accounting utilities and validation pattern; separate scale adapter required, not direct R4Case loading。
 
-接口缺口：Thermal storage/HP specification, flexible-load preferences, private payoffs and startup interpretation require declared inputs.
+接口缺口：R4Case is fixed to DSO/A/B and one battery; eight aggregators, two batteries and distinct electric/heat mappings require an incremental scale interface. A4/A8 share heat node 26; avoid double-counting base load. Thermal storage/HP, flexible preferences, payoffs and startup interpretation still require declared inputs.
 
 不得默认继承：7.2 PV enlargement, teaching settlement prices, or automatic second multiplication of table-7-9 loads。
 
@@ -94,4 +94,4 @@
 
 不得默认继承：Chapter-6 500 USD/MWh penalty, four-hour window inferred from mixed captions or ablation inferred from HS/NR abbreviations。
 
-迁移状态：`specified_not_executed`；详见[输入说明与后续顺序](ch07-inputs.md)。
+迁移状态：`partial_72_fixed_flow_duals_open_73_pending`；详见[输入说明与后续顺序](ch07-inputs.md)。

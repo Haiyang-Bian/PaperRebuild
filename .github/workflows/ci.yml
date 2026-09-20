@@ -14,6 +14,27 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  tests:
+    name: Tests (${{ matrix.os }}, ${{ matrix.stage }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        stage: [r1_r4, r5_r6, r7_r9]
+    runs-on: ${{ matrix.os }}
+    env:
+      JULIA_NUM_THREADS: '1'
+      JULIA_PKG_PRECOMPILE_AUTO: '0'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: julia-actions/setup-julia@v2
+        with:
+          version: '1.12.6'
+      - uses: julia-actions/cache@v2
+      - name: Julia tests with complete stage coverage
+        timeout-minutes: 10
+        run: julia --startup-file=no --project=. scripts/test.jl ${{ matrix.stage }}
+
   check:
     name: Check (${{ matrix.os }})
     strategy:
@@ -32,9 +53,6 @@ jobs:
       - uses: julia-actions/cache@v2
       - name: Restore environments
         run: julia --startup-file=no --project=. scripts/bootstrap.jl
-      - name: Julia tests
-        timeout-minutes: 10
-        run: julia --startup-file=no --project=. scripts/test.jl
       - name: Chapter 2 source and symbol mapping
         run: julia --startup-file=no --project=. scripts/check_ch02.jl
       - name: Chapter 3 source and symbol mapping
@@ -104,6 +122,10 @@ jobs:
         run: julia --startup-file=no --project=. scripts/check_r7_lossy_flow_results.jl results/summaries/r7-lossy-flow-20260920-v1 results/summaries/r7-flow-planning-20260920-v2
       - name: R9 original input and migration mapping
         run: julia --startup-file=no --project=. scripts/check_r9_inputs.jl
+      - name: R9 fixed-flow mapping
+        run: julia --startup-file=no --project=. scripts/check_r9_fixed.jl
+      - name: R9 fixed-flow original values and independent KKT
+        run: julia --startup-file=no --project=. scripts/r9_fixed_evidence.jl check results/summaries/r9-fixed-20260921-v4
       - name: R9 source audit replay and tamper checks
         run: julia --startup-file=no --project=. scripts/test_r9_report.jl
       - name: R9 frozen original-input evidence
@@ -178,7 +200,7 @@ jobs:
 
   docs:
     name: Build documentation
-    needs: check
+    needs: [check, tests]
     runs-on: ubuntu-latest
     env:
       JULIA_NUM_THREADS: '1'

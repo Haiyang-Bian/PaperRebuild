@@ -1,0 +1,60 @@
+# 仅重读缩放探针原值；按显式正目标尺度换回CNY后使用原A1，不重新优化。
+push!(LOAD_PATH, normpath(joinpath(@__DIR__, "..")))
+using JuMP, TOML, SHA, Dates, UUIDs, CSV, Random
+length(ARGS) == 2 || error("usage: check_r9_fixed_scaling.jl PROBE NEW_REVIEW")
+probe, out = abspath.(ARGS)
+ispath(out) && error("Do not overwrite review")
+hashfile(p) = bytes2hex(sha256(read(p)))
+toml(p, x) = open(io -> TOML.print(io, x; sorted = true), p, "w")
+m = TOML.parsefile(joinpath(probe, "manifest.toml"))
+all(hashfile(joinpath(probe, p)) == h for (p, h) in m["files"]) || error("Frozen input changed")
+mkpath(out)
+cp(@__FILE__, joinpath(out, "review-source.jl"))
+mod = Module(gensym(:R9ScaleReview))
+Core.eval(mod, :(using JuMP, TOML, SHA, Dates, UUIDs, CSV, Random))
+for path in m["science_files"]
+    Base.include(mod, joinpath(probe, "code", path))
+end
+Base.invokelatest() do
+    c = getfield(mod, :load_r9_pv_case)(joinpath(probe, "case.toml"))
+    summary = NamedTuple[]
+    for entry in m["entries"]
+        id = lowercase(entry["solver"])*"-"*entry["representation"]
+        folder = joinpath(probe, id)
+        r = TOML.parsefile(joinpath(folder, "stage.toml"))
+        s = r["objective_currency_scale"]
+        isfinite(s) && s > 0 || error("Invalid frozen objective scale")
+        currency = deepcopy(r)
+        currency["objective_kind"] = "operating_cost"
+        for key in ("solver_objective", "solver_bound", "raw_solver_bound")
+            haskey(currency, key) && (currency[key] *= s)
+        end
+        haskey(currency, "bound_objective_kind") && (currency["bound_objective_kind"] = "operating_cost")
+        report = getfield(mod, :validate_r3_solution)(c, currency)
+        terminal = getfield(mod, :r9_flow_terminal_rows)(c, currency)
+        rows = vcat(report.rows, terminal)
+        CSV.write(joinpath(out, id*"-residuals.csv"), rows; newline = '\n')
+        reconstructed = false
+        if report.model_pass
+            rr = getfield(mod, :reconstruct_r3_pressure)(c, currency)
+            rv = getfield(mod, :validate_r3_solution)(c, rr)
+            CSV.write(joinpath(out, id*"-reconstructed-residuals.csv"), rv.rows; newline = '\n')
+            reconstructed = rv.physical_pass
+        end
+        failures = filter(x -> x.scope == "model" && !x.pass, rows)
+        cost = get(r, "operating_cost", NaN)
+        k = isfile(joinpath(folder, "kkt.toml")) ? TOML.parsefile(joinpath(folder, "kkt.toml")) : Dict("trusted"=>false)
+        push!(summary, (; id, status=r["status"], cost_CNY=cost, model_pass=report.model_pass,
+            terminal_pass=!isempty(terminal)&&all(x.pass for x in terminal),
+            reconstructed_physical_pass=reconstructed, model_failures=length(failures),
+            max_model_ratio=maximum(x.residual/x.tolerance for x in rows if x.scope=="model"; init=0.0),
+            kkt_collected=isfile(joinpath(folder,"kkt.toml")), kkt_trusted=k["trusted"],
+            stage_sha256=hashfile(joinpath(folder,"stage.toml"))))
+        println(last(summary))
+    end
+    CSV.write(joinpath(out, "summary.csv"), summary; newline='\n')
+    toml(joinpath(out,"manifest.toml"), Dict("schema"=>"r9-fixed-scaling-review-v1",
+        "parent_manifest_sha256"=>hashfile(joinpath(probe,"manifest.toml")), "solver_run"=>false,
+        "original_failure_preserved"=>true,
+        "files"=>Dict(p=>hashfile(joinpath(out,p)) for p in readdir(out))))
+end

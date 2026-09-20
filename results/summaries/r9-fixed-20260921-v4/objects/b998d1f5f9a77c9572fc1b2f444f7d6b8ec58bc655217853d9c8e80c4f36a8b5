@@ -1,0 +1,23 @@
+WARNING: Detected access to binding `##R9FixedFrozen#277.load_r9_pv_case` in a world prior to its definition world.
+  Julia 1.12 has introduced more strict world age semantics for global bindings.
+  !!! This code may malfunction under Revise.
+  !!! This code will error in future versions of Julia.
+Hint: Add an appropriate `invokelatest` around the access to this binding.
+To make this warning an error, and hence obtain a stack trace, use `julia --depwarn=error`.
+ERROR: LoadError: UndefVarError: `Clarabel` not defined in `Main.R9FixedStudy`
+The binding may be too new: running in world age 38798, while current world is 40375.
+Hint: Clarabel is loaded but not imported in the active module Main.
+Stacktrace:
+ [1] run(out::String, solver::String)
+   @ Main.R9FixedStudy <workspace>\scripts\r9_fixed_study.jl:94
+ [2] main(args::Vector{String})
+   @ Main.R9FixedStudy <workspace>\scripts\r9_fixed_study.jl:212
+ [3] top-level scope
+   @ <workspace>\scripts\r9_fixed_study.jl:218
+ [4] include(mod::Module, _path::String)
+   @ Base .\Base.jl:306
+ [5] exec_options(opts::Base.JLOptions)
+   @ Base .\client.jl:317
+ [6] _start()
+   @ Base .\client.jl:550
+in expression starting at <workspace>\scripts\r9_fixed_study.jl:217

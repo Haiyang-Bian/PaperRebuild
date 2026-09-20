@@ -100,6 +100,6 @@ function r9_markdown(root = normpath(joinpath(@__DIR__, "..")))
             "。\n",
         )
     end
-    println(io, "迁移状态：`specified_not_executed`；详见[输入说明与后续顺序](ch07-inputs.md)。")
+    println(io, "迁移状态：`", migration["status"], "`；详见[输入说明与后续顺序](ch07-inputs.md)。")
     String(take!(io))
 end

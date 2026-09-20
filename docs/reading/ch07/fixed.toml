@@ -1,0 +1,50 @@
+schema = "r9-fixed-adoption-v1"
+original_input_reproduction = false
+uses_projected_gradient = false
+page = "docs/src/ch07-fixed.md"
+test_file = "test/r9_fixed.jl"
+test = "R9 fixed-flow forward witness and independent terminal contract"
+
+[[equations]]
+id = "R9-F1"
+meaning = "显式给定流量后的前向热关系及终端源温系统"
+status = "derived_positive_fixed_flow"
+api = "build_r9_reduced_model"
+[[equations]]
+id = "R9-F2"
+meaning = "输入盒中心正则常数点与完整核空间；16.44 K反例限制其用途"
+status = "diagnostic_not_control_preserving"
+api = "r9_terminal_coordinates"
+[[equations]]
+id = "R9-F3"
+meaning = "保留全部源温变量的显式终端舍入区间，独立于原A1"
+status = "declared_numerical_interpretation_not_exact_equivalence"
+api = "validate_r9_fixed_solution"
+
+[[symbols]]
+id = "r9.fixed_flow"
+latex = '\bar m'
+meaning = "固定子问题的管道×时段流量参数；不作为PG初值"
+unit = "kg/s"
+code = "flow_schedule"
+[[symbols]]
+id = "r9.terminal_band"
+latex = '\epsilon_T=2^{-34}'
+meaning = "每条终端仿射等式的预先固定半宽；不改变原A1"
+unit = "K"
+code = "terminal_certificate.radius_K"
+[[symbols]]
+id = "r9.terminal_regularization"
+latex = '\lambda=(10^{-10}/(4\max(1,R)))^2'
+meaning = "仅用于诊断常数点的输入盒正则权重"
+unit = "1"
+code = "terminal_certificate.regularization_weight"
+
+[[issues]]
+id = "R9-FQ01"
+status = "counterexample_preserved"
+meaning = "精确核空间保留所有非零秩，不代表保留容差内原始控制量，不能自动接入PG。"
+[[issues]]
+id = "R9-FQ02"
+status = "requires_kkt_and_parameter_derivatives"
+meaning = "缩减SOCP的KKT、流量参数导数与原物理可行性须分别验证。"

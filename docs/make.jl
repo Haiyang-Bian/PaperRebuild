@@ -254,6 +254,8 @@ makedocs(;
             "前向表示与终端数值解释" => "ch07-numerics.md",
             "变流量输运与周期记忆" => "ch07-flow.md",
             "变流量直接参考与边界归因" => "ch07-flow-results.md",
+            "固定流量子问题与终端边界" => "ch07-fixed.md",
+            "固定流量台账索引" => "ch07-fixed-generated.md",
         ],
         "第 2 章模型与首批实现" => [
             "模型详解" => "ch02-models.md",

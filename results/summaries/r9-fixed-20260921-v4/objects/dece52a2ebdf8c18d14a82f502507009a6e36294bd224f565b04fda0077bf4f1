@@ -1,0 +1,37 @@
+Precompiling packages...
+  10023.5 ms  ✓ PaperRebuild
+  1 dependency successfully precompiled in 11 seconds. 81 already precompiled.
+Test Summary:                                        | Pass  Total  Time
+R9-F1:F2 exact rank and bounded terminal coordinates |   36     36  2.8s
+R9 fixed-flow forward witness and independent terminal contract: Error During Test at <workspace>\test\r9_fixed.jl:34
+  Got exception outside of a @test
+  ArgumentError: 固定流量终端不相容：完整源温域误差界8.293231899944827e-9 K超过1e-10 K；不能重新锚定
+  Stacktrace:
+    [1] r9_terminal_coordinates(A::Matrix{Float64}, rhs::Vector{Float64}, lower::Vector{Float64}, upper::Vector{Float64})
+      @ PaperRebuild <workspace>\src\formulations\r9_terminal.jl:112
+    [2] r9_parameterize_fixed_terminal(c::R2Case, b::@NamedTuple{status::String, model::Model, variables::Dict{String, Any}, constraints::Dict{String, Vector{Any}}, class::String, operation::R3OperationSpec, case::R2Case, spec::R2Spec, fixed_flows::Bool, flow_schedule::Matrix{Float64}, cost_expression::AffExpr, elastic_rows::Vector{NamedTuple}, objective_kind::String, variant::String, flow_domain::@NamedTuple{pass::Bool, rows::Vector{NamedTuple}}, terminal_interpretation::String, constant_checks::Vector{NamedTuple}, terminal_certificate::Dict{String, Any}, temperature_centre_K::Float64}, mode::Symbol)
+      @ PaperRebuild <workspace>\src\formulations\r9_terminal.jl:143
+    [3] build_r9_reduced_model(c::R2Case; mode::Symbol, physical::Bool, optimizer::Nothing, terminal::Symbol, flow_schedule::Matrix{Float64})
+      @ PaperRebuild <workspace>\src\formulations\r9_reduced.jl:241
+    [4] top-level scope
+      @ <workspace>\test\r9_fixed.jl:35
+    [5] macro expansion
+      @ <user>\.julia\juliaup\julia-1.12.6+0.x64.w64.mingw32\share\julia\stdlib\v1.12\Test\src\Test.jl:1777 [inlined]
+    [6] macro expansion
+      @ <workspace>\test\r9_fixed.jl:44 [inlined]
+    [7] include(mapexpr::Function, mod::Module, _path::String)
+      @ Base .\Base.jl:307
+    [8] top-level scope
+      @ <workspace>\scripts\test_r9_fixed.jl:2
+    [9] include(mod::Module, _path::String)
+      @ Base .\Base.jl:306
+   [10] exec_options(opts::Base.JLOptions)
+      @ Base .\client.jl:317
+   [11] _start()
+      @ Base .\client.jl:550
+Test Summary:                                                   | Error  Total   Time
+R9 fixed-flow forward witness and independent terminal contract |     1      1  20.8s
+RNG of the outermost testset: Random.Xoshiro(0x169a432512ef2b2c, 0xbf83a0eb53e81c25, 0x1de55dc648acdbbb, 0x4ffeb55405b20a07, 0x1a96f012a1e61073)
+ERROR: LoadError: Some tests did not pass: 0 passed, 0 failed, 1 errored, 0 broken.
+in expression starting at <workspace>\test\r9_fixed.jl:34
+in expression starting at <workspace>\scripts\test_r9_fixed.jl:2

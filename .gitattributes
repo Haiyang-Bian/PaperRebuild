@@ -11,3 +11,5 @@ results/summaries/r7-linked-public-20260920-v2/parts/**/*.part -text whitespace=
 results/summaries/r9-flow-diagnostics-20260921-v2/runs/*/solver-local.log -text whitespace=cr-at-eol,-blank-at-eof
 # Content-addressed evidence preserves the exact original bytes, including native logs.
 results/summaries/r9-flow-reference-20260921-v2/objects/* -text whitespace=cr-at-eol,-blank-at-eof
+# Immutable object chunks may split UTF-8 and lines; preserve bytes and do not merge them as text.
+results/summaries/r9-fixed-20260921-v4/objects/* binary

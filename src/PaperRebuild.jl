@@ -350,8 +350,13 @@ export validate_r9_reduced_solution
 include("networks/r9_short_pipe.jl")
 include("formulations/r9_flow.jl")
 include("verification/r9_flow.jl")
+include("formulations/r9_terminal.jl")
+include("verification/r9_fixed.jl")
+include("reporting/r9_fixed.jl")
 export r9_transport_coefficients, audit_r9_flow_domain, build_r9_flow_model
 export r9_flow_terminal_rows, r9_heat_memory_balance
+export r9_terminal_coordinates
+export solve_r9_fixed_case, validate_r9_fixed_solution
 
 """
     hello(who::String)

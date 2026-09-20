@@ -1,5 +1,8 @@
 {
   "inputs": [
+    {"id":"r9FixedStudy","type":"promptString","description":"R9固定流量冻结目录；freeze须新目录","default":"results/runs/r9-fixed-new"},
+    {"id":"r9FixedReport","type":"promptString","description":"R9固定流量原值检查新报告目录","default":"results/runs/r9-fixed-report-new"},
+    {"id":"r9FixedFigures","type":"promptString","description":"R9固定流量F37只读重绘的新目录","default":"results/runs/r9-fixed-redraw"},
     {"id":"r9FlowReferenceOutput","type":"promptString","description":"R9四模式直接参考新目录，不覆盖历史运行","default":"results/runs/r9-flow-reference-new"},
     {"id":"r9FlowReferenceFigures","type":"promptString","description":"R9 F36重绘的新目录","default":"results/runs/r9-flow-reference-redraw"},
     {"id":"r9FlowProbeOutput","type":"promptString","description":"R9开发探针新目录，不覆盖原结果","default":"results/runs/r9-flow-probe-new"},
@@ -167,6 +170,14 @@
     }
   ],
   "tasks": [
+    {"label":"PaperRebuild: R9 fixed-flow frozen evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_fixed_evidence.jl","check","results/summaries/r9-fixed-20260921-v4"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 fixed-flow redraw F37","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r9_fixed.jl","results/summaries/r9-fixed-20260921-v4","${input:r9FixedFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 fixed-flow tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_fixed.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 fixed-flow mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_fixed.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 fixed-flow freeze","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_fixed_study.jl","freeze","results/runs/r9-flow-reference-20260921-v1","${input:r9FixedStudy}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 fixed-flow Clarabel","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_fixed_study.jl","run","${input:r9FixedStudy}","Clarabel"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 fixed-flow Gurobi","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/r9_fixed_study.jl","run","${input:r9FixedStudy}","Gurobi"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 fixed-flow report","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_fixed_study.jl","check","${input:r9FixedStudy}","${input:r9FixedReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 four-mode direct reference","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_flow_reference.jl","${input:r9FlowReferenceOutput}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 flow reference readback","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_flow_evidence.jl","check","results/summaries/r9-flow-reference-20260921-v2"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 flow reference redraw F36","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r9_flow_reference.jl","results/summaries/r9-flow-reference-20260921-v2","${input:r9FlowReferenceFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
