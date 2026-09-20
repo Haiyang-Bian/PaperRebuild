@@ -190,17 +190,20 @@ end
 function joint_frozen_read(record)
     files=TOML.parsefile(joinpath(record, "files.toml"))["files"]
     id=PaperRebuild.r7_digest(Dict(p=>h for (p, h) in files if startswith(p, "code/")))
-    mod=get!(JOINT_MODULES, id) do
-        m=Module(gensym(:R7JointFrozen))
-        Core.eval(m, :(using JuMP, TOML, SHA, Dates, UUIDs))
-        Core.eval(m, :(const MOI=JuMP.MOI))
-        for p in PaperRebuild.r7_flow_planning_includes()
-            joint_hash(joinpath(record, "code", split(p, '/')...))==files["code/"*p] ||
-                error("冻结源码篡改")
-            Base.include(m, joinpath(record, "code", split(p, '/')...))
+    if !haskey(JOINT_MODULES, id)
+        # include清单由该记录自己的版本决定，新增有损源文件不能使旧无损记录失读。
+        # 执行冻结入口前检查全部登记字节；冻结read函数再检查精确文件集合与科学身份。
+        for (p, h) in files
+            !isabspath(p)&&!occursin(':', p)&&!occursin('\\', p) &&
+            all(x->!(x in ("", ".", "..")), split(p, '/'))||error("冻结路径非法")
+            joint_hash(joinpath(record, split(p, '/')...))==h||error("冻结内容篡改")
         end
-        m
+        wrapper=Module(gensym(:R7JointFrozen))
+        Base.include(wrapper, abspath(joinpath(record, "code/replay.jl")))
+        JOINT_MODULES[id]=Base.invokelatest(getfield, wrapper, :FrozenR7FlowPlanning)
+        return Base.invokelatest(getfield, wrapper, :x)
     end
+    mod=JOINT_MODULES[id]
     Base.invokelatest(() -> getfield(mod, :read_r7_flow_planning)(record))
 end
 function joint_tables(dir)

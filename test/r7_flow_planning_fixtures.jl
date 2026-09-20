@@ -6,10 +6,17 @@ function joint_test_case(;
     limit = 0.4,
     healthy_only = false,
     substeps = 1,
+    UA = 0.0,
+    thermal = :lossless,
+    battery_rule = "paper_sum_bound",
 )
     root=normpath(joinpath(@__DIR__, ".."))
     d=TOML.parsefile(joinpath(root, "configs/r7/normal-reserve-hand.toml"))
     healthy_only&&(d["electric"]["fault_budget"]=0)
+    d["battery_rule"]=battery_rule
+    for p in d["heat"]["pipes"]
+        p["UA_S_W_K"], p["UA_R_W_K"]=UA, UA
+    end
     rules=TOML.parsefile(joinpath(root, "configs/r7/planning-reserve-hand.toml"))
     foreach(e->e["loss_limit_MWh"]=limit, rules["events"])
     c=R7PlanningCase(R7NormalCase(d), rules)
@@ -19,7 +26,7 @@ function joint_test_case(;
         nb[Symbol(kind*"_min")]=free_normal ? map(y->y>0 ? 0.05 : 0.0, x) : x
         nb[Symbol(kind*"_max")]=free_normal ? map(y->y>0 ? 10.0 : 0.0, x) : x
     end
-    ns=r7_normal_flow_spec(c.normal; nb...)
+    ns=r7_normal_flow_spec(c.normal; nb..., thermal)
     rb=Dict{String,Any}()
     for pair in PaperRebuild.r7_planning_pairs(c)
         T=rules["events"][pair.event]["periods"]

@@ -136,6 +136,7 @@
 - `configs/r7/inner-tie-two-fault.toml`
 - `configs/r7/inner-tie-two-hour.toml`
 - `configs/r7/linked-study.toml`
+- `configs/r7/lossy-flow-study.toml`
 - `configs/r7/normal-flow-study.toml`
 - `configs/r7/normal-hand.toml`
 - `configs/r7/normal-reserve-hand.toml`
@@ -200,6 +201,7 @@
 - `docs/agent/tasks/2026-09-20-r7-commitment.md`
 - `docs/agent/tasks/2026-09-20-r7-flow-planning.md`
 - `docs/agent/tasks/2026-09-20-r7-linked-planning.md`
+- `docs/agent/tasks/2026-09-20-r7-lossy-flow.md`
 - `docs/agent/tasks/2026-09-20-r7-normal-flow.md`
 - `docs/agent/tasks/2026-09-20-r7-normal.md`
 - `docs/agent/tasks/2026-09-20-r7-pipe-state.md`
@@ -265,6 +267,7 @@
 - `docs/reading/ch06/flow-planning.toml`
 - `docs/reading/ch06/inner-adversary.toml`
 - `docs/reading/ch06/linked-planning.toml`
+- `docs/reading/ch06/lossy-flow.toml`
 - `docs/reading/ch06/normal-dispatch.toml`
 - `docs/reading/ch06/normal-flow.toml`
 - `docs/reading/ch06/normal-prerequisites.toml`
@@ -572,6 +575,7 @@
 - `docs/src/assets/r7-flow-planning-20260920-v2/F29-shared-flow.png`
 - `docs/src/assets/r7-inner-20260920-v3/F22-inner-faults.png`
 - `docs/src/assets/r7-linked-20260920-v2/F27-linked-planning.png`
+- `docs/src/assets/r7-lossy-flow-20260920-v1/F30-lossy-flow.png`
 - `docs/src/assets/r7-normal-20260920-v2/F20-normal-event.png`
 - `docs/src/assets/r7-normal-flow-20260920-v1/F28-normal-flow.png`
 - `docs/src/assets/r7-planning-20260920-v2/F21-finite-planning.png`
@@ -676,6 +680,8 @@
 - `docs/src/ch06-flow-planning.md`
 - `docs/src/ch06-linked-equations.md`
 - `docs/src/ch06-linked-planning.md`
+- `docs/src/ch06-lossy-flow-equations.md`
+- `docs/src/ch06-lossy-flow.md`
 - `docs/src/ch06-normal-equations.md`
 - `docs/src/ch06-normal-flow-equations.md`
 - `docs/src/ch06-normal-flow.md`
@@ -1136,6 +1142,29 @@
 - `results/summaries/r7-linked-public-20260920-v2/study-source.jl`
 - `results/summaries/r7-linked-public-20260920-v2/summary.csv`
 - `results/summaries/r7-linked-public-20260920-v2/transport-study-source.jl`
+- `results/summaries/r7-lossy-flow-20260920-v1/environment.toml`
+- `results/summaries/r7-lossy-flow-20260920-v1/events.csv`
+- `results/summaries/r7-lossy-flow-20260920-v1/freeze.toml`
+- `results/summaries/r7-lossy-flow-20260920-v1/inputs.toml`
+- `results/summaries/r7-lossy-flow-20260920-v1/report-hashes.toml`
+- `results/summaries/r7-lossy-flow-20260920-v1/residuals.csv`
+- `results/summaries/r7-lossy-flow-20260920-v1/rule.toml`
+- `results/summaries/r7-lossy-flow-20260920-v1/study-source.jl`
+- `results/summaries/r7-lossy-flow-20260920-v1/summary.csv`
+- `results/summaries/r7-lossy-flow-20260920-v1/trajectories.csv`
+- `results/summaries/r7-lossy-flow-audit-20260920-v1/audit-source.jl`
+- `results/summaries/r7-lossy-flow-audit-20260920-v1/audit.toml`
+- `results/summaries/r7-lossy-flow-audit-20260920-v1/energy-cost.csv`
+- `results/summaries/r7-lossy-flow-figures-20260920-v2/F30-lossy-flow.png`
+- `results/summaries/r7-lossy-flow-figures-20260920-v2/F30-lossy-flow.svg`
+- `results/summaries/r7-lossy-flow-figures-20260920-v2/energy-cost.csv`
+- `results/summaries/r7-lossy-flow-figures-20260920-v2/events.csv`
+- `results/summaries/r7-lossy-flow-figures-20260920-v2/figure.toml`
+- `results/summaries/r7-lossy-flow-figures-20260920-v2/plot-source.jl`
+- `results/summaries/r7-lossy-flow-figures-20260920-v2/residuals.csv`
+- `results/summaries/r7-lossy-flow-figures-20260920-v2/rule.toml`
+- `results/summaries/r7-lossy-flow-figures-20260920-v2/summary.csv`
+- `results/summaries/r7-lossy-flow-figures-20260920-v2/trajectories.csv`
 - `results/summaries/r7-nested-legacy-20260920-v1/files.toml`
 - `results/summaries/r7-nested-legacy-20260920-v1/metadata.toml`
 - `results/summaries/r7-nested-legacy-20260920-v1/normal.toml`
@@ -1273,6 +1302,7 @@
 - `scripts/audit_r5_market_payment.jl`
 - `scripts/audit_r5_market_replay.jl`
 - `scripts/audit_r5_strategic_selection.jl`
+- `scripts/audit_r7_lossy_flow.jl`
 - `scripts/audit_r7_lp_identity.jl`
 - `scripts/audit_r7_normal_flow.jl`
 - `scripts/audit_r7_transport.jl`
@@ -1353,6 +1383,10 @@
 - `scripts/check_r7_inner_figures.jl`
 - `scripts/check_r7_linked_figures.jl`
 - `scripts/check_r7_linked_planning.jl`
+- `scripts/check_r7_lossy_flow.jl`
+- `scripts/check_r7_lossy_flow_audit.jl`
+- `scripts/check_r7_lossy_flow_figures.jl`
+- `scripts/check_r7_lossy_flow_results.jl`
 - `scripts/check_r7_normal.jl`
 - `scripts/check_r7_normal_figures.jl`
 - `scripts/check_r7_normal_flow.jl`
@@ -1470,6 +1504,7 @@
 - `scripts/plot_r7_flow_planning.jl`
 - `scripts/plot_r7_inner.jl`
 - `scripts/plot_r7_linked.jl`
+- `scripts/plot_r7_lossy_flow.jl`
 - `scripts/plot_r7_normal.jl`
 - `scripts/plot_r7_normal_flow.jl`
 - `scripts/plot_r7_planning.jl`
@@ -1551,6 +1586,8 @@
 - `scripts/r7_inner_study.jl`
 - `scripts/r7_linked_docs.jl`
 - `scripts/r7_linked_study.jl`
+- `scripts/r7_lossy_flow_docs.jl`
+- `scripts/r7_lossy_flow_study.jl`
 - `scripts/r7_normal.jl`
 - `scripts/r7_normal_docs.jl`
 - `scripts/r7_normal_evidence.jl`
@@ -1686,6 +1723,10 @@
 - `scripts/test_r7_flow_planning.jl`
 - `scripts/test_r7_flow_planning_gurobi.jl`
 - `scripts/test_r7_linked_planning.jl`
+- `scripts/test_r7_lossy_flow.jl`
+- `scripts/test_r7_lossy_flow_gurobi.jl`
+- `scripts/test_r7_lossy_mass.jl`
+- `scripts/test_r7_lossy_mass_gurobi.jl`
 - `scripts/test_r7_normal.jl`
 - `scripts/test_r7_normal_cli.jl`
 - `scripts/test_r7_normal_evidence.jl`
@@ -1806,6 +1847,7 @@
 - `src/formulations/r7_transport.jl`
 - `src/networks/fixed_flow_heat.jl`
 - `src/networks/r7_linked_state.jl`
+- `src/networks/r7_lossy_mass.jl`
 - `src/networks/r7_mass_overlap.jl`
 - `src/networks/r7_normal_transport.jl`
 - `src/networks/r7_pipe_state.jl`
@@ -1928,6 +1970,9 @@
 - `test/r7_flow_planning.jl`
 - `test/r7_flow_planning_fixtures.jl`
 - `test/r7_linked_planning.jl`
+- `test/r7_lossy_flow.jl`
+- `test/r7_lossy_mass.jl`
+- `test/r7_lossy_mass_fixtures.jl`
 - `test/r7_normal.jl`
 - `test/r7_normal_flow.jl`
 - `test/r7_pipe_state.jl`
@@ -2013,6 +2058,8 @@
 - `results/summaries/r7-linked-public-20260920-v2/code/`
 - `results/summaries/r7-linked-public-20260920-v2/parts/`
 - `results/summaries/r7-linked-public-20260920-v2/records/`
+- `results/summaries/r7-lossy-flow-20260920-v1/code/`
+- `results/summaries/r7-lossy-flow-20260920-v1/records/`
 - `results/summaries/r7-nested-legacy-20260920-v1/code/`
 - `results/summaries/r7-nested-reserve-20260920-v1/code/`
 - `results/summaries/r7-normal-20260920-v2/event/`

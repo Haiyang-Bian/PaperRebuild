@@ -1,5 +1,9 @@
 {
   "inputs": [
+    {"id":"r7LossyBatch","type":"promptString","description":"有损共同流量：冻结用新目录，运行用已冻结目录","default":"results/runs/r7-lossy-flow-new"},
+    {"id":"r7LossyReport","type":"promptString","description":"有损共同流量报告：生成用新目录，核查用已有目录","default":"results/summaries/r7-lossy-flow-20260920-v1"},
+    {"id":"r7LossyAudit","type":"promptString","description":"有损费用归因：生成用新目录，核查用已有目录","default":"results/summaries/r7-lossy-flow-audit-20260920-v1"},
+    {"id":"r7LossyFigures","type":"promptString","description":"有损科学图新目录，不覆盖原图","default":"results/runs/r7-lossy-flow-redraw"},
     {"id":"r7JointBatch","type":"promptString","description":"共同流量：冻结用新目录，运行用已冻结目录","default":"results/runs/r7-flow-planning-new"},
     {"id":"r7JointReport","type":"promptString","description":"共同流量报告：生成用新目录，核查用已有目录","default":"results/summaries/r7-flow-planning-20260920-v2"},
     {"id":"r7JointFigures","type":"promptString","description":"共同流量科学图新目录，不覆盖原图","default":"results/runs/r7-flow-planning-redraw"},
@@ -143,6 +147,18 @@
     }
   ],
   "tasks": [
+    {"label":"PaperRebuild: R7 lossy flow mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r7_lossy_flow.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 lossy kernel tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r7_lossy_mass.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 lossy integration tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r7_lossy_flow.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 lossy flow freeze","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_lossy_flow_study.jl","freeze","${input:r7LossyBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 lossy flow open reference","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_lossy_flow_study.jl","run","${input:r7LossyBatch}","HiGHS"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 lossy flow Gurobi","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/r7_lossy_flow_study.jl","run","${input:r7LossyBatch}","Gurobi"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 lossy flow report","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_lossy_flow_study.jl","report","${input:r7LossyBatch}","${input:r7LossyReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 lossy flow verify","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r7_lossy_flow_results.jl","${input:r7LossyReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 lossy flow cost audit","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/audit_r7_lossy_flow.jl","${input:r7LossyReport}","${input:r7LossyAudit}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 lossy flow audit verify","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r7_lossy_flow_audit.jl","${input:r7LossyReport}","${input:r7LossyAudit}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 lossy flow redraw","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r7_lossy_flow.jl","${input:r7LossyReport}","${input:r7LossyAudit}","${input:r7LossyFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 lossy figure verify","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r7_lossy_flow_figures.jl","${input:r7LossyReport}","${input:r7LossyAudit}","${input:r7LossyFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R7 shared flow mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r7_flow_planning.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R7 shared flow tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r7_flow_planning.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R7 shared flow freeze","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_flow_planning_study.jl","freeze","${input:r7JointBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},

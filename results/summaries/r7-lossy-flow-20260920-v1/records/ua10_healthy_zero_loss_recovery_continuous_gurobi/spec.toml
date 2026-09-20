@@ -1,0 +1,99 @@
+case_sha256 = "418eff37e49bd9e466501ae38200c3939b8a856306deec61d232048474d0a894"
+energy_balance = true
+idle_temperature_rule = "free_zero_flow"
+normal_domain = "continuous_positive_lossy_gauss_fixed_electric_topology"
+recovery_domain = "continuous_nonnegative_lossy_gauss_shared_scenarios"
+schema = "r7-flow-planning-spec-v1"
+state_rule = "same_normal_mass_labels_and_temperatures"
+substeps = 1
+version = "r7_shared_lossy_flow_v1"
+
+[[bounds]]
+event = 1
+fault = [0]
+
+    [bounds.bounds.load_max]
+    data = [0.0, 10.0]
+    shape = [2, 1]
+
+    [bounds.bounds.load_min]
+    data = [0.0, 0.0]
+    shape = [2, 1]
+
+    [bounds.bounds.pipe_max]
+    data = [10.0]
+    shape = [1, 1]
+
+    [bounds.bounds.pipe_min]
+    data = [0.0]
+    shape = [1, 1]
+
+    [bounds.bounds.source_max]
+    data = [10.0, 0.0]
+    shape = [2, 1]
+
+    [bounds.bounds.source_min]
+    data = [0.0, 0.0]
+    shape = [2, 1]
+[[bounds]]
+event = 2
+fault = [0]
+
+    [bounds.bounds.load_max]
+    data = [0.0, 10.0]
+    shape = [2, 1]
+
+    [bounds.bounds.load_min]
+    data = [0.0, 0.0]
+    shape = [2, 1]
+
+    [bounds.bounds.pipe_max]
+    data = [10.0]
+    shape = [1, 1]
+
+    [bounds.bounds.pipe_min]
+    data = [0.0]
+    shape = [1, 1]
+
+    [bounds.bounds.source_max]
+    data = [10.0, 0.0]
+    shape = [2, 1]
+
+    [bounds.bounds.source_min]
+    data = [0.0, 0.0]
+    shape = [2, 1]
+
+[normal_flow]
+bound_scope = "adopted_gauss_model_not_exact_PDE"
+case_sha256 = "8ed6189a907a1596baa9fe9bb96e46d0b4159360da4f7ecfd0135abb426b7585"
+flow_unit = "kg/s"
+max_truncation_error = 1.0e-10
+quadrature_order = 10
+scenario_rule = "shared_flows"
+schema = "r7-normal-flow-spec-v1"
+thermal_rule = "mass_overlap_decay_gauss"
+version = "r7_continuous_positive_lossy_gauss_v1"
+
+    [normal_flow.load_max]
+    data = [0.0, 5.0, 0.0, 5.0, 0.0, 5.0, 0.0, 5.0]
+    shape = [2, 4]
+
+    [normal_flow.load_min]
+    data = [0.0, 5.0, 0.0, 5.0, 0.0, 5.0, 0.0, 5.0]
+    shape = [2, 4]
+
+    [normal_flow.pipe_max]
+    data = [5.0, 5.0, 5.0, 5.0]
+    shape = [1, 4]
+
+    [normal_flow.pipe_min]
+    data = [5.0, 5.0, 5.0, 5.0]
+    shape = [1, 4]
+
+    [normal_flow.source_max]
+    data = [5.0, 0.0, 5.0, 0.0, 5.0, 0.0, 5.0, 0.0]
+    shape = [2, 4]
+
+    [normal_flow.source_min]
+    data = [5.0, 0.0, 5.0, 0.0, 5.0, 0.0, 5.0, 0.0]
+    shape = [2, 4]

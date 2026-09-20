@@ -1,0 +1,20 @@
+figure = "F30"
+origin = "synthetic"
+plot_source_sha256 = "a9912c5333fbf95636532f7c9742e0b32c9e27b10bbe1cbe48de0433a0594556"
+run_ids = ["r7-flow-planning-c327f4a4-e3cc-4100-ac5a-c2387a6a7f33", "r7-flow-planning-74e6d73e-9dc9-406d-988e-6c0a516b3571", "r7-flow-planning-52a29a9e-739d-4396-a265-7c6962184f73", "r7-flow-planning-382ddd3a-4a9b-44fd-af74-eaaf5514e0f1", "r7-flow-planning-069ce620-6e39-44c7-869f-9decd9fb2613", "r7-flow-planning-6e803d90-8c31-4cde-8a4d-ad3194fe286d", "r7-flow-planning-06d5e4d9-3198-4c07-bfa6-1d0cc211d070", "r7-flow-planning-6487d229-fb73-4427-b3c1-2dfffb232bbc", "r7-flow-planning-f8e86961-a14b-4113-b31c-9106c13d603b", "r7-flow-planning-c893365e-0d97-4065-b5aa-c05fce37cd30", "r7-flow-planning-c3a65e76-c274-454a-b079-11f0385a8281", "r7-flow-planning-b66f8df3-f491-4c9d-9c2b-614e5a9c3d76", "r7-flow-planning-d7792b9a-dfe6-46be-a79e-074fcb9372d8", "r7-flow-planning-e1027475-654e-40f3-ada7-b65e7652d3e9", "r7-flow-planning-08ab1fad-13b9-4b09-8c2b-9c6a994e78d7", "r7-flow-planning-c656828b-a748-4c9f-81b4-020fb12e34dc", "r7-flow-planning-c452c23b-85c8-4c02-945f-70634d0bfa3f", "r7-flow-planning-312ad926-1a9c-43d9-bdb6-28ea24589b2e", "r7-flow-planning-d0adbbcf-9589-4976-b3e9-617ec1d8b442", "r7-flow-planning-92a0c734-b060-4806-bf2d-f19b78b0fd5e", "r7-flow-planning-0d8542ca-57c7-4f86-8477-a4ff12375bdc", "r7-flow-planning-ee79dd49-5c64-494d-8e3f-5aeec844f0a9", "r7-flow-planning-46c1c71c-3ed0-44ce-9943-e80702c8f68d", "r7-flow-planning-d22ab2dd-638e-4b4e-b9e8-a0ae80f20bd9"]
+schema = "r7-lossy-flow-figure-v1"
+units = ["USD", "MWh", "kg/s", "W/K", "percent", "residual / tolerance"]
+
+[audit_hashes]
+"energy-cost.csv" = "e79c9ed536cbc317700f977d654badfb4bb635e4748267151a9a11827d2493b1"
+
+[outputs]
+"F30-lossy-flow.png" = "953b7614ae0cb8b2f752fff700c26507a4f65db239aa53aa86cae70b30956352"
+"F30-lossy-flow.svg" = "3eaea032bf4a5c6ed985e2ae41d1b6faaaec68405a62c9ee20cff37f32a07e8e"
+
+[report_hashes]
+"events.csv" = "f22e1177da6ffa21a9fe71ce9453ce48fef472d6b16db89d2d36b9d60dfcd5ab"
+"residuals.csv" = "6c600fed14072328d91766b31f8e1b8112ea51400c7781c7771cf9a4d7536b0d"
+"rule.toml" = "6304825b9175ba3c0926dcb48d4c0b3814e625e43982d72f8f1726b63d6084b9"
+"summary.csv" = "3de6a8f178ea3cc6cd7a2821af4fa684e19f997bbc207cd7da3a7684ee9d50d7"
+"trajectories.csv" = "40857c4fa6a0ed782f01b27bd9d8bf9c9c43dd36b7ac2262c84197d237a276c8"

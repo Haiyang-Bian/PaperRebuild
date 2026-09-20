@@ -63,6 +63,8 @@ include(joinpath(@__DIR__, "..", "scripts", "r7_normal_flow_docs.jl"))
 write(joinpath(@__DIR__, "src", "ch06-normal-flow-equations.md"), r7_normal_flow_markdown())
 include(joinpath(@__DIR__, "..", "scripts", "r7_flow_planning_docs.jl"))
 write(joinpath(@__DIR__, "src", "ch06-flow-planning-equations.md"), r7_flow_planning_markdown())
+include(joinpath(@__DIR__, "..", "scripts", "r7_lossy_flow_docs.jl"))
+write(joinpath(@__DIR__, "src", "ch06-lossy-flow-equations.md"), r7_lossy_flow_markdown())
 
 makedocs(;
     modules = [PaperRebuild],
@@ -224,6 +226,8 @@ makedocs(;
             "连续流量推导与符号" => "ch06-normal-flow-equations.md",
             "灾前灾后共同流量" => "ch06-flow-planning.md",
             "共同流量推导与符号" => "ch06-flow-planning-equations.md",
+            "有损连续流量" => "ch06-lossy-flow.md",
+            "有损输运推导与符号" => "ch06-lossy-flow-equations.md",
         ],
         "第 2 章模型与首批实现" => [
             "模型详解" => "ch02-models.md",
