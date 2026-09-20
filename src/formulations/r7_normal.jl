@@ -1,11 +1,18 @@
 """
-    build_r7_normal(case; optimizer=nothing, fixed_commitments=nothing)
+    build_r7_normal(case; optimizer=nothing, fixed_commitments=nothing,
+                    fixed_battery_modes=nothing)
 
 构建给定管流、固定电拓扑的正常经济调度，不求解、不写文件。采用(6-1)至(6-46)的
 显式解释：共享CHP启停、逐场景设备、电池周期能量、线性电网、正端口混合和双管输运。
 给定流量使水力与热耦合线性；实际MOI类型决定LP/MILP，不据此宣称原变流量模型为MILP。
+互斥电池模式按设备ID提供时段×场景矩阵；不传时保留整数决策，不固定灾时电池的末端能量。
 """
-function build_r7_normal(c::R7NormalCase; optimizer = nothing, fixed_commitments = nothing)
+function build_r7_normal(
+    c::R7NormalCase;
+    optimizer = nothing,
+    fixed_commitments = nothing,
+    fixed_battery_modes = nothing,
+)
     r7_normal_assert(c)
     d=c.data
     e, h=d["electric"], d["heat"]
@@ -22,6 +29,7 @@ function build_r7_normal(c::R7NormalCase; optimizer = nothing, fixed_commitments
         )
     end
     rows=Dict{String,Vector{Any}}()
+    r7_add_battery_domain!(m, d, variables, rows; fixed_modes = fixed_battery_modes)
     add(id, x) = (push!(get!(rows, id, Any[]), x); x)
     function bounds(id, x, lo, hi)
         add(id, @constraint(m, x>=lo))

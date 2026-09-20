@@ -50,6 +50,7 @@ end
 """
 function build_r7_adversary(c::R7RecoveryCase, topologies; optimizer = nothing)
     r7_recovery_assert(c)
+    r7_exclusive_battery(c.data) && error("当前内层模式池仅含电拓扑，尚不覆盖互斥电池模式")
     lines=c.data["electric"]["lines"]
     L=length(lines)
     zs=[Int.(z) for z in topologies]

@@ -1,0 +1,53 @@
+case_sha256 = "d0da56d38f1922827c9b4a5e1d56d8da93f2f57e7cfd9aa2a4a36c8a70c872b2"
+elapsed_sec = 0.031999826431274414
+fault = [1]
+formula_ids = ["6-11", "6-12", "6-13", "6-14", "6-19", "6-20", "6-24:25", "6-3", "6-3/9", "6-4:5/57:58", "6-54", "6-55", "6-56", "6-61", "6-63", "6-72", "6-74", "6-75", "6-8/56/60", "6-83", "6-84", "R7-B1", "R7-C1-load", "R7-C1-source", "R7-D1-m_load", "R7-D1-m_pipe", "R7-D1-m_source", "R7-R1", "R7-R2", "R7-R3", "R7-R4", "R7-T-bound", "R7-T-control", "R7-T-idle", "R7-T-port", "R7-T1-transport", "R7-T2-load", "R7-T2-source", "R7-T3-mix", "R7-T4-inventory", "R7-T4-spatial"]
+julia_version = "1.12.6"
+lower_bound_MWh = 0.0
+model_class = "MILP"
+objective_kind = "expected_unserved_energy_MWh"
+optimizer_request = "MathOptInterface.OptimizerWithAttributes(HiGHS.Optimizer, Pair{MathOptInterface.AbstractOptimizerAttribute, Any}[MathOptInterface.RawOptimizerAttribute(\"threads\") => 1, MathOptInterface.RawOptimizerAttribute(\"primal_feasibility_tolerance\") => 1.0e-9, MathOptInterface.RawOptimizerAttribute(\"dual_feasibility_tolerance\") => 1.0e-9, MathOptInterface.RawOptimizerAttribute(\"mip_feasibility_tolerance\") => 1.0e-9, MathOptInterface.RawOptimizerAttribute(\"mip_rel_gap\") => 1.0e-9])"
+primal_status = "NO_SOLUTION"
+raw_status = "kHighsModelStatusInfeasible"
+replaced_formulas = ["6-80:82", "R7-A3/90", "6-89", "6-85", "6-86", "R7-A4/76:78", "R7-A4/77:79"]
+requested_budget_sec = 600.0
+run_id = "r7-transport-ddeffdcf-5830-462a-a03c-0a5f5891916b"
+schema = "r7-transport-result-v1"
+solver = "HiGHS"
+spec_sha256 = "849ad2dc7f0e2dc2cd631b1dabac6604ff3f63a0e123e1761b2d36305d827653"
+status = "infeasible_certified"
+termination_status = "INFEASIBLE"
+utc = "2026-09-20T01:55:29.806"
+version = "r7_transport_recovery_v1"
+
+[source_hashes_at_solve]
+"Manifest.toml" = "948f0f5c5a4bc8381a3d9ad413fb0f8e78ee1a3bad52606dea9b9b6f144e5450"
+"Project.toml" = "313f8c54dfa9a7a276832e48cc8d7e3e9b63c29aab765bf7fa541f2fb68f40a9"
+"src/PaperRebuild.jl" = "0c11df39abc4872035631ac99496d76b86ba77292b7930639639f3ead6d0ee79"
+"src/algorithms/r7_recovery.jl" = "cd38f5a89d37c7e28279c76fe2a861d7266b46e1b54ad389063bd47e7afa0b52"
+"src/algorithms/r7_thermal.jl" = "b7f212109ebab47ddfb1d184a2d325dee66aad518bc6b83c6227b53453b3a039"
+"src/algorithms/r7_transport.jl" = "065a42037aabe61fa8648f73482c62e4bd8d67ab8797bfb4fb38a728c7474395"
+"src/core/r7_recovery.jl" = "67216c11c389f8e46a752f8b0169d7fbb4361919d4c3f8db222104fcd4acff58"
+"src/core/r7_thermal.jl" = "0a640358ca33e27b03784d755132e21432c90e89be0bc1c3a2ded52bfbc7ef09"
+"src/core/r7_transport.jl" = "20e45ae6a72fffd4db5fba556824b69607a66a3f03324762e7cb093c0bcfb686"
+"src/formulations/r7_recovery.jl" = "b377e9a2122f8bf8de55cfc1d84cfc797bb161fd42afc724181ce3ffb8454dd9"
+"src/formulations/r7_thermal.jl" = "6b25fe04a60016dc6235b967d220f030b8d141d31c3b32aa15487640e2f97fd8"
+"src/formulations/r7_transport.jl" = "8a5080bc29884415f2ff2e88f962c278fa4e80b7dd8445a4e900de47c5d5239d"
+"src/networks/r7_pipe_state.jl" = "2d8b4b01dbcdfc276ac15bf40d715b1d23f3dc56271ef4b0736f6fae2403f8a8"
+"src/reporting/r7_recovery.jl" = "2118f6326e9709e079567a2513af8b52b29a3f83b1d9a239d634deba5825ffd9"
+"src/reporting/r7_thermal.jl" = "9351abc1a68b588bd0d636103667e580dc3cc1e59586fcf42a927b7d972c4ad8"
+"src/reporting/r7_transport.jl" = "df498ea0813eaf0d79e1e2b1330818eb4818b16e2e61e0d5779bccc17f0ca64e"
+"src/verification/r7_recovery.jl" = "acd45c5de04376d680365ae135db2ea1e60aedcef82041ef1830e1f83c4a8e81"
+"src/verification/r7_thermal.jl" = "7a9320c533b6f5044cddcd75147c80b222d2c05f913aaaff126ea74cb431e121"
+"src/verification/r7_transport.jl" = "c20c503a0ad1cdfe95f14c59f1030d5ae14c3d88abef711ff2f0a0412244153d"
+
+[validation]
+ac_grid_validated = false
+conditional_optimality_pass = false
+continuous_node_dynamics_verified = false
+full_variable_flow_optimized = false
+hydraulic_verified = false
+model_pass = false
+thermal_flow_basis = "declared_schedule_with_raw_equality_check"
+validation_version = "r7_transport_validation_v2"
+whole_recovery_certified = false

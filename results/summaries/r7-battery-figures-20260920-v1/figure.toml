@@ -1,0 +1,20 @@
+origin = "synthetic"
+report_manifest_sha256 = "8d16f27ca7481a4204e866ecfa71c36e66f0eae617675d2f18421fa03363b0cd"
+run_ids = ["r7-transport-44e61e0c-45ff-42df-b21e-2271a2d36c19", "r7-transport-dabe92b3-e573-48e4-ae9c-743ce35592d2", "r7-transport-36c6a38c-6ecb-4676-bc1d-bb9d8f7ab803", "r7-transport-69f71a3a-4843-40ed-ba3a-6d6713e2cb41", "r7-transport-02f31685-ba4c-443f-ae30-17af1ac8178c", "r7-transport-3a454ad2-17a5-4af6-a30f-70607a670ded", "r7-transport-f7b122ea-c037-480f-8372-c841366b5d5f", "r7-transport-d9c175e1-4f1c-4593-9c62-ff5782b04f15", "r7-transport-b5d0905d-3310-4f38-a0ab-30414b9ac7ca", "r7-transport-40dcb9a4-05fa-4a5f-983e-6153f2fe4cf9", "r7-battery-reconstruction-0bf615d1-4d57-498c-91e7-735d49fbc55a", "r7-transport-d2d4f9c6-97ba-4df6-8086-68b18c0b4d62", "r7-transport-19596ddf-f3a9-4f3d-867b-29215bfdf621", "r7-transport-ddeffdcf-5830-462a-a03c-0a5f5891916b", "r7-transport-0bdae8cf-48b7-4dab-9dfc-0acc1fe8904e", "r7-transport-b1ad548e-7967-456c-b4bb-c052d052e37f", "r7-transport-86711261-03a9-424a-8b30-2051c873b146", "r7-transport-89e97510-34af-42bb-853c-1b4f50834992", "r7-transport-1c42a4a3-4d08-4685-8393-af93d60b0d4e", "r7-transport-4c5dfc9e-dd49-4f9d-b0bc-01d1b2255b30", "r7-transport-f64a01b6-e873-479e-a5ef-4caf4b8c2da0", "r7-transport-e670e036-6db1-409a-ae28-c04b5a71ee05", "r7-transport-cbc5ba37-912d-47bd-9928-494ab3b02a3e", "r7-battery-reconstruction-223dc6ac-3908-4b2c-af9c-2c91eff5f24e", "r7-transport-d2bf72c2-be1f-48a6-b417-68b400df5080", "r7-transport-8053a604-652a-4cbb-8cd7-d8ed5adaf5fb", "r7-transport-42dabc50-7cbd-4397-88b2-84f582a6f136", "r7-transport-4712cf65-dab0-4fe1-8485-1d367c195e06", "r7-transport-bfb0dd52-8147-4746-9533-22a53fed4e57", "r7-transport-0432bf1f-2ee4-4b59-8ce3-d985a083537e", "r7-transport-7e45cbb9-2548-4916-b5a2-bc6e4b513835", "r7-transport-ba9f9edf-120b-4245-a8ee-7d688828f8e5", "r7-transport-677b12f2-4b6a-4171-9b24-22153206641d", "r7-transport-f7b4b129-ea4e-4f3e-b0e0-19b5a978afd9", "r7-transport-2359aad1-ce5d-4281-bceb-8feb4f13b151", "r7-transport-f57ff335-f5b6-4cda-b89a-f417e1f0dfc7", "r7-battery-reconstruction-c25ea474-a799-456b-89e0-8e5bd072a050"]
+schema = "r7-battery-figure-v1"
+solver_called = false
+source_sha256 = "3756c6798f53624fd70e14ff9c153e9091ab20697c1aab971f8f8d30ad6b10db"
+
+[files]
+"F26-battery-domain.png" = "49182e96fc192e83556d18a08f79ab8994c69442e2993f76ada752b1b12aec8c"
+"F26-battery-domain.svg" = "90b83ff19ed4765750e70d253cac527336b7e4c33772b07fb8e7f57460c42a13"
+"domain-pairs.csv" = "ce89fe912ba44725c21bc0f525082bbb0f4880dff64036cb45365581365fa2f3"
+"ideal-cycles.csv" = "a29daa9ae0d453bd54961d37f0a652af11acf9917197403177653ba92440ef65"
+"rule.toml" = "d226c9a21c3f06ccac5d52c72e94bd978742fcbfc87b069619c0650636c97fac"
+"summary.csv" = "7bba4c70aa030e95fd53d54e45039981512789755c9559edc582028ede794907"
+
+[settings]
+main_solver = "HiGHS"
+raster_scale = 1.5
+size_px = [1440, 650]
+units = ["MW", "MWh"]

@@ -98,6 +98,7 @@ function solve_r7_adversary(
     deadline = nothing,
 )
     r7_recovery_assert(c)
+    r7_exclusive_battery(c.data) && error("互斥电池须用完整MILP故障审计，不能套用旧LP对偶算法")
     isfinite(budget_sec)&&budget_sec>=0 || error("故障对手预算错误")
     deadline===nothing || isfinite(deadline) || error("截止时间错误")
     max_iterations isa Integer && max_iterations>0 || error("内层轮数错误")

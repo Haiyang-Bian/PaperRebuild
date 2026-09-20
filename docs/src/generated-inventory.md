@@ -128,6 +128,7 @@
 - `configs/r6/pilot-rule.toml`
 - `configs/r6/protocol.toml`
 - `configs/r6/study.toml`
+- `configs/r7/battery-study.toml`
 - `configs/r7/chp-component-hand.toml`
 - `configs/r7/inner-freeze.toml`
 - `configs/r7/inner-tie-bottleneck.toml`
@@ -192,6 +193,7 @@
 - `docs/agent/tasks/2026-09-19-r7-audit.md`
 - `docs/agent/tasks/2026-09-20-r6-formal-evidence.md`
 - `docs/agent/tasks/2026-09-20-r7-adversary.md`
+- `docs/agent/tasks/2026-09-20-r7-battery.md`
 - `docs/agent/tasks/2026-09-20-r7-commitment.md`
 - `docs/agent/tasks/2026-09-20-r7-normal.md`
 - `docs/agent/tasks/2026-09-20-r7-pipe-state.md`
@@ -252,6 +254,7 @@
 - `docs/reading/ch05/strategic-model.toml`
 - `docs/reading/ch05/strategic.toml`
 - `docs/reading/ch06/audit.toml`
+- `docs/reading/ch06/battery-domain.toml`
 - `docs/reading/ch06/compatible-ports.toml`
 - `docs/reading/ch06/inner-adversary.toml`
 - `docs/reading/ch06/normal-dispatch.toml`
@@ -556,6 +559,7 @@
 - `docs/src/assets/r6-formal-20260920-v1/F19.pdf`
 - `docs/src/assets/r6-formal-20260920-v1/F19.png`
 - `docs/src/assets/r6-formal-20260920-v1/figure-config.toml`
+- `docs/src/assets/r7-battery-20260920-v1/F26-battery-domain.png`
 - `docs/src/assets/r7-inner-20260920-v3/F22-inner-faults.png`
 - `docs/src/assets/r7-normal-20260920-v2/F20-normal-event.png`
 - `docs/src/assets/r7-planning-20260920-v2/F21-finite-planning.png`
@@ -652,6 +656,8 @@
 - `docs/src/ch06-adversary.md`
 - `docs/src/ch06-audit-equations.md`
 - `docs/src/ch06-audit.md`
+- `docs/src/ch06-battery-equations.md`
+- `docs/src/ch06-battery.md`
 - `docs/src/ch06-commitment-equations.md`
 - `docs/src/ch06-commitment.md`
 - `docs/src/ch06-normal-equations.md`
@@ -1036,6 +1042,23 @@
 - `results/summaries/r6-training-pilot-v1/residuals-008.csv`
 - `results/summaries/r6-training-pilot-v1/risk-scenarios.csv`
 - `results/summaries/r6-training-pilot-v1/trajectories.csv`
+- `results/summaries/r7-battery-figures-20260920-v1/F26-battery-domain.png`
+- `results/summaries/r7-battery-figures-20260920-v1/F26-battery-domain.svg`
+- `results/summaries/r7-battery-figures-20260920-v1/domain-pairs.csv`
+- `results/summaries/r7-battery-figures-20260920-v1/figure.toml`
+- `results/summaries/r7-battery-figures-20260920-v1/ideal-cycles.csv`
+- `results/summaries/r7-battery-figures-20260920-v1/rule.toml`
+- `results/summaries/r7-battery-figures-20260920-v1/summary.csv`
+- `results/summaries/r7-battery-public-20260920-v1/domain-pairs.csv`
+- `results/summaries/r7-battery-public-20260920-v1/files.toml`
+- `results/summaries/r7-battery-public-20260920-v1/freeze.toml`
+- `results/summaries/r7-battery-public-20260920-v1/ideal-cycles.csv`
+- `results/summaries/r7-battery-public-20260920-v1/original-files.toml`
+- `results/summaries/r7-battery-public-20260920-v1/packing.toml`
+- `results/summaries/r7-battery-public-20260920-v1/rule.toml`
+- `results/summaries/r7-battery-public-20260920-v1/study-source.jl`
+- `results/summaries/r7-battery-public-20260920-v1/summary.csv`
+- `results/summaries/r7-battery-public-20260920-v1/transport-study-source.jl`
 - `results/summaries/r7-inner-figures-20260920-v3/F22-inner-faults.png`
 - `results/summaries/r7-inner-figures-20260920-v3/F22-inner-faults.svg`
 - `results/summaries/r7-inner-figures-20260920-v3/figure.toml`
@@ -1235,6 +1258,8 @@
 - `scripts/check_r6_figures.jl`
 - `scripts/check_r7_adversary.jl`
 - `scripts/check_r7_adversary_gurobi.jl`
+- `scripts/check_r7_battery.jl`
+- `scripts/check_r7_battery_figures.jl`
 - `scripts/check_r7_commitment.jl`
 - `scripts/check_r7_inner_figures.jl`
 - `scripts/check_r7_normal.jl`
@@ -1313,6 +1338,7 @@
 - `scripts/maintenance-core.ps1`
 - `scripts/merge_r3_v2_studies.jl`
 - `scripts/pack_r3_v2_report.jl`
+- `scripts/pack_r7_battery.jl`
 - `scripts/pack_r7_transport_audit.jl`
 - `scripts/pilot_r6_training.jl`
 - `scripts/plot_ch03_data.jl`
@@ -1344,6 +1370,7 @@
 - `scripts/plot_r5_strategic.jl`
 - `scripts/plot_r5_strategic_benders.jl`
 - `scripts/plot_r6_study.jl`
+- `scripts/plot_r7_battery.jl`
 - `scripts/plot_r7_inner.jl`
 - `scripts/plot_r7_normal.jl`
 - `scripts/plot_r7_planning.jl`
@@ -1416,6 +1443,8 @@
 - `scripts/r6_study_tables.jl`
 - `scripts/r7_adversary.jl`
 - `scripts/r7_adversary_docs.jl`
+- `scripts/r7_battery_docs.jl`
+- `scripts/r7_battery_study.jl`
 - `scripts/r7_commitment_docs.jl`
 - `scripts/r7_inner_study.jl`
 - `scripts/r7_normal.jl`
@@ -1546,6 +1575,7 @@
 - `scripts/test_r6_study_report_artifacts.jl`
 - `scripts/test_r6_workflow.jl`
 - `scripts/test_r7_adversary.jl`
+- `scripts/test_r7_battery.jl`
 - `scripts/test_r7_commitment.jl`
 - `scripts/test_r7_normal.jl`
 - `scripts/test_r7_normal_cli.jl`
@@ -1765,6 +1795,7 @@
 - `test/r6_study.jl`
 - `test/r6_study_report.jl`
 - `test/r7_adversary.jl`
+- `test/r7_battery.jl`
 - `test/r7_commitment.jl`
 - `test/r7_normal.jl`
 - `test/r7_pipe_state.jl`
@@ -1838,6 +1869,9 @@
 - `results/summaries/r6-public-20260920-v1/test/`
 - `results/summaries/r6-public-20260920-v1/validation/`
 - `results/summaries/r6-training-pilot-v1/witnesses/`
+- `results/summaries/r7-battery-public-20260920-v1/code/`
+- `results/summaries/r7-battery-public-20260920-v1/input-parts/`
+- `results/summaries/r7-battery-public-20260920-v1/records/`
 - `results/summaries/r7-inner-three-node-20260920-v1/inner-tie-bottleneck/`
 - `results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-fault/`
 - `results/summaries/r7-inner-three-node-20260920-v1/inner-tie-two-hour/`

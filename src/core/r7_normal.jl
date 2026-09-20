@@ -33,7 +33,7 @@ function R7NormalCase(input::AbstractDict)
     d["thermal_model"] in ("node_method_fixed_v1", "plug_flow_reference_v1") ||
         error("未声明热输运版本")
     d["heat_terminal_rule"] in ("free", "pipe_inventory_initial") || error("未声明热末端条件")
-    d["battery_rule"]=="paper_sum_bound" || error("不能静默更改原电池和式边界")
+    r7_battery_rule(d)
     d["scenario_information"]=="full_trajectory_after_shared_commitment" ||
         error("须显式给出场景信息结构")
     for (k, unit) in (
@@ -232,6 +232,13 @@ end
 load_r7_normal_case(path::AbstractString) = R7NormalCase(TOML.parsefile(path))
 r7_normal_assert(c) = r7_digest(c.data)==c.sha256 || error("正常案例构造后被修改")
 
+function with_r7_battery_rule(c::R7NormalCase, rule::AbstractString)
+    r7_normal_assert(c)
+    d=deepcopy(c.data)
+    d["battery_rule"]=String(rule)
+    R7NormalCase(d)
+end
+
 function r7_normal_shape(c)
     d=c.data
     T=d["periods"]
@@ -241,7 +248,7 @@ function r7_normal_shape(c)
     length(d["devices"]),
     length(d["electric"]["lines"]),
     length(d["heat"]["pipes"])
-    Dict(
+    shapes=Dict(
         "P"=>(G, T, W),
         "Q"=>(G, T, W),
         "H"=>(G, T, W),
@@ -266,4 +273,6 @@ function r7_normal_shape(c)
         "Φ_val_S"=>(A, T),
         "Φ_val_R"=>(A, T),
     )
+    r7_exclusive_battery(d) && (shapes["b_BES"]=(G, T, W))
+    shapes
 end

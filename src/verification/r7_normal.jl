@@ -106,6 +106,7 @@ function validate_r7_normal(c::R7NormalCase, r)
     end
     bound(id, entity, t, w, x, lo, hi, unit, tol) =
         rec(id, entity, t, w, max(0.0, lo-x, x-hi), unit, tol)
+    r7_verify_battery_domain!(rec, d, r, v, pt)
     startup=0.0
     simultaneous=0.0
     for (g, z) in enumerate(ds)

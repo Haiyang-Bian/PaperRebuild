@@ -85,6 +85,9 @@ function solve_r7_planning(
 )
     r7_planning_assert(c)
     method in (:extensive, :finite_fault_ccg, :nested_indicator_ccg) || error("未实现的规划方法")
+    method==:nested_indicator_ccg &&
+        r7_exclusive_battery(c.normal.data) &&
+        error("当前嵌套LP对偶未覆盖互斥电池；显式选择extensive或finite_fault_ccg")
     isfinite(budget_sec)&&budget_sec>=0 || error("规划预算错误")
     started=time()
     stop=started+budget_sec

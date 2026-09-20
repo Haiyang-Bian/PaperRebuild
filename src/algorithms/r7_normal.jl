@@ -9,10 +9,12 @@ function solve_r7_normal(
     c::R7NormalCase;
     optimizer,
     fixed_commitments = nothing,
+    fixed_battery_modes = nothing,
     budget_sec = 60.0,
     deadline = nothing,
 )
     r7_normal_assert(c)
+    modes=r7_fixed_battery_modes(c.data, fixed_battery_modes)
     isfinite(budget_sec)&&budget_sec>=0 || error("正常调度预算错误")
     deadline===nothing || isfinite(deadline) || error("正常调度截止时间错误")
     started=time()
@@ -31,9 +33,10 @@ function solve_r7_normal(
         "full_preplan_optimality_verified"=>false,
     )
     fixed_commitments===nothing || (r["fixed_commitments"]=deepcopy(fixed_commitments))
+    modes===nothing || (r["fixed_battery_modes"]=Dict(k=>r7_pack(a) for (k, a) in modes))
     if time()<stop
         try
-            b=build_r7_normal(c; optimizer, fixed_commitments)
+            b=build_r7_normal(c; optimizer, fixed_commitments, fixed_battery_modes = modes)
             r["build_sec"]=time()-started
             r["model_class"]=b.model_class
             r["model_types"]=b.model_types

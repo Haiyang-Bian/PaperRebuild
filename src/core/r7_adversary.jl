@@ -131,6 +131,7 @@ end
 """
 function r7_recovery_lp(c::R7RecoveryCase, z)
     r7_recovery_assert(c)
+    r7_exclusive_battery(c.data) && error("互斥电池未固定，不能抽取为连续LP对偶")
     b=build_r7_recovery(c, zeros(Int, length(z)); fixed_z = z, fault_variables = true)
     labels=Dict{Any,String}(con=>id for (id, cs) in b.constraints for con in cs)
     r7_linear_recourse(
