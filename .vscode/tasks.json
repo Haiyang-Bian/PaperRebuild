@@ -1,5 +1,10 @@
 {
   "inputs": [
+    {"id":"r7TransportBatch","type":"promptString","description":"逐管研究批次：冻结须新目录，运行须已冻结目录","default":"results/runs/r7-transport-new"},
+    {"id":"r7TransportReport","type":"promptString","description":"逐管报告：生成须新目录，检查使用已有目录","default":"results/summaries/r7-transport-20260920-v1"},
+    {"id":"r7TransportAudit","type":"promptString","description":"逐管原验证公开审计，含原字节CSV分片","default":"results/summaries/r7-transport-audit-public-20260920-v1"},
+    {"id":"r7TransportRecheck","type":"promptString","description":"逐管固定流量验证补证；创建须新目录","default":"results/summaries/r7-transport-recheck-20260920-v1"},
+    {"id":"r7TransportFigures","type":"promptString","description":"逐管图的新目录；不得覆盖已有图","default":"results/runs/r7-transport-redraw"},
     {"id":"r7PortsBatch","type":"promptString","description":"端口研究：冻结用新目录，运行用已冻结目录","default":"results/runs/r7-ports-new"},
     {"id":"r7PortsReport","type":"promptString","description":"端口研究报告（生成时必须是新目录）","default":"results/summaries/r7-ports-20260920-v1"},
     {"id":"r7PortsFigures","type":"promptString","description":"端口图件的新输出目录","default":"results/runs/r7-ports-redraw"},
@@ -123,6 +128,16 @@
     }
   ],
   "tasks": [
+    {"label":"R7: 逐管联合恢复映射","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r7_transport.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 逐管联合恢复测试","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r7_transport.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 冻结逐管对照","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_transport_study.jl","freeze","${input:r7TransportBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 逐管对照开放求解器","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_transport_study.jl","run","${input:r7TransportBatch}","open"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 逐管对照Gurobi","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/r7_transport_study.jl","run","${input:r7TransportBatch}","gurobi"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 保存逐管报告","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_transport_study.jl","report","${input:r7TransportBatch}","${input:r7TransportReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 核验逐管报告","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_transport_study.jl","check","${input:r7TransportReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 核验逐管原残差审计","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/pack_r7_transport_audit.jl","check","${input:r7TransportReport}","${input:r7TransportAudit}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 核验逐管原值补证","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/recheck_r7_transport.jl","check","${input:r7TransportReport}","${input:r7TransportRecheck}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 重绘逐管F25","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r7_transport.jl","${input:r7TransportReport}","${input:r7TransportRecheck}","${input:r7TransportFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"R7: 相容端口公式映射","type":"process","command":"julia","args":["+1.12.6","--project=.","scripts/check_r7_ports.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"R7: 相容端口测试","type":"process","command":"julia","args":["+1.12.6","--project=.","scripts/test_r7_ports.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"R7: 冻结端口对照","type":"process","command":"julia","args":["+1.12.6","--project=.","scripts/r7_ports_study.jl","freeze","${input:r7PortsBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},

@@ -53,6 +53,8 @@ include(joinpath(@__DIR__, "..", "scripts", "r7_thermal_docs.jl"))
 write(joinpath(@__DIR__, "src", "ch06-thermal-equations.md"), r7_thermal_markdown())
 include(joinpath(@__DIR__, "..", "scripts", "r7_ports_docs.jl"))
 write(joinpath(@__DIR__, "src", "ch06-ports-equations.md"), r7_ports_markdown())
+include(joinpath(@__DIR__, "..", "scripts", "r7_transport_docs.jl"))
+write(joinpath(@__DIR__, "src", "ch06-transport-equations.md"), r7_transport_markdown())
 
 makedocs(;
     modules = [PaperRebuild],
@@ -204,6 +206,8 @@ makedocs(;
             "逐管热重构方程与符号" => "ch06-thermal-equations.md",
             "温区相容端口与安全规划" => "ch06-ports.md",
             "端口必要条件与符号" => "ch06-ports-equations.md",
+            "逐管输运与联合恢复" => "ch06-transport.md",
+            "联合恢复方程与符号" => "ch06-transport-equations.md",
         ],
         "第 2 章模型与首批实现" => [
             "模型详解" => "ch02-models.md",

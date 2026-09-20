@@ -52,6 +52,15 @@ R3第四批显式v3见[物理恢复与停止判据](../src/ch03-r3-v3.md)。恢�
 
 ## 文档更新路由
 
+R7逐管联合恢复读[实际热交付](../src/ch06-transport.md)，台账ch06/transport-recovery.toml。
+r7_transport_recovery_v1在给定流量域替换双水箱/Taylor热块；条件LP/MILP界不是自由流量或全故障界。
+三个旧调度的出口温区冲突已有解析证据；改变流量与设备的联合改善不等于储热资源单独贡献。
+原37项在r7-transport-20260920-v1，冻结源码重验；audit保留旧失败，recheck保存验证器修正的原值补证。
+固定流量数值系数和停流分支由输入决定；冗余变量的舍入尾差不能激活不存在的端口，流量等式残差仍须独立通过。
+三Clarabel模型补证通过但电池同时充放且缺有效界；模型、互斥、条件费用和完整物理认证继续分开。
+原值不可覆盖；plot_r7_transport.jl只读原报告与补证，check_r7_transport_figures.jl校验图源/ID/副本。
+原残差CSV超过5MiB，公开audit-public按行分片；pack_r7_transport_audit.jl check独立回代并校验拼接SHA，不删失败行。
+
 R7温区相容端口读[相容条件与规划](../src/ch06-ports.md)，台账ch06/compatible-ports.toml。
 原6-27无明确源停机豁免；r7_recovery_port_checked_v1保留温区并追加相容端口行，旧版本/哈希不变。
 岛内无有功消纳端的证书只是当前设备/边界的热失供下界，不证明一般储热无用或可达到该下界。

@@ -1,0 +1,55 @@
+schema = "r7-transport-recovery-mapping-v1"
+version = "r7_transport_recovery_v1"
+source_pages = [109,115,116]
+scope = "原6-26至29端口关系与项目逐管输运参考的联合恢复；替换6-73至90中的双水箱/Taylor部分。给定管流，不冒称全变流量或作者完整模型等价实现"
+
+[[equation]]
+id = "R7-D1"
+latex = '\min_{y,\tau}\ \sum_\omega\pi_\omega\sum_t\Delta t\!\left(\sum_iP_{i,t,\omega}^{\rm shed}+\sum_jH_{j,t,\omega}^{\rm shed}\right),\qquad m=\bar m,\quad y\in\mathcal Y_{\rm electric,device,flow},\quad (y,\tau)\in\mathcal T_{\rm pipe}'
+meaning = "给定跨场景共享流量，设备和失供按原时段重新优化；逐管状态、端口功率、混合按子步闭合。原双水箱库存及Taylor交换块显式移除，不与详细热库存强行同时成立。保留原输入、设备和线性电网。"
+source_equations = ["6-26:29", "6-51:75", "R7-T1:T4", "project conditional redispatch"]
+classification = "project detailed transport reference in prescribed-flow domain"
+api = "build_r7_transport_recovery"
+test = "R7-D1 conditional redispatch and original compatibility"
+
+[[equation]]
+id = "R7-D2"
+latex = '\begin{aligned}\underline\tau^{\rm out}_{a,k}&=\Phi_{a,k}(\underline\tau^{\rm in};\tau^0,\bar m),&\overline\tau^{\rm out}_{a,k}&=\Phi_{a,k}(\overline\tau^{\rm in};\tau^0,\bar m),\\H^{\rm src}_{j,t}&\le c_w\bar m^{\rm src}_{j,t}(\overline\tau^{S}-\underline\tau^R_{j,k})/10^6,&H^{\rm delivered}_{j,t}&\le c_w\bar m^{\rm load}_{j,t}(\overline\tau^S_{j,k}-\underline\tau^{R})/10^6.\end{aligned}'
+meaning = "给定流量的被动平流散热对入口温度单调。以入口温区两端回放获得出口必要区间，节点按流量加权，再与原端口温差包络取交集。初始水尚未排完时，出口受空间初态限制。代码同时计算功率下界，记录原调度的MW缺口。只是原父调度冲突见证；不称最小IIS或充分可行条件。"
+source_equations = ["6-26:29", "R7-T1:T3", "monotonicity of adopted passive transport"]
+classification = "derived necessary interval test"
+api = "r7_transport_port_witness"
+test = "R7-D2 transport interval conflict"
+
+[[equation]]
+id = "R7-D3"
+latex = 'L_{\rm free\ flow}^{\star}\le L^{\star}(\bar m)\le L(y_{\rm feasible},\bar m)'
+meaning = "仅当热模型、状态、边界相同且自由域包含这条流量计划时，固定流量可行解是自由问题的候选上界。固定流量求解器下界不是自由问题下界；条件不可行也不证明所有流量不可行。子步热合格、水力、交流电网与全故障安全分别标记。"
+source_equations = ["set inclusion under identical model and boundaries", "project certificate scope"]
+classification = "conditional bound interpretation"
+api = "validate_r7_transport_recovery"
+test = "R7-D3 evidence, failures and validation"
+
+[[symbol]]
+id = "R7D-flow"
+latex = '\bar m_{a,t},\bar m_{j,t}^{\rm src},\bar m_{j,t}^{\rm load}'
+meaning = "给定流量计划；管流可带符号，源荷端口非负，跨新能源场景共享"
+unit = "kg/s"
+julia = "flow_schedule[m_pipe/m_source/m_load]"
+shape = "pipe or node × original time"
+
+[[symbol]]
+id = "R7D-temperature"
+latex = '\tau^S_{j,k,\omega},\tau^R_{j,k,\omega},\tau_{j,k,\omega}^{\rm src},\tau_{j,k,\omega}^{\rm load}'
+meaning = "节点混合、源供水与负荷回水温度分别记录；k是子步，不替代原调度t"
+unit = "K"
+julia = "S,R,T_source,T_load"
+shape = "node × thermal substep × scenario"
+
+[[symbol]]
+id = "R7D-gap"
+latex = '\delta H=\max\{\underline H-H,H-\overline H,0\}'
+meaning = "原父调度违反输运必要功率区间的缺口；不是新增能源、松弛调度或费用"
+unit = "MW"
+julia = "gap_MW"
+shape = "port × thermal substep × scenario"

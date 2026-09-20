@@ -143,6 +143,7 @@
 - `configs/r7/thermal-freeze.toml`
 - `configs/r7/thermal-front.toml`
 - `configs/r7/thermal-steady.toml`
+- `configs/r7/transport-study.toml`
 - `data/processed/README.md`
 - `data/raw/README.md`
 - `docs/Manifest.toml`
@@ -198,6 +199,7 @@
 - `docs/agent/tasks/2026-09-20-r7-ports.md`
 - `docs/agent/tasks/2026-09-20-r7-recovery.md`
 - `docs/agent/tasks/2026-09-20-r7-thermal.md`
+- `docs/agent/tasks/2026-09-20-r7-transport.md`
 - `docs/make.jl`
 - `docs/reading/README.md`
 - `docs/reading/ch02/README.md`
@@ -258,6 +260,7 @@
 - `docs/reading/ch06/planning.toml`
 - `docs/reading/ch06/recovery.toml`
 - `docs/reading/ch06/thermal-reconstruction.toml`
+- `docs/reading/ch06/transport-recovery.toml`
 - `docs/reading/source_manifest.json`
 - `docs/reading/sources.json`
 - `docs/src/api.md`
@@ -558,6 +561,7 @@
 - `docs/src/assets/r7-planning-20260920-v2/F21-finite-planning.png`
 - `docs/src/assets/r7-ports-20260920-v1/F24-compatible-ports.png`
 - `docs/src/assets/r7-thermal-20260920-v1/F23-thermal-delivery.png`
+- `docs/src/assets/r7-transport-20260920-v1/F25-transport-redispatch.png`
 - `docs/src/ch02-api.md`
 - `docs/src/ch02-generated.md`
 - `docs/src/ch02-models.md`
@@ -662,6 +666,8 @@
 - `docs/src/ch06-recovery.md`
 - `docs/src/ch06-thermal-equations.md`
 - `docs/src/ch06-thermal.md`
+- `docs/src/ch06-transport-equations.md`
+- `docs/src/ch06-transport.md`
 - `docs/src/index.md`
 - `docs/src/julia-design.md`
 - `docs/src/quality.md`
@@ -1113,6 +1119,36 @@
 - `results/summaries/r7-thermal-figures-20260920-v1/solver-comparison.csv`
 - `results/summaries/r7-thermal-figures-20260920-v1/summary.csv`
 - `results/summaries/r7-thermal-figures-20260920-v1/trajectory.csv`
+- `results/summaries/r7-transport-20260920-v1/files.toml`
+- `results/summaries/r7-transport-20260920-v1/freeze.toml`
+- `results/summaries/r7-transport-20260920-v1/inputs.toml`
+- `results/summaries/r7-transport-20260920-v1/rule.toml`
+- `results/summaries/r7-transport-20260920-v1/solver-pairs.csv`
+- `results/summaries/r7-transport-20260920-v1/study-source.jl`
+- `results/summaries/r7-transport-20260920-v1/summary.csv`
+- `results/summaries/r7-transport-20260920-v1/transport-witness.csv`
+- `results/summaries/r7-transport-audit-public-20260920-v1/original-audit.toml`
+- `results/summaries/r7-transport-audit-public-20260920-v1/pack.toml`
+- `results/summaries/r7-transport-audit-public-20260920-v1/residuals-001.csv`
+- `results/summaries/r7-transport-audit-public-20260920-v1/residuals-002.csv`
+- `results/summaries/r7-transport-audit-public-20260920-v1/residuals-003.csv`
+- `results/summaries/r7-transport-audit-public-20260920-v1/residuals-004.csv`
+- `results/summaries/r7-transport-audit-public-20260920-v1/validation-summary.csv`
+- `results/summaries/r7-transport-figures-20260920-v1/F25-transport-redispatch.png`
+- `results/summaries/r7-transport-figures-20260920-v1/F25-transport-redispatch.svg`
+- `results/summaries/r7-transport-figures-20260920-v1/figure.toml`
+- `results/summaries/r7-transport-figures-20260920-v1/inputs.toml`
+- `results/summaries/r7-transport-figures-20260920-v1/recheck-summary.csv`
+- `results/summaries/r7-transport-figures-20260920-v1/recheck.toml`
+- `results/summaries/r7-transport-figures-20260920-v1/rule.toml`
+- `results/summaries/r7-transport-figures-20260920-v1/solver-pairs.csv`
+- `results/summaries/r7-transport-figures-20260920-v1/summary.csv`
+- `results/summaries/r7-transport-figures-20260920-v1/transport-witness.csv`
+- `results/summaries/r7-transport-figures-20260920-v1/zero-branch.csv`
+- `results/summaries/r7-transport-recheck-20260920-v1/files.toml`
+- `results/summaries/r7-transport-recheck-20260920-v1/recheck.toml`
+- `results/summaries/r7-transport-recheck-20260920-v1/summary.csv`
+- `results/summaries/r7-transport-recheck-20260920-v1/zero-branch.csv`
 - `scripts/add_r6_stdlib.jl`
 - `scripts/audit_ch05_cuts.jl`
 - `scripts/audit_ch05_probability.jl`
@@ -1131,6 +1167,7 @@
 - `scripts/audit_r5_market_replay.jl`
 - `scripts/audit_r5_strategic_selection.jl`
 - `scripts/audit_r7_lp_identity.jl`
+- `scripts/audit_r7_transport.jl`
 - `scripts/audit_thesis_tables.jl`
 - `scripts/bootstrap.jl`
 - `scripts/bootstrap_data.jl`
@@ -1210,6 +1247,8 @@
 - `scripts/check_r7_recovery.jl`
 - `scripts/check_r7_thermal.jl`
 - `scripts/check_r7_thermal_figures.jl`
+- `scripts/check_r7_transport.jl`
+- `scripts/check_r7_transport_figures.jl`
 - `scripts/check_solvers.jl`
 - `scripts/collect_ch03_data.jl`
 - `scripts/compare_r1_runs.jl`
@@ -1274,6 +1313,7 @@
 - `scripts/maintenance-core.ps1`
 - `scripts/merge_r3_v2_studies.jl`
 - `scripts/pack_r3_v2_report.jl`
+- `scripts/pack_r7_transport_audit.jl`
 - `scripts/pilot_r6_training.jl`
 - `scripts/plot_ch03_data.jl`
 - `scripts/plot_r1.jl`
@@ -1309,6 +1349,7 @@
 - `scripts/plot_r7_planning.jl`
 - `scripts/plot_r7_ports.jl`
 - `scripts/plot_r7_thermal.jl`
+- `scripts/plot_r7_transport.jl`
 - `scripts/prepare_r1_summary.jl`
 - `scripts/preview.jl`
 - `scripts/probe_r4_discrete.jl`
@@ -1390,8 +1431,11 @@
 - `scripts/r7_recovery_docs.jl`
 - `scripts/r7_thermal_docs.jl`
 - `scripts/r7_thermal_study.jl`
+- `scripts/r7_transport_docs.jl`
+- `scripts/r7_transport_study.jl`
 - `scripts/read_docx.py`
 - `scripts/read_thesis.py`
+- `scripts/recheck_r7_transport.jl`
 - `scripts/recover_r3_v3_checkpoint.jl`
 - `scripts/redraw_r3_v2_case.jl`
 - `scripts/replay_r3_v2_input.jl`
@@ -1511,6 +1555,7 @@
 - `scripts/test_r7_ports.jl`
 - `scripts/test_r7_recovery.jl`
 - `scripts/test_r7_thermal.jl`
+- `scripts/test_r7_transport.jl`
 - `scripts/tighten_r4_distributed_cost.jl`
 - `scripts/validate_ch03_data.jl`
 - `scripts/validate_r1.jl`
@@ -1553,6 +1598,7 @@
 - `src/algorithms/r7_planning.jl`
 - `src/algorithms/r7_recovery.jl`
 - `src/algorithms/r7_thermal.jl`
+- `src/algorithms/r7_transport.jl`
 - `src/components/devices.jl`
 - `src/components/r7_commitment.jl`
 - `src/core/case.jl`
@@ -1583,6 +1629,7 @@
 - `src/core/r7_planning.jl`
 - `src/core/r7_recovery.jl`
 - `src/core/r7_thermal.jl`
+- `src/core/r7_transport.jl`
 - `src/formulations/r1.jl`
 - `src/formulations/r2.jl`
 - `src/formulations/r3.jl`
@@ -1606,6 +1653,7 @@
 - `src/formulations/r7_planning.jl`
 - `src/formulations/r7_recovery.jl`
 - `src/formulations/r7_thermal.jl`
+- `src/formulations/r7_transport.jl`
 - `src/networks/fixed_flow_heat.jl`
 - `src/networks/r7_normal_transport.jl`
 - `src/networks/r7_pipe_state.jl`
@@ -1636,6 +1684,7 @@
 - `src/reporting/r7_planning.jl`
 - `src/reporting/r7_recovery.jl`
 - `src/reporting/r7_thermal.jl`
+- `src/reporting/r7_transport.jl`
 - `src/reporting/runs.jl`
 - `src/verification/r1.jl`
 - `src/verification/r2.jl`
@@ -1670,6 +1719,7 @@
 - `src/verification/r7_planning.jl`
 - `src/verification/r7_recovery.jl`
 - `src/verification/r7_thermal.jl`
+- `src/verification/r7_transport.jl`
 - `test/ch03_data.jl`
 - `test/ch06_audit.jl`
 - `test/maintenance.tests.ps1`
@@ -1722,6 +1772,7 @@
 - `test/r7_ports.jl`
 - `test/r7_recovery.jl`
 - `test/r7_thermal.jl`
+- `test/r7_transport.jl`
 - `test/runtests.jl`
 - `tools/Manifest.toml`
 - `tools/Project.toml`
@@ -1804,3 +1855,7 @@
 - `results/summaries/r7-ports-20260920-v1/records/`
 - `results/summaries/r7-ports-20260920-v1/thermal/`
 - `results/summaries/r7-thermal-20260920-v1/evidence/`
+- `results/summaries/r7-transport-20260920-v1/code/`
+- `results/summaries/r7-transport-20260920-v1/records/`
+- `results/summaries/r7-transport-recheck-20260920-v1/code/`
+- `results/summaries/r7-transport-recheck-20260920-v1/records/`
