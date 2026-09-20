@@ -1,0 +1,26 @@
+created_utc = "2026-09-20T15:48:11.353"
+hypothesis = "Resolve solver-status contradiction by changing only Presolve; do not rewrite previous INFEASIBLE runs"
+input_sha256 = "d514c3c2e94f962feb65717da43920559b4bcbca8613d2abcef2e1ed292d51b0"
+parent_manifest_sha256 = "f980fb181de25a1fa5865daa4897c5b6129e0509a9110724fcdac2e588ff3065"
+schema = "r9-presolve-diagnostic-v1"
+study_source_sha256 = "15c014a3751616d4e6543595841cf4a1e45dfee114563011928bbe609d576a46"
+
+[[entries]]
+budget_sec = 600.0
+mode = "CF_CT"
+physical = false
+[[entries]]
+budget_sec = 600.0
+mode = "CF_VT"
+physical = false
+[[entries]]
+budget_sec = 600.0
+mode = "CF_CT"
+physical = true
+[[entries]]
+budget_sec = 600.0
+mode = "CF_VT"
+physical = true
+
+[parameter]
+Presolve = 0

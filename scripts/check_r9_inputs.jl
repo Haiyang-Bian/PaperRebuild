@@ -5,7 +5,7 @@ ARGS in (String[], ["--sync"]) || error("usage: check_r9_inputs.jl [--sync]")
 b=load_r9_sources(joinpath(root, "docs/reading/ch07"))
 a=audit_r9_sources(b)
 m=TOML.parsefile(joinpath(root, "docs/reading/ch07/migration.toml"))
-m["schema"]=="r9-migration-route-v1" && m["status"]=="specified_not_executed" ||
+m["schema"]=="r9-migration-route-v1" && m["status"]=="partial_72_fixed_modes_with_numerical_gaps" ||
     error("迁移状态变更需新验收")
 Set(r["section"] for r in m["route"])==Set(["7.2", "7.3", "7.4", "7.5"]) || error("场景迁移缺失")
 testname="R9 original topology, units, arithmetic and missing-input gates"
@@ -20,5 +20,5 @@ read(page, String)==expected || error("第7章生成页失步")
 println(
     "R9 source/migration mapping passed; ",
     length(a["rows"]),
-    " arithmetic rows; no optimization.",
+    " arithmetic rows; this source check does not run optimization.",
 )

@@ -335,6 +335,12 @@ export save_r8_energy_run, read_r8_energy_run
 include("core/r9_inputs.jl")
 include("verification/r9_sources.jl")
 export load_r9_sources, r9_tariff, r9_original_input_gate, audit_r9_sources
+include("core/r9_pv.jl")
+include("verification/r9_pv.jl")
+include("formulations/r9_pv.jl")
+include("reporting/r9_pv.jl")
+export r9_pv_case, load_r9_pv_case, audit_r9_pv_input
+export build_r9_pv_model, solve_r9_pv_case, validate_r9_pv_solution
 
 """
     hello(who::String)

@@ -11285,6 +11285,26 @@
           "path": "docs/src/ch07-inputs.md",
           "name": "ch07-inputs.md",
           "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch07-pv-generated.md",
+          "name": "ch07-pv-generated.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch07-pv-results.md",
+          "name": "ch07-pv-results.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch07-pv.md",
+          "name": "ch07-pv.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r9-pv-20260920-v2/F34-r9-pv.png",
+          "name": "F34-r9-pv.png",
+          "isDirectory": false
         }
       ],
       "order": 1,
@@ -11605,6 +11625,11 @@
         {
           "path": "docs/agent/tasks/2026-09-20-r9-inputs.md",
           "name": "2026-09-20-r9-inputs.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/agent/tasks/2026-09-21-r9-pv.md",
+          "name": "2026-09-21-r9-pv.md",
           "isDirectory": false
         }
       ],
@@ -12557,6 +12582,26 @@
           "path": "src/verification/r9_sources.jl",
           "name": "r9_sources.jl",
           "isDirectory": false
+        },
+        {
+          "path": "src/core/r9_pv.jl",
+          "name": "r9_pv.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/formulations/r9_pv.jl",
+          "name": "r9_pv.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/reporting/r9_pv.jl",
+          "name": "r9_pv.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/verification/r9_pv.jl",
+          "name": "r9_pv.jl",
+          "isDirectory": false
         }
       ],
       "order": 3,
@@ -13213,6 +13258,11 @@
           "path": "configs/r8/energy-flow-study.toml",
           "name": "energy-flow-study.toml",
           "isDirectory": false
+        },
+        {
+          "path": "configs/r9/pv-protocol.toml",
+          "name": "pv-protocol.toml",
+          "isDirectory": false
         }
       ],
       "order": 4,
@@ -13598,6 +13648,11 @@
         {
           "path": "docs/reading/ch07/topology.toml",
           "name": "topology.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch07/pv-adoption.toml",
+          "name": "pv-adoption.toml",
           "isDirectory": false
         }
       ],
@@ -71510,6 +71565,556 @@
           "path": "results/summaries/r9-inputs-20260920-v1/topology.toml",
           "name": "topology.toml",
           "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-attribution-20260920-v1/attribution-source.jl",
+          "name": "attribution-source.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-attribution-20260920-v1/attribution.csv",
+          "name": "attribution.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-attribution-20260920-v1/manifest.toml",
+          "name": "manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/case.toml",
+          "name": "case.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/code/src/components/devices.jl",
+          "name": "devices.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/code/src/core/case.jl",
+          "name": "case.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/code/src/core/r2_case.jl",
+          "name": "r2_case.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/code/src/core/r3.jl",
+          "name": "r3.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/code/src/core/r3_operation.jl",
+          "name": "r3_operation.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/code/src/core/r9_inputs.jl",
+          "name": "r9_inputs.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/code/src/core/r9_pv.jl",
+          "name": "r9_pv.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/code/src/formulations/r1.jl",
+          "name": "r1.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/code/src/formulations/r2.jl",
+          "name": "r2.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/code/src/formulations/r3.jl",
+          "name": "r3.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/code/src/formulations/r9_pv.jl",
+          "name": "r9_pv.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/code/src/networks/fixed_flow_heat.jl",
+          "name": "fixed_flow_heat.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/code/src/networks/water_mass.jl",
+          "name": "water_mass.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/code/src/reporting/r2_runs.jl",
+          "name": "r2_runs.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/code/src/reporting/r3_modes.jl",
+          "name": "r3_modes.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/code/src/reporting/r3_runs.jl",
+          "name": "r3_runs.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/code/src/reporting/r9_pv.jl",
+          "name": "r9_pv.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/code/src/reporting/runs.jl",
+          "name": "runs.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/code/src/verification/r1.jl",
+          "name": "r1.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/code/src/verification/r2.jl",
+          "name": "r2.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/code/src/verification/r3.jl",
+          "name": "r3.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/code/src/verification/r9_pv.jl",
+          "name": "r9_pv.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/code/src/verification/r9_sources.jl",
+          "name": "r9_sources.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/code/tools/solvers/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/code/tools/solvers/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/input-checks.csv",
+          "name": "input-checks.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/manifest.toml",
+          "name": "manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/protocol.toml",
+          "name": "protocol.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/runs/cf_ct_clarabel_socp/evidence.toml",
+          "name": "evidence.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/runs/cf_ct_clarabel_socp/residuals-001.csv",
+          "name": "residuals-001.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/runs/cf_ct_clarabel_socp/residuals-002.csv",
+          "name": "residuals-002.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/runs/cf_ct_clarabel_socp/residuals-003.csv",
+          "name": "residuals-003.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/runs/cf_ct_clarabel_socp/residuals-004.csv",
+          "name": "residuals-004.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/runs/cf_ct_clarabel_socp/residuals-005.csv",
+          "name": "residuals-005.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/runs/cf_ct_clarabel_socp/residuals-006.csv",
+          "name": "residuals-006.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/runs/cf_ct_clarabel_socp/residuals-007.csv",
+          "name": "residuals-007.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/runs/cf_ct_clarabel_socp/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/runs/cf_ct_clarabel_socp/started.toml",
+          "name": "started.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/runs/cf_ct_gurobi_original/evidence.toml",
+          "name": "evidence.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/runs/cf_ct_gurobi_original/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/runs/cf_ct_gurobi_original/started.toml",
+          "name": "started.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/runs/cf_ct_gurobi_socp/evidence.toml",
+          "name": "evidence.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/runs/cf_ct_gurobi_socp/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/runs/cf_ct_gurobi_socp/started.toml",
+          "name": "started.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/runs/cf_vt_clarabel_socp/evidence.toml",
+          "name": "evidence.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/runs/cf_vt_clarabel_socp/residuals-001.csv",
+          "name": "residuals-001.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/runs/cf_vt_clarabel_socp/residuals-002.csv",
+          "name": "residuals-002.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/runs/cf_vt_clarabel_socp/residuals-003.csv",
+          "name": "residuals-003.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/runs/cf_vt_clarabel_socp/residuals-004.csv",
+          "name": "residuals-004.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/runs/cf_vt_clarabel_socp/residuals-005.csv",
+          "name": "residuals-005.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/runs/cf_vt_clarabel_socp/residuals-006.csv",
+          "name": "residuals-006.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/runs/cf_vt_clarabel_socp/residuals-007.csv",
+          "name": "residuals-007.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/runs/cf_vt_clarabel_socp/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/runs/cf_vt_clarabel_socp/started.toml",
+          "name": "started.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/runs/cf_vt_gurobi_original/evidence.toml",
+          "name": "evidence.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/runs/cf_vt_gurobi_original/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/runs/cf_vt_gurobi_original/started.toml",
+          "name": "started.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/runs/cf_vt_gurobi_socp/evidence.toml",
+          "name": "evidence.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/runs/cf_vt_gurobi_socp/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/runs/cf_vt_gurobi_socp/started.toml",
+          "name": "started.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/source-inputs.toml",
+          "name": "source-inputs.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/source-reported-results.toml",
+          "name": "source-reported-results.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/source-topology.toml",
+          "name": "source-topology.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-batch-20260920-v4/study-source.jl",
+          "name": "study-source.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-presolve-20260920-v1/cf_ct_original.toml",
+          "name": "cf_ct_original.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-presolve-20260920-v1/cf_ct_socp.toml",
+          "name": "cf_ct_socp.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-presolve-20260920-v1/cf_vt_original.toml",
+          "name": "cf_vt_original.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-presolve-20260920-v1/cf_vt_socp.toml",
+          "name": "cf_vt_socp.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-presolve-20260920-v1/evidence.toml",
+          "name": "evidence.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-presolve-20260920-v1/manifest.toml",
+          "name": "manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-presolve-20260920-v1/study-source.jl",
+          "name": "study-source.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-presolve-20260920-v1/summary.csv",
+          "name": "summary.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-solver-audit-20260920-v1/all-constraint-distances.csv",
+          "name": "all-constraint-distances.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-solver-audit-20260920-v1/audit-source.jl",
+          "name": "audit-source.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-solver-audit-20260920-v1/audit.toml",
+          "name": "audit.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-solver-audit-20260920-v1/auxiliary-reconstruction.csv",
+          "name": "auxiliary-reconstruction.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-vt-witness-20260920-v1/all-constraint-distances.csv",
+          "name": "all-constraint-distances.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-vt-witness-20260920-v1/audit-source.jl",
+          "name": "audit-source.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-vt-witness-20260920-v1/audit.toml",
+          "name": "audit.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-vt-witness-20260920-v1/auxiliary-reconstruction.csv",
+          "name": "auxiliary-reconstruction.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-figures-20260920-v2/F34-r9-pv.png",
+          "name": "F34-r9-pv.png",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-figures-20260920-v2/F34-r9-pv.svg",
+          "name": "F34-r9-pv.svg",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-figures-20260920-v2/attribution.csv",
+          "name": "attribution.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-figures-20260920-v2/figure-config.toml",
+          "name": "figure-config.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-figures-20260920-v2/plot_r9_pv.jl",
+          "name": "plot_r9_pv.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-figures-20260920-v2/summary.csv",
+          "name": "summary.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-figures-20260920-v2/trajectories.csv",
+          "name": "trajectories.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-report-20260920-v2/report-source.jl",
+          "name": "report-source.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-report-20260920-v2/report.toml",
+          "name": "report.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-report-20260920-v2/residuals-001.csv",
+          "name": "residuals-001.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-report-20260920-v2/residuals-002.csv",
+          "name": "residuals-002.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-report-20260920-v2/residuals-003.csv",
+          "name": "residuals-003.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-report-20260920-v2/residuals-004.csv",
+          "name": "residuals-004.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-report-20260920-v2/residuals-005.csv",
+          "name": "residuals-005.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-report-20260920-v2/residuals-006.csv",
+          "name": "residuals-006.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-report-20260920-v2/residuals-007.csv",
+          "name": "residuals-007.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-report-20260920-v2/residuals-008.csv",
+          "name": "residuals-008.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-report-20260920-v2/residuals-009.csv",
+          "name": "residuals-009.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-report-20260920-v2/residuals-010.csv",
+          "name": "residuals-010.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-report-20260920-v2/residuals-011.csv",
+          "name": "residuals-011.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-report-20260920-v2/residuals-012.csv",
+          "name": "residuals-012.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-report-20260920-v2/residuals-013.csv",
+          "name": "residuals-013.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-report-20260920-v2/summary.csv",
+          "name": "summary.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-pv-report-20260920-v2/trajectories.csv",
+          "name": "trajectories.csv",
+          "isDirectory": false
         }
       ],
       "order": 6,
@@ -71845,6 +72450,11 @@
         {
           "path": "test/r9_sources.jl",
           "name": "r9_sources.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "test/r9_pv.jl",
+          "name": "r9_pv.jl",
           "isDirectory": false
         }
       ],
@@ -74426,6 +75036,71 @@
         {
           "path": "scripts/test_r9_sources.jl",
           "name": "test_r9_sources.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/audit_r9_solver.jl",
+          "name": "audit_r9_solver.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r9_presolve.jl",
+          "name": "check_r9_presolve.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r9_pv.jl",
+          "name": "check_r9_pv.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r9_pv_figures.jl",
+          "name": "check_r9_pv_figures.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r9_pv_results.jl",
+          "name": "check_r9_pv_results.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/plot_r9_pv.jl",
+          "name": "plot_r9_pv.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r9_presolve_check.jl",
+          "name": "r9_presolve_check.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r9_pv_attribution.jl",
+          "name": "r9_pv_attribution.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r9_pv_docs.jl",
+          "name": "r9_pv_docs.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r9_pv_study.jl",
+          "name": "r9_pv_study.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/run_r9_gurobi.jl",
+          "name": "run_r9_gurobi.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/test_r9_pv.jl",
+          "name": "test_r9_pv.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/test_r9_pv_evidence.jl",
+          "name": "test_r9_pv_evidence.jl",
           "isDirectory": false
         }
       ],

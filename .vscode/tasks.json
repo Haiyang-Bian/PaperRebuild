@@ -1,5 +1,9 @@
 {
   "inputs": [
+    {"id":"r9PVAttribution","type":"promptString","description":"R9费用/热量归因目录","default":"results/summaries/r9-pv-attribution-20260920-v1"},
+    {"id":"r9PVFigures","type":"promptString","description":"R9科学图重绘新目录","default":"results/runs/r9-pv-redraw"},
+    {"id":"r9PVBatch","type":"promptString","description":"R9固定模式冻结目录；freeze须使用新目录","default":"results/runs/r9-pv-new"},
+    {"id":"r9PVReport","type":"promptString","description":"R9原值审计新报告目录","default":"results/runs/r9-pv-report-new"},
     {"id":"r9SourceReport","type":"promptString","description":"R9来源审计：创建须新目录，检查用已有报告","default":"results/summaries/r9-inputs-20260920-v1"},
     {"id":"r9SourceFigures","type":"promptString","description":"R9连接图新目录，拒绝覆盖","default":"results/runs/r9-source-redraw"},
     {"id":"r8EnergyBatch","type":"promptString","description":"R8能流对照：冻结用新目录，运行用已冻结目录","default":"results/runs/r8-energy-new"},
@@ -157,6 +161,15 @@
     }
   ],
   "tasks": [
+    {"label":"PaperRebuild: R9 PV mapping check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_pv.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 PV original-value verification","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_pv_results.jl","${input:r9PVBatch}","${input:r9PVReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 PV redraw scientific figure","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r9_pv.jl","${input:r9PVReport}","${input:r9PVAttribution}","${input:r9PVFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 PV input and model tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_pv.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 PV frozen replay tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_pv_evidence.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 PV freeze inputs","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_pv_study.jl","freeze","${input:r9PVBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 PV Clarabel run","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_pv_study.jl","run","${input:r9PVBatch}","Clarabel"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 PV Gurobi run","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/run_r9_gurobi.jl","${input:r9PVBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 PV independent report","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_pv_study.jl","report","${input:r9PVBatch}","${input:r9PVReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 source tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_sources.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 source mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_inputs.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 audit source tables to new directory","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/audit_r9_inputs.jl","write","${input:r9SourceReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},

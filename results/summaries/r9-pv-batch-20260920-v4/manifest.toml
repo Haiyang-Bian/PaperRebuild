@@ -1,0 +1,79 @@
+created_utc = "2026-09-20T15:38:04.999"
+input_sha256 = "d514c3c2e94f962feb65717da43920559b4bcbca8613d2abcef2e1ed292d51b0"
+julia_version = "1.12.6"
+origin = "synthetic"
+schema = "r9-pv-study-v1"
+science_files = ["src/components/devices.jl", "src/networks/fixed_flow_heat.jl", "src/core/case.jl", "src/formulations/r1.jl", "src/verification/r1.jl", "src/reporting/runs.jl", "src/networks/water_mass.jl", "src/core/r2_case.jl", "src/core/r3_operation.jl", "src/formulations/r2.jl", "src/reporting/r2_runs.jl", "src/verification/r2.jl", "src/core/r3.jl", "src/formulations/r3.jl", "src/verification/r3.jl", "src/reporting/r3_runs.jl", "src/reporting/r3_modes.jl", "src/core/r9_inputs.jl", "src/verification/r9_sources.jl", "src/core/r9_pv.jl", "src/verification/r9_pv.jl", "src/formulations/r9_pv.jl", "src/reporting/r9_pv.jl"]
+
+[[entries]]
+budget_sec = 600.0
+id = "cf_ct_clarabel_socp"
+mode = "CF_CT"
+physical = false
+solver = "Clarabel"
+[[entries]]
+budget_sec = 600.0
+id = "cf_vt_clarabel_socp"
+mode = "CF_VT"
+physical = false
+solver = "Clarabel"
+[[entries]]
+budget_sec = 600.0
+id = "cf_ct_gurobi_socp"
+mode = "CF_CT"
+physical = false
+solver = "Gurobi"
+[[entries]]
+budget_sec = 600.0
+id = "cf_vt_gurobi_socp"
+mode = "CF_VT"
+physical = false
+solver = "Gurobi"
+[[entries]]
+budget_sec = 600.0
+id = "cf_ct_gurobi_original"
+mode = "CF_CT"
+physical = true
+solver = "Gurobi"
+[[entries]]
+budget_sec = 600.0
+id = "cf_vt_gurobi_original"
+mode = "CF_VT"
+physical = true
+solver = "Gurobi"
+
+[files]
+"case.toml" = "d514c3c2e94f962feb65717da43920559b4bcbca8613d2abcef2e1ed292d51b0"
+"code/Manifest.toml" = "948f0f5c5a4bc8381a3d9ad413fb0f8e78ee1a3bad52606dea9b9b6f144e5450"
+"code/Project.toml" = "313f8c54dfa9a7a276832e48cc8d7e3e9b63c29aab765bf7fa541f2fb68f40a9"
+"code/src/components/devices.jl" = "01a86d8bb7bbbf0ad27f79acb099427ec18543a0a4b1b916f411f2e1a4053e2d"
+"code/src/core/case.jl" = "dd5de1049fc740706fa9005f48b60d75e088bc68faa9f6092b9b310e7aaed624"
+"code/src/core/r2_case.jl" = "11026416169278767a8900e84e5fb65f80113e405a4046a44f6b92dc983498d5"
+"code/src/core/r3.jl" = "1a29d3ac34ebf6936b9055b737167e59cf746cc6b5fb1055b8f73db2ebd26f15"
+"code/src/core/r3_operation.jl" = "0766d65a9c5772e8ac51b06142ef33a58b2a07041783ff0902756ce6c55c40b3"
+"code/src/core/r9_inputs.jl" = "be2d4335404b883d81cde43135e352ab399985ef73ee70e6537eb35c23c72cf7"
+"code/src/core/r9_pv.jl" = "8f4e6f87745ba4e9474a1884e4b358dcd5357e03e02296dced3527cfc4949785"
+"code/src/formulations/r1.jl" = "e952963689b39d28dc490066e55c7e5ca2689cd0ce78982a5397b09713466655"
+"code/src/formulations/r2.jl" = "7118267881dc2f362004c14da042ad1e208a87657144538a8e2ec6ce82619c12"
+"code/src/formulations/r3.jl" = "83e7255d85dc0a607a0cf37a232c1e329da070fb9f787f9295380e9ab8495578"
+"code/src/formulations/r9_pv.jl" = "345d74bc66c0977a01d7cd1423c01841b13f854999e7e4bf987cdd8953c64da0"
+"code/src/networks/fixed_flow_heat.jl" = "620c069f6b3a520d32ee546ec048074f9cbaa3c785f8c2e31ec7fd7bf245a83b"
+"code/src/networks/water_mass.jl" = "ef76594a25d5a310f8265137e733d811c8dbefcf0aea0b3ff8be5ed7b05bceef"
+"code/src/reporting/r2_runs.jl" = "c0174b63fb559bd87b66604e80018ab5b4a055a4dfe7c0257884ed1955ea1971"
+"code/src/reporting/r3_modes.jl" = "39db6cf0c2226628f47e171a0cdb4f547b81ff0857edc3bf100b65191b564d16"
+"code/src/reporting/r3_runs.jl" = "d58b4c7d4e89bbcae9252d04e531d964e9897f79d8c7cc277c130902f6843416"
+"code/src/reporting/r9_pv.jl" = "f106842c758d291179c246a1b62e4fbd8fc34ac684e24042d603ae282ee136d5"
+"code/src/reporting/runs.jl" = "7cb0ad0bf0bc5ea77af73e08a8261982510ce869caef95e26b7d51730a43b635"
+"code/src/verification/r1.jl" = "c81ba065cd5e6e38e37cc385d89b81e0915c26b10edb2dd0321fd91633c202d3"
+"code/src/verification/r2.jl" = "47fec7dc944afd8d2e5ac99d6885994fa7ce2465c36dfdcf6984d50466391783"
+"code/src/verification/r3.jl" = "82afeb350db18fca6ada3179f87c3d266e21f13bb922ae6841619811ca8dfddb"
+"code/src/verification/r9_pv.jl" = "739b8864ab391b219780f9f7d9d80cf699d3b82b3db79fb800026c2f6f405038"
+"code/src/verification/r9_sources.jl" = "1b65bc9360e1b1a3816800ecffb442d39336da92db4d11ed7ac055e5fcbeeb60"
+"code/tools/solvers/Manifest.toml" = "22cb571f15112ccc21408903f229e25b49ee0d59333c14d251ab4b83a8abbf54"
+"code/tools/solvers/Project.toml" = "be07a40d34ee1e44e61d0e81fc1a71161cc9ba7ef20d57fc7fbe4e70f6e3ba8b"
+"input-checks.csv" = "f32960abd751e41f6e92bc2498237f507ee40533c6444fda086c5b166b4d66f4"
+"protocol.toml" = "03dfdd404b61e6e49141b6b54a639e917756924d78737123fcb128e5f096a306"
+"source-inputs.toml" = "34155cc8723c03b06ee738139ed7041a04d86aba29fd231639cfe89602e1a9b7"
+"source-reported-results.toml" = "3ed021a50df205621e95dbd748adeaf8f2e4795bd5dc335d13fcd8a571d16c16"
+"source-topology.toml" = "3c111b9582e4e5cd719150b88e73e014889426df048fa2f55f40a95bdb1ec71f"
+"study-source.jl" = "4ec0008163fca8dee509d42c3eef12aa942fe283a78be7acea2fb91a342589ab"

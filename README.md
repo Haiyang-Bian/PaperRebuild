@@ -4,12 +4,14 @@
 主要智能体为 Codex，IDE 为 VS Code，文件视图使用 CodeGroup。
 
 **当前进度以[当前状态](docs/agent/current-state.md)和[全文覆盖清单](docs/src/reproduction-coverage.md)为准。**
-最新研究入口为[R6六方法开发结果](docs/src/r6-pilot-results.md)、
-[新日策略](docs/src/r6-evaluation.md)和[正式实验协议](docs/src/r6-study.md)。
-R6的14×500验证、六策略各1000日独立测试与24项压力测试已完成，[正式证据与F17–F19](docs/src/r6-test-results.md)已封存；
-[R7恢复子问题](docs/src/ch06-recovery.md)已与解析/LP小例对照，尚无灾前优化或嵌套算法。
-新增[灾前CHP启停块](docs/src/ch06-commitment.md)与[管内温度/显热参考](docs/src/ch06-pipe-state.md)；完整正常热网及状态连接继续推进。
-目前仍是明确标注的合成模型与方法验证，尚未完成全论文、论文规模或作者同输入数值复现。
+最新研究入口为[R9的44电节点/38热节点、24小时固定模式](docs/src/ch07-pv.md)及[结果与数值边界](docs/src/ch07-pv-results.md)。
+CF-CT与CF-VT已在预先声明的替代输入上执行；保留跨求解器状态矛盾和CF-VT新增整日热量核算失败，
+费用降低约1.062%目前只是候选差异。两者光伏均在容差内全利用，本例不支持减少弃光的结论。
+下一步先核查固定流量等价表示、尺度和整日守恒，再接入变流量模式及第7章其他场景。
+
+此前[R8稳态能流与跨时段机制](docs/src/ch06-r8-energy-results.md)、
+[R7有损共同状态规划](docs/src/ch06-lossy-flow.md)和[R6样本外统计](docs/src/r6-test-results.md)的正负结果均已保留。
+已有论文示范区节点规模的迁移，缺失参数仍为明确标注的合成替代值；尚未完成全论文或作者同输入数值复现。
 
 **以下保留R4历史阶段摘要。**热状态相容性核查的34个父调度在两组预先声明温度带下完成272条阶段记录；
 26个能在设备、热交付和费用不变时重构稳态供回水状态，其中24个同时通过原电网检查。

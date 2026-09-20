@@ -73,6 +73,8 @@ write(
 )
 include(joinpath(@__DIR__, "..", "scripts", "r9_docs.jl"))
 write(joinpath(@__DIR__, "src", "ch07-inputs-generated.md"), r9_markdown())
+include(joinpath(@__DIR__, "..", "scripts", "r9_pv_docs.jl"))
+write(joinpath(@__DIR__, "src", "ch07-pv-generated.md"), r9_pv_markdown())
 
 makedocs(;
     modules = [PaperRebuild],
@@ -243,8 +245,13 @@ makedocs(;
             "R8储热机制结果" => "ch06-r8-energy-results.md",
             "R8能流推导与符号" => "ch06-r8-energy-equations.md",
         ],
-        "第 7 章示范区迁移" =>
-            ["输入与后续顺序" => "ch07-inputs.md", "来源与核查索引" => "ch07-inputs-generated.md"],
+        "第 7 章示范区迁移" => [
+            "输入与后续顺序" => "ch07-inputs.md",
+            "来源与核查索引" => "ch07-inputs-generated.md",
+            "24小时固定模式基准" => "ch07-pv.md",
+            "固定模式采用式与符号" => "ch07-pv-generated.md",
+            "固定模式结果与数值边界" => "ch07-pv-results.md",
+        ],
         "第 2 章模型与首批实现" => [
             "模型详解" => "ch02-models.md",
             "符号与代码命名" => "ch02-naming.md",
