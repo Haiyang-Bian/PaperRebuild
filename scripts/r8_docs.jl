@@ -1,10 +1,14 @@
 using TOML
-function r8_markdown(root = normpath(joinpath(@__DIR__, "..")))
-    d=TOML.parsefile(joinpath(root, "docs/reading/ch06/r8-tradeoff.toml"))
+function r8_markdown(root = normpath(joinpath(@__DIR__, "..")); ledger = "r8-tradeoff.toml")
+    d=TOML.parsefile(joinpath(root, "docs/reading/ch06", ledger))
     io=IOBuffer()
     println(
         io,
-        "# R8：目标、恢复界与符号\n\n<!-- generated: r8-tradeoff -->\n\n",
+        "# ",
+        get(d, "title", "R8：目标、恢复界与符号"),
+        "\n\n<!-- generated: ",
+        replace(ledger, ".toml"=>""),
+        " -->\n\n",
         d["scope"],
         "。\n\n",
         d["source_note"],

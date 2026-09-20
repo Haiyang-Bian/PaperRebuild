@@ -1,5 +1,9 @@
 {
   "inputs": [
+    {"id":"r8EnergyBatch","type":"promptString","description":"R8能流对照：冻结用新目录，运行用已冻结目录","default":"results/runs/r8-energy-new"},
+    {"id":"r8EnergyReport","type":"promptString","description":"R8能流原值报告，创建不得覆盖","default":"results/summaries/r8-energy-20260920-v1"},
+    {"id":"r8EnergyAudit","type":"promptString","description":"R8能流配对和独立回放审计","default":"results/summaries/r8-energy-audit-20260920-v2"},
+    {"id":"r8EnergyFigures","type":"promptString","description":"R8能流图件，只读重绘到新目录","default":"results/runs/r8-energy-redraw"},
     {"id":"r8Batch","type":"promptString","description":"R8冻结用新目录，运行使用已冻结目录","default":"results/runs/r8-tradeoff-new"},
     {"id":"r8Report","type":"promptString","description":"R8报告：生成用新目录，核查用已有目录","default":"results/summaries/r8-tradeoff-20260920-v1"},
     {"id":"r8Audit","type":"promptString","description":"R8审计用新目录或已保存审计","default":"results/summaries/r8-tradeoff-audit-20260920-v1"},
@@ -151,6 +155,19 @@
     }
   ],
   "tasks": [
+    {"label":"R8 energy: mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r8_energy.jl"],"problemMatcher":[]},
+    {"label":"R8 energy: tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r8_energy_flow.jl"],"problemMatcher":[]},
+    {"label":"R8 energy: analytic four-hour witness","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r8_energy_cases.jl"],"problemMatcher":[]},
+    {"label":"R8 energy: protocol tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r8_energy_study.jl"],"problemMatcher":[]},
+    {"label":"R8 energy: freeze","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r8_energy_study.jl","freeze","${input:r8EnergyBatch}"],"problemMatcher":[]},
+    {"label":"R8 energy: run HiGHS","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r8_energy_study.jl","run","${input:r8EnergyBatch}","HiGHS"],"problemMatcher":[]},
+    {"label":"R8 energy: run Gurobi","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/run_r8_energy_gurobi.jl","${input:r8EnergyBatch}"],"problemMatcher":[]},
+    {"label":"R8 energy: report","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r8_energy_study.jl","report","${input:r8EnergyBatch}","${input:r8EnergyReport}"],"problemMatcher":[]},
+    {"label":"R8 energy: audit saved values","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/audit_r8_energy.jl","${input:r8EnergyReport}","${input:r8Report}","${input:r8EnergyAudit}"],"problemMatcher":[]},
+    {"label":"R8 energy: verify evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r8_energy_results.jl","${input:r8EnergyReport}","${input:r8Report}","${input:r8EnergyAudit}"],"problemMatcher":[]},
+    {"label":"R8 energy: redraw F32","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r8_energy.jl","${input:r8EnergyReport}","${input:r8EnergyAudit}","${input:r8EnergyFigures}"],"problemMatcher":[]},
+    {"label":"R8 energy: verify F32","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r8_energy_figures.jl","${input:r8EnergyReport}","${input:r8EnergyAudit}","${input:r8EnergyFigures}","docs/src/assets/r8-energy-20260920-v1/F32-r8-energy.png"],"problemMatcher":[]},
+    {"label":"R8: verify original free-model embeddings","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r8_embedding_evidence.jl","check","${input:r8Report}","results/summaries/r8-embedding-20260920-v1"],"problemMatcher":[]},
     {"label":"R8: mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r8.jl"],"problemMatcher":[]},
     {"label":"R8: tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r8_tradeoff.jl"],"problemMatcher":[]},
     {"label":"R8: protocol tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r8_study.jl"],"problemMatcher":[]},

@@ -1,0 +1,21 @@
+audit_sha256 = "f7cbaa1056484b4b6af837ecf23192b0301c9dd70d2a79b5bfe94ba7976fb551"
+figure = "F32"
+layout_size = [1760, 1440]
+origin = "synthetic"
+pixels_per_layout_unit = 1.5
+report_manifest_sha256 = "31a7b3f0b61bdd3ad83e49f4a6082648180b4733f3a3eee0c20e6606f01bcecd"
+run_ids = ["r8-energy-41647084-fe10-439c-bc86-3120b16794a3", "r8-energy-98efc3bc-5c1d-40af-8dd6-5d3d518a15c3", "r8-energy-bc1b1984-e66c-4a8e-9fbf-221affa21448", "r8-energy-721d162f-502f-4392-857a-31ffa757bbc7", "r8-energy-573d3662-f6eb-468a-bf72-e91d7e7cec57", "r8-energy-9d9a9b23-ee01-416a-96e7-858759a7e089", "r8-energy-b6eed093-ea37-473e-98c3-e2715fc8ab23", "r8-energy-bfff1dbe-659a-4bb0-920f-ea40ebebf7d7", "r8-energy-a7cf6860-85f0-49bf-bea9-7956f16ed73c", "r8-energy-faeb863d-35af-4a40-b4bf-014c1a206742", "r8-energy-4013a06b-65cd-4c8d-93d5-334f471e2cb0", "r8-energy-a5c05bb2-5fae-42e5-9aee-51382df0fa7f", "r8-f4f49375-9b0b-4ff1-aee9-510fd8703e1b", "r8-65e95b1b-b36c-4555-a609-3c7c19ceea40", "r8-08e5a0bb-eb1e-447d-a248-58d59a2ad936", "r8-ee2be879-8b78-4566-a4f5-52fd8143bebb", "r8-7af2b250-2893-47b1-991a-7681ed72c314", "r8-ae773bd0-65dd-4756-8924-2fc77cb79cf9", "r8-energy-8231bd2a-c84b-4156-9e77-ae93db1bb2e6", "r8-energy-222048e1-ecf5-44b9-ae22-ecc37f2d989e", "r8-energy-3feacb72-1262-4017-a02e-77f81dec4020", "r8-energy-e86e6cea-681b-4bf7-8583-0fb716f042e6", "r8-energy-01d58b04-e6b5-483d-b401-50012570f34e", "r8-energy-be199839-0781-4864-b5b8-f61851ece50f", "r8-884fce54-6774-4f87-a165-714fe0544f1f", "r8-97b2c440-9f45-4366-aa84-9a50054ebcd1", "r8-445e3a56-98c4-4771-bd28-e51e1695095e", "r8-167d1891-abc6-4bee-83f0-e8669a46f64d", "r8-6070d5e9-5f5c-4806-b81b-f4366b9fd7b8", "r8-619d3e39-3057-4fca-9971-d1efc4ec2b81", "r8-energy-5ff1bd70-3bc4-4002-b0a4-988eed481a35", "r8-energy-82320086-4f2c-47d5-bd34-d26afa47833e", "r8-energy-df2e3b46-3513-43d8-a0c6-2b64c8bd554d", "r8-energy-0b0423e3-4706-4f04-a35f-07127c1bf5c5", "r8-energy-76f10cd8-c5ba-4306-8d7c-0b593f8f2e3b", "r8-energy-ed9d4dda-3200-4b17-97f6-74712990e69e"]
+size_pixels = [2640, 2160]
+units = ["USD", "MWh", "MW", "W/K", "dimensionless residual ratio"]
+
+[files]
+"F32-r8-energy.png" = "dfcad9fe03ae178950824a46b9e36659b2a82cd4cb34e2fb53038441b700b734"
+"hand-witness.csv" = "30b638ff54931cdf6329d75c240296cdfb70d03d3c05c5424a0b61b653be81f2"
+"plot-source.jl" = "f41175557ae6f66f53dca0f854b572a47738fad3b11e43bbc94e2290e98d67eb"
+"residual-points.csv" = "d98eb253f2388e1b04d33559a7d802e20f6ab9be05b2344c27d971cc5165c809"
+"selected-trajectories.csv" = "c3a384009b16222f5508e9b337bdee5a5be8fdb91eedd2d712389c74cb822916"
+"summary.csv" = "cbcde4ad714d0973364822393c02410b57c2c0f193edc2c0b4a8457f2fae81a4"
+
+[selected_witnesses]
+detailed = "shift_four_ua0_detailed_economic_gurobi/event1/fault000/scenario1"
+energy = "shift_four_ua0_energy_economic_gurobi/event1/fault000/scenario1"

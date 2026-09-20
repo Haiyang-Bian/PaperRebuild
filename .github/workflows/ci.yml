@@ -104,6 +104,18 @@ jobs:
         run: julia --startup-file=no --project=. scripts/check_r7_lossy_flow_results.jl results/summaries/r7-lossy-flow-20260920-v1 results/summaries/r7-flow-planning-20260920-v2
       - name: R8 objective and symbol mapping
         run: julia --startup-file=no --project=. scripts/check_r8.jl
+      - name: R8 steady energy-flow mapping
+        run: julia --startup-file=no --project=. scripts/check_r8_energy.jl
+      - name: R8 analytic multi-hour heat witness
+        run: julia --startup-file=no --project=. scripts/test_r8_energy_cases.jl
+      - name: R8 frozen energy comparison protocol
+        run: julia --startup-file=no --project=. scripts/test_r8_energy_study.jl
+      - name: R8 energy raw evidence and independent trajectories
+        run: julia --startup-file=no --project=. scripts/check_r8_energy_results.jl results/summaries/r8-energy-20260920-v1 results/summaries/r8-tradeoff-20260920-v1 results/summaries/r8-energy-audit-20260920-v2
+      - name: R8 original free-domain embedding witnesses
+        run: julia --startup-file=no --project=. scripts/r8_embedding_evidence.jl check results/summaries/r8-tradeoff-20260920-v1 results/summaries/r8-embedding-20260920-v1
+      - name: R8 energy figure provenance
+        run: julia --startup-file=no --project=. scripts/check_r8_energy_figures.jl results/summaries/r8-energy-20260920-v1 results/summaries/r8-energy-audit-20260920-v2 results/summaries/r8-energy-figures-20260920-v2 docs/src/assets/r8-energy-20260920-v1/F32-r8-energy.png
       - name: R8 frozen protocol tests
         run: julia --startup-file=no --project=. scripts/test_r8_study.jl
       - name: R8 normal heat boundary certificate

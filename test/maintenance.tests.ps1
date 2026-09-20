@@ -75,6 +75,17 @@ $snapshot = Snapshot $fixture
 Sync-Project $fixture
 Assert ((Snapshot $fixture) -eq $snapshot) 'Sync is idempotent'
 
+# Set membership must preserve the old -cin/-ceq comparison semantics, including
+# case differences, Chinese names, and canonically equivalent Unicode accents.
+$comparisonSamples = @('src/Heat.jl', 'src/heat.jl', 'src/热网.jl', 'src/É.jl', ('src/E' + [char]0x0301 + '.jl'))
+foreach ($left in $comparisonSamples) {
+    $lookup = [Collections.Generic.HashSet[string]]::new([StringComparer]::InvariantCulture)
+    [void]$lookup.Add($left)
+    foreach ($right in $comparisonSamples) {
+        Assert ($lookup.Contains($right) -eq ($right -cin @($left))) 'membership comparison matches PowerShell'
+    }
+}
+
 # Manual groups, unknown fields, aliases, ordering and folded state survive synchronization.
 $groupPath = Safe-Path $fixture '.vscode/file-groups.json'
 $document = Read-Json $groupPath

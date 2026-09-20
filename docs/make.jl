@@ -67,6 +67,10 @@ include(joinpath(@__DIR__, "..", "scripts", "r7_lossy_flow_docs.jl"))
 write(joinpath(@__DIR__, "src", "ch06-lossy-flow-equations.md"), r7_lossy_flow_markdown())
 include(joinpath(@__DIR__, "..", "scripts", "r8_docs.jl"))
 write(joinpath(@__DIR__, "src", "ch06-r8-equations.md"), r8_markdown())
+write(
+    joinpath(@__DIR__, "src", "ch06-r8-energy-equations.md"),
+    r8_markdown(; ledger = "r8-energy-flow.toml"),
+)
 
 makedocs(;
     modules = [PaperRebuild],
@@ -233,6 +237,9 @@ makedocs(;
             "R8成本与保供比较" => "ch06-r8.md",
             "R8首批机制结果" => "ch06-r8-results.md",
             "R8目标与符号" => "ch06-r8-equations.md",
+            "R8稳态能流对照" => "ch06-r8-energy.md",
+            "R8储热机制结果" => "ch06-r8-energy-results.md",
+            "R8能流推导与符号" => "ch06-r8-energy-equations.md",
         ],
         "第 2 章模型与首批实现" => [
             "模型详解" => "ch02-models.md",

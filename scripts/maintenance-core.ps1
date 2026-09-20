@@ -165,11 +165,21 @@ function Desired-Groups([string]$Root, $Document) {
             $groups.Add($group)
         } else { $group = $existing[0] }
         $wanted = @($paths | Where-Object { $_ -cmatch $definition.pattern })
+        # Match PowerShell's case-sensitive invariant-culture string comparison.
+        # A set avoids rescanning every historical evidence file for each member.
+        $wantedPaths = [Collections.Generic.HashSet[string]]::new([StringComparer]::InvariantCulture)
+        foreach ($path in $wanted) { [void]$wantedPaths.Add($path) }
+        $memberPaths = [Collections.Generic.HashSet[string]]::new([StringComparer]::InvariantCulture)
         $members = [Collections.Generic.List[object]]::new()
         # Keep aliases, ordering and unknown metadata for surviving members.
-        foreach ($file in @($group.files)) { if ($file.path -cin $wanted) { $members.Add($file) } }
+        foreach ($file in @($group.files)) {
+            if ($wantedPaths.Contains($file.path)) {
+                $members.Add($file)
+                [void]$memberPaths.Add($file.path)
+            }
+        }
         foreach ($path in $wanted) {
-            if (@($members | Where-Object { $_.path -ceq $path }).Count -eq 0) {
+            if ($memberPaths.Add($path)) {
                 $members.Add([ordered]@{ path = $path; name = ($path.Split('/')[-1]); isDirectory = $false })
             }
         }

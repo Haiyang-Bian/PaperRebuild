@@ -11250,6 +11250,26 @@
           "path": "docs/src/ch06-r8.md",
           "name": "ch06-r8.md",
           "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r8-energy-20260920-v1/F32-r8-energy.png",
+          "name": "F32-r8-energy.png",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch06-r8-energy-equations.md",
+          "name": "ch06-r8-energy-equations.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch06-r8-energy-results.md",
+          "name": "ch06-r8-energy-results.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch06-r8-energy.md",
+          "name": "ch06-r8-energy.md",
+          "isDirectory": false
         }
       ],
       "order": 1,
@@ -11560,6 +11580,11 @@
         {
           "path": "docs/agent/tasks/2026-09-20-r8-tradeoff.md",
           "name": "2026-09-20-r8-tradeoff.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/agent/tasks/2026-09-20-r8-energy.md",
+          "name": "2026-09-20-r8-energy.md",
           "isDirectory": false
         }
       ],
@@ -12477,6 +12502,31 @@
           "path": "src/verification/r8_tradeoff.jl",
           "name": "r8_tradeoff.jl",
           "isDirectory": false
+        },
+        {
+          "path": "src/algorithms/r8_energy_flow.jl",
+          "name": "r8_energy_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/core/r8_energy_flow.jl",
+          "name": "r8_energy_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/formulations/r8_energy_flow.jl",
+          "name": "r8_energy_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/reporting/r8_energy_flow.jl",
+          "name": "r8_energy_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/verification/r8_energy_flow.jl",
+          "name": "r8_energy_flow.jl",
+          "isDirectory": false
         }
       ],
       "order": 3,
@@ -13128,6 +13178,11 @@
           "path": "configs/r8/tradeoff-study.toml",
           "name": "tradeoff-study.toml",
           "isDirectory": false
+        },
+        {
+          "path": "configs/r8/energy-flow-study.toml",
+          "name": "energy-flow-study.toml",
+          "isDirectory": false
         }
       ],
       "order": 4,
@@ -13488,6 +13543,11 @@
         {
           "path": "docs/reading/ch06/r8-tradeoff.toml",
           "name": "r8-tradeoff.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch06/r8-energy-flow.toml",
+          "name": "r8-energy-flow.toml",
           "isDirectory": false
         }
       ],
@@ -70255,6 +70315,1081 @@
           "path": "results/summaries/r8-tradeoff-figures-20260920-v3/summary.csv",
           "name": "summary.csv",
           "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-embedding-20260920-v1/manifest.toml",
+          "name": "manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-embedding-20260920-v1/replay-source.jl",
+          "name": "replay-source.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-embedding-20260920-v1/summary.csv",
+          "name": "summary.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-embedding-20260920-v1/v1/legacy_all_joint_continuous_threshold_L0p4_gurobi.toml",
+          "name": "legacy_all_joint_continuous_threshold_L0p4_gurobi.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-embedding-20260920-v1/v1/probe-source.jl",
+          "name": "probe-source.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-embedding-20260920-v1/v1/protocol.toml",
+          "name": "protocol.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-embedding-20260920-v1/v1/tie_three_all_joint_continuous_economic_L0p4_gurobi.toml",
+          "name": "tie_three_all_joint_continuous_economic_L0p4_gurobi.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-embedding-20260920-v1/v1/tie_three_all_joint_continuous_penalty_L0p4_gurobi.toml",
+          "name": "tie_three_all_joint_continuous_penalty_L0p4_gurobi.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-embedding-20260920-v1/v1/tie_three_all_joint_continuous_threshold_L0p4_gurobi.toml",
+          "name": "tie_three_all_joint_continuous_threshold_L0p4_gurobi.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-embedding-20260920-v1/v2/legacy_all_joint_continuous_threshold_L0p4_gurobi.toml",
+          "name": "legacy_all_joint_continuous_threshold_L0p4_gurobi.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-embedding-20260920-v1/v2/probe-source.jl",
+          "name": "probe-source.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-embedding-20260920-v1/v2/protocol.toml",
+          "name": "protocol.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-embedding-20260920-v1/v2/tie_three_all_joint_continuous_economic_L0p4_gurobi.toml",
+          "name": "tie_three_all_joint_continuous_economic_L0p4_gurobi.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-embedding-20260920-v1/v2/tie_three_all_joint_continuous_penalty_L0p4_gurobi.toml",
+          "name": "tie_three_all_joint_continuous_penalty_L0p4_gurobi.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-embedding-20260920-v1/v2/tie_three_all_joint_continuous_threshold_L0p4_gurobi.toml",
+          "name": "tie_three_all_joint_continuous_threshold_L0p4_gurobi.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/frozen-module.jl",
+          "name": "frozen-module.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/algorithms/r7_adversary.jl",
+          "name": "r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/algorithms/r7_flow_planning.jl",
+          "name": "r7_flow_planning.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/algorithms/r7_linked_planning.jl",
+          "name": "r7_linked_planning.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/algorithms/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/algorithms/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/algorithms/r7_planning.jl",
+          "name": "r7_planning.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/algorithms/r7_transport.jl",
+          "name": "r7_transport.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/algorithms/r8_energy_flow.jl",
+          "name": "r8_energy_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/algorithms/r8_tradeoff.jl",
+          "name": "r8_tradeoff.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/components/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/core/r7_adversary.jl",
+          "name": "r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/core/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/core/r7_flow_planning.jl",
+          "name": "r7_flow_planning.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/core/r7_linked_planning.jl",
+          "name": "r7_linked_planning.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/core/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/core/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/core/r7_planning.jl",
+          "name": "r7_planning.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/core/r7_transport.jl",
+          "name": "r7_transport.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/core/r8_energy_flow.jl",
+          "name": "r8_energy_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/core/r8_tradeoff.jl",
+          "name": "r8_tradeoff.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/formulations/r7_adversary.jl",
+          "name": "r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/formulations/r7_flow_planning.jl",
+          "name": "r7_flow_planning.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/formulations/r7_linked_planning.jl",
+          "name": "r7_linked_planning.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/formulations/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/formulations/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/formulations/r7_planning.jl",
+          "name": "r7_planning.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/formulations/r7_transport.jl",
+          "name": "r7_transport.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/formulations/r8_energy_flow.jl",
+          "name": "r8_energy_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/formulations/r8_tradeoff.jl",
+          "name": "r8_tradeoff.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/networks/fixed_flow_heat.jl",
+          "name": "fixed_flow_heat.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/networks/r7_linked_state.jl",
+          "name": "r7_linked_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/networks/r7_lossy_mass.jl",
+          "name": "r7_lossy_mass.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/networks/r7_mass_overlap.jl",
+          "name": "r7_mass_overlap.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/networks/r7_normal_transport.jl",
+          "name": "r7_normal_transport.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/reporting/r7_adversary.jl",
+          "name": "r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/reporting/r7_flow_planning.jl",
+          "name": "r7_flow_planning.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/reporting/r7_linked_planning.jl",
+          "name": "r7_linked_planning.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/reporting/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/reporting/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/reporting/r7_planning.jl",
+          "name": "r7_planning.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/reporting/r7_transport.jl",
+          "name": "r7_transport.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/reporting/r8_energy_flow.jl",
+          "name": "r8_energy_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/reporting/r8_tradeoff.jl",
+          "name": "r8_tradeoff.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/verification/r7_adversary.jl",
+          "name": "r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/verification/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/verification/r7_flow_planning.jl",
+          "name": "r7_flow_planning.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/verification/r7_linked_planning.jl",
+          "name": "r7_linked_planning.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/verification/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/verification/r7_normal_flow.jl",
+          "name": "r7_normal_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/verification/r7_planning.jl",
+          "name": "r7_planning.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/verification/r7_transport.jl",
+          "name": "r7_transport.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/verification/r8_energy_flow.jl",
+          "name": "r8_energy_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/src/verification/r8_tradeoff.jl",
+          "name": "r8_tradeoff.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/tools/solvers/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/code/tools/solvers/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/environment.toml",
+          "name": "environment.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/freeze.toml",
+          "name": "freeze.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/hand-witness.csv",
+          "name": "hand-witness.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/inputs.toml",
+          "name": "inputs.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/r8_archive.jl",
+          "name": "r8_archive.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/r8_cases.jl",
+          "name": "r8_cases.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/r8_energy_cases.jl",
+          "name": "r8_energy_cases.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/r8_energy_study.jl",
+          "name": "r8_energy_study.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/r8_tradeoff_study.jl",
+          "name": "r8_tradeoff_study.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/legacy_ua10_energy_economic_gurobi/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/legacy_ua10_energy_economic_gurobi/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/legacy_ua10_energy_economic_highs/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/legacy_ua10_energy_economic_highs/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/legacy_ua10_energy_penalty_gurobi/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/legacy_ua10_energy_penalty_gurobi/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/legacy_ua10_energy_penalty_highs/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/legacy_ua10_energy_penalty_highs/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/legacy_ua10_energy_threshold_gurobi/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/legacy_ua10_energy_threshold_gurobi/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/legacy_ua10_energy_threshold_highs/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/legacy_ua10_energy_threshold_highs/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua0_detailed_economic_gurobi/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua0_detailed_economic_gurobi/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua0_detailed_economic_highs/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua0_detailed_economic_highs/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua0_detailed_penalty_gurobi/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua0_detailed_penalty_gurobi/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua0_detailed_penalty_highs/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua0_detailed_penalty_highs/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua0_detailed_threshold_gurobi/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua0_detailed_threshold_gurobi/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua0_detailed_threshold_highs/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua0_detailed_threshold_highs/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua0_energy_economic_gurobi/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua0_energy_economic_gurobi/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua0_energy_economic_highs/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua0_energy_economic_highs/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua0_energy_penalty_gurobi/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua0_energy_penalty_gurobi/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua0_energy_penalty_highs/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua0_energy_penalty_highs/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua0_energy_threshold_gurobi/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua0_energy_threshold_gurobi/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua0_energy_threshold_highs/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua0_energy_threshold_highs/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua10_detailed_economic_gurobi/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua10_detailed_economic_gurobi/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua10_detailed_economic_highs/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua10_detailed_economic_highs/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua10_detailed_penalty_gurobi/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua10_detailed_penalty_gurobi/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua10_detailed_penalty_highs/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua10_detailed_penalty_highs/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua10_detailed_threshold_gurobi/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua10_detailed_threshold_gurobi/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua10_detailed_threshold_highs/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua10_detailed_threshold_highs/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua10_energy_economic_gurobi/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua10_energy_economic_gurobi/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua10_energy_economic_highs/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua10_energy_economic_highs/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua10_energy_penalty_gurobi/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua10_energy_penalty_gurobi/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua10_energy_penalty_highs/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua10_energy_penalty_highs/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua10_energy_threshold_gurobi/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua10_energy_threshold_gurobi/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua10_energy_threshold_highs/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/shift_four_ua10_energy_threshold_highs/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/tie_three_ua10_energy_economic_gurobi/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/tie_three_ua10_energy_economic_gurobi/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/tie_three_ua10_energy_economic_highs/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/tie_three_ua10_energy_economic_highs/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/tie_three_ua10_energy_penalty_gurobi/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/tie_three_ua10_energy_penalty_gurobi/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/tie_three_ua10_energy_penalty_highs/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/tie_three_ua10_energy_penalty_highs/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/tie_three_ua10_energy_threshold_gurobi/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/tie_three_ua10_energy_threshold_gurobi/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/tie_three_ua10_energy_threshold_highs/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/records/tie_three_ua10_energy_threshold_highs/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/report-hashes.toml",
+          "name": "report-hashes.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/rule.toml",
+          "name": "rule.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/run_r8_energy_gurobi.jl",
+          "name": "run_r8_energy_gurobi.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-20260920-v1/summary.csv",
+          "name": "summary.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-audit-20260920-v2/audit-source.jl",
+          "name": "audit-source.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-audit-20260920-v2/audit.toml",
+          "name": "audit.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-audit-20260920-v2/boundary-certificates.csv",
+          "name": "boundary-certificates.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-audit-20260920-v2/model-comparisons.csv",
+          "name": "model-comparisons.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-audit-20260920-v2/residuals-001.csv",
+          "name": "residuals-001.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-audit-20260920-v2/residuals-002.csv",
+          "name": "residuals-002.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-audit-20260920-v2/residuals-003.csv",
+          "name": "residuals-003.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-audit-20260920-v2/residuals-004.csv",
+          "name": "residuals-004.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-audit-20260920-v2/residuals-005.csv",
+          "name": "residuals-005.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-audit-20260920-v2/residuals-006.csv",
+          "name": "residuals-006.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-audit-20260920-v2/residuals-007.csv",
+          "name": "residuals-007.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-audit-20260920-v2/residuals-008.csv",
+          "name": "residuals-008.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-audit-20260920-v2/residuals-009.csv",
+          "name": "residuals-009.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-audit-20260920-v2/residuals-010.csv",
+          "name": "residuals-010.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-audit-20260920-v2/residuals-011.csv",
+          "name": "residuals-011.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-audit-20260920-v2/residuals-012.csv",
+          "name": "residuals-012.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-audit-20260920-v2/residuals-013.csv",
+          "name": "residuals-013.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-audit-20260920-v2/residuals-014.csv",
+          "name": "residuals-014.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-audit-20260920-v2/residuals-015.csv",
+          "name": "residuals-015.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-audit-20260920-v2/residuals-016.csv",
+          "name": "residuals-016.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-audit-20260920-v2/residuals-017.csv",
+          "name": "residuals-017.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-audit-20260920-v2/residuals-018.csv",
+          "name": "residuals-018.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-audit-20260920-v2/residuals-019.csv",
+          "name": "residuals-019.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-audit-20260920-v2/residuals-020.csv",
+          "name": "residuals-020.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-audit-20260920-v2/residuals-021.csv",
+          "name": "residuals-021.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-audit-20260920-v2/residuals-022.csv",
+          "name": "residuals-022.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-audit-20260920-v2/residuals-023.csv",
+          "name": "residuals-023.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-audit-20260920-v2/residuals-024.csv",
+          "name": "residuals-024.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-audit-20260920-v2/residuals-025.csv",
+          "name": "residuals-025.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-audit-20260920-v2/solver-pairs.csv",
+          "name": "solver-pairs.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-audit-20260920-v2/trajectories.csv",
+          "name": "trajectories.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-figures-20260920-v1/F32-r8-energy.png",
+          "name": "F32-r8-energy.png",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-figures-20260920-v1/figure.toml",
+          "name": "figure.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-figures-20260920-v1/hand-witness.csv",
+          "name": "hand-witness.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-figures-20260920-v1/plot-source.jl",
+          "name": "plot-source.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-figures-20260920-v1/residual-points.csv",
+          "name": "residual-points.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-figures-20260920-v1/selected-trajectories.csv",
+          "name": "selected-trajectories.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-figures-20260920-v1/summary.csv",
+          "name": "summary.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-figures-20260920-v2/F32-r8-energy.png",
+          "name": "F32-r8-energy.png",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-figures-20260920-v2/figure.toml",
+          "name": "figure.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-figures-20260920-v2/hand-witness.csv",
+          "name": "hand-witness.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-figures-20260920-v2/plot-source.jl",
+          "name": "plot-source.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-figures-20260920-v2/residual-points.csv",
+          "name": "residual-points.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-figures-20260920-v2/selected-trajectories.csv",
+          "name": "selected-trajectories.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r8-energy-figures-20260920-v2/summary.csv",
+          "name": "summary.csv",
+          "isDirectory": false
         }
       ],
       "order": 6,
@@ -70580,6 +71715,11 @@
         {
           "path": "test/r8_tradeoff.jl",
           "name": "r8_tradeoff.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "test/r8_energy_flow.jl",
+          "name": "r8_energy_flow.jl",
           "isDirectory": false
         }
       ],
@@ -73061,6 +74201,66 @@
         {
           "path": "scripts/test_r8_tradeoff.jl",
           "name": "test_r8_tradeoff.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/audit_r8_energy.jl",
+          "name": "audit_r8_energy.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r8_energy.jl",
+          "name": "check_r8_energy.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r8_energy_figures.jl",
+          "name": "check_r8_energy_figures.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r8_energy_results.jl",
+          "name": "check_r8_energy_results.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/plot_r8_energy.jl",
+          "name": "plot_r8_energy.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r8_embedding_evidence.jl",
+          "name": "r8_embedding_evidence.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r8_energy_cases.jl",
+          "name": "r8_energy_cases.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r8_energy_study.jl",
+          "name": "r8_energy_study.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/run_r8_energy_gurobi.jl",
+          "name": "run_r8_energy_gurobi.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/test_r8_energy_cases.jl",
+          "name": "test_r8_energy_cases.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/test_r8_energy_flow.jl",
+          "name": "test_r8_energy_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/test_r8_energy_study.jl",
+          "name": "test_r8_energy_study.jl",
           "isDirectory": false
         }
       ],
