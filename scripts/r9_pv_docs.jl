@@ -64,7 +64,28 @@ function r9_pv_markdown(root = normpath(joinpath(@__DIR__, "..")))
     )
     println(
         io,
-        "\n连续流量推导见[输运与周期记忆](ch07-flow.md)。R9-V1–V4对应`test/r9_flow.jl`；尚无变流量优化结果。",
+        "\n连续流量推导见[输运与周期记忆](ch07-flow.md)。R9-V1–V4对应`test/r9_flow.jl`，R9-V5对应`test/r9_heat_memory.jl`；[直接参考](ch07-flow-results.md)有三项合格候选，CF-VT字面版本仍失败，PG尚未迁移。",
     )
+    flow=TOML.parsefile(joinpath(root, "docs/reading/ch07/flow.toml"))
+    println(
+        io,
+        "\n## 连续流量与记忆符号\n\n| 稳定ID | 原形 | 含义 | 单位 | Julia映射 |\n|---|---|---|---|---|",
+    )
+    for s in flow["symbols"]
+        println(
+            io,
+            "| `",
+            s["id"],
+            "` | ``",
+            s["latex"],
+            "`` | ",
+            s["meaning"],
+            " | ",
+            s["unit"],
+            " | `",
+            s["code"],
+            "` |",
+        )
+    end
     return String(take!(io))
 end

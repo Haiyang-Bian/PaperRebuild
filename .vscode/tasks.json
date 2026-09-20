@@ -1,5 +1,7 @@
 {
   "inputs": [
+    {"id":"r9FlowReferenceOutput","type":"promptString","description":"R9四模式直接参考新目录，不覆盖历史运行","default":"results/runs/r9-flow-reference-new"},
+    {"id":"r9FlowReferenceFigures","type":"promptString","description":"R9 F36重绘的新目录","default":"results/runs/r9-flow-reference-redraw"},
     {"id":"r9FlowProbeOutput","type":"promptString","description":"R9开发探针新目录，不覆盖原结果","default":"results/runs/r9-flow-probe-new"},
     {"id":"r9NumericsBatch","type":"promptString","description":"R9数值批次；freeze须使用新目录，其他任务选择已有目录","default":"results/summaries/r9-numerics-20260921-v2"},
     {"id":"r9NumericsReport","type":"promptString","description":"R9数值报告；生成须新目录，检查使用已有目录","default":"results/summaries/r9-numerics-report-20260921-v1"},
@@ -165,6 +167,9 @@
     }
   ],
   "tasks": [
+    {"label":"PaperRebuild: R9 four-mode direct reference","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_flow_reference.jl","${input:r9FlowReferenceOutput}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 flow reference readback","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_flow_evidence.jl","check","results/summaries/r9-flow-reference-20260921-v2"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 flow reference redraw F36","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r9_flow_reference.jl","results/summaries/r9-flow-reference-20260921-v2","${input:r9FlowReferenceFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 native start tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/test_r9_gurobi_start.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 flow diagnostic evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_flow_diagnostics.jl","check","results/summaries/r9-flow-diagnostics-20260921-v2"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 physical flow probe","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/r9_flow_probe.jl","${input:r9FlowProbeOutput}","VF_VT","true","120","local","drop_implied_cones"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},

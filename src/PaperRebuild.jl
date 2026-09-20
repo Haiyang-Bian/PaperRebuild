@@ -351,7 +351,7 @@ include("networks/r9_short_pipe.jl")
 include("formulations/r9_flow.jl")
 include("verification/r9_flow.jl")
 export r9_transport_coefficients, audit_r9_flow_domain, build_r9_flow_model
-export r9_flow_terminal_rows
+export r9_flow_terminal_rows, r9_heat_memory_balance
 
 """
     hello(who::String)

@@ -25,11 +25,15 @@ isfile(joinpath(root, numerics["test_file"])) || error("数值测试缺失")
 flow=TOML.parsefile(joinpath(root, "docs/reading/ch07/flow.toml"))
 flow["schema"]=="r9-flow-adoption-v1" && !flow["original_input_reproduction"] ||
     error("变流量解释身份错误")
-Set(x["id"] for x in flow["equations"])==Set("R9-V$i" for i in 1:4) || error("变流量推导缺失")
+Set(x["id"] for x in flow["equations"])==Set("R9-V$i" for i in 1:5) || error("变流量推导缺失")
 fpage=read(joinpath(root, "docs/src/ch07-flow.md"), String)
 for row in flow["equations"]
     isdefined(PaperRebuild, Symbol(row["api"])) || error("变流量API缺失")
     occursin("\\tag{"*row["id"]*"}", fpage) || error("变流量编号公式缺失")
+    if haskey(row, "test_file")
+        occursin(row["test"], read(joinpath(root, row["test_file"]), String)) ||
+            error("公式测试缺失")
+    end
 end
 occursin(flow["test"], read(joinpath(root, flow["test_file"]), String)) ||
     error("变流量测试映射缺失")

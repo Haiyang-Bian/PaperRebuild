@@ -151,6 +151,7 @@
 - `configs/r7/transport-study.toml`
 - `configs/r8/energy-flow-study.toml`
 - `configs/r8/tradeoff-study.toml`
+- `configs/r9/flow-reference.toml`
 - `configs/r9/pv-protocol.toml`
 - `data/processed/README.md`
 - `data/raw/README.md`
@@ -216,6 +217,7 @@
 - `docs/agent/tasks/2026-09-20-r8-energy.md`
 - `docs/agent/tasks/2026-09-20-r8-tradeoff.md`
 - `docs/agent/tasks/2026-09-20-r9-inputs.md`
+- `docs/agent/tasks/2026-09-21-r9-flow-reference.md`
 - `docs/agent/tasks/2026-09-21-r9-flow.md`
 - `docs/agent/tasks/2026-09-21-r9-numerics.md`
 - `docs/agent/tasks/2026-09-21-r9-pv.md`
@@ -602,6 +604,7 @@
 - `docs/src/assets/r7-transport-20260920-v1/F25-transport-redispatch.png`
 - `docs/src/assets/r8-energy-20260920-v1/F32-r8-energy.png`
 - `docs/src/assets/r8-tradeoff-20260920-v1/F31-r8-tradeoff.png`
+- `docs/src/assets/r9-flow/F36-flow-reference.png`
 - `docs/src/assets/r9-inputs-20260920-v1/F33-r9-topology.png`
 - `docs/src/assets/r9-numerics-20260921-v1/F35-r9-numerics.png`
 - `docs/src/assets/r9-pv-20260920-v2/F34-r9-pv.png`
@@ -727,6 +730,7 @@
 - `docs/src/ch06-thermal.md`
 - `docs/src/ch06-transport-equations.md`
 - `docs/src/ch06-transport.md`
+- `docs/src/ch07-flow-results.md`
 - `docs/src/ch07-flow.md`
 - `docs/src/ch07-inputs-generated.md`
 - `docs/src/ch07-inputs.md`
@@ -1429,6 +1433,22 @@
 - `results/summaries/r9-flow-diagnostics-20260921-v2/artifact-hashes.toml`
 - `results/summaries/r9-flow-diagnostics-20260921-v2/index.toml`
 - `results/summaries/r9-flow-diagnostics-20260921-v2/probes.csv`
+- `results/summaries/r9-flow-figures-20260921-v1/F36-flow-reference.pdf`
+- `results/summaries/r9-flow-figures-20260921-v1/F36-flow-reference.png`
+- `results/summaries/r9-flow-figures-20260921-v1/figure.toml`
+- `results/summaries/r9-flow-figures-20260921-v1/iterations.csv`
+- `results/summaries/r9-flow-figures-20260921-v1/memory.csv`
+- `results/summaries/r9-flow-figures-20260921-v1/plot-source.jl`
+- `results/summaries/r9-flow-figures-20260921-v1/ratios.csv`
+- `results/summaries/r9-flow-figures-20260921-v1/summary.csv`
+- `results/summaries/r9-flow-figures-20260921-v1/trajectories.csv`
+- `results/summaries/r9-flow-reference-20260921-v2/artifact-hashes.toml`
+- `results/summaries/r9-flow-reference-20260921-v2/index.toml`
+- `results/summaries/r9-flow-reference-20260921-v2/iterations.csv`
+- `results/summaries/r9-flow-reference-20260921-v2/memory.csv`
+- `results/summaries/r9-flow-reference-20260921-v2/ratios.csv`
+- `results/summaries/r9-flow-reference-20260921-v2/summary.csv`
+- `results/summaries/r9-flow-reference-20260921-v2/trajectories.csv`
 - `results/summaries/r9-input-figures-20260920-v1/F33-r9-topology.png`
 - `results/summaries/r9-input-figures-20260920-v1/F33-r9-topology.svg`
 - `results/summaries/r9-input-figures-20260920-v1/edges.csv`
@@ -1815,6 +1835,7 @@
 - `scripts/plot_r7_transport.jl`
 - `scripts/plot_r8_energy.jl`
 - `scripts/plot_r8_tradeoff.jl`
+- `scripts/plot_r9_flow_reference.jl`
 - `scripts/plot_r9_inputs.jl`
 - `scripts/plot_r9_numerics.jl`
 - `scripts/plot_r9_pv.jl`
@@ -1922,7 +1943,9 @@
 - `scripts/r8_tradeoff_study.jl`
 - `scripts/r9_docs.jl`
 - `scripts/r9_flow_diagnostics.jl`
+- `scripts/r9_flow_evidence.jl`
 - `scripts/r9_flow_probe.jl`
+- `scripts/r9_flow_reference.jl`
 - `scripts/r9_numerics_study.jl`
 - `scripts/r9_presolve_check.jl`
 - `scripts/r9_pv_attribution.jl`
@@ -2349,6 +2372,7 @@
 - `test/r8_energy_flow.jl`
 - `test/r8_tradeoff.jl`
 - `test/r9_flow.jl`
+- `test/r9_heat_memory.jl`
 - `test/r9_pv.jl`
 - `test/r9_reduced.jl`
 - `test/r9_sources.jl`
@@ -2458,6 +2482,7 @@
 - `results/summaries/r8-tradeoff-20260920-v1/code/`
 - `results/summaries/r8-tradeoff-20260920-v1/records/`
 - `results/summaries/r9-flow-diagnostics-20260921-v2/runs/`
+- `results/summaries/r9-flow-reference-20260921-v2/objects/`
 - `results/summaries/r9-inputs-20260920-v1/code/`
 - `results/summaries/r9-numerics-20260921-v2/code/`
 - `results/summaries/r9-numerics-20260921-v2/runs/`

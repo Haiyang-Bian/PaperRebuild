@@ -89,10 +89,12 @@ fixed = build_r9_flow_model(case; mode=:VF_VT, flow_schedule=given_flow)
 julia +1.12.6 --startup-file=no --project=. scripts/test_r9_flow.jl
 ```
 
-下一步先核验连续变流量模型的数值表现，冻结一致的终端解释，再执行同输入四模式对照。
-在此之前，不将固定流量的0.381%推广成变流量收益，也不据此解释作者全部收益。
+后续[四模式直接参考](ch07-flow-results.md)使用同一字面终端、完整历史和原电网关系。
+三项候选通过，CF-VT仍未返回候选；不把局部参考当作者PG规模迁移或全局最优证明。
 
 ## 5. 开发探针说明了什么？
+
+本节保留第一批五项的原判定；后续边界与预处理对照见[新结果](ch07-flow-results.md)。
 
 五次预先冻结输入与源码的VF-VT原物理直接参考探针，均使用120秒预算：
 
@@ -163,4 +165,27 @@ r9_transport_coefficients
 audit_r9_flow_domain
 build_r9_flow_model
 r9_flow_terminal_rows
+r9_heat_memory_balance
 ```
+
+## 6. 热量记忆账本
+
+将式（R9-V2）乘以当前管流并按时间求和，中间时段入口温度相消：
+
+```math
+\underbrace{\frac{c_p\Delta t_h}{10^6}\sum_t m_{p,t}
+(\tau^{\mathrm{in}}_{p,t}-\tau^{\mathrm{out}}_{p,t})}_{Q^{\mathrm{net}}_p}
+=\underbrace{\frac{c_p\Delta t_h}{10^6}\sum_t m_{p,t}
+(\tau^{\star}_{p,t}-\tau^{\mathrm{out}}_{p,t})}_{Q^{\mathrm{loss}}_p}
++\underbrace{\frac{c_p M_p}{3.6\times10^9}
+(\tau^{\mathrm{in}}_{p,T}-\tau^{\mathrm{in}}_{p,0})}_{\Delta E^{\mathrm{mem}}_p}.
+\tag{R9-V5}
+```
+
+各项单位为MWh，供回水分别计算。``\tau^\star``由独立累计质量回放重算；
+``\Delta E^{\mathrm{mem}}``是当前单步WMM的离散记忆代理，不等于连续管内温度场的完整库存。
+只有终端记忆恢复后，管道净热量才可直接解释成这个采用模型内的周期损耗。
+恒等式成立本身不能证明设备、电网、温区或终端条件成立。
+
+`test/r9_heat_memory.jl`包括无损解析降温、变流量、时间单位、缺失/非法输入及独立回放检查。
+最新诊断量化了末端降温导致的3.878771 MWh记忆消耗；此结果不计入周期收益。

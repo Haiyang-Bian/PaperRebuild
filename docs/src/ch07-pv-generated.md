@@ -22,6 +22,7 @@
 | R9-V2 | 保留本步与前步入口温度的连续流量热输运；不取整时延 | `derived_from_checked_WMM` | [`build_r9_flow_model`](@ref) |
 | R9-V3 | 损耗衰减对本步和前步流量的依赖及解析导数 | `derived_from_checked_WMM` | [`r9_transport_coefficients`](@ref) |
 | R9-V4 | 同时恢复入口温度与管流记忆；只认证采用WMM离散状态 | `project_periodic_boundary` | [`r9_flow_terminal_rows`](@ref) |
+| R9-V5 | 管道净热量=输运损耗+入口温度记忆变化；不把离散代理当连续管内库存 | `derived_single_step_WMM_identity` | [`r9_heat_memory_balance`](@ref) |
 
 ## 符号
 
@@ -41,9 +42,25 @@
 | `r9.loss_constant` | ``C_p=\epsilon_pL_p/(2c_p)`` | 单步WMM损耗指数的质量流量系数 | kg/s | `C` |
 | `r9.inverse_relative` | ``u_{p,t}=m_p^{ref}/m_{p,t}`` | 无量纲相对倒数流量，仅作为精确等式辅助量 | 1 | `r9_inverse_relative` |
 | `r9.attenuation` | ``a_{p,t}`` | 相对于环境温差的衰减系数 | 1 | `attenuation` |
+| `r9.net_heat` | ``Q_p^{\mathrm{net}}`` | 单方向管道全时域入口减出口净热量 | MWh | `net_MWh` |
+| `r9.attenuation_heat` | ``Q_p^{\mathrm{loss}}`` | 独立回放中间温度减实际出口温度的损耗项；须另外检查输运方程 | MWh | `attenuation_MWh` |
+| `r9.memory_energy` | ``\Delta E_p^{\mathrm{mem}}`` | 入口温度末初差对应的单步WMM记忆能量变化，不是连续温度场库存 | MWh | `memory_change_MWh` |
 
 测试：`test/r9_pv.jl` / **R9-P1:P6 44/38 periodic input and fixed-mode model**。冻结重读及求解验证另见`scripts/test_r9_pv_evidence.jl`。
 
 数值推导见[前向与终端解释](ch07-numerics.md)。R9-N1–N6对应`test/r9_reduced.jl`、`scripts/check_r9_affine_certificate.jl`及`scripts/check_r9_numerics_results.jl`。
 
-连续流量推导见[输运与周期记忆](ch07-flow.md)。R9-V1–V4对应`test/r9_flow.jl`；尚无变流量优化结果。
+连续流量推导见[输运与周期记忆](ch07-flow.md)。R9-V1–V4对应`test/r9_flow.jl`，R9-V5对应`test/r9_heat_memory.jl`；[直接参考](ch07-flow-results.md)有三项合格候选，CF-VT字面版本仍失败，PG尚未迁移。
+
+## 连续流量与记忆符号
+
+| 稳定ID | 原形 | 含义 | 单位 | Julia映射 |
+|---|---|---|---|---|
+| `r9.pipe_mass` | ``M_p=\rho A_pL_p`` | 管内水质量 | kg | `mass_kg` |
+| `r9.mass_per_step` | ``q_p=M_p/\Delta t_s`` | 管内质量与时间步的比值，须小于本步与前步流量 | kg/s | `q` |
+| `r9.loss_constant` | ``C_p=\epsilon_pL_p/(2c_p)`` | 单步WMM损耗指数的质量流量系数 | kg/s | `C` |
+| `r9.inverse_relative` | ``u_{p,t}=m_p^{ref}/m_{p,t}`` | 无量纲相对倒数流量，仅作为精确等式辅助量 | 1 | `r9_inverse_relative` |
+| `r9.attenuation` | ``a_{p,t}`` | 相对于环境温差的衰减系数 | 1 | `attenuation` |
+| `r9.net_heat` | ``Q_p^{\mathrm{net}}`` | 单方向管道全时域入口减出口净热量 | MWh | `net_MWh` |
+| `r9.attenuation_heat` | ``Q_p^{\mathrm{loss}}`` | 独立回放中间温度减实际出口温度的损耗项；须另外检查输运方程 | MWh | `attenuation_MWh` |
+| `r9.memory_energy` | ``\Delta E_p^{\mathrm{mem}}`` | 入口温度末初差对应的单步WMM记忆能量变化，不是连续温度场库存 | MWh | `memory_change_MWh` |

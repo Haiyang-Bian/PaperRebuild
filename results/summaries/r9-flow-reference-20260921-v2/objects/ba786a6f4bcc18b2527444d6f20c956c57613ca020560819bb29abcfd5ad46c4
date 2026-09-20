@@ -1,0 +1,87 @@
+
+Gurobi 13.0.3 (win64) logging started Mon Sep 21 04:35:39 2026
+
+Set parameter LogFile to value "<workspace>\results\runs\r9-flow-reference-20260921-v1\runs\cf_ct\solver-local.log"
+
+Gurobi 13.0.3 (win64) logging started Mon Sep 21 04:35:39 2026
+
+Set parameter LogFile to value "<workspace>\results\runs\r9-flow-reference-20260921-v1\runs\cf_ct\solver-local.log"
+Set parameter OptimalityTarget to value 1
+Set parameter OptimalityTol to value 1e-09
+Set parameter LogToConsole to value 0
+Set parameter NonConvex to value 2
+Set parameter NLBarPFeasTol to value 1e-09
+Set parameter Presolve to value 0
+Set parameter TimeLimit to value 5.1274243220000062e+02
+Gurobi Optimizer version 13.0.3 build v13.0.3rc0 (win64 - Windows 11+.0 (26200.2))
+
+CPU model: 12th Gen Intel(R) Core(TM) i7-12700, instruction set [SSE2|AVX|AVX2]
+Thread count: 12 physical cores, 20 logical processors, using up to 1 threads
+
+Non-default parameters:
+TimeLimit  5.1274243220000062e+02
+FeasibilityTol  1e-09
+OptimalityTol  1e-09
+NLBarPFeasTol  1e-09
+NLBarDFeasTol  1e-09
+OptimalityTarget  1
+LogToConsole  0
+NonConvex  2
+Presolve  0
+Threads  1
+
+Optimize a model with 17799 rows, 20688 columns and 45949 nonzeros (Min)
+Model fingerprint: 0xf5dc3d7d
+Model has 120 linear objective coefficients
+Model has 2808 quadratic constraints
+Coefficient statistics:
+  Matrix range     [1e-05, 3e+01]
+  QMatrix range    [9e-02, 2e+02]
+  QLMatrix range   [1e+00, 1e+00]
+  Objective range  [5e+01, 1e+03]
+  Bounds range     [1e-03, 5e+03]
+  RHS range        [5e-03, 4e+02]
+
+
+Continuous model is non-convex -- solving with NL barrier
+
+
+Loaded warm-start solution
+Ordering time: 0.01s
+
+NL barrier statistics:
+  Hessian NZ  : 3.048e+03
+  Jacobian NZ : 4.816e+04
+  Factor NZ   : 4.794e+05
+  Factor Ops  : 8.938e+06
+  Threads     : 1
+
+                           Residuals
+Iter     Objective      Primal     Dual      Compl     Step     Time
+   0   5.04111185e+05  1.00e+01  1.00e+02  5.80e+03  0.00e+00     0s
+   1   5.04505398e+05  2.25e+00  7.60e+00  4.49e+02  7.75e-01     0s
+   2   5.04889217e+05  3.64e-05  1.83e+00  2.63e+01  1.00e+00     0s
+   3   5.05009254e+05  6.13e-05  4.66e-01  3.00e+00  1.00e+00     0s
+   4   5.05010518e+05  7.00e-06  2.92e-01  2.24e+00  1.00e+00     0s
+   5   5.05010190e+05  5.48e-06  8.96e-03  1.05e+00  1.00e+00     0s
+   6   5.05009510e+05  2.20e-06  7.18e-03  1.01e+00  9.17e-01     0s
+   7   5.05009275e+05  9.22e-07  2.37e-04  1.00e+00  1.00e+00     0s
+   8   5.05009183e+05  3.14e-07  3.85e-05  1.00e+00  1.00e+00     0s
+   9   5.04242741e+05  2.91e-05  3.82e+00  1.50e-01  9.87e-01     0s
+  10   5.04258287e+05  9.04e-06  8.60e-02  1.50e-01  1.00e+00     0s
+  11   5.04259893e+05  9.14e-07  1.54e-03  1.50e-01  1.00e+00     0s
+  12   5.04146705e+05  3.28e-06  8.53e-02  2.25e-02  1.00e+00     0s
+  13   5.04148774e+05  1.25e-07  1.47e-04  2.25e-02  1.00e+00     0s
+  14   5.04131982e+05  3.13e-07  1.88e-03  3.38e-03  1.00e+00     0s
+  15   5.04132167e+05  8.06e-10  1.24e-07  3.37e-03  1.00e+00     0s
+  16   5.04129519e+05  2.83e-08  4.70e-05  3.46e-04  1.00e+00     0s
+  17   5.04129535e+05  9.96e-12  2.14e-10  3.46e-04  1.00e+00     0s
+  18   5.04129246e+05  1.40e-09  5.65e-07  1.43e-05  1.00e+00     0s
+  19   5.04129234e+05  1.95e-11  1.03e-09  1.65e-07  1.00e+00     0s
+  20   5.04129234e+05  2.33e-12  1.41e-12  1.00e-09  1.00e+00     0s
+
+NL barrier solved model in 20 iterations and 0.30 seconds (0.36 work units)
+First-order optimal solution
+Solution objective 5.041292339831e+05
+
+User-callback calls 204, time in user-callback 0.02 sec

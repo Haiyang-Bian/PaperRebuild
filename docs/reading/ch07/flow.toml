@@ -7,7 +7,7 @@ terminal_interpretation = "literal"
 scope = "whole declared positive-flow box; one-step WMM segment only"
 test_file = "test/r9_flow.jl"
 test = "R9-V1:V4 full flow box, derivatives and terminal memory"
-optimization_status = "development_probes_no_candidate"
+optimization_status = "formal_direct_reference_3_of_4_pass; CF_VT_literal_no_candidate; PG_not_migrated"
 
 [[equations]]
 id = "R9-V1"
@@ -29,6 +29,14 @@ id = "R9-V4"
 meaning = "同时恢复入口温度与管流记忆；只认证采用WMM离散状态"
 status = "project_periodic_boundary"
 api = "r9_flow_terminal_rows"
+
+[[equations]]
+id = "R9-V5"
+meaning = "管道净热量=输运损耗+入口温度记忆变化；不把离散代理当连续管内库存"
+status = "derived_single_step_WMM_identity"
+api = "r9_heat_memory_balance"
+test_file = "test/r9_heat_memory.jl"
+test = "R9-V5 independent WMM memory energy identity"
 
 [[symbols]]
 id = "r9.pipe_mass"
@@ -61,10 +69,29 @@ meaning = "相对于环境温差的衰减系数"
 unit = "1"
 code = "attenuation"
 
+[[symbols]]
+id = "r9.net_heat"
+latex = 'Q_p^{\mathrm{net}}'
+meaning = "单方向管道全时域入口减出口净热量"
+unit = "MWh"
+code = "net_MWh"
+[[symbols]]
+id = "r9.attenuation_heat"
+latex = 'Q_p^{\mathrm{loss}}'
+meaning = "独立回放中间温度减实际出口温度的损耗项；须另外检查输运方程"
+unit = "MWh"
+code = "attenuation_MWh"
+[[symbols]]
+id = "r9.memory_energy"
+latex = '\Delta E_p^{\mathrm{mem}}'
+meaning = "入口温度末初差对应的单步WMM记忆能量变化，不是连续温度场库存"
+unit = "MWh"
+code = "memory_change_MWh"
+
 [[diagnostics]]
 id = "R9-D1"
 meaning = "保留原等式与非负边界时删除被蕴含锥；另界定sqrt系数舍入"
 implementation = "scripts/r9_flow_probe.jl"
 test_file = "scripts/test_r9_gurobi_start.jl"
 test = "R9 implied physical cones and their retained sign conditions"
-status = "diagnostic_representation_no_accepted_candidate"
+status = "earlier_five_probes_failed; later_presolve_off_reference_has_verified_candidates"

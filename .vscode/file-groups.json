@@ -11320,6 +11320,16 @@
           "path": "docs/src/ch07-flow.md",
           "name": "ch07-flow.md",
           "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r9-flow/F36-flow-reference.png",
+          "name": "F36-flow-reference.png",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch07-flow-results.md",
+          "name": "ch07-flow-results.md",
+          "isDirectory": false
         }
       ],
       "order": 1,
@@ -11655,6 +11665,11 @@
         {
           "path": "docs/agent/tasks/2026-09-21-r9-flow.md",
           "name": "2026-09-21-r9-flow.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/agent/tasks/2026-09-21-r9-flow-reference.md",
+          "name": "2026-09-21-r9-flow-reference.md",
           "isDirectory": false
         }
       ],
@@ -13317,6 +13332,11 @@
         {
           "path": "configs/r9/pv-protocol.toml",
           "name": "pv-protocol.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r9/flow-reference.toml",
+          "name": "flow-reference.toml",
           "isDirectory": false
         }
       ],
@@ -73900,6 +73920,681 @@
           "path": "results/summaries/r9-flow-diagnostics-20260921-v2/runs/r9-flow-probe-vf-vt-physical-v1/stage.toml",
           "name": "stage.toml",
           "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-figures-20260921-v1/F36-flow-reference.pdf",
+          "name": "F36-flow-reference.pdf",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-figures-20260921-v1/F36-flow-reference.png",
+          "name": "F36-flow-reference.png",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-figures-20260921-v1/figure.toml",
+          "name": "figure.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-figures-20260921-v1/iterations.csv",
+          "name": "iterations.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-figures-20260921-v1/memory.csv",
+          "name": "memory.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-figures-20260921-v1/plot-source.jl",
+          "name": "plot-source.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-figures-20260921-v1/ratios.csv",
+          "name": "ratios.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-figures-20260921-v1/summary.csv",
+          "name": "summary.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-figures-20260921-v1/trajectories.csv",
+          "name": "trajectories.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/artifact-hashes.toml",
+          "name": "artifact-hashes.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/index.toml",
+          "name": "index.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/iterations.csv",
+          "name": "iterations.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/memory.csv",
+          "name": "memory.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/018d92877abb0cf3009e1f923ac5a77e4ef55731916db534af78b9b213d00528",
+          "name": "018d92877abb0cf3009e1f923ac5a77e4ef55731916db534af78b9b213d00528",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/01a86d8bb7bbbf0ad27f79acb099427ec18543a0a4b1b916f411f2e1a4053e2d",
+          "name": "01a86d8bb7bbbf0ad27f79acb099427ec18543a0a4b1b916f411f2e1a4053e2d",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/031de542820ad8eb331d309477f23261988414f1f66d63c5319bf430ebeb412b",
+          "name": "031de542820ad8eb331d309477f23261988414f1f66d63c5319bf430ebeb412b",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/05bdff61e581ea0c5ea21574fe12c8f357fe4c1491ebcc6fe4288cf4a2486d0a",
+          "name": "05bdff61e581ea0c5ea21574fe12c8f357fe4c1491ebcc6fe4288cf4a2486d0a",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/0766d65a9c5772e8ac51b06142ef33a58b2a07041783ff0902756ce6c55c40b3",
+          "name": "0766d65a9c5772e8ac51b06142ef33a58b2a07041783ff0902756ce6c55c40b3",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/077edd6d908d6c06a8bcc5598321245eb10d2712cb00efb820bc048ba2a75d08",
+          "name": "077edd6d908d6c06a8bcc5598321245eb10d2712cb00efb820bc048ba2a75d08",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/09c989bfe39b187adc8d81d4c1d3c74f2e539c0fa758a4b6b87ad2b9ebb90ee8",
+          "name": "09c989bfe39b187adc8d81d4c1d3c74f2e539c0fa758a4b6b87ad2b9ebb90ee8",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/0d9340ddf097560449a75b9ab486e6cac79aa41ed97df72d472f05451a758c49",
+          "name": "0d9340ddf097560449a75b9ab486e6cac79aa41ed97df72d472f05451a758c49",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/0ea03026b4e02e921fa999a9a2906d062ca78216673b90660831734fc9429b07",
+          "name": "0ea03026b4e02e921fa999a9a2906d062ca78216673b90660831734fc9429b07",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/10f85d7191d57f26db4ff86c12f3a21fa10203d388fdc90c58078b6f2cb83aa1",
+          "name": "10f85d7191d57f26db4ff86c12f3a21fa10203d388fdc90c58078b6f2cb83aa1",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/11026416169278767a8900e84e5fb65f80113e405a4046a44f6b92dc983498d5",
+          "name": "11026416169278767a8900e84e5fb65f80113e405a4046a44f6b92dc983498d5",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/13e981a89adab35d0ac40bd0eacc241c289cb57c6af4655426de4608c8529a69",
+          "name": "13e981a89adab35d0ac40bd0eacc241c289cb57c6af4655426de4608c8529a69",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/145761373e71ef1e0555135aaabf56333ba7ce319cf24e226b2c17fbd7b9f232",
+          "name": "145761373e71ef1e0555135aaabf56333ba7ce319cf24e226b2c17fbd7b9f232",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/17493cf5730e8ddb25483e0b651635d41b042392e1713da400d0a32316077d4d",
+          "name": "17493cf5730e8ddb25483e0b651635d41b042392e1713da400d0a32316077d4d",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/19676e6bfba28a238962ee812ac9f9431277c202c88878967ae72b06360fbaa4",
+          "name": "19676e6bfba28a238962ee812ac9f9431277c202c88878967ae72b06360fbaa4",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/1a29d3ac34ebf6936b9055b737167e59cf746cc6b5fb1055b8f73db2ebd26f15",
+          "name": "1a29d3ac34ebf6936b9055b737167e59cf746cc6b5fb1055b8f73db2ebd26f15",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/1a5b12c25ba3e82f67c659198a0f53b21bf10ca5eeaf00009ee6b557127cba96",
+          "name": "1a5b12c25ba3e82f67c659198a0f53b21bf10ca5eeaf00009ee6b557127cba96",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/1b65bc9360e1b1a3816800ecffb442d39336da92db4d11ed7ac055e5fcbeeb60",
+          "name": "1b65bc9360e1b1a3816800ecffb442d39336da92db4d11ed7ac055e5fcbeeb60",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/1c5456ff827986d2a7a4d100010af630d2614a6476e7772dbdae24211da5a047",
+          "name": "1c5456ff827986d2a7a4d100010af630d2614a6476e7772dbdae24211da5a047",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/1dedf36d47ed8b9521e43a58105e2bf1368df0e22e3c8a89b38292ca2e2939b6",
+          "name": "1dedf36d47ed8b9521e43a58105e2bf1368df0e22e3c8a89b38292ca2e2939b6",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/1ebaf3c871fb0edfadec7c67739fc1fdb9ae39a1434c72a59d1b26b58fd44888",
+          "name": "1ebaf3c871fb0edfadec7c67739fc1fdb9ae39a1434c72a59d1b26b58fd44888",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/21e95a15983faf84ab424650851d0813bd4e882989665538788e39fd08e03385",
+          "name": "21e95a15983faf84ab424650851d0813bd4e882989665538788e39fd08e03385",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/22cb571f15112ccc21408903f229e25b49ee0d59333c14d251ab4b83a8abbf54",
+          "name": "22cb571f15112ccc21408903f229e25b49ee0d59333c14d251ab4b83a8abbf54",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/265e1b96c8aeebb2278cc4a11d54394e3dcab5e039bba676116ff764642521fb",
+          "name": "265e1b96c8aeebb2278cc4a11d54394e3dcab5e039bba676116ff764642521fb",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/26ad7dd3d96c62aadfce818a05c3c034656538f89aca94fe7b999c57bb70053d",
+          "name": "26ad7dd3d96c62aadfce818a05c3c034656538f89aca94fe7b999c57bb70053d",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/2a48701342b2eba886858d6fc850c1ee900df39c87e1be65a5a92a4242705a29",
+          "name": "2a48701342b2eba886858d6fc850c1ee900df39c87e1be65a5a92a4242705a29",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/2b93051fd40bbd3b58198dc200144ee1bb30a9c080bb999c0779836c1b04b15f",
+          "name": "2b93051fd40bbd3b58198dc200144ee1bb30a9c080bb999c0779836c1b04b15f",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/2da3314d7cfc793eb83d0777cc6ef18551b09ef53855858e5ff92ff2b6eb8ddc",
+          "name": "2da3314d7cfc793eb83d0777cc6ef18551b09ef53855858e5ff92ff2b6eb8ddc",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/313f8c54dfa9a7a276832e48cc8d7e3e9b63c29aab765bf7fa541f2fb68f40a9",
+          "name": "313f8c54dfa9a7a276832e48cc8d7e3e9b63c29aab765bf7fa541f2fb68f40a9",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/31f45e03eb6015097811049b54de1d2d2ff8e65c027623067ee6cc71e8ba272b",
+          "name": "31f45e03eb6015097811049b54de1d2d2ff8e65c027623067ee6cc71e8ba272b",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/345d74bc66c0977a01d7cd1423c01841b13f854999e7e4bf987cdd8953c64da0",
+          "name": "345d74bc66c0977a01d7cd1423c01841b13f854999e7e4bf987cdd8953c64da0",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/39db6cf0c2226628f47e171a0cdb4f547b81ff0857edc3bf100b65191b564d16",
+          "name": "39db6cf0c2226628f47e171a0cdb4f547b81ff0857edc3bf100b65191b564d16",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/3ad0881a54d26a46d6e41d9bf3d0025a34b3bbf710d0cba07803f5f4b8a1a960",
+          "name": "3ad0881a54d26a46d6e41d9bf3d0025a34b3bbf710d0cba07803f5f4b8a1a960",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/3d69413ea3e8ec54e99bc98ced7c4732cfd0872088af6e5a2a9de0711d750fda",
+          "name": "3d69413ea3e8ec54e99bc98ced7c4732cfd0872088af6e5a2a9de0711d750fda",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/42101e0cc784295d7edb297782f19253f85338e989282287977c9b5e8a7396d6",
+          "name": "42101e0cc784295d7edb297782f19253f85338e989282287977c9b5e8a7396d6",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/4289e33cdae925640a20f115bc3559213254d0b7d21dc6214f86cfa224a538b3",
+          "name": "4289e33cdae925640a20f115bc3559213254d0b7d21dc6214f86cfa224a538b3",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/47fec7dc944afd8d2e5ac99d6885994fa7ce2465c36dfdcf6984d50466391783",
+          "name": "47fec7dc944afd8d2e5ac99d6885994fa7ce2465c36dfdcf6984d50466391783",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/498a86faee6972007a40e869260395f0d1dcfe6a4f2196e44aa1c753acdf9485",
+          "name": "498a86faee6972007a40e869260395f0d1dcfe6a4f2196e44aa1c753acdf9485",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/4ad1facc4c4b58b4d695b608b99afd6aa219dc7db24ae97a55830f760f610360",
+          "name": "4ad1facc4c4b58b4d695b608b99afd6aa219dc7db24ae97a55830f760f610360",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/4dbbc7d0d0816dfa433f010209faddaac90ba5fa65fddbb83d0b1f9dcdf5be18",
+          "name": "4dbbc7d0d0816dfa433f010209faddaac90ba5fa65fddbb83d0b1f9dcdf5be18",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/4dce51d0ec3ba0939ad719912010e1c44c59347039401f9f44d51260afd72249",
+          "name": "4dce51d0ec3ba0939ad719912010e1c44c59347039401f9f44d51260afd72249",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/51b5d8597e797a0f7109cbc72ae0df3387b3ad5d5a9680f1841060dc6706934b",
+          "name": "51b5d8597e797a0f7109cbc72ae0df3387b3ad5d5a9680f1841060dc6706934b",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/52ac3e26cc0461ef5092ff1b8c04f8f1a13c719a494cc4c482a4083d57e7f935",
+          "name": "52ac3e26cc0461ef5092ff1b8c04f8f1a13c719a494cc4c482a4083d57e7f935",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/52bcf5144cbc2495e4aed120b66f04eb56ebf4d6c92063ebd47aabac499edc5b",
+          "name": "52bcf5144cbc2495e4aed120b66f04eb56ebf4d6c92063ebd47aabac499edc5b",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/542c6cf0d42173888ef75e9260e1f38f72586dd3ae4397f860cb937bc317c508",
+          "name": "542c6cf0d42173888ef75e9260e1f38f72586dd3ae4397f860cb937bc317c508",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/5896b1f3fce4fbd328c19fa57eceb5d90b96dbd218f69a9bb2111c55ee7e9f26",
+          "name": "5896b1f3fce4fbd328c19fa57eceb5d90b96dbd218f69a9bb2111c55ee7e9f26",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/590ec2bbedc9fe4d1ee856f46aa3483d0f2b92691ffdb1816c20a00b51be3256",
+          "name": "590ec2bbedc9fe4d1ee856f46aa3483d0f2b92691ffdb1816c20a00b51be3256",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/59b91e520125e2933779b97a3687310d440932f11cf9fadf025f4074bea51ef3",
+          "name": "59b91e520125e2933779b97a3687310d440932f11cf9fadf025f4074bea51ef3",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/5e6168c0ca1fb06f89843ed3ebe46aad2ec558a46e6336ee4622fea2d0ec1ba0",
+          "name": "5e6168c0ca1fb06f89843ed3ebe46aad2ec558a46e6336ee4622fea2d0ec1ba0",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/620c069f6b3a520d32ee546ec048074f9cbaa3c785f8c2e31ec7fd7bf245a83b",
+          "name": "620c069f6b3a520d32ee546ec048074f9cbaa3c785f8c2e31ec7fd7bf245a83b",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/683e56ced0eba55e0defe26ab20679b304a5c629b6231dc46d443dfc35a515ed",
+          "name": "683e56ced0eba55e0defe26ab20679b304a5c629b6231dc46d443dfc35a515ed",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/691e209bffeeffeaff7245d18c7c701a2896ee91f760bfc318a93e941163d3de",
+          "name": "691e209bffeeffeaff7245d18c7c701a2896ee91f760bfc318a93e941163d3de",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/6a15b7114b33570852c383a7a3b39d02d775f93ba3c9c4f740c1e898af98eee3",
+          "name": "6a15b7114b33570852c383a7a3b39d02d775f93ba3c9c4f740c1e898af98eee3",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/6bce732a46f4ccd59051785dbb1be18ebd1f0f31ccd6583b1fc4212353dd99be",
+          "name": "6bce732a46f4ccd59051785dbb1be18ebd1f0f31ccd6583b1fc4212353dd99be",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/6f3c25430ae5d3d0517843585144147cc3c93e59fc9c4b5b92566946f382bbdb",
+          "name": "6f3c25430ae5d3d0517843585144147cc3c93e59fc9c4b5b92566946f382bbdb",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/7118267881dc2f362004c14da042ad1e208a87657144538a8e2ec6ce82619c12",
+          "name": "7118267881dc2f362004c14da042ad1e208a87657144538a8e2ec6ce82619c12",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/739b8864ab391b219780f9f7d9d80cf699d3b82b3db79fb800026c2f6f405038",
+          "name": "739b8864ab391b219780f9f7d9d80cf699d3b82b3db79fb800026c2f6f405038",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/772f99c6d6173ec97b5e20db263827d338e3f3686dcb4f99791fb2802e509293",
+          "name": "772f99c6d6173ec97b5e20db263827d338e3f3686dcb4f99791fb2802e509293",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/774b2bd17fa9b78f6c7da472abe877baa2182e90c2822068f16c2f2ecf055e41",
+          "name": "774b2bd17fa9b78f6c7da472abe877baa2182e90c2822068f16c2f2ecf055e41",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/77e4908d9c55f09210552ac9dc06d7595225f082584abbdcc1d18cea67ca8ae0",
+          "name": "77e4908d9c55f09210552ac9dc06d7595225f082584abbdcc1d18cea67ca8ae0",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/7976a973e16359fba03886529410d8594a713f2287369f6e50d3c9d022ce7dd0",
+          "name": "7976a973e16359fba03886529410d8594a713f2287369f6e50d3c9d022ce7dd0",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/7b205766f1d0d6a147dbb2b4e42f0a12fdb5b2a900d4d45832ddc926f2965b44",
+          "name": "7b205766f1d0d6a147dbb2b4e42f0a12fdb5b2a900d4d45832ddc926f2965b44",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/7c7eaf3facee28cf888ec7bc61ee47e49e5d9ae6d9e101e8e163eea70f13b586",
+          "name": "7c7eaf3facee28cf888ec7bc61ee47e49e5d9ae6d9e101e8e163eea70f13b586",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/7cb0ad0bf0bc5ea77af73e08a8261982510ce869caef95e26b7d51730a43b635",
+          "name": "7cb0ad0bf0bc5ea77af73e08a8261982510ce869caef95e26b7d51730a43b635",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/7e2884a8446d41e7fa3a89d3ff5a02d37341df8c49cabcec00650e152cc77409",
+          "name": "7e2884a8446d41e7fa3a89d3ff5a02d37341df8c49cabcec00650e152cc77409",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/7f19b3f8280ca3a54b954d2a3901ee16ddb0c3f46e093c02e5556d145fd2f64a",
+          "name": "7f19b3f8280ca3a54b954d2a3901ee16ddb0c3f46e093c02e5556d145fd2f64a",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/7fb1a544dffb4876f66f84f91d92ea78a1249b5a9dc0ea463aa9733c90ef6779",
+          "name": "7fb1a544dffb4876f66f84f91d92ea78a1249b5a9dc0ea463aa9733c90ef6779",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/82afeb350db18fca6ada3179f87c3d266e21f13bb922ae6841619811ca8dfddb",
+          "name": "82afeb350db18fca6ada3179f87c3d266e21f13bb922ae6841619811ca8dfddb",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/83e7255d85dc0a607a0cf37a232c1e329da070fb9f787f9295380e9ab8495578",
+          "name": "83e7255d85dc0a607a0cf37a232c1e329da070fb9f787f9295380e9ab8495578",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/89038286a87e683b6bf87e53ec47cccbbe11735b980d030023d92ebb72df6eaa",
+          "name": "89038286a87e683b6bf87e53ec47cccbbe11735b980d030023d92ebb72df6eaa",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/8ab9be2dc432003e9dc0c17bd140aee95e3f28a2a4ca6db1a2646a7bee74d4ec",
+          "name": "8ab9be2dc432003e9dc0c17bd140aee95e3f28a2a4ca6db1a2646a7bee74d4ec",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/8b6076481a69751f2e68071de6df5c9d23e8f6fd03ef3aba2beca7f6edb7715a",
+          "name": "8b6076481a69751f2e68071de6df5c9d23e8f6fd03ef3aba2beca7f6edb7715a",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/8daf19c0ef8b724633826db763cc63e4f966a1540584e4451f93880a8f9348e5",
+          "name": "8daf19c0ef8b724633826db763cc63e4f966a1540584e4451f93880a8f9348e5",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/8f4e6f87745ba4e9474a1884e4b358dcd5357e03e02296dced3527cfc4949785",
+          "name": "8f4e6f87745ba4e9474a1884e4b358dcd5357e03e02296dced3527cfc4949785",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/90fc4e402a386b419bea7c840ee1f6b371c8b3d4a6fbb0971575883cca8bb683",
+          "name": "90fc4e402a386b419bea7c840ee1f6b371c8b3d4a6fbb0971575883cca8bb683",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/913d0050b129586a985ffbf709ac6890712d5337d2167fbdf5d60550697dfde4",
+          "name": "913d0050b129586a985ffbf709ac6890712d5337d2167fbdf5d60550697dfde4",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/92425ee450fca9cc4a0b70137a3e08dd1b337345c85ac84d413f3c8e8ab90961",
+          "name": "92425ee450fca9cc4a0b70137a3e08dd1b337345c85ac84d413f3c8e8ab90961",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/93985b55f0497b2293faa952d03cbeb18995dc9594ba3d854fb466f54ab5871a",
+          "name": "93985b55f0497b2293faa952d03cbeb18995dc9594ba3d854fb466f54ab5871a",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/948f0f5c5a4bc8381a3d9ad413fb0f8e78ee1a3bad52606dea9b9b6f144e5450",
+          "name": "948f0f5c5a4bc8381a3d9ad413fb0f8e78ee1a3bad52606dea9b9b6f144e5450",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/94bb4008412f68840050a9a4db5910daafbfbeef577e0ca82c07fae270cb65d6",
+          "name": "94bb4008412f68840050a9a4db5910daafbfbeef577e0ca82c07fae270cb65d6",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/9659c5c91081decbf5e2e41ddfa3b7269cbdf8926d853928ffece4abd0cbe04a",
+          "name": "9659c5c91081decbf5e2e41ddfa3b7269cbdf8926d853928ffece4abd0cbe04a",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/9b218f4fcf1366cd59618b376a43968a67c8aa240e2e84c9136d020b1abf4c55",
+          "name": "9b218f4fcf1366cd59618b376a43968a67c8aa240e2e84c9136d020b1abf4c55",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/9ba838153ba736915259d6dbbe7faa66656fb3183bd310975c99896d4a7b2051",
+          "name": "9ba838153ba736915259d6dbbe7faa66656fb3183bd310975c99896d4a7b2051",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/9f328dcd95c3feef0b9042c17c8d9e9d8f0fbaee81c43a790a939c824728ce0b",
+          "name": "9f328dcd95c3feef0b9042c17c8d9e9d8f0fbaee81c43a790a939c824728ce0b",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/a5f72a4c126c85ecebb773e6d3d1287c3170fe6af2ad497aa7fdc1981b0e2bb1",
+          "name": "a5f72a4c126c85ecebb773e6d3d1287c3170fe6af2ad497aa7fdc1981b0e2bb1",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/ad68dece7fa907c4b78a0c0f8b72f7f027a9e493cc5cc7c9515c319c71a5b335",
+          "name": "ad68dece7fa907c4b78a0c0f8b72f7f027a9e493cc5cc7c9515c319c71a5b335",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/af566b74af0b106d28bd303216269a5f0597a367a9bf55019384ab1c5f912cd3",
+          "name": "af566b74af0b106d28bd303216269a5f0597a367a9bf55019384ab1c5f912cd3",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/b1da05da9f59b474cd5f6826799f4c9c832ae9592fcd75a06aa777e69ee034e1",
+          "name": "b1da05da9f59b474cd5f6826799f4c9c832ae9592fcd75a06aa777e69ee034e1",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/b3b2cddf3e768a118bb860e83b1a6f015b2954b67a57daa7ef775466e71c80e6",
+          "name": "b3b2cddf3e768a118bb860e83b1a6f015b2954b67a57daa7ef775466e71c80e6",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/b7dfbb66329e87453649c3510a858394a132e221daa77ff91ee467666ba02e76",
+          "name": "b7dfbb66329e87453649c3510a858394a132e221daa77ff91ee467666ba02e76",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/ba1adcd3d190f59943cf44b844587e52eb3b1346016af8653baf31a3a8129282",
+          "name": "ba1adcd3d190f59943cf44b844587e52eb3b1346016af8653baf31a3a8129282",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/ba786a6f4bcc18b2527444d6f20c956c57613ca020560819bb29abcfd5ad46c4",
+          "name": "ba786a6f4bcc18b2527444d6f20c956c57613ca020560819bb29abcfd5ad46c4",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/bc43f097657be08621c82dacddb79c91070f997df604c9c0cd5cd2562ddbd6b7",
+          "name": "bc43f097657be08621c82dacddb79c91070f997df604c9c0cd5cd2562ddbd6b7",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/be07a40d34ee1e44e61d0e81fc1a71161cc9ba7ef20d57fc7fbe4e70f6e3ba8b",
+          "name": "be07a40d34ee1e44e61d0e81fc1a71161cc9ba7ef20d57fc7fbe4e70f6e3ba8b",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/be2d4335404b883d81cde43135e352ab399985ef73ee70e6537eb35c23c72cf7",
+          "name": "be2d4335404b883d81cde43135e352ab399985ef73ee70e6537eb35c23c72cf7",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/bfe0082900ccfc94fe8ae15019e80f5573eaa8b696f0f1eb19530f853ffd2e37",
+          "name": "bfe0082900ccfc94fe8ae15019e80f5573eaa8b696f0f1eb19530f853ffd2e37",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/c0174b63fb559bd87b66604e80018ab5b4a055a4dfe7c0257884ed1955ea1971",
+          "name": "c0174b63fb559bd87b66604e80018ab5b4a055a4dfe7c0257884ed1955ea1971",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/c0602e4cb3ba5d6bb3429c584a46ba3b11f15fb7100934ad2947b905f2b253b6",
+          "name": "c0602e4cb3ba5d6bb3429c584a46ba3b11f15fb7100934ad2947b905f2b253b6",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/c2aee40abd855eca0216e171b277e2c80a2555caa021a062ba95b849158c8821",
+          "name": "c2aee40abd855eca0216e171b277e2c80a2555caa021a062ba95b849158c8821",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/c81ba065cd5e6e38e37cc385d89b81e0915c26b10edb2dd0321fd91633c202d3",
+          "name": "c81ba065cd5e6e38e37cc385d89b81e0915c26b10edb2dd0321fd91633c202d3",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/cac2dda48d680076c6ed2e19df1e44917db874647ddc6134579c40c9e20343f0",
+          "name": "cac2dda48d680076c6ed2e19df1e44917db874647ddc6134579c40c9e20343f0",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/cdc06d3acd3f1f7dd2fb7e6e18e929e3ce63b06e9ac887e295864dbbc39a7b0a",
+          "name": "cdc06d3acd3f1f7dd2fb7e6e18e929e3ce63b06e9ac887e295864dbbc39a7b0a",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/d40a65c5b06859f4f02b81ba4c1aac5798176f5526c709ed918cbcd33345923f",
+          "name": "d40a65c5b06859f4f02b81ba4c1aac5798176f5526c709ed918cbcd33345923f",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/d514c3c2e94f962feb65717da43920559b4bcbca8613d2abcef2e1ed292d51b0",
+          "name": "d514c3c2e94f962feb65717da43920559b4bcbca8613d2abcef2e1ed292d51b0",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/d58b4c7d4e89bbcae9252d04e531d964e9897f79d8c7cc277c130902f6843416",
+          "name": "d58b4c7d4e89bbcae9252d04e531d964e9897f79d8c7cc277c130902f6843416",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/d629c8b113d8888f5e694faf319309274e700c6e0e079ff5fef8e03de5b0a0ed",
+          "name": "d629c8b113d8888f5e694faf319309274e700c6e0e079ff5fef8e03de5b0a0ed",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/d8c82fcbfaa654814837cb7f9150de66d64c76b4d6ae55fdd572ddfc3d957243",
+          "name": "d8c82fcbfaa654814837cb7f9150de66d64c76b4d6ae55fdd572ddfc3d957243",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/dd5de1049fc740706fa9005f48b60d75e088bc68faa9f6092b9b310e7aaed624",
+          "name": "dd5de1049fc740706fa9005f48b60d75e088bc68faa9f6092b9b310e7aaed624",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/e24b73dae2977de391f4dc95747153e66ccde20a571b25d23a7af36bf147654f",
+          "name": "e24b73dae2977de391f4dc95747153e66ccde20a571b25d23a7af36bf147654f",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "name": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/e432d97def69288d076b819b608a9b6e59e9233bcfb129bcd589f4a69e978558",
+          "name": "e432d97def69288d076b819b608a9b6e59e9233bcfb129bcd589f4a69e978558",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/e675b0876b9863a17d38dd6ed1938e800f29c114e693acc2610ba8a480c2cac8",
+          "name": "e675b0876b9863a17d38dd6ed1938e800f29c114e693acc2610ba8a480c2cac8",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/e71ad2e64d18f050612374b1b078ead93856156ff69461a2f817fe0612caade9",
+          "name": "e71ad2e64d18f050612374b1b078ead93856156ff69461a2f817fe0612caade9",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/e952963689b39d28dc490066e55c7e5ca2689cd0ce78982a5397b09713466655",
+          "name": "e952963689b39d28dc490066e55c7e5ca2689cd0ce78982a5397b09713466655",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/ed07ca2c42178c8ea0ac0c53396c5a8506ac892b8e7649bf249a0c7f6ae8e0b8",
+          "name": "ed07ca2c42178c8ea0ac0c53396c5a8506ac892b8e7649bf249a0c7f6ae8e0b8",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/ef76594a25d5a310f8265137e733d811c8dbefcf0aea0b3ff8be5ed7b05bceef",
+          "name": "ef76594a25d5a310f8265137e733d811c8dbefcf0aea0b3ff8be5ed7b05bceef",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/f106842c758d291179c246a1b62e4fbd8fc34ac684e24042d603ae282ee136d5",
+          "name": "f106842c758d291179c246a1b62e4fbd8fc34ac684e24042d603ae282ee136d5",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/f3e13bac6f5f7268e660e43d567933a670035c660334b8f0f2f4f0438de349bf",
+          "name": "f3e13bac6f5f7268e660e43d567933a670035c660334b8f0f2f4f0438de349bf",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/objects/f8e13465885d4b59488fa6caf6f8535e042fcbf74336e5660edd6350c510b3ff",
+          "name": "f8e13465885d4b59488fa6caf6f8535e042fcbf74336e5660edd6350c510b3ff",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/ratios.csv",
+          "name": "ratios.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/summary.csv",
+          "name": "summary.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-flow-reference-20260921-v2/trajectories.csv",
+          "name": "trajectories.csv",
+          "isDirectory": false
         }
       ],
       "order": 6,
@@ -74250,6 +74945,11 @@
         {
           "path": "test/r9_flow.jl",
           "name": "r9_flow.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "test/r9_heat_memory.jl",
+          "name": "r9_heat_memory.jl",
           "isDirectory": false
         }
       ],
@@ -77001,6 +77701,21 @@
         {
           "path": "scripts/test_r9_gurobi_start.jl",
           "name": "test_r9_gurobi_start.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/plot_r9_flow_reference.jl",
+          "name": "plot_r9_flow_reference.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r9_flow_evidence.jl",
+          "name": "r9_flow_evidence.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r9_flow_reference.jl",
+          "name": "r9_flow_reference.jl",
           "isDirectory": false
         }
       ],
