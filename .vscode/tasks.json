@@ -1,5 +1,10 @@
 {
   "inputs": [
+    {"id":"r9CommonInput","type":"promptString","description":"共同可行见证的冻结输入，只读","default":"results/summaries/r9-common-input-20260921-v2"},
+    {"id":"r9CommonNewInput","type":"promptString","description":"共同可行见证新冻结目录，不覆盖旧输入","default":"results/runs/r9-common-input-new"},
+    {"id":"r9CommonEvidence","type":"promptString","description":"共同可行见证已封存证据，只读","default":"results/summaries/r9-common-evidence-20260921-v1"},
+    {"id":"r9CommonOutput","type":"promptString","description":"共同见证运行或审计新目录，不覆盖原结果","default":"results/runs/r9-common-new"},
+    {"id":"r9CommonFigures","type":"promptString","description":"F44只读重绘的新目录","default":"results/runs/r9-common-redraw-new"},
     {"id":"r9ReserveStudy","type":"promptString","description":"第7.4节冻结数据目录；freeze须新目录","default":"results/summaries/r9-reserve-data-20260921-v2"},
     {"id":"r9ReserveEvidence","type":"promptString","description":"备用数值证据目录；freeze须新目录","default":"results/summaries/r9-reserve-full-20260921-v1"},
     {"id":"r9ReserveFigures","type":"promptString","description":"备用图表的新输出目录","default":"results/summaries/r9-reserve-figures-20260921-v1"},
@@ -185,6 +190,14 @@
     }
   ],
   "tasks": [
+    {"label":"PaperRebuild: R9 common witness tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_common_witness.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 common freeze","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_reserve_witness.jl","freeze","${input:r9ReserveStudy}","${input:r9CommonNewInput}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 common witness run","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","${input:r9CommonInput}/implementation/scripts/r9_reserve_witness.jl","run","${input:r9CommonInput}","${input:r9CommonOutput}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 common evidence replay","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--depwarn=error","--project=.","${input:r9CommonEvidence}/audit-source.jl","check","${input:r9CommonInput}","${input:r9CommonEvidence}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 common original model audit","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/audit_r9_common_start.jl","${input:r9CommonInput}","${input:r9CommonEvidence}/run","${input:r9CommonOutput}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 common redraw F44","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r9_common_witness.jl","${input:r9CommonInput}","${input:r9CommonEvidence}","${input:r9CommonFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 risk LP MIP start tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/test_r9_risk_native_start.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 common delivery check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_common_delivery.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 risk mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_risk.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 risk tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_risk.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 risk freeze inputs","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_reserve_study.jl","freeze","${input:r9ReserveStudy}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},

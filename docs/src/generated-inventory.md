@@ -224,6 +224,7 @@
 - `docs/agent/tasks/2026-09-20-r8-energy.md`
 - `docs/agent/tasks/2026-09-20-r8-tradeoff.md`
 - `docs/agent/tasks/2026-09-20-r9-inputs.md`
+- `docs/agent/tasks/2026-09-21-r9-common-witness.md`
 - `docs/agent/tasks/2026-09-21-r9-fixed.md`
 - `docs/agent/tasks/2026-09-21-r9-flow-reference.md`
 - `docs/agent/tasks/2026-09-21-r9-flow.md`
@@ -623,6 +624,7 @@
 - `docs/src/assets/r7-transport-20260920-v1/F25-transport-redispatch.png`
 - `docs/src/assets/r8-energy-20260920-v1/F32-r8-energy.png`
 - `docs/src/assets/r8-tradeoff-20260920-v1/F31-r8-tradeoff.png`
+- `docs/src/assets/r9-common-20260921-v1/F44-common-witness.png`
 - `docs/src/assets/r9-fixed/F37-fixed-flow.png`
 - `docs/src/assets/r9-fixed/F37-fixed-flow.svg`
 - `docs/src/assets/r9-fixed/diagnostics.csv`
@@ -778,6 +780,7 @@
 - `docs/src/ch06-thermal.md`
 - `docs/src/ch06-transport-equations.md`
 - `docs/src/ch06-transport.md`
+- `docs/src/ch07-common-witness.md`
 - `docs/src/ch07-fixed-generated.md`
 - `docs/src/ch07-fixed.md`
 - `docs/src/ch07-flow-results.md`
@@ -1489,6 +1492,26 @@
 - `results/summaries/r8-tradeoff-figures-20260920-v3/plot-source.jl`
 - `results/summaries/r8-tradeoff-figures-20260920-v3/residual-points.csv`
 - `results/summaries/r8-tradeoff-figures-20260920-v3/summary.csv`
+- `results/summaries/r9-common-evidence-20260921-v1/audit-source.jl`
+- `results/summaries/r9-common-evidence-20260921-v1/construction-failure.toml`
+- `results/summaries/r9-common-evidence-20260921-v1/construction-status.toml`
+- `results/summaries/r9-common-evidence-20260921-v1/delivery.toml`
+- `results/summaries/r9-common-figures-20260921-v1/F44-common-witness.pdf`
+- `results/summaries/r9-common-figures-20260921-v1/F44-common-witness.png`
+- `results/summaries/r9-common-figures-20260921-v1/figure-source.toml`
+- `results/summaries/r9-common-figures-20260921-v1/redraw.jl`
+- `results/summaries/r9-common-figures-20260921-v1/residuals.csv`
+- `results/summaries/r9-common-figures-20260921-v1/trajectories.csv`
+- `results/summaries/r9-common-figures-20260921-v1/visual-review.toml`
+- `results/summaries/r9-common-input-20260921-v1/manifest.sha256`
+- `results/summaries/r9-common-input-20260921-v1/manifest.toml`
+- `results/summaries/r9-common-input-20260921-v2/manifest.sha256`
+- `results/summaries/r9-common-input-20260921-v2/manifest.toml`
+- `results/summaries/r9-common-start-20260921-v1/audit-source.jl`
+- `results/summaries/r9-common-start-20260921-v1/files.toml`
+- `results/summaries/r9-common-start-20260921-v1/linear-audit.toml`
+- `results/summaries/r9-common-start-20260921-v1/mapping-source.jl`
+- `results/summaries/r9-common-start-20260921-v1/status.toml`
 - `results/summaries/r9-fixed-20260921-v4/artifact-hashes.toml`
 - `results/summaries/r9-fixed-20260921-v4/diagnostics.csv`
 - `results/summaries/r9-fixed-20260921-v4/index.toml`
@@ -1811,6 +1834,7 @@
 - `scripts/audit_r8_energy.jl`
 - `scripts/audit_r8_results.jl`
 - `scripts/audit_r9_affine_exact.jl`
+- `scripts/audit_r9_common_start.jl`
 - `scripts/audit_r9_fixed_flow.jl`
 - `scripts/audit_r9_fixed_terminal.jl`
 - `scripts/audit_r9_independent_heat.jl`
@@ -1926,6 +1950,7 @@
 - `scripts/check_r8_figures.jl`
 - `scripts/check_r8_results.jl`
 - `scripts/check_r9_affine_certificate.jl`
+- `scripts/check_r9_common_delivery.jl`
 - `scripts/check_r9_figures.jl`
 - `scripts/check_r9_fixed.jl`
 - `scripts/check_r9_fixed_delivery.jl`
@@ -2056,6 +2081,7 @@
 - `scripts/plot_r7_transport.jl`
 - `scripts/plot_r8_energy.jl`
 - `scripts/plot_r8_tradeoff.jl`
+- `scripts/plot_r9_common_witness.jl`
 - `scripts/plot_r9_fixed.jl`
 - `scripts/plot_r9_flow_reference.jl`
 - `scripts/plot_r9_inputs.jl`
@@ -2176,6 +2202,7 @@
 - `scripts/r9_flow_evidence.jl`
 - `scripts/r9_flow_probe.jl`
 - `scripts/r9_flow_reference.jl`
+- `scripts/r9_gurobi_start.jl`
 - `scripts/r9_network_docs.jl`
 - `scripts/r9_network_evidence.jl`
 - `scripts/r9_network_study.jl`
@@ -2188,6 +2215,7 @@
 - `scripts/r9_reserve_evidence.jl`
 - `scripts/r9_reserve_study.jl`
 - `scripts/r9_reserve_support.jl`
+- `scripts/r9_reserve_witness.jl`
 - `scripts/r9_risk_docs.jl`
 - `scripts/r9_source_report.jl`
 - `scripts/r9_trading_evidence.jl`
@@ -2241,6 +2269,7 @@
 - `scripts/run_r9_network_batch.jl`
 - `scripts/run_r9_numerics_gurobi.jl`
 - `scripts/run_r9_reserve_batch.jl`
+- `scripts/seal_r9_common_witness.jl`
 - `scripts/seal_r9_reserve_probe.jl`
 - `scripts/smoke.jl`
 - `scripts/study_r4.jl`
@@ -2340,6 +2369,8 @@
 - `scripts/test_r8_heat_boundary.jl`
 - `scripts/test_r8_study.jl`
 - `scripts/test_r8_tradeoff.jl`
+- `scripts/test_r9_common_evidence.jl`
+- `scripts/test_r9_common_witness.jl`
 - `scripts/test_r9_fixed.jl`
 - `scripts/test_r9_flow.jl`
 - `scripts/test_r9_gurobi_start.jl`
@@ -2354,6 +2385,7 @@
 - `scripts/test_r9_reserve_freeze.jl`
 - `scripts/test_r9_reserve_support.jl`
 - `scripts/test_r9_risk.jl`
+- `scripts/test_r9_risk_native_start.jl`
 - `scripts/test_r9_sources.jl`
 - `scripts/test_r9_trading.jl`
 - `scripts/test_r9_trading_artifacts.jl`
@@ -2407,6 +2439,8 @@
 - `src/algorithms/r7_transport.jl`
 - `src/algorithms/r8_energy_flow.jl`
 - `src/algorithms/r8_tradeoff.jl`
+- `src/algorithms/r9_common_witness.jl`
+- `src/algorithms/r9_risk_start.jl`
 - `src/algorithms/r9_trading.jl`
 - `src/components/devices.jl`
 - `src/components/r7_commitment.jl`
@@ -2479,6 +2513,7 @@
 - `src/formulations/r7_transport.jl`
 - `src/formulations/r8_energy_flow.jl`
 - `src/formulations/r8_tradeoff.jl`
+- `src/formulations/r9_common_witness.jl`
 - `src/formulations/r9_flow.jl`
 - `src/formulations/r9_network.jl`
 - `src/formulations/r9_pv.jl`
@@ -2645,6 +2680,7 @@
 - `test/r7_transport.jl`
 - `test/r8_energy_flow.jl`
 - `test/r8_tradeoff.jl`
+- `test/r9_common_witness.jl`
 - `test/r9_fixed.jl`
 - `test/r9_flow.jl`
 - `test/r9_heat_memory.jl`
@@ -2762,6 +2798,11 @@
 - `results/summaries/r8-energy-20260920-v1/records/`
 - `results/summaries/r8-tradeoff-20260920-v1/code/`
 - `results/summaries/r8-tradeoff-20260920-v1/records/`
+- `results/summaries/r9-common-evidence-20260921-v1/run/`
+- `results/summaries/r9-common-input-20260921-v1/implementation/`
+- `results/summaries/r9-common-input-20260921-v1/study/`
+- `results/summaries/r9-common-input-20260921-v2/implementation/`
+- `results/summaries/r9-common-input-20260921-v2/study/`
 - `results/summaries/r9-fixed-20260921-v4/objects/`
 - `results/summaries/r9-flow-diagnostics-20260921-v2/runs/`
 - `results/summaries/r9-flow-reference-20260921-v2/objects/`

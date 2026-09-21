@@ -68,3 +68,21 @@ latex = 'z_s'
 meaning = "整条情景允许退到声明物理温度界；实际越界事件另行重算"
 unit = "1"
 code = "z[s]"
+
+[[audit_equations]]
+id = "R9-CW1"
+page = "docs/src/ch07-common-witness.md"
+implementation = "src/formulations/r9_common_witness.jl"
+test = "test/r9_common_witness.jl"
+
+[[audit_equations]]
+id = "R9-CW2"
+page = "docs/src/ch07-common-witness.md"
+implementation = "src/algorithms/r9_common_witness.jl"
+test = "test/r9_common_witness.jl"
+
+[[audit_equations]]
+id = "R9-CW3"
+page = "docs/src/ch07-common-witness.md"
+implementation = "src/algorithms/r9_common_witness.jl"
+test = "test/r9_common_witness.jl"

@@ -380,6 +380,13 @@ include("verification/r9_reserve.jl")
 export r9_reserve_template, audit_r9_reserve_input
 include("core/r9_risk.jl")
 export R9ReserveStudySpec, load_r9_reserve_study, r9_reserve_risk_case
+include("formulations/r9_common_witness.jl")
+include("algorithms/r9_common_witness.jl")
+export build_r9_common_witness, solve_r9_common_witness, r9_common_risk_candidate
+export r9_constant_transport
+export r9_diagonal_transport_bound
+include("algorithms/r9_risk_start.jl")
+export r9_risk_start_values, audit_r9_risk_start
 
 """
     hello(who::String)
