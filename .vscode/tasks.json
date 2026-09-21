@@ -1,5 +1,7 @@
 {
   "inputs": [
+    {"id":"r9CompactInput","type":"promptString","description":"等价表示已冻结输入；freeze请改用新目录","default":"results/summaries/r9-compact-input-20260921-v1"},
+    {"id":"r9CompactOutput","type":"promptString","description":"等价表示新运行目录，不覆盖历史","default":"results/runs/r9-compact-new"},
     {"id":"r9SeededInput","type":"promptString","description":"带初值求解的新冻结目录或已冻结输入","default":"results/summaries/r9-seeded-input-20260921-v1"},
     {"id":"r9SeededOutput","type":"promptString","description":"新运行目录；check时选择已保存运行","default":"results/runs/r9-seeded-new"},
     {"id":"r9SeededScheme","type":"pickString","description":"保持原百情景的风险方案","options":["3A","3B","3C"],"default":"3A"},
@@ -195,6 +197,13 @@
     }
   ],
   "tasks": [
+    {"label":"PaperRebuild: R9 compact risk tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_compact_risk.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 compact freeze tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--depwarn=error","--project=.","scripts/test_r9_compact_freeze.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 compact input check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_compact_delivery.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 compact native tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_compact_native.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 compact freeze","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_seeded_study.jl","freeze","${input:r9CommonInput}","${input:r9CommonEvidence}","${input:r9CompactInput}","configs/r9/compact-study.toml"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 compact batch","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","${input:r9CompactInput}/implementation/scripts/run_r9_seeded_batch.jl","${input:r9CommonInput}","${input:r9CompactInput}","${input:r9CompactOutput}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 compact independent replay","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--depwarn=error","--project=.","${input:r9CompactInput}/implementation/scripts/r9_seeded_study.jl","check","${input:r9CommonInput}","${input:r9CompactInput}","${input:r9SeededScheme}","${input:r9CompactOutput}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 seeded risk tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_seeded_risk.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 seeded delivery check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_seeded_delivery.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 seeded redraw","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r9_seeded.jl","${input:r9SeededEvidence}","${input:r9CommonEvidence}","${input:r9SeededFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},

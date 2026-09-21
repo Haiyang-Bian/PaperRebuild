@@ -387,6 +387,9 @@ export r9_constant_transport
 export r9_diagonal_transport_bound
 include("algorithms/r9_risk_start.jl")
 export r9_risk_start_values, audit_r9_risk_start
+include("formulations/r9_compact_risk.jl")
+export build_r9_compact_risk
+include("algorithms/r9_compact_risk.jl")
 include("algorithms/r9_seeded_risk.jl")
 export solve_r9_seeded_risk
 

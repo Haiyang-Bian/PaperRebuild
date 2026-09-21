@@ -151,6 +151,7 @@
 - `configs/r7/transport-study.toml`
 - `configs/r8/energy-flow-study.toml`
 - `configs/r8/tradeoff-study.toml`
+- `configs/r9/compact-study.toml`
 - `configs/r9/flow-reference.toml`
 - `configs/r9/network-protocol.toml`
 - `configs/r9/network-study.toml`
@@ -226,6 +227,7 @@
 - `docs/agent/tasks/2026-09-20-r8-tradeoff.md`
 - `docs/agent/tasks/2026-09-20-r9-inputs.md`
 - `docs/agent/tasks/2026-09-21-r9-common-witness.md`
+- `docs/agent/tasks/2026-09-21-r9-compact-risk.md`
 - `docs/agent/tasks/2026-09-21-r9-fixed.md`
 - `docs/agent/tasks/2026-09-21-r9-flow-reference.md`
 - `docs/agent/tasks/2026-09-21-r9-flow.md`
@@ -445,6 +447,7 @@
 - `docs/src/ch06-transport-equations.md`
 - `docs/src/ch06-transport.md`
 - `docs/src/ch07-common-witness.md`
+- `docs/src/ch07-compact-risk.md`
 - `docs/src/ch07-fixed-generated.md`
 - `docs/src/ch07-fixed.md`
 - `docs/src/ch07-flow-results.md`
@@ -637,6 +640,7 @@
 - `scripts/check_r8_results.jl`
 - `scripts/check_r9_affine_certificate.jl`
 - `scripts/check_r9_common_delivery.jl`
+- `scripts/check_r9_compact_delivery.jl`
 - `scripts/check_r9_figures.jl`
 - `scripts/check_r9_fixed.jl`
 - `scripts/check_r9_fixed_delivery.jl`
@@ -1062,6 +1066,9 @@
 - `scripts/test_r8_tradeoff.jl`
 - `scripts/test_r9_common_evidence.jl`
 - `scripts/test_r9_common_witness.jl`
+- `scripts/test_r9_compact_freeze.jl`
+- `scripts/test_r9_compact_native.jl`
+- `scripts/test_r9_compact_risk.jl`
 - `scripts/test_r9_fixed.jl`
 - `scripts/test_r9_flow.jl`
 - `scripts/test_r9_gurobi_start.jl`
@@ -1134,6 +1141,7 @@
 - `src/algorithms/r8_energy_flow.jl`
 - `src/algorithms/r8_tradeoff.jl`
 - `src/algorithms/r9_common_witness.jl`
+- `src/algorithms/r9_compact_risk.jl`
 - `src/algorithms/r9_risk_start.jl`
 - `src/algorithms/r9_seeded_risk.jl`
 - `src/algorithms/r9_trading.jl`
@@ -1209,6 +1217,7 @@
 - `src/formulations/r8_energy_flow.jl`
 - `src/formulations/r8_tradeoff.jl`
 - `src/formulations/r9_common_witness.jl`
+- `src/formulations/r9_compact_risk.jl`
 - `src/formulations/r9_flow.jl`
 - `src/formulations/r9_network.jl`
 - `src/formulations/r9_pv.jl`
@@ -1376,6 +1385,7 @@
 - `test/r8_energy_flow.jl`
 - `test/r8_tradeoff.jl`
 - `test/r9_common_witness.jl`
+- `test/r9_compact_risk.jl`
 - `test/r9_fixed.jl`
 - `test/r9_flow.jl`
 - `test/r9_heat_memory.jl`
@@ -1538,6 +1548,7 @@
 - `results/summaries/r9-common-input-20260921-v1/`
 - `results/summaries/r9-common-input-20260921-v2/`
 - `results/summaries/r9-common-start-20260921-v1/`
+- `results/summaries/r9-compact-input-20260921-v1/`
 - `results/summaries/r9-fixed-20260921-v4/`
 - `results/summaries/r9-fixed-figures-20260921-v4/`
 - `results/summaries/r9-flow-diagnostics-20260921-v2/`

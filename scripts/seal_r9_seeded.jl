@@ -91,6 +91,20 @@ function check(common, frozen, out; replay = true)
         s["parent_witness_sha256"]==fm["protocol"]["parent_witness_sha256"] || error("Wrong seed")
         s["status"]==r["status"] && s["has_candidate"]==r["has_candidate"] ||
             error("False solver status")
+        representation=get(fm["protocol"], "representation", "original")
+        get(s, "representation", "original")==get(r, "representation", "original")==representation ||
+            error("Representation mismatch")
+        get(s, "solver_logging_requested", false)==get(r, "solver_logging_requested", false)==get(
+            fm["protocol"],
+            "solver_log",
+            false,
+        ) || error("Logging mismatch")
+        if representation=="r9_compact_v1"
+            get(r, "representation_source_hashes", Dict())==Dict(
+                p=>fm["source_hashes"][p] for
+                p in ("src/formulations/r9_compact_risk.jl", "src/algorithms/r9_compact_risk.jl")
+            ) || error("Compact source mismatch")
+        end
         for key in ("model_pass", "risk_pass", "cost_pass", "optimality_pass")
             s[key]==v[key] || error("False validation flag")
         end

@@ -11560,6 +11560,11 @@
           "path": "docs/src/ch07-seeded-risk.md",
           "name": "ch07-seeded-risk.md",
           "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch07-compact-risk.md",
+          "name": "ch07-compact-risk.md",
+          "isDirectory": false
         }
       ],
       "order": 1,
@@ -11945,6 +11950,11 @@
         {
           "path": "docs/agent/tasks/2026-09-21-r9-seeded-risk.md",
           "name": "2026-09-21-r9-seeded-risk.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/agent/tasks/2026-09-21-r9-compact-risk.md",
+          "name": "2026-09-21-r9-compact-risk.md",
           "isDirectory": false
         }
       ],
@@ -13047,6 +13057,16 @@
           "path": "src/algorithms/r9_seeded_risk.jl",
           "name": "r9_seeded_risk.jl",
           "isDirectory": false
+        },
+        {
+          "path": "src/algorithms/r9_compact_risk.jl",
+          "name": "r9_compact_risk.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/formulations/r9_compact_risk.jl",
+          "name": "r9_compact_risk.jl",
+          "isDirectory": false
         }
       ],
       "order": 3,
@@ -13752,6 +13772,11 @@
         {
           "path": "configs/r9/seeded-study.toml",
           "name": "seeded-study.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r9/compact-study.toml",
+          "name": "compact-study.toml",
           "isDirectory": false
         }
       ],
@@ -83125,6 +83150,81 @@
           "path": "results/summaries/r9-seeded-structure-20260921-v1/structure.toml",
           "name": "structure.toml",
           "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-compact-input-20260921-v1/implementation/configs/r9/compact-study.toml",
+          "name": "compact-study.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-compact-input-20260921-v1/implementation/configs/r9/seeded-study.toml",
+          "name": "seeded-study.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-compact-input-20260921-v1/implementation/scripts/r9_gurobi_start.jl",
+          "name": "r9_gurobi_start.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-compact-input-20260921-v1/implementation/scripts/r9_reserve_study.jl",
+          "name": "r9_reserve_study.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-compact-input-20260921-v1/implementation/scripts/r9_reserve_witness.jl",
+          "name": "r9_reserve_witness.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-compact-input-20260921-v1/implementation/scripts/r9_seeded_study.jl",
+          "name": "r9_seeded_study.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-compact-input-20260921-v1/implementation/scripts/run_r9_seeded_batch.jl",
+          "name": "run_r9_seeded_batch.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-compact-input-20260921-v1/implementation/src/algorithms/r9_compact_risk.jl",
+          "name": "r9_compact_risk.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-compact-input-20260921-v1/implementation/src/algorithms/r9_risk_start.jl",
+          "name": "r9_risk_start.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-compact-input-20260921-v1/implementation/src/algorithms/r9_seeded_risk.jl",
+          "name": "r9_seeded_risk.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-compact-input-20260921-v1/implementation/src/formulations/r9_compact_risk.jl",
+          "name": "r9_compact_risk.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-compact-input-20260921-v1/manifest.sha256",
+          "name": "manifest.sha256",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-compact-input-20260921-v1/manifest.toml",
+          "name": "manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-compact-input-20260921-v1/parent-status.toml",
+          "name": "parent-status.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-compact-input-20260921-v1/witness.toml",
+          "name": "witness.toml",
+          "isDirectory": false
         }
       ],
       "order": 6,
@@ -83540,6 +83640,11 @@
         {
           "path": "test/r9_seeded_risk.jl",
           "name": "r9_seeded_risk.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "test/r9_compact_risk.jl",
+          "name": "r9_compact_risk.jl",
           "isDirectory": false
         }
       ],
@@ -86641,6 +86746,26 @@
         {
           "path": "scripts/test_r9_seeded_risk.jl",
           "name": "test_r9_seeded_risk.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r9_compact_delivery.jl",
+          "name": "check_r9_compact_delivery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/test_r9_compact_freeze.jl",
+          "name": "test_r9_compact_freeze.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/test_r9_compact_native.jl",
+          "name": "test_r9_compact_native.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/test_r9_compact_risk.jl",
+          "name": "test_r9_compact_risk.jl",
           "isDirectory": false
         }
       ],

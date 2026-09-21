@@ -94,4 +94,5 @@ if PAPERREBUILD_TEST_STAGE in ("all", "r7_r9")
     include("r9_risk_evidence.jl")
     include("r9_common_witness.jl")
     include("r9_seeded_risk.jl")
+    include("r9_compact_risk.jl")
 end
