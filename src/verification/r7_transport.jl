@@ -42,7 +42,7 @@ function validate_r7_transport_recovery(c, s, r)
         "values"=>r["values"],
         "solver_objective_MWh"=>r["solver_objective_MWh"],
     )
-    for key in ("fixed_z", "fixed_battery_modes")
+    for key in ("fixed_z", "fixed_energized", "fixed_battery_modes")
         haskey(r, key) && (shared[key]=r[key])
     end
     a=validate_r7_recovery(c, shared; aggregate_heat = false)

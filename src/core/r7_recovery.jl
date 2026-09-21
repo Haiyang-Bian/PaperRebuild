@@ -13,6 +13,107 @@ struct R7RecoveryCase
     sha256::String
 end
 
+r7_electric_domain(d) = get(d["electric"], "recovery_domain", "all_nodes_energized_v1")
+r7_partial_energization(d) = r7_electric_domain(d)=="partial_energization_v1"
+
+function r7_check_electric_domain(d)
+    rule=r7_electric_domain(d)
+    rule in ("all_nodes_energized_v1", "partial_energization_v1") || error("未支持的灾后带电域")
+    if haskey(d["electric"], "recovery_domain")
+        source=get(d["electric"], "recovery_domain_provenance", "")
+        source isa AbstractString && !isempty(strip(source)) || error("灾后带电域缺少采用依据")
+    elseif haskey(d["electric"], "recovery_domain_provenance")
+        error("带电域来源不能脱离显式版本")
+    end
+    nothing
+end
+
+function r7_electric_domain_input(c, rule, provenance)
+    d=deepcopy(c.data)
+    d["electric"]["recovery_domain"]=String(rule)
+    d["electric"]["recovery_domain_provenance"]=String(provenance)
+    d
+end
+
+"""
+    with_r7_electric_domain(case, rule; provenance)
+
+复制正常或恢复输入，显式选择灾后电网域。`partial_energization_v1`用项目式R9-RE1至RE4
+区分机械开关、带电节点及带电线路；允许整个闭合分量停电，停电节点电压、设备电功率和
+服务电负荷均为零。拓扑和带电状态在事件时域及新能源场景之间共用；CHP继承启停和爬坡，
+不得通过停电取消已开机承诺。正常调度仍为原连接树。原`all_nodes_energized_v1`及历史输入不迁移。
+此域没有增加黑启动、频率动态或热泵/水泵辅助用电模型，不能作为这些能力的认证。
+"""
+function with_r7_electric_domain(c::R7RecoveryCase, rule::AbstractString; provenance)
+    r7_recovery_assert(c)
+    R7RecoveryCase(r7_electric_domain_input(c, rule, provenance))
+end
+
+# 根的成网资格仍由输入给定；CHP还须在整个事件中已开机。GT/BES的成网可用性是显式输入假设。
+function r7_available_root(c, n)
+    all(
+        t->any(
+            g->g["electric_node"]==n &&
+               g["P_max_MW"]>0 &&
+               (g["kind"] in ("GT", "BES") || (g["kind"]=="CHP" && g["commitment"][t]==1)),
+            c.data["devices"],
+        ),
+        1:c.data["periods"],
+    )
+end
+
+function r7_switch_admissible(c, gamma, z)
+    e=c.data["electric"]
+    length(z)==length(e["lines"]) && all(x->x in (0, 1), z) || error("机械开关须为线路0/1向量")
+    all(i->z[i]<=1-gamma[i], eachindex(z)) &&
+        sum(
+            (abs(z[i]-e["lines"][i]["base_closed"]) for i in eachindex(z) if gamma[i]==0);
+            init = 0,
+        )<=e["switch_budget"]
+end
+
+function r7_partial_roots(c, z, energized)
+    e=c.data["electric"]
+    N=e["nodes"]
+    length(z)==length(e["lines"]) && all(x->x in (0, 1), z) || error("机械开关须为线路0/1向量")
+    length(energized)==N && all(x->x in (0, 1), energized) || error("带电模式须为节点0/1向量")
+    all(
+        l->z[l]==0 || energized[e["lines"][l]["from"]]==energized[e["lines"][l]["to"]],
+        eachindex(z),
+    ) || return nothing
+    live=[z[l]*energized[e["lines"][l]["from"]] for l in eachindex(z)]
+    groups=r7_connected_components(N, [(l["from"], l["to"]) for l in e["lines"]], live)
+    roots=zeros(Int, N)
+    for group in groups
+        energized[first(group)]==0 && continue
+        edges=count(l->live[l]==1 && e["lines"][l]["from"] in group, eachindex(live))
+        edges==length(group)-1 || return nothing
+        candidates=filter(n->e["root_eligible"][n]==1 && r7_available_root(c, n), group)
+        isempty(candidates) && return nothing
+        roots[first(candidates)]=1
+    end
+    roots
+end
+
+function r7_recovery_mode(c, mode)
+    if r7_partial_energization(c.data)
+        mode isa AbstractDict && Set(keys(mode))==Set(["switch", "energized"]) ||
+            error("部分带电对偶模式必须同时固定机械开关和节点带电状态")
+        r7_partial_roots(c, mode["switch"], mode["energized"])===nothing &&
+            error("带电恢复模式不是合格森林")
+        return Dict("switch"=>Int.(mode["switch"]), "energized"=>Int.(mode["energized"]))
+    end
+    mode isa AbstractVector || error("旧全节点带电域仅接受原拓扑向量")
+    all(x->x in (0, 1), mode) || error("拓扑须为0/1")
+    Int.(mode)
+end
+
+function r7_mode_from_values(c, values)
+    z=round.(Int, vec(r7_unpack(values, "z")))
+    r7_partial_energization(c.data) ?
+    Dict("switch"=>z, "energized"=>round.(Int, vec(r7_unpack(values, "energized")))) : z
+end
+
 r7_critical_service(d) = haskey(d, "load_service")
 r7_service_objective(d) =
     r7_critical_service(d) ? "critical_electric_v1" : "total_electric_and_heat_v1"
@@ -231,6 +332,7 @@ function R7RecoveryCase(input::AbstractDict)
     N isa Integer && N >= 1 && J isa Integer && J >= 2 || error("节点数错误")
     e["pcc_node"] isa Integer && 1 <= e["pcc_node"] <= N || error("PCC节点错误")
     e["flow_domain"] in ("forward_only", "signed") || error("须显式选择电支路方向解释")
+    r7_check_electric_domain(d)
     0 < e["v_min_pu"] <= e["v_ref_pu"] <= e["v_max_pu"] && e["S_base_MVA"] > 0 ||
         error("电压或标幺基准错误")
     all(isfinite, [e[k] for k in ("v_min_pu", "v_ref_pu", "v_max_pu", "S_base_MVA")]) || error("非有限电网边界")

@@ -10,6 +10,7 @@ function solve_r7_transport_recovery(
     s;
     optimizer,
     fixed_z = nothing,
+    fixed_energized = nothing,
     fixed_battery_modes = nothing,
     budget_sec = 600.0,
     deadline = Inf,
@@ -37,6 +38,7 @@ function solve_r7_transport_recovery(
         "source_hashes_at_solve"=>r7_transport_science_hashes(),
     )
     fixed_z===nothing || (r["fixed_z"]=Int.(fixed_z))
+    fixed_energized===nothing || (r["fixed_energized"]=Int.(fixed_energized))
     modes===nothing || (r["fixed_battery_modes"]=Dict(k=>r7_pack(a) for (k, a) in modes))
     if time()<stop
         try
@@ -46,6 +48,7 @@ function solve_r7_transport_recovery(
                 s;
                 optimizer,
                 fixed_z,
+                fixed_energized,
                 fixed_battery_modes = modes,
                 deadline = stop,
             )
@@ -168,6 +171,7 @@ function r7_reconstruct_battery_cycles(c::R7RecoveryCase, s, parent)
         "julia_version"=>string(VERSION),
     )
     haskey(parent, "fixed_z") && (r["fixed_z"]=deepcopy(parent["fixed_z"]))
+    haskey(parent, "fixed_energized") && (r["fixed_energized"]=deepcopy(parent["fixed_energized"]))
     r["validation"]=validate_r7_transport_recovery(derived, spec, r)
     r["elapsed_sec"]=time()-started
     (; case = derived, spec, result = r)

@@ -60,7 +60,8 @@ end
     build_r7_recovery(case, fault; optimizer=nothing, fixed_z=nothing,
                       boundary_variables=false, fault_variables=false)
 
-构建给定灾前状态/故障的最小加权失供MILP；固定有效森林后为LP。拓扑跨时段与场景共用，
+构建给定灾前状态/故障的最小加权失供MILP；新部分带电域须同时固定fixed_z与fixed_energized，
+再固定其他整数模式后才为LP。机械开关、带电状态跨时段与场景共用，
 管流跨新能源场景共用，连续调度按场景变化。不求解、不写文件。采用(6-51)至(6-90)
 及其继承的设备/线性电网约束；双水箱通过不代表详细热网或交流潮流通过。
 固定拓扑仅用于穷举/对照，根取每个分量的最早合格节点；根不改变物理出力能力。
@@ -73,6 +74,7 @@ function build_r7_recovery(
     gamma;
     optimizer = nothing,
     fixed_z = nothing,
+    fixed_energized = nothing,
     fixed_battery_modes = nothing,
     boundary_variables = false,
     fault_variables = false,
@@ -83,6 +85,14 @@ function build_r7_recovery(
         (fixed_z===nothing || boundary_variables) &&
         error("故障参数模板要求固定拓扑及数值灾前边界")
     d=c.data
+    partial=r7_partial_energization(d)
+    fixed_energized===nothing ||
+        (partial && fixed_z!==nothing) ||
+        error("固定带电模式仅用于显式部分带电域且须同时固定机械开关")
+    partial &&
+        fault_variables &&
+        fixed_energized===nothing &&
+        error("部分带电域LP对偶须固定节点带电模式")
     e, h=d["electric"], d["heat"]
     ls, ps, ds=e["lines"], h["pipes"], d["devices"]
     N, J, T, W, G, L, A=e["nodes"],
@@ -136,7 +146,17 @@ function build_r7_recovery(
     @variable(m, 0<=beta[1:N]<=1)
     @variable(m, 0<=a_on[1:L]<=1)
     @variable(m, 0<=a_off[1:L]<=1)
-    if fixed_z===nothing
+    if partial
+        if fixed_z===nothing
+            foreach(set_binary, vcat(z, a_on, a_off))
+        else
+            fault_variables ||
+                r7_switch_admissible(c, gamma, fixed_z) ||
+                error("固定机械开关违反故障/动作预算")
+            length(fixed_z)==L && all(x->x in (0, 1), fixed_z) || error("固定机械开关形状错误")
+            foreach(i->fix(z[i], fixed_z[i]; force = true), 1:L)
+        end
+    elseif fixed_z===nothing
         foreach(set_binary, vcat(z, beta, a_on, a_off))
     else
         roots=fault_variables ? r7_forest_roots(c, fixed_z) : r7_topology_roots(c, gamma, fixed_z)
@@ -146,33 +166,87 @@ function build_r7_recovery(
     end
     @variable(m, virtual[1:L])
     @variable(m, root_supply[1:N]>=0)
+    electric_variables=Dict{String,Any}()
+    energized=ones(N)
+    live=z
+    if partial
+        # R9-RE1：闭合线路两端同为带电或停电；机械闭合不等于有电，不增加虚构开关动作。
+        energized=[
+            @variable(m, lower_bound=0, upper_bound=1, base_name="energized[$n]") for n in 1:N
+        ]
+        live=[@variable(m, lower_bound=0, upper_bound=1, base_name="live[$l]") for l in 1:L]
+        if fixed_energized===nothing || boundary_variables
+            foreach(set_binary, beta)
+        end
+        if fixed_energized===nothing
+            foreach(set_binary, energized)
+        else
+            roots=r7_partial_roots(c, fixed_z, fixed_energized)
+            roots===nothing && error("固定带电模式不是合格森林")
+            foreach(n->fix(energized[n], fixed_energized[n]; force = true), 1:N)
+            boundary_variables || foreach(n->fix(beta[n], roots[n]; force = true), 1:N)
+        end
+        for l in 1:L
+            i, j=ls[l]["from"], ls[l]["to"]
+            add("R9-RE1", @constraint(m, energized[i]-energized[j]<=1-z[l]))
+            add("R9-RE1", @constraint(m, energized[j]-energized[i]<=1-z[l]))
+            add("R9-RE1", @constraint(m, live[l]<=z[l]))
+            add("R9-RE1", @constraint(m, live[l]<=energized[i]))
+            add("R9-RE1", @constraint(m, live[l]>=z[l]+energized[i]-1))
+        end
+        electric_variables["energized"]=energized
+        electric_variables["live"]=live
+    end
     for l in 1:L
         base=ls[l]["base_closed"]
         # 自动故障断开不计主动动作；健康线路才可合闸/分闸，修复原6-62的字面冲突。
         add("R7-R1", @constraint(m, z[l]==base*(1-fault_coefficient[l])+a_on[l]-a_off[l]))
         add("R7-R1", @constraint(m, a_on[l]<=(1-base)*(1-fault_coefficient[l])))
         add("R7-R1", @constraint(m, a_off[l]<=base*(1-fault_coefficient[l])))
-        add("R7-R2", @constraint(m, virtual[l]<=(N-1)*z[l]))
-        add("R7-R2", @constraint(m, virtual[l]>=-(N-1)*z[l]))
+        add(partial ? "R9-RE2" : "R7-R2", @constraint(m, virtual[l]<=(N-1)*live[l]))
+        add(partial ? "R9-RE2" : "R7-R2", @constraint(m, virtual[l]>=-(N-1)*live[l]))
     end
     add("6-63", @constraint(m, sum(a_on)+sum(a_off)<=e["switch_budget"]))
-    add("R7-R2", @constraint(m, sum(z)==N-sum(beta)))
+    forest_id=partial ? "R9-RE2" : "R7-R2"
+    add(forest_id, @constraint(m, sum(live)==sum(energized)-sum(beta)))
     for n in 1:N
-        add("R7-R2", @constraint(m, beta[n]<=e["root_eligible"][n]))
-        add("R7-R2", @constraint(m, root_supply[n]<=N*beta[n]))
+        add(forest_id, @constraint(m, beta[n]<=e["root_eligible"][n]))
+        add(forest_id, @constraint(m, root_supply[n]<=N*beta[n]))
+        if partial
+            add("R9-RE2", @constraint(m, beta[n]<=energized[n]))
+            for t in 1:T
+                ready=sum(
+                    (
+                        ds[g]["kind"]=="CHP" ? inherited("u", (g, t), ds[g]["commitment"][t]) : 1
+                        for g in 1:G if ds[g]["electric_node"]==n &&
+                            ds[g]["P_max_MW"]>0 &&
+                            ds[g]["kind"] in ("CHP", "GT", "BES")
+                    );
+                    init = 0.0,
+                )
+                add("R9-RE2", @constraint(m, beta[n]<=ready))
+            end
+        end
         add(
-            "R7-R2",
+            forest_id,
             @constraint(
                 m,
                 sum(virtual[l] for l in 1:L if ls[l]["from"]==n)-sum(
                     virtual[l] for l in 1:L if ls[l]["to"]==n
-                )==root_supply[n]-1
+                )==root_supply[n]-energized[n]
             )
         )
     end
     @variable(m, P_line[1:L, 1:T, 1:W])
     @variable(m, Q_line[1:L, 1:T, 1:W])
-    @variable(m, e["v_min_pu"]<=v[1:N, 1:T, 1:W]<=e["v_max_pu"])
+    v_lower=partial ? 0.0 : e["v_min_pu"]
+    @variable(m, v_lower<=v[1:N, 1:T, 1:W]<=e["v_max_pu"])
+    if partial
+        for n in 1:N, t in 1:T, w in 1:W
+            add("R9-RE3", @constraint(m, v[n, t, w]>=e["v_min_pu"]*energized[n]))
+            add("R9-RE3", @constraint(m, v[n, t, w]<=e["v_max_pu"]*energized[n]))
+        end
+    end
     @variable(m, P_PCC[1:T, 1:W])
     @variable(m, Q_PCC[1:T, 1:W])
     foreach(x->fix(x, 0; force = true), vcat(vec(P_PCC), vec(Q_PCC)))
@@ -180,16 +254,16 @@ function build_r7_recovery(
         line=ls[l]
         sign=e["flow_domain"]=="signed" ? -1.0 : 0.0
         for (power, cap) in ((P_line, line["P_max_MW"]), (Q_line, line["Q_max_Mvar"]))
-            add("6-24:25", @constraint(m, power[l, t, w]<=cap*z[l]))
-            add("6-24:25", @constraint(m, power[l, t, w]>=sign*cap*z[l]))
+            add("6-24:25", @constraint(m, power[l, t, w]<=cap*live[l]))
+            add("6-24:25", @constraint(m, power[l, t, w]>=sign*cap*live[l]))
         end
         dv=v[line["from"], t, w]-v[line["to"], t, w]-(
             line["r_pu"]*P_line[l, t, w]+line["x_pu"]*Q_line[l, t, w]
         )/(e["S_base_MVA"]*e["v_ref_pu"])
         # 断开支路不强迫两端电压相等；流为零时M由电压范围给出，不选任意大数。
-        M=e["v_max_pu"]-e["v_min_pu"]
-        add("R7-R3", @constraint(m, dv<=M*(1-z[l])))
-        add("R7-R3", @constraint(m, -dv<=M*(1-z[l])))
+        M=e["v_max_pu"]-v_lower
+        add(partial ? "R9-RE3" : "R7-R3", @constraint(m, dv<=M*(1-live[l])))
+        add(partial ? "R9-RE3" : "R7-R3", @constraint(m, -dv<=M*(1-live[l])))
     end
     # 各孤岛根电压不额外固定：原文只约束电压范围，固定不同根会改变连续可行域。
     @variable(m, P[1:G, 1:T, 1:W]>=0)
@@ -206,6 +280,7 @@ function build_r7_recovery(
             kind=="BES" && (upper=0.0)
             if kind=="CHP"
                 u=inherited("u", (g, t), dev["commitment"][t])
+                partial && add("R9-RE4", @constraint(m, u<=energized[dev["electric_node"]]))
                 upper*=u
                 add("6-56", @constraint(m, P[g, t, w]>=dev["P_min_MW"]*u))
                 add("6-3", @constraint(m, Q[g, t, w]>=dev["Q_min_Mvar"]*u))
@@ -234,6 +309,15 @@ function build_r7_recovery(
                 kind=="CHP" ? inherited("u", (g, t), dev["commitment"][t]) : 1
             ) : 0.0
             add("6-3/9", @constraint(m, Q[g, t, w]<=qmax))
+            if partial
+                y=energized[dev["electric_node"]]
+                pcap=kind=="PV" ? d["renewable_factor"]*dev["available_MW"][t][w] : dev["P_max_MW"]
+                qcap=kind in ("CHP", "GT") ? dev["Q_max_Mvar"] : 0.0
+                add("R9-RE4", @constraint(m, P[g, t, w]<=pcap*y))
+                add("R9-RE4", @constraint(m, Q[g, t, w]<=qcap*y))
+                kind=="BES" &&
+                    add("R9-RE4", @constraint(m, P_ch[g, t, w]+P_dis[g, t, w]<=dev["P_max_MW"]*y))
+            end
             if kind in ("CHP", "EB")
                 add("6-11", @constraint(m, H[g, t, w]==dev["heat_ratio"]*P[g, t, w]))
             else
@@ -295,6 +379,7 @@ function build_r7_recovery(
     end
     for n in 1:N, t in 1:T, w in 1:W
         served=e["load_MW"][n][t]-P_shed[n, t, w]
+        partial && add("R9-RE4", @constraint(m, served<=e["load_MW"][n][t]*energized[n]))
         add("6-54", @constraint(m, P_shed[n, t, w]<=e["load_MW"][n][t]*e["shed_fraction_max"][n]))
         gen=sum(
             (
@@ -483,6 +568,7 @@ function build_r7_recovery(
         ))
     )
     merge!(variables, service_variables)
+    merge!(variables, electric_variables)
     r7_add_battery_domain!(m, d, variables, cs; fixed_modes = fixed_battery_modes)
     types=list_of_constraint_types(m)
     all(
@@ -501,6 +587,7 @@ function build_r7_recovery(
         model_class = any(is_binary, all_variables(m)) ? "MILP" : "LP",
         fault = Int.(gamma),
         fixed_z,
+        fixed_energized,
         boundary_parameters = parameters,
         fault_parameters,
     )

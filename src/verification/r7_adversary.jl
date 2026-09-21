@@ -98,7 +98,7 @@ end
 function validate_r7_adversary(c::R7RecoveryCase, r)
     r7_recovery_assert(c)
     r["schema"]=="r7-adversary-result-v1" &&
-    r["version"]=="r7_inner_indicator_v1" &&
+    r["version"]==r7_adversary_version(c) &&
     r["case_sha256"]==c.sha256 &&
     r["preplan_id"]==c.data["preplan_id"] &&
     r["objective_kind"]==r7_loss_objective_kind(c.data; worst = true) &&
@@ -106,7 +106,7 @@ function validate_r7_adversary(c::R7RecoveryCase, r)
     r["author_literal_algorithm"]===false || error("内层对手身份或范围错误")
     cap=r7_recovery_loss_cap(c).cap_MWh
     cap_tol=1e-6*(1+max(1.0, cap))
-    zs=Vector{Int}[]
+    zs=Any[]
     checks=Dict{String,Any}[]
     lower, upper=0.0, Inf
     worst_fault=Int[]
@@ -154,8 +154,14 @@ function validate_r7_adversary(c::R7RecoveryCase, r)
             end
             inf_certificate |= rec["status"]=="infeasible_certified"
             if q["model_pass"]
-                z=round.(Int, vec(r7_unpack(rec["values"], "z")))
-                r7_topology_roots(c, rec["fault"], z)===nothing && error("恢复模式不是合格森林")
+                z=r7_mode_from_values(c, rec["values"])
+                if r7_partial_energization(c.data)
+                    r7_recovery_mode(c, z)
+                    r7_switch_admissible(c, rec["fault"], z["switch"]) ||
+                        error("恢复开关模式不相容")
+                else
+                    r7_topology_roots(c, rec["fault"], z)===nothing && error("恢复模式不是合格森林")
+                end
                 if !(z in zs)
                     get(it, "added_topology", Int[])==z || error("合格新拓扑未登记")
                     push!(zs, z)

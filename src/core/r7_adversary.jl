@@ -1,4 +1,6 @@
 const R7_ADVERSARY_CORE_FILE = @__FILE__
+r7_adversary_version(c) =
+    r7_partial_energization(c.data) ? "r7_inner_energization_v1" : "r7_inner_indicator_v1"
 
 """
     R7RecourseLP
@@ -129,17 +131,23 @@ end
 由故障参数行决定，不能用零故障的动作预算提前排除它；保留不适用模式的不可行证据。
 返回可哈希的规范行、中文公式标签及共同可行对偶，采用式R7-I1/I2。
 """
-function r7_recovery_lp(c::R7RecoveryCase, z)
+function r7_recovery_lp(c::R7RecoveryCase, mode)
     r7_recovery_assert(c)
     r7_exclusive_battery(c.data) && error("互斥电池未固定，不能抽取为连续LP对偶")
-    b=build_r7_recovery(c, zeros(Int, length(z)); fixed_z = z, fault_variables = true)
-    labels=Dict{Any,String}(con=>id for (id, cs) in b.constraints for con in cs)
-    r7_linear_recourse(
-        b.model,
-        b.fault_parameters;
-        labels,
-        metadata = Dict("case_sha256"=>c.sha256, "topology"=>Int.(z)),
+    declared=r7_recovery_mode(c, mode)
+    z=r7_partial_energization(c.data) ? declared["switch"] : declared
+    y=r7_partial_energization(c.data) ? declared["energized"] : nothing
+    b=build_r7_recovery(
+        c,
+        zeros(Int, length(z));
+        fixed_z = z,
+        fixed_energized = y,
+        fault_variables = true,
     )
+    metadata=Dict{String,Any}("case_sha256"=>c.sha256, "topology"=>Int.(z))
+    y===nothing || (metadata["energized"]=Int.(y))
+    labels=Dict{Any,String}(con=>id for (id, cs) in b.constraints for con in cs)
+    r7_linear_recourse(b.model, b.fault_parameters; labels, metadata)
 end
 
 function r7_lp_assert(lp)

@@ -15,13 +15,22 @@ function build_r7_transport_recovery(
     spec;
     optimizer = nothing,
     fixed_z = nothing,
+    fixed_energized = nothing,
     fixed_battery_modes = nothing,
     deadline = Inf,
     boundary_variables = false,
     history = nothing,
 )
     x=r7_transport_inputs(c, spec)
-    b=build_r7_recovery(c, gamma; optimizer, fixed_z, fixed_battery_modes, boundary_variables)
+    b=build_r7_recovery(
+        c,
+        gamma;
+        optimizer,
+        fixed_z,
+        fixed_energized,
+        fixed_battery_modes,
+        boundary_variables,
+    )
     m=b.model
     # 双水箱近似与逐管热状态是不同模型；只保留二者共同的非热状态约束。
     for id in R7_TRANSPORT_PROXY_ROWS

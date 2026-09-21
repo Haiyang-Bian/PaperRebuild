@@ -53,7 +53,7 @@ function build_r7_adversary(c::R7RecoveryCase, topologies; optimizer = nothing)
     r7_exclusive_battery(c.data) && error("当前内层模式池仅含电拓扑，尚不覆盖互斥电池模式")
     lines=c.data["electric"]["lines"]
     L=length(lines)
-    zs=[Int.(z) for z in topologies]
+    zs=[r7_recovery_mode(c, z) for z in topologies]
     length(unique(zs))==length(zs) || error("恢复拓扑池重复")
     lps=[r7_recovery_lp(c, z) for z in zs]
     model=optimizer===nothing ? Model() : Model(optimizer; add_bridges = false)

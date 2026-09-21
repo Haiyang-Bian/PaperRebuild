@@ -65,6 +65,7 @@ function validate_r7_recovery(c::R7RecoveryCase, r; aggregate_heat = true, therm
     r["preplan_optimality_verified"] === false || error("恢复目标或灾前证据范围错误")
     r["case_sha256"]==c.sha256 || error("恢复结果输入身份错误")
     d=c.data
+    partial=r7_partial_energization(d)
     e, h=d["electric"], d["heat"]
     ds, ls, ps=d["devices"], e["lines"], h["pipes"]
     N, J, T, W, G, L, A=e["nodes"],
@@ -121,6 +122,11 @@ function validate_r7_recovery(c::R7RecoveryCase, r; aggregate_heat = true, therm
         "H_loss_R"=>(T, W),
     )
     r7_exclusive_battery(d) && (shape["b_BES"]=(G, T, W))
+    if partial
+        shape["energized"]=(N,)
+        shape["live"]=(L,)
+        out["electric_recovery_domain"]=r7_electric_domain(d)
+    end
     if r7_critical_service(d)
         shape["P_shed_critical"]=(N, T, W)
         shape["P_shed_ordinary"]=(N, T, W)
@@ -177,6 +183,27 @@ function validate_r7_recovery(c::R7RecoveryCase, r; aggregate_heat = true, therm
         rec(id, entity, t, w, max(0.0, lo-x, x-hi), unit, tol)
     r7_verify_battery_domain!(rec, d, r, v, pt)
     z, beta=v["z"], v["beta"]
+    energized=partial ? v["energized"] : ones(N)
+    live=partial ? v["live"] : z
+    if haskey(r, "fixed_energized")
+        partial && haskey(r, "fixed_z") || error("固定带电记录缺少对应域或机械开关")
+        length(r["fixed_energized"])==N && all(x->x in (0, 1), r["fixed_energized"]) ||
+            error("固定带电记录错误")
+        for n in 1:N
+            rec("R9-RE1-fixed", n, 0, 0, energized[n]-r["fixed_energized"][n], "1", 1e-6)
+        end
+    end
+    if partial
+        for (key, vec) in (("energized", energized), ("live", live)), (i, x) in enumerate(vec)
+            bound("R9-RE1-"*key, i, 0, 0, x, 0, 1, "1", 1e-6)
+            rec("R9-RE1-integer-"*key, i, 0, 0, x-round(x), "1", 1e-6)
+        end
+        for l in 1:L
+            i, j=ls[l]["from"], ls[l]["to"]
+            rec("R9-RE1-closed-component", l, 0, 0, z[l]*(energized[i]-energized[j]), "1", 1e-6)
+            rec("R9-RE1-live-product", l, 0, 0, live[l]-z[l]*energized[i], "1", 1e-6)
+        end
+    end
     if haskey(r, "fixed_z")
         length(r["fixed_z"]) == L && all(x -> x in (0, 1), r["fixed_z"]) ||
             error("固定拓扑记录错误")
@@ -195,22 +222,37 @@ function validate_r7_recovery(c::R7RecoveryCase, r; aggregate_heat = true, therm
         rec("R7-R1", l, 0, 0, z[l]-base*(1-gamma[l])-v["a_on"][l]+v["a_off"][l], "1", 1e-6)
         bound("on-action", l, 0, 0, v["a_on"][l], 0, (1-base)*(1-gamma[l]), "1", 1e-6)
         bound("off-action", l, 0, 0, v["a_off"][l], 0, base*(1-gamma[l]), "1", 1e-6)
-        bound("virtual-arc", l, 0, 0, v["virtual"][l], -(N-1)*z[l], (N-1)*z[l], "1", 1e-6)
+        bound("virtual-arc", l, 0, 0, v["virtual"][l], -(N-1)*live[l], (N-1)*live[l], "1", 1e-6)
     end
     bound("6-63", "network", 0, 0, sum(v["a_on"])+sum(v["a_off"]), 0, e["switch_budget"], "1", 1e-6)
-    rec("forest-edges", "network", 0, 0, sum(z)-N+sum(beta), "1", 1e-6)
+    rec("forest-edges", "network", 0, 0, sum(live)-sum(energized)+sum(beta), "1", 1e-6)
     # 独立图遍历只在原整数残差检查之后解释邻接结构；不以四舍五入掩盖非整数候选。
-    groups=r7_connected_components(N, [(l["from"], l["to"]) for l in ls], Int.(round.(z)))
-    rec("forest-independent", "network", 0, 0, sum(round.(z))-N+length(groups), "1", 1e-6)
+    groups=r7_connected_components(N, [(l["from"], l["to"]) for l in ls], Int.(round.(live)))
+    rec("forest-independent", "network", 0, 0, sum(round.(live))-N+length(groups), "1", 1e-6)
     for (i, group) in enumerate(groups)
-        rec("one-root-per-component", i, 0, 0, sum(beta[group])-1, "1", 1e-6)
+        rec("one-root-per-component", i, 0, 0, sum(beta[group])-energized[first(group)], "1", 1e-6)
     end
     for n in 1:N
         bound("root-eligible", n, 0, 0, beta[n], 0, e["root_eligible"][n], "1", 1e-6)
         bound("root-supply", n, 0, 0, v["root_supply"][n], 0, N*beta[n], "1", 1e-6)
+        if partial
+            bound("R9-RE2-live-root", n, 0, 0, beta[n], 0, energized[n], "1", 1e-6)
+            for t in 1:T
+                ready=sum(
+                    (
+                        g["kind"]=="CHP" ? g["commitment"][t] : 1 for
+                        g in ds if g["electric_node"]==n &&
+                            g["P_max_MW"]>0 &&
+                            g["kind"] in ("CHP", "GT", "BES")
+                    );
+                    init = 0.0,
+                )
+                bound("R9-RE2-root-available", n, t, 0, beta[n], 0, ready, "1", 1e-6)
+            end
+        end
         outgoing=sum(v["virtual"][l] for l in 1:L if ls[l]["from"]==n; init = 0.0)
         incoming=sum(v["virtual"][l] for l in 1:L if ls[l]["to"]==n; init = 0.0)
-        rec("virtual-node", n, 0, 0, outgoing-incoming-v["root_supply"][n]+1, "1", 1e-6)
+        rec("virtual-node", n, 0, 0, outgoing-incoming-v["root_supply"][n]+energized[n], "1", 1e-6)
     end
     dt=d["dt_h"]
     simultaneous=0.0
@@ -226,6 +268,15 @@ function validate_r7_recovery(c::R7RecoveryCase, r; aggregate_heat = true, therm
         qlo=kind=="CHP" ? dev["Q_min_Mvar"]*u : 0.0
         qhi=kind in ("CHP", "GT") ? dev["Q_max_Mvar"]*u : 0.0
         bound("6-3/9", g, t, w, Q, qlo, qhi, "Mvar", pt)
+        if partial
+            y=energized[dev["electric_node"]]
+            pcap=kind=="PV" ? d["renewable_factor"]*dev["available_MW"][t][w] : dev["P_max_MW"]
+            qcap=kind in ("CHP", "GT") ? dev["Q_max_Mvar"] : 0.0
+            bound("R9-RE4-device-P", g, t, w, P, 0, pcap*y, "MW", pt)
+            bound("R9-RE4-device-Q", g, t, w, Q, 0, qcap*y, "Mvar", pt)
+            kind=="BES" && bound("R9-RE4-battery", g, t, w, ch+dis, 0, dev["P_max_MW"]*y, "MW", pt)
+            kind=="CHP" && bound("R9-RE4-commitment", g, t, w, u, 0, y, "1", 1e-6)
+        end
         rec("6-11", g, t, w, H-(kind in ("CHP", "EB") ? dev["heat_ratio"]*P : 0.0), "MW", pt)
         if kind=="CHP"
             previous=t==1 ? dev["previous_P_MW"][w] : v["P"][g, t-1, w]
@@ -304,8 +355,8 @@ function validate_r7_recovery(c::R7RecoveryCase, r; aggregate_heat = true, therm
                     t,
                     w,
                     v[key][l, t, w],
-                    sign*line[maxkey]*z[l],
-                    line[maxkey]*z[l],
+                    sign*line[maxkey]*live[l],
+                    line[maxkey]*live[l],
                     key=="P_line" ? "MW" : "Mvar",
                     pt,
                 )
@@ -314,22 +365,43 @@ function validate_r7_recovery(c::R7RecoveryCase, r; aggregate_heat = true, therm
                 line["r_pu"]*v["P_line"][l, t, w]+line["x_pu"]*v["Q_line"][l, t, w]
             )/(e["S_base_MVA"]*e["v_ref_pu"])
             bound(
-                "R7-R3",
+                partial ? "R9-RE3" : "R7-R3",
                 l,
                 t,
                 w,
                 voltage,
-                -(e["v_max_pu"]-e["v_min_pu"])*(1-z[l]),
-                (e["v_max_pu"]-e["v_min_pu"])*(1-z[l]),
+                -(e["v_max_pu"]-(partial ? 0.0 : e["v_min_pu"]))*(1-live[l]),
+                (e["v_max_pu"]-(partial ? 0.0 : e["v_min_pu"]))*(1-live[l]),
                 "pu",
                 1e-6,
             )
         end
         for n in 1:N
-            bound("6-22", n, t, w, v["v"][n, t, w], e["v_min_pu"], e["v_max_pu"], "pu", 1e-6)
+            bound(
+                "6-22",
+                n,
+                t,
+                w,
+                v["v"][n, t, w],
+                e["v_min_pu"]*energized[n],
+                e["v_max_pu"]*energized[n],
+                "pu",
+                1e-6,
+            )
             shed=v["P_shed"][n, t, w]
             bound("6-54", n, t, w, shed, 0, e["load_MW"][n][t]*e["shed_fraction_max"][n], "MW", pt)
             demand=e["load_MW"][n][t]-shed
+            partial && bound(
+                "R9-RE4-served",
+                n,
+                t,
+                w,
+                demand,
+                0,
+                e["load_MW"][n][t]*energized[n],
+                "MW",
+                pt,
+            )
             p, q=-demand, -e["tan_phi"][n]*demand
             for g in 1:G
                 ds[g]["electric_node"]==n || continue

@@ -15,6 +15,8 @@
 这是费用核算与兼容性工作，尚未完成第7.5节关键负荷保供实验。
 [关键负荷接口](docs/src/ch07-critical-load.md)现已显式拆分关键/普通电失供并单列热失供，
 179项解析和计算链专项、完整R7–R9回归通过；工程收尾见当前状态，不代表规模保供完成。
+[部分节点停电域](docs/src/ch07-energization.md)进一步区分机械开关与实际带电，
+141项解析/继承专项通过；保留原全节点域、CHP爬坡反例和各自验证范围。
 历史[流量/终端结果](docs/src/ch07-flow-results.md)和[交易/重构结果](docs/src/ch07-network-results.md)保留各自边界。
 
 此前[R8稳态能流与跨时段机制](docs/src/ch06-r8-energy-results.md)、

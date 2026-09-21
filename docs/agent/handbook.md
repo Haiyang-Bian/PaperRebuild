@@ -52,6 +52,13 @@ R3第四批显式v3见[物理恢复与停止判据](../src/ch03-r3-v3.md)。恢�
 
 ## 文档更新路由
 
+第7.5节[部分停电域](../src/ch07-energization.md)显式使用partial_energization_v1，旧输入仍全节点成网。
+机械z与energized/live分开，动作只按机械z；停电不能取消CHP已开承诺、爬坡或原削减限制。
+根资格须声明，GT/BES成网可用性仍为假设，不认证黑启动/频率或热泵辅助用电。
+固定z仍可能是MILP；实际LP对偶还须固定带电模式。r7_inner_energization_v1模式池同时保存switch/energized，
+互斥电池未固定仍不能套用旧LP对偶。正常调度域不改变，R8 retain_surviving固定机械开关。
+15分钟事件直接继承0.5MW源、1MW/h爬坡时至少须发0.25MW；孤立源不可行须保留，不能暗加停机或弃电。
+
 第7.5节后续从`docs/reading/ch07/resilience-review.toml`开始。GT1当前转录已纠为771.3 CNY/MWh，
 旧冻结输入保持；两图关键节点、故障标记、时钟和方案标签不一致，不能静默合并。
 R7/R8[显式币种接口](../src/ch07-resilience-currency.md)采用v2与中性费用字段；旧v1仍为USD，

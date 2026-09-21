@@ -17,6 +17,11 @@ function with_r7_critical_load(c::R7NormalCase, critical_load_MW; provenance)
     R7NormalCase(r7_service_input(c, critical_load_MW, provenance))
 end
 
+function with_r7_electric_domain(c::R7NormalCase, rule::AbstractString; provenance)
+    r7_normal_assert(c)
+    R7NormalCase(r7_electric_domain_input(c, rule, provenance))
+end
+
 function r7_normal_chp(d, g)
     x=deepcopy(g)
     x["schema"]=r7_money_schema(d, "r7-chp-component-v1")
@@ -69,6 +74,7 @@ function R7NormalCase(input::AbstractDict)
     N isa Integer && N>=1 && J isa Integer && J>=2 || error("节点数错误")
     e["pcc_node"] isa Integer && 1<=e["pcc_node"]<=N || error("PCC节点错误")
     e["flow_domain"] in ("forward_only", "signed") || error("电支路方向解释缺失")
+    r7_check_electric_domain(d)
     for k in (
         "S_base_MVA",
         "v_min_pu",

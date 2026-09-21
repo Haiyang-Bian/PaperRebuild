@@ -11,6 +11,7 @@ function solve_r7_recovery(
     gamma;
     optimizer,
     fixed_z = nothing,
+    fixed_energized = nothing,
     fixed_battery_modes = nothing,
     budget_sec = 60.0,
     deadline = nothing,
@@ -39,10 +40,18 @@ function solve_r7_recovery(
         "source_hashes_at_solve"=>r7_recovery_science_hashes(),
     )
     fixed_z===nothing || (r["fixed_z"]=Int.(fixed_z))
+    fixed_energized===nothing || (r["fixed_energized"]=Int.(fixed_energized))
     modes===nothing || (r["fixed_battery_modes"]=Dict(k=>r7_pack(a) for (k, a) in modes))
     if time()<stop
         try
-            b=build_r7_recovery(c, gamma; optimizer, fixed_z, fixed_battery_modes = modes)
+            b=build_r7_recovery(
+                c,
+                gamma;
+                optimizer,
+                fixed_z,
+                fixed_energized,
+                fixed_battery_modes = modes,
+            )
             r["model_class"]=b.model_class
             r["formula_ids"]=sort(collect(keys(b.constraints)))
             set_silent(b.model)
@@ -108,7 +117,11 @@ function enumerate_r7_recovery(c::R7RecoveryCase, gamma; optimizer, budget_sec =
         time()<stop || break
         z=[(mask >> (i-1)) & 1 for i in 1:L]
         scanned+=1
-        r7_topology_roots(c, gamma, z)===nothing && continue
+        if r7_partial_energization(c.data)
+            r7_switch_admissible(c, gamma, z) || continue
+        else
+            r7_topology_roots(c, gamma, z)===nothing && continue
+        end
         r=solve_r7_recovery(
             c,
             gamma;

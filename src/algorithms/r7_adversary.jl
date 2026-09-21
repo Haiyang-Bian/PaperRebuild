@@ -106,7 +106,7 @@ function solve_r7_adversary(
     stop=deadline===nothing ? start+budget_sec : min(deadline, start+budget_sec)
     r=Dict{String,Any}(
         "schema"=>"r7-adversary-result-v1",
-        "version"=>"r7_inner_indicator_v1",
+        "version"=>r7_adversary_version(c),
         "run_id"=>"r7-adversary-"*string(uuid4()),
         "case_sha256"=>c.sha256,
         "preplan_id"=>c.data["preplan_id"],
@@ -122,7 +122,7 @@ function solve_r7_adversary(
         "utc"=>string(now(UTC)),
         "source_hashes_at_solve"=>r7_adversary_science_hashes(),
     )
-    zs=Vector{Int}[]
+    zs=Any[]
     for k in 1:max_iterations
         time()<stop || break
         master=r7_solve_adversary_master(c, zs, optimizer, stop)
@@ -146,7 +146,7 @@ function solve_r7_adversary(
         )
         it["recovery"]=rec
         if rec["candidate_accepted"]
-            z=round.(Int, vec(r7_unpack(rec["values"], "z")))
+            z=r7_mode_from_values(c, rec["values"])
             if !(z in zs)
                 it["added_topology"]=z
                 push!(zs, z)

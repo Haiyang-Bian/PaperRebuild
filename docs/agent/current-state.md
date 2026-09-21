@@ -1,8 +1,30 @@
 # 当前状态
 
-更新：2026-09-21（第7.5节关键负荷范围179项专项、完整R7–R9回归及项目检查通过；规模迁移前的节点分配与停电域边界已登记）。
+更新：2026-09-21（第7.5节部分停电域149项专项、完整R7–R9回归及工程收尾通过；规模输入未冻结）。
 
 ## 研究进度
+
+### 当前节点：第7.5节显式部分停电域
+
+- 从1482ce3继续；原PDF113/114确认CHP承诺/爬坡及故障孤岛公式，节点停电选择登记为项目域扩展。
+  partial_energization_v1分开机械z、节点energized及线路live；停电不产生虚构开关动作。
+  设备电功率、服务负荷、电压及成网根受带电状态约束，原CHP承诺和削减边界保持。
+  旧全节点域和结果不改，未新增黑启动、频率或热网泵辅助用电模型。
+- 真正LP对偶须同时固定机械开关和带电模式；新内层版本r7_inner_energization_v1，旧默认保持。
+  原正常连接树不改，事件/有限故障规划/详细/能流R8继承显式域。
+- tmp/r7-energization-tests-v1.log为74通过/2失败/1错误；发现0.5MW CHP前状态在0.25h内
+  以1MW/h只能降至0.25MW，孤立无负荷源真实违反边界。已保留负例，积分例另显式给零前出力。
+  v2实际退出0：78解析+63规划/R8检查通过，证据tmp/jl_TdN33n及tmp/jl_subZ7y。
+  映射首次受Julia沙箱EBADF影响，原日志保留；允许本地运行后退出0。
+  Gurobi实际原生指示对偶8项通过，32.4秒，tmp/jl_A5yAwu；最坏关键失供0.3MWh与完整故障审计一致。
+  35项映射通过。完整R7–R9回归实际退出0，tmp/r7-energization-regression.log记录tests passed。
+  旧冻结正常/事件证据16项通过；冻结实际对偶源码回放返回worst_loss_certified。
+  导航同步退出0，保留17598个原成员和人工元数据、新增7项；严格Documenter/doctest实际退出0，
+  tmp/r7-energization-docs.log保留原输出。最终Project Check实际退出0，
+  tmp/r7-energization-project-check.log记录Project checks passed。已核对33项本地提交范围。
+- 文档ch07-energization.md，台账ch07/resilience-energization.toml，任务tasks/2026-09-21-r9-energization.md。
+  规模关键负荷分配、事件窗口、故障全集/预算、成网资格仍未冻结；全文目标active。
+  个人settings哈希保持，Bridge无注册实例；仅本地提交、不推送、不合并。
 
 ### 当前节点：第7.5节关键负荷服务范围
 

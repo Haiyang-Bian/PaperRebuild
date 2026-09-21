@@ -232,6 +232,7 @@ include("reporting/r7_recovery.jl")
 export R7RecoveryCase, load_r7_recovery_case, r7_faults, build_r7_recovery, solve_r7_recovery
 export with_r7_battery_rule, r7_battery_cycle_effect
 export with_r7_critical_load
+export with_r7_electric_domain
 export validate_r7_recovery,
     enumerate_r7_recovery, audit_r7_faults, save_r7_recovery, read_r7_recovery
 

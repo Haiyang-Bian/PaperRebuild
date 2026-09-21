@@ -122,6 +122,8 @@ jobs:
         run: julia --startup-file=no --project=. scripts/check_r7_lossy_flow_results.jl results/summaries/r7-lossy-flow-20260920-v1 results/summaries/r7-flow-planning-20260920-v2
       - name: R9 original input and migration mapping
         run: julia --startup-file=no --project=. scripts/check_r9_inputs.jl
+      - name: R9 explicit partial energization mapping
+        run: julia --startup-file=no --project=. scripts/check_r9_energization.jl
       - name: R9 fixed-flow mapping
         run: julia --startup-file=no --project=. scripts/check_r9_fixed.jl
       - name: R9 fixed-flow original values and independent KKT
