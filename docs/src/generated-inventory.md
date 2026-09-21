@@ -153,6 +153,7 @@
 - `configs/r8/tradeoff-study.toml`
 - `configs/r9/flow-reference.toml`
 - `configs/r9/pv-protocol.toml`
+- `configs/r9/trading-protocol.toml`
 - `data/processed/README.md`
 - `data/raw/README.md`
 - `docs/Manifest.toml`
@@ -222,6 +223,7 @@
 - `docs/agent/tasks/2026-09-21-r9-flow.md`
 - `docs/agent/tasks/2026-09-21-r9-numerics.md`
 - `docs/agent/tasks/2026-09-21-r9-pv.md`
+- `docs/agent/tasks/2026-09-21-r9-trading-model.md`
 - `docs/make.jl`
 - `docs/reading/README.md`
 - `docs/reading/ch02/README.md`
@@ -298,6 +300,7 @@
 - `docs/reading/ch07/pv-adoption.toml`
 - `docs/reading/ch07/reported-results.toml`
 - `docs/reading/ch07/topology.toml`
+- `docs/reading/ch07/trading.toml`
 - `docs/reading/source_manifest.json`
 - `docs/reading/sources.json`
 - `docs/src/api.md`
@@ -750,6 +753,8 @@
 - `docs/src/ch07-pv-generated.md`
 - `docs/src/ch07-pv-results.md`
 - `docs/src/ch07-pv.md`
+- `docs/src/ch07-trading-generated.md`
+- `docs/src/ch07-trading.md`
 - `docs/src/index.md`
 - `docs/src/julia-design.md`
 - `docs/src/quality.md`
@@ -1782,6 +1787,7 @@
 - `scripts/check_r9_pv.jl`
 - `scripts/check_r9_pv_figures.jl`
 - `scripts/check_r9_pv_results.jl`
+- `scripts/check_r9_trading.jl`
 - `scripts/check_solvers.jl`
 - `scripts/collect_ch03_data.jl`
 - `scripts/compare_r1_runs.jl`
@@ -2167,6 +2173,7 @@
 - `scripts/test_r9_reduced.jl`
 - `scripts/test_r9_report.jl`
 - `scripts/test_r9_sources.jl`
+- `scripts/test_r9_trading.jl`
 - `scripts/tighten_r4_distributed_cost.jl`
 - `scripts/validate_ch03_data.jl`
 - `scripts/validate_r1.jl`
@@ -2253,6 +2260,7 @@
 - `src/core/r8_tradeoff.jl`
 - `src/core/r9_inputs.jl`
 - `src/core/r9_pv.jl`
+- `src/core/r9_trading.jl`
 - `src/formulations/r1.jl`
 - `src/formulations/r2.jl`
 - `src/formulations/r3.jl`
@@ -2286,6 +2294,7 @@
 - `src/formulations/r9_pv.jl`
 - `src/formulations/r9_reduced.jl`
 - `src/formulations/r9_terminal.jl`
+- `src/formulations/r9_trading.jl`
 - `src/networks/fixed_flow_heat.jl`
 - `src/networks/r7_linked_state.jl`
 - `src/networks/r7_lossy_mass.jl`
@@ -2374,8 +2383,10 @@
 - `src/verification/r9_pv.jl`
 - `src/verification/r9_reduced.jl`
 - `src/verification/r9_sources.jl`
+- `src/verification/r9_trading.jl`
 - `test/ch03_data.jl`
 - `test/ch06_audit.jl`
+- `test/fixtures/r9_trading.jl`
 - `test/maintenance.tests.ps1`
 - `test/r1.jl`
 - `test/r2.jl`
@@ -2443,6 +2454,7 @@
 - `test/r9_pv.jl`
 - `test/r9_reduced.jl`
 - `test/r9_sources.jl`
+- `test/r9_trading.jl`
 - `test/runtests.jl`
 - `tools/Manifest.toml`
 - `tools/Project.toml`

@@ -1,5 +1,5 @@
 schema = "r9-migration-route-v1"
-status = "partial_72_fixed_flow_duals_open_73_pending"
+status = "partial_72_fixed_flow_duals_open_73_model_inputs"
 scope = "Preserve chapter-7 source connectivity and scenario-specific modifications; freeze separately labelled replacements for missing fields before optimization."
 source_input_status = "partial_original_input_not_runnable"
 ref157_doi = "10.1016/j.apenergy.2021.117224"
@@ -25,7 +25,7 @@ required_change = "Eight aggregators and explicitly replaced resources; separate
 must_not_inherit = "7.2 PV enlargement, teaching settlement prices, or automatic second multiplication of table-7-9 loads"
 known_interface_gap = "R4Case is fixed to DSO/A/B and one battery; eight aggregators, two batteries and distinct electric/heat mappings require an incremental scale interface. A4/A8 share heat node 26; avoid double-counting base load. Thermal storage/HP, flexible preferences, payoffs and startup interpretation still require declared inputs."
 acceptance = "Feasible disagreement points; network checks; internal transfers cancel; coalition and allocation claims kept separate; larger-system iteration and timing evidence."
-stage = "after_common_input_freeze"
+stage = "input_protocol_and_analytical_model_checks; scale_runs_and_full_trading_methods_pending"
 
 [[route]]
 section = "7.4"

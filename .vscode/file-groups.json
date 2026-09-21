@@ -11380,6 +11380,16 @@
           "path": "docs/src/ch07-fixed.md",
           "name": "ch07-fixed.md",
           "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch07-trading-generated.md",
+          "name": "ch07-trading-generated.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch07-trading.md",
+          "name": "ch07-trading.md",
+          "isDirectory": false
         }
       ],
       "order": 1,
@@ -11725,6 +11735,11 @@
         {
           "path": "docs/agent/tasks/2026-09-21-r9-fixed.md",
           "name": "2026-09-21-r9-fixed.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/agent/tasks/2026-09-21-r9-trading-model.md",
+          "name": "2026-09-21-r9-trading-model.md",
           "isDirectory": false
         }
       ],
@@ -12742,6 +12757,21 @@
           "path": "src/verification/r9_fixed.jl",
           "name": "r9_fixed.jl",
           "isDirectory": false
+        },
+        {
+          "path": "src/core/r9_trading.jl",
+          "name": "r9_trading.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/formulations/r9_trading.jl",
+          "name": "r9_trading.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/verification/r9_trading.jl",
+          "name": "r9_trading.jl",
+          "isDirectory": false
         }
       ],
       "order": 3,
@@ -13408,6 +13438,11 @@
           "path": "configs/r9/flow-reference.toml",
           "name": "flow-reference.toml",
           "isDirectory": false
+        },
+        {
+          "path": "configs/r9/trading-protocol.toml",
+          "name": "trading-protocol.toml",
+          "isDirectory": false
         }
       ],
       "order": 4,
@@ -13813,6 +13848,11 @@
         {
           "path": "docs/reading/ch07/fixed.toml",
           "name": "fixed.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch07/trading.toml",
+          "name": "trading.toml",
           "isDirectory": false
         }
       ],
@@ -75881,6 +75921,16 @@
           "path": "test/r9_fixed.jl",
           "name": "r9_fixed.jl",
           "isDirectory": false
+        },
+        {
+          "path": "test/fixtures/r9_trading.jl",
+          "name": "r9_trading.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "test/r9_trading.jl",
+          "name": "r9_trading.jl",
+          "isDirectory": false
         }
       ],
       "order": 7,
@@ -78696,6 +78746,16 @@
         {
           "path": "scripts/test_r9_fixed.jl",
           "name": "test_r9_fixed.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r9_trading.jl",
+          "name": "check_r9_trading.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/test_r9_trading.jl",
+          "name": "test_r9_trading.jl",
           "isDirectory": false
         }
       ],

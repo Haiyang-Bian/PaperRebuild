@@ -94,4 +94,4 @@
 
 不得默认继承：Chapter-6 500 USD/MWh penalty, four-hour window inferred from mixed captions or ablation inferred from HS/NR abbreviations。
 
-迁移状态：`partial_72_fixed_flow_duals_open_73_pending`；详见[输入说明与后续顺序](ch07-inputs.md)。
+迁移状态：`partial_72_fixed_flow_duals_open_73_model_inputs`；详见[输入说明与后续顺序](ch07-inputs.md)。

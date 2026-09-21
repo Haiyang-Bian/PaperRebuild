@@ -83,4 +83,5 @@ if PAPERREBUILD_TEST_STAGE in ("all", "r7_r9")
     include("r9_flow.jl")
     include("r9_heat_memory.jl")
     include("r9_fixed.jl")
+    include("r9_trading.jl")
 end

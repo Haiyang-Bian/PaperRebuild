@@ -358,6 +358,12 @@ export r9_flow_terminal_rows, r9_heat_memory_balance
 export r9_terminal_coordinates
 export solve_r9_fixed_case, validate_r9_fixed_solution
 
+include("core/r9_trading.jl")
+include("formulations/r9_trading.jl")
+include("verification/r9_trading.jl")
+export R9TradingCase, load_r9_trading_case, r9_trading_case, build_r9_trading_model
+export validate_r9_trading_solution, r9_trading_ledger
+
 """
     hello(who::String)
 
