@@ -1,6 +1,6 @@
 """
     r8_energy_spec(case; pipe_capacity_MW, mode=:threshold, limits_MWh=nothing,
-                   loss_rule=:reference_UA, penalty_USD_MWh=500.0,
+                   loss_rule=:reference_UA, penalty_USD_MWh=nothing, penalty_MWh=nothing,
                    topology=:reconfigure)
 
 R8-E1至E3：作者PDF123方案3.1的项目采用版，仅保留逐时热能流节点平衡。
@@ -8,6 +8,7 @@ R8-E1至E3：作者PDF123方案3.1的项目采用版，仅保留逐时热能流�
 lossless仅接受UA均为零的共同输入。没有温度、质量流、水压、空间状态或管网末端库存约束。
 这些舍弃项属于对照模型差异，不是原热模型的等价变换，也不认证作者未公开的具体损耗规则。
 经济、逐事件门槛和罚项的目标语义与R8详细模型一致。输入不改写。
+v2显式传penalty_MWh，单位为正常输入币种/MWh；v1省略旧USD关键字时仍使用500 USD/MWh。
 """
 function r8_energy_spec(
     c::R7PlanningCase;
@@ -15,11 +16,12 @@ function r8_energy_spec(
     mode = :threshold,
     limits_MWh = nothing,
     loss_rule = :reference_UA,
-    penalty_USD_MWh = 500.0,
+    penalty_USD_MWh = nothing,
+    penalty_MWh = nothing,
     topology = :reconfigure,
 )
     s=Dict{String,Any}(
-        "schema"=>"r8-energy-spec-v1",
+        "schema"=>r7_money_schema(c.normal.data, "r8-energy-spec-v1"),
         "version"=>"r8_energy_flow_checked_v1",
         "case_sha256"=>c.sha256,
         "mode"=>String(mode),
@@ -28,19 +30,26 @@ function r8_energy_spec(
         "limits_MWh"=>limits_MWh===nothing ?
                       [e["loss_limit_MWh"] for e in c.specification["events"]] :
                       Float64.(limits_MWh),
-        "penalty_USD_MWh"=>Float64(penalty_USD_MWh),
+        r7_money_key(c.normal.data, "penalty_USD_MWh")=>r8_penalty_value(
+            c.normal.data,
+            penalty_USD_MWh,
+            penalty_MWh,
+        ),
         "recovery_topology"=>String(topology),
         "event_rule"=>"sum_of_event_worst_expected_unserved_energy",
         "economic_rule"=>"normal_only_then_independent_recourse",
         "heat_domain"=>"directed_energy_balance_without_storage_or_temperature",
     )
+    r7_currency_record!(s, c.normal.data)
     r8_energy_check(c, s)
     s
 end
 
 function r8_energy_check(c, s)
+    r7_check_currency_record(c.normal.data, s)
+    r7_check_money_fields(c.normal.data, s, ("penalty_USD_MWh",))
     r7_planning_assert(c)
-    s["schema"]=="r8-energy-spec-v1" &&
+    s["schema"]==r7_money_schema(c.normal.data, "r8-energy-spec-v1") &&
     s["version"]=="r8_energy_flow_checked_v1" &&
     s["case_sha256"]==c.sha256 &&
     s["mode"] in ("economic", "threshold", "penalty") &&
@@ -54,7 +63,8 @@ function r8_energy_check(c, s)
         error("管道能流容量缺失或非有限")
     length(s["limits_MWh"])==length(c.specification["events"]) &&
     all(x->isfinite(x)&&x>=0, s["limits_MWh"]) || error("事件门槛错误")
-    isfinite(s["penalty_USD_MWh"]) && s["penalty_USD_MWh"]>0 || error("罚项价格错误")
+    isfinite(s[r7_money_key(c.normal.data, "penalty_USD_MWh")]) &&
+    s[r7_money_key(c.normal.data, "penalty_USD_MWh")]>0 || error("罚项价格错误")
     s["loss_rule"]=="lossless" &&
         any(p["UA_$(side)_W_K"]!=0 for p in ps for side in ("S", "R")) &&
         error("lossless要求共同输入UA=0，不能静默取消损耗")

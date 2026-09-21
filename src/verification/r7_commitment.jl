@@ -85,21 +85,24 @@ function validate_r7_chp(s::R7CHPSpec, values::AbstractDict)
     end
     remaining=max(0, d[previous_state==1 ? "min_on_h" : "min_off_h"]-age)
     d["terminal_rule"]=="complete_within_horizon" && rec("R7-N4", T, 0, remaining, "h", 1e-6*(1+dt))
-    startup=d["startup_cost_USD"]*sum(on)
-    running=dt*sum(d["probabilities"][w]*d["cost_P_USD_MWh"]*P[t, w] for t in 1:T, w in 1:W)
-    Dict(
+    startup=d[r7_money_key(d, "startup_cost_USD")]*sum(on)
+    running=dt*sum(
+        d["probabilities"][w]*d[r7_money_key(d, "cost_P_USD_MWh")]*P[t, w] for t in 1:T, w in 1:W
+    )
+    result = Dict{String,Any}(
         "component_pass"=>all(r["pass"] for r in rows),
         "normal_network_verified"=>false,
         "preplan_optimality_verified"=>false,
-        "startup_cost_USD"=>startup,
-        "running_cost_USD"=>running,
-        "total_cost_USD"=>startup+running,
+        r7_money_key(d, "startup_cost_USD")=>startup,
+        r7_money_key(d, "running_cost_USD")=>running,
+        r7_money_key(d, "total_cost_USD")=>startup+running,
         "rows"=>rows,
         "terminal_state"=>previous_state,
         "terminal_duration_h"=>age,
         "terminal_remaining_h"=>remaining,
         "spec_sha256"=>s.sha256,
     )
+    r7_currency_record!(result, d)
 end
 
 """

@@ -236,6 +236,7 @@
 - `docs/agent/tasks/2026-09-21-r9-numerics.md`
 - `docs/agent/tasks/2026-09-21-r9-pv.md`
 - `docs/agent/tasks/2026-09-21-r9-reserve.md`
+- `docs/agent/tasks/2026-09-21-r9-resilience-currency.md`
 - `docs/agent/tasks/2026-09-21-r9-risk-study.md`
 - `docs/agent/tasks/2026-09-21-r9-seeded-risk.md`
 - `docs/agent/tasks/2026-09-21-r9-trading-model.md`
@@ -318,6 +319,7 @@
 - `docs/reading/ch07/pv-adoption.toml`
 - `docs/reading/ch07/reported-results.toml`
 - `docs/reading/ch07/reserve.toml`
+- `docs/reading/ch07/resilience-currency.toml`
 - `docs/reading/ch07/resilience-review.toml`
 - `docs/reading/ch07/risk-study.toml`
 - `docs/reading/ch07/topology.toml`
@@ -465,6 +467,7 @@
 - `docs/src/ch07-pv.md`
 - `docs/src/ch07-reserve-generated.md`
 - `docs/src/ch07-reserve.md`
+- `docs/src/ch07-resilience-currency.md`
 - `docs/src/ch07-risk-generated.md`
 - `docs/src/ch07-risk-results.md`
 - `docs/src/ch07-risk-study.md`
@@ -659,6 +662,7 @@
 - `scripts/check_r9_pv_figures.jl`
 - `scripts/check_r9_pv_results.jl`
 - `scripts/check_r9_reserve.jl`
+- `scripts/check_r9_resilience_currency.jl`
 - `scripts/check_r9_resilience_sources.jl`
 - `scripts/check_r9_risk.jl`
 - `scripts/check_r9_seeded_delivery.jl`
@@ -1045,6 +1049,8 @@
 - `scripts/test_r7_adversary.jl`
 - `scripts/test_r7_battery.jl`
 - `scripts/test_r7_commitment.jl`
+- `scripts/test_r7_currency.jl`
+- `scripts/test_r7_currency_planning.jl`
 - `scripts/test_r7_flow_planning.jl`
 - `scripts/test_r7_flow_planning_gurobi.jl`
 - `scripts/test_r7_linked_planning.jl`
@@ -1375,6 +1381,8 @@
 - `test/r7_adversary.jl`
 - `test/r7_battery.jl`
 - `test/r7_commitment.jl`
+- `test/r7_currency.jl`
+- `test/r7_currency_planning.jl`
 - `test/r7_flow_planning.jl`
 - `test/r7_flow_planning_fixtures.jl`
 - `test/r7_linked_planning.jl`

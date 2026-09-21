@@ -1,14 +1,15 @@
 function r8_energy_snapshot(b, c, id)
     pack(a) = r7_pack(value.(a))
     n=Dict{String,Any}(
-        "schema"=>"r8-energy-normal-v1",
+        "schema"=>r7_money_schema(c.normal.data, "r8-energy-normal-v1"),
         "run_id"=>id*"-normal",
         "case_sha256"=>c.normal.sha256,
         "values"=>Dict(k=>pack(a) for (k, a) in b.normal_variables),
         "energy_values"=>Dict("H_pipe"=>pack(b.normal_heat_flow)),
         "chp_values"=>Dict(id=>Dict(k=>pack(a) for (k, a) in v) for (id, v) in b.chp_variables),
-        "normal_cost_USD"=>value(b.normal_cost),
+        r7_money_key(c.normal.data, "normal_cost_USD")=>value(b.normal_cost),
     )
+    r7_currency_record!(n, c.normal.data)
     witnesses=[
         Dict(
             "event"=>w.pair.event,
@@ -32,6 +33,7 @@ function r8_energy_stage(c, s; optimizer, deadline, normal_result = nothing)
         "evaluation"=>evaluation,
         "objective_kind"=>r8_objective_kind(s; evaluation),
     )
+    r7_currency_record!(r, c.normal.data)
     evaluation && (r["fixed_normal_sha256"]=r7_digest(normal_result))
     if time()<deadline
         try
@@ -88,7 +90,7 @@ function solve_r8_energy_case(c::R7PlanningCase, s; optimizer, budget_sec = 600.
     stop=started+budget_sec
     hashes=r8_energy_science_hashes()
     r=Dict{String,Any}(
-        "schema"=>"r8-energy-result-v1",
+        "schema"=>r7_money_schema(c.normal.data, "r8-energy-result-v1"),
         "version"=>s["version"],
         "run_id"=>"r8-energy-"*string(uuid4()),
         "case_sha256"=>c.sha256,
@@ -98,6 +100,7 @@ function solve_r8_energy_case(c::R7PlanningCase, s; optimizer, budget_sec = 600.
         "julia_version"=>string(VERSION),
         "full_thesis_domain_verified"=>false,
     )
+    r7_currency_record!(r, c.normal.data)
     r["primary"]=r8_energy_stage(c, s; optimizer, deadline = started+0.8budget_sec)
     if r["primary"]["validation"]["model_pass"]
         r["evaluation"]=r8_energy_stage(

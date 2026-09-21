@@ -49,13 +49,14 @@ function save_r7_normal(c::R7NormalCase, r, directory::AbstractString)
     write(joinpath(staging, "case.toml"), r7_text(c.data))
     write(joinpath(staging, "result.toml"), r7_text(r))
     metadata=Dict{String,Any}(
-        "schema"=>"r7-normal-metadata-v1",
+        "schema"=>r7_money_schema(c.data, "r7-normal-metadata-v1"),
         "case_sha256"=>c.sha256,
         "run_id"=>r["run_id"],
         "origin"=>c.data["origin"],
         "scope"=>"conditional_prescribed_flow_not_full_preplan",
         "saved_utc"=>string(now(UTC)),
     )
+    r7_currency_record!(metadata, c.data)
     root=normpath(joinpath(@__DIR__, "..", ".."))
     if ispath(joinpath(root, ".git"))
         metadata["git_commit"]=readchomp(Cmd(["git", "-C", root, "rev-parse", "HEAD"]))
@@ -127,7 +128,8 @@ function read_r7_normal(directory::AbstractString)
     c=load_r7_normal_case(joinpath(directory, "case.toml"))
     r=TOML.parsefile(joinpath(directory, "result.toml"))
     meta=TOML.parsefile(joinpath(directory, "metadata.toml"))
-    meta["schema"]=="r7-normal-metadata-v1" &&
+    r7_check_currency_record(c.data, meta)
+    meta["schema"]==r7_money_schema(c.data, "r7-normal-metadata-v1") &&
     meta["case_sha256"]==c.sha256 &&
     meta["run_id"]==r["run_id"] &&
     meta["origin"]==c.data["origin"] &&

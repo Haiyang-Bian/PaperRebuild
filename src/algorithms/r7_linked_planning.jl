@@ -5,6 +5,7 @@ function r7_linked_master(c, s, pairs, optimizer, deadline, id)
         "included"=>[Dict("event"=>p.event, "fault"=>p.fault) for p in pairs],
         "witnesses"=>Any[],
     )
+    r7_currency_record!(r, c.normal.data)
     if time()<deadline
         try
             b=build_r7_linked_planning(c, s; optimizer, included = pairs, deadline)
@@ -28,11 +29,11 @@ function r7_linked_master(c, s, pairs, optimizer, deadline, id)
                 if has_values(b.model)&&pr in (MOI.FEASIBLE_POINT, MOI.NEARLY_FEASIBLE_POINT)
                     r["status"]=ts==MOI.TIME_LIMIT ? "time_limit_with_solution" : "candidate"
                     r["normal"]=Dict{String,Any}(
-                        "schema"=>"r7-normal-result-v1",
+                        "schema"=>r7_money_schema(c.normal.data, "r7-normal-result-v1"),
                         "version"=>"r7_normal_prescribed_v1",
                         "run_id"=>id,
                         "case_sha256"=>c.normal.sha256,
-                        "objective_kind"=>"expected_normal_cost_USD",
+                        "objective_kind"=>r7_normal_objective_kind(c.normal.data),
                         "thermal_model"=>c.normal.data["thermal_model"],
                         "full_preplan_optimality_verified"=>false,
                         "status"=>"candidate",
@@ -41,8 +42,11 @@ function r7_linked_master(c, s, pairs, optimizer, deadline, id)
                             g=>Dict(k=>r7_pack(value.(a)) for (k, a) in block) for
                             (g, block) in b.chp_variables
                         ),
-                        "solver_objective_USD"=>objective_value(b.model),
+                        r7_money_key(c.normal.data, "solver_objective_USD")=>objective_value(
+                            b.model,
+                        ),
                     )
+                    r7_currency_record!(r["normal"], c.normal.data)
                     r["witnesses"]=[
                         Dict(
                             "event"=>w.pair.event,
@@ -61,7 +65,8 @@ function r7_linked_master(c, s, pairs, optimizer, deadline, id)
                 end
                 try
                     lb=objective_bound(b.model)
-                    isfinite(lb) ? (r["lower_bound_USD"]=lb) : (r["bound_unavailable"]="nonfinite")
+                    isfinite(lb) ? (r[r7_money_key(c.normal.data, "lower_bound_USD")]=lb) :
+                    (r["bound_unavailable"]="nonfinite")
                 catch err
                     r["bound_unavailable"]=sprint(showerror, err)
                 end
@@ -101,12 +106,12 @@ function solve_r7_linked_planning(
     isfinite(budget_sec)&&0<=budget_sec<=600 || error("详细热规划预算须在0至600秒")
     deadline=started+budget_sec
     r=Dict{String,Any}(
-        "schema"=>"r7-linked-planning-result-v1",
+        "schema"=>r7_money_schema(c.normal.data, "r7-linked-planning-result-v1"),
         "version"=>s["version"],
         "case_sha256"=>c.sha256,
         "spec_sha256"=>r7_digest(s),
         "run_id"=>"r7-linked-"*string(uuid4()),
-        "objective_kind"=>"expected_normal_cost_USD",
+        "objective_kind"=>r7_normal_objective_kind(c.normal.data),
         "method"=>string(method),
         "full_variable_flow_verified"=>false,
         "source_hashes_at_solve"=>r7_linked_science_hashes(),
@@ -116,6 +121,7 @@ function solve_r7_linked_planning(
         "status"=>"budget_exhausted",
         "iterations"=>Any[],
     )
+    r7_currency_record!(r, c.normal.data)
     allpairs=r7_planning_pairs(c)
     pairs=method==:extensive ? copy(allpairs) : eltype(allpairs)[]
     for k in 1:(length(allpairs)+1)

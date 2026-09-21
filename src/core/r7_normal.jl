@@ -1,7 +1,9 @@
 """
     R7NormalCase(data)
 
-第6章给定正向管流的正常调度输入，schema为r7-normal-case-v1。电压为幅值pu，
+第6章给定正向管流的正常调度输入。v1保留USD；v2显式currency及中性费用字段，
+用于第7.5节人民币输入，不执行汇率换算。正常、事件继承及R7/R8费用链共同保持币种。
+电压为幅值pu，
 功率MW/Mvar、热量MWh、流率kg/s、压力Pa、温度K。启停跨场景共享，调度允许场景依赖。
 显式区分node_method_fixed_v1和plug_flow_reference_v1；不将给定流量的条件最优冒充完整灾前规划。
 """
@@ -12,7 +14,8 @@ end
 
 function r7_normal_chp(d, g)
     x=deepcopy(g)
-    x["schema"]="r7-chp-component-v1"
+    x["schema"]=r7_money_schema(d, "r7-chp-component-v1")
+    r7_currency_record!(x, d)
     for k in ("periods", "dt_h", "probabilities")
         x[k]=d[k]
     end
@@ -26,7 +29,7 @@ end
 
 function R7NormalCase(input::AbstractDict)
     d=TOML.parse(r7_text(input))
-    d["schema"]=="r7-normal-case-v1" || error("正常运行输入版本错误")
+    r7_check_currency_schema(d, "r7-normal-case-v1")
     d["origin"] in ("synthetic", "public_adapted", "thesis_verified") || error("正常输入来源缺失")
     !isempty(strip(d["name"])) || error("案例名称缺失")
     d["flow_control"]=="prescribed_positive" || error("本接口是给定正向管流的条件调度")
@@ -44,7 +47,7 @@ function R7NormalCase(input::AbstractDict)
         "temperature"=>"K",
         "flow"=>"kg/s",
         "pressure"=>"Pa",
-        "price"=>"USD/MWh",
+        "price"=>r7_currency(d)*"/MWh",
     )
         d["units"][k]==unit || error("正常输入单位错误：$k")
     end
@@ -77,7 +80,8 @@ function R7NormalCase(input::AbstractDict)
     0<e["v_min_pu"]<=e["v_ref_pu"]<=e["v_max_pu"] &&
     e["pcc_min_MW"]<=e["pcc_max_MW"] &&
     e["qcc_min_Mvar"]<=e["qcc_max_Mvar"] || error("电网边界错误")
-    r7_numbers(e["price_USD_MWh"], (T,), "PCC电价")
+    r7_check_money_fields(d, e, ("price_USD_MWh",))
+    r7_numbers(e[r7_money_key(d, "price_USD_MWh")], (T,), "PCC电价")
     r7_numbers(e["load_MW"], (N, T), "固定电负荷"; lo = 0)
     r7_numbers(e["tan_phi"], (N,), "负荷功率因数"; lo = 0)
     ends=Tuple{Int,Int}[]
@@ -197,10 +201,12 @@ function R7NormalCase(input::AbstractDict)
     all(x->x isa String&&!isempty(strip(x)), ids) && length(unique(ids))==length(ids) ||
         error("设备身份错误")
     for g in ds
+        r7_check_money_fields(d, g, ("cost_P_USD_MWh",))
         g["kind"] in ("CHP", "GT", "PV", "EB", "BES") || error("设备类别错误")
         g["electric_node"] isa Integer && 1<=g["electric_node"]<=N || error("设备电节点错误")
         isfinite(g["P_max_MW"]) && g["P_max_MW"]>=0 || error("设备容量错误")
-        isfinite(g["cost_P_USD_MWh"]) && g["cost_P_USD_MWh"]>=0 || error("设备费用错误")
+        isfinite(g[r7_money_key(d, "cost_P_USD_MWh")]) && g[r7_money_key(d, "cost_P_USD_MWh")]>=0 ||
+            error("设备费用错误")
         if g["kind"] in ("CHP", "EB")
             g["heat_node"] isa Integer &&
             1<=g["heat_node"]<=J &&

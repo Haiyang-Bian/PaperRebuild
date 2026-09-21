@@ -35,7 +35,9 @@ function r7_planning_event(c, n, s)
 end
 
 function r7_planning_master_check(c, m)
+    r7_check_currency_record(c.normal.data, m)
     out=Dict{String,Any}("normal_pass"=>false, "included_pass"=>false, "witness_checks"=>Any[])
+    r7_currency_record!(out, c.normal.data)
     allowed=Set(r7_planning_pair_key(p) for p in r7_planning_pairs(c))
     included=[r7_planning_pair_key((event = p["event"], fault = p["fault"])) for p in m["included"]]
     length(included)==length(unique(included)) && all(k->k in allowed, included) ||
@@ -44,12 +46,13 @@ function r7_planning_master_check(c, m)
     m["status"] in ("candidate", "time_limit_with_solution") || error("主问题状态与原值矛盾")
     n=m["normal"]
     # 主问题界属于安全规划，不能冒充无灾害正常调度的最优下界。
-    !haskey(n, "lower_bound_USD") || error("正常子记录混入安全规划费用界")
+    !haskey(n, r7_money_key(c.normal.data, "lower_bound_USD")) ||
+        error("正常子记录混入安全规划费用界")
     q=validate_r7_normal(c.normal, n)
     out["normal_check"]=q
     out["normal_pass"]=q["model_pass"]&&q["pipe_reference_pass"]
     out["normal_pass"] || return out
-    out["cost_USD"]=q["cost_USD"]
+    out[r7_money_key(c.normal.data, "cost_USD")]=q[r7_money_key(c.normal.data, "cost_USD")]
     events=Any[]
     for s in eachindex(c.specification["events"])
         event=try
@@ -158,10 +161,11 @@ end
 """
 function validate_r7_planning(c::R7PlanningCase, r)
     r7_planning_assert(c)
-    r["schema"]=="r7-planning-result-v1" &&
+    r7_check_currency_record(c.normal.data, r)
+    r["schema"]==r7_money_schema(c.normal.data, "r7-planning-result-v1") &&
     r["case_sha256"]==c.sha256 &&
     r["normal_domain"]==c.specification["normal_domain"] &&
-    r["objective_kind"]=="expected_normal_cost_USD" &&
+    r["objective_kind"]==r7_normal_objective_kind(c.normal.data) &&
     r["full_preplan_optimality_verified"]===false &&
     r["author_nested_algorithm_verified"]===false || error("规划身份或范围错误")
     r["method"] in ("extensive", "finite_fault_ccg", "nested_indicator_ccg") ||
@@ -174,6 +178,7 @@ function validate_r7_planning(c::R7PlanningCase, r)
         "iterations"=>Any[],
         "candidate_iteration"=>0,
     )
+    r7_currency_record!(out, c.normal.data)
     allkeys=Set(r7_planning_pair_key(p) for p in r7_planning_pairs(c))
     expected=Set{String}()
     lower=-Inf
@@ -185,9 +190,10 @@ function validate_r7_planning(c::R7PlanningCase, r)
         )
         got==(r["method"]=="extensive" ? allkeys : expected) || error("外层故障递推错误")
         q=r7_planning_master_check(c, m)
-        if haskey(m, "lower_bound_USD")
-            isfinite(m["lower_bound_USD"]) || error("主问题费用界非有限")
-            lower=max(lower, m["lower_bound_USD"])
+        if haskey(m, r7_money_key(c.normal.data, "lower_bound_USD"))
+            isfinite(m[r7_money_key(c.normal.data, "lower_bound_USD")]) ||
+                error("主问题费用界非有限")
+            lower=max(lower, m[r7_money_key(c.normal.data, "lower_bound_USD")])
         end
         audits=Any[]
         robust=false
@@ -206,8 +212,8 @@ function validate_r7_planning(c::R7PlanningCase, r)
                 robust=length(audits)==length(c.specification["events"]) &&
                        all(a["status"]=="safe_adopted_model" for a in audits)
             end
-            if robust && q["cost_USD"]<best
-                best=q["cost_USD"]
+            if robust && q[r7_money_key(c.normal.data, "cost_USD")]<best
+                best=q[r7_money_key(c.normal.data, "cost_USD")]
                 out["candidate_iteration"]=i
             end
         elseif !isempty(it["audits"])
@@ -228,10 +234,10 @@ function validate_r7_planning(c::R7PlanningCase, r)
     end
     out["robust_model_pass"]=isfinite(best)
     if isfinite(lower)
-        out["lower_bound_USD"]=lower
+        out[r7_money_key(c.normal.data, "lower_bound_USD")]=lower
     end
     if isfinite(best)
-        out["cost_USD"]=best
+        out[r7_money_key(c.normal.data, "cost_USD")]=best
         if isfinite(lower)
             gap=(best-lower)/max(1, abs(best))
             out["relative_gap"]=gap

@@ -65,27 +65,35 @@ function r8_energy_balance_rows(d, s, values, packed; recovery = false)
 end
 
 function r8_energy_normal_check(c, s, n)
-    n["schema"]=="r8-energy-normal-v1" && n["case_sha256"]==c.normal.sha256 ||
-        error("稳态正常计划身份错误")
+    r7_check_currency_record(c.normal.data, n)
+    n["schema"]==r7_money_schema(c.normal.data, "r8-energy-normal-v1") &&
+    n["case_sha256"]==c.normal.sha256 || error("稳态正常计划身份错误")
     shared=Dict{String,Any}(
-        "schema"=>"r7-normal-result-v1",
+        "schema"=>r7_money_schema(c.normal.data, "r7-normal-result-v1"),
         "version"=>"r7_normal_prescribed_v1",
         "case_sha256"=>c.normal.sha256,
-        "objective_kind"=>"expected_normal_cost_USD",
+        "objective_kind"=>r7_normal_objective_kind(c.normal.data),
         "thermal_model"=>c.normal.data["thermal_model"],
         "full_preplan_optimality_verified"=>false,
         "status"=>"candidate",
         "values"=>n["values"],
         "chp_values"=>n["chp_values"],
-        "solver_objective_USD"=>n["normal_cost_USD"],
+        r7_money_key(c.normal.data, "solver_objective_USD")=>n[r7_money_key(
+            c.normal.data,
+            "normal_cost_USD",
+        )],
     )
+    r7_currency_record!(shared, c.normal.data)
     common=validate_r7_normal(c.normal, shared; thermal = false)
     rows=r8_energy_balance_rows(c.normal.data, s, n["values"], n["energy_values"])
     Dict(
         "model_pass"=>common["shared_block_pass"]&&all(r["pass"] for r in rows),
         "shared"=>common,
         "rows"=>rows,
-        "normal_cost_USD"=>common["cost_USD"],
+        r7_money_key(c.normal.data, "normal_cost_USD")=>common[r7_money_key(
+            c.normal.data,
+            "cost_USD",
+        )],
         "dynamic_heat_verified"=>false,
     )
 end
@@ -123,6 +131,7 @@ function r8_energy_event(c, n, eindex)
 end
 
 function r8_energy_stage_check(c, s, r; normal_result = nothing)
+    r7_check_currency_record(c.normal.data, r)
     evaluation=normal_result!==nothing
     r["evaluation"]===evaluation && r["objective_kind"]==r8_objective_kind(s; evaluation) ||
         error("能流目标身份错误")
@@ -138,6 +147,7 @@ function r8_energy_stage_check(c, s, r; normal_result = nothing)
         "rows"=>Dict{String,Any}[],
         "witness_checks"=>Any[],
     )
+    r7_currency_record!(q, c.normal.data)
     haskey(r, "normal") || return q
     r["status"] in ("candidate", "time_limit_with_solution") || error("能流状态与候选矛盾")
     n=r["normal"]
@@ -145,8 +155,8 @@ function r8_energy_stage_check(c, s, r; normal_result = nothing)
     q["normal_check"]=nq
     q["normal_pass"]=nq["model_pass"]
     nq["model_pass"] || return q
-    cost=nq["normal_cost_USD"]
-    q["normal_cost_USD"]=cost
+    cost=nq[r7_money_key(c.normal.data, "normal_cost_USD")]
+    q[r7_money_key(c.normal.data, "normal_cost_USD")]=cost
     rows=q["rows"]
     rec(id, key, x, tol) = push!(
         rows,
@@ -253,7 +263,8 @@ function r8_energy_stage_check(c, s, r; normal_result = nothing)
         q["event_upper_MWh"]=upper
         q["threshold_pass"]=all(upper .<= s["limits_MWh"] .+ 1e-6)
         objective=evaluation ? sum(eta) :
-                  s["mode"]=="penalty" ? cost+s["penalty_USD_MWh"]*sum(eta) : cost
+                  s["mode"]=="penalty" ?
+                  cost+s[r7_money_key(c.normal.data, "penalty_USD_MWh")]*sum(eta) : cost
         if evaluation && haskey(r, "objective_lower_bound")
             lower=[
                 max(
@@ -296,7 +307,8 @@ end
 """
 function validate_r8_energy_solution(c::R7PlanningCase, s, r)
     r8_energy_check(c, s)
-    r["schema"]=="r8-energy-result-v1" &&
+    r7_check_currency_record(c.normal.data, r)
+    r["schema"]==r7_money_schema(c.normal.data, "r8-energy-result-v1") &&
     r["version"]==s["version"] &&
     r["case_sha256"]==c.sha256 &&
     r["spec_sha256"]==r7_digest(s) &&
@@ -310,6 +322,7 @@ function validate_r8_energy_solution(c::R7PlanningCase, s, r)
         "dynamic_heat_verified"=>false,
         "full_thesis_domain_verified"=>false,
     )
+    r7_currency_record!(q, c.normal.data)
     if haskey(r, "evaluation")
         primary["model_pass"] || error("未通过正常计划出现恢复评估")
         ev=r8_energy_stage_check(c, s, r["evaluation"]; normal_result = r["primary"]["normal"])

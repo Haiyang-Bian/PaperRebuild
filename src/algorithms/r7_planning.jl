@@ -5,6 +5,7 @@ function r7_solve_planning_master(c, pairs, optimizer, stop, id)
         "included"=>[Dict("event"=>p.event, "fault"=>p.fault) for p in pairs],
         "witnesses"=>Any[],
     )
+    r7_currency_record!(r, c.normal.data)
     if started<stop
         try
             b=build_r7_planning(c; optimizer, included = pairs)
@@ -26,11 +27,11 @@ function r7_solve_planning_master(c, pairs, optimizer, stop, id)
                 if has_values(b.model)&&pr in (MOI.FEASIBLE_POINT, MOI.NEARLY_FEASIBLE_POINT)
                     r["status"]=ts==MOI.TIME_LIMIT ? "time_limit_with_solution" : "candidate"
                     r["normal"]=Dict{String,Any}(
-                        "schema"=>"r7-normal-result-v1",
+                        "schema"=>r7_money_schema(c.normal.data, "r7-normal-result-v1"),
                         "version"=>"r7_normal_prescribed_v1",
                         "run_id"=>id,
                         "case_sha256"=>c.normal.sha256,
-                        "objective_kind"=>"expected_normal_cost_USD",
+                        "objective_kind"=>r7_normal_objective_kind(c.normal.data),
                         "thermal_model"=>c.normal.data["thermal_model"],
                         "full_preplan_optimality_verified"=>false,
                         "status"=>"candidate",
@@ -39,8 +40,11 @@ function r7_solve_planning_master(c, pairs, optimizer, stop, id)
                             g=>Dict(k=>r7_pack(value.(a)) for (k, a) in block) for
                             (g, block) in b.chp_variables
                         ),
-                        "solver_objective_USD"=>objective_value(b.model),
+                        r7_money_key(c.normal.data, "solver_objective_USD")=>objective_value(
+                            b.model,
+                        ),
                     )
+                    r7_currency_record!(r["normal"], c.normal.data)
                     r["witnesses"]=[
                         Dict(
                             "event"=>w.pair.event,
@@ -53,7 +57,8 @@ function r7_solve_planning_master(c, pairs, optimizer, stop, id)
                 end
                 try
                     lb=objective_bound(b.model)
-                    isfinite(lb) ? (r["lower_bound_USD"]=lb) : (r["bound_unavailable"]="nonfinite")
+                    isfinite(lb) ? (r[r7_money_key(c.normal.data, "lower_bound_USD")]=lb) :
+                    (r["bound_unavailable"]="nonfinite")
                 catch err
                     r["bound_unavailable"]=sprint(showerror, err)
                 end
@@ -92,12 +97,12 @@ function solve_r7_planning(
     started=time()
     stop=started+budget_sec
     r=Dict{String,Any}(
-        "schema"=>"r7-planning-result-v1",
+        "schema"=>r7_money_schema(c.normal.data, "r7-planning-result-v1"),
         "case_sha256"=>c.sha256,
         "run_id"=>"r7-planning-"*string(uuid4()),
         "method"=>string(method),
         "normal_domain"=>c.specification["normal_domain"],
-        "objective_kind"=>"expected_normal_cost_USD",
+        "objective_kind"=>r7_normal_objective_kind(c.normal.data),
         "full_preplan_optimality_verified"=>false,
         "author_nested_algorithm_verified"=>false,
         "source_hashes_at_solve"=>r7_planning_science_hashes(),
@@ -106,6 +111,7 @@ function solve_r7_planning(
         "status"=>"budget_exhausted",
         "iterations"=>Any[],
     )
+    r7_currency_record!(r, c.normal.data)
     allpairs=r7_planning_pairs(c)
     pairs=method==:extensive ? allpairs : eltype(allpairs)[]
     for k in 1:(length(allpairs)+1)

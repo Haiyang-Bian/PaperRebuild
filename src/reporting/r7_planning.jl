@@ -38,12 +38,13 @@ function save_r7_planning(c::R7PlanningCase, r, directory::AbstractString)
     end
     root=normpath(joinpath(@__DIR__, "..", ".."))
     meta=Dict{String,Any}(
-        "schema"=>"r7-planning-metadata-v1",
+        "schema"=>r7_money_schema(c.normal.data, "r7-planning-metadata-v1"),
         "case_sha256"=>c.sha256,
         "run_id"=>r["run_id"],
         "origin"=>c.normal.data["origin"],
         "saved_utc"=>string(now(UTC)),
     )
+    r7_currency_record!(meta, c.normal.data)
     if ispath(joinpath(root, ".git"))
         meta["git_commit"]=readchomp(Cmd(["git", "-C", root, "rev-parse", "HEAD"]))
         meta["git_status"]=read(Cmd(["git", "-C", root, "status", "--short"]), String)
@@ -126,7 +127,8 @@ function read_r7_planning(directory::AbstractString)
     )
     r=TOML.parsefile(joinpath(directory, "result.toml"))
     meta=TOML.parsefile(joinpath(directory, "metadata.toml"))
-    meta["schema"]=="r7-planning-metadata-v1"&&meta["case_sha256"]==c.sha256&&meta["run_id"]==r["run_id"]&&meta["origin"]==c.normal.data["origin"] ||
+    r7_check_currency_record(c.normal.data, meta)
+    meta["schema"]==r7_money_schema(c.normal.data, "r7-planning-metadata-v1")&&meta["case_sha256"]==c.sha256&&meta["run_id"]==r["run_id"]&&meta["origin"]==c.normal.data["origin"] ||
         error("规划存档身份错误")
     r["source_hashes_at_solve"]==r7_planning_science_hashes() ||
         error("请用冻结code/replay.jl重验规划结果")

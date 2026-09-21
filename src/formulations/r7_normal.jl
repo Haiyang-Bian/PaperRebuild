@@ -255,9 +255,10 @@ function build_r7_normal(
     startup=sum(b.startup_cost for b in values(chp); init = 0.0)
     running=dt*sum(
         d["probabilities"][w]*(
-            e["price_USD_MWh"][t]*PP[t, w]+sum(
-                z["cost_P_USD_MWh"]*(z["kind"]=="BES" ? Pch[g, t, w]+Pdis[g, t, w] : P[g, t, w]) for
-                (g, z) in enumerate(ds);
+            e[r7_money_key(d, "price_USD_MWh")][t]*PP[t, w]+sum(
+                z[r7_money_key(d, "cost_P_USD_MWh")]*(
+                    z["kind"]=="BES" ? Pch[g, t, w]+Pdis[g, t, w] : P[g, t, w]
+                ) for (g, z) in enumerate(ds);
                 init = 0.0,
             )
         ) for t in 1:T, w in 1:W

@@ -30,6 +30,7 @@ function r8_normal_differences(actual, expected)
 end
 
 function r8_validate_stage(c, flow, s, r; normal_result = nothing)
+    r7_check_currency_record(c.normal.data, r)
     evaluation=normal_result!==nothing
     r["evaluation"]===evaluation && r["objective_kind"]==r8_objective_kind(s; evaluation) ||
         error("R8阶段目标/单位错误")
@@ -45,6 +46,7 @@ function r8_validate_stage(c, flow, s, r; normal_result = nothing)
         "rows"=>Dict{String,Any}[],
         "witness_checks"=>Any[],
     )
+    r7_currency_record!(q, c.normal.data)
     haskey(r, "normal") || return q
     r["status"] in ("candidate", "time_limit_with_solution") || error("R8状态与原值矛盾")
     n=r["normal"]
@@ -75,8 +77,8 @@ function r8_validate_stage(c, flow, s, r; normal_result = nothing)
             )
         end
     end
-    cost=nq["cost_USD"]
-    q["normal_cost_USD"]=cost
+    cost=nq[r7_money_key(c.normal.data, "cost_USD")]
+    q[r7_money_key(c.normal.data, "normal_cost_USD")]=cost
     if !evaluation && s["mode"]=="economic"
         isempty(r["witnesses"]) && isempty(r["eta_MWh"]) || error("经济基线不得附加恢复约束")
         objective=cost
@@ -127,7 +129,8 @@ function r8_validate_stage(c, flow, s, r; normal_result = nothing)
         heat
         q["threshold_pass"]=all(upper .<= s["limits_MWh"] .+ 1e-6)
         objective=evaluation ? sum(eta) :
-                  s["mode"]=="penalty" ? cost+s["penalty_USD_MWh"]*sum(eta) : cost
+                  s["mode"]=="penalty" ?
+                  cost+s[r7_money_key(c.normal.data, "penalty_USD_MWh")]*sum(eta) : cost
         if evaluation && haskey(r, "objective_lower_bound")
             # 各事件恢复块在固定正常计划后独立。总下界减其余事件可行上界给逐事件下界。
             lb=r["objective_lower_bound"]
@@ -168,7 +171,8 @@ end
 """
 function validate_r8_solution(c::R7PlanningCase, flow, s, r)
     r8_check(c, flow, s)
-    r["schema"]=="r8-tradeoff-result-v1" &&
+    r7_check_currency_record(c.normal.data, r)
+    r["schema"]==r7_money_schema(c.normal.data, "r8-tradeoff-result-v1") &&
     r["version"]==s["version"] &&
     r["case_sha256"]==c.sha256 &&
     r["flow_sha256"]==r7_digest(flow) &&
@@ -185,6 +189,7 @@ function validate_r8_solution(c::R7PlanningCase, flow, s, r)
         "threshold_pass"=>false,
         "full_thesis_domain_verified"=>false,
     )
+    r7_currency_record!(q, c.normal.data)
     if haskey(r, "evaluation")
         p["model_pass"] || error("未通过的主阶段不能有恢复评估")
         e=r8_validate_stage(c, flow, s, r["evaluation"]; normal_result = r["primary"]["normal"])

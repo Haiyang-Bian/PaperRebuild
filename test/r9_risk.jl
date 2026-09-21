@@ -62,8 +62,28 @@ const ROOT=normpath(joinpath(@__DIR__, ".."))
         @test a==b
     end
     full=r9_reserve_risk_case(template, train, reps, spec, "3C")
-    # 修正前386.8秒纯输入性能采样的原摘要；只改变SHA字节载体，不改变输入身份。
-    @test full.sha256=="c8fda7079f341bf7fa87dd8095039f8403a9811d39c4a15b9ca5d9b6d6acfab4"
+    # 保留原性能采样身份，用其冻结来源重建；7.5来源更正不重写已存7.4风险输入。
+    frozen_template=r9_reserve_template(
+        joinpath(ROOT, "results/summaries/r9-inputs-20260920-v1"),
+        joinpath(ROOT, "configs/r9/reserve-protocol.toml"),
+    )
+    frozen_full=r9_reserve_risk_case(frozen_template, train, reps, spec, "3C")
+    @test frozen_full.sha256=="c8fda7079f341bf7fa87dd8095039f8403a9811d39c4a15b9ca5d9b6d6acfab4"
+    actual, expected=deepcopy(full.data), deepcopy(frozen_full.data)
+    @test actual["r9_study"]["template_sha256"]==template.sha256!=frozen_template.sha256
+    actual["r9_study"]["template_sha256"]=frozen_template.sha256
+    for (a, b) in zip(actual["commitment"]["scenarios"], expected["commitment"]["scenarios"])
+        # 情景身份包含来源哈希；先按完整数据核验两边，再只归一化比较副本的身份。
+        @test a["case_sha256"]==R5DispatchCase(a["case"]).sha256
+        @test b["case_sha256"]==R5DispatchCase(b["case"]).sha256
+        @test a["case_sha256"]!=b["case_sha256"]
+        a["case_sha256"]=b["case_sha256"]
+        sa=pop!(a["case"]["r9_reserve"], "source_hashes")
+        sb=pop!(b["case"]["r9_reserve"], "source_hashes")
+        @test Set(keys(sa))==Set(keys(sb))
+        @test Set(k for k in keys(sa) if sa[k]!=sb[k])==Set(["inputs.toml"])
+    end
+    @test actual==expected # 100情景、设备、概率、风险半径及所有物理和费用数值逐值相同。
     @test !full.data["r9_study"]["pilot"]
     @test length(full.data["commitment"]["scenarios"])==100
     @test [s["probability"] for s in full.data["commitment"]["scenarios"]]==reps["counts"] ./ 120

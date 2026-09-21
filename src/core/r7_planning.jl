@@ -72,8 +72,9 @@ function r7_event_template(c::R7PlanningCase, s)
         "heat"=>deepcopy(d["heat"]),
         "devices"=>deepcopy(d["devices"]),
     )
+    r7_currency_record!(out, d)
     out["electric"]["load_MW"]=[row[win] for row in d["electric"]["load_MW"]]
-    pop!(out["electric"], "price_USD_MWh")
+    pop!(out["electric"], r7_money_key(d, "price_USD_MWh"))
     h=out["heat"]
     h["load_MW"]=[row[win] for row in d["heat"]["load_MW"]]
     h["ambient_K"]=h["ambient_K"][win]

@@ -11,6 +11,8 @@
 [等价表示对照](docs/src/ch07-compact-risk.md)现已运行：建模约从51–57秒降至31–32秒，
 但3A仍无候选，3B/C费用不变、间隙仍约32.93%；不能把建模改善当成优化完成。
 第7.5节原页复核另纠正GT转录并保留关键负荷/故障/时轴冲突，按独立输入继续。
+[币种与状态继承准备](docs/src/ch07-resilience-currency.md)为R7/R8新增显式CNY接口；
+这是费用核算与兼容性工作，尚未完成第7.5节关键负荷保供实验。
 历史[流量/终端结果](docs/src/ch07-flow-results.md)和[交易/重构结果](docs/src/ch07-network-results.md)保留各自边界。
 
 此前[R8稳态能流与跨时段机制](docs/src/ch06-r8-energy-results.md)、

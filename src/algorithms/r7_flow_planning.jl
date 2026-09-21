@@ -16,19 +16,20 @@ function solve_r7_flow_planning(c, s; optimizer, budget_sec = 600.0, deadline = 
     reserve=lossy ? min(60.0, 0.1max(0.0, stop-started)) : 0.0
     compute_stop=stop-reserve
     r=Dict{String,Any}(
-        "schema"=>"r7-flow-planning-result-v1",
+        "schema"=>r7_money_schema(c.normal.data, "r7-flow-planning-result-v1"),
         "version"=>s["version"],
         "run_id"=>"r7-flow-planning-"*string(uuid4()),
         "case_sha256"=>c.sha256,
         "spec_sha256"=>r7_digest(s),
         "method"=>"extensive",
-        "objective_kind"=>"expected_normal_cost_USD",
+        "objective_kind"=>r7_normal_objective_kind(c.normal.data),
         "status"=>"budget_exhausted",
         "full_thesis_domain_verified"=>false,
         "budget_sec"=>Float64(budget_sec),
         "source_hashes_at_solve"=>r7_flow_planning_science_hashes(),
         "julia_version"=>string(VERSION),
     )
+    r7_currency_record!(r, c.normal.data)
     if lossy
         r["validation_reserve_sec"]=reserve
         r["bound_scope"]="adopted_gauss_model_not_exact_PDE"
@@ -57,12 +58,12 @@ function solve_r7_flow_planning(c, s; optimizer, budget_sec = 600.0, deadline = 
                     r["status"]=ts==MOI.TIME_LIMIT ? "time_limit_with_solution" : "candidate"
                     sample(a) = r7_pack(map(x->x isa Real ? Float64(x) : value(x), a))
                     r["normal"]=Dict{String,Any}(
-                        "schema"=>"r7-normal-flow-result-v1",
+                        "schema"=>r7_money_schema(c.normal.data, "r7-normal-flow-result-v1"),
                         "version"=>s["normal_flow"]["version"],
                         "run_id"=>r["run_id"]*"-normal",
                         "case_sha256"=>c.normal.sha256,
                         "spec_sha256"=>r7_digest(s["normal_flow"]),
-                        "objective_kind"=>"expected_normal_cost_USD",
+                        "objective_kind"=>r7_normal_objective_kind(c.normal.data),
                         "full_preplan_optimality_verified"=>false,
                         "energy_balance"=>true,
                         "status"=>"candidate",
@@ -72,8 +73,11 @@ function solve_r7_flow_planning(c, s; optimizer, budget_sec = 600.0, deadline = 
                             (id, block) in b.chp_variables
                         ),
                         "flow_values"=>Dict(k=>sample(a) for (k, a) in b.normal_flow),
-                        "solver_objective_USD"=>objective_value(b.model),
+                        r7_money_key(c.normal.data, "solver_objective_USD")=>objective_value(
+                            b.model,
+                        ),
                     )
+                    r7_currency_record!(r["normal"], c.normal.data)
                     r["witnesses"]=[
                         Dict(
                             "event"=>w.pair.event,
@@ -90,7 +94,7 @@ function solve_r7_flow_planning(c, s; optimizer, budget_sec = 600.0, deadline = 
                 end
                 try
                     bound=objective_bound(b.model)
-                    isfinite(bound) ? (r["lower_bound_USD"]=bound) :
+                    isfinite(bound) ? (r[r7_money_key(c.normal.data, "lower_bound_USD")]=bound) :
                     (r["bound_unavailable"]="nonfinite")
                 catch err
                     r["bound_unavailable"]=sprint(showerror, err)

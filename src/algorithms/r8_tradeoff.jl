@@ -1,12 +1,12 @@
 function r8_snapshot(b, c, flow, s, id)
     sample(a) = r7_pack(map(x->x isa Real ? Float64(x) : value(x), a))
     n=Dict{String,Any}(
-        "schema"=>"r7-normal-flow-result-v1",
+        "schema"=>r7_money_schema(c.normal.data, "r7-normal-flow-result-v1"),
         "version"=>flow["normal_flow"]["version"],
         "run_id"=>id*"-normal",
         "case_sha256"=>c.normal.sha256,
         "spec_sha256"=>r7_digest(flow["normal_flow"]),
-        "objective_kind"=>"expected_normal_cost_USD",
+        "objective_kind"=>r7_normal_objective_kind(c.normal.data),
         "full_preplan_optimality_verified"=>false,
         "energy_balance"=>true,
         "status"=>"candidate",
@@ -15,8 +15,9 @@ function r8_snapshot(b, c, flow, s, id)
             id=>Dict(k=>sample(a) for (k, a) in block) for (id, block) in b.chp_variables
         ),
         "flow_values"=>Dict(k=>sample(a) for (k, a) in b.normal_flow),
-        "solver_objective_USD"=>value(b.normal_cost),
+        r7_money_key(c.normal.data, "solver_objective_USD")=>value(b.normal_cost),
     )
+    r7_currency_record!(n, c.normal.data)
     witnesses=[
         Dict(
             "event"=>w.pair.event,
@@ -41,6 +42,7 @@ function r8_solve_stage(c, flow, s; optimizer, deadline, normal_result = nothing
         "objective_kind"=>r8_objective_kind(s; evaluation),
         "evaluation"=>evaluation,
     )
+    r7_currency_record!(r, c.normal.data)
     evaluation && (r["fixed_normal_sha256"]=r7_digest(normal_result))
     if time()<deadline
         try
@@ -103,7 +105,7 @@ function solve_r8_case(c::R7PlanningCase, flow, s; optimizer, budget_sec = 600.0
     stop=started+budget_sec
     reserve=min(60.0, 0.1budget_sec)
     r=Dict{String,Any}(
-        "schema"=>"r8-tradeoff-result-v1",
+        "schema"=>r7_money_schema(c.normal.data, "r8-tradeoff-result-v1"),
         "version"=>s["version"],
         "run_id"=>"r8-"*string(uuid4()),
         "case_sha256"=>c.sha256,
@@ -114,6 +116,7 @@ function solve_r8_case(c::R7PlanningCase, flow, s; optimizer, budget_sec = 600.0
         "julia_version"=>string(VERSION),
         "full_thesis_domain_verified"=>false,
     )
+    r7_currency_record!(r, c.normal.data)
     primary=r8_solve_stage(c, flow, s; optimizer, deadline = started+0.8budget_sec)
     r["primary"]=primary
     if primary["validation"]["model_pass"]

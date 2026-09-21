@@ -187,9 +187,10 @@ R7-J4从正常原值重新累计水团，再独立核查全部事件/故障的�
 """
 function validate_r7_flow_planning(c::R7PlanningCase, s, r)
     r7_flow_planning_check(c, s)
-    r["schema"]=="r7-flow-planning-result-v1"&&r["version"]==s["version"] &&
+    r7_check_currency_record(c.normal.data, r)
+    r["schema"]==r7_money_schema(c.normal.data, "r7-flow-planning-result-v1")&&r["version"]==s["version"] &&
     r["case_sha256"]==c.sha256&&r["spec_sha256"]==r7_digest(s) &&
-    r["objective_kind"]=="expected_normal_cost_USD"&&r["method"]=="extensive" &&
+    r["objective_kind"]==r7_normal_objective_kind(c.normal.data)&&r["method"]=="extensive" &&
     r["full_thesis_domain_verified"]===false || error("联合流量结果身份/范围错误")
     r["status"]=="infeasible_certified"&&get(r, "termination_status", "")!="INFEASIBLE" &&
         error("联合规划不可行缺终止证据")
@@ -203,6 +204,7 @@ function validate_r7_flow_planning(c::R7PlanningCase, s, r)
         "ac_grid_verified"=>false,
         "witness_checks"=>Any[],
     )
+    r7_currency_record!(q, c.normal.data)
     if r7_is_lossy_flow(s["normal_flow"])
         q["bound_scope"]="adopted_gauss_model_not_exact_PDE"
         q["exact_transport_optimality_verified"]=false
@@ -210,7 +212,8 @@ function validate_r7_flow_planning(c::R7PlanningCase, s, r)
     haskey(r, "normal") || return q
     r["status"] in ("candidate", "time_limit_with_solution") || error("联合状态与候选矛盾")
     n=r["normal"]
-    !haskey(n, "lower_bound_USD") || error("正常子记录不能继承安全规划费用界")
+    !haskey(n, r7_money_key(c.normal.data, "lower_bound_USD")) ||
+        error("正常子记录不能继承安全规划费用界")
     nq=validate_r7_normal_flow(c.normal, s["normal_flow"], n)
     q["normal_check"]=nq
     q["normal_pass"]=nq["model_pass"]
@@ -220,10 +223,15 @@ function validate_r7_flow_planning(c::R7PlanningCase, s, r)
     checks=[r7_joint_witness_check(c, s, n, w) for w in r["witnesses"]]
     q["witness_checks"]=checks
     q["robust_model_pass"]=all(w["threshold_pass"] for w in checks)
-    q["cost_USD"]=nq["cost_USD"]
-    if haskey(r, "lower_bound_USD")
-        isfinite(r["lower_bound_USD"]) || error("联合规划非有限界")
-        gap=(q["cost_USD"]-r["lower_bound_USD"])/max(1, abs(q["cost_USD"]))
+    q[r7_money_key(c.normal.data, "cost_USD")]=nq[r7_money_key(c.normal.data, "cost_USD")]
+    if haskey(r, r7_money_key(c.normal.data, "lower_bound_USD"))
+        isfinite(r[r7_money_key(c.normal.data, "lower_bound_USD")]) || error("联合规划非有限界")
+        gap=(
+            q[r7_money_key(c.normal.data, "cost_USD")]-r[r7_money_key(
+                c.normal.data,
+                "lower_bound_USD",
+            )]
+        )/max(1, abs(q[r7_money_key(c.normal.data, "cost_USD")]))
         q["relative_gap"]=gap
         q["domain_optimality_pass"]=q["robust_model_pass"]&&-1e-6<=gap<=1e-4
     end

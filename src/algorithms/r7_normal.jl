@@ -20,11 +20,11 @@ function solve_r7_normal(
     started=time()
     stop=deadline===nothing ? started+budget_sec : min(deadline, started+budget_sec)
     r=Dict{String,Any}(
-        "schema"=>"r7-normal-result-v1",
+        "schema"=>r7_money_schema(c.data, "r7-normal-result-v1"),
         "version"=>"r7_normal_prescribed_v1",
         "run_id"=>string(uuid4()),
         "case_sha256"=>c.sha256,
-        "objective_kind"=>"expected_normal_cost_USD",
+        "objective_kind"=>r7_normal_objective_kind(c.data),
         "thermal_model"=>c.data["thermal_model"],
         "source_hashes_at_solve"=>r7_normal_science_hashes(),
         "julia_version"=>string(VERSION),
@@ -32,6 +32,7 @@ function solve_r7_normal(
         "status"=>"budget_exhausted",
         "full_preplan_optimality_verified"=>false,
     )
+    r7_currency_record!(r, c.data)
     fixed_commitments===nothing || (r["fixed_commitments"]=deepcopy(fixed_commitments))
     modes===nothing || (r["fixed_battery_modes"]=Dict(k=>r7_pack(a) for (k, a) in modes))
     if time()<stop
@@ -58,12 +59,12 @@ function solve_r7_normal(
                         id=>Dict(k=>r7_pack(value.(a)) for (k, a) in block.variables) for
                         (id, block) in b.chp
                     )
-                    r["solver_objective_USD"]=objective_value(b.model)
+                    r[r7_money_key(c.data, "solver_objective_USD")]=objective_value(b.model)
                     r["status"]=ts==MOI.TIME_LIMIT ? "time_limit_with_solution" : "candidate"
                 end
                 try
                     lower=objective_bound(b.model)
-                    isfinite(lower) ? (r["lower_bound_USD"]=lower) :
+                    isfinite(lower) ? (r[r7_money_key(c.data, "lower_bound_USD")]=lower) :
                     (r["bound_unavailable"]="nonfinite")
                 catch err
                     r["bound_unavailable"]=sprint(showerror, err)

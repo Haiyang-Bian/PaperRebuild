@@ -48,7 +48,9 @@ function r7_linked_witness(c, s, n, w)
 end
 
 function r7_linked_master_check(c, s, m)
+    r7_check_currency_record(c.normal.data, m)
     out=Dict{String,Any}("normal_pass"=>false, "included_pass"=>false, "witness_checks"=>Any[])
+    r7_currency_record!(out, c.normal.data)
     included=[r7_planning_pair_key((event = p["event"], fault = p["fault"])) for p in m["included"]]
     allowed=Set(r7_planning_pair_key.(r7_planning_pairs(c)))
     length(included)==length(unique(included)) && all(k->k in allowed, included) ||
@@ -59,12 +61,12 @@ function r7_linked_master_check(c, s, m)
     haskey(m, "normal") || return out
     m["status"] in ("candidate", "time_limit_with_solution") || error("主问题状态与原值冲突")
     n=m["normal"]
-    !haskey(n, "lower_bound_USD") || error("正常子记录混入安全费用界")
+    !haskey(n, r7_money_key(c.normal.data, "lower_bound_USD")) || error("正常子记录混入安全费用界")
     q=validate_r7_normal(c.normal, n)
     out["normal_check"]=q
     out["normal_pass"]=q["model_pass"]&&q["pipe_reference_pass"]
     out["normal_pass"] || return out
-    out["cost_USD"]=q["cost_USD"]
+    out[r7_money_key(c.normal.data, "cost_USD")]=q[r7_money_key(c.normal.data, "cost_USD")]
     checks=[r7_linked_witness(c, s, n, w) for w in m["witnesses"]]
     sort([w["key"] for w in checks])==sort(included) || error("详细恢复见证缺失或重复")
     out["witness_checks"]=checks
@@ -105,11 +107,12 @@ R7-L3独立验算：从本轮正常原值重放完整空间状态，再逐故障
 """
 function validate_r7_linked_planning(c::R7PlanningCase, s, r)
     r7_linked_spec_check(c, s)
-    r["schema"]=="r7-linked-planning-result-v1" &&
+    r7_check_currency_record(c.normal.data, r)
+    r["schema"]==r7_money_schema(c.normal.data, "r7-linked-planning-result-v1") &&
     r["version"]==s["version"] &&
     r["case_sha256"]==c.sha256 &&
     r["spec_sha256"]==r7_digest(s) &&
-    r["objective_kind"]=="expected_normal_cost_USD" &&
+    r["objective_kind"]==r7_normal_objective_kind(c.normal.data) &&
     r["method"] in ("extensive", "finite_fault_ccg") &&
     r["full_variable_flow_verified"]===false || error("详细规划身份/范围错误")
     out=Dict{String,Any}(
@@ -123,6 +126,7 @@ function validate_r7_linked_planning(c::R7PlanningCase, s, r)
         "candidate_iteration"=>0,
         "iterations"=>Any[],
     )
+    r7_currency_record!(out, c.normal.data)
     allpairs=r7_planning_pairs(c)
     allkeys=Set(r7_planning_pair_key.(allpairs))
     expected=Set{String}()
@@ -134,9 +138,10 @@ function validate_r7_linked_planning(c::R7PlanningCase, s, r)
         )
         got==(r["method"]=="extensive" ? allkeys : expected) || error("详细规划外层递推错误")
         q=r7_linked_master_check(c, s, m)
-        if haskey(m, "lower_bound_USD")
-            isfinite(m["lower_bound_USD"]) || error("详细规划费用界非有限")
-            lower=max(lower, m["lower_bound_USD"])
+        if haskey(m, r7_money_key(c.normal.data, "lower_bound_USD"))
+            isfinite(m[r7_money_key(c.normal.data, "lower_bound_USD")]) ||
+                error("详细规划费用界非有限")
+            lower=max(lower, m[r7_money_key(c.normal.data, "lower_bound_USD")])
         end
         audits=Any[]
         robust=false
@@ -151,8 +156,8 @@ function validate_r7_linked_planning(c::R7PlanningCase, s, r)
                 end
                 robust=length(audits)==length(allpairs)&&all(a["safe"] for a in audits)
             end
-            if robust&&q["cost_USD"]<best
-                best=q["cost_USD"]
+            if robust&&q[r7_money_key(c.normal.data, "cost_USD")]<best
+                best=q[r7_money_key(c.normal.data, "cost_USD")]
                 out["candidate_iteration"]=i
             end
         elseif !isempty(it["audits"])
@@ -171,9 +176,9 @@ function validate_r7_linked_planning(c::R7PlanningCase, s, r)
         error("详细规划总状态缺不可行证据")
     out["robust_model_pass"]=isfinite(best)
     out["substep_transport_verified"]=isfinite(best)
-    isfinite(lower)&&(out["lower_bound_USD"]=lower)
+    isfinite(lower)&&(out[r7_money_key(c.normal.data, "lower_bound_USD")]=lower)
     if isfinite(best)
-        out["cost_USD"]=best
+        out[r7_money_key(c.normal.data, "cost_USD")]=best
         if isfinite(lower)
             gap=(best-lower)/max(1, abs(best))
             out["relative_gap"]=gap

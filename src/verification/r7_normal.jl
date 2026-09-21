@@ -57,10 +57,11 @@ thermal=false仅核验共用设备、电池、启停、电网及成本，输入�
 """
 function validate_r7_normal(c::R7NormalCase, r; thermal = true)
     r7_normal_assert(c)
-    r["schema"]=="r7-normal-result-v1" &&
+    r7_check_currency_record(c.data, r)
+    r["schema"]==r7_money_schema(c.data, "r7-normal-result-v1") &&
     r["version"]=="r7_normal_prescribed_v1" &&
     r["case_sha256"]==c.sha256 &&
-    r["objective_kind"]=="expected_normal_cost_USD" &&
+    r["objective_kind"]==r7_normal_objective_kind(c.data) &&
     r["thermal_model"]==c.data["thermal_model"] &&
     r["full_preplan_optimality_verified"]===false || error("正常结果身份、范围或目标错误")
     out=Dict{String,Any}(
@@ -72,12 +73,13 @@ function validate_r7_normal(c::R7NormalCase, r; thermal = true)
         "ac_grid_validated"=>false,
         "rows"=>Dict{String,Any}[],
     )
+    r7_currency_record!(out, c.data)
     thermal || (out["shared_block_pass"]=false)
     haskey(r, "values") || return out
     r["status"] in
     ("infeasible_certified", "budget_exhausted", "time_limit_no_solution", "license_unavailable") &&
         error("正常状态与候选矛盾")
-    isfinite(r["solver_objective_USD"]) || error("正常目标非有限")
+    isfinite(r[r7_money_key(c.data, "solver_objective_USD")]) || error("正常目标非有限")
     v=r7_normal_decode(c, r; thermal)
     d=c.data
     e, h=d["electric"], d["heat"]
@@ -129,7 +131,7 @@ function validate_r7_normal(c::R7NormalCase, r; thermal = true)
                 k=>r7_unpack(r["chp_values"][z["id"]], k) for k in keys(r["chp_values"][z["id"]])
             )
             check=validate_r7_chp(r7_normal_chp(d, z), cv)
-            startup+=check["startup_cost_USD"]
+            startup+=check[r7_money_key(c.data, "startup_cost_USD")]
             for row in check["rows"]
                 rec(
                     row["formula"],
@@ -520,25 +522,36 @@ function validate_r7_normal(c::R7NormalCase, r; thermal = true)
         end
     end
     resource=dt*sum(
-        d["probabilities"][w]*z["cost_P_USD_MWh"]*(
+        d["probabilities"][w]*z[r7_money_key(c.data, "cost_P_USD_MWh")]*(
             z["kind"]=="BES" ? v["P_ch"][g, t, w]+v["P_dis"][g, t, w] : v["P"][g, t, w]
         ) for (g, z) in enumerate(ds), t in 1:T, w in 1:W
     )
-    grid=dt*sum(d["probabilities"][w]*e["price_USD_MWh"][t]*v["P_PCC"][t, w] for t in 1:T, w in 1:W)
+    grid=dt*sum(
+        d["probabilities"][w]*e[r7_money_key(c.data, "price_USD_MWh")][t]*v["P_PCC"][t, w] for
+        t in 1:T, w in 1:W
+    )
     cost=startup+resource+grid
-    rec("6-1", "cost", 0, 0, r["solver_objective_USD"]-cost, "USD", 1e-6*max(1, abs(cost)))
+    rec(
+        "6-1",
+        "cost",
+        0,
+        0,
+        r[r7_money_key(c.data, "solver_objective_USD")]-cost,
+        r7_currency(c.data),
+        1e-6*max(1, abs(cost)),
+    )
     out["model_pass"]=all(x["pass"] for x in out["rows"] if x["scope"]=="adopted")
     out["pipe_reference_pass"]=all(x["pass"] for x in out["rows"] if x["scope"]=="pipe_reference")
     out["cost_pass"]=last(out["rows"])["pass"]
-    out["cost_USD"]=cost
-    out["startup_cost_USD"]=startup
-    out["resource_cost_USD"]=resource
-    out["grid_payment_USD"]=grid
+    out[r7_money_key(c.data, "cost_USD")]=cost
+    out[r7_money_key(c.data, "startup_cost_USD")]=startup
+    out[r7_money_key(c.data, "resource_cost_USD")]=resource
+    out[r7_money_key(c.data, "grid_payment_USD")]=grid
     out["max_simultaneous_charge_discharge_MW"]=simultaneous
     out["mutual_exclusivity_pass"]=simultaneous<=pt
-    if haskey(r, "lower_bound_USD")
-        isfinite(r["lower_bound_USD"]) || error("正常成本界非有限")
-        gap=(cost-r["lower_bound_USD"])/max(1, abs(cost))
+    if haskey(r, r7_money_key(c.data, "lower_bound_USD"))
+        isfinite(r[r7_money_key(c.data, "lower_bound_USD")]) || error("正常成本界非有限")
+        gap=(cost-r[r7_money_key(c.data, "lower_bound_USD")])/max(1, abs(cost))
         out["relative_gap"]=gap
         out["optimality_pass"]=out["model_pass"] && -1e-6<=gap<=1e-4
     end
@@ -608,6 +621,7 @@ function r7_normal_event(c::R7NormalCase, r; event_start, periods, renewable_fac
         "battery_rule"=>d["battery_rule"],
         "units"=>deepcopy(d["units"]),
     )
+    r7_currency_record!(ed, d)
     ed["electric"]=deepcopy(d["electric"])
     ed["electric"]["load_MW"]=[a[win] for a in d["electric"]["load_MW"]]
     h=deepcopy(d["heat"])
@@ -710,7 +724,7 @@ function r7_normal_event(c::R7NormalCase, r; event_start, periods, renewable_fac
         end
     end
     # 电价不是灾后失供目标；删去未切片的正常期序列，避免形成模糊的事件输入。
-    pop!(ed["electric"], "price_USD_MWh")
+    pop!(ed["electric"], r7_money_key(c.data, "price_USD_MWh"))
     event=R7RecoveryCase(ed)
     evidence=Dict(
         "schema"=>"r7-normal-event-v1",
@@ -729,5 +743,6 @@ function r7_normal_event(c::R7NormalCase, r; event_start, periods, renewable_fac
         "initial_pipe_profiles"=>profiles,
         "boundary_adjustments"=>adjustments,
     )
+    r7_currency_record!(evidence, d)
     (; case = event, evidence)
 end

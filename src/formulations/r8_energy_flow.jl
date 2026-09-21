@@ -173,7 +173,14 @@ function build_r8_energy_model(
         end
         @objective(m, Min, sum(eta))
     else
-        @objective(m, Min, cost+(s["mode"]=="penalty" ? s["penalty_USD_MWh"]*sum(eta) : 0.0))
+        @objective(
+            m,
+            Min,
+            cost+(
+                s["mode"]=="penalty" ? s[r7_money_key(c.normal.data, "penalty_USD_MWh")]*sum(eta) :
+                0.0
+            )
+        )
     end
     time()<deadline || error("energy_build_deadline")
     types=list_of_constraint_types(m)

@@ -83,9 +83,10 @@ status = "ablation_text_checked_utilization_metric_open"
 
 [[migration]]
 id = "R9-RM01"
-current_contract = "R7NormalCase schema r7-normal-case-v1 requires USD/MWh; R8 specs/results use explicit USD keys"
+current_contract = "Legacy R7/R8 v1 retains USD keys; new v2 explicitly declares USD/CNY and neutral monetary fields. Recovery quantities remain MWh."
 required_before_run = "Introduce an explicit currency-aware input/results version; preserve old USD inputs, hashes and readers. No implicit exchange rate or relabelled CNY values in USD fields."
-status = "identified_not_implemented"
+status = "implemented_currency_v2_verified"
+adopted_contract = "docs/reading/ch07/resilience-currency.toml"
 [[migration]]
 id = "R9-RM02"
 current_contract = "R7 recovery objective integrates all declared electric and heat shedding; no separate critical-load accounting"

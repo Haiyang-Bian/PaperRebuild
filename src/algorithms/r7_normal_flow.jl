@@ -24,12 +24,12 @@ function solve_r7_normal_flow(
     reserve=lossy ? min(60.0, 0.1max(0.0, stop-started)) : 0.0
     compute_stop=stop-reserve
     r=Dict{String,Any}(
-        "schema"=>"r7-normal-flow-result-v1",
+        "schema"=>r7_money_schema(c.data, "r7-normal-flow-result-v1"),
         "version"=>s["version"],
         "run_id"=>"r7-normal-flow-"*string(uuid4()),
         "case_sha256"=>c.sha256,
         "spec_sha256"=>r7_digest(s),
-        "objective_kind"=>"expected_normal_cost_USD",
+        "objective_kind"=>r7_normal_objective_kind(c.data),
         "source_hashes_at_solve"=>r7_normal_flow_science_hashes(),
         "julia_version"=>string(VERSION),
         "budget_sec"=>Float64(budget_sec),
@@ -37,6 +37,7 @@ function solve_r7_normal_flow(
         "full_preplan_optimality_verified"=>false,
         "energy_balance"=>energy_balance,
     )
+    r7_currency_record!(r, c.data)
     if lossy
         r["validation_reserve_sec"]=reserve
         r["bound_scope"]="adopted_gauss_model_not_exact_PDE"
@@ -69,12 +70,12 @@ function solve_r7_normal_flow(
                     r["flow_values"]=Dict(
                         k=>r7_pack(b.fixed_flow ? a : value.(a)) for (k, a) in b.flow
                     )
-                    r["solver_objective_USD"]=objective_value(b.model)
+                    r[r7_money_key(c.data, "solver_objective_USD")]=objective_value(b.model)
                     r["status"]=ts==MOI.TIME_LIMIT ? "time_limit_with_solution" : "candidate"
                 end
                 try
                     bound=objective_bound(b.model)
-                    isfinite(bound) ? (r["lower_bound_USD"]=bound) :
+                    isfinite(bound) ? (r[r7_money_key(c.data, "lower_bound_USD")]=bound) :
                     (r["bound_unavailable"]="nonfinite")
                 catch err
                     r["bound_unavailable"]=sprint(showerror, err)

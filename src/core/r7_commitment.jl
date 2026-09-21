@@ -1,8 +1,46 @@
+# v1保持原USD字段与哈希；v2使用显式币种和无币种后缀的数值字段，不执行汇率换算。
+r7_currency_v2(d) = haskey(d, "currency")
+function r7_currency(d)
+    currency = get(d, "currency", "USD")
+    currency in ("USD", "CNY") || error("未支持的R7币种")
+    currency
+end
+r7_money_key(d, legacy) = r7_currency_v2(d) ? replace(legacy, "_USD" => "") : legacy
+r7_money_schema(d, legacy) = r7_currency_v2(d) ? replace(legacy, r"-v1$" => "-v2") : legacy
+r7_normal_objective_kind(d) = "expected_normal_cost_" * r7_currency(d)
+function r7_check_currency_schema(d, legacy)
+    d["schema"] in (legacy, replace(legacy, r"-v1$" => "-v2")) || error("R7费用输入版本错误")
+    (d["schema"] != legacy) == r7_currency_v2(d) || error("费用v2须显式币种，v1不得暗改币种")
+    r7_currency(d)
+    nothing
+end
+function r7_check_money_fields(d, values, fields)
+    for legacy in fields
+        actual = r7_money_key(d, legacy)
+        other = r7_currency_v2(d) ? legacy : replace(legacy, "_USD" => "")
+        haskey(values, actual) && !haskey(values, other) || error("R7费用字段缺失或混用：$actual")
+    end
+    nothing
+end
+function r7_currency_record!(record, d)
+    r7_currency_v2(d) && (record["currency"] = r7_currency(d))
+    record
+end
+function r7_check_currency_record(d, record)
+    if r7_currency_v2(d)
+        get(record, "currency", nothing) == r7_currency(d) || error("R7结果币种与输入不同")
+        any(occursin("_USD", k) for k in keys(record)) && error("v2结果混入旧USD费用字段")
+    else
+        haskey(record, "currency") && error("旧USD结果不得添加未声明币种")
+    end
+    nothing
+end
+
 """
     R7CHPSpec(data)
 
 第6章灾前CHP约束块的显式输入，不是完整正常调度案例。功率MW/Mvar、时间h、
-启机费USD/次、运行费USD/MWh。启停跨新能源场景共享，P/Q按时间、场景排列。
+v1启机费USD/次、运行费USD/MWh；v2显式currency为USD或CNY，费用字段去除_USD后缀。启停跨新能源场景共享，P/Q按时间、场景排列。
 必须给出窗口前状态、已持续时间、各场景前一出力及末端规则；不默认冷启动或周期启停。
 """
 struct R7CHPSpec
@@ -12,7 +50,8 @@ end
 
 function R7CHPSpec(input::AbstractDict)
     d=TOML.parse(r7_text(input))
-    d["schema"]=="r7-chp-component-v1" || error("CHP约束块输入版本错误")
+    r7_check_currency_schema(d, "r7-chp-component-v1")
+    r7_check_money_fields(d, d, ("startup_cost_USD", "cost_P_USD_MWh"))
     d["id"] isa String && !isempty(strip(d["id"])) || error("CHP身份缺失")
     d["periods"] isa Integer && d["periods"]>0 || error("CHP时域错误")
     isfinite(d["dt_h"]) && d["dt_h"]>0 || error("CHP时间步错误")
@@ -28,8 +67,8 @@ function R7CHPSpec(input::AbstractDict)
         "ramp_MW_h",
         "startup_MW",
         "shutdown_MW",
-        "startup_cost_USD",
-        "cost_P_USD_MWh",
+        r7_money_key(d, "startup_cost_USD"),
+        r7_money_key(d, "cost_P_USD_MWh"),
     )
         isfinite(d[key]) && d[key]>=0 || error("CHP参数错误：$key")
     end

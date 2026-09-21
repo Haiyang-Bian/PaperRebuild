@@ -85,10 +85,13 @@ function add_r7_chp_commitment!(m::JuMP.Model, s::R7CHPSpec; fixed_u = nothing)
         # 给定初始义务在窗口内无法结束；保留数学不可行，不在输入层伪造满龄状态。
         add("R7-N4", @constraint(m, 0.0*sum(u)>=1.0))
     end
-    startup_cost=@expression(m, d["startup_cost_USD"]*sum(ν_on))
+    startup_cost=@expression(m, d[r7_money_key(d, "startup_cost_USD")]*sum(ν_on))
     running_cost=@expression(
         m,
-        dt*sum(d["probabilities"][w]*d["cost_P_USD_MWh"]*P[t, w] for t in 1:T, w in 1:W)
+        dt*sum(
+            d["probabilities"][w]*d[r7_money_key(d, "cost_P_USD_MWh")]*P[t, w] for
+            t in 1:T, w in 1:W
+        )
     )
     (;
         variables = Dict(

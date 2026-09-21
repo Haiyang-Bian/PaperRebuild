@@ -102,7 +102,7 @@ function build_r8_model(
         end
         @objective(m, Min, sum(eta))
     elseif s["mode"]=="penalty"
-        @objective(m, Min, cost+s["penalty_USD_MWh"]*sum(eta))
+        @objective(m, Min, cost+s[r7_money_key(c.normal.data, "penalty_USD_MWh")]*sum(eta))
     else
         @objective(m, Min, cost)
     end

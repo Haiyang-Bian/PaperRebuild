@@ -28,7 +28,20 @@ end
         joinpath(root, "docs/reading/ch07"),
         joinpath(root, "configs/r9/trading-protocol.toml"),
     )
-    @test parent.sha256=="73595793a7b47b3e39e4b4aa97a323ac35989887802b54ed113f36fa01dc4d1d"
+    # 7.5转录修正会改变整份来源哈希；历史身份应由冻结来源重建，不能强迫现行来源沿用旧哈希。
+    frozen=r9_trading_case(
+        joinpath(root, "results/summaries/r9-inputs-20260920-v1"),
+        joinpath(root, "configs/r9/trading-protocol.toml"),
+    )
+    @test frozen.sha256=="73595793a7b47b3e39e4b4aa97a323ac35989887802b54ed113f36fa01dc4d1d"
+    current_data, frozen_data=deepcopy(parent.data), deepcopy(frozen.data)
+    current_sources=pop!(current_data["provenance"], "source_hashes")
+    frozen_sources=pop!(frozen_data["provenance"], "source_hashes")
+    @test current_data==frozen_data # 全部7.3数值、协议及其余来源仍逐值相同。
+    @test Set(keys(current_sources))==Set(keys(frozen_sources))
+    @test Set(k for k in keys(current_sources) if current_sources[k]!=frozen_sources[k]) ==
+          Set(["inputs.toml"])
+    @test parent.sha256!=frozen.sha256
     p=joinpath(root, "configs/r9/network-protocol.toml")
     legacy=r9_reconfiguration_case(parent, p)
     equipment=r9_reconfiguration_case(parent, p; design = :equipment, policy = :joint)
