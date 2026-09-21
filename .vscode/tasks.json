@@ -1,5 +1,11 @@
 {
   "inputs": [
+    {"id":"r9ResilienceEvidence","type":"promptString","description":"保供证据目录；封存使用新目录","default":"results/summaries/r9-resilience-evidence-20260922-v2"},
+    {"id":"r9ResilienceFigures","type":"promptString","description":"F47重绘新目录，不覆盖原图","default":"results/runs/new-resilience-figures"},
+    {"id":"r9ResilienceInput","type":"promptString","description":"保供冻结输入；freeze须使用新目录","default":"results/summaries/r9-resilience-input-20260922-v2"},
+    {"id":"r9ResilienceOutput","type":"promptString","description":"保供预运行目录，不覆盖既有阶段","default":"results/runs/r9-resilience-pilot-20260922-v2"},
+    {"id":"r9ResilienceSet","type":"pickString","description":"分别保留两套原图关键节点","options":["nodes_figure_7_12","nodes_figure_7_14"],"default":"nodes_figure_7_12"},
+    {"id":"r9ResilienceStage","type":"pickString","description":"先正常运行，再逐项恢复；仅3故障预运行","options":["normal","aggregate-external_only","aggregate-single_1_2","aggregate-author_event1","detailed-external_only","detailed-single_1_2","detailed-author_event1"],"default":"normal"},
     {"id":"r7InitialProfileOutput","type":"promptString","description":"初态Gurobi验证新目录，不覆盖旧证据","default":"tmp/r7-initial-profile-new"},
     {"id":"r9InputAuditOutput","type":"promptString","description":"预优化输入审计新TOML路径，不代表规模输入冻结","default":"tmp/r9-resilience-input-new.toml"},
     {"id":"r9CompactEvidence","type":"promptString","description":"等价表示原值证据；封存时使用新目录","default":"results/summaries/r9-compact-evidence-20260921-v1"},
@@ -202,6 +208,18 @@
     }
   ],
   "tasks": [
+    {"label":"PaperRebuild: R9 resilience batch","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/run_r9_resilience_batch.jl","${input:r9ResilienceInput}","${input:r9ResilienceOutput}","${input:r9ResilienceSet}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 resilience freeze evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_resilience_evidence.jl","freeze","${input:r9ResilienceInput}","${input:r9ResilienceOutput}","${input:r9ResilienceSet}","${input:r9ResilienceEvidence}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 resilience replay","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_resilience_evidence.jl","check","${input:r9ResilienceEvidence}","--replay"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 resilience report tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_resilience_report.jl","${input:r9ResilienceEvidence}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 resilience redraw","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r9_resilience.jl","${input:r9ResilienceEvidence}","${input:r9ResilienceFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 resilience pilot mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_resilience_pilot.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 declared switch tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r7_switch_control.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 declared switch native dual","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/test_r7_switch_control_gurobi.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 resilience input tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_resilience.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 resilience freeze","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_resilience_study.jl","freeze","${input:r9ResilienceInput}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 resilience run stage","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/r9_resilience_study.jl","run","${input:r9ResilienceInput}","${input:r9ResilienceOutput}","${input:r9ResilienceSet}","${input:r9ResilienceStage}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 resilience frozen check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_resilience_study.jl","check","${input:r9ResilienceInput}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 energization mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_energization.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 initial profile mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_initial_profile.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R7 initial profile tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r7_initial_profile.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},

@@ -1,0 +1,35 @@
+schema = "r9-resilience-pilot-contract-v1"
+origin = "thesis_topology_and_assets_with_declared_project_inputs"
+source_sha256 = "20328e2480e773520c19c378e53365fc944c0bafcfca73071f5d8313d5ee7d91"
+pdf_pages = [139,141,142]
+page = "docs/src/ch07-resilience-pilot.md"
+protocol = "configs/r9/resilience-protocol.toml"
+legacy_switch_domain_preserved = true
+old_results_rewritten = false
+original_input_complete = false
+mixed_hourly_quarter_hour_conversion_supported = false
+common_quarter_hour_grid = true
+scale_fault_universe_certified = false
+normal_flow_domain = "prescribed_positive"
+thermal_end_rule = "free"
+test_commands = ["scripts/test_r7_switch_control.jl","scripts/test_r7_switch_control_gurobi.jl","scripts/test_r9_resilience.jl","scripts/check_r9_resilience_pilot.jl","scripts/test_r9_resilience_report.jl"]
+
+[[formula]]
+id = "R9-RW1"
+meaning = "Declared actuator subset; forced fault opening does not consume active switching budget."
+api = ["with_r7_switch_control","build_r7_recovery","validate_r7_recovery","r7_recovery_lp"]
+test = "test/r7_switch_control.jl"
+
+[[formula]]
+id = "R9-RW2"
+meaning = "Common 15-minute clock, exact event boundary and critical-load integral; explicit scale inputs."
+api = ["r9_resilience_template","r7_normal_event"]
+test = "test/r9_resilience.jl"
+
+[[formula]]
+id = "R9-RW3"
+meaning = "Project capacity lower bound for inherited commitments, no battery and disconnected PCC; not a free-preplan bound."
+api = []
+script = "scripts/r9_resilience_evidence.jl"
+function = "capacity_certificate"
+test = "scripts/test_r9_resilience_report.jl"

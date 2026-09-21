@@ -159,6 +159,7 @@
 - `configs/r9/reserve-protocol.toml`
 - `configs/r9/reserve-study.toml`
 - `configs/r9/reserve-trajectories.toml`
+- `configs/r9/resilience-protocol.toml`
 - `configs/r9/seeded-study.toml`
 - `configs/r9/trading-protocol.toml`
 - `configs/r9/trading-study.toml`
@@ -245,6 +246,7 @@
 - `docs/agent/tasks/2026-09-21-r9-trading-model.md`
 - `docs/agent/tasks/2026-09-21-r9-trading-runs.md`
 - `docs/agent/tasks/2026-09-21-r9-trading-study.md`
+- `docs/agent/tasks/2026-09-22-r9-resilience-pilot.md`
 - `docs/make.jl`
 - `docs/reading/README.md`
 - `docs/reading/ch02/README.md`
@@ -326,6 +328,7 @@
 - `docs/reading/ch07/resilience-energization.toml`
 - `docs/reading/ch07/resilience-initial-profile.toml`
 - `docs/reading/ch07/resilience-load-service.toml`
+- `docs/reading/ch07/resilience-pilot.toml`
 - `docs/reading/ch07/resilience-review.toml`
 - `docs/reading/ch07/risk-study.toml`
 - `docs/reading/ch07/topology.toml`
@@ -477,6 +480,7 @@
 - `docs/src/ch07-reserve-generated.md`
 - `docs/src/ch07-reserve.md`
 - `docs/src/ch07-resilience-currency.md`
+- `docs/src/ch07-resilience-pilot.md`
 - `docs/src/ch07-risk-generated.md`
 - `docs/src/ch07-risk-results.md`
 - `docs/src/ch07-risk-study.md`
@@ -676,6 +680,8 @@
 - `scripts/check_r9_pv_results.jl`
 - `scripts/check_r9_reserve.jl`
 - `scripts/check_r9_resilience_currency.jl`
+- `scripts/check_r9_resilience_delivery.jl`
+- `scripts/check_r9_resilience_pilot.jl`
 - `scripts/check_r9_resilience_sources.jl`
 - `scripts/check_r9_risk.jl`
 - `scripts/check_r9_seeded_delivery.jl`
@@ -803,6 +809,7 @@
 - `scripts/plot_r9_pv.jl`
 - `scripts/plot_r9_reserve.jl`
 - `scripts/plot_r9_reserve_limits.jl`
+- `scripts/plot_r9_resilience.jl`
 - `scripts/plot_r9_seeded.jl`
 - `scripts/plot_r9_trading.jl`
 - `scripts/prepare_r1_summary.jl`
@@ -930,6 +937,8 @@
 - `scripts/r9_reserve_study.jl`
 - `scripts/r9_reserve_support.jl`
 - `scripts/r9_reserve_witness.jl`
+- `scripts/r9_resilience_evidence.jl`
+- `scripts/r9_resilience_study.jl`
 - `scripts/r9_risk_docs.jl`
 - `scripts/r9_seeded_study.jl`
 - `scripts/r9_source_report.jl`
@@ -985,6 +994,7 @@
 - `scripts/run_r9_network_batch.jl`
 - `scripts/run_r9_numerics_gurobi.jl`
 - `scripts/run_r9_reserve_batch.jl`
+- `scripts/run_r9_resilience_batch.jl`
 - `scripts/run_r9_seeded_batch.jl`
 - `scripts/seal_r9_common_witness.jl`
 - `scripts/seal_r9_reserve_probe.jl`
@@ -1085,6 +1095,8 @@
 - `scripts/test_r7_planning.jl`
 - `scripts/test_r7_ports.jl`
 - `scripts/test_r7_recovery.jl`
+- `scripts/test_r7_switch_control.jl`
+- `scripts/test_r7_switch_control_gurobi.jl`
 - `scripts/test_r7_thermal.jl`
 - `scripts/test_r7_transport.jl`
 - `scripts/test_r8_energy_cases.jl`
@@ -1113,6 +1125,8 @@
 - `scripts/test_r9_reserve.jl`
 - `scripts/test_r9_reserve_freeze.jl`
 - `scripts/test_r9_reserve_support.jl`
+- `scripts/test_r9_resilience.jl`
+- `scripts/test_r9_resilience_report.jl`
 - `scripts/test_r9_risk.jl`
 - `scripts/test_r9_risk_native_start.jl`
 - `scripts/test_r9_seeded_evidence.jl`
@@ -1217,6 +1231,7 @@
 - `src/core/r9_network.jl`
 - `src/core/r9_pv.jl`
 - `src/core/r9_reserve.jl`
+- `src/core/r9_resilience.jl`
 - `src/core/r9_risk.jl`
 - `src/core/r9_trading.jl`
 - `src/formulations/r1.jl`
@@ -1417,6 +1432,7 @@
 - `test/r7_planning.jl`
 - `test/r7_ports.jl`
 - `test/r7_recovery.jl`
+- `test/r7_switch_control.jl`
 - `test/r7_thermal.jl`
 - `test/r7_transport.jl`
 - `test/r8_energy_flow.jl`
@@ -1430,6 +1446,7 @@
 - `test/r9_pv.jl`
 - `test/r9_reduced.jl`
 - `test/r9_reserve.jl`
+- `test/r9_resilience.jl`
 - `test/r9_risk.jl`
 - `test/r9_risk_evidence.jl`
 - `test/r9_seeded_risk.jl`
@@ -1504,6 +1521,7 @@
 - `docs/src/assets/r9-pv-20260920-v2/`
 - `docs/src/assets/r9-reserve-full-20260921-v1/`
 - `docs/src/assets/r9-reserve-pilot-20260921-v1/`
+- `docs/src/assets/r9-resilience-pilot-v2/`
 - `docs/src/assets/r9-seeded-20260921-v2/`
 - `docs/src/assets/r9-trading-20260921-v1/`
 - `results/summaries/ch03-data/`
@@ -1619,6 +1637,12 @@
 - `results/summaries/r9-reserve-pilot-20260921-v2/`
 - `results/summaries/r9-reserve-pilot-figures-20260921-v1/`
 - `results/summaries/r9-reserve-structure-20260921-v1/`
+- `results/summaries/r9-resilience-evidence-20260922-v1/`
+- `results/summaries/r9-resilience-evidence-20260922-v2/`
+- `results/summaries/r9-resilience-figures-20260922-v1/`
+- `results/summaries/r9-resilience-figures-20260922-v2/`
+- `results/summaries/r9-resilience-input-20260922-v1/`
+- `results/summaries/r9-resilience-input-20260922-v2/`
 - `results/summaries/r9-resilience-input-audit-20260921-v1/`
 - `results/summaries/r9-seeded-evidence-20260921-v1/`
 - `results/summaries/r9-seeded-figures-20260921-v1/`
