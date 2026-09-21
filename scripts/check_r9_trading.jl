@@ -16,6 +16,11 @@ end
 page=read(joinpath(root, ledger["page"]), String)
 tests=read(joinpath(root, ledger["test_file"]), String)
 all(x->occursin(x, tests), ledger["tests"]) || error("测试映射缺失")
+run_tests=read(joinpath(root, ledger["run_test_file"]), String)
+all(x->occursin(x, run_tests), ledger["run_tests"]) || error("运行测试映射缺失")
+for api in ledger["run_apis"]
+    isdefined(PaperRebuild, Symbol(api)) && occursin(api, page) || error("运行API/卡片缺失")
+end
 Set(x["id"] for x in ledger["equations"])==Set("R9-T$i" for i in 1:6) || error("方程映射缺失")
 source=load_r9_sources(joinpath(root, "docs/reading/ch07"))
 ledger["source_sha256"]==source.data["inputs.toml"]["source_sha256"] || error("原件来源漂移")
@@ -39,6 +44,10 @@ end
 println(io, "\n## 采用解释与缺口\n\n| ID | 出处 | 状态 | 含义 |\n|---|---|---|---|")
 for x in ledger["issues"]
     println(io, "| $(x["id"]) | $(x["source"]) | $(x["status"]) | $(x["meaning"]) |")
+end
+println(io, "\n## 运行与独立重验\n\n| Julia API | 测试位置 |\n|---|---|")
+for api in ledger["run_apis"]
+    println(io, "| [`$api`](@ref) | `$(ledger["run_test_file"])` |")
 end
 expected=String(take!(io))
 target=joinpath(root, "docs/src/ch07-trading-generated.md")

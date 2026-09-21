@@ -32,3 +32,13 @@
 | R9-TQ03 | PDF132 text; missing heat-store nameplates | explicit_synthetic_replacement | 两台储热各0.5MW/2MWh和储能效率/初末状态均为项目参数；电池50元/MWh按吞吐量解释。 |
 | R9-TQ04 | project model boundary | full_thermal_compatibility_and_reconfiguration_pending | 双向稳态能量/质量包络不保证混合温度、水压或动态输运。温热管对即使负荷小仍承担参考散热。 |
 | R9-TQ05 | PDF133-135 schemes2A/2B/2C | benchmark_not_equivalent_to_2B_2C | 集中资源目标与教学结算是迁移基准；分布式协调、重构、议价和原表绝对效用尚未由本入口复现。 |
+
+## 运行与独立重验
+
+| Julia API | 测试位置 |
+|---|---|
+| [`solve_r9_trading_case`](@ref) | `test/r9_trading_runs.jl` |
+| [`validate_r9_trading_run`](@ref) | `test/r9_trading_runs.jl` |
+| [`save_r9_trading_run`](@ref) | `test/r9_trading_runs.jl` |
+| [`read_r9_trading_run`](@ref) | `test/r9_trading_runs.jl` |
+| [`compare_r9_trading_runs`](@ref) | `test/r9_trading_runs.jl` |

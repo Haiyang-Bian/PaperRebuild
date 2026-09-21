@@ -1,5 +1,5 @@
 schema = "r9-trading-adoption-v1"
-status = "input_and_analytical_model_checks; scale_experiments_pending"
+status = "input_model_and_budgeted_run_interfaces; scale_experiments_pending"
 original_input_reproduction = false
 uses_projected_gradient = false
 network_reconfiguration = false
@@ -12,6 +12,9 @@ protocol = "configs/r9/trading-protocol.toml"
 page = "docs/src/ch07-trading.md"
 test_file = "test/r9_trading.jl"
 tests = ["R9-T1 scale input, original sites and explicit replacements", "R9-T2:T6 analytical power, bidirectional heat and internal accounting", "R9-T3 half-hour storage and independent frozen plans"]
+run_test_file = "test/r9_trading_runs.jl"
+run_tests = ["R9 trading shared budget and raw stage states", "R9 trading independent plans and network feasibility are separate", "R9 trading immutable frozen replay and declared comparison domain"]
+run_apis = ["solve_r9_trading_case", "validate_r9_trading_run", "save_r9_trading_run", "read_r9_trading_run", "compare_r9_trading_runs"]
 
 [[equations]]
 id = "R9-T1"

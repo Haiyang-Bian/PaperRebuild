@@ -224,6 +224,7 @@
 - `docs/agent/tasks/2026-09-21-r9-numerics.md`
 - `docs/agent/tasks/2026-09-21-r9-pv.md`
 - `docs/agent/tasks/2026-09-21-r9-trading-model.md`
+- `docs/agent/tasks/2026-09-21-r9-trading-runs.md`
 - `docs/make.jl`
 - `docs/reading/README.md`
 - `docs/reading/ch02/README.md`
@@ -1788,6 +1789,7 @@
 - `scripts/check_r9_pv_figures.jl`
 - `scripts/check_r9_pv_results.jl`
 - `scripts/check_r9_trading.jl`
+- `scripts/check_r9_trading_runs.jl`
 - `scripts/check_solvers.jl`
 - `scripts/collect_ch03_data.jl`
 - `scripts/compare_r1_runs.jl`
@@ -2174,6 +2176,7 @@
 - `scripts/test_r9_report.jl`
 - `scripts/test_r9_sources.jl`
 - `scripts/test_r9_trading.jl`
+- `scripts/test_r9_trading_runs.jl`
 - `scripts/tighten_r4_distributed_cost.jl`
 - `scripts/validate_ch03_data.jl`
 - `scripts/validate_r1.jl`
@@ -2222,6 +2225,7 @@
 - `src/algorithms/r7_transport.jl`
 - `src/algorithms/r8_energy_flow.jl`
 - `src/algorithms/r8_tradeoff.jl`
+- `src/algorithms/r9_trading.jl`
 - `src/components/devices.jl`
 - `src/components/r7_commitment.jl`
 - `src/core/case.jl`
@@ -2338,6 +2342,7 @@
 - `src/reporting/r9_fixed.jl`
 - `src/reporting/r9_pv.jl`
 - `src/reporting/r9_reduced.jl`
+- `src/reporting/r9_trading.jl`
 - `src/reporting/runs.jl`
 - `src/verification/r1.jl`
 - `src/verification/r2.jl`
@@ -2384,6 +2389,7 @@
 - `src/verification/r9_reduced.jl`
 - `src/verification/r9_sources.jl`
 - `src/verification/r9_trading.jl`
+- `src/verification/r9_trading_runs.jl`
 - `test/ch03_data.jl`
 - `test/ch06_audit.jl`
 - `test/fixtures/r9_trading.jl`
@@ -2455,6 +2461,7 @@
 - `test/r9_reduced.jl`
 - `test/r9_sources.jl`
 - `test/r9_trading.jl`
+- `test/r9_trading_runs.jl`
 - `test/runtests.jl`
 - `tools/Manifest.toml`
 - `tools/Project.toml`

@@ -1,5 +1,8 @@
 {
   "inputs": [
+    {"id":"r9TradingRun","type":"promptString","description":"R9交易运行目录；只读冻结原值与源码","default":"results/runs/r9-trading/independent-socp"},
+    {"id":"r9TradingComparison","type":"promptString","description":"同输入同整数域的R9集中交易运行","default":"results/runs/r9-trading/central-socp"},
+    {"id":"r9TradingGurobiTest","type":"promptString","description":"三节点Gurobi接口测试新目录，不是规模研究","default":"results/runs/r9-trading-gurobi-test-new"},
     {"id":"r9FixedStudy","type":"promptString","description":"R9固定流量冻结目录；freeze须新目录","default":"results/runs/r9-fixed-new"},
     {"id":"r9FixedReport","type":"promptString","description":"R9固定流量原值检查新报告目录","default":"results/runs/r9-fixed-report-new"},
     {"id":"r9FixedFigures","type":"promptString","description":"R9固定流量F37只读重绘的新目录","default":"results/runs/r9-fixed-redraw"},
@@ -172,6 +175,10 @@
   "tasks": [
     {"label":"PaperRebuild: R9 trading input and model tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_trading.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 trading mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_trading.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 trading run and replay tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_trading_runs.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 trading optional Gurobi test","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/test_r9_trading_runs.jl","--gurobi","${input:r9TradingGurobiTest}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 trading frozen replay","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_trading_runs.jl","check","${input:r9TradingRun}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 trading compare","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_trading_runs.jl","compare","${input:r9TradingRun}","${input:r9TradingComparison}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 fixed-flow frozen evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_fixed_evidence.jl","check","results/summaries/r9-fixed-20260921-v4"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 fixed-flow redraw F37","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r9_fixed.jl","results/summaries/r9-fixed-20260921-v4","${input:r9FixedFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 fixed-flow tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_fixed.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},

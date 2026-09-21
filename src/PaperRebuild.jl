@@ -363,6 +363,11 @@ include("formulations/r9_trading.jl")
 include("verification/r9_trading.jl")
 export R9TradingCase, load_r9_trading_case, r9_trading_case, build_r9_trading_model
 export validate_r9_trading_solution, r9_trading_ledger
+include("algorithms/r9_trading.jl")
+include("verification/r9_trading_runs.jl")
+include("reporting/r9_trading.jl")
+export solve_r9_trading_case, validate_r9_trading_run, save_r9_trading_run
+export read_r9_trading_run, compare_r9_trading_runs
 
 """
     hello(who::String)

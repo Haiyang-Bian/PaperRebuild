@@ -1,7 +1,8 @@
 # 第7.3节迁移：八聚合商输入与交易模型
 
 这一节点接续[固定流量实验](ch07-fixed.md)，转向“哪些主体供能、交易如何经过网络、收益怎样记账”。
-规模输入和模型构造已经建立，解析例已运行；**44/38节点的正式交易实验尚未执行**。
+规模输入、模型构造和预算/保存/独立重验接口已经建立，解析例已运行；
+**44/38节点的正式交易实验尚未执行**。
 第7.2节的对偶/KKT问题保持开放，本节点不使用其梯度或参考调度作初值。
 
 ## 1. 从原表到可运行输入
@@ -120,7 +121,8 @@ L_p&=10^{-6}U_p d_p(S_p^{\rm ref}+R_p^{\rm ref}-2T_p^{\rm amb}).
 `stage=:central`最小化联合资源费用；`stage=:local, actor=a`按零售价优化单个聚合商；
 `stage=:network, frozen=plans`冻结全部独立计划，再求运营商网络调度。
 冻结用附加等式，保留原容量边界；网络失败不能由悄悄调整聚合商来变成成功。
-当前已用小例验证这三个构建路径，完整预算/保存/重读编排仍待下一节点完成。
+这三个路径由`solve_r9_trading_case`编排；独立运营保留逐主体原计划及网络阶段的冻结副本。
+网络失败时不回到主体阶段重新调整计划。
 
 ```math
 \begin{aligned}
@@ -154,11 +156,65 @@ P2P按主体ID依次匹配余缺，剩余量与DSO结算。服务费每笔仅由
 ```sh
 julia +1.12.6 --startup-file=no --project=. scripts/test_r9_trading.jl
 julia +1.12.6 --startup-file=no --project=. scripts/check_r9_trading.jl
+julia +1.12.6 --startup-file=no --depwarn=error --project=. scripts/test_r9_trading_runs.jl
+julia +1.12.6 --startup-file=no --project=tools/solvers scripts/test_r9_trading_runs.jl --gurobi NEW_TEST_DIRECTORY
 ```
 
-下一节点先冻结完整输入与运行源码，加入共享600秒预算和失败证据保存，
-再执行独立运营网络校核、集中SOCP及原电网等式参考。
+下一节点先冻结规模运行的完整输入、源码及方法规则，
+再执行独立运营网络校核、集中SOCP及原电网等式参考。完整方法的进程/JIT时间也须记录，
+不能只把求解器报告时间当作总预算。
 同输入调度可实施后再迁移分布式协调、重构和议价；本节点不以成功构建14989个变量的模型代替规模实验。
+
+## 7. 如何运行、保存和解释结果？
+
+新增67项开放运行/存档检查通过。本机Gurobi另有22项小例检查通过：
+集中与独立运营的SOCP/原等式四项资源费用都是100元，原等式两项通过原支路检查；
+SOCP两项保留原等式未通过的判定。该零阻抗解析例不能用来推断规模松弛是否紧。
+
+运行接口用同一个截止时间连接建模、各主体局部调度和网络校核。总预算不超过600秒；
+各局部阶段不超过60秒，并为最终独立回代保留总预算的10%（至多60秒）。
+可用`deadline`传入外层脚本启动时确定的更早截止时间，以覆盖加载与JIT。
+本节点没有测得规模计算时间或算法加速比。
+
+示意调用如下；规模整数模型需要在可选求解环境中显式提供工厂`optimizer`，
+普通包导入与结果重验不加载商业求解器。Clarabel仅用于明确固定全部整数选择的连续小例。
+
+```julia
+result = solve_r9_trading_case(case; optimizer, operation=:independent,
+                              electric=:socp, budget_sec=600.0)
+path = save_r9_trading_run(case, result; directory="results/runs/NEW_BATCH",
+                           run_id="independent-socp")
+checked = read_r9_trading_run(path)
+```
+
+保存目录必须不存在。每个运行包含原始输入、逐阶段候选/状态/界、CSV残差、完整Julia源码与锁文件。
+独立计划与网络冻结控制逐值相等；不因网络校核失败而删除先前的局部成功。
+保存前后科学源码必须一致。默认重读运行自己的源码版本，先查完整清单/哈希，再逐式回代；
+后续代码变化不会静默改写历史判定。哈希用于完整性核对，不是作者身份或数字签名。
+
+| 字段 | 应怎样理解 |
+|---|---|
+| `status` | 求解停止事实；限时有候选、限时无候选、已证明不可行、许可或数值失败分别记录 |
+| `model_pass` | 所选模型与全部冻结计划通过独立检查 |
+| `electric_original_pass` | 原支路等式通过；SOCP通过不能替代此项 |
+| `heat_energy_mass_pass` | 稳态能量/质量包络通过；不是完整温度场认证 |
+| `ledger_pass` | 内部现金流、费用与收支恒等式通过 |
+| `cost_optimization_complete` | 原停止状态、模型检查与有效费用界均通过；局部计划的界也不能缺失 |
+| `wall_budget_pass` | 记录的总耗时是否在可用预算内，独立于模型是否可行 |
+
+测试中的容量反例让两个聚合商局部成功后，运营商网络报告不可行；
+该运行没有可实施系统费用，也不能报告集中协调的收益率。
+同输入、同固定整数选择的两个已验证候选才允许计算资源费用差，
+不同固定储能选择不能只因都写着“固定整数”而混比。
+费用差仍是候选差，不是全局最优性间隙。
+
+```sh
+julia +1.12.6 --startup-file=no --project=. scripts/check_r9_trading_runs.jl check RUN_DIRECTORY
+julia +1.12.6 --startup-file=no --project=. scripts/check_r9_trading_runs.jl compare AG0_DIRECTORY CENTRAL_DIRECTORY
+```
+
+退出成功表示存档可核对、原判定可重现；即使原记录是不可行，检查脚本也可成功重验这一事实。
+没有科学新结果时不生成新的收益曲线；正式规模图表仍在下一节点。
 
 公式和符号权威清单见[台账索引](ch07-trading-generated.md)。
 
@@ -173,4 +229,9 @@ r9_trading_case
 build_r9_trading_model
 validate_r9_trading_solution
 r9_trading_ledger
+solve_r9_trading_case
+validate_r9_trading_run
+save_r9_trading_run
+read_r9_trading_run
+compare_r9_trading_runs
 ```
