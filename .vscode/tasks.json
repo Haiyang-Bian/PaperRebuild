@@ -1,5 +1,8 @@
 {
   "inputs": [
+    {"id":"r9PreplanFaultParent","type":"promptString","description":"已保存开机候选的父诊断目录","default":"results/runs/r9-preplan-loss-diagnostic-20260922-v1"},
+    {"id":"r9PreplanFaultRaw","type":"promptString","description":"独立故障新运行目录；已有目录不覆盖","default":"results/runs/new-preplan-faults"},
+    {"id":"r9PreplanFaultEvidence","type":"promptString","description":"逐故障证据目录；freeze使用新目录","default":"results/summaries/r9-preplan-faults-20260922-v1"},
     {"id":"r9PreplanEvidence","type":"promptString","description":"灾前对照证据；封存须新目录","default":"results/summaries/r9-preplan-evidence-20260922-v1"},
     {"id":"r9PreplanDiagnosticEvidence","type":"promptString","description":"独立诊断证据，只读重验","default":"results/summaries/r9-preplan-diagnostics-20260922-v1"},
     {"id":"r9PreplanFigures","type":"promptString","description":"F48重绘新目录，不覆盖原图","default":"results/runs/new-preplan-figures"},
@@ -215,6 +218,9 @@
     }
   ],
   "tasks": [
+    {"label":"PaperRebuild: R9 preplan independent faults","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/r9_preplan_faults.jl","${input:r9PreplanInput}","${input:r9PreplanFaultParent}","${input:r9PreplanFaultRaw}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 preplan freeze fault evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_preplan_fault_evidence.jl","freeze","${input:r9PreplanInput}","${input:r9PreplanOutput}/penalty","${input:r9PreplanFaultParent}","${input:r9PreplanFaultRaw}","${input:r9PreplanFaultEvidence}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 preplan replay fault evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_preplan_fault_evidence.jl","check","${input:r9PreplanFaultEvidence}","--replay"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 preplan freeze evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_preplan_evidence.jl","freeze","${input:r9PreplanInput}","${input:r9PreplanOutput}","${input:r9PreplanEvidence}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 preplan replay evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_preplan_evidence.jl","check","${input:r9PreplanEvidence}","--replay"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 preplan replay diagnostics","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_preplan_diagnostic_evidence.jl","check","${input:r9PreplanDiagnosticEvidence}","--replay"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},

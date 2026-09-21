@@ -247,6 +247,7 @@
 - `docs/agent/tasks/2026-09-21-r9-trading-model.md`
 - `docs/agent/tasks/2026-09-21-r9-trading-runs.md`
 - `docs/agent/tasks/2026-09-21-r9-trading-study.md`
+- `docs/agent/tasks/2026-09-22-r9-preplan-faults.md`
 - `docs/agent/tasks/2026-09-22-r9-preplan.md`
 - `docs/agent/tasks/2026-09-22-r9-resilience-pilot.md`
 - `docs/make.jl`
@@ -682,6 +683,7 @@
 - `scripts/check_r9_numerics_results.jl`
 - `scripts/check_r9_preplan.jl`
 - `scripts/check_r9_preplan_delivery.jl`
+- `scripts/check_r9_preplan_faults.jl`
 - `scripts/check_r9_presolve.jl`
 - `scripts/check_r9_pv.jl`
 - `scripts/check_r9_pv_figures.jl`
@@ -939,6 +941,8 @@
 - `scripts/r9_numerics_study.jl`
 - `scripts/r9_preplan_diagnostic_evidence.jl`
 - `scripts/r9_preplan_evidence.jl`
+- `scripts/r9_preplan_fault_evidence.jl`
+- `scripts/r9_preplan_faults.jl`
 - `scripts/r9_preplan_study.jl`
 - `scripts/r9_presolve_check.jl`
 - `scripts/r9_pv_attribution.jl`
@@ -1644,6 +1648,7 @@
 - `results/summaries/r9-numerics-report-20260921-v1/`
 - `results/summaries/r9-preplan-diagnostics-20260922-v1/`
 - `results/summaries/r9-preplan-evidence-20260922-v1/`
+- `results/summaries/r9-preplan-faults-20260922-v1/`
 - `results/summaries/r9-preplan-figures-20260922-v1/`
 - `results/summaries/r9-preplan-figures-20260922-v2/`
 - `results/summaries/r9-preplan-input-20260922-v1/`

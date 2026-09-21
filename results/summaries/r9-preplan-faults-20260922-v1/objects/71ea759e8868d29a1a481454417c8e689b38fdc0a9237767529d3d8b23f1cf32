@@ -1,0 +1,1572 @@
+boundary_adjustments = []
+conditional_cost_complete = false
+currency = "CNY"
+detailed_disaster_heat_verified = false
+event_case_sha256 = "b1a30330fe482f63caa8d12807d4a36b32a23c40c849e0ab028adb5413dff7fc"
+event_start = 41
+full_preplan_optimality_verified = false
+normal_model_pass = true
+normal_pipe_reference_pass = true
+normal_thermal_model = "plug_flow_reference_v1"
+parent_case_sha256 = "aa73ac37aeda4472bdf95cc4e1c7f50df783a790dd9feececa66529a00592db1"
+parent_result_sha256 = "e3500d498703a86aa4a7b9574d6815c81631d409c0d9594b6ce8bdb85c46992d"
+parent_run_id = "r9-loss-audit-78b00651-baa4-4f8b-9c92-5e4619b8e0e7-normal"
+periods = 16
+recovery_model = "r7_recovery_port_checked_v1"
+schema = "r7-normal-event-v1"
+unstrengthened_event_case_sha256 = "aa5a4e778c7189c07307f265ae09ef9e7645f989adf42bd281ab7300c0eacf55"
+
+[[initial_pipe_profiles]]
+mass_kg = 1147.6190476190477
+mean_K = 372.372342056389
+pipe = 1
+reference_K = 343.15
+relative_heat_MWh = 0.039125469086609806
+scenario = 1
+side = "S"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 90.0
+    base_K = 283.15
+    from_left = true
+    mass_kg = 860.7142857142859
+    rate_per_kg = 1.5145755696682622e-5
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 88.83435910631941
+    base_K = 283.15
+    from_left = true
+    mass_kg = 286.9047619047618
+    rate_per_kg = 1.5145755696682622e-5
+[[initial_pipe_profiles]]
+mass_kg = 1147.6190476190477
+mean_K = 327.21510720695306
+pipe = 1
+reference_K = 293.15
+relative_heat_MWh = 0.0456093935381983
+scenario = 1
+side = "R"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 44.44917671091093
+    base_K = 283.15
+    from_left = true
+    mass_kg = 860.7142857142859
+    rate_per_kg = 1.5145755696682622e-5
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 43.87349028797012
+    base_K = 283.15
+    from_left = true
+    mass_kg = 286.9047619047618
+    rate_per_kg = 1.5145755696682622e-5
+[[initial_pipe_profiles]]
+mass_kg = 11476.190476190479
+mean_K = 372.99656781608763
+pipe = 2
+reference_K = 343.15
+relative_heat_MWh = 0.39961238020428463
+scenario = 1
+side = "S"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 90.0
+    base_K = 283.15
+    from_left = true
+    mass_kg = 8607.142857142859
+    rate_per_kg = 2.9744057848890014e-7
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 89.76988446708104
+    base_K = 283.15
+    from_left = true
+    mass_kg = 2869.04761904762
+    rate_per_kg = 2.9744057848890014e-7
+[[initial_pipe_profiles]]
+mass_kg = 11476.190476190479
+mean_K = 310.3596742427315
+pipe = 2
+reference_K = 293.15
+relative_heat_MWh = 0.23041841624990556
+scenario = 1
+side = "R"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 27.96175713329569
+    base_K = 283.15
+    from_left = true
+    mass_kg = 8607.142857142859
+    rate_per_kg = 2.9744057848890014e-7
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 25.071406471990358
+    base_K = 283.15
+    from_left = true
+    mass_kg = 2869.04761904762
+    rate_per_kg = 2.9744057848890014e-7
+[[initial_pipe_profiles]]
+mass_kg = 4590.476190476191
+mean_K = 372.5588346798682
+pipe = 3
+reference_K = 343.15
+relative_heat_MWh = 0.1575006479521832
+scenario = 1
+side = "S"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 89.69331011234891
+    base_K = 283.15
+    from_left = true
+    mass_kg = 3442.8571428571436
+    rate_per_kg = 1.3847670337661606e-6
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 89.26671004436885
+    base_K = 283.15
+    from_left = true
+    mass_kg = 1147.6190476190473
+    rate_per_kg = 1.3847670337661606e-6
+[[initial_pipe_profiles]]
+mass_kg = 4590.476190476191
+mean_K = 315.98389208506995
+pipe = 3
+reference_K = 293.15
+relative_heat_MWh = 0.1222881776111524
+scenario = 1
+side = "R"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 34.149129333129224
+    base_K = 283.15
+    from_left = true
+    mass_kg = 3442.8571428571436
+    rate_per_kg = 1.3847670337661606e-6
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 29.155158691246807
+    base_K = 283.15
+    from_left = true
+    mass_kg = 1147.6190476190473
+    rate_per_kg = 1.3847670337661606e-6
+[[initial_pipe_profiles]]
+mass_kg = 3442.8571428571436
+mean_K = 371.92903289640503
+pipe = 4
+reference_K = 343.15
+relative_heat_MWh = 0.11559578213389375
+scenario = 1
+side = "S"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 89.12496138783672
+    base_K = 283.15
+    from_left = true
+    mass_kg = 2582.1428571428573
+    rate_per_kg = 2.2606011014477925e-6
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 88.60623703048752
+    base_K = 283.15
+    from_left = true
+    mass_kg = 860.7142857142862
+    rate_per_kg = 2.2606011014477925e-6
+[[initial_pipe_profiles]]
+mass_kg = 3442.8571428571436
+mean_K = 320.5376568147508
+pipe = 4
+reference_K = 293.15
+relative_heat_MWh = 0.11000708820591588
+scenario = 1
+side = "R"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 39.023768783303524
+    base_K = 283.15
+    from_left = true
+    mass_kg = 2582.1428571428573
+    rate_per_kg = 2.2606011014477925e-6
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 32.852281216856234
+    base_K = 283.15
+    from_left = true
+    mass_kg = 860.7142857142862
+    rate_per_kg = 2.2606011014477925e-6
+[[initial_pipe_profiles]]
+mass_kg = 1147.6190476190477
+mean_K = 370.81987398548404
+pipe = 5
+reference_K = 343.15
+relative_heat_MWh = 0.03704688683612033
+scenario = 1
+side = "S"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 88.43400068681063
+    base_K = 283.15
+    from_left = true
+    mass_kg = 860.7142857142859
+    rate_per_kg = 1.5145755696682622e-5
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 87.28864193578487
+    base_K = 283.15
+    from_left = true
+    mass_kg = 286.9047619047618
+    rate_per_kg = 1.5145755696682622e-5
+[[initial_pipe_profiles]]
+mass_kg = 1147.6190476190477
+mean_K = 324.63957632573727
+pipe = 5
+reference_K = 293.15
+relative_heat_MWh = 0.042161043858348256
+scenario = 1
+side = "R"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 42.552506724651494
+    base_K = 283.15
+    from_left = true
+    mass_kg = 860.7142857142859
+    rate_per_kg = 1.5145755696682622e-5
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 39.21434113394745
+    base_K = 283.15
+    from_left = true
+    mass_kg = 286.9047619047618
+    rate_per_kg = 1.5145755696682622e-5
+[[initial_pipe_profiles]]
+mass_kg = 1147.6190476190477
+mean_K = 370.81987398548404
+pipe = 6
+reference_K = 343.15
+relative_heat_MWh = 0.03704688683612033
+scenario = 1
+side = "S"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 88.43400068681063
+    base_K = 283.15
+    from_left = true
+    mass_kg = 860.7142857142859
+    rate_per_kg = 1.5145755696682622e-5
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 87.28864193578487
+    base_K = 283.15
+    from_left = true
+    mass_kg = 286.9047619047618
+    rate_per_kg = 1.5145755696682622e-5
+[[initial_pipe_profiles]]
+mass_kg = 1147.6190476190477
+mean_K = 324.63957632573727
+pipe = 6
+reference_K = 293.15
+relative_heat_MWh = 0.042161043858348256
+scenario = 1
+side = "R"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 42.552506724651494
+    base_K = 283.15
+    from_left = true
+    mass_kg = 860.7142857142859
+    rate_per_kg = 1.5145755696682622e-5
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 39.21434113394745
+    base_K = 283.15
+    from_left = true
+    mass_kg = 286.9047619047618
+    rate_per_kg = 1.5145755696682622e-5
+[[initial_pipe_profiles]]
+mass_kg = 5738.095238095239
+mean_K = 372.59952108682006
+pipe = 7
+reference_K = 343.15
+relative_heat_MWh = 0.19714818283121244
+scenario = 1
+side = "S"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 89.69331011234891
+    base_K = 283.15
+    from_left = true
+    mass_kg = 4303.571428571429
+    rate_per_kg = 9.490833719316638e-7
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 89.32770959026566
+    base_K = 283.15
+    from_left = true
+    mass_kg = 1434.52380952381
+    rate_per_kg = 9.490833719316638e-7
+[[initial_pipe_profiles]]
+mass_kg = 5738.095238095239
+mean_K = 310.6562705265902
+pipe = 7
+reference_K = 293.15
+relative_heat_MWh = 0.11719475546967376
+scenario = 1
+side = "R"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 28.23961108265007
+    base_K = 283.15
+    from_left = true
+    mass_kg = 4303.571428571429
+    rate_per_kg = 9.490833719316638e-7
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 25.496376943891864
+    base_K = 283.15
+    from_left = true
+    mass_kg = 1434.52380952381
+    rate_per_kg = 9.490833719316638e-7
+[[initial_pipe_profiles]]
+mass_kg = 4590.476190476191
+mean_K = 372.0732438026414
+pipe = 8
+reference_K = 343.15
+relative_heat_MWh = 0.15490003903192404
+scenario = 1
+side = "S"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 89.20617421247078
+    base_K = 283.15
+    from_left = true
+    mass_kg = 3442.8571428571436
+    rate_per_kg = 1.3847670337661606e-6
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 88.78189106431164
+    base_K = 283.15
+    from_left = true
+    mass_kg = 1147.6190476190473
+    rate_per_kg = 1.3847670337661606e-6
+[[initial_pipe_profiles]]
+mass_kg = 4590.476190476191
+mean_K = 311.0070844248686
+pipe = 8
+reference_K = 293.15
+relative_heat_MWh = 0.09563460769762978
+scenario = 1
+side = "R"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 28.82453778559801
+    base_K = 283.15
+    from_left = true
+    mass_kg = 3442.8571428571436
+    rate_per_kg = 1.3847670337661606e-6
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 25.18052866975402
+    base_K = 283.15
+    from_left = true
+    mass_kg = 1147.6190476190473
+    rate_per_kg = 1.3847670337661606e-6
+[[initial_pipe_profiles]]
+mass_kg = 3442.8571428571436
+mean_K = 371.4468625536431
+pipe = 9
+reference_K = 343.15
+relative_heat_MWh = 0.11365906459046647
+scenario = 1
+side = "S"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 88.6409122629587
+    base_K = 283.15
+    from_left = true
+    mass_kg = 2582.1428571428573
+    rate_per_kg = 2.2606011014477925e-6
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 88.12500516429127
+    base_K = 283.15
+    from_left = true
+    mass_kg = 860.7142857142862
+    rate_per_kg = 2.2606011014477925e-6
+[[initial_pipe_profiles]]
+mass_kg = 3442.8571428571436
+mean_K = 312.3230656532163
+pipe = 9
+reference_K = 293.15
+relative_heat_MWh = 0.07701181370708561
+scenario = 1
+side = "R"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 30.615242928722182
+    base_K = 283.15
+    from_left = true
+    mass_kg = 2582.1428571428573
+    rate_per_kg = 2.2606011014477925e-6
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 25.138514273978178
+    base_K = 283.15
+    from_left = true
+    mass_kg = 860.7142857142862
+    rate_per_kg = 2.2606011014477925e-6
+[[initial_pipe_profiles]]
+mass_kg = 1147.6190476190477
+mean_K = 369.28130840147924
+pipe = 10
+reference_K = 343.15
+relative_heat_MWh = 0.034986918470869495
+scenario = 1
+side = "S"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 87.591754858103
+    base_K = 283.15
+    from_left = true
+    mass_kg = 860.7142857142859
+    rate_per_kg = 1.5145755696682622e-5
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 83.63679606594926
+    base_K = 283.15
+    from_left = true
+    mass_kg = 286.9047619047618
+    rate_per_kg = 1.5145755696682622e-5
+[[initial_pipe_profiles]]
+mass_kg = 1147.6190476190477
+mean_K = 317.11538645979795
+pipe = 10
+reference_K = 293.15
+relative_heat_MWh = 0.032086989648951764
+scenario = 1
+side = "R"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 36.51576635171671
+    base_K = 283.15
+    from_left = true
+    mass_kg = 860.7142857142859
+    rate_per_kg = 1.5145755696682622e-5
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 27.08395262605865
+    base_K = 283.15
+    from_left = true
+    mass_kg = 286.9047619047618
+    rate_per_kg = 1.5145755696682622e-5
+[[initial_pipe_profiles]]
+mass_kg = 1147.6190476190477
+mean_K = 369.28130840147924
+pipe = 11
+reference_K = 343.15
+relative_heat_MWh = 0.034986918470869495
+scenario = 1
+side = "S"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 87.591754858103
+    base_K = 283.15
+    from_left = true
+    mass_kg = 860.7142857142859
+    rate_per_kg = 1.5145755696682622e-5
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 83.63679606594926
+    base_K = 283.15
+    from_left = true
+    mass_kg = 286.9047619047618
+    rate_per_kg = 1.5145755696682622e-5
+[[initial_pipe_profiles]]
+mass_kg = 1147.6190476190477
+mean_K = 317.11538645979795
+pipe = 11
+reference_K = 293.15
+relative_heat_MWh = 0.032086989648951764
+scenario = 1
+side = "R"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 36.51576635171671
+    base_K = 283.15
+    from_left = true
+    mass_kg = 860.7142857142859
+    rate_per_kg = 1.5145755696682622e-5
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 27.08395262605865
+    base_K = 283.15
+    from_left = true
+    mass_kg = 286.9047619047618
+    rate_per_kg = 1.5145755696682622e-5
+[[initial_pipe_profiles]]
+mass_kg = 24404.761904761905
+mean_K = 373.0555886346338
+pipe = 12
+reference_K = 343.15
+relative_heat_MWh = 0.8514785652916577
+scenario = 1
+side = "S"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 90.0
+    base_K = 283.15
+    from_left = true
+    mass_kg = 18303.57142857143
+    rate_per_kg = 8.602824634347621e-8
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 89.85839534265108
+    base_K = 283.15
+    from_left = true
+    mass_kg = 6101.190476190473
+    rate_per_kg = 8.602824634347621e-8
+[[initial_pipe_profiles]]
+mass_kg = 24404.761904761905
+mean_K = 302.6640686399898
+pipe = 12
+reference_K = 293.15
+relative_heat_MWh = 0.2708866765552661
+scenario = 1
+side = "R"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 19.84331056676342
+    base_K = 283.15
+    from_left = true
+    mass_kg = 18303.57142857143
+    rate_per_kg = 8.602824634347621e-8
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 18.578061627806456
+    base_K = 283.15
+    from_left = true
+    mass_kg = 6101.190476190473
+    rate_per_kg = 8.602824634347621e-8
+[[initial_pipe_profiles]]
+mass_kg = 9180.952380952382
+mean_K = 372.78370679245126
+pipe = 13
+reference_K = 343.15
+relative_heat_MWh = 0.3174099260880337
+scenario = 1
+side = "S"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 89.8112433183357
+    base_K = 283.15
+    from_left = true
+    mass_kg = 6885.714285714287
+    rate_per_kg = 4.3119346523409286e-7
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 89.54498247058226
+    base_K = 283.15
+    from_left = true
+    mass_kg = 2295.2380952380945
+    rate_per_kg = 4.3119346523409286e-7
+[[initial_pipe_profiles]]
+mass_kg = 9180.952380952382
+mean_K = 305.3144025284633
+pipe = 13
+reference_K = 293.15
+relative_heat_MWh = 0.13029426708265177
+scenario = 1
+side = "R"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 22.641054880774618
+    base_K = 283.15
+    from_left = true
+    mass_kg = 6885.714285714287
+    rate_per_kg = 4.3119346523409286e-7
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 20.84549213845043
+    base_K = 283.15
+    from_left = true
+    mass_kg = 2295.2380952380945
+    rate_per_kg = 4.3119346523409286e-7
+[[initial_pipe_profiles]]
+mass_kg = 8033.333333333335
+mean_K = 372.41300293404754
+pipe = 14
+reference_K = 343.15
+relative_heat_MWh = 0.27425936638743476
+scenario = 1
+side = "S"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 89.45640438726133
+    base_K = 283.15
+    from_left = true
+    mass_kg = 6025.000000000001
+    rate_per_kg = 5.390252787264547e-7
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 89.16635456761489
+    base_K = 283.15
+    from_left = true
+    mass_kg = 2008.333333333334
+    rate_per_kg = 5.390252787264547e-7
+[[initial_pipe_profiles]]
+mass_kg = 8033.333333333335
+mean_K = 305.075493831391
+pipe = 14
+reference_K = 293.15
+relative_heat_MWh = 0.11176837829753695
+scenario = 1
+side = "R"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 22.579904324144593
+    base_K = 283.15
+    from_left = true
+    mass_kg = 6025.000000000001
+    rate_per_kg = 5.390252787264547e-7
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 20.08300647628671
+    base_K = 283.15
+    from_left = true
+    mass_kg = 2008.333333333334
+    rate_per_kg = 5.390252787264547e-7
+[[initial_pipe_profiles]]
+mass_kg = 6885.714285714287
+mean_K = 372.00614780527667
+pipe = 15
+reference_K = 343.15
+relative_heat_MWh = 0.23181105403572289
+scenario = 1
+side = "S"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 89.0698804331343
+    base_K = 283.15
+    from_left = true
+    mass_kg = 5164.285714285715
+    rate_per_kg = 6.980982441590214e-7
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 88.74934572904779
+    base_K = 283.15
+    from_left = true
+    mass_kg = 1721.4285714285725
+    rate_per_kg = 6.980982441590214e-7
+[[initial_pipe_profiles]]
+mass_kg = 6885.714285714287
+mean_K = 305.5935890069787
+pipe = 15
+reference_K = 293.15
+relative_heat_MWh = 0.09996349835606212
+scenario = 1
+side = "R"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 23.35313112143109
+    base_K = 283.15
+    from_left = true
+    mass_kg = 5164.285714285715
+    rate_per_kg = 6.980982441590214e-7
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 19.853023528676957
+    base_K = 283.15
+    from_left = true
+    mass_kg = 1721.4285714285725
+    rate_per_kg = 6.980982441590214e-7
+[[initial_pipe_profiles]]
+mass_kg = 2295.2380952380954
+mean_K = 370.2565449091072
+pipe = 16
+reference_K = 343.15
+relative_heat_MWh = 0.07258530358994268
+scenario = 1
+side = "S"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 88.27797235754986
+    base_K = 283.15
+    from_left = true
+    mass_kg = 1721.4285714285718
+    rate_per_kg = 4.536313058023542e-6
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 84.7337967253573
+    base_K = 283.15
+    from_left = true
+    mass_kg = 573.8095238095236
+    rate_per_kg = 4.536313058023542e-6
+[[initial_pipe_profiles]]
+mass_kg = 2295.2380952380954
+mean_K = 309.0935016804027
+pipe = 16
+reference_K = 293.15
+relative_heat_MWh = 0.04269315449974514
+scenario = 1
+side = "R"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 27.317330518802407
+    base_K = 283.15
+    from_left = true
+    mass_kg = 1721.4285714285718
+    rate_per_kg = 4.536313058023542e-6
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 22.16999193699975
+    base_K = 283.15
+    from_left = true
+    mass_kg = 573.8095238095236
+    rate_per_kg = 4.536313058023542e-6
+[[initial_pipe_profiles]]
+mass_kg = 1147.6190476190477
+mean_K = 361.88990227322665
+pipe = 17
+reference_K = 343.15
+relative_heat_MWh = 0.025090646932486856
+scenario = 1
+side = "S"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 81.7140862773507
+    base_K = 283.15
+    from_left = true
+    mass_kg = 860.7142857142859
+    rate_per_kg = 1.5145755696682622e-5
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 71.56354815916481
+    base_K = 283.15
+    from_left = true
+    mass_kg = 286.9047619047618
+    rate_per_kg = 1.5145755696682622e-5
+[[initial_pipe_profiles]]
+mass_kg = 1147.6190476190477
+mean_K = 305.67019233999747
+pipe = 17
+reference_K = 293.15
+relative_heat_MWh = 0.016763146410774383
+scenario = 1
+side = "R"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 24.371459797944794
+    base_K = 283.15
+    from_left = true
+    mass_kg = 860.7142857142859
+    rate_per_kg = 1.5145755696682622e-5
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 17.47881268814968
+    base_K = 283.15
+    from_left = true
+    mass_kg = 286.9047619047618
+    rate_per_kg = 1.5145755696682622e-5
+[[initial_pipe_profiles]]
+mass_kg = 3442.8571428571436
+mean_K = 370.370241584682
+pipe = 18
+reference_K = 343.15
+relative_heat_MWh = 0.10933463703180613
+scenario = 1
+side = "S"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 88.27797235754986
+    base_K = 283.15
+    from_left = true
+    mass_kg = 2582.1428571428573
+    rate_per_kg = 2.2606011014477925e-6
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 84.90103489511546
+    base_K = 283.15
+    from_left = true
+    mass_kg = 860.7142857142862
+    rate_per_kg = 2.2606011014477925e-6
+[[initial_pipe_profiles]]
+mass_kg = 3442.8571428571436
+mean_K = 305.7275214048327
+pipe = 18
+reference_K = 293.15
+relative_heat_MWh = 0.050519710976078144
+scenario = 1
+side = "R"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 23.65307058258287
+    base_K = 283.15
+    from_left = true
+    mass_kg = 2582.1428571428573
+    rate_per_kg = 2.2606011014477925e-6
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 19.576605937372427
+    base_K = 283.15
+    from_left = true
+    mass_kg = 860.7142857142862
+    rate_per_kg = 2.2606011014477925e-6
+[[initial_pipe_profiles]]
+mass_kg = 2295.2380952380954
+mean_K = 362.3661489538193
+pipe = 19
+reference_K = 343.15
+relative_heat_MWh = 0.051456576643005
+scenario = 1
+side = "S"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 81.92919458285377
+    base_K = 283.15
+    from_left = true
+    mass_kg = 1721.4285714285718
+    rate_per_kg = 4.536313058023542e-6
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 72.1279814827316
+    base_K = 283.15
+    from_left = true
+    mass_kg = 573.8095238095236
+    rate_per_kg = 4.536313058023542e-6
+[[initial_pipe_profiles]]
+mass_kg = 2295.2380952380954
+mean_K = 302.6838892305348
+pipe = 19
+reference_K = 293.15
+relative_heat_MWh = 0.02552963671732112
+scenario = 1
+side = "R"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 20.447226760199044
+    base_K = 283.15
+    from_left = true
+    mass_kg = 1721.4285714285718
+    rate_per_kg = 4.536313058023542e-6
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 17.054938724826435
+    base_K = 283.15
+    from_left = true
+    mass_kg = 573.8095238095236
+    rate_per_kg = 4.536313058023542e-6
+[[initial_pipe_profiles]]
+mass_kg = 1147.6190476190477
+mean_K = 349.92791414433884
+pipe = 20
+reference_K = 343.15
+relative_heat_MWh = 0.009074873937698149
+scenario = 1
+side = "S"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 69.03089197698296
+    base_K = 283.15
+    from_left = true
+    mass_kg = 860.7142857142859
+    rate_per_kg = 1.5145755696682622e-5
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 61.4964011706732
+    base_K = 283.15
+    from_left = true
+    mass_kg = 286.9047619047618
+    rate_per_kg = 1.5145755696682622e-5
+[[initial_pipe_profiles]]
+mass_kg = 1147.6190476190477
+mean_K = 299.5651235472041
+pipe = 20
+reference_K = 293.15
+relative_heat_MWh = 0.008589137638201102
+scenario = 1
+side = "R"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 16.74265149646726
+    base_K = 283.15
+    from_left = true
+    mass_kg = 860.7142857142859
+    rate_per_kg = 1.5145755696682622e-5
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 15.792774952234561
+    base_K = 283.15
+    from_left = true
+    mass_kg = 286.9047619047618
+    rate_per_kg = 1.5145755696682622e-5
+[[initial_pipe_profiles]]
+mass_kg = 14076.190476190477
+mean_K = 372.8272915592483
+pipe = 21
+reference_K = 343.15
+relative_heat_MWh = 0.48736707693965553
+scenario = 1
+side = "S"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 89.8112433183357
+    base_K = 283.15
+    from_left = true
+    mass_kg = 10557.142857142859
+    rate_per_kg = 2.1212640096553362e-7
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 89.61034068409195
+    base_K = 283.15
+    from_left = true
+    mass_kg = 3519.0476190476184
+    rate_per_kg = 2.1212640096553362e-7
+[[initial_pipe_profiles]]
+mass_kg = 14076.190476190477
+mean_K = 301.73073609377934
+pipe = 21
+reference_K = 293.15
+relative_heat_MWh = 0.14091475496228822
+scenario = 1
+side = "R"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 18.85564707316803
+    base_K = 283.15
+    from_left = true
+    mass_kg = 10557.142857142859
+    rate_per_kg = 2.1212640096553362e-7
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 17.82594700945486
+    base_K = 283.15
+    from_left = true
+    mass_kg = 3519.0476190476184
+    rate_per_kg = 2.1212640096553362e-7
+[[initial_pipe_profiles]]
+mass_kg = 12928.571428571431
+mean_K = 372.552303734246
+pipe = 22
+reference_K = 343.15
+relative_heat_MWh = 0.4434847479915438
+scenario = 1
+side = "S"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 89.5434730574226
+    base_K = 283.15
+    from_left = true
+    mass_kg = 9696.428571428572
+    rate_per_kg = 2.441420971190195e-7
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 89.33174692922722
+    base_K = 283.15
+    from_left = true
+    mass_kg = 3232.1428571428587
+    rate_per_kg = 2.441420971190195e-7
+[[initial_pipe_profiles]]
+mass_kg = 12928.571428571431
+mean_K = 300.9702939405256
+pipe = 22
+reference_K = 293.15
+relative_heat_MWh = 0.11795610026959498
+scenario = 1
+side = "R"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 18.160235786631574
+    base_K = 283.15
+    from_left = true
+    mass_kg = 9696.428571428572
+    rate_per_kg = 2.441420971190195e-7
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 16.871558750756172
+    base_K = 283.15
+    from_left = true
+    mass_kg = 3232.1428571428587
+    rate_per_kg = 2.441420971190195e-7
+[[initial_pipe_profiles]]
+mass_kg = 11780.952380952383
+mean_K = 372.261712814411
+pipe = 23
+reference_K = 343.15
+relative_heat_MWh = 0.40012431946029386
+scenario = 1
+side = "S"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 89.26128286230158
+    base_K = 283.15
+    from_left = true
+    mass_kg = 8835.714285714288
+    rate_per_kg = 2.847847037224628e-7
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 89.03695916251954
+    base_K = 283.15
+    from_left = true
+    mass_kg = 2945.2380952380954
+    rate_per_kg = 2.847847037224628e-7
+[[initial_pipe_profiles]]
+mass_kg = 11780.952380952383
+mean_K = 300.20485022699813
+pipe = 23
+reference_K = 293.15
+relative_heat_MWh = 0.0969649970088522
+scenario = 1
+side = "R"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 17.428722757963158
+    base_K = 283.15
+    from_left = true
+    mass_kg = 8835.714285714288
+    rate_per_kg = 2.847847037224628e-7
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 16.005671287084123
+    base_K = 283.15
+    from_left = true
+    mass_kg = 2945.2380952380954
+    rate_per_kg = 2.847847037224628e-7
+[[initial_pipe_profiles]]
+mass_kg = 10633.333333333336
+mean_K = 370.8670628519534
+pipe = 24
+reference_K = 343.15
+relative_heat_MWh = 0.343845563046733
+scenario = 1
+side = "S"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 88.59620990300317
+    base_K = 283.15
+    from_left = true
+    mass_kg = 7975.000000000001
+    rate_per_kg = 3.3762105395867394e-7
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 85.47546845898022
+    base_K = 283.15
+    from_left = true
+    mass_kg = 2658.333333333335
+    rate_per_kg = 3.3762105395867394e-7
+[[initial_pipe_profiles]]
+mass_kg = 10633.333333333336
+mean_K = 299.508961755855
+pipe = 24
+reference_K = 293.15
+relative_heat_MWh = 0.07888645333791289
+scenario = 1
+side = "R"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 16.840280245654355
+    base_K = 283.15
+    from_left = true
+    mass_kg = 7975.000000000001
+    rate_per_kg = 3.3762105395867394e-7
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 14.989684349318964
+    base_K = 283.15
+    from_left = true
+    mass_kg = 2658.333333333335
+    rate_per_kg = 3.3762105395867394e-7
+[[initial_pipe_profiles]]
+mass_kg = 1147.6190476190477
+mean_K = 362.7146892451062
+pipe = 25
+reference_K = 343.15
+relative_heat_MWh = 0.02619494504483666
+scenario = 1
+side = "S"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 82.5700273165807
+    base_K = 283.15
+    from_left = true
+    mass_kg = 860.7142857142859
+    rate_per_kg = 1.5145755696682622e-5
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 72.31316405249275
+    base_K = 283.15
+    from_left = true
+    mass_kg = 286.9047619047618
+    rate_per_kg = 1.5145755696682622e-5
+[[initial_pipe_profiles]]
+mass_kg = 1147.6190476190477
+mean_K = 306.3629975385588
+pipe = 25
+reference_K = 293.15
+relative_heat_MWh = 0.017690735593292577
+scenario = 1
+side = "R"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 25.087639113153784
+    base_K = 283.15
+    from_left = true
+    mass_kg = 860.7142857142859
+    rate_per_kg = 1.5145755696682622e-5
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 18.11682342822411
+    base_K = 283.15
+    from_left = true
+    mass_kg = 286.9047619047618
+    rate_per_kg = 1.5145755696682622e-5
+[[initial_pipe_profiles]]
+mass_kg = 8338.095238095239
+mean_K = 363.2275103233248
+pipe = 26
+reference_K = 343.15
+relative_heat_MWh = 0.195309558756343
+scenario = 1
+side = "S"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 82.5700273165807
+    base_K = 283.15
+    from_left = true
+    mass_kg = 6253.571428571429
+    rate_per_kg = 5.064607296305236e-7
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 73.03035436589042
+    base_K = 283.15
+    from_left = true
+    mass_kg = 2084.523809523809
+    rate_per_kg = 5.064607296305236e-7
+[[initial_pipe_profiles]]
+mass_kg = 8338.095238095239
+mean_K = 297.7263466474507
+pipe = 26
+reference_K = 293.15
+relative_heat_MWh = 0.04451768322047945
+scenario = 1
+side = "R"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 14.751979301115341
+    base_K = 283.15
+    from_left = true
+    mass_kg = 6253.571428571429
+    rate_per_kg = 5.064607296305236e-7
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 14.126912676624864
+    base_K = 283.15
+    from_left = true
+    mass_kg = 2084.523809523809
+    rate_per_kg = 5.064607296305236e-7
+[[initial_pipe_profiles]]
+mass_kg = 6885.714285714287
+mean_K = 348.47522825604125
+pipe = 27
+reference_K = 343.15
+relative_heat_MWh = 0.04277933365686473
+scenario = 1
+side = "S"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 66.60686848205671
+    base_K = 283.15
+    from_left = true
+    mass_kg = 5164.285714285715
+    rate_per_kg = 6.980982441590214e-7
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 61.87723447693698
+    base_K = 283.15
+    from_left = true
+    mass_kg = 1721.4285714285725
+    rate_per_kg = 6.980982441590214e-7
+[[initial_pipe_profiles]]
+mass_kg = 6885.714285714287
+mean_K = 298.3835225497536
+pipe = 27
+reference_K = 293.15
+relative_heat_MWh = 0.04204263114968717
+scenario = 1
+side = "R"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 15.435036412297734
+    base_K = 283.15
+    from_left = true
+    mass_kg = 5164.285714285715
+    rate_per_kg = 6.980982441590214e-7
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 14.721191723452014
+    base_K = 283.15
+    from_left = true
+    mass_kg = 1721.4285714285725
+    rate_per_kg = 6.980982441590214e-7
+[[initial_pipe_profiles]]
+mass_kg = 5738.095238095239
+mean_K = 344.675745025925
+pipe = 28
+reference_K = 343.15
+relative_heat_MWh = 0.01021401531244226
+scenario = 1
+side = "S"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 61.47252691942123
+    base_K = 283.15
+    from_left = true
+    mass_kg = 4303.571428571429
+    rate_per_kg = 9.490833719316638e-7
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 62.103766543259354
+    base_K = 283.15
+    from_left = true
+    mass_kg = 1434.52380952381
+    rate_per_kg = 9.490833719316638e-7
+[[initial_pipe_profiles]]
+mass_kg = 5738.095238095239
+mean_K = 299.24043818181855
+pipe = 28
+reference_K = 293.15
+relative_heat_MWh = 0.04077210005050766
+scenario = 1
+side = "R"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 16.335648763137954
+    base_K = 283.15
+    from_left = true
+    mass_kg = 4303.571428571429
+    rate_per_kg = 9.490833719316638e-7
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 15.465276556289195
+    base_K = 283.15
+    from_left = true
+    mass_kg = 1434.52380952381
+    rate_per_kg = 9.490833719316638e-7
+[[initial_pipe_profiles]]
+mass_kg = 4590.476190476191
+mean_K = 345.60061238913596
+pipe = 29
+reference_K = 343.15
+relative_heat_MWh = 0.01312439079515045
+scenario = 1
+side = "S"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 62.575397747216016
+    base_K = 283.15
+    from_left = true
+    mass_kg = 3442.8571428571436
+    rate_per_kg = 1.3847670337661606e-6
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 62.572736988648515
+    base_K = 283.15
+    from_left = true
+    mass_kg = 1147.6190476190473
+    rate_per_kg = 1.3847670337661606e-6
+[[initial_pipe_profiles]]
+mass_kg = 4590.476190476191
+mean_K = 299.7443504505577
+pipe = 29
+reference_K = 293.15
+relative_heat_MWh = 0.035316410190764605
+scenario = 1
+side = "R"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 16.799121116817616
+    base_K = 283.15
+    from_left = true
+    mass_kg = 3442.8571428571436
+    rate_per_kg = 1.3847670337661606e-6
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 16.112780178295708
+    base_K = 283.15
+    from_left = true
+    mass_kg = 1147.6190476190473
+    rate_per_kg = 1.3847670337661606e-6
+[[initial_pipe_profiles]]
+mass_kg = 1147.6190476190477
+mean_K = 344.57558400666
+pipe = 30
+reference_K = 343.15
+relative_heat_MWh = 0.001908698586694836
+scenario = 1
+side = "S"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 62.07928467714777
+    base_K = 283.15
+    from_left = true
+    mass_kg = 860.7142857142859
+    rate_per_kg = 1.5145755696682622e-5
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 60.80505789476004
+    base_K = 283.15
+    from_left = true
+    mass_kg = 286.9047619047618
+    rate_per_kg = 1.5145755696682622e-5
+[[initial_pipe_profiles]]
+mass_kg = 1147.6190476190477
+mean_K = 299.7907788896317
+pipe = 30
+reference_K = 293.15
+relative_heat_MWh = 0.00889126506889583
+scenario = 1
+side = "R"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 16.718995044263124
+    base_K = 283.15
+    from_left = true
+    mass_kg = 860.7142857142859
+    rate_per_kg = 1.5145755696682622e-5
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 16.768020943872166
+    base_K = 283.15
+    from_left = true
+    mass_kg = 286.9047619047618
+    rate_per_kg = 1.5145755696682622e-5
+[[initial_pipe_profiles]]
+mass_kg = 2295.2380952380954
+mean_K = 344.78920805576047
+pipe = 31
+reference_K = 343.15
+relative_heat_MWh = 0.004389434904869723
+scenario = 1
+side = "S"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 62.07928467714777
+    base_K = 283.15
+    from_left = true
+    mass_kg = 1721.4285714285718
+    rate_per_kg = 4.536313058023542e-6
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 61.12373204621647
+    base_K = 283.15
+    from_left = true
+    mass_kg = 573.8095238095236
+    rate_per_kg = 4.536313058023542e-6
+[[initial_pipe_profiles]]
+mass_kg = 2295.2380952380954
+mean_K = 299.62297452086057
+pipe = 31
+reference_K = 293.15
+relative_heat_MWh = 0.01733318732808231
+scenario = 1
+side = "R"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 16.52449025098781
+    base_K = 283.15
+    from_left = true
+    mass_kg = 1721.4285714285718
+    rate_per_kg = 4.536313058023542e-6
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 16.53298143625934
+    base_K = 283.15
+    from_left = true
+    mass_kg = 573.8095238095236
+    rate_per_kg = 4.536313058023542e-6
+[[initial_pipe_profiles]]
+mass_kg = 1147.6190476190477
+mean_K = 343.8320521464752
+pipe = 32
+reference_K = 343.15
+relative_heat_MWh = 0.0009131920405584993
+scenario = 1
+side = "S"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 61.143662702548454
+    base_K = 283.15
+    from_left = true
+    mass_kg = 860.7142857142859
+    rate_per_kg = 1.5145755696682622e-5
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 60.61917695350653
+    base_K = 283.15
+    from_left = true
+    mass_kg = 286.9047619047618
+    rate_per_kg = 1.5145755696682622e-5
+[[initial_pipe_profiles]]
+mass_kg = 1147.6190476190477
+mean_K = 299.2757050204734
+pipe = 32
+reference_K = 293.15
+relative_heat_MWh = 0.008201638388522794
+scenario = 1
+side = "R"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 16.295146479984453
+    base_K = 283.15
+    from_left = true
+    mass_kg = 860.7142857142859
+    rate_per_kg = 1.5145755696682622e-5
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 15.969286119965362
+    base_K = 283.15
+    from_left = true
+    mass_kg = 286.9047619047618
+    rate_per_kg = 1.5145755696682622e-5
+[[initial_pipe_profiles]]
+mass_kg = 5738.095238095239
+mean_K = 348.45464616059934
+pipe = 33
+reference_K = 343.15
+relative_heat_MWh = 0.03551165901956798
+scenario = 1
+side = "S"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 66.60686848205671
+    base_K = 283.15
+    from_left = true
+    mass_kg = 4303.571428571429
+    rate_per_kg = 9.490833719316638e-7
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 61.847585723933896
+    base_K = 283.15
+    from_left = true
+    mass_kg = 1434.52380952381
+    rate_per_kg = 9.490833719316638e-7
+[[initial_pipe_profiles]]
+mass_kg = 5738.095238095239
+mean_K = 298.61351384102056
+pipe = 33
+reference_K = 293.15
+relative_heat_MWh = 0.03657518988016577
+scenario = 1
+side = "R"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 15.645632554085296
+    base_K = 283.15
+    from_left = true
+    mass_kg = 4303.571428571429
+    rate_per_kg = 9.490833719316638e-7
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 15.02310519921429
+    base_K = 283.15
+    from_left = true
+    mass_kg = 1434.52380952381
+    rate_per_kg = 9.490833719316638e-7
+[[initial_pipe_profiles]]
+mass_kg = 4590.476190476191
+mean_K = 344.6083985007124
+pipe = 34
+reference_K = 343.15
+relative_heat_MWh = 0.007810534192704069
+scenario = 1
+side = "S"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 61.43325694197432
+    base_K = 283.15
+    from_left = true
+    mass_kg = 3442.8571428571436
+    rate_per_kg = 1.3847670337661606e-6
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 62.02171137764839
+    base_K = 283.15
+    from_left = true
+    mass_kg = 1147.6190476190473
+    rate_per_kg = 1.3847670337661606e-6
+[[initial_pipe_profiles]]
+mass_kg = 4590.476190476191
+mean_K = 299.2041365791231
+pipe = 34
+reference_K = 293.15
+relative_heat_MWh = 0.03242326479041501
+scenario = 1
+side = "R"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 16.248762687808778
+    base_K = 283.15
+    from_left = true
+    mass_kg = 3442.8571428571436
+    rate_per_kg = 1.3847670337661606e-6
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 15.598662132630048
+    base_K = 283.15
+    from_left = true
+    mass_kg = 1147.6190476190473
+    rate_per_kg = 1.3847670337661606e-6
+[[initial_pipe_profiles]]
+mass_kg = 3442.8571428571436
+mean_K = 345.4594638993305
+pipe = 35
+reference_K = 343.15
+relative_heat_MWh = 0.009276346662310926
+scenario = 1
+side = "S"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 62.47849131670671
+    base_K = 283.15
+    from_left = true
+    mass_kg = 2582.1428571428573
+    rate_per_kg = 2.2606011014477925e-6
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 62.4090437597615
+    base_K = 283.15
+    from_left = true
+    mass_kg = 860.7142857142862
+    rate_per_kg = 2.2606011014477925e-6
+[[initial_pipe_profiles]]
+mass_kg = 3442.8571428571436
+mean_K = 299.56761399797784
+pipe = 35
+reference_K = 293.15
+relative_heat_MWh = 0.025777416225211035
+scenario = 1
+side = "R"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 16.67436174464774
+    base_K = 283.15
+    from_left = true
+    mass_kg = 2582.1428571428573
+    rate_per_kg = 2.2606011014477925e-6
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 15.80845388641871
+    base_K = 283.15
+    from_left = true
+    mass_kg = 860.7142857142862
+    rate_per_kg = 2.2606011014477925e-6
+[[initial_pipe_profiles]]
+mass_kg = 2295.2380952380954
+mean_K = 344.60604113093666
+pipe = 36
+reference_K = 343.15
+relative_heat_MWh = 0.0038989545839526905
+scenario = 1
+side = "S"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 61.894810021677074
+    base_K = 283.15
+    from_left = true
+    mass_kg = 1721.4285714285718
+    rate_per_kg = 4.536313058023542e-6
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 60.94209690868302
+    base_K = 283.15
+    from_left = true
+    mass_kg = 573.8095238095236
+    rate_per_kg = 4.536313058023542e-6
+[[initial_pipe_profiles]]
+mass_kg = 2295.2380952380954
+mean_K = 299.44507215642955
+pipe = 36
+reference_K = 293.15
+relative_heat_MWh = 0.01685680432999475
+scenario = 1
+side = "R"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 16.34576232231052
+    base_K = 283.15
+    from_left = true
+    mass_kg = 1721.4285714285718
+    rate_per_kg = 4.536313058023542e-6
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 16.355236557541545
+    base_K = 283.15
+    from_left = true
+    mass_kg = 573.8095238095236
+    rate_per_kg = 4.536313058023542e-6
+[[initial_pipe_profiles]]
+mass_kg = 1147.6190476190477
+mean_K = 343.6517295038869
+pipe = 37
+reference_K = 343.15
+relative_heat_MWh = 0.0006717600579818802
+scenario = 1
+side = "S"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 60.961968339123814
+    base_K = 283.15
+    from_left = true
+    mass_kg = 860.7142857142859
+    rate_per_kg = 1.5145755696682622e-5
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 60.43904115069289
+    base_K = 283.15
+    from_left = true
+    mass_kg = 286.9047619047618
+    rate_per_kg = 1.5145755696682622e-5
+[[initial_pipe_profiles]]
+mass_kg = 1147.6190476190477
+mean_K = 299.09816538442436
+pipe = 37
+reference_K = 293.15
+relative_heat_MWh = 0.00796393254247931
+scenario = 1
+side = "R"
+
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 16.11597356535924
+    base_K = 283.15
+    from_left = true
+    mass_kg = 860.7142857142859
+    rate_per_kg = 1.5145755696682622e-5
+    [[initial_pipe_profiles.segments]]
+    amplitude_K = 15.792774952234561
+    base_K = 283.15
+    from_left = true
+    mass_kg = 286.9047619047618
+    rate_per_kg = 1.5145755696682622e-5

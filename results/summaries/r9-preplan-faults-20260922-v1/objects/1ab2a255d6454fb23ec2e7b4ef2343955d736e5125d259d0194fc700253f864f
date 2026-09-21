@@ -1,0 +1,53 @@
+bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+case_sha256 = "b1a30330fe482f63caa8d12807d4a36b32a23c40c849e0ab028adb5413dff7fc"
+elapsed_sec = 3.1720001697540283
+fault = [1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+formula_ids = ["6-11", "6-19", "6-20", "6-24:25", "6-3", "6-3/9", "6-4:5/57:58", "6-54", "6-55", "6-56", "6-63", "6-72", "6-74", "6-75", "6-8/56/60", "6-83", "6-84", "R7-C1-load", "R7-C1-source", "R7-D1-m_load", "R7-D1-m_pipe", "R7-D1-m_source", "R7-R1", "R7-R4", "R7-T-bound", "R7-T-control", "R7-T-idle", "R7-T-port", "R7-T1-transport", "R7-T2-load", "R7-T2-source", "R7-T3-mix", "R7-T4-inventory", "R7-T4-spatial", "R9-RE1", "R9-RE2", "R9-RE3", "R9-RE4", "R9-RL1", "R9-RW1"]
+julia_version = "1.12.6"
+model_class = "MILP"
+objective_kind = "expected_critical_electric_unserved_energy_MWh"
+optimizer_request = "MathOptInterface.OptimizerWithAttributes(Gurobi.Optimizer, Pair{MathOptInterface.AbstractOptimizerAttribute, Any}[MathOptInterface.RawOptimizerAttribute(\"OutputFlag\") => 0, MathOptInterface.RawOptimizerAttribute(\"Threads\") => 1, MathOptInterface.RawOptimizerAttribute(\"FeasibilityTol\") => 1.0e-9, MathOptInterface.RawOptimizerAttribute(\"IntFeasTol\") => 1.0e-9, MathOptInterface.RawOptimizerAttribute(\"OptimalityTol\") => 1.0e-9, MathOptInterface.RawOptimizerAttribute(\"MIPGap\") => 0.0001])"
+primal_status = "NO_SOLUTION"
+raw_status = "Model was proven to be infeasible."
+replaced_formulas = ["6-80:82", "R7-A3/90", "6-89", "6-85", "6-86", "R7-A4/76:78", "R7-A4/77:79"]
+requested_budget_sec = 60.0
+run_id = "r7-transport-44b371d6-6682-4e47-ad7c-1457b8fd7329"
+schema = "r7-transport-result-v1"
+solver = "Gurobi"
+spec_sha256 = "585fd91eebdad622b3e7aafe47a1e55e3a8d30af157bd316960f051676693ca3"
+status = "infeasible_certified"
+termination_status = "INFEASIBLE"
+utc = "2026-09-21T19:12:29.093"
+version = "r7_transport_recovery_v1"
+
+[source_hashes_at_solve]
+"Manifest.toml" = "948f0f5c5a4bc8381a3d9ad413fb0f8e78ee1a3bad52606dea9b9b6f144e5450"
+"Project.toml" = "a03b47e468b374bc737db5a13dc9359a40f74b16efaf85a1c541bcdd6a2a0bd4"
+"src/PaperRebuild.jl" = "d266beb2970b3bdd0f2ee2e3e2337edbf863c230e13a289374b2087537fe12b2"
+"src/algorithms/r7_recovery.jl" = "a6d792f7d806a59b5adb44632299d92a4e08a1807c15778324824687a8668177"
+"src/algorithms/r7_thermal.jl" = "b7f212109ebab47ddfb1d184a2d325dee66aad518bc6b83c6227b53453b3a039"
+"src/algorithms/r7_transport.jl" = "1b37c0e59b8b7199bdc058d15e47b57f56becf340c21735f471cbef8fb5bdcd0"
+"src/core/r7_recovery.jl" = "12d4ded37622392b51590bda37959f887dbd2c6d0f8b95f07da827d594dc2c13"
+"src/core/r7_thermal.jl" = "0a640358ca33e27b03784d755132e21432c90e89be0bc1c3a2ded52bfbc7ef09"
+"src/core/r7_transport.jl" = "20e45ae6a72fffd4db5fba556824b69607a66a3f03324762e7cb093c0bcfb686"
+"src/formulations/r7_recovery.jl" = "133dc7033dcffa20dc8c94e3c6f43b288e2487d245ef8346585d0d9e5f7b65b1"
+"src/formulations/r7_thermal.jl" = "ed9008fe0904e1a980c3bf9629e1a3ff6bfa9e2ab8a54a153dd020ce94d8b126"
+"src/formulations/r7_transport.jl" = "c6c8e1ef44eb8f62934dbfd2624417ab096dbabc013ec96cf97693c853184467"
+"src/networks/r7_pipe_state.jl" = "2d8b4b01dbcdfc276ac15bf40d715b1d23f3dc56271ef4b0736f6fae2403f8a8"
+"src/reporting/r7_recovery.jl" = "2118f6326e9709e079567a2513af8b52b29a3f83b1d9a239d634deba5825ffd9"
+"src/reporting/r7_thermal.jl" = "9351abc1a68b588bd0d636103667e580dc3cc1e59586fcf42a927b7d972c4ad8"
+"src/reporting/r7_transport.jl" = "df498ea0813eaf0d79e1e2b1330818eb4818b16e2e61e0d5779bccc17f0ca64e"
+"src/verification/r7_recovery.jl" = "93ebfdd36e95e2c9a90a38540098643e7475a8aabe850c5edcf0c298ee221b23"
+"src/verification/r7_thermal.jl" = "3e2ebbc202ba307027f0ebd7ff3d8c7f8c72d07a70757fe0d2a3862a82d5cccb"
+"src/verification/r7_transport.jl" = "5cce1b29eaf89dca3f44b6ab7ad0a282d7f8034efc50945717ce1e7a518e88f4"
+
+[validation]
+ac_grid_validated = false
+conditional_optimality_pass = false
+continuous_node_dynamics_verified = false
+full_variable_flow_optimized = false
+hydraulic_verified = false
+model_pass = false
+thermal_flow_basis = "declared_schedule_with_raw_equality_check"
+validation_version = "r7_transport_validation_v2"
+whole_recovery_certified = false
