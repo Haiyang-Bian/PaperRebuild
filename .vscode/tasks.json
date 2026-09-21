@@ -1,5 +1,8 @@
 {
   "inputs": [
+    {"id":"r9HeldoutInput","type":"promptString","description":"新日冻结目录；freeze使用新目录","default":"results/summaries/r9-heldout-input-20260922-v2"},
+    {"id":"r9HeldoutRuns","type":"promptString","description":"原始新日记录；run只追加未完成日","default":"results/runs/r9-heldout-20260922-v1"},
+    {"id":"r9HeldoutReport","type":"promptString","description":"新日统计新报告目录；不可覆盖已有报告","default":"results/summaries/r9-heldout-report-20260922-v1"},
     {"id":"r9ElectricCutEvidence","type":"promptString","description":"区域供能证据目录；只读重验","default":"results/summaries/r9-electric-cut-evidence-20260922-v1"},
     {"id":"r9ElectricCutNewEvidence","type":"promptString","description":"区域供能新证据目录；不可覆盖已有记录","default":"results/summaries/new-electric-cut-evidence"},
     {"id":"r9ElectricCutFigure","type":"promptString","description":"F50新图目录；只读原值、不覆盖已有图","default":"results/runs/new-electric-cut-figure"},
@@ -227,6 +230,13 @@
     }
   ],
   "tasks": [
+    {"label":"PaperRebuild: R9 heldout numerical report","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/report_r9_evaluation.jl","${input:r9HeldoutInput}","${input:r9HeldoutRuns}","${input:r9HeldoutReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 heldout tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_evaluation.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 heldout mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_evaluation.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 heldout freeze","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_reserve_evaluation.jl","freeze","results/summaries/r9-common-input-20260921-v2","results/summaries/r9-compact-input-20260921-v1","results/summaries/r9-compact-evidence-20260921-v1","${input:r9HeldoutInput}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 heldout first three days","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_reserve_evaluation.jl","run","${input:r9HeldoutInput}","${input:r9HeldoutRuns}","3"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 heldout next 50 days","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_reserve_evaluation.jl","run","${input:r9HeldoutInput}","${input:r9HeldoutRuns}","50"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 heldout numeric replay","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_reserve_evaluation.jl","check","${input:r9HeldoutInput}","${input:r9HeldoutRuns}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 electric cut tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_electric_cut.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 electric cut mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_electric_cut.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 electric cut freeze evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_electric_cut_evidence.jl","freeze","${input:r9PreplanFaultEvidence}","${input:r9ElectricCutNewEvidence}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},

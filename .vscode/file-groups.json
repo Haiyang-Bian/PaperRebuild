@@ -11810,6 +11810,11 @@
           "path": "docs/src/ch07-resilience-electric-cut.md",
           "name": "ch07-resilience-electric-cut.md",
           "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch07-reserve-evaluation.md",
+          "name": "ch07-reserve-evaluation.md",
+          "isDirectory": false
         }
       ],
       "order": 1,
@@ -12250,6 +12255,11 @@
         {
           "path": "docs/agent/tasks/2026-09-22-r9-electric-cut.md",
           "name": "2026-09-22-r9-electric-cut.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/agent/tasks/2026-09-22-r9-reserve-evaluation.md",
+          "name": "2026-09-22-r9-reserve-evaluation.md",
           "isDirectory": false
         }
       ],
@@ -13432,6 +13442,21 @@
           "path": "src/verification/r9_electric_cut.jl",
           "name": "r9_electric_cut.jl",
           "isDirectory": false
+        },
+        {
+          "path": "src/algorithms/r9_evaluation.jl",
+          "name": "r9_evaluation.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/core/r9_evaluation.jl",
+          "name": "r9_evaluation.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/reporting/r9_evaluation.jl",
+          "name": "r9_evaluation.jl",
+          "isDirectory": false
         }
       ],
       "order": 3,
@@ -14163,6 +14188,11 @@
           "path": "configs/r9/electric-cut-study.toml",
           "name": "electric-cut-study.toml",
           "isDirectory": false
+        },
+        {
+          "path": "configs/r9/reserve-evaluation.toml",
+          "name": "reserve-evaluation.toml",
+          "isDirectory": false
         }
       ],
       "order": 4,
@@ -14633,6 +14663,11 @@
         {
           "path": "docs/reading/ch07/resilience-electric-cut.toml",
           "name": "resilience-electric-cut.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch07/reserve-evaluation.toml",
+          "name": "reserve-evaluation.toml",
           "isDirectory": false
         }
       ],
@@ -91145,6 +91180,316 @@
           "path": "results/summaries/r9-electric-cut-evidence-20260922-v1/summary.csv",
           "name": "summary.csv",
           "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/configs/r9/reserve-evaluation.toml",
+          "name": "reserve-evaluation.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/library.jl",
+          "name": "library.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/scripts/r9_reserve_evaluation.jl",
+          "name": "r9_reserve_evaluation.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/scripts/r9_reserve_study.jl",
+          "name": "r9_reserve_study.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/scripts/r9_reserve_witness.jl",
+          "name": "r9_reserve_witness.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/scripts/r9_seeded_study.jl",
+          "name": "r9_seeded_study.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/scripts/seal_r9_seeded.jl",
+          "name": "seal_r9_seeded.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/algorithms/r5_commitment.jl",
+          "name": "r5_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/algorithms/r5_dispatch.jl",
+          "name": "r5_dispatch.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/algorithms/r5_market.jl",
+          "name": "r5_market.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/algorithms/r5_market_selection.jl",
+          "name": "r5_market_selection.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/algorithms/r5_risk.jl",
+          "name": "r5_risk.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/algorithms/r5_strategic.jl",
+          "name": "r5_strategic.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/algorithms/r6_data.jl",
+          "name": "r6_data.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/algorithms/r6_evaluation.jl",
+          "name": "r6_evaluation.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/algorithms/r6_methods.jl",
+          "name": "r6_methods.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/algorithms/r6_support_evaluation.jl",
+          "name": "r6_support_evaluation.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/algorithms/r9_evaluation.jl",
+          "name": "r9_evaluation.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/core/r5_benders.jl",
+          "name": "r5_benders.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/core/r5_commitment.jl",
+          "name": "r5_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/core/r5_dispatch.jl",
+          "name": "r5_dispatch.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/core/r5_market.jl",
+          "name": "r5_market.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/core/r5_risk.jl",
+          "name": "r5_risk.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/core/r5_strategic.jl",
+          "name": "r5_strategic.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/core/r6_evaluation.jl",
+          "name": "r6_evaluation.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/core/r6_methods.jl",
+          "name": "r6_methods.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/core/r6_protocol.jl",
+          "name": "r6_protocol.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/core/r9_evaluation.jl",
+          "name": "r9_evaluation.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/formulations/r5_commitment.jl",
+          "name": "r5_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/formulations/r5_dispatch.jl",
+          "name": "r5_dispatch.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/formulations/r5_dispatch_dual.jl",
+          "name": "r5_dispatch_dual.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/formulations/r5_market.jl",
+          "name": "r5_market.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/formulations/r5_risk.jl",
+          "name": "r5_risk.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/formulations/r5_strategic.jl",
+          "name": "r5_strategic.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/formulations/r6_evaluation.jl",
+          "name": "r6_evaluation.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/networks/fixed_flow_heat.jl",
+          "name": "fixed_flow_heat.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/reporting/r5_commitment.jl",
+          "name": "r5_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/reporting/r5_dispatch.jl",
+          "name": "r5_dispatch.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/reporting/r5_market.jl",
+          "name": "r5_market.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/reporting/r5_risk.jl",
+          "name": "r5_risk.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/reporting/r5_strategic.jl",
+          "name": "r5_strategic.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/reporting/r6_evaluation.jl",
+          "name": "r6_evaluation.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/reporting/r9_evaluation.jl",
+          "name": "r9_evaluation.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/verification/r5_benders.jl",
+          "name": "r5_benders.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/verification/r5_commitment.jl",
+          "name": "r5_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/verification/r5_dispatch.jl",
+          "name": "r5_dispatch.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/verification/r5_dispatch_duality.jl",
+          "name": "r5_dispatch_duality.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/verification/r5_market.jl",
+          "name": "r5_market.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/verification/r5_market_payment.jl",
+          "name": "r5_market_payment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/verification/r5_risk.jl",
+          "name": "r5_risk.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/verification/r5_strategic.jl",
+          "name": "r5_strategic.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/verification/r6_evaluation.jl",
+          "name": "r6_evaluation.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/src/verification/r6_statistics.jl",
+          "name": "r6_statistics.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/tools/solvers/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/code/tools/solvers/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/manifest.sha256",
+          "name": "manifest.sha256",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/manifest.toml",
+          "name": "manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/policy-3B.toml",
+          "name": "policy-3B.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/policy-3C.toml",
+          "name": "policy-3C.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-heldout-input-20260922-v2/test-days.toml",
+          "name": "test-days.toml",
+          "isDirectory": false
         }
       ],
       "order": 6,
@@ -91615,6 +91960,11 @@
         {
           "path": "test/r9_electric_cut.jl",
           "name": "r9_electric_cut.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "test/r9_evaluation.jl",
+          "name": "r9_evaluation.jl",
           "isDirectory": false
         }
       ],
@@ -94996,6 +95346,26 @@
         {
           "path": "scripts/test_r9_electric_cut.jl",
           "name": "test_r9_electric_cut.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r9_evaluation.jl",
+          "name": "check_r9_evaluation.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r9_reserve_evaluation.jl",
+          "name": "r9_reserve_evaluation.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/report_r9_evaluation.jl",
+          "name": "report_r9_evaluation.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/test_r9_evaluation.jl",
+          "name": "test_r9_evaluation.jl",
           "isDirectory": false
         }
       ],

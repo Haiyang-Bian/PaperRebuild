@@ -420,6 +420,14 @@ export r9_handoff_temperature_check
 include("verification/r9_electric_cut.jl")
 export r9_electric_cut_bound, validate_r9_electric_cut_bound
 
+include("core/r9_evaluation.jl")
+include("algorithms/r9_evaluation.jl")
+include("reporting/r9_evaluation.jl")
+export R9ReservePolicy, r9_reserve_policy_from_training, r9_reserve_support_label
+export r9_reserve_evaluation_day, evaluate_r9_reserve_day, validate_r9_reserve_day
+export save_r9_reserve_day, read_r9_reserve_day
+export summarize_r9_reserve_days
+
 """
     hello(who::String)
 

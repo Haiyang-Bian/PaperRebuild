@@ -276,6 +276,7 @@ makedocs(;
             "共同可行见证" => "ch07-common-witness.md",
             "原模型带初值对照" => "ch07-seeded-risk.md",
             "同模型紧凑表示" => "ch07-compact-risk.md",
+            "训练之后的新日评价" => "ch07-reserve-evaluation.md",
             "保供准备：币种与状态继承" => "ch07-resilience-currency.md",
             "保供准备：关键负荷范围" => "ch07-critical-load.md",
             "保供准备：部分节点停电" => "ch07-energization.md",
