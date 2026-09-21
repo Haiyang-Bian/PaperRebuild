@@ -34,7 +34,7 @@ end
 
 function r7_normal_initial(d, pipe, side, w)
     x=pipe["initial_$(side)_profiles"][w]
-    r7_pipe_state(x["mass_kg"], x["temperature_K"])
+    r7_initial_state(x)
 end
 
 function R7NormalCase(input::AbstractDict)
@@ -176,10 +176,15 @@ function R7NormalCase(input::AbstractDict)
                 M=r7_pipe_check(state)
                 abs(M-h["rho_kg_m3"]*p["volume_$(side)_m3"])<=1e-8*max(1, M) ||
                     error("初始管温质量与体积不符")
-                all(h["$(side)_min_K"]<=s.base_K<=h["$(side)_max_K"] for s in state.segments) ||
-                    error("初始管温越界")
+                all(
+                    h["$(side)_min_K"]<=value<=h["$(side)_max_K"] for s in state.segments for
+                    value in
+                    (s.base_K+s.amplitude_K, s.base_K+s.amplitude_K*exp(-s.rate_per_kg*s.mass_kg))
+                ) || error("初始管温越界")
             end
             if d["thermal_model"]=="node_method_fixed_v1"
+                all(!haskey(x, "schema") for x in p["initial_$(side)_profiles"]) ||
+                    error("指数空间初态仅用于显式塞流参考，不能替代作者节点法历史")
                 all(==(first(f)), f) || error("作者节点法入口当前只实现恒定流量特例")
                 k=ceil(Int, h["rho_kg_m3"]*p["volume_$(side)_m3"]/(first(f)*3600dt))
                 hist=p["history_$(side)_K"]

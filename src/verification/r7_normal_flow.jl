@@ -27,6 +27,9 @@ function validate_r7_normal_flow(c, s, r)
     if r7_is_lossy_flow(s)
         out["bound_scope"]="adopted_gauss_model_not_exact_PDE"
         out["exact_transport_optimality_verified"]=false
+    elseif r7_has_spatial_initial(c.data)
+        out["bound_scope"]="adopted_spatial_profile_model_not_full_PDE"
+        out["exact_transport_optimality_verified"]=false
     end
     haskey(r, "values") || return out
     r["status"] in

@@ -229,6 +229,7 @@ function r7_add_joint_thermal!(m, d, event, s, nv, nf, rv, flow, at, index; dead
         )
         @constraint(m, tv["E_$side"][a, 1, w]==nv["E_pipe_$side"][a, at, w])
         profile=p["initial_$(side)_profiles"][w]
+        initial=r7_initial_transport(profile, M, lo, lo+span)
         if lossy
             bounded=[
                 @variable(
@@ -248,8 +249,9 @@ function r7_add_joint_thermal!(m, d, event, s, nv, nf, rv, flow, at, index; dead
                 bounded,
                 outlet,
                 inventory,
-                profile["mass_kg"] ./ M,
-                (profile["temperature_K"] .- lo) ./ span;
+                initial.mass,
+                initial.mean;
+                initial_spatial = initial.spatial,
                 dt_h = vcat(fill(d["dt_h"], H), fill(dt, K)),
                 decay_per_h = 3600p["UA_$(side)_W_K"]/(M*h["c_J_kgK"]),
                 ambient = (ambient .- lo) ./ span,
@@ -268,8 +270,9 @@ function r7_add_joint_thermal!(m, d, event, s, nv, nf, rv, flow, at, index; dead
                 inlet,
                 outlet,
                 inventory,
-                profile["mass_kg"] ./ M,
-                (profile["temperature_K"] .- lo) ./ span;
+                initial.mass,
+                initial.mean;
+                initial_spatial = initial.spatial,
                 prefix = "joint_$(index)_$a$side$w",
                 deadline,
                 allow_zero = true,

@@ -85,7 +85,7 @@ function r7_event_template(c::R7PlanningCase, s)
     for (p, old) in zip(h["pipes"], d["heat"]["pipes"])
         for side in ("S", "R")
             p["initial_$(side)_K"]=[
-                sum(x["mass_kg"] .* x["temperature_K"])/sum(x["mass_kg"]) for
+                r7_initial_mean(x, h["c_J_kgK"], h["$(side)_min_K"]) for
                 x in old["initial_$(side)_profiles"]
             ]
             delete!(p, "initial_$(side)_profiles")

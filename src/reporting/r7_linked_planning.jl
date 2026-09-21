@@ -56,6 +56,7 @@ function save_r7_linked_planning(c, s, r, directory::AbstractString)
         "verification/r7_commitment.jl",
         "networks/r7_pipe_state.jl",
         "networks/fixed_flow_heat.jl",
+        "core/r7_initial_profile.jl",
     )
         add(p)
     end

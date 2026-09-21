@@ -273,6 +273,8 @@ export solve_r7_transport_recovery, validate_r7_transport_recovery
 export save_r7_transport_recovery, read_r7_transport_recovery
 export r7_reconstruct_battery_cycles
 
+include("core/r7_initial_profile.jl")
+export r7_initial_profile
 include("core/r7_normal.jl")
 include("networks/r7_normal_transport.jl")
 include("formulations/r7_normal.jl")

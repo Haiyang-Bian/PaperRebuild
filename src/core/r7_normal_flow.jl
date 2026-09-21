@@ -75,19 +75,29 @@ function r7_normal_flow_check(c, s)
         isfinite(s["max_truncation_error"]) &&
         0 < s["max_truncation_error"] <= 1e-10 &&
         s["bound_scope"] == "adopted_gauss_model_not_exact_PDE" || error("有损积分契约非法")
-        for p in h["pipes"], side in ("S", "R")
-            span = h["$(side)_max_K"]-h["$(side)_min_K"]
+    end
+    for p in h["pipes"], side in ("S", "R")
+        lo, hi=h["$(side)_min_K"], h["$(side)_max_K"]
+        span=hi-lo
+        mass=h["rho_kg_m3"]*p["volume_$(side)_m3"]
+        for profile in p["initial_$(side)_profiles"]
+            # 原分段常温无损域不需积分；新空间分布即使UA=0也须检查空间积分界。
+            lossy || haskey(profile, "schema") || continue
             ambient = (h["ambient_K"] .- h["$(side)_min_K"]) ./ span
-            β =
-                3600d["dt_h"]*p["UA_$(side)_W_K"]/(
-                    h["rho_kg_m3"]*p["volume_$(side)_m3"]*h["c_J_kgK"]
-                )
-            error_bound = r7_loss_quadrature_bound(
+            β=3600d["dt_h"]*p["UA_$(side)_W_K"]/(mass*h["c_J_kgK"])
+            initial=r7_initial_transport(profile, mass, lo, hi)
+            shape=initial.spatial===nothing ? nothing :
+                  r7_initial_spatial_check(initial.mass, initial.mean, initial.spatial, 0.0, 1.0)
+            error_bound = r7_initial_quadrature_bound(
                 β,
-                max(1, maximum(ambient))-min(0, minimum(ambient));
-                order = s["quadrature_order"],
+                shape,
+                lossy ? ambient : zeros(length(ambient)),
+                0.0,
+                1.0;
+                order = lossy ? s["quadrature_order"] : 10,
             )
-            error_bound <= s["max_truncation_error"] || error("有损管积分截断界超出协议")
+            error_bound <= (lossy ? s["max_truncation_error"] : 1e-10) ||
+                error("管温空间/时间积分截断界超出协议")
         end
     end
     b=Dict(

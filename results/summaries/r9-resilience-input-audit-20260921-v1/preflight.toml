@@ -1,0 +1,696 @@
+audit_script_sha256 = "74365f04c8d6a52bfe68d1deb919be0d7a878ab904af85ffb8b3b0a65f2ccaf8"
+critical_allocation_rule = "equal_within_each_source_set; common_total_is_pointwise_max_plus_equal_remaining_nonroot_load"
+critical_node_peak_MW = [[0.0, 1.1458333333333333, 0.0, 1.1458333333333333, 0.0, 1.1458333333333333, 1.1458333333333333, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.1458333333333333, 1.1458333333333333, 0.0, 0.0, 0.0, 1.1458333333333333, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.1458333333333333, 1.1458333333333333, 0.0, 0.0, 0.0, 0.0, 1.1458333333333333, 1.1458333333333333, 0.0, 0.0, 1.1458333333333333, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 1.0576923076923077, 0.0, 1.0576923076923077, 0.0, 1.0576923076923077, 1.0576923076923077, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0576923076923077, 0.0, 1.0576923076923077, 1.0576923076923077, 1.0576923076923077, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0576923076923077, 1.0576923076923077, 0.0, 0.0, 0.0, 1.0576923076923077, 1.0576923076923077, 0.0, 0.0, 0.0, 1.0576923076923077, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+critical_set_keys = ["nodes_figure_7_12", "nodes_figure_7_14"]
+dt_h = 0.25
+engineering_protocol = "configs/r9/reserve-protocol.toml"
+engineering_protocol_sha256 = "72c3e9aaa90acf994486acecf0c8fd80eaf21954372a94bd8c853c98ad0fab06"
+heat_loss_MW = 0.4258476407666742
+maximum_uniform_outlet_error_K = 0.17255599710932756
+optimization_performed = false
+origin = "preoptimization_project_input_audit_not_frozen_scale_case"
+pipe_replay_sha256 = "2d8b4b01dbcdfc276ac15bf40d715b1d23f3dc56271ef4b0736f6fae2403f8a8"
+reference_CHP2_MW = 4.629704218134866
+scale_input_frozen = false
+source15_heat_MW = 0.6542025790048294
+source1_heat_MW = 5.555645061761839
+total_node_peak_MW = [0.5623237924865833, 1.7081571258199166, 0.5623237924865833, 1.7081571258199166, 0.5623237924865833, 1.7081571258199166, 1.7081571258199166, 0.5623237924865833, 0.5623237924865833, 0.5623237924865833, 0.5623237924865833, 0.5623237924865833, 0.5623237924865833, 1.7081571258199166, 1.7081571258199166, 0.5623237924865833, 1.620016100178891, 1.620016100178891, 1.7081571258199166, 0.5623237924865833, 0.5623237924865833, 0.5623237924865833, 0.5623237924865833, 0.5623237924865833, 0.5623237924865833, 1.7081571258199166, 1.7081571258199166, 0.5623237924865833, 0.5623237924865833, 0.5623237924865833, 1.620016100178891, 1.7081571258199166, 1.7081571258199166, 0.5623237924865833, 0.5623237924865833, 1.7081571258199166, 0.5623237924865833, 0.5623237924865833, 0.5623237924865833, 0.5623237924865833, 0.5623237924865833, 0.5623237924865833, 0.5623237924865833, 0.0]
+total_peak_MW = 41.103
+
+[[profiles]]
+UA_W_K = 69.81592354119235
+inlet_K = 363.15
+mass_kg = 1147.6190476190477
+mean_K = 362.45874849456806
+outlet_K = 361.77149040969846
+pipe = 1
+side = "S"
+uniform_first_outlet_error_K = 0.17255599710932756
+[[profiles]]
+UA_W_K = 69.81592354119235
+inlet_K = 321.7714904096985
+mass_kg = 1147.6190476190477
+mean_K = 321.4377758673519
+outlet_K = 321.1059892231797
+pipe = 1
+side = "R"
+uniform_first_outlet_error_K = 0.08330462234363267
+[[profiles]]
+UA_W_K = 137.10830348582394
+inlet_K = 363.15
+mass_kg = 11476.190476190479
+mean_K = 363.0136158365223
+outlet_K = 362.87738676653305
+pipe = 2
+side = "S"
+uniform_first_outlet_error_K = 0.03408629173571853
+[[profiles]]
+UA_W_K = 137.10830348582394
+inlet_K = 320.6314525771864
+mass_kg = 11476.190476190479
+mean_K = 320.5675541202406
+outlet_K = 320.5037283274101
+pipe = 2
+side = "R"
+uniform_first_outlet_error_K = 0.015970046590325637
+[[profiles]]
+UA_W_K = 102.13162423894906
+inlet_K = 362.87738676653305
+mass_kg = 4590.476190476191
+mean_K = 362.6245197154391
+outlet_K = 362.37218790029976
+pipe = 3
+side = "S"
+uniform_first_outlet_error_K = 0.06318295222848747
+[[profiles]]
+UA_W_K = 102.13162423894906
+inlet_K = 320.69657270051067
+mass_kg = 4590.476190476191
+mean_K = 320.5774882616181
+outlet_K = 320.4586558851159
+pipe = 3
+side = "R"
+uniform_first_outlet_error_K = 0.02975518708802838
+[[profiles]]
+UA_W_K = 93.78426612370663
+inlet_K = 362.37218790029976
+mass_kg = 3442.8571428571436
+mean_K = 362.0646959079161
+outlet_K = 361.758000610499
+pipe = 4
+side = "S"
+uniform_first_outlet_error_K = 0.07682255190354681
+[[profiles]]
+UA_W_K = 93.78426612370663
+inlet_K = 320.4270326260148
+mass_kg = 3442.8571428571436
+mean_K = 320.28234602575645
+outlet_K = 320.138034300581
+pipe = 4
+side = "R"
+uniform_first_outlet_error_K = 0.03614791322513611
+[[profiles]]
+UA_W_K = 69.81592354119235
+inlet_K = 361.758000610499
+mass_kg = 1147.6190476190477
+mean_K = 361.0787768759865
+outlet_K = 360.403477076549
+pipe = 5
+side = "S"
+uniform_first_outlet_error_K = 0.16955352407643431
+[[profiles]]
+UA_W_K = 69.81592354119235
+inlet_K = 320.403477076549
+mass_kg = 1147.6190476190477
+mean_K = 320.0815830501523
+outlet_K = 319.76154863377275
+pipe = 5
+side = "R"
+uniform_first_outlet_error_K = 0.0803538860341746
+[[profiles]]
+UA_W_K = 69.81592354119235
+inlet_K = 361.758000610499
+mass_kg = 1147.6190476190477
+mean_K = 361.0787768759865
+outlet_K = 360.403477076549
+pipe = 6
+side = "S"
+uniform_first_outlet_error_K = 0.16955352407643431
+[[profiles]]
+UA_W_K = 69.81592354119235
+inlet_K = 320.403477076549
+mass_kg = 1147.6190476190477
+mean_K = 320.0815830501523
+outlet_K = 319.76154863377275
+pipe = 6
+side = "R"
+uniform_first_outlet_error_K = 0.0803538860341746
+[[profiles]]
+UA_W_K = 109.37244310548212
+inlet_K = 362.87738676653305
+mass_kg = 5738.095238095239
+mean_K = 362.6606854105074
+outlet_K = 362.44437707775273
+pipe = 7
+side = "S"
+uniform_first_outlet_error_K = 0.054150549602468345
+[[profiles]]
+UA_W_K = 109.37244310548212
+inlet_K = 320.52348328613783
+mass_kg = 5738.095238095239
+mean_K = 320.4219010715944
+outlet_K = 320.32050309297335
+pipe = 7
+side = "R"
+uniform_first_outlet_error_K = 0.025383933207706377
+[[profiles]]
+UA_W_K = 102.13162423894906
+inlet_K = 362.44437707775273
+mass_kg = 4590.476190476191
+mean_K = 362.1928833801266
+outlet_K = 361.9419220115198
+pipe = 8
+side = "S"
+uniform_first_outlet_error_K = 0.06283979749099444
+[[profiles]]
+UA_W_K = 102.13162423894906
+inlet_K = 320.27852767841773
+mass_kg = 4590.476190476191
+mean_K = 320.16076913036704
+outlet_K = 320.0432598382341
+pipe = 8
+side = "R"
+uniform_first_outlet_error_K = 0.029423891660826484
+[[profiles]]
+UA_W_K = 93.78426612370663
+inlet_K = 361.9419220115198
+mass_kg = 3442.8571428571436
+mean_K = 361.6361000476837
+outlet_K = 361.33107045186136
+pipe = 9
+side = "S"
+uniform_first_outlet_error_K = 0.0764053187464242
+[[profiles]]
+UA_W_K = 93.78426612370663
+inlet_K = 320.0098267465792
+mass_kg = 3442.8571428571436
+mean_K = 319.8667594839143
+outlet_K = 319.724062900717
+pipe = 9
+side = "R"
+uniform_first_outlet_error_K = 0.03574334449029948
+[[profiles]]
+UA_W_K = 69.81592354119235
+inlet_K = 361.33107045186136
+mass_kg = 1147.6190476190477
+mean_K = 360.65553566878475
+outlet_K = 359.98390350938723
+pipe = 10
+side = "S"
+uniform_first_outlet_error_K = 0.16863265708616382
+[[profiles]]
+UA_W_K = 69.81592354119235
+inlet_K = 319.98390350938723
+mass_kg = 1147.6190476190477
+mean_K = 319.66563486873974
+outlet_K = 319.3492048939381
+pipe = 10
+side = "R"
+uniform_first_outlet_error_K = 0.0794488868435792
+[[profiles]]
+UA_W_K = 69.81592354119235
+inlet_K = 361.33107045186136
+mass_kg = 1147.6190476190477
+mean_K = 360.65553566878475
+outlet_K = 359.98390350938723
+pipe = 11
+side = "S"
+uniform_first_outlet_error_K = 0.16863265708616382
+[[profiles]]
+UA_W_K = 69.81592354119235
+inlet_K = 319.98390350938723
+mass_kg = 1147.6190476190477
+mean_K = 319.66563486873974
+outlet_K = 319.3492048939381
+pipe = 11
+side = "R"
+uniform_first_outlet_error_K = 0.0794488868435792
+[[profiles]]
+UA_W_K = 179.33219506867997
+inlet_K = 363.15
+mass_kg = 24404.761904761905
+mean_K = 363.06607878634117
+outlet_K = 362.9822162829654
+pipe = 12
+side = "S"
+uniform_first_outlet_error_K = 0.020976621028239606
+[[profiles]]
+UA_W_K = 179.33219506867997
+inlet_K = 320.2172859897372
+mass_kg = 24404.761904761905
+mean_K = 320.178401844396
+outlet_K = 320.13954490194044
+pipe = 12
+side = "R"
+uniform_first_outlet_error_K = 0.00971933013437365
+[[profiles]]
+UA_W_K = 127.20836903751798
+inlet_K = 362.9822162829654
+mass_kg = 9180.952380952382
+mean_K = 362.8244060377348
+outlet_K = 362.6668038997882
+pipe = 13
+side = "S"
+uniform_first_outlet_error_K = 0.039439467794295524
+[[profiles]]
+UA_W_K = 127.20836903751798
+inlet_K = 320.3850325227287
+mass_kg = 9180.952380952382
+mean_K = 320.3114272805448
+outlet_K = 320.23791910295284
+pipe = 13
+side = "R"
+uniform_first_outlet_error_K = 0.018395203520242376
+[[profiles]]
+UA_W_K = 121.74993916443256
+inlet_K = 362.6668038997882
+mass_kg = 8033.333333333335
+mean_K = 362.49489149693153
+outlet_K = 362.3232270516758
+pipe = 14
+side = "S"
+uniform_first_outlet_error_K = 0.04296249023951759
+[[profiles]]
+UA_W_K = 121.74993916443256
+inlet_K = 320.2192342296135
+mass_kg = 8033.333333333335
+mean_K = 320.1390919098027
+outlet_K = 320.0590651831488
+pipe = 14
+side = "R"
+uniform_first_outlet_error_K = 0.02002830264387967
+[[profiles]]
+UA_W_K = 115.84641176857181
+inlet_K = 362.3232270516758
+mass_kg = 6885.714285714287
+mean_K = 362.13324249358016
+outlet_K = 361.94356210425974
+pipe = 15
+side = "S"
+uniform_first_outlet_error_K = 0.047476974945425354
+[[profiles]]
+UA_W_K = 115.84641176857181
+inlet_K = 320.0454963293007
+mass_kg = 6885.714285714287
+mean_K = 319.95696167147673
+outlet_K = 319.8685687592698
+pipe = 15
+side = "R"
+uniform_first_outlet_error_K = 0.022124733575537903
+[[profiles]]
+UA_W_K = 83.64241229303664
+inlet_K = 361.94356210425974
+mass_kg = 2295.2380952380954
+mean_K = 361.5347859737977
+outlet_K = 361.12742609771345
+pipe = 16
+side = "S"
+uniform_first_outlet_error_K = 0.10210396534495203
+[[profiles]]
+UA_W_K = 83.64241229303664
+inlet_K = 320.1399721568901
+mass_kg = 2295.2380952380954
+mean_K = 319.94807046745785
+outlet_K = 319.75683364465436
+pipe = 16
+side = "R"
+uniform_first_outlet_error_K = 0.04793313989557646
+[[profiles]]
+UA_W_K = 69.81592354119235
+inlet_K = 361.12742609771345
+mass_kg = 1147.6190476190477
+mean_K = 360.4536509329665
+outlet_K = 359.7837682264294
+pipe = 17
+side = "S"
+uniform_first_outlet_error_K = 0.16819340640381597
+[[profiles]]
+UA_W_K = 69.81592354119235
+inlet_K = 319.7837682264294
+mass_kg = 1147.6190476190477
+mean_K = 319.46722888347733
+outlet_K = 319.1525182160667
+pipe = 17
+side = "R"
+uniform_first_outlet_error_K = 0.07901720505225285
+[[profiles]]
+UA_W_K = 93.78426612370663
+inlet_K = 361.94356210425974
+mass_kg = 3442.8571428571436
+mean_K = 361.6377337745885
+outlet_K = 361.33269782942466
+pipe = 18
+side = "S"
+uniform_first_outlet_error_K = 0.07640690916076665
+[[profiles]]
+UA_W_K = 93.78426612370663
+inlet_K = 319.89008504965335
+mass_kg = 3442.8571428571436
+mean_K = 319.7474825508877
+outlet_K = 319.60524952741184
+pipe = 18
+side = "R"
+uniform_first_outlet_error_K = 0.035627229763179
+[[profiles]]
+UA_W_K = 83.64241229303664
+inlet_K = 361.3326978294246
+mass_kg = 2295.2380952380954
+mean_K = 360.9270908250667
+outlet_K = 360.52288909526567
+pipe = 19
+side = "S"
+uniform_first_outlet_error_K = 0.10131238208509785
+[[profiles]]
+UA_W_K = 83.64241229303664
+inlet_K = 319.5457624055408
+mass_kg = 2295.2380952380954
+mean_K = 319.3569434395742
+outlet_K = 319.1687786597678
+pipe = 19
+side = "R"
+uniform_first_outlet_error_K = 0.04716313825792895
+[[profiles]]
+UA_W_K = 69.81592354119235
+inlet_K = 360.52288909526567
+mass_kg = 1147.6190476190477
+mean_K = 359.8543375194317
+outlet_K = 359.18964822467615
+pipe = 20
+side = "S"
+uniform_first_outlet_error_K = 0.16688945033831715
+[[profiles]]
+UA_W_K = 69.81592354119235
+inlet_K = 319.18964822467615
+mass_kg = 1147.6190476190477
+mean_K = 318.87824246104435
+outlet_K = 318.568635715816
+pipe = 20
+side = "R"
+uniform_first_outlet_error_K = 0.07773571793597966
+[[profiles]]
+UA_W_K = 147.1068980592993
+inlet_K = 362.9822162829654
+mass_kg = 14076.190476190477
+mean_K = 362.8631480526655
+outlet_K = 362.74419827326506
+pipe = 21
+side = "S"
+uniform_first_outlet_error_K = 0.029759617117520065
+[[profiles]]
+UA_W_K = 147.1068980592993
+inlet_K = 320.08853758082904
+mass_kg = 14076.190476190477
+mean_K = 320.0334444554669
+outlet_K = 319.9784061375898
+pipe = 21
+side = "R"
+uniform_first_outlet_error_K = 0.013769838624966724
+[[profiles]]
+UA_W_K = 142.82748649493215
+inlet_K = 362.74419827326506
+mass_kg = 12928.571428571431
+mean_K = 362.6187144304414
+outlet_K = 362.49336254426873
+pipe = 22
+side = "S"
+uniform_first_outlet_error_K = 0.03136266951963762
+[[profiles]]
+UA_W_K = 142.82748649493215
+inlet_K = 319.96883697343645
+mass_kg = 12928.571428571431
+mean_K = 319.9107904166276
+outlet_K = 319.8528049005796
+pipe = 22
+side = "R"
+uniform_first_outlet_error_K = 0.014507803849369338
+[[profiles]]
+UA_W_K = 138.33927787628488
+inlet_K = 362.49336254426873
+mass_kg = 11780.952380952383
+mean_K = 362.36041139058824
+outlet_K = 362.22760883904505
+pipe = 23
+side = "S"
+uniform_first_outlet_error_K = 0.03322844824560889
+[[profiles]]
+UA_W_K = 138.33927787628488
+inlet_K = 319.8458246001608
+mass_kg = 11780.952380952383
+mean_K = 319.7843354968584
+outlet_K = 319.72291512114435
+pipe = 23
+side = "R"
+uniform_first_outlet_error_K = 0.01536795605147745
+[[profiles]]
+UA_W_K = 133.60921805734466
+inlet_K = 362.22760883904505
+mass_kg = 10633.333333333336
+mean_K = 362.0858327712529
+outlet_K = 361.9442262624233
+pipe = 24
+side = "S"
+uniform_first_outlet_error_K = 0.03543335536670611
+[[profiles]]
+UA_W_K = 133.60921805734466
+inlet_K = 319.71981845769693
+mass_kg = 10633.333333333336
+mean_K = 319.6542534369923
+outlet_K = 319.5887668296409
+pipe = 24
+side = "R"
+uniform_first_outlet_error_K = 0.016386324676886943
+[[profiles]]
+UA_W_K = 69.81592354119235
+inlet_K = 361.9442262624233
+mass_kg = 1147.6190476190477
+mean_K = 361.26339341838275
+outlet_K = 360.58649380538407
+pipe = 25
+side = "S"
+uniform_first_outlet_error_K = 0.16995520348962145
+[[profiles]]
+UA_W_K = 69.81592354119235
+inlet_K = 320.58649380538407
+mass_kg = 1147.6190476190477
+mean_K = 320.26301839662074
+outlet_K = 319.94141173365927
+pipe = 25
+side = "R"
+uniform_first_outlet_error_K = 0.08074864396076009
+[[profiles]]
+UA_W_K = 123.23881773872345
+inlet_K = 361.9442262624233
+mass_kg = 8338.095238095239
+mean_K = 361.7780894351873
+outlet_K = 361.61218630412355
+pipe = 26
+side = "S"
+uniform_first_outlet_error_K = 0.04151949681818223
+[[profiles]]
+UA_W_K = 123.23881773872345
+inlet_K = 319.53649473301135
+mass_kg = 8338.095238095239
+mean_K = 319.4597741777635
+outlet_K = 319.3831615413942
+pipe = 26
+side = "R"
+uniform_first_outlet_error_K = 0.01917334586499919
+[[profiles]]
+UA_W_K = 115.84641176857181
+inlet_K = 362.1342656425954
+mass_kg = 6885.714285714287
+mean_K = 361.9447345174484
+outlet_K = 361.7555068351222
+pipe = 27
+side = "S"
+uniform_first_outlet_error_K = 0.04736366244799228
+[[profiles]]
+UA_W_K = 115.84641176857181
+inlet_K = 319.70982958589457
+mass_kg = 6885.714285714287
+mean_K = 319.6221003960335
+outlet_K = 319.53451166222055
+pipe = 27
+side = "R"
+uniform_first_outlet_error_K = 0.021923447835774823
+[[profiles]]
+UA_W_K = 109.37244310548212
+inlet_K = 361.7555068351222
+mass_kg = 5738.095238095239
+mean_K = 361.54185478137896
+outlet_K = 361.32859022049934
+pipe = 28
+side = "S"
+uniform_first_outlet_error_K = 0.053388572854714766
+[[profiles]]
+UA_W_K = 109.37244310548212
+inlet_K = 319.49810536990856
+mass_kg = 5738.095238095239
+mean_K = 319.3993101623635
+outlet_K = 319.300694136049
+pipe = 28
+side = "R"
+uniform_first_outlet_error_K = 0.02468750027577471
+[[profiles]]
+UA_W_K = 102.13162423894906
+inlet_K = 361.32859022049934
+mass_kg = 4590.476190476191
+mean_K = 361.0806354038486
+outlet_K = 360.833205425576
+pipe = 29
+side = "S"
+uniform_first_outlet_error_K = 0.061955550426546324
+[[profiles]]
+UA_W_K = 102.13162423894906
+inlet_K = 319.26935730991386
+mass_kg = 4590.476190476191
+mean_K = 319.1547994930734
+outlet_K = 319.04048415726083
+pipe = 29
+side = "R"
+uniform_first_outlet_error_K = 0.028624136824134894
+[[profiles]]
+UA_W_K = 69.81592354119235
+inlet_K = 360.83320542557595
+mass_kg = 1147.6190476190477
+mean_K = 360.1619725168608
+outlet_K = 359.49461737951947
+pipe = 30
+side = "S"
+uniform_first_outlet_error_K = 0.16755878713564698
+[[profiles]]
+UA_W_K = 69.81592354119235
+inlet_K = 319.49461737951947
+mass_kg = 1147.6190476190477
+mean_K = 319.1805764860452
+outlet_K = 318.8683498343506
+pipe = 30
+side = "R"
+uniform_first_outlet_error_K = 0.0783935211434823
+[[profiles]]
+UA_W_K = 83.64241229303664
+inlet_K = 360.83320542557595
+mass_kg = 2295.2380952380954
+mean_K = 360.4301897569388
+outlet_K = 360.0285703848622
+pipe = 31
+side = "S"
+uniform_first_outlet_error_K = 0.10066511911418274
+[[profiles]]
+UA_W_K = 83.64241229303664
+inlet_K = 319.0598880970919
+mass_kg = 2295.2380952380954
+mean_K = 318.8735898170087
+outlet_K = 318.68793698986434
+pipe = 31
+side = "R"
+uniform_first_outlet_error_K = 0.0465335221798
+[[profiles]]
+UA_W_K = 69.81592354119235
+inlet_K = 360.0285703848622
+mass_kg = 1147.6190476190477
+mean_K = 359.3642900409373
+outlet_K = 358.70384730280966
+pipe = 32
+side = "S"
+uniform_first_outlet_error_K = 0.165823229613693
+[[profiles]]
+UA_W_K = 69.81592354119235
+inlet_K = 318.70384730280966
+mass_kg = 1147.6190476190477
+mean_K = 318.3966391719101
+outlet_K = 318.09120580932165
+pipe = 32
+side = "R"
+uniform_first_outlet_error_K = 0.07668786965513164
+[[profiles]]
+UA_W_K = 109.37244310548212
+inlet_K = 362.1342656425954
+mass_kg = 5738.095238095239
+mean_K = 361.91958411139757
+outlet_K = 361.7052919401888
+pipe = 33
+side = "S"
+uniform_first_outlet_error_K = 0.0536458244519622
+[[profiles]]
+UA_W_K = 109.37244310548212
+inlet_K = 319.73758630356275
+mass_kg = 5738.095238095239
+mean_K = 319.638140179875
+outlet_K = 319.53887441796036
+pipe = 33
+side = "R"
+uniform_first_outlet_error_K = 0.02485015485041231
+[[profiles]]
+UA_W_K = 102.13162423894906
+inlet_K = 361.7052919401888
+mass_kg = 4590.476190476191
+mean_K = 361.45614235901775
+outlet_K = 361.2075201451465
+pipe = 34
+side = "S"
+uniform_first_outlet_error_K = 0.06225408180608838
+[[profiles]]
+UA_W_K = 102.13162423894906
+inlet_K = 319.4758414500778
+mass_kg = 4590.476190476191
+mean_K = 319.3606287386304
+outlet_K = 319.24565989440623
+pipe = 34
+side = "R"
+uniform_first_outlet_error_K = 0.0287877729107322
+[[profiles]]
+UA_W_K = 93.78426612370663
+inlet_K = 361.2075201451465
+mass_kg = 3442.8571428571436
+mean_K = 360.9045486793727
+outlet_K = 360.6023621961278
+pipe = 35
+side = "S"
+uniform_first_outlet_error_K = 0.07569316187476716
+[[profiles]]
+UA_W_K = 93.78426612370663
+inlet_K = 319.177929600189
+mass_kg = 3442.8571428571436
+mean_K = 319.03809125252604
+outlet_K = 318.8986152183883
+pipe = 35
+side = "R"
+uniform_first_outlet_error_K = 0.03493664546567743
+[[profiles]]
+UA_W_K = 83.64241229303664
+inlet_K = 360.6023621961278
+mass_kg = 2295.2380952380954
+mean_K = 360.200544127898
+outlet_K = 359.80011820699724
+pipe = 36
+side = "S"
+uniform_first_outlet_error_K = 0.10036598288445475
+[[profiles]]
+UA_W_K = 83.64241229303664
+inlet_K = 318.8353385471807
+mass_kg = 2295.2380952380954
+mean_K = 318.6502052162844
+outlet_K = 318.46571330221957
+pipe = 36
+side = "R"
+uniform_first_outlet_error_K = 0.046242541560957307
+[[profiles]]
+UA_W_K = 69.81592354119235
+inlet_K = 359.80011820699724
+mass_kg = 1147.6190476190477
+mean_K = 359.1378118369707
+outlet_K = 358.4793316689211
+pipe = 37
+side = "S"
+uniform_first_outlet_error_K = 0.16533046969692577
+[[profiles]]
+UA_W_K = 69.81592354119235
+inlet_K = 318.4793316689211
+mass_kg = 1147.6190476190477
+mean_K = 318.17406349764553
+outlet_K = 317.8705588873642
+pipe = 37
+side = "R"
+uniform_first_outlet_error_K = 0.07620360066670173
+
+[source_hashes]
+"inputs.toml" = "ee3ba6f3c97a5fe4528e2c20bb33ea96e28d4b13819dba4dbc43adb2ed39af5e"
+"reported-results.toml" = "3ed021a50df205621e95dbd748adeaf8f2e4795bd5dc335d13fcd8a571d16c16"
+"topology.toml" = "3c111b9582e4e5cd719150b88e73e014889426df048fa2f55f40a95bdb1ec71f"
+
+[units]
+UA = "W/K"
+mass = "kg"
+power = "MW"
+temperature = "K"

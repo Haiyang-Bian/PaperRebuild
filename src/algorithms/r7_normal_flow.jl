@@ -41,6 +41,9 @@ function solve_r7_normal_flow(
     if lossy
         r["validation_reserve_sec"]=reserve
         r["bound_scope"]="adopted_gauss_model_not_exact_PDE"
+    elseif r7_has_spatial_initial(c.data)
+        # 零UA不保证指数初态的变流量空间积分为代数精确；限定所报告费用界。
+        r["bound_scope"]="adopted_spatial_profile_model_not_full_PDE"
     end
     if time()<compute_stop
         try

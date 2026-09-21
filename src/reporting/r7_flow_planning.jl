@@ -17,6 +17,7 @@ function r7_flow_planning_includes()
             "src/verification/r7_commitment.jl",
             "src/networks/r7_pipe_state.jl",
             "src/networks/fixed_flow_heat.jl",
+            "src/core/r7_initial_profile.jl",
         ],
     )
     for name in (

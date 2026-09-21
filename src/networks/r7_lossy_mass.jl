@@ -88,18 +88,60 @@ function r7_loss_temperature!(m, x, lo, hi, tag)
     y
 end
 
+# R9-RI2：源标签与初始空间坐标方向相反；sl/sr由源区间左端起算。
+function r7_initial_exponents(s, mass, sl, sr)
+    s.from_left ? (-s.rate*(mass-sl), -s.rate*(mass-sr)) : (-s.rate*sl, -s.rate*sr)
+end
+
+function r7_initial_spatial_check(mass, means, spatial, lo, hi)
+    spatial===nothing && return (;
+        base = Float64.(means),
+        amplitude = zeros(length(means)),
+        span = 0.0,
+        amplitude_max = 0.0,
+    )
+    length(spatial)==length(mass) || error("指数初态段数错误")
+    for (w, mean, s) in zip(mass, means, spatial)
+        all(isfinite, (s.base, s.amplitude, s.rate)) && s.rate>=0 && s.from_left isa Bool ||
+            error("指数初态参数错误")
+        endpoints=(s.base+s.amplitude, s.base+s.amplitude*exp(-s.rate*w))
+        all(x->lo<=x<=hi, endpoints) || error("指数初态真实端点越界")
+        exact=s.base+s.amplitude*(s.rate==0 ? 1.0 : -expm1(-s.rate*w)/(s.rate*w))
+        abs(exact-mean)<=1e-10 || error("初态均值与空间分布不一致")
+    end
+    (;
+        base = [s.base for s in spatial],
+        amplitude = [s.amplitude for s in spatial],
+        span = maximum(s.rate*w for (s, w) in zip(spatial, mass)),
+        amplitude_max = maximum(abs(s.amplitude) for s in spatial),
+    )
+end
+
+# R9-RI3：初态空间指数和当步时间指数共同进入积分误差；供输入预检与建模共用。
+function r7_initial_quadrature_bound(beta, shape, ambient, lo, hi; order = 10)
+    low, high=min(lo, minimum(ambient)), max(hi, maximum(ambient))
+    bound=r7_loss_quadrature_bound(beta, high-low; order)
+    shape===nothing && return bound
+    base_span=maximum(abs.(shape.base .- ambient'))
+    bound+r7_loss_quadrature_bound(beta+shape.span, base_span+shape.amplitude_max; order)
+end
+
 """
     add_r7_lossy_mass_transport!(model, q, theta_in, theta_out, inventory,
         initial_mass, initial_theta; dt_h, decay_per_h, ambient, order=10,
-        max_truncation_error=1e-10, temperature_bounds=(0.0,1.0), prefix="lossy", deadline=Inf)
+        max_truncation_error=1e-10, temperature_bounds=(0.0,1.0), prefix="lossy", deadline=Inf,
+        initial_spatial=nothing)
 
 R7-H1至H4：加入正向/停流有损塞流的累计质量表达式，不求解或写文件。q为每步通过质量/管内质量，
 dt_h可为不同正步长，decay_per_h=3600UA/(M*c)，ambient和温度使用同一归一化标度。
-初态为入口至出口的分段常温，initial_mass之和为1。每步入口、环境及流量常值；不取整时延。
+初态按入口至出口排列，initial_mass之和为1；默认使用分段常温。显式initial_spatial逐段给出
+归一化base、amplitude、rate及from_left，按R9-RI1/RI2保留指数空间分布；initial_theta必须为
+该段精确均值，不能另给不一致均温。每步入口、环境及流量常值；不取整时延。
 使用有解析截断界的Gauss积分；显式拒绝超界参数。指数保留为非线性约束，不宣称模型仍为MIQCP。
 零流不除以流量、出口温度无观测意义，但库存继续散热。保留水团两端受temperature_bounds约束；
 不限制已经离管的水团。loss返回按整管质量及温度标度归一化的散热，可为负（环境供热）。
-UA=0时直接使用原无损质量核。独立验证仍须调用r7_pipe_step，不能用本核重算自身作为物理证明。
+UA=0且无指数初态时直接使用原无损质量核；指数初态即使UA=0仍需空间积分及误差验收。
+独立验证仍须调用r7_pipe_step，不能用本核重算自身作为物理证明。
 """
 function add_r7_lossy_mass_transport!(
     m,
@@ -117,6 +159,7 @@ function add_r7_lossy_mass_transport!(
     temperature_bounds = (0.0, 1.0),
     prefix = "lossy",
     deadline = Inf,
+    initial_spatial = nothing,
 )
     T = length(q)
     T > 0 &&
@@ -139,10 +182,19 @@ function add_r7_lossy_mass_transport!(
     β = decay_per_h .* dt_h
     all(isfinite, β) || error("散热指数溢出")
     low, high = min(lo, minimum(ambient)), max(hi, maximum(ambient))
-    bound = r7_loss_quadrature_bound(maximum(β), high-low; order)
+    shape=r7_initial_spatial_check(initial_mass, initial_θ, initial_spatial, lo, hi)
+    # 初态幅值可能大于物理温区（base可为环境温度）；按实际系数另计误差，不能只看段均值。
+    bound = r7_initial_quadrature_bound(
+        maximum(β),
+        initial_spatial===nothing ? nothing : shape,
+        ambient,
+        lo,
+        hi;
+        order,
+    )
     bound <= max_truncation_error || error("有损积分截断上界超出预定门槛，不自动放宽")
     gauss = r7_gauss_unit(order)
-    if decay_per_h == 0 && temperature_bounds == (0.0, 1.0)
+    if decay_per_h == 0 && temperature_bounds == (0.0, 1.0) && initial_spatial===nothing
         z = add_r7_mass_transport!(
             m,
             q,
@@ -173,7 +225,7 @@ function add_r7_lossy_mass_transport!(
             background[j, t] = ambient[t]+(background[j, t-1]-ambient[t])*exp(-β[t])
         end
     end
-    initial = hcat(initial_θ, zeros(n, T))
+    initial = hcat(shape.base, zeros(n, T))
     for t in 1:T
         initial[:, t+1] = ambient[t] .+ (initial[:, t] .- ambient[t])*exp(-β[t])
     end
@@ -207,6 +259,19 @@ function add_r7_lossy_mass_transport!(
                     z = r7_loss_mean_exp!(m, -β[t]*vl, -β[t]*vr, gauss, -β[t], 0.0, tag*"_age")
                     if born <= 0
                         expr = ambient[t]+(initial[j, t]-ambient[t])*z
+                        if initial_spatial!==nothing && shape.amplitude[j]!=0
+                            el, er=r7_initial_exponents(initial_spatial[j], initial_mass[j], sl, sr)
+                            spatial=r7_loss_mean_exp!(
+                                m,
+                                el-β[t]*vl,
+                                er-β[t]*vr,
+                                gauss,
+                                -initial_spatial[j].rate*initial_mass[j]-β[t],
+                                0.0,
+                                tag*"_initial",
+                            )
+                            expr += shape.amplitude[j]*exp(-decay_per_h*times[t])*spatial
+                        end
                     else
                         B = born == t ? ambient[t] : background[born, t-1]
                         age = decay_per_h*(times[t]-times[born])
@@ -228,6 +293,22 @@ function add_r7_lossy_mass_transport!(
                     if born <= 0
                         avg = initial[j, t+1]
                         endpoint = (avg, avg)
+                        if initial_spatial!==nothing && shape.amplitude[j]!=0
+                            el, er=r7_initial_exponents(initial_spatial[j], initial_mass[j], sl, sr)
+                            lower=-initial_spatial[j].rate*initial_mass[j]
+                            spatial=r7_loss_mean_exp!(m, el, er, gauss, lower, 0.0, tag*"_initial")
+                            amp=shape.amplitude[j]*exp(-decay_per_h*times[t+1])
+                            endpoint=Tuple(
+                                initial[j, t+1]+amp*r7_loss_exp!(
+                                    m,
+                                    e,
+                                    lower,
+                                    0.0,
+                                    tag*"_initial_endpoint_$k",
+                                ) for (k, e) in enumerate((el, er))
+                            )
+                            avg += amp*spatial
+                        end
                     else
                         age = decay_per_h*(times[t+1]-times[born])
                         el, er = -age+β[born]*ul, -age+β[born]*ur

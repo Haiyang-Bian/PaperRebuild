@@ -11,6 +11,7 @@ function r7_normal_flow_includes()
             "verification/r7_commitment.jl",
             "networks/r7_pipe_state.jl",
             "networks/fixed_flow_heat.jl",
+            "core/r7_initial_profile.jl",
             "core/r7_normal.jl",
             "networks/r7_normal_transport.jl",
         ],

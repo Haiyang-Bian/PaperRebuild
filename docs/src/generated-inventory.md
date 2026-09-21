@@ -234,6 +234,7 @@
 - `docs/agent/tasks/2026-09-21-r9-fixed.md`
 - `docs/agent/tasks/2026-09-21-r9-flow-reference.md`
 - `docs/agent/tasks/2026-09-21-r9-flow.md`
+- `docs/agent/tasks/2026-09-21-r9-initial-profile.md`
 - `docs/agent/tasks/2026-09-21-r9-network.md`
 - `docs/agent/tasks/2026-09-21-r9-numerics.md`
 - `docs/agent/tasks/2026-09-21-r9-pv.md`
@@ -323,6 +324,7 @@
 - `docs/reading/ch07/reserve.toml`
 - `docs/reading/ch07/resilience-currency.toml`
 - `docs/reading/ch07/resilience-energization.toml`
+- `docs/reading/ch07/resilience-initial-profile.toml`
 - `docs/reading/ch07/resilience-load-service.toml`
 - `docs/reading/ch07/resilience-review.toml`
 - `docs/reading/ch07/risk-study.toml`
@@ -462,6 +464,7 @@
 - `docs/src/ch07-fixed.md`
 - `docs/src/ch07-flow-results.md`
 - `docs/src/ch07-flow.md`
+- `docs/src/ch07-initial-profile.md`
 - `docs/src/ch07-inputs-generated.md`
 - `docs/src/ch07-inputs.md`
 - `docs/src/ch07-network-generated.md`
@@ -541,6 +544,7 @@
 - `scripts/audit_r9_numerics_cost.jl`
 - `scripts/audit_r9_reduced.jl`
 - `scripts/audit_r9_reserve_structure.jl`
+- `scripts/audit_r9_resilience_input.jl`
 - `scripts/audit_r9_seeded_structure.jl`
 - `scripts/audit_r9_solver.jl`
 - `scripts/audit_r9_terminal.jl`
@@ -659,6 +663,7 @@
 - `scripts/check_r9_fixed.jl`
 - `scripts/check_r9_fixed_delivery.jl`
 - `scripts/check_r9_fixed_scaling.jl`
+- `scripts/check_r9_initial_profile.jl`
 - `scripts/check_r9_inputs.jl`
 - `scripts/check_r9_network.jl`
 - `scripts/check_r9_network_delivery.jl`
@@ -1064,6 +1069,8 @@
 - `scripts/test_r7_energization_gurobi.jl`
 - `scripts/test_r7_flow_planning.jl`
 - `scripts/test_r7_flow_planning_gurobi.jl`
+- `scripts/test_r7_initial_profile.jl`
+- `scripts/test_r7_initial_profile_gurobi.jl`
 - `scripts/test_r7_linked_planning.jl`
 - `scripts/test_r7_lossy_flow.jl`
 - `scripts/test_r7_lossy_flow_gurobi.jl`
@@ -1196,6 +1203,7 @@
 - `src/core/r7_adversary.jl`
 - `src/core/r7_commitment.jl`
 - `src/core/r7_flow_planning.jl`
+- `src/core/r7_initial_profile.jl`
 - `src/core/r7_linked_planning.jl`
 - `src/core/r7_normal.jl`
 - `src/core/r7_normal_flow.jl`
@@ -1398,6 +1406,7 @@
 - `test/r7_energization.jl`
 - `test/r7_flow_planning.jl`
 - `test/r7_flow_planning_fixtures.jl`
+- `test/r7_initial_profile.jl`
 - `test/r7_linked_planning.jl`
 - `test/r7_lossy_flow.jl`
 - `test/r7_lossy_mass.jl`
@@ -1610,6 +1619,7 @@
 - `results/summaries/r9-reserve-pilot-20260921-v2/`
 - `results/summaries/r9-reserve-pilot-figures-20260921-v1/`
 - `results/summaries/r9-reserve-structure-20260921-v1/`
+- `results/summaries/r9-resilience-input-audit-20260921-v1/`
 - `results/summaries/r9-seeded-evidence-20260921-v1/`
 - `results/summaries/r9-seeded-figures-20260921-v1/`
 - `results/summaries/r9-seeded-figures-20260921-v2/`

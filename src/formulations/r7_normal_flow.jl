@@ -119,18 +119,12 @@ function build_r7_normal_flow(
                 @constraint(m, v["E_pipe_$side"][a, t, w]==cap*inv[t])
             end
             profile=p["initial_$(side)_profiles"][w]
-            args=(
-                m,
-                q,
-                θin,
-                θout,
-                inv,
-                profile["mass_kg"] ./ M,
-                (profile["temperature_K"] .- lo) ./ (hi-lo),
-            )
+            initial=r7_initial_transport(profile, M, lo, hi)
+            args=(m, q, θin, θout, inv, initial.mass, initial.mean)
             transport["$a:$side:$w"]=lossy ?
                                      add_r7_lossy_mass_transport!(
                 args...;
+                initial_spatial = initial.spatial,
                 dt_h = fill(d["dt_h"], T),
                 decay_per_h = 3600p["UA_$(side)_W_K"]/(M*h["c_J_kgK"]),
                 ambient = (h["ambient_K"] .- lo) ./ (hi-lo),
@@ -145,8 +139,9 @@ function build_r7_normal_flow(
                 θin,
                 θout,
                 inv,
-                profile["mass_kg"] ./ M,
-                (profile["temperature_K"] .- lo) ./ (hi-lo);
+                initial.mass,
+                initial.mean;
+                initial_spatial = initial.spatial,
                 prefix = "pipe_$a$side$w",
                 deadline,
             )

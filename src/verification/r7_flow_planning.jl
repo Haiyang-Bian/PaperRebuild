@@ -208,6 +208,9 @@ function validate_r7_flow_planning(c::R7PlanningCase, s, r)
     if r7_is_lossy_flow(s["normal_flow"])
         q["bound_scope"]="adopted_gauss_model_not_exact_PDE"
         q["exact_transport_optimality_verified"]=false
+    elseif r7_has_spatial_initial(c.normal.data)
+        q["bound_scope"]="adopted_spatial_profile_model_not_full_PDE"
+        q["exact_transport_optimality_verified"]=false
     end
     haskey(r, "normal") || return q
     r["status"] in ("candidate", "time_limit_with_solution") || error("联合状态与候选矛盾")

@@ -1,5 +1,7 @@
 {
   "inputs": [
+    {"id":"r7InitialProfileOutput","type":"promptString","description":"初态Gurobi验证新目录，不覆盖旧证据","default":"tmp/r7-initial-profile-new"},
+    {"id":"r9InputAuditOutput","type":"promptString","description":"预优化输入审计新TOML路径，不代表规模输入冻结","default":"tmp/r9-resilience-input-new.toml"},
     {"id":"r9CompactEvidence","type":"promptString","description":"等价表示原值证据；封存时使用新目录","default":"results/summaries/r9-compact-evidence-20260921-v1"},
     {"id":"r9CompactReport","type":"promptString","description":"配对报告；生成时使用新目录","default":"results/summaries/r9-compact-report-20260921-v1"},
     {"id":"r9CompactFigures","type":"promptString","description":"F46重绘新目录；交付检查时选择已有图","default":"results/runs/r9-compact-redraw-new"},
@@ -201,6 +203,10 @@
   ],
   "tasks": [
     {"label":"PaperRebuild: R9 energization mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_energization.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 initial profile mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_initial_profile.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 initial profile tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r7_initial_profile.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 initial profile Gurobi check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/test_r7_initial_profile_gurobi.jl","${input:r7InitialProfileOutput}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 resilience input preflight","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/audit_r9_resilience_input.jl","${input:r9InputAuditOutput}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R7-R8 energization tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r7_energization.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R7 energization Gurobi dual check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/test_r7_energization_gurobi.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 compact report tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_compact_report.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},

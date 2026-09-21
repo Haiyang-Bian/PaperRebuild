@@ -71,6 +71,7 @@ function save_r7_planning(c::R7PlanningCase, r, directory::AbstractString)
         "verification/r7_commitment.jl",
         "networks/r7_pipe_state.jl",
         "networks/fixed_flow_heat.jl",
+        "core/r7_initial_profile.jl",
         "core/r7_normal.jl",
         "networks/r7_normal_transport.jl",
         "formulations/r7_normal.jl",

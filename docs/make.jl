@@ -279,6 +279,7 @@ makedocs(;
             "保供准备：币种与状态继承" => "ch07-resilience-currency.md",
             "保供准备：关键负荷范围" => "ch07-critical-load.md",
             "保供准备：部分节点停电" => "ch07-energization.md",
+            "保供准备：初始空间管温" => "ch07-initial-profile.md",
         ],
         "第 2 章模型与首批实现" => [
             "模型详解" => "ch02-models.md",

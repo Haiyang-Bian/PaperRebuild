@@ -37,13 +37,15 @@ end
 
 """
     add_r7_mass_transport!(model, q, θ_in, θ_out, inventory, initial_mass, initial_θ;
-                           prefix="pipe", deadline=Inf, allow_zero=false)
+                           prefix="pipe", deadline=Inf, allow_zero=false, initial_spatial=nothing)
 
 向JuMP加入R7-F2/F3无损正向塞流。q为每步通过质量/整管质量，θ为归一化温度；
 inventory为相对温区下限的归一化整管显热，长度T+1。初始段按入口至出口排列且质量归一化和为1。
 质量坐标交集随连续流量变化，分段正部精确线性化，温度与交集的乘积保留为二次等式。
 不取整时延、不冻结输运权重；返回出口/库存交集以供独立证据保存，不求解或写文件。
 显式allow_zero=true允许停流；此时出口温度无观测意义，库存继续受质量区间约束，重启继承原空间状态。
+显式initial_spatial保留R9-RI1指数初态，转入零时间散热的Gauss空间积分并检查1e-10截断界；
+该扩展可能产生指数非线性约束，不再保证原分段常温特例的MIQCP类型。
 """
 function add_r7_mass_transport!(
     m,
@@ -56,8 +58,29 @@ function add_r7_mass_transport!(
     prefix = "pipe",
     deadline = Inf,
     allow_zero = false,
+    initial_spatial = nothing,
 )
     T=length(q)
+    if initial_spatial!==nothing
+        all(
+            allow_zero ? first(r7_affine_interval(x))>=0 : first(r7_affine_interval(x))>0 for x in q
+        ) || error("输运流量须符合声明的非负/严格正有限界")
+        return add_r7_lossy_mass_transport!(
+            m,
+            q,
+            θ_in,
+            θ_out,
+            inventory,
+            initial_mass,
+            initial_θ;
+            initial_spatial,
+            dt_h = ones(T),
+            decay_per_h = 0.0,
+            ambient = zeros(T),
+            prefix,
+            deadline,
+        )
+    end
     length(θ_in)==length(θ_out)==T && length(inventory)==T+1 && T>0 || error("输运维度错误")
     length(initial_mass)==length(initial_θ)>0 &&
     all(>(0), initial_mass) &&
