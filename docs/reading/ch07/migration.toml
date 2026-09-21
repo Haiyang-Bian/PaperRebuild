@@ -1,5 +1,5 @@
 schema = "r9-migration-route-v1"
-status = "partial_72_fixed_flow_duals_open_73_model_inputs"
+status = "partial_72_duals_open_73_central_network_verified_disagreement_open"
 scope = "Preserve chapter-7 source connectivity and scenario-specific modifications; freeze separately labelled replacements for missing fields before optimization."
 source_input_status = "partial_original_input_not_runnable"
 ref157_doi = "10.1016/j.apenergy.2021.117224"
@@ -23,9 +23,9 @@ name = "Aggregator trading and network coordination"
 reuse = "R4 theory, network/accounting utilities and validation pattern; separate scale adapter required, not direct R4Case loading"
 required_change = "Eight aggregators and explicitly replaced resources; separate base/non-aggregated loads; added four electric and two heat ties"
 must_not_inherit = "7.2 PV enlargement, teaching settlement prices, or automatic second multiplication of table-7-9 loads"
-known_interface_gap = "R4Case is fixed to DSO/A/B and one battery; eight aggregators, two batteries and distinct electric/heat mappings require an incremental scale interface. A4/A8 share heat node 26; avoid double-counting base load. Thermal storage/HP, flexible preferences, payoffs and startup interpretation still require declared inputs."
+known_interface_gap = "R9TradingCase now separates eight aggregators, equipment and distinct electric/heat nodes. Sixteen frozen network methods include four accepted centralized candidates under replacement equipment sizing; saved independent plans exceed DSO heat capacity. Distributed coordination and bargaining still need scale migration; a feasible or explicitly penalized counterfactual disagreement rule must be distinguished. Complete thermal physics and author-input equivalence remain open."
 acceptance = "Feasible disagreement points; network checks; internal transfers cancel; coalition and allocation claims kept separate; larger-system iteration and timing evidence."
-stage = "input_protocol_and_analytical_model_checks; scale_runs_and_full_trading_methods_pending"
+stage = "central_scale_and_network_results_frozen; independent_disagreement_and_distributed_bargaining_open"
 
 [[route]]
 section = "7.4"

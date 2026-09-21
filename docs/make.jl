@@ -1,5 +1,7 @@
 using Documenter
 using PaperRebuild
+include(joinpath(@__DIR__, "..", "scripts", "r9_network_docs.jl"))
+write(joinpath(@__DIR__, "src", "ch07-network-generated.md"), r9_network_markdown())
 
 include(joinpath(@__DIR__, "..", "scripts", "ch02_docs.jl"))
 sync_ch02()
@@ -258,6 +260,9 @@ makedocs(;
             "固定流量台账索引" => "ch07-fixed-generated.md",
             "八聚合商输入与交易模型" => "ch07-trading.md",
             "规模交易结果与容量反例" => "ch07-trading-results.md",
+            "设备接入与网络重构" => "ch07-network.md",
+            "重构结果与独立供热缺口" => "ch07-network-results.md",
+            "接入与重构台账索引" => "ch07-network-generated.md",
             "交易模型台账索引" => "ch07-trading-generated.md",
         ],
         "第 2 章模型与首批实现" => [

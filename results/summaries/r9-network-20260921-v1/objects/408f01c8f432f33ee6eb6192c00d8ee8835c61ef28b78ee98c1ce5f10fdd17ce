@@ -1,0 +1,35 @@
+bargaining = false
+budget_sec = 600.0
+distributed_algorithm = false
+initial_primal_injection = false
+manifest_sha256 = "2a312e0e3086047a13febf9608aa3ef5449220d185b721a5a96cd382d6daad50"
+method_budget_pass = true
+method_elapsed_sec = 27.5669122999534
+origin = "synthetic"
+process_budget_pass = true
+process_elapsed_sec = 29.654154099989682
+raw_result_sha256 = "14ace90fc9beb51520ae194bf1602cacc67f65e34c11b725e7a0e502d5f1eec4"
+record = "record"
+record_manifest_sha256 = "7cfce711fd09cca578ea8745aab0e46966752e4f5bf8e79d77616aa9c7cb1e49"
+schema = "r9-network-receipt-v1"
+start_utc = "2026-09-21T02:33:11.484"
+status = "network_infeasible_certified"
+uses_projected_gradient = false
+
+[entry]
+case = "legacy-fixed"
+design = "legacy"
+electric = "exact"
+id = "legacy-fixed-independent-exact"
+input_sha256 = "1b2b64954b28a7fb8cb6b32f531b35cd566da6bc5aece5bd32d8ab8786ddb8cf"
+operation = "independent"
+policy = "fixed"
+
+[solver_options]
+FeasibilityTol = 1.0e-8
+IntFeasTol = 1.0e-8
+MIPGap = 0.0001
+NonConvex = 2
+OptimalityTol = 1.0e-8
+Seed = 0
+Threads = 1

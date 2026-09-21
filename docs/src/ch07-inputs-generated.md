@@ -74,7 +74,7 @@
 
 复用：R4 theory, network/accounting utilities and validation pattern; separate scale adapter required, not direct R4Case loading。
 
-接口缺口：R4Case is fixed to DSO/A/B and one battery; eight aggregators, two batteries and distinct electric/heat mappings require an incremental scale interface. A4/A8 share heat node 26; avoid double-counting base load. Thermal storage/HP, flexible preferences, payoffs and startup interpretation still require declared inputs.
+接口缺口：R9TradingCase now separates eight aggregators, equipment and distinct electric/heat nodes. Sixteen frozen network methods include four accepted centralized candidates under replacement equipment sizing; saved independent plans exceed DSO heat capacity. Distributed coordination and bargaining still need scale migration; a feasible or explicitly penalized counterfactual disagreement rule must be distinguished. Complete thermal physics and author-input equivalence remain open.
 
 不得默认继承：7.2 PV enlargement, teaching settlement prices, or automatic second multiplication of table-7-9 loads。
 
@@ -94,4 +94,4 @@
 
 不得默认继承：Chapter-6 500 USD/MWh penalty, four-hour window inferred from mixed captions or ablation inferred from HS/NR abbreviations。
 
-迁移状态：`partial_72_fixed_flow_duals_open_73_model_inputs`；详见[输入说明与后续顺序](ch07-inputs.md)。
+迁移状态：`partial_72_duals_open_73_central_network_verified_disagreement_open`；详见[输入说明与后续顺序](ch07-inputs.md)。

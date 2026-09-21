@@ -141,8 +141,8 @@ meaning = "集中资源目标与教学结算是迁移基准；分布式协调、
 [[issues]]
 id = "R9-TQ06"
 source = "project network sizing protocol; frozen scale input and literal capacity witness"
-status = "synthetic_input_incompatibility_proved; revised_design_pending"
-meaning = "基础7.1设备/未放大负荷的替代网络设计未覆盖7.3新增电锅炉接入与跨热区送出。第8时段精确正缺口0.080119MW证明当前输入/采用模型冲突；不归因于作者原输入，不据此宣称单处增容足够。"
+status = "legacy_synthetic_incompatibility_proved; separate_v2_network_design_tested"
+meaning = "基础7.1设备/未放大负荷的替代网络设计未覆盖7.3新增电锅炉接入与跨热区送出。第8时段精确正缺口0.080119MW证明该旧输入/采用模型冲突；不归因于作者原输入，不据此宣称单处增容足够。另立v2设备接入/重构16项见network.toml及ch07-network-results.md，不迁移旧判定。"
 
 [[symbols]]
 id = "r9.trading.cut"

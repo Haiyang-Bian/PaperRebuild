@@ -1,0 +1,35 @@
+bargaining = false
+budget_sec = 600.0
+distributed_algorithm = false
+initial_primal_injection = false
+manifest_sha256 = "2a312e0e3086047a13febf9608aa3ef5449220d185b721a5a96cd382d6daad50"
+method_budget_pass = true
+method_elapsed_sec = 25.303633000003174
+origin = "synthetic"
+process_budget_pass = true
+process_elapsed_sec = 26.935944400029257
+raw_result_sha256 = "b4ae8608ae16381996d55f46e0cc94727d719891a984c66f6365107f599a30e8"
+record = "record"
+record_manifest_sha256 = "72800554882580937a5e536d21a0994e7f3b797e076d79d0eff6c21505027862"
+schema = "r9-network-receipt-v1"
+start_utc = "2026-09-21T02:34:08.652"
+status = "infeasible_certified"
+uses_projected_gradient = false
+
+[entry]
+case = "legacy-fixed"
+design = "legacy"
+electric = "exact"
+id = "legacy-fixed-central-exact"
+input_sha256 = "1b2b64954b28a7fb8cb6b32f531b35cd566da6bc5aece5bd32d8ab8786ddb8cf"
+operation = "central"
+policy = "fixed"
+
+[solver_options]
+FeasibilityTol = 1.0e-8
+IntFeasTol = 1.0e-8
+MIPGap = 0.0001
+NonConvex = 2
+OptimalityTol = 1.0e-8
+Seed = 0
+Threads = 1

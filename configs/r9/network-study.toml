@@ -1,0 +1,26 @@
+schema = "r9-network-study-protocol-v1"
+origin = "synthetic"
+input_protocol = "configs/r9/trading-protocol.toml"
+network_protocol = "configs/r9/network-protocol.toml"
+expected_parent_sha256 = "73595793a7b47b3e39e4b4aa97a323ac35989887802b54ed113f36fa01dc4d1d"
+designs = ["legacy","equipment"]
+policies = ["fixed","joint"]
+operations = ["independent","central"]
+electric_versions = ["socp","exact"]
+budget_sec = 600.0
+integer_rule = "all_permitted_storage_direction_and_switch_choices_free"
+comparison_scope = "topology_within_same_design; combined_parameters_between_designs"
+cost_scope = "resource_discomfort_external_and_switching; no_capital_cost; no_periodic_topology_claim"
+author_equivalence = false
+uses_projected_gradient = false
+distributed_algorithm = false
+bargaining = false
+
+[gurobi]
+Threads = 1
+Seed = 0
+NonConvex = 2
+MIPGap = 0.0001
+FeasibilityTol = 0.00000001
+OptimalityTol = 0.00000001
+IntFeasTol = 0.00000001

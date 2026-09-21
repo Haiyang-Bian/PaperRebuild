@@ -1,0 +1,35 @@
+bargaining = false
+budget_sec = 600.0
+distributed_algorithm = false
+initial_primal_injection = false
+manifest_sha256 = "2a312e0e3086047a13febf9608aa3ef5449220d185b721a5a96cd382d6daad50"
+method_budget_pass = true
+method_elapsed_sec = 141.615565300046
+origin = "synthetic"
+process_budget_pass = true
+process_elapsed_sec = 144.89849380002124
+raw_result_sha256 = "8b103c9a37773d556db93d94e5b6fa41bb4d9c85a6e4875a05069a507d39c64e"
+record = "record"
+record_manifest_sha256 = "346ca50a923f3116cc025c6a45d23bd3ff0700996ac49013e522634a91ccc195"
+schema = "r9-network-receipt-v1"
+start_utc = "2026-09-21T02:42:27.566"
+status = "solver_optimal"
+uses_projected_gradient = false
+
+[entry]
+case = "equipment-joint"
+design = "equipment"
+electric = "exact"
+id = "equipment-joint-central-exact"
+input_sha256 = "0ccd3fc8cbec9eff35715615750f1961896dcec0dc7fb10c5c0a522594969fd3"
+operation = "central"
+policy = "joint"
+
+[solver_options]
+FeasibilityTol = 1.0e-8
+IntFeasTol = 1.0e-8
+MIPGap = 0.0001
+NonConvex = 2
+OptimalityTol = 1.0e-8
+Seed = 0
+Threads = 1

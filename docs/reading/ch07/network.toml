@@ -1,0 +1,101 @@
+schema = "r9-network-adoption-v1"
+model_version = "r9_trading_reconfiguration_v1"
+source_sha256 = "20328e2480e773520c19c378e53365fc944c0bafcfca73071f5d8313d5ee7d91"
+pdf_pages = [133,134]
+prior_formula_source = "chapter4 equations4-22,4-27:40,4-41:51; R4-N1:N5 derived interpretation"
+protocol = "configs/r9/network-protocol.toml"
+page = "docs/src/ch07-network.md"
+test_file = "test/r9_network.jl"
+original_input_reproduction = false
+full_thermal_physics_certified = false
+frozen_study = "r9-network-20260921-v1"
+frozen_label_alias = "Frozen source R9-N1:N5 maps to current R9-RN1:RN5; all eight model expressions verified equal; frozen bytes and original judgments preserved."
+result_page = "docs/src/ch07-network-results.md"
+independent_plan_diagnostic = "R9-AG0-H1: saved local heat deficit versus actual DSO variable upper bounds; nonnegative losses omitted; exact binary rational witness, not central infeasibility."
+new_apis = ["r9_reconfiguration_case","validate_r9_network"]
+tests = ["R9-RN1 full graph and equipment design identity","R9-RN2 N4 fixed trees, closed ties and independent physics","R9-RN3 dwell, daily valves and zero action fee","R9-RN5 archive and budget preserve versioned topology"]
+
+[[equations]]
+id = "R9-RN1"
+meaning = "候选图、可控边、全节点连通径向；虚拟流不限制物理输送方向"
+api = "build_r9_trading_model"
+[[equations]]
+id = "R9-RN2"
+meaning = "开路时潮流与电流平方归零，电压差只保留原电压边界；闭路恢复制约"
+api = "validate_r9_trading_solution"
+[[equations]]
+id = "R9-RN3"
+meaning = "精确动作异或、稳定窗口与最多动作次数；日阀门只相对初始状态计一次"
+api = "validate_r9_network"
+[[equations]]
+id = "R9-RN4"
+meaning = "正反热弧之和等于日阀门状态；关闭时两弧、质量流量与损耗均为零"
+api = "build_r9_trading_model"
+[[equations]]
+id = "R9-RN5"
+meaning = "资源成本加运营商动作成本，按CNY/次、不乘时间步；内部支付继续抵消"
+api = "r9_trading_ledger"
+
+[[symbols]]
+id = "r9.network.uE"
+latex = 'u^E_{e,t}'
+meaning = "电线路闭合状态；非开关位置保持初始值"
+code = "u_E[e,t]"
+unit = "1"
+[[symbols]]
+id = "r9.network.uH"
+latex = 'u^H_p'
+meaning = "热管整日阀门状态，数组第二维长度为1"
+code = "u_H[p,1]"
+unit = "1"
+[[symbols]]
+id = "r9.network.aE"
+latex = 'a^E_{e,t}'
+meaning = "电开关相邻状态之差的绝对值"
+code = "a_E[e,t]"
+unit = "1"
+[[symbols]]
+id = "r9.network.aH"
+latex = 'a^H_p'
+meaning = "热阀门相对初始状态的一次动作"
+code = "a_H[p,1]"
+unit = "1"
+[[symbols]]
+id = "r9.network.flow"
+latex = 'F^E_{e,t},F^H_p'
+meaning = "证明连通的虚拟商品流，无物理能量含义"
+code = "F_E[e,t], F_H[p,1]"
+unit = "1"
+[[symbols]]
+id = "r9.network.direction"
+latex = 'y^+_{p,t},y^-_{p,t}'
+meaning = "双向热弧，二者之和为uH；旧v1的和为1仍保留"
+code = "heat_direction[p,t], u_H[p,1]-heat_direction[p,t]"
+unit = "1"
+[[symbols]]
+id = "r9.network.cost"
+latex = 'c^{SA},c^{VA}'
+meaning = "电开关和热阀门动作资源费用；项目合成参数"
+code = "electric_action_CNY, heat_action_CNY"
+unit = "CNY/次"
+
+[[issues]]
+id = "R9-RNC01"
+status = "explicit_project_design"
+meaning = "原文没有完整支路参数。legacy保留原额定值；equipment按所有新增设备及最大灵活负荷重建设计包络，阻抗、容量及损耗一起变化，不是仅增容的单因素因果实验。"
+[[issues]]
+id = "R9-RNC02"
+status = "source_switch_locations_with_project_operating_parameters"
+meaning = "图7-6辨识六条原电支路开关与四联络线、两条原热支路阀门与两联络管；其余支路不新增控制。动作费5CNY/次、两步稳定及每电线最多两次为项目设定。"
+[[issues]]
+id = "R9-RNC03"
+status = "construction_rule_corrected_before_optimization"
+meaning = "构造测试发现路径大管径UA求和与路径最小容量混配可使联络管损耗超过额定容量。正式冻结前改为路径总长、最小容量、按该容量设计自身截面及SI传热；不是根据运行收益改参。"
+[[issues]]
+id = "R9-RNC04"
+status = "same_design_comparison_only"
+meaning = "同一设计的fixed/joint具有相同候选支路参数、损耗、核心输入与动作费。fixed零动作计划可嵌入joint。新输入不能被旧固定树热割直接诊断，避免把关闭管道损耗当作必须承担。"
+[[issues]]
+id = "R9-RNC05"
+status = "bounded_scope"
+meaning = "热网仍是稳态质量/能量包络，缺少温度混合、水压、动态换向及启停暖管能量；尾端拓扑自由，不报告周期重构收益。继承的provenance记录父输入，实际拓扑域以v2 network_control为准。"

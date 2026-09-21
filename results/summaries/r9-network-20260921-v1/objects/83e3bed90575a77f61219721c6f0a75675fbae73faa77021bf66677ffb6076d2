@@ -1,0 +1,35 @@
+bargaining = false
+budget_sec = 600.0
+distributed_algorithm = false
+initial_primal_injection = false
+manifest_sha256 = "2a312e0e3086047a13febf9608aa3ef5449220d185b721a5a96cd382d6daad50"
+method_budget_pass = true
+method_elapsed_sec = 29.85705460002646
+origin = "synthetic"
+process_budget_pass = true
+process_elapsed_sec = 32.348269400012214
+raw_result_sha256 = "e2e569a74aee9e323ca9a42497712121f9660006fc8384bda28ae744cdb81e97"
+record = "record"
+record_manifest_sha256 = "3579b8691fd774f5dafd7f46d79fbc7e7532a0f2827731e06719c2866bf730ed"
+schema = "r9-network-receipt-v1"
+start_utc = "2026-09-21T02:37:32.125"
+status = "solver_optimal"
+uses_projected_gradient = false
+
+[entry]
+case = "equipment-fixed"
+design = "equipment"
+electric = "socp"
+id = "equipment-fixed-central-socp"
+input_sha256 = "5f1ddce8f60ff26281cadd450d5755327d54ab9bb197012dbe9f0121e025cad8"
+operation = "central"
+policy = "fixed"
+
+[solver_options]
+FeasibilityTol = 1.0e-8
+IntFeasTol = 1.0e-8
+MIPGap = 0.0001
+NonConvex = 2
+OptimalityTol = 1.0e-8
+Seed = 0
+Threads = 1

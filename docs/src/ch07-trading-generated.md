@@ -36,7 +36,7 @@
 | R9-TQ03 | PDF132 text; missing heat-store nameplates | explicit_synthetic_replacement | 两台储热各0.5MW/2MWh和储能效率/初末状态均为项目参数；电池50元/MWh按吞吐量解释。 |
 | R9-TQ04 | project model boundary | full_thermal_compatibility_and_reconfiguration_pending | 双向稳态能量/质量包络不保证混合温度、水压或动态输运。温热管对即使负荷小仍承担参考散热。 |
 | R9-TQ05 | PDF133-135 schemes2A/2B/2C | benchmark_not_equivalent_to_2B_2C | 集中资源目标与教学结算是迁移基准；分布式协调、重构、议价和原表绝对效用尚未由本入口复现。 |
-| R9-TQ06 | project network sizing protocol; frozen scale input and literal capacity witness | synthetic_input_incompatibility_proved; revised_design_pending | 基础7.1设备/未放大负荷的替代网络设计未覆盖7.3新增电锅炉接入与跨热区送出。第8时段精确正缺口0.080119MW证明当前输入/采用模型冲突；不归因于作者原输入，不据此宣称单处增容足够。 |
+| R9-TQ06 | project network sizing protocol; frozen scale input and literal capacity witness | legacy_synthetic_incompatibility_proved; separate_v2_network_design_tested | 基础7.1设备/未放大负荷的替代网络设计未覆盖7.3新增电锅炉接入与跨热区送出。第8时段精确正缺口0.080119MW证明该旧输入/采用模型冲突；不归因于作者原输入，不据此宣称单处增容足够。另立v2设备接入/重构16项见network.toml及ch07-network-results.md，不迁移旧判定。 |
 
 ## 运行与独立重验
 

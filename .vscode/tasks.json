@@ -1,5 +1,8 @@
 {
   "inputs": [
+    {"id":"r9NetworkSummary","type":"promptString","description":"R9接入/拓扑已封存原值目录，只读","default":"results/summaries/r9-network-20260921-v1"},
+    {"id":"r9NetworkFigures","type":"promptString","description":"F39/F40重绘新目录，不覆盖旧图","default":"results/runs/r9-network-redraw-new"},
+    {"id":"r9NetworkStudy","type":"promptString","description":"R9接入与拓扑十六方法批次；freeze须新目录","default":"results/runs/r9-network-new"},
     {"id":"r9TradingStudy","type":"promptString","description":"R9四方法批次；冻结须新目录，运行须已冻结目录","default":"results/runs/r9-trading-new"},
     {"id":"r9TradingMethod","type":"pickString","description":"R9已冻结方法","options":["independent-socp","independent-exact","central-socp","central-exact"],"default":"central-socp"},
     {"id":"r9TradingSummary","type":"promptString","description":"R9四方法封存目录，仅重读","default":"results/summaries/r9-trading-20260921-v1"},
@@ -177,6 +180,14 @@
     }
   ],
   "tasks": [
+    {"label":"PaperRebuild: R9 network evidence check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","${input:r9NetworkSummary}/code/scripts/r9_network_evidence.jl","check","${input:r9NetworkSummary}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 independent heat audit","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","${input:r9NetworkSummary}/independent-heat/audit-source.jl","check","${input:r9NetworkSummary}","${input:r9NetworkSummary}/independent-heat"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 network redraw","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r9_network.jl","${input:r9NetworkSummary}","${input:r9NetworkFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 network mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_network.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 network tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_network.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 network freeze","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_network_study.jl","freeze","${input:r9NetworkStudy}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 network frozen batch","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","${input:r9NetworkStudy}/code/scripts/run_r9_network_batch.jl","${input:r9NetworkStudy}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 network frozen inputs check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_network_study.jl","check","${input:r9NetworkStudy}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 trading study freeze","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_trading_study.jl","freeze","${input:r9TradingStudy}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 trading frozen method","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","${input:r9TradingStudy}/code/scripts/r9_trading_study.jl","run","${input:r9TradingStudy}","${input:r9TradingMethod}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 trading study evidence check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","${input:r9TradingSummary}/code/scripts/r9_trading_evidence.jl","check","${input:r9TradingSummary}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},

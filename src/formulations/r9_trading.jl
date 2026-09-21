@@ -2,13 +2,15 @@
     build_r9_trading_model(case; electric=:socp, stage=:central, actor=0,
         frozen=nothing, modes=nothing, optimizer=nothing)
 
-构造多聚合商固定拓扑调度，不求解、不写文件。stage=:local仅优化指定主体；:network冻结
+构造多聚合商调度，不求解、不写文件。旧输入固定拓扑；v2输入按显式网络控制块建模。
+stage=:local仅优化指定主体；:network冻结
 全部聚合商控制后校核运营商/网络；:central联合优化资源。合同不作为指定支路的潮流。
 电网使用原节点编号与标幺平方量，可显式选择原支路等式:exact。
 热网允许每时段双向交换；正反两个弧互斥，共用一对管道容量和一次参考供回水损耗。
 质量守恒、端口和管道热功率包络同时施加；没有恢复混合温度/水压，不能认证完整热物理。
 电池与热储能分别逐时互斥，初末能量相等。设备×时间与主体×时间维度不混用。
-modes可固定z_storage与heat_direction矩阵供连续对照，不放松整数域。R9-T1—T6。
+modes可固定z_storage与heat_direction矩阵供连续对照；v2还必须给u_E与u_H，不放松整数域。
+R9-T1—T6与R9-RN1—N5，热阀门整日固定，不限制热流参考方向。
 """
 function build_r9_trading_model(
     c::R9TradingCase;
@@ -54,6 +56,7 @@ function build_r9_trading_model(
     discomfort=AffExpr(0.0)
     external=AffExpr(0.0)
     retail=AffExpr(0.0)
+    switching=AffExpr(0.0)
     for (j, x) in enumerate(g)
         kind=x["kind"]
         on=active(x["owner"])
@@ -195,6 +198,8 @@ function build_r9_trading_model(
         n, k, base=e["nodes"], h["nodes"], e["base_MVA"]
         edges, pipes=e["edges"], h["pipes"]
         L, R=length(edges), length(pipes)
+        network=haskey(d, "network_control")
+        network && (switching=r9_network_variables!(model, v, cs, c, modes))
         v["P_grid"]=@variable(
             model,
             [1:T],
@@ -232,7 +237,21 @@ function build_r9_trading_model(
                     set_upper_bound(var, cap)
                 end
                 set_upper_bound(l, line["ell_max_pu"])
-                add("ch04-032", @constraint(model, v["v"][o, t]==vi-2(r*P+x*Q)+(r^2+x^2)*l))
+                if network
+                    u=v["u_E"][j, t]
+                    for (var, cap) in ((P, line["P_max_MW"]/base), (Q, line["Q_max_Mvar"]/base))
+                        add("R9-RN2", @constraint(model, var<=cap*u))
+                        add("R9-RN2", @constraint(model, var>=-cap*u))
+                    end
+                    add("R9-RN2", @constraint(model, l<=line["ell_max_pu"]*u))
+                    # 开路使P/Q/ell=0，平方电压跨度就是足够且可推导的M。
+                    drop=v["v"][o, t]-vi+2(r*P+x*Q)-(r^2+x^2)*l
+                    M=e["v_max_pu"]^2-e["v_min_pu"]^2
+                    add("R9-RN2", @constraint(model, drop<=M*(1-u)))
+                    add("R9-RN2", @constraint(model, drop>=-M*(1-u)))
+                else
+                    add("ch04-032", @constraint(model, v["v"][o, t]==vi-2(r*P+x*Q)+(r^2+x^2)*l))
+                end
                 if electric==:socp
                     add("ch04-033", @constraint(model, [vi+l, 2P, 2Q, vi-l] in SecondOrderCone()))
                 else
@@ -285,8 +304,10 @@ function build_r9_trading_model(
             for (j, pipe) in enumerate(pipes)
                 z=v["heat_direction"][j, t]
                 binary_mode(z, "heat_direction", j, t, true)
+                open=network ? v["u_H"][j, 1] : 1
+                network && add("R9-RN4", @constraint(model, z<=open))
                 # 正反向共用管对，损耗只施加于实际方向；不用双弧同时开放制造虚假循环。
-                for (side, on) in (("plus", z), ("minus", 1-z))
+                for (side, on) in (("plus", z), ("minus", open-z))
                     hi, ho, m=v["H_"*side*"_in"][j, t],
                     v["H_"*side*"_out"][j, t],
                     v["m_"*side][j, t]
@@ -350,7 +371,7 @@ function build_r9_trading_model(
             end
         end
     end
-    @objective(model, Min, resource+discomfort+external+retail)
+    @objective(model, Min, resource+discomfort+external+retail+switching)
     return (;
         model,
         variables = v,
@@ -359,6 +380,7 @@ function build_r9_trading_model(
         discomfort,
         external,
         retail,
+        switching,
         objective_kind = stage==:local ? "local_resource_plus_retail" : "system_resource_cost",
         model_class = electric==:exact && stage!=:local ?
                       (any(is_binary, all_variables(model)) ? "nonconvex_MIQCP" : "nonconvex_QCP") :

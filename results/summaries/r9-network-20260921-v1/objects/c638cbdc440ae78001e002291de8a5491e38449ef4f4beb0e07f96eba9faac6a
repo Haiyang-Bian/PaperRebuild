@@ -1,0 +1,67 @@
+# 单商品流仅证明全节点连通；实际电/热流方向不由虚拟流确定。
+function r9_network_variables!(model, v, cs, c, modes)
+    d=c.data
+    n=d["network_control"]
+    T=d["T"]
+    add(id, con) = r2_add!(cs, id, con)
+    cost=AffExpr(0.0)
+    for (side, key, suffix, nt) in (("electric", "edges", "E", T), ("heat", "pipes", "H", 1))
+        net=d[side]
+        edges=net[key]
+        L=length(edges)
+        N=net["nodes"]
+        ukey="u_"*suffix
+        akey="a_"*suffix
+        fkey="F_"*suffix
+        v[ukey]=@variable(model, [1:L, 1:nt], lower_bound=0, upper_bound=1, base_name=ukey)
+        v[akey]=@variable(model, [1:L, 1:nt], lower_bound=0, upper_bound=1, base_name=akey)
+        v[fkey]=@variable(model, [1:L, 1:nt], base_name=fkey)
+        if modes!==nothing
+            haskey(modes, ukey) && size(modes[ukey])==(L, nt) && all(x->x in (0, 1), modes[ukey]) ||
+                error("固定模式缺少完整拓扑：$ukey")
+        end
+        enabled=n["policy"] in (side, "joint")
+        for j in 1:L, t in 1:nt
+            initial=n[side*"_initial"][j]
+            u=v[ukey][j, t]
+            if !enabled || n[side*"_switchable"][j]==0
+                modes===nothing ||
+                    modes[ukey][j, t]==initial ||
+                    error("固定整数选择修改了不可控支路")
+                fix(u, initial; force = true)
+            elseif modes===nothing
+                set_binary(u)
+            else
+                fix(u, modes[ukey][j, t]; force = true)
+            end
+            prev=t==1 ? initial : v[ukey][j, t-1]
+            a=v[akey][j, t]
+            # 四条XOR不等式让零动作费时仍精确记录动作，而不是靠目标压低a。
+            add("R9-N3", @constraint(model, a>=u-prev))
+            add("R9-N3", @constraint(model, a>=prev-u))
+            add("R9-N3", @constraint(model, a<=u+prev))
+            add("R9-N3", @constraint(model, a<=2-u-prev))
+            add("R9-N1", @constraint(model, v[fkey][j, t]<=(N-1)*u))
+            add("R9-N1", @constraint(model, v[fkey][j, t]>=-(N-1)*u))
+            add_to_expression!(cost, n[side*"_action_CNY"], a)
+        end
+        for t in 1:nt
+            add("R9-N1", @constraint(model, sum(v[ukey][:, t])==N-1))
+            for i in 1:N
+                balance=sum(v[fkey][j, t] for j in 1:L if edges[j]["from"]==i; init = 0) -
+                        sum(v[fkey][j, t] for j in 1:L if edges[j]["to"]==i; init = 0)
+                add("R9-N1", @constraint(model, balance==(i==net["root"] ? N-1 : -1)))
+            end
+        end
+        if side=="electric"
+            for j in 1:L
+                add("R9-N3", @constraint(model, sum(v[akey][j, :])<=n["electric_max_actions"]))
+                for t in 1:T
+                    lo=max(1, t-n["dwell_steps"]+1)
+                    add("R9-N3", @constraint(model, sum(v[akey][j, lo:t])<=1))
+                end
+            end
+        end
+    end
+    cost
+end
