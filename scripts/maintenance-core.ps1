@@ -197,8 +197,8 @@ function Inventory-Text([string]$Root) {
     $lines.Add('')
     $assets = [Collections.Generic.SortedSet[string]]::new([StringComparer]::Ordinal)
     foreach ($path in @(Candidate-Paths $Root)) {
-        # 人类入口按批次汇总重复图源；CodeGroup仍维护每个真实文件。
-        if ($path -match '^((?:docs/src/assets|results/summaries)/[^/]+/[^/]+)/') {
+        # 人类入口按完整批次汇总图源与证据，包含批次根文件；CodeGroup仍维护每个真实文件。
+        if ($path -match '^((?:docs/src/assets|results/summaries)/[^/]+)/') {
             [void]$assets.Add($Matches[1])
             continue
         }

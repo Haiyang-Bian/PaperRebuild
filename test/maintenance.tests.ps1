@@ -1,5 +1,5 @@
 ﻿# No external testing framework; isolate all Git writes and fault injection under tmp/.
-param([switch]$Compact)
+param([switch]$Compact, [switch]$InventoryOnly)
 $ErrorActionPreference = 'Stop'
 [Console]::InputEncoding = [Text.UTF8Encoding]::new($false)
 [Console]::OutputEncoding = [Text.UTF8Encoding]::new($false)
@@ -35,6 +35,25 @@ function Event([string]$Name, [string]$Session = 'fixture-session', [string]$Tur
     return @{ hook_event_name = $Name; session_id = $Session; turn_id = $Turn; permission_mode = 'default'; stop_hook_active = $Active }
 }
 [IO.Directory]::CreateDirectory($fixture) | Out-Null
+if ($InventoryOnly) {
+    # 独立检查目录层级：根表格和嵌套证据同属一个批次，普通源码及公共样式仍展开。
+    Put 'docs/src/assets/test-batch/F04.csv' "value`n1`n"
+    Put 'docs/src/assets/test-batch/run/F05.csv' "value`n2`n"
+    Put 'results/summaries/test-batch/summary.csv' "value`n3`n"
+    Put 'results/summaries/test-batch/run/F04.csv' "value`n4`n"
+    Put 'docs/src/assets/custom.css' 'body {}'
+    Put 'src/example.jl' 'module Example end'
+    Git-Write @('init', '-q')
+    $index = Inventory-Text $fixture
+    Assert ($index.Contains('- `docs/src/assets/test-batch/`')) 'figure batch visible'
+    Assert ($index.Contains('- `results/summaries/test-batch/`')) 'evidence batch visible'
+    Assert ([regex]::Matches($index, 'test-batch/').Count -eq 2) 'each batch listed once'
+    Assert ($index -notmatch 'F04.csv|F05.csv|summary.csv|test-batch/run/') 'batch members summarized'
+    Assert ($index.Contains('src/example.jl')) 'ordinary source preserved'
+    Assert ($index.Contains('docs/src/assets/custom.css')) 'common stylesheet preserved'
+    Write-Output "Inventory tests passed: $script:Assertions assertions. Fixture retained under tmp/."
+    exit 0
+}
 $compactFiles = @('README.md', 'AGENTS.md', 'CONTRIBUTING.md', 'LICENSE', 'NOTICE.md',
     '.gitignore', '.gitattributes', 'Project.toml', 'Manifest.toml', 'src/PaperRebuild.jl',
     'test/runtests.jl', 'docs/make.jl', 'docs/Project.toml', 'docs/Manifest.toml',
@@ -66,7 +85,7 @@ Check-Project $fixture
 Assert $true 'clean clone checks without original documents'
 if ($Compact) {
     $index = Inventory-Text $fixture
-    Assert ($index -match 'docs/src/assets/test-batch/run/') 'artifact batch directory visible'
+    Assert ($index -match 'docs/src/assets/test-batch/') 'artifact batch directory visible'
     Assert ($index -notmatch 'test-batch/run/F04.csv') 'repeated artifact members summarized'
     Assert ($index -match 'src/PaperRebuild.jl') 'source entry preserved'
 }

@@ -274,6 +274,7 @@ makedocs(;
             "备用风险结果与规模边界" => "ch07-risk-results.md",
             "备用风险台账索引" => "ch07-risk-generated.md",
             "共同可行见证" => "ch07-common-witness.md",
+            "原模型带初值对照" => "ch07-seeded-risk.md",
         ],
         "第 2 章模型与首批实现" => [
             "模型详解" => "ch02-models.md",

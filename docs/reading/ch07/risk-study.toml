@@ -76,6 +76,18 @@ implementation = "src/formulations/r9_common_witness.jl"
 test = "test/r9_common_witness.jl"
 
 [[audit_equations]]
+id = "R9-WS1"
+page = "docs/src/ch07-seeded-risk.md"
+implementation = "src/algorithms/r9_seeded_risk.jl"
+test = "test/r9_seeded_risk.jl"
+
+[[audit_equations]]
+id = "R9-WS2"
+page = "docs/src/ch07-seeded-risk.md"
+implementation = "src/core/r9_risk.jl"
+test = "test/r9_risk.jl"
+
+[[audit_equations]]
 id = "R9-CW2"
 page = "docs/src/ch07-common-witness.md"
 implementation = "src/algorithms/r9_common_witness.jl"

@@ -93,4 +93,5 @@ if PAPERREBUILD_TEST_STAGE in ("all", "r7_r9")
     include(joinpath(@__DIR__, "..", "scripts", "test_r9_reserve_support.jl"))
     include("r9_risk_evidence.jl")
     include("r9_common_witness.jl")
+    include("r9_seeded_risk.jl")
 end

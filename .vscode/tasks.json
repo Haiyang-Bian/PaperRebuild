@@ -1,5 +1,10 @@
 {
   "inputs": [
+    {"id":"r9SeededInput","type":"promptString","description":"带初值求解的新冻结目录或已冻结输入","default":"results/summaries/r9-seeded-input-20260921-v1"},
+    {"id":"r9SeededOutput","type":"promptString","description":"新运行目录；check时选择已保存运行","default":"results/runs/r9-seeded-new"},
+    {"id":"r9SeededScheme","type":"pickString","description":"保持原百情景的风险方案","options":["3A","3B","3C"],"default":"3A"},
+    {"id":"r9SeededEvidence","type":"promptString","description":"原数值封存证据，只读","default":"results/summaries/r9-seeded-evidence-20260921-v1"},
+    {"id":"r9SeededFigures","type":"promptString","description":"F45重绘的新目录，不覆盖旧图","default":"results/runs/r9-seeded-redraw-new"},
     {"id":"r9CommonInput","type":"promptString","description":"共同可行见证的冻结输入，只读","default":"results/summaries/r9-common-input-20260921-v2"},
     {"id":"r9CommonNewInput","type":"promptString","description":"共同可行见证新冻结目录，不覆盖旧输入","default":"results/runs/r9-common-input-new"},
     {"id":"r9CommonEvidence","type":"promptString","description":"共同可行见证已封存证据，只读","default":"results/summaries/r9-common-evidence-20260921-v1"},
@@ -190,6 +195,13 @@
     }
   ],
   "tasks": [
+    {"label":"PaperRebuild: R9 seeded risk tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_seeded_risk.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 seeded delivery check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_seeded_delivery.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 seeded redraw","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r9_seeded.jl","${input:r9SeededEvidence}","${input:r9CommonEvidence}","${input:r9SeededFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 seeded native tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_seeded_native.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 seeded freeze","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_seeded_study.jl","freeze","${input:r9CommonInput}","${input:r9CommonEvidence}","${input:r9SeededInput}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 seeded batch","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","${input:r9SeededInput}/implementation/scripts/run_r9_seeded_batch.jl","${input:r9CommonInput}","${input:r9SeededInput}","${input:r9SeededOutput}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 seeded independent replay","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--depwarn=error","--project=.","${input:r9SeededInput}/implementation/scripts/r9_seeded_study.jl","check","${input:r9CommonInput}","${input:r9SeededInput}","${input:r9SeededScheme}","${input:r9SeededOutput}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 common witness tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_common_witness.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 common freeze","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_reserve_witness.jl","freeze","${input:r9ReserveStudy}","${input:r9CommonNewInput}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 common witness run","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","${input:r9CommonInput}/implementation/scripts/r9_reserve_witness.jl","run","${input:r9CommonInput}","${input:r9CommonOutput}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},

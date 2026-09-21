@@ -127,7 +127,8 @@ Julia脚本`scripts/r9_reserve_witness.jl`提供`freeze`、`run`、原值`replay
 检查完整进程93.92秒，没有调用优化器；行归一化门槛``10^{-8}``不能替代已单独通过的物理A1。
 
 可选Gurobi小例已分别验证LP的`PStart`和MIP的`Start`传入、原生列映射及数值回读，17项通过。
-这只证明初值接口工作，完整100情景的带初值求解尚未执行。
+这只证明初值接口工作；后续[完整100情景对照](ch07-seeded-risk.md)中3A仍超时无候选，
+3B/3C返回并验证了同费用的保守候选，未取得费用改善或最优性。
 两种属性的作用不同，参见[Gurobi初值属性](https://docs.gurobi.com/projects/optimizer/en/current/reference/attributes/variable.html#attrpstart)
 和[LPWarmStart](https://docs.gurobi.com/projects/optimizer/en/current/reference/parameters.html#parameterlpwarmstart)。
 

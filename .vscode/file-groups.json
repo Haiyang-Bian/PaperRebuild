@@ -11550,6 +11550,16 @@
           "path": "docs/src/ch07-common-witness.md",
           "name": "ch07-common-witness.md",
           "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r9-seeded-20260921-v2/F45-seeded-risk.png",
+          "name": "F45-seeded-risk.png",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch07-seeded-risk.md",
+          "name": "ch07-seeded-risk.md",
+          "isDirectory": false
         }
       ],
       "order": 1,
@@ -11930,6 +11940,11 @@
         {
           "path": "docs/agent/tasks/2026-09-21-r9-common-witness.md",
           "name": "2026-09-21-r9-common-witness.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/agent/tasks/2026-09-21-r9-seeded-risk.md",
+          "name": "2026-09-21-r9-seeded-risk.md",
           "isDirectory": false
         }
       ],
@@ -13027,6 +13042,11 @@
           "path": "src/formulations/r9_common_witness.jl",
           "name": "r9_common_witness.jl",
           "isDirectory": false
+        },
+        {
+          "path": "src/algorithms/r9_seeded_risk.jl",
+          "name": "r9_seeded_risk.jl",
+          "isDirectory": false
         }
       ],
       "order": 3,
@@ -13727,6 +13747,11 @@
         {
           "path": "configs/r9/reserve-trajectories.toml",
           "name": "reserve-trajectories.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r9/seeded-study.toml",
+          "name": "seeded-study.toml",
           "isDirectory": false
         }
       ],
@@ -81860,6 +81885,1246 @@
           "path": "results/summaries/r9-common-start-20260921-v1/status.toml",
           "name": "status.toml",
           "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3A/local-logs.toml",
+          "name": "local-logs.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3A/run/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3A/run/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3A/run/validation.toml",
+          "name": "validation.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3A/status.toml",
+          "name": "status.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/local-logs.toml",
+          "name": "local-logs.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-001.toml",
+          "name": "scenario-001.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-002.toml",
+          "name": "scenario-002.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-003.toml",
+          "name": "scenario-003.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-004.toml",
+          "name": "scenario-004.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-005.toml",
+          "name": "scenario-005.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-006.toml",
+          "name": "scenario-006.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-007.toml",
+          "name": "scenario-007.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-008.toml",
+          "name": "scenario-008.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-009.toml",
+          "name": "scenario-009.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-010.toml",
+          "name": "scenario-010.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-011.toml",
+          "name": "scenario-011.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-012.toml",
+          "name": "scenario-012.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-013.toml",
+          "name": "scenario-013.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-014.toml",
+          "name": "scenario-014.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-015.toml",
+          "name": "scenario-015.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-016.toml",
+          "name": "scenario-016.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-017.toml",
+          "name": "scenario-017.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-018.toml",
+          "name": "scenario-018.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-019.toml",
+          "name": "scenario-019.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-020.toml",
+          "name": "scenario-020.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-021.toml",
+          "name": "scenario-021.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-022.toml",
+          "name": "scenario-022.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-023.toml",
+          "name": "scenario-023.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-024.toml",
+          "name": "scenario-024.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-025.toml",
+          "name": "scenario-025.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-026.toml",
+          "name": "scenario-026.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-027.toml",
+          "name": "scenario-027.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-028.toml",
+          "name": "scenario-028.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-029.toml",
+          "name": "scenario-029.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-030.toml",
+          "name": "scenario-030.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-031.toml",
+          "name": "scenario-031.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-032.toml",
+          "name": "scenario-032.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-033.toml",
+          "name": "scenario-033.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-034.toml",
+          "name": "scenario-034.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-035.toml",
+          "name": "scenario-035.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-036.toml",
+          "name": "scenario-036.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-037.toml",
+          "name": "scenario-037.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-038.toml",
+          "name": "scenario-038.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-039.toml",
+          "name": "scenario-039.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-040.toml",
+          "name": "scenario-040.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-041.toml",
+          "name": "scenario-041.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-042.toml",
+          "name": "scenario-042.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-043.toml",
+          "name": "scenario-043.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-044.toml",
+          "name": "scenario-044.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-045.toml",
+          "name": "scenario-045.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-046.toml",
+          "name": "scenario-046.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-047.toml",
+          "name": "scenario-047.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-048.toml",
+          "name": "scenario-048.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-049.toml",
+          "name": "scenario-049.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-050.toml",
+          "name": "scenario-050.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-051.toml",
+          "name": "scenario-051.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-052.toml",
+          "name": "scenario-052.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-053.toml",
+          "name": "scenario-053.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-054.toml",
+          "name": "scenario-054.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-055.toml",
+          "name": "scenario-055.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-056.toml",
+          "name": "scenario-056.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-057.toml",
+          "name": "scenario-057.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-058.toml",
+          "name": "scenario-058.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-059.toml",
+          "name": "scenario-059.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-060.toml",
+          "name": "scenario-060.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-061.toml",
+          "name": "scenario-061.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-062.toml",
+          "name": "scenario-062.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-063.toml",
+          "name": "scenario-063.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-064.toml",
+          "name": "scenario-064.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-065.toml",
+          "name": "scenario-065.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-066.toml",
+          "name": "scenario-066.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-067.toml",
+          "name": "scenario-067.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-068.toml",
+          "name": "scenario-068.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-069.toml",
+          "name": "scenario-069.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-070.toml",
+          "name": "scenario-070.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-071.toml",
+          "name": "scenario-071.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-072.toml",
+          "name": "scenario-072.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-073.toml",
+          "name": "scenario-073.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-074.toml",
+          "name": "scenario-074.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-075.toml",
+          "name": "scenario-075.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-076.toml",
+          "name": "scenario-076.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-077.toml",
+          "name": "scenario-077.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-078.toml",
+          "name": "scenario-078.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-079.toml",
+          "name": "scenario-079.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-080.toml",
+          "name": "scenario-080.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-081.toml",
+          "name": "scenario-081.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-082.toml",
+          "name": "scenario-082.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-083.toml",
+          "name": "scenario-083.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-084.toml",
+          "name": "scenario-084.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-085.toml",
+          "name": "scenario-085.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-086.toml",
+          "name": "scenario-086.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-087.toml",
+          "name": "scenario-087.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-088.toml",
+          "name": "scenario-088.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-089.toml",
+          "name": "scenario-089.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-090.toml",
+          "name": "scenario-090.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-091.toml",
+          "name": "scenario-091.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-092.toml",
+          "name": "scenario-092.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-093.toml",
+          "name": "scenario-093.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-094.toml",
+          "name": "scenario-094.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-095.toml",
+          "name": "scenario-095.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-096.toml",
+          "name": "scenario-096.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-097.toml",
+          "name": "scenario-097.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-098.toml",
+          "name": "scenario-098.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-099.toml",
+          "name": "scenario-099.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/scenario-100.toml",
+          "name": "scenario-100.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/run/validation.toml",
+          "name": "validation.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3B/status.toml",
+          "name": "status.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/local-logs.toml",
+          "name": "local-logs.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/result.toml",
+          "name": "result.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-001.toml",
+          "name": "scenario-001.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-002.toml",
+          "name": "scenario-002.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-003.toml",
+          "name": "scenario-003.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-004.toml",
+          "name": "scenario-004.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-005.toml",
+          "name": "scenario-005.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-006.toml",
+          "name": "scenario-006.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-007.toml",
+          "name": "scenario-007.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-008.toml",
+          "name": "scenario-008.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-009.toml",
+          "name": "scenario-009.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-010.toml",
+          "name": "scenario-010.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-011.toml",
+          "name": "scenario-011.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-012.toml",
+          "name": "scenario-012.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-013.toml",
+          "name": "scenario-013.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-014.toml",
+          "name": "scenario-014.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-015.toml",
+          "name": "scenario-015.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-016.toml",
+          "name": "scenario-016.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-017.toml",
+          "name": "scenario-017.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-018.toml",
+          "name": "scenario-018.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-019.toml",
+          "name": "scenario-019.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-020.toml",
+          "name": "scenario-020.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-021.toml",
+          "name": "scenario-021.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-022.toml",
+          "name": "scenario-022.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-023.toml",
+          "name": "scenario-023.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-024.toml",
+          "name": "scenario-024.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-025.toml",
+          "name": "scenario-025.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-026.toml",
+          "name": "scenario-026.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-027.toml",
+          "name": "scenario-027.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-028.toml",
+          "name": "scenario-028.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-029.toml",
+          "name": "scenario-029.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-030.toml",
+          "name": "scenario-030.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-031.toml",
+          "name": "scenario-031.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-032.toml",
+          "name": "scenario-032.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-033.toml",
+          "name": "scenario-033.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-034.toml",
+          "name": "scenario-034.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-035.toml",
+          "name": "scenario-035.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-036.toml",
+          "name": "scenario-036.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-037.toml",
+          "name": "scenario-037.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-038.toml",
+          "name": "scenario-038.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-039.toml",
+          "name": "scenario-039.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-040.toml",
+          "name": "scenario-040.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-041.toml",
+          "name": "scenario-041.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-042.toml",
+          "name": "scenario-042.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-043.toml",
+          "name": "scenario-043.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-044.toml",
+          "name": "scenario-044.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-045.toml",
+          "name": "scenario-045.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-046.toml",
+          "name": "scenario-046.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-047.toml",
+          "name": "scenario-047.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-048.toml",
+          "name": "scenario-048.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-049.toml",
+          "name": "scenario-049.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-050.toml",
+          "name": "scenario-050.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-051.toml",
+          "name": "scenario-051.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-052.toml",
+          "name": "scenario-052.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-053.toml",
+          "name": "scenario-053.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-054.toml",
+          "name": "scenario-054.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-055.toml",
+          "name": "scenario-055.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-056.toml",
+          "name": "scenario-056.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-057.toml",
+          "name": "scenario-057.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-058.toml",
+          "name": "scenario-058.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-059.toml",
+          "name": "scenario-059.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-060.toml",
+          "name": "scenario-060.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-061.toml",
+          "name": "scenario-061.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-062.toml",
+          "name": "scenario-062.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-063.toml",
+          "name": "scenario-063.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-064.toml",
+          "name": "scenario-064.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-065.toml",
+          "name": "scenario-065.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-066.toml",
+          "name": "scenario-066.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-067.toml",
+          "name": "scenario-067.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-068.toml",
+          "name": "scenario-068.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-069.toml",
+          "name": "scenario-069.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-070.toml",
+          "name": "scenario-070.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-071.toml",
+          "name": "scenario-071.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-072.toml",
+          "name": "scenario-072.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-073.toml",
+          "name": "scenario-073.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-074.toml",
+          "name": "scenario-074.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-075.toml",
+          "name": "scenario-075.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-076.toml",
+          "name": "scenario-076.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-077.toml",
+          "name": "scenario-077.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-078.toml",
+          "name": "scenario-078.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-079.toml",
+          "name": "scenario-079.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-080.toml",
+          "name": "scenario-080.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-081.toml",
+          "name": "scenario-081.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-082.toml",
+          "name": "scenario-082.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-083.toml",
+          "name": "scenario-083.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-084.toml",
+          "name": "scenario-084.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-085.toml",
+          "name": "scenario-085.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-086.toml",
+          "name": "scenario-086.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-087.toml",
+          "name": "scenario-087.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-088.toml",
+          "name": "scenario-088.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-089.toml",
+          "name": "scenario-089.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-090.toml",
+          "name": "scenario-090.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-091.toml",
+          "name": "scenario-091.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-092.toml",
+          "name": "scenario-092.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-093.toml",
+          "name": "scenario-093.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-094.toml",
+          "name": "scenario-094.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-095.toml",
+          "name": "scenario-095.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-096.toml",
+          "name": "scenario-096.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-097.toml",
+          "name": "scenario-097.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-098.toml",
+          "name": "scenario-098.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-099.toml",
+          "name": "scenario-099.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/scenario-100.toml",
+          "name": "scenario-100.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/run/validation.toml",
+          "name": "validation.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/3C/status.toml",
+          "name": "status.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/audit-source.jl",
+          "name": "audit-source.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-evidence-20260921-v1/delivery.toml",
+          "name": "delivery.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-figures-20260921-v1/F45-seeded-risk.pdf",
+          "name": "F45-seeded-risk.pdf",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-figures-20260921-v1/F45-seeded-risk.png",
+          "name": "F45-seeded-risk.png",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-figures-20260921-v1/commitments.csv",
+          "name": "commitments.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-figures-20260921-v1/figure-source.toml",
+          "name": "figure-source.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-figures-20260921-v1/redraw.jl",
+          "name": "redraw.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-figures-20260921-v1/residuals.csv",
+          "name": "residuals.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-figures-20260921-v1/summary.csv",
+          "name": "summary.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-figures-20260921-v1/visual-review.toml",
+          "name": "visual-review.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-figures-20260921-v2/F45-seeded-risk.pdf",
+          "name": "F45-seeded-risk.pdf",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-figures-20260921-v2/F45-seeded-risk.png",
+          "name": "F45-seeded-risk.png",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-figures-20260921-v2/commitments.csv",
+          "name": "commitments.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-figures-20260921-v2/figure-source.toml",
+          "name": "figure-source.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-figures-20260921-v2/redraw.jl",
+          "name": "redraw.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-figures-20260921-v2/residuals.csv",
+          "name": "residuals.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-figures-20260921-v2/summary.csv",
+          "name": "summary.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-figures-20260921-v2/visual-review.toml",
+          "name": "visual-review.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-input-20260921-v1/implementation/configs/r9/seeded-study.toml",
+          "name": "seeded-study.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-input-20260921-v1/implementation/scripts/r9_gurobi_start.jl",
+          "name": "r9_gurobi_start.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-input-20260921-v1/implementation/scripts/r9_reserve_study.jl",
+          "name": "r9_reserve_study.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-input-20260921-v1/implementation/scripts/r9_reserve_witness.jl",
+          "name": "r9_reserve_witness.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-input-20260921-v1/implementation/scripts/r9_seeded_study.jl",
+          "name": "r9_seeded_study.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-input-20260921-v1/implementation/scripts/run_r9_seeded_batch.jl",
+          "name": "run_r9_seeded_batch.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-input-20260921-v1/implementation/src/algorithms/r9_risk_start.jl",
+          "name": "r9_risk_start.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-input-20260921-v1/implementation/src/algorithms/r9_seeded_risk.jl",
+          "name": "r9_seeded_risk.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-input-20260921-v1/manifest.sha256",
+          "name": "manifest.sha256",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-input-20260921-v1/manifest.toml",
+          "name": "manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-input-20260921-v1/parent-status.toml",
+          "name": "parent-status.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-input-20260921-v1/witness.toml",
+          "name": "witness.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-structure-20260921-v1/audit-source.jl",
+          "name": "audit-source.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-structure-20260921-v1/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-seeded-structure-20260921-v1/structure.toml",
+          "name": "structure.toml",
+          "isDirectory": false
         }
       ],
       "order": 6,
@@ -82270,6 +83535,11 @@
         {
           "path": "test/r9_common_witness.jl",
           "name": "r9_common_witness.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "test/r9_seeded_risk.jl",
+          "name": "r9_seeded_risk.jl",
           "isDirectory": false
         }
       ],
@@ -85326,6 +86596,51 @@
         {
           "path": "scripts/test_r9_risk_native_start.jl",
           "name": "test_r9_risk_native_start.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/audit_r9_seeded_structure.jl",
+          "name": "audit_r9_seeded_structure.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r9_seeded_delivery.jl",
+          "name": "check_r9_seeded_delivery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/plot_r9_seeded.jl",
+          "name": "plot_r9_seeded.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r9_seeded_study.jl",
+          "name": "r9_seeded_study.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/run_r9_seeded_batch.jl",
+          "name": "run_r9_seeded_batch.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/seal_r9_seeded.jl",
+          "name": "seal_r9_seeded.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/test_r9_seeded_evidence.jl",
+          "name": "test_r9_seeded_evidence.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/test_r9_seeded_native.jl",
+          "name": "test_r9_seeded_native.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/test_r9_seeded_risk.jl",
+          "name": "test_r9_seeded_risk.jl",
           "isDirectory": false
         }
       ],

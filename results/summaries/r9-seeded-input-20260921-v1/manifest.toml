@@ -1,0 +1,56 @@
+created_utc = "2026-09-21T08:33:26.508"
+git_commit = "c27fd553b183d5b643ea9d328ee96fb76d599482"
+git_status = """ M .vscode/settings.json\n M .vscode/tasks.json\n M docs/make.jl\n M docs/reading/ch07/risk-study.toml\n M src/PaperRebuild.jl\n M test/runtests.jl\n?? configs/r9/seeded-study.toml\n?? docs/agent/tasks/2026-09-21-r9-seeded-risk.md\n?? docs/src/ch07-seeded-risk.md\n?? results/summaries/r9-seeded-input-20260921-v1/\n?? scripts/r9_seeded_study.jl\n?? scripts/run_r9_seeded_batch.jl\n?? scripts/test_r9_seeded_native.jl\n?? scripts/test_r9_seeded_risk.jl\n?? src/algorithms/r9_seeded_risk.jl\n?? test/r9_seeded_risk.jl\n"""
+optimization_performed = false
+origin = "synthetic"
+schema = "r9-seeded-freeze-v1"
+
+[cases]
+3A = "8ef3645de2a1c7100b89ef17703f2af8856122a6b95ade26996129e842eb6bbf"
+3B = "9c80589a4a0bcb89bffbc708fe6f0891dc1e41534c8264608596609775301d90"
+3C = "ce95fa0748bbfde08f4e3e65e418fe0a3a722c7964c290730b9b611f91135883"
+
+[files]
+"implementation/configs/r9/seeded-study.toml" = "bb22cc00336345accfba7ac4f7a8139dcb8a31bb20f614a41808171ded6f6a62"
+"implementation/scripts/r9_gurobi_start.jl" = "20eb2562215cf3d83e52b1303bec97103caa8e6a08f0890946277feca8aad6f6"
+"implementation/scripts/r9_reserve_study.jl" = "6a9fb134f8c57d9ca5ec338adc261e09a850f9d324f87b8a5a01c7d4c9487b47"
+"implementation/scripts/r9_reserve_witness.jl" = "b7a6ecb0788a94819e79b293ddd52454a26febbdbbefd1fc68179dfe75be1622"
+"implementation/scripts/r9_seeded_study.jl" = "41ba3ed8fdd270cc555fd66b95e3e5816f83381b0b68e72da092b6e873a4df0c"
+"implementation/scripts/run_r9_seeded_batch.jl" = "178a61c6497faa6ce3a40a86ed15f4109816705f5e17905669821d173ba719bc"
+"implementation/src/algorithms/r9_risk_start.jl" = "b43c07dcfdd3bf421c3e1aa6bb2450ab5561412b3af1a09a7beed37fb70903dc"
+"implementation/src/algorithms/r9_seeded_risk.jl" = "efcf6cbca4be0a426ddcf47eebe54eb46a656742b493a098d64edf01165c2ca8"
+"parent-status.toml" = "dacb42675b5a0e263db4e4eb1933774b5f9972f3bc67ef202cc78981f454ab64"
+"witness.toml" = "3996193a5606f7ad5a405a2d1badcd11104224abde8221700adabe9d993f1e91"
+
+[protocol]
+LPWarmStart = 2
+LP_Method = 0
+budget_sec = 600.0
+candidate_fallback = "none"
+comparison_scope = "same_model_seed_plus_LP_method_and_budget_partition; not isolated causal speedup"
+dual_reductions = 0
+feasibility_tolerance = 1.0e-9
+heldout_evaluation = "not_started"
+integer_tolerance = 1.0e-9
+mip_gap = 1.0e-9
+optimality_tolerance = 1.0e-9
+optimization_cutoff_fraction = 0.7
+oracle_cutoff_fraction = 0.8
+origin = "synthetic"
+parent_common_sha256 = "039ee2c45d94bab32fe27fbed70799ffa980c2f6766c704ed321e40ed34a22b2"
+parent_study_sha256 = "03e5889509207752d68398e32989957474b46fd9e184e91112d94567f8331d90"
+parent_witness_sha256 = "3996193a5606f7ad5a405a2d1badcd11104224abde8221700adabe9d993f1e91"
+schema = "r9-seeded-study-v1"
+schemes = ["3A", "3B", "3C"]
+seed = 23
+threads = 1
+
+[source_hashes]
+"configs/r9/seeded-study.toml" = "bb22cc00336345accfba7ac4f7a8139dcb8a31bb20f614a41808171ded6f6a62"
+"scripts/r9_gurobi_start.jl" = "20eb2562215cf3d83e52b1303bec97103caa8e6a08f0890946277feca8aad6f6"
+"scripts/r9_reserve_study.jl" = "6a9fb134f8c57d9ca5ec338adc261e09a850f9d324f87b8a5a01c7d4c9487b47"
+"scripts/r9_reserve_witness.jl" = "b7a6ecb0788a94819e79b293ddd52454a26febbdbbefd1fc68179dfe75be1622"
+"scripts/r9_seeded_study.jl" = "41ba3ed8fdd270cc555fd66b95e3e5816f83381b0b68e72da092b6e873a4df0c"
+"scripts/run_r9_seeded_batch.jl" = "178a61c6497faa6ce3a40a86ed15f4109816705f5e17905669821d173ba719bc"
+"src/algorithms/r9_risk_start.jl" = "b43c07dcfdd3bf421c3e1aa6bb2450ab5561412b3af1a09a7beed37fb70903dc"
+"src/algorithms/r9_seeded_risk.jl" = "efcf6cbca4be0a426ddcf47eebe54eb46a656742b493a098d64edf01165c2ca8"
