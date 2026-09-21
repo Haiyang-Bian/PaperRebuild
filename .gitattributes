@@ -15,3 +15,6 @@ results/summaries/r9-flow-reference-20260921-v2/objects/* -text whitespace=cr-at
 results/summaries/r9-fixed-20260921-v4/objects/* binary
 results/summaries/r9-trading-20260921-v1/objects/* binary
 results/summaries/r9-network-20260921-v1/objects/* binary
+# Immutable nominal probe objects preserve exact bytes, including split UTF-8 sequences.
+results/summaries/r9-reserve-nominal-20260921-v3/** -text whitespace=cr-at-eol
+results/summaries/r9-reserve-nominal-20260921-v3/objects/* binary

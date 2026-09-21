@@ -33,9 +33,9 @@ name = "Price-taking reserve and risk"
 reuse = "R5 internal dispatch/risk interfaces and R6 frozen statistical protocol"
 required_change = "External energy/reserve prices and transmission tariff; 100 representative scenarios; epsilon 0.05; new P2H equipment and sample split"
 must_not_inherit = "Strategic market-clearing KKT, previous synthetic dataset identity or a capacity-price time unit chosen without declaration"
-known_interface_gap = "Resolve capacity input/output basis; specify buildings, call signals, uncertainty support and reserve settlement time."
+known_interface_gap = "Explicit electric-input P2H interpretation, CNY v2, buildings and steady fixed-flow history are implemented; one nominal no-reserve 44/38-node day passes model and KKT. Call signals, representative support, sample split, risk radius and strict 3A delivery remain to be frozen. Linear grid, free terminal pipe state and complete-trajectory recourse are bounded project assumptions."
 acceptance = "Day-ahead versus delivered reserves; power/energy units; held-out violation counts and confidence interval; actual recourse feasibility."
-stage = "after_common_input_freeze"
+stage = "input_and_currency_checked; nominal_no_reserve_verified; formal_100_scenario_risk_comparison_pending"
 
 [[route]]
 section = "7.5"

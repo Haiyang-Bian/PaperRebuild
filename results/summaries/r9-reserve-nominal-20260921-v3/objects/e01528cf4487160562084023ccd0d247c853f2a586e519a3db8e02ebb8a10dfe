@@ -1,0 +1,23 @@
+module FrozenR5Commitment
+using JuMP,TOML,SHA,Dates,UUIDs
+include("src/networks/fixed_flow_heat.jl")
+include("src/core/r5_market.jl")
+include("src/formulations/r5_market.jl")
+include("src/verification/r5_market.jl")
+include("src/algorithms/r5_market.jl")
+include("src/reporting/r5_market.jl")
+include("src/core/r5_dispatch.jl")
+include("src/formulations/r5_dispatch.jl")
+include("src/verification/r5_dispatch.jl")
+include("src/algorithms/r5_dispatch.jl")
+include("src/reporting/r5_dispatch.jl")
+include("src/verification/r5_dispatch_duality.jl")
+include("src/formulations/r5_dispatch_dual.jl")
+include("src/core/r5_commitment.jl")
+include("src/formulations/r5_commitment.jl")
+include("src/verification/r5_commitment.jl")
+include("src/algorithms/r5_commitment.jl")
+include("src/reporting/r5_commitment.jl")
+end
+x=FrozenR5Commitment.read_r5_commitment_run(joinpath(@__DIR__,".."))
+println(x.result["run_id"]," model=",x.validation["model_pass"]," kkt=",x.validation["kkt_pass"])

@@ -375,6 +375,9 @@ include("verification/r9_trading_capacity.jl")
 export audit_r9_trading_capacity
 export r9_trading_heat_cut
 export r9_reconfiguration_case, validate_r9_network
+include("core/r9_reserve.jl")
+include("verification/r9_reserve.jl")
+export r9_reserve_template, audit_r9_reserve_input
 
 """
     hello(who::String)

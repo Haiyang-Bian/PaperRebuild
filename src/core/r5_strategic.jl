@@ -27,6 +27,7 @@ function R5StrategicCase(input::AbstractDict)
     only(market.data["ies"])["id"] == d["leader_id"] || error("领导者身份错误")
     d["origin"] == market.data["origin"] == risk.data["origin"] || error("来源声明不一致")
     firstcase = first(risk.data["commitment"]["scenarios"])["case"]
+    firstcase["schema"]=="r5-dispatch-case-v1" || error("策略市场仍采用原USD输入；v2先用于外生价格")
     market.data["T"] == firstcase["T"] && market.data["dt_h"] == firstcase["dt_h"] ||
         error("市场和补救时域/单位不同；不能自动缩放成交")
     # 支付由真实市场乘子计算，补救子记录的日前常数必须为零，避免重复计费。

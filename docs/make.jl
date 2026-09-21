@@ -2,6 +2,8 @@ using Documenter
 using PaperRebuild
 include(joinpath(@__DIR__, "..", "scripts", "r9_network_docs.jl"))
 write(joinpath(@__DIR__, "src", "ch07-network-generated.md"), r9_network_markdown())
+include(joinpath(@__DIR__, "..", "scripts", "r9_reserve_docs.jl"))
+write(joinpath(@__DIR__, "src", "ch07-reserve-generated.md"), r9_reserve_markdown())
 
 include(joinpath(@__DIR__, "..", "scripts", "ch02_docs.jl"))
 sync_ch02()
@@ -264,6 +266,8 @@ makedocs(;
             "重构结果与独立供热缺口" => "ch07-network-results.md",
             "接入与重构台账索引" => "ch07-network-generated.md",
             "交易模型台账索引" => "ch07-trading-generated.md",
+            "备用输入与费用单位" => "ch07-reserve.md",
+            "备用输入台账索引" => "ch07-reserve-generated.md",
         ],
         "第 2 章模型与首批实现" => [
             "模型详解" => "ch02-models.md",

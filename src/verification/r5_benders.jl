@@ -237,7 +237,10 @@ function r5_benders_cut(c::R5RiskCase, r; arithmetic = :float_box)
             "arithmetic"=>string(arithmetic),
             "source_value"=>source,
             "productive"=>r["elastic"] ? source>1e-8 : true,
-            "units"=>r["elastic"] ? "normalized_violation" : "synthetic_USD",
+            "units"=>r["elastic"] ? "normalized_violation" :
+                     "synthetic_"*r5_dispatch_currency(
+                first(c.data["commitment"]["scenarios"])["case"],
+            ),
         ),
     )
     cut

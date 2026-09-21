@@ -7,7 +7,7 @@ const R5_BENDERS_MODEL_FILE=@__FILE__
 构造固定日前承诺和舒适分支的连续补救LP，不求解、不写文件。scenario为输入顺序的情景索引。
 branch=0保持全部舒适，branch=1仅使用已声明室温物理域；设备、交付及末期关系不变。
 elastic=true改为有界归一化关系诊断，原物理盒保持硬约束；其解不是可实施调度。
-目标不含日前常数，成本单位USD；诊断为无量纲。参数依赖见R5-BD1，有限盒见R5-BD2。
+目标不含日前常数，成本使用输入币种；诊断为无量纲。参数依赖见R5-BD1，有限盒见R5-BD2。
 numerical_scale仅改变u=scale*y的数值表示；variables返回原单位表达式，solver_variables为原始u。
 """
 function build_r5_benders_subproblem(

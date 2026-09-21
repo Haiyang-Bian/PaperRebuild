@@ -1,0 +1,96 @@
+schema = "r9-reserve-adoption-v1"
+status = "input_and_currency_adaptation; formal_risk_experiments_pending"
+source_pdf = "docs/摘要.pdf"
+source_sha256 = "20328e2480e773520c19c378e53365fc944c0bafcfca73071f5d8313d5ee7d91"
+physical_pages = [135,136,137]
+protocol = "configs/r9/reserve-protocol.toml"
+page = "docs/src/ch07-reserve.md"
+test_file = "test/r9_reserve.jl"
+tests = ["R9-RS original nameplates and independent steady history", "R9-RS declared capacity and temperature boundary rejection"]
+new_apis = ["r9_reserve_template", "audit_r9_reserve_input"]
+original_input_reproduction = false
+full_electric_physics_certified = false
+formal_risk_experiment_completed = false
+
+[[equations]]
+id = "R9-RS1"
+meaning = "参考负荷、端口质量流率与建筑连续C/G参数；项目替代，不拟合原表费用"
+api = "r9_reserve_template"
+[[equations]]
+id = "R9-RS2"
+meaning = "正向固定流量下，按原节点法J生成稳态入口历史；不改成PDE精确衰减"
+api = "audit_r9_reserve_input"
+[[equations]]
+id = "R9-RS3"
+meaning = "混合、建筑负荷回水及源端热量，分别核对供回方向与容量"
+api = "audit_r9_reserve_input"
+[[equations]]
+id = "R9-RS4"
+meaning = "输配费在日前和实时能量价各加一次，合并后仅按实际PCC购电计费"
+api = "r9_reserve_template"
+
+[[symbols]]
+id = "r9.reserve.Href"
+latex = 'H_b^{\mathrm{ref}}'
+meaning = "建筑参考热负荷；36节点均分参考总负荷"
+code = "href"
+unit = "MW"
+[[symbols]]
+id = "r9.reserve.m"
+latex = 'm_b'
+meaning = "建筑端口质量流率；不是管内体积流量"
+code = "buildings[b].m_kg_s"
+unit = "kg/s"
+[[symbols]]
+id = "r9.reserve.C"
+latex = 'C_b'
+meaning = "单区建筑显式热容；项目替代参数"
+code = "C_MWh_K"
+unit = "MWh/K"
+[[symbols]]
+id = "r9.reserve.G"
+latex = 'G_b'
+meaning = "建筑与室外的传热系数"
+code = "G_MW_K"
+unit = "MW/K"
+[[symbols]]
+id = "r9.reserve.J"
+latex = 'J_p'
+meaning = "作者固定流节点法的半时间步衰减系数"
+code = "fixed_flow_kernel(...).J"
+unit = "1"
+[[symbols]]
+id = "r9.reserve.tariff"
+latex = '\kappa^{\mathrm{grid}}'
+meaning = "按实际购电能量计费的输配费；不计入备用容量价"
+code = "transmission_CNY_MWh"
+unit = "CNY/MWh"
+
+[[issues]]
+id = "R9-RS-C01"
+status = "project_interpretation"
+meaning = "表7-12四台P2H按电输入侧解释容量，效率0.8；原表未写容量侧。PV1仍为第7.1节2MW。"
+[[issues]]
+id = "R9-RS-C02"
+status = "project_interpretation"
+meaning = "备用价格文字与坐标时间单位不一致；显式采用CNY/(MW*h)，所有容量收益乘dt。图7-9曲线与文字200–400/20–40范围也不完全相容；当前合成价格按文字范围冻结，不称为原曲线数字化。"
+[[issues]]
+id = "R9-RS-C03"
+status = "bounded_model"
+meaning = "复用R5线性电压幅值潮流、固定正流热节点法、连续CHP及完整未来轨迹补救；不认证AC损耗、水压、启停或在线控制。"
+[[issues]]
+id = "R9-RS-C04"
+status = "boundary_declared"
+meaning = "建筑末温回初值，管温终端free；不能将末端管内热量消耗解释为公平周期收益。"
+[[issues]]
+id = "R9-RS-C05"
+status = "pending_formal_comparison"
+meaning = "3A要求全部调用交付，不能把模板delta=0.1称100%；三方案的交付规则及是否增加共同delta=0对照须在正式优化前冻结。无备用探针的容量分母为零，实际交付误差被约束为零。"
+[[issues]]
+id = "R9-RS-C06"
+status = "pending_formal_comparison"
+meaning = "100代表情景、训练/验证/测试划分、概率距离和风险半径尚未冻结；当前不报告3A/3B/3C收益排序、样本外可靠率或作者同输入结果。式5-70的联合舒适风险不同于交付误差delta；有限支持概率扰动不能认证任意未见24h调用轨迹。"
+[[issues]]
+id = "R9-RS-C07"
+status = "currency_checked"
+meaning = "v1USD数据和哈希不迁移；v2显式USD/CNY及cost_per_MWh、penalty_per_MWh。原USD市场父记录和策略市场不自动跨币种。"

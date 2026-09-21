@@ -82,7 +82,7 @@
 
 复用：R5 internal dispatch/risk interfaces and R6 frozen statistical protocol。
 
-接口缺口：Resolve capacity input/output basis; specify buildings, call signals, uncertainty support and reserve settlement time.
+接口缺口：Explicit electric-input P2H interpretation, CNY v2, buildings and steady fixed-flow history are implemented; one nominal no-reserve 44/38-node day passes model and KKT. Call signals, representative support, sample split, risk radius and strict 3A delivery remain to be frozen. Linear grid, free terminal pipe state and complete-trajectory recourse are bounded project assumptions.
 
 不得默认继承：Strategic market-clearing KKT, previous synthetic dataset identity or a capacity-price time unit chosen without declaration。
 

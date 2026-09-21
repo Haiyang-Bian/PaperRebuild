@@ -1,5 +1,6 @@
 {
   "inputs": [
+    {"id":"r9ReserveProbe","type":"promptString","description":"第7.4节输入/无备用开发基准的新目录，不覆盖旧结果","default":"results/runs/r9-reserve-new"},
     {"id":"r9NetworkSummary","type":"promptString","description":"R9接入/拓扑已封存原值目录，只读","default":"results/summaries/r9-network-20260921-v1"},
     {"id":"r9NetworkFigures","type":"promptString","description":"F39/F40重绘新目录，不覆盖旧图","default":"results/runs/r9-network-redraw-new"},
     {"id":"r9NetworkStudy","type":"promptString","description":"R9接入与拓扑十六方法批次；freeze须新目录","default":"results/runs/r9-network-new"},
@@ -180,6 +181,11 @@
     }
   ],
   "tasks": [
+    {"label":"PaperRebuild: R9 reserve mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_reserve.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 reserve input tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_reserve.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 currency tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_currency.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 reserve input audit","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/probe_r9_reserve.jl","input","${input:r9ReserveProbe}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 reserve nominal probe","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/probe_r9_reserve.jl","nominal","${input:r9ReserveProbe}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 network evidence check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","${input:r9NetworkSummary}/code/scripts/r9_network_evidence.jl","check","${input:r9NetworkSummary}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 independent heat audit","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","${input:r9NetworkSummary}/independent-heat/audit-source.jl","check","${input:r9NetworkSummary}","${input:r9NetworkSummary}/independent-heat"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 network redraw","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r9_network.jl","${input:r9NetworkSummary}","${input:r9NetworkFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},

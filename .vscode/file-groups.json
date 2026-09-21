@@ -11480,6 +11480,16 @@
           "path": "docs/src/ch07-network.md",
           "name": "ch07-network.md",
           "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch07-reserve-generated.md",
+          "name": "ch07-reserve-generated.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch07-reserve.md",
+          "name": "ch07-reserve.md",
+          "isDirectory": false
         }
       ],
       "order": 1,
@@ -11845,6 +11855,11 @@
         {
           "path": "docs/agent/tasks/2026-09-21-r9-network.md",
           "name": "2026-09-21-r9-network.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/agent/tasks/2026-09-21-r9-reserve.md",
+          "name": "2026-09-21-r9-reserve.md",
           "isDirectory": false
         }
       ],
@@ -12912,6 +12927,16 @@
           "path": "src/verification/r9_network.jl",
           "name": "r9_network.jl",
           "isDirectory": false
+        },
+        {
+          "path": "src/core/r9_reserve.jl",
+          "name": "r9_reserve.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/verification/r9_reserve.jl",
+          "name": "r9_reserve.jl",
+          "isDirectory": false
         }
       ],
       "order": 3,
@@ -13598,6 +13623,11 @@
           "path": "configs/r9/network-study.toml",
           "name": "network-study.toml",
           "isDirectory": false
+        },
+        {
+          "path": "configs/r9/reserve-protocol.toml",
+          "name": "reserve-protocol.toml",
+          "isDirectory": false
         }
       ],
       "order": 4,
@@ -14013,6 +14043,11 @@
         {
           "path": "docs/reading/ch07/network.toml",
           "name": "network.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch07/reserve.toml",
+          "name": "reserve.toml",
           "isDirectory": false
         }
       ],
@@ -78985,6 +79020,236 @@
           "path": "results/summaries/r9-network-20260921-v1/trajectories.csv",
           "name": "trajectories.csv",
           "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/archive-code/r9_fixed_evidence.jl",
+          "name": "r9_fixed_evidence.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/audit-source.jl",
+          "name": "audit-source.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/delivery.toml",
+          "name": "delivery.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/object-chunks.toml",
+          "name": "object-chunks.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/0746dcd8a87713cd8616cbf0c6f80ffdf85533c0c7b5777fb85f1726d1a0290f",
+          "name": "0746dcd8a87713cd8616cbf0c6f80ffdf85533c0c7b5777fb85f1726d1a0290f",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/0be0ef9d6c6748ea1bc9e96ef45a55156467b11b603b6ee2a0d93e1c1b52b09a",
+          "name": "0be0ef9d6c6748ea1bc9e96ef45a55156467b11b603b6ee2a0d93e1c1b52b09a",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/12763cffcca4b461817a4823c5b255b77143d2780f0a2df23442fe6a2bffcad5",
+          "name": "12763cffcca4b461817a4823c5b255b77143d2780f0a2df23442fe6a2bffcad5",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/164d47e5922903179225a17c8a681610ae7eb5312068a4f806d85010f16f0796",
+          "name": "164d47e5922903179225a17c8a681610ae7eb5312068a4f806d85010f16f0796",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/180ce14ba015198654a5af096172b4b6959b7fe6b029860631258779a39eac6a",
+          "name": "180ce14ba015198654a5af096172b4b6959b7fe6b029860631258779a39eac6a",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/1901b2183fd64b2358310eacb8fb866b12ed24e9f9f47c9a8594f163ac5fb8fd",
+          "name": "1901b2183fd64b2358310eacb8fb866b12ed24e9f9f47c9a8594f163ac5fb8fd",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/1cf9ad75caf22a26ab9602f59be02c526f72164affddd7d527a2c4cb3102f748",
+          "name": "1cf9ad75caf22a26ab9602f59be02c526f72164affddd7d527a2c4cb3102f748",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/1db12fb985f87315c469cdd4086d0ea08808042a8ddcbf65d0c19857ae119007",
+          "name": "1db12fb985f87315c469cdd4086d0ea08808042a8ddcbf65d0c19857ae119007",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/22cb571f15112ccc21408903f229e25b49ee0d59333c14d251ab4b83a8abbf54",
+          "name": "22cb571f15112ccc21408903f229e25b49ee0d59333c14d251ab4b83a8abbf54",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/34155cc8723c03b06ee738139ed7041a04d86aba29fd231639cfe89602e1a9b7",
+          "name": "34155cc8723c03b06ee738139ed7041a04d86aba29fd231639cfe89602e1a9b7",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/3c111b9582e4e5cd719150b88e73e014889426df048fa2f55f40a95bdb1ec71f",
+          "name": "3c111b9582e4e5cd719150b88e73e014889426df048fa2f55f40a95bdb1ec71f",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/47cf2899d6167974ec406d7b431d06bcd2ca3b16108bdbc67c8805e071e57009",
+          "name": "47cf2899d6167974ec406d7b431d06bcd2ca3b16108bdbc67c8805e071e57009",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/4ffe577d9fdc891441e47a7f832d2c01646691f159331fbbfa262d1fda322234",
+          "name": "4ffe577d9fdc891441e47a7f832d2c01646691f159331fbbfa262d1fda322234",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/5038f22f037bba90a7bb3e2afc79b900fdff2d91ebe0afbde8ff189acd0c04bb",
+          "name": "5038f22f037bba90a7bb3e2afc79b900fdff2d91ebe0afbde8ff189acd0c04bb",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/54b43500d3dde0ed617326912d47633425150cb679afa6f8433f2007dd4ac801",
+          "name": "54b43500d3dde0ed617326912d47633425150cb679afa6f8433f2007dd4ac801",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/5d919f4e14dff618d7cc6467ccdcf5ea073b218b2799db0966eb877f4f5d92cb",
+          "name": "5d919f4e14dff618d7cc6467ccdcf5ea073b218b2799db0966eb877f4f5d92cb",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/5e4a30e71b12c56b8754482163182b93266de454a8b04fb41a5e2f86a98af812",
+          "name": "5e4a30e71b12c56b8754482163182b93266de454a8b04fb41a5e2f86a98af812",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/620c069f6b3a520d32ee546ec048074f9cbaa3c785f8c2e31ec7fd7bf245a83b",
+          "name": "620c069f6b3a520d32ee546ec048074f9cbaa3c785f8c2e31ec7fd7bf245a83b",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/72c3e9aaa90acf994486acecf0c8fd80eaf21954372a94bd8c853c98ad0fab06",
+          "name": "72c3e9aaa90acf994486acecf0c8fd80eaf21954372a94bd8c853c98ad0fab06",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/74c97b977895fadb449e43fd011843cf45feb0d8101641bdc65495f4b9d3381b",
+          "name": "74c97b977895fadb449e43fd011843cf45feb0d8101641bdc65495f4b9d3381b",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/7d5faa97dbc2724d33831b319af807381ea13aa763cfde5655a4d7ecea956f2a",
+          "name": "7d5faa97dbc2724d33831b319af807381ea13aa763cfde5655a4d7ecea956f2a",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/8066cff3f078c9c5ad89040cbb6816d3a2c490ea500efbb83a9b8e52b6eb8b92",
+          "name": "8066cff3f078c9c5ad89040cbb6816d3a2c490ea500efbb83a9b8e52b6eb8b92",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/85ba2ee6e8f84bef53db7949bf4fc425b57476bdaa49f22d9a816bf32bd01713",
+          "name": "85ba2ee6e8f84bef53db7949bf4fc425b57476bdaa49f22d9a816bf32bd01713",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/89a2b20bb234acc6554e644fa2c8028ed18bf7c788ecb7f2b46567cab4b8cf36",
+          "name": "89a2b20bb234acc6554e644fa2c8028ed18bf7c788ecb7f2b46567cab4b8cf36",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/8d66f8987a6a2e053416d276080b50644d63b38763fa06625e27fa9899f246ae",
+          "name": "8d66f8987a6a2e053416d276080b50644d63b38763fa06625e27fa9899f246ae",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/948f0f5c5a4bc8381a3d9ad413fb0f8e78ee1a3bad52606dea9b9b6f144e5450",
+          "name": "948f0f5c5a4bc8381a3d9ad413fb0f8e78ee1a3bad52606dea9b9b6f144e5450",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/9685a38e919580a17abd0f8fee7c90fbdc7f8dd85080831ee36772c3d8d69bdf",
+          "name": "9685a38e919580a17abd0f8fee7c90fbdc7f8dd85080831ee36772c3d8d69bdf",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/9cd7fcfc3b8538a1e0eb2d6ace1e7ccc144bd465443e76e11acade0e8d1c1381",
+          "name": "9cd7fcfc3b8538a1e0eb2d6ace1e7ccc144bd465443e76e11acade0e8d1c1381",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/9cf4ce16f01659598ad2669fcd389ee088a1c85515fe463414e4f3b59db09598",
+          "name": "9cf4ce16f01659598ad2669fcd389ee088a1c85515fe463414e4f3b59db09598",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/9e422d26b32cd2d9a7859f57bd33cc78aa8cd4af1bf44bad2228184effc29843",
+          "name": "9e422d26b32cd2d9a7859f57bd33cc78aa8cd4af1bf44bad2228184effc29843",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/a03b47e468b374bc737db5a13dc9359a40f74b16efaf85a1c541bcdd6a2a0bd4",
+          "name": "a03b47e468b374bc737db5a13dc9359a40f74b16efaf85a1c541bcdd6a2a0bd4",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/a08369e5458aa86e3d6534d6198335af0defdfaeff87e7ac76167f9d9509d9a5",
+          "name": "a08369e5458aa86e3d6534d6198335af0defdfaeff87e7ac76167f9d9509d9a5",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/a145fc5b03f95c6c82ff81935c34881db7d37fdb34e9458d82addc64b9c824b9",
+          "name": "a145fc5b03f95c6c82ff81935c34881db7d37fdb34e9458d82addc64b9c824b9",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/a5a5bbc1b96743973ea81e79ec8af40e8f18328d00ca7fc14b540aaf9324154a",
+          "name": "a5a5bbc1b96743973ea81e79ec8af40e8f18328d00ca7fc14b540aaf9324154a",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/aa4b247facc4561e785e0815b15f912cf05fe29ed36ceec543df96d92fbb1df4",
+          "name": "aa4b247facc4561e785e0815b15f912cf05fe29ed36ceec543df96d92fbb1df4",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/ad705fb5a65c895c8785da4a0b797b8ff20fa6039ab721f536982a855127895e",
+          "name": "ad705fb5a65c895c8785da4a0b797b8ff20fa6039ab721f536982a855127895e",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/b66b34edafb602439fa8c93beb25fc20500b6a4106dee739a1795418cb265222",
+          "name": "b66b34edafb602439fa8c93beb25fc20500b6a4106dee739a1795418cb265222",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/be07a40d34ee1e44e61d0e81fc1a71161cc9ba7ef20d57fc7fbe4e70f6e3ba8b",
+          "name": "be07a40d34ee1e44e61d0e81fc1a71161cc9ba7ef20d57fc7fbe4e70f6e3ba8b",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/c354ba0c6e2ac9b53e701e0f0176d99e81b8d4d313ff241e42bf8da9f4488100",
+          "name": "c354ba0c6e2ac9b53e701e0f0176d99e81b8d4d313ff241e42bf8da9f4488100",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/cddd855c4f82366a25eb1fd6922208370d60192b43bf4bdd4f93eef88bd5a374",
+          "name": "cddd855c4f82366a25eb1fd6922208370d60192b43bf4bdd4f93eef88bd5a374",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/e01528cf4487160562084023ccd0d247c853f2a586e519a3db8e02ebb8a10dfe",
+          "name": "e01528cf4487160562084023ccd0d247c853f2a586e519a3db8e02ebb8a10dfe",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/fe48a6db69bf8bbb9b843b1ecc1695ced426a60860e39a586198e15cd77fca03",
+          "name": "fe48a6db69bf8bbb9b843b1ecc1695ced426a60860e39a586198e15cd77fca03",
+          "isDirectory": false
         }
       ],
       "order": 6,
@@ -79365,6 +79630,16 @@
         {
           "path": "test/r9_network.jl",
           "name": "r9_network.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "test/r5_currency.jl",
+          "name": "r5_currency.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "test/r9_reserve.jl",
+          "name": "r9_reserve.jl",
           "isDirectory": false
         }
       ],
@@ -82286,6 +82561,36 @@
         {
           "path": "scripts/test_r9_network_evidence.jl",
           "name": "test_r9_network_evidence.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r9_reserve.jl",
+          "name": "check_r9_reserve.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/probe_r9_reserve.jl",
+          "name": "probe_r9_reserve.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r9_reserve_docs.jl",
+          "name": "r9_reserve_docs.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/seal_r9_reserve_probe.jl",
+          "name": "seal_r9_reserve_probe.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/test_r5_currency.jl",
+          "name": "test_r5_currency.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/test_r9_reserve.jl",
+          "name": "test_r9_reserve.jl",
           "isDirectory": false
         }
       ],

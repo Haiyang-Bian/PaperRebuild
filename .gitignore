@@ -79,3 +79,7 @@ Thumbs.db
 # Complete v3 preserved locally; v4 only shards byte-identical raw records to satisfy 5 MiB.
 /results/summaries/r9-fixed-20260921-v3/
 /results/summaries/r9-fixed-figures-20260921-v3/
+# Unsplit nominal probe is retained locally; v2 preserves identical bytes in 4MiB objects.
+/results/summaries/r9-reserve-nominal-20260921-v1/
+# v2 keeps the same raw evidence; v3 fixes a Julia 1.12 frozen-binding replay warning.
+/results/summaries/r9-reserve-nominal-20260921-v2/

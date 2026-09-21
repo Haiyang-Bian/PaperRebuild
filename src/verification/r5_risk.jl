@@ -77,9 +77,9 @@ function r5_risk_policy(c, r)
         v=validate_r5_dispatch(view, rr)
         haskey(v, "operating_net_cost")||error("风险情景数值缺失")
         real=v["operating_net_cost"]-v["day_ahead_cost"]
-        linear=v["device_cost"]+v["real_time_settlement"]+view.data["dt_h"]*view.data["realtime"]["penalty_USD_MWh"]*sum(
-            only(rr["values"]["mismatch"]),
-        )
+        linear=v["device_cost"]+v["real_time_settlement"]+view.data["dt_h"]*r5_dispatch_penalty(
+            view.data,
+        )*sum(only(rr["values"]["mismatch"]))
         b0=c.data["commitment"]["scenarios"][i]["case"]["buildings"]
         violation=maximum(
             max(0.0, b["T_min_K"]-τ, τ-b["T_max_K"]) for (j, b) in enumerate(b0) for
@@ -245,7 +245,7 @@ function validate_r5_risk(c::R5RiskCase, r)
         "cost",
         get(r, "solver_objective", NaN)-modelobj,
         1e-6*max(1, abs(modelobj));
-        unit = "USD",
+        unit = r5_dispatch_currency(first(sc)["case"]),
     )
     out["model_pass"]=all(v["validation"]["model_pass"] for v in values(policy.scenarios))&&all(
         a["pass"] for a in out["rows"]
@@ -282,7 +282,7 @@ function validate_r5_risk(c::R5RiskCase, r)
         "cost",
         max(0.0, upper-modelobj),
         1e-6*max(1, abs(upper), abs(modelobj));
-        unit = "USD",
+        unit = r5_dispatch_currency(first(sc)["case"]),
     )
     out["risk_pass"]=out["model_pass"]&&all(x["pass"] for x in out["rows"] if x["group"]=="risk")
     out["cost_pass"]=all(x["pass"] for x in out["rows"] if x["group"]=="cost")

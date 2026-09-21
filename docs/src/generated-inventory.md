@@ -155,6 +155,7 @@
 - `configs/r9/network-protocol.toml`
 - `configs/r9/network-study.toml`
 - `configs/r9/pv-protocol.toml`
+- `configs/r9/reserve-protocol.toml`
 - `configs/r9/trading-protocol.toml`
 - `configs/r9/trading-study.toml`
 - `data/processed/README.md`
@@ -227,6 +228,7 @@
 - `docs/agent/tasks/2026-09-21-r9-network.md`
 - `docs/agent/tasks/2026-09-21-r9-numerics.md`
 - `docs/agent/tasks/2026-09-21-r9-pv.md`
+- `docs/agent/tasks/2026-09-21-r9-reserve.md`
 - `docs/agent/tasks/2026-09-21-r9-trading-model.md`
 - `docs/agent/tasks/2026-09-21-r9-trading-runs.md`
 - `docs/agent/tasks/2026-09-21-r9-trading-study.md`
@@ -306,6 +308,7 @@
 - `docs/reading/ch07/numerics.toml`
 - `docs/reading/ch07/pv-adoption.toml`
 - `docs/reading/ch07/reported-results.toml`
+- `docs/reading/ch07/reserve.toml`
 - `docs/reading/ch07/topology.toml`
 - `docs/reading/ch07/trading.toml`
 - `docs/reading/source_manifest.json`
@@ -777,6 +780,8 @@
 - `docs/src/ch07-pv-generated.md`
 - `docs/src/ch07-pv-results.md`
 - `docs/src/ch07-pv.md`
+- `docs/src/ch07-reserve-generated.md`
+- `docs/src/ch07-reserve.md`
 - `docs/src/ch07-trading-generated.md`
 - `docs/src/ch07-trading-results.md`
 - `docs/src/ch07-trading.md`
@@ -1706,6 +1711,9 @@
 - `results/summaries/r9-pv-vt-witness-20260920-v1/audit-source.jl`
 - `results/summaries/r9-pv-vt-witness-20260920-v1/audit.toml`
 - `results/summaries/r9-pv-vt-witness-20260920-v1/auxiliary-reconstruction.csv`
+- `results/summaries/r9-reserve-nominal-20260921-v3/audit-source.jl`
+- `results/summaries/r9-reserve-nominal-20260921-v3/delivery.toml`
+- `results/summaries/r9-reserve-nominal-20260921-v3/object-chunks.toml`
 - `results/summaries/r9-trading-20260921-v1/artifact-hashes.toml`
 - `results/summaries/r9-trading-20260921-v1/capacity.toml`
 - `results/summaries/r9-trading-20260921-v1/evidence.toml`
@@ -1868,6 +1876,7 @@
 - `scripts/check_r9_pv.jl`
 - `scripts/check_r9_pv_figures.jl`
 - `scripts/check_r9_pv_results.jl`
+- `scripts/check_r9_reserve.jl`
 - `scripts/check_r9_trading.jl`
 - `scripts/check_r9_trading_delivery.jl`
 - `scripts/check_r9_trading_runs.jl`
@@ -1998,6 +2007,7 @@
 - `scripts/probe_r7_flow_balance.jl`
 - `scripts/probe_r9_fixed_scaling.jl`
 - `scripts/probe_r9_reduced.jl`
+- `scripts/probe_r9_reserve.jl`
 - `scripts/publish_r3_v2_report.jl`
 - `scripts/publish_r3_v3_audit_addendum.jl`
 - `scripts/publish_r3_v3_report.jl`
@@ -2107,6 +2117,7 @@
 - `scripts/r9_pv_attribution.jl`
 - `scripts/r9_pv_docs.jl`
 - `scripts/r9_pv_study.jl`
+- `scripts/r9_reserve_docs.jl`
 - `scripts/r9_source_report.jl`
 - `scripts/r9_trading_evidence.jl`
 - `scripts/r9_trading_study.jl`
@@ -2158,6 +2169,7 @@
 - `scripts/run_r9_gurobi.jl`
 - `scripts/run_r9_network_batch.jl`
 - `scripts/run_r9_numerics_gurobi.jl`
+- `scripts/seal_r9_reserve_probe.jl`
 - `scripts/smoke.jl`
 - `scripts/study_r4.jl`
 - `scripts/study_r4_bargaining.jl`
@@ -2203,6 +2215,7 @@
 - `scripts/test_r5_benders_study.jl`
 - `scripts/test_r5_benders_witness.jl`
 - `scripts/test_r5_commitment.jl`
+- `scripts/test_r5_currency.jl`
 - `scripts/test_r5_dispatch.jl`
 - `scripts/test_r5_dispatch_duality.jl`
 - `scripts/test_r5_execution.jl`
@@ -2265,6 +2278,7 @@
 - `scripts/test_r9_pv_evidence.jl`
 - `scripts/test_r9_reduced.jl`
 - `scripts/test_r9_report.jl`
+- `scripts/test_r9_reserve.jl`
 - `scripts/test_r9_sources.jl`
 - `scripts/test_r9_trading.jl`
 - `scripts/test_r9_trading_artifacts.jl`
@@ -2358,6 +2372,7 @@
 - `src/core/r9_inputs.jl`
 - `src/core/r9_network.jl`
 - `src/core/r9_pv.jl`
+- `src/core/r9_reserve.jl`
 - `src/core/r9_trading.jl`
 - `src/formulations/r1.jl`
 - `src/formulations/r2.jl`
@@ -2483,6 +2498,7 @@
 - `src/verification/r9_network.jl`
 - `src/verification/r9_pv.jl`
 - `src/verification/r9_reduced.jl`
+- `src/verification/r9_reserve.jl`
 - `src/verification/r9_sources.jl`
 - `src/verification/r9_trading.jl`
 - `src/verification/r9_trading_capacity.jl`
@@ -2514,6 +2530,7 @@
 - `test/r5_benders.jl`
 - `test/r5_benders_loop.jl`
 - `test/r5_commitment.jl`
+- `test/r5_currency.jl`
 - `test/r5_dispatch.jl`
 - `test/r5_dispatch_duality.jl`
 - `test/r5_execution.jl`
@@ -2557,6 +2574,7 @@
 - `test/r9_network.jl`
 - `test/r9_pv.jl`
 - `test/r9_reduced.jl`
+- `test/r9_reserve.jl`
 - `test/r9_sources.jl`
 - `test/r9_trading.jl`
 - `test/r9_trading_runs.jl`
@@ -2683,6 +2701,8 @@
 - `results/summaries/r9-numerics-audit-20260921-v1/terminal-matrix/`
 - `results/summaries/r9-pv-batch-20260920-v4/code/`
 - `results/summaries/r9-pv-batch-20260920-v4/runs/`
+- `results/summaries/r9-reserve-nominal-20260921-v3/archive-code/`
+- `results/summaries/r9-reserve-nominal-20260921-v3/objects/`
 - `results/summaries/r9-trading-20260921-v1/code/`
 - `results/summaries/r9-trading-20260921-v1/figures/`
 - `results/summaries/r9-trading-20260921-v1/objects/`
