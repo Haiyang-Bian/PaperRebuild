@@ -304,8 +304,10 @@ source = "table-7-15 / PDF139; do not substitute trading CHP2"
 id = "GT1"
 electric_node = 22
 P_max_MW = 2.0
-cost_CNY_MWh = 711.3
+cost_literal_CNY_kWh = 0.7713
+cost_CNY_MWh = 771.3
 source = "table-7-16 / PDF139"
+transcription_correction = "R9-RS01; prior project transcription 711.3, corrected after 300 dpi source-page review; frozen inputs unchanged"
 
 [[gaps]]
 id = "R9-D01"
@@ -357,3 +359,14 @@ id = "R9-Q03"
 scope = ["7.5"]
 missing = "事件时轴不一致；事件1失供表7-18为0.2593 MWh，PDF141文字为0.358 MWh"
 impact = "four-hour horizon must be defined explicitly, not inferred by mixing inclusive and half-open labels"
+
+[[gaps]]
+id = "R9-Q04"
+scope = ["7.5"]
+missing = "图7-12与图7-14的重要负荷节点标记不同；13.75 MW没有唯一逐节点分配"
+impact = "see resilience-review.toml; do not merge incompatible markings into one author input"
+[[gaps]]
+id = "R9-Q05"
+scope = ["7.5"]
+missing = "图7-12易故障线路标记与事件1断线不同；K、故障候选及外部电网边界须独立定义"
+impact = "one example with three failed lines does not determine the full uncertainty set"

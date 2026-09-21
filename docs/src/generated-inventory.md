@@ -227,6 +227,7 @@
 - `docs/agent/tasks/2026-09-20-r8-tradeoff.md`
 - `docs/agent/tasks/2026-09-20-r9-inputs.md`
 - `docs/agent/tasks/2026-09-21-r9-common-witness.md`
+- `docs/agent/tasks/2026-09-21-r9-compact-results.md`
 - `docs/agent/tasks/2026-09-21-r9-compact-risk.md`
 - `docs/agent/tasks/2026-09-21-r9-fixed.md`
 - `docs/agent/tasks/2026-09-21-r9-flow-reference.md`
@@ -317,6 +318,7 @@
 - `docs/reading/ch07/pv-adoption.toml`
 - `docs/reading/ch07/reported-results.toml`
 - `docs/reading/ch07/reserve.toml`
+- `docs/reading/ch07/resilience-review.toml`
 - `docs/reading/ch07/risk-study.toml`
 - `docs/reading/ch07/topology.toml`
 - `docs/reading/ch07/trading.toml`
@@ -641,6 +643,7 @@
 - `scripts/check_r9_affine_certificate.jl`
 - `scripts/check_r9_common_delivery.jl`
 - `scripts/check_r9_compact_delivery.jl`
+- `scripts/check_r9_compact_results.jl`
 - `scripts/check_r9_figures.jl`
 - `scripts/check_r9_fixed.jl`
 - `scripts/check_r9_fixed_delivery.jl`
@@ -656,6 +659,7 @@
 - `scripts/check_r9_pv_figures.jl`
 - `scripts/check_r9_pv_results.jl`
 - `scripts/check_r9_reserve.jl`
+- `scripts/check_r9_resilience_sources.jl`
 - `scripts/check_r9_risk.jl`
 - `scripts/check_r9_seeded_delivery.jl`
 - `scripts/check_r9_trading.jl`
@@ -773,6 +777,7 @@
 - `scripts/plot_r8_energy.jl`
 - `scripts/plot_r8_tradeoff.jl`
 - `scripts/plot_r9_common_witness.jl`
+- `scripts/plot_r9_compact.jl`
 - `scripts/plot_r9_fixed.jl`
 - `scripts/plot_r9_flow_reference.jl`
 - `scripts/plot_r9_inputs.jl`
@@ -950,6 +955,7 @@
 - `scripts/report_r6_study.jl`
 - `scripts/report_r7_inner.jl`
 - `scripts/report_r7_thermal.jl`
+- `scripts/report_r9_compact.jl`
 - `scripts/requirements-reading.txt`
 - `scripts/run_r1.jl`
 - `scripts/run_r2.jl`
@@ -1068,6 +1074,7 @@
 - `scripts/test_r9_common_witness.jl`
 - `scripts/test_r9_compact_freeze.jl`
 - `scripts/test_r9_compact_native.jl`
+- `scripts/test_r9_compact_report.jl`
 - `scripts/test_r9_compact_risk.jl`
 - `scripts/test_r9_fixed.jl`
 - `scripts/test_r9_flow.jl`
@@ -1458,6 +1465,7 @@
 - `docs/src/assets/r8-energy-20260920-v1/`
 - `docs/src/assets/r8-tradeoff-20260920-v1/`
 - `docs/src/assets/r9-common-20260921-v1/`
+- `docs/src/assets/r9-compact-20260921-v2/`
 - `docs/src/assets/r9-fixed/`
 - `docs/src/assets/r9-flow/`
 - `docs/src/assets/r9-inputs-20260920-v1/`
@@ -1548,7 +1556,11 @@
 - `results/summaries/r9-common-input-20260921-v1/`
 - `results/summaries/r9-common-input-20260921-v2/`
 - `results/summaries/r9-common-start-20260921-v1/`
+- `results/summaries/r9-compact-evidence-20260921-v1/`
+- `results/summaries/r9-compact-figures-20260921-v1/`
+- `results/summaries/r9-compact-figures-20260921-v2/`
 - `results/summaries/r9-compact-input-20260921-v1/`
+- `results/summaries/r9-compact-report-20260921-v1/`
 - `results/summaries/r9-fixed-20260921-v4/`
 - `results/summaries/r9-fixed-figures-20260921-v4/`
 - `results/summaries/r9-flow-diagnostics-20260921-v2/`
