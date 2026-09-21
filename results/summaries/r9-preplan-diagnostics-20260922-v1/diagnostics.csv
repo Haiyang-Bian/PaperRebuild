@@ -1,0 +1,5 @@
+diagnostic,status,model_pass,normal_cost_CNY,selected_worst_loss_MWh,solver_objective,objective_lower_bound,objective_units,CHP1_event_on_steps,bound_pass,scope
+threshold_DualReductions_0,infeasible_certified,false,NaN,NaN,NaN,NaN,none,NaN,false,separate same-model solve; original ambiguous status retained
+normal_maximum_CHP1_event_on,OPTIMAL,true,557055.7557231165,NaN,16.0,NaN,steps,16.0,false,normal feasibility only; no recovery or minimum-cost certificate
+minimum_selected_worst_loss,OPTIMAL,true,600294.7998935537,10.319838401908155,10.319838401908155,10.319838401908155,MWh,16.0,true,selected 3-fault adopted-model loss bound; cost not optimized
+penalty_with_CHP1_event_on,OPTIMAL,true,503527.7756139871,10.31983840190815,606726.1596330686,606726.1596330695,CNY,16.0,true,pinned-commitment adopted-model penalty objective; independent recovery not performed

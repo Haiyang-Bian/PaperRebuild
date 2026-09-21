@@ -1,5 +1,12 @@
 {
   "inputs": [
+    {"id":"r9PreplanEvidence","type":"promptString","description":"灾前对照证据；封存须新目录","default":"results/summaries/r9-preplan-evidence-20260922-v1"},
+    {"id":"r9PreplanDiagnosticEvidence","type":"promptString","description":"独立诊断证据，只读重验","default":"results/summaries/r9-preplan-diagnostics-20260922-v1"},
+    {"id":"r9PreplanFigures","type":"promptString","description":"F48重绘新目录，不覆盖原图","default":"results/runs/new-preplan-figures"},
+    {"id":"r9PreplanNewAudit","type":"promptString","description":"独立诊断新目录，不覆盖原值","default":"results/runs/new-preplan-audit"},
+    {"id":"r9PreplanInput","type":"promptString","description":"灾前对照冻结输入；freeze使用新目录","default":"results/summaries/r9-preplan-input-20260922-v1"},
+    {"id":"r9PreplanOutput","type":"promptString","description":"灾前对照新运行根目录","default":"results/runs/r9-preplan-20260922-v1"},
+    {"id":"r9PreplanMode","type":"pickString","description":"同输入经济/罚费/门槛方案","options":["economic","penalty","threshold"],"default":"penalty"},
     {"id":"r9ResilienceEvidence","type":"promptString","description":"保供证据目录；封存使用新目录","default":"results/summaries/r9-resilience-evidence-20260922-v2"},
     {"id":"r9ResilienceFigures","type":"promptString","description":"F47重绘新目录，不覆盖原图","default":"results/runs/new-resilience-figures"},
     {"id":"r9ResilienceInput","type":"promptString","description":"保供冻结输入；freeze须使用新目录","default":"results/summaries/r9-resilience-input-20260922-v2"},
@@ -208,6 +215,17 @@
     }
   ],
   "tasks": [
+    {"label":"PaperRebuild: R9 preplan freeze evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_preplan_evidence.jl","freeze","${input:r9PreplanInput}","${input:r9PreplanOutput}","${input:r9PreplanEvidence}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 preplan replay evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_preplan_evidence.jl","check","${input:r9PreplanEvidence}","--replay"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 preplan replay diagnostics","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_preplan_diagnostic_evidence.jl","check","${input:r9PreplanDiagnosticEvidence}","--replay"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 preplan redraw F48","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r9_preplan.jl","${input:r9PreplanEvidence}","${input:r9PreplanFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 preplan commitment diagnostic","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/audit_r9_preplan_commitment.jl","${input:r9PreplanInput}","${input:r9PreplanNewAudit}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 preplan loss-floor diagnostic","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/audit_r9_preplan_loss_floor.jl","${input:r9PreplanInput}","${input:r9PreplanNewAudit}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 preplan tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_preplan.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 preplan mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_preplan.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 preplan freeze","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_preplan_study.jl","freeze","${input:r9PreplanInput}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 preplan frozen check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_preplan_study.jl","check","${input:r9PreplanInput}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 preplan full method","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/r9_preplan_study.jl","run","${input:r9PreplanInput}","${input:r9PreplanOutput}","${input:r9PreplanMode}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 resilience batch","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/run_r9_resilience_batch.jl","${input:r9ResilienceInput}","${input:r9ResilienceOutput}","${input:r9ResilienceSet}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 resilience freeze evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_resilience_evidence.jl","freeze","${input:r9ResilienceInput}","${input:r9ResilienceOutput}","${input:r9ResilienceSet}","${input:r9ResilienceEvidence}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 resilience replay","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_resilience_evidence.jl","check","${input:r9ResilienceEvidence}","--replay"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},

@@ -155,6 +155,7 @@
 - `configs/r9/flow-reference.toml`
 - `configs/r9/network-protocol.toml`
 - `configs/r9/network-study.toml`
+- `configs/r9/preplan-study.toml`
 - `configs/r9/pv-protocol.toml`
 - `configs/r9/reserve-protocol.toml`
 - `configs/r9/reserve-study.toml`
@@ -246,6 +247,7 @@
 - `docs/agent/tasks/2026-09-21-r9-trading-model.md`
 - `docs/agent/tasks/2026-09-21-r9-trading-runs.md`
 - `docs/agent/tasks/2026-09-21-r9-trading-study.md`
+- `docs/agent/tasks/2026-09-22-r9-preplan.md`
 - `docs/agent/tasks/2026-09-22-r9-resilience-pilot.md`
 - `docs/make.jl`
 - `docs/reading/README.md`
@@ -329,6 +331,7 @@
 - `docs/reading/ch07/resilience-initial-profile.toml`
 - `docs/reading/ch07/resilience-load-service.toml`
 - `docs/reading/ch07/resilience-pilot.toml`
+- `docs/reading/ch07/resilience-preplan.toml`
 - `docs/reading/ch07/resilience-review.toml`
 - `docs/reading/ch07/risk-study.toml`
 - `docs/reading/ch07/topology.toml`
@@ -481,6 +484,7 @@
 - `docs/src/ch07-reserve.md`
 - `docs/src/ch07-resilience-currency.md`
 - `docs/src/ch07-resilience-pilot.md`
+- `docs/src/ch07-resilience-preplan.md`
 - `docs/src/ch07-risk-generated.md`
 - `docs/src/ch07-risk-results.md`
 - `docs/src/ch07-risk-study.md`
@@ -546,6 +550,8 @@
 - `scripts/audit_r9_independent_heat.jl`
 - `scripts/audit_r9_inputs.jl`
 - `scripts/audit_r9_numerics_cost.jl`
+- `scripts/audit_r9_preplan_commitment.jl`
+- `scripts/audit_r9_preplan_loss_floor.jl`
 - `scripts/audit_r9_reduced.jl`
 - `scripts/audit_r9_reserve_structure.jl`
 - `scripts/audit_r9_resilience_input.jl`
@@ -674,6 +680,8 @@
 - `scripts/check_r9_numerics_delivery.jl`
 - `scripts/check_r9_numerics_figures.jl`
 - `scripts/check_r9_numerics_results.jl`
+- `scripts/check_r9_preplan.jl`
+- `scripts/check_r9_preplan_delivery.jl`
 - `scripts/check_r9_presolve.jl`
 - `scripts/check_r9_pv.jl`
 - `scripts/check_r9_pv_figures.jl`
@@ -806,6 +814,7 @@
 - `scripts/plot_r9_inputs.jl`
 - `scripts/plot_r9_network.jl`
 - `scripts/plot_r9_numerics.jl`
+- `scripts/plot_r9_preplan.jl`
 - `scripts/plot_r9_pv.jl`
 - `scripts/plot_r9_reserve.jl`
 - `scripts/plot_r9_reserve_limits.jl`
@@ -928,6 +937,9 @@
 - `scripts/r9_network_evidence.jl`
 - `scripts/r9_network_study.jl`
 - `scripts/r9_numerics_study.jl`
+- `scripts/r9_preplan_diagnostic_evidence.jl`
+- `scripts/r9_preplan_evidence.jl`
+- `scripts/r9_preplan_study.jl`
 - `scripts/r9_presolve_check.jl`
 - `scripts/r9_pv_attribution.jl`
 - `scripts/r9_pv_docs.jl`
@@ -1118,6 +1130,7 @@
 - `scripts/test_r9_network.jl`
 - `scripts/test_r9_network_evidence.jl`
 - `scripts/test_r9_numerics_evidence.jl`
+- `scripts/test_r9_preplan.jl`
 - `scripts/test_r9_pv.jl`
 - `scripts/test_r9_pv_evidence.jl`
 - `scripts/test_r9_reduced.jl`
@@ -1187,6 +1200,7 @@
 - `src/algorithms/r8_tradeoff.jl`
 - `src/algorithms/r9_common_witness.jl`
 - `src/algorithms/r9_compact_risk.jl`
+- `src/algorithms/r9_preplan.jl`
 - `src/algorithms/r9_risk_start.jl`
 - `src/algorithms/r9_seeded_risk.jl`
 - `src/algorithms/r9_trading.jl`
@@ -1229,6 +1243,7 @@
 - `src/core/r8_tradeoff.jl`
 - `src/core/r9_inputs.jl`
 - `src/core/r9_network.jl`
+- `src/core/r9_preplan.jl`
 - `src/core/r9_pv.jl`
 - `src/core/r9_reserve.jl`
 - `src/core/r9_resilience.jl`
@@ -1267,6 +1282,7 @@
 - `src/formulations/r9_compact_risk.jl`
 - `src/formulations/r9_flow.jl`
 - `src/formulations/r9_network.jl`
+- `src/formulations/r9_preplan.jl`
 - `src/formulations/r9_pv.jl`
 - `src/formulations/r9_reduced.jl`
 - `src/formulations/r9_terminal.jl`
@@ -1312,6 +1328,7 @@
 - `src/reporting/r8_energy_flow.jl`
 - `src/reporting/r8_tradeoff.jl`
 - `src/reporting/r9_fixed.jl`
+- `src/reporting/r9_preplan.jl`
 - `src/reporting/r9_pv.jl`
 - `src/reporting/r9_reduced.jl`
 - `src/reporting/r9_trading.jl`
@@ -1358,6 +1375,7 @@
 - `src/verification/r9_fixed.jl`
 - `src/verification/r9_flow.jl`
 - `src/verification/r9_network.jl`
+- `src/verification/r9_preplan.jl`
 - `src/verification/r9_pv.jl`
 - `src/verification/r9_reduced.jl`
 - `src/verification/r9_reserve.jl`
@@ -1443,6 +1461,7 @@
 - `test/r9_flow.jl`
 - `test/r9_heat_memory.jl`
 - `test/r9_network.jl`
+- `test/r9_preplan.jl`
 - `test/r9_pv.jl`
 - `test/r9_reduced.jl`
 - `test/r9_reserve.jl`
@@ -1518,6 +1537,7 @@
 - `docs/src/assets/r9-inputs-20260920-v1/`
 - `docs/src/assets/r9-network-20260921-v1/`
 - `docs/src/assets/r9-numerics-20260921-v1/`
+- `docs/src/assets/r9-preplan-v2/`
 - `docs/src/assets/r9-pv-20260920-v2/`
 - `docs/src/assets/r9-reserve-full-20260921-v1/`
 - `docs/src/assets/r9-reserve-pilot-20260921-v1/`
@@ -1622,6 +1642,11 @@
 - `results/summaries/r9-numerics-cost-20260921-v1/`
 - `results/summaries/r9-numerics-figures-20260921-v1/`
 - `results/summaries/r9-numerics-report-20260921-v1/`
+- `results/summaries/r9-preplan-diagnostics-20260922-v1/`
+- `results/summaries/r9-preplan-evidence-20260922-v1/`
+- `results/summaries/r9-preplan-figures-20260922-v1/`
+- `results/summaries/r9-preplan-figures-20260922-v2/`
+- `results/summaries/r9-preplan-input-20260922-v1/`
 - `results/summaries/r9-pv-attribution-20260920-v1/`
 - `results/summaries/r9-pv-batch-20260920-v4/`
 - `results/summaries/r9-pv-figures-20260920-v2/`
