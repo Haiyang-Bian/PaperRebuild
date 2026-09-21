@@ -1,0 +1,79 @@
+bargaining = false
+budget_sec = 600.0
+command = "r9_trading_study.jl run STUDY central-socp"
+distributed_algorithm = false
+initial_primal_injection = false
+input_sha256 = "73595793a7b47b3e39e4b4aa97a323ac35989887802b54ed113f36fa01dc4d1d"
+julia_version = "1.12.6"
+manifest_sha256 = "b2c67330589ca97b9aa3e9a5d585e04df3d90e7ed3e4d968dfdbf5192f05f038"
+method_budget_pass = true
+method_elapsed_sec = 24.165121800033376
+origin = "synthetic"
+process_budget_pass = true
+process_elapsed_with_archive_sec = 25.716830300050788
+raw_result_sha256 = "42cbdeb310f5d6e90cb42a8ca64abc6294e9ab19f291a2f8e59cde66b7010577"
+record = "record"
+record_manifest_sha256 = "af62a9648edaa563a0427e00d8e52461dcc5a647f6aa186a3eb84510f9377755"
+schema = "r9-trading-method-receipt-v1"
+start_utc = "2026-09-21T01:10:31.995"
+status = "infeasible_certified"
+uses_projected_gradient = false
+validation_source = "frozen_source"
+
+[entry]
+electric = "socp"
+id = "central-socp"
+operation = "central"
+
+[run_validation]
+adopted_physical_pass = false
+cost_optimization_complete = false
+electric_original_pass = false
+full_thermal_physics_certified = false
+heat_energy_mass_pass = false
+ledger_pass = false
+local_cost_optimization_complete = false
+local_plans_pass = true
+model_pass = false
+
+    [[run_validation.stage_checks]]
+    electric_original_pass = false
+    failed_row_count = 0
+    full_thermal_physics_certified = false
+    heat_energy_mass_pass = false
+    ledger_pass = false
+    model_pass = false
+    row_count = 0
+
+[runtime_packages.CSV]
+uuid = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
+version = "1.0.0"
+
+[runtime_packages.Gurobi]
+uuid = "2e9cd046-0924-5485-92f1-d5272153d98b"
+version = "1.9.3"
+
+[runtime_packages.Gurobi_jll]
+uuid = "c018c7e6-a5b0-4aea-8f80-9c1ef9991411"
+version = "13.0.3"
+
+[runtime_packages.JuMP]
+uuid = "4076af6c-e467-56ae-b986-b466b2749572"
+version = "1.31.2"
+
+[runtime_packages.MathOptInterface]
+uuid = "b8f27783-ece8-5eb3-8dc8-9495eed66fee"
+version = "1.53.0"
+
+[runtime_packages.TOML]
+uuid = "fa267f1f-6049-4f14-aa54-33bafae1ed76"
+version = "1.0.3"
+
+[solver_options]
+FeasibilityTol = 1.0e-8
+IntFeasTol = 1.0e-8
+MIPGap = 0.0001
+NonConvex = 2
+OptimalityTol = 1.0e-8
+Seed = 0
+Threads = 1

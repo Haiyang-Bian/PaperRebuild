@@ -1,0 +1,159 @@
+bargaining = false
+budget_sec = 600.0
+command = "r9_trading_study.jl run STUDY independent-exact"
+distributed_algorithm = false
+initial_primal_injection = false
+input_sha256 = "73595793a7b47b3e39e4b4aa97a323ac35989887802b54ed113f36fa01dc4d1d"
+julia_version = "1.12.6"
+manifest_sha256 = "b2c67330589ca97b9aa3e9a5d585e04df3d90e7ed3e4d968dfdbf5192f05f038"
+method_budget_pass = true
+method_elapsed_sec = 25.948010199994314
+origin = "synthetic"
+process_budget_pass = true
+process_elapsed_with_archive_sec = 28.237665600026958
+raw_result_sha256 = "3ac2649253f0f7f7b7a689e8b1d44fb655918443dd7ff295bf9c973823f3cd52"
+record = "record"
+record_manifest_sha256 = "9b8cc284fbcde5c6c2222a23064e94b7e79d73ae369f57624b8e4ca63820d972"
+schema = "r9-trading-method-receipt-v1"
+start_utc = "2026-09-21T01:09:05.289"
+status = "network_infeasible_certified"
+uses_projected_gradient = false
+validation_source = "frozen_source"
+
+[entry]
+electric = "exact"
+id = "independent-exact"
+operation = "independent"
+
+[run_validation]
+adopted_physical_pass = false
+cost_optimization_complete = false
+electric_original_pass = false
+full_thermal_physics_certified = false
+heat_energy_mass_pass = false
+ledger_pass = false
+local_cost_optimization_complete = false
+local_plans_pass = true
+model_pass = false
+
+    [[run_validation.stage_checks]]
+    electric_original_pass = false
+    failed_row_count = 0
+    full_thermal_physics_certified = false
+    heat_energy_mass_pass = false
+    ledger_pass = false
+    model_pass = true
+    recomputed_objective_CNY = 16356.91626418187
+    row_count = 3640
+    system_cost_CNY = 1500.5494176349696
+    [[run_validation.stage_checks]]
+    electric_original_pass = false
+    failed_row_count = 0
+    full_thermal_physics_certified = false
+    heat_energy_mass_pass = false
+    ledger_pass = false
+    model_pass = true
+    recomputed_objective_CNY = 22195.927274251855
+    row_count = 3640
+    system_cost_CNY = 12763.7044614683
+    [[run_validation.stage_checks]]
+    electric_original_pass = false
+    failed_row_count = 0
+    full_thermal_physics_certified = false
+    heat_energy_mass_pass = false
+    ledger_pass = false
+    model_pass = true
+    recomputed_objective_CNY = 50440.53787307805
+    row_count = 3496
+    system_cost_CNY = 1445.0402699188207
+    [[run_validation.stage_checks]]
+    electric_original_pass = false
+    failed_row_count = 0
+    full_thermal_physics_certified = false
+    heat_energy_mass_pass = false
+    ledger_pass = false
+    model_pass = true
+    recomputed_objective_CNY = 63882.00577291489
+    row_count = 3496
+    system_cost_CNY = 405.51220959205807
+    [[run_validation.stage_checks]]
+    electric_original_pass = false
+    failed_row_count = 0
+    full_thermal_physics_certified = false
+    heat_energy_mass_pass = false
+    ledger_pass = false
+    model_pass = true
+    recomputed_objective_CNY = 44436.30398855293
+    row_count = 3496
+    system_cost_CNY = 405.4478656147655
+    [[run_validation.stage_checks]]
+    electric_original_pass = false
+    failed_row_count = 0
+    full_thermal_physics_certified = false
+    heat_energy_mass_pass = false
+    ledger_pass = false
+    model_pass = true
+    recomputed_objective_CNY = 61114.69240780668
+    row_count = 3496
+    system_cost_CNY = 405.4695415543396
+    [[run_validation.stage_checks]]
+    electric_original_pass = false
+    failed_row_count = 0
+    full_thermal_physics_certified = false
+    heat_energy_mass_pass = false
+    ledger_pass = false
+    model_pass = true
+    recomputed_objective_CNY = 62933.85385566379
+    row_count = 3496
+    system_cost_CNY = 405.4827915790754
+    [[run_validation.stage_checks]]
+    electric_original_pass = false
+    failed_row_count = 0
+    full_thermal_physics_certified = false
+    heat_energy_mass_pass = false
+    ledger_pass = false
+    model_pass = true
+    recomputed_objective_CNY = 8165.115001264105
+    row_count = 3496
+    system_cost_CNY = 73.4931983616048
+    [[run_validation.stage_checks]]
+    electric_original_pass = false
+    failed_row_count = 0
+    full_thermal_physics_certified = false
+    heat_energy_mass_pass = false
+    ledger_pass = false
+    model_pass = false
+    row_count = 0
+
+[runtime_packages.CSV]
+uuid = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
+version = "1.0.0"
+
+[runtime_packages.Gurobi]
+uuid = "2e9cd046-0924-5485-92f1-d5272153d98b"
+version = "1.9.3"
+
+[runtime_packages.Gurobi_jll]
+uuid = "c018c7e6-a5b0-4aea-8f80-9c1ef9991411"
+version = "13.0.3"
+
+[runtime_packages.JuMP]
+uuid = "4076af6c-e467-56ae-b986-b466b2749572"
+version = "1.31.2"
+
+[runtime_packages.MathOptInterface]
+uuid = "b8f27783-ece8-5eb3-8dc8-9495eed66fee"
+version = "1.53.0"
+
+[runtime_packages.TOML]
+uuid = "fa267f1f-6049-4f14-aa54-33bafae1ed76"
+version = "1.0.3"
+
+[solver_options]
+FeasibilityTol = 1.0e-8
+IntFeasTol = 1.0e-8
+MIPGap = 0.0001
+NonConvex = 2
+OptimalityTol = 1.0e-8
+Seed = 0
+Threads = 1

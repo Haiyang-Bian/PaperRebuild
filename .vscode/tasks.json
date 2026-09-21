@@ -1,5 +1,9 @@
 {
   "inputs": [
+    {"id":"r9TradingStudy","type":"promptString","description":"R9四方法批次；冻结须新目录，运行须已冻结目录","default":"results/runs/r9-trading-new"},
+    {"id":"r9TradingMethod","type":"pickString","description":"R9已冻结方法","options":["independent-socp","independent-exact","central-socp","central-exact"],"default":"central-socp"},
+    {"id":"r9TradingSummary","type":"promptString","description":"R9四方法封存目录，仅重读","default":"results/summaries/r9-trading-20260921-v1"},
+    {"id":"r9TradingFigures","type":"promptString","description":"F38重绘新目录，不覆盖旧图","default":"results/runs/r9-trading-redraw"},
     {"id":"r9TradingRun","type":"promptString","description":"R9交易运行目录；只读冻结原值与源码","default":"results/runs/r9-trading/independent-socp"},
     {"id":"r9TradingComparison","type":"promptString","description":"同输入同整数域的R9集中交易运行","default":"results/runs/r9-trading/central-socp"},
     {"id":"r9TradingGurobiTest","type":"promptString","description":"三节点Gurobi接口测试新目录，不是规模研究","default":"results/runs/r9-trading-gurobi-test-new"},
@@ -173,6 +177,11 @@
     }
   ],
   "tasks": [
+    {"label":"PaperRebuild: R9 trading study freeze","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_trading_study.jl","freeze","${input:r9TradingStudy}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 trading frozen method","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","${input:r9TradingStudy}/code/scripts/r9_trading_study.jl","run","${input:r9TradingStudy}","${input:r9TradingMethod}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 trading study evidence check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","${input:r9TradingSummary}/code/scripts/r9_trading_evidence.jl","check","${input:r9TradingSummary}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 trading artifact tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_trading_artifacts.jl","${input:r9TradingSummary}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 trading capacity redraw","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r9_trading.jl","${input:r9TradingSummary}","${input:r9TradingFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 trading input and model tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_trading.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 trading mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_trading.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 trading run and replay tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_trading_runs.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},

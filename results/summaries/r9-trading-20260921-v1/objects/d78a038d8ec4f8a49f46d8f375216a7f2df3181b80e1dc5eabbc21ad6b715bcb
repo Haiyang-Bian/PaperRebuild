@@ -1,0 +1,28 @@
+audit_source_sha256 = "f8dc698d6c330c3b8e48cfc31577f32ec2d8e84168beef3464883b5575d72921"
+budget_pass = true
+budget_sec = 60
+elapsed_sec = 24.09516780002741
+electric = "socp"
+error_category = "diagnostic_incomplete"
+error_type = "OptimizeNotCalled"
+independent_analytic_proof = false
+input_or_model_changed = false
+input_sha256 = "73595793a7b47b3e39e4b4aa97a323ac35989887802b54ed113f36fa01dc4d1d"
+model_class = "MISOCP"
+model_types = ["(AffExpr, MathOptInterface.EqualTo{Float64})", "(AffExpr, MathOptInterface.GreaterThan{Float64})", "(AffExpr, MathOptInterface.LessThan{Float64})", "(Vector{AffExpr}, MathOptInterface.SecondOrderCone)", "(Vector{AffExpr}, MathOptInterface.RotatedSecondOrderCone)", "(VariableRef, MathOptInterface.EqualTo{Float64})", "(VariableRef, MathOptInterface.GreaterThan{Float64})", "(VariableRef, MathOptInterface.LessThan{Float64})", "(VariableRef, MathOptInterface.ZeroOne)"]
+origin = "synthetic"
+primal_status = "NO_SOLUTION"
+raw_status = "Model was proven to be infeasible."
+schema = "r9-trading-conflict-v1"
+stage = "central"
+study_manifest_sha256 = "b2c67330589ca97b9aa3e9a5d585e04df3d90e7ed3e4d968dfdbf5192f05f038"
+termination = "INFEASIBLE"
+
+[solver_options]
+FeasibilityTol = 1.0e-8
+IntFeasTol = 1.0e-8
+MIPGap = 0.0001
+NonConvex = 2
+OptimalityTol = 1.0e-8
+Seed = 0
+Threads = 1

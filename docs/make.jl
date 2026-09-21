@@ -257,6 +257,7 @@ makedocs(;
             "固定流量子问题与终端边界" => "ch07-fixed.md",
             "固定流量台账索引" => "ch07-fixed-generated.md",
             "八聚合商输入与交易模型" => "ch07-trading.md",
+            "规模交易结果与容量反例" => "ch07-trading-results.md",
             "交易模型台账索引" => "ch07-trading-generated.md",
         ],
         "第 2 章模型与首批实现" => [

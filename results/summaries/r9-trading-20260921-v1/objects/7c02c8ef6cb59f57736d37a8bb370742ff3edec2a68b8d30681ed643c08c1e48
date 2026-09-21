@@ -1,0 +1,129 @@
+schema = "r9-trading-adoption-v1"
+status = "input_model_and_budgeted_run_interfaces; scale_experiments_pending"
+original_input_reproduction = false
+uses_projected_gradient = false
+network_reconfiguration = false
+distributed_algorithm = false
+bargaining = false
+full_thermal_physics_certified = false
+source_pdf_pages = [127,128,132,133,134,135]
+source_sha256 = "20328e2480e773520c19c378e53365fc944c0bafcfca73071f5d8313d5ee7d91"
+protocol = "configs/r9/trading-protocol.toml"
+page = "docs/src/ch07-trading.md"
+test_file = "test/r9_trading.jl"
+tests = ["R9-T1 scale input, original sites and explicit replacements", "R9-T2:T6 analytical power, bidirectional heat and internal accounting", "R9-T3 half-hour storage and independent frozen plans"]
+run_test_file = "test/r9_trading_runs.jl"
+run_tests = ["R9 trading shared budget and raw stage states", "R9 trading independent plans and network feasibility are separate", "R9 trading immutable frozen replay and declared comparison domain"]
+run_apis = ["solve_r9_trading_case", "validate_r9_trading_run", "save_r9_trading_run", "read_r9_trading_run", "compare_r9_trading_runs"]
+
+[[equations]]
+id = "R9-T1"
+meaning = "主体净注入与电热节点分别聚合；共用H26不重复叠加背景负荷"
+status = "project_scale_mapping"
+api = "r9_trading_case"
+[[equations]]
+id = "R9-T2"
+meaning = "原设备关系及项目凸负荷偏好；HP/EB按已知数值表解释"
+status = "adopted_with_explicit_replacements"
+api = "build_r9_trading_model"
+[[equations]]
+id = "R9-T3"
+meaning = "电池/热储能逐时互斥、时间步长与周期能量"
+status = "project_boundary_and_missing_parameter_replacement"
+api = "validate_r9_trading_solution"
+[[equations]]
+id = "R9-T4"
+meaning = "固定电网支路关系、锥松弛与原等式分开验收"
+status = "derived_from_ch04_030_033"
+api = "build_r9_trading_model"
+[[equations]]
+id = "R9-T5"
+meaning = "双向互斥热弧、每管对一次参考损耗及质量/能量包络"
+status = "project_steady_envelope_not_temperature_field"
+api = "validate_r9_trading_solution"
+[[equations]]
+id = "R9-T6"
+meaning = "资源目标、确定性合同分解与内部现金抵消"
+status = "project_teaching_settlement_not_bargaining"
+api = "r9_trading_ledger"
+
+[[symbols]]
+id = "r9.trading.actor"
+latex = 'a'
+meaning = "主体；DSO编号1，A1至A8编号2至9"
+unit = "1"
+code = "actors[a]"
+[[symbols]]
+id = "r9.trading.device"
+latex = 'g'
+meaning = "设备，归属与电/热节点分别登记"
+unit = "1"
+code = "devices[g]"
+[[symbols]]
+id = "r9.trading.power"
+latex = 'P_{g,t}^{\rm gen},P_{g,t}^{\rm cons}'
+meaning = "设备电力注入与消耗；热量使用H"
+unit = "MW"
+code = "P_gen[g,t], P_cons[g,t]"
+[[symbols]]
+id = "r9.trading.storage"
+latex = 'E_{g,t}'
+meaning = "时段开始的电/热能量状态，末端另有T+1状态"
+unit = "MWh"
+code = "E[g,t]"
+[[symbols]]
+id = "r9.trading.heat_direction"
+latex = 'y_{p,t}^{+},y_{p,t}^{-}'
+meaning = "一对管道的热传递方向，二者之和为1；仍是温热管网假设"
+unit = "1"
+code = "heat_direction[p,t], 1-heat_direction[p,t]"
+[[symbols]]
+id = "r9.trading.flow"
+latex = 'm_{p,t}^{\sigma}'
+meaning = "按所选正向/反向弧定义的非负质量流量"
+unit = "kg/s"
+code = "m_plus[p,t], m_minus[p,t]"
+[[symbols]]
+id = "r9.trading.heat"
+latex = 'H_{p,t}^{\sigma,\rm in},H_{p,t}^{\sigma,\rm out}'
+meaning = "管对入口和出口热功率；不同于完整供回水温度场"
+unit = "MW"
+code = "H_plus_in[p,t], H_plus_out[p,t], H_minus_in[p,t], H_minus_out[p,t]"
+[[symbols]]
+id = "r9.trading.preference"
+latex = 'w_{a,t}^{P},w_{a,t}^{H}'
+meaning = "凸二次不满意度的每小时费用上图变量"
+unit = "CNY/h"
+code = "w_P[a,t], w_H[a,t]"
+[[symbols]]
+id = "r9.trading.cash"
+latex = 'C_a^{\rm cash}'
+meaning = "主体内部结算净收入；正数为收入"
+unit = "CNY"
+code = "internal_cash_CNY"
+
+[[issues]]
+id = "R9-TQ01"
+source = "PDF132 text and table7-9"
+status = "source_ambiguity; explicit_before_factor_interpretation"
+meaning = "表7-9是否已扩大1.5倍未说明；采用先分离背景、再只放大主体负荷一次。不能称作者原输入。"
+[[issues]]
+id = "R9-TQ02"
+source = "PDF132 tables7-7 and7-9"
+status = "source_ambiguity; numeric_EB_conversion_adopted"
+meaning = "资源栏HP与数值表EB身份不同；按表列热容量及0.94/0.92效率解释，不发明额外HP或COP。"
+[[issues]]
+id = "R9-TQ03"
+source = "PDF132 text; missing heat-store nameplates"
+status = "explicit_synthetic_replacement"
+meaning = "两台储热各0.5MW/2MWh和储能效率/初末状态均为项目参数；电池50元/MWh按吞吐量解释。"
+[[issues]]
+id = "R9-TQ04"
+source = "project model boundary"
+status = "full_thermal_compatibility_and_reconfiguration_pending"
+meaning = "双向稳态能量/质量包络不保证混合温度、水压或动态输运。温热管对即使负荷小仍承担参考散热。"
+[[issues]]
+id = "R9-TQ05"
+source = "PDF133-135 schemes2A/2B/2C"
+status = "benchmark_not_equivalent_to_2B_2C"
+meaning = "集中资源目标与教学结算是迁移基准；分布式协调、重构、议价和原表绝对效用尚未由本入口复现。"

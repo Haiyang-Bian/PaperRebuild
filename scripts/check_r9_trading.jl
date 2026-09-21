@@ -21,7 +21,7 @@ all(x->occursin(x, run_tests), ledger["run_tests"]) || error("运行测试映射
 for api in ledger["run_apis"]
     isdefined(PaperRebuild, Symbol(api)) && occursin(api, page) || error("运行API/卡片缺失")
 end
-Set(x["id"] for x in ledger["equations"])==Set("R9-T$i" for i in 1:6) || error("方程映射缺失")
+Set(x["id"] for x in ledger["equations"])==Set("R9-T$i" for i in 1:8) || error("方程映射缺失")
 source=load_r9_sources(joinpath(root, "docs/reading/ch07"))
 ledger["source_sha256"]==source.data["inputs.toml"]["source_sha256"] || error("原件来源漂移")
 c=r9_trading_case(joinpath(root, "docs/reading/ch07"), joinpath(root, ledger["protocol"]))

@@ -1,6 +1,58 @@
 using JuMP, Clarabel, SHA, TOML
 include("fixtures/r9_trading.jl")
 
+@testset "R9-T7 necessary capacity cuts are not feasibility certificates" begin
+    c=r9_trading_fixture()
+    passed=audit_r9_trading_capacity(c)
+    @test passed["violations"]==0
+    @test passed["meaning"]=="necessary_capacity_only; no_violation_does_not_prove_feasibility"
+    @test length(passed["rows"])==2
+    d=deepcopy(c.data)
+    d["electric"]["grid_max_MW"]=0.5
+    d["devices"][1]["availability_MW"].=0.0
+    shortage=audit_r9_trading_capacity(R9TradingCase(d))
+    row=only(r for r in shortage["rows"] if r["positive_deficit"])
+    @test row["carrier"]=="P" && row["nodes"]==[1, 2, 3]
+    @test row["deficit_MW"]==1.5
+    d=deepcopy(c.data)
+    d["heat"]["pipes"][1]["H_max_MW"]=0.2
+    cut=audit_r9_trading_capacity(R9TradingCase(d))
+    row=only(r for r in cut["rows"] if r["positive_deficit"])
+    @test row["carrier"]=="H" && row["nodes"]==[2, 3]
+    @test row["crossing_edges"]==[1]
+    @test row["deficit_MW"]≈0.8
+    exact=parse(BigInt, row["exact_deficit_numerator"])//parse(
+        BigInt,
+        row["exact_deficit_denominator"],
+    )
+    @test exact==1-Rational{BigInt}(0.2)
+    @test PaperRebuild.r9_trading_cut_set([1.0], [nextfloat(1.0)], Tuple{Int,Int,Float64}[])==[1]
+    @test isempty(PaperRebuild.r9_trading_cut_set([2.0], [1.0], Tuple{Int,Int,Float64}[]))
+    # 节点集合来自搜索，但证据始终由输入边界重新求和；历史输入不能原位更改。
+    bad=r9_trading_fixture()
+    bad.data["electric"]["grid_max_MW"]+=1.0
+    @test_throws ErrorException audit_r9_trading_capacity(bad)
+end
+
+@testset "R9-T8 coupled electric supply and heat cut" begin
+    c=r9_trading_fixture(; reverse = true)
+    @test !r9_trading_heat_cut(c, [1, 2, 3], 1)["positive_deficit"]
+    d=deepcopy(c.data)
+    d["electric"]["edges"][2]["P_max_MW"]=1.5
+    x=r9_trading_heat_cut(R9TradingCase(d), [1, 2, 3], 1)
+    @test x["positive_deficit"]
+    @test x["deficit_MW"]≈0.5
+    @test only(x["devices"])["electric_node"]==3
+    @test only(x["devices"])["admissible_heat_upper_MW"]≈0.5
+    @test isempty(x["crossing_pipes"])
+    @test x["internal_pipes"]==[1, 2]
+    for nodes in (Int[], [1, 1], [0], [4])
+        @test_throws ErrorException r9_trading_heat_cut(c, nodes, 1)
+    end
+    @test_throws ErrorException r9_trading_heat_cut(c, [1], 0)
+    @test_throws ErrorException r9_trading_heat_cut(c, [1], 2)
+end
+
 # 明确固定整数方案后才使用Clarabel；没有将二元变量连续松弛。
 function r9_trading_test_solve(
     c;

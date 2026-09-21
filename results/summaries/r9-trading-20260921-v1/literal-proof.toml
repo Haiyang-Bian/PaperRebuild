@@ -1,0 +1,1036 @@
+deficit_MW = 0.08011921641428904
+frozen_model_built_without_optimizer = true
+input_sha256 = "73595793a7b47b3e39e4b4aa97a323ac35989887802b54ed113f36fa01dc4d1d"
+positive_deficit = true
+schema = "r9-trading-literal-cut-v1"
+solver_used = false
+
+[[bounds]]
+bound = 0.0
+side = "lower"
+variable = "H_D[3,8]"
+
+    [bounds.coefficient]
+    denominator = "1"
+    numerator = "-1"
+[[bounds]]
+bound = 1.3905
+side = "lower"
+variable = "H_D[4,8]"
+
+    [bounds.coefficient]
+    denominator = "1"
+    numerator = "-1"
+[[bounds]]
+bound = 1.0395
+side = "lower"
+variable = "H_D[5,8]"
+
+    [bounds.coefficient]
+    denominator = "1"
+    numerator = "-1"
+[[bounds]]
+bound = 2.8080000000000003
+side = "lower"
+variable = "H_D[6,8]"
+
+    [bounds.coefficient]
+    denominator = "1"
+    numerator = "-1"
+[[bounds]]
+bound = 0.7695
+side = "lower"
+variable = "H_D[7,8]"
+
+    [bounds.coefficient]
+    denominator = "1"
+    numerator = "-1"
+[[bounds]]
+bound = 0.4185
+side = "lower"
+variable = "H_D[8,8]"
+
+    [bounds.coefficient]
+    denominator = "1"
+    numerator = "-1"
+[[bounds]]
+bound = 1.0395
+side = "lower"
+variable = "H_D[9,8]"
+
+    [bounds.coefficient]
+    denominator = "1"
+    numerator = "-1"
+[[bounds]]
+bound = 0.0
+side = "lower"
+variable = "H_cons[1,8]"
+
+    [bounds.coefficient]
+    denominator = "1"
+    numerator = "-1"
+[[bounds]]
+bound = 0.0
+side = "lower"
+variable = "H_cons[13,8]"
+
+    [bounds.coefficient]
+    denominator = "1"
+    numerator = "-1"
+[[bounds]]
+bound = 0.0
+side = "lower"
+variable = "H_cons[2,8]"
+
+    [bounds.coefficient]
+    denominator = "1"
+    numerator = "-1"
+[[bounds]]
+bound = 0.0
+side = "lower"
+variable = "H_cons[3,8]"
+
+    [bounds.coefficient]
+    denominator = "1"
+    numerator = "-1"
+[[bounds]]
+bound = 0.0
+side = "lower"
+variable = "H_cons[4,8]"
+
+    [bounds.coefficient]
+    denominator = "1"
+    numerator = "-1"
+[[bounds]]
+bound = 0.0
+side = "lower"
+variable = "H_cons[6,8]"
+
+    [bounds.coefficient]
+    denominator = "1"
+    numerator = "-1"
+[[bounds]]
+bound = 4.800000000000001
+side = "upper"
+variable = "H_gen[1,8]"
+
+    [bounds.coefficient]
+    denominator = "1"
+    numerator = "1"
+[[bounds]]
+bound = 0.5
+side = "upper"
+variable = "H_gen[13,8]"
+
+    [bounds.coefficient]
+    denominator = "1"
+    numerator = "1"
+[[bounds]]
+bound = 1.2
+side = "upper"
+variable = "H_gen[2,8]"
+
+    [bounds.coefficient]
+    denominator = "1"
+    numerator = "1"
+[[bounds]]
+bound = 1.0
+side = "upper"
+variable = "H_gen[3,8]"
+
+    [bounds.coefficient]
+    denominator = "1"
+    numerator = "1"
+[[bounds]]
+bound = 1.2
+side = "upper"
+variable = "H_gen[4,8]"
+
+    [bounds.coefficient]
+    denominator = "1"
+    numerator = "1"
+[[bounds]]
+bound = 0.17000000000000012
+side = "upper"
+variable = "H_minus_out[9,8]"
+
+    [bounds.coefficient]
+    denominator = "1"
+    numerator = "1"
+[[bounds]]
+bound = 0.0
+side = "lower"
+variable = "H_plus_in[9,8]"
+
+    [bounds.coefficient]
+    denominator = "1"
+    numerator = "-1"
+[[bounds]]
+bound = 0.021928285714285716
+side = "upper"
+variable = "P_branch[37,8]"
+
+    [bounds.coefficient]
+    denominator = "5764607523034235"
+    numerator = "265171946059574816"
+[[bounds]]
+bound = 0.0
+side = "upper"
+variable = "P_gen[6,8]"
+
+    [bounds.coefficient]
+    denominator = "9007199254740992"
+    numerator = "8286623314361713"
+[[bounds]]
+bound = 0.0
+side = "lower"
+variable = "ell[37,8]"
+
+    [bounds.coefficient]
+    denominator = "6490371073168534670771109232640"
+    numerator = "-46975129346328351156227213609461"
+
+[exact_deficit]
+denominator = "3323069989462289751434807927111680"
+numerator = "266241763645558379222469629814079"
+
+[[rows]]
+equation = "R9-T5-heat-balance"
+expression = "H_gen[1,8] + H_gen[3,8] - H_cons[1,8] - H_cons[3,8] - H_plus_in[1,8] - H_plus_in[2,8] - H_plus_in[12,8] + H_minus_out[1,8] + H_minus_out[2,8] + H_minus_out[12,8] == 0"
+ordinal = 267
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "1"
+[[rows]]
+equation = "R9-T5-heat-balance"
+expression = "-H_D[6,8] + H_plus_out[1,8] - H_minus_in[1,8] == 0"
+ordinal = 268
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "1"
+[[rows]]
+equation = "R9-T5-heat-balance"
+expression = "-H_plus_in[3,8] - H_plus_in[7,8] + H_plus_out[2,8] - H_minus_in[2,8] + H_minus_out[3,8] + H_minus_out[7,8] == 0.056666666666666705"
+ordinal = 269
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "1"
+[[rows]]
+equation = "R9-T5-heat-balance"
+expression = "-H_D[4,8] - H_plus_in[4,8] + H_plus_out[3,8] - H_minus_in[3,8] + H_minus_out[4,8] == 0"
+ordinal = 270
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "1"
+[[rows]]
+equation = "R9-T5-heat-balance"
+expression = "H_gen[6,8] - H_cons[6,8] - H_plus_in[13,8] - H_plus_in[21,8] + H_plus_out[12,8] - H_minus_in[12,8] + H_minus_out[13,8] + H_minus_out[21,8] == 0.056666666666666705"
+ordinal = 273
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "1"
+[[rows]]
+equation = "R9-T5-heat-balance"
+expression = "-H_plus_in[14,8] + H_plus_out[13,8] - H_minus_in[13,8] + H_minus_out[14,8] == 0.056666666666666705"
+ordinal = 274
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "1"
+[[rows]]
+equation = "R9-T5-heat-balance"
+expression = "-H_plus_in[15,8] + H_plus_out[14,8] - H_minus_in[14,8] + H_minus_out[15,8] == 0.056666666666666705"
+ordinal = 275
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "1"
+[[rows]]
+equation = "R9-T5-heat-balance"
+expression = "-H_plus_in[22,8] + H_plus_out[21,8] - H_minus_in[21,8] + H_minus_out[22,8] == 0.056666666666666705"
+ordinal = 276
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "1"
+[[rows]]
+equation = "R9-T5-heat-balance"
+expression = "-H_plus_in[23,8] + H_plus_out[22,8] - H_minus_in[22,8] + H_minus_out[23,8] == 0.056666666666666705"
+ordinal = 277
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "1"
+[[rows]]
+equation = "R9-T5-heat-balance"
+expression = "-H_plus_in[24,8] + H_plus_out[23,8] - H_minus_in[23,8] + H_minus_out[24,8] == 0.056666666666666705"
+ordinal = 278
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "1"
+[[rows]]
+equation = "R9-T5-heat-balance"
+expression = "-H_plus_in[25,8] - H_plus_in[26,8] + H_plus_out[24,8] - H_minus_in[24,8] + H_minus_out[25,8] + H_minus_out[26,8] == 0.056666666666666705"
+ordinal = 279
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "1"
+[[rows]]
+equation = "R9-T5-heat-balance"
+expression = "H_plus_out[25,8] - H_minus_in[25,8] == 0.056666666666666705"
+ordinal = 280
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "1"
+[[rows]]
+equation = "R9-T5-heat-balance"
+expression = "H_gen[2,8] + H_gen[4,8] + H_gen[13,8] - H_cons[2,8] - H_cons[4,8] - H_cons[13,8] - H_D[3,8] - H_plus_in[27,8] - H_plus_in[33,8] + H_plus_out[26,8] - H_minus_in[26,8] + H_minus_out[27,8] + H_minus_out[33,8] == 0"
+ordinal = 281
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "1"
+[[rows]]
+equation = "R9-T5-heat-balance"
+expression = "-H_D[8,8] - H_plus_in[34,8] + H_plus_out[33,8] - H_minus_in[33,8] + H_minus_out[34,8] == 0"
+ordinal = 282
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "1"
+[[rows]]
+equation = "R9-T5-heat-balance"
+expression = "-H_plus_in[28,8] + H_plus_out[27,8] - H_minus_in[27,8] + H_minus_out[28,8] == 0.056666666666666705"
+ordinal = 283
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "1"
+[[rows]]
+equation = "R9-T5-heat-balance"
+expression = "-H_D[7,8] - H_plus_in[29,8] + H_plus_out[28,8] - H_minus_in[28,8] + H_minus_out[29,8] == 0"
+ordinal = 284
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "1"
+[[rows]]
+equation = "R9-T5-heat-balance"
+expression = "-H_plus_in[30,8] - H_plus_in[31,8] + H_plus_out[29,8] - H_minus_in[29,8] + H_minus_out[30,8] + H_minus_out[31,8] == 0.056666666666666705"
+ordinal = 285
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "1"
+[[rows]]
+equation = "R9-T5-heat-balance"
+expression = "H_plus_out[30,8] - H_minus_in[30,8] == 0.056666666666666705"
+ordinal = 286
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "1"
+[[rows]]
+equation = "R9-T5-heat-balance"
+expression = "-H_plus_in[32,8] + H_plus_out[31,8] - H_minus_in[31,8] + H_minus_out[32,8] == 0.056666666666666705"
+ordinal = 287
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "1"
+[[rows]]
+equation = "R9-T5-heat-balance"
+expression = "H_plus_out[32,8] - H_minus_in[32,8] == 0.056666666666666705"
+ordinal = 288
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "1"
+[[rows]]
+equation = "R9-T5-heat-balance"
+expression = "-H_plus_in[9,8] + H_plus_out[8,8] - H_minus_in[8,8] + H_minus_out[9,8] == 0.056666666666666705"
+ordinal = 290
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "1"
+[[rows]]
+equation = "R9-T5-heat-balance"
+expression = "-H_plus_in[8,8] + H_plus_out[7,8] - H_minus_in[7,8] + H_minus_out[8,8] == 0.056666666666666705"
+ordinal = 291
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "1"
+[[rows]]
+equation = "R9-T5-heat-balance"
+expression = "-H_D[5,8] - H_D[9,8] - H_plus_in[5,8] - H_plus_in[6,8] + H_plus_out[4,8] - H_minus_in[4,8] + H_minus_out[5,8] + H_minus_out[6,8] == 0"
+ordinal = 292
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "1"
+[[rows]]
+equation = "R9-T5-heat-balance"
+expression = "H_plus_out[5,8] - H_minus_in[5,8] == 0.056666666666666705"
+ordinal = 293
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "1"
+[[rows]]
+equation = "R9-T5-heat-balance"
+expression = "H_plus_out[6,8] - H_minus_in[6,8] == 0.056666666666666705"
+ordinal = 294
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "1"
+[[rows]]
+equation = "R9-T5-heat-balance"
+expression = "-H_plus_in[16,8] - H_plus_in[18,8] + H_plus_out[15,8] - H_minus_in[15,8] + H_minus_out[16,8] + H_minus_out[18,8] == 0.056666666666666705"
+ordinal = 295
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "1"
+[[rows]]
+equation = "R9-T5-heat-balance"
+expression = "-H_plus_in[17,8] + H_plus_out[16,8] - H_minus_in[16,8] + H_minus_out[17,8] == 0.056666666666666705"
+ordinal = 296
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "1"
+[[rows]]
+equation = "R9-T5-heat-balance"
+expression = "H_plus_out[17,8] - H_minus_in[17,8] == 0.056666666666666705"
+ordinal = 297
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "1"
+[[rows]]
+equation = "R9-T5-heat-balance"
+expression = "-H_plus_in[19,8] + H_plus_out[18,8] - H_minus_in[18,8] + H_minus_out[19,8] == 0.056666666666666705"
+ordinal = 298
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "1"
+[[rows]]
+equation = "R9-T5-heat-balance"
+expression = "-H_plus_in[20,8] + H_plus_out[19,8] - H_minus_in[19,8] + H_minus_out[20,8] == 0.056666666666666705"
+ordinal = 299
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "1"
+[[rows]]
+equation = "R9-T5-heat-balance"
+expression = "H_plus_out[20,8] - H_minus_in[20,8] == 0.056666666666666705"
+ordinal = 300
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "1"
+[[rows]]
+equation = "R9-T5-heat-balance"
+expression = "-H_plus_in[35,8] + H_plus_out[34,8] - H_minus_in[34,8] + H_minus_out[35,8] == 0.056666666666666705"
+ordinal = 301
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "1"
+[[rows]]
+equation = "R9-T5-heat-balance"
+expression = "-H_plus_in[36,8] + H_plus_out[35,8] - H_minus_in[35,8] + H_minus_out[36,8] == 0.056666666666666705"
+ordinal = 302
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "1"
+[[rows]]
+equation = "R9-T5-heat-balance"
+expression = "-H_plus_in[37,8] + H_plus_out[36,8] - H_minus_in[36,8] + H_minus_out[37,8] == 0.056666666666666705"
+ordinal = 303
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "1"
+[[rows]]
+equation = "R9-T5-heat-balance"
+expression = "H_plus_out[37,8] - H_minus_in[37,8] == 0.056666666666666705"
+ordinal = 304
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_plus_in[1,8] + H_plus_out[1,8] + 0.014244142922228175 heat_direction[1,8] == 0"
+ordinal = 519
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_minus_in[1,8] + H_minus_out[1,8] - 0.014244142922228175 heat_direction[1,8] == -0.014244142922228175"
+ordinal = 520
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_plus_in[2,8] + H_plus_out[2,8] + 0.01601371122802169 heat_direction[2,8] == 0"
+ordinal = 521
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_minus_in[2,8] + H_minus_out[2,8] - 0.01601371122802169 heat_direction[2,8] == -0.01601371122802169"
+ordinal = 522
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_plus_in[3,8] + H_plus_out[3,8] + 0.015484025438019645 heat_direction[3,8] == 0"
+ordinal = 523
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_minus_in[3,8] + H_minus_out[3,8] - 0.015484025438019645 heat_direction[3,8] == -0.015484025438019645"
+ordinal = 524
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_plus_in[4,8] + H_plus_out[4,8] + 0.013242540271898768 heat_direction[4,8] == 0"
+ordinal = 525
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_minus_in[4,8] + H_minus_out[4,8] - 0.013242540271898768 heat_direction[4,8] == -0.013242540271898768"
+ordinal = 526
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_plus_in[5,8] + H_plus_out[5,8] + 0.005737001337321962 heat_direction[5,8] == 0"
+ordinal = 527
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_minus_in[5,8] + H_minus_out[5,8] - 0.005737001337321962 heat_direction[5,8] == -0.005737001337321962"
+ordinal = 528
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_plus_in[6,8] + H_plus_out[6,8] + 0.005737001337321962 heat_direction[6,8] == 0"
+ordinal = 529
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_minus_in[6,8] + H_minus_out[6,8] - 0.005737001337321962 heat_direction[6,8] == -0.005737001337321962"
+ordinal = 530
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_plus_in[7,8] + H_plus_out[7,8] + 0.007701413869794857 heat_direction[7,8] == 0"
+ordinal = 531
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_minus_in[7,8] + H_minus_out[7,8] - 0.007701413869794857 heat_direction[7,8] == -0.007701413869794857"
+ordinal = 532
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_plus_in[8,8] + H_plus_out[8,8] + 0.007208218282053171 heat_direction[8,8] == 0"
+ordinal = 533
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_minus_in[8,8] + H_minus_out[8,8] - 0.007208218282053171 heat_direction[8,8] == -0.007208218282053171"
+ordinal = 534
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_plus_in[12,8] + H_plus_out[12,8] + 0.016745259342994118 heat_direction[12,8] == 0"
+ordinal = 541
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_minus_in[12,8] + H_minus_out[12,8] - 0.016745259342994118 heat_direction[12,8] == -0.016745259342994118"
+ordinal = 542
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_plus_in[13,8] + H_plus_out[13,8] + 0.009143186944934083 heat_direction[13,8] == 0"
+ordinal = 543
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_minus_in[13,8] + H_minus_out[13,8] - 0.009143186944934083 heat_direction[13,8] == -0.009143186944934083"
+ordinal = 544
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_plus_in[14,8] + H_plus_out[14,8] + 0.008833612056461356 heat_direction[14,8] == 0"
+ordinal = 545
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_minus_in[14,8] + H_minus_out[14,8] - 0.008833612056461356 heat_direction[14,8] == -0.008833612056461356"
+ordinal = 546
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_plus_in[15,8] + H_plus_out[15,8] + 0.008496350351144733 heat_direction[15,8] == 0"
+ordinal = 547
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_minus_in[15,8] + H_minus_out[15,8] - 0.008496350351144733 heat_direction[15,8] == -0.008496350351144733"
+ordinal = 548
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_plus_in[16,8] + H_plus_out[16,8] + 0.006597098830507259 heat_direction[16,8] == 0"
+ordinal = 549
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_minus_in[16,8] + H_minus_out[16,8] - 0.006597098830507259 heat_direction[16,8] == -0.006597098830507259"
+ordinal = 550
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_plus_in[17,8] + H_plus_out[17,8] + 0.005737001337321962 heat_direction[17,8] == 0"
+ordinal = 551
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_minus_in[17,8] + H_minus_out[17,8] - 0.005737001337321962 heat_direction[17,8] == -0.005737001337321962"
+ordinal = 552
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_plus_in[18,8] + H_plus_out[18,8] + 0.007208218282053171 heat_direction[18,8] == 0"
+ordinal = 553
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_minus_in[18,8] + H_minus_out[18,8] - 0.007208218282053171 heat_direction[18,8] == -0.007208218282053171"
+ordinal = 554
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_plus_in[19,8] + H_plus_out[19,8] + 0.006597098830507259 heat_direction[19,8] == 0"
+ordinal = 555
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_minus_in[19,8] + H_minus_out[19,8] - 0.006597098830507259 heat_direction[19,8] == -0.006597098830507259"
+ordinal = 556
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_plus_in[20,8] + H_plus_out[20,8] + 0.005737001337321962 heat_direction[20,8] == 0"
+ordinal = 557
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_minus_in[20,8] + H_minus_out[20,8] - 0.005737001337321962 heat_direction[20,8] == -0.005737001337321962"
+ordinal = 558
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_plus_in[21,8] + H_plus_out[21,8] + 0.015842373900934147 heat_direction[21,8] == 0"
+ordinal = 559
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_minus_in[21,8] + H_minus_out[21,8] - 0.015842373900934147 heat_direction[21,8] == -0.015842373900934147"
+ordinal = 560
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_plus_in[22,8] + H_plus_out[22,8] + 0.01573687658924598 heat_direction[22,8] == 0"
+ordinal = 561
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_minus_in[22,8] + H_minus_out[22,8] - 0.01573687658924598 heat_direction[22,8] == -0.01573687658924598"
+ordinal = 562
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_plus_in[23,8] + H_plus_out[23,8] + 0.015630224614828814 heat_direction[23,8] == 0"
+ordinal = 563
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_minus_in[23,8] + H_minus_out[23,8] - 0.015630224614828814 heat_direction[23,8] == -0.015630224614828814"
+ordinal = 564
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_plus_in[24,8] + H_plus_out[24,8] + 0.015522380239039025 heat_direction[24,8] == 0"
+ordinal = 565
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_minus_in[24,8] + H_minus_out[24,8] - 0.015522380239039025 heat_direction[24,8] == -0.015522380239039025"
+ordinal = 566
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_plus_in[25,8] + H_plus_out[25,8] + 0.005737001337321962 heat_direction[25,8] == 0"
+ordinal = 567
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_minus_in[25,8] + H_minus_out[25,8] - 0.005737001337321962 heat_direction[25,8] == -0.005737001337321962"
+ordinal = 568
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_plus_in[26,8] + H_plus_out[26,8] + 0.015302952798808108 heat_direction[26,8] == 0"
+ordinal = 569
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_minus_in[26,8] + H_minus_out[26,8] - 0.015302952798808108 heat_direction[26,8] == -0.015302952798808108"
+ordinal = 570
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_plus_in[27,8] + H_plus_out[27,8] + 0.010865753162559144 heat_direction[27,8] == 0"
+ordinal = 571
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_minus_in[27,8] + H_minus_out[27,8] - 0.010865753162559144 heat_direction[27,8] == -0.010865753162559144"
+ordinal = 572
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_plus_in[28,8] + H_plus_out[28,8] + 0.010655681207358391 heat_direction[28,8] == 0"
+ordinal = 573
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_minus_in[28,8] + H_minus_out[28,8] - 0.010655681207358391 heat_direction[28,8] == -0.010655681207358391"
+ordinal = 574
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_plus_in[29,8] + H_plus_out[29,8] + 0.007701413869794857 heat_direction[29,8] == 0"
+ordinal = 575
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_minus_in[29,8] + H_minus_out[29,8] - 0.007701413869794857 heat_direction[29,8] == -0.007701413869794857"
+ordinal = 576
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_plus_in[30,8] + H_plus_out[30,8] + 0.005737001337321962 heat_direction[30,8] == 0"
+ordinal = 577
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_minus_in[30,8] + H_minus_out[30,8] - 0.005737001337321962 heat_direction[30,8] == -0.005737001337321962"
+ordinal = 578
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_plus_in[31,8] + H_plus_out[31,8] + 0.006597098830507259 heat_direction[31,8] == 0"
+ordinal = 579
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_minus_in[31,8] + H_minus_out[31,8] - 0.006597098830507259 heat_direction[31,8] == -0.006597098830507259"
+ordinal = 580
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_plus_in[32,8] + H_plus_out[32,8] + 0.005737001337321962 heat_direction[32,8] == 0"
+ordinal = 581
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_minus_in[32,8] + H_minus_out[32,8] - 0.005737001337321962 heat_direction[32,8] == -0.005737001337321962"
+ordinal = 582
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_plus_in[33,8] + H_plus_out[33,8] + 0.009559330488710861 heat_direction[33,8] == 0"
+ordinal = 583
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_minus_in[33,8] + H_minus_out[33,8] - 0.009559330488710861 heat_direction[33,8] == -0.009559330488710861"
+ordinal = 584
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_plus_in[34,8] + H_plus_out[34,8] + 0.007701413869794857 heat_direction[34,8] == 0"
+ordinal = 585
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_minus_in[34,8] + H_minus_out[34,8] - 0.007701413869794857 heat_direction[34,8] == -0.007701413869794857"
+ordinal = 586
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_plus_in[35,8] + H_plus_out[35,8] + 0.007208218282053171 heat_direction[35,8] == 0"
+ordinal = 587
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_minus_in[35,8] + H_minus_out[35,8] - 0.007208218282053171 heat_direction[35,8] == -0.007208218282053171"
+ordinal = 588
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_plus_in[36,8] + H_plus_out[36,8] + 0.006597098830507259 heat_direction[36,8] == 0"
+ordinal = 589
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_minus_in[36,8] + H_minus_out[36,8] - 0.006597098830507259 heat_direction[36,8] == -0.006597098830507259"
+ordinal = 590
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_plus_in[37,8] + H_plus_out[37,8] + 0.005737001337321962 heat_direction[37,8] == 0"
+ordinal = 591
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T5-loss"
+expression = "-H_minus_in[37,8] + H_minus_out[37,8] - 0.005737001337321962 heat_direction[37,8] == -0.005737001337321962"
+ordinal = 592
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "R9-T2-P2H"
+expression = "-0.92 P_cons[6,8] + H_gen[6,8] == 0"
+ordinal = 80
+
+    [rows.weight]
+    denominator = "1"
+    numerator = "-1"
+[[rows]]
+equation = "ch04-030:031"
+expression = "0.02 P_gen[6,8] - 0.02 P_cons[6,8] - 0.15734053608618673 ell[37,8] + P_branch[37,8] == 0.012572217142857145"
+ordinal = 689
+
+    [rows.weight]
+    denominator = "5764607523034235"
+    numerator = "265171946059574816"

@@ -1,5 +1,5 @@
 schema = "r9-trading-adoption-v1"
-status = "input_model_and_budgeted_run_interfaces; scale_experiments_pending"
+status = "four_scale_methods_infeasible; coupled_capacity_contradiction_verified"
 original_input_reproduction = false
 uses_projected_gradient = false
 network_reconfiguration = false
@@ -11,7 +11,7 @@ source_sha256 = "20328e2480e773520c19c378e53365fc944c0bafcfca73071f5d8313d5ee7d9
 protocol = "configs/r9/trading-protocol.toml"
 page = "docs/src/ch07-trading.md"
 test_file = "test/r9_trading.jl"
-tests = ["R9-T1 scale input, original sites and explicit replacements", "R9-T2:T6 analytical power, bidirectional heat and internal accounting", "R9-T3 half-hour storage and independent frozen plans"]
+tests = ["R9-T1 scale input, original sites and explicit replacements", "R9-T2:T6 analytical power, bidirectional heat and internal accounting", "R9-T3 half-hour storage and independent frozen plans", "R9-T7 necessary capacity cuts are not feasibility certificates", "R9-T8 coupled electric supply and heat cut"]
 run_test_file = "test/r9_trading_runs.jl"
 run_tests = ["R9 trading shared budget and raw stage states", "R9 trading independent plans and network feasibility are separate", "R9 trading immutable frozen replay and declared comparison domain"]
 run_apis = ["solve_r9_trading_case", "validate_r9_trading_run", "save_r9_trading_run", "read_r9_trading_run", "compare_r9_trading_runs"]
@@ -46,6 +46,17 @@ id = "R9-T6"
 meaning = "资源目标、确定性合同分解与内部现金抵消"
 status = "project_teaching_settlement_not_bargaining"
 api = "r9_trading_ledger"
+
+[[equations]]
+id = "R9-T7"
+meaning = "忽略损耗和电热耦合的必要容量割；无违反不证明原模型可行"
+status = "project_independent_diagnostic"
+api = "audit_r9_trading_capacity"
+[[equations]]
+id = "R9-T8"
+meaning = "计入强制参考损耗与末端馈线电锅炉上界的热区域必要容量割"
+status = "project_derived_and_exact_frozen_matrix_witness"
+api = "r9_trading_heat_cut"
 
 [[symbols]]
 id = "r9.trading.actor"
@@ -127,3 +138,21 @@ id = "R9-TQ05"
 source = "PDF133-135 schemes2A/2B/2C"
 status = "benchmark_not_equivalent_to_2B_2C"
 meaning = "集中资源目标与教学结算是迁移基准；分布式协调、重构、议价和原表绝对效用尚未由本入口复现。"
+[[issues]]
+id = "R9-TQ06"
+source = "project network sizing protocol; frozen scale input and literal capacity witness"
+status = "synthetic_input_incompatibility_proved; revised_design_pending"
+meaning = "基础7.1设备/未放大负荷的替代网络设计未覆盖7.3新增电锅炉接入与跨热区送出。第8时段精确正缺口0.080119MW证明当前输入/采用模型冲突；不归因于作者原输入，不据此宣称单处增容足够。"
+
+[[symbols]]
+id = "r9.trading.cut"
+latex = 'A,\delta(A)'
+meaning = "诊断热节点集合及其边界管对；内部管对另计参考损耗"
+unit = "1"
+code = "nodes, crossing_pipes, internal_pipes"
+[[symbols]]
+id = "r9.trading.capacity_deficit"
+latex = 'D_A^{H,\min}+L_A-\widehat H_A^{\max}-C_{\delta(A)}'
+meaning = "必要容量缺口；正值为容量矛盾，无正值不证明可行"
+unit = "MW"
+code = "deficit_MW, exact_deficit"

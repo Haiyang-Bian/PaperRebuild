@@ -154,6 +154,7 @@
 - `configs/r9/flow-reference.toml`
 - `configs/r9/pv-protocol.toml`
 - `configs/r9/trading-protocol.toml`
+- `configs/r9/trading-study.toml`
 - `data/processed/README.md`
 - `data/raw/README.md`
 - `docs/Manifest.toml`
@@ -225,6 +226,7 @@
 - `docs/agent/tasks/2026-09-21-r9-pv.md`
 - `docs/agent/tasks/2026-09-21-r9-trading-model.md`
 - `docs/agent/tasks/2026-09-21-r9-trading-runs.md`
+- `docs/agent/tasks/2026-09-21-r9-trading-study.md`
 - `docs/make.jl`
 - `docs/reading/README.md`
 - `docs/reading/ch02/README.md`
@@ -622,6 +624,11 @@
 - `docs/src/assets/r9-inputs-20260920-v1/F33-r9-topology.png`
 - `docs/src/assets/r9-numerics-20260921-v1/F35-r9-numerics.png`
 - `docs/src/assets/r9-pv-20260920-v2/F34-r9-pv.png`
+- `docs/src/assets/r9-trading-20260921-v1/F38-capacity.png`
+- `docs/src/assets/r9-trading-20260921-v1/F38-capacity.svg`
+- `docs/src/assets/r9-trading-20260921-v1/figure.toml`
+- `docs/src/assets/r9-trading-20260921-v1/heat-cut.csv`
+- `docs/src/assets/r9-trading-20260921-v1/plot-source.jl`
 - `docs/src/ch02-api.md`
 - `docs/src/ch02-generated.md`
 - `docs/src/ch02-models.md`
@@ -755,6 +762,7 @@
 - `docs/src/ch07-pv-results.md`
 - `docs/src/ch07-pv.md`
 - `docs/src/ch07-trading-generated.md`
+- `docs/src/ch07-trading-results.md`
 - `docs/src/ch07-trading.md`
 - `docs/src/index.md`
 - `docs/src/julia-design.md`
@@ -1639,6 +1647,15 @@
 - `results/summaries/r9-pv-vt-witness-20260920-v1/audit-source.jl`
 - `results/summaries/r9-pv-vt-witness-20260920-v1/audit.toml`
 - `results/summaries/r9-pv-vt-witness-20260920-v1/auxiliary-reconstruction.csv`
+- `results/summaries/r9-trading-20260921-v1/artifact-hashes.toml`
+- `results/summaries/r9-trading-20260921-v1/capacity.toml`
+- `results/summaries/r9-trading-20260921-v1/evidence.toml`
+- `results/summaries/r9-trading-20260921-v1/heat-cut-proof.toml`
+- `results/summaries/r9-trading-20260921-v1/heat-cut.csv`
+- `results/summaries/r9-trading-20260921-v1/literal-proof.toml`
+- `results/summaries/r9-trading-20260921-v1/object-chunks.toml`
+- `results/summaries/r9-trading-20260921-v1/stages.csv`
+- `results/summaries/r9-trading-20260921-v1/summary.csv`
 - `scripts/add_r6_stdlib.jl`
 - `scripts/archive_r9_numerics.jl`
 - `scripts/audit_ch05_cuts.jl`
@@ -1672,6 +1689,7 @@
 - `scripts/audit_r9_solver.jl`
 - `scripts/audit_r9_terminal.jl`
 - `scripts/audit_r9_terminal_exact.jl`
+- `scripts/audit_r9_trading_conflict.jl`
 - `scripts/audit_thesis_tables.jl`
 - `scripts/bootstrap.jl`
 - `scripts/bootstrap_data.jl`
@@ -1789,6 +1807,7 @@
 - `scripts/check_r9_pv_figures.jl`
 - `scripts/check_r9_pv_results.jl`
 - `scripts/check_r9_trading.jl`
+- `scripts/check_r9_trading_delivery.jl`
 - `scripts/check_r9_trading_runs.jl`
 - `scripts/check_solvers.jl`
 - `scripts/collect_ch03_data.jl`
@@ -1906,6 +1925,7 @@
 - `scripts/plot_r9_inputs.jl`
 - `scripts/plot_r9_numerics.jl`
 - `scripts/plot_r9_pv.jl`
+- `scripts/plot_r9_trading.jl`
 - `scripts/prepare_r1_summary.jl`
 - `scripts/preview.jl`
 - `scripts/probe_r4_discrete.jl`
@@ -2022,6 +2042,8 @@
 - `scripts/r9_pv_docs.jl`
 - `scripts/r9_pv_study.jl`
 - `scripts/r9_source_report.jl`
+- `scripts/r9_trading_evidence.jl`
+- `scripts/r9_trading_study.jl`
 - `scripts/read_docx.py`
 - `scripts/read_thesis.py`
 - `scripts/recheck_r7_transport.jl`
@@ -2176,7 +2198,9 @@
 - `scripts/test_r9_report.jl`
 - `scripts/test_r9_sources.jl`
 - `scripts/test_r9_trading.jl`
+- `scripts/test_r9_trading_artifacts.jl`
 - `scripts/test_r9_trading_runs.jl`
+- `scripts/test_r9_trading_study.jl`
 - `scripts/tighten_r4_distributed_cost.jl`
 - `scripts/validate_ch03_data.jl`
 - `scripts/validate_r1.jl`
@@ -2389,6 +2413,7 @@
 - `src/verification/r9_reduced.jl`
 - `src/verification/r9_sources.jl`
 - `src/verification/r9_trading.jl`
+- `src/verification/r9_trading_capacity.jl`
 - `src/verification/r9_trading_runs.jl`
 - `test/ch03_data.jl`
 - `test/ch06_audit.jl`
@@ -2581,3 +2606,6 @@
 - `results/summaries/r9-numerics-audit-20260921-v1/terminal-matrix/`
 - `results/summaries/r9-pv-batch-20260920-v4/code/`
 - `results/summaries/r9-pv-batch-20260920-v4/runs/`
+- `results/summaries/r9-trading-20260921-v1/code/`
+- `results/summaries/r9-trading-20260921-v1/figures/`
+- `results/summaries/r9-trading-20260921-v1/objects/`

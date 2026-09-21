@@ -368,6 +368,9 @@ include("verification/r9_trading_runs.jl")
 include("reporting/r9_trading.jl")
 export solve_r9_trading_case, validate_r9_trading_run, save_r9_trading_run
 export read_r9_trading_run, compare_r9_trading_runs
+include("verification/r9_trading_capacity.jl")
+export audit_r9_trading_capacity
+export r9_trading_heat_cut
 
 """
     hello(who::String)
