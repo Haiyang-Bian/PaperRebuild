@@ -41,11 +41,13 @@ function r8_spec(
         "bound_scope"=>"declared_control_and_thermal_model",
     )
     r7_currency_record!(s, c.normal.data)
+    r7_record_service!(s, c.normal.data)
     r8_check(c, flow, s)
     s
 end
 
 function r8_check(c, flow, s)
+    r7_check_service_record(c.normal.data, s)
     r7_check_currency_record(c.normal.data, s)
     r7_check_money_fields(c.normal.data, s, ("penalty_USD_MWh",))
     r7_flow_planning_check(c, flow)
@@ -69,6 +71,14 @@ end
 # 总需求是可交付电热失供的显式有限上界；不是可行恢复存在性的假设。
 function r8_loss_caps(c)
     d=c.normal.data
+    if r7_critical_service(d)
+        return [
+            d["dt_h"]*sum(
+                sum(row[t] for row in d["load_service"]["critical_load_MW"]) for
+                t in e["event_start"]:(e["event_start"]+e["periods"]-1)
+            ) for e in c.specification["events"]
+        ]
+    end
     [
         d["dt_h"]*sum(
             sum(row[t] for row in d[k]["load_MW"]) for k in ("electric", "heat") for
@@ -90,6 +100,12 @@ function r8_carrier(c, flow)
 end
 
 function r8_objective_kind(s; evaluation = false)
+    if get(s, "service_objective", nothing)=="critical_electric_v1"
+        evaluation && return "sum_event_worst_expected_critical_electric_unserved_energy_MWh"
+        return s["mode"]=="penalty" ?
+               "normal_cost_plus_event_critical_electric_unserved_penalty_"*r7_currency(s) :
+               r7_normal_objective_kind(s)
+    end
     evaluation && return "sum_event_worst_expected_unserved_energy_MWh"
     s["mode"]=="penalty" ? "normal_cost_plus_event_unserved_penalty_"*r7_currency(s) :
     r7_normal_objective_kind(s)

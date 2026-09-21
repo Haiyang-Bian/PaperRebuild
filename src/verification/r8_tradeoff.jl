@@ -95,6 +95,7 @@ function r8_validate_stage(c, flow, s, r; normal_result = nothing)
         upper=zeros(length(caps))
         electric=zeros(length(caps))
         heat=zeros(length(caps))
+        ordinary=zeros(length(caps))
         for (w, chk) in zip(r["witnesses"], checks)
             e=w["event"]
             loss=chk["loss_MWh"]
@@ -102,6 +103,8 @@ function r8_validate_stage(c, flow, s, r; normal_result = nothing)
                 upper[e]=loss
                 electric[e]=chk["shared"]["loss_electric_MWh"]
                 heat[e]=chk["shared"]["loss_heat_MWh"]
+                r7_critical_service(c.normal.data) &&
+                    (ordinary[e]=chk["shared"]["loss_ordinary_electric_MWh"])
             end
             rec("R8-T2-epigraph", string(e), max(0.0, loss-eta[e]), 1e-6)
             if !evaluation && s["mode"]=="threshold"
@@ -127,6 +130,11 @@ function r8_validate_stage(c, flow, s, r; normal_result = nothing)
         q["event_upper_MWh"], q["event_electric_at_worst_MWh"], q["event_heat_at_worst_MWh"]=upper,
         electric,
         heat
+        if r7_critical_service(c.normal.data)
+            q["event_critical_at_worst_MWh"]=copy(upper)
+            q["event_ordinary_at_worst_MWh"]=ordinary
+            r7_record_service!(q, c.normal.data)
+        end
         q["threshold_pass"]=all(upper .<= s["limits_MWh"] .+ 1e-6)
         objective=evaluation ? sum(eta) :
                   s["mode"]=="penalty" ?

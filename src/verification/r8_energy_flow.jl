@@ -148,6 +148,7 @@ function r8_energy_stage_check(c, s, r; normal_result = nothing)
         "witness_checks"=>Any[],
     )
     r7_currency_record!(q, c.normal.data)
+    r7_record_service!(q, c.normal.data)
     haskey(r, "normal") || return q
     r["status"] in ("candidate", "time_limit_with_solution") || error("能流状态与候选矛盾")
     n=r["normal"]
@@ -204,7 +205,7 @@ function r8_energy_stage_check(c, s, r; normal_result = nothing)
                 "case_sha256"=>ev.case.sha256,
                 "preplan_id"=>n["run_id"],
                 "preplan_optimality_verified"=>false,
-                "objective_kind"=>"expected_unserved_energy_MWh",
+                "objective_kind"=>r7_loss_objective_kind(ev.case.data),
                 "fault"=>w["fault"],
                 "status"=>"candidate",
                 "values"=>w["values"],

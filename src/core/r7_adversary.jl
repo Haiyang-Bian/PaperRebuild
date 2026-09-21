@@ -160,6 +160,15 @@ function r7_recovery_loss_cap(c::R7RecoveryCase)
         net["load_MW"][n][t]*net["shed_fraction_max"][n] for net in (d["electric"], d["heat"]) for
         n in 1:net["nodes"] for t in 1:d["periods"]
     )
+    if r7_critical_service(d)
+        e=d["electric"]
+        B=d["dt_h"]*sum(d["probabilities"])*sum(
+            min(
+                d["load_service"]["critical_load_MW"][n][t],
+                e["load_MW"][n][t]*e["shed_fraction_max"][n],
+            ) for n in 1:e["nodes"], t in 1:d["periods"]
+        )
+    end
     isfinite(B) && B>=0 && B+1.0>B || error("失供界非有限或截断间隔无法表示")
     (; feasible_upper_MWh = Float64(B), cap_MWh = Float64(B+1.0), margin_MWh = 1.0)
 end

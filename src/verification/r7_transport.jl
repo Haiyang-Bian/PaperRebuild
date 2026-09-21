@@ -11,7 +11,7 @@ function validate_r7_transport_recovery(c, s, r)
     r["version"]==s["version"] &&
     r["spec_sha256"]==r7_digest(s) &&
     r["case_sha256"]==c.sha256 &&
-    r["objective_kind"]=="expected_unserved_energy_MWh" || error("逐管结果身份错误")
+    r["objective_kind"]==r7_loss_objective_kind(c.data) || error("逐管结果身份错误")
     r7_check_fault(c, r["fault"])
     r["status"]=="infeasible_certified" &&
         r["termination_status"]!="INFEASIBLE" &&
@@ -64,6 +64,16 @@ function validate_r7_transport_recovery(c, s, r)
     q["model_pass"]=a["shared_block_pass"]&&b["same_dispatch_pass"]&&flow_residual<=1e-6
     for k in ("loss_MWh", "loss_electric_MWh", "loss_heat_MWh")
         q[k]=a[k]
+    end
+    if r7_critical_service(c.data)
+        for k in (
+            "loss_critical_electric_MWh",
+            "loss_ordinary_electric_MWh",
+            "loss_all_energy_MWh",
+            "service_objective",
+        )
+            q[k]=a[k]
+        end
     end
     if haskey(r, "lower_bound_MWh")
         lb=r["lower_bound_MWh"]

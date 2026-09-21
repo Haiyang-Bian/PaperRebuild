@@ -9,7 +9,7 @@ function r7_linked_witness(c, s, n, w)
         "case_sha256"=>ev.case.sha256,
         "spec_sha256"=>r7_digest(ev.spec),
         "fault"=>pair.fault,
-        "objective_kind"=>"expected_unserved_energy_MWh",
+        "objective_kind"=>r7_loss_objective_kind(ev.case.data),
         "status"=>"feasibility_witness",
         "values"=>w["values"],
         "thermal_values"=>w["thermal_values"],

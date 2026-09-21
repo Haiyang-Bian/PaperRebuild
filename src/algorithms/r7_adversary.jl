@@ -110,7 +110,7 @@ function solve_r7_adversary(
         "run_id"=>"r7-adversary-"*string(uuid4()),
         "case_sha256"=>c.sha256,
         "preplan_id"=>c.data["preplan_id"],
-        "objective_kind"=>"worst_expected_unserved_energy_MWh",
+        "objective_kind"=>r7_loss_objective_kind(c.data; worst = true),
         "preplan_optimality_verified"=>false,
         "author_literal_algorithm"=>false,
         "iterations"=>Any[],

@@ -13,6 +13,86 @@ struct R7RecoveryCase
     sha256::String
 end
 
+r7_critical_service(d) = haskey(d, "load_service")
+r7_service_objective(d) =
+    r7_critical_service(d) ? "critical_electric_v1" : "total_electric_and_heat_v1"
+r7_loss_objective_kind(d; worst = false) =
+    (worst ? "worst_" : "") * (
+        r7_critical_service(d) ? "expected_critical_electric_unserved_energy_MWh" :
+        "expected_unserved_energy_MWh"
+    )
+
+function r7_check_load_service(d)
+    r7_critical_service(d) || return nothing
+    s=d["load_service"]
+    s["schema"]=="r7-critical-load-service-v1" && s["objective"]=="critical_electric_v1" ||
+        error("关键负荷服务范围未声明")
+    s["power_factor_rule"]=="same_node_tan_phi" &&
+    s["ordinary_rule"]=="original_total_shedding_bound" &&
+    s["heat_rule"]=="excluded_from_objective_report_separately" || error("未支持的负荷分类规则")
+    s["provenance"] isa AbstractString && !isempty(strip(s["provenance"])) ||
+        error("关键负荷来源缺失")
+    shape=(d["electric"]["nodes"], d["periods"])
+    critical=r7_numbers(s["critical_load_MW"], shape, "关键电负荷"; lo = 0)
+    total=r7_numbers(d["electric"]["load_MW"], shape, "总电负荷"; lo = 0)
+    all(critical .<= total) || error("关键电负荷不能超过原总负荷")
+    nothing
+end
+
+function r7_service_input(c, critical_load_MW, provenance)
+    d=deepcopy(c.data)
+    load=critical_load_MW isa AbstractMatrix ?
+         [collect(critical_load_MW[n, :]) for n in axes(critical_load_MW, 1)] :
+         deepcopy(critical_load_MW)
+    d["load_service"]=Dict{String,Any}(
+        "schema"=>"r7-critical-load-service-v1",
+        "objective"=>"critical_electric_v1",
+        "critical_load_MW"=>load,
+        "provenance"=>String(provenance),
+        "power_factor_rule"=>"same_node_tan_phi",
+        "ordinary_rule"=>"original_total_shedding_bound",
+        "heat_rule"=>"excluded_from_objective_report_separately",
+    )
+    d
+end
+
+"""
+    with_r7_critical_load(case, critical_load_MW; provenance)
+
+为正常或恢复输入建立显式关键电负荷版本；数组为节点×时段、单位MW，必须介于零与原总需求之间。
+保留全部普通电负荷、热负荷、容量及原削减上界，不修改父输入。项目式R9-RL1将总电失供拆为
+关键和普通两部分；R9-RL2只对关键有功失供积分，普通与热失供另报。两类采用同节点功率因数，
+热削减仍受原边界控制；这不是作者未公开逐节点负荷的恢复或对全部负荷的保障。
+"""
+function with_r7_critical_load(c::R7RecoveryCase, critical_load_MW; provenance)
+    r7_recovery_assert(c)
+    R7RecoveryCase(r7_service_input(c, critical_load_MW, provenance))
+end
+
+function r7_slice_load_service!(out, d, win)
+    if r7_critical_service(d)
+        out["load_service"]=deepcopy(d["load_service"])
+        out["load_service"]["critical_load_MW"]=[
+            row[win] for row in d["load_service"]["critical_load_MW"]
+        ]
+    end
+    out
+end
+
+function r7_record_service!(record, d)
+    r7_critical_service(d) && (record["service_objective"]=r7_service_objective(d))
+    record
+end
+function r7_check_service_record(d, record)
+    if r7_critical_service(d)
+        get(record, "service_objective", nothing)==r7_service_objective(d) ||
+            error("结果或规格的失供范围不符")
+    else
+        haskey(record, "service_objective") && error("旧输入不得暗加关键负荷目标")
+    end
+    nothing
+end
+
 function r7_battery_rule(d)
     rule=d["battery_rule"]
     rule in ("paper_sum_bound", "per_period_exclusive_v1") || error("未声明的电池运行域")
@@ -169,6 +249,7 @@ function R7RecoveryCase(input::AbstractDict)
     e["fault_budget"] isa Integer &&
     0 <= e["fault_budget"] <= count(l->l["vulnerable"], e["lines"]) || error("故障预算错误")
     r7_numbers(e["load_MW"], (N, T), "电负荷"; lo = 0)
+    r7_check_load_service(d)
     r7_numbers(e["tan_phi"], (N,), "负荷无功比"; lo = 0)
     r7_numbers(e["shed_fraction_max"], (N,), "电负荷削减上限"; lo = 0, hi = 1)
     h["available"] === true || error("首批不支持供热网络自身故障")

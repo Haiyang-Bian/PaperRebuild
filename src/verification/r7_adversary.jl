@@ -101,7 +101,7 @@ function validate_r7_adversary(c::R7RecoveryCase, r)
     r["version"]=="r7_inner_indicator_v1" &&
     r["case_sha256"]==c.sha256 &&
     r["preplan_id"]==c.data["preplan_id"] &&
-    r["objective_kind"]=="worst_expected_unserved_energy_MWh" &&
+    r["objective_kind"]==r7_loss_objective_kind(c.data; worst = true) &&
     r["preplan_optimality_verified"]===false &&
     r["author_literal_algorithm"]===false || error("内层对手身份或范围错误")
     cap=r7_recovery_loss_cap(c).cap_MWh

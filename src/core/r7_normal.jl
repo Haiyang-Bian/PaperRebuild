@@ -12,6 +12,11 @@ struct R7NormalCase
     sha256::String
 end
 
+function with_r7_critical_load(c::R7NormalCase, critical_load_MW; provenance)
+    r7_normal_assert(c)
+    R7NormalCase(r7_service_input(c, critical_load_MW, provenance))
+end
+
 function r7_normal_chp(d, g)
     x=deepcopy(g)
     x["schema"]=r7_money_schema(d, "r7-chp-component-v1")
@@ -83,6 +88,7 @@ function R7NormalCase(input::AbstractDict)
     r7_check_money_fields(d, e, ("price_USD_MWh",))
     r7_numbers(e[r7_money_key(d, "price_USD_MWh")], (T,), "PCC电价")
     r7_numbers(e["load_MW"], (N, T), "固定电负荷"; lo = 0)
+    r7_check_load_service(d)
     r7_numbers(e["tan_phi"], (N,), "负荷功率因数"; lo = 0)
     ends=Tuple{Int,Int}[]
     for l in e["lines"]

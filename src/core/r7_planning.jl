@@ -74,6 +74,7 @@ function r7_event_template(c::R7PlanningCase, s)
     )
     r7_currency_record!(out, d)
     out["electric"]["load_MW"]=[row[win] for row in d["electric"]["load_MW"]]
+    r7_slice_load_service!(out, d, win)
     pop!(out["electric"], r7_money_key(d, "price_USD_MWh"))
     h=out["heat"]
     h["load_MW"]=[row[win] for row in d["heat"]["load_MW"]]

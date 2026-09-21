@@ -27,7 +27,7 @@ function solve_r7_recovery(
         "run_id"=>"r7-recovery-"*string(uuid4()),
         "case_sha256"=>c.sha256,
         "fault"=>Int.(gamma),
-        "objective_kind"=>"expected_unserved_energy_MWh",
+        "objective_kind"=>r7_loss_objective_kind(c.data),
         "preplan_id"=>c.data["preplan_id"],
         "preplan_optimality_verified"=>false,
         "status"=>"budget_exhausted",

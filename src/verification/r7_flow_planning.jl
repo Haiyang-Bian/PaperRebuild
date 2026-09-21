@@ -75,7 +75,7 @@ function r7_joint_witness_check(c, s, n, w)
         "fault"=>pair.fault,
         "preplan_id"=>n["run_id"],
         "preplan_optimality_verified"=>false,
-        "objective_kind"=>"expected_unserved_energy_MWh",
+        "objective_kind"=>r7_loss_objective_kind(ev.case.data),
         "status"=>"candidate",
         "values"=>w["values"],
         "solver_objective_MWh"=>w["witness_loss_MWh"],

@@ -229,6 +229,7 @@
 - `docs/agent/tasks/2026-09-21-r9-common-witness.md`
 - `docs/agent/tasks/2026-09-21-r9-compact-results.md`
 - `docs/agent/tasks/2026-09-21-r9-compact-risk.md`
+- `docs/agent/tasks/2026-09-21-r9-critical-service.md`
 - `docs/agent/tasks/2026-09-21-r9-fixed.md`
 - `docs/agent/tasks/2026-09-21-r9-flow-reference.md`
 - `docs/agent/tasks/2026-09-21-r9-flow.md`
@@ -320,6 +321,7 @@
 - `docs/reading/ch07/reported-results.toml`
 - `docs/reading/ch07/reserve.toml`
 - `docs/reading/ch07/resilience-currency.toml`
+- `docs/reading/ch07/resilience-load-service.toml`
 - `docs/reading/ch07/resilience-review.toml`
 - `docs/reading/ch07/risk-study.toml`
 - `docs/reading/ch07/topology.toml`
@@ -452,6 +454,7 @@
 - `docs/src/ch06-transport.md`
 - `docs/src/ch07-common-witness.md`
 - `docs/src/ch07-compact-risk.md`
+- `docs/src/ch07-critical-load.md`
 - `docs/src/ch07-fixed-generated.md`
 - `docs/src/ch07-fixed.md`
 - `docs/src/ch07-flow-results.md`
@@ -647,6 +650,7 @@
 - `scripts/check_r9_common_delivery.jl`
 - `scripts/check_r9_compact_delivery.jl`
 - `scripts/check_r9_compact_results.jl`
+- `scripts/check_r9_critical_service.jl`
 - `scripts/check_r9_figures.jl`
 - `scripts/check_r9_fixed.jl`
 - `scripts/check_r9_fixed_delivery.jl`
@@ -1049,6 +1053,7 @@
 - `scripts/test_r7_adversary.jl`
 - `scripts/test_r7_battery.jl`
 - `scripts/test_r7_commitment.jl`
+- `scripts/test_r7_critical_service.jl`
 - `scripts/test_r7_currency.jl`
 - `scripts/test_r7_currency_planning.jl`
 - `scripts/test_r7_flow_planning.jl`
@@ -1381,6 +1386,7 @@
 - `test/r7_adversary.jl`
 - `test/r7_battery.jl`
 - `test/r7_commitment.jl`
+- `test/r7_critical_service.jl`
 - `test/r7_currency.jl`
 - `test/r7_currency_planning.jl`
 - `test/r7_flow_planning.jl`

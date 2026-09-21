@@ -7,7 +7,9 @@ c=TOML.parsefile(joinpath(root, "docs/reading/ch07/resilience-currency.toml"))
     @test c["supported_currency"]==["USD", "CNY"]
     @test !c["exchange_rate_applied"] && !c["old_results_rewritten"]
     @test !c["chapter_7_5_optimization_performed"]
-    @test !c["critical_load_objective_implemented"] && !c["event_grid_conversion_implemented"]
+    @test !c["critical_load_objective_implemented_in_this_contract"] &&
+          !c["event_grid_conversion_implemented"]
+    @test isfile(joinpath(root, c["critical_load_followup"]))
     page=read(joinpath(root, c["human_page"]), String)
     @test Set(f["id"] for f in c["formula"])==Set(["R9-RC1", "R9-RC2", "R9-RC3"])
     for f in c["formula"]

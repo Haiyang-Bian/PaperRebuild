@@ -624,6 +624,7 @@ function r7_normal_event(c::R7NormalCase, r; event_start, periods, renewable_fac
     r7_currency_record!(ed, d)
     ed["electric"]=deepcopy(d["electric"])
     ed["electric"]["load_MW"]=[a[win] for a in d["electric"]["load_MW"]]
+    r7_slice_load_service!(ed, d, win)
     h=deepcopy(d["heat"])
     h["load_MW"]=[a[win] for a in d["heat"]["load_MW"]]
     h["ambient_K"]=h["ambient_K"][win]

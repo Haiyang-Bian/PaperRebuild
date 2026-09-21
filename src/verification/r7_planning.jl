@@ -6,7 +6,7 @@ function r7_planning_witness(c, w)
         "case_sha256"=>c.sha256,
         "preplan_id"=>c.data["preplan_id"],
         "preplan_optimality_verified"=>false,
-        "objective_kind"=>"expected_unserved_energy_MWh",
+        "objective_kind"=>r7_loss_objective_kind(c.data),
         "fault"=>w["fault"],
         "status"=>"feasibility_witness",
         "values"=>w["values"],

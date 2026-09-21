@@ -41,11 +41,13 @@ function r8_energy_spec(
         "heat_domain"=>"directed_energy_balance_without_storage_or_temperature",
     )
     r7_currency_record!(s, c.normal.data)
+    r7_record_service!(s, c.normal.data)
     r8_energy_check(c, s)
     s
 end
 
 function r8_energy_check(c, s)
+    r7_check_service_record(c.normal.data, s)
     r7_check_currency_record(c.normal.data, s)
     r7_check_money_fields(c.normal.data, s, ("penalty_USD_MWh",))
     r7_planning_assert(c)

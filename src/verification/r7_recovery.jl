@@ -60,7 +60,7 @@ function validate_r7_recovery(c::R7RecoveryCase, r; aggregate_heat = true, therm
     r7_recovery_assert(c)
     r["schema"] == "r7-recovery-result-v1" && r["version"] == r7_recovery_version(c) ||
         error("恢复结果版本错误")
-    r["objective_kind"] == "expected_unserved_energy_MWh" &&
+    r["objective_kind"] == r7_loss_objective_kind(c.data) &&
     r["preplan_id"] == c.data["preplan_id"] &&
     r["preplan_optimality_verified"] === false || error("恢复目标或灾前证据范围错误")
     r["case_sha256"]==c.sha256 || error("恢复结果输入身份错误")
@@ -121,6 +121,10 @@ function validate_r7_recovery(c::R7RecoveryCase, r; aggregate_heat = true, therm
         "H_loss_R"=>(T, W),
     )
     r7_exclusive_battery(d) && (shape["b_BES"]=(G, T, W))
+    if r7_critical_service(d)
+        shape["P_shed_critical"]=(N, T, W)
+        shape["P_shed_ordinary"]=(N, T, W)
+    end
     if !aggregate_heat
         foreach(k->delete!(shape, k), ("E_S", "E_R", "H_CF", "H_loss_S", "H_loss_R"))
     end
@@ -536,23 +540,48 @@ function validate_r7_recovery(c::R7RecoveryCase, r; aggregate_heat = true, therm
     end
     lossP=dt*sum(d["probabilities"][w]*sum(v["P_shed"][:, :, w]) for w in 1:W)
     lossH=dt*sum(d["probabilities"][w]*sum(v["H_shed"][:, :, w]) for w in 1:W)
+    loss=lossP+lossH
+    if r7_critical_service(d)
+        critical=d["load_service"]["critical_load_MW"]
+        for n in 1:N, t in 1:T, w in 1:W
+            a, b=v["P_shed_critical"][n, t, w], v["P_shed_ordinary"][n, t, w]
+            rec("R9-RL1-split", string(n), t, w, v["P_shed"][n, t, w]-a-b, "MW", pt)
+            rec("R9-RL1-critical", string(n), t, w, max(0.0, -a, a-critical[n][t]), "MW", pt)
+            rec(
+                "R9-RL1-ordinary",
+                string(n),
+                t,
+                w,
+                max(0.0, -b, b-e["load_MW"][n][t]+critical[n][t]),
+                "MW",
+                pt,
+            )
+        end
+        loss=dt*sum(d["probabilities"][w]*sum(v["P_shed_critical"][:, :, w]) for w in 1:W)
+        out["loss_critical_electric_MWh"]=loss
+        out["loss_ordinary_electric_MWh"]=dt*sum(
+            d["probabilities"][w]*sum(v["P_shed_ordinary"][:, :, w]) for w in 1:W
+        )
+        out["loss_all_energy_MWh"]=lossP+lossH
+        r7_record_service!(out, d)
+    end
     rec(
-        "6-53",
+        r7_critical_service(d) ? "R9-RL2" : "6-53",
         "objective",
         0,
         0,
-        r["solver_objective_MWh"]-lossP-lossH,
+        r["solver_objective_MWh"]-loss,
         "MWh",
-        1e-6*max(1, abs(lossP+lossH)),
+        1e-6*max(1, abs(loss)),
     )
-    out["loss_electric_MWh"], out["loss_heat_MWh"], out["loss_MWh"]=lossP, lossH, lossP+lossH
+    out["loss_electric_MWh"], out["loss_heat_MWh"], out["loss_MWh"]=lossP, lossH, loss
     out["model_pass"]=all(x["pass"] for x in rows if x["scope"]=="adopted")
     out["loss_pass"]=last(rows)["pass"]
     out["exchange_exact_pass"]=all(x["pass"] for x in rows if x["scope"]=="exact_exchange")
     out["max_simultaneous_charge_discharge_MW"]=simultaneous
     out["mutual_exclusivity_pass"]=simultaneous<=pt
     if haskey(r, "lower_bound_MWh")
-        gap=(lossP+lossH-r["lower_bound_MWh"])/max(1, abs(lossP+lossH))
+        gap=(loss-r["lower_bound_MWh"])/max(1, abs(loss))
         out["relative_gap"]=gap
         out["optimality_pass"]=out["model_pass"] && -1e-6<=gap<=1e-4
     end

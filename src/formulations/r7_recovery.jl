@@ -273,6 +273,26 @@ function build_r7_recovery(
     end
     @variable(m, P_shed[1:N, 1:T, 1:W]>=0)
     @variable(m, H_shed[1:J, 1:T, 1:W]>=0)
+    service_variables=Dict{String,Any}()
+    if r7_critical_service(d)
+        # R9-RL1：仅拆分原需求及削减，不删普通负荷；两类共用原节点的无功比。
+        @variable(m, P_shed_critical[1:N, 1:T, 1:W]>=0)
+        @variable(m, P_shed_ordinary[1:N, 1:T, 1:W]>=0)
+        critical=d["load_service"]["critical_load_MW"]
+        for n in 1:N, t in 1:T, w in 1:W
+            add(
+                "R9-RL1",
+                @constraint(m, P_shed[n, t, w]==P_shed_critical[n, t, w]+P_shed_ordinary[n, t, w])
+            )
+            add("R9-RL1", @constraint(m, P_shed_critical[n, t, w]<=critical[n][t]))
+            add(
+                "R9-RL1",
+                @constraint(m, P_shed_ordinary[n, t, w]<=e["load_MW"][n][t]-critical[n][t])
+            )
+        end
+        service_variables["P_shed_critical"]=P_shed_critical
+        service_variables["P_shed_ordinary"]=P_shed_ordinary
+    end
     for n in 1:N, t in 1:T, w in 1:W
         served=e["load_MW"][n][t]-P_shed[n, t, w]
         add("6-54", @constraint(m, P_shed[n, t, w]<=e["load_MW"][n][t]*e["shed_fraction_max"][n]))
@@ -422,13 +442,15 @@ function build_r7_recovery(
             )
         )
     end
-    @objective(
-        m,
-        Min,
-        dt*sum(
-            d["probabilities"][w]*(sum(P_shed[:, t, w])+sum(H_shed[:, t, w])) for t in 1:T, w in 1:W
-        )
+    # R9-RL2：关键负荷目标显式替换原6-53的统计范围；原物理平衡和总削减界不变。
+    loss=r7_critical_service(d) ?
+         dt*sum(
+        d["probabilities"][w]*sum(service_variables["P_shed_critical"][:, :, w]) for w in 1:W
+    ) :
+         dt*sum(
+        d["probabilities"][w]*(sum(P_shed[:, t, w])+sum(H_shed[:, t, w])) for t in 1:T, w in 1:W
     )
+    @objective(m, Min, loss)
     variables=Dict(
         string(k)=>val for (k, val) in pairs((;
             z,
@@ -460,6 +482,7 @@ function build_r7_recovery(
             H_loss_R,
         ))
     )
+    merge!(variables, service_variables)
     r7_add_battery_domain!(m, d, variables, cs; fixed_modes = fixed_battery_modes)
     types=list_of_constraint_types(m)
     all(
