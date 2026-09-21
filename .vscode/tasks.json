@@ -1,5 +1,11 @@
 {
   "inputs": [
+    {"id":"r9DetailedEvidence","type":"promptString","description":"详细灾前证据目录；重读不优化","default":"results/summaries/r9-detailed-preplan-evidence-20260922-v1"},
+    {"id":"r9HandoffFigure","type":"promptString","description":"F49新图目录；不覆盖已有图","default":"results/runs/new-handoff-figure"},
+    {"id":"r9DetailedInput","type":"promptString","description":"详细灾前输入目录；freeze须使用新目录","default":"results/summaries/r9-detailed-preplan-input-20260922-v1"},
+    {"id":"r9DetailedOut","type":"promptString","description":"详细灾前新运行目录；不可覆盖已有记录","default":"results/runs/new-detailed-preplan"},
+    {"id":"r9DetailedMode","type":"pickString","description":"已冻结的详细灾前方案","options":["penalty","threshold"],"default":"penalty"},
+    {"id":"r9HandoffEvidence","type":"promptString","description":"已封存的温区反例目录","default":"results/summaries/r9-handoff-evidence-20260922-v1"},
     {"id":"r9PreplanFaultParent","type":"promptString","description":"已保存开机候选的父诊断目录","default":"results/runs/r9-preplan-loss-diagnostic-20260922-v1"},
     {"id":"r9PreplanFaultRaw","type":"promptString","description":"独立故障新运行目录；已有目录不覆盖","default":"results/runs/new-preplan-faults"},
     {"id":"r9PreplanFaultEvidence","type":"promptString","description":"逐故障证据目录；freeze使用新目录","default":"results/summaries/r9-preplan-faults-20260922-v1"},
@@ -218,6 +224,15 @@
     }
   ],
   "tasks": [
+    {"label":"PaperRebuild: R9 detailed preplan mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_detailed_preplan.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 detailed artifacts check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_detailed_artifacts.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 detailed evidence replay","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_detailed_preplan_evidence.jl","check","${input:r9DetailedEvidence}","--replay"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 handoff figure","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r9_handoff.jl","${input:r9HandoffEvidence}","${input:r9HandoffFigure}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 detailed preplan tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_detailed_preplan.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 detailed preplan freeze input","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_detailed_preplan_study.jl","freeze","${input:r9DetailedInput}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 detailed preplan run","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/run_r9_detailed_preplan.jl","${input:r9DetailedInput}","${input:r9DetailedOut}","${input:r9DetailedMode}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 detailed preplan replay","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","${input:r9DetailedOut}/primary/code/replay.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 handoff evidence replay","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_handoff_evidence.jl","check","${input:r9HandoffEvidence}","--replay"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 preplan independent faults","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/r9_preplan_faults.jl","${input:r9PreplanInput}","${input:r9PreplanFaultParent}","${input:r9PreplanFaultRaw}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 preplan freeze fault evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_preplan_fault_evidence.jl","freeze","${input:r9PreplanInput}","${input:r9PreplanOutput}/penalty","${input:r9PreplanFaultParent}","${input:r9PreplanFaultRaw}","${input:r9PreplanFaultEvidence}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 preplan replay fault evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_preplan_fault_evidence.jl","check","${input:r9PreplanFaultEvidence}","--replay"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},

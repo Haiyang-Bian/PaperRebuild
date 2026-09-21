@@ -282,6 +282,7 @@ makedocs(;
             "保供准备：初始空间管温" => "ch07-initial-profile.md",
             "保供规模预运行" => "ch07-resilience-pilot.md",
             "灾前经济与保供对照" => "ch07-resilience-preplan.md",
+            "灾前与详细恢复相容性" => "ch07-resilience-detailed.md",
         ],
         "第 2 章模型与首批实现" => [
             "模型详解" => "ch02-models.md",

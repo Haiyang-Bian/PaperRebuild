@@ -11720,6 +11720,61 @@
           "path": "docs/src/ch07-resilience-preplan.md",
           "name": "ch07-resilience-preplan.md",
           "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r9-handoff-v1/F49-handoff-temperature.png",
+          "name": "F49-handoff-temperature.png",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r9-handoff-v1/artifacts.toml",
+          "name": "artifacts.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r9-handoff-v1/figure-config.toml",
+          "name": "figure-config.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r9-handoff-v1/plot-source.jl",
+          "name": "plot-source.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r9-handoff-v1/source.csv",
+          "name": "source.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r9-handoff-v2/F49-handoff-temperature.png",
+          "name": "F49-handoff-temperature.png",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r9-handoff-v2/artifacts.toml",
+          "name": "artifacts.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r9-handoff-v2/figure-config.toml",
+          "name": "figure-config.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r9-handoff-v2/plot-source.jl",
+          "name": "plot-source.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r9-handoff-v2/source.csv",
+          "name": "source.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch07-resilience-detailed.md",
+          "name": "ch07-resilience-detailed.md",
+          "isDirectory": false
         }
       ],
       "order": 1,
@@ -12150,6 +12205,11 @@
         {
           "path": "docs/agent/tasks/2026-09-22-r9-preplan-faults.md",
           "name": "2026-09-22-r9-preplan-faults.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/agent/tasks/2026-09-22-r9-detailed-preplan.md",
+          "name": "2026-09-22-r9-detailed-preplan.md",
           "isDirectory": false
         }
       ],
@@ -13297,6 +13357,36 @@
           "path": "src/verification/r9_preplan.jl",
           "name": "r9_preplan.jl",
           "isDirectory": false
+        },
+        {
+          "path": "src/algorithms/r9_detailed_preplan.jl",
+          "name": "r9_detailed_preplan.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/core/r9_detailed_preplan.jl",
+          "name": "r9_detailed_preplan.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/formulations/r9_detailed_preplan.jl",
+          "name": "r9_detailed_preplan.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/reporting/r9_detailed_preplan.jl",
+          "name": "r9_detailed_preplan.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/verification/r9_detailed_preplan.jl",
+          "name": "r9_detailed_preplan.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/verification/r9_handoff.jl",
+          "name": "r9_handoff.jl",
+          "isDirectory": false
         }
       ],
       "order": 3,
@@ -14018,6 +14108,11 @@
           "path": "configs/r9/preplan-study.toml",
           "name": "preplan-study.toml",
           "isDirectory": false
+        },
+        {
+          "path": "configs/r9/detailed-preplan-study.toml",
+          "name": "detailed-preplan-study.toml",
+          "isDirectory": false
         }
       ],
       "order": 4,
@@ -14478,6 +14573,11 @@
         {
           "path": "docs/reading/ch07/resilience-preplan.toml",
           "name": "resilience-preplan.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch07/resilience-detailed-preplan.toml",
+          "name": "resilience-detailed-preplan.toml",
           "isDirectory": false
         }
       ],
@@ -89250,6 +89350,1556 @@
           "path": "results/summaries/r9-preplan-faults-20260922-v1/report-source.jl",
           "name": "report-source.jl",
           "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/artifacts.toml",
+          "name": "artifacts.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/baseline-artifacts.toml",
+          "name": "baseline-artifacts.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/baseline-comparison.csv",
+          "name": "baseline-comparison.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/baseline-index.toml",
+          "name": "baseline-index.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/comparison.csv",
+          "name": "comparison.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/index.toml",
+          "name": "index.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/object-chunks.toml",
+          "name": "object-chunks.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/016bd21bb2445ab28be0f6e03eafd1259ed1100572d38e4c8178e30fe69e1264",
+          "name": "016bd21bb2445ab28be0f6e03eafd1259ed1100572d38e4c8178e30fe69e1264",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/022f3f5203797523c47fab58af5d4561f5b4e34124198eaa8f1f1701f3bde73a",
+          "name": "022f3f5203797523c47fab58af5d4561f5b4e34124198eaa8f1f1701f3bde73a",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/0265bfb05d42735e5b56fd402016a6fbf61e8739645c95fba135553dc93652c6",
+          "name": "0265bfb05d42735e5b56fd402016a6fbf61e8739645c95fba135553dc93652c6",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/056baafe0e8a4bce089e97c4202f1b805a6c504ca79e936d902ea1b08e77ade7",
+          "name": "056baafe0e8a4bce089e97c4202f1b805a6c504ca79e936d902ea1b08e77ade7",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/0622f6efb74475710852a0bf19c426e5e7ddc56a25f59c5e5ca9b525cce1fe8e",
+          "name": "0622f6efb74475710852a0bf19c426e5e7ddc56a25f59c5e5ca9b525cce1fe8e",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/0634f7287636d8a86183bda8d0953ac24ab80f7d88c041c78df1c1d6d883e621",
+          "name": "0634f7287636d8a86183bda8d0953ac24ab80f7d88c041c78df1c1d6d883e621",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/07a53276c8e3a09c35bd2ddaa9c951da6107aaa263e0a2bfe17f985e47aa76be",
+          "name": "07a53276c8e3a09c35bd2ddaa9c951da6107aaa263e0a2bfe17f985e47aa76be",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/084c7487e1ccc2865848a1aa415c7a346b065a0a55360e16c73f8a7ba644acf3",
+          "name": "084c7487e1ccc2865848a1aa415c7a346b065a0a55360e16c73f8a7ba644acf3",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/0a640358ca33e27b03784d755132e21432c90e89be0bc1c3a2ded52bfbc7ef09",
+          "name": "0a640358ca33e27b03784d755132e21432c90e89be0bc1c3a2ded52bfbc7ef09",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/0b26ceb6fd63e137276b186a6343b1d02dd819dbb01a9572932320da723040c9",
+          "name": "0b26ceb6fd63e137276b186a6343b1d02dd819dbb01a9572932320da723040c9",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/0c97f7eb4a0108ea046fb2446b06a6d8f8dc764da31ff71073e847d4aaecfe54",
+          "name": "0c97f7eb4a0108ea046fb2446b06a6d8f8dc764da31ff71073e847d4aaecfe54",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/0f44d5e7c7d8fb06f0b3307c92b718ed42ab9c3f7035f0dda39858b27f8b2228",
+          "name": "0f44d5e7c7d8fb06f0b3307c92b718ed42ab9c3f7035f0dda39858b27f8b2228",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/10f9a4a8362eae11426a8fef1ce85b4576250bb3010f8ab62f37dae1b5217258",
+          "name": "10f9a4a8362eae11426a8fef1ce85b4576250bb3010f8ab62f37dae1b5217258",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/12d4ded37622392b51590bda37959f887dbd2c6d0f8b95f07da827d594dc2c13",
+          "name": "12d4ded37622392b51590bda37959f887dbd2c6d0f8b95f07da827d594dc2c13",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/133dc7033dcffa20dc8c94e3c6f43b288e2487d245ef8346585d0d9e5f7b65b1",
+          "name": "133dc7033dcffa20dc8c94e3c6f43b288e2487d245ef8346585d0d9e5f7b65b1",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/13ce1336b96a4fc63b8e9baf29f43a867cf481c207bf7850c08fc56681baa6ce",
+          "name": "13ce1336b96a4fc63b8e9baf29f43a867cf481c207bf7850c08fc56681baa6ce",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/142d84a542b802da2ad91c0cdacb54a8a5b018eea8b57f1463464b3fa6c5aaa1",
+          "name": "142d84a542b802da2ad91c0cdacb54a8a5b018eea8b57f1463464b3fa6c5aaa1",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/16c2cbbca9d09be4b28e4777b2acdadff2aaca9fd8d9a2e188b71b69a459178d",
+          "name": "16c2cbbca9d09be4b28e4777b2acdadff2aaca9fd8d9a2e188b71b69a459178d",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/1b37c0e59b8b7199bdc058d15e47b57f56becf340c21735f471cbef8fb5bdcd0",
+          "name": "1b37c0e59b8b7199bdc058d15e47b57f56becf340c21735f471cbef8fb5bdcd0",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/20e45ae6a72fffd4db5fba556824b69607a66a3f03324762e7cb093c0bcfb686",
+          "name": "20e45ae6a72fffd4db5fba556824b69607a66a3f03324762e7cb093c0bcfb686",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/2118f6326e9709e079567a2513af8b52b29a3f83b1d9a239d634deba5825ffd9",
+          "name": "2118f6326e9709e079567a2513af8b52b29a3f83b1d9a239d634deba5825ffd9",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/216968f13aac6e514d039bac74525b1aa8b97ffa00a93bc7f72f3ea202499859",
+          "name": "216968f13aac6e514d039bac74525b1aa8b97ffa00a93bc7f72f3ea202499859",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/22cb571f15112ccc21408903f229e25b49ee0d59333c14d251ab4b83a8abbf54",
+          "name": "22cb571f15112ccc21408903f229e25b49ee0d59333c14d251ab4b83a8abbf54",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/23872aef95bf80b5d61ac41147c83dbc3eaa8dace5fe7a931f2ecc5656178b77",
+          "name": "23872aef95bf80b5d61ac41147c83dbc3eaa8dace5fe7a931f2ecc5656178b77",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/24faf49ee80399ebadd5b4dff59f62ee4a8ca2044a0cb44ce2c7536bdcb86eb7",
+          "name": "24faf49ee80399ebadd5b4dff59f62ee4a8ca2044a0cb44ce2c7536bdcb86eb7",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/25461a5abf0cac63c9ef15bddb87c3e44652fd352cad9c13816e4a46fdaec7de",
+          "name": "25461a5abf0cac63c9ef15bddb87c3e44652fd352cad9c13816e4a46fdaec7de",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/260195c3e638208accae9874903710b713d135d01d4fbd6e812945a18af5abcd",
+          "name": "260195c3e638208accae9874903710b713d135d01d4fbd6e812945a18af5abcd",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/2706fd9de352e216b2a5d6f7b17a0f627d077cb174e52b6d8e8dd89a254b4b4b",
+          "name": "2706fd9de352e216b2a5d6f7b17a0f627d077cb174e52b6d8e8dd89a254b4b4b",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/297df8ff5a394b2507935bd79815b14384a551ea3a422b3534bb784d434f8ec5",
+          "name": "297df8ff5a394b2507935bd79815b14384a551ea3a422b3534bb784d434f8ec5",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/2bc9e6d8426bb0c89e840afb5f8f76f6d07d554d3703e56a86a29dd487ef3a19",
+          "name": "2bc9e6d8426bb0c89e840afb5f8f76f6d07d554d3703e56a86a29dd487ef3a19",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/2c637560e7a257b530c436dd8313d3906c2c264cea6b90c8d79324ca358fcb11",
+          "name": "2c637560e7a257b530c436dd8313d3906c2c264cea6b90c8d79324ca358fcb11",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/2d8b4b01dbcdfc276ac15bf40d715b1d23f3dc56271ef4b0736f6fae2403f8a8",
+          "name": "2d8b4b01dbcdfc276ac15bf40d715b1d23f3dc56271ef4b0736f6fae2403f8a8",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/2e1ab7dae04d0ed71786ca8b6f3a233a903f7286a68711c0914a61e5367a8b9f",
+          "name": "2e1ab7dae04d0ed71786ca8b6f3a233a903f7286a68711c0914a61e5367a8b9f",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/2f91ce3fed2a53176460fd6501116d2509745ebc373ffe4aa0abb2c2fe05f941",
+          "name": "2f91ce3fed2a53176460fd6501116d2509745ebc373ffe4aa0abb2c2fe05f941",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/2feb93019ba96cfaa5955003e5f812548fd897b3bdc7cc20d2b2dd42aa8a3351",
+          "name": "2feb93019ba96cfaa5955003e5f812548fd897b3bdc7cc20d2b2dd42aa8a3351",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/30aad2e4da3f3f05e74936edf66fa4d4f697829d82b15c01ce81cfcca346575b",
+          "name": "30aad2e4da3f3f05e74936edf66fa4d4f697829d82b15c01ce81cfcca346575b",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/33c47f43140320f492ae685c8bd29597cbaed4c3e81821e15a959be5905fbe92",
+          "name": "33c47f43140320f492ae685c8bd29597cbaed4c3e81821e15a959be5905fbe92",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/340061b086a4d94228a8bcf556127f09b2c1043cb45e9820aee5cc2b09dd5467",
+          "name": "340061b086a4d94228a8bcf556127f09b2c1043cb45e9820aee5cc2b09dd5467",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/34c9aca73a7aed659e9d9370da7bf4f6f345d1b41c085c28e3f30c521b95dca1",
+          "name": "34c9aca73a7aed659e9d9370da7bf4f6f345d1b41c085c28e3f30c521b95dca1",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/350f695caff8ca26a4e816cd913470ae852310d2cd76037ce5d2f2e0a7faaf4e",
+          "name": "350f695caff8ca26a4e816cd913470ae852310d2cd76037ce5d2f2e0a7faaf4e",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/36aadb9229aa51199d93d55c9da74ea85977a62172e7a2ab5a51468dbe32ff02",
+          "name": "36aadb9229aa51199d93d55c9da74ea85977a62172e7a2ab5a51468dbe32ff02",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/3846fb305e040168373f1920a364c3dc5dc42a1b57ef4a27cfa1ecdb7ebe1e22",
+          "name": "3846fb305e040168373f1920a364c3dc5dc42a1b57ef4a27cfa1ecdb7ebe1e22",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/3ba8aa0b75e5f8da30f5b887ac5a7131d669804fd77b37046b9945db8b8daba6",
+          "name": "3ba8aa0b75e5f8da30f5b887ac5a7131d669804fd77b37046b9945db8b8daba6",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/3c67648e6b59e1e0b11ddff1209b8755ac58355a4a8bdc6dce8a76d7e1bede7e",
+          "name": "3c67648e6b59e1e0b11ddff1209b8755ac58355a4a8bdc6dce8a76d7e1bede7e",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/3cdd6252d20750181d95a9f382ca65e4423e579e89ec887b2560ef1b16d5f6f3",
+          "name": "3cdd6252d20750181d95a9f382ca65e4423e579e89ec887b2560ef1b16d5f6f3",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/3e2ebbc202ba307027f0ebd7ff3d8c7f8c72d07a70757fe0d2a3862a82d5cccb",
+          "name": "3e2ebbc202ba307027f0ebd7ff3d8c7f8c72d07a70757fe0d2a3862a82d5cccb",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/3e568a97e80744572d30ce5f3e489a3be422a44a8a9f4e97094a49fea1b44f5a",
+          "name": "3e568a97e80744572d30ce5f3e489a3be422a44a8a9f4e97094a49fea1b44f5a",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/3f138f07f1eaf5ac904b2ca19f767ca46b03b7f5787e76eb2fb4a7fdb0641dde",
+          "name": "3f138f07f1eaf5ac904b2ca19f767ca46b03b7f5787e76eb2fb4a7fdb0641dde",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/3fe1b8678e1b75813d1044f560f8ca0cb7d920ed61d9298fde3cd5e13be95c85",
+          "name": "3fe1b8678e1b75813d1044f560f8ca0cb7d920ed61d9298fde3cd5e13be95c85",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/40a6b76e4417e0bd21e207bb70145516155375d6bb5216ff83e84ea6b03ceabc",
+          "name": "40a6b76e4417e0bd21e207bb70145516155375d6bb5216ff83e84ea6b03ceabc",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/41e5fb35b046747b8537be007e93ef6dbbfc3406ec6763e24ef90dd3385965f8",
+          "name": "41e5fb35b046747b8537be007e93ef6dbbfc3406ec6763e24ef90dd3385965f8",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/425ce5883f3d134f23211303629cf01922563117b72cbf7617b5eade8581476e",
+          "name": "425ce5883f3d134f23211303629cf01922563117b72cbf7617b5eade8581476e",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/4684fa7fad2aea26a5d8e9867e389497b68a88fb0440893e72cc10ba9626e6de",
+          "name": "4684fa7fad2aea26a5d8e9867e389497b68a88fb0440893e72cc10ba9626e6de",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/4e30f5bc8bc7523f7848ab31c0fa307fba6774cc89f31f0af3a26311a06a17f2",
+          "name": "4e30f5bc8bc7523f7848ab31c0fa307fba6774cc89f31f0af3a26311a06a17f2",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/50c9003f3e1aadfc219400b9720570d770483bf402d1713d79cade6b49836de5",
+          "name": "50c9003f3e1aadfc219400b9720570d770483bf402d1713d79cade6b49836de5",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/5530d9cb5a448db2fec391ba0dfca6115ebc88e8836ab98a7255bd8f13f351c5",
+          "name": "5530d9cb5a448db2fec391ba0dfca6115ebc88e8836ab98a7255bd8f13f351c5",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/55eb30567af60daa360268d37f284796b5d36a8faca454868a09ceb048c39e40",
+          "name": "55eb30567af60daa360268d37f284796b5d36a8faca454868a09ceb048c39e40",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/57449c93e2c12adc167bc303586fee816b53fc8b6b9747cc90290037adc84077",
+          "name": "57449c93e2c12adc167bc303586fee816b53fc8b6b9747cc90290037adc84077",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/5831c295cc4702942c3c4d8dced5de1fbe9988313c8141933e8238a14bfab61c",
+          "name": "5831c295cc4702942c3c4d8dced5de1fbe9988313c8141933e8238a14bfab61c",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/5a3afebd3f01508dd6df57e8c70ac21e9924e526a7fc829b8aa733268884ddcf",
+          "name": "5a3afebd3f01508dd6df57e8c70ac21e9924e526a7fc829b8aa733268884ddcf",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/5a42b9bfaa2b068e0cb0cc0c8f1e7f54f30057388a723c3c5a51993e7d5d0536",
+          "name": "5a42b9bfaa2b068e0cb0cc0c8f1e7f54f30057388a723c3c5a51993e7d5d0536",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/5cce1b29eaf89dca3f44b6ab7ad0a282d7f8034efc50945717ce1e7a518e88f4",
+          "name": "5cce1b29eaf89dca3f44b6ab7ad0a282d7f8034efc50945717ce1e7a518e88f4",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/620c069f6b3a520d32ee546ec048074f9cbaa3c785f8c2e31ec7fd7bf245a83b",
+          "name": "620c069f6b3a520d32ee546ec048074f9cbaa3c785f8c2e31ec7fd7bf245a83b",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/677d33ad957cd989e443f9c13a4a343f826434f2612126bc2c7f99f87b047726",
+          "name": "677d33ad957cd989e443f9c13a4a343f826434f2612126bc2c7f99f87b047726",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/6ad54a9fb29b1ec1af4aba2649170ea486b3fd799f84ebc0bc8dc3d98b712050",
+          "name": "6ad54a9fb29b1ec1af4aba2649170ea486b3fd799f84ebc0bc8dc3d98b712050",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/6b2791a224fd2ed70317bebc9feaec6a79c4d6b9e4cfeca9c7e2b6d97b550e51",
+          "name": "6b2791a224fd2ed70317bebc9feaec6a79c4d6b9e4cfeca9c7e2b6d97b550e51",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/6bdcb4f9135f09666ded9200fcfc1b9347ad65a1715d2f4506b0ba0562dd91b1",
+          "name": "6bdcb4f9135f09666ded9200fcfc1b9347ad65a1715d2f4506b0ba0562dd91b1",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/76f4ac00a97b5db80fca87a5be15cb1db6a8ea7db39b69c45d9630be594dde7c",
+          "name": "76f4ac00a97b5db80fca87a5be15cb1db6a8ea7db39b69c45d9630be594dde7c",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/77fef5ab501f05fc95a7a469198785b9bbaf8602e10fc1d232b75c9af8809229",
+          "name": "77fef5ab501f05fc95a7a469198785b9bbaf8602e10fc1d232b75c9af8809229",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/79db356c697a60bfec6c25e0874f71e5f070397191a1e4ce400acb1fa2951933",
+          "name": "79db356c697a60bfec6c25e0874f71e5f070397191a1e4ce400acb1fa2951933",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/7b9f9ffe2fe6d4fd8db23372d22f79e68096433b4ed5a7ed72ffb02dfe174b4a",
+          "name": "7b9f9ffe2fe6d4fd8db23372d22f79e68096433b4ed5a7ed72ffb02dfe174b4a",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/7e37002835d15978ea4d21f827d53ce51b27cdea91bb89bb2bf06f3b577a388b",
+          "name": "7e37002835d15978ea4d21f827d53ce51b27cdea91bb89bb2bf06f3b577a388b",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/802a7e8b291fd60907637e1b9d7b9a4355d87ab9ce5bb57e151eb2073cd5a59d",
+          "name": "802a7e8b291fd60907637e1b9d7b9a4355d87ab9ce5bb57e151eb2073cd5a59d",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/804dc7b8a611cbdd11fdef9b9f50579595e406d1b3f6ef57eb89018e8b2150d5",
+          "name": "804dc7b8a611cbdd11fdef9b9f50579595e406d1b3f6ef57eb89018e8b2150d5",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/81e08020871f0f80516b42fa873541f52ec3325ef4c3ae630114afa704b144b7",
+          "name": "81e08020871f0f80516b42fa873541f52ec3325ef4c3ae630114afa704b144b7",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/82463d51ae810061420e8ac099e3ab1165dcd54898cc44e86abedb56145c3ef4",
+          "name": "82463d51ae810061420e8ac099e3ab1165dcd54898cc44e86abedb56145c3ef4",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/8314a8f1a109b4ccc8c115bc97c8167fce91041de2f4686da922973125404136",
+          "name": "8314a8f1a109b4ccc8c115bc97c8167fce91041de2f4686da922973125404136",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/837f7b4f41b127f54709fa8bfa91a371652c63ae38c5307bc6c3dd5f56b10ce1",
+          "name": "837f7b4f41b127f54709fa8bfa91a371652c63ae38c5307bc6c3dd5f56b10ce1",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/84942652e5d7d17038314a486aa7f3223a3707caeebc79933c939ee6443b2ded",
+          "name": "84942652e5d7d17038314a486aa7f3223a3707caeebc79933c939ee6443b2ded",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/84fab3bd3027945580a378ceb9faa18d9bcd347493d7570deb15b377dd592942",
+          "name": "84fab3bd3027945580a378ceb9faa18d9bcd347493d7570deb15b377dd592942",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/87028aac4a9a1fc721c6d63cc51b59b42d8c27bfb28a2e4fda16ca1616c5beef",
+          "name": "87028aac4a9a1fc721c6d63cc51b59b42d8c27bfb28a2e4fda16ca1616c5beef",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/877c4d8a044a105c1c31ffeae2338958841087e3ce0e432dc86ad0f220a5beca",
+          "name": "877c4d8a044a105c1c31ffeae2338958841087e3ce0e432dc86ad0f220a5beca",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/87aa3f2bceee9c6540aa8d9373515f5173d655505625e76755d4acde82a620ee",
+          "name": "87aa3f2bceee9c6540aa8d9373515f5173d655505625e76755d4acde82a620ee",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/88451e15493b3148bbf83002f2d9468bbcf57ce7fdc5b86cc56d0c03527a9b0a",
+          "name": "88451e15493b3148bbf83002f2d9468bbcf57ce7fdc5b86cc56d0c03527a9b0a",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/8922bdb1ba997a8d9b5990df3ac242eb07d78024596deee14822f876abff9573",
+          "name": "8922bdb1ba997a8d9b5990df3ac242eb07d78024596deee14822f876abff9573",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/8a681083af164ede545e1e33a9981bfc60d1ef65552e32c19eba386412103a52",
+          "name": "8a681083af164ede545e1e33a9981bfc60d1ef65552e32c19eba386412103a52",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/90988fba098f3400942ad851ec0d65af876ef4b804e089bd215afc8bb91bd39a",
+          "name": "90988fba098f3400942ad851ec0d65af876ef4b804e089bd215afc8bb91bd39a",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/91167c97ea61c2fb1f8c8e02a989fb8aea670cc0f5cb87ce0fdaa17fbfdc789e",
+          "name": "91167c97ea61c2fb1f8c8e02a989fb8aea670cc0f5cb87ce0fdaa17fbfdc789e",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/9181a85f1626ba68b602c6e73834ba9f7a7678227e10a30778c773b96f6fd66e",
+          "name": "9181a85f1626ba68b602c6e73834ba9f7a7678227e10a30778c773b96f6fd66e",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/9182223216e52f2ef64a70e3a7a5511d492386849665849fc0a8b381f2c0280e",
+          "name": "9182223216e52f2ef64a70e3a7a5511d492386849665849fc0a8b381f2c0280e",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/921c53d948b73693dd093b8cdcd2abf78488da6104fd7ac1857ff105d827422f",
+          "name": "921c53d948b73693dd093b8cdcd2abf78488da6104fd7ac1857ff105d827422f",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/9291ebad44f1f49344c5dd6c910d82112d55262cf64d2b1ce4c48dcf58e364b2",
+          "name": "9291ebad44f1f49344c5dd6c910d82112d55262cf64d2b1ce4c48dcf58e364b2",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/9351abc1a68b588bd0d636103667e580dc3cc1e59586fcf42a927b7d972c4ad8",
+          "name": "9351abc1a68b588bd0d636103667e580dc3cc1e59586fcf42a927b7d972c4ad8",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/93ea112206f9c07a0b33a94dd9fd99efd41cc406309b3ccbde91b6aedbc77959",
+          "name": "93ea112206f9c07a0b33a94dd9fd99efd41cc406309b3ccbde91b6aedbc77959",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/93ebfdd36e95e2c9a90a38540098643e7475a8aabe850c5edcf0c298ee221b23",
+          "name": "93ebfdd36e95e2c9a90a38540098643e7475a8aabe850c5edcf0c298ee221b23",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/941e1bffe5ff901e0f1769632df6afed3913cc931b1ab10437cec0a1166a031d",
+          "name": "941e1bffe5ff901e0f1769632df6afed3913cc931b1ab10437cec0a1166a031d",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/948f0f5c5a4bc8381a3d9ad413fb0f8e78ee1a3bad52606dea9b9b6f144e5450",
+          "name": "948f0f5c5a4bc8381a3d9ad413fb0f8e78ee1a3bad52606dea9b9b6f144e5450",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/94daf77bc348ea1c475d7a40bfef336098959c70a69587cab30cfc3f5a4ef884",
+          "name": "94daf77bc348ea1c475d7a40bfef336098959c70a69587cab30cfc3f5a4ef884",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/982d09417280d5f2b96af4f9ed56b02f14473c6eb5423d7886334a066127aad6",
+          "name": "982d09417280d5f2b96af4f9ed56b02f14473c6eb5423d7886334a066127aad6",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/993db7f3b92cf5f095e4861644a2fd5b18f38ac7c0f195bffa0bdfa889db483c",
+          "name": "993db7f3b92cf5f095e4861644a2fd5b18f38ac7c0f195bffa0bdfa889db483c",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/9d19fb94520fac102add36d29677cc3ba306017a1642d833777c05ecf7a870c1",
+          "name": "9d19fb94520fac102add36d29677cc3ba306017a1642d833777c05ecf7a870c1",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/9d7578e291a9506b043b1f033cdb991e7db71be2c391c027c93efbd889315910",
+          "name": "9d7578e291a9506b043b1f033cdb991e7db71be2c391c027c93efbd889315910",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/9e25ed4fbbef91cacedcdd7d2e68ffaa4f5539216f0d00e38cced0ff6abbce8c",
+          "name": "9e25ed4fbbef91cacedcdd7d2e68ffaa4f5539216f0d00e38cced0ff6abbce8c",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/a03b47e468b374bc737db5a13dc9359a40f74b16efaf85a1c541bcdd6a2a0bd4",
+          "name": "a03b47e468b374bc737db5a13dc9359a40f74b16efaf85a1c541bcdd6a2a0bd4",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/a1a585b7f2bd40a2feeb199794774bdd382ad0dc367275eb592fccbca3fee88d",
+          "name": "a1a585b7f2bd40a2feeb199794774bdd382ad0dc367275eb592fccbca3fee88d",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/a4ef6346ebc417ab41428fef9c2199a1ab912d99ced64152ee6a84038206a183",
+          "name": "a4ef6346ebc417ab41428fef9c2199a1ab912d99ced64152ee6a84038206a183",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/a6d792f7d806a59b5adb44632299d92a4e08a1807c15778324824687a8668177",
+          "name": "a6d792f7d806a59b5adb44632299d92a4e08a1807c15778324824687a8668177",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/a9379eaf26487cd84da0a5fc52b64067f638f3b61d8988fec55b3a55b59fac63",
+          "name": "a9379eaf26487cd84da0a5fc52b64067f638f3b61d8988fec55b3a55b59fac63",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/aa73ac37aeda4472bdf95cc4e1c7f50df783a790dd9feececa66529a00592db1",
+          "name": "aa73ac37aeda4472bdf95cc4e1c7f50df783a790dd9feececa66529a00592db1",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/ab98ca60f1273ff3a1364c37724283f814cc05ec661d308da96b794cd4cc7397",
+          "name": "ab98ca60f1273ff3a1364c37724283f814cc05ec661d308da96b794cd4cc7397",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/abb2c1718b056ed2ee8f2dcdfe7830cc751f06489b7db495cf56f77905d0bc63",
+          "name": "abb2c1718b056ed2ee8f2dcdfe7830cc751f06489b7db495cf56f77905d0bc63",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/abedfb7cd1d5616d16502bcd37181af15066e78961d5c0ebf287c51c120ee01b",
+          "name": "abedfb7cd1d5616d16502bcd37181af15066e78961d5c0ebf287c51c120ee01b",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/adfa33c87facf71105db1b5e1a38562e7c8d829b8fadef36b416ab77e2b59366",
+          "name": "adfa33c87facf71105db1b5e1a38562e7c8d829b8fadef36b416ab77e2b59366",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/afcca443e018e560f05a1a897dbe04488c22c93ff280a5c2820056cf3285ebb8",
+          "name": "afcca443e018e560f05a1a897dbe04488c22c93ff280a5c2820056cf3285ebb8",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/b56cee2007666cb023c170f1c3165cdb54035e47f36bbd493ec9ab22a23c1ff6",
+          "name": "b56cee2007666cb023c170f1c3165cdb54035e47f36bbd493ec9ab22a23c1ff6",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/b794b21fd2769c3de0857a1cf806a7d80a815f68a418dc9d8725fadf8629342f",
+          "name": "b794b21fd2769c3de0857a1cf806a7d80a815f68a418dc9d8725fadf8629342f",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/b7f212109ebab47ddfb1d184a2d325dee66aad518bc6b83c6227b53453b3a039",
+          "name": "b7f212109ebab47ddfb1d184a2d325dee66aad518bc6b83c6227b53453b3a039",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/b8aa0aa12ba5be18e011d5d49f921835714a15d31d18ff9c669e7d7d9a8265fe",
+          "name": "b8aa0aa12ba5be18e011d5d49f921835714a15d31d18ff9c669e7d7d9a8265fe",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/ba0240987fb19255bb23f2a9a028b188330322dc5ad92ad25d88184b7a4efcdb",
+          "name": "ba0240987fb19255bb23f2a9a028b188330322dc5ad92ad25d88184b7a4efcdb",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/bc2ed1ea07492b98b9939c21296133eb198786410af87bcc6b15600ef07aea2e",
+          "name": "bc2ed1ea07492b98b9939c21296133eb198786410af87bcc6b15600ef07aea2e",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/bc6b28bad5ed70062e40ad5b70dad26a2c827a23b45bb5f1e589a722f295088a",
+          "name": "bc6b28bad5ed70062e40ad5b70dad26a2c827a23b45bb5f1e589a722f295088a",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/bdd779c071deb4dbba414905eb131a5561f91c77307ef60b2dee7863b44f6e25",
+          "name": "bdd779c071deb4dbba414905eb131a5561f91c77307ef60b2dee7863b44f6e25",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/be07a40d34ee1e44e61d0e81fc1a71161cc9ba7ef20d57fc7fbe4e70f6e3ba8b",
+          "name": "be07a40d34ee1e44e61d0e81fc1a71161cc9ba7ef20d57fc7fbe4e70f6e3ba8b",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/be44529b4ff2d118e8ecc6ea46615ea282d9713840dea1d9b9a5b0bb7bdd157e",
+          "name": "be44529b4ff2d118e8ecc6ea46615ea282d9713840dea1d9b9a5b0bb7bdd157e",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/be4e5120fae6aba9c9c078c7972e323856b8b1a0576edb318bc6f3b3573c3a59",
+          "name": "be4e5120fae6aba9c9c078c7972e323856b8b1a0576edb318bc6f3b3573c3a59",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/c1d1d649910f27fe5ee7a21358ef1bd1c053887c8db45d01bcedfd368fa37345",
+          "name": "c1d1d649910f27fe5ee7a21358ef1bd1c053887c8db45d01bcedfd368fa37345",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/c226bde4076de469363e0a3a2deb2331b90bc8c2cf8c0a7d07f692a14064e121",
+          "name": "c226bde4076de469363e0a3a2deb2331b90bc8c2cf8c0a7d07f692a14064e121",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/c29d6a51db206505f8fba104452991d2facf2c87090f1969721aa165de134782",
+          "name": "c29d6a51db206505f8fba104452991d2facf2c87090f1969721aa165de134782",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/c5309252e76caa3a2e15ee72f7fea78434bc84af399e3cb69cb74b7bc038bae5",
+          "name": "c5309252e76caa3a2e15ee72f7fea78434bc84af399e3cb69cb74b7bc038bae5",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/c6c8e1ef44eb8f62934dbfd2624417ab096dbabc013ec96cf97693c853184467",
+          "name": "c6c8e1ef44eb8f62934dbfd2624417ab096dbabc013ec96cf97693c853184467",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/c9f197fc830b4036cf348e957369a1943d4645ce098503067a2594533a272688",
+          "name": "c9f197fc830b4036cf348e957369a1943d4645ce098503067a2594533a272688",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/cdb5743a201814a2edb43cb779d32fd45141321ba78cc3e7385d70a9b108b324",
+          "name": "cdb5743a201814a2edb43cb779d32fd45141321ba78cc3e7385d70a9b108b324",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/cdd781f867f7f24ec99e0922423daf8b2fcd9c3b98c1d1aa044b3b3f9aed3453",
+          "name": "cdd781f867f7f24ec99e0922423daf8b2fcd9c3b98c1d1aa044b3b3f9aed3453",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/cfcaa24539e06be08dc6da93a1a790733cd68c9b3083791b31b13b769ffdafc4",
+          "name": "cfcaa24539e06be08dc6da93a1a790733cd68c9b3083791b31b13b769ffdafc4",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/d37b0a7085ca82071b63f9013af613a7320f56f37ac4b3a226356264131b5393",
+          "name": "d37b0a7085ca82071b63f9013af613a7320f56f37ac4b3a226356264131b5393",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/d3d818d4f33b51dabc79e00845a85a0b1a501ea820041ae77423bcd5ea2568bf",
+          "name": "d3d818d4f33b51dabc79e00845a85a0b1a501ea820041ae77423bcd5ea2568bf",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/d44fa48436afdfb9cb0fdd078d2dd19850c2388b0a41b63392b61918b8e5c9ff",
+          "name": "d44fa48436afdfb9cb0fdd078d2dd19850c2388b0a41b63392b61918b8e5c9ff",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/d458bc564f44b9e997e97f87bff1a3ac1beaf020e039d1120e5962530efb1922",
+          "name": "d458bc564f44b9e997e97f87bff1a3ac1beaf020e039d1120e5962530efb1922",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/d4760f7dd2aa89be19136b7f4e972c7b5ed6f14ce1dc60d241a20a2496c20645",
+          "name": "d4760f7dd2aa89be19136b7f4e972c7b5ed6f14ce1dc60d241a20a2496c20645",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/d8ed4f3406f8a52361d49a25c7057700d242f49d44af408e87251c8748b8bd8f",
+          "name": "d8ed4f3406f8a52361d49a25c7057700d242f49d44af408e87251c8748b8bd8f",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/d92902dd28d4350ae87c65ca73996285e331813e09ef3bbc28400da8c954ed95",
+          "name": "d92902dd28d4350ae87c65ca73996285e331813e09ef3bbc28400da8c954ed95",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/db138b17f2f857bbf33b0acdfaed332cb98a17fb2de11e2d41b66a5748596529",
+          "name": "db138b17f2f857bbf33b0acdfaed332cb98a17fb2de11e2d41b66a5748596529",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/dde4bccb7b31b2cc882be0995874ad91d224d981440707cf44c6e9a4e46bb061",
+          "name": "dde4bccb7b31b2cc882be0995874ad91d224d981440707cf44c6e9a4e46bb061",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/df498ea0813eaf0d79e1e2b1330818eb4818b16e2e61e0d5779bccc17f0ca64e",
+          "name": "df498ea0813eaf0d79e1e2b1330818eb4818b16e2e61e0d5779bccc17f0ca64e",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/e03c98e7e625bd117d659895f2021787842a658c1b69f79edb8667c1ea05bbf3",
+          "name": "e03c98e7e625bd117d659895f2021787842a658c1b69f79edb8667c1ea05bbf3",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/e49519045d7f0f0cdc04ee367696ef4dfbfce6b1174af0633d95d31402300833",
+          "name": "e49519045d7f0f0cdc04ee367696ef4dfbfce6b1174af0633d95d31402300833",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/e8c09fb167e5d656d04d33bc51f900edd37f9ebad78fbbea3d89ed2be1292ab3",
+          "name": "e8c09fb167e5d656d04d33bc51f900edd37f9ebad78fbbea3d89ed2be1292ab3",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/e953147e0a341ed6be76d3ca76f8a14a7503727f0e2d043d32408a1889caa44d",
+          "name": "e953147e0a341ed6be76d3ca76f8a14a7503727f0e2d043d32408a1889caa44d",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/ed9008fe0904e1a980c3bf9629e1a3ff6bfa9e2ab8a54a153dd020ce94d8b126",
+          "name": "ed9008fe0904e1a980c3bf9629e1a3ff6bfa9e2ab8a54a153dd020ce94d8b126",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/edc119fd6f9544de2a37179e65d0704272a9aa8d47f3d0a7f4a92d39088ac583",
+          "name": "edc119fd6f9544de2a37179e65d0704272a9aa8d47f3d0a7f4a92d39088ac583",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/edeea886981598da8d76f552f538c90bbdad3c4d2bf03c5bb91dc58ba80e3f97",
+          "name": "edeea886981598da8d76f552f538c90bbdad3c4d2bf03c5bb91dc58ba80e3f97",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/f082a63aa02dc1113384c85f2d1cabba9d3d836aabf9be74422bedac051cf262",
+          "name": "f082a63aa02dc1113384c85f2d1cabba9d3d836aabf9be74422bedac051cf262",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/f1666e1a63a312103f09d145640c0f03bdf889d5dbd7f78c526832390037a868",
+          "name": "f1666e1a63a312103f09d145640c0f03bdf889d5dbd7f78c526832390037a868",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/f413b78a9f9fa22fc9540e05a541ea10d8324d9e0cee2193929516ca2ba51987",
+          "name": "f413b78a9f9fa22fc9540e05a541ea10d8324d9e0cee2193929516ca2ba51987",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/fb6c4df77c0e70428a8b10410de84d9ed9975b6637f13436a72874b446b5eed0",
+          "name": "fb6c4df77c0e70428a8b10410de84d9ed9975b6637f13436a72874b446b5eed0",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/fcb1df4fcbfb4a3d50e9ec08c4b04a6ab490dbc87a579b0f57ac93f8da4c0d32",
+          "name": "fcb1df4fcbfb4a3d50e9ec08c4b04a6ab490dbc87a579b0f57ac93f8da4c0d32",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/fd53259815b89f8d467a47a8bc3b05e9091fcbb708a8417a13a41bb6f069f9ba",
+          "name": "fd53259815b89f8d467a47a8bc3b05e9091fcbb708a8417a13a41bb6f069f9ba",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/objects/fff562e2fb717295f9313bfcf3ac4a8d3094fe6886e347f7c4160d973a5c9f43",
+          "name": "fff562e2fb717295f9313bfcf3ac4a8d3094fe6886e347f7c4160d973a5c9f43",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/r9_fixed_evidence.jl",
+          "name": "r9_fixed_evidence.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/r9_resilience_evidence.jl",
+          "name": "r9_resilience_evidence.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/report-source.jl",
+          "name": "report-source.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-evidence-20260922-v1/summary.csv",
+          "name": "summary.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/scripts/r9_detailed_preplan_study.jl",
+          "name": "r9_detailed_preplan_study.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/scripts/r9_preplan_study.jl",
+          "name": "r9_preplan_study.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/scripts/r9_resilience_study.jl",
+          "name": "r9_resilience_study.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/scripts/run_r9_detailed_preplan.jl",
+          "name": "run_r9_detailed_preplan.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/algorithms/r7_adversary.jl",
+          "name": "r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/algorithms/r7_linked_planning.jl",
+          "name": "r7_linked_planning.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/algorithms/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/algorithms/r7_planning.jl",
+          "name": "r7_planning.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/algorithms/r7_transport.jl",
+          "name": "r7_transport.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/algorithms/r9_detailed_preplan.jl",
+          "name": "r9_detailed_preplan.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/algorithms/r9_preplan.jl",
+          "name": "r9_preplan.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/components/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/core/r7_adversary.jl",
+          "name": "r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/core/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/core/r7_initial_profile.jl",
+          "name": "r7_initial_profile.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/core/r7_linked_planning.jl",
+          "name": "r7_linked_planning.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/core/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/core/r7_planning.jl",
+          "name": "r7_planning.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/core/r7_transport.jl",
+          "name": "r7_transport.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/core/r8_tradeoff.jl",
+          "name": "r8_tradeoff.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/core/r9_detailed_preplan.jl",
+          "name": "r9_detailed_preplan.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/core/r9_preplan.jl",
+          "name": "r9_preplan.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/formulations/r7_adversary.jl",
+          "name": "r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/formulations/r7_linked_planning.jl",
+          "name": "r7_linked_planning.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/formulations/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/formulations/r7_planning.jl",
+          "name": "r7_planning.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/formulations/r7_transport.jl",
+          "name": "r7_transport.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/formulations/r9_detailed_preplan.jl",
+          "name": "r9_detailed_preplan.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/formulations/r9_preplan.jl",
+          "name": "r9_preplan.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/networks/fixed_flow_heat.jl",
+          "name": "fixed_flow_heat.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/networks/r7_linked_state.jl",
+          "name": "r7_linked_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/networks/r7_normal_transport.jl",
+          "name": "r7_normal_transport.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/reporting/r7_adversary.jl",
+          "name": "r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/reporting/r7_linked_planning.jl",
+          "name": "r7_linked_planning.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/reporting/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/reporting/r7_planning.jl",
+          "name": "r7_planning.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/reporting/r7_transport.jl",
+          "name": "r7_transport.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/reporting/r9_detailed_preplan.jl",
+          "name": "r9_detailed_preplan.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/reporting/r9_preplan.jl",
+          "name": "r9_preplan.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/verification/r7_adversary.jl",
+          "name": "r7_adversary.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/verification/r7_commitment.jl",
+          "name": "r7_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/verification/r7_linked_planning.jl",
+          "name": "r7_linked_planning.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/verification/r7_normal.jl",
+          "name": "r7_normal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/verification/r7_planning.jl",
+          "name": "r7_planning.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/verification/r7_transport.jl",
+          "name": "r7_transport.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/verification/r9_detailed_preplan.jl",
+          "name": "r9_detailed_preplan.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/verification/r9_handoff.jl",
+          "name": "r9_handoff.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/src/verification/r9_preplan.jl",
+          "name": "r9_preplan.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/tools/solvers/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/code/tools/solvers/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/construction.toml",
+          "name": "construction.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/normal.toml",
+          "name": "normal.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/parent-files.toml",
+          "name": "parent-files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/penalty-spec.toml",
+          "name": "penalty-spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/planning.toml",
+          "name": "planning.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/protocol.toml",
+          "name": "protocol.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-detailed-preplan-input-20260922-v1/threshold-spec.toml",
+          "name": "threshold-spec.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/artifacts.toml",
+          "name": "artifacts.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/iis-diagnostic.toml",
+          "name": "iis-diagnostic.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/iis-files.toml",
+          "name": "iis-files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/iis-protocol.toml",
+          "name": "iis-protocol.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/kernel/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/kernel/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/kernel/replay.jl",
+          "name": "replay.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/kernel/src/PaperRebuild.jl",
+          "name": "PaperRebuild.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/kernel/src/algorithms/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/kernel/src/algorithms/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/kernel/src/algorithms/r7_transport.jl",
+          "name": "r7_transport.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/kernel/src/core/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/kernel/src/core/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/kernel/src/core/r7_transport.jl",
+          "name": "r7_transport.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/kernel/src/formulations/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/kernel/src/formulations/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/kernel/src/formulations/r7_transport.jl",
+          "name": "r7_transport.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/kernel/src/networks/r7_pipe_state.jl",
+          "name": "r7_pipe_state.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/kernel/src/reporting/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/kernel/src/reporting/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/kernel/src/reporting/r7_transport.jl",
+          "name": "r7_transport.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/kernel/src/verification/r7_recovery.jl",
+          "name": "r7_recovery.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/kernel/src/verification/r7_thermal.jl",
+          "name": "r7_thermal.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/kernel/src/verification/r7_transport.jl",
+          "name": "r7_transport.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/kernel/src/verification/r9_handoff.jl",
+          "name": "r9_handoff.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/object-chunks.toml",
+          "name": "object-chunks.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/objects/0120c7f94cd4936d336e3e9cdc6cc9e11c3e55541f05fb39cde36368998c017a",
+          "name": "0120c7f94cd4936d336e3e9cdc6cc9e11c3e55541f05fb39cde36368998c017a",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/objects/0a640358ca33e27b03784d755132e21432c90e89be0bc1c3a2ded52bfbc7ef09",
+          "name": "0a640358ca33e27b03784d755132e21432c90e89be0bc1c3a2ded52bfbc7ef09",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/objects/0f0f1f728de4b18dd7ee73186b666a49adf85ff7c631b25c614a9ac32c86bd4f",
+          "name": "0f0f1f728de4b18dd7ee73186b666a49adf85ff7c631b25c614a9ac32c86bd4f",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/objects/12d4ded37622392b51590bda37959f887dbd2c6d0f8b95f07da827d594dc2c13",
+          "name": "12d4ded37622392b51590bda37959f887dbd2c6d0f8b95f07da827d594dc2c13",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/objects/133dc7033dcffa20dc8c94e3c6f43b288e2487d245ef8346585d0d9e5f7b65b1",
+          "name": "133dc7033dcffa20dc8c94e3c6f43b288e2487d245ef8346585d0d9e5f7b65b1",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/objects/19e6ad116682a8fb6c093fb63356e3e939251246c84f6aa99cb284e6019e7006",
+          "name": "19e6ad116682a8fb6c093fb63356e3e939251246c84f6aa99cb284e6019e7006",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/objects/1b37c0e59b8b7199bdc058d15e47b57f56becf340c21735f471cbef8fb5bdcd0",
+          "name": "1b37c0e59b8b7199bdc058d15e47b57f56becf340c21735f471cbef8fb5bdcd0",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/objects/20e45ae6a72fffd4db5fba556824b69607a66a3f03324762e7cb093c0bcfb686",
+          "name": "20e45ae6a72fffd4db5fba556824b69607a66a3f03324762e7cb093c0bcfb686",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/objects/2118f6326e9709e079567a2513af8b52b29a3f83b1d9a239d634deba5825ffd9",
+          "name": "2118f6326e9709e079567a2513af8b52b29a3f83b1d9a239d634deba5825ffd9",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/objects/2d8b4b01dbcdfc276ac15bf40d715b1d23f3dc56271ef4b0736f6fae2403f8a8",
+          "name": "2d8b4b01dbcdfc276ac15bf40d715b1d23f3dc56271ef4b0736f6fae2403f8a8",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/objects/36e5592d2ff979c88741af4a791dfa2190781a70d061b933e87027484aa46a55",
+          "name": "36e5592d2ff979c88741af4a791dfa2190781a70d061b933e87027484aa46a55",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/objects/3e2ebbc202ba307027f0ebd7ff3d8c7f8c72d07a70757fe0d2a3862a82d5cccb",
+          "name": "3e2ebbc202ba307027f0ebd7ff3d8c7f8c72d07a70757fe0d2a3862a82d5cccb",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/objects/51b3214c4e04eca1ae05a635a621c5949593e9b4e59444a281424dfb9b36c088",
+          "name": "51b3214c4e04eca1ae05a635a621c5949593e9b4e59444a281424dfb9b36c088",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/objects/585fd91eebdad622b3e7aafe47a1e55e3a8d30af157bd316960f051676693ca3",
+          "name": "585fd91eebdad622b3e7aafe47a1e55e3a8d30af157bd316960f051676693ca3",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/objects/5cce1b29eaf89dca3f44b6ab7ad0a282d7f8034efc50945717ce1e7a518e88f4",
+          "name": "5cce1b29eaf89dca3f44b6ab7ad0a282d7f8034efc50945717ce1e7a518e88f4",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/objects/5d3a8d2bcb58d4de284a6d6629a7ac115f7f3eba2ce20408740c4c30d55cd576",
+          "name": "5d3a8d2bcb58d4de284a6d6629a7ac115f7f3eba2ce20408740c4c30d55cd576",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/objects/6d705bf274bc174a21c9a9938774da8974cf5715de1d376339d68c4e5ac9ff0b",
+          "name": "6d705bf274bc174a21c9a9938774da8974cf5715de1d376339d68c4e5ac9ff0b",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/objects/84645ac3a86493aa0d97de59aa03069c9e88f41993635e81c92fbfce1a62f95f",
+          "name": "84645ac3a86493aa0d97de59aa03069c9e88f41993635e81c92fbfce1a62f95f",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/objects/876363a7fa474fc26d45c241c2d26cf3c0769d7646ed76224e856841c0630c02",
+          "name": "876363a7fa474fc26d45c241c2d26cf3c0769d7646ed76224e856841c0630c02",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/objects/9182223216e52f2ef64a70e3a7a5511d492386849665849fc0a8b381f2c0280e",
+          "name": "9182223216e52f2ef64a70e3a7a5511d492386849665849fc0a8b381f2c0280e",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/objects/9351abc1a68b588bd0d636103667e580dc3cc1e59586fcf42a927b7d972c4ad8",
+          "name": "9351abc1a68b588bd0d636103667e580dc3cc1e59586fcf42a927b7d972c4ad8",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/objects/93ebfdd36e95e2c9a90a38540098643e7475a8aabe850c5edcf0c298ee221b23",
+          "name": "93ebfdd36e95e2c9a90a38540098643e7475a8aabe850c5edcf0c298ee221b23",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/objects/948f0f5c5a4bc8381a3d9ad413fb0f8e78ee1a3bad52606dea9b9b6f144e5450",
+          "name": "948f0f5c5a4bc8381a3d9ad413fb0f8e78ee1a3bad52606dea9b9b6f144e5450",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/objects/a03b47e468b374bc737db5a13dc9359a40f74b16efaf85a1c541bcdd6a2a0bd4",
+          "name": "a03b47e468b374bc737db5a13dc9359a40f74b16efaf85a1c541bcdd6a2a0bd4",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/objects/a6d792f7d806a59b5adb44632299d92a4e08a1807c15778324824687a8668177",
+          "name": "a6d792f7d806a59b5adb44632299d92a4e08a1807c15778324824687a8668177",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/objects/aa2e2b9907f06b5965a21a38cc51fe10b4a84bcc765945986d1066ef8e484a51",
+          "name": "aa2e2b9907f06b5965a21a38cc51fe10b4a84bcc765945986d1066ef8e484a51",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/objects/b1a30330fe482f63caa8d12807d4a36b32a23c40c849e0ab028adb5413dff7fc",
+          "name": "b1a30330fe482f63caa8d12807d4a36b32a23c40c849e0ab028adb5413dff7fc",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/objects/b7f212109ebab47ddfb1d184a2d325dee66aad518bc6b83c6227b53453b3a039",
+          "name": "b7f212109ebab47ddfb1d184a2d325dee66aad518bc6b83c6227b53453b3a039",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/objects/c6c8e1ef44eb8f62934dbfd2624417ab096dbabc013ec96cf97693c853184467",
+          "name": "c6c8e1ef44eb8f62934dbfd2624417ab096dbabc013ec96cf97693c853184467",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/objects/d266beb2970b3bdd0f2ee2e3e2337edbf863c230e13a289374b2087537fe12b2",
+          "name": "d266beb2970b3bdd0f2ee2e3e2337edbf863c230e13a289374b2087537fe12b2",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/objects/df498ea0813eaf0d79e1e2b1330818eb4818b16e2e61e0d5779bccc17f0ca64e",
+          "name": "df498ea0813eaf0d79e1e2b1330818eb4818b16e2e61e0d5779bccc17f0ca64e",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/objects/e3556b83631bc7432d2a6fb7f58dc5316a1c3abfaac88ccce138dfd80f961512",
+          "name": "e3556b83631bc7432d2a6fb7f58dc5316a1c3abfaac88ccce138dfd80f961512",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/objects/e784d667b29251d4632019daa3752201c797829f1c959a7ad613faa3efed9c85",
+          "name": "e784d667b29251d4632019daa3752201c797829f1c959a7ad613faa3efed9c85",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/objects/ed9008fe0904e1a980c3bf9629e1a3ff6bfa9e2ab8a54a153dd020ce94d8b126",
+          "name": "ed9008fe0904e1a980c3bf9629e1a3ff6bfa9e2ab8a54a153dd020ce94d8b126",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/objects/edd5b82ab3702808720ff032778bc618837fc4503d18daaaa368ee43913360ee",
+          "name": "edd5b82ab3702808720ff032778bc618837fc4503d18daaaa368ee43913360ee",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/objects/fcf5025cd18291f89f98c2aae20be967bce4fc6e67405229cc13c1f524d26be7",
+          "name": "fcf5025cd18291f89f98c2aae20be967bce4fc6e67405229cc13c1f524d26be7",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/parents.toml",
+          "name": "parents.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/r9_fixed_evidence.jl",
+          "name": "r9_fixed_evidence.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/r9_resilience_evidence.jl",
+          "name": "r9_resilience_evidence.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/report-source.jl",
+          "name": "report-source.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/result-index.toml",
+          "name": "result-index.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/scope.toml",
+          "name": "scope.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-handoff-evidence-20260922-v1/summary.toml",
+          "name": "summary.toml",
+          "isDirectory": false
         }
       ],
       "order": 6,
@@ -89710,6 +91360,11 @@
         {
           "path": "test/r9_preplan.jl",
           "name": "r9_preplan.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "test/r9_detailed_preplan.jl",
+          "name": "r9_detailed_preplan.jl",
           "isDirectory": false
         }
       ],
@@ -93026,6 +94681,46 @@
         {
           "path": "scripts/r9_preplan_faults.jl",
           "name": "r9_preplan_faults.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r9_detailed_artifacts.jl",
+          "name": "check_r9_detailed_artifacts.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r9_detailed_preplan.jl",
+          "name": "check_r9_detailed_preplan.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/plot_r9_handoff.jl",
+          "name": "plot_r9_handoff.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r9_detailed_preplan_evidence.jl",
+          "name": "r9_detailed_preplan_evidence.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r9_detailed_preplan_study.jl",
+          "name": "r9_detailed_preplan_study.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r9_handoff_evidence.jl",
+          "name": "r9_handoff_evidence.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/run_r9_detailed_preplan.jl",
+          "name": "run_r9_detailed_preplan.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/test_r9_detailed_preplan.jl",
+          "name": "test_r9_detailed_preplan.jl",
           "isDirectory": false
         }
       ],
