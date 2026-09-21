@@ -18,3 +18,10 @@ results/summaries/r9-network-20260921-v1/objects/* binary
 # Immutable nominal probe objects preserve exact bytes, including split UTF-8 sequences.
 results/summaries/r9-reserve-nominal-20260921-v3/** -text whitespace=cr-at-eol
 results/summaries/r9-reserve-nominal-20260921-v3/objects/* binary
+# Frozen risk-study sources and numerical witnesses retain their exact bytes.
+results/summaries/r9-reserve-data-20260921-v1/** -text whitespace=cr-at-eol,-blank-at-eof
+results/summaries/r9-reserve-data-20260921-v2/** -text whitespace=cr-at-eol,-blank-at-eof
+results/summaries/r9-reserve-pilot-20260921-v2/** -text whitespace=cr-at-eol
+results/summaries/r9-reserve-pilot-20260921-v2/objects/* binary
+results/summaries/r9-reserve-full-20260921-v1/** -text whitespace=cr-at-eol
+results/summaries/r9-reserve-full-20260921-v1/objects/* binary

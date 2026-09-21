@@ -378,6 +378,8 @@ export r9_reconfiguration_case, validate_r9_network
 include("core/r9_reserve.jl")
 include("verification/r9_reserve.jl")
 export r9_reserve_template, audit_r9_reserve_input
+include("core/r9_risk.jl")
+export R9ReserveStudySpec, load_r9_reserve_study, r9_reserve_risk_case
 
 """
     hello(who::String)

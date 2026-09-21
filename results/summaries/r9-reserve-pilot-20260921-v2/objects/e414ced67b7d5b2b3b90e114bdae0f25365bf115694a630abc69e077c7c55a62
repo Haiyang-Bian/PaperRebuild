@@ -1,0 +1,134 @@
+julia_version = "1.12.6"
+protocol_sha256 = "8904916e1e160a032e012358e06d7da5c5fbaa67efed460d45f0d1afe117cc25"
+schema = "r6-frozen-data-v1"
+status = "input_frozen_no_method_results"
+
+[files]
+"representatives.toml" = "c38eb113feb994e356121f4b583bf77aaf942ad7e496b571416683eb75265040"
+"test-001.csv" = "6b830dc0d423c7379cb1603f29bf9168d4fbb527c955fcd77460f84b465a4633"
+"test-002.csv" = "99ec13f0ce645fc6f14a02ee46e8879550b5b34384802cd3266218d2a8f370f9"
+"test-003.csv" = "5cf13ef1fc22265f2b89314369a959c1d53ce9948d520f422e81c0d95a0b08a7"
+"test-004.csv" = "f6153f261a2cf861b6ad9dbd684f4f72656133c475a7fcf725cf374607c12029"
+"test-005.csv" = "5eec6ee16e0cf5d46071fed71f64c7c5413a60e55588f4fb278af7357bf66ec4"
+"train-001.csv" = "647b823a2bc2be0a620b6608da944a0258579dfc29db0c1a632b9fbbb6e934d7"
+"train-002.csv" = "f5279790f3ce95fca7960dc78e209227523cf7c3445806e10166b37aa7ecac85"
+"train-003.csv" = "5b464bc09b0fef38be2f1f1a51b6b0e7806567ed809dbcee2212740b33ae70fd"
+"train-004.csv" = "06f7c5397e6dff7f9ddd0ec15e6c4fdbe4dc25fea2fb88cb8d8ce8ad54a8c0c8"
+"train-005.csv" = "a498277fa88e0d416a46c1df18711541c2f2dc332d1821fa609fe417519c5939"
+"train-006.csv" = "a2ebfaed86c8839ae7b8fdb298a7691b7a7887360ab28479a739647106393474"
+"train-007.csv" = "66255c1828b57cb27c32095600cb5bd4b82a397accdf60d72da39d1ce4581874"
+"train-008.csv" = "23a1d9cf01f668c5ed1acb198abdefbf120ae93f17e283adae860749d8b84b9b"
+"train-009.csv" = "21f31181313249c36d087ee77b11d164a6ac20aa11cffabdcf01104ae75422db"
+"train-010.csv" = "5d76c1f85d28cf97943e41735257413339d0254d6b08a643af87330b89161a52"
+"validation-001.csv" = "84a414748a4d607f166362e4a8b0720e3577a4c00af0ef64c11d89ac9bc23563"
+"validation-002.csv" = "8a3599d27743b57883b108d4bb0104d375f014dc4d1828c1d1b95b136047ba7e"
+"validation-003.csv" = "1cf90339cc342edb73c25f19ec8e1fc5e86281c64104a2055b54dd79689feab2"
+
+[groups.test]
+count = 1000
+files = ["test-001.csv", "test-002.csv", "test-003.csv", "test-004.csv", "test-005.csv"]
+sha256 = "250cab708aa0b0cc64e2d937015d19bcfecbada95d00aa0e63ab90c233a07158"
+
+[groups.train]
+count = 2000
+files = ["train-001.csv", "train-002.csv", "train-003.csv", "train-004.csv", "train-005.csv", "train-006.csv", "train-007.csv", "train-008.csv", "train-009.csv", "train-010.csv"]
+sha256 = "ae0ad3108876239f5a1573ec40f19cefc5d814bad21a81586bde2d5b6acd7d42"
+
+[groups.validation]
+count = 500
+files = ["validation-001.csv", "validation-002.csv", "validation-003.csv"]
+sha256 = "cdb9003a8c9a0c9ad0a12b53e8cbc4554c5eedfe5cb9a1ac9cfa430378afacf4"
+
+[protocol]
+T = 24
+dt_h = 1.0
+methods = ["D", "SP", "RO", "DRO", "CCP", "DRJCC"]
+name = "r9_74_independent_pv_call_daily_v1"
+origin = "synthetic"
+recourse_information = "complete_trajectory"
+sample_unit = "complete_day"
+schema = "r6-protocol-v1"
+
+    [protocol.clustering]
+    algorithm = "lloyd_farthest_first_observed_representative_v1"
+    count = 100
+    distance = "rms_pv_and_signed_call_half"
+    max_iterations = 200
+    tolerance = 1.0e-10
+
+    [protocol.generator]
+    activation_ar = 0.7
+    call_scale = 0.75
+    clear_sky_fraction = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.05, 0.2, 0.4, 0.65, 0.85, 0.96, 1.0, 0.95, 0.8, 0.6, 0.35, 0.12, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    cloud_daily_scale = 0.8
+    cloud_hourly_scale = 0.4
+    cloud_intercept = 1.4
+    version = "r6_correlated_pv_call_v1"
+    weather_ar = 0.8
+
+    [protocol.samples]
+    test = 1000
+    train = 2000
+    validation = 500
+
+    [protocol.seeds]
+    test = 2026092103
+    train = 2026092101
+    validation = 2026092102
+
+    [protocol.statistics]
+    bootstrap_replicates = 2000
+    bootstrap_seed = 2026092104
+    confidence = 0.95
+    epsilon = 0.05
+    primary_claim = "DRJCC_joint_comfort"
+    unknown_rule = "keep_denominator_upper_counts_all"
+
+[provenance]
+market_solver_or_strategy_used = false
+usage = "R9 three-scheme input only; R6 schema labels do not execute methods"
+
+    [provenance.source_hashes]
+    "Manifest.toml" = "948f0f5c5a4bc8381a3d9ad413fb0f8e78ee1a3bad52606dea9b9b6f144e5450"
+    "Project.toml" = "a03b47e468b374bc737db5a13dc9359a40f74b16efaf85a1c541bcdd6a2a0bd4"
+    "configs/r9/reserve-protocol.toml" = "72c3e9aaa90acf994486acecf0c8fd80eaf21954372a94bd8c853c98ad0fab06"
+    "configs/r9/reserve-study.toml" = "a116ecc8add52247a1a6fadd31183ec64b321e30f414bfe037e98c6ad4341883"
+    "configs/r9/reserve-trajectories.toml" = "6142568e35d6fc3d649e0d42749f27b088334f4ff2a3d098f4d906f5a166c058"
+    "docs/reading/ch07/inputs.toml" = "34155cc8723c03b06ee738139ed7041a04d86aba29fd231639cfe89602e1a9b7"
+    "docs/reading/ch07/reported-results.toml" = "3ed021a50df205621e95dbd748adeaf8f2e4795bd5dc335d13fcd8a571d16c16"
+    "docs/reading/ch07/topology.toml" = "3c111b9582e4e5cd719150b88e73e014889426df048fa2f55f40a95bdb1ec71f"
+    "scripts/r9_reserve_study.jl" = "6a9fb134f8c57d9ca5ec338adc261e09a850f9d324f87b8a5a01c7d4c9487b47"
+    "scripts/run_r9_reserve_batch.jl" = "1b092d25ef5e758b80262da4df20ca7f7c7cd156dd69662742ba96d683caa938"
+    "src/algorithms/r5_commitment.jl" = "5038f22f037bba90a7bb3e2afc79b900fdff2d91ebe0afbde8ff189acd0c04bb"
+    "src/algorithms/r5_dispatch.jl" = "fe48a6db69bf8bbb9b843b1ecc1695ced426a60860e39a586198e15cd77fca03"
+    "src/algorithms/r5_market.jl" = "a5a5bbc1b96743973ea81e79ec8af40e8f18328d00ca7fc14b540aaf9324154a"
+    "src/algorithms/r5_risk.jl" = "44824bcb0093e32b935b3d88b87d292cdf1add9d3afeac133db8e7064b4ae28f"
+    "src/algorithms/r6_data.jl" = "f2ed119e36dd8609d167823f30ab0257d3e9b191c04bfb18efbd0e76a8fd4a59"
+    "src/core/r5_commitment.jl" = "3ece4af603f2ee34400e0e479b90ff07bb99973ba4e2b179a556ea65072a9d26"
+    "src/core/r5_dispatch.jl" = "2c81a1ef97f4e88d328ee73b81ecbc9e5b800fe389495572f1cefbd8bed59b23"
+    "src/core/r5_market.jl" = "5141419a352751fb65a1fa0127e5ae7826e3d7b65a03dc491ec870adc1c17ee0"
+    "src/core/r5_risk.jl" = "7f0de03bef8332d3070dd41738c0dde82a0c1c050a59f8fdeb2d58a2a17080dd"
+    "src/core/r6_protocol.jl" = "202d6a03d73621767ff078493c9ba107725a15bd076d85263f33e5f4cbed73f9"
+    "src/core/r9_inputs.jl" = "be2d4335404b883d81cde43135e352ab399985ef73ee70e6537eb35c23c72cf7"
+    "src/core/r9_pv.jl" = "8f4e6f87745ba4e9474a1884e4b358dcd5357e03e02296dced3527cfc4949785"
+    "src/core/r9_reserve.jl" = "1cf9ad75caf22a26ab9602f59be02c526f72164affddd7d527a2c4cb3102f748"
+    "src/core/r9_risk.jl" = "b35c2880356c6ea78d280a97a1fda327c62fa0638ebfb326da1b0e92b23e5c37"
+    "src/formulations/r5_commitment.jl" = "8d66f8987a6a2e053416d276080b50644d63b38763fa06625e27fa9899f246ae"
+    "src/formulations/r5_dispatch.jl" = "9cf4ce16f01659598ad2669fcd389ee088a1c85515fe463414e4f3b59db09598"
+    "src/formulations/r5_dispatch_dual.jl" = "9685a38e919580a17abd0f8fee7c90fbdc7f8dd85080831ee36772c3d8d69bdf"
+    "src/formulations/r5_market.jl" = "85ba2ee6e8f84bef53db7949bf4fc425b57476bdaa49f22d9a816bf32bd01713"
+    "src/formulations/r5_risk.jl" = "7b68ae8d7bdd94e8a4d475403962c2e547eac0fb79304f2036da5fb724837f2c"
+    "src/networks/fixed_flow_heat.jl" = "620c069f6b3a520d32ee546ec048074f9cbaa3c785f8c2e31ec7fd7bf245a83b"
+    "src/reporting/r5_commitment.jl" = "7d5faa97dbc2724d33831b319af807381ea13aa763cfde5655a4d7ecea956f2a"
+    "src/reporting/r5_dispatch.jl" = "5d919f4e14dff618d7cc6467ccdcf5ea073b218b2799db0966eb877f4f5d92cb"
+    "src/reporting/r5_market.jl" = "164d47e5922903179225a17c8a681610ae7eb5312068a4f806d85010f16f0796"
+    "src/reporting/r5_risk.jl" = "973e9a81c86ff6b0268992be7c02b0cfeadc49dd04905bbe6a66fa37a827a377"
+    "src/reporting/r6_data.jl" = "0c7336645ead1ce9524e1bd01e33cda1e2f3dbd7848f8489b5ccde366ec394e4"
+    "src/verification/r5_commitment.jl" = "54b43500d3dde0ed617326912d47633425150cb679afa6f8433f2007dd4ac801"
+    "src/verification/r5_dispatch.jl" = "9e422d26b32cd2d9a7859f57bd33cc78aa8cd4af1bf44bad2228184effc29843"
+    "src/verification/r5_dispatch_duality.jl" = "1901b2183fd64b2358310eacb8fb866b12ed24e9f9f47c9a8594f163ac5fb8fd"
+    "src/verification/r5_market.jl" = "47cf2899d6167974ec406d7b431d06bcd2ca3b16108bdbc67c8805e071e57009"
+    "src/verification/r5_risk.jl" = "cf65ed22cd792d244c77d7858c9d45f2838733a2fe5abd540aee8b036cde0312"
+    "src/verification/r9_reserve.jl" = "0be0ef9d6c6748ea1bc9e96ef45a55156467b11b603b6ee2a0d93e1c1b52b09a"
+    "tools/solvers/Manifest.toml" = "22cb571f15112ccc21408903f229e25b49ee0d59333c14d251ab4b83a8abbf54"
+    "tools/solvers/Project.toml" = "be07a40d34ee1e44e61d0e81fc1a71161cc9ba7ef20d57fc7fbe4e70f6e3ba8b"

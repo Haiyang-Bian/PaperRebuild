@@ -1,0 +1,359 @@
+schema = "r9-source-inputs-v1"
+source_id = "thesis-scan-v1"
+source_sha256 = "20328e2480e773520c19c378e53365fc944c0bafcfca73071f5d8313d5ee7d91"
+origin = "transcribed_from_user_supplied_thesis"
+status = "partial_original_input_not_runnable"
+pdf_pages_reviewed = [127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143]
+note = "数字取原PDF，不用DOCX替代核验；缺失参数不补零。热电比按H/P解释，派生量另存。"
+
+[base]
+pdf_page = 128
+electric_nodes = 44
+electric_edges = 43
+heat_nodes = 38
+heat_pipe_pairs = 37
+electric_peak_MVA = 45.67
+heat_peak_MW = 7.23
+distribution_voltage_kV = 10.0
+substation_nodes = [1,20,44]
+substation_high_side_kV = [110.0,110.0,220.0]
+reported_distributed_electric_capacity_MW = 16.5
+reported_renewable_capacity_MW = 8.0
+reported_heat_capacity_MW = 8.1
+electric_peak_is_active_power = false
+
+[[base.pv]]
+id = "PV1"
+electric_node = 22
+P_max_MW = 2.0
+cost_CNY_MWh = 55.0
+source = "table-7-1 / PDF128; kW/1000, CNY/kWh*1000"
+[[base.pv]]
+id = "PV2"
+electric_node = 34
+P_max_MW = 3.0
+cost_CNY_MWh = 50.0
+source = "table-7-1 / PDF128"
+[[base.pv]]
+id = "PV3"
+electric_node = 8
+P_max_MW = 3.0
+cost_CNY_MWh = 45.0
+source = "table-7-1 / PDF128"
+
+[[base.chp]]
+id = "CHP"
+electric_node = 33
+heat_node = 1
+H_over_P = 0.8
+P_max_MW = 8.5
+P_min_MW = 3.0
+startup_CNY = 4000.0
+fuel_CNY_MWh_electric = 685.9
+source = "table-7-2 / PDF128"
+
+[[base.eb]]
+id = "EB1"
+electric_node = 33
+heat_node = 1
+eta = 0.92
+H_max_MW = 1.0
+source = "table-7-3 / PDF128; capacity is HEAT output"
+[[base.eb]]
+id = "EB2"
+electric_node = 22
+heat_node = 15
+eta = 0.93
+H_max_MW = 1.2
+source = "table-7-3 / PDF128; capacity is HEAT output"
+
+[base.tariff]
+source = "table-7-4 / PDF128"
+interval_convention = "hour_start_in_half_open_interval"
+interval_convention_origin = "project_explicit_reading_of_clock_ranges"
+peak_intervals_h = [[8,12],[17,21]]
+flat_intervals_h = [[5,8],[12,17]]
+valley_intervals_h = [[21,24],[0,5]]
+peak_CNY_MWh = 1034.7
+flat_CNY_MWh = 606.8
+valley_CNY_MWh = 258.9
+
+[pv_dispatch]
+section = "7.2"
+pdf_page = 129
+parent = "base"
+pv1_capacity_MW = 6.0
+change = "only stated PV1 capacity change; no 1.5 load factor"
+CF = "each pipe mass-flow rate prescribed"
+CT = "heat-source supply temperature prescribed"
+modes = ["CF_CT","CF_VT","VF_CT","VF_VT"]
+daily_heat_balance_claim = true
+explicit_full_terminal_state = false
+target_table = "7-5"
+
+[trading]
+section = "7.3"
+pdf_pages = [131,132,133,134,135]
+parent = "base"
+load_factor = 1.5
+load_factor_scope = "aggregate-node loads; table-7-9 pre/post scaling not specified"
+aggregation_count = 8
+resource_scope = "CHP replacements, added EB, battery, PV and heat storage mentioned"
+new_heat_ties = [[6,27],[32,16]]
+new_electric_ties = [[6,38],[18,27],[25,24],[19,33]]
+tie_source = "figure-7-6 / PDF133; heat ties also stated on PDF134"
+scheme_2A = "retail and feed-in only"
+scheme_2B = "P2P with network correction, fixed topology"
+scheme_2C = "coordinated trading and network reconfiguration"
+target_tables = ["7-10","7-11"]
+
+[[trading.chp]]
+id = "CHP1"
+electric_node = 33
+heat_node = 1
+P_max_MW = 6.0
+P_min_MW = 3.0
+H_over_P = 0.8
+fuel_CNY_MWh_electric = 685.9
+source = "table-7-6 / PDF132; replaces base CHP"
+[[trading.chp]]
+id = "CHP2"
+electric_node = 22
+heat_node = 15
+P_max_MW = 1.0
+P_min_MW = 0.0
+H_over_P = 1.2
+fuel_CNY_MWh_electric = 711.3
+source = "table-7-6 / PDF132"
+[[trading.eb]]
+id = "EB3"
+electric_node = 8
+heat_node = 5
+H_max_MW = 2.0
+eta = 0.94
+source = "table-7-7 / PDF132"
+[[trading.eb]]
+id = "EB4"
+electric_node = 37
+heat_node = 7
+H_max_MW = 1.0
+eta = 0.92
+source = "table-7-7 / PDF132"
+[[trading.battery]]
+id = "BS1"
+electric_node = 8
+P_max_MW = 0.5
+E_max_MWh = 2.0
+cost_CNY_MWh = 50.0
+source = "table-7-8 / PDF132; charge/discharge cost basis unspecified"
+[[trading.battery]]
+id = "BS2"
+electric_node = 22
+P_max_MW = 0.5
+E_max_MWh = 2.0
+cost_CNY_MWh = 50.0
+source = "table-7-8 / PDF132"
+
+[[trading.aggregators]]
+id = "A1"
+electric_node = 8
+heat_node = 5
+electric_MW = 1.62
+heat_MW = 0.0
+resources_literal = ["FL","PV","HP","BES"]
+[[trading.aggregators]]
+id = "A2"
+electric_node = 22
+heat_node = 15
+electric_MW = 1.94
+heat_MW = 0.0
+resources_literal = ["FL","PV","CHP","HP","BES"]
+[[trading.aggregators]]
+id = "A3"
+electric_node = 34
+heat_node = 4
+electric_MW = 2.68
+heat_MW = 1.03
+resources_literal = ["FL","PV"]
+[[trading.aggregators]]
+id = "A4"
+electric_node = 2
+heat_node = 26
+electric_MW = 2.68
+heat_MW = 0.77
+resources_literal = ["FL"]
+[[trading.aggregators]]
+id = "A5"
+electric_node = 31
+heat_node = 2
+electric_MW = 1.08
+heat_MW = 2.08
+resources_literal = ["FL"]
+[[trading.aggregators]]
+id = "A6"
+electric_node = 38
+heat_node = 18
+electric_MW = 2.65
+heat_MW = 0.57
+resources_literal = ["FL"]
+[[trading.aggregators]]
+id = "A7"
+electric_node = 26
+heat_node = 16
+electric_MW = 2.87
+heat_MW = 0.31
+resources_literal = ["FL"]
+[[trading.aggregators]]
+id = "A8"
+electric_node = 35
+heat_node = 26
+electric_MW = 0.0
+heat_MW = 0.77
+resources_literal = ["FL"]
+
+[reserve]
+section = "7.4"
+pdf_pages = [135,136,137]
+parent = "base"
+market_role = "price_taker"
+risk_tolerance = 0.05
+representative_scenarios = 100
+energy_price_range_CNY_MWh = [200.0,400.0]
+transmission_price_CNY_MWh = 125.6
+reserve_price_range_literal_CNY_MWh = [20.0,40.0]
+reserve_price_unit_issue = "figure-7-9 axis says CNY/MW; text says CNY/MWh"
+scheme_3A = "robust; all declared calls delivered without comfort sacrifice"
+scheme_3B = "known-probability chance constraint; comfort sacrifice allowed in selected scenarios"
+scheme_3C = "distributionally robust chance constraint"
+target_tables = ["7-13","7-14"]
+[[reserve.p2h]]
+id = "P2H1"
+electric_node = 15
+heat_node = 23
+eta = 0.8
+capacity_MW = 0.2
+capacity_basis = "unspecified_in_table_7_12"
+[[reserve.p2h]]
+id = "P2H2"
+electric_node = 2
+heat_node = 6
+eta = 0.8
+capacity_MW = 0.3
+capacity_basis = "unspecified_in_table_7_12"
+[[reserve.p2h]]
+id = "P2H3"
+electric_node = 38
+heat_node = 28
+eta = 0.8
+capacity_MW = 0.25
+capacity_basis = "unspecified_in_table_7_12"
+[[reserve.p2h]]
+id = "P2H4"
+electric_node = 21
+heat_node = 14
+eta = 0.8
+capacity_MW = 0.2
+capacity_basis = "unspecified_in_table_7_12"
+
+[resilience]
+section = "7.5"
+pdf_pages = [138,139,140,141,142,143]
+parent = "base"
+critical_active_capacity_MW = 13.75
+reported_distributed_electric_capacity_MW = 24.5
+renewable_factor = 0.4
+event_duration_h = 4.0
+unserved_limit_MWh = 2.0
+penalty_literal_CNY_kWh = 10.0
+penalty_CNY_MWh = 10000.0
+scheme_4A = "normal economic dispatch"
+scheme_4B = "penalize critical unserved energy"
+scheme_4C = "worst-case event unserved energy constrained"
+event_clock_status = "conflicting_text_and_figure_labels_Q09"
+event_windows_table_7_18 = [[10,14],[12,15],[16,19]]
+event_windows_figure_7_16 = [[8,12],[12,16],[16,20]]
+event1_example_faults = [[1,7],[1,44],[44,20]]
+event1_example_source = "PDF141 text; not a complete fault uncertainty set"
+scheme_4C_HS_literal = "no electric network reconfiguration"
+scheme_4C_NR_literal = "no heating-network flexibility"
+ablation_label_note = "PDF143 labels retained literally; never infer physical removal from acronym alone"
+target_tables = ["7-17","7-18","7-19"]
+[[resilience.chp]]
+id = "CHP1"
+electric_node = 33
+heat_node = 1
+P_max_MW = 8.5
+P_min_MW = 3.0
+H_over_P = 0.8
+startup_CNY = 8000.0
+fuel_CNY_MWh_electric = 685.9
+reported_joint_cost_CNY_MWh_total_energy = 381.0
+source = "table-7-15 / PDF139"
+[[resilience.chp]]
+id = "CHP2"
+electric_node = 33
+heat_node = 1
+P_max_MW = 6.0
+P_min_MW = 3.4
+H_over_P = 1.2
+startup_CNY = 14000.0
+fuel_CNY_MWh_electric = 600.1
+reported_joint_cost_CNY_MWh_total_energy = 272.7
+source = "table-7-15 / PDF139; do not substitute trading CHP2"
+[[resilience.gt]]
+id = "GT1"
+electric_node = 22
+P_max_MW = 2.0
+cost_CNY_MWh = 711.3
+source = "table-7-16 / PDF139"
+
+[[gaps]]
+id = "R9-D01"
+scope = ["7.2","7.3","7.4","7.5"]
+missing = "逐线路电阻、电抗、容量；变压器阻抗/变比；节点电压边界"
+impact = "graph alone is not a runnable electrical network"
+[[gaps]]
+id = "R9-D02"
+scope = ["7.2","7.3","7.4","7.5"]
+missing = "逐管长度、直径、粗糙度/水压、保温；温度/流量边界及历史"
+impact = "cannot certify author's hydraulic or transport feasibility"
+[[gaps]]
+id = "R9-D03"
+scope = ["7.2","7.3","7.4","7.5"]
+missing = "24小时逐节点有功、无功、热需求、光伏可用出力与功率因数"
+impact = "45.67 MVA cannot silently become 45.67 MW"
+[[gaps]]
+id = "R9-D04"
+scope = ["7.2"]
+missing = "固定热源供温/管流参考及精确的日末热状态约束"
+impact = "mode fairness and end-state borrowing remain undefined for original inputs"
+[[gaps]]
+id = "R9-D05"
+scope = ["7.3"]
+missing = "表7-9是否已放大负荷；HP/EB身份；新增光伏和热储能参数；电池效率/初末状态；不满意度与结算规则"
+impact = "do not multiply table loads twice or invent omitted equipment"
+[[gaps]]
+id = "R9-D06"
+scope = ["7.4"]
+missing = "逐时价格及备用容量价的时间基准；P2H容量基准；训练/验证/测试样本、舒适度与热参数、模糊集标定"
+impact = "price-taking migration cannot inherit strategic lower-level market or R6 dataset identity"
+[[gaps]]
+id = "R9-D07"
+scope = ["7.5"]
+missing = "关键负荷逐节点分配；精确故障集合/时轴；电源可用性与成网资格"
+impact = "aggregate 13.75 MW does not define every critical node or event"
+[[gaps]]
+id = "R9-Q01"
+scope = ["7.2","7.3","7.4","7.5"]
+missing = "正文8.1 MW与表列基准设备合计9.0 MW供热能力的解释"
+impact = "retain both; no rescaling to hide discrepancy"
+[[gaps]]
+id = "R9-Q02"
+scope = ["7.5"]
+missing = "表7-17标题写4C、所在文字讨论4B；4B罚项目标与纯失供描述不一致"
+impact = "commitment rows are author targets, not an unambiguous initialization for either scheme"
+[[gaps]]
+id = "R9-Q03"
+scope = ["7.5"]
+missing = "事件时轴不一致；事件1失供表7-18为0.2593 MWh，PDF141文字为0.358 MWh"
+impact = "four-hour horizon must be defined explicitly, not inferred by mixing inclusive and half-open labels"

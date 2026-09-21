@@ -82,7 +82,7 @@
 
 复用：R5 internal dispatch/risk interfaces and R6 frozen statistical protocol。
 
-接口缺口：Explicit electric-input P2H interpretation, CNY v2, buildings and steady fixed-flow history are implemented; one nominal no-reserve 44/38-node day passes model and KKT. Call signals, representative support, sample split, risk radius and strict 3A delivery remain to be frozen. Linear grid, free terminal pipe state and complete-trajectory recourse are bounded project assumptions.
+接口缺口：CNY v2, independent 2000/500/1000 days, 100 training representatives and three common strict-delivery risk schemes are frozen. Four-support pilots pass; all three formal 100-support methods time out without an incumbent within the complete process budget. Held-out dispatch remains unperformed. Linear grid, free terminal pipe state and complete-trajectory recourse are bounded project assumptions.
 
 不得默认继承：Strategic market-clearing KKT, previous synthetic dataset identity or a capacity-price time unit chosen without declaration。
 

@@ -1,5 +1,9 @@
 {
   "inputs": [
+    {"id":"r9ReserveStudy","type":"promptString","description":"第7.4节冻结数据目录；freeze须新目录","default":"results/summaries/r9-reserve-data-20260921-v2"},
+    {"id":"r9ReserveEvidence","type":"promptString","description":"备用数值证据目录；freeze须新目录","default":"results/summaries/r9-reserve-full-20260921-v1"},
+    {"id":"r9ReserveFigures","type":"promptString","description":"备用图表的新输出目录","default":"results/summaries/r9-reserve-figures-20260921-v1"},
+    {"id":"r9ReserveBatch","type":"promptString","description":"备用批次新输出目录，不覆盖已有运行","default":"results/runs/r9-reserve-batch-new"},
     {"id":"r9ReserveProbe","type":"promptString","description":"第7.4节输入/无备用开发基准的新目录，不覆盖旧结果","default":"results/runs/r9-reserve-new"},
     {"id":"r9NetworkSummary","type":"promptString","description":"R9接入/拓扑已封存原值目录，只读","default":"results/summaries/r9-network-20260921-v1"},
     {"id":"r9NetworkFigures","type":"promptString","description":"F39/F40重绘新目录，不覆盖旧图","default":"results/runs/r9-network-redraw-new"},
@@ -181,6 +185,18 @@
     }
   ],
   "tasks": [
+    {"label":"PaperRebuild: R9 risk mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_risk.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 risk tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_risk.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 risk freeze inputs","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_reserve_study.jl","freeze","${input:r9ReserveStudy}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 risk frozen inputs check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_reserve_study.jl","check","${input:r9ReserveStudy}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 risk pilot batch","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","${input:r9ReserveStudy}/code/scripts/run_r9_reserve_batch.jl","${input:r9ReserveStudy}","pilot","${input:r9ReserveBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 risk full batch","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","${input:r9ReserveStudy}/code/scripts/run_r9_reserve_batch.jl","${input:r9ReserveStudy}","full","${input:r9ReserveBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 risk archive saved results","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_reserve_evidence.jl","freeze","${input:r9ReserveStudy}","${input:r9ReserveBatch}","${input:r9ReserveEvidence}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 risk evidence replay","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","${input:r9ReserveEvidence}/r9_reserve_evidence.jl","check","${input:r9ReserveEvidence}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 risk redraw saved","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r9_reserve.jl","${input:r9ReserveEvidence}","${input:r9ReserveFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 risk redraw no-candidate limits","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r9_reserve_limits.jl","${input:r9ReserveEvidence}","${input:r9ReserveFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 risk support audit tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_reserve_support.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 risk frozen portability tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_reserve_freeze.jl","${input:r9ReserveStudy}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 reserve mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_reserve.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 reserve input tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_reserve.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R5 currency tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_currency.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},

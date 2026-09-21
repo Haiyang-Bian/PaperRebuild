@@ -1,0 +1,33 @@
+schema = "r9-reserve-study-v1"
+id = "r9-74-risk-v1"
+origin = "synthetic"
+schemes = ["3A", "3B", "3C"]
+currency = "CNY"
+delivery_delta = 0.0
+epsilon = 0.05
+radius = 0.01
+radius_rule = "predeclared_sensitivity_parameter_not_statistical_confidence_radius"
+support_count = 100
+pilot_count = 4
+pilot_rule = "first_four_frozen_representatives_renormalize_training_frequencies"
+recourse_information = "complete_trajectory"
+guarantee_scope = "finite_frozen_support_only_not_all_24h_calls"
+uncertainty = "synthetic_correlated_PV_and_signed_reserve_call"
+reserve_bound_rule = "sum_device_electric_ranges_plus_local_P2H_nameplates"
+test_policy = "nearest_frozen_representative_comfort_branch_full_trajectory_recourse"
+test_gate = "lock_all_training_candidates_before_out_of_sample_optimization"
+radius_selection = "none_no_validation_or_test_tuning"
+budget_sec = 600.0
+archive_reserve_sec = 60.0
+solver = "gurobi"
+oracle_solver = "highs"
+source_policy = "freeze_exact_source_and_input_before_first_solve_commit_at_checkpoint"
+
+[interpretations]
+scheme_3A = "hard_comfort_strict_delivery_worst_cost_over_fixed_support"
+scheme_3B = "empirical_known_weights_joint_chance_strict_delivery"
+scheme_3C = "finite_support_transport_cost_and_joint_chance_strict_delivery"
+original_3A = "paper_asks_any_call_100_percent_but_continuous_call_domain_not_recovered"
+original_3B = "empirical_training_weights_are_not_known_true_probabilities"
+price = "same_predeclared_synthetic_prices_all_schemes"
+delivery = "override_input_template_delta_0_1_to_common_0_0_explicitly"

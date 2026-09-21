@@ -1,0 +1,70 @@
+schema = "r9-reserve-risk-mapping-v1"
+page = "docs/src/ch07-risk-study.md"
+test_file = "test/r9_risk.jl"
+source_pdf_pages = [93,135,136,137]
+author_input_equivalence = false
+continuous_call_guarantee = false
+out_of_sample_completed = false
+
+[[audit_equations]]
+id = "R9-RS-A1"
+meaning = "单个代表发生事件时的最坏概率；有限支持运输的分数背包特例"
+source = "项目推导；不是原文新式号"
+page = "docs/src/ch07-risk-results.md"
+implementation = "scripts/r9_reserve_support.jl"
+test = "scripts/test_r9_reserve_support.jl"
+status = "42_analytic_and_independent_LP_checks_pass"
+
+[[equations]]
+id = "R9-RK1"
+meaning = "合成PV/正上调完整轨迹到MW出力与互斥调用比例的映射"
+api = "r9_reserve_risk_case"
+[[equations]]
+id = "R9-RK2"
+meaning = "三方案共同严格交付，delta=0；不同于联合室温风险epsilon"
+api = "R9ReserveStudySpec"
+[[equations]]
+id = "R9-RK3"
+meaning = "固定支持概率运输集合；费用与联合事件分别取各自最坏分布"
+api = "r9_reserve_risk_case"
+[[equations]]
+id = "R9-RK4"
+meaning = "3A支持最坏/硬舒适、3B经验概率/机会约束、3C运输球/机会约束"
+api = "r9_reserve_risk_case"
+
+[[symbols]]
+id = "r9.risk.a"
+latex = 'a_{s,t}'
+meaning = "完整日有符号调用，正为上调；每小时仅允许一个方向"
+unit = "1"
+code = "training.values[2,t,s]"
+[[symbols]]
+id = "r9.risk.pv"
+latex = 'p_{s,t}^{PV}'
+meaning = "所有PV共用的额定出力比例；共同天气是项目合成假设"
+unit = "1"
+code = "training.values[1,t,s]"
+[[symbols]]
+id = "r9.risk.delta"
+latex = '\delta'
+meaning = "交付误差预算系数；本批三方案均为0，不继承模板0.1"
+unit = "1"
+code = "delivery_delta"
+[[symbols]]
+id = "r9.risk.epsilon"
+latex = '\epsilon'
+meaning = "任一楼宇时段舒适越界的联合事件上限；3A为0、3B/3C为0.05"
+unit = "1"
+code = "epsilon"
+[[symbols]]
+id = "r9.risk.rho"
+latex = '\rho'
+meaning = "归一化完整轨迹RMS距离上的质量运输预算；非统计置信半径"
+unit = "normalized_trajectory"
+code = "ambiguity.radius"
+[[symbols]]
+id = "r9.risk.z"
+latex = 'z_s'
+meaning = "整条情景允许退到声明物理温度界；实际越界事件另行重算"
+unit = "1"
+code = "z[s]"

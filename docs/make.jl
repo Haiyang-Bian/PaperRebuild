@@ -4,6 +4,8 @@ include(joinpath(@__DIR__, "..", "scripts", "r9_network_docs.jl"))
 write(joinpath(@__DIR__, "src", "ch07-network-generated.md"), r9_network_markdown())
 include(joinpath(@__DIR__, "..", "scripts", "r9_reserve_docs.jl"))
 write(joinpath(@__DIR__, "src", "ch07-reserve-generated.md"), r9_reserve_markdown())
+include(joinpath(@__DIR__, "..", "scripts", "r9_risk_docs.jl"))
+write(joinpath(@__DIR__, "src", "ch07-risk-generated.md"), r9_risk_markdown())
 
 include(joinpath(@__DIR__, "..", "scripts", "ch02_docs.jl"))
 sync_ch02()
@@ -268,6 +270,9 @@ makedocs(;
             "交易模型台账索引" => "ch07-trading-generated.md",
             "备用输入与费用单位" => "ch07-reserve.md",
             "备用输入台账索引" => "ch07-reserve-generated.md",
+            "备用三方案与冻结输入" => "ch07-risk-study.md",
+            "备用风险结果与规模边界" => "ch07-risk-results.md",
+            "备用风险台账索引" => "ch07-risk-generated.md",
         ],
         "第 2 章模型与首批实现" => [
             "模型详解" => "ch02-models.md",

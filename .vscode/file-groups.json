@@ -11490,6 +11490,56 @@
           "path": "docs/src/ch07-reserve.md",
           "name": "ch07-reserve.md",
           "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r9-reserve-full-20260921-v1/F43-scale-and-risk-boundary.png",
+          "name": "F43-scale-and-risk-boundary.png",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r9-reserve-full-20260921-v1/figure-source.toml",
+          "name": "figure-source.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r9-reserve-full-20260921-v1/render-review.toml",
+          "name": "render-review.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r9-reserve-pilot-20260921-v1/F41-reserve-commitments.png",
+          "name": "F41-reserve-commitments.png",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r9-reserve-pilot-20260921-v1/F42-reserve-risk-residuals.png",
+          "name": "F42-reserve-risk-residuals.png",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r9-reserve-pilot-20260921-v1/figure-source.toml",
+          "name": "figure-source.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/assets/r9-reserve-pilot-20260921-v1/render-review.toml",
+          "name": "render-review.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch07-risk-generated.md",
+          "name": "ch07-risk-generated.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch07-risk-results.md",
+          "name": "ch07-risk-results.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch07-risk-study.md",
+          "name": "ch07-risk-study.md",
+          "isDirectory": false
         }
       ],
       "order": 1,
@@ -11860,6 +11910,11 @@
         {
           "path": "docs/agent/tasks/2026-09-21-r9-reserve.md",
           "name": "2026-09-21-r9-reserve.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/agent/tasks/2026-09-21-r9-risk-study.md",
+          "name": "2026-09-21-r9-risk-study.md",
           "isDirectory": false
         }
       ],
@@ -12937,6 +12992,11 @@
           "path": "src/verification/r9_reserve.jl",
           "name": "r9_reserve.jl",
           "isDirectory": false
+        },
+        {
+          "path": "src/core/r9_risk.jl",
+          "name": "r9_risk.jl",
+          "isDirectory": false
         }
       ],
       "order": 3,
@@ -13628,6 +13688,16 @@
           "path": "configs/r9/reserve-protocol.toml",
           "name": "reserve-protocol.toml",
           "isDirectory": false
+        },
+        {
+          "path": "configs/r9/reserve-study.toml",
+          "name": "reserve-study.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "configs/r9/reserve-trajectories.toml",
+          "name": "reserve-trajectories.toml",
+          "isDirectory": false
         }
       ],
       "order": 4,
@@ -14048,6 +14118,11 @@
         {
           "path": "docs/reading/ch07/reserve.toml",
           "name": "reserve.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch07/risk-study.toml",
+          "name": "risk-study.toml",
           "isDirectory": false
         }
       ],
@@ -79250,6 +79325,1651 @@
           "path": "results/summaries/r9-reserve-nominal-20260921-v3/objects/fe48a6db69bf8bbb9b843b1ecc1695ced426a60860e39a586198e15cd77fca03",
           "name": "fe48a6db69bf8bbb9b843b1ecc1695ced426a60860e39a586198e15cd77fca03",
           "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/configs/r9/reserve-protocol.toml",
+          "name": "reserve-protocol.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/configs/r9/reserve-study.toml",
+          "name": "reserve-study.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/configs/r9/reserve-trajectories.toml",
+          "name": "reserve-trajectories.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/docs/reading/ch07/inputs.toml",
+          "name": "inputs.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/docs/reading/ch07/reported-results.toml",
+          "name": "reported-results.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/docs/reading/ch07/topology.toml",
+          "name": "topology.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/scripts/r9_reserve_study.jl",
+          "name": "r9_reserve_study.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/scripts/run_r9_reserve_batch.jl",
+          "name": "run_r9_reserve_batch.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/src/algorithms/r5_commitment.jl",
+          "name": "r5_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/src/algorithms/r5_dispatch.jl",
+          "name": "r5_dispatch.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/src/algorithms/r5_market.jl",
+          "name": "r5_market.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/src/algorithms/r5_risk.jl",
+          "name": "r5_risk.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/src/algorithms/r6_data.jl",
+          "name": "r6_data.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/src/core/r5_commitment.jl",
+          "name": "r5_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/src/core/r5_dispatch.jl",
+          "name": "r5_dispatch.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/src/core/r5_market.jl",
+          "name": "r5_market.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/src/core/r5_risk.jl",
+          "name": "r5_risk.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/src/core/r6_protocol.jl",
+          "name": "r6_protocol.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/src/core/r9_inputs.jl",
+          "name": "r9_inputs.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/src/core/r9_pv.jl",
+          "name": "r9_pv.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/src/core/r9_reserve.jl",
+          "name": "r9_reserve.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/src/core/r9_risk.jl",
+          "name": "r9_risk.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/src/formulations/r5_commitment.jl",
+          "name": "r5_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/src/formulations/r5_dispatch.jl",
+          "name": "r5_dispatch.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/src/formulations/r5_dispatch_dual.jl",
+          "name": "r5_dispatch_dual.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/src/formulations/r5_market.jl",
+          "name": "r5_market.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/src/formulations/r5_risk.jl",
+          "name": "r5_risk.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/src/networks/fixed_flow_heat.jl",
+          "name": "fixed_flow_heat.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/src/reporting/r5_commitment.jl",
+          "name": "r5_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/src/reporting/r5_dispatch.jl",
+          "name": "r5_dispatch.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/src/reporting/r5_market.jl",
+          "name": "r5_market.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/src/reporting/r5_risk.jl",
+          "name": "r5_risk.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/src/reporting/r6_data.jl",
+          "name": "r6_data.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/src/verification/r5_commitment.jl",
+          "name": "r5_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/src/verification/r5_dispatch.jl",
+          "name": "r5_dispatch.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/src/verification/r5_dispatch_duality.jl",
+          "name": "r5_dispatch_duality.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/src/verification/r5_market.jl",
+          "name": "r5_market.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/src/verification/r5_risk.jl",
+          "name": "r5_risk.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/src/verification/r9_reserve.jl",
+          "name": "r9_reserve.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/study-library.jl",
+          "name": "study-library.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/tools/solvers/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/code/tools/solvers/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/data/manifest.sha256",
+          "name": "manifest.sha256",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/data/manifest.toml",
+          "name": "manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/data/representatives.toml",
+          "name": "representatives.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/data/test-001.csv",
+          "name": "test-001.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/data/test-002.csv",
+          "name": "test-002.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/data/test-003.csv",
+          "name": "test-003.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/data/test-004.csv",
+          "name": "test-004.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/data/test-005.csv",
+          "name": "test-005.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/data/train-001.csv",
+          "name": "train-001.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/data/train-002.csv",
+          "name": "train-002.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/data/train-003.csv",
+          "name": "train-003.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/data/train-004.csv",
+          "name": "train-004.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/data/train-005.csv",
+          "name": "train-005.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/data/train-006.csv",
+          "name": "train-006.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/data/train-007.csv",
+          "name": "train-007.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/data/train-008.csv",
+          "name": "train-008.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/data/train-009.csv",
+          "name": "train-009.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/data/train-010.csv",
+          "name": "train-010.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/data/validation-001.csv",
+          "name": "validation-001.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/data/validation-002.csv",
+          "name": "validation-002.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/data/validation-003.csv",
+          "name": "validation-003.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/input-audit.toml",
+          "name": "input-audit.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/manifest.sha256",
+          "name": "manifest.sha256",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/manifest.toml",
+          "name": "manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v1/template.toml",
+          "name": "template.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/configs/r9/reserve-protocol.toml",
+          "name": "reserve-protocol.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/configs/r9/reserve-study.toml",
+          "name": "reserve-study.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/configs/r9/reserve-trajectories.toml",
+          "name": "reserve-trajectories.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/docs/reading/ch07/inputs.toml",
+          "name": "inputs.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/docs/reading/ch07/reported-results.toml",
+          "name": "reported-results.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/docs/reading/ch07/topology.toml",
+          "name": "topology.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/scripts/r9_reserve_study.jl",
+          "name": "r9_reserve_study.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/scripts/run_r9_reserve_batch.jl",
+          "name": "run_r9_reserve_batch.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/src/algorithms/r5_commitment.jl",
+          "name": "r5_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/src/algorithms/r5_dispatch.jl",
+          "name": "r5_dispatch.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/src/algorithms/r5_market.jl",
+          "name": "r5_market.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/src/algorithms/r5_risk.jl",
+          "name": "r5_risk.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/src/algorithms/r6_data.jl",
+          "name": "r6_data.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/src/core/r5_commitment.jl",
+          "name": "r5_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/src/core/r5_dispatch.jl",
+          "name": "r5_dispatch.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/src/core/r5_market.jl",
+          "name": "r5_market.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/src/core/r5_risk.jl",
+          "name": "r5_risk.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/src/core/r6_protocol.jl",
+          "name": "r6_protocol.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/src/core/r9_inputs.jl",
+          "name": "r9_inputs.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/src/core/r9_pv.jl",
+          "name": "r9_pv.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/src/core/r9_reserve.jl",
+          "name": "r9_reserve.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/src/core/r9_risk.jl",
+          "name": "r9_risk.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/src/formulations/r5_commitment.jl",
+          "name": "r5_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/src/formulations/r5_dispatch.jl",
+          "name": "r5_dispatch.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/src/formulations/r5_dispatch_dual.jl",
+          "name": "r5_dispatch_dual.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/src/formulations/r5_market.jl",
+          "name": "r5_market.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/src/formulations/r5_risk.jl",
+          "name": "r5_risk.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/src/networks/fixed_flow_heat.jl",
+          "name": "fixed_flow_heat.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/src/reporting/r5_commitment.jl",
+          "name": "r5_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/src/reporting/r5_dispatch.jl",
+          "name": "r5_dispatch.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/src/reporting/r5_market.jl",
+          "name": "r5_market.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/src/reporting/r5_risk.jl",
+          "name": "r5_risk.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/src/reporting/r6_data.jl",
+          "name": "r6_data.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/src/verification/r5_commitment.jl",
+          "name": "r5_commitment.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/src/verification/r5_dispatch.jl",
+          "name": "r5_dispatch.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/src/verification/r5_dispatch_duality.jl",
+          "name": "r5_dispatch_duality.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/src/verification/r5_market.jl",
+          "name": "r5_market.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/src/verification/r5_risk.jl",
+          "name": "r5_risk.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/src/verification/r9_reserve.jl",
+          "name": "r9_reserve.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/study-library.jl",
+          "name": "study-library.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/tools/solvers/Manifest.toml",
+          "name": "Manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/code/tools/solvers/Project.toml",
+          "name": "Project.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/data/manifest.sha256",
+          "name": "manifest.sha256",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/data/manifest.toml",
+          "name": "manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/data/representatives.toml",
+          "name": "representatives.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/data/test-001.csv",
+          "name": "test-001.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/data/test-002.csv",
+          "name": "test-002.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/data/test-003.csv",
+          "name": "test-003.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/data/test-004.csv",
+          "name": "test-004.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/data/test-005.csv",
+          "name": "test-005.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/data/train-001.csv",
+          "name": "train-001.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/data/train-002.csv",
+          "name": "train-002.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/data/train-003.csv",
+          "name": "train-003.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/data/train-004.csv",
+          "name": "train-004.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/data/train-005.csv",
+          "name": "train-005.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/data/train-006.csv",
+          "name": "train-006.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/data/train-007.csv",
+          "name": "train-007.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/data/train-008.csv",
+          "name": "train-008.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/data/train-009.csv",
+          "name": "train-009.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/data/train-010.csv",
+          "name": "train-010.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/data/validation-001.csv",
+          "name": "validation-001.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/data/validation-002.csv",
+          "name": "validation-002.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/data/validation-003.csv",
+          "name": "validation-003.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/input-audit.toml",
+          "name": "input-audit.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/manifest.sha256",
+          "name": "manifest.sha256",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/manifest.toml",
+          "name": "manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-data-20260921-v2/template.toml",
+          "name": "template.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/README.md",
+          "name": "README.md",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/artifact-hashes.toml",
+          "name": "artifact-hashes.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/index.toml",
+          "name": "index.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/03e5889509207752d68398e32989957474b46fd9e184e91112d94567f8331d90",
+          "name": "03e5889509207752d68398e32989957474b46fd9e184e91112d94567f8331d90",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/06f7c5397e6dff7f9ddd0ec15e6c4fdbe4dc25fea2fb88cb8d8ce8ad54a8c0c8",
+          "name": "06f7c5397e6dff7f9ddd0ec15e6c4fdbe4dc25fea2fb88cb8d8ce8ad54a8c0c8",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/090adc2336be15c10827745d41fc56f47f621ccee36aec44904b61bb0b8079bf",
+          "name": "090adc2336be15c10827745d41fc56f47f621ccee36aec44904b61bb0b8079bf",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/0be0ef9d6c6748ea1bc9e96ef45a55156467b11b603b6ee2a0d93e1c1b52b09a",
+          "name": "0be0ef9d6c6748ea1bc9e96ef45a55156467b11b603b6ee2a0d93e1c1b52b09a",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/0c7336645ead1ce9524e1bd01e33cda1e2f3dbd7848f8489b5ccde366ec394e4",
+          "name": "0c7336645ead1ce9524e1bd01e33cda1e2f3dbd7848f8489b5ccde366ec394e4",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/164d47e5922903179225a17c8a681610ae7eb5312068a4f806d85010f16f0796",
+          "name": "164d47e5922903179225a17c8a681610ae7eb5312068a4f806d85010f16f0796",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/1901b2183fd64b2358310eacb8fb866b12ed24e9f9f47c9a8594f163ac5fb8fd",
+          "name": "1901b2183fd64b2358310eacb8fb866b12ed24e9f9f47c9a8594f163ac5fb8fd",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/19de0483534716d344e156138061000e6056cccfbf95a39da9404a305b724a84",
+          "name": "19de0483534716d344e156138061000e6056cccfbf95a39da9404a305b724a84",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/1b092d25ef5e758b80262da4df20ca7f7c7cd156dd69662742ba96d683caa938",
+          "name": "1b092d25ef5e758b80262da4df20ca7f7c7cd156dd69662742ba96d683caa938",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/1cf90339cc342edb73c25f19ec8e1fc5e86281c64104a2055b54dd79689feab2",
+          "name": "1cf90339cc342edb73c25f19ec8e1fc5e86281c64104a2055b54dd79689feab2",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/1cf9ad75caf22a26ab9602f59be02c526f72164affddd7d527a2c4cb3102f748",
+          "name": "1cf9ad75caf22a26ab9602f59be02c526f72164affddd7d527a2c4cb3102f748",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/1f89cbcb8dd9b0a61497da91e91f953cdd5d1ea33a87a08724b8144f191e04c6",
+          "name": "1f89cbcb8dd9b0a61497da91e91f953cdd5d1ea33a87a08724b8144f191e04c6",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/202d6a03d73621767ff078493c9ba107725a15bd076d85263f33e5f4cbed73f9",
+          "name": "202d6a03d73621767ff078493c9ba107725a15bd076d85263f33e5f4cbed73f9",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/21f31181313249c36d087ee77b11d164a6ac20aa11cffabdcf01104ae75422db",
+          "name": "21f31181313249c36d087ee77b11d164a6ac20aa11cffabdcf01104ae75422db",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/22cb571f15112ccc21408903f229e25b49ee0d59333c14d251ab4b83a8abbf54",
+          "name": "22cb571f15112ccc21408903f229e25b49ee0d59333c14d251ab4b83a8abbf54",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/23a1d9cf01f668c5ed1acb198abdefbf120ae93f17e283adae860749d8b84b9b",
+          "name": "23a1d9cf01f668c5ed1acb198abdefbf120ae93f17e283adae860749d8b84b9b",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/2c81a1ef97f4e88d328ee73b81ecbc9e5b800fe389495572f1cefbd8bed59b23",
+          "name": "2c81a1ef97f4e88d328ee73b81ecbc9e5b800fe389495572f1cefbd8bed59b23",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/2ef19e986bad03aacc072d07c96539a84c70fb99a080ea5075f598bcc1619cf4",
+          "name": "2ef19e986bad03aacc072d07c96539a84c70fb99a080ea5075f598bcc1619cf4",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/34155cc8723c03b06ee738139ed7041a04d86aba29fd231639cfe89602e1a9b7",
+          "name": "34155cc8723c03b06ee738139ed7041a04d86aba29fd231639cfe89602e1a9b7",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/3c111b9582e4e5cd719150b88e73e014889426df048fa2f55f40a95bdb1ec71f",
+          "name": "3c111b9582e4e5cd719150b88e73e014889426df048fa2f55f40a95bdb1ec71f",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/3ece4af603f2ee34400e0e479b90ff07bb99973ba4e2b179a556ea65072a9d26",
+          "name": "3ece4af603f2ee34400e0e479b90ff07bb99973ba4e2b179a556ea65072a9d26",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/3ed021a50df205621e95dbd748adeaf8f2e4795bd5dc335d13fcd8a571d16c16",
+          "name": "3ed021a50df205621e95dbd748adeaf8f2e4795bd5dc335d13fcd8a571d16c16",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/44824bcb0093e32b935b3d88b87d292cdf1add9d3afeac133db8e7064b4ae28f",
+          "name": "44824bcb0093e32b935b3d88b87d292cdf1add9d3afeac133db8e7064b4ae28f",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/47cf2899d6167974ec406d7b431d06bcd2ca3b16108bdbc67c8805e071e57009",
+          "name": "47cf2899d6167974ec406d7b431d06bcd2ca3b16108bdbc67c8805e071e57009",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/4b29961ff21d2b26cfb6bca3d013d418a7fd4340270c41b167e5590bfab306d6",
+          "name": "4b29961ff21d2b26cfb6bca3d013d418a7fd4340270c41b167e5590bfab306d6",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/5038f22f037bba90a7bb3e2afc79b900fdff2d91ebe0afbde8ff189acd0c04bb",
+          "name": "5038f22f037bba90a7bb3e2afc79b900fdff2d91ebe0afbde8ff189acd0c04bb",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/5141419a352751fb65a1fa0127e5ae7826e3d7b65a03dc491ec870adc1c17ee0",
+          "name": "5141419a352751fb65a1fa0127e5ae7826e3d7b65a03dc491ec870adc1c17ee0",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/54b43500d3dde0ed617326912d47633425150cb679afa6f8433f2007dd4ac801",
+          "name": "54b43500d3dde0ed617326912d47633425150cb679afa6f8433f2007dd4ac801",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/5b464bc09b0fef38be2f1f1a51b6b0e7806567ed809dbcee2212740b33ae70fd",
+          "name": "5b464bc09b0fef38be2f1f1a51b6b0e7806567ed809dbcee2212740b33ae70fd",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/5cf13ef1fc22265f2b89314369a959c1d53ce9948d520f422e81c0d95a0b08a7",
+          "name": "5cf13ef1fc22265f2b89314369a959c1d53ce9948d520f422e81c0d95a0b08a7",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/5d76c1f85d28cf97943e41735257413339d0254d6b08a643af87330b89161a52",
+          "name": "5d76c1f85d28cf97943e41735257413339d0254d6b08a643af87330b89161a52",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/5d919f4e14dff618d7cc6467ccdcf5ea073b218b2799db0966eb877f4f5d92cb",
+          "name": "5d919f4e14dff618d7cc6467ccdcf5ea073b218b2799db0966eb877f4f5d92cb",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/5eec6ee16e0cf5d46071fed71f64c7c5413a60e55588f4fb278af7357bf66ec4",
+          "name": "5eec6ee16e0cf5d46071fed71f64c7c5413a60e55588f4fb278af7357bf66ec4",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/6142568e35d6fc3d649e0d42749f27b088334f4ff2a3d098f4d906f5a166c058",
+          "name": "6142568e35d6fc3d649e0d42749f27b088334f4ff2a3d098f4d906f5a166c058",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/620c069f6b3a520d32ee546ec048074f9cbaa3c785f8c2e31ec7fd7bf245a83b",
+          "name": "620c069f6b3a520d32ee546ec048074f9cbaa3c785f8c2e31ec7fd7bf245a83b",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/647b823a2bc2be0a620b6608da944a0258579dfc29db0c1a632b9fbbb6e934d7",
+          "name": "647b823a2bc2be0a620b6608da944a0258579dfc29db0c1a632b9fbbb6e934d7",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/66255c1828b57cb27c32095600cb5bd4b82a397accdf60d72da39d1ce4581874",
+          "name": "66255c1828b57cb27c32095600cb5bd4b82a397accdf60d72da39d1ce4581874",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/6a9fb134f8c57d9ca5ec338adc261e09a850f9d324f87b8a5a01c7d4c9487b47",
+          "name": "6a9fb134f8c57d9ca5ec338adc261e09a850f9d324f87b8a5a01c7d4c9487b47",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/6b830dc0d423c7379cb1603f29bf9168d4fbb527c955fcd77460f84b465a4633",
+          "name": "6b830dc0d423c7379cb1603f29bf9168d4fbb527c955fcd77460f84b465a4633",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/72c3e9aaa90acf994486acecf0c8fd80eaf21954372a94bd8c853c98ad0fab06",
+          "name": "72c3e9aaa90acf994486acecf0c8fd80eaf21954372a94bd8c853c98ad0fab06",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/7b68ae8d7bdd94e8a4d475403962c2e547eac0fb79304f2036da5fb724837f2c",
+          "name": "7b68ae8d7bdd94e8a4d475403962c2e547eac0fb79304f2036da5fb724837f2c",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/7d5faa97dbc2724d33831b319af807381ea13aa763cfde5655a4d7ecea956f2a",
+          "name": "7d5faa97dbc2724d33831b319af807381ea13aa763cfde5655a4d7ecea956f2a",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/7f0de03bef8332d3070dd41738c0dde82a0c1c050a59f8fdeb2d58a2a17080dd",
+          "name": "7f0de03bef8332d3070dd41738c0dde82a0c1c050a59f8fdeb2d58a2a17080dd",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/8066cff3f078c9c5ad89040cbb6816d3a2c490ea500efbb83a9b8e52b6eb8b92",
+          "name": "8066cff3f078c9c5ad89040cbb6816d3a2c490ea500efbb83a9b8e52b6eb8b92",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/83bb151c95fa3a62a7a68df2d8cd8f73451db8e5473aee483a27c439ed8840b2",
+          "name": "83bb151c95fa3a62a7a68df2d8cd8f73451db8e5473aee483a27c439ed8840b2",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/84a414748a4d607f166362e4a8b0720e3577a4c00af0ef64c11d89ac9bc23563",
+          "name": "84a414748a4d607f166362e4a8b0720e3577a4c00af0ef64c11d89ac9bc23563",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/85ba2ee6e8f84bef53db7949bf4fc425b57476bdaa49f22d9a816bf32bd01713",
+          "name": "85ba2ee6e8f84bef53db7949bf4fc425b57476bdaa49f22d9a816bf32bd01713",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/89a2b20bb234acc6554e644fa2c8028ed18bf7c788ecb7f2b46567cab4b8cf36",
+          "name": "89a2b20bb234acc6554e644fa2c8028ed18bf7c788ecb7f2b46567cab4b8cf36",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/8a3599d27743b57883b108d4bb0104d375f014dc4d1828c1d1b95b136047ba7e",
+          "name": "8a3599d27743b57883b108d4bb0104d375f014dc4d1828c1d1b95b136047ba7e",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/8d66f8987a6a2e053416d276080b50644d63b38763fa06625e27fa9899f246ae",
+          "name": "8d66f8987a6a2e053416d276080b50644d63b38763fa06625e27fa9899f246ae",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/8f4e6f87745ba4e9474a1884e4b358dcd5357e03e02296dced3527cfc4949785",
+          "name": "8f4e6f87745ba4e9474a1884e4b358dcd5357e03e02296dced3527cfc4949785",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/900388ad41f37b679ef1b37e367e786152d958fff144029665fab5e0fb10eb4d",
+          "name": "900388ad41f37b679ef1b37e367e786152d958fff144029665fab5e0fb10eb4d",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/948f0f5c5a4bc8381a3d9ad413fb0f8e78ee1a3bad52606dea9b9b6f144e5450",
+          "name": "948f0f5c5a4bc8381a3d9ad413fb0f8e78ee1a3bad52606dea9b9b6f144e5450",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/95d38414d70d63dde1feda095a8e4511f2998b826a58e2f230df379d1835af5b",
+          "name": "95d38414d70d63dde1feda095a8e4511f2998b826a58e2f230df379d1835af5b",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/9685a38e919580a17abd0f8fee7c90fbdc7f8dd85080831ee36772c3d8d69bdf",
+          "name": "9685a38e919580a17abd0f8fee7c90fbdc7f8dd85080831ee36772c3d8d69bdf",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/99ec13f0ce645fc6f14a02ee46e8879550b5b34384802cd3266218d2a8f370f9",
+          "name": "99ec13f0ce645fc6f14a02ee46e8879550b5b34384802cd3266218d2a8f370f9",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/9cf4ce16f01659598ad2669fcd389ee088a1c85515fe463414e4f3b59db09598",
+          "name": "9cf4ce16f01659598ad2669fcd389ee088a1c85515fe463414e4f3b59db09598",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/9e422d26b32cd2d9a7859f57bd33cc78aa8cd4af1bf44bad2228184effc29843",
+          "name": "9e422d26b32cd2d9a7859f57bd33cc78aa8cd4af1bf44bad2228184effc29843",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/a03b47e468b374bc737db5a13dc9359a40f74b16efaf85a1c541bcdd6a2a0bd4",
+          "name": "a03b47e468b374bc737db5a13dc9359a40f74b16efaf85a1c541bcdd6a2a0bd4",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/a116ecc8add52247a1a6fadd31183ec64b321e30f414bfe037e98c6ad4341883",
+          "name": "a116ecc8add52247a1a6fadd31183ec64b321e30f414bfe037e98c6ad4341883",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/a2ebfaed86c8839ae7b8fdb298a7691b7a7887360ab28479a739647106393474",
+          "name": "a2ebfaed86c8839ae7b8fdb298a7691b7a7887360ab28479a739647106393474",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/a498277fa88e0d416a46c1df18711541c2f2dc332d1821fa609fe417519c5939",
+          "name": "a498277fa88e0d416a46c1df18711541c2f2dc332d1821fa609fe417519c5939",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/a5a5bbc1b96743973ea81e79ec8af40e8f18328d00ca7fc14b540aaf9324154a",
+          "name": "a5a5bbc1b96743973ea81e79ec8af40e8f18328d00ca7fc14b540aaf9324154a",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/b2c2019588f24f3bff524fdef42d06fc830aa2ab33bc988c752384229d074070",
+          "name": "b2c2019588f24f3bff524fdef42d06fc830aa2ab33bc988c752384229d074070",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/b35c2880356c6ea78d280a97a1fda327c62fa0638ebfb326da1b0e92b23e5c37",
+          "name": "b35c2880356c6ea78d280a97a1fda327c62fa0638ebfb326da1b0e92b23e5c37",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/be07a40d34ee1e44e61d0e81fc1a71161cc9ba7ef20d57fc7fbe4e70f6e3ba8b",
+          "name": "be07a40d34ee1e44e61d0e81fc1a71161cc9ba7ef20d57fc7fbe4e70f6e3ba8b",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/be2d4335404b883d81cde43135e352ab399985ef73ee70e6537eb35c23c72cf7",
+          "name": "be2d4335404b883d81cde43135e352ab399985ef73ee70e6537eb35c23c72cf7",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/c38eb113feb994e356121f4b583bf77aaf942ad7e496b571416683eb75265040",
+          "name": "c38eb113feb994e356121f4b583bf77aaf942ad7e496b571416683eb75265040",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/cf65ed22cd792d244c77d7858c9d45f2838733a2fe5abd540aee8b036cde0312",
+          "name": "cf65ed22cd792d244c77d7858c9d45f2838733a2fe5abd540aee8b036cde0312",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/dc4c43f372c0962fed320edfc6bae4b107ba45feae9833a27a8123144f846c4b",
+          "name": "dc4c43f372c0962fed320edfc6bae4b107ba45feae9833a27a8123144f846c4b",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/ebb509d3071ad94c66402e64b391c25f3bf74f8f6fc97a41ba5121b6f3d101be",
+          "name": "ebb509d3071ad94c66402e64b391c25f3bf74f8f6fc97a41ba5121b6f3d101be",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/f2ed119e36dd8609d167823f30ab0257d3e9b191c04bfb18efbd0e76a8fd4a59",
+          "name": "f2ed119e36dd8609d167823f30ab0257d3e9b191c04bfb18efbd0e76a8fd4a59",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/f5279790f3ce95fca7960dc78e209227523cf7c3445806e10166b37aa7ecac85",
+          "name": "f5279790f3ce95fca7960dc78e209227523cf7c3445806e10166b37aa7ecac85",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/f6153f261a2cf861b6ad9dbd684f4f72656133c475a7fcf725cf374607c12029",
+          "name": "f6153f261a2cf861b6ad9dbd684f4f72656133c475a7fcf725cf374607c12029",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/objects/fe48a6db69bf8bbb9b843b1ecc1695ced426a60860e39a586198e15cd77fca03",
+          "name": "fe48a6db69bf8bbb9b843b1ecc1695ced426a60860e39a586198e15cd77fca03",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/r9_fixed_evidence.jl",
+          "name": "r9_fixed_evidence.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/r9_reserve_evidence.jl",
+          "name": "r9_reserve_evidence.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/r9_reserve_study.jl",
+          "name": "r9_reserve_study.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/r9_reserve_support.jl",
+          "name": "r9_reserve_support.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/residuals.csv",
+          "name": "residuals.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/scenarios.csv",
+          "name": "scenarios.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/summary.csv",
+          "name": "summary.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/support.csv",
+          "name": "support.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-20260921-v1/trajectories.csv",
+          "name": "trajectories.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-figures-20260921-v1/F43-scale-and-risk-boundary.pdf",
+          "name": "F43-scale-and-risk-boundary.pdf",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-figures-20260921-v1/F43-scale-and-risk-boundary.png",
+          "name": "F43-scale-and-risk-boundary.png",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-figures-20260921-v1/figure-source.toml",
+          "name": "figure-source.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-figures-20260921-v1/redraw.jl",
+          "name": "redraw.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-full-figures-20260921-v1/render-review.toml",
+          "name": "render-review.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/README.md",
+          "name": "README.md",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/artifact-hashes.toml",
+          "name": "artifact-hashes.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/index.toml",
+          "name": "index.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/06f7c5397e6dff7f9ddd0ec15e6c4fdbe4dc25fea2fb88cb8d8ce8ad54a8c0c8",
+          "name": "06f7c5397e6dff7f9ddd0ec15e6c4fdbe4dc25fea2fb88cb8d8ce8ad54a8c0c8",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/0b9034a62b97a7d2e7211f27172eea5b151198ce2772297e767c3ce38977e5e2",
+          "name": "0b9034a62b97a7d2e7211f27172eea5b151198ce2772297e767c3ce38977e5e2",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/0be0ef9d6c6748ea1bc9e96ef45a55156467b11b603b6ee2a0d93e1c1b52b09a",
+          "name": "0be0ef9d6c6748ea1bc9e96ef45a55156467b11b603b6ee2a0d93e1c1b52b09a",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/0c7336645ead1ce9524e1bd01e33cda1e2f3dbd7848f8489b5ccde366ec394e4",
+          "name": "0c7336645ead1ce9524e1bd01e33cda1e2f3dbd7848f8489b5ccde366ec394e4",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/164d47e5922903179225a17c8a681610ae7eb5312068a4f806d85010f16f0796",
+          "name": "164d47e5922903179225a17c8a681610ae7eb5312068a4f806d85010f16f0796",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/1901b2183fd64b2358310eacb8fb866b12ed24e9f9f47c9a8594f163ac5fb8fd",
+          "name": "1901b2183fd64b2358310eacb8fb866b12ed24e9f9f47c9a8594f163ac5fb8fd",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/1b092d25ef5e758b80262da4df20ca7f7c7cd156dd69662742ba96d683caa938",
+          "name": "1b092d25ef5e758b80262da4df20ca7f7c7cd156dd69662742ba96d683caa938",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/1cf90339cc342edb73c25f19ec8e1fc5e86281c64104a2055b54dd79689feab2",
+          "name": "1cf90339cc342edb73c25f19ec8e1fc5e86281c64104a2055b54dd79689feab2",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/1cf9ad75caf22a26ab9602f59be02c526f72164affddd7d527a2c4cb3102f748",
+          "name": "1cf9ad75caf22a26ab9602f59be02c526f72164affddd7d527a2c4cb3102f748",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/202d6a03d73621767ff078493c9ba107725a15bd076d85263f33e5f4cbed73f9",
+          "name": "202d6a03d73621767ff078493c9ba107725a15bd076d85263f33e5f4cbed73f9",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/21f31181313249c36d087ee77b11d164a6ac20aa11cffabdcf01104ae75422db",
+          "name": "21f31181313249c36d087ee77b11d164a6ac20aa11cffabdcf01104ae75422db",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/22cb571f15112ccc21408903f229e25b49ee0d59333c14d251ab4b83a8abbf54",
+          "name": "22cb571f15112ccc21408903f229e25b49ee0d59333c14d251ab4b83a8abbf54",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/23a1d9cf01f668c5ed1acb198abdefbf120ae93f17e283adae860749d8b84b9b",
+          "name": "23a1d9cf01f668c5ed1acb198abdefbf120ae93f17e283adae860749d8b84b9b",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/2c81a1ef97f4e88d328ee73b81ecbc9e5b800fe389495572f1cefbd8bed59b23",
+          "name": "2c81a1ef97f4e88d328ee73b81ecbc9e5b800fe389495572f1cefbd8bed59b23",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/2fb03bcd49f934f4ee1d4833c9ec740bd6cfaf7cfc80797c0513a7eb46a2e9f7",
+          "name": "2fb03bcd49f934f4ee1d4833c9ec740bd6cfaf7cfc80797c0513a7eb46a2e9f7",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/34155cc8723c03b06ee738139ed7041a04d86aba29fd231639cfe89602e1a9b7",
+          "name": "34155cc8723c03b06ee738139ed7041a04d86aba29fd231639cfe89602e1a9b7",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/3c111b9582e4e5cd719150b88e73e014889426df048fa2f55f40a95bdb1ec71f",
+          "name": "3c111b9582e4e5cd719150b88e73e014889426df048fa2f55f40a95bdb1ec71f",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/3ceecb0771c9c85c8e5814d14396f03b6ce63c5f5369b7ebcbf967a024d428f2",
+          "name": "3ceecb0771c9c85c8e5814d14396f03b6ce63c5f5369b7ebcbf967a024d428f2",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/3ece4af603f2ee34400e0e479b90ff07bb99973ba4e2b179a556ea65072a9d26",
+          "name": "3ece4af603f2ee34400e0e479b90ff07bb99973ba4e2b179a556ea65072a9d26",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/3ed021a50df205621e95dbd748adeaf8f2e4795bd5dc335d13fcd8a571d16c16",
+          "name": "3ed021a50df205621e95dbd748adeaf8f2e4795bd5dc335d13fcd8a571d16c16",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/44824bcb0093e32b935b3d88b87d292cdf1add9d3afeac133db8e7064b4ae28f",
+          "name": "44824bcb0093e32b935b3d88b87d292cdf1add9d3afeac133db8e7064b4ae28f",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/47cf2899d6167974ec406d7b431d06bcd2ca3b16108bdbc67c8805e071e57009",
+          "name": "47cf2899d6167974ec406d7b431d06bcd2ca3b16108bdbc67c8805e071e57009",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/5038f22f037bba90a7bb3e2afc79b900fdff2d91ebe0afbde8ff189acd0c04bb",
+          "name": "5038f22f037bba90a7bb3e2afc79b900fdff2d91ebe0afbde8ff189acd0c04bb",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/5141419a352751fb65a1fa0127e5ae7826e3d7b65a03dc491ec870adc1c17ee0",
+          "name": "5141419a352751fb65a1fa0127e5ae7826e3d7b65a03dc491ec870adc1c17ee0",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/54b43500d3dde0ed617326912d47633425150cb679afa6f8433f2007dd4ac801",
+          "name": "54b43500d3dde0ed617326912d47633425150cb679afa6f8433f2007dd4ac801",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/5612bbeb4a85b1f57a448fc3a334eb337a2214ca2f4fd7857be163354b37213b",
+          "name": "5612bbeb4a85b1f57a448fc3a334eb337a2214ca2f4fd7857be163354b37213b",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/5b464bc09b0fef38be2f1f1a51b6b0e7806567ed809dbcee2212740b33ae70fd",
+          "name": "5b464bc09b0fef38be2f1f1a51b6b0e7806567ed809dbcee2212740b33ae70fd",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/5cf13ef1fc22265f2b89314369a959c1d53ce9948d520f422e81c0d95a0b08a7",
+          "name": "5cf13ef1fc22265f2b89314369a959c1d53ce9948d520f422e81c0d95a0b08a7",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/5d76c1f85d28cf97943e41735257413339d0254d6b08a643af87330b89161a52",
+          "name": "5d76c1f85d28cf97943e41735257413339d0254d6b08a643af87330b89161a52",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/5d919f4e14dff618d7cc6467ccdcf5ea073b218b2799db0966eb877f4f5d92cb",
+          "name": "5d919f4e14dff618d7cc6467ccdcf5ea073b218b2799db0966eb877f4f5d92cb",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/5e99701b489fdf72930f2b6899bff7ec1d9aa820e1cda25610e99e7b1e8faf5e",
+          "name": "5e99701b489fdf72930f2b6899bff7ec1d9aa820e1cda25610e99e7b1e8faf5e",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/5eec6ee16e0cf5d46071fed71f64c7c5413a60e55588f4fb278af7357bf66ec4",
+          "name": "5eec6ee16e0cf5d46071fed71f64c7c5413a60e55588f4fb278af7357bf66ec4",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/6142568e35d6fc3d649e0d42749f27b088334f4ff2a3d098f4d906f5a166c058",
+          "name": "6142568e35d6fc3d649e0d42749f27b088334f4ff2a3d098f4d906f5a166c058",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/620c069f6b3a520d32ee546ec048074f9cbaa3c785f8c2e31ec7fd7bf245a83b",
+          "name": "620c069f6b3a520d32ee546ec048074f9cbaa3c785f8c2e31ec7fd7bf245a83b",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/647b823a2bc2be0a620b6608da944a0258579dfc29db0c1a632b9fbbb6e934d7",
+          "name": "647b823a2bc2be0a620b6608da944a0258579dfc29db0c1a632b9fbbb6e934d7",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/66255c1828b57cb27c32095600cb5bd4b82a397accdf60d72da39d1ce4581874",
+          "name": "66255c1828b57cb27c32095600cb5bd4b82a397accdf60d72da39d1ce4581874",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/6a9fb134f8c57d9ca5ec338adc261e09a850f9d324f87b8a5a01c7d4c9487b47",
+          "name": "6a9fb134f8c57d9ca5ec338adc261e09a850f9d324f87b8a5a01c7d4c9487b47",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/6b830dc0d423c7379cb1603f29bf9168d4fbb527c955fcd77460f84b465a4633",
+          "name": "6b830dc0d423c7379cb1603f29bf9168d4fbb527c955fcd77460f84b465a4633",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/72c3e9aaa90acf994486acecf0c8fd80eaf21954372a94bd8c853c98ad0fab06",
+          "name": "72c3e9aaa90acf994486acecf0c8fd80eaf21954372a94bd8c853c98ad0fab06",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/7b68ae8d7bdd94e8a4d475403962c2e547eac0fb79304f2036da5fb724837f2c",
+          "name": "7b68ae8d7bdd94e8a4d475403962c2e547eac0fb79304f2036da5fb724837f2c",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/7d5faa97dbc2724d33831b319af807381ea13aa763cfde5655a4d7ecea956f2a",
+          "name": "7d5faa97dbc2724d33831b319af807381ea13aa763cfde5655a4d7ecea956f2a",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/7e1524491b4cacfacd8b6d5e55cc14c6020377b34dd8c9eaab65701c3c2856a8",
+          "name": "7e1524491b4cacfacd8b6d5e55cc14c6020377b34dd8c9eaab65701c3c2856a8",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/7f0de03bef8332d3070dd41738c0dde82a0c1c050a59f8fdeb2d58a2a17080dd",
+          "name": "7f0de03bef8332d3070dd41738c0dde82a0c1c050a59f8fdeb2d58a2a17080dd",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/8066cff3f078c9c5ad89040cbb6816d3a2c490ea500efbb83a9b8e52b6eb8b92",
+          "name": "8066cff3f078c9c5ad89040cbb6816d3a2c490ea500efbb83a9b8e52b6eb8b92",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/84a414748a4d607f166362e4a8b0720e3577a4c00af0ef64c11d89ac9bc23563",
+          "name": "84a414748a4d607f166362e4a8b0720e3577a4c00af0ef64c11d89ac9bc23563",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/85ba2ee6e8f84bef53db7949bf4fc425b57476bdaa49f22d9a816bf32bd01713",
+          "name": "85ba2ee6e8f84bef53db7949bf4fc425b57476bdaa49f22d9a816bf32bd01713",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/86df69d85581b9f7b04c42aa76b637b3357ce60254487f48337683914ccec84b",
+          "name": "86df69d85581b9f7b04c42aa76b637b3357ce60254487f48337683914ccec84b",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/89a2b20bb234acc6554e644fa2c8028ed18bf7c788ecb7f2b46567cab4b8cf36",
+          "name": "89a2b20bb234acc6554e644fa2c8028ed18bf7c788ecb7f2b46567cab4b8cf36",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/8a3599d27743b57883b108d4bb0104d375f014dc4d1828c1d1b95b136047ba7e",
+          "name": "8a3599d27743b57883b108d4bb0104d375f014dc4d1828c1d1b95b136047ba7e",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/8d66f8987a6a2e053416d276080b50644d63b38763fa06625e27fa9899f246ae",
+          "name": "8d66f8987a6a2e053416d276080b50644d63b38763fa06625e27fa9899f246ae",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/8f4e6f87745ba4e9474a1884e4b358dcd5357e03e02296dced3527cfc4949785",
+          "name": "8f4e6f87745ba4e9474a1884e4b358dcd5357e03e02296dced3527cfc4949785",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/948f0f5c5a4bc8381a3d9ad413fb0f8e78ee1a3bad52606dea9b9b6f144e5450",
+          "name": "948f0f5c5a4bc8381a3d9ad413fb0f8e78ee1a3bad52606dea9b9b6f144e5450",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/95d38414d70d63dde1feda095a8e4511f2998b826a58e2f230df379d1835af5b",
+          "name": "95d38414d70d63dde1feda095a8e4511f2998b826a58e2f230df379d1835af5b",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/9685a38e919580a17abd0f8fee7c90fbdc7f8dd85080831ee36772c3d8d69bdf",
+          "name": "9685a38e919580a17abd0f8fee7c90fbdc7f8dd85080831ee36772c3d8d69bdf",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/973e9a81c86ff6b0268992be7c02b0cfeadc49dd04905bbe6a66fa37a827a377",
+          "name": "973e9a81c86ff6b0268992be7c02b0cfeadc49dd04905bbe6a66fa37a827a377",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/99ec13f0ce645fc6f14a02ee46e8879550b5b34384802cd3266218d2a8f370f9",
+          "name": "99ec13f0ce645fc6f14a02ee46e8879550b5b34384802cd3266218d2a8f370f9",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/9cf4ce16f01659598ad2669fcd389ee088a1c85515fe463414e4f3b59db09598",
+          "name": "9cf4ce16f01659598ad2669fcd389ee088a1c85515fe463414e4f3b59db09598",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/9e422d26b32cd2d9a7859f57bd33cc78aa8cd4af1bf44bad2228184effc29843",
+          "name": "9e422d26b32cd2d9a7859f57bd33cc78aa8cd4af1bf44bad2228184effc29843",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/a03b47e468b374bc737db5a13dc9359a40f74b16efaf85a1c541bcdd6a2a0bd4",
+          "name": "a03b47e468b374bc737db5a13dc9359a40f74b16efaf85a1c541bcdd6a2a0bd4",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/a116ecc8add52247a1a6fadd31183ec64b321e30f414bfe037e98c6ad4341883",
+          "name": "a116ecc8add52247a1a6fadd31183ec64b321e30f414bfe037e98c6ad4341883",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/a2ebfaed86c8839ae7b8fdb298a7691b7a7887360ab28479a739647106393474",
+          "name": "a2ebfaed86c8839ae7b8fdb298a7691b7a7887360ab28479a739647106393474",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/a498277fa88e0d416a46c1df18711541c2f2dc332d1821fa609fe417519c5939",
+          "name": "a498277fa88e0d416a46c1df18711541c2f2dc332d1821fa609fe417519c5939",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/a5a5bbc1b96743973ea81e79ec8af40e8f18328d00ca7fc14b540aaf9324154a",
+          "name": "a5a5bbc1b96743973ea81e79ec8af40e8f18328d00ca7fc14b540aaf9324154a",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/b35c2880356c6ea78d280a97a1fda327c62fa0638ebfb326da1b0e92b23e5c37",
+          "name": "b35c2880356c6ea78d280a97a1fda327c62fa0638ebfb326da1b0e92b23e5c37",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/b97101f9db87ec9fd420f9c3d647a5120e21aae91a61eedd41a9862d66417e2e",
+          "name": "b97101f9db87ec9fd420f9c3d647a5120e21aae91a61eedd41a9862d66417e2e",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/be07a40d34ee1e44e61d0e81fc1a71161cc9ba7ef20d57fc7fbe4e70f6e3ba8b",
+          "name": "be07a40d34ee1e44e61d0e81fc1a71161cc9ba7ef20d57fc7fbe4e70f6e3ba8b",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/be2d4335404b883d81cde43135e352ab399985ef73ee70e6537eb35c23c72cf7",
+          "name": "be2d4335404b883d81cde43135e352ab399985ef73ee70e6537eb35c23c72cf7",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/c06cc51bbb00561e7ef888c1078bd743b052d054bc14bc4e24abda29294e2e0d",
+          "name": "c06cc51bbb00561e7ef888c1078bd743b052d054bc14bc4e24abda29294e2e0d",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/c38eb113feb994e356121f4b583bf77aaf942ad7e496b571416683eb75265040",
+          "name": "c38eb113feb994e356121f4b583bf77aaf942ad7e496b571416683eb75265040",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/cf65ed22cd792d244c77d7858c9d45f2838733a2fe5abd540aee8b036cde0312",
+          "name": "cf65ed22cd792d244c77d7858c9d45f2838733a2fe5abd540aee8b036cde0312",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/e414ced67b7d5b2b3b90e114bdae0f25365bf115694a630abc69e077c7c55a62",
+          "name": "e414ced67b7d5b2b3b90e114bdae0f25365bf115694a630abc69e077c7c55a62",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/f2ed119e36dd8609d167823f30ab0257d3e9b191c04bfb18efbd0e76a8fd4a59",
+          "name": "f2ed119e36dd8609d167823f30ab0257d3e9b191c04bfb18efbd0e76a8fd4a59",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/f5279790f3ce95fca7960dc78e209227523cf7c3445806e10166b37aa7ecac85",
+          "name": "f5279790f3ce95fca7960dc78e209227523cf7c3445806e10166b37aa7ecac85",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/f6153f261a2cf861b6ad9dbd684f4f72656133c475a7fcf725cf374607c12029",
+          "name": "f6153f261a2cf861b6ad9dbd684f4f72656133c475a7fcf725cf374607c12029",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/objects/fe48a6db69bf8bbb9b843b1ecc1695ced426a60860e39a586198e15cd77fca03",
+          "name": "fe48a6db69bf8bbb9b843b1ecc1695ced426a60860e39a586198e15cd77fca03",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/r9_fixed_evidence.jl",
+          "name": "r9_fixed_evidence.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/r9_reserve_evidence.jl",
+          "name": "r9_reserve_evidence.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/r9_reserve_study.jl",
+          "name": "r9_reserve_study.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/r9_reserve_support.jl",
+          "name": "r9_reserve_support.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/residuals.csv",
+          "name": "residuals.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/scenarios.csv",
+          "name": "scenarios.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/summary.csv",
+          "name": "summary.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/support.csv",
+          "name": "support.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-20260921-v2/trajectories.csv",
+          "name": "trajectories.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-figures-20260921-v1/F41-reserve-commitments.pdf",
+          "name": "F41-reserve-commitments.pdf",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-figures-20260921-v1/F41-reserve-commitments.png",
+          "name": "F41-reserve-commitments.png",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-figures-20260921-v1/F42-reserve-risk-residuals.pdf",
+          "name": "F42-reserve-risk-residuals.pdf",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-figures-20260921-v1/F42-reserve-risk-residuals.png",
+          "name": "F42-reserve-risk-residuals.png",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-figures-20260921-v1/figure-source.toml",
+          "name": "figure-source.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-figures-20260921-v1/redraw.jl",
+          "name": "redraw.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-pilot-figures-20260921-v1/render-review.toml",
+          "name": "render-review.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-structure-20260921-v1/audit-source.jl",
+          "name": "audit-source.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-structure-20260921-v1/audit.toml",
+          "name": "audit.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-structure-20260921-v1/constraint-types.csv",
+          "name": "constraint-types.csv",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-structure-20260921-v1/files.toml",
+          "name": "files.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-reserve-structure-20260921-v1/single-event-support.csv",
+          "name": "single-event-support.csv",
+          "isDirectory": false
         }
       ],
       "order": 6,
@@ -79640,6 +81360,21 @@
         {
           "path": "test/r9_reserve.jl",
           "name": "r9_reserve.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "test/r5_risk_serialization.jl",
+          "name": "r5_risk_serialization.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "test/r9_risk.jl",
+          "name": "r9_risk.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "test/r9_risk_evidence.jl",
+          "name": "r9_risk_evidence.jl",
           "isDirectory": false
         }
       ],
@@ -82591,6 +84326,66 @@
         {
           "path": "scripts/test_r9_reserve.jl",
           "name": "test_r9_reserve.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/audit_r9_reserve_structure.jl",
+          "name": "audit_r9_reserve_structure.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r9_risk.jl",
+          "name": "check_r9_risk.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/plot_r9_reserve.jl",
+          "name": "plot_r9_reserve.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/plot_r9_reserve_limits.jl",
+          "name": "plot_r9_reserve_limits.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r9_reserve_evidence.jl",
+          "name": "r9_reserve_evidence.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r9_reserve_study.jl",
+          "name": "r9_reserve_study.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r9_reserve_support.jl",
+          "name": "r9_reserve_support.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r9_risk_docs.jl",
+          "name": "r9_risk_docs.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/run_r9_reserve_batch.jl",
+          "name": "run_r9_reserve_batch.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/test_r9_reserve_freeze.jl",
+          "name": "test_r9_reserve_freeze.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/test_r9_reserve_support.jl",
+          "name": "test_r9_reserve_support.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/test_r9_risk.jl",
+          "name": "test_r9_risk.jl",
           "isDirectory": false
         }
       ],
