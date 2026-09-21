@@ -1,0 +1,16 @@
+schema = "r9-electric-cut-study-v1"
+parent_evidence = "results/summaries/r9-preplan-faults-20260922-v1"
+fault_ids = ["external_only", "single_1_2", "author_event1"]
+nodes = [1,2,3,4,5,6,13,14,15,16,17,18,19,27,38,39,40,41,42,43,44]
+selection = "posthoc region found by optimistic max-flow development audit; same explicit region for all three faults"
+purpose = "necessary lower-bound proof from node balance; not a preselected statistical test or new optimized plan"
+model_version = "r9-electric-cut-v1"
+external_exchange = "zero_in_R7_recovery"
+source_equations = ["6-19", "6-24:25", "6-8/56/60", "R9-RL1", "R9-RL2"]
+parameter_gap = "docs/reading/ch07/inputs.toml:R9-D01"
+capacity_rule = "original_tree_absolute_load_and_all_connected_device_envelope; ties_use_path_sum_impedance_and_minimum_capacity"
+capacity_factor = 1.5
+scope = "synthetic replacement capacities and nodal demand on author topology"
+optimization_performed = false
+original_data_complete = false
+full_fault_certificate = false

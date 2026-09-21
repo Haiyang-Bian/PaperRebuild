@@ -1,0 +1,47 @@
+schema = "r9-electric-cut-mapping-v1"
+page = "docs/src/ch07-resilience-electric-cut.md"
+parent = "docs/reading/ch06/recovery.toml"
+input_gap = "docs/reading/ch07/inputs.toml:R9-D01"
+protocol = "configs/r9/electric-cut-study.toml"
+test = "test/r9_electric_cut.jl"
+original_input_complete = false
+model_changed = false
+method = "necessary bound derived from adopted node balance; optimistic extra capabilities cannot invalidate it"
+
+[[formula]]
+id = "R9-EC1"
+source_equations = ["6-19", "6-24:25", "6-8/56/60", "R9-RL1"]
+meaning = "区域关键需求减去区域内额定/可用发电上界及健康边界支路容量，给出各时段的必要失供。"
+kind = "project_derived_necessary_condition"
+api = ["r9_electric_cut_bound"]
+[[formula]]
+id = "R9-EC2"
+source_equations = ["R9-RL2"]
+meaning = "按原时间步长和场景概率积分；与既有R7规划门槛余量分开报告严格数学排除和验收排除。"
+kind = "project_exact_input_arithmetic"
+api = ["r9_electric_cut_bound", "validate_r9_electric_cut_bound"]
+
+[[symbol]]
+id = "R9-EC-U"
+latex = "U"
+meaning = "显式选取的电节点区域"
+unit = "node set"
+julia = "nodes / U"
+[[symbol]]
+id = "R9-EC-delta"
+latex = "\\delta_\\gamma(U)"
+meaning = "连接区域内外的全部健康电支路"
+unit = "line set"
+julia = "boundary_lines"
+[[symbol]]
+id = "R9-EC-G"
+latex = "\\overline G_{U,t,\\omega}"
+meaning = "区域内忽略耦合约束的发电上界；电池仅计额定放电功率"
+unit = "MW"
+julia = "internal_generation_upper_MW"
+[[symbol]]
+id = "R9-EC-L"
+latex = "\\underline L_U"
+meaning = "区域割给出的期望关键电力失供必要下界"
+unit = "MWh"
+julia = "loss_lower_MWh"

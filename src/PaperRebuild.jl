@@ -417,6 +417,9 @@ export r9_detailed_preplan_spec, build_r9_detailed_preplan, solve_r9_detailed_pr
 export validate_r9_detailed_preplan, save_r9_detailed_preplan, read_r9_detailed_preplan
 export r9_handoff_temperature_check
 
+include("verification/r9_electric_cut.jl")
+export r9_electric_cut_bound, validate_r9_electric_cut_bound
+
 """
     hello(who::String)
 

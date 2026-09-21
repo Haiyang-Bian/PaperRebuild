@@ -153,6 +153,7 @@
 - `configs/r8/tradeoff-study.toml`
 - `configs/r9/compact-study.toml`
 - `configs/r9/detailed-preplan-study.toml`
+- `configs/r9/electric-cut-study.toml`
 - `configs/r9/flow-reference.toml`
 - `configs/r9/network-protocol.toml`
 - `configs/r9/network-study.toml`
@@ -249,6 +250,7 @@
 - `docs/agent/tasks/2026-09-21-r9-trading-runs.md`
 - `docs/agent/tasks/2026-09-21-r9-trading-study.md`
 - `docs/agent/tasks/2026-09-22-r9-detailed-preplan.md`
+- `docs/agent/tasks/2026-09-22-r9-electric-cut.md`
 - `docs/agent/tasks/2026-09-22-r9-preplan-faults.md`
 - `docs/agent/tasks/2026-09-22-r9-preplan.md`
 - `docs/agent/tasks/2026-09-22-r9-resilience-pilot.md`
@@ -331,6 +333,7 @@
 - `docs/reading/ch07/reserve.toml`
 - `docs/reading/ch07/resilience-currency.toml`
 - `docs/reading/ch07/resilience-detailed-preplan.toml`
+- `docs/reading/ch07/resilience-electric-cut.toml`
 - `docs/reading/ch07/resilience-energization.toml`
 - `docs/reading/ch07/resilience-initial-profile.toml`
 - `docs/reading/ch07/resilience-load-service.toml`
@@ -488,6 +491,7 @@
 - `docs/src/ch07-reserve.md`
 - `docs/src/ch07-resilience-currency.md`
 - `docs/src/ch07-resilience-detailed.md`
+- `docs/src/ch07-resilience-electric-cut.md`
 - `docs/src/ch07-resilience-pilot.md`
 - `docs/src/ch07-resilience-preplan.md`
 - `docs/src/ch07-risk-generated.md`
@@ -675,6 +679,8 @@
 - `scripts/check_r9_critical_service.jl`
 - `scripts/check_r9_detailed_artifacts.jl`
 - `scripts/check_r9_detailed_preplan.jl`
+- `scripts/check_r9_electric_cut.jl`
+- `scripts/check_r9_electric_cut_artifacts.jl`
 - `scripts/check_r9_energization.jl`
 - `scripts/check_r9_figures.jl`
 - `scripts/check_r9_fixed.jl`
@@ -817,6 +823,7 @@
 - `scripts/plot_r8_tradeoff.jl`
 - `scripts/plot_r9_common_witness.jl`
 - `scripts/plot_r9_compact.jl`
+- `scripts/plot_r9_electric_cut.jl`
 - `scripts/plot_r9_fixed.jl`
 - `scripts/plot_r9_flow_reference.jl`
 - `scripts/plot_r9_handoff.jl`
@@ -937,6 +944,7 @@
 - `scripts/r9_detailed_preplan_evidence.jl`
 - `scripts/r9_detailed_preplan_study.jl`
 - `scripts/r9_docs.jl`
+- `scripts/r9_electric_cut_evidence.jl`
 - `scripts/r9_fixed_evidence.jl`
 - `scripts/r9_fixed_study.jl`
 - `scripts/r9_flow_diagnostics.jl`
@@ -1140,6 +1148,7 @@
 - `scripts/test_r9_compact_report.jl`
 - `scripts/test_r9_compact_risk.jl`
 - `scripts/test_r9_detailed_preplan.jl`
+- `scripts/test_r9_electric_cut.jl`
 - `scripts/test_r9_fixed.jl`
 - `scripts/test_r9_flow.jl`
 - `scripts/test_r9_gurobi_start.jl`
@@ -1393,6 +1402,7 @@
 - `src/verification/r8_energy_flow.jl`
 - `src/verification/r8_tradeoff.jl`
 - `src/verification/r9_detailed_preplan.jl`
+- `src/verification/r9_electric_cut.jl`
 - `src/verification/r9_fixed.jl`
 - `src/verification/r9_flow.jl`
 - `src/verification/r9_handoff.jl`
@@ -1480,6 +1490,7 @@
 - `test/r9_common_witness.jl`
 - `test/r9_compact_risk.jl`
 - `test/r9_detailed_preplan.jl`
+- `test/r9_electric_cut.jl`
 - `test/r9_fixed.jl`
 - `test/r9_flow.jl`
 - `test/r9_heat_memory.jl`
@@ -1555,6 +1566,7 @@
 - `docs/src/assets/r8-tradeoff-20260920-v1/`
 - `docs/src/assets/r9-common-20260921-v1/`
 - `docs/src/assets/r9-compact-20260921-v2/`
+- `docs/src/assets/r9-electric-cut-v1/`
 - `docs/src/assets/r9-fixed/`
 - `docs/src/assets/r9-flow/`
 - `docs/src/assets/r9-handoff-v1/`
@@ -1656,6 +1668,7 @@
 - `results/summaries/r9-compact-report-20260921-v1/`
 - `results/summaries/r9-detailed-preplan-evidence-20260922-v1/`
 - `results/summaries/r9-detailed-preplan-input-20260922-v1/`
+- `results/summaries/r9-electric-cut-evidence-20260922-v1/`
 - `results/summaries/r9-fixed-20260921-v4/`
 - `results/summaries/r9-fixed-figures-20260921-v4/`
 - `results/summaries/r9-flow-diagnostics-20260921-v2/`

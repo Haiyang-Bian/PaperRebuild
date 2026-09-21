@@ -150,8 +150,9 @@ F49来自已封存的旧状态反例，不是新详细规划的调度曲线。�
 诊断包`results/summaries/r9-handoff-evidence-20260922-v1`保存原IIS、输入、冻结源码和独立回放，
 68项文件哈希与移位重验已通过；这给出一个充分冲突，不声称IIS导出文件仅有两行。
 
-原聚合最坏失供10.319838 MWh的网络或设备端口原因仍未解释。上述温区冲突不能替代电力原因，
-也不能把新计划下的模型可行误写成零失供。
+本批结束时原聚合最坏失供10.319838 MWh的电力原因尚未解释；接续的
+[区域供能下界](ch07-resilience-electric-cut.md)已给出6.045880 MWh必要缺口，明确区分容量来源和未解释的剩余差额。
+上述温区冲突不能替代电力原因，也不能把新计划下的模型可行误写成零失供。
 
 ## 7. 证据重读与下一步
 
@@ -167,7 +168,8 @@ julia +1.12.6 --startup-file=no --project=. scripts/r9_detailed_preplan_evidence
 julia +1.12.6 --startup-file=no --project=docs scripts/plot_r9_handoff.jl results/summaries/r9-handoff-evidence-20260922-v1 results/runs/new-handoff-figure
 ```
 
-下一步先从已保存最坏故障提取电力分区、可达发电、联络线路容量及CHP热端口限制，
-形成可独立核验的供能下界。只有证据表明某个项目假设不合理时，才建立显式新版本对照。
+原定下一步的电力分区必要界已在[区域供能下界](ch07-resilience-electric-cut.md)完成：
+三条健康边界限制一个无内部发电区域，当前替代容量下已排除2 MWh门槛。
+只有明确提出新的设计或归因问题时，才建立显式新版本对照，不据此反推作者逐线参数。
 随后按[全文覆盖清单](reproduction-coverage.md)推进剩余故障、规模算法和跨章教程；
 不以继续加罚值、改变负荷或放宽温度阈值代替原因解释。
