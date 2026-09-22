@@ -1,5 +1,10 @@
 {
   "inputs": [
+    {"id":"r9DistributedInput","type":"promptString","description":"分布协调输入TOML；须为已冻结输入","default":""},
+    {"id":"r9DistributedRules","type":"promptString","description":"分布算法/模式/求解器规则TOML；运行前确定","default":""},
+    {"id":"r9DistributedDirectory","type":"promptString","description":"新分布运行的父目录","default":"results/runs/r9-distributed"},
+    {"id":"r9DistributedId","type":"promptString","description":"新的运行ID，已有ID会拒绝覆盖","default":"new-distributed-run"},
+    {"id":"r9DistributedRun","type":"promptString","description":"已保存分布运行目录；只读独立重验","default":""},
     {"id":"r9HeldoutFigures","type":"promptString","description":"F51新图目录；重绘不求解、不覆盖原图","default":"results/runs/new-r9-heldout-figures"},
     {"id":"r9HeldoutInput","type":"promptString","description":"新日冻结目录；freeze使用新目录","default":"results/summaries/r9-heldout-input-20260922-v2"},
     {"id":"r9HeldoutRuns","type":"promptString","description":"原始新日记录；run只追加未完成日","default":"results/runs/r9-heldout-20260922-v1"},
@@ -231,6 +236,12 @@
     }
   ],
   "tasks": [
+    {"label":"PaperRebuild: R9 distributed run (Clarabel)","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_distributed.jl","run","${input:r9DistributedInput}","${input:r9DistributedRules}","${input:r9DistributedDirectory}","${input:r9DistributedId}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 distributed run (Gurobi)","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/r9_distributed.jl","run","${input:r9DistributedInput}","${input:r9DistributedRules}","${input:r9DistributedDirectory}","${input:r9DistributedId}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 distributed saved-run check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_distributed.jl","check","${input:r9DistributedRun}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 distributed tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_distributed.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 distributed mapping check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_distributed.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 distributed symbols sync","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_distributed.jl","--sync"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 heldout report tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_heldout_report.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 heldout artifacts","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_heldout_artifacts.jl","${input:r9HeldoutInput}","${input:r9HeldoutReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 heldout redraw F51","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r9_evaluation.jl","${input:r9HeldoutReport}","${input:r9HeldoutFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},

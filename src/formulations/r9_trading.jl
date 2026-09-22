@@ -10,6 +10,7 @@ stage=:local仅优化指定主体；:network冻结
 质量守恒、端口和管道热功率包络同时施加；没有恢复混合温度/水压，不能认证完整热物理。
 电池与热储能分别逐时互斥，初末能量相等。设备×时间与主体×时间维度不混用。
 modes可固定z_storage与heat_direction矩阵供连续对照；v2还必须给u_E与u_H，不放松整数域。
+分布接口新增:agent/:operator，分别保留主体资源或运营商与网络；原三种stage行为不变。
 R9-T1—T6与R9-RN1—N5，热阀门整日固定，不限制热流参考方向。
 """
 function build_r9_trading_model(
@@ -22,15 +23,17 @@ function build_r9_trading_model(
     optimizer = nothing,
 )
     TOML.parse(c.source_text)==c.data || error("输入被原位改写")
-    electric in (:socp, :exact) && stage in (:central, :local, :network) || error("模型选择错误")
+    electric in (:socp, :exact) && stage in (:central, :local, :network, :agent, :operator) ||
+        error("模型选择错误")
     d=c.data
     T=d["T"]
     dt=d["dt_h"]
     a, g=d["actors"], d["devices"]
     A, G=length(a), length(g)
-    stage==:local && !(actor in 2:A) && error("局部主体编号错误")
+    stage in (:local, :agent) && !(actor in 2:A) && error("局部主体编号错误")
+    stage==:operator && actor!=1 && error("运营商主体编号错误")
     stage==:network && frozen===nothing && error("网络阶段缺少独立计划")
-    active(i) = stage!=:local || i==actor
+    active(i) = stage in (:local, :agent) ? i==actor : stage==:operator ? i==1 : true
     model=optimizer===nothing ? Model() : Model(optimizer)
     v=Dict{String,Any}()
     cs=Dict{String,Vector{Any}}()
@@ -147,6 +150,18 @@ function build_r9_trading_model(
             t,
         ]
     )
+    if stage==:operator
+        contract=r9_boundary_contract(c)
+        v["boundary"]=@variable(model, [1:4(A-1), 1:T], base_name="boundary")
+        for k in axes(v["boundary"], 1), t in 1:T
+            # R9-DC1：有限盒只取原参数的必要界，不把上轮AG调度固定进运营商块。
+            set_lower_bound(v["boundary"][k, t], contract.lower[k, t])
+            set_upper_bound(v["boundary"][k, t], contract.upper[k, t])
+        end
+        boundary=v["boundary"]
+    else
+        boundary=r9_trading_message_expressions(c, v)
+    end
     if stage==:local
         for carrier in ("P", "H"), side in ("buy", "sell")
             key=carrier*"_"*side
@@ -171,7 +186,7 @@ function build_r9_trading_model(
                 @constraint(model, net[actor, t]+v[carrier*"_buy"][t]-v[carrier*"_sell"][t]==0)
             )
         end
-    else
+    elseif stage!=:agent
         if stage==:network
             length(frozen)==A-1 && Set(r["actor"] for r in frozen)==Set(2:A) ||
                 error("独立计划不完整")
@@ -267,6 +282,10 @@ function build_r9_trading_model(
                     a[j]["Q_ratio"]*v["P_D"][j, t] for j in 2:A if a[j]["electric_node"]==i;
                     init = 0,
                 )
+                if stage==:operator
+                    pinj+=sum(boundary[4j-7, t] for j in 2:A if a[j]["electric_node"]==i; init = 0)
+                    qload+=sum(boundary[4j-6, t] for j in 2:A if a[j]["electric_node"]==i; init = 0)
+                end
                 for (key, net, grid, loss) in
                     (("P", pinj, v["P_grid"], "r_pu"), ("Q", -qload, v["Q_grid"], "x_pu"))
                     branches=v[key*"_branch"]
@@ -328,6 +347,10 @@ function build_r9_trading_model(
                     v["H_D"][j, t] for j in 2:A if a[j]["heat_node"]==i;
                     init = 0,
                 )+sum(v["H_cons"][j, t] for j in 1:G if g[j]["heat_node"]==i; init = 0)
+                if stage==:operator
+                    src+=sum(boundary[4j-5, t] for j in 2:A if a[j]["heat_node"]==i; init = 0)
+                    dem+=sum(boundary[4j-4, t] for j in 2:A if a[j]["heat_node"]==i; init = 0)
+                end
                 cap_src=sum(
                     g[j]["kind"] in ("CHP", "P2H") ? g[j]["power_max_MW"]*g[j]["heat_ratio"] :
                     g[j]["kind"]=="HS" ? g[j]["power_max_MW"] : 0.0 for
@@ -381,8 +404,11 @@ function build_r9_trading_model(
         external,
         retail,
         switching,
-        objective_kind = stage==:local ? "local_resource_plus_retail" : "system_resource_cost",
-        model_class = electric==:exact && stage!=:local ?
+        boundary,
+        objective_kind = stage==:local ? "local_resource_plus_retail" :
+                         stage==:agent ? "agent_resource_cost" :
+                         stage==:operator ? "operator_resource_cost" : "system_resource_cost",
+        model_class = electric==:exact && stage in (:central, :network, :operator) ?
                       (any(is_binary, all_variables(model)) ? "nonconvex_MIQCP" : "nonconvex_QCP") :
                       r2_model_class(model),
         model_types = string.(list_of_constraint_types(model)),

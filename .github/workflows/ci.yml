@@ -126,6 +126,8 @@ jobs:
         run: julia --startup-file=no --project=. scripts/check_r9_energization.jl
       - name: R9 fixed-flow mapping
         run: julia --startup-file=no --project=. scripts/check_r9_fixed.jl
+      - name: R9 distributed resource mapping
+        run: julia --startup-file=no --project=. scripts/check_r9_distributed.jl
       - name: R9 fixed-flow original values and independent KKT
         run: julia --startup-file=no --project=. scripts/r9_fixed_evidence.jl check results/summaries/r9-fixed-20260921-v4
       - name: R9 source audit replay and tamper checks

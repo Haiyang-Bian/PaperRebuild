@@ -1,0 +1,74 @@
+schema = "r9-distributed-mapping-v1"
+page = "docs/src/ch07-distributed.md"
+generated = "docs/src/ch07-distributed-generated.md"
+test = "test/r9_distributed.jl"
+parent = "docs/reading/ch04/distributed.toml"
+origin = "synthetic"
+original_input_complete = false
+primary_admm = "https://web.stanford.edu/~boyd/papers/admm/"
+scope = "multi_aggregator_resource_coordination; fixed_discrete_convex_and_separate_integer_heuristic"
+not_claimed = ["author_code_equivalence", "full_thermal_physics", "privacy_deployment", "bargaining", "global_certificate_from_augmented_block_bounds"]
+
+[[formula]]
+id = "R9-DC1"
+meaning = "主体四类边界及输入推导的有限通信盒。热源、热需求分开，储热充放不丢失。"
+api = ["r9_boundary_contract", "r9_trading_boundary"]
+[[formula]]
+id = "R9-DC2"
+meaning = "资源成本分块，外购费用与网络动作仅由运营商承担，内部支付不进入系统资源目标。"
+api = ["build_r9_distributed_block"]
+[[formula]]
+id = "R9-DC3"
+meaning = "边界一致性与集中模型的双向嵌入；原值合并不平均或再调度。"
+api = ["build_r9_distributed_block", "validate_r9_distributed"]
+[[formula]]
+id = "R9-DC4"
+meaning = "固定正罚系数的归一化两块ADMM；所有独立主体共同构成第一块。整数版本仅为启发式。"
+api = ["R9DistributedSpec", "solve_r9_distributed"]
+[[formula]]
+id = "R9-DC5"
+meaning = "独立原始/对偶残差、逐轮控制回放、最好候选与范围明确的物理检查。"
+api = ["validate_r9_distributed", "save_r9_distributed_run", "read_r9_distributed_run"]
+
+[[symbol]]
+id = "R9-DC-b"
+latex = 'b_{i,t}=(P_{i,t}^{net},Q_{i,t}^{load},H_{i,t}^{src},H_{i,t}^{demand})'
+meaning = "主体实际控制导出的四分量边界；净电注入向网络为正，其余三项非负"
+unit = "MW, Mvar, MW, MW"
+julia = "message[4(i-2)+1:4(i-1), t]"
+[[symbol]]
+id = "R9-DC-bhat"
+latex = '\widehat b_{i,t}'
+meaning = "运营商网络块中的对应边界副本"
+unit = "MW, Mvar, MW, MW"
+julia = "operator.values.boundary"
+[[symbol]]
+id = "R9-DC-scale"
+latex = 'S_j'
+meaning = "通信行全时域最大绝对边界；恒零行取同单位1，边界不变"
+unit = "corresponding message unit"
+julia = "contract.scale[j]"
+[[symbol]]
+id = "R9-DC-xzu"
+latex = 'x=S^{-1}b,\ z=S^{-1}\widehat b,\ u'
+meaning = "归一化主体消息、网络副本及缩放对偶变量；并非原物理功率或市场价格"
+unit = "1"
+julia = "trace[k].x, trace[k].z, trace[k].u"
+[[symbol]]
+id = "R9-DC-C"
+latex = 'C_s'
+meaning = "从输入预先计算并冻结的正费用尺度，不是费用界"
+unit = "CNY"
+julia = "result.cost_scale"
+[[symbol]]
+id = "R9-DC-rho"
+latex = '\rho'
+meaning = "归一化增广目标的固定正罚系数"
+unit = "1"
+julia = "spec.rho"
+[[symbol]]
+id = "R9-DC-residual"
+latex = 'r^k=x^k-z^k,\ d^k=\rho(z^k-z^{k-1})'
+meaning = "ADMM原始与对偶残差；无穷范数分别检查A4"
+unit = "1"
+julia = "trace[k].primal, trace[k].dual"

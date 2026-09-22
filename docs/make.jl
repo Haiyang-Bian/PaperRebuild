@@ -267,6 +267,8 @@ makedocs(;
             "规模交易结果与容量反例" => "ch07-trading-results.md",
             "设备接入与网络重构" => "ch07-network.md",
             "重构结果与独立供热缺口" => "ch07-network-results.md",
+            "多主体分块与分布协调" => "ch07-distributed.md",
+            "分布边界采用式与符号" => "ch07-distributed-generated.md",
             "接入与重构台账索引" => "ch07-network-generated.md",
             "交易模型台账索引" => "ch07-trading-generated.md",
             "备用输入与费用单位" => "ch07-reserve.md",

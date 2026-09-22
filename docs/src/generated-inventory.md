@@ -251,6 +251,7 @@
 - `docs/agent/tasks/2026-09-21-r9-trading-runs.md`
 - `docs/agent/tasks/2026-09-21-r9-trading-study.md`
 - `docs/agent/tasks/2026-09-22-r9-detailed-preplan.md`
+- `docs/agent/tasks/2026-09-22-r9-distributed.md`
 - `docs/agent/tasks/2026-09-22-r9-electric-cut.md`
 - `docs/agent/tasks/2026-09-22-r9-heldout-results.md`
 - `docs/agent/tasks/2026-09-22-r9-preplan-faults.md`
@@ -325,6 +326,7 @@
 - `docs/reading/ch06/recovery.toml`
 - `docs/reading/ch06/thermal-reconstruction.toml`
 - `docs/reading/ch06/transport-recovery.toml`
+- `docs/reading/ch07/distributed.toml`
 - `docs/reading/ch07/fixed.toml`
 - `docs/reading/ch07/flow.toml`
 - `docs/reading/ch07/inputs.toml`
@@ -476,6 +478,8 @@
 - `docs/src/ch07-common-witness.md`
 - `docs/src/ch07-compact-risk.md`
 - `docs/src/ch07-critical-load.md`
+- `docs/src/ch07-distributed-generated.md`
+- `docs/src/ch07-distributed.md`
 - `docs/src/ch07-energization.md`
 - `docs/src/ch07-fixed-generated.md`
 - `docs/src/ch07-fixed.md`
@@ -685,6 +689,7 @@
 - `scripts/check_r9_critical_service.jl`
 - `scripts/check_r9_detailed_artifacts.jl`
 - `scripts/check_r9_detailed_preplan.jl`
+- `scripts/check_r9_distributed.jl`
 - `scripts/check_r9_electric_cut.jl`
 - `scripts/check_r9_electric_cut_artifacts.jl`
 - `scripts/check_r9_energization.jl`
@@ -952,6 +957,7 @@
 - `scripts/r8_tradeoff_study.jl`
 - `scripts/r9_detailed_preplan_evidence.jl`
 - `scripts/r9_detailed_preplan_study.jl`
+- `scripts/r9_distributed.jl`
 - `scripts/r9_docs.jl`
 - `scripts/r9_electric_cut_evidence.jl`
 - `scripts/r9_fixed_evidence.jl`
@@ -1159,6 +1165,7 @@
 - `scripts/test_r9_compact_report.jl`
 - `scripts/test_r9_compact_risk.jl`
 - `scripts/test_r9_detailed_preplan.jl`
+- `scripts/test_r9_distributed.jl`
 - `scripts/test_r9_electric_cut.jl`
 - `scripts/test_r9_evaluation.jl`
 - `scripts/test_r9_fixed.jl`
@@ -1239,6 +1246,7 @@
 - `src/algorithms/r9_common_witness.jl`
 - `src/algorithms/r9_compact_risk.jl`
 - `src/algorithms/r9_detailed_preplan.jl`
+- `src/algorithms/r9_distributed.jl`
 - `src/algorithms/r9_evaluation.jl`
 - `src/algorithms/r9_preplan.jl`
 - `src/algorithms/r9_risk_start.jl`
@@ -1282,6 +1290,7 @@
 - `src/core/r8_energy_flow.jl`
 - `src/core/r8_tradeoff.jl`
 - `src/core/r9_detailed_preplan.jl`
+- `src/core/r9_distributed.jl`
 - `src/core/r9_evaluation.jl`
 - `src/core/r9_inputs.jl`
 - `src/core/r9_network.jl`
@@ -1323,6 +1332,7 @@
 - `src/formulations/r9_common_witness.jl`
 - `src/formulations/r9_compact_risk.jl`
 - `src/formulations/r9_detailed_preplan.jl`
+- `src/formulations/r9_distributed.jl`
 - `src/formulations/r9_flow.jl`
 - `src/formulations/r9_network.jl`
 - `src/formulations/r9_preplan.jl`
@@ -1371,6 +1381,7 @@
 - `src/reporting/r8_energy_flow.jl`
 - `src/reporting/r8_tradeoff.jl`
 - `src/reporting/r9_detailed_preplan.jl`
+- `src/reporting/r9_distributed.jl`
 - `src/reporting/r9_evaluation.jl`
 - `src/reporting/r9_fixed.jl`
 - `src/reporting/r9_preplan.jl`
@@ -1418,6 +1429,7 @@
 - `src/verification/r8_energy_flow.jl`
 - `src/verification/r8_tradeoff.jl`
 - `src/verification/r9_detailed_preplan.jl`
+- `src/verification/r9_distributed.jl`
 - `src/verification/r9_electric_cut.jl`
 - `src/verification/r9_fixed.jl`
 - `src/verification/r9_flow.jl`
@@ -1506,6 +1518,7 @@
 - `test/r9_common_witness.jl`
 - `test/r9_compact_risk.jl`
 - `test/r9_detailed_preplan.jl`
+- `test/r9_distributed.jl`
 - `test/r9_electric_cut.jl`
 - `test/r9_evaluation.jl`
 - `test/r9_fixed.jl`

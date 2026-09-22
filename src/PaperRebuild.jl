@@ -365,15 +365,23 @@ export solve_r9_fixed_case, validate_r9_fixed_solution
 
 include("core/r9_trading.jl")
 include("core/r9_network.jl")
+include("core/r9_distributed.jl")
 include("formulations/r9_network.jl")
 include("formulations/r9_trading.jl")
+include("formulations/r9_distributed.jl")
+export r9_boundary_contract, r9_trading_boundary, build_r9_distributed_block
 include("verification/r9_network.jl")
 include("verification/r9_trading.jl")
+include("verification/r9_distributed.jl")
 export R9TradingCase, load_r9_trading_case, r9_trading_case, build_r9_trading_model
 export validate_r9_trading_solution, r9_trading_ledger
 include("algorithms/r9_trading.jl")
 include("verification/r9_trading_runs.jl")
 include("reporting/r9_trading.jl")
+include("algorithms/r9_distributed.jl")
+include("reporting/r9_distributed.jl")
+export R9DistributedSpec, solve_r9_distributed, validate_r9_distributed
+export save_r9_distributed_run, read_r9_distributed_run
 export solve_r9_trading_case, validate_r9_trading_run, save_r9_trading_run
 export read_r9_trading_run, compare_r9_trading_runs
 include("verification/r9_trading_capacity.jl")
