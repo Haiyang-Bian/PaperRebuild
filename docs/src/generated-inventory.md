@@ -252,6 +252,7 @@
 - `docs/agent/tasks/2026-09-21-r9-trading-study.md`
 - `docs/agent/tasks/2026-09-22-r9-detailed-preplan.md`
 - `docs/agent/tasks/2026-09-22-r9-electric-cut.md`
+- `docs/agent/tasks/2026-09-22-r9-heldout-results.md`
 - `docs/agent/tasks/2026-09-22-r9-preplan-faults.md`
 - `docs/agent/tasks/2026-09-22-r9-preplan.md`
 - `docs/agent/tasks/2026-09-22-r9-reserve-evaluation.md`
@@ -522,6 +523,7 @@
 - `docs/src/reading.md`
 - `docs/src/reproduction-acceptance.md`
 - `docs/src/reproduction-coverage.md`
+- `docs/src/reproduction-findings.md`
 - `docs/src/reproduction-plan.md`
 - `docs/src/structure.md`
 - `docs/src/templates.md`
@@ -691,6 +693,7 @@
 - `scripts/check_r9_fixed.jl`
 - `scripts/check_r9_fixed_delivery.jl`
 - `scripts/check_r9_fixed_scaling.jl`
+- `scripts/check_r9_heldout_artifacts.jl`
 - `scripts/check_r9_initial_profile.jl`
 - `scripts/check_r9_inputs.jl`
 - `scripts/check_r9_network.jl`
@@ -829,6 +832,7 @@
 - `scripts/plot_r9_common_witness.jl`
 - `scripts/plot_r9_compact.jl`
 - `scripts/plot_r9_electric_cut.jl`
+- `scripts/plot_r9_evaluation.jl`
 - `scripts/plot_r9_fixed.jl`
 - `scripts/plot_r9_flow_reference.jl`
 - `scripts/plot_r9_handoff.jl`
@@ -1160,6 +1164,7 @@
 - `scripts/test_r9_fixed.jl`
 - `scripts/test_r9_flow.jl`
 - `scripts/test_r9_gurobi_start.jl`
+- `scripts/test_r9_heldout_report.jl`
 - `scripts/test_r9_network.jl`
 - `scripts/test_r9_network_evidence.jl`
 - `scripts/test_r9_numerics_evidence.jl`
@@ -1583,6 +1588,7 @@
 - `docs/src/assets/r9-flow/`
 - `docs/src/assets/r9-handoff-v1/`
 - `docs/src/assets/r9-handoff-v2/`
+- `docs/src/assets/r9-heldout-v1/`
 - `docs/src/assets/r9-inputs-20260920-v1/`
 - `docs/src/assets/r9-network-20260921-v1/`
 - `docs/src/assets/r9-numerics-20260921-v1/`
@@ -1688,6 +1694,7 @@
 - `results/summaries/r9-flow-reference-20260921-v2/`
 - `results/summaries/r9-handoff-evidence-20260922-v1/`
 - `results/summaries/r9-heldout-input-20260922-v2/`
+- `results/summaries/r9-heldout-report-20260922-v1/`
 - `results/summaries/r9-input-figures-20260920-v1/`
 - `results/summaries/r9-inputs-20260920-v1/`
 - `results/summaries/r9-network-20260921-v1/`

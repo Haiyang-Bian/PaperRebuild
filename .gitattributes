@@ -1,5 +1,9 @@
 * text=auto eol=lf
 results/summaries/r9-heldout-input-20260922-v2/** -text
+results/summaries/r9-heldout-report-20260922-v1/** -text whitespace=cr-at-eol
+# Preserve the copied statistical protocol byte for byte, including its final blank line.
+results/summaries/r9-heldout-report-20260922-v1/statistics-source.toml -text whitespace=cr-at-eol,-blank-at-eof
+docs/src/assets/r9-heldout-v1/** -text whitespace=cr-at-eol
 *.pdf binary
 *.docx binary
 *.png binary

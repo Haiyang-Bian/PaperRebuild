@@ -112,6 +112,7 @@ makedocs(;
         "审读证据与问题台账" => "thesis-audit.md",
         "逐阶段复现计划" => "reproduction-plan.md",
         "全文完成清单" => "reproduction-coverage.md",
+        "跨章阶段结论" => "reproduction-findings.md",
         "验收与科学图表" => "reproduction-acceptance.md",
         "Julia 工具与架构" => "julia-design.md",
         "第3章数据搜集" => "ch03-data.md",

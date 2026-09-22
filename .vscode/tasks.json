@@ -1,5 +1,6 @@
 {
   "inputs": [
+    {"id":"r9HeldoutFigures","type":"promptString","description":"F51新图目录；重绘不求解、不覆盖原图","default":"results/runs/new-r9-heldout-figures"},
     {"id":"r9HeldoutInput","type":"promptString","description":"新日冻结目录；freeze使用新目录","default":"results/summaries/r9-heldout-input-20260922-v2"},
     {"id":"r9HeldoutRuns","type":"promptString","description":"原始新日记录；run只追加未完成日","default":"results/runs/r9-heldout-20260922-v1"},
     {"id":"r9HeldoutReport","type":"promptString","description":"新日统计新报告目录；不可覆盖已有报告","default":"results/summaries/r9-heldout-report-20260922-v1"},
@@ -230,6 +231,9 @@
     }
   ],
   "tasks": [
+    {"label":"PaperRebuild: R9 heldout report tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_heldout_report.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 heldout artifacts","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_heldout_artifacts.jl","${input:r9HeldoutInput}","${input:r9HeldoutReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 heldout redraw F51","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r9_evaluation.jl","${input:r9HeldoutReport}","${input:r9HeldoutFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 heldout numerical report","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/report_r9_evaluation.jl","${input:r9HeldoutInput}","${input:r9HeldoutRuns}","${input:r9HeldoutReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 heldout tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_evaluation.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 heldout mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_evaluation.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
