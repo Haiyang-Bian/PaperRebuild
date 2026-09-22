@@ -23,6 +23,9 @@ objective_record默认reported保持旧v1；显式separate使用v2分别记录�
 记录可重算不等于报告一致；1e-9门槛不变，solver_objective_reports_pass的false不得隐去。
 完整子块精度未认证；LOCALLY_SOLVED/ALMOST_OPTIMAL不升级为OPTIMAL，旧失败及缺失轨迹不重判。
 原证据用r9_distributed_evidence.jl重读；热量/目标诊断用r9_distributed_diagnostics.jl与专项篡改测试。
+连续首块的四项相等上下界/显式固定诊断见同页第10节；r9_block_bound_evidence.jl只读数字系数。
+只允许有限且严格相等的界转换，逐行证明其它约束及目标不变；未经修改的原乘子和原状态均保留。
+独立残差小不升级ALMOST_OPTIMAL；OPTIMAL也不替代乘子与报告目标核对。不把单块诊断计为新ADMM成功。
 
 第 2 章工作先读 [模型详解与 C01–C12 疑点](../src/ch02-models.md)、[符号规则](../src/ch02-naming.md)。
 公式/符号权威数据在 `docs/reading/ch02/`，改动后用 Julia `scripts/check_ch02.jl --sync` 更新生成页。

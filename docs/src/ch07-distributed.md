@@ -292,9 +292,10 @@ F53不把缺失合格费用画成零。图源见[逐轮表](assets/r9-distribute
 这比把所有失败都归因于“模型太复杂”更具体，但尚不能判定整数外层的主导原因是固定罚系数、
 离散跳变、子块精度还是预算，也不能把合成输入上的负结果归因于作者未公开实现。
 
-下一步先完成本批可移位证据、真实图表、文档与本地提交，再接续全文交付入口。
-若继续该算法专题，先对已保存的连续首块与整数末轮做限定范围的尺度/误差诊断，
-为一次受控对照明确假设、预算与停止条件；不直接扩大rho扫描、迭代次数或采用更容易成功的新输入。
+本批可移位证据、真实图表、严格文档与本地提交已完成；最终项目Check原进程也已实际退出0。
+接续对已保存的连续首块做了下节限定四项的等价表示诊断，尚未解除数值状态限制。
+下一步以完整子块精度和端到端开销为有预算的独立专题，同时推进全文交付入口；
+不直接扩大rho扫描、迭代次数或采用更容易成功的新输入。
 只有取得合并A1候选和同模型有效参考后，才讨论费用与速度；原集中解继续只用于独立参考。
 
 ```sh
@@ -302,6 +303,50 @@ julia +1.12.6 --startup-file=no --project=. scripts/r9_distributed_evidence.jl c
 julia +1.12.6 --startup-file=no --project=. scripts/test_r9_distributed_diagnostics.jl DIAGNOSTICS
 julia +1.12.6 --startup-file=no --project=docs scripts/plot_r9_distributed.jl EVIDENCE NEW_FIGURES
 julia +1.12.6 --startup-file=no --project=. scripts/check_r9_distributed_artifacts.jl EVIDENCE FIGURES
+```
+
+## 10. 连续首块：相同上下界是不是原因？
+
+沿用失败的actor=2、第一轮零消息/零乘子、同输入、固定模式、目标和求解容差。
+在优化前固定四个变体：Clarabel/Gurobi分别采用原表示或显式固定表示。
+只将1775个**有限且严格相等**的上下界改写为固定等式：
+
+```math
+\ell_j\le x_j\le\ell_j\quad\Longleftrightarrow\quad x_j=\ell_j.
+\tag{R9-DB1}
+```
+
+没有舍入、放宽范围或改变其它行；逐行数值系数比较证明目标和可行集合相同。
+Gurobi两项都设置`QCPDual=1`采集乘子，其余原属性保持。
+各次求解最多60秒，四项共享600秒；脚本内总耗时27.094352秒，不作跨求解器速度结论。
+
+| 求解器与表示 | 原生状态 | 增广数学目标（无量纲） | 原始残差指标 | 对偶／互补／驻点指标 |
+| --- | --- | ---: | ---: | --- |
+| Clarabel，原相同上下界 | ALMOST_OPTIMAL | 6.066472498235 | 3.678e-10 | 0／9.492e-11／2.790e-13 |
+| Clarabel，显式固定 | ALMOST_OPTIMAL | 6.066472497910 | 1.812e-10 | 0／4.233e-11／1.071e-13 |
+| Gurobi，原相同上下界 | OPTIMAL | 6.066473527488 | 1.221e-15 | 2.614e-5／1.288e-3／1.180e-4 |
+| Gurobi，显式固定 | OPTIMAL | 6.066473527488 | 1.221e-15 | 2.614e-5／1.288e-3／1.180e-4 |
+
+这些指标从保存的多项式系数、原变量和**未经修改的原乘子**重算，归一化沿用R3形式，
+并补旋转锥的正交坐标变换。它们是数值诊断，不替代A1，不单独构成严格全局下界。
+乘子符号依据[MOI对偶约定](https://jump.dev/MathOptInterface.jl/stable/background/duality/)；
+解析二次问题和旋转锥例分别核查导数、符号、互补及缺失乘子的处理。
+
+**本对照排除了“仅把这些相同上下界改为显式固定，就能解除当前失败”的解释。**
+它没有排除其它等价表示的影响，也未确定求解器内部误差的具体成因。
+Clarabel仍返回近似状态，不能因为独立残差较小就改写为OPTIMAL；
+求解器具有不同的完整精度和降低精度条件，见[官方设置](https://clarabel.org/stable/api_settings/)。
+Gurobi虽报告OPTIMAL，保存乘子的上述三类指标仍超原1e-6级KKT门槛，
+且报告目标相对误差5.542e-8超过原1e-9核对门槛；不能仅靠状态字符串生成可信梯度或块精度证书。
+
+这四次只求单个连续首块，没有重新运行完整ADMM，不改变前述240/238轮及失败判定。
+数值证据保存在`results/summaries/r9-bound-diagnostic-20260922-v1`，包含父身份、
+优化前规则、原脚本、全部数值模型、原点、原乘子及只读重验脚本。
+包内重验仅需Julia标准库，无需商业许可；VS Code提供对应replay/tests任务。
+
+```sh
+julia +1.12.6 --startup-file=no scripts/r9_block_bound_evidence.jl check results/summaries/r9-bound-diagnostic-20260922-v1
+julia +1.12.6 --startup-file=no scripts/test_r9_block_bound_evidence.jl results/summaries/r9-bound-diagnostic-20260922-v1
 ```
 
 ## 内部建模与审计接口

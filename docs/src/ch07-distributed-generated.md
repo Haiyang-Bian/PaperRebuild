@@ -7,6 +7,7 @@
 | 符号 | 含义 | 单位 | Julia字段 |
 | --- | --- | --- | --- |
 | ``b_{i,t}=(P_{i,t}^{net},Q_{i,t}^{load},H_{i,t}^{src},H_{i,t}^{demand})`` | 主体实际控制导出的四分量边界；净电注入向网络为正，其余三项非负 | MW, Mvar, MW, MW | `message[4(i-2)+1:4(i-1), t]` |
+| ``x_j,\ell_j`` | 本诊断的原变量与严格相等上下界；与ADMM归一化消息x属于不同作用域 | 原变量各自单位；不得将不同变量原始残差合并作A1 | `equal-bounds.toml: index, name, value` |
 | ``\widehat b_{i,t}`` | 运营商网络块中的对应边界副本 | MW, Mvar, MW, MW | `operator.values.boundary` |
 | ``S_j`` | 通信行全时域最大绝对边界；恒零行取同单位1，边界不变 | corresponding message unit | `contract.scale[j]` |
 | ``x=S^{-1}b,\ z=S^{-1}\widehat b,\ u`` | 归一化主体消息、网络副本及缩放对偶变量；并非原物理功率或市场价格 | 1 | `trace[k].x, trace[k].z, trace[k].u` |
@@ -21,3 +22,7 @@
 - **R9-DC3**：边界一致性与集中模型的双向嵌入；原值合并不平均或再调度。
 - **R9-DC4**：固定正罚系数的归一化两块ADMM；所有独立主体共同构成第一块。整数版本仅为启发式。
 - **R9-DC5**：独立原始/对偶残差、逐轮控制回放、最好候选与范围明确的物理检查。
+
+## 项目诊断关系
+
+- **R9-DB1**：有限且严格相等的上下界改为固定等式，其它目标及约束逐行不变；只检验本首块表示假设。 状态：`verified_equivalence_did_not_resolve_solver_status`。

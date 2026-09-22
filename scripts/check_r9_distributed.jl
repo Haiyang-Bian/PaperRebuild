@@ -30,6 +30,10 @@ println(io, "\n## 采用式\n")
 for f in x["formula"]
     println(io, "- **", f["id"], "**：", f["meaning"])
 end
+println(io, "\n## 项目诊断关系\n")
+for d in get(x, "diagnostic", [])
+    println(io, "- **", d["id"], "**：", d["meaning"], " 状态：`", d["status"], "`。")
+end
 generated=String(take!(io))
 path=joinpath(root, x["generated"])
 ARGS==["--sync"] && write(path, generated)
@@ -44,6 +48,13 @@ ARGS==["--sync"] && write(path, generated)
         for api in f["api"]
             @test isdefined(PaperRebuild, Symbol(api)) && occursin(api, page)
         end
+    end
+    for d in get(x, "diagnostic", [])
+        @test occursin("\\tag{"*d["id"]*"}", page)
+        @test isfile(joinpath(root, d["script"])) &&
+              occursin(d["id"], read(joinpath(root, d["test"]), String))
+        @test isdir(joinpath(root, d["evidence"])) &&
+              d["origin"]=="project_exact_equivalence_diagnostic"
     end
     @test read(path, String)==generated
 end

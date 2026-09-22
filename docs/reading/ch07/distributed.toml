@@ -36,6 +36,22 @@ latex = 'b_{i,t}=(P_{i,t}^{net},Q_{i,t}^{load},H_{i,t}^{src},H_{i,t}^{demand})'
 meaning = "主体实际控制导出的四分量边界；净电注入向网络为正，其余三项非负"
 unit = "MW, Mvar, MW, MW"
 julia = "message[4(i-2)+1:4(i-1), t]"
+
+[[diagnostic]]
+id = "R9-DB1"
+meaning = "有限且严格相等的上下界改为固定等式，其它目标及约束逐行不变；只检验本首块表示假设。"
+origin = "project_exact_equivalence_diagnostic"
+status = "verified_equivalence_did_not_resolve_solver_status"
+script = "scripts/r9_block_bound_evidence.jl"
+test = "scripts/test_r9_block_bound_evidence.jl"
+evidence = "results/summaries/r9-bound-diagnostic-20260922-v1"
+
+[[symbol]]
+id = "R9-DB-fixed"
+latex = 'x_j,\ell_j'
+meaning = "本诊断的原变量与严格相等上下界；与ADMM归一化消息x属于不同作用域"
+unit = "原变量各自单位；不得将不同变量原始残差合并作A1"
+julia = "equal-bounds.toml: index, name, value"
 [[symbol]]
 id = "R9-DC-bhat"
 latex = '\widehat b_{i,t}'

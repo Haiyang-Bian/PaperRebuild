@@ -253,6 +253,7 @@
 - `docs/agent/tasks/2026-09-21-r9-trading-model.md`
 - `docs/agent/tasks/2026-09-21-r9-trading-runs.md`
 - `docs/agent/tasks/2026-09-21-r9-trading-study.md`
+- `docs/agent/tasks/2026-09-22-r9-block-bounds.md`
 - `docs/agent/tasks/2026-09-22-r9-detailed-preplan.md`
 - `docs/agent/tasks/2026-09-22-r9-distributed-scale.md`
 - `docs/agent/tasks/2026-09-22-r9-distributed.md`
@@ -963,6 +964,7 @@
 - `scripts/r8_energy_cases.jl`
 - `scripts/r8_energy_study.jl`
 - `scripts/r8_tradeoff_study.jl`
+- `scripts/r9_block_bound_evidence.jl`
 - `scripts/r9_detailed_preplan_evidence.jl`
 - `scripts/r9_detailed_preplan_study.jl`
 - `scripts/r9_distributed.jl`
@@ -1170,6 +1172,7 @@
 - `scripts/test_r8_heat_boundary.jl`
 - `scripts/test_r8_study.jl`
 - `scripts/test_r8_tradeoff.jl`
+- `scripts/test_r9_block_bound_evidence.jl`
 - `scripts/test_r9_common_evidence.jl`
 - `scripts/test_r9_common_witness.jl`
 - `scripts/test_r9_compact_freeze.jl`
@@ -1703,6 +1706,7 @@
 - `results/summaries/r8-tradeoff-20260920-v1/`
 - `results/summaries/r8-tradeoff-audit-20260920-v1/`
 - `results/summaries/r8-tradeoff-figures-20260920-v3/`
+- `results/summaries/r9-bound-diagnostic-20260922-v1/`
 - `results/summaries/r9-common-evidence-20260921-v1/`
 - `results/summaries/r9-common-figures-20260921-v1/`
 - `results/summaries/r9-common-input-20260921-v1/`

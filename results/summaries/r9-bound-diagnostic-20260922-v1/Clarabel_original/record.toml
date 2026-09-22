@@ -1,0 +1,31 @@
+constraint_count = 5116
+dual_status = "NEARLY_FEASIBLE_POINT"
+elapsed_sec = 16.69748770003207
+equal_bound_count = 1775
+id = "Clarabel_original"
+new_full_admm_run = false
+original_primal_normalized = 3.6784548440248466e-10
+primal_status = "NEARLY_FEASIBLE_POINT"
+same_initial_model = true
+termination = "ALMOST_OPTIMAL"
+variable_count = 2749
+
+[options]
+max_threads = 1
+tol_feas = 1.0e-10
+tol_gap_abs = 1.0e-10
+tol_gap_rel = 1.0e-10
+verbose = false
+
+[replay]
+all_raw_duals_available = true
+complementarity_normalized = 9.492422429688285e-11
+diagnostic_only = true
+dual_normalized = 0.0
+global_bound_certified = false
+objective_at_primal = 6.066472498234762
+primal_normalized = 3.6784548440248466e-10
+primal_raw_mixed_units = 1.6845928030306823e-7
+report_relative_error = 4.392231663253578e-16
+stationarity_normalized = 2.79017912429809e-13
+worst_primal_row = "MathOptInterface.ConstraintIndex{MathOptInterface.VectorAffineFunction{Float64}, MathOptInterface.RotatedSecondOrderCone}(27)"
