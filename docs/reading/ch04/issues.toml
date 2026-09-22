@@ -1,0 +1,51 @@
+schema = "ch04-issues-v1"
+
+[[issue]]
+adopted = "文字出售为正与方程相反。采用P_net=sell-buy+sum(export)，同时变换双方。"
+equations = [17, 18, 56, 57]
+id = "R4-C01"
+state = "adopted_derivation"
+topic = "交易符号"
+validation = "守恒手算0.2MW出售、0.3MW购买。"
+[[issue]]
+adopted = "恢复Δt与E[t-1]；4-54第二个dis改ch。新增逐时互斥与周期边界。"
+equations = [1, 2, 3, 4, 11, 20, 21, 54]
+id = "R4-C02"
+state = "adopted_derivation"
+topic = "时间与储能"
+validation = "能量单位与一步递推；非原文数值匹配。"
+[[issue]]
+adopted = "统一净注入；分源荷非负端口，恢复cp/1e6；SI参考温度损耗；4-55用H。"
+equations = [43, 46, 47, 55]
+id = "R4-C03"
+state = "adopted_derivation"
+topic = "热端口与损耗"
+validation = "逐管能量守恒、量纲和零损耗极限；不验证动态热网。"
+[[issue]]
+adopted = "对称费率下有向净量可能抵消。按每对实际出售量只收卖方一次。"
+equations = [14, 24]
+id = "R4-C04"
+state = "adopted_derivation"
+topic = "有向服务费"
+validation = "收款方运营商有同额收入，主体效用之和不变。"
+[[issue]]
+adopted = "首批仅固定树、l>=0与Imax平方。重构采用N1–N6的连通、开路和动作解释，详见network.toml。"
+equations = [29, 32, 34, 35, 36, 37, 38, 39, 40, 48, 49, 50, 51]
+id = "R4-C05"
+state = "adopted_derivation"
+topic = "固定拓扑与平方量"
+validation = "旧固定拓扑判定保留。新重构含独立图校验与单时段72项穷举；原电网等式另验。"
+[[issue]]
+adopted = "采用凸且递减的二次特例，Q/H混排另记；GT/非市场用户不启用。"
+equations = [4, 8, 23]
+id = "R4-C06"
+state = "adopted_derivation"
+topic = "不满意度与范围"
+validation = "导数、凸性、边界检查；不包含负荷时移能量守恒。"
+[[issue]]
+adopted = "已定位作者接受稿；尚未建立逐管公式与被引文献逐式等价证据。"
+equations = [41, 42, 43, 44, 45, 46, 47]
+id = "R4-C07"
+state = "source_correspondence_unresolved"
+topic = "第26篇引文"
+validation = "解释与来源缺口分开，采用式不冒称引文已证实。"

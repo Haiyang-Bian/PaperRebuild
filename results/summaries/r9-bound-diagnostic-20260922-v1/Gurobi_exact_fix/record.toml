@@ -1,0 +1,34 @@
+constraint_count = 3341
+dual_status = "FEASIBLE_POINT"
+elapsed_sec = 0.4787789999973029
+equal_bound_count = 1775
+id = "Gurobi_exact_fix"
+new_full_admm_run = false
+original_primal_normalized = 1.2212453270876722e-15
+primal_status = "FEASIBLE_POINT"
+same_initial_model = true
+termination = "OPTIMAL"
+variable_count = 2749
+
+[options]
+FeasibilityTol = 1.0e-8
+IntFeasTol = 1.0e-8
+MIPGap = 0.0001
+NonConvex = 2
+OptimalityTol = 1.0e-8
+QCPDual = 1
+Seed = 0
+Threads = 1
+
+[replay]
+all_raw_duals_available = true
+complementarity_normalized = 0.0012880521274928145
+diagnostic_only = true
+dual_normalized = 2.6142022974441625e-5
+global_bound_certified = false
+objective_at_primal = 6.066473527487882
+primal_normalized = 1.2212453270876722e-15
+primal_raw_mixed_units = 1.2212453270876722e-15
+report_relative_error = 5.541737820737684e-8
+stationarity_normalized = 0.00011795781216802964
+worst_primal_row = "MathOptInterface.ConstraintIndex{MathOptInterface.ScalarAffineFunction{Float64}, MathOptInterface.EqualTo{Float64}}(213)"

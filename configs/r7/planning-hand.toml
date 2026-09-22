@@ -1,0 +1,10 @@
+schema = "r7-planning-spec-v1"
+normal_domain = "prescribed_positive_fixed_electric_topology"
+recovery_model = "r7_recovery_checked_v1"
+
+[[events]]
+id = "hour2"
+event_start = 2
+periods = 1
+renewable_factor = 0.5
+loss_limit_MWh = 0.0

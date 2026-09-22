@@ -1,0 +1,24 @@
+Precompiling packages...
+  10014.9 ms  ✓ PaperRebuild
+  1 dependency successfully precompiled in 11 seconds. 81 already precompiled.
+Test Summary:                                        | Pass  Total  Time
+R9-F1:F2 exact rank and bounded terminal coordinates |   36     36  3.1s
+R9 fixed-flow forward witness and independent terminal contract: Test Failed at <workspace>\test\r9_fixed.jl:75
+  Expression: maximum(abs, predicted - original) < 0.001
+   Evaluated: 16.441653850438172 < 0.001
+
+Stacktrace:
+ [1] top-level scope
+   @ <workspace>\test\r9_fixed.jl:35
+ [2] macro expansion
+   @ <user>\.julia\juliaup\julia-1.12.6+0.x64.w64.mingw32\share\julia\stdlib\v1.12\Test\src\Test.jl:1777 [inlined]
+ [3] macro expansion
+   @ <workspace>\test\r9_fixed.jl:75 [inlined]
+ [4] macro expansion
+   @ <user>\.julia\juliaup\julia-1.12.6+0.x64.w64.mingw32\share\julia\stdlib\v1.12\Test\src\Test.jl:680 [inlined]
+Test Summary:                                                   | Pass  Fail  Total   Time
+R9 fixed-flow forward witness and independent terminal contract |   24     1     25  35.9s
+RNG of the outermost testset: Random.Xoshiro(0xa5e43e02937dd580, 0xdc2d993ed3bc4e5e, 0x2a120e8b1f245804, 0x28b77f46e700a3dc, 0x29cbcd66fb6cf3b2)
+ERROR: LoadError: Some tests did not pass: 24 passed, 1 failed, 0 errored, 0 broken.
+in expression starting at <workspace>\test\r9_fixed.jl:34
+in expression starting at <workspace>\scripts\test_r9_fixed.jl:2

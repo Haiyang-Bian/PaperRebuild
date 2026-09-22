@@ -1,0 +1,245 @@
+leader_id = "IES"
+name = "r6_daily_small_v1"
+origin = "synthetic"
+schema = "r6-physical-case-v1"
+selection = "optimistic_primal_dual"
+
+[bid_bounds.down_bid]
+lower = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+upper = [200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0]
+
+[bid_bounds.energy_bid]
+lower = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+upper = [200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0]
+
+[bid_bounds.up_bid]
+lower = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+upper = [200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0, 200.0]
+
+[bounds.P_DA_MW]
+lower = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+upper = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+
+[bounds.R_down_MW]
+lower = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+upper = [0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08]
+
+[bounds.R_up_MW]
+lower = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+upper = [0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08]
+
+[dispatch]
+T = 24
+ambient_K = [282.15, 281.65, 281.15, 280.65, 280.15, 280.65, 281.15, 282.15, 283.15, 284.15, 285.15, 286.15, 287.15, 287.65, 287.15, 286.15, 285.15, 284.15, 283.15, 282.65, 282.15, 282.15, 282.15, 282.15]
+dt_h = 1.0
+name = "r6_daily_small_v1"
+origin = "synthetic"
+schema = "r5-dispatch-case-v1"
+
+    [dispatch.award]
+    P_DA_MW = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    R_down_MW = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    R_up_MW = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    down_price = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    energy_price = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    origin = "synthetic"
+    up_price = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+    [[dispatch.buildings]]
+    COP_DH = 0.95
+    C_MWh_K = 0.02
+    G_MW_K = 0.003
+    P_DH_max_MW = 0.05
+    R_max_K = 343.15
+    R_min_K = 303.15
+    T_initial_K = 293.15
+    T_max_K = 294.15
+    T_min_K = 292.15
+    electric_node = 2
+    heat_node = 2
+    id = "building"
+    m_kg_s = 1.0
+    terminal_rule = "initial"
+
+    [[dispatch.devices]]
+    cost_USD_MWh = 0.0
+    heat_ratio = 0.95
+    id = "EB"
+    kind = "EB"
+    node = 2
+    p_max_MW = 0.1
+    p_min_MW = 0.0
+    q_max_Mvar = 0.0
+    q_min_Mvar = 0.0
+    source_id = "source"
+    [[dispatch.devices]]
+    P_initial_MW = 0.0
+    cost_USD_MWh = 130.0
+    id = "GT"
+    kind = "GT"
+    node = 2
+    p_max_MW = 0.15
+    p_min_MW = 0.0
+    q_max_Mvar = 0.0
+    q_min_Mvar = 0.0
+    ramp_down_MW_h = 1.0
+    ramp_up_MW_h = 1.0
+    [[dispatch.devices]]
+    P_initial_MW = 0.03
+    cost_USD_MWh = 90.0
+    heat_ratio = 1.0
+    id = "CHP"
+    kind = "CHP"
+    node = 2
+    p_max_MW = 0.08
+    p_min_MW = 0.0
+    q_max_Mvar = 0.03
+    q_min_Mvar = -0.03
+    ramp_down_MW_h = 0.08
+    ramp_up_MW_h = 0.08
+    source_id = "source"
+    [[dispatch.devices]]
+    available_MW = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    cost_USD_MWh = 5.0
+    id = "PV"
+    kind = "PV"
+    node = 2
+    p_max_MW = 0.08
+    p_min_MW = 0.0
+    q_max_Mvar = 0.0
+    q_min_Mvar = 0.0
+
+    [dispatch.electric]
+    P_load_MW = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.1, 0.1, 0.1, 0.1, 0.1, 0.11, 0.13, 0.15, 0.14, 0.13, 0.13, 0.14, 0.14, 0.13, 0.13, 0.14, 0.16, 0.18, 0.18, 0.17, 0.15, 0.13, 0.12, 0.11]]
+    Q_load_Mvar = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02]]
+    S_base_MVA = 1.0
+    nodes = 2
+    pcc_max_MW = 1.0
+    pcc_min_MW = 0.0
+    qcc_max_Mvar = 1.0
+    qcc_min_Mvar = -1.0
+    root = 1
+    v_max_pu = 1.05
+    v_min_pu = 0.95
+    v_ref_pu = 1.0
+
+        [[dispatch.electric.lines]]
+        P_limit_MW = 1.0
+        Q_limit_Mvar = 1.0
+        from = 1
+        id = "e12"
+        r_pu = 0.01
+        to = 2
+        x_pu = 0.005
+
+    [dispatch.heat]
+    R_max_K = 343.15
+    R_min_K = 293.15
+    S_max_K = 353.15
+    S_min_K = 303.15
+    c_J_kgK = 4200.0
+    nodes = 2
+    terminal_rule = "free"
+
+        [[dispatch.heat.pipes]]
+        area_m2 = 0.01
+        from = 1
+        history_R_K = [323.15]
+        history_S_K = [333.15]
+        id = "h12"
+        length_m = 90.0
+        loss_W_mK = 0.05
+        m_kg_s = 1.0
+        rho_kg_m3 = 1000.0
+        to = 2
+
+        [[dispatch.heat.sources]]
+        T_max_K = 353.15
+        T_min_K = 313.15
+        id = "source"
+        m_kg_s = 1.0
+        node = 1
+
+    [dispatch.realtime]
+    alpha_down = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    alpha_up = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    delta = 0.1
+    penalty_USD_MWh = 1000.0
+    price = [70.0, 65.0, 65.0, 65.0, 70.0, 80.0, 100.0, 120.0, 110.0, 100.0, 95.0, 90.0, 90.0, 90.0, 95.0, 110.0, 130.0, 150.0, 150.0, 140.0, 120.0, 100.0, 85.0, 75.0]
+
+    [dispatch.units]
+    energy = "MWh"
+    energy_price = "USD/MWh"
+    flow = "kg/s"
+    heat_capacity = "MWh/K"
+    heat_transfer = "MW/K"
+    power = "MW"
+    reactive = "Mvar"
+    reserve_price = "USD/(MW*h)"
+    temperature = "K"
+    time = "h"
+
+[market]
+T = 24
+description = "Synthetic daily abundant-supply market; physical-rule.toml fixes hourly offers before optimization."
+dt_h = 1.0
+load_MW = [[1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]]
+name = "r6_daily_small_v1"
+nodes = 1
+origin = "synthetic"
+reserve_down_MW = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+reserve_up_MW = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+schema = "r5-market-case-v1"
+
+    [[market.generators]]
+    down_bid = [100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0]
+    down_max = 1.0
+    energy_bid = [70.0, 65.0, 65.0, 65.0, 70.0, 80.0, 100.0, 120.0, 110.0, 100.0, 95.0, 90.0, 90.0, 90.0, 95.0, 110.0, 130.0, 150.0, 150.0, 140.0, 120.0, 100.0, 85.0, 75.0]
+    id = "G"
+    node = 1
+    p_bid_max = 5.0
+    p_initial = 1.0
+    p_max = 5.0
+    p_min = 0.0
+    ramp_down_MW_h = 20.0
+    ramp_up_MW_h = 20.0
+    up_bid = [100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0]
+    up_max = 1.0
+
+    [[market.ies]]
+    down_bid = [100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0]
+    down_max = 0.08
+    energy_bid = [70.0, 65.0, 65.0, 65.0, 70.0, 80.0, 100.0, 120.0, 110.0, 100.0, 95.0, 90.0, 90.0, 90.0, 95.0, 110.0, 130.0, 150.0, 150.0, 140.0, 120.0, 100.0, 85.0, 75.0]
+    id = "IES"
+    node = 1
+    purchase_bid_max = 1.0
+    q_max = 1.0
+    q_min = 0.0
+    up_bid = [100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0]
+    up_max = 0.08
+
+    [market.network]
+    limit_MW = []
+    ptdf = []
+    slack_node = 1
+
+    [market.units]
+    energy = "MWh"
+    energy_price = "USD/MWh"
+    power = "MW"
+    ramp = "MW/h"
+    reserve_price = "USD/(MW*h)"
+    time = "h"
+
+[provenance]
+changes = "Keep all parent equipment, network, ramps, initial temperatures, pipe histories, physical temperature domain, building terminal=initial and pipe terminal=free. Replace the four-hour future by explicit daily ambient/load/price arrays. PV and activation are filled only by frozen R6 trajectories. External market retains one abundant generator and optimistic selection."
+hour_convention = "entry t covers [t-1,t) hours from 00:00"
+parent = "configs/r5/strategic/competitive_future_e030_r005.toml"
+parent_file_sha256 = "05d5ce41e6bdaa49005812870c7aefc405febe80f2068a7012959f59724e391b"
+parent_sha256 = "05d5ce41e6bdaa49005812870c7aefc405febe80f2068a7012959f59724e391b"
+rule = "configs/r6/physical-rule.toml"
+rule_file_sha256 = "10a381f81ffb5f375862947bc1e1d8b4afe1971fb5d56d42e635257d1ad850f2"
+
+[temperature_domain.building]
+lower_K = 291.15
+upper_K = 295.15

@@ -1,0 +1,994 @@
+[record]
+case = "competitive_future_e030_r005"
+case_sha256 = "05d5ce41e6bdaa49005812870c7aefc405febe80f2068a7012959f59724e391b"
+cost_complete = true
+delivery_pass = true
+delivery_status = "solver_optimal"
+elapsed_sec = 1.0439999103546143
+id = "competitive_future_e030_r005-saved_independent"
+mode = "saved_independent"
+parent = "results/summaries/r5-strategic/witnesses/competitive_future_e030_r005-sos1.toml"
+parent_sha256 = "2483a53622a085b2d77496a1642fd62b89f7113d3d2a9c7c44353c8905794b46"
+selection_pass = true
+selection_status = "preserved_parent_market_witness"
+stages = ["delivery"]
+total_cost_USD = 43.74458290926382
+
+    [record.stage_sha256]
+    delivery = "b2e273de78b2251433ec36eef4d7c1074452dd0bea9fa2b643610304357ccf93"
+
+[stages.delivery]
+raw_result_sha256 = "b2e273de78b2251433ec36eef4d7c1074452dd0bea9fa2b643610304357ccf93"
+
+    [stages.delivery.payload]
+    kind = "fixed_award_delivery"
+
+        [stages.delivery.payload.case]
+        leader_id = "IES"
+        name = "competitive_future_e030_r005"
+        origin = "synthetic"
+        quantity_rule = "fixed_offer_capacities"
+        schema = "r5-strategic-case-v1"
+        selection = "optimistic_primal_dual"
+
+            [stages.delivery.payload.case.bid_bounds.down_bid]
+            lower = [0.0, 0.0, 0.0, 0.0]
+            upper = [200.0, 200.0, 200.0, 200.0]
+
+            [stages.delivery.payload.case.bid_bounds.energy_bid]
+            lower = [0.0, 0.0, 0.0, 0.0]
+            upper = [200.0, 200.0, 200.0, 200.0]
+
+            [stages.delivery.payload.case.bid_bounds.up_bid]
+            lower = [0.0, 0.0, 0.0, 0.0]
+            upper = [200.0, 200.0, 200.0, 200.0]
+
+            [stages.delivery.payload.case.market]
+            T = 4
+            description = "One exogenous generator, common 100 USD prices, explicit abundant supply."
+            dt_h = 1.0
+            load_MW = [[1.0, 1.0, 1.0, 1.0]]
+            name = "competitive_future_e030_r005"
+            nodes = 1
+            origin = "synthetic"
+            reserve_down_MW = [0.1, 0.1, 0.1, 0.1]
+            reserve_up_MW = [0.1, 0.1, 0.1, 0.1]
+            schema = "r5-market-case-v1"
+
+                [[stages.delivery.payload.case.market.generators]]
+                down_bid = [100.0, 100.0, 100.0, 100.0]
+                down_max = 1.0
+                energy_bid = [100.0, 100.0, 100.0, 100.0]
+                id = "G"
+                node = 1
+                p_bid_max = 5.0
+                p_initial = 1.0
+                p_max = 5.0
+                p_min = 0.0
+                ramp_down_MW_h = 20.0
+                ramp_up_MW_h = 20.0
+                up_bid = [100.0, 100.0, 100.0, 100.0]
+                up_max = 1.0
+
+                [[stages.delivery.payload.case.market.ies]]
+                down_bid = [100.0, 100.0, 100.0, 100.0]
+                down_max = 0.08
+                energy_bid = [100.0, 100.0, 100.0, 100.0]
+                id = "IES"
+                node = 1
+                purchase_bid_max = 1.0
+                q_max = 1.0
+                q_min = 0.0
+                up_bid = [100.0, 100.0, 100.0, 100.0]
+                up_max = 0.08
+
+                [stages.delivery.payload.case.market.network]
+                limit_MW = []
+                ptdf = []
+                slack_node = 1
+
+                [stages.delivery.payload.case.market.units]
+                energy = "MWh"
+                energy_price = "USD/MWh"
+                power = "MW"
+                ramp = "MW/h"
+                reserve_price = "USD/(MW*h)"
+                time = "h"
+
+            [stages.delivery.payload.case.provenance]
+            changes = "External one-node market and explicit zero embedded day-ahead prices; no physical trajectory or risk parameter changes."
+            parent_risk = "configs/r5/risk/future_e030_r005.toml"
+            parent_risk_sha256 = "e3a85ba4778e94f3bb4dbfe4c881e739e06bb66166e7a8de630f3afcf9748acf"
+
+            [stages.delivery.payload.case.risk]
+            epsilon = 0.3
+            event = "any_building_time_comfort_violation"
+            name = "future_e030_r005"
+            objective = "worst_expected_net_cost"
+            origin = "synthetic"
+            schema = "r5-risk-case-v1"
+
+                [stages.delivery.payload.case.risk.ambiguity]
+                distance = [[0.0, 1.0, 1.0], [1.0, 0.0, 1.0], [1.0, 1.0, 0.0]]
+                distance_provenance = "Euclidean distance between one-hot labels of the three frozen full-call regimes, divided by sqrt(2); synthetic categorical trajectory metric, not calibrated from thesis samples."
+                distance_unit = "normalized_trajectory"
+                radius = 0.05
+                support = "fixed_scenarios"
+
+                [stages.delivery.payload.case.risk.commitment]
+                comfort = "hard_each_scenario"
+                name = "four_period_future"
+                objective = "expected_net_cost"
+                origin = "synthetic"
+                recourse_information = "complete_trajectory"
+                schema = "r5-commitment-case-v1"
+                uncertain_fields = ["ambient_K", "devices.available_MW", "electric.P_load_MW", "realtime.alpha_down", "realtime.alpha_up"]
+
+                    [stages.delivery.payload.case.risk.commitment.bounds.P_DA_MW]
+                    lower = [0.0, 0.0, 0.0, 0.0]
+                    upper = [1.0, 1.0, 1.0, 1.0]
+
+                    [stages.delivery.payload.case.risk.commitment.bounds.R_down_MW]
+                    lower = [0.0, 0.0, 0.0, 0.0]
+                    upper = [0.08, 0.08, 0.08, 0.08]
+
+                    [stages.delivery.payload.case.risk.commitment.bounds.R_up_MW]
+                    lower = [0.0, 0.0, 0.0, 0.0]
+                    upper = [0.08, 0.08, 0.08, 0.08]
+
+                    [stages.delivery.payload.case.risk.commitment.day_ahead]
+                    down_price = [0.0, 0.0, 0.0, 0.0]
+                    energy_price = [0.0, 0.0, 0.0, 0.0]
+                    up_price = [0.0, 0.0, 0.0, 0.0]
+
+                    [[stages.delivery.payload.case.risk.commitment.scenarios]]
+                    case_sha256 = "7a5490c6231cebc7ff8c78c3d3151543b20d4d377d4747016802152b011bb624"
+                    id = "none"
+                    probability = 0.5
+
+                        [stages.delivery.payload.case.risk.commitment.scenarios.case]
+                        T = 4
+                        ambient_K = [283.15, 282.15, 283.15, 284.15]
+                        dt_h = 1.0
+                        name = "shared_none"
+                        origin = "synthetic"
+                        schema = "r5-dispatch-case-v1"
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.award]
+                            P_DA_MW = [0.14, 0.14, 0.14, 0.14]
+                            R_down_MW = [0.03, 0.03, 0.03, 0.03]
+                            R_up_MW = [0.03, 0.03, 0.03, 0.03]
+                            down_price = [2.0, 2.0, 2.0, 2.0]
+                            energy_price = [80.0, 100.0, 140.0, 100.0]
+                            origin = "synthetic"
+                            up_price = [5.0, 5.0, 5.0, 5.0]
+
+                            [[stages.delivery.payload.case.risk.commitment.scenarios.case.buildings]]
+                            COP_DH = 0.95
+                            C_MWh_K = 0.02
+                            G_MW_K = 0.003
+                            P_DH_max_MW = 0.05
+                            R_max_K = 343.15
+                            R_min_K = 303.15
+                            T_initial_K = 293.15
+                            T_max_K = 294.15
+                            T_min_K = 292.15
+                            electric_node = 2
+                            heat_node = 2
+                            id = "building"
+                            m_kg_s = 1.0
+                            terminal_rule = "initial"
+
+                            [[stages.delivery.payload.case.risk.commitment.scenarios.case.devices]]
+                            cost_USD_MWh = 0.0
+                            heat_ratio = 0.95
+                            id = "EB"
+                            kind = "EB"
+                            node = 2
+                            p_max_MW = 0.1
+                            p_min_MW = 0.0
+                            q_max_Mvar = 0.0
+                            q_min_Mvar = 0.0
+                            source_id = "source"
+                            [[stages.delivery.payload.case.risk.commitment.scenarios.case.devices]]
+                            P_initial_MW = 0.0
+                            cost_USD_MWh = 130.0
+                            id = "GT"
+                            kind = "GT"
+                            node = 2
+                            p_max_MW = 0.15
+                            p_min_MW = 0.0
+                            q_max_Mvar = 0.0
+                            q_min_Mvar = 0.0
+                            ramp_down_MW_h = 1.0
+                            ramp_up_MW_h = 1.0
+                            [[stages.delivery.payload.case.risk.commitment.scenarios.case.devices]]
+                            P_initial_MW = 0.03
+                            cost_USD_MWh = 90.0
+                            heat_ratio = 1.0
+                            id = "CHP"
+                            kind = "CHP"
+                            node = 2
+                            p_max_MW = 0.08
+                            p_min_MW = 0.0
+                            q_max_Mvar = 0.03
+                            q_min_Mvar = -0.03
+                            ramp_down_MW_h = 0.08
+                            ramp_up_MW_h = 0.08
+                            source_id = "source"
+                            [[stages.delivery.payload.case.risk.commitment.scenarios.case.devices]]
+                            available_MW = [0.0, 0.04, 0.08, 0.02]
+                            cost_USD_MWh = 5.0
+                            id = "PV"
+                            kind = "PV"
+                            node = 2
+                            p_max_MW = 0.08
+                            p_min_MW = 0.0
+                            q_max_Mvar = 0.0
+                            q_min_Mvar = 0.0
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.electric]
+                            P_load_MW = [[0.0, 0.0, 0.0, 0.0], [0.12, 0.14, 0.13, 0.12]]
+                            Q_load_Mvar = [[0.0, 0.0, 0.0, 0.0], [0.02, 0.02, 0.02, 0.02]]
+                            S_base_MVA = 1.0
+                            nodes = 2
+                            pcc_max_MW = 1.0
+                            pcc_min_MW = 0.0
+                            qcc_max_Mvar = 1.0
+                            qcc_min_Mvar = -1.0
+                            root = 1
+                            v_max_pu = 1.05
+                            v_min_pu = 0.95
+                            v_ref_pu = 1.0
+
+                                [[stages.delivery.payload.case.risk.commitment.scenarios.case.electric.lines]]
+                                P_limit_MW = 1.0
+                                Q_limit_Mvar = 1.0
+                                from = 1
+                                id = "e12"
+                                r_pu = 0.01
+                                to = 2
+                                x_pu = 0.005
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.heat]
+                            R_max_K = 343.15
+                            R_min_K = 293.15
+                            S_max_K = 353.15
+                            S_min_K = 303.15
+                            c_J_kgK = 4200.0
+                            nodes = 2
+                            terminal_rule = "free"
+
+                                [[stages.delivery.payload.case.risk.commitment.scenarios.case.heat.pipes]]
+                                area_m2 = 0.01
+                                from = 1
+                                history_R_K = [323.15]
+                                history_S_K = [333.15]
+                                id = "h12"
+                                length_m = 90.0
+                                loss_W_mK = 0.05
+                                m_kg_s = 1.0
+                                rho_kg_m3 = 1000.0
+                                to = 2
+
+                                [[stages.delivery.payload.case.risk.commitment.scenarios.case.heat.sources]]
+                                T_max_K = 353.15
+                                T_min_K = 313.15
+                                id = "source"
+                                m_kg_s = 1.0
+                                node = 1
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.realtime]
+                            alpha_down = [0.0, 0.0, 0.0, 0.0]
+                            alpha_up = [0.0, 0.0, 0.0, 0.0]
+                            delta = 0.1
+                            penalty_USD_MWh = 1000.0
+                            price = [80.0, 120.0, 150.0, 100.0]
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.units]
+                            energy = "MWh"
+                            energy_price = "USD/MWh"
+                            flow = "kg/s"
+                            heat_capacity = "MWh/K"
+                            heat_transfer = "MW/K"
+                            power = "MW"
+                            reactive = "Mvar"
+                            reserve_price = "USD/(MW*h)"
+                            temperature = "K"
+                            time = "h"
+                    [[stages.delivery.payload.case.risk.commitment.scenarios]]
+                    case_sha256 = "c1ca1cf4e38c88bec1967708d1f45560f39a87834722dc4365a53c9ee0943562"
+                    id = "up"
+                    probability = 0.25
+
+                        [stages.delivery.payload.case.risk.commitment.scenarios.case]
+                        T = 4
+                        ambient_K = [282.15, 281.15, 282.15, 283.15]
+                        dt_h = 1.0
+                        name = "shared_up"
+                        origin = "synthetic"
+                        schema = "r5-dispatch-case-v1"
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.award]
+                            P_DA_MW = [0.14, 0.14, 0.14, 0.14]
+                            R_down_MW = [0.03, 0.03, 0.03, 0.03]
+                            R_up_MW = [0.03, 0.03, 0.03, 0.03]
+                            down_price = [2.0, 2.0, 2.0, 2.0]
+                            energy_price = [80.0, 100.0, 140.0, 100.0]
+                            origin = "synthetic"
+                            up_price = [5.0, 5.0, 5.0, 5.0]
+
+                            [[stages.delivery.payload.case.risk.commitment.scenarios.case.buildings]]
+                            COP_DH = 0.95
+                            C_MWh_K = 0.02
+                            G_MW_K = 0.003
+                            P_DH_max_MW = 0.05
+                            R_max_K = 343.15
+                            R_min_K = 303.15
+                            T_initial_K = 293.15
+                            T_max_K = 294.15
+                            T_min_K = 292.15
+                            electric_node = 2
+                            heat_node = 2
+                            id = "building"
+                            m_kg_s = 1.0
+                            terminal_rule = "initial"
+
+                            [[stages.delivery.payload.case.risk.commitment.scenarios.case.devices]]
+                            cost_USD_MWh = 0.0
+                            heat_ratio = 0.95
+                            id = "EB"
+                            kind = "EB"
+                            node = 2
+                            p_max_MW = 0.1
+                            p_min_MW = 0.0
+                            q_max_Mvar = 0.0
+                            q_min_Mvar = 0.0
+                            source_id = "source"
+                            [[stages.delivery.payload.case.risk.commitment.scenarios.case.devices]]
+                            P_initial_MW = 0.0
+                            cost_USD_MWh = 130.0
+                            id = "GT"
+                            kind = "GT"
+                            node = 2
+                            p_max_MW = 0.15
+                            p_min_MW = 0.0
+                            q_max_Mvar = 0.0
+                            q_min_Mvar = 0.0
+                            ramp_down_MW_h = 1.0
+                            ramp_up_MW_h = 1.0
+                            [[stages.delivery.payload.case.risk.commitment.scenarios.case.devices]]
+                            P_initial_MW = 0.03
+                            cost_USD_MWh = 90.0
+                            heat_ratio = 1.0
+                            id = "CHP"
+                            kind = "CHP"
+                            node = 2
+                            p_max_MW = 0.08
+                            p_min_MW = 0.0
+                            q_max_Mvar = 0.03
+                            q_min_Mvar = -0.03
+                            ramp_down_MW_h = 0.08
+                            ramp_up_MW_h = 0.08
+                            source_id = "source"
+                            [[stages.delivery.payload.case.risk.commitment.scenarios.case.devices]]
+                            available_MW = [0.0, 0.032, 0.064, 0.016]
+                            cost_USD_MWh = 5.0
+                            id = "PV"
+                            kind = "PV"
+                            node = 2
+                            p_max_MW = 0.08
+                            p_min_MW = 0.0
+                            q_max_Mvar = 0.0
+                            q_min_Mvar = 0.0
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.electric]
+                            P_load_MW = [[0.0, 0.0, 0.0, 0.0], [0.132, 0.15400000000000003, 0.14300000000000002, 0.132]]
+                            Q_load_Mvar = [[0.0, 0.0, 0.0, 0.0], [0.02, 0.02, 0.02, 0.02]]
+                            S_base_MVA = 1.0
+                            nodes = 2
+                            pcc_max_MW = 1.0
+                            pcc_min_MW = 0.0
+                            qcc_max_Mvar = 1.0
+                            qcc_min_Mvar = -1.0
+                            root = 1
+                            v_max_pu = 1.05
+                            v_min_pu = 0.95
+                            v_ref_pu = 1.0
+
+                                [[stages.delivery.payload.case.risk.commitment.scenarios.case.electric.lines]]
+                                P_limit_MW = 1.0
+                                Q_limit_Mvar = 1.0
+                                from = 1
+                                id = "e12"
+                                r_pu = 0.01
+                                to = 2
+                                x_pu = 0.005
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.heat]
+                            R_max_K = 343.15
+                            R_min_K = 293.15
+                            S_max_K = 353.15
+                            S_min_K = 303.15
+                            c_J_kgK = 4200.0
+                            nodes = 2
+                            terminal_rule = "free"
+
+                                [[stages.delivery.payload.case.risk.commitment.scenarios.case.heat.pipes]]
+                                area_m2 = 0.01
+                                from = 1
+                                history_R_K = [323.15]
+                                history_S_K = [333.15]
+                                id = "h12"
+                                length_m = 90.0
+                                loss_W_mK = 0.05
+                                m_kg_s = 1.0
+                                rho_kg_m3 = 1000.0
+                                to = 2
+
+                                [[stages.delivery.payload.case.risk.commitment.scenarios.case.heat.sources]]
+                                T_max_K = 353.15
+                                T_min_K = 313.15
+                                id = "source"
+                                m_kg_s = 1.0
+                                node = 1
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.realtime]
+                            alpha_down = [0.0, 0.0, 0.0, 0.0]
+                            alpha_up = [1.0, 1.0, 1.0, 1.0]
+                            delta = 0.1
+                            penalty_USD_MWh = 1000.0
+                            price = [80.0, 120.0, 150.0, 100.0]
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.units]
+                            energy = "MWh"
+                            energy_price = "USD/MWh"
+                            flow = "kg/s"
+                            heat_capacity = "MWh/K"
+                            heat_transfer = "MW/K"
+                            power = "MW"
+                            reactive = "Mvar"
+                            reserve_price = "USD/(MW*h)"
+                            temperature = "K"
+                            time = "h"
+                    [[stages.delivery.payload.case.risk.commitment.scenarios]]
+                    case_sha256 = "f9da46d12ffd42b0f3107918127ee07460cab337b89cc793200a67805b13794d"
+                    id = "down"
+                    probability = 0.25
+
+                        [stages.delivery.payload.case.risk.commitment.scenarios.case]
+                        T = 4
+                        ambient_K = [284.15, 283.15, 284.15, 285.15]
+                        dt_h = 1.0
+                        name = "shared_down"
+                        origin = "synthetic"
+                        schema = "r5-dispatch-case-v1"
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.award]
+                            P_DA_MW = [0.14, 0.14, 0.14, 0.14]
+                            R_down_MW = [0.03, 0.03, 0.03, 0.03]
+                            R_up_MW = [0.03, 0.03, 0.03, 0.03]
+                            down_price = [2.0, 2.0, 2.0, 2.0]
+                            energy_price = [80.0, 100.0, 140.0, 100.0]
+                            origin = "synthetic"
+                            up_price = [5.0, 5.0, 5.0, 5.0]
+
+                            [[stages.delivery.payload.case.risk.commitment.scenarios.case.buildings]]
+                            COP_DH = 0.95
+                            C_MWh_K = 0.02
+                            G_MW_K = 0.003
+                            P_DH_max_MW = 0.05
+                            R_max_K = 343.15
+                            R_min_K = 303.15
+                            T_initial_K = 293.15
+                            T_max_K = 294.15
+                            T_min_K = 292.15
+                            electric_node = 2
+                            heat_node = 2
+                            id = "building"
+                            m_kg_s = 1.0
+                            terminal_rule = "initial"
+
+                            [[stages.delivery.payload.case.risk.commitment.scenarios.case.devices]]
+                            cost_USD_MWh = 0.0
+                            heat_ratio = 0.95
+                            id = "EB"
+                            kind = "EB"
+                            node = 2
+                            p_max_MW = 0.1
+                            p_min_MW = 0.0
+                            q_max_Mvar = 0.0
+                            q_min_Mvar = 0.0
+                            source_id = "source"
+                            [[stages.delivery.payload.case.risk.commitment.scenarios.case.devices]]
+                            P_initial_MW = 0.0
+                            cost_USD_MWh = 130.0
+                            id = "GT"
+                            kind = "GT"
+                            node = 2
+                            p_max_MW = 0.15
+                            p_min_MW = 0.0
+                            q_max_Mvar = 0.0
+                            q_min_Mvar = 0.0
+                            ramp_down_MW_h = 1.0
+                            ramp_up_MW_h = 1.0
+                            [[stages.delivery.payload.case.risk.commitment.scenarios.case.devices]]
+                            P_initial_MW = 0.03
+                            cost_USD_MWh = 90.0
+                            heat_ratio = 1.0
+                            id = "CHP"
+                            kind = "CHP"
+                            node = 2
+                            p_max_MW = 0.08
+                            p_min_MW = 0.0
+                            q_max_Mvar = 0.03
+                            q_min_Mvar = -0.03
+                            ramp_down_MW_h = 0.08
+                            ramp_up_MW_h = 0.08
+                            source_id = "source"
+                            [[stages.delivery.payload.case.risk.commitment.scenarios.case.devices]]
+                            available_MW = [0.0, 0.036000000000000004, 0.07200000000000001, 0.018000000000000002]
+                            cost_USD_MWh = 5.0
+                            id = "PV"
+                            kind = "PV"
+                            node = 2
+                            p_max_MW = 0.08
+                            p_min_MW = 0.0
+                            q_max_Mvar = 0.0
+                            q_min_Mvar = 0.0
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.electric]
+                            P_load_MW = [[0.0, 0.0, 0.0, 0.0], [0.108, 0.12600000000000003, 0.117, 0.108]]
+                            Q_load_Mvar = [[0.0, 0.0, 0.0, 0.0], [0.02, 0.02, 0.02, 0.02]]
+                            S_base_MVA = 1.0
+                            nodes = 2
+                            pcc_max_MW = 1.0
+                            pcc_min_MW = 0.0
+                            qcc_max_Mvar = 1.0
+                            qcc_min_Mvar = -1.0
+                            root = 1
+                            v_max_pu = 1.05
+                            v_min_pu = 0.95
+                            v_ref_pu = 1.0
+
+                                [[stages.delivery.payload.case.risk.commitment.scenarios.case.electric.lines]]
+                                P_limit_MW = 1.0
+                                Q_limit_Mvar = 1.0
+                                from = 1
+                                id = "e12"
+                                r_pu = 0.01
+                                to = 2
+                                x_pu = 0.005
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.heat]
+                            R_max_K = 343.15
+                            R_min_K = 293.15
+                            S_max_K = 353.15
+                            S_min_K = 303.15
+                            c_J_kgK = 4200.0
+                            nodes = 2
+                            terminal_rule = "free"
+
+                                [[stages.delivery.payload.case.risk.commitment.scenarios.case.heat.pipes]]
+                                area_m2 = 0.01
+                                from = 1
+                                history_R_K = [323.15]
+                                history_S_K = [333.15]
+                                id = "h12"
+                                length_m = 90.0
+                                loss_W_mK = 0.05
+                                m_kg_s = 1.0
+                                rho_kg_m3 = 1000.0
+                                to = 2
+
+                                [[stages.delivery.payload.case.risk.commitment.scenarios.case.heat.sources]]
+                                T_max_K = 353.15
+                                T_min_K = 313.15
+                                id = "source"
+                                m_kg_s = 1.0
+                                node = 1
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.realtime]
+                            alpha_down = [1.0, 1.0, 1.0, 1.0]
+                            alpha_up = [0.0, 0.0, 0.0, 0.0]
+                            delta = 0.1
+                            penalty_USD_MWh = 1000.0
+                            price = [80.0, 120.0, 150.0, 100.0]
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.units]
+                            energy = "MWh"
+                            energy_price = "USD/MWh"
+                            flow = "kg/s"
+                            heat_capacity = "MWh/K"
+                            heat_transfer = "MW/K"
+                            power = "MW"
+                            reactive = "Mvar"
+                            reserve_price = "USD/(MW*h)"
+                            temperature = "K"
+                            time = "h"
+
+                [stages.delivery.payload.case.risk.temperature_domain.building]
+                lower_K = 291.15
+                upper_K = 295.15
+
+        [stages.delivery.payload.market]
+        budget_sec = 599.9169998168945
+        case_sha256 = "f5a5669507162aa09455e349bf205b026476c0cf27e8d37006cdfec8029d17a7"
+        cost_optimization_complete = true
+        created_utc = "2026-09-19T05:54:25.252"
+        dual_status = "FEASIBLE_POINT"
+        elapsed_sec = 0.007999897003173828
+        fixed_load_utility_constant_omitted = true
+        julia_version = "1.12.6"
+        model_type = "continuous_LP"
+        objective_type = "fixed_bid_clearing_cost_not_system_resource_cost"
+        primal_status = "FEASIBLE_POINT"
+        raw_status = "kHighsModelStatusOptimal"
+        run_id = "r5-market-5e2bd1fe-56d4-44c6-8666-29bef9848db7"
+        schema = "r5-market-result-v1"
+        solver = "HiGHS"
+        solver_objective = 480.0
+        solver_objective_bound = 480.0
+        solver_version = "v1.15.1"
+        status = "solver_optimal"
+        termination = "OPTIMAL"
+        version = "r5_market_clearing_checked_v1"
+
+            [stages.delivery.payload.market.lower_bound_duals]
+            P_G = [[0.0, 0.0, 0.0, 0.0]]
+            P_IES = [[0.0, 0.0, 0.0, 0.0]]
+            R_G_down = [[0.0, 0.0, 0.0, 0.0]]
+            R_G_up = [[0.0, 0.0, 0.0, 0.0]]
+            R_IES_down = [[0.0, 0.0, 0.0, 0.0]]
+            R_IES_up = [[0.0, 0.0, 0.0, 0.0]]
+
+            [[stages.delivery.payload.market.model_types]]
+            count = 12
+            function = "AffExpr"
+            set = "MathOptInterface.EqualTo{Float64}"
+            [[stages.delivery.payload.market.model_types]]
+            count = 8
+            function = "AffExpr"
+            set = "MathOptInterface.GreaterThan{Float64}"
+            [[stages.delivery.payload.market.model_types]]
+            count = 40
+            function = "AffExpr"
+            set = "MathOptInterface.LessThan{Float64}"
+            [[stages.delivery.payload.market.model_types]]
+            count = 24
+            function = "VariableRef"
+            set = "MathOptInterface.GreaterThan{Float64}"
+
+            [stages.delivery.payload.market.multipliers]
+            down = [100.0, 100.0, 100.0, 100.0]
+            energy = [100.0, 100.0, 100.0, 100.0]
+            g_cap_down = [[0.0, 0.0, 0.0, 0.0]]
+            g_cap_up = [[0.0, 0.0, 0.0, 0.0]]
+            gd_bid = [[0.0, 0.0, 0.0, 0.0]]
+            gu_bid = [[0.0, 0.0, 0.0, 0.0]]
+            i_cap_down = [[0.0, 0.0, 0.0, 0.0]]
+            i_cap_up = [[0.0, 0.0, 0.0, 0.0]]
+            id_bid = [[0.0, 0.0, 0.0, 0.0]]
+            iu_bid = [[0.0, 0.0, 0.0, 0.0]]
+            line_down = []
+            line_up = []
+            pg_bid = [[0.0, 0.0, 0.0, 0.0]]
+            q_bid = [[0.0, 0.0, 0.0, 0.0]]
+            ramp_down = [[0.0, 0.0, 0.0, 0.0]]
+            ramp_up = [[0.0, 0.0, 0.0, 0.0]]
+            up = [100.0, 100.0, 100.0, 100.0]
+
+            [stages.delivery.payload.market.raw_duals]
+            down = [-100.0, -100.0, -100.0, -100.0]
+            energy = [-100.0, -100.0, -100.0, -100.0]
+            g_cap_down = [[0.0, 0.0, 0.0, 0.0]]
+            g_cap_up = [[-0.0, -0.0, -0.0, -0.0]]
+            gd_bid = [[-0.0, -0.0, -0.0, -0.0]]
+            gu_bid = [[-0.0, -0.0, -0.0, -0.0]]
+            i_cap_down = [[-0.0, -0.0, -0.0, -0.0]]
+            i_cap_up = [[0.0, 0.0, 0.0, 0.0]]
+            id_bid = [[-0.0, -0.0, -0.0, -0.0]]
+            iu_bid = [[-0.0, -0.0, -0.0, -0.0]]
+            line_down = []
+            line_up = []
+            pg_bid = [[-0.0, -0.0, -0.0, -0.0]]
+            q_bid = [[-0.0, -0.0, -0.0, -0.0]]
+            ramp_down = [[-0.0, -0.0, -0.0, -0.0]]
+            ramp_up = [[-0.0, -0.0, -0.0, -0.0]]
+            up = [-100.0, -100.0, -100.0, -100.0]
+
+            [stages.delivery.payload.market.values]
+            P_G = [[1.0, 1.0, 1.0, 1.0]]
+            P_IES = [[0.0, 0.0, 0.0, 0.0]]
+            R_G_down = [[0.1, 0.1, 0.1, 0.1]]
+            R_G_up = [[0.1, 0.1, 0.1, 0.1]]
+            R_IES_down = [[0.0, 0.0, 0.0, 0.0]]
+            R_IES_up = [[0.0, 0.0, 0.0, 0.0]]
+
+        [stages.delivery.payload.market_case]
+        T = 4
+        description = "One exogenous generator, common 100 USD prices, explicit abundant supply."
+        dt_h = 1.0
+        load_MW = [[1.0, 1.0, 1.0, 1.0]]
+        name = "competitive_future_e030_r005"
+        nodes = 1
+        origin = "synthetic"
+        reserve_down_MW = [0.1, 0.1, 0.1, 0.1]
+        reserve_up_MW = [0.1, 0.1, 0.1, 0.1]
+        schema = "r5-market-case-v1"
+
+            [[stages.delivery.payload.market_case.generators]]
+            down_bid = [100.0, 100.0, 100.0, 100.0]
+            down_max = 1.0
+            energy_bid = [100.0, 100.0, 100.0, 100.0]
+            id = "G"
+            node = 1
+            p_bid_max = 5.0
+            p_initial = 1.0
+            p_max = 5.0
+            p_min = 0.0
+            ramp_down_MW_h = 20.0
+            ramp_up_MW_h = 20.0
+            up_bid = [100.0, 100.0, 100.0, 100.0]
+            up_max = 1.0
+
+            [[stages.delivery.payload.market_case.ies]]
+            down_bid = [100.0, 100.0, 100.0, 100.0]
+            down_max = 0.08
+            energy_bid = [100.0, 100.0, 100.0, 100.0]
+            id = "IES"
+            node = 1
+            purchase_bid_max = 1.0
+            q_max = 1.0
+            q_min = 0.0
+            up_bid = [100.0, 100.0, 100.0, 100.0]
+            up_max = 0.08
+
+            [stages.delivery.payload.market_case.network]
+            limit_MW = []
+            ptdf = []
+            slack_node = 1
+
+            [stages.delivery.payload.market_case.units]
+            energy = "MWh"
+            energy_price = "USD/MWh"
+            power = "MW"
+            ramp = "MW/h"
+            reserve_price = "USD/(MW*h)"
+            time = "h"
+
+    [stages.delivery.result]
+    budget_sec = 599.9920001029968
+    case_sha256 = "05d5ce41e6bdaa49005812870c7aefc405febe80f2068a7012959f59724e391b"
+    created_utc = "2026-09-19T07:17:23.036"
+    elapsed_sec = 0.10900020599365234
+    kind = "fixed_award_delivery"
+    market_case_sha256 = "f5a5669507162aa09455e349bf205b026476c0cf27e8d37006cdfec8029d17a7"
+    market_witness_sha256 = "9009cd455d354ead0c99baa29c0428539aa307060bc88404e748fffd73a05fef"
+    run_id = "r5-delivery-996a5b1a-08b5-4253-b86f-1b6774a197b9"
+    schema = "r5-execution-result-v1"
+    status = "solver_optimal"
+    version = "r5_execution_delivery_v1"
+
+        [stages.delivery.result.awards]
+        P_DA_MW = [0.0, 0.0, 0.0, 0.0]
+        R_down_MW = [0.0, 0.0, 0.0, 0.0]
+        R_up_MW = [0.0, 0.0, 0.0, 0.0]
+
+        [stages.delivery.result.risk]
+        bound_source = "MOI.ObjectiveBound"
+        case_sha256 = "5f8ecd8265053313bc47ad5373190a221ace8c418ac8b591a33315e0336af4ac"
+        commitment_source = "fixed_executed_market_awards"
+        has_candidate = true
+        method = "fixed_executed_awards"
+        primal_status = "FEASIBLE_POINT"
+        raw_status = "kHighsModelStatusOptimal"
+        run_id = "r5-delivery-996a5b1a-08b5-4253-b86f-1b6774a197b9/risk"
+        schema = "r5-risk-result-v1"
+        solver = "HiGHS"
+        solver_objective = 43.74458290926384
+        solver_objective_bound = 43.74458290926384
+        solver_version = "v1.15.1"
+        status = "solver_optimal"
+        termination = "OPTIMAL"
+        version = "r5_finite_support_checked_v1"
+        z = [0.0, 1.0, 0.0]
+
+            [stages.delivery.result.risk.embedded_duals.cost]
+            lambda = 13.759752160020284
+            nu = [41.813163504094696, 51.179903178441094, 37.42015101842081]
+
+            [stages.delivery.result.risk.embedded_duals.risk]
+            lambda = 1.0
+            nu = [0.0, 1.0, -5.551115123125783e-17]
+
+            [stages.delivery.result.risk.first_stage]
+            P_DA_MW = [0.0, 0.0, 0.0, 0.0]
+            R_down_MW = [0.0, 0.0, 0.0, 0.0]
+            R_up_MW = [0.0, 0.0, 0.0, 0.0]
+
+            [stages.delivery.result.risk.oracles.actual]
+            budget_sec = 599.9159998893738
+            elapsed_sec = 0.004999876022338867
+            lambda = 1.0
+            nu = [-0.0, 1.0, -0.0]
+            quantity = "probability"
+            schema = "r5-transport-witness-v1"
+            status = "solver_optimal"
+            transport = [[0.45, 0.0, 0.0], [0.05, 0.25, 0.0], [0.0, 0.0, 0.25]]
+
+                [stages.delivery.result.risk.oracles.actual.dual_solver]
+                bound_source = "MOI.ObjectiveBound"
+                has_candidate = true
+                primal_status = "FEASIBLE_POINT"
+                raw_status = "kHighsModelStatusOptimal"
+                solver = "HiGHS"
+                solver_objective = 0.3
+                solver_objective_bound = 0.3
+                solver_version = "v1.15.1"
+                status = "solver_optimal"
+                termination = "OPTIMAL"
+
+                [stages.delivery.result.risk.oracles.actual.primal_solver]
+                bound_source = "MOI.ObjectiveBound"
+                has_candidate = true
+                primal_status = "FEASIBLE_POINT"
+                raw_status = "kHighsModelStatusOptimal"
+                solver = "HiGHS"
+                solver_objective = 0.3
+                solver_objective_bound = 0.3
+                solver_version = "v1.15.1"
+                status = "solver_optimal"
+                termination = "OPTIMAL"
+
+            [stages.delivery.result.risk.oracles.cost]
+            budget_sec = 599.9260001182556
+            elapsed_sec = 0.006000041961669922
+            lambda = 13.759752160020277
+            nu = [41.81316350409467, 51.17990317844109, 37.42015101842081]
+            quantity = "cost"
+            schema = "r5-transport-witness-v1"
+            status = "solver_optimal"
+            transport = [[0.5, 0.0, 0.0], [0.0, 0.25, 0.05], [0.0, 0.0, 0.2]]
+
+                [stages.delivery.result.risk.oracles.cost.dual_solver]
+                bound_source = "MOI.ObjectiveBound"
+                has_candidate = true
+                primal_status = "FEASIBLE_POINT"
+                raw_status = "kHighsModelStatusOptimal"
+                solver = "HiGHS"
+                solver_objective = 43.744582909263826
+                solver_objective_bound = 43.74458290926382
+                solver_version = "v1.15.1"
+                status = "solver_optimal"
+                termination = "OPTIMAL"
+
+                [stages.delivery.result.risk.oracles.cost.primal_solver]
+                bound_source = "MOI.ObjectiveBound"
+                has_candidate = true
+                primal_status = "FEASIBLE_POINT"
+                raw_status = "kHighsModelStatusOptimal"
+                solver = "HiGHS"
+                solver_objective = 43.74458290926382
+                solver_objective_bound = 43.74458290926382
+                solver_version = "v1.15.1"
+                status = "solver_optimal"
+                termination = "OPTIMAL"
+
+            [stages.delivery.result.risk.oracles.risk]
+            budget_sec = 599.920000076294
+            elapsed_sec = 0.004000186920166016
+            lambda = 1.0
+            nu = [-0.0, 1.0, -0.0]
+            quantity = "probability"
+            schema = "r5-transport-witness-v1"
+            status = "solver_optimal"
+            transport = [[0.45, 0.0, 0.0], [0.05, 0.25, 0.0], [0.0, 0.0, 0.25]]
+
+                [stages.delivery.result.risk.oracles.risk.dual_solver]
+                bound_source = "MOI.ObjectiveBound"
+                has_candidate = true
+                primal_status = "FEASIBLE_POINT"
+                raw_status = "kHighsModelStatusOptimal"
+                solver = "HiGHS"
+                solver_objective = 0.3
+                solver_objective_bound = 0.3
+                solver_version = "v1.15.1"
+                status = "solver_optimal"
+                termination = "OPTIMAL"
+
+                [stages.delivery.result.risk.oracles.risk.primal_solver]
+                bound_source = "MOI.ObjectiveBound"
+                has_candidate = true
+                primal_status = "FEASIBLE_POINT"
+                raw_status = "kHighsModelStatusOptimal"
+                solver = "HiGHS"
+                solver_objective = 0.3
+                solver_objective_bound = 0.3
+                solver_version = "v1.15.1"
+                status = "solver_optimal"
+                termination = "OPTIMAL"
+
+            [stages.delivery.result.risk.scenarios.down]
+            case_sha256 = "864e45955211bd755bcb00bb65d686579c634c025d62aac09faf33a52897f061"
+            run_id = "r5-delivery-996a5b1a-08b5-4253-b86f-1b6774a197b9/risk/down"
+            schema = "r5-dispatch-result-v1"
+            solver_objective = 37.42015101842081
+            status = "embedded_strategic_policy"
+            version = "r5_dispatch_checked_v1"
+
+                [stages.delivery.result.risk.scenarios.down.values]
+                H_D = [[0.049999999999999885, 0.03299999999999929, 0.029999999999999416, 0.003999999999999844]]
+                P_DER = [[0.0, 0.0, 0.0, 0.0], [0.027999999999999997, 0.08070290507150918, 0.045, 0.01680087038901103], [0.08, 0.009297094928490846, 0.0, 0.07319912961098897], [0.0, 0.036000000000000004, 0.07200000000000001, 0.018000000000000002]]
+                P_DH = [[0.0, 0.0, 0.0, 0.0]]
+                P_PCC = [[0.0, 0.0, 0.0, 0.0]]
+                P_line = [[0.0, 0.0, 0.0, 0.0]]
+                Q_DER = [[0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0], [0.03, 0.03, 0.03, 0.03], [0.0, 0.0, 0.0, 0.0]]
+                Q_PCC = [[-0.009999999999999998, -0.009999999999999998, -0.009999999999999998, -0.009999999999999998]]
+                Q_line = [[-0.009999999999999998, -0.009999999999999998, -0.009999999999999998, -0.009999999999999998]]
+                delivery = [[0.0, 0.0, 0.0, 0.0]]
+                mismatch = [[0.0, 0.0, 0.0, 0.0]]
+                v = [[1.0, 1.0, 1.0, 1.0], [1.00005, 1.00005, 1.00005, 1.00005]]
+                "τ_IN" = [[294.15, 294.15, 294.15, 293.15]]
+                "τ_R" = [[331.06085355830203, 329.75994625067005, 317.46537171831034, 335.7216358069074], [333.83197946185277, 328.53591590742474, 313.87047915699475, 343.15]]
+                "τ_S" = [[350.10847260592107, 331.9735402812631, 317.46537171831034, 353.15], [345.7367413666146, 336.39305876456757, 321.01333629985186, 344.1023809523808]]
+                "τ_load_R" = [[333.83197946185277, 328.53591590742474, 313.87047915699475, 343.15]]
+                "τ_pipe_R" = [[331.06085355830203, 329.75994625067005, 317.46537171831034, 335.7216358069074]]
+                "τ_pipe_S" = [[345.7367413666146, 336.39305876456757, 321.01333629985186, 344.1023809523808]]
+                "τ_src" = [[350.10847260592107, 331.9735402812631, 317.46537171831034, 353.15]]
+
+            [stages.delivery.result.risk.scenarios.none]
+            case_sha256 = "5d43a52ccb9731ccd1c8d4bbe5dc62601ea764b44849309cf92a24417ffc6df5"
+            run_id = "r5-delivery-996a5b1a-08b5-4253-b86f-1b6774a197b9/risk/none"
+            schema = "r5-dispatch-result-v1"
+            solver_objective = 41.81316350409466
+            status = "embedded_strategic_policy"
+            version = "r5_dispatch_checked_v1"
+
+                [stages.delivery.result.risk.scenarios.none.values]
+                H_D = [[0.0529999999999996, 0.035999999999999366, 0.032999999999998954, 0.006999999999999306]]
+                P_DER = [[0.0, 0.0, 0.0, 0.0], [0.03999999999999976, 0.07559636116475035, 0.05000000000000002, 0.029732726437617273], [0.08, 0.02440363883524955, 0.0, 0.07026727356238271], [0.0, 0.04, 0.08, 0.02]]
+                P_DH = [[0.0, 0.0, 0.0, 0.0]]
+                P_PCC = [[0.0, 0.0, 0.0, 0.0]]
+                P_line = [[0.0, 0.0, 0.0, 0.0]]
+                Q_DER = [[0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0], [0.03, 0.03, 0.03, 0.03], [0.0, 0.0, 0.0, 0.0]]
+                Q_PCC = [[-0.009999999999999998, -0.009999999999999998, -0.009999999999999998, -0.009999999999999998]]
+                Q_line = [[-0.009999999999999998, -0.009999999999999998, -0.009999999999999998, -0.009999999999999998]]
+                delivery = [[0.0, 0.0, 0.0, 0.0]]
+                mismatch = [[0.0, 0.0, 0.0, 0.0]]
+                v = [[1.0, 1.0, 1.0, 1.0], [1.00005, 1.00005, 1.00005, 1.00005]]
+                "τ_IN" = [[294.15, 294.15, 294.15, 293.15]]
+                "τ_R" = [[329.83715884254974, 331.67078638557103, 320.33722420769635, 336.419696770861], [332.19974669448794, 331.63610594628403, 316.677293426654, 343.15]]
+                "τ_S" = [[348.88477789016883, 337.48117658444005, 320.33722420769635, 353.15], [344.8187943135355, 340.2075345177124, 324.5344362837966, 344.81666666666666]]
+                "τ_load_R" = [[332.19974669448794, 331.63610594628403, 316.677293426654, 343.15]]
+                "τ_pipe_R" = [[329.83715884254974, 331.67078638557103, 320.33722420769635, 336.419696770861]]
+                "τ_pipe_S" = [[344.8187943135355, 340.2075345177124, 324.5344362837966, 344.81666666666666]]
+                "τ_src" = [[348.88477789016883, 337.48117658444005, 320.33722420769635, 353.15]]
+
+            [stages.delivery.result.risk.scenarios.up]
+            case_sha256 = "a91f27de83e8e707131d1783993a02bca25007733cc4c64e4435ab98a21cdfc1"
+            run_id = "r5-delivery-996a5b1a-08b5-4253-b86f-1b6774a197b9/risk/up"
+            schema = "r5-dispatch-result-v1"
+            solver_objective = 51.17990317844109
+            status = "embedded_strategic_policy"
+            version = "r5_dispatch_checked_v1"
+
+                [stages.delivery.result.risk.scenarios.up.values]
+                H_D = [[0.07899999999999932, 0.04199999999999858, 0.027500000000000066, 0.0]]
+                P_DER = [[0.0, 0.0, 0.0, 0.0], [0.052000000000000005, 0.08441512856842255, 0.07900000000000001, 0.039832450892604614], [0.08, 0.037584871431577474, 0.0, 0.0761675491073954], [0.0, 0.032, 0.064, 0.016]]
+                P_DH = [[0.0, 0.0, 0.0, 0.0]]
+                P_PCC = [[0.0, 0.0, 0.0, 0.0]]
+                P_line = [[0.0, 0.0, 0.0, 0.0]]
+                Q_DER = [[0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0], [0.03, 0.03, 0.03, 0.03], [0.0, 0.0, 0.0, 0.0]]
+                Q_PCC = [[-0.009999999999999998, -0.009999999999999998, -0.009999999999999998, -0.009999999999999998]]
+                Q_line = [[-0.009999999999999998, -0.009999999999999998, -0.009999999999999998, -0.009999999999999998]]
+                delivery = [[0.0, 0.0, 0.0, 0.0]]
+                mismatch = [[0.0, 0.0, 0.0, 0.0]]
+                v = [[1.0, 1.0, 1.0, 1.0], [1.00005, 1.00005, 1.00005, 1.00005]]
+                "τ_IN" = [[295.15, 295.15, 294.65, 293.15]]
+                "τ_R" = [[319.2970297120734, 320.76942594849174, 313.66483712849066, 335.01486926014394], [318.11895445003637, 321.7662361784645, 311.0545097132332, 343.15]]
+                "τ_S" = [[338.3446487596925, 329.7182048607721, 313.66483712849066, 353.15], [336.92847825956, 331.76623617846417, 317.60212876085217, 343.15]]
+                "τ_load_R" = [[318.11895445003637, 321.7662361784645, 311.0545097132332, 343.15]]
+                "τ_pipe_R" = [[319.2970297120734, 320.76942594849174, 313.66483712849066, 335.01486926014394]]
+                "τ_pipe_S" = [[336.92847825956, 331.76623617846417, 317.60212876085217, 343.15]]
+                "τ_src" = [[338.3446487596925, 329.7182048607721, 313.66483712849066, 353.15]]

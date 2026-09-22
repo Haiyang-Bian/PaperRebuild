@@ -1,0 +1,69 @@
+schema = "r6-method-audit-v1"
+source = "docs/摘要.pdf"
+source_sha256 = "20328e2480e773520c19c378e53365fc944c0bafcfca73071f5d8313d5ee7d91"
+pdf_pages = [100, 101]
+status = "six_method_development_solved_formal_evaluation_pending"
+
+[[equation]]
+id = "R6-M1"
+latex = 'P_{d,t}^{\rm PV,avail}=\bar P^{\rm PV}p_{d,t},\quad \alpha_{d,t}^{\rm up}=\max(a_{d,t},0),\quad \alpha_{d,t}^{\rm down}=\max(-a_{d,t},0)'
+meaning = "比例乘MW额定容量，正上调意味着减少购电，两个调用比例每时段互斥；设备/初值/历史/终端不随轨迹改变。D用全部训练PV均值及零调用。"
+api = "r6_dispatch_day"
+test = "R6-PHYSICAL"
+[[equation]]
+id = "R6-M2"
+latex = '\min_{b,x,y}\ C_{\rm market}(b,x)+\sup_{q\in\mathcal Q}\sum_s q_s C_s(y_s),\qquad \sup_{q\in\mathcal Q}\sum_s q_s z_s\le\epsilon'
+meaning = "D/SP/CCP固定经验概率；D使用唯一名义日。RO取全部有限支持概率，DRO/DRJCC取运输球。D/SP/RO/DRO固定全部z=0，CCP/DRJCC采用整日机会约束。所有方法使用同一连续报价和乐观市场KKT。费用与风险有两套独立最坏分布；未更换为外生固定价格。"
+api = "R6MethodSpec"
+test = "R6-METHOD"
+[[equation]]
+id = "R6-M3"
+latex = '\rho_{\rm RO}=\max_{i,j}D_{ij},\qquad \Pi_{ij}=q_i p_j\ \Longrightarrow\ \sum_{ij}D_{ij}\Pi_{ij}\le\rho_{\rm RO},\quad \sup_{q\in\Delta_N}\sum_iq_iC_i=\max_i C_i'
+meaning = "任意有限支持概率q均有可行运输Pi，故该半径覆盖完整有限单纯形。反之运输边际仍是该单纯形，得到等价最坏情景费用。rho=0且非对角距离严格正时唯一边际为p，恢复经验期望；R6拒绝重复支持，避免静默合并或误称唯一经验分布。保证不延伸到支持外轨迹。"
+api = "r6_training_case"
+test = "R6-ROBUST"
+
+[[symbol]]
+id = "r6-rating"
+latex = '\bar P^{\rm PV}'
+meaning = "冻结的光伏额定功率"
+unit = "MW"
+julia = "devices.p_max_MW"
+[[symbol]]
+id = "r6-first-stage"
+latex = 'b,x=(P^{\rm DA},R^{\rm up},R^{\rm down})'
+meaning = "连续价格报价与全情景共用的日前成交"
+unit = "USD/MWh; MW"
+julia = "market.bids; risk.base.first_stage"
+[[symbol]]
+id = "r6-ambiguity"
+latex = '\mathcal Q,\rho,D,\Pi'
+meaning = "概率集合、半径、冻结距离、运输概率质量"
+unit = "1"
+julia = "ambiguity; radius; distance; transport"
+[[symbol]]
+id = "r6-label"
+latex = 'z_s'
+meaning = "情景整日舒适约束的放松开关；实际越界另由数值回放判定"
+unit = "1"
+julia = "risk.z[s]"
+
+[[finding]]
+id = "R6-MA01"
+location = "PDF100–101，第5.6.3节"
+classification = "project_adopted_six_method_definition"
+original = "D忽略调用/采用平均情景；SP已知分布；RO最坏情况；DRO Wasserstein模糊集；CCP在SP上增加供热质量机会约束；DRJCC为提出模型。"
+adopted = "同物理/市场结构，仅改变情景费用规则与舒适风险。SP使用训练代表经验分布而非已知真实分布；RO/DRO保证限于有限支持。D明确为均值PV/零调用，仍计该名义日内部调度费用。"
+[[finding]]
+id = "R6-MA02"
+location = "项目configs/r6/physical-rule.toml与daily-small.toml"
+classification = "synthetic_daily_physical_template"
+original = "本小系统不是作者原始24小时算例。"
+adopted = "继承四小时父模型的所有设备/网络/历史/物理域，另显式声明24小时负荷、气温和费用。楼温terminal=initial，管温terminal=free；所有方法一致，不把管温免费边界称周期能量恢复。"
+[[finding]]
+id = "R6-MA03"
+location = "项目configs/r6/pilot-rule.toml"
+classification = "development_cost_measurement_only"
+original = "正式输入有100代表；开发先取冻结顺序的前三个，权重按所选簇质量条件归一。"
+adopted = "六方法每项120秒，rho=0.01为预声明开发值，不是验证选出的半径；D始终取全部训练PV均值。另只构建100场景SP记录规模，未优化测试集。前三代表可能没有可释放的5%概率质量，不能以此试运行评价机会约束收益。"
+evidence = "r6-training-pilot-v1六项开发求解已通过独立验算；三个条件概率均高于0.05，SP=CCP、DRO=DRJCC。公开见证results/summaries/r6-training-pilot-v1，解释docs/src/r6-pilot-results.md；正式样本外尚未执行。"

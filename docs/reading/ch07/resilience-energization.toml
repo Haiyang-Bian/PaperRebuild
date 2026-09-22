@@ -1,0 +1,47 @@
+schema = "r9-resilience-energization-contract-v1"
+origin = "project_adoption_and_synthetic_verification"
+source = "docs/摘要.pdf"
+source_sha256 = "20328e2480e773520c19c378e53365fc944c0bafcfca73071f5d8313d5ee7d91"
+pdf_pages = [113,114]
+source_equations = ["6-56:58","6-61","6-62:69"]
+human_page = "docs/src/ch07-energization.md"
+domain = "partial_energization_v1"
+legacy_domain = "all_nodes_energized_v1"
+adversary_version = "r7_inner_energization_v1"
+classification = "project_explicit_domain_extension_not_literal_formula_correction"
+switching_charged_on = "mechanical_z_only"
+shared_energization = "event_periods_and_renewable_scenarios"
+chp_commitment_preserved = true
+shedding_bounds_preserved = true
+normal_network_changed = false
+old_results_rewritten = false
+black_start_or_frequency_certified = false
+heating_pump_auxiliary_electricity_added = false
+chapter_7_5_scale_optimization_performed = false
+test_commands = ["scripts/test_r7_energization.jl","scripts/test_r7_energization_gurobi.jl","scripts/check_r9_energization.jl"]
+
+[[formula]]
+id = "R9-RE1"
+meaning = "Mechanical closure ties endpoint energized states; actual live edge is their exact binary product."
+api = ["with_r7_electric_domain","build_r7_recovery","validate_r7_recovery"]
+test = "test/r7_energization.jl"
+[[formula]]
+id = "R9-RE2"
+meaning = "Only energized nodes consume virtual commodity; each energized component is a tree with one eligible available root."
+api = ["build_r7_recovery","validate_r7_recovery"]
+test = "test/r7_energization.jl"
+[[formula]]
+id = "R9-RE3"
+meaning = "Off nodes have zero voltage; inactive lines have zero power and voltage relaxation derived from the enlarged voltage interval."
+api = ["build_r7_recovery","validate_r7_recovery"]
+test = "test/r7_energization.jl"
+[[formula]]
+id = "R9-RE4"
+meaning = "Off nodes serve no electric demand or device power; CHP commitments, ramp and original shedding bounds remain hard."
+api = ["build_r7_recovery","validate_r7_recovery"]
+test = "test/r7_energization.jl"
+[[formula]]
+id = "R9-RE5"
+meaning = "Actual affine recourse dual requires both mechanical switch and energized-node modes; the legacy mode schema stays unchanged."
+api = ["r7_recovery_lp","build_r7_adversary","validate_r7_adversary"]
+test = "scripts/test_r7_energization_gurobi.jl"

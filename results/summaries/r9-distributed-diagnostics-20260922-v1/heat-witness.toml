@@ -1,0 +1,37 @@
+boundary_pipe = 9
+gap_MW = 0.25753746071274425
+gap_exact = "417878421316818299511110542577239//1622592768292133633915780102881280"
+internal_loss_MW = 0.38388282614527697
+maximum_net_supply_MW = 0.14783333333333248
+maximum_source_MW = 9.200000000000001
+minimum_boundary_export_MW = 0.02148796790079979
+minimum_load_MW = 9.052166666666668
+nodes = [1, 2, 3, 4, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38]
+posthoc_region = true
+scope = "fixed_mode_thermal_envelope_only"
+t = 8
+
+[[sources]]
+device = "CHP1"
+exact = "10808639105689191//2251799813685248"
+max_heat_MW = 4.800000000000001
+[[sources]]
+device = "CHP2"
+exact = "5404319552844595//4503599627370496"
+max_heat_MW = 1.2
+[[sources]]
+device = "EB1"
+exact = "20282409603651670224222398246107//20282409603651670423947251286016"
+max_heat_MW = 1.0
+[[sources]]
+device = "EB2"
+exact = "48677783048764010223275883963055//40564819207303340847894502572032"
+max_heat_MW = 1.2
+[[sources]]
+device = "EB4"
+exact = "20282409603651670224222398246107//20282409603651670423947251286016"
+max_heat_MW = 1.0
+[[sources]]
+device = "HS2"
+exact = "0//1"
+max_heat_MW = 0.0

@@ -1,8 +1,131 @@
 using Test
 using PaperRebuild
 
+# 各CI分组在干净克隆中独立执行，不能依赖先前分组创建的本地临时目录。
+mkpath(joinpath(@__DIR__, "..", "tmp"))
+
 @testset "Package scaffold (not thesis validation)" begin
     @test PaperRebuild.hello("Julia") == "Hello, Julia"
     @test PaperRebuild.domath(2) == 7
     @test PaperRebuild.domath(1.5) == 6.5
+end
+
+const PAPERREBUILD_TEST_STAGE = isempty(ARGS) ? "all" : popfirst!(ARGS)
+PAPERREBUILD_TEST_STAGE in
+("all", "r1_r4", "r5_r6", "r7_r9", "r7_r8", "r9_physics", "r9_markets") && isempty(ARGS) ||
+    error("Unknown test stage")
+
+if PAPERREBUILD_TEST_STAGE in ("all", "r1_r4")
+    include("historical_evidence.jl")
+    include("r1.jl")
+    include("r1_entry.jl")
+    include("r2.jl")
+    include("r3.jl")
+    include("r3_pg.jl")
+    include("r3_duals.jl")
+    include("r3_v2.jl")
+    include("r3_optional_attributes.jl")
+    include("r3_audit.jl")
+    include("r3_v3.jl")
+    include("r3_boundary.jl")
+    include("r3_baseline.jl")
+    include("r4.jl")
+    include("r4_baseline.jl")
+    include("r4_bargaining.jl")
+    include("r4_tspa.jl")
+    include("r4_distributed.jl")
+    include("r4_discrete.jl")
+    include("r4_reconfiguration.jl")
+    include("r4_heat_compatibility.jl")
+    include("r4_thermal.jl")
+end
+
+if PAPERREBUILD_TEST_STAGE in ("all", "r5_r6")
+    include("r5_market.jl")
+    include("r5_dispatch.jl")
+    include("r5_dispatch_duality.jl")
+    include("r5_commitment.jl")
+    include("r5_currency.jl")
+    include("r5_risk.jl")
+    include("r5_risk_artifacts.jl")
+    include("r5_risk_serialization.jl")
+    include("r5_benders.jl")
+    include("r5_benders_loop.jl")
+    include("r5_market_payment.jl")
+    include("r5_strategic.jl")
+    include("r5_market_selection.jl")
+    include("r5_execution.jl")
+    include("r5_execution_scaling.jl")
+    include("r5_strategic_benders.jl")
+    include("r6.jl")
+    include("r6_methods.jl")
+    include("r6_evaluation.jl")
+    include("r6_study.jl")
+    include("r6_study_report.jl")
+    include("r6_hash_io.jl")
+    include("r6_continuation.jl")
+end
+
+if PAPERREBUILD_TEST_STAGE in ("all", "r7_r9", "r7_r8")
+    include("ch06_audit.jl")
+    include("r7_recovery.jl")
+    include("r7_commitment.jl")
+    include("r7_pipe_state.jl")
+    include("r7_normal.jl")
+    include("r7_currency.jl")
+    include("r7_planning.jl")
+    include("r7_adversary.jl")
+    include("r7_thermal.jl")
+    include("r7_ports.jl")
+    include("r7_transport.jl")
+    include("r7_battery.jl")
+    include("r7_linked_planning.jl")
+    include("r7_normal_flow.jl")
+    include("r7_flow_planning.jl")
+    include("r7_lossy_mass.jl")
+    include("r7_lossy_flow.jl")
+    include("r7_initial_profile.jl")
+    include("r8_tradeoff.jl")
+    include("r8_energy_flow.jl")
+    include("r7_currency_planning.jl")
+    include("r7_critical_service.jl")
+    include("r7_energization.jl")
+    include("r7_switch_control.jl")
+end
+
+if PAPERREBUILD_TEST_STAGE in ("all", "r7_r9", "r9_physics")
+    include("r9_resilience.jl")
+    include("r9_preplan.jl")
+    include("r9_detailed_preplan.jl")
+    include("r9_electric_cut.jl")
+end
+
+if PAPERREBUILD_TEST_STAGE in ("all", "r7_r9", "r9_markets")
+    include("r9_evaluation.jl")
+end
+
+if PAPERREBUILD_TEST_STAGE in ("all", "r7_r9", "r9_physics")
+    include("r9_sources.jl")
+    include("r9_pv.jl")
+    include("r9_reduced.jl")
+    include("r9_flow.jl")
+    include("r9_heat_memory.jl")
+    include("r9_fixed.jl")
+end
+
+if PAPERREBUILD_TEST_STAGE in ("all", "r7_r9", "r9_markets")
+    include("r9_trading.jl")
+    include("r9_trading_runs.jl")
+    include("r9_network.jl")
+    include("r9_distributed.jl")
+    include("r9_distributed_study.jl")
+    include("r9_scalability.jl")
+    include("r9_scalability_study.jl")
+    include("r9_reserve.jl")
+    include("r9_risk.jl")
+    include(joinpath(@__DIR__, "..", "scripts", "test_r9_reserve_support.jl"))
+    include("r9_risk_evidence.jl")
+    include("r9_common_witness.jl")
+    include("r9_seeded_risk.jl")
+    include("r9_compact_risk.jl")
 end

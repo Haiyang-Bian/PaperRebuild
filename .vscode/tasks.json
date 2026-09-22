@@ -1,77 +1,1231 @@
 {
-  "version": "2.0.0",
-  "tasks": [
+  "inputs": [
+    {"id":"r9ScalabilityStudy","type":"promptString","description":"12方法规模对照目录；冻结须新路径，运行用已冻结目录","default":"results/runs/r9-scalability-study-20260922-v1"},
+    {"id":"r9ScalabilityMethod","type":"pickString","description":"只读重验已有方法；完整轨迹缺失不伪造轮数","options":["ag8-fixed-central","ag8-fixed-admm","ag8-mip-central","ag8-mip-admm","ag16-fixed-central","ag16-fixed-admm","ag16-mip-central","ag16-mip-admm","ag32-fixed-central","ag32-fixed-admm","ag32-mip-central","ag32-mip-admm"]},
+    {"id":"r9ScalabilityPrepared","type":"promptString","description":"主体拆分输入的新目录，不覆盖已有目录、不运行优化","default":"results/runs/r9-scalability-inputs-new"},
+    {"id":"r9DistributedEvidence","type":"promptString","description":"冻结分布证据包；只读重验","default":"results/summaries/r9-distributed-corridor-evidence-20260922-v1"},
+    {"id":"r9DistributedDiagnostics","type":"promptString","description":"热量反例及目标标量诊断包；只读重验","default":"results/summaries/r9-distributed-diagnostics-20260922-v1"},
+    {"id":"r9DistributedFigures","type":"promptString","description":"F52/F53新目录；不覆盖已有图","default":"results/runs/new-r9-distributed-figures"},
+    {"id":"r9DistributedSavedFigures","type":"promptString","description":"已有F52/F53目录；只读检查","default":"results/summaries/r9-distributed-corridor-figures-20260922-v1"},
+    {"id":"r9DistributedStudy","type":"promptString","description":"规模分布目录；freeze默认事后走廊修订协议，必须为新路径","default":"results/runs/r9-distributed-corridor-20260922-v1"},
+    {"id":"r9DistributedParent","type":"promptString","description":"原网络冻结批次目录","default":"results/runs/r9-network-20260921-v1"},
+    {"id":"r9DistributedMethod","type":"pickString","description":"运行一个已冻结方法；不可覆盖已运行ID","options":["fixed-convex-central","fixed-convex-admm","fixed-mip-central","fixed-mip-admm","joint-mip-central","joint-mip-admm"]},
+    {"id":"r9DistributedInput","type":"promptString","description":"分布协调输入TOML；须为已冻结输入","default":""},
+    {"id":"r9DistributedRules","type":"promptString","description":"分布算法/模式/求解器规则TOML；运行前确定","default":""},
+    {"id":"r9DistributedDirectory","type":"promptString","description":"新分布运行的父目录","default":"results/runs/r9-distributed"},
+    {"id":"r9DistributedId","type":"promptString","description":"新的运行ID，已有ID会拒绝覆盖","default":"new-distributed-run"},
+    {"id":"r9DistributedRun","type":"promptString","description":"已保存分布运行目录；只读独立重验","default":""},
+    {"id":"r9HeldoutFigures","type":"promptString","description":"F51新图目录；重绘不求解、不覆盖原图","default":"results/runs/new-r9-heldout-figures"},
+    {"id":"r9HeldoutInput","type":"promptString","description":"新日冻结目录；freeze使用新目录","default":"results/summaries/r9-heldout-input-20260922-v2"},
+    {"id":"r9HeldoutRuns","type":"promptString","description":"原始新日记录；run只追加未完成日","default":"results/runs/r9-heldout-20260922-v1"},
+    {"id":"r9HeldoutReport","type":"promptString","description":"新日统计新报告目录；不可覆盖已有报告","default":"results/summaries/r9-heldout-report-20260922-v1"},
+    {"id":"r9ElectricCutEvidence","type":"promptString","description":"区域供能证据目录；只读重验","default":"results/summaries/r9-electric-cut-evidence-20260922-v1"},
+    {"id":"r9ElectricCutNewEvidence","type":"promptString","description":"区域供能新证据目录；不可覆盖已有记录","default":"results/summaries/new-electric-cut-evidence"},
+    {"id":"r9ElectricCutFigure","type":"promptString","description":"F50新图目录；只读原值、不覆盖已有图","default":"results/runs/new-electric-cut-figure"},
+    {"id":"r9DetailedEvidence","type":"promptString","description":"详细灾前证据目录；重读不优化","default":"results/summaries/r9-detailed-preplan-evidence-20260922-v1"},
+    {"id":"r9HandoffFigure","type":"promptString","description":"F49新图目录；不覆盖已有图","default":"results/runs/new-handoff-figure"},
+    {"id":"r9DetailedInput","type":"promptString","description":"详细灾前输入目录；freeze须使用新目录","default":"results/summaries/r9-detailed-preplan-input-20260922-v1"},
+    {"id":"r9DetailedOut","type":"promptString","description":"详细灾前新运行目录；不可覆盖已有记录","default":"results/runs/new-detailed-preplan"},
+    {"id":"r9DetailedMode","type":"pickString","description":"已冻结的详细灾前方案","options":["penalty","threshold"],"default":"penalty"},
+    {"id":"r9HandoffEvidence","type":"promptString","description":"已封存的温区反例目录","default":"results/summaries/r9-handoff-evidence-20260922-v1"},
+    {"id":"r9PreplanFaultParent","type":"promptString","description":"已保存开机候选的父诊断目录","default":"results/runs/r9-preplan-loss-diagnostic-20260922-v1"},
+    {"id":"r9PreplanFaultRaw","type":"promptString","description":"独立故障新运行目录；已有目录不覆盖","default":"results/runs/new-preplan-faults"},
+    {"id":"r9PreplanFaultEvidence","type":"promptString","description":"逐故障证据目录；freeze使用新目录","default":"results/summaries/r9-preplan-faults-20260922-v1"},
+    {"id":"r9PreplanEvidence","type":"promptString","description":"灾前对照证据；封存须新目录","default":"results/summaries/r9-preplan-evidence-20260922-v1"},
+    {"id":"r9PreplanDiagnosticEvidence","type":"promptString","description":"独立诊断证据，只读重验","default":"results/summaries/r9-preplan-diagnostics-20260922-v1"},
+    {"id":"r9PreplanFigures","type":"promptString","description":"F48重绘新目录，不覆盖原图","default":"results/runs/new-preplan-figures"},
+    {"id":"r9PreplanNewAudit","type":"promptString","description":"独立诊断新目录，不覆盖原值","default":"results/runs/new-preplan-audit"},
+    {"id":"r9PreplanInput","type":"promptString","description":"灾前对照冻结输入；freeze使用新目录","default":"results/summaries/r9-preplan-input-20260922-v1"},
+    {"id":"r9PreplanOutput","type":"promptString","description":"灾前对照新运行根目录","default":"results/runs/r9-preplan-20260922-v1"},
+    {"id":"r9PreplanMode","type":"pickString","description":"同输入经济/罚费/门槛方案","options":["economic","penalty","threshold"],"default":"penalty"},
+    {"id":"r9ResilienceEvidence","type":"promptString","description":"保供证据目录；封存使用新目录","default":"results/summaries/r9-resilience-evidence-20260922-v2"},
+    {"id":"r9ResilienceFigures","type":"promptString","description":"F47重绘新目录，不覆盖原图","default":"results/runs/new-resilience-figures"},
+    {"id":"r9ResilienceInput","type":"promptString","description":"保供冻结输入；freeze须使用新目录","default":"results/summaries/r9-resilience-input-20260922-v2"},
+    {"id":"r9ResilienceOutput","type":"promptString","description":"保供预运行目录，不覆盖既有阶段","default":"results/runs/r9-resilience-pilot-20260922-v2"},
+    {"id":"r9ResilienceSet","type":"pickString","description":"分别保留两套原图关键节点","options":["nodes_figure_7_12","nodes_figure_7_14"],"default":"nodes_figure_7_12"},
+    {"id":"r9ResilienceStage","type":"pickString","description":"先正常运行，再逐项恢复；仅3故障预运行","options":["normal","aggregate-external_only","aggregate-single_1_2","aggregate-author_event1","detailed-external_only","detailed-single_1_2","detailed-author_event1"],"default":"normal"},
+    {"id":"r7InitialProfileOutput","type":"promptString","description":"初态Gurobi验证新目录，不覆盖旧证据","default":"tmp/r7-initial-profile-new"},
+    {"id":"r9InputAuditOutput","type":"promptString","description":"预优化输入审计新TOML路径，不代表规模输入冻结","default":"tmp/r9-resilience-input-new.toml"},
+    {"id":"r9CompactEvidence","type":"promptString","description":"等价表示原值证据；封存时使用新目录","default":"results/summaries/r9-compact-evidence-20260921-v1"},
+    {"id":"r9CompactReport","type":"promptString","description":"配对报告；生成时使用新目录","default":"results/summaries/r9-compact-report-20260921-v1"},
+    {"id":"r9CompactFigures","type":"promptString","description":"F46重绘新目录；交付检查时选择已有图","default":"results/runs/r9-compact-redraw-new"},
+    {"id":"r9CompactInput","type":"promptString","description":"等价表示已冻结输入；freeze请改用新目录","default":"results/summaries/r9-compact-input-20260921-v1"},
+    {"id":"r9CompactOutput","type":"promptString","description":"等价表示新运行目录，不覆盖历史","default":"results/runs/r9-compact-new"},
+    {"id":"r9SeededInput","type":"promptString","description":"带初值求解的新冻结目录或已冻结输入","default":"results/summaries/r9-seeded-input-20260921-v1"},
+    {"id":"r9SeededOutput","type":"promptString","description":"新运行目录；check时选择已保存运行","default":"results/runs/r9-seeded-new"},
+    {"id":"r9SeededScheme","type":"pickString","description":"保持原百情景的风险方案","options":["3A","3B","3C"],"default":"3A"},
+    {"id":"r9SeededEvidence","type":"promptString","description":"原数值封存证据，只读","default":"results/summaries/r9-seeded-evidence-20260921-v1"},
+    {"id":"r9SeededFigures","type":"promptString","description":"F45重绘的新目录，不覆盖旧图","default":"results/runs/r9-seeded-redraw-new"},
+    {"id":"r9CommonInput","type":"promptString","description":"共同可行见证的冻结输入，只读","default":"results/summaries/r9-common-input-20260921-v2"},
+    {"id":"r9CommonNewInput","type":"promptString","description":"共同可行见证新冻结目录，不覆盖旧输入","default":"results/runs/r9-common-input-new"},
+    {"id":"r9CommonEvidence","type":"promptString","description":"共同可行见证已封存证据，只读","default":"results/summaries/r9-common-evidence-20260921-v1"},
+    {"id":"r9CommonOutput","type":"promptString","description":"共同见证运行或审计新目录，不覆盖原结果","default":"results/runs/r9-common-new"},
+    {"id":"r9CommonFigures","type":"promptString","description":"F44只读重绘的新目录","default":"results/runs/r9-common-redraw-new"},
+    {"id":"r9ReserveStudy","type":"promptString","description":"第7.4节冻结数据目录；freeze须新目录","default":"results/summaries/r9-reserve-data-20260921-v2"},
+    {"id":"r9ReserveEvidence","type":"promptString","description":"备用数值证据目录；freeze须新目录","default":"results/summaries/r9-reserve-full-20260921-v1"},
+    {"id":"r9ReserveFigures","type":"promptString","description":"备用图表的新输出目录","default":"results/summaries/r9-reserve-figures-20260921-v1"},
+    {"id":"r9ReserveBatch","type":"promptString","description":"备用批次新输出目录，不覆盖已有运行","default":"results/runs/r9-reserve-batch-new"},
+    {"id":"r9ReserveProbe","type":"promptString","description":"第7.4节输入/无备用开发基准的新目录，不覆盖旧结果","default":"results/runs/r9-reserve-new"},
+    {"id":"r9NetworkSummary","type":"promptString","description":"R9接入/拓扑已封存原值目录，只读","default":"results/summaries/r9-network-20260921-v1"},
+    {"id":"r9NetworkFigures","type":"promptString","description":"F39/F40重绘新目录，不覆盖旧图","default":"results/runs/r9-network-redraw-new"},
+    {"id":"r9NetworkStudy","type":"promptString","description":"R9接入与拓扑十六方法批次；freeze须新目录","default":"results/runs/r9-network-new"},
+    {"id":"r9TradingStudy","type":"promptString","description":"R9四方法批次；冻结须新目录，运行须已冻结目录","default":"results/runs/r9-trading-new"},
+    {"id":"r9TradingMethod","type":"pickString","description":"R9已冻结方法","options":["independent-socp","independent-exact","central-socp","central-exact"],"default":"central-socp"},
+    {"id":"r9TradingSummary","type":"promptString","description":"R9四方法封存目录，仅重读","default":"results/summaries/r9-trading-20260921-v1"},
+    {"id":"r9TradingFigures","type":"promptString","description":"F38重绘新目录，不覆盖旧图","default":"results/runs/r9-trading-redraw"},
+    {"id":"r9TradingRun","type":"promptString","description":"R9交易运行目录；只读冻结原值与源码","default":"results/runs/r9-trading/independent-socp"},
+    {"id":"r9TradingComparison","type":"promptString","description":"同输入同整数域的R9集中交易运行","default":"results/runs/r9-trading/central-socp"},
+    {"id":"r9TradingGurobiTest","type":"promptString","description":"三节点Gurobi接口测试新目录，不是规模研究","default":"results/runs/r9-trading-gurobi-test-new"},
+    {"id":"r9FixedStudy","type":"promptString","description":"R9固定流量冻结目录；freeze须新目录","default":"results/runs/r9-fixed-new"},
+    {"id":"r9FixedReport","type":"promptString","description":"R9固定流量原值检查新报告目录","default":"results/runs/r9-fixed-report-new"},
+    {"id":"r9FixedFigures","type":"promptString","description":"R9固定流量F37只读重绘的新目录","default":"results/runs/r9-fixed-redraw"},
+    {"id":"r9FlowReferenceOutput","type":"promptString","description":"R9四模式直接参考新目录，不覆盖历史运行","default":"results/runs/r9-flow-reference-new"},
+    {"id":"r9FlowReferenceFigures","type":"promptString","description":"R9 F36重绘的新目录","default":"results/runs/r9-flow-reference-redraw"},
+    {"id":"r9FlowProbeOutput","type":"promptString","description":"R9开发探针新目录，不覆盖原结果","default":"results/runs/r9-flow-probe-new"},
+    {"id":"r9NumericsBatch","type":"promptString","description":"R9数值批次；freeze须使用新目录，其他任务选择已有目录","default":"results/summaries/r9-numerics-20260921-v2"},
+    {"id":"r9NumericsReport","type":"promptString","description":"R9数值报告；生成须新目录，检查使用已有目录","default":"results/summaries/r9-numerics-report-20260921-v1"},
+    {"id":"r9NumericsFigures","type":"promptString","description":"R9 F35重绘的新目录，不覆盖旧图","default":"results/runs/r9-numerics-redraw"},
+    {"id":"r9PVAttribution","type":"promptString","description":"R9费用/热量归因目录","default":"results/summaries/r9-pv-attribution-20260920-v1"},
+    {"id":"r9PVFigures","type":"promptString","description":"R9科学图重绘新目录","default":"results/runs/r9-pv-redraw"},
+    {"id":"r9PVBatch","type":"promptString","description":"R9固定模式冻结目录；freeze须使用新目录","default":"results/runs/r9-pv-new"},
+    {"id":"r9PVReport","type":"promptString","description":"R9原值审计新报告目录","default":"results/runs/r9-pv-report-new"},
+    {"id":"r9SourceReport","type":"promptString","description":"R9来源审计：创建须新目录，检查用已有报告","default":"results/summaries/r9-inputs-20260920-v1"},
+    {"id":"r9SourceFigures","type":"promptString","description":"R9连接图新目录，拒绝覆盖","default":"results/runs/r9-source-redraw"},
+    {"id":"r8EnergyBatch","type":"promptString","description":"R8能流对照：冻结用新目录，运行用已冻结目录","default":"results/runs/r8-energy-new"},
+    {"id":"r8EnergyReport","type":"promptString","description":"R8能流原值报告，创建不得覆盖","default":"results/summaries/r8-energy-20260920-v1"},
+    {"id":"r8EnergyAudit","type":"promptString","description":"R8能流配对和独立回放审计","default":"results/summaries/r8-energy-audit-20260920-v2"},
+    {"id":"r8EnergyFigures","type":"promptString","description":"R8能流图件，只读重绘到新目录","default":"results/runs/r8-energy-redraw"},
+    {"id":"r8Batch","type":"promptString","description":"R8冻结用新目录，运行使用已冻结目录","default":"results/runs/r8-tradeoff-new"},
+    {"id":"r8Report","type":"promptString","description":"R8报告：生成用新目录，核查用已有目录","default":"results/summaries/r8-tradeoff-20260920-v1"},
+    {"id":"r8Audit","type":"promptString","description":"R8审计用新目录或已保存审计","default":"results/summaries/r8-tradeoff-audit-20260920-v1"},
+    {"id":"r8Figures","type":"promptString","description":"R8只读重绘的新图件目录","default":"results/runs/r8-tradeoff-redraw"},
+    {"id":"r7LossyBatch","type":"promptString","description":"有损共同流量：冻结用新目录，运行用已冻结目录","default":"results/runs/r7-lossy-flow-new"},
+    {"id":"r7LossyReport","type":"promptString","description":"有损共同流量报告：生成用新目录，核查用已有目录","default":"results/summaries/r7-lossy-flow-20260920-v1"},
+    {"id":"r7LossyAudit","type":"promptString","description":"有损费用归因：生成用新目录，核查用已有目录","default":"results/summaries/r7-lossy-flow-audit-20260920-v1"},
+    {"id":"r7LossyFigures","type":"promptString","description":"有损科学图新目录，不覆盖原图","default":"results/runs/r7-lossy-flow-redraw"},
+    {"id":"r7JointBatch","type":"promptString","description":"共同流量：冻结用新目录，运行用已冻结目录","default":"results/runs/r7-flow-planning-new"},
+    {"id":"r7JointReport","type":"promptString","description":"共同流量报告：生成用新目录，核查用已有目录","default":"results/summaries/r7-flow-planning-20260920-v2"},
+    {"id":"r7JointFigures","type":"promptString","description":"共同流量科学图新目录，不覆盖原图","default":"results/runs/r7-flow-planning-redraw"},
+    {"id":"r7NormalFlowBatch","type":"promptString","description":"连续正常流量：冻结用新目录，运行用已冻结目录","default":"results/runs/r7-normal-flow-new"},
+    {"id":"r7NormalFlowReport","type":"promptString","description":"连续正常流量报告：生成须新目录，核查使用已有目录","default":"results/summaries/r7-normal-flow-20260920-v1"},
+    {"id":"r7NormalFlowFigures","type":"promptString","description":"连续正常流量新图目录，不覆盖旧图","default":"results/runs/r7-normal-flow-redraw"},
+    {"id":"r7NormalFlowAudit","type":"promptString","description":"连续正常流量费用审计：生成用新目录，核查用已有目录","default":"results/summaries/r7-normal-flow-audit-20260920-v1"},
+    {"id":"r7FlowBalanceProbe","type":"promptString","description":"整网能量等价探针：运行用新目录，核查用已有目录","default":"results/runs/r7-flow-balance-new"},
+    {"id":"r7LinkedBatch","type":"promptString","description":"同一灾前状态规划：冻结须新目录，运行须已冻结目录","default":"results/runs/r7-linked-new"},
+    {"id":"r7LinkedReport","type":"promptString","description":"详细状态规划报告：生成须新目录，重验使用已有目录","default":"results/summaries/r7-linked-20260920-v2"},
+    {"id":"r7LinkedFigures","type":"promptString","description":"详细状态规划新图目录，不覆盖旧图","default":"results/runs/r7-linked-redraw"},
+    {"id":"r7LinkedPublic","type":"promptString","description":"详细状态规划公开分片证据，仅重验或重绘","default":"results/summaries/r7-linked-public-20260920-v2"},
+    {"id":"r7BatteryBatch","type":"promptString","description":"电池域研究：冻结须新目录，运行须已冻结目录","default":"results/runs/r7-battery-new"},
+    {"id":"r7BatteryPublic","type":"promptString","description":"电池域公开原值包，仅重读不优化","default":"results/summaries/r7-battery-public-20260920-v1"},
+    {"id":"r7BatteryFigures","type":"promptString","description":"电池域重绘的新目录，不覆盖旧图","default":"results/runs/r7-battery-redraw"},
+    {"id":"r7TransportBatch","type":"promptString","description":"逐管研究批次：冻结须新目录，运行须已冻结目录","default":"results/runs/r7-transport-new"},
+    {"id":"r7TransportReport","type":"promptString","description":"逐管报告：生成须新目录，检查使用已有目录","default":"results/summaries/r7-transport-20260920-v1"},
+    {"id":"r7TransportAudit","type":"promptString","description":"逐管原验证公开审计，含原字节CSV分片","default":"results/summaries/r7-transport-audit-public-20260920-v1"},
+    {"id":"r7TransportRecheck","type":"promptString","description":"逐管固定流量验证补证；创建须新目录","default":"results/summaries/r7-transport-recheck-20260920-v1"},
+    {"id":"r7TransportFigures","type":"promptString","description":"逐管图的新目录；不得覆盖已有图","default":"results/runs/r7-transport-redraw"},
+    {"id":"r7PortsBatch","type":"promptString","description":"端口研究：冻结用新目录，运行用已冻结目录","default":"results/runs/r7-ports-new"},
+    {"id":"r7PortsReport","type":"promptString","description":"端口研究报告（生成时必须是新目录）","default":"results/summaries/r7-ports-20260920-v1"},
+    {"id":"r7PortsFigures","type":"promptString","description":"端口图件的新输出目录","default":"results/runs/r7-ports-redraw"},
+    {"id":"r7ThermalRun","type":"promptString","description":"热重构批次：运行须新目录，核查须已有目录","default":"results/runs/r7-thermal-new"},
+    {"id":"r7ThermalEvidence","type":"promptString","description":"已冻结热重构报告","default":"results/summaries/r7-thermal-20260920-v1"},
+    {"id":"r7ThermalFigures","type":"promptString","description":"热重构图的新输出目录，不覆盖旧图","default":"results/runs/r7-thermal-redraw"},
+    {"id":"r7InnerCase","type":"promptString","description":"内层故障对手的固定灾前输入","default":"configs/r7/inner-tie-two-hour.toml"},
+    {"id":"r7InnerRun","type":"promptString","description":"运行用新目录；重验用已保存目录","default":"results/runs/r7-inner-new"},
+    {"id":"r7InnerEvidence","type":"promptString","description":"已冻结的三节点内层证据","default":"results/summaries/r7-inner-three-node-20260920-v1"},
+    {"id":"r7InnerFigures","type":"promptString","description":"内层图表的新目录，不覆盖旧图","default":"results/runs/r7-inner-redraw"},
+    {"id":"r7PlanningNormal","type":"promptString","description":"正常运行输入","default":"configs/r7/normal-reserve-hand.toml"},
+    {"id":"r7PlanningSpec","type":"promptString","description":"安全规划事件和门槛","default":"configs/r7/planning-reserve-hand.toml"},
+    {"id":"r7PlanningMethod","type":"pickString","description":"有限故障规划方法","options":["finite_fault_ccg","extensive"],"default":"finite_fault_ccg"},
+    {"id":"r7PlanningRun","type":"promptString","description":"规划运行目录；运行须新目录，检查只读已有目录","default":"results/runs/r7-planning-new"},
+    {"id":"r7PlanningEvidence","type":"promptString","description":"已有规划开发证据包","default":"results/summaries/r7-planning-20260920-v2"},
+    {"id":"r7PlanningFigures","type":"promptString","description":"规划新图件目录；不覆盖已有图","default":"results/runs/r7-planning-redraw"},
+    {"id":"r7NormalEvidence","type":"promptString","description":"R7已保存正常/恢复证据包","default":"results/summaries/r7-normal-20260920-v2"},
+    {"id":"r7NormalFigures","type":"promptString","description":"R7新图表目录；不得覆盖旧图","default":"results/runs/r7-normal-redraw"},
+    {"id":"r7NormalCase","type":"promptString","description":"R7给定流量正常案例","default":"configs/r7/normal-hand.toml"},
+    {"id":"r7NormalRun","type":"promptString","description":"正常运行目录；run须新目录，check/event使用已有目录","default":"results/runs/r7-normal-new"},
+    {"id":"r7NormalEvent","type":"promptString","description":"事件目录；event须新目录，check-event使用已有目录","default":"results/runs/r7-event-new"},
+    {"id":"r6PublicEvidence","type":"promptString","description":"R6可移植证据目录；导出使用新目录，重验使用已有目录","default":"results/summaries/r6-public-20260920-v1"},
+    {"id":"r6FigureOutput","type":"promptString","description":"R6科学图的新输出目录；不得覆盖旧图","default":"results/runs/r6-redraw-local"},
+    {"id":"r6SavedFigures","type":"promptString","description":"已有R6图目录；只读核对图源及哈希","default":"results/summaries/r6-figures-20260920-v2"},
+    {"id":"r6FrozenWorkspace","type":"promptString","description":"R6冻结执行目录；prepare须新目录，其余操作须已验证目录","default":"results/runs/r6-formal-20260919-v2/frozen-workspace"},
+    {"id":"r6FrozenAction","type":"pickString","description":"按原协议执行：验证完成后锁定选择，再测试与压力评估","options":["check","validation","select","test","stress"],"default":"check"},
+    {"id":"r6StudyReport","type":"promptString","description":"R6报告目录；生成须新目录，重验须已有目录","default":"results/runs/r6-formal-report-new"},
+    {"id":"r6StudyRun","type":"promptString","description":"R6正式批次目录：冻结须新目录，后续操作须同目录","default":"results/runs/r6-formal-20260919-v2"},
+    {"id":"r6DayRun","type":"promptString","description":"已保存的R6策略日记录目录"},
     {
-      "label": "PaperRebuild: bootstrap",
+      "id": "r6PilotRun",
+      "type": "promptString",
+      "description": "R6开发运行目录（已有目录不可重新求解覆盖）",
+      "default": "results/runs/r6-training-pilot-v1"
+    },
+    {
+      "id": "r6PilotReport",
+      "type": "promptString",
+      "description": "R6开发证据目录（创建报告时须为新目录）",
+      "default": "results/summaries/r6-training-pilot-v1"
+    },
+    {"id":"r5SBBatch","description":"策略分解新批次编号，不覆盖旧结果","type":"promptString","default":"r5-strategic-benders-new"},
+    {"id":"r5SBStudy","description":"已完成的策略分解study.toml","type":"promptString","default":"results/runs/r5/r5-strategic-benders-20260919/study.toml"},
+    {"id":"r5SBReport","description":"策略分解报告目录；生成须新目录，重绘只读已有表","type":"promptString","default":"results/summaries/r5-strategic-benders-replay"},
+    {"id":"r5StrategicBendersCase","description":"策略报价输入TOML","type":"promptString","default":"configs/r5/strategic/competitive_hard_zero.toml"},
+    {"id":"r5StrategicBendersRoute","description":"分解路线；paper_critical单列受限域","type":"pickString","options":["critical","cuts","paper_critical"],"default":"critical"},
+    {"id":"r5StrategicBendersRun","description":"已保存的策略分解运行目录","type":"promptString"},
+    {"id":"r5StrategicBendersReference","description":"同输入同域的已保存独立参考目录","type":"promptString"},
+    {"id":"r5ExecutionBatch","description":"执行对照的新批次ID，不覆盖旧运行","type":"promptString","default":"r5-execution-new"},
+    {"id":"r5ExecutionStudy","description":"已完成执行study.toml","type":"promptString","default":"results/runs/r5-execution-20260919/study.toml"},
+    {"id":"r5ExecutionReport","description":"执行报告新目录；重绘读取已有CSV","type":"promptString","default":"results/summaries/r5-execution-replay"},
+    {"id":"r5StrategyBatch","description":"连续报价新批次ID，不覆盖旧运行","type":"promptString","default":"r5-strategic-new"},
+    {"id":"r5StrategyStudy","description":"已完成的策略study.toml","type":"promptString","default":"results/runs/r5-strategic-20260919/study.toml"},
+    {"id":"r5StrategyReport","description":"新策略报告目录；重绘读取其中已保存CSV","type":"promptString","default":"results/summaries/r5-strategic-replay"},
+    {"id":"r5StatusBatch","description":"状态复核的新批次名，不覆盖旧运行","type":"promptString","default":"r5-benders-status-new"},
+    {"id":"r5StatusStudy","description":"已完成的状态复核study.toml","type":"promptString","default":"results/runs/r5/r5-benders-status-20260919/study.toml"},
+    {"id":"r5StatusReport","description":"状态报告新目录；重绘读取已有CSV","type":"promptString","default":"results/summaries/r5-benders-status-replay"},
+    {"id":"r5PaymentReport","description":"支付只读审计的新目录，不覆盖封存证据","type":"promptString","default":"results/summaries/r5-market-payment-replay"},
+    {"id":"r5BendersBatch","description":"新分解批次名；不可覆盖旧实验","type":"promptString","default":"r5-benders-new"},
+    {"id":"r5BendersStudy","description":"已完成的分解study.toml","type":"promptString","default":"results/runs/r5/r5-benders-20260919/study.toml"},
+    {"id":"r5BendersReport","description":"新的分解报告目录；绘图读取该目录已有CSV","type":"promptString","default":"results/summaries/r5-benders-replay"},
+    {"id":"r5BendersCase","description":"有限支持风险案例路径","type":"promptString","default":"configs/r5/risk/hard_zero.toml"},
+    {"id":"r5BendersRun","description":"Benders运行目录；运行需新目录，重读需已有目录","type":"promptString","default":"results/runs/r5/benders-development-new"},
+    {"id":"r5BendersRoute","description":"分解路线；paper_critical的域受限制","type":"pickString","options":["cuts","critical","paper_critical"],"default":"cuts"},
+    {"id":"r5BendersReference","description":"同输入的已保存直接参考或另一分解运行","type":"promptString","default":"results/runs/r5/r5-risk-20260919/hard_zero--highs"},
+    {"id":"r5RiskBatch","description":"新的风险调度批次名；不得覆盖已有批次","type":"promptString","default":"r5-risk-new"},
+    {"id":"r5RiskStudy","description":"已完成的风险study.toml","type":"promptString","default":"results/runs/r5/r5-risk-20260919/study.toml"},
+    {"id":"r5RiskReport","description":"风险报告新目录；重绘需已有CSV且无旧图","type":"promptString","default":"results/summaries/r5-risk-replay"},
+    {"id":"r5CommitmentBatch","description":"新的共同承诺批次名；不得覆盖已有批次","type":"promptString","default":"r5-commitment-new"},
+    {"id":"r5CommitmentStudy","description":"已完成的共同承诺study.toml","type":"promptString","default":"results/runs/r5/r5-commitment-20260919/study.toml"},
+    {"id":"r5CommitmentReport","description":"共同承诺报告新目录；重绘需已有CSV且无旧图","type":"promptString","default":"results/summaries/r5-commitment-replay"},
+    {"id":"r5DualityReport","description":"新的只读补救对偶审计输出目录","type":"promptString","default":"results/summaries/r5-duality-new"},
+    {"id":"r5DispatchReport","description":"IES报告新目录；重绘需已有CSV且无旧图","type":"promptString","default":"results/summaries/r5-dispatch-replay"},
+    {"id":"r5DispatchStudy","description":"已完成的IES批次study.toml","type":"promptString","default":"results/runs/r5/r5-dispatch-20260919/study.toml"},
+    {"id":"r5DispatchCase","description":"确定性IES输入TOML","type":"promptString","default":"configs/r5/dispatch/hand.toml"},
+    {"id":"r5DispatchRun","description":"保存运行的目录；新求解必须使用未存在的路径","type":"promptString","default":"results/runs/r5/dispatch-new"},
+    {"id":"r5DispatchBatch","description":"新正式批次名称，不覆盖已有批次","type":"promptString","default":"r5-dispatch-new"},
+    {"id":"r5MarketReport","description":"市场报告新目录；重绘需已有CSV且没有旧图","type":"promptString","default":"results/summaries/r5-market-replay"},
+    {"id":"r5MarketStudy","description":"市场批次study.toml或单次运行目录","type":"promptString","default":"results/runs/r5/r5-market-depot-20260919/study.toml"},
+    {"id":"r5MarketLeft","description":"同输入市场运行A目录","type":"promptString"},
+    {"id":"r5MarketRight","description":"同输入市场运行B目录","type":"promptString"},
+    {"id":"r5MarketCase","description":"固定报价市场案例TOML","type":"promptString","default":"configs/r5/market-base.toml"},
+    {"id":"r5MarketOutput","description":"单次市场运行的新目录，不得覆盖旧运行","type":"promptString","default":"results/runs/r5/market-local"},
+    {"id":"r4ThermalStudy","description":"R4稳态循环热网批次study.toml路径","type":"promptString","default":"results/runs/r4/r4-thermal-20260919/study.toml"},
+    {"id":"r4ThermalReport","description":"热调度报告的新目录；重绘时已有表且无旧图","type":"promptString","default":"results/summaries/r4-thermal-replay"},
+    {"id":"r4HeatStudy","description":"R4热相容性批次study.toml路径","type":"promptString","default":"results/runs/r4/r4-heat-20260919/study.toml"},
+    {"id":"r4HeatReport","description":"R4热核查报告目录；报告生成须用新目录","type":"promptString","default":"results/summaries/r4-heat-replay"},
+    {"id":"r4NetworkStudy","description":"R4重构批次study.toml路径","type":"promptString","default":"results/runs/r4/r4-network-20260919/study.toml"},
+    {"id":"r4NetworkReport","description":"R4重构报告目录；比较须用新目录，重绘须有数据表且无旧图","type":"promptString","default":"results/summaries/r4-network-replay"},
+    {"id":"r4DiscreteRun","description":"R4离散核查运行目录","type":"promptString"},
+    {"id":"r4DiscreteStudy","description":"R4离散批次study.toml路径","type":"promptString"},
+    {"id":"r4DiscreteReport","description":"R4离散核查报告目录","type":"promptString"},
+    {"id":"r4DistributedRun","description":"R4分布运行目录（含result.toml）","type":"promptString"},
+    {"id":"r4DistributedStudy","description":"R4分布批次study.toml路径","type":"promptString"},
+    {"id":"r4DistributedReport","description":"R4分布报告目录","type":"promptString"},
+    {"id":"r4TSPAStudy","description":"R4两阶段批次study.toml路径","type":"promptString"},
+    {"id":"r4BargainingStudy","description":"R4议价批次study.toml路径","type":"promptString"},
+    {"id":"r4BaselineStudy","description":"R4新基线批次study.toml路径","type":"promptString"},
+    {"id":"r4RunDirectory","description":"已保存R4运行目录","type":"promptString"},
+    {"id":"r4CompareDirectory","description":"同输入的另一个R4运行目录","type":"promptString"},
+    {
+      "description": "R3运行目录（包含case.toml/run.toml/metadata.toml）",
+      "id": "r3RunDirectory",
+      "type": "promptString"
+    },
+    {
+      "description": "已保存批次的study.toml路径",
+      "id": "r3StudyManifest",
+      "type": "promptString"
+    },
+    {
+      "default": "single-delay-switch",
+      "description": "R3 v2冻结实验ID（例如single-delay-switch）",
+      "id": "r3V2ReplayId",
+      "type": "promptString"
+    },
+    {
+      "description": "R3第五批报告目录（含comparison.csv等图源）",
+      "id": "r3BaselineReport",
+      "type": "promptString"
+    }
+  ],
+  "tasks": [
+    {"label":"PaperRebuild: F13 scalability study tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_scalability_study.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: F13 scalability study freeze","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_scalability_study.jl","freeze","${input:r9ScalabilityStudy}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: F13 scalability frozen study check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_scalability_study.jl","check","${input:r9ScalabilityStudy}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: F13 scalability serial batch","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--threads=1","--project=.","${input:r9ScalabilityStudy}/code/scripts/run_r9_scalability_batch.jl","${input:r9ScalabilityStudy}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: F13 scalability saved method replay","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_scalability_study.jl","replay","${input:r9ScalabilityStudy}","${input:r9ScalabilityMethod}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 scalability prepare inputs","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_scalability_inputs.jl","prepare","results/summaries/r9-scalability-inputs-20260922-v2/parent.toml","${input:r9ScalabilityPrepared}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 scalability math tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_scalability.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 scalability mapping check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_scalability.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 scalability prepared input check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_scalability_inputs.jl","check","results/summaries/r9-scalability-inputs-20260922-v2"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 scalability prepared input tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_scalability_inputs.jl","results/summaries/r9-scalability-inputs-20260922-v2"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R10 beginner frozen replay","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--depwarn=error","scripts/r10_beginner_evidence.jl","check","results/summaries/r10-beginner-20260922-v2"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R10 beginner replay tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--depwarn=error","scripts/test_r10_beginner.jl","results/summaries/r10-beginner-20260922-v2"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: Test-stage coverage","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_test_stages.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 distributed evidence check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_distributed_evidence.jl","check","${input:r9DistributedEvidence}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 block bound diagnostic replay","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_block_bound_evidence.jl","check","results/summaries/r9-bound-diagnostic-20260922-v1"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 block bound diagnostic tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_block_bound_evidence.jl","results/summaries/r9-bound-diagnostic-20260922-v1"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 distributed diagnostic witness check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_distributed_diagnostics.jl","${input:r9DistributedDiagnostics}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 distributed scientific figures","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r9_distributed.jl","${input:r9DistributedEvidence}","${input:r9DistributedFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 distributed figure source check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_distributed_artifacts.jl","${input:r9DistributedEvidence}","${input:r9DistributedSavedFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 distributed study rules tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_distributed_study.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 distributed study freeze","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_distributed_study.jl","freeze","${input:r9DistributedParent}","${input:r9DistributedStudy}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 distributed study check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_distributed_study.jl","check","${input:r9DistributedStudy}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 distributed frozen method (Clarabel)","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","${input:r9DistributedStudy}/code/scripts/r9_distributed_study.jl","run","${input:r9DistributedStudy}","${input:r9DistributedMethod}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 distributed frozen method (Gurobi)","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","${input:r9DistributedStudy}/code/scripts/r9_distributed_study.jl","run","${input:r9DistributedStudy}","${input:r9DistributedMethod}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 distributed run (Clarabel)","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_distributed.jl","run","${input:r9DistributedInput}","${input:r9DistributedRules}","${input:r9DistributedDirectory}","${input:r9DistributedId}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 distributed run (Gurobi)","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/r9_distributed.jl","run","${input:r9DistributedInput}","${input:r9DistributedRules}","${input:r9DistributedDirectory}","${input:r9DistributedId}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 distributed saved-run check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_distributed.jl","check","${input:r9DistributedRun}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 distributed tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_distributed.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 distributed mapping check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_distributed.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 distributed symbols sync","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_distributed.jl","--sync"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 heldout report tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_heldout_report.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 heldout artifacts","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_heldout_artifacts.jl","${input:r9HeldoutInput}","${input:r9HeldoutReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 heldout redraw F51","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r9_evaluation.jl","${input:r9HeldoutReport}","${input:r9HeldoutFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 heldout numerical report","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/report_r9_evaluation.jl","${input:r9HeldoutInput}","${input:r9HeldoutRuns}","${input:r9HeldoutReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 heldout tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_evaluation.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 heldout mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_evaluation.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 heldout freeze","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_reserve_evaluation.jl","freeze","results/summaries/r9-common-input-20260921-v2","results/summaries/r9-compact-input-20260921-v1","results/summaries/r9-compact-evidence-20260921-v1","${input:r9HeldoutInput}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 heldout first three days","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_reserve_evaluation.jl","run","${input:r9HeldoutInput}","${input:r9HeldoutRuns}","3"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 heldout next 50 days","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_reserve_evaluation.jl","run","${input:r9HeldoutInput}","${input:r9HeldoutRuns}","50"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 heldout numeric replay","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_reserve_evaluation.jl","check","${input:r9HeldoutInput}","${input:r9HeldoutRuns}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 electric cut tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_electric_cut.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 electric cut mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_electric_cut.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 electric cut freeze evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_electric_cut_evidence.jl","freeze","${input:r9PreplanFaultEvidence}","${input:r9ElectricCutNewEvidence}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 electric cut replay evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_electric_cut_evidence.jl","check","${input:r9ElectricCutEvidence}","--replay"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 electric cut delivery check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_electric_cut_artifacts.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 electric cut redraw F50","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r9_electric_cut.jl","${input:r9ElectricCutEvidence}","${input:r9ElectricCutFigure}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 detailed preplan mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_detailed_preplan.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 detailed artifacts check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_detailed_artifacts.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 detailed evidence replay","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_detailed_preplan_evidence.jl","check","${input:r9DetailedEvidence}","--replay"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 handoff figure","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r9_handoff.jl","${input:r9HandoffEvidence}","${input:r9HandoffFigure}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 detailed preplan tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_detailed_preplan.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 detailed preplan freeze input","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_detailed_preplan_study.jl","freeze","${input:r9DetailedInput}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 detailed preplan run","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/run_r9_detailed_preplan.jl","${input:r9DetailedInput}","${input:r9DetailedOut}","${input:r9DetailedMode}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 detailed preplan replay","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","${input:r9DetailedOut}/primary/code/replay.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 handoff evidence replay","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_handoff_evidence.jl","check","${input:r9HandoffEvidence}","--replay"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 preplan independent faults","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/r9_preplan_faults.jl","${input:r9PreplanInput}","${input:r9PreplanFaultParent}","${input:r9PreplanFaultRaw}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 preplan freeze fault evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_preplan_fault_evidence.jl","freeze","${input:r9PreplanInput}","${input:r9PreplanOutput}/penalty","${input:r9PreplanFaultParent}","${input:r9PreplanFaultRaw}","${input:r9PreplanFaultEvidence}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 preplan replay fault evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_preplan_fault_evidence.jl","check","${input:r9PreplanFaultEvidence}","--replay"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 preplan freeze evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_preplan_evidence.jl","freeze","${input:r9PreplanInput}","${input:r9PreplanOutput}","${input:r9PreplanEvidence}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 preplan replay evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_preplan_evidence.jl","check","${input:r9PreplanEvidence}","--replay"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 preplan replay diagnostics","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_preplan_diagnostic_evidence.jl","check","${input:r9PreplanDiagnosticEvidence}","--replay"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 preplan redraw F48","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r9_preplan.jl","${input:r9PreplanEvidence}","${input:r9PreplanFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 preplan commitment diagnostic","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/audit_r9_preplan_commitment.jl","${input:r9PreplanInput}","${input:r9PreplanNewAudit}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 preplan loss-floor diagnostic","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/audit_r9_preplan_loss_floor.jl","${input:r9PreplanInput}","${input:r9PreplanNewAudit}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 preplan tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_preplan.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 preplan mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_preplan.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 preplan freeze","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_preplan_study.jl","freeze","${input:r9PreplanInput}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 preplan frozen check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_preplan_study.jl","check","${input:r9PreplanInput}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 preplan full method","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/r9_preplan_study.jl","run","${input:r9PreplanInput}","${input:r9PreplanOutput}","${input:r9PreplanMode}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 resilience batch","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/run_r9_resilience_batch.jl","${input:r9ResilienceInput}","${input:r9ResilienceOutput}","${input:r9ResilienceSet}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 resilience freeze evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_resilience_evidence.jl","freeze","${input:r9ResilienceInput}","${input:r9ResilienceOutput}","${input:r9ResilienceSet}","${input:r9ResilienceEvidence}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 resilience replay","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_resilience_evidence.jl","check","${input:r9ResilienceEvidence}","--replay"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 resilience report tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_resilience_report.jl","${input:r9ResilienceEvidence}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 resilience redraw","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r9_resilience.jl","${input:r9ResilienceEvidence}","${input:r9ResilienceFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 resilience pilot mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_resilience_pilot.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 declared switch tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r7_switch_control.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 declared switch native dual","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/test_r7_switch_control_gurobi.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 resilience input tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_resilience.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 resilience freeze","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_resilience_study.jl","freeze","${input:r9ResilienceInput}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 resilience run stage","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/r9_resilience_study.jl","run","${input:r9ResilienceInput}","${input:r9ResilienceOutput}","${input:r9ResilienceSet}","${input:r9ResilienceStage}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 resilience frozen check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_resilience_study.jl","check","${input:r9ResilienceInput}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 energization mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_energization.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 initial profile mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_initial_profile.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 initial profile tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r7_initial_profile.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 initial profile Gurobi check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/test_r7_initial_profile_gurobi.jl","${input:r7InitialProfileOutput}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 resilience input preflight","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/audit_r9_resilience_input.jl","${input:r9InputAuditOutput}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7-R8 energization tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r7_energization.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 energization Gurobi dual check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/test_r7_energization_gurobi.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 compact report tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_compact_report.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 resilience source checks","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","scripts/check_r9_resilience_sources.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 resilience currency mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_resilience_currency.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 currency and state tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r7_currency.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7-R8 currency planning tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r7_currency_planning.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 critical load mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_critical_service.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7-R8 critical load tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r7_critical_service.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 compact evidence seal","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/seal_r9_seeded.jl","seal","${input:r9CommonInput}","${input:r9CompactInput}","${input:r9CompactOutput}","${input:r9CompactEvidence}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 compact paired report","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/report_r9_compact.jl","${input:r9CommonInput}","${input:r9SeededInput}","${input:r9CompactInput}","${input:r9SeededEvidence}","${input:r9CompactEvidence}","${input:r9CompactReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 compact redraw","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r9_compact.jl","${input:r9CompactReport}","${input:r9CompactFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 compact results check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_compact_results.jl","${input:r9CompactEvidence}","${input:r9CompactReport}","${input:r9CompactFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 compact risk tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_compact_risk.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 compact freeze tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--depwarn=error","--project=.","scripts/test_r9_compact_freeze.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 compact input check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_compact_delivery.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 compact native tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_compact_native.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 compact freeze","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_seeded_study.jl","freeze","${input:r9CommonInput}","${input:r9CommonEvidence}","${input:r9CompactInput}","configs/r9/compact-study.toml"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 compact batch","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","${input:r9CompactInput}/implementation/scripts/run_r9_seeded_batch.jl","${input:r9CommonInput}","${input:r9CompactInput}","${input:r9CompactOutput}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 compact independent replay","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--depwarn=error","--project=.","${input:r9CompactInput}/implementation/scripts/r9_seeded_study.jl","check","${input:r9CommonInput}","${input:r9CompactInput}","${input:r9SeededScheme}","${input:r9CompactOutput}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 seeded risk tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_seeded_risk.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 seeded delivery check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_seeded_delivery.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 seeded redraw","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r9_seeded.jl","${input:r9SeededEvidence}","${input:r9CommonEvidence}","${input:r9SeededFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 seeded native tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_seeded_native.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 seeded freeze","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_seeded_study.jl","freeze","${input:r9CommonInput}","${input:r9CommonEvidence}","${input:r9SeededInput}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 seeded batch","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","${input:r9SeededInput}/implementation/scripts/run_r9_seeded_batch.jl","${input:r9CommonInput}","${input:r9SeededInput}","${input:r9SeededOutput}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 seeded independent replay","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--depwarn=error","--project=.","${input:r9SeededInput}/implementation/scripts/r9_seeded_study.jl","check","${input:r9CommonInput}","${input:r9SeededInput}","${input:r9SeededScheme}","${input:r9SeededOutput}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 common witness tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_common_witness.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 common freeze","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_reserve_witness.jl","freeze","${input:r9ReserveStudy}","${input:r9CommonNewInput}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 common witness run","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","${input:r9CommonInput}/implementation/scripts/r9_reserve_witness.jl","run","${input:r9CommonInput}","${input:r9CommonOutput}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 common evidence replay","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--depwarn=error","--project=.","${input:r9CommonEvidence}/audit-source.jl","check","${input:r9CommonInput}","${input:r9CommonEvidence}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 common original model audit","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/audit_r9_common_start.jl","${input:r9CommonInput}","${input:r9CommonEvidence}/run","${input:r9CommonOutput}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 common redraw F44","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r9_common_witness.jl","${input:r9CommonInput}","${input:r9CommonEvidence}","${input:r9CommonFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 risk LP MIP start tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/test_r9_risk_native_start.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 common delivery check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_common_delivery.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 risk mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_risk.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 risk tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_risk.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 risk freeze inputs","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_reserve_study.jl","freeze","${input:r9ReserveStudy}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 risk frozen inputs check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_reserve_study.jl","check","${input:r9ReserveStudy}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 risk pilot batch","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","${input:r9ReserveStudy}/code/scripts/run_r9_reserve_batch.jl","${input:r9ReserveStudy}","pilot","${input:r9ReserveBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 risk full batch","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","${input:r9ReserveStudy}/code/scripts/run_r9_reserve_batch.jl","${input:r9ReserveStudy}","full","${input:r9ReserveBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 risk archive saved results","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_reserve_evidence.jl","freeze","${input:r9ReserveStudy}","${input:r9ReserveBatch}","${input:r9ReserveEvidence}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 risk evidence replay","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","${input:r9ReserveEvidence}/r9_reserve_evidence.jl","check","${input:r9ReserveEvidence}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 risk redraw saved","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r9_reserve.jl","${input:r9ReserveEvidence}","${input:r9ReserveFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 risk redraw no-candidate limits","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r9_reserve_limits.jl","${input:r9ReserveEvidence}","${input:r9ReserveFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 risk support audit tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_reserve_support.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 risk frozen portability tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_reserve_freeze.jl","${input:r9ReserveStudy}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 reserve mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_reserve.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 reserve input tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_reserve.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 currency tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_currency.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 reserve input audit","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/probe_r9_reserve.jl","input","${input:r9ReserveProbe}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 reserve nominal probe","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/probe_r9_reserve.jl","nominal","${input:r9ReserveProbe}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 network evidence check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","${input:r9NetworkSummary}/code/scripts/r9_network_evidence.jl","check","${input:r9NetworkSummary}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 independent heat audit","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","${input:r9NetworkSummary}/independent-heat/audit-source.jl","check","${input:r9NetworkSummary}","${input:r9NetworkSummary}/independent-heat"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 network redraw","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r9_network.jl","${input:r9NetworkSummary}","${input:r9NetworkFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 network mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_network.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 network tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_network.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 network freeze","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_network_study.jl","freeze","${input:r9NetworkStudy}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 network frozen batch","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","${input:r9NetworkStudy}/code/scripts/run_r9_network_batch.jl","${input:r9NetworkStudy}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 network frozen inputs check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_network_study.jl","check","${input:r9NetworkStudy}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 trading study freeze","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_trading_study.jl","freeze","${input:r9TradingStudy}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 trading frozen method","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","${input:r9TradingStudy}/code/scripts/r9_trading_study.jl","run","${input:r9TradingStudy}","${input:r9TradingMethod}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 trading study evidence check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","${input:r9TradingSummary}/code/scripts/r9_trading_evidence.jl","check","${input:r9TradingSummary}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 trading artifact tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_trading_artifacts.jl","${input:r9TradingSummary}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 trading capacity redraw","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r9_trading.jl","${input:r9TradingSummary}","${input:r9TradingFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 trading input and model tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_trading.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 trading mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_trading.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 trading run and replay tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_trading_runs.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 trading optional Gurobi test","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/test_r9_trading_runs.jl","--gurobi","${input:r9TradingGurobiTest}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 trading frozen replay","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_trading_runs.jl","check","${input:r9TradingRun}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 trading compare","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_trading_runs.jl","compare","${input:r9TradingRun}","${input:r9TradingComparison}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 fixed-flow frozen evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_fixed_evidence.jl","check","results/summaries/r9-fixed-20260921-v4"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 fixed-flow redraw F37","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r9_fixed.jl","results/summaries/r9-fixed-20260921-v4","${input:r9FixedFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 fixed-flow tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_fixed.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 fixed-flow mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_fixed.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 fixed-flow freeze","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_fixed_study.jl","freeze","results/runs/r9-flow-reference-20260921-v1","${input:r9FixedStudy}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 fixed-flow Clarabel","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_fixed_study.jl","run","${input:r9FixedStudy}","Clarabel"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 fixed-flow Gurobi","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/r9_fixed_study.jl","run","${input:r9FixedStudy}","Gurobi"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 fixed-flow report","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_fixed_study.jl","check","${input:r9FixedStudy}","${input:r9FixedReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 four-mode direct reference","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_flow_reference.jl","${input:r9FlowReferenceOutput}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 flow reference readback","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_flow_evidence.jl","check","results/summaries/r9-flow-reference-20260921-v2"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 flow reference redraw F36","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r9_flow_reference.jl","results/summaries/r9-flow-reference-20260921-v2","${input:r9FlowReferenceFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 native start tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/test_r9_gurobi_start.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 flow diagnostic evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_flow_diagnostics.jl","check","results/summaries/r9-flow-diagnostics-20260921-v2"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 physical flow probe","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/r9_flow_probe.jl","${input:r9FlowProbeOutput}","VF_VT","true","120","local","drop_implied_cones"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {
+      "label": "PaperRebuild: R9 flow transport tests",
       "type": "process",
       "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/test_r9_flow.jl"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "problemMatcher": []
+    },
+    {"label":"PaperRebuild: R9 numerical mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_pv.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 numerical tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_reduced.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 numerical freeze","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_numerics_study.jl","freeze","results/summaries/r9-pv-batch-20260920-v4","${input:r9NumericsBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 numerical Clarabel run","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_numerics_study.jl","run","${input:r9NumericsBatch}","Clarabel"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 numerical Gurobi run","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/run_r9_numerics_gurobi.jl","${input:r9NumericsBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 numerical report","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_numerics_study.jl","report","${input:r9NumericsBatch}","${input:r9NumericsReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 numerical saved-value checks","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_numerics_results.jl","${input:r9NumericsBatch}","${input:r9NumericsReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 numerical redraw F35","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r9_numerics.jl","${input:r9NumericsReport}","${input:r9NumericsFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 PV mapping check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_pv.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 PV original-value verification","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_pv_results.jl","${input:r9PVBatch}","${input:r9PVReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 PV redraw scientific figure","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r9_pv.jl","${input:r9PVReport}","${input:r9PVAttribution}","${input:r9PVFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 PV input and model tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_pv.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 PV frozen replay tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_pv_evidence.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 PV freeze inputs","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_pv_study.jl","freeze","${input:r9PVBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 PV Clarabel run","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_pv_study.jl","run","${input:r9PVBatch}","Clarabel"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 PV Gurobi run","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/run_r9_gurobi.jl","${input:r9PVBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 PV independent report","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_pv_study.jl","report","${input:r9PVBatch}","${input:r9PVReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 source tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_sources.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 source mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_inputs.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 audit source tables to new directory","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/audit_r9_inputs.jl","write","${input:r9SourceReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 recheck frozen source audit","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/audit_r9_inputs.jl","check","${input:r9SourceReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 redraw source connections","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r9_inputs.jl","${input:r9SourceReport}","${input:r9SourceFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R8 energy: mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r8_energy.jl"],"problemMatcher":[]},
+    {"label":"R8 energy: tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r8_energy_flow.jl"],"problemMatcher":[]},
+    {"label":"R8 energy: analytic four-hour witness","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r8_energy_cases.jl"],"problemMatcher":[]},
+    {"label":"R8 energy: protocol tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r8_energy_study.jl"],"problemMatcher":[]},
+    {"label":"R8 energy: freeze","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r8_energy_study.jl","freeze","${input:r8EnergyBatch}"],"problemMatcher":[]},
+    {"label":"R8 energy: run HiGHS","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r8_energy_study.jl","run","${input:r8EnergyBatch}","HiGHS"],"problemMatcher":[]},
+    {"label":"R8 energy: run Gurobi","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/run_r8_energy_gurobi.jl","${input:r8EnergyBatch}"],"problemMatcher":[]},
+    {"label":"R8 energy: report","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r8_energy_study.jl","report","${input:r8EnergyBatch}","${input:r8EnergyReport}"],"problemMatcher":[]},
+    {"label":"R8 energy: audit saved values","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/audit_r8_energy.jl","${input:r8EnergyReport}","${input:r8Report}","${input:r8EnergyAudit}"],"problemMatcher":[]},
+    {"label":"R8 energy: verify evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r8_energy_results.jl","${input:r8EnergyReport}","${input:r8Report}","${input:r8EnergyAudit}"],"problemMatcher":[]},
+    {"label":"R8 energy: redraw F32","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r8_energy.jl","${input:r8EnergyReport}","${input:r8EnergyAudit}","${input:r8EnergyFigures}"],"problemMatcher":[]},
+    {"label":"R8 energy: verify F32","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r8_energy_figures.jl","${input:r8EnergyReport}","${input:r8EnergyAudit}","${input:r8EnergyFigures}","docs/src/assets/r8-energy-20260920-v1/F32-r8-energy.png"],"problemMatcher":[]},
+    {"label":"R8: verify original free-model embeddings","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r8_embedding_evidence.jl","check","${input:r8Report}","results/summaries/r8-embedding-20260920-v1"],"problemMatcher":[]},
+    {"label":"R8: mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r8.jl"],"problemMatcher":[]},
+    {"label":"R8: tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r8_tradeoff.jl"],"problemMatcher":[]},
+    {"label":"R8: protocol tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r8_study.jl"],"problemMatcher":[]},
+    {"label":"R8: heat boundary certificate","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r8_heat_boundary.jl"],"problemMatcher":[]},
+    {"label":"R8: freeze study","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r8_tradeoff_study.jl","freeze","${input:r8Batch}"],"problemMatcher":[]},
+    {"label":"R8: run HiGHS","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r8_tradeoff_study.jl","run","${input:r8Batch}","HiGHS"],"problemMatcher":[]},
+    {"label":"R8: run Gurobi","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/run_r8_gurobi.jl","${input:r8Batch}"],"problemMatcher":[]},
+    {"label":"R8: report","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r8_tradeoff_study.jl","report","${input:r8Batch}","${input:r8Report}"],"problemMatcher":[]},
+    {"label":"R8: verify saved runs","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r8_tradeoff_study.jl","check","${input:r8Report}"],"problemMatcher":[]},
+    {"label":"R8: comparison audit","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/audit_r8_results.jl","${input:r8Report}","${input:r8Audit}"],"problemMatcher":[]},
+    {"label":"R8: verify comparison audit","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r8_results.jl","${input:r8Report}","${input:r8Audit}"],"problemMatcher":[]},
+    {"label":"R8: redraw F31","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r8_tradeoff.jl","${input:r8Report}","${input:r8Audit}","${input:r8Figures}"],"problemMatcher":[]},
+    {"label":"R8: verify F31","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r8_figures.jl","${input:r8Report}","${input:r8Audit}","${input:r8Figures}","docs/src/assets/r8-tradeoff-20260920-v1/F31-r8-tradeoff.png"],"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 lossy flow mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r7_lossy_flow.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 lossy kernel tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r7_lossy_mass.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 lossy integration tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r7_lossy_flow.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 lossy flow freeze","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_lossy_flow_study.jl","freeze","${input:r7LossyBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 lossy flow open reference","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_lossy_flow_study.jl","run","${input:r7LossyBatch}","HiGHS"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 lossy flow Gurobi","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/r7_lossy_flow_study.jl","run","${input:r7LossyBatch}","Gurobi"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 lossy flow report","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_lossy_flow_study.jl","report","${input:r7LossyBatch}","${input:r7LossyReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 lossy flow verify","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r7_lossy_flow_results.jl","${input:r7LossyReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 lossy flow cost audit","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/audit_r7_lossy_flow.jl","${input:r7LossyReport}","${input:r7LossyAudit}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 lossy flow audit verify","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r7_lossy_flow_audit.jl","${input:r7LossyReport}","${input:r7LossyAudit}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 lossy flow redraw","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r7_lossy_flow.jl","${input:r7LossyReport}","${input:r7LossyAudit}","${input:r7LossyFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 lossy figure verify","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r7_lossy_flow_figures.jl","${input:r7LossyReport}","${input:r7LossyAudit}","${input:r7LossyFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 shared flow mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r7_flow_planning.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 shared flow tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r7_flow_planning.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 shared flow freeze","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_flow_planning_study.jl","freeze","${input:r7JointBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 shared flow open reference","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_flow_planning_study.jl","run","${input:r7JointBatch}","HiGHS"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 shared flow Gurobi","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/r7_flow_planning_study.jl","run","${input:r7JointBatch}","Gurobi"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 shared flow report","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_flow_planning_study.jl","report","${input:r7JointBatch}","${input:r7JointReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 shared flow verify","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r7_flow_planning_results.jl","${input:r7JointReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 shared flow redraw","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r7_flow_planning.jl","${input:r7JointReport}","${input:r7JointFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 continuous normal flow mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r7_normal_flow.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 continuous normal flow tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r7_normal_flow.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 continuous normal flow Gurobi analytic tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/test_r7_normal_flow_gurobi.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 continuous normal flow freeze","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_normal_flow_study.jl","freeze","${input:r7NormalFlowBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 continuous normal flow open reference","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_normal_flow_study.jl","run","${input:r7NormalFlowBatch}","HiGHS"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 continuous normal flow Gurobi study","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/r7_normal_flow_study.jl","run","${input:r7NormalFlowBatch}","Gurobi"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 continuous normal flow report","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_normal_flow_study.jl","report","${input:r7NormalFlowBatch}","${input:r7NormalFlowReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 continuous normal flow verify and compare","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r7_normal_flow_results.jl","${input:r7NormalFlowReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 continuous normal flow redraw","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r7_normal_flow.jl","${input:r7NormalFlowReport}","${input:r7NormalFlowFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 continuous normal flow cost audit","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/audit_r7_normal_flow.jl","${input:r7NormalFlowReport}","${input:r7NormalFlowAudit}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 continuous normal flow audit verify","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r7_normal_flow_audit.jl","${input:r7NormalFlowReport}","${input:r7NormalFlowAudit}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 continuous normal flow figure verify","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/check_r7_normal_flow_figures.jl","${input:r7NormalFlowReport}","${input:r7NormalFlowFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 flow redundant energy probe","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/probe_r7_flow_balance.jl","${input:r7NormalFlowReport}","${input:r7FlowBalanceProbe}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 flow redundant energy probe verify","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r7_flow_balance_probe.jl","${input:r7FlowBalanceProbe}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 同一灾前状态规划映射","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r7_linked_planning.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 同一灾前状态规划测试","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r7_linked_planning.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 冻结详细状态规划","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_linked_study.jl","freeze","${input:r7LinkedBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 详细状态规划开放运行","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_linked_study.jl","run","${input:r7LinkedBatch}","open"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 详细状态规划Gurobi运行","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/r7_linked_study.jl","run","${input:r7LinkedBatch}","gurobi"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 详细状态规划报告","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_linked_study.jl","report","${input:r7LinkedBatch}","${input:r7LinkedReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 详细状态规划证据重验","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_linked_study.jl","check","${input:r7LinkedReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 详细状态规划公开证据重验","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/pack_r7_linked.jl","check","${input:r7LinkedPublic}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 详细状态规划科学图重绘","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r7_linked.jl","${input:r7LinkedPublic}","${input:r7LinkedFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 电池域科学图重绘","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r7_battery.jl","${input:r7BatteryPublic}","${input:r7BatteryFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 电池运行域映射","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r7_battery.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 电池运行域测试","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r7_battery.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 冻结电池域研究","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_battery_study.jl","freeze","${input:r7BatteryBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 电池域开放运行","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_battery_study.jl","run","${input:r7BatteryBatch}","open"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 电池域Gurobi运行","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/r7_battery_study.jl","run","${input:r7BatteryBatch}","gurobi"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 电池域公开证据重验","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/pack_r7_battery.jl","check","${input:r7BatteryPublic}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 逐管联合恢复映射","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r7_transport.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 逐管联合恢复测试","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r7_transport.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 冻结逐管对照","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_transport_study.jl","freeze","${input:r7TransportBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 逐管对照开放求解器","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_transport_study.jl","run","${input:r7TransportBatch}","open"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 逐管对照Gurobi","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/r7_transport_study.jl","run","${input:r7TransportBatch}","gurobi"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 保存逐管报告","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_transport_study.jl","report","${input:r7TransportBatch}","${input:r7TransportReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 核验逐管报告","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_transport_study.jl","check","${input:r7TransportReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 核验逐管原残差审计","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/pack_r7_transport_audit.jl","check","${input:r7TransportReport}","${input:r7TransportAudit}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 核验逐管原值补证","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/recheck_r7_transport.jl","check","${input:r7TransportReport}","${input:r7TransportRecheck}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 重绘逐管F25","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r7_transport.jl","${input:r7TransportReport}","${input:r7TransportRecheck}","${input:r7TransportFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 相容端口公式映射","type":"process","command":"julia","args":["+1.12.6","--project=.","scripts/check_r7_ports.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 相容端口测试","type":"process","command":"julia","args":["+1.12.6","--project=.","scripts/test_r7_ports.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 冻结端口对照","type":"process","command":"julia","args":["+1.12.6","--project=.","scripts/r7_ports_study.jl","freeze","${input:r7PortsBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 端口对照开放求解器","type":"process","command":"julia","args":["+1.12.6","--project=.","scripts/r7_ports_study.jl","run","${input:r7PortsBatch}","open"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 端口对照Gurobi","type":"process","command":"julia","args":["+1.12.6","--project=tools/solvers","scripts/r7_ports_study.jl","run","${input:r7PortsBatch}","gurobi"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 冻结端口报告","type":"process","command":"julia","args":["+1.12.6","--project=.","scripts/r7_ports_study.jl","report","${input:r7PortsBatch}","${input:r7PortsReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 核验端口报告","type":"process","command":"julia","args":["+1.12.6","--project=.","scripts/r7_ports_study.jl","check","${input:r7PortsReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 重绘相容端口F24","type":"process","command":"julia","args":["+1.12.6","--project=docs","scripts/plot_r7_ports.jl","${input:r7PortsReport}","${input:r7PortsFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 热重构公式与输入检查","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r7_thermal.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 热重构解析和边界测试","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r7_thermal.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 执行冻结热重构协议","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_thermal_study.jl","run","${input:r7ThermalRun}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 只读核验热重构批次","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_thermal_study.jl","check","${input:r7ThermalRun}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 核验热重构报告和对照","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/report_r7_thermal.jl","check","${input:r7ThermalEvidence}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 重绘热重构图 F23","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r7_thermal.jl","${input:r7ThermalEvidence}","${input:r7ThermalFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 inner mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r7_adversary.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 inner tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r7_adversary.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 inner solve","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/r7_adversary.jl","run","${input:r7InnerCase}","${input:r7InnerRun}","600"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 nested planning","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/r7_adversary.jl","plan","${input:r7PlanningNormal}","${input:r7PlanningSpec}","${input:r7PlanningRun}","600"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 inner replay saved","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_adversary.jl","check","${input:r7InnerRun}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 inner compare evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_inner_study.jl","check","${input:r7InnerEvidence}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R7 inner redraw","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r7_inner.jl","${input:r7InnerEvidence}","${input:r7InnerFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 只读重验规划证据包","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_planning_evidence.jl","check","${input:r7PlanningEvidence}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 重绘规划图 F21","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r7_planning.jl","${input:r7PlanningEvidence}","${input:r7PlanningFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 规划公式与输入检查","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r7_planning.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 有限故障规划测试","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r7_planning.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 运行有限故障规划","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_planning.jl","run","${input:r7PlanningNormal}","${input:r7PlanningSpec}","${input:r7PlanningMethod}","${input:r7PlanningRun}","600"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"R7: 只读重验规划运行","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r7_planning.jl","check","${input:r7PlanningRun}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {
+      "label": "PaperRebuild: R7 normal evidence checks", "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--depwarn=error", "--project=.", "scripts/test_r7_normal_evidence.jl", "${input:r7NormalEvidence}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R7 normal redraw saved", "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=docs", "scripts/plot_r7_normal.jl", "${input:r7NormalEvidence}", "${input:r7NormalFigures}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R7 normal mapping", "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/check_r7_normal.jl"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R7 normal tests", "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/test_r7_normal.jl"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R7 normal run", "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/r7_normal.jl", "run", "${input:r7NormalCase}", "${input:r7NormalRun}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R7 normal validate saved", "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/r7_normal.jl", "check", "${input:r7NormalRun}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R7 hand-case event (hour 2, derating 0.5, limit 2 MWh)", "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/r7_normal.jl", "event", "${input:r7NormalRun}", "2", "1", "0.5", "2.0", "${input:r7NormalEvent}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R7 event validate saved", "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/r7_normal.jl", "check-event", "${input:r7NormalRun}", "${input:r7NormalEvent}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R6 figure source checks",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/check_r6_figures.jl", "${input:r6PublicEvidence}", "${input:r6SavedFigures}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R7 pipe state tests",
+      "type": "process",
+      "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/test_r7_pipe_state.jl"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R7 pipe state mapping",
+      "type": "process",
+      "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/check_r7_pipe_state.jl"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R7 normal CHP mapping",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/check_r7_commitment.jl"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R7 normal CHP tests",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/test_r7_commitment.jl"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R7 recovery mapping",
+      "type": "process",
+      "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/check_r7_recovery.jl"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R7 recovery tests",
+      "type": "process",
+      "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/test_r7_recovery.jl"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R6 public evidence export",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/r6_public_report.jl", "create", "${input:r6StudyRun}", "${input:r6StudyReport}", "${input:r6PublicEvidence}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R6 public evidence replay",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/r6_public_report.jl", "check", "${input:r6PublicEvidence}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R6 public evidence tests",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/test_r6_public_report.jl", "${input:r6PublicEvidence}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R6 redraw F17 F18 F19",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=docs", "scripts/plot_r6_study.jl", "${input:r6PublicEvidence}", "${input:r6FigureOutput}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R6 frozen final report",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/r6_frozen_workspace.jl", "run", "${input:r6StudyRun}", "${input:r6FrozenWorkspace}", "report-create", "${input:r6StudyReport}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R6 prepare frozen execution",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/r6_frozen_workspace.jl", "prepare", "${input:r6StudyRun}", "${input:r6FrozenWorkspace}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R6 check frozen execution files",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/r6_frozen_workspace.jl", "check", "${input:r6StudyRun}", "${input:r6FrozenWorkspace}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R6 frozen study action",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/r6_frozen_workspace.jl", "run", "${input:r6StudyRun}", "${input:r6FrozenWorkspace}", "${input:r6FrozenAction}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R6 frozen report snapshot",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/r6_frozen_workspace.jl", "run", "${input:r6StudyRun}", "${input:r6FrozenWorkspace}", "report-snapshot", "${input:r6StudyReport}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R6 frozen report recheck",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/r6_frozen_workspace.jl", "run", "${input:r6StudyRun}", "${input:r6FrozenWorkspace}", "report-check", "${input:r6StudyReport}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R7 audit mapping",
+      "type": "process",
+      "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/check_ch06.jl"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R7 analytic audit tests",
+      "type": "process",
+      "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/test_ch06_audit.jl"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R7 replay analytic evidence",
+      "type": "process",
+      "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/audit_ch06.jl", "check", "results/summaries/ch06-audit-v1/audit.toml"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "problemMatcher": []
+    },
+    {"label":"PaperRebuild: R6 report tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r6_study_report.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R6 progress snapshot","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/report_r6_study.jl","snapshot","${input:r6StudyRun}","${input:r6StudyReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R6 final evidence tables","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/report_r6_study.jl","create","${input:r6StudyRun}","${input:r6StudyReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R6 report numeric replay","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/report_r6_study.jl","check","${input:r6StudyRun}","${input:r6StudyReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R6 formal protocol tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r6_study.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R6 formal freeze","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r6_study.jl","freeze","${input:r6StudyRun}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R6 formal training","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r6_study.jl","train","${input:r6StudyRun}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R6 formal validation","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r6_study.jl","validation","${input:r6StudyRun}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R6 lock selection","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r6_study.jl","select","${input:r6StudyRun}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R6 formal held out test","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r6_study.jl","test","${input:r6StudyRun}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R6 deterministic stress","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r6_study.jl","stress","${input:r6StudyRun}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R6 formal evidence verify","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r6_study.jl","check","${input:r6StudyRun}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R6 new day policy tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r6_evaluation.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R6 saved day verify","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r6_evaluation.jl","${input:r6DayRun}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {
+      "label": "PaperRebuild: R6 six method tests",
+      "type": "process",
+      "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/test_r6_methods.jl"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R6 training pilot",
+      "type": "process",
+      "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/pilot_r6_training.jl", "${input:r6PilotRun}"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R6 pilot evidence report",
+      "type": "process",
+      "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/r6_pilot_report.jl", "create", "${input:r6PilotRun}", "${input:r6PilotReport}"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R6 pilot evidence verify",
+      "type": "process",
+      "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/r6_pilot_replay.jl", "check", "results/summaries/r6-pilot-replay-v2"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R6 pilot replay and tamper tests",
+      "type": "process",
+      "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/r6_pilot_replay.jl", "check", "results/summaries/r6-pilot-replay-v2"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R6 statistics and data tests",
+      "type": "process",
+      "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/test_r6.jl"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R6 source and statistical mapping",
+      "type": "process",
+      "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/check_r6.jl"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R6 freeze daily data",
+      "type": "process",
+      "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/freeze_r6_data.jl", "results/summaries/r6-data-v1"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R6 verify frozen daily data",
+      "type": "process",
+      "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/check_r6_data.jl", "results/summaries/r6-data-v1"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": []
+    },
+    {"label":"PaperRebuild: R5 strategy Benders frozen rules","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_strategic_benders_study.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 strategy Benders formal study","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/study_r5_strategic_benders.jl","${input:r5SBBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 strategy Benders formal report","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/report_r5_strategic_benders.jl","${input:r5SBStudy}","${input:r5SBReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 strategy Benders evidence replay","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_strategic_benders_artifacts.jl","${input:r5SBReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 strategy Benders redraw","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r5_strategic_benders.jl","${input:r5SBReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 strategic Benders mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_strategic_benders.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 strategic Benders tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_strategic_benders.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 strategic Benders run","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r5_strategic_benders_task.jl","run","${input:r5StrategicBendersCase}","${input:r5StrategicBendersRoute}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 strategic Benders verify","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r5_strategic_benders_task.jl","verify","${input:r5StrategicBendersRun}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 strategic Benders compare","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r5_strategic_benders_task.jl","compare","${input:r5StrategicBendersRun}","${input:r5StrategicBendersReference}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 execution mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_execution.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 execution tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_execution.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 execution study","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/study_r5_execution.jl","${input:r5ExecutionBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 execution report","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/report_r5_execution.jl","${input:r5ExecutionStudy}","${input:r5ExecutionReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 execution artifacts","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_execution_artifacts.jl","${input:r5ExecutionReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 execution redraw","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r5_execution.jl","${input:r5ExecutionReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 strategic mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_strategic.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 strategic tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_strategic.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 strategic freeze inputs","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/freeze_r5_strategic.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 strategic frozen study","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/study_r5_strategic.jl","${input:r5StrategyBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 strategic saved report","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/report_r5_strategic.jl","${input:r5StrategyStudy}","${input:r5StrategyReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 strategic saved plots","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r5_strategic.jl","${input:r5StrategyReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 strategic selection audit","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/audit_r5_strategic_selection.jl","${input:r5StrategyReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 strategic public verification","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_strategic_artifacts.jl","results/summaries/r5-strategic"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 status frozen rules","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_benders_status.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 status frozen study","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/study_r5_benders_status.jl","${input:r5StatusBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 status saved report","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/report_r5_benders_status.jl","${input:r5StatusStudy}","${input:r5StatusReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 status saved plots","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r5_benders_status.jl","${input:r5StatusReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 status seal local report","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_benders_status_artifacts.jl","${input:r5StatusReport}","--seal"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 status frozen evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_benders_status_artifacts.jl","results/summaries/r5-benders-status"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 payment mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_market_payment.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 payment tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_market_payment.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 payment audit saved market","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/audit_r5_market_payment.jl","${input:r5MarketStudy}","${input:r5PaymentReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 payment seal local report","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_market_payment_artifacts.jl","${input:r5PaymentReport}","--seal"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 payment frozen evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_market_payment_artifacts.jl","results/summaries/r5-market-payment"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 Benders study rules","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_benders_study.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 Benders public witness test","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_benders_witness.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 Benders frozen study","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/study_r5_benders.jl","${input:r5BendersBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 Benders saved report","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/report_r5_benders.jl","${input:r5BendersStudy}","${input:r5BendersReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 Benders saved plots","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r5_benders.jl","${input:r5BendersReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 Benders frozen evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_benders_artifacts.jl","results/summaries/r5-benders"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 Benders tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_benders.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 Benders outer tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_benders_loop.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 Benders run","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r5_benders.jl","run","${input:r5BendersCase}","${input:r5BendersRun}","${input:r5BendersRoute}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 Benders verify saved","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r5_benders.jl","verify","${input:r5BendersRun}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 Benders compare saved","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r5_benders.jl","compare","${input:r5BendersRun}","${input:r5BendersReference}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 Benders mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_benders.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 risk frozen evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_risk_artifacts.jl","results/summaries/r5-risk"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 risk tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_risk.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 risk mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_risk.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 risk frozen study","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/study_r5_risk.jl","${input:r5RiskBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 risk saved report","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/report_r5_risk.jl","${input:r5RiskStudy}","${input:r5RiskReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 risk redraw","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r5_risk.jl","${input:r5RiskReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 risk seal local report","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_risk_artifacts.jl","${input:r5RiskReport}","--seal"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 shared commitment tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_commitment.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 shared commitment mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_commitment.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 shared commitment frozen study","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/study_r5_commitment.jl","${input:r5CommitmentBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 shared commitment report saved","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/report_r5_commitment.jl","${input:r5CommitmentStudy}","${input:r5CommitmentReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 shared commitment redraw","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r5_commitment.jl","${input:r5CommitmentReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 shared commitment seal","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_commitment_artifacts.jl","${input:r5CommitmentReport}","--seal"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 shared commitment frozen evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_commitment_artifacts.jl","results/summaries/r5-commitment"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 recourse duality frozen evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_duality.jl","results/summaries/r5-duality-verified"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 recourse duality tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_dispatch_duality.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 recourse duality mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_duality.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 recourse duality audit saved","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/audit_r5_dispatch_duality.jl","${input:r5DispatchStudy}","${input:r5DualityReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 recourse duality seal","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_duality.jl","${input:r5DualityReport}","--seal"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 recourse duality redraw","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r5_duality.jl","${input:r5DualityReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 dispatch frozen evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_dispatch_artifacts.jl","results/summaries/r5-dispatch"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 dispatch report saved","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/report_r5_dispatch.jl","${input:r5DispatchStudy}","${input:r5DispatchReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 dispatch audit mechanisms","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/audit_r5_dispatch.jl","${input:r5DispatchStudy}","${input:r5DispatchReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 dispatch redraw saved","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r5_dispatch.jl","${input:r5DispatchReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 dispatch mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_dispatch.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 dispatch tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_dispatch.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 dispatch run","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/run_r5_dispatch.jl","${input:r5DispatchCase}","${input:r5DispatchRun}","highs","60"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 dispatch validate saved","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/validate_r5_dispatch.jl","${input:r5DispatchRun}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 dispatch frozen study","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/study_r5_dispatch.jl","${input:r5DispatchBatch}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 market frozen evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_market_artifacts.jl","results/summaries/r5-market-verified"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 market report saved","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/report_r5_market.jl","${input:r5MarketStudy}","${input:r5MarketReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 market redraw saved","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r5_market.jl","${input:r5MarketReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 market mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r5_market.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 market tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r5_market.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 market freeze once","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/freeze_r5_market.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 market study","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/study_r5_market.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 market run","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/run_r5_market.jl","${input:r5MarketCase}","${input:r5MarketOutput}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 market validate saved","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/validate_r5_market.jl","${input:r5MarketStudy}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 market compare saved","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/compare_r5_market.jl","${input:r5MarketLeft}","${input:r5MarketRight}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 frozen artifacts","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_ch05_artifacts.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 cut audit","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/audit_ch05_cuts.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 input transcription","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_ch05_inputs.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 probability audit","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/audit_ch05_probability.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R5 probability evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_ch05_probability.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 thermal validate","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/validate_r4_thermal.jl","${input:r4ThermalStudy}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 thermal report","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/report_r4_thermal.jl","${input:r4ThermalStudy}","${input:r4ThermalReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 thermal redraw","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r4_thermal.jl","${input:r4ThermalReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 thermal mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r4_thermal.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 thermal tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r4_thermal.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 thermal Gurobi checks","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r4_thermal.jl","--gurobi"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 thermal study","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/study_r4_thermal.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 heat compare","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/report_r4_heat_compatibility.jl","${input:r4HeatStudy}","${input:r4HeatReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 heat redraw","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r4_heat_compatibility.jl","${input:r4HeatReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 heat evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r4_heat_artifacts.jl","results/summaries/r4-heat"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 heat inspect","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/inspect_r4_heat_results.jl","results/summaries/r4-heat"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 heat mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r4_heat_compatibility.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 heat tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r4_heat_compatibility.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 heat frozen study","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/study_r4_heat_compatibility.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 network validate","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/validate_r4.jl","${input:r4RunDirectory}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 network compare","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/report_r4_reconfiguration.jl","${input:r4NetworkStudy}","${input:r4NetworkReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 network redraw","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r4_reconfiguration.jl","${input:r4NetworkReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 network evidence","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r4_network_artifacts.jl","results/summaries/r4-network"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 network mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r4_reconfiguration.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 network tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r4_reconfiguration.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 network frozen study","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/study_r4_reconfiguration.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 discrete mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r4_discrete.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 discrete tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r4_discrete.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 discrete frozen study","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/study_r4_discrete.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 discrete validate","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r4_discrete.jl","${input:r4DiscreteRun}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 discrete compare","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/report_r4_discrete.jl","${input:r4DiscreteStudy}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 discrete redraw","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r4_discrete.jl","${input:r4DiscreteReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 distributed mapping","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r4_distributed.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 distributed tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r4_distributed.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 distributed frozen study","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/study_r4_distributed.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 distributed validate","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r4_distributed.jl","${input:r4DistributedRun}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 distributed compare","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/report_r4_distributed.jl","${input:r4DistributedStudy}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 distributed redraw","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r4_distributed.jl","${input:r4DistributedReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 distributed cost audit","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/audit_r4_distributed.jl","${input:r4DistributedStudy}","${input:r4DistributedReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 distributed cost tightening audit","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/tighten_r4_distributed_cost.jl","${input:r4DistributedStudy}","${input:r4DistributedReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R4 distributed artifacts check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r4_distributed_artifacts.jl","${input:r4DistributedReport}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {
+      "label": "PaperRebuild: R4 TSPA mapping",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/check_r4_tspa.jl"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 TSPA tests",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/test_r4_tspa.jl"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 TSPA experiments",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/study_r4_tspa.jl"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 TSPA report",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/report_r4_tspa.jl", "${input:r4TSPAStudy}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 TSPA redraw",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=docs", "scripts/plot_r4_tspa.jl", "results/summaries/r4-tspa"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 TSPA evidence check",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/check_r4_tspa.jl", "results/summaries/r4-tspa"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 bargaining mapping",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/check_r4_bargaining.jl"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 bargaining experiments",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/study_r4_bargaining.jl"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 bargaining report",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/report_r4_bargaining.jl", "${input:r4BargainingStudy}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 bargaining redraw",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=docs", "scripts/plot_r4_bargaining.jl", "results/summaries/r4-bargaining"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 bargaining evidence check",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/check_r4_bargaining.jl", "results/summaries/r4-bargaining"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 baseline freeze",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/freeze_r4_baseline.jl"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 baseline mapping",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/check_r4_baseline.jl"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 baseline experiments",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/study_r4_baseline.jl"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 baseline report",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/report_r4_baseline.jl", "${input:r4BaselineStudy}"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 baseline redraw",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=docs", "scripts/plot_r4_baseline.jl", "results/summaries/r4-baseline"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 baseline evidence check",
+      "type": "process", "command": "julia",
+      "args": ["+1.12.6", "--startup-file=no", "--project=.", "scripts/check_r4_baseline.jl", "results/summaries/r4-baseline"],
+      "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 mapping",
+      "type": "process",
+      "command": "julia",
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/check_ch04.jl"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 tests",
+      "type": "process",
+      "command": "julia",
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/test_r4.jl"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 run central",
+      "type": "process",
+      "command": "julia",
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/run_r4.jl",
+        "base",
+        "central_exact",
+        "gurobi"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 validate",
+      "type": "process",
+      "command": "julia",
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/validate_r4.jl",
+        "${input:r4RunDirectory}"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 redraw",
+      "type": "process",
+      "command": "julia",
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=docs",
+        "scripts/plot_r4.jl",
+        "${input:r4RunDirectory}"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 frozen study",
+      "type": "process",
+      "command": "julia",
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/study_r4.jl"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "PaperRebuild: R4 compare",
+      "type": "process",
+      "command": "julia",
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/compare_r4.jl",
+        "${input:r4RunDirectory}",
+        "${input:r4CompareDirectory}"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
       "args": [
         "+1.12.6",
         "--startup-file=no",
         "--project=.",
         "scripts/bootstrap.jl"
       ],
+      "command": "julia",
+      "label": "PaperRebuild: bootstrap",
       "options": {
         "cwd": "${workspaceFolder}"
       },
-      "problemMatcher": []
+      "problemMatcher": [],
+      "type": "process"
     },
     {
-      "label": "PaperRebuild: test",
-      "type": "process",
-      "command": "julia",
       "args": [
         "+1.12.6",
         "--startup-file=no",
         "--project=.",
         "scripts/test.jl"
       ],
+      "command": "julia",
+      "group": {
+        "isDefault": true,
+        "kind": "test"
+      },
+      "label": "PaperRebuild: test",
       "options": {
         "cwd": "${workspaceFolder}"
       },
       "problemMatcher": [],
-      "group": {
-        "kind": "test",
-        "isDefault": true
-      }
+      "type": "process"
     },
     {
-      "label": "PaperRebuild: smoke",
-      "type": "process",
-      "command": "julia",
       "args": [
         "+1.12.6",
         "--startup-file=no",
         "--project=.",
         "scripts/smoke.jl"
       ],
+      "command": "julia",
+      "label": "PaperRebuild: smoke",
       "options": {
         "cwd": "${workspaceFolder}"
       },
-      "problemMatcher": []
+      "problemMatcher": [],
+      "type": "process"
     },
     {
-      "label": "PaperRebuild: format check",
-      "type": "process",
-      "command": "julia",
       "args": [
         "+1.12.6",
         "--startup-file=no",
         "--project=tools",
         "scripts/format.jl"
       ],
+      "command": "julia",
+      "label": "PaperRebuild: format check",
       "options": {
         "cwd": "${workspaceFolder}"
       },
-      "problemMatcher": []
+      "problemMatcher": [],
+      "type": "process"
     },
     {
-      "label": "PaperRebuild: project check",
-      "type": "process",
-      "command": "pwsh",
-      "windows": {
-        "command": "powershell.exe"
-      },
       "args": [
         "-NoProfile",
         "-ExecutionPolicy",
@@ -81,18 +1235,18 @@
         "-Action",
         "Check"
       ],
+      "command": "pwsh",
+      "label": "PaperRebuild: project check",
       "options": {
         "cwd": "${workspaceFolder}"
       },
-      "problemMatcher": []
-    },
-    {
-      "label": "PaperRebuild: navigation sync",
+      "problemMatcher": [],
       "type": "process",
-      "command": "pwsh",
       "windows": {
         "command": "powershell.exe"
-      },
+      }
+    },
+    {
       "args": [
         "-NoProfile",
         "-ExecutionPolicy",
@@ -102,18 +1256,18 @@
         "-Action",
         "Sync"
       ],
+      "command": "pwsh",
+      "label": "PaperRebuild: navigation sync",
       "options": {
         "cwd": "${workspaceFolder}"
       },
-      "problemMatcher": []
-    },
-    {
-      "label": "PaperRebuild: maintenance tests",
+      "problemMatcher": [],
       "type": "process",
-      "command": "pwsh",
       "windows": {
         "command": "powershell.exe"
-      },
+      }
+    },
+    {
       "args": [
         "-NoProfile",
         "-ExecutionPolicy",
@@ -121,44 +1275,1087 @@
         "-File",
         "test/maintenance.tests.ps1"
       ],
+      "command": "pwsh",
+      "label": "PaperRebuild: maintenance tests",
       "options": {
         "cwd": "${workspaceFolder}"
       },
-      "problemMatcher": []
+      "problemMatcher": [],
+      "type": "process",
+      "windows": {
+        "command": "powershell.exe"
+      }
     },
     {
-      "label": "PaperRebuild: docs build",
-      "type": "process",
-      "command": "julia",
       "args": [
         "+1.12.6",
         "--startup-file=no",
         "--project=docs",
         "docs/make.jl"
       ],
+      "command": "julia",
+      "group": {
+        "isDefault": true,
+        "kind": "build"
+      },
+      "label": "PaperRebuild: docs build",
       "options": {
         "cwd": "${workspaceFolder}"
       },
       "problemMatcher": [],
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      }
+      "type": "process"
     },
     {
-      "label": "PaperRebuild: docs preview",
-      "type": "process",
-      "command": "julia",
       "args": [
         "+1.12.6",
         "--startup-file=no",
         "--project=docs",
         "scripts/preview.jl"
       ],
+      "command": "julia",
+      "label": "PaperRebuild: docs preview",
       "options": {
         "cwd": "${workspaceFolder}"
       },
-      "problemMatcher": []
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=tools/solvers",
+        "scripts/bootstrap_solvers.jl"
+      ],
+      "command": "julia",
+      "detail": "Agent Bridge: 恢复独立的 Julia 求解器预检环境，不运行论文实验。",
+      "isBackground": false,
+      "label": "PaperRebuild: solver bootstrap",
+      "options": {
+        "cwd": ".",
+        "env": {}
+      },
+      "presentation": {
+        "clear": false,
+        "echo": true,
+        "focus": false,
+        "panel": "shared",
+        "reveal": "always"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=tools/solvers",
+        "scripts/check_solvers.jl"
+      ],
+      "command": "julia",
+      "detail": "Agent Bridge: 运行 8 个解析求解器能力检查，非论文复现。先执行 solver bootstrap。",
+      "group": "test",
+      "isBackground": false,
+      "label": "PaperRebuild: solver check",
+      "options": {
+        "cwd": ".",
+        "env": {}
+      },
+      "presentation": {
+        "clear": false,
+        "echo": true,
+        "focus": false,
+        "panel": "shared",
+        "reveal": "always"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/audit_thesis_tables.jl"
+      ],
+      "command": "julia",
+      "detail": "Agent Bridge: 只核算已转录论文表值，不运行模型。",
+      "group": "test",
+      "isBackground": false,
+      "label": "PaperRebuild: thesis arithmetic",
+      "options": {
+        "cwd": ".",
+        "env": {}
+      },
+      "presentation": {
+        "clear": false,
+        "echo": true,
+        "focus": false,
+        "panel": "shared",
+        "reveal": "always"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/check_ch02.jl"
+      ],
+      "command": "julia",
+      "detail": "Generated by VS Code Agent Bridge",
+      "group": "test",
+      "isBackground": false,
+      "label": "PaperRebuild: R1 mapping check",
+      "options": {
+        "cwd": ".",
+        "env": {}
+      },
+      "presentation": {
+        "clear": false,
+        "echo": true,
+        "focus": false,
+        "panel": "shared",
+        "reveal": "always"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/check_ch02.jl",
+        "--sync"
+      ],
+      "command": "julia",
+      "detail": "Generated by VS Code Agent Bridge",
+      "isBackground": false,
+      "label": "PaperRebuild: R1 mapping sync",
+      "options": {
+        "cwd": ".",
+        "env": {}
+      },
+      "presentation": {
+        "clear": false,
+        "echo": true,
+        "focus": false,
+        "panel": "shared",
+        "reveal": "always"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/test_r1.jl"
+      ],
+      "command": "julia",
+      "detail": "Generated by VS Code Agent Bridge",
+      "group": "test",
+      "isBackground": false,
+      "label": "PaperRebuild: R1 tests",
+      "options": {
+        "cwd": ".",
+        "env": {}
+      },
+      "presentation": {
+        "clear": false,
+        "echo": true,
+        "focus": false,
+        "panel": "shared",
+        "reveal": "always"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/run_r1.jl"
+      ],
+      "command": "julia",
+      "detail": "Generated by VS Code Agent Bridge",
+      "isBackground": false,
+      "label": "PaperRebuild: R1 micro case",
+      "options": {
+        "cwd": ".",
+        "env": {}
+      },
+      "presentation": {
+        "clear": false,
+        "echo": true,
+        "focus": false,
+        "panel": "shared",
+        "reveal": "always"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/r1_task.jl",
+        "validate"
+      ],
+      "command": "julia",
+      "detail": "Generated by VS Code Agent Bridge",
+      "group": "test",
+      "isBackground": false,
+      "label": "PaperRebuild: R1 validate saved",
+      "options": {
+        "cwd": ".",
+        "env": {}
+      },
+      "presentation": {
+        "clear": false,
+        "echo": true,
+        "focus": false,
+        "panel": "shared",
+        "reveal": "always"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=docs",
+        "scripts/r1_task.jl",
+        "plot"
+      ],
+      "command": "julia",
+      "detail": "Generated by VS Code Agent Bridge",
+      "isBackground": false,
+      "label": "PaperRebuild: R1 redraw",
+      "options": {
+        "cwd": ".",
+        "env": {}
+      },
+      "presentation": {
+        "clear": false,
+        "echo": true,
+        "focus": false,
+        "panel": "shared",
+        "reveal": "always"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=tools/data",
+        "scripts/bootstrap_data.jl"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: Ch03 restore data tools",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=tools/data",
+        "scripts/collect_ch03_data.jl"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: Ch03 collect data",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=tools/data",
+        "scripts/validate_ch03_data.jl"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: Ch03 validate data",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=tools/data",
+        "test/ch03_data.jl"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: Ch03 data tests",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=docs",
+        "scripts/ch03_task.jl",
+        "plot"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: Ch03 data plots",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/check_ch03.jl"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R2 mapping check",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "test/r2.jl"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R2 tests",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/run_r2.jl",
+        "single-source",
+        "wmm_checked_v1",
+        "--fixed",
+        "--open"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R2 open fixed WMM",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=tools/solvers",
+        "scripts/run_r2.jl",
+        "single-source",
+        "wmm_checked_v1"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R2 variable WMM",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=tools/solvers",
+        "scripts/run_r2.jl",
+        "two-source",
+        "schpd_mc_v1"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R2 SCHPD",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/r2_task.jl",
+        "validate"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R2 validate saved",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=docs",
+        "scripts/r2_task.jl",
+        "plot"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R2 redraw",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=tools/solvers",
+        "scripts/experiment_r2.jl"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R2 comparison experiments",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=docs",
+        "scripts/report_r2.jl"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R2 comparison report",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/check_ch03.jl"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 mapping check",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/test_r3.jl"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 tests",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/experiment_r3.jl",
+        "single-fixed",
+        "--open"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 open fixed case",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=tools/solvers",
+        "scripts/experiment_r3.jl",
+        "single-schpd"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 single SCHPD feasibility",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=tools/solvers",
+        "scripts/experiment_r3.jl"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 formal experiments",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/r3_task.jl",
+        "validate",
+        "${input:r3RunDirectory}"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 validate saved",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/r3_task.jl",
+        "stages",
+        "${input:r3RunDirectory}"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 stage comparison",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=docs",
+        "scripts/r3_task.jl",
+        "plot",
+        "${input:r3RunDirectory}"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 redraw",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=docs",
+        "scripts/report_r3.jl",
+        "${input:r3StudyManifest}"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 evidence report",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/test_r3_pg.jl"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 PG sensitivity check",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/experiment_r3_pg.jl",
+        "single-source-case_fixed",
+        "--open"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 PG open fixed case",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=tools/solvers",
+        "scripts/experiment_r3_pg.jl"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 PG formal experiments",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=tools/solvers",
+        "scripts/check_r3_pg_reference.jl"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 PG solver reference",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/r3_pg_task.jl",
+        "validate",
+        "${input:r3RunDirectory}"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 PG validate saved",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/r3_pg_task.jl",
+        "compare",
+        "${input:r3RunDirectory}"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 PG iteration comparison",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=docs",
+        "scripts/r3_pg_task.jl",
+        "plot",
+        "${input:r3RunDirectory}"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 PG redraw",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=docs",
+        "scripts/report_r3_pg.jl",
+        "${input:r3StudyManifest}"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 PG evidence report",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/test_r3_v2.jl"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 v2 tests",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=tools/solvers",
+        "scripts/diagnose_r3_duals.jl"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 dual minimal examples",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/freeze_r3_modes.jl"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 freeze four modes",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=tools/solvers",
+        "scripts/experiment_r3_v2.jl"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 v2 formal experiments",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=docs",
+        "scripts/report_r3_v2.jl",
+        "${input:r3StudyManifest}"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 v2 evidence report",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/replay_r3_v2_input.jl",
+        "results/summaries/r3-v2/r3-v2-combined-20260917T095056-767e69d2/inputs/manifest.toml",
+        "all",
+        "--check-only"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 v2 check frozen inputs",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=tools/solvers",
+        "scripts/replay_r3_v2_input.jl",
+        "results/summaries/r3-v2/r3-v2-combined-20260917T095056-767e69d2/inputs/manifest.toml",
+        "${input:r3V2ReplayId}"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 v2 replay frozen case",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--project=.",
+        "scripts/audit_r3_v3.jl"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 v3 audit historical failure",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--project=.",
+        "scripts/test_r3_v3.jl"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 v3 tests",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--project=tools/solvers",
+        "scripts/experiment_r3_v3.jl"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 v3 formal experiments",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--project=.",
+        "scripts/r3_pg_task.jl",
+        "validate",
+        "${input:r3RunDirectory}"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 v3 validate saved",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--project=docs",
+        "scripts/report_r3_v3.jl",
+        "${input:r3StudyManifest}"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 v3 compare and figures",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--project=docs",
+        "scripts/r3_pg_task.jl",
+        "plot",
+        "${input:r3RunDirectory}"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 v3 redraw saved",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/check_r3_baseline.jl"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 baseline mapping",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/test_r3_baseline.jl"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 baseline tests",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/freeze_r3_baseline.jl"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 baseline freeze",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=tools/solvers",
+        "scripts/experiment_r3_baseline.jl"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 baseline formal experiments",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/compare_r3_baseline.jl",
+        "${input:r3StudyManifest}"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 baseline validate and compare",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=.",
+        "scripts/report_r3_baseline.jl",
+        "${input:r3StudyManifest}"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 baseline evidence report",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
+    },
+    {
+      "args": [
+        "+1.12.6",
+        "--startup-file=no",
+        "--project=docs",
+        "scripts/plot_r3_baseline.jl",
+        "${input:r3BaselineReport}"
+      ],
+      "command": "julia",
+      "label": "PaperRebuild: R3 baseline redraw",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "type": "process"
     }
-  ]
+  ],
+  "version": "2.0.0"
 }

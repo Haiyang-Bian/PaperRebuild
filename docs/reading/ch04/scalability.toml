@@ -1,0 +1,102 @@
+schema = "r9-scalability-mapping-v1"
+page = "docs/src/ch04-scalability.md"
+generated = "docs/src/ch04-scalability-symbols.md"
+test = "test/r9_scalability.jl"
+origin = "project_controlled_synthetic_split"
+source_pdf = "docs/摘要.pdf"
+source_sha256 = "20328e2480e773520c19c378e53365fc944c0bafcfca73071f5d8313d5ee7d91"
+source_pdf_pages = [81, 82]
+source_printed_page = 65
+source_section = "4.5.4"
+original_input_complete = false
+formal_scalability_experiments_complete = false
+formal_protocol = "configs/r9/scalability-study.toml"
+formal_runner = "scripts/r9_scalability_study.jl"
+formal_launcher = "scripts/run_r9_scalability_batch.jl"
+formal_test = "test/r9_scalability_study.jl"
+source_note = "PDF79–82逐页核读。表4-9未说明扩容时负荷、设备和网络如何变化；ADMM轮数的跨外层汇总口径未闭合。"
+
+[[author_table_4_9]]
+aggregators = 6
+atc_iterations = 15
+admm_iterations = 65
+seconds = 51.01
+[[author_table_4_9]]
+aggregators = 15
+atc_iterations = 28
+admm_iterations = 79
+seconds = 144.47
+[[author_table_4_9]]
+aggregators = 30
+atc_iterations = 26
+admm_iterations = 81
+seconds = 226.18
+
+[author_table_4_8]
+central_welfare_USD = 39220.96
+distributed_welfare_USD = 38934.32
+central_seconds = 35.23
+distributed_seconds = 51.01
+reported_relative_difference_percent = 0.73
+
+[[formula]]
+id = "R9-SC1"
+meaning = "等分负荷/偏好并按倍数缩放二次不满意度；设备整台保留"
+api = ["r9_split_aggregators", "audit_r9_aggregator_split"]
+[[formula]]
+id = "R9-SC2"
+meaning = "原调度等分提升、子调度聚合及物理控制保持；最优集中资源费用相同"
+api = ["r9_split_values"]
+[[formula]]
+id = "R9-SC3"
+meaning = "任意子调度的实际费用与聚合费用之间的非负Jensen差"
+api = ["r9_split_cost_identity"]
+
+[[symbol]]
+id = "R9-SC-parent"
+latex = 'i,r,t'
+meaning = "父聚合商、子主体及时间索引；运营商不拆分"
+unit = "index"
+julia = "mapping.parent_for_actor / copy_index"
+[[symbol]]
+id = "R9-SC-k"
+latex = 'k'
+meaning = "每个父主体的等分倍数，本协议取1、2、4"
+unit = "1"
+julia = "mapping.multiplier"
+[[symbol]]
+id = "R9-SC-d"
+latex = 'd_{i,t},d_{ir,t}'
+meaning = "各能量载体的实际灵活负荷；电、热分别应用同一推导"
+unit = "MW"
+julia = "values.P_D / H_D"
+[[symbol]]
+id = "R9-SC-pref"
+latex = '\bar d_{i,t}'
+meaning = "父主体偏好负荷，子偏好为其1/k"
+unit = "MW"
+julia = "actors.P_preferred / H_preferred"
+[[symbol]]
+id = "R9-SC-a"
+latex = 'a_i'
+meaning = "父主体二次不满意度系数；子主体取k倍"
+unit = "CNY/(h MW²)"
+julia = "actors.sat_P / sat_H"
+[[symbol]]
+id = "R9-SC-w"
+latex = 'w_{i,t},w_{ir,t}'
+meaning = "不满意度上图辅助量，等分提升除以k，聚合相加"
+unit = "CNY/h"
+julia = "values.w_P / w_H"
+[[symbol]]
+id = "R9-SC-delta"
+latex = '\delta_{ir,t},\bar\delta_{i,t}'
+meaning = "子主体偏好减实际负荷，及同父子主体偏差的平均值"
+unit = "MW"
+julia = "r9_split_cost_identity: δ / meanδ"
+[[symbol]]
+id = "R9-SC-cost"
+latex = 'J_k,J_1,\Delta J'
+meaning = "子调度与聚合调度实际资源费用及非负差；不是求解器增广目标"
+unit = "CNY"
+julia = "child_cost_CNY / parent_cost_CNY / variance_gap_CNY"

@@ -1,0 +1,51 @@
+schema_version = 1
+purpose = "第3章数据搜集；公开基准不等同于作者修改后的输入包"
+
+[[sources]]
+id = "matpower-case33bw-8.1"
+filename = "case33bw.m"
+url = "https://raw.githubusercontent.com/MATPOWER/matpower/1a828c7af590714499284e36ee9c81273388c594/data/case33bw.m"
+landing_url = "https://github.com/MATPOWER/matpower/blob/1a828c7af590714499284e36ee9c81273388c594/data/case33bw.m"
+version = "8.1 / commit 1a828c7af590714499284e36ee9c81273388c594"
+kind = "matpower"
+sha256 = "b40831eeb444669ae876e2996f0dda9f05cd83e81b314b8dfca51e4890cca95d"
+license = "MATPOWER LICENSE 明确排除 case 数据；本项目仅本地下载，不重新许可"
+role = "公开33节点电网候选基准，电压和负荷不同于学位论文"
+
+[[sources]]
+id = "liu2016-barry-paper"
+filename = "liu2016.pdf"
+url = "https://orca.cardiff.ac.uk/id/eprint/73462/1/Liu%20et%20al.%202015.pdf"
+landing_url = "https://orca.cardiff.ac.uk/id/eprint/73462/"
+version = "author manuscript; DOI 10.1016/j.apenergy.2015.01.102"
+kind = "pdf"
+required = false
+acquisition_status = "2026-09-16 Julia Downloads返回HTTP403；尚未保存PDF字节"
+license = "Cardiff公开作者稿，未确认再分发许可；仅本地保存"
+role = "论文文献[25]；附录A表4原始Barry管道，非学位论文修改后数据"
+
+[[sources]]
+id = "figshare-14813121-v3"
+filename = "parameters-load-data.xlsx"
+url = "https://ndownloader.figshare.com/files/28961190"
+landing_url = "https://figshare.com/articles/dataset/Parameters_and_load_data/14813121/3"
+metadata_url = "https://api.figshare.com/v2/articles/14813121/versions/3"
+version = "3 / file 28961190"
+expected_bytes = 134118
+publisher_md5 = "1e4863faa20d94d9cb86943e9f49214f"
+kind = "xlsx"
+sha256 = "8603893b874db11d171d08a1de518d1c1d04dfaabdc850ea488cc801ff50fb4d"
+license = "CC BY 4.0"
+attribution = "Chun Qin (2021). Parameters and load data. figshare. DOI 10.6084/m9.figshare.14813121.v3"
+role = "再修改后的Barry与工业园数据，引用Xin Qin等2021；不能混同作者原始测试床"
+
+[[sources]]
+id = "qin2021-author-workbook"
+filename = "modified-barry.xlsx"
+url = "https://docs.google.com/spreadsheets/d/1u0pp2BUgdesQ5lEBuuPDIRMhxS9INvC6/export?format=xlsx"
+landing_url = "https://xinqin-site.github.io/codes/"
+version = "public Google export; byte identity fixed by receipt SHA-256"
+kind = "xlsx"
+sha256 = "200fdf2f5af9610d8b817d26febe2d857e7a8980cbd07419152bdb7287845c2b"
+license = "作者公开入口，未见明确再分发许可；仅本地保存"
+role = "Xin Qin等2021公开modified Barry测试床；与学位论文仅作候选对照"

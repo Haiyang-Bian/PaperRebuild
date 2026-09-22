@@ -1,0 +1,95 @@
+schema = "r9-trading-protocol-v1"
+id = "r9-73-44e38h-8aggregators-24h-v1"
+origin = "synthetic_missing_fields_with_thesis_topology_and_nameplates"
+T = 24
+dt_h = 1.0
+currency = "CNY"
+budget_sec = 600.0
+load_table_rule = "table_7_9_before_factor; multiply_aggregators_once_by_1_5"
+background_rule = "base_peak_minus_unscaled_table_totals; uniform_on_other_load_nodes"
+p2h_rule = "numerical_EB_tables_define_conversion; HP_label_does_not_add_unlisted_capacity"
+storage_rule = "two_source_heat_stores_explicit_project_replacement"
+commitment_rule = "CHP1_on_at_Pmin; CHP2_zero_min; no_inferred_startup_cost"
+network_rule = "fixed_original_trees; bidirectional_heat_exchange; original_ties_recorded_inactive"
+electric_profile = [0.62,0.59,0.57,0.56,0.58,0.65,0.75,0.86,0.94,0.98,1.0,0.96,0.9,0.87,0.9,0.94,0.98,1.0,0.96,0.9,0.82,0.75,0.7,0.65]
+heat_profile = [0.8,0.8,0.78,0.76,0.8,0.88,0.96,1.0,0.96,0.88,0.82,0.8,0.78,0.76,0.78,0.84,0.92,0.98,0.94,0.88,0.84,0.82,0.8,0.8]
+pv_profile = [0.0,0.0,0.0,0.0,0.0,0.0,0.05,0.2,0.4,0.65,0.85,0.96,1.0,0.95,0.8,0.6,0.35,0.12,0.0,0.0,0.0,0.0,0.0,0.0]
+profile_origin = "project synthetic hourly arrays; common shape with 7.2, no optimization-derived values"
+
+[electric]
+power_factor = 0.9
+base_MVA = 50.0
+base_kV = 10.0
+grid_max_MW = 75.0
+grid_Q_max_Mvar = 50.0
+v_min_pu = 0.95
+v_max_pu = 1.05
+path_squared_voltage_drop_budget = 0.04
+x_over_r = 0.5
+capacity_factor = 1.5
+design_rule = "unscaled_table_and_background_plus_base_7_1_absolute_nameplates; freeze_before_7_3_optimization"
+transformer_rule = "ideal_nominal_ratio_lossless_unlimited_at_44_1_20; equivalent_10kV_network"
+
+[heat]
+cp_J_kgK = 4200.0
+rho_kg_m3 = 1000.0
+S_reference_K = 363.15
+R_reference_K = 323.15
+ambient_K = 283.15
+delta_min_K = 20.0
+delta_max_K = 70.0
+length_m = 600.0
+velocity_m_s = 1.0
+insulation_W_mK = 0.03
+insulation_thickness_m = 0.1
+capacity_factor = 1.5
+design_rule = "unscaled_base_subtree_absolute_heat_envelope; no_resizing_after_solve"
+model = "steady_energy_mass_envelope; no_temperature_mixing_or_hydraulic_certificate"
+
+[storage]
+battery_eta_ch = 0.95
+battery_eta_dis = 0.95
+battery_loss_per_h = 0.0
+initial_fraction = 0.5
+terminal = "energy_equal_initial"
+heat_power_MW = 0.5
+heat_energy_MWh = 2.0
+heat_eta_ch = 0.95
+heat_eta_dis = 0.95
+heat_loss_per_h = 0.001
+heat_cycle_CNY_MWh = 5.0
+heat_owners = ["A1","A2"]
+cost_basis = "charge_plus_discharge_throughput; explicit_project_interpretation"
+
+[demand]
+flex_fraction = 0.1
+dissatisfaction_CNY_h_MW2 = 10000.0
+preference = "unadjusted_hourly_reference; independent_of_flex_bounds"
+reactive_rule = "fixed_power_factor_for_demand;_conversion_and_storage_unity_power_factor"
+
+[settlement]
+retail_limit_MW = 100.0
+P_buy_tariff_factor = 1.05
+P_sell_tariff_factor = 0.5
+H_buy_CNY_MWh = 350.0
+H_sell_CNY_MWh = 175.0
+fee_CNY_MWh = 5.0
+peer_rule = "retail_midpoint; deterministic_actor_ID_matching; not_bargaining"
+utility_rule = "negative_resource_and_dissatisfaction_plus_internal_cash; no_unpublished_gross_benefit_constant"
+
+[[provenance]]
+fields = "topology, actor sites, table loads, CHP/P2H/PV/battery nameplates and variable costs"
+origin = "thesis"
+source = "PDF127-128 and132; tables7-1:4,7-6:9; typed ledgers retain source hashes"
+[[provenance]]
+fields = "1.5 factor, unallocated background, HP/EB reconciliation"
+origin = "explicit_project_interpretation_of_ambiguous_source"
+source = "original_text_and_tables_preserved; no_fit_to_tables7-10:11"
+[[provenance]]
+fields = "heat_storage, efficiencies, initial/terminal states, flexible-load preferences, settlement"
+origin = "synthetic_explicit_replacement"
+source = "this protocol frozen before optimization; not author parameters"
+[[provenance]]
+fields = "network parameters, losses, profiles and transformer equivalence"
+origin = "synthetic_engineering_replacement"
+source = "input-only sizing rules; literal source connectivity preserved; no WMM history inherited"

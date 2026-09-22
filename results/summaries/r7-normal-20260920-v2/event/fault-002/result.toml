@@ -1,0 +1,43 @@
+candidate_accepted = false
+case_sha256 = "0dcda9ae2007b2c3021f95c26ce37b325f2c227e27bbaf9352688081b3674972"
+elapsed_sec = 0.021000146865844727
+fault = [1]
+formula_ids = ["6-11", "6-12", "6-13", "6-14", "6-19", "6-20", "6-24:25", "6-3", "6-3/9", "6-4:5/57:58", "6-54", "6-55", "6-56", "6-61", "6-63", "6-72", "6-74", "6-75", "6-8/56/60", "6-80:82", "6-83", "6-84", "6-85", "6-86", "6-89", "R7-A3/90", "R7-A4/76:78", "R7-A4/77:79", "R7-R1", "R7-R2", "R7-R3", "R7-R4"]
+julia_version = "1.12.6"
+loss_optimization_complete = false
+lower_bound_MWh = 0.0
+model_class = "MILP"
+objective_kind = "expected_unserved_energy_MWh"
+optimizer_request = "MathOptInterface.OptimizerWithAttributes(HiGHS.Optimizer, Pair{MathOptInterface.AbstractOptimizerAttribute, Any}[MathOptInterface.RawOptimizerAttribute(\"threads\") => 1, MathOptInterface.RawOptimizerAttribute(\"primal_feasibility_tolerance\") => 1.0e-9, MathOptInterface.RawOptimizerAttribute(\"dual_feasibility_tolerance\") => 1.0e-9, MathOptInterface.RawOptimizerAttribute(\"mip_feasibility_tolerance\") => 1.0e-9, MathOptInterface.RawOptimizerAttribute(\"mip_rel_gap\") => 1.0e-9])"
+parent_normal_result_sha256 = "e1dbb35a49715759d1885a22d8600e8c470fe25b5c44ad01a7293cc3c9490f84"
+parent_normal_run_id = "fc1bdb39-44a2-4730-969a-97b4e339d967"
+preplan_id = "fc1bdb39-44a2-4730-969a-97b4e339d967"
+preplan_optimality_verified = false
+primal_status = "NO_SOLUTION"
+raw_status = "kHighsModelStatusInfeasible"
+requested_budget_sec = 585.433000087738
+run_id = "r7-recovery-ade43d2e-9b16-4fdc-960c-7b29edc82244"
+schema = "r7-recovery-result-v1"
+solver = "HiGHS"
+status = "infeasible_certified"
+termination_status = "INFEASIBLE"
+utc = "2026-09-19T19:43:43.702"
+version = "r7_recovery_checked_v1"
+
+[source_hashes_at_solve]
+"Manifest.toml" = "948f0f5c5a4bc8381a3d9ad413fb0f8e78ee1a3bad52606dea9b9b6f144e5450"
+"Project.toml" = "313f8c54dfa9a7a276832e48cc8d7e3e9b63c29aab765bf7fa541f2fb68f40a9"
+"src/PaperRebuild.jl" = "caa3f24f375eaadb89bc958f24ab6ba9f4b234f84857abb94ce47457607e1e53"
+"src/algorithms/r7_recovery.jl" = "ae17bc9781056995358fb5c783d53ea4b6f4eb9983211811f6ee72ab36c5a0bb"
+"src/core/r7_recovery.jl" = "40ad22ac1c87a582eb7d4a1c32f29937c68e0bc687ca005f0541974b87b30dce"
+"src/formulations/r7_recovery.jl" = "4b8a73597a04cedaa2a28db654e2ad0135c51c95f44c6eb5202b6be828882c7e"
+"src/reporting/r7_recovery.jl" = "f3617abd6cb02602bf8d2cf67784a78ffcd150daace84cbe23f4011a35212924"
+"src/verification/r7_recovery.jl" = "916b3b525d2877013f9bbd4f47a77355ad1b6cc075194fc5fe8696d2deda1962"
+
+[validation]
+ac_grid_validated = false
+detailed_heat_validated = false
+loss_pass = false
+model_pass = false
+optimality_pass = false
+rows = []

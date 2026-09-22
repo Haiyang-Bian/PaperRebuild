@@ -1,0 +1,74 @@
+archive_reserve_sec = 60.0
+author_code_equivalence = false
+budget_sec = 600.0
+central_solution_injected = false
+comparison = "paired_same_input_and_discrete_domain; serial_simulation_no_privacy_or_speedup_claim"
+fixed_input_sha256 = "5f1ddce8f60ff26281cadd450d5755327d54ab9bb197012dbe9f0121e025cad8"
+fixed_mode_rule = "initial_topology; reverse_3_25_24_5_heat_corridor; storage_charge_at_or_below_price_midrange"
+historical_results_preserved = true
+initialization = "zero_messages_and_scaled_duals"
+joint_input_sha256 = "0ccd3fc8cbec9eff35715615750f1961896dcec0dc7fb10c5c0a522594969fd3"
+max_iterations = 1000
+objective_record = "separate"
+objective_semantics = "Keep native reported objective and saved-primal evaluated objective separately; unchanged 1e-9 report gate remains explicit and may fail. No exact block-optimality certificate."
+origin = "synthetic"
+original_preregistered_design = false
+parent_manifest_sha256 = "2a312e0e3086047a13febf9608aa3ef5449220d185b721a5a96cd382d6daad50"
+reverse_heat_corridor = [[3, 25], [25, 24], [24, 5]]
+revision_reason = "Post-diagnostic fixed-mode study: EB3 at node 5 can export through 5->24->25->3; all original device/load/price/capacity bytes retained. Independent of centralized optimum. This rule does not pre-certify feasibility."
+rho = 1.0
+schema = "r9-distributed-study-protocol-v3"
+thermal_scope = "steady_energy_mass_envelopes_not_dynamic_thermal_physics"
+
+[clarabel]
+max_threads = 1
+tol_feas = 1.0e-10
+tol_gap_abs = 1.0e-10
+tol_gap_rel = 1.0e-10
+verbose = false
+
+[gurobi]
+FeasibilityTol = 1.0e-8
+IntFeasTol = 1.0e-8
+MIPGap = 0.0001
+NonConvex = 2
+OptimalityTol = 1.0e-8
+Seed = 0
+Threads = 1
+
+[[methods]]
+case = "equipment-fixed"
+domain = "fixed_modes"
+id = "fixed-convex-central"
+method = "central"
+solver = "Clarabel"
+[[methods]]
+case = "equipment-fixed"
+domain = "fixed_modes"
+id = "fixed-convex-admm"
+method = "admm"
+solver = "Clarabel"
+[[methods]]
+case = "equipment-fixed"
+domain = "mixed_integer"
+id = "fixed-mip-central"
+method = "central"
+solver = "Gurobi"
+[[methods]]
+case = "equipment-fixed"
+domain = "mixed_integer"
+id = "fixed-mip-admm"
+method = "admm"
+solver = "Gurobi"
+[[methods]]
+case = "equipment-joint"
+domain = "mixed_integer"
+id = "joint-mip-central"
+method = "central"
+solver = "Gurobi"
+[[methods]]
+case = "equipment-joint"
+domain = "mixed_integer"
+id = "joint-mip-admm"
+method = "admm"
+solver = "Gurobi"

@@ -1,0 +1,5 @@
+include("r4_setup.jl")
+length(ARGS)==1 || error("提供已保存的运行目录")
+r=read_r4_run(ARGS[1])
+println(r.result["status"])
+println(Dict(k=>v for (k, v) in r.validation if k!="rows"))

@@ -1,0 +1,103 @@
+schema = "ch05-strategic-model-v1"
+source = "docs/摘要.pdf"
+source_sha256 = "20328e2480e773520c19c378e53365fc944c0bafcfca73071f5d8313d5ee7d91"
+pdf_pages = [89, 90, 91]
+version = "r5_strategic_checked_v1"
+scope = "One IES, continuous price bids, fixed offer capacities, optimistic primal-dual selection, finite-support risk recourse."
+
+[[equation]]
+id = "R5-ST1"
+source_equations = ["5-32", "5-34", "5-43至5-50"]
+latex = 'Ay=b,\quad Gy\le h,\quad y\ge0,\quad c(o)+A^\mathsf T\pi+G^\mathsf T\mu-\delta=0'
+meaning = "下层目标系数c随连续报价o改变。等式乘子自由，其他乘子非负；所有市场原始行及变量下界均计入。报价界按原5-32显式输入。"
+api = "build_r5_strategic"
+test = "R5-ST 连续报价与独立下层"
+
+[[equation]]
+id = "R5-ST2"
+source_equations = ["5-51至5-57"]
+latex = 's=h-Gy\ge0,\quad \mu\ge0,\quad (\mu_j,s_j)\in\mathrm{SOS1},\qquad (\delta_k,y_k)\in\mathrm{SOS1}'
+meaning = "两个非负量至多一个非零表达互补，不设置任意乘子上界；这是项目求解表示。风险舒适开关的大M仍来自显式温度域，不能与对偶M混为一谈。"
+api = "build_r5_strategic"
+test = "R5-ST 连续报价与独立下层"
+
+[[equation]]
+id = "R5-ST3"
+source_equations = ["5-33"]
+latex = 'P_t^{\mathrm{DA}}=P_t^{\mathrm{IES}},\qquad R_t^U=R_t^{\mathrm{IES},U},\qquad R_t^D=R_t^{\mathrm{IES},D}'
+meaning = "共同承诺与市场成交逐时相等，两侧同为MW；不按内部设备容量缩放成交。补救仍须逐情景满足原采用物理关系。"
+api = "validate_r5_strategic"
+test = "R5-ST 连续报价与独立下层"
+
+[[equation]]
+id = "R5-ST4"
+source_equations = ["5-6", "5-61", "5-66", "5-68"]
+latex = '\min_{o,y,\pi,\mu,\delta,x,z}\ \Pi^{\mathrm{IES}}(y,\pi,\mu)+\sup_{p\in\mathcal P}\sum_i p_i Q_i(x_i),\qquad \sup_{p\in\mathcal P}\sum_i p_i z_i\le\epsilon'
+meaning = "采用全时域支付恒等式R5-SP3连接风险补救；内嵌补救的日前价格显式为零，避免重复计费。费用和事件的最坏分布独立。所有下层最优变量共同由上层选择，是显式乐观解释。"
+api = "solve_r5_strategic"
+test = "R5-ST 连续报价与独立下层"
+
+[[equation]]
+id = "R5-ST5"
+source_equations = ["5-58", "5-61"]
+latex = '\Pi_{\min/\max}(\bar y,\bar o)=\min/\max_{\pi,\mu}\{\Pi(\bar y,\pi,\mu):\ (\pi,\mu)\in\mathcal D(\bar o),\ D(\pi,\mu)=c(\bar o)^\mathsf T\bar y\}'
+meaning = "固定原始成交和报价，在对偶最优面上分别求支付两端；不改变成交、不截断价格。强对偶与双边可行性保证对应下层最优，不证明悲观双层决策已求解。"
+api = "r5_market_settlement_range"
+test = "R5-ST 固定成交价格最优面"
+
+[[symbol]]
+id = "R5-ST-S01"
+latex = 'o_t^E,o_t^U,o_t^D'
+meaning = "IES连续购电效用报价与上/下备用供给报价"
+unit = "USD/MWh；USD/(MW h)"
+julia = "bids[energy_bid / up_bid / down_bid][t]"
+scope = "三类时段向量；容量另以外生输入固定"
+[[symbol]]
+id = "R5-ST-S02"
+latex = 'y'
+meaning = "全部发电与IES能量/备用成交"
+unit = "MW"
+julia = "selected_market[values]"
+scope = "主体×时段；与内部风险共同承诺精确桥接"
+[[symbol]]
+id = "R5-ST-S03"
+latex = '\pi,\mu,\delta'
+meaning = "所选下层等式、不等式与变量下界乘子"
+unit = "USD/MW"
+julia = "selected_market[multipliers / lower_bound_duals]"
+scope = "优化变量来源，不是上层MIP求解器原始对偶"
+[[symbol]]
+id = "R5-ST-S04"
+latex = 's'
+meaning = "市场不等式剩余容量"
+unit = "MW"
+julia = "market_slack"
+scope = "与非负乘子组成SOS1；独立验算由原值重算"
+[[symbol]]
+id = "R5-ST-S05"
+latex = 'Q_i,z_i,\mathcal P'
+meaning = "情景补救费、舒适开关与有限支持运输歧义集"
+unit = "USD；1"
+julia = "risk_policy / embedded_duals / oracles"
+scope = "沿用风险台账；费用/风险两个对手独立"
+
+[[issue]]
+id = "R5-ST-C01"
+original = "原5-32为连续价格报价；原文未完整给出多最优出清的执行规则。"
+adopted = "单领导者连续报价，固定可报价容量，明确乐观原始/对偶选择；固定报价变体仍采用相同选择规则。"
+evidence = "独立下层只比较最优值并核验KKT，不强迫成交和价格一致；另测固定成交支付范围。"
+[[issue]]
+id = "R5-ST-C02"
+original = "KKT互补常用大M表达，但原页不足以给出所有有效对偶界。"
+adopted = "SOS1原生表达，Gurobi PreSOS1BigM=0；不支持原生SOS1的求解器明确拒绝。开放求解器用于显式固定分支。"
+evidence = "记录实际MOI类型；固定分支只报告该分支界；不能把其目标当作一般全域下界。"
+[[issue]]
+id = "R5-ST-C03"
+original = "原5-6净支付和实时补救共同组成IES目标。"
+adopted = "风险模板日前价格显式为零，净支付按所选真实出清乘子另计；不将上层界复用为风险子记录或市场界。"
+evidence = "独立检查支付直接乘积与仿射式、三个运输证书及费用分项；缺失认证保留候选未决。"
+[[issue]]
+id = "R5-ST-C04"
+original = "价格制定者改善私人目标不自动改善总体资源成本。"
+adopted = "手算阶梯例分别记录IES支出和外部/内部发电资源费，明确固定报价对照与完全价格接受者不是同一概念。"
+evidence = "预定低价容量0.2MW、普通负荷0.1MW、IES需求0.142MW及20/100/130三价格；不按收益调整参数。"

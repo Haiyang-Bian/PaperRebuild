@@ -1,0 +1,75 @@
+schema = "r3-baseline-differences-v1"
+algorithm = "r3_paper_structure_v1"
+source = "docs/摘要.pdf"
+physical_pages = [53, 54, 55, 57, 60]
+interpretation = "论文结构基线；使用核查版模型，不是作者程序的等价实现。"
+
+[[difference]]
+id = "B01"
+topic = "模型与物理核验"
+author = "3-59/60保留二阶锥约束；固定流量后为SOCP。"
+project = "核查版WMM；另对电网原支路等式和κ等式独立检查，不反馈基线外层。"
+status = "source_and_project_distinguished"
+
+[[difference]]
+id = "B02"
+topic = "已核查补全"
+author = "WMM/SCHPD原式及疑点保留于model-issues.toml。"
+project = "继续采用wmm_checked_v1、schpd_mc_v1；不启用阻断literal版本。"
+status = "adopted_interpretation_not_literal"
+
+[[difference]]
+id = "B03"
+topic = "终端与回温"
+author = "当前原页未取得与项目共同恢复尾段等价的定义。"
+project = "legacy_tail、bounded_return_tail、core_only；只作冻结的边界对照。"
+status = "project_boundary_experiment"
+
+[[difference]]
+id = "B04"
+topic = "初始化"
+author = "步骤1.b先解SCHPD。"
+project = "使用历史冻结的SCHPD/参考流量/box25/50/75；来源与近重复保留。"
+status = "synthetic_inputs_only"
+
+[[difference]]
+id = "B05"
+topic = "投影几何"
+author = "3-63/66写流量欧氏距离。"
+project = "physical_euclidean与normalized_euclidean配对；其余数值规则固定。"
+status = "controlled_comparison"
+
+[[difference]]
+id = "B06"
+topic = "步长与接受"
+author = "给出γ但当前页未取得数值或完整线搜索规则。"
+project = "未投影最大归一化位移0.1；折半12次；Armijo 1e-4；敏感性另取0.01与1。"
+status = "project_completion"
+
+[[difference]]
+id = "B07"
+topic = "不可行更新"
+author = "3-64割及3-65/66梯度投影替代路线。"
+project = "采用诊断梯度投影；不累积未证全局有效割，不调用局部恢复。"
+status = "selected_author_structure"
+
+[[difference]]
+id = "B08"
+topic = "停止"
+author = "步骤2.b比较相邻费用绝对差与ε，另有轮数上限；ε数值未确认。"
+project = "预先声明三个ε只作轨迹前缀审计；项目停止仍需三次小变化与可信方向。"
+status = "distinct_success_criteria"
+
+[[difference]]
+id = "B09"
+topic = "对偶与分段"
+author = "3-61使用乘子与θ(m)链式导数。"
+project = "原KKT及A2门槛；不可信或不可靠切换处保存未决，不以额外算法续做。"
+status = "project_evidence_gate"
+
+[[difference]]
+id = "B10"
+topic = "时间与性能"
+author = "表3-7报告不同初始化与求解方式耗时。"
+project = "冻结初值生成与外层耗时分开；不继承作者加速比或一般收敛结论。"
+status = "not_same_input_reproduction"

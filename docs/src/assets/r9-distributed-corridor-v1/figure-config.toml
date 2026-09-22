@@ -1,0 +1,15 @@
+input_manifest_sha256 = "1623bf96b2637084aca0501cbcf5d3b1f6cf366d0fc38d1ef9789f92a8670aea"
+log_display_floor = 1.0e-14
+optimization_performed = false
+origin = "synthetic"
+runs = ["fixed-convex-central", "fixed-convex-admm", "fixed-mip-central", "fixed-mip-admm", "joint-mip-central", "joint-mip-admm"]
+schema = "r9-distributed-figure-v1"
+
+[files]
+"F52-distributed-iterations.png" = "30da15ed70af54e080128efa3eac79b2bcfe6a83887163e1a99d26407045daf3"
+"F53-distributed-cost-status.png" = "ee19140fb6ccd6c7265ff4650d37d29be94b8a7b900f88b3d406019b788f8b02"
+"comparisons.csv" = "9bc981bbd75d2cd6ffb705cb936e84f6b804cfdc3081221cf2a678384f48a811"
+"iterations.csv" = "e91c7aea49d84cd34a3c9a1e9afe36000bdc3857be620bffc18e3ca80e41ef94"
+"objective_reports.csv" = "46699003d122d9bb414a59bda6ec115113ab05efe1c685ae9f905000026549fa"
+"plot.jl" = "a00a482b7a185029de401133145b027944d8614f99c66a963530594d708430d1"
+"summary.csv" = "582838b6c3d18d34b71f40074ea19bce3c7bbec772a04e690fca6d7e5205d5a3"

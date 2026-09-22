@@ -1,0 +1,27 @@
+schema = "r4-discrete-study-v1"
+origin = "synthetic"
+cases = ["open_flexible", "open_fixed", "import_flexible", "import_fixed"]
+methods = ["distributed", "central_enumeration", "central_misocp", "central_exact"]
+pattern_order = "binary integer 0:15, first period is least significant bit"
+expected_patterns = 16
+budget_sec = 600.0
+rho = 1.0
+peer_rho = 1.0
+max_iterations = 1000
+inner_iterations = 100
+discrete_solver = "clarabel"
+reference_solver = "gurobi"
+postprocessing = "explicit analytical w epigraph reconstruction; all physical and contract values unchanged"
+relative_cost_A4 = 0.001
+gap_A2 = 0.0001
+precision_cases = ["open_flexible", "import_flexible"]
+precision_profiles = ["original", "qcp_1e9"]
+precision_pattern = [1, 0, 1, 0]
+precision_change = "only BarQCPConvTol from original default 1e-6 to 1e-9; no algorithm/tolerance change"
+precision_budget_sec = 600.0
+
+[input_sha256]
+open_flexible = "7aadd5364225052c196f45a433635d9c412e37ffa3cbf78b0ed1b1791c2231d5"
+open_fixed = "ba5e4cbe085086ea8847d397f01d77bf89e12bf2b398c74a0e3bc8a0dce79fd9"
+import_flexible = "fcdb954da900fd878194b0a3d72bf2f130ecf057615bd84ae16436d315b9d5ca"
+import_fixed = "99b92147e9b1b369bd8903e84a7edfea423a55b47320608dd7ed5ff72f640689"

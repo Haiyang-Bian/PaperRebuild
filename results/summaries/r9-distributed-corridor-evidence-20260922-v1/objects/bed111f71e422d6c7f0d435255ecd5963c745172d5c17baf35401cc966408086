@@ -1,0 +1,48 @@
+budget_sec = 600.0
+central_solution_injected = false
+manifest_sha256 = "1623bf96b2637084aca0501cbcf5d3b1f6cf366d0fc38d1ef9789f92a8670aea"
+method_budget_pass = true
+method_elapsed_sec = 597.1628630999476
+process_budget_pass = false
+process_elapsed_sec = 654.6155573000433
+raw_before_validation_sha256 = "5b6b8763943f0f56e8139fdcb197b95989f83f255bb278cc1afa3b20fceb5f64"
+raw_result_sha256 = "035e1f4e5e22ac798de465384454e99cab03aee0bf012fd04e26d5dcb9d696ce"
+record = "record"
+record_manifest_sha256 = "cb137b4add882c976e2794d70b3dddfa6dfaa140bf8528894ec72ef90492d11e"
+schema = "r9-distributed-study-receipt-v1"
+start_utc = "2026-09-22T03:41:47.615"
+status = "time_limit_with_candidate"
+
+[entry]
+case = "equipment-joint"
+domain = "mixed_integer"
+id = "joint-mip-admm"
+method = "admm"
+solver = "Gurobi"
+
+[packages]
+Clarabel = "0.11.1"
+Gurobi = "1.9.3"
+Gurobi_jll = "13.0.3"
+JuMP = "1.31.2"
+MathOptInterface = "1.53.0"
+
+[validation]
+best_model_cost_CNY = nan
+best_model_found = false
+best_physical_cost_CNY = nan
+best_physical_found = false
+consensus_A4_pass = false
+cost_optimization_complete = false
+full_thermal_physics_certified = false
+iterations = 238
+last_cost_CNY = 663951.5536192942
+last_electric_original_pass = false
+last_model_pass = false
+max_solver_objective_report_relative_error = 7.480370835255545e-7
+mixed_integer_heuristic = true
+record_pass = true
+solver_objective_report_mismatch_count = 1241
+solver_objective_reports_checked = 2142
+solver_objective_reports_pass = false
+subproblem_accuracy_certified = false

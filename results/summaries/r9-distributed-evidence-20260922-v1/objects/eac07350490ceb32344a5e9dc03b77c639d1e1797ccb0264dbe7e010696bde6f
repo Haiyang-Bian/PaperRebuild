@@ -1,0 +1,18 @@
+budget_sec = 600.0
+central_solution_injected = false
+error_summary = "主体增广目标或符号错误"
+error_type = "ErrorException"
+manifest_sha256 = "78f1df14bb9b7d4018b8e484428eeefb3e21ea3f81a5a84d33c62dc411d02544"
+process_budget_pass = true
+process_elapsed_sec = 545.172753599938
+schema = "r9-distributed-study-receipt-v1"
+start_utc = "2026-09-22T02:41:55.680"
+status = "startup_or_archive_error"
+status_before_archive_error = "not_started"
+
+[entry]
+case = "equipment-joint"
+domain = "mixed_integer"
+id = "joint-mip-admm"
+method = "admm"
+solver = "Gurobi"

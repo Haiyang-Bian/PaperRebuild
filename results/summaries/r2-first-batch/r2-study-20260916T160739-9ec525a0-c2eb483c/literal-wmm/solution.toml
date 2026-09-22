@@ -1,0 +1,33 @@
+budget_sec = 60.0
+case_origin = "synthetic"
+elapsed_sec = 0.0019998550415039062
+fixed_flows = false
+input_sha256 = "1edcf60d35079ba126c253525d622dc104b7c8b503d71c153fb76e7a0aef8f4d"
+issues = ["R2-C01", "R2-C02"]
+paper_match = "blocked"
+seed = 0
+status = "blocked"
+study_job = "literal-wmm"
+threads = 1
+
+[source_hashes_at_solve]
+"src/PaperRebuild.jl" = "2fea0749f6271116672c095050d843581d1f2cfd0bf18f1c787761d89212ca66"
+"src/components/devices.jl" = "01a86d8bb7bbbf0ad27f79acb099427ec18543a0a4b1b916f411f2e1a4053e2d"
+"src/core/case.jl" = "dd5de1049fc740706fa9005f48b60d75e088bc68faa9f6092b9b310e7aaed624"
+"src/core/r2_case.jl" = "9aa0fc0be333668f9f8515270af6677c4bf03d9490250a8d5918fd05da93cfc3"
+"src/formulations/r1.jl" = "e952963689b39d28dc490066e55c7e5ca2689cd0ce78982a5397b09713466655"
+"src/formulations/r2.jl" = "bc65149e2f5601a48d56b33545de29ae65d8c7233feefa411f27da1da52e5c76"
+"src/networks/fixed_flow_heat.jl" = "620c069f6b3a520d32ee546ec048074f9cbaa3c785f8c2e31ec7fd7bf245a83b"
+"src/networks/water_mass.jl" = "ef76594a25d5a310f8265137e733d811c8dbefcf0aea0b3ff8be5ed7b05bceef"
+"src/reporting/r2_runs.jl" = "7cbc9b6643dc2f440e8611a46d5e886ffdaf5ba881dc6d94aaebf447d0080fe7"
+"src/reporting/runs.jl" = "7cb0ad0bf0bc5ea77af73e08a8261982510ce869caef95e26b7d51730a43b635"
+"src/verification/r1.jl" = "c81ba065cd5e6e38e37cc385d89b81e0915c26b10edb2dd0321fd91633c202d3"
+"src/verification/r2.jl" = "27395b0ac9689212005ea79ddf8e1b9c92cd5df170af1ba78bd51c53bd9560ca"
+
+[spec]
+dynamics = "wmm"
+dynamics_product = "exact"
+formulation = "wmm_literal"
+heat_balance = "exact"
+loss = "wmm"
+mixing = "exact"

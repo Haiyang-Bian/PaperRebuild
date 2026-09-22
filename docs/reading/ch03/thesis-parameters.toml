@@ -1,0 +1,101 @@
+schema_version = 1
+source = "docs/摘要.pdf"
+source_sha256 = "20328e2480e773520c19c378e53365fc944c0bafcfca73071f5d8313d5ee7d91"
+physical_pages = [55, 56]
+printed_pages = [38, 39]
+verification = "2026-09-16 原PDF图像逐项核对；不使用DOCX估算"
+case_id = "thesis-ch03-PDN33-DHN32"
+ready_for_dispatch = false
+
+[system]
+electric_nodes = 33
+electric_active_branches = 32
+electric_kV = 10.0
+electric_peak_MVA = 10.33
+distributed_capacity_MW = 9.5
+pv_capacity_MW = 3.5
+heat_nodes = 32
+pipe_total_km_reported = 12.58
+heat_peak_MW = 6.24
+supply_min_K = 343.0
+supply_max_K = 363.0
+return_min_K = 303.0
+return_max_K = 323.0
+pipe_length_convention = "原文只写管道全长，单侧/供回双侧统计待核"
+CHP_count_in_prose = 3
+CHP_count_in_table = 2
+CHP_count_status = "Q01 unresolved"
+
+[[pv]]
+id = "PV1"
+electric_node = 32
+rated_kW = 2000.0
+cost_USD_per_kWh = 0.0125
+source_table = "3-2"
+
+[[pv]]
+id = "PV2"
+electric_node = 14
+rated_kW = 1500.0
+cost_USD_per_kWh = 0.0125
+source_table = "3-2"
+
+[[chp]]
+id = "CHP1"
+electric_node = 6
+heat_node = 1
+heat_to_power_percent = 150.0
+rated_kW = 3000.0
+cost_USD_per_kWh = 0.2
+source_table = "3-3"
+capacity_interpretation = "表头额定功率；按电功率解释与总装机吻合，仍记录为项目解释"
+
+[[chp]]
+id = "CHP2"
+electric_node = 7
+heat_node = 5
+heat_to_power_percent = 80.0
+rated_kW = 3000.0
+cost_USD_per_kWh = 0.18
+source_table = "3-3"
+capacity_interpretation = "表头额定功率；按电功率解释与总装机吻合，仍记录为项目解释"
+
+[[converters]]
+id = "EB1"
+electric_node = 33
+heat_node = 10
+COP = 0.95
+rated_heat_kW = 2000.0
+source_table = "3-4"
+
+[[converters]]
+id = "HP1"
+electric_node = 15
+heat_node = 24
+COP = 2.5
+rated_heat_kW = 800.0
+source_table = "3-4"
+
+[[converters]]
+id = "HP2"
+electric_node = 18
+heat_node = 30
+COP = 2.5
+rated_heat_kW = 1500.0
+source_table = "3-4"
+
+[tariff]
+source_table = "3-5"
+unit = "USD/kWh"
+interval_convention = "项目表示采用[起点,终点)，跨午夜拆分；不据此认定论文优化步长"
+start_h = [0, 6, 10, 18, 22]
+end_h = [6, 10, 18, 22, 24]
+price = [0.0559, 0.2049, 0.1117, 0.2049, 0.0559]
+
+[heat_topology]
+source_figure = "3-2 / PDF56"
+status = "图示连接人工转录；边的次序为项目索引，不是作者管段编号；未赋予管长或流向"
+edges = [[1,2],[2,3],[2,4],[2,5],[5,6],[5,7],[5,8],[5,9],[9,10],[9,11],[11,12],[11,13],[11,14],[9,15],[15,16],[15,17],[15,18],[18,19],[19,20],[19,21],[21,22],[21,23],[19,24],[24,25],[24,26],[24,27],[27,28],[27,29],[27,30],[30,31],[30,32]]
+
+[missing]
+items = ["作者逐支路阻抗、容量、基值修改表", "修改后热网每条管道参数及与文献[25]编号映射", "各节点P/Q/H及PV可用出力原始时序", "时间步长和初始温度/流量历史", "Q01正文3台CHP与表格2台冲突"]

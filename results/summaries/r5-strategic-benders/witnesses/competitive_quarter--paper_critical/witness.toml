@@ -1,0 +1,949 @@
+iteration_count = 3
+parent_result_sha256 = "e260403ff345722a0696f56fcfaf73c0dae6d71d3e8f35f663ee1a18f299a328"
+raw_result_content_sha256 = "0baceb9759874384a7c9b4029f812d3b5fea4f628e6feb3a0702514e8ef22417"
+schema = "r5-strategic-benders-public-v1"
+
+[case]
+leader_id = "IES"
+name = "competitive_quarter"
+origin = "synthetic"
+quantity_rule = "fixed_offer_capacities"
+schema = "r5-strategic-case-v1"
+selection = "optimistic_primal_dual"
+
+    [case.bid_bounds.down_bid]
+    lower = [0.0]
+    upper = [200.0]
+
+    [case.bid_bounds.energy_bid]
+    lower = [0.0]
+    upper = [200.0]
+
+    [case.bid_bounds.up_bid]
+    lower = [0.0]
+    upper = [200.0]
+
+    [case.market]
+    T = 1
+    description = "One exogenous generator, common 100 USD prices, explicit abundant supply."
+    dt_h = 0.25
+    load_MW = [[1.0]]
+    name = "competitive_quarter"
+    nodes = 1
+    origin = "synthetic"
+    reserve_down_MW = [0.1]
+    reserve_up_MW = [0.1]
+    schema = "r5-market-case-v1"
+
+        [[case.market.generators]]
+        down_bid = [100.0]
+        down_max = 1.0
+        energy_bid = [100.0]
+        id = "G"
+        node = 1
+        p_bid_max = 5.0
+        p_initial = 1.0
+        p_max = 5.0
+        p_min = 0.0
+        ramp_down_MW_h = 20.0
+        ramp_up_MW_h = 20.0
+        up_bid = [100.0]
+        up_max = 1.0
+
+        [[case.market.ies]]
+        down_bid = [100.0]
+        down_max = 0.08
+        energy_bid = [100.0]
+        id = "IES"
+        node = 1
+        purchase_bid_max = 1.0
+        q_max = 1.0
+        q_min = 0.0
+        up_bid = [100.0]
+        up_max = 0.08
+
+        [case.market.network]
+        limit_MW = []
+        ptdf = []
+        slack_node = 1
+
+        [case.market.units]
+        energy = "MWh"
+        energy_price = "USD/MWh"
+        power = "MW"
+        ramp = "MW/h"
+        reserve_price = "USD/(MW*h)"
+        time = "h"
+
+    [case.provenance]
+    changes = "External one-node market and explicit zero embedded day-ahead prices; no physical trajectory or risk parameter changes."
+    parent_risk = "configs/r5/risk/quarter.toml"
+    parent_risk_sha256 = "a9fa178ef996fa31b663ac51797e132c4942a8c231f02dcd62b1e67cb6d144c1"
+
+    [case.risk]
+    epsilon = 0.0
+    event = "any_building_time_comfort_violation"
+    name = "quarter"
+    objective = "worst_expected_net_cost"
+    origin = "synthetic"
+    schema = "r5-risk-case-v1"
+
+        [case.risk.ambiguity]
+        distance = [[0.0, 1.0, 1.0], [1.0, 0.0, 1.0], [1.0, 1.0, 0.0]]
+        distance_provenance = "Euclidean distance between one-hot labels of the three frozen full-call regimes, divided by sqrt(2); synthetic categorical trajectory metric, not calibrated from thesis samples."
+        distance_unit = "normalized_trajectory"
+        radius = 0.0
+        support = "fixed_scenarios"
+
+        [case.risk.commitment]
+        comfort = "hard_each_scenario"
+        name = "shared_hand"
+        objective = "expected_net_cost"
+        origin = "synthetic"
+        recourse_information = "complete_trajectory"
+        schema = "r5-commitment-case-v1"
+        uncertain_fields = ["realtime.alpha_down", "realtime.alpha_up"]
+
+            [case.risk.commitment.bounds.P_DA_MW]
+            lower = [0.0]
+            upper = [1.0]
+
+            [case.risk.commitment.bounds.R_down_MW]
+            lower = [0.0]
+            upper = [0.08]
+
+            [case.risk.commitment.bounds.R_up_MW]
+            lower = [0.0]
+            upper = [0.08]
+
+            [case.risk.commitment.day_ahead]
+            down_price = [0.0]
+            energy_price = [0.0]
+            up_price = [0.0]
+
+            [[case.risk.commitment.scenarios]]
+            case_sha256 = "d39ca0ad367685e74249f83f59fc7853d0be975097cf7f5d83c7be7839dd4ea1"
+            id = "none"
+            probability = 0.5
+
+                [case.risk.commitment.scenarios.case]
+                T = 1
+                ambient_K = [283.15]
+                dt_h = 0.25
+                name = "shared_none"
+                origin = "synthetic"
+                schema = "r5-dispatch-case-v1"
+
+                    [case.risk.commitment.scenarios.case.award]
+                    P_DA_MW = [0.142]
+                    R_down_MW = [0.0]
+                    R_up_MW = [0.0]
+                    down_price = [2.0]
+                    energy_price = [100.0]
+                    origin = "synthetic"
+                    up_price = [5.0]
+
+                    [[case.risk.commitment.scenarios.case.buildings]]
+                    COP_DH = 1.0
+                    C_MWh_K = 0.01
+                    G_MW_K = 0.0042
+                    P_DH_max_MW = 0.0
+                    R_max_K = 320.15
+                    R_min_K = 320.15
+                    T_initial_K = 293.15
+                    T_max_K = 293.15
+                    T_min_K = 293.15
+                    electric_node = 2
+                    heat_node = 2
+                    id = "building"
+                    m_kg_s = 1.0
+                    terminal_rule = "initial"
+
+                    [[case.risk.commitment.scenarios.case.devices]]
+                    cost_USD_MWh = 0.0
+                    heat_ratio = 1.0
+                    id = "EB"
+                    kind = "EB"
+                    node = 2
+                    p_max_MW = 0.1
+                    p_min_MW = 0.0
+                    q_max_Mvar = 0.0
+                    q_min_Mvar = 0.0
+                    source_id = "source"
+                    [[case.risk.commitment.scenarios.case.devices]]
+                    P_initial_MW = 0.05
+                    cost_USD_MWh = 130.0
+                    id = "GT"
+                    kind = "GT"
+                    node = 2
+                    p_max_MW = 0.2
+                    p_min_MW = 0.0
+                    q_max_Mvar = 0.0
+                    q_min_Mvar = 0.0
+                    ramp_down_MW_h = 1.0
+                    ramp_up_MW_h = 1.0
+
+                    [case.risk.commitment.scenarios.case.electric]
+                    P_load_MW = [[0.0], [0.1]]
+                    Q_load_Mvar = [[0.0], [0.02]]
+                    S_base_MVA = 1.0
+                    nodes = 2
+                    pcc_max_MW = 1.0
+                    pcc_min_MW = 0.0
+                    qcc_max_Mvar = 1.0
+                    qcc_min_Mvar = -1.0
+                    root = 1
+                    v_max_pu = 1.05
+                    v_min_pu = 0.95
+                    v_ref_pu = 1.0
+
+                        [[case.risk.commitment.scenarios.case.electric.lines]]
+                        P_limit_MW = 1.0
+                        Q_limit_Mvar = 1.0
+                        from = 1
+                        id = "e12"
+                        r_pu = 0.01
+                        to = 2
+                        x_pu = 0.005
+
+                    [case.risk.commitment.scenarios.case.heat]
+                    R_max_K = 343.15
+                    R_min_K = 293.15
+                    S_max_K = 353.15
+                    S_min_K = 303.15
+                    c_J_kgK = 4200.0
+                    nodes = 2
+                    terminal_rule = "free"
+
+                        [[case.risk.commitment.scenarios.case.heat.pipes]]
+                        area_m2 = 0.01
+                        from = 1
+                        history_R_K = [320.15, 320.15, 320.15, 320.15]
+                        history_S_K = [330.15, 330.15, 330.15, 330.15]
+                        id = "h12"
+                        length_m = 360.0
+                        loss_W_mK = 0.0
+                        m_kg_s = 1.0
+                        rho_kg_m3 = 1000.0
+                        to = 2
+
+                        [[case.risk.commitment.scenarios.case.heat.sources]]
+                        T_max_K = 330.15
+                        T_min_K = 330.15
+                        id = "source"
+                        m_kg_s = 1.0
+                        node = 1
+
+                    [case.risk.commitment.scenarios.case.realtime]
+                    alpha_down = [0.0]
+                    alpha_up = [0.0]
+                    delta = 0.0
+                    penalty_USD_MWh = 1000.0
+                    price = [80.0]
+
+                    [case.risk.commitment.scenarios.case.units]
+                    energy = "MWh"
+                    energy_price = "USD/MWh"
+                    flow = "kg/s"
+                    heat_capacity = "MWh/K"
+                    heat_transfer = "MW/K"
+                    power = "MW"
+                    reactive = "Mvar"
+                    reserve_price = "USD/(MW*h)"
+                    temperature = "K"
+                    time = "h"
+            [[case.risk.commitment.scenarios]]
+            case_sha256 = "2e3bfbf561fc8197540964227d6f6b3f5e8a95cb2fbba4f5371325ad3cb76383"
+            id = "up"
+            probability = 0.25
+
+                [case.risk.commitment.scenarios.case]
+                T = 1
+                ambient_K = [283.15]
+                dt_h = 0.25
+                name = "shared_up"
+                origin = "synthetic"
+                schema = "r5-dispatch-case-v1"
+
+                    [case.risk.commitment.scenarios.case.award]
+                    P_DA_MW = [0.142]
+                    R_down_MW = [0.0]
+                    R_up_MW = [0.0]
+                    down_price = [2.0]
+                    energy_price = [100.0]
+                    origin = "synthetic"
+                    up_price = [5.0]
+
+                    [[case.risk.commitment.scenarios.case.buildings]]
+                    COP_DH = 1.0
+                    C_MWh_K = 0.01
+                    G_MW_K = 0.0042
+                    P_DH_max_MW = 0.0
+                    R_max_K = 320.15
+                    R_min_K = 320.15
+                    T_initial_K = 293.15
+                    T_max_K = 293.15
+                    T_min_K = 293.15
+                    electric_node = 2
+                    heat_node = 2
+                    id = "building"
+                    m_kg_s = 1.0
+                    terminal_rule = "initial"
+
+                    [[case.risk.commitment.scenarios.case.devices]]
+                    cost_USD_MWh = 0.0
+                    heat_ratio = 1.0
+                    id = "EB"
+                    kind = "EB"
+                    node = 2
+                    p_max_MW = 0.1
+                    p_min_MW = 0.0
+                    q_max_Mvar = 0.0
+                    q_min_Mvar = 0.0
+                    source_id = "source"
+                    [[case.risk.commitment.scenarios.case.devices]]
+                    P_initial_MW = 0.05
+                    cost_USD_MWh = 130.0
+                    id = "GT"
+                    kind = "GT"
+                    node = 2
+                    p_max_MW = 0.2
+                    p_min_MW = 0.0
+                    q_max_Mvar = 0.0
+                    q_min_Mvar = 0.0
+                    ramp_down_MW_h = 1.0
+                    ramp_up_MW_h = 1.0
+
+                    [case.risk.commitment.scenarios.case.electric]
+                    P_load_MW = [[0.0], [0.1]]
+                    Q_load_Mvar = [[0.0], [0.02]]
+                    S_base_MVA = 1.0
+                    nodes = 2
+                    pcc_max_MW = 1.0
+                    pcc_min_MW = 0.0
+                    qcc_max_Mvar = 1.0
+                    qcc_min_Mvar = -1.0
+                    root = 1
+                    v_max_pu = 1.05
+                    v_min_pu = 0.95
+                    v_ref_pu = 1.0
+
+                        [[case.risk.commitment.scenarios.case.electric.lines]]
+                        P_limit_MW = 1.0
+                        Q_limit_Mvar = 1.0
+                        from = 1
+                        id = "e12"
+                        r_pu = 0.01
+                        to = 2
+                        x_pu = 0.005
+
+                    [case.risk.commitment.scenarios.case.heat]
+                    R_max_K = 343.15
+                    R_min_K = 293.15
+                    S_max_K = 353.15
+                    S_min_K = 303.15
+                    c_J_kgK = 4200.0
+                    nodes = 2
+                    terminal_rule = "free"
+
+                        [[case.risk.commitment.scenarios.case.heat.pipes]]
+                        area_m2 = 0.01
+                        from = 1
+                        history_R_K = [320.15, 320.15, 320.15, 320.15]
+                        history_S_K = [330.15, 330.15, 330.15, 330.15]
+                        id = "h12"
+                        length_m = 360.0
+                        loss_W_mK = 0.0
+                        m_kg_s = 1.0
+                        rho_kg_m3 = 1000.0
+                        to = 2
+
+                        [[case.risk.commitment.scenarios.case.heat.sources]]
+                        T_max_K = 330.15
+                        T_min_K = 330.15
+                        id = "source"
+                        m_kg_s = 1.0
+                        node = 1
+
+                    [case.risk.commitment.scenarios.case.realtime]
+                    alpha_down = [0.0]
+                    alpha_up = [1.0]
+                    delta = 0.0
+                    penalty_USD_MWh = 1000.0
+                    price = [80.0]
+
+                    [case.risk.commitment.scenarios.case.units]
+                    energy = "MWh"
+                    energy_price = "USD/MWh"
+                    flow = "kg/s"
+                    heat_capacity = "MWh/K"
+                    heat_transfer = "MW/K"
+                    power = "MW"
+                    reactive = "Mvar"
+                    reserve_price = "USD/(MW*h)"
+                    temperature = "K"
+                    time = "h"
+            [[case.risk.commitment.scenarios]]
+            case_sha256 = "bf6d27a22d0621f58b0a6c4d48ea60a5c1a1f7dfe523c87149edf0807a42a593"
+            id = "down"
+            probability = 0.25
+
+                [case.risk.commitment.scenarios.case]
+                T = 1
+                ambient_K = [283.15]
+                dt_h = 0.25
+                name = "shared_down"
+                origin = "synthetic"
+                schema = "r5-dispatch-case-v1"
+
+                    [case.risk.commitment.scenarios.case.award]
+                    P_DA_MW = [0.142]
+                    R_down_MW = [0.0]
+                    R_up_MW = [0.0]
+                    down_price = [2.0]
+                    energy_price = [100.0]
+                    origin = "synthetic"
+                    up_price = [5.0]
+
+                    [[case.risk.commitment.scenarios.case.buildings]]
+                    COP_DH = 1.0
+                    C_MWh_K = 0.01
+                    G_MW_K = 0.0042
+                    P_DH_max_MW = 0.0
+                    R_max_K = 320.15
+                    R_min_K = 320.15
+                    T_initial_K = 293.15
+                    T_max_K = 293.15
+                    T_min_K = 293.15
+                    electric_node = 2
+                    heat_node = 2
+                    id = "building"
+                    m_kg_s = 1.0
+                    terminal_rule = "initial"
+
+                    [[case.risk.commitment.scenarios.case.devices]]
+                    cost_USD_MWh = 0.0
+                    heat_ratio = 1.0
+                    id = "EB"
+                    kind = "EB"
+                    node = 2
+                    p_max_MW = 0.1
+                    p_min_MW = 0.0
+                    q_max_Mvar = 0.0
+                    q_min_Mvar = 0.0
+                    source_id = "source"
+                    [[case.risk.commitment.scenarios.case.devices]]
+                    P_initial_MW = 0.05
+                    cost_USD_MWh = 130.0
+                    id = "GT"
+                    kind = "GT"
+                    node = 2
+                    p_max_MW = 0.2
+                    p_min_MW = 0.0
+                    q_max_Mvar = 0.0
+                    q_min_Mvar = 0.0
+                    ramp_down_MW_h = 1.0
+                    ramp_up_MW_h = 1.0
+
+                    [case.risk.commitment.scenarios.case.electric]
+                    P_load_MW = [[0.0], [0.1]]
+                    Q_load_Mvar = [[0.0], [0.02]]
+                    S_base_MVA = 1.0
+                    nodes = 2
+                    pcc_max_MW = 1.0
+                    pcc_min_MW = 0.0
+                    qcc_max_Mvar = 1.0
+                    qcc_min_Mvar = -1.0
+                    root = 1
+                    v_max_pu = 1.05
+                    v_min_pu = 0.95
+                    v_ref_pu = 1.0
+
+                        [[case.risk.commitment.scenarios.case.electric.lines]]
+                        P_limit_MW = 1.0
+                        Q_limit_Mvar = 1.0
+                        from = 1
+                        id = "e12"
+                        r_pu = 0.01
+                        to = 2
+                        x_pu = 0.005
+
+                    [case.risk.commitment.scenarios.case.heat]
+                    R_max_K = 343.15
+                    R_min_K = 293.15
+                    S_max_K = 353.15
+                    S_min_K = 303.15
+                    c_J_kgK = 4200.0
+                    nodes = 2
+                    terminal_rule = "free"
+
+                        [[case.risk.commitment.scenarios.case.heat.pipes]]
+                        area_m2 = 0.01
+                        from = 1
+                        history_R_K = [320.15, 320.15, 320.15, 320.15]
+                        history_S_K = [330.15, 330.15, 330.15, 330.15]
+                        id = "h12"
+                        length_m = 360.0
+                        loss_W_mK = 0.0
+                        m_kg_s = 1.0
+                        rho_kg_m3 = 1000.0
+                        to = 2
+
+                        [[case.risk.commitment.scenarios.case.heat.sources]]
+                        T_max_K = 330.15
+                        T_min_K = 330.15
+                        id = "source"
+                        m_kg_s = 1.0
+                        node = 1
+
+                    [case.risk.commitment.scenarios.case.realtime]
+                    alpha_down = [1.0]
+                    alpha_up = [0.0]
+                    delta = 0.0
+                    penalty_USD_MWh = 1000.0
+                    price = [80.0]
+
+                    [case.risk.commitment.scenarios.case.units]
+                    energy = "MWh"
+                    energy_price = "USD/MWh"
+                    flow = "kg/s"
+                    heat_capacity = "MWh/K"
+                    heat_transfer = "MW/K"
+                    power = "MW"
+                    reactive = "Mvar"
+                    reserve_price = "USD/(MW*h)"
+                    temperature = "K"
+                    time = "h"
+
+        [case.risk.temperature_domain.building]
+        lower_K = 292.15
+        upper_K = 294.15
+
+[files_sha256]
+"iterations/0001.toml" = "221fec59f42297d8f40ea6611f2419094cb9d2af35afcea145470cf434b81f8c"
+"iterations/0002.toml" = "1de201af9899c18cfe5977c161161586604b3b5d712958296429dfab853d7854"
+"iterations/0003.toml" = "b768f7dc501a3d4fb9192ef2fb63a81b5d51ccfed5a3c7e5062ac80431264d8a"
+"subproblems/r5-benders-sub-0335280e-e5ca-41ca-91b7-c04a80cf3ec1.toml" = "54d35fdd6c3d1696add9df567fb830092aa8be5a71a9cd0fd595d38fd514f0af"
+"subproblems/r5-benders-sub-0e572a2a-1829-4caf-aa84-f3af8603d6b1.toml" = "7bf68bb7f0042549730b3e93a84b4f5e2e69b04cfe77eb2478ce02932c097f2d"
+"subproblems/r5-benders-sub-145aa9f9-37dd-48d2-b91f-e0d94867330a.toml" = "c1f234b29ebaad7da36fb8e10497868d23bfd83068c74b7eeab4e0659dcec872"
+"subproblems/r5-benders-sub-2017b800-2b35-43ef-aa78-864dad0bff5a.toml" = "9bdb044f23c61538b1c95174e183ca6ce25000b4926c9b0454450ddacce43fbf"
+"subproblems/r5-benders-sub-44f1243c-451b-43a2-b912-7ad2f1956ae9.toml" = "9d5249b34c55e3197a64dc038fe9229c3548b2b2971498214ac6cff29b736d2c"
+"subproblems/r5-benders-sub-480407f1-3963-4fae-bb16-988e1b4cd55c.toml" = "9d029e046ad6f779d252082f7358561b12f37b2389f1e3ad01cc184012393b7c"
+"subproblems/r5-benders-sub-77c20de5-0287-4f8a-95ef-80d88b971d9c.toml" = "dc07c96f7502bffd699d1601ec76ef43056a8caf9a77d48f16cb7dd03e69ff76"
+"subproblems/r5-benders-sub-80c17e92-c4d0-4aee-9822-acb921278b62.toml" = "fe5ea1bd60626c2ca7eed3113ef258ae560263c00486eef4e9dbb27b19008457"
+"subproblems/r5-benders-sub-8d294765-8a11-445c-ba56-c34b76ee1a44.toml" = "5c4be7c71326d50784e4a445eded3904e589ae5ab31caefeedaa909eb562dac3"
+"subproblems/r5-benders-sub-bf99e9b1-6049-4d86-b61e-e72c20a19a95.toml" = "79192ac9d41a5dfcc18ef89c4dcd9eab368e6271474cd29d0ab71bc246264096"
+"subproblems/r5-benders-sub-d0635c15-c151-46bd-8631-4bb8ef448d9c.toml" = "4bd5894742ac6b8fbfab82df655808c0c9834d1a34db9318b06b75923e4a438c"
+"subproblems/r5-benders-sub-d5366cc2-8925-4257-b79c-87b38cd42d28.toml" = "72d0dbe0518c584877747a9d5e827fab9dfc0df314ca2cc759ee089a86d16971"
+
+[result]
+budget_overrun_sec = 0.0
+budget_sec = 600.0
+case_sha256 = "caf4e19e0645b3af812276b1ab059197dddb67aabd221ce5a2897a2f349e5b31"
+cost_optimization_complete = false
+created_utc = "2026-09-19T08:53:29.417"
+cut_order = ["r5-benders-sub-2017b800-2b35-43ef-aa78-864dad0bff5a", "r5-benders-sub-77c20de5-0287-4f8a-95ef-80d88b971d9c", "r5-benders-sub-80c17e92-c4d0-4aee-9822-acb921278b62", "r5-benders-sub-8d294765-8a11-445c-ba56-c34b76ee1a44"]
+declared_branch_cost_complete = false
+elapsed_sec = 2.74399995803833
+julia_version = "1.12.6"
+objective_type = "market_net_payment_plus_worst_recourse"
+run_id = "r5-strategic-benders-a7c56986-64f1-45cc-8c6f-8ffbc5a61133"
+schema = "r5-strategic-benders-result-v1"
+selected_iteration = 3
+selection = "optimistic_primal_dual"
+source_unchanged = true
+status = "restricted_domain_gap"
+version = "r5_strategic_benders_checked_v1"
+
+    [result.cuts.r5-benders-sub-2017b800-2b35-43ef-aa78-864dad0bff5a]
+    arithmetic = "rational_box"
+    branch = 0
+    case_sha256 = "d746810c0e57ccbca51f54bbd92d41922c322ed7519d23d973441a14c03dff31"
+    certificate_scope = "exact_rational_minorant_of_encoded_bounded_LP_outward_float_coefficients"
+    constant = 4.614999999999993
+    deactivation_M = 24.615000002649996
+    exact_coefficient_guard = "0//1"
+    exact_raw_constant = "332545796485037425//72057594037927936"
+    exact_sign_guard = "0//1"
+    exact_stationarity_guard = "62185299034452783//10141204801825835211973625643008"
+    guard = 6.897260540483785e-15
+    kind = "cost"
+    lower_cost = -20.00000000265
+    productive = true
+    raw_constant = 4.615
+    rounding_guard = 7.653166295140683e-16
+    scenario = 1
+    sign_guard = 0.0
+    source_run_id = "r5-benders-sub-2017b800-2b35-43ef-aa78-864dad0bff5a"
+    source_value = 4.614999999999993
+    stationarity_guard = 6.131943910969717e-15
+    units = "synthetic_USD"
+
+        [result.cuts.r5-benders-sub-2017b800-2b35-43ef-aa78-864dad0bff5a.exact_gradient]
+        "P_DA_MW/1" = "-65//2"
+        "R_down_MW/1" = "0//1"
+        "R_up_MW/1" = "0//1"
+
+        [result.cuts.r5-benders-sub-2017b800-2b35-43ef-aa78-864dad0bff5a.gradient]
+        "P_DA_MW/1" = -32.5
+        "R_down_MW/1" = 0.0
+        "R_up_MW/1" = 0.0
+
+        [result.cuts.r5-benders-sub-2017b800-2b35-43ef-aa78-864dad0bff5a.stationarity_raw]
+        "H_D/1/1" = 0.0
+        "P_DER/1/1" = 0.0
+        "P_DER/2/1" = 0.0
+        "P_DH/1/1" = 0.0
+        "P_PCC/1/1" = 0.0
+        "P_line/1/1" = 0.0
+        "Q_DER/1/1" = 0.0
+        "Q_DER/2/1" = 0.0
+        "Q_PCC/1/1" = 0.0
+        "Q_line/1/1" = 0.0
+        "delivery/1/1" = 0.0
+        "mismatch/1/1" = 0.0
+        "v/1/1" = 0.0
+        "v/2/1" = 0.0
+        "τ_IN/1/1" = 0.0
+        "τ_R/1/1" = -9.107298248878237e-18
+        "τ_R/2/1" = 0.0
+        "τ_S/1/1" = 0.0
+        "τ_S/2/1" = 0.0
+        "τ_load_R/1/1" = 0.0
+        "τ_pipe_R/1/1" = 0.0
+        "τ_pipe_S/1/1" = 0.0
+        "τ_src/1/1" = 9.107298248878237e-18
+
+    [result.cuts.r5-benders-sub-77c20de5-0287-4f8a-95ef-80d88b971d9c]
+    arithmetic = "rational_box"
+    branch = 0
+    case_sha256 = "d746810c0e57ccbca51f54bbd92d41922c322ed7519d23d973441a14c03dff31"
+    certificate_scope = "exact_rational_minorant_of_encoded_bounded_LP_outward_float_coefficients"
+    constant = 4.614999999999993
+    deactivation_M = 25.615000002649996
+    exact_coefficient_guard = "0//1"
+    exact_raw_constant = "332545796485037425//72057594037927936"
+    exact_sign_guard = "0//1"
+    exact_stationarity_guard = "62185299034452783//10141204801825835211973625643008"
+    guard = 6.897260540483785e-15
+    kind = "cost"
+    lower_cost = -20.00000000265
+    productive = true
+    raw_constant = 4.615
+    rounding_guard = 7.653166295140683e-16
+    scenario = 2
+    sign_guard = 0.0
+    source_run_id = "r5-benders-sub-77c20de5-0287-4f8a-95ef-80d88b971d9c"
+    source_value = 4.614999999999993
+    stationarity_guard = 6.131943910969717e-15
+    units = "synthetic_USD"
+
+        [result.cuts.r5-benders-sub-77c20de5-0287-4f8a-95ef-80d88b971d9c.exact_gradient]
+        "P_DA_MW/1" = "-65//2"
+        "R_down_MW/1" = "0//1"
+        "R_up_MW/1" = "25//2"
+
+        [result.cuts.r5-benders-sub-77c20de5-0287-4f8a-95ef-80d88b971d9c.gradient]
+        "P_DA_MW/1" = -32.5
+        "R_down_MW/1" = 0.0
+        "R_up_MW/1" = 12.5
+
+        [result.cuts.r5-benders-sub-77c20de5-0287-4f8a-95ef-80d88b971d9c.stationarity_raw]
+        "H_D/1/1" = 0.0
+        "P_DER/1/1" = 0.0
+        "P_DER/2/1" = 0.0
+        "P_DH/1/1" = 0.0
+        "P_PCC/1/1" = 0.0
+        "P_line/1/1" = 0.0
+        "Q_DER/1/1" = 0.0
+        "Q_DER/2/1" = 0.0
+        "Q_PCC/1/1" = 0.0
+        "Q_line/1/1" = 0.0
+        "delivery/1/1" = 0.0
+        "mismatch/1/1" = 0.0
+        "v/1/1" = 0.0
+        "v/2/1" = 0.0
+        "τ_IN/1/1" = 0.0
+        "τ_R/1/1" = -9.107298248878237e-18
+        "τ_R/2/1" = 0.0
+        "τ_S/1/1" = 0.0
+        "τ_S/2/1" = 0.0
+        "τ_load_R/1/1" = 0.0
+        "τ_pipe_R/1/1" = 0.0
+        "τ_pipe_S/1/1" = 0.0
+        "τ_src/1/1" = 9.107298248878237e-18
+
+    [result.cuts.r5-benders-sub-80c17e92-c4d0-4aee-9822-acb921278b62]
+    arithmetic = "rational_box"
+    branch = 0
+    case_sha256 = "d746810c0e57ccbca51f54bbd92d41922c322ed7519d23d973441a14c03dff31"
+    certificate_scope = "exact_rational_minorant_of_encoded_bounded_LP_outward_float_coefficients"
+    constant = 4.614999999999993
+    deactivation_M = 24.615000002649996
+    exact_coefficient_guard = "0//1"
+    exact_raw_constant = "332545796485037425//72057594037927936"
+    exact_sign_guard = "0//1"
+    exact_stationarity_guard = "62185299034452783//10141204801825835211973625643008"
+    guard = 6.897260540483785e-15
+    kind = "cost"
+    lower_cost = -20.00000000265
+    productive = true
+    raw_constant = 4.615
+    rounding_guard = 7.653166295140683e-16
+    scenario = 3
+    sign_guard = 0.0
+    source_run_id = "r5-benders-sub-80c17e92-c4d0-4aee-9822-acb921278b62"
+    source_value = 3.614999999999993
+    stationarity_guard = 6.131943910969717e-15
+    units = "synthetic_USD"
+
+        [result.cuts.r5-benders-sub-80c17e92-c4d0-4aee-9822-acb921278b62.exact_gradient]
+        "P_DA_MW/1" = "-65//2"
+        "R_down_MW/1" = "-25//2"
+        "R_up_MW/1" = "0//1"
+
+        [result.cuts.r5-benders-sub-80c17e92-c4d0-4aee-9822-acb921278b62.gradient]
+        "P_DA_MW/1" = -32.5
+        "R_down_MW/1" = -12.5
+        "R_up_MW/1" = 0.0
+
+        [result.cuts.r5-benders-sub-80c17e92-c4d0-4aee-9822-acb921278b62.stationarity_raw]
+        "H_D/1/1" = 0.0
+        "P_DER/1/1" = 0.0
+        "P_DER/2/1" = 0.0
+        "P_DH/1/1" = 0.0
+        "P_PCC/1/1" = 0.0
+        "P_line/1/1" = 0.0
+        "Q_DER/1/1" = 0.0
+        "Q_DER/2/1" = 0.0
+        "Q_PCC/1/1" = 0.0
+        "Q_line/1/1" = 0.0
+        "delivery/1/1" = 0.0
+        "mismatch/1/1" = 0.0
+        "v/1/1" = 0.0
+        "v/2/1" = 0.0
+        "τ_IN/1/1" = 0.0
+        "τ_R/1/1" = -9.107298248878237e-18
+        "τ_R/2/1" = 0.0
+        "τ_S/1/1" = 0.0
+        "τ_S/2/1" = 0.0
+        "τ_load_R/1/1" = 0.0
+        "τ_pipe_R/1/1" = 0.0
+        "τ_pipe_S/1/1" = 0.0
+        "τ_src/1/1" = 9.107298248878237e-18
+
+    [result.cuts.r5-benders-sub-8d294765-8a11-445c-ba56-c34b76ee1a44]
+    arithmetic = "rational_box"
+    branch = 0
+    case_sha256 = "d746810c0e57ccbca51f54bbd92d41922c322ed7519d23d973441a14c03dff31"
+    certificate_scope = "exact_rational_minorant_of_encoded_bounded_LP_outward_float_coefficients"
+    constant = 0.0
+    deactivation_M = 21.600000002650003
+    exact_coefficient_guard = "0//1"
+    exact_raw_constant = "0//1"
+    exact_sign_guard = "0//1"
+    exact_stationarity_guard = "0//1"
+    guard = 0.0
+    kind = "cost"
+    lower_cost = -20.00000000265
+    productive = true
+    raw_constant = 0.0
+    rounding_guard = 0.0
+    scenario = 3
+    sign_guard = 0.0
+    source_run_id = "r5-benders-sub-8d294765-8a11-445c-ba56-c34b76ee1a44"
+    source_value = 1.2400000000000009
+    stationarity_guard = 0.0
+    units = "synthetic_USD"
+
+        [result.cuts.r5-benders-sub-8d294765-8a11-445c-ba56-c34b76ee1a44.exact_gradient]
+        "P_DA_MW/1" = "0//1"
+        "R_down_MW/1" = "20//1"
+        "R_up_MW/1" = "0//1"
+
+        [result.cuts.r5-benders-sub-8d294765-8a11-445c-ba56-c34b76ee1a44.gradient]
+        "P_DA_MW/1" = 0.0
+        "R_down_MW/1" = 20.0
+        "R_up_MW/1" = 0.0
+
+        [result.cuts.r5-benders-sub-8d294765-8a11-445c-ba56-c34b76ee1a44.stationarity_raw]
+        "H_D/1/1" = 0.0
+        "P_DER/1/1" = 0.0
+        "P_DER/2/1" = 0.0
+        "P_DH/1/1" = 0.0
+        "P_PCC/1/1" = 0.0
+        "P_line/1/1" = 0.0
+        "Q_DER/1/1" = 0.0
+        "Q_DER/2/1" = 0.0
+        "Q_PCC/1/1" = 0.0
+        "Q_line/1/1" = 0.0
+        "delivery/1/1" = 0.0
+        "mismatch/1/1" = 0.0
+        "v/1/1" = 0.0
+        "v/2/1" = 0.0
+        "τ_IN/1/1" = 0.0
+        "τ_R/1/1" = 0.0
+        "τ_R/2/1" = 0.0
+        "τ_S/1/1" = 0.0
+        "τ_S/2/1" = 0.0
+        "τ_load_R/1/1" = 0.0
+        "τ_pipe_R/1/1" = 0.0
+        "τ_pipe_S/1/1" = 0.0
+        "τ_src/1/1" = 0.0
+
+    [result.source_hashes_at_return]
+    "Manifest.toml" = "6aa68b274431d56e5f78dfe516af70b7a6aefe8529cf58240d882de31c72bb75"
+    "Project.toml" = "b3f905bb91f92e68ff970eedc46e9ed854ca4e08ff124541d68e991818de4a92"
+    "src/algorithms/r5_benders.jl" = "212a004d95e367a3051326198dd0f082141bea927ab335b6c78a83b615d3c1bf"
+    "src/algorithms/r5_commitment.jl" = "5038f22f037bba90a7bb3e2afc79b900fdff2d91ebe0afbde8ff189acd0c04bb"
+    "src/algorithms/r5_dispatch.jl" = "fe48a6db69bf8bbb9b843b1ecc1695ced426a60860e39a586198e15cd77fca03"
+    "src/algorithms/r5_market.jl" = "a5a5bbc1b96743973ea81e79ec8af40e8f18328d00ca7fc14b540aaf9324154a"
+    "src/algorithms/r5_market_selection.jl" = "d80d8adf5b1c3662a6d559dca81b88131e9ea55c708f4ce234bb0c37a0f877cc"
+    "src/algorithms/r5_risk.jl" = "44824bcb0093e32b935b3d88b87d292cdf1add9d3afeac133db8e7064b4ae28f"
+    "src/algorithms/r5_strategic.jl" = "b1ffb61adbc615052da4d64fcd9dcf79984078aabb903c958203fa0a13a16bda"
+    "src/algorithms/r5_strategic_benders.jl" = "718c9dfdfdbf133fd914b53eaf7522e1b09bb025f233425887dfaae1ab2b43b7"
+    "src/core/r5_benders.jl" = "3522687413059a2eb40c27dbf7d70ec2e8735f63af7ceca71e920a66280308c3"
+    "src/core/r5_commitment.jl" = "5e4a30e71b12c56b8754482163182b93266de454a8b04fb41a5e2f86a98af812"
+    "src/core/r5_dispatch.jl" = "7308945636b363ab412716e0bcd059992a1760567d53d6991cd57739230a15af"
+    "src/core/r5_market.jl" = "b66b34edafb602439fa8c93beb25fc20500b6a4106dee739a1795418cb265222"
+    "src/core/r5_risk.jl" = "691219d10cda283b7c6e3cd19e2467b102c1564fc907427f773ad72627a635c8"
+    "src/core/r5_strategic.jl" = "0932c0cb3573fe5a2dd1c88c2e2d0bdc0bf3a234813ff4fbb987e43f9b4175cd"
+    "src/core/r5_strategic_benders.jl" = "795d72b6aa02b38410d5fc5802efa2a21399c2f9e6dbc3144af562db67582795"
+    "src/formulations/r5_benders.jl" = "aee2c0998eab6aadd29b5a2ebd662b30ef24902ed4019a0f007e7424cb20d539"
+    "src/formulations/r5_commitment.jl" = "8d66f8987a6a2e053416d276080b50644d63b38763fa06625e27fa9899f246ae"
+    "src/formulations/r5_dispatch.jl" = "fef8db84d2be1544c622f8d9891fd4c47eb91dc2ff2e89817bec7a5996622d19"
+    "src/formulations/r5_dispatch_dual.jl" = "9685a38e919580a17abd0f8fee7c90fbdc7f8dd85080831ee36772c3d8d69bdf"
+    "src/formulations/r5_market.jl" = "85ba2ee6e8f84bef53db7949bf4fc425b57476bdaa49f22d9a816bf32bd01713"
+    "src/formulations/r5_risk.jl" = "7b68ae8d7bdd94e8a4d475403962c2e547eac0fb79304f2036da5fb724837f2c"
+    "src/formulations/r5_strategic.jl" = "1ac16f750fe5f382c3152ab9c9c6dccd898dd264fb69a8903638de7d04572f97"
+    "src/formulations/r5_strategic_benders.jl" = "66dd95920cac91a3b1ce667f0a3e1636b0a52f39b170066eb242b3aa7b010029"
+    "src/networks/fixed_flow_heat.jl" = "620c069f6b3a520d32ee546ec048074f9cbaa3c785f8c2e31ec7fd7bf245a83b"
+    "src/reporting/r5_benders.jl" = "24dc9c7944e5f9f1dadc04108bf4f27af6baf6088ec6c4814bb639527a00e35a"
+    "src/reporting/r5_commitment.jl" = "7d5faa97dbc2724d33831b319af807381ea13aa763cfde5655a4d7ecea956f2a"
+    "src/reporting/r5_dispatch.jl" = "5d919f4e14dff618d7cc6467ccdcf5ea073b218b2799db0966eb877f4f5d92cb"
+    "src/reporting/r5_market.jl" = "164d47e5922903179225a17c8a681610ae7eb5312068a4f806d85010f16f0796"
+    "src/reporting/r5_risk.jl" = "973e9a81c86ff6b0268992be7c02b0cfeadc49dd04905bbe6a66fa37a827a377"
+    "src/reporting/r5_strategic.jl" = "df33ac903b2ecf16f573294f4a32f47ed81ea80886b4d531eb38dd44f42769cf"
+    "src/reporting/r5_strategic_benders.jl" = "8bb9c0a1a348f8a78c24e52c08ffe23f32da74a769b405be16e69f01699a4e91"
+    "src/verification/r5_benders.jl" = "4611e873233e4d682c044374cb0a2fa4c4870696b798c4d3fc043af710f33a5c"
+    "src/verification/r5_commitment.jl" = "71c04cdeb804ee48dbfd585e5376cdacd910cc5a507db8d9027b866690cde8ed"
+    "src/verification/r5_dispatch.jl" = "6ad9b1f74949e1345df473bfd778db6e419a57b2e2060cc065a7d5fbae1802f2"
+    "src/verification/r5_dispatch_duality.jl" = "5dbbcbae682b3c738c5506b36254466614d6ff80e835afe7619744c77c7fc96d"
+    "src/verification/r5_market.jl" = "47cf2899d6167974ec406d7b431d06bcd2ca3b16108bdbc67c8805e071e57009"
+    "src/verification/r5_market_payment.jl" = "fdcefbd1530785534bcab392753ea5b62da033fce24a223278e4b2ff33fe32e1"
+    "src/verification/r5_risk.jl" = "a9389a9963ede5a33b8867a9cd8ae9e6a1b608e9995ff0fa62eeb0fed38c2433"
+    "src/verification/r5_strategic.jl" = "89965480ecc6e0c1bac0f19996b4edc481444fdc3774b71dfe56e3ebe642bbc5"
+    "src/verification/r5_strategic_benders.jl" = "bdc842e26c3c20e837453d1aad220729e80ea5f629052b436cf9145794a6e4bc"
+    "tools/solvers/Manifest.toml" = "4c3bfa7a47e06095c1251dfb555ff155bc7e02241013547c294c2920cedb958e"
+    "tools/solvers/Project.toml" = "be07a40d34ee1e44e61d0e81fc1a71161cc9ba7ef20d57fc7fbe4e70f6e3ba8b"
+
+    [result.source_hashes_at_solve]
+    "Manifest.toml" = "6aa68b274431d56e5f78dfe516af70b7a6aefe8529cf58240d882de31c72bb75"
+    "Project.toml" = "b3f905bb91f92e68ff970eedc46e9ed854ca4e08ff124541d68e991818de4a92"
+    "src/algorithms/r5_benders.jl" = "212a004d95e367a3051326198dd0f082141bea927ab335b6c78a83b615d3c1bf"
+    "src/algorithms/r5_commitment.jl" = "5038f22f037bba90a7bb3e2afc79b900fdff2d91ebe0afbde8ff189acd0c04bb"
+    "src/algorithms/r5_dispatch.jl" = "fe48a6db69bf8bbb9b843b1ecc1695ced426a60860e39a586198e15cd77fca03"
+    "src/algorithms/r5_market.jl" = "a5a5bbc1b96743973ea81e79ec8af40e8f18328d00ca7fc14b540aaf9324154a"
+    "src/algorithms/r5_market_selection.jl" = "d80d8adf5b1c3662a6d559dca81b88131e9ea55c708f4ce234bb0c37a0f877cc"
+    "src/algorithms/r5_risk.jl" = "44824bcb0093e32b935b3d88b87d292cdf1add9d3afeac133db8e7064b4ae28f"
+    "src/algorithms/r5_strategic.jl" = "b1ffb61adbc615052da4d64fcd9dcf79984078aabb903c958203fa0a13a16bda"
+    "src/algorithms/r5_strategic_benders.jl" = "718c9dfdfdbf133fd914b53eaf7522e1b09bb025f233425887dfaae1ab2b43b7"
+    "src/core/r5_benders.jl" = "3522687413059a2eb40c27dbf7d70ec2e8735f63af7ceca71e920a66280308c3"
+    "src/core/r5_commitment.jl" = "5e4a30e71b12c56b8754482163182b93266de454a8b04fb41a5e2f86a98af812"
+    "src/core/r5_dispatch.jl" = "7308945636b363ab412716e0bcd059992a1760567d53d6991cd57739230a15af"
+    "src/core/r5_market.jl" = "b66b34edafb602439fa8c93beb25fc20500b6a4106dee739a1795418cb265222"
+    "src/core/r5_risk.jl" = "691219d10cda283b7c6e3cd19e2467b102c1564fc907427f773ad72627a635c8"
+    "src/core/r5_strategic.jl" = "0932c0cb3573fe5a2dd1c88c2e2d0bdc0bf3a234813ff4fbb987e43f9b4175cd"
+    "src/core/r5_strategic_benders.jl" = "795d72b6aa02b38410d5fc5802efa2a21399c2f9e6dbc3144af562db67582795"
+    "src/formulations/r5_benders.jl" = "aee2c0998eab6aadd29b5a2ebd662b30ef24902ed4019a0f007e7424cb20d539"
+    "src/formulations/r5_commitment.jl" = "8d66f8987a6a2e053416d276080b50644d63b38763fa06625e27fa9899f246ae"
+    "src/formulations/r5_dispatch.jl" = "fef8db84d2be1544c622f8d9891fd4c47eb91dc2ff2e89817bec7a5996622d19"
+    "src/formulations/r5_dispatch_dual.jl" = "9685a38e919580a17abd0f8fee7c90fbdc7f8dd85080831ee36772c3d8d69bdf"
+    "src/formulations/r5_market.jl" = "85ba2ee6e8f84bef53db7949bf4fc425b57476bdaa49f22d9a816bf32bd01713"
+    "src/formulations/r5_risk.jl" = "7b68ae8d7bdd94e8a4d475403962c2e547eac0fb79304f2036da5fb724837f2c"
+    "src/formulations/r5_strategic.jl" = "1ac16f750fe5f382c3152ab9c9c6dccd898dd264fb69a8903638de7d04572f97"
+    "src/formulations/r5_strategic_benders.jl" = "66dd95920cac91a3b1ce667f0a3e1636b0a52f39b170066eb242b3aa7b010029"
+    "src/networks/fixed_flow_heat.jl" = "620c069f6b3a520d32ee546ec048074f9cbaa3c785f8c2e31ec7fd7bf245a83b"
+    "src/reporting/r5_benders.jl" = "24dc9c7944e5f9f1dadc04108bf4f27af6baf6088ec6c4814bb639527a00e35a"
+    "src/reporting/r5_commitment.jl" = "7d5faa97dbc2724d33831b319af807381ea13aa763cfde5655a4d7ecea956f2a"
+    "src/reporting/r5_dispatch.jl" = "5d919f4e14dff618d7cc6467ccdcf5ea073b218b2799db0966eb877f4f5d92cb"
+    "src/reporting/r5_market.jl" = "164d47e5922903179225a17c8a681610ae7eb5312068a4f806d85010f16f0796"
+    "src/reporting/r5_risk.jl" = "973e9a81c86ff6b0268992be7c02b0cfeadc49dd04905bbe6a66fa37a827a377"
+    "src/reporting/r5_strategic.jl" = "df33ac903b2ecf16f573294f4a32f47ed81ea80886b4d531eb38dd44f42769cf"
+    "src/reporting/r5_strategic_benders.jl" = "8bb9c0a1a348f8a78c24e52c08ffe23f32da74a769b405be16e69f01699a4e91"
+    "src/verification/r5_benders.jl" = "4611e873233e4d682c044374cb0a2fa4c4870696b798c4d3fc043af710f33a5c"
+    "src/verification/r5_commitment.jl" = "71c04cdeb804ee48dbfd585e5376cdacd910cc5a507db8d9027b866690cde8ed"
+    "src/verification/r5_dispatch.jl" = "6ad9b1f74949e1345df473bfd778db6e419a57b2e2060cc065a7d5fbae1802f2"
+    "src/verification/r5_dispatch_duality.jl" = "5dbbcbae682b3c738c5506b36254466614d6ff80e835afe7619744c77c7fc96d"
+    "src/verification/r5_market.jl" = "47cf2899d6167974ec406d7b431d06bcd2ca3b16108bdbc67c8805e071e57009"
+    "src/verification/r5_market_payment.jl" = "fdcefbd1530785534bcab392753ea5b62da033fce24a223278e4b2ff33fe32e1"
+    "src/verification/r5_risk.jl" = "a9389a9963ede5a33b8867a9cd8ae9e6a1b608e9995ff0fa62eeb0fed38c2433"
+    "src/verification/r5_strategic.jl" = "89965480ecc6e0c1bac0f19996b4edc481444fdc3774b71dfe56e3ebe642bbc5"
+    "src/verification/r5_strategic_benders.jl" = "bdc842e26c3c20e837453d1aad220729e80ea5f629052b436cf9145794a6e4bc"
+    "tools/solvers/Manifest.toml" = "4c3bfa7a47e06095c1251dfb555ff155bc7e02241013547c294c2920cedb958e"
+    "tools/solvers/Project.toml" = "be07a40d34ee1e44e61d0e81fc1a71161cc9ba7ef20d57fc7fbe4e70f6e3ba8b"
+
+    [result.spec]
+    absolute_gap = 1.0e-7
+    critical_count = 1
+    cut_arithmetic = "rational_box"
+    diagnostic_scale = 1024.0
+    feasibility = "paper_critical"
+    max_iterations = 200
+    relative_gap = 1.0e-6
+
+    [result.subproblem_source_hashes]
+    "Manifest.toml" = "6aa68b274431d56e5f78dfe516af70b7a6aefe8529cf58240d882de31c72bb75"
+    "Project.toml" = "b3f905bb91f92e68ff970eedc46e9ed854ca4e08ff124541d68e991818de4a92"
+    "src/algorithms/r5_benders.jl" = "212a004d95e367a3051326198dd0f082141bea927ab335b6c78a83b615d3c1bf"
+    "src/algorithms/r5_commitment.jl" = "5038f22f037bba90a7bb3e2afc79b900fdff2d91ebe0afbde8ff189acd0c04bb"
+    "src/algorithms/r5_dispatch.jl" = "fe48a6db69bf8bbb9b843b1ecc1695ced426a60860e39a586198e15cd77fca03"
+    "src/algorithms/r5_market.jl" = "a5a5bbc1b96743973ea81e79ec8af40e8f18328d00ca7fc14b540aaf9324154a"
+    "src/algorithms/r5_risk.jl" = "44824bcb0093e32b935b3d88b87d292cdf1add9d3afeac133db8e7064b4ae28f"
+    "src/core/r5_benders.jl" = "3522687413059a2eb40c27dbf7d70ec2e8735f63af7ceca71e920a66280308c3"
+    "src/core/r5_commitment.jl" = "5e4a30e71b12c56b8754482163182b93266de454a8b04fb41a5e2f86a98af812"
+    "src/core/r5_dispatch.jl" = "7308945636b363ab412716e0bcd059992a1760567d53d6991cd57739230a15af"
+    "src/core/r5_market.jl" = "b66b34edafb602439fa8c93beb25fc20500b6a4106dee739a1795418cb265222"
+    "src/core/r5_risk.jl" = "691219d10cda283b7c6e3cd19e2467b102c1564fc907427f773ad72627a635c8"
+    "src/formulations/r5_benders.jl" = "aee2c0998eab6aadd29b5a2ebd662b30ef24902ed4019a0f007e7424cb20d539"
+    "src/formulations/r5_commitment.jl" = "8d66f8987a6a2e053416d276080b50644d63b38763fa06625e27fa9899f246ae"
+    "src/formulations/r5_dispatch.jl" = "fef8db84d2be1544c622f8d9891fd4c47eb91dc2ff2e89817bec7a5996622d19"
+    "src/formulations/r5_dispatch_dual.jl" = "9685a38e919580a17abd0f8fee7c90fbdc7f8dd85080831ee36772c3d8d69bdf"
+    "src/formulations/r5_market.jl" = "85ba2ee6e8f84bef53db7949bf4fc425b57476bdaa49f22d9a816bf32bd01713"
+    "src/formulations/r5_risk.jl" = "7b68ae8d7bdd94e8a4d475403962c2e547eac0fb79304f2036da5fb724837f2c"
+    "src/networks/fixed_flow_heat.jl" = "620c069f6b3a520d32ee546ec048074f9cbaa3c785f8c2e31ec7fd7bf245a83b"
+    "src/reporting/r5_benders.jl" = "24dc9c7944e5f9f1dadc04108bf4f27af6baf6088ec6c4814bb639527a00e35a"
+    "src/reporting/r5_commitment.jl" = "7d5faa97dbc2724d33831b319af807381ea13aa763cfde5655a4d7ecea956f2a"
+    "src/reporting/r5_dispatch.jl" = "5d919f4e14dff618d7cc6467ccdcf5ea073b218b2799db0966eb877f4f5d92cb"
+    "src/reporting/r5_market.jl" = "164d47e5922903179225a17c8a681610ae7eb5312068a4f806d85010f16f0796"
+    "src/reporting/r5_risk.jl" = "973e9a81c86ff6b0268992be7c02b0cfeadc49dd04905bbe6a66fa37a827a377"
+    "src/verification/r5_benders.jl" = "4611e873233e4d682c044374cb0a2fa4c4870696b798c4d3fc043af710f33a5c"
+    "src/verification/r5_commitment.jl" = "71c04cdeb804ee48dbfd585e5376cdacd910cc5a507db8d9027b866690cde8ed"
+    "src/verification/r5_dispatch.jl" = "6ad9b1f74949e1345df473bfd778db6e419a57b2e2060cc065a7d5fbae1802f2"
+    "src/verification/r5_dispatch_duality.jl" = "5dbbcbae682b3c738c5506b36254466614d6ff80e835afe7619744c77c7fc96d"
+    "src/verification/r5_market.jl" = "47cf2899d6167974ec406d7b431d06bcd2ca3b16108bdbc67c8805e071e57009"
+    "src/verification/r5_risk.jl" = "a9389a9963ede5a33b8867a9cd8ae9e6a1b608e9995ff0fa62eeb0fed38c2433"
+    "tools/solvers/Manifest.toml" = "4c3bfa7a47e06095c1251dfb555ff155bc7e02241013547c294c2920cedb958e"
+    "tools/solvers/Project.toml" = "be07a40d34ee1e44e61d0e81fc1a71161cc9ba7ef20d57fc7fbe4e70f6e3ba8b"
+
+[validation_sha256]
+"candidate/1" = "6dfe392b8bedb9f8231468c6adde9348a11b6f619ae5acaa5733993fbe4309e0"
+"candidate/3" = "591cbc8052986e0ccaa3873b8817a6cd8e0e06a651d212f7a7c7a231aceab61e"
+"master/1" = "f48d7892c26503f92e733473799d6b59fa4ec9b6b2a0a2742fefa1e687e35076"
+"master/2" = "19439fc09fe0cb29532eddff58a4430cd1d11af469ae441aa469b2bd3af51002"
+"master/3" = "e98a2e4714bc93732bd11ac67829ea551f849f0c4732809239beea479c77ec92"
+r5-benders-sub-0335280e-e5ca-41ca-91b7-c04a80cf3ec1 = "976fd92c54d9b63289336bf82e34e0de417871699feccc2d321caeca180ee747"
+r5-benders-sub-0e572a2a-1829-4caf-aa84-f3af8603d6b1 = "4f40d6d59a3a4167168b806086d2827f879620fef18491c66dfa3ea79fe88cc1"
+r5-benders-sub-145aa9f9-37dd-48d2-b91f-e0d94867330a = "7e0f5ebcf2c448f3fa0b514b7bda7409be7dbae0350d6dac2d69bf120a7c6c97"
+r5-benders-sub-2017b800-2b35-43ef-aa78-864dad0bff5a = "4dc994f2126e9ab0e5ce01f4a1ab63e24b085da5dd53fd528f24dbdd0ab903ec"
+r5-benders-sub-44f1243c-451b-43a2-b912-7ad2f1956ae9 = "46b4ee40494b9b741c445b1997018f0424d37fca98cd9e83603f802d385f4c01"
+r5-benders-sub-480407f1-3963-4fae-bb16-988e1b4cd55c = "976fd92c54d9b63289336bf82e34e0de417871699feccc2d321caeca180ee747"
+r5-benders-sub-77c20de5-0287-4f8a-95ef-80d88b971d9c = "4dc994f2126e9ab0e5ce01f4a1ab63e24b085da5dd53fd528f24dbdd0ab903ec"
+r5-benders-sub-80c17e92-c4d0-4aee-9822-acb921278b62 = "8cea67befeef68d5d85ddfee29698181b46a5be3f4fd336558589d82c3392c86"
+r5-benders-sub-8d294765-8a11-445c-ba56-c34b76ee1a44 = "2b15db6f2158ddc5b8637a94f60a2c5f25ec2bb616b99ceb12cd12bec10f22eb"
+r5-benders-sub-bf99e9b1-6049-4d86-b61e-e72c20a19a95 = "4afaaa84abcbeab78ed251da3f796bb2acba8683aa4f0f815ff76cd88e341dbf"
+r5-benders-sub-d0635c15-c151-46bd-8631-4bb8ef448d9c = "1777238e528a261d580316115d76174bf23d9153403f49774c19b5c051072de0"
+r5-benders-sub-d5366cc2-8925-4257-b79c-87b38cd42d28 = "976fd92c54d9b63289336bf82e34e0de417871699feccc2d321caeca180ee747"
+result = "3baef11a79904bc9cdbfff8654c6e8f87968b50dec6a580bcffeb5fb6d431273"
+"risk/1" = "8ba9aa6b89703aa1351da9903e9bb854980a31127461ec910076d0632fd57d59"
+"risk/3" = "81825c5fa49aed53861dd6d2fc1f3aaeed4c9789f783c2c6b1890544a4e5733b"

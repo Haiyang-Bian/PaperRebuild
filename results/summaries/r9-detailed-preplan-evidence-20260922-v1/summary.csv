@@ -1,0 +1,9 @@
+mode,stage,run_id,status,model_pass,normal_cost_CNY,penalty_CNY,solver_objective,objective_unit,lower_bound,relative_gap,conditional_gap_pass,critical_loss_MWh,threshold_pass,handoff_necessary_pass,whole_method_sec,budget_pass
+penalty,primary,r9-detailed-preplan-d999677c-dc10-43b8-8fd1-a92f779c7a84,candidate,true,498199.1064435785,105521.90617756327,603721.0126211417,CNY,603721.0126211427,-1.5426373360304413e-15,true,10.552190617757061,false,false,179.635999917984,true
+penalty,detailed-external_only,r7-transport-1ef5aed5-636b-47eb-a768-064304e19818,solver_optimal,true,498199.1064435785,NaN,10.141924515983813,MWh,10.141924515983813,3.5029975555441907e-16,true,10.141924515983817,false,true,179.635999917984,true
+penalty,detailed-single_1_2,r7-transport-e55f58af-6242-4af3-8426-f4e6207ff1f0,solver_optimal,true,498199.1064435785,NaN,10.437325808244783,MWh,10.437325808244786,-3.4038543436040837e-16,true,10.437325808244783,false,true,179.635999917984,true
+penalty,detailed-author_event1,r7-transport-99455cb2-b668-4b4e-8cb3-92020fe685f0,solver_optimal,true,498199.1064435785,NaN,10.552190617756324,MWh,10.552190617756326,-1.6834010147723725e-16,true,10.552190617756324,false,true,179.635999917984,true
+threshold,primary,r9-detailed-preplan-986b76b9-4969-4285-89d8-ceec2811927c,infeasible_certified,false,NaN,NaN,NaN,CNY,NaN,NaN,false,NaN,false,false,82.68700003623962,true
+threshold,detailed-external_only,"",primary_candidate_unavailable,false,NaN,NaN,NaN,MWh,NaN,NaN,false,NaN,false,false,82.68700003623962,true
+threshold,detailed-single_1_2,"",primary_candidate_unavailable,false,NaN,NaN,NaN,MWh,NaN,NaN,false,NaN,false,false,82.68700003623962,true
+threshold,detailed-author_event1,"",primary_candidate_unavailable,false,NaN,NaN,NaN,MWh,NaN,NaN,false,NaN,false,false,82.68700003623962,true

@@ -1,0 +1,11 @@
+schema = "r6-training-pilot-v1"
+physical = "configs/r6/daily-small.toml"
+dataset = "results/summaries/r6-data-v1"
+methods = ["D", "SP", "RO", "DRO", "CCP", "DRJCC"]
+development_count = 3
+selection = "first_representatives_in_frozen_order"
+radius = 0.01
+epsilon = 0.05
+budget_sec = 120.0
+full_build_method = "SP"
+purpose = "Development only: measure six 24-hour model solves on the first three training representatives, and full 100-scenario SP build size. Not a radius selection, formal comparison or out-of-sample test. No held-out trajectory is optimized."

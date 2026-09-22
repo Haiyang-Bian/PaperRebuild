@@ -1,0 +1,114 @@
+conflict_status = "CONFLICT_FOUND"
+flow_sha256 = "858561dcd7a43bcfa1381cd63a957418226af33b3b2d0b1c4ec89901faff69f7"
+input_sha256 = "a31cb0ad4684049b587f1358ff4921299dd148344353c871305e1d3e9b43e186"
+termination = "INFEASIBLE"
+unavailable_constraint_types = ["QuadExpr in MathOptInterface.EqualTo{Float64}", "Vector{AffExpr} in MathOptInterface.SecondOrderCone"]
+
+[[constraints]]
+equation = "3-39"
+expression = "_[371] - _[430] == 0"
+status = "IN_CONFLICT"
+[[constraints]]
+equation = "3-39"
+expression = "_[373] - _[433] == 0"
+status = "IN_CONFLICT"
+[[constraints]]
+equation = "3-39"
+expression = "_[375] - _[436] == 0"
+status = "IN_CONFLICT"
+[[constraints]]
+equation = "3-39"
+expression = "_[374] - _[434] == 0"
+status = "IN_CONFLICT"
+[[constraints]]
+equation = "3-39"
+expression = "_[376] - _[437] == 0"
+status = "IN_CONFLICT"
+[[constraints]]
+equation = "3-38"
+expression = "-_[438] + _[480] == 0"
+status = "IN_CONFLICT"
+[[constraints]]
+equation = "3-35"
+expression = "_[430] - _[472] == 0"
+status = "IN_CONFLICT"
+[[constraints]]
+equation = "3-35"
+expression = "_[433] - _[475] == 0"
+status = "IN_CONFLICT"
+[[constraints]]
+equation = "3-35"
+expression = "_[436] - _[478] == 0"
+status = "IN_CONFLICT"
+[[constraints]]
+equation = "3-35"
+expression = "-_[401] + 2.0000000000000844 _[434] - _[476] == 0"
+status = "IN_CONFLICT"
+[[constraints]]
+equation = "3-35"
+expression = "-_[403] + 2.0000000000000844 _[437] - _[479] == 0"
+status = "IN_CONFLICT"
+[[constraints]]
+equation = "3-35"
+expression = "-_[404] + _[438] == 0"
+status = "IN_CONFLICT"
+[[constraints]]
+equation = "3-17"
+expression = "-2.0000000000000844 _[480] + 2.0000000000000844 _[690] + _[860] == 0"
+status = "IN_CONFLICT"
+[[constraints]]
+equation = "3-17"
+expression = "_[802] - 0.0042 _[860] == 0"
+status = "IN_CONFLICT"
+[[constraints]]
+equation = "3-33"
+expression = "-0.5 _[371] - 0.5000000000000033 _[373] + _[961] == 0"
+status = "IN_CONFLICT"
+[[constraints]]
+equation = "3-34"
+expression = "_[401] - 0.9915531078683681 _[961] == 2.474939394568139"
+status = "IN_CONFLICT"
+[[constraints]]
+equation = "3-33"
+expression = "-0.5 _[373] - 0.5000000000000033 _[375] + _[963] == 0"
+status = "IN_CONFLICT"
+[[constraints]]
+equation = "3-34"
+expression = "_[403] - 0.991465201390702 _[963] == 2.5006959925242995"
+status = "IN_CONFLICT"
+[[constraints]]
+equation = "3-33"
+expression = "-0.5 _[374] - 1.5000000000000844 _[376] + 2.0000000000000844 _[1075] == 0"
+status = "IN_CONFLICT"
+[[constraints]]
+equation = "3-34"
+expression = "_[404] - 0.9957234562822663 _[1075] == 1.2530273092959874"
+status = "IN_CONFLICT"
+[[constraints]]
+equation = "R3-operation"
+expression = "_[472] == 353"
+status = "IN_CONFLICT"
+[[constraints]]
+equation = "R3-operation"
+expression = "_[475] == 353"
+status = "IN_CONFLICT"
+[[constraints]]
+equation = "R3-operation"
+expression = "_[476] == 353"
+status = "IN_CONFLICT"
+[[constraints]]
+equation = "R3-operation"
+expression = "_[478] == 353"
+status = "IN_CONFLICT"
+[[constraints]]
+equation = "R3-operation"
+expression = "_[479] == 353"
+status = "IN_CONFLICT"
+[[constraints]]
+equation = "R3-operation"
+expression = "_[690] == 313"
+status = "IN_CONFLICT"
+[[constraints]]
+equation = "variable_bound_or_fix"
+expression = "_[802] == 0.33170305057544147"
+status = "IN_CONFLICT"

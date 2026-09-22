@@ -1,0 +1,12 @@
+batch_id = "r4-network-20260919"
+origin = "synthetic"
+scope = "static adopted heat model; original electrical equations checked separately; no dynamic heat claim"
+script_sha256 = "d9bd204cfbe6c87fa46b8c9d6522ad54d060004ba57f221a9db2e5b15a00f161"
+solver_reexecuted = false
+units = ["USD_synthetic", "MW", "kg/s", "normalized residual", "binary state"]
+
+[sources]
+"comparison.csv" = "7ba37182a93add5d5360ad0f593739d9d9a53503751fca706d11a2627b430fc8"
+"residuals.csv" = "ee12929d9bd410d12fbd284435e5c9b130962baa0330d2ef041943681f3d3544"
+"thermal-diagnostic.csv" = "3fb165fffa76abab2a881703325eb91ca7d74edb02c0f1f30bdebe5d6ef1055a"
+"topology.csv" = "cbdf0cfe9d0704c968183e6729853619a1f0a8467be4063e2a704225a7629c9c"

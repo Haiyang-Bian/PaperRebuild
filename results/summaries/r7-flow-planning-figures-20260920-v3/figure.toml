@@ -1,0 +1,17 @@
+figure = "F29"
+origin = "synthetic"
+plot_source_sha256 = "6edbb52af56d8b2fbc2abe616d2a4fd02f0d43bf39e6552a87ea94391a49966b"
+run_ids = ["r7-flow-planning-786489ac-e014-4c7e-8d8d-483974a6bcf3", "r7-flow-planning-5f7c3455-4676-4cc4-a001-9644b0b639fe", "r7-flow-planning-235706c5-e17b-4f66-ac26-6e78c929e03e", "r7-flow-planning-b723ff7a-db64-47d6-b9e3-134def33934d", "r7-flow-planning-0fa8ab2a-28c3-47e7-bfdf-977ca755150e", "r7-flow-planning-754b73a5-a037-457d-8a4e-d8bf7038cc5e", "r7-flow-planning-718c141d-82b0-477a-a0f4-1849fd540ef0", "r7-flow-planning-ca8dd2d0-616d-426e-acc8-a6af867da279", "r7-flow-planning-ba642444-9d03-44ef-b463-8d3e8d931599", "r7-flow-planning-17493e54-23c9-4a9b-ba01-59f3a648fcfa", "r7-flow-planning-96f84b0d-8808-412f-a2da-f57806a474df", "r7-flow-planning-7baac0b9-2f67-4381-a5ba-9d3c3a1f6bd8"]
+schema = "r7-shared-flow-figure-v1"
+units = ["USD", "MWh", "kg/s", "residual / tolerance"]
+
+[outputs]
+"F29-shared-flow.png" = "23dab73a5e2a12e20a2ff620a7b683c20f3c1250997af1d37aa1619d46fecc97"
+"F29-shared-flow.svg" = "ecc86b0c1b42fde8c4b325ca307c8477eb56580fe990bca7077da20eca27e5f2"
+
+[report_hashes]
+"events.csv" = "66b00fb44962fe3f562f81bf868a7c36b1d599e966a09712130c05e856e5cfd3"
+"residuals.csv" = "869b2a2586ed7d7fec9830e2334c431d75ec78a86517fec9c51bacee29a0a139"
+"rule.toml" = "b99563bfdb3eaa4eefe0af7b2b8acb9d6a93a91ff453a29d26d3d3757cd7ab23"
+"summary.csv" = "72ed2b65d60c689779c0867f55e8761788f61a8c59d6ad8b286a3a8faf45d082"
+"trajectories.csv" = "44868eebf41e4c980175e987a901dae1e1cc76f84ca9c5e0ab2a7ae4a31dbda1"

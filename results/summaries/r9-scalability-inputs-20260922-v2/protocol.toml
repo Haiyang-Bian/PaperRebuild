@@ -1,0 +1,16 @@
+schema = "r9-scalability-input-protocol-v1"
+origin = "synthetic"
+parent_sha256 = "5f1ddce8f60ff26281cadd450d5755327d54ab9bb197012dbe9f0121e025cad8"
+parent_aggregators = 8
+multipliers = [1, 2, 4]
+electric_nodes = 44
+heat_nodes = 38
+T = 24
+dt_h = 1.0
+device_rule = "indivisible_devices_to_first_child; unchanged_binary_domain"
+demand_rule = "equal_shares; dissatisfaction_coefficient_times_multiplier"
+fixed_mode_rule_version = 3
+scope = "input_preparation_and_central_projection_equivalence_only"
+author_input_equivalence = false
+formal_methods_started = false
+payoff_or_AG0_equivalence = false

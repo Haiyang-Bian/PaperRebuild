@@ -1,0 +1,135 @@
+batch = "r3-pg-20260917T071031-7eafbab9"
+budget_per_instance_sec = 600.0
+config_sha256 = "baca58b252c0d6fbba875b661afde3f3069fb07f9d262d222ce44683d06297d6"
+max_iterations = 200
+origin = "synthetic"
+schema = "r3-pg-study-v1"
+
+[[runs]]
+case = "single-source"
+directory = "single-source-schpd"
+elapsed_sec = 30.562112400017213
+id = "single-source-schpd"
+initialization = "schpd"
+outer_status = "untrusted_sensitivity"
+physical_pass = true
+[[runs]]
+case = "single-source"
+directory = "single-source-case_fixed"
+elapsed_sec = 1.1233266000053845
+id = "single-source-case_fixed"
+initialization = "case_fixed"
+outer_status = "untrusted_sensitivity"
+physical_pass = true
+[[runs]]
+case = "single-source"
+directory = "single-source-box25"
+elapsed_sec = 2.9886321000230964
+id = "single-source-box25"
+initialization = "box25"
+outer_status = "line_search_stalled"
+physical_pass = true
+[[runs]]
+case = "single-source"
+directory = "single-source-box50"
+elapsed_sec = 1.1004371999879368
+id = "single-source-box50"
+initialization = "box50"
+outer_status = "untrusted_sensitivity"
+physical_pass = true
+[[runs]]
+case = "single-source"
+directory = "single-source-box75"
+elapsed_sec = 1.9732988000032492
+id = "single-source-box75"
+initialization = "box75"
+outer_status = "untrusted_sensitivity"
+physical_pass = true
+[[runs]]
+case = "two-source"
+directory = "two-source-schpd"
+elapsed_sec = 0.9057863999914844
+id = "two-source-schpd"
+initialization = "schpd"
+outer_status = "line_search_stalled"
+physical_pass = true
+[[runs]]
+case = "two-source"
+directory = "two-source-case_fixed"
+elapsed_sec = 3.0175912999839056
+id = "two-source-case_fixed"
+initialization = "case_fixed"
+outer_status = "untrusted_sensitivity"
+physical_pass = true
+[[runs]]
+case = "two-source"
+directory = "two-source-box25"
+elapsed_sec = 2.387087100010831
+id = "two-source-box25"
+initialization = "box25"
+outer_status = "line_search_stalled"
+physical_pass = true
+[[runs]]
+case = "two-source"
+directory = "two-source-box50"
+elapsed_sec = 4.039635699999053
+id = "two-source-box50"
+initialization = "box50"
+outer_status = "untrusted_sensitivity"
+physical_pass = true
+[[runs]]
+case = "two-source"
+directory = "two-source-box75"
+elapsed_sec = 1.849576300010085
+id = "two-source-box75"
+initialization = "box75"
+outer_status = "untrusted_sensitivity"
+physical_pass = true
+[[runs]]
+case = "single-source"
+directory = "single-no-halfspace"
+elapsed_sec = 1.095784300006926
+id = "single-no-halfspace"
+initialization = "schpd"
+outer_status = "untrusted_sensitivity"
+physical_pass = true
+[[runs]]
+case = "two-source"
+directory = "two-no-halfspace"
+elapsed_sec = 0.6727221999899484
+id = "two-no-halfspace"
+initialization = "schpd"
+outer_status = "line_search_stalled"
+physical_pass = true
+[[runs]]
+case = "single-source"
+directory = "single-low-flow"
+elapsed_sec = 2.360311099997489
+id = "single-low-flow"
+initialization = "low_flow"
+outer_status = "line_search_stalled"
+physical_pass = true
+[[runs]]
+case = "single-source"
+directory = "single-impossible-heat"
+elapsed_sec = 2.4719677999964915
+id = "single-impossible-heat"
+initialization = "case_fixed"
+outer_status = "line_search_stalled"
+physical_pass = false
+[[runs]]
+case = "single-source"
+directory = "single-loose-electric"
+elapsed_sec = 0.5007761000015307
+id = "single-loose-electric"
+initialization = "case_fixed"
+outer_status = "smooth_numeric_stop"
+physical_pass = true
+[[runs]]
+case = "single-source"
+directory = "single-delay-switch"
+elapsed_sec = 1.6481125999998767
+id = "single-delay-switch"
+initialization = "case_fixed"
+outer_status = "line_search_stalled"
+physical_pass = false

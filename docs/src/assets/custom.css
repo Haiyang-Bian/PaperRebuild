@@ -1,0 +1,36 @@
+/* 正文占满侧栏以外的可用宽度；小屏沿用 Documenter 的抽屉导航。 */
+#documenter .docs-main,
+#documenter .docs-main > article {
+    max-width: none;
+}
+
+/* 独立公式居中，原论文式号由 LaTeX \tag 在右侧排版。 */
+#documenter .math-container {
+    padding: 0.4rem 0;
+}
+
+#documenter .katex-display {
+    text-align: center;
+}
+
+/* 长公式在自身容器中滚动，避免把整页撑出浏览器。 */
+#documenter .math-container > span {
+    display: block;
+    min-width: min-content;
+}
+
+#documenter .katex-display > .katex > .katex-html {
+    padding: 0 4em;
+}
+
+/* Documenter 的 Bulma 标签也叫 .tag；恢复 KaTeX 式号应有的正文样式。 */
+#documenter .katex .tag {
+    display: inline-block;
+    background: transparent;
+    border-radius: 0;
+    color: inherit;
+    font-size: inherit;
+    height: auto;
+    line-height: inherit;
+    padding: 0;
+}

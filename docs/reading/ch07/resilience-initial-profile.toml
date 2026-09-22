@@ -1,0 +1,34 @@
+schema = "r9-resilience-initial-profile-contract-v1"
+origin = "project_state_representation_and_synthetic_verification"
+input_schema = "r7-initial-profile-v2"
+classification = "project_input_extension_not_recovered_author_history"
+human_page = "docs/src/ch07-initial-profile.md"
+quadrature_reference = "https://dlmf.nist.gov/3.5#v"
+quadrature_reference_equations = ["3.5.19","3.5.20","3.5.21"]
+legacy_piecewise_constant_preserved = true
+old_results_rewritten = false
+node_method_history_inferred = false
+reverse_flow_optimization_added = false
+scale_input_frozen = false
+scale_optimization_performed = false
+maximum_normalized_quadrature_error = 1e-10
+input_preflight = "results/summaries/r9-resilience-input-audit-20260921-v1/preflight.toml"
+test_commands = ["scripts/test_r7_initial_profile.jl","scripts/test_r7_initial_profile_gurobi.jl","scripts/check_r9_initial_profile.jl","scripts/audit_r9_resilience_input.jl"]
+
+[[formula]]
+id = "R9-RI1"
+meaning = "Steady positive-flow exponential temperature in spatial mass coordinates; explicit initial state provenance."
+api = ["r7_initial_profile","load_r7_normal_case"]
+test = "test/r7_initial_profile.jl"
+
+[[formula]]
+id = "R9-RI2"
+meaning = "Piecewise exponential state, exact mean and inventory; cumulative-label integration and inherited profiles."
+api = ["r7_initial_profile","add_r7_mass_transport!","add_r7_lossy_mass_transport!","build_r7_flow_planning"]
+test = "test/r7_initial_profile.jl"
+
+[[formula]]
+id = "R9-RI3"
+meaning = "Independent Gauss remainder for spatial and temporal exponential integration; original tolerance retained."
+api = ["r7_loss_quadrature_bound","r7_normal_flow_spec","add_r7_lossy_mass_transport!"]
+test = "test/r7_initial_profile.jl"

@@ -1,0 +1,90 @@
+schema = "r2-issues-v1"
+source = "docs/摘要.pdf，PDF46–52原页"
+literal_status = "blocked"
+paper_match = "blocked: 原式疑点和作者完整输入均未闭合"
+adopted_model_status = "可在明确假设下验证；原文未获作者解释不阻断已推导的采用模型"
+resolution_document = "docs/src/ch03-r3-theory.md"
+
+[[resolution]]
+id = "R2-C01"
+classification = "符号与方向补全"
+derivation = "质量守恒与正温差热交换同时成立：端口按源/荷拆正幅值，净注入另赋符号；供回水按真实入流混合。"
+status = "adopted_derived"
+evidence = "R2 inputs and class ch03-001:057；R3 fixed schedule and reconstruction ch03-060"
+[[resolution]]
+id = "R2-C02"
+classification = "有依据的损耗表达修正"
+derivation = "线性沿程传热对温差积分得到负指数；量纲无量纲。beta0=1对应当前出流，停留时间项排除该项，采用公开预印本式29。"
+status = "adopted_derived_with_reference_version_limit"
+evidence = "R2 transport ch03-027:034；R3独立累计质量回放"
+[[resolution]]
+id = "R2-C03"
+classification = "包络系数的量纲修正"
+derivation = "先包络w=mDeltaT再乘cp；原印式角点反例足以拒绝缺少cp的写法。"
+status = "adopted_verified_counterexample"
+evidence = "R2 envelopes and literal counterexamples ch03-042:052"
+[[resolution]]
+id = "R2-C04"
+classification = "时间单位恢复及项目能量代理"
+derivation = "P*dt_h产生MWh，rho*A*L*cp*DeltaT/3.6e9按每侧计量；dt未印出可能为1h约定。端点平均温度与独立E递推仍是近似，不能当WMM恒等式。"
+status = "adopted_units_proxy_not_physical_identity"
+evidence = "R2能量反例及energy-temperature-consistency残差；R3最终WMM不使用E代理"
+[[resolution]]
+id = "R2-C05"
+classification = "项目有限体积近似"
+derivation = "单管热量守恒确定三项均为W；均温离散是新增模型假设，不是WMM的等价改写。"
+status = "project_approximation"
+evidence = "R2动态回代；R3最终采用WMM输运"
+[[resolution]]
+id = "Q10"
+classification = "项目额外McCormick松弛"
+derivation = "m和温差皆可变时保留双线性；有界四面包络后检查MOI类型才能称项目MISOCP。"
+status = "project_relaxation_author_handling_unknown"
+evidence = "R2 inputs and class ch03-001:057；SCHPD只作为R3初值"
+
+[[issue]]
+id = "R2-C01"
+equations = [17,20,21,22,35,36]
+observation = "3-21给节点m=管道流入-流出，负荷节点末端为正；3-17正温差下给正H，与3-20负热注入冲突。混合式也未按源/荷区分本地入流，3-22右端出现ij。"
+project_choice = "端口流量与热量用正幅值；质量/热量净注入按source/load取符号。供回水混合仅计真正入流。管道回水方向反向；kappa按当前管索引。"
+test = "R2 inputs and class ch03-001:057"
+status = "作者解释未核清；项目闭合有显式定义"
+[[issue]]
+id = "R2-C02"
+equations = [34]
+observation = "240dpi原页局部核对：3-34将温差括号直接作幂底，未印e及衰减负号；beta求和下限是0。公开预印本1711.02274v2式29使用负指数且beta从1起，而beta0=1。回水损耗未在该式单列。"
+project_choice = "checked版明确采用exp负指数、beta从1起算，供回两侧分别使用同式；依据传热量纲和预印本式29，不称原式等价变形；保留与R1半步损耗不同的事实。"
+reference = "https://arxiv.org/abs/1711.02274v2"
+reference_version = "2017预印本；2019 Energy期刊版未逐式核对，不称同一版本"
+test = "R2 transport ch03-027:034"
+status = "无损输运等价已可测试；有损版本差异保留"
+[[issue]]
+id = "R2-C03"
+equations = [42]
+observation = "四条包络的第二项没有c_w，温差符号部分未带t。"
+project_choice = "先对w=m*Delta_tau建标准四面包络，再H=(cp_J_kgK/1e6)*w，所有项单位一致。"
+counterexample = "cw=4.2，m盒[1,4]、Delta_tau盒[2,6]；右上角真实热量100.8，原某上界49.6。"
+test = "R2 envelopes and literal counterexamples ch03-042:052"
+status = "补全版有角点和盒内检验；未冒称原式正确"
+[[issue]]
+id = "R2-C04"
+equations = [1,44,46,47]
+observation = "3-1/44未显式写时间步；3-44两项均印为供水损耗；3-46有2AL；3-47返回温差项括号外未见AL。"
+project_choice = "MW和单价/MWh乘dt_h；S/R损耗各计一次；E由每侧cp*rho*A*L*(Tbar-Tmin)/3.6e9累计。初始出口由同一历史WMM回放，均温取初始进出口平均。自由终端；E代理不额外强制等于每期管温积分，另列一致性残差。"
+counterexample = "取AL=1且所有初温都在上界，原3-46给E0=2Emax，已足以构成界冲突。"
+test = "R2 envelopes and literal counterexamples ch03-042:052"
+status = "项目能量定义已闭合；原式未解除"
+[[issue]]
+id = "R2-C05"
+equations = [52]
+observation = "一阶差分未除时间步；按2章epsilon的单位，损耗系数缺比热且长度处理不一致。"
+project_choice = "使用单管有限体积能量式：rho*A*L*cp*(Tbar_t-Tbar_prev)/dt_s + cp*m*(Tout-Tin) + epsilon*L*(Tref或Tbar-Tamb)=0，三项单位W。它是项目补全，不能等同原式。"
+test = "R2 envelopes and literal counterexamples ch03-042:052"
+status = "补全版有独立回代；原式未解除"
+[[issue]]
+id = "Q10"
+equations = [52]
+observation = "变流量m与温度差仍相乘；表3-1所称线性/混合整数不能由所印方程直接推出。"
+project_choice = "schpd_literal保持blocked；schpd_mc_v1增加独立dynamics_product=:mc开关，有限边界包络后通过MOI实际类型检查。exact开关则如实归类nonconvex。"
+test = "R2 inputs and class ch03-001:057"
+status = "项目MISOCP变体可实现；作者实际处理仍未知"

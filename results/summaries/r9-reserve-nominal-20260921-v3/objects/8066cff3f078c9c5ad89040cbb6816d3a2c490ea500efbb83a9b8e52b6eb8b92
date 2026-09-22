@@ -1,0 +1,3292 @@
+buildings = 36
+case_sha256 = "89a2b20bb234acc6554e644fa2c8028ed18bf7c788ecb7f2b46567cab4b8cf36"
+electric_nodes = 44
+failures = []
+heat_nodes = 38
+local_P2H_count = 4
+reference_pass = true
+reference_source_heat_MW = [5.730396463418252, 0.6796512725679915]
+whole_day_dispatch_verified = false
+
+[[rows]]
+id = "electric-node-count"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "electric-root"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "heat-node-count"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "time-periods"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "time-step"
+pass = true
+residual = 0.0
+tolerance = 0.0
+unit = "h"
+[[rows]]
+id = "electric-topology"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "heat-topology"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "device-inventory"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "device-kind/CHP"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "device-node/CHP"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "device-capacity/CHP"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "device-cost/CHP"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "CNY/MWh"
+[[rows]]
+id = "device-heat-port/CHP"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "device-heat-ratio/CHP"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "1"
+[[rows]]
+id = "device-kind/EB1"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "device-node/EB1"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "device-capacity/EB1"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "device-cost/EB1"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "CNY/MWh"
+[[rows]]
+id = "device-heat-port/EB1"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "device-heat-ratio/EB1"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "1"
+[[rows]]
+id = "device-kind/EB2"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "device-node/EB2"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "device-capacity/EB2"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "device-cost/EB2"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "CNY/MWh"
+[[rows]]
+id = "device-heat-port/EB2"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "device-heat-ratio/EB2"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "1"
+[[rows]]
+id = "device-kind/PV1"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "device-node/PV1"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "device-capacity/PV1"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "device-cost/PV1"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "CNY/MWh"
+[[rows]]
+id = "device-kind/PV2"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "device-node/PV2"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "device-capacity/PV2"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "device-cost/PV2"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "CNY/MWh"
+[[rows]]
+id = "device-kind/PV3"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "device-node/PV3"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "device-capacity/PV3"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "device-cost/PV3"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "CNY/MWh"
+[[rows]]
+id = "local-heater-count"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "building-count"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "local-heater-port/P2H1"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "local-heater-node/P2H1"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "local-heater-capacity/P2H1"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "local-heater-efficiency/P2H1"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "1"
+[[rows]]
+id = "local-heater-port/P2H2"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "local-heater-node/P2H2"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "local-heater-capacity/P2H2"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "local-heater-efficiency/P2H2"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "1"
+[[rows]]
+id = "local-heater-port/P2H3"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "local-heater-node/P2H3"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "local-heater-capacity/P2H3"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "local-heater-efficiency/P2H3"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "1"
+[[rows]]
+id = "local-heater-port/P2H4"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "local-heater-node/P2H4"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "local-heater-capacity/P2H4"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "local-heater-efficiency/P2H4"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "1"
+[[rows]]
+id = "terminal-pipe-rule"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "terminal-building/B2"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "building-time-constant/B2"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "h"
+[[rows]]
+id = "terminal-building/B3"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "building-time-constant/B3"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "h"
+[[rows]]
+id = "terminal-building/B4"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "building-time-constant/B4"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "h"
+[[rows]]
+id = "terminal-building/B5"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "building-time-constant/B5"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "h"
+[[rows]]
+id = "terminal-building/B6"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "building-time-constant/B6"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "h"
+[[rows]]
+id = "terminal-building/B7"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "building-time-constant/B7"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "h"
+[[rows]]
+id = "terminal-building/B8"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "building-time-constant/B8"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "h"
+[[rows]]
+id = "terminal-building/B9"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "building-time-constant/B9"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "h"
+[[rows]]
+id = "terminal-building/B10"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "building-time-constant/B10"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "h"
+[[rows]]
+id = "terminal-building/B11"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "building-time-constant/B11"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "h"
+[[rows]]
+id = "terminal-building/B12"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "building-time-constant/B12"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "h"
+[[rows]]
+id = "terminal-building/B13"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "building-time-constant/B13"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "h"
+[[rows]]
+id = "terminal-building/B14"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "building-time-constant/B14"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "h"
+[[rows]]
+id = "terminal-building/B16"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "building-time-constant/B16"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "h"
+[[rows]]
+id = "terminal-building/B17"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "building-time-constant/B17"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "h"
+[[rows]]
+id = "terminal-building/B18"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "building-time-constant/B18"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "h"
+[[rows]]
+id = "terminal-building/B19"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "building-time-constant/B19"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "h"
+[[rows]]
+id = "terminal-building/B20"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "building-time-constant/B20"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "h"
+[[rows]]
+id = "terminal-building/B21"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "building-time-constant/B21"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "h"
+[[rows]]
+id = "terminal-building/B22"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "building-time-constant/B22"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "h"
+[[rows]]
+id = "terminal-building/B23"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "building-time-constant/B23"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "h"
+[[rows]]
+id = "terminal-building/B24"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "building-time-constant/B24"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "h"
+[[rows]]
+id = "terminal-building/B25"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "building-time-constant/B25"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "h"
+[[rows]]
+id = "terminal-building/B26"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "building-time-constant/B26"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "h"
+[[rows]]
+id = "terminal-building/B27"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "building-time-constant/B27"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "h"
+[[rows]]
+id = "terminal-building/B28"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "building-time-constant/B28"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "h"
+[[rows]]
+id = "terminal-building/B29"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "building-time-constant/B29"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "h"
+[[rows]]
+id = "terminal-building/B30"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "building-time-constant/B30"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "h"
+[[rows]]
+id = "terminal-building/B31"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "building-time-constant/B31"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "h"
+[[rows]]
+id = "terminal-building/B32"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "building-time-constant/B32"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "h"
+[[rows]]
+id = "terminal-building/B33"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "building-time-constant/B33"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "h"
+[[rows]]
+id = "terminal-building/B34"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "building-time-constant/B34"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "h"
+[[rows]]
+id = "terminal-building/B35"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "building-time-constant/B35"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "h"
+[[rows]]
+id = "terminal-building/B36"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "building-time-constant/B36"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "h"
+[[rows]]
+id = "terminal-building/B37"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "building-time-constant/B37"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "h"
+[[rows]]
+id = "terminal-building/B38"
+pass = true
+residual = 0
+tolerance = 0.0
+unit = "1"
+[[rows]]
+id = "building-time-constant/B38"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "h"
+[[rows]]
+id = "price/energy_price"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "CNY/MWh"
+[[rows]]
+id = "price/up_price"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "CNY/(MW*h)"
+[[rows]]
+id = "price/down_price"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "CNY/(MW*h)"
+[[rows]]
+id = "price/realtime"
+pass = true
+residual = 2.842170943040401e-14
+tolerance = 1.0e-6
+unit = "CNY/MWh"
+[[rows]]
+id = "source-temp-bound/1"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-temp-bound/1"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "supply-mix/1"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-mix/1"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "mass/1"
+pass = true
+residual = 3.552713678800501e-15
+tolerance = 1.0e-6
+unit = "kg/s"
+[[rows]]
+id = "source-temp-bound/2"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-temp-bound/2"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "supply-mix/2"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-mix/2"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "mass/2"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "kg/s"
+[[rows]]
+id = "source-temp-bound/3"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-temp-bound/3"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "supply-mix/3"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-mix/3"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "mass/3"
+pass = true
+residual = 1.7763568394002505e-15
+tolerance = 1.0e-6
+unit = "kg/s"
+[[rows]]
+id = "source-temp-bound/4"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-temp-bound/4"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "supply-mix/4"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-mix/4"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "mass/4"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "kg/s"
+[[rows]]
+id = "source-temp-bound/5"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-temp-bound/5"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "supply-mix/5"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-mix/5"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "mass/5"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "kg/s"
+[[rows]]
+id = "source-temp-bound/6"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-temp-bound/6"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "supply-mix/6"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-mix/6"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "mass/6"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "kg/s"
+[[rows]]
+id = "source-temp-bound/7"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-temp-bound/7"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "supply-mix/7"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-mix/7"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "mass/7"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "kg/s"
+[[rows]]
+id = "source-temp-bound/8"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-temp-bound/8"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "supply-mix/8"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-mix/8"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "mass/8"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "kg/s"
+[[rows]]
+id = "source-temp-bound/9"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-temp-bound/9"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "supply-mix/9"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-mix/9"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "mass/9"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "kg/s"
+[[rows]]
+id = "source-temp-bound/10"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-temp-bound/10"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "supply-mix/10"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-mix/10"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "mass/10"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "kg/s"
+[[rows]]
+id = "source-temp-bound/11"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-temp-bound/11"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "supply-mix/11"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-mix/11"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "mass/11"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "kg/s"
+[[rows]]
+id = "source-temp-bound/12"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-temp-bound/12"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "supply-mix/12"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-mix/12"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "mass/12"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "kg/s"
+[[rows]]
+id = "source-temp-bound/13"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-temp-bound/13"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "supply-mix/13"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-mix/13"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "mass/13"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "kg/s"
+[[rows]]
+id = "source-temp-bound/14"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-temp-bound/14"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "supply-mix/14"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-mix/14"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "mass/14"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "kg/s"
+[[rows]]
+id = "source-temp-bound/15"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-temp-bound/15"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "supply-mix/15"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-mix/15"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "mass/15"
+pass = true
+residual = 1.7763568394002505e-15
+tolerance = 1.0e-6
+unit = "kg/s"
+[[rows]]
+id = "source-temp-bound/16"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-temp-bound/16"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "supply-mix/16"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-mix/16"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "mass/16"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "kg/s"
+[[rows]]
+id = "source-temp-bound/17"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-temp-bound/17"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "supply-mix/17"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-mix/17"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "mass/17"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "kg/s"
+[[rows]]
+id = "source-temp-bound/18"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-temp-bound/18"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "supply-mix/18"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-mix/18"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "mass/18"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "kg/s"
+[[rows]]
+id = "source-temp-bound/19"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-temp-bound/19"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "supply-mix/19"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-mix/19"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "mass/19"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "kg/s"
+[[rows]]
+id = "source-temp-bound/20"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-temp-bound/20"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "supply-mix/20"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-mix/20"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "mass/20"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "kg/s"
+[[rows]]
+id = "source-temp-bound/21"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-temp-bound/21"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "supply-mix/21"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-mix/21"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "mass/21"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "kg/s"
+[[rows]]
+id = "source-temp-bound/22"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-temp-bound/22"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "supply-mix/22"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-mix/22"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "mass/22"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "kg/s"
+[[rows]]
+id = "source-temp-bound/23"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-temp-bound/23"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "supply-mix/23"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-mix/23"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "mass/23"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "kg/s"
+[[rows]]
+id = "source-temp-bound/24"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-temp-bound/24"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "supply-mix/24"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-mix/24"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "mass/24"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "kg/s"
+[[rows]]
+id = "source-temp-bound/25"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-temp-bound/25"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "supply-mix/25"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-mix/25"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "mass/25"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "kg/s"
+[[rows]]
+id = "source-temp-bound/26"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-temp-bound/26"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "supply-mix/26"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-mix/26"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "mass/26"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "kg/s"
+[[rows]]
+id = "source-temp-bound/27"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-temp-bound/27"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "supply-mix/27"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-mix/27"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "mass/27"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "kg/s"
+[[rows]]
+id = "source-temp-bound/28"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-temp-bound/28"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "supply-mix/28"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-mix/28"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "mass/28"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "kg/s"
+[[rows]]
+id = "source-temp-bound/29"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-temp-bound/29"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "supply-mix/29"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-mix/29"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "mass/29"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "kg/s"
+[[rows]]
+id = "source-temp-bound/30"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-temp-bound/30"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "supply-mix/30"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-mix/30"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "mass/30"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "kg/s"
+[[rows]]
+id = "source-temp-bound/31"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-temp-bound/31"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "supply-mix/31"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-mix/31"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "mass/31"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "kg/s"
+[[rows]]
+id = "source-temp-bound/32"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-temp-bound/32"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "supply-mix/32"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-mix/32"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "mass/32"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "kg/s"
+[[rows]]
+id = "source-temp-bound/33"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-temp-bound/33"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "supply-mix/33"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-mix/33"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "mass/33"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "kg/s"
+[[rows]]
+id = "source-temp-bound/34"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-temp-bound/34"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "supply-mix/34"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-mix/34"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "mass/34"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "kg/s"
+[[rows]]
+id = "source-temp-bound/35"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-temp-bound/35"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "supply-mix/35"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-mix/35"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "mass/35"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "kg/s"
+[[rows]]
+id = "source-temp-bound/36"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-temp-bound/36"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "supply-mix/36"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-mix/36"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "mass/36"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "kg/s"
+[[rows]]
+id = "source-temp-bound/37"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-temp-bound/37"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "supply-mix/37"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-mix/37"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "mass/37"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "kg/s"
+[[rows]]
+id = "source-temp-bound/38"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-temp-bound/38"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "supply-mix/38"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "return-mix/38"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "mass/38"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "kg/s"
+[[rows]]
+id = "transport/S/1"
+pass = true
+residual = 1.4210854715202004e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/S/1"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/R/1"
+pass = true
+residual = 1.4210854715202004e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/R/1"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/S/2"
+pass = true
+residual = 1.4210854715202004e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/S/2"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/R/2"
+pass = true
+residual = 1.4210854715202004e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/R/2"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/S/3"
+pass = true
+residual = 2.842170943040401e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/S/3"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/R/3"
+pass = true
+residual = 1.4210854715202004e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/R/3"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/S/4"
+pass = true
+residual = 1.4210854715202004e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/S/4"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/R/4"
+pass = true
+residual = 1.4210854715202004e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/R/4"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/S/5"
+pass = true
+residual = 1.4210854715202004e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/S/5"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/R/5"
+pass = true
+residual = 1.4210854715202004e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/R/5"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/S/6"
+pass = true
+residual = 1.4210854715202004e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/S/6"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/R/6"
+pass = true
+residual = 1.4210854715202004e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/R/6"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/S/7"
+pass = true
+residual = 1.4210854715202004e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/S/7"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/R/7"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/R/7"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/S/8"
+pass = true
+residual = 2.842170943040401e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/S/8"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/R/8"
+pass = true
+residual = 1.4210854715202004e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/R/8"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/S/9"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/S/9"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/R/9"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/R/9"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/S/10"
+pass = true
+residual = 1.4210854715202004e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/S/10"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/R/10"
+pass = true
+residual = 2.842170943040401e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/R/10"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/S/11"
+pass = true
+residual = 1.4210854715202004e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/S/11"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/R/11"
+pass = true
+residual = 2.842170943040401e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/R/11"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/S/12"
+pass = true
+residual = 2.842170943040401e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/S/12"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/R/12"
+pass = true
+residual = 1.4210854715202004e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/R/12"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/S/13"
+pass = true
+residual = 2.842170943040401e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/S/13"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/R/13"
+pass = true
+residual = 1.4210854715202004e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/R/13"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/S/14"
+pass = true
+residual = 2.842170943040401e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/S/14"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/R/14"
+pass = true
+residual = 7.105427357601002e-15
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/R/14"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/S/15"
+pass = true
+residual = 1.4210854715202004e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/S/15"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/R/15"
+pass = true
+residual = 7.105427357601002e-15
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/R/15"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/S/16"
+pass = true
+residual = 1.4210854715202004e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/S/16"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/R/16"
+pass = true
+residual = 7.105427357601002e-15
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/R/16"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/S/17"
+pass = true
+residual = 1.4210854715202004e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/S/17"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/R/17"
+pass = true
+residual = 2.1316282072803006e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/R/17"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/S/18"
+pass = true
+residual = 1.4210854715202004e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/S/18"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/R/18"
+pass = true
+residual = 2.842170943040401e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/R/18"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/S/19"
+pass = true
+residual = 1.4210854715202004e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/S/19"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/R/19"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/R/19"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/S/20"
+pass = true
+residual = 1.4210854715202004e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/S/20"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/R/20"
+pass = true
+residual = 2.842170943040401e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/R/20"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/S/21"
+pass = true
+residual = 1.4210854715202004e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/S/21"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/R/21"
+pass = true
+residual = 1.4210854715202004e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/R/21"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/S/22"
+pass = true
+residual = 1.4210854715202004e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/S/22"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/R/22"
+pass = true
+residual = 2.1316282072803006e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/R/22"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/S/23"
+pass = true
+residual = 2.842170943040401e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/S/23"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/R/23"
+pass = true
+residual = 2.1316282072803006e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/R/23"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/S/24"
+pass = true
+residual = 1.4210854715202004e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/S/24"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/R/24"
+pass = true
+residual = 2.842170943040401e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/R/24"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/S/25"
+pass = true
+residual = 1.4210854715202004e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/S/25"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/R/25"
+pass = true
+residual = 7.105427357601002e-15
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/R/25"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/S/26"
+pass = true
+residual = 1.4210854715202004e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/S/26"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/R/26"
+pass = true
+residual = 2.1316282072803006e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/R/26"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/S/27"
+pass = true
+residual = 1.4210854715202004e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/S/27"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/R/27"
+pass = true
+residual = 1.4210854715202004e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/R/27"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/S/28"
+pass = true
+residual = 2.842170943040401e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/S/28"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/R/28"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/R/28"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/S/29"
+pass = true
+residual = 1.4210854715202004e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/S/29"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/R/29"
+pass = true
+residual = 2.1316282072803006e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/R/29"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/S/30"
+pass = true
+residual = 1.4210854715202004e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/S/30"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/R/30"
+pass = true
+residual = 7.105427357601002e-15
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/R/30"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/S/31"
+pass = true
+residual = 2.842170943040401e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/S/31"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/R/31"
+pass = true
+residual = 7.105427357601002e-15
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/R/31"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/S/32"
+pass = true
+residual = 1.4210854715202004e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/S/32"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/R/32"
+pass = true
+residual = 2.1316282072803006e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/R/32"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/S/33"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/S/33"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/R/33"
+pass = true
+residual = 2.1316282072803006e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/R/33"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/S/34"
+pass = true
+residual = 2.842170943040401e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/S/34"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/R/34"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/R/34"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/S/35"
+pass = true
+residual = 1.4210854715202004e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/S/35"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/R/35"
+pass = true
+residual = 1.4210854715202004e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/R/35"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/S/36"
+pass = true
+residual = 1.4210854715202004e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/S/36"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/R/36"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/R/36"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/S/37"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/S/37"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "transport/R/37"
+pass = true
+residual = 1.4210854715202004e-14
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "history/R/37"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "load-return/1"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "building-heat/1"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "load-return/2"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "building-heat/2"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "load-return/3"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "building-heat/3"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "load-return/4"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "building-heat/4"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "load-return/5"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "building-heat/5"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "load-return/6"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "building-heat/6"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "load-return/7"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "building-heat/7"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "load-return/8"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "building-heat/8"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "load-return/9"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "building-heat/9"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "load-return/10"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "building-heat/10"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "load-return/11"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "building-heat/11"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "load-return/12"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "building-heat/12"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "load-return/13"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "building-heat/13"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "load-return/14"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "building-heat/14"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "load-return/15"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "building-heat/15"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "load-return/16"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "building-heat/16"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "load-return/17"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "building-heat/17"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "load-return/18"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "building-heat/18"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "load-return/19"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "building-heat/19"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "load-return/20"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "building-heat/20"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "load-return/21"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "building-heat/21"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "load-return/22"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "building-heat/22"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "load-return/23"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "building-heat/23"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "load-return/24"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "building-heat/24"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "load-return/25"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "building-heat/25"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "load-return/26"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "building-heat/26"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "load-return/27"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "building-heat/27"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "load-return/28"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "building-heat/28"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "load-return/29"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "building-heat/29"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "load-return/30"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "building-heat/30"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "load-return/31"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "building-heat/31"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "load-return/32"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "building-heat/32"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "load-return/33"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "building-heat/33"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "load-return/34"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "building-heat/34"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "load-return/35"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "building-heat/35"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "load-return/36"
+pass = true
+residual = 0.0
+tolerance = 0.0001
+unit = "K"
+[[rows]]
+id = "building-heat/36"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "source-heat/1"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "source-capacity/1"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "source-heat/2"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"
+[[rows]]
+id = "source-capacity/2"
+pass = true
+residual = 0.0
+tolerance = 1.0e-6
+unit = "MW"

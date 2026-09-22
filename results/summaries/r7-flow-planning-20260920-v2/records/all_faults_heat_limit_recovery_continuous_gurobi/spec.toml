@@ -1,0 +1,150 @@
+case_sha256 = "7f5613fa9a7ff18e17be4d1d1b8ab6579fac2d76f330d1ae47bf7ba0883349a0"
+energy_balance = true
+idle_temperature_rule = "free_zero_flow"
+normal_domain = "continuous_positive_lossless_fixed_electric_topology"
+recovery_domain = "continuous_nonnegative_lossless_shared_scenarios"
+schema = "r7-flow-planning-spec-v1"
+state_rule = "same_normal_mass_labels_and_temperatures"
+substeps = 1
+version = "r7_shared_continuous_flow_v1"
+
+[[bounds]]
+event = 1
+fault = [0]
+
+    [bounds.bounds.load_max]
+    data = [0.0, 10.0]
+    shape = [2, 1]
+
+    [bounds.bounds.load_min]
+    data = [0.0, 0.0]
+    shape = [2, 1]
+
+    [bounds.bounds.pipe_max]
+    data = [10.0]
+    shape = [1, 1]
+
+    [bounds.bounds.pipe_min]
+    data = [0.0]
+    shape = [1, 1]
+
+    [bounds.bounds.source_max]
+    data = [10.0, 0.0]
+    shape = [2, 1]
+
+    [bounds.bounds.source_min]
+    data = [0.0, 0.0]
+    shape = [2, 1]
+[[bounds]]
+event = 1
+fault = [1]
+
+    [bounds.bounds.load_max]
+    data = [0.0, 10.0]
+    shape = [2, 1]
+
+    [bounds.bounds.load_min]
+    data = [0.0, 0.0]
+    shape = [2, 1]
+
+    [bounds.bounds.pipe_max]
+    data = [10.0]
+    shape = [1, 1]
+
+    [bounds.bounds.pipe_min]
+    data = [0.0]
+    shape = [1, 1]
+
+    [bounds.bounds.source_max]
+    data = [10.0, 0.0]
+    shape = [2, 1]
+
+    [bounds.bounds.source_min]
+    data = [0.0, 0.0]
+    shape = [2, 1]
+[[bounds]]
+event = 2
+fault = [0]
+
+    [bounds.bounds.load_max]
+    data = [0.0, 10.0]
+    shape = [2, 1]
+
+    [bounds.bounds.load_min]
+    data = [0.0, 0.0]
+    shape = [2, 1]
+
+    [bounds.bounds.pipe_max]
+    data = [10.0]
+    shape = [1, 1]
+
+    [bounds.bounds.pipe_min]
+    data = [0.0]
+    shape = [1, 1]
+
+    [bounds.bounds.source_max]
+    data = [10.0, 0.0]
+    shape = [2, 1]
+
+    [bounds.bounds.source_min]
+    data = [0.0, 0.0]
+    shape = [2, 1]
+[[bounds]]
+event = 2
+fault = [1]
+
+    [bounds.bounds.load_max]
+    data = [0.0, 10.0]
+    shape = [2, 1]
+
+    [bounds.bounds.load_min]
+    data = [0.0, 0.0]
+    shape = [2, 1]
+
+    [bounds.bounds.pipe_max]
+    data = [10.0]
+    shape = [1, 1]
+
+    [bounds.bounds.pipe_min]
+    data = [0.0]
+    shape = [1, 1]
+
+    [bounds.bounds.source_max]
+    data = [10.0, 0.0]
+    shape = [2, 1]
+
+    [bounds.bounds.source_min]
+    data = [0.0, 0.0]
+    shape = [2, 1]
+
+[normal_flow]
+case_sha256 = "ac0d554e1c8a8f4ab722d0fa9d001492c2b180cf94158fbf5daea571dcf328bd"
+flow_unit = "kg/s"
+scenario_rule = "shared_flows"
+schema = "r7-normal-flow-spec-v1"
+thermal_rule = "exact_mass_overlap_zero_UA"
+version = "r7_continuous_positive_lossless_v1"
+
+    [normal_flow.load_max]
+    data = [0.0, 5.0, 0.0, 5.0, 0.0, 5.0, 0.0, 5.0]
+    shape = [2, 4]
+
+    [normal_flow.load_min]
+    data = [0.0, 5.0, 0.0, 5.0, 0.0, 5.0, 0.0, 5.0]
+    shape = [2, 4]
+
+    [normal_flow.pipe_max]
+    data = [5.0, 5.0, 5.0, 5.0]
+    shape = [1, 4]
+
+    [normal_flow.pipe_min]
+    data = [5.0, 5.0, 5.0, 5.0]
+    shape = [1, 4]
+
+    [normal_flow.source_max]
+    data = [5.0, 0.0, 5.0, 0.0, 5.0, 0.0, 5.0, 0.0]
+    shape = [2, 4]
+
+    [normal_flow.source_min]
+    data = [5.0, 0.0, 5.0, 0.0, 5.0, 0.0, 5.0, 0.0]
+    shape = [2, 4]

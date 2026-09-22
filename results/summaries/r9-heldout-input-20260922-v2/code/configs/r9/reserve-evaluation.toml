@@ -1,0 +1,39 @@
+schema = "r9-reserve-evaluation-study-v1"
+id = "r9-74-heldout-v1"
+origin = "synthetic"
+currency = "CNY"
+schemes = ["3A", "3B", "3C"]
+evaluation_version = "r9_nearest_recourse_v1"
+information = "complete_trajectory"
+training_gate = "verify_and_lock_all_slots_before_any_test_optimization"
+missing_candidate = "training_candidate_unavailable_no_reference_injection"
+deduplication = "exact_operation_hash_and_payload_equality_keep_parent_identities"
+test_days = 1000
+test_order = "original_frozen_order"
+prefix_measurement_days = 3
+prefix_is_part_of_final_test = true
+day_budget_sec = 60.0
+chunk_days = 50
+retry_completed_days = false
+radius_tuning = false
+epsilon = 0.05
+confidence = 0.95
+unknown_rule = "keep_denominator_upper_counts_all"
+cost_rule = "complete_cost_days_only_no_population_mean_if_missing"
+replay_rule = "frozen_sources_original_values_and_duals_no_optimization"
+raw_records = "local_full_values_duals_and_hashes_compact_reconstructible_residual_summary"
+training_time_included_in_day_time = false
+setup_and_save_time_reported_separately = true
+
+[parents]
+common_sha256 = "039ee2c45d94bab32fe27fbed70799ffa980c2f6766c704ed321e40ed34a22b2"
+training_freeze_sha256 = "b3473ac124c64b7fef5789ef4638e3bf2a15ea11cfa0d30f5e0e2829acebe609"
+training_evidence_sha256 = "ea18e8ffe4b57d51cd67cbfb2e9eaf26a7f4856f67f4e1d417e4f9001a0d4cfb"
+
+[solver]
+name = "HiGHS"
+threads = 1
+random_seed = 20260922
+primal_feasibility_tolerance = 1e-9
+dual_feasibility_tolerance = 1e-9
+output_flag = false

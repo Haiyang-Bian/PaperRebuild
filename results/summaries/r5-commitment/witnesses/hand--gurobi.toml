@@ -1,0 +1,915 @@
+parent_result_sha256 = "2d49fa4c6953dca10d0b137afeea17030c0a9e8c38edce94ab55d7f99324140c"
+
+[case]
+comfort = "hard_each_scenario"
+name = "shared_hand"
+objective = "expected_net_cost"
+origin = "synthetic"
+recourse_information = "complete_trajectory"
+schema = "r5-commitment-case-v1"
+uncertain_fields = ["realtime.alpha_down", "realtime.alpha_up"]
+
+    [case.bounds.P_DA_MW]
+    lower = [0.0]
+    upper = [1.0]
+
+    [case.bounds.R_down_MW]
+    lower = [0.0]
+    upper = [0.08]
+
+    [case.bounds.R_up_MW]
+    lower = [0.0]
+    upper = [0.08]
+
+    [case.day_ahead]
+    down_price = [100.0]
+    energy_price = [100.0]
+    up_price = [100.0]
+
+    [[case.scenarios]]
+    case_sha256 = "f0bf23617ebae0a71accc0192b82859288b88be6c0cf4d55f9a21fa50dd0ef95"
+    id = "none"
+    probability = 0.5
+
+        [case.scenarios.case]
+        T = 1
+        ambient_K = [283.15]
+        dt_h = 1.0
+        name = "shared_none"
+        origin = "synthetic"
+        schema = "r5-dispatch-case-v1"
+
+            [case.scenarios.case.award]
+            P_DA_MW = [0.142]
+            R_down_MW = [0.0]
+            R_up_MW = [0.0]
+            down_price = [2.0]
+            energy_price = [100.0]
+            origin = "synthetic"
+            up_price = [5.0]
+
+            [[case.scenarios.case.buildings]]
+            COP_DH = 1.0
+            C_MWh_K = 0.01
+            G_MW_K = 0.0042
+            P_DH_max_MW = 0.0
+            R_max_K = 320.15
+            R_min_K = 320.15
+            T_initial_K = 293.15
+            T_max_K = 293.15
+            T_min_K = 293.15
+            electric_node = 2
+            heat_node = 2
+            id = "building"
+            m_kg_s = 1.0
+            terminal_rule = "initial"
+
+            [[case.scenarios.case.devices]]
+            cost_USD_MWh = 0.0
+            heat_ratio = 1.0
+            id = "EB"
+            kind = "EB"
+            node = 2
+            p_max_MW = 0.1
+            p_min_MW = 0.0
+            q_max_Mvar = 0.0
+            q_min_Mvar = 0.0
+            source_id = "source"
+            [[case.scenarios.case.devices]]
+            P_initial_MW = 0.05
+            cost_USD_MWh = 130.0
+            id = "GT"
+            kind = "GT"
+            node = 2
+            p_max_MW = 0.2
+            p_min_MW = 0.0
+            q_max_Mvar = 0.0
+            q_min_Mvar = 0.0
+            ramp_down_MW_h = 1.0
+            ramp_up_MW_h = 1.0
+
+            [case.scenarios.case.electric]
+            P_load_MW = [[0.0], [0.1]]
+            Q_load_Mvar = [[0.0], [0.02]]
+            S_base_MVA = 1.0
+            nodes = 2
+            pcc_max_MW = 1.0
+            pcc_min_MW = 0.0
+            qcc_max_Mvar = 1.0
+            qcc_min_Mvar = -1.0
+            root = 1
+            v_max_pu = 1.05
+            v_min_pu = 0.95
+            v_ref_pu = 1.0
+
+                [[case.scenarios.case.electric.lines]]
+                P_limit_MW = 1.0
+                Q_limit_Mvar = 1.0
+                from = 1
+                id = "e12"
+                r_pu = 0.01
+                to = 2
+                x_pu = 0.005
+
+            [case.scenarios.case.heat]
+            R_max_K = 343.15
+            R_min_K = 293.15
+            S_max_K = 353.15
+            S_min_K = 303.15
+            c_J_kgK = 4200.0
+            nodes = 2
+            terminal_rule = "free"
+
+                [[case.scenarios.case.heat.pipes]]
+                area_m2 = 0.01
+                from = 1
+                history_R_K = [320.15]
+                history_S_K = [330.15]
+                id = "h12"
+                length_m = 360.0
+                loss_W_mK = 0.0
+                m_kg_s = 1.0
+                rho_kg_m3 = 1000.0
+                to = 2
+
+                [[case.scenarios.case.heat.sources]]
+                T_max_K = 330.15
+                T_min_K = 330.15
+                id = "source"
+                m_kg_s = 1.0
+                node = 1
+
+            [case.scenarios.case.realtime]
+            alpha_down = [0.0]
+            alpha_up = [0.0]
+            delta = 0.0
+            penalty_USD_MWh = 1000.0
+            price = [80.0]
+
+            [case.scenarios.case.units]
+            energy = "MWh"
+            energy_price = "USD/MWh"
+            flow = "kg/s"
+            heat_capacity = "MWh/K"
+            heat_transfer = "MW/K"
+            power = "MW"
+            reactive = "Mvar"
+            reserve_price = "USD/(MW*h)"
+            temperature = "K"
+            time = "h"
+    [[case.scenarios]]
+    case_sha256 = "d21f3f7cd019c63d1194e1d4fed126e9fb2ead0bb4b10694ceeeb8712835e33c"
+    id = "up"
+    probability = 0.25
+
+        [case.scenarios.case]
+        T = 1
+        ambient_K = [283.15]
+        dt_h = 1.0
+        name = "shared_up"
+        origin = "synthetic"
+        schema = "r5-dispatch-case-v1"
+
+            [case.scenarios.case.award]
+            P_DA_MW = [0.142]
+            R_down_MW = [0.0]
+            R_up_MW = [0.0]
+            down_price = [2.0]
+            energy_price = [100.0]
+            origin = "synthetic"
+            up_price = [5.0]
+
+            [[case.scenarios.case.buildings]]
+            COP_DH = 1.0
+            C_MWh_K = 0.01
+            G_MW_K = 0.0042
+            P_DH_max_MW = 0.0
+            R_max_K = 320.15
+            R_min_K = 320.15
+            T_initial_K = 293.15
+            T_max_K = 293.15
+            T_min_K = 293.15
+            electric_node = 2
+            heat_node = 2
+            id = "building"
+            m_kg_s = 1.0
+            terminal_rule = "initial"
+
+            [[case.scenarios.case.devices]]
+            cost_USD_MWh = 0.0
+            heat_ratio = 1.0
+            id = "EB"
+            kind = "EB"
+            node = 2
+            p_max_MW = 0.1
+            p_min_MW = 0.0
+            q_max_Mvar = 0.0
+            q_min_Mvar = 0.0
+            source_id = "source"
+            [[case.scenarios.case.devices]]
+            P_initial_MW = 0.05
+            cost_USD_MWh = 130.0
+            id = "GT"
+            kind = "GT"
+            node = 2
+            p_max_MW = 0.2
+            p_min_MW = 0.0
+            q_max_Mvar = 0.0
+            q_min_Mvar = 0.0
+            ramp_down_MW_h = 1.0
+            ramp_up_MW_h = 1.0
+
+            [case.scenarios.case.electric]
+            P_load_MW = [[0.0], [0.1]]
+            Q_load_Mvar = [[0.0], [0.02]]
+            S_base_MVA = 1.0
+            nodes = 2
+            pcc_max_MW = 1.0
+            pcc_min_MW = 0.0
+            qcc_max_Mvar = 1.0
+            qcc_min_Mvar = -1.0
+            root = 1
+            v_max_pu = 1.05
+            v_min_pu = 0.95
+            v_ref_pu = 1.0
+
+                [[case.scenarios.case.electric.lines]]
+                P_limit_MW = 1.0
+                Q_limit_Mvar = 1.0
+                from = 1
+                id = "e12"
+                r_pu = 0.01
+                to = 2
+                x_pu = 0.005
+
+            [case.scenarios.case.heat]
+            R_max_K = 343.15
+            R_min_K = 293.15
+            S_max_K = 353.15
+            S_min_K = 303.15
+            c_J_kgK = 4200.0
+            nodes = 2
+            terminal_rule = "free"
+
+                [[case.scenarios.case.heat.pipes]]
+                area_m2 = 0.01
+                from = 1
+                history_R_K = [320.15]
+                history_S_K = [330.15]
+                id = "h12"
+                length_m = 360.0
+                loss_W_mK = 0.0
+                m_kg_s = 1.0
+                rho_kg_m3 = 1000.0
+                to = 2
+
+                [[case.scenarios.case.heat.sources]]
+                T_max_K = 330.15
+                T_min_K = 330.15
+                id = "source"
+                m_kg_s = 1.0
+                node = 1
+
+            [case.scenarios.case.realtime]
+            alpha_down = [0.0]
+            alpha_up = [1.0]
+            delta = 0.0
+            penalty_USD_MWh = 1000.0
+            price = [80.0]
+
+            [case.scenarios.case.units]
+            energy = "MWh"
+            energy_price = "USD/MWh"
+            flow = "kg/s"
+            heat_capacity = "MWh/K"
+            heat_transfer = "MW/K"
+            power = "MW"
+            reactive = "Mvar"
+            reserve_price = "USD/(MW*h)"
+            temperature = "K"
+            time = "h"
+    [[case.scenarios]]
+    case_sha256 = "acfbf28c98e5312deac9e269ec5b40b9d3437f1de0ea8657cd59468217e5b71a"
+    id = "down"
+    probability = 0.25
+
+        [case.scenarios.case]
+        T = 1
+        ambient_K = [283.15]
+        dt_h = 1.0
+        name = "shared_down"
+        origin = "synthetic"
+        schema = "r5-dispatch-case-v1"
+
+            [case.scenarios.case.award]
+            P_DA_MW = [0.142]
+            R_down_MW = [0.0]
+            R_up_MW = [0.0]
+            down_price = [2.0]
+            energy_price = [100.0]
+            origin = "synthetic"
+            up_price = [5.0]
+
+            [[case.scenarios.case.buildings]]
+            COP_DH = 1.0
+            C_MWh_K = 0.01
+            G_MW_K = 0.0042
+            P_DH_max_MW = 0.0
+            R_max_K = 320.15
+            R_min_K = 320.15
+            T_initial_K = 293.15
+            T_max_K = 293.15
+            T_min_K = 293.15
+            electric_node = 2
+            heat_node = 2
+            id = "building"
+            m_kg_s = 1.0
+            terminal_rule = "initial"
+
+            [[case.scenarios.case.devices]]
+            cost_USD_MWh = 0.0
+            heat_ratio = 1.0
+            id = "EB"
+            kind = "EB"
+            node = 2
+            p_max_MW = 0.1
+            p_min_MW = 0.0
+            q_max_Mvar = 0.0
+            q_min_Mvar = 0.0
+            source_id = "source"
+            [[case.scenarios.case.devices]]
+            P_initial_MW = 0.05
+            cost_USD_MWh = 130.0
+            id = "GT"
+            kind = "GT"
+            node = 2
+            p_max_MW = 0.2
+            p_min_MW = 0.0
+            q_max_Mvar = 0.0
+            q_min_Mvar = 0.0
+            ramp_down_MW_h = 1.0
+            ramp_up_MW_h = 1.0
+
+            [case.scenarios.case.electric]
+            P_load_MW = [[0.0], [0.1]]
+            Q_load_Mvar = [[0.0], [0.02]]
+            S_base_MVA = 1.0
+            nodes = 2
+            pcc_max_MW = 1.0
+            pcc_min_MW = 0.0
+            qcc_max_Mvar = 1.0
+            qcc_min_Mvar = -1.0
+            root = 1
+            v_max_pu = 1.05
+            v_min_pu = 0.95
+            v_ref_pu = 1.0
+
+                [[case.scenarios.case.electric.lines]]
+                P_limit_MW = 1.0
+                Q_limit_Mvar = 1.0
+                from = 1
+                id = "e12"
+                r_pu = 0.01
+                to = 2
+                x_pu = 0.005
+
+            [case.scenarios.case.heat]
+            R_max_K = 343.15
+            R_min_K = 293.15
+            S_max_K = 353.15
+            S_min_K = 303.15
+            c_J_kgK = 4200.0
+            nodes = 2
+            terminal_rule = "free"
+
+                [[case.scenarios.case.heat.pipes]]
+                area_m2 = 0.01
+                from = 1
+                history_R_K = [320.15]
+                history_S_K = [330.15]
+                id = "h12"
+                length_m = 360.0
+                loss_W_mK = 0.0
+                m_kg_s = 1.0
+                rho_kg_m3 = 1000.0
+                to = 2
+
+                [[case.scenarios.case.heat.sources]]
+                T_max_K = 330.15
+                T_min_K = 330.15
+                id = "source"
+                m_kg_s = 1.0
+                node = 1
+
+            [case.scenarios.case.realtime]
+            alpha_down = [1.0]
+            alpha_up = [0.0]
+            delta = 0.0
+            penalty_USD_MWh = 1000.0
+            price = [80.0]
+
+            [case.scenarios.case.units]
+            energy = "MWh"
+            energy_price = "USD/MWh"
+            flow = "kg/s"
+            heat_capacity = "MWh/K"
+            heat_transfer = "MW/K"
+            power = "MW"
+            reactive = "Mvar"
+            reserve_price = "USD/(MW*h)"
+            temperature = "K"
+            time = "h"
+
+[result]
+case_sha256 = "45916bd87b68387f3354f000f0b5824900de51dd56ab2dccbe6c261205db4b18"
+cost_optimization_complete = true
+elapsed_sec = 0.7070000171661377
+run_id = "r5-commitment-de9269fb-9669-4942-9387-b34e51d217dd"
+schema = "r5-commitment-result-v1"
+solver_objective = 2.085000000000001
+solver_objective_bound = 2.085000000000001
+status = "solver_optimal"
+version = "r5_shared_commitment_checked_v1"
+
+    [result.first_stage]
+    P_DA_MW = [0.08]
+    R_down_MW = [0.06200000000000004]
+    R_up_MW = [0.08]
+
+    [result.raw_first_stage_duals]
+    "PCC-down/1" = 0.0
+    "PCC-up/1" = 0.0
+    "P_DA_MW/1/lower" = 0.0
+    "P_DA_MW/1/upper" = 0.0
+    "R_down_MW/1/lower" = 0.0
+    "R_down_MW/1/upper" = 0.0
+    "R_up_MW/1/lower" = 0.0
+    "R_up_MW/1/upper" = -5.0
+
+    [result.scenarios.down]
+    case_sha256 = "d365d38bee3ee4c1b454928f64d9d7b03d1db5165379fdc04bed6e1e32889e63"
+    dual_probability_divisor = 0.25
+    parent_run_id = "r5-commitment-de9269fb-9669-4942-9387-b34e51d217dd"
+    run_id = "r5-commitment-de9269fb-9669-4942-9387-b34e51d217dd/down"
+    schema = "r5-dispatch-result-v1"
+    solver_objective = -1.2400000000000002
+    status = "embedded_shared_commitment_candidate"
+    version = "r5_dispatch_checked_v1"
+
+        [result.scenarios.down.raw_bound_duals]
+        "H_D/1/1/lower" = 0.0
+        "P_DER/1/1/lower" = 0.0
+        "P_DER/1/1/upper" = 0.0
+        "P_DER/2/1/lower" = 450.0
+        "P_DER/2/1/upper" = 0.0
+        "P_DH/1/1/lower" = 0.0
+        "P_DH/1/1/upper" = -320.0
+        "P_PCC/1/1/lower" = 0.0
+        "P_PCC/1/1/upper" = 0.0
+        "P_line/1/1/lower" = 0.0
+        "P_line/1/1/upper" = 0.0
+        "Q_DER/1/1/lower" = -0.0
+        "Q_DER/1/1/upper" = 0.0
+        "Q_DER/2/1/lower" = -0.0
+        "Q_DER/2/1/upper" = 0.0
+        "Q_PCC/1/1/lower" = 0.0
+        "Q_PCC/1/1/upper" = 0.0
+        "Q_line/1/1/lower" = 0.0
+        "Q_line/1/1/upper" = 0.0
+        "mismatch/1/1/lower" = 600.0
+        "v/1/1/lower" = 0.0
+        "v/1/1/upper" = 0.0
+        "v/2/1/lower" = 0.0
+        "v/2/1/upper" = 0.0
+        "τ_IN/1/1/lower" = 0.0
+        "τ_IN/1/1/upper" = 0.0
+        "τ_R/1/1/lower" = 0.0
+        "τ_R/1/1/upper" = 0.0
+        "τ_R/2/1/lower" = 0.0
+        "τ_R/2/1/upper" = 0.0
+        "τ_S/1/1/lower" = 0.0
+        "τ_S/1/1/upper" = 0.0
+        "τ_S/2/1/lower" = 0.0
+        "τ_S/2/1/upper" = 0.0
+        "τ_load_R/1/1/lower" = -0.0
+        "τ_load_R/1/1/upper" = 0.0
+        "τ_src/1/1/lower" = 0.0
+        "τ_src/1/1/upper" = -1.3439999999999999
+
+        [result.scenarios.down.raw_constraint_duals]
+        "5-10-down/GT/1" = 0.0
+        "5-10-up/GT/1" = 0.0
+        "5-14/1/1" = -320.0
+        "5-14/2/1" = -320.0
+        "5-15/1/1" = 0.0
+        "5-15/2/1" = 0.0
+        "5-16/e12/1" = 0.0
+        "5-17/root/1" = 0.0
+        "5-18/source/1" = -320.0
+        "5-19/building/1" = 0.0
+        "5-20/1/1" = 0.0
+        "5-20/2/1" = 0.0
+        "5-21/1/1" = 1.3439999999999999
+        "5-21/2/1" = 0.0
+        "5-25-26-R/h12/1" = 1.3439999999999999
+        "5-25-26-S/h12/1" = 0.0
+        "5-3-minus/PCC/1" = 400.0
+        "5-3-plus/PCC/1" = 0.0
+        "5-4/window/0" = 0.0
+        "R5-D-building/building/1" = 0.0
+        "R5-D-delivery/PCC/1" = 320.0
+        "R5-D-terminal/building/1" = 0.0
+
+        [result.scenarios.down.values]
+        H_D = [[0.041999999999999885]]
+        P_DER = [[0.04200000000000004], [0.0]]
+        P_DH = [[0.0]]
+        P_PCC = [[0.14200000000000004]]
+        P_line = [[0.14200000000000004]]
+        Q_DER = [[0.0], [0.0]]
+        Q_PCC = [[0.02]]
+        Q_line = [[0.02]]
+        delivery = [[-0.06200000000000004]]
+        mismatch = [[0.0]]
+        v = [[1.0], [0.99848]]
+        "τ_IN" = [[293.15]]
+        "τ_R" = [[320.15], [320.15]]
+        "τ_S" = [[330.15], [330.15]]
+        "τ_load_R" = [[320.15]]
+        "τ_pipe_R" = [[320.15]]
+        "τ_pipe_S" = [[330.15]]
+        "τ_src" = [[330.15]]
+
+    [result.scenarios.none]
+    case_sha256 = "a9b16e9ca45a58615161dd4ee4e24f5105e86d1d017f2e7504f034a954917761"
+    dual_probability_divisor = 0.5
+    parent_run_id = "r5-commitment-de9269fb-9669-4942-9387-b34e51d217dd"
+    run_id = "r5-commitment-de9269fb-9669-4942-9387-b34e51d217dd/none"
+    schema = "r5-dispatch-result-v1"
+    solver_objective = 1.860000000000002
+    status = "embedded_shared_commitment_candidate"
+    version = "r5_dispatch_checked_v1"
+
+        [result.scenarios.none.raw_bound_duals]
+        "H_D/1/1/lower" = 0.0
+        "P_DER/1/1/lower" = 0.0
+        "P_DER/1/1/upper" = 0.0
+        "P_DER/2/1/lower" = 0.0
+        "P_DER/2/1/upper" = 0.0
+        "P_DH/1/1/lower" = 130.0
+        "P_DH/1/1/upper" = 0.0
+        "P_PCC/1/1/lower" = 0.0
+        "P_PCC/1/1/upper" = 0.0
+        "P_line/1/1/lower" = 0.0
+        "P_line/1/1/upper" = 0.0
+        "Q_DER/1/1/lower" = -0.0
+        "Q_DER/1/1/upper" = 0.0
+        "Q_DER/2/1/lower" = -0.0
+        "Q_DER/2/1/upper" = 0.0
+        "Q_PCC/1/1/lower" = 0.0
+        "Q_PCC/1/1/upper" = 0.0
+        "Q_line/1/1/lower" = 0.0
+        "Q_line/1/1/upper" = 0.0
+        "mismatch/1/1/lower" = 950.0
+        "v/1/1/lower" = 0.0
+        "v/1/1/upper" = 0.0
+        "v/2/1/lower" = 0.0
+        "v/2/1/upper" = 0.0
+        "τ_IN/1/1/lower" = 0.0
+        "τ_IN/1/1/upper" = 0.0
+        "τ_R/1/1/lower" = 0.0
+        "τ_R/1/1/upper" = 0.0
+        "τ_R/2/1/lower" = 0.0
+        "τ_R/2/1/upper" = 0.0
+        "τ_S/1/1/lower" = 0.0
+        "τ_S/1/1/upper" = 0.0
+        "τ_S/2/1/lower" = 0.0
+        "τ_S/2/1/upper" = 0.0
+        "τ_load_R/1/1/lower" = -0.0
+        "τ_load_R/1/1/upper" = 0.0
+        "τ_src/1/1/lower" = 0.5459999999999999
+        "τ_src/1/1/upper" = 0.0
+
+        [result.scenarios.none.raw_constraint_duals]
+        "5-10-down/GT/1" = 0.0
+        "5-10-up/GT/1" = 0.0
+        "5-14/1/1" = 130.0
+        "5-14/2/1" = 130.0
+        "5-15/1/1" = 0.0
+        "5-15/2/1" = 0.0
+        "5-16/e12/1" = 0.0
+        "5-17/root/1" = 0.0
+        "5-18/source/1" = 130.0
+        "5-19/building/1" = 0.0
+        "5-20/1/1" = 0.0
+        "5-20/2/1" = 0.0
+        "5-21/1/1" = -0.5459999999999999
+        "5-21/2/1" = 0.0
+        "5-25-26-R/h12/1" = -0.5459999999999999
+        "5-25-26-S/h12/1" = 0.0
+        "5-3-minus/PCC/1" = 0.0
+        "5-3-plus/PCC/1" = 50.0
+        "5-4/window/0" = 0.0
+        "R5-D-building/building/1" = 0.0
+        "R5-D-delivery/PCC/1" = -130.0
+        "R5-D-terminal/building/1" = 0.0
+
+        [result.scenarios.none.values]
+        H_D = [[0.041999999999999885]]
+        P_DER = [[0.04200000000000004], [0.06200000000000004]]
+        P_DH = [[0.0]]
+        P_PCC = [[0.08]]
+        P_line = [[0.08]]
+        Q_DER = [[0.0], [0.0]]
+        Q_PCC = [[0.02]]
+        Q_line = [[0.02]]
+        delivery = [[0.0]]
+        mismatch = [[0.0]]
+        v = [[1.0], [0.9991]]
+        "τ_IN" = [[293.15]]
+        "τ_R" = [[320.15], [320.15]]
+        "τ_S" = [[330.15], [330.15]]
+        "τ_load_R" = [[320.15]]
+        "τ_pipe_R" = [[320.15]]
+        "τ_pipe_S" = [[330.15]]
+        "τ_src" = [[330.15]]
+
+    [result.scenarios.up]
+    case_sha256 = "141a0bd0ea5a3957aa7e729ff0af9e537982403f4bff73802eba4f910464903f"
+    dual_probability_divisor = 0.25
+    parent_run_id = "r5-commitment-de9269fb-9669-4942-9387-b34e51d217dd"
+    run_id = "r5-commitment-de9269fb-9669-4942-9387-b34e51d217dd/up"
+    schema = "r5-dispatch-result-v1"
+    solver_objective = 5.86
+    status = "embedded_shared_commitment_candidate"
+    version = "r5_dispatch_checked_v1"
+
+        [result.scenarios.up.raw_bound_duals]
+        "H_D/1/1/lower" = 0.0
+        "P_DER/1/1/lower" = 0.0
+        "P_DER/1/1/upper" = 0.0
+        "P_DER/2/1/lower" = 0.0
+        "P_DER/2/1/upper" = 0.0
+        "P_DH/1/1/lower" = 130.0
+        "P_DH/1/1/upper" = 0.0
+        "P_PCC/1/1/lower" = 330.0
+        "P_PCC/1/1/upper" = 0.0
+        "P_line/1/1/lower" = 0.0
+        "P_line/1/1/upper" = 0.0
+        "Q_DER/1/1/lower" = -0.0
+        "Q_DER/1/1/upper" = 0.0
+        "Q_DER/2/1/lower" = -0.0
+        "Q_DER/2/1/upper" = 0.0
+        "Q_PCC/1/1/lower" = 0.0
+        "Q_PCC/1/1/upper" = 0.0
+        "Q_line/1/1/lower" = 0.0
+        "Q_line/1/1/upper" = 0.0
+        "mismatch/1/1/lower" = 620.0
+        "v/1/1/lower" = 0.0
+        "v/1/1/upper" = 0.0
+        "v/2/1/lower" = 0.0
+        "v/2/1/upper" = 0.0
+        "τ_IN/1/1/lower" = 0.0
+        "τ_IN/1/1/upper" = 0.0
+        "τ_R/1/1/lower" = 0.0
+        "τ_R/1/1/upper" = 0.0
+        "τ_R/2/1/lower" = 0.0
+        "τ_R/2/1/upper" = 0.0
+        "τ_S/1/1/lower" = 0.0
+        "τ_S/1/1/upper" = 0.0
+        "τ_S/2/1/lower" = 0.0
+        "τ_S/2/1/upper" = 0.0
+        "τ_load_R/1/1/lower" = -0.0
+        "τ_load_R/1/1/upper" = 0.0
+        "τ_src/1/1/lower" = 0.5459999999999999
+        "τ_src/1/1/upper" = 0.0
+
+        [result.scenarios.up.raw_constraint_duals]
+        "5-10-down/GT/1" = 0.0
+        "5-10-up/GT/1" = 0.0
+        "5-14/1/1" = 130.0
+        "5-14/2/1" = 130.0
+        "5-15/1/1" = 0.0
+        "5-15/2/1" = 0.0
+        "5-16/e12/1" = 0.0
+        "5-17/root/1" = 0.0
+        "5-18/source/1" = 130.0
+        "5-19/building/1" = 0.0
+        "5-20/1/1" = 0.0
+        "5-20/2/1" = 0.0
+        "5-21/1/1" = -0.5459999999999999
+        "5-21/2/1" = 0.0
+        "5-25-26-R/h12/1" = -0.5459999999999999
+        "5-25-26-S/h12/1" = 0.0
+        "5-3-minus/PCC/1" = 0.0
+        "5-3-plus/PCC/1" = 380.0
+        "5-4/window/0" = 0.0
+        "R5-D-building/building/1" = 0.0
+        "R5-D-delivery/PCC/1" = -460.0
+        "R5-D-terminal/building/1" = 0.0
+
+        [result.scenarios.up.values]
+        H_D = [[0.041999999999999885]]
+        P_DER = [[0.04200000000000004], [0.14200000000000004]]
+        P_DH = [[0.0]]
+        P_PCC = [[0.0]]
+        P_line = [[0.0]]
+        Q_DER = [[0.0], [0.0]]
+        Q_PCC = [[0.02]]
+        Q_line = [[0.02]]
+        delivery = [[0.08]]
+        mismatch = [[0.0]]
+        v = [[1.0], [0.9999]]
+        "τ_IN" = [[293.15]]
+        "τ_R" = [[320.15], [320.15]]
+        "τ_S" = [[330.15], [330.15]]
+        "τ_load_R" = [[320.15]]
+        "τ_pipe_R" = [[320.15]]
+        "τ_pipe_S" = [[330.15]]
+        "τ_src" = [[330.15]]
+
+    [result.weighted_raw_scenario_duals.down]
+    "5-10-down/GT/1" = 0.0
+    "5-10-up/GT/1" = 0.0
+    "5-14/1/1" = -80.0
+    "5-14/2/1" = -80.0
+    "5-15/1/1" = 0.0
+    "5-15/2/1" = 0.0
+    "5-16/e12/1" = 0.0
+    "5-17/root/1" = 0.0
+    "5-18/source/1" = -80.0
+    "5-19/building/1" = 0.0
+    "5-20/1/1" = 0.0
+    "5-20/2/1" = 0.0
+    "5-21/1/1" = 0.33599999999999997
+    "5-21/2/1" = 0.0
+    "5-25-26-R/h12/1" = 0.33599999999999997
+    "5-25-26-S/h12/1" = 0.0
+    "5-3-minus/PCC/1" = 100.0
+    "5-3-plus/PCC/1" = 0.0
+    "5-4/window/0" = 0.0
+    "H_D/1/1/lower" = 0.0
+    "P_DER/1/1/lower" = 0.0
+    "P_DER/1/1/upper" = 0.0
+    "P_DER/2/1/lower" = 112.5
+    "P_DER/2/1/upper" = 0.0
+    "P_DH/1/1/lower" = 0.0
+    "P_DH/1/1/upper" = -80.0
+    "P_PCC/1/1/lower" = 0.0
+    "P_PCC/1/1/upper" = 0.0
+    "P_line/1/1/lower" = 0.0
+    "P_line/1/1/upper" = 0.0
+    "Q_DER/1/1/lower" = -0.0
+    "Q_DER/1/1/upper" = 0.0
+    "Q_DER/2/1/lower" = -0.0
+    "Q_DER/2/1/upper" = 0.0
+    "Q_PCC/1/1/lower" = 0.0
+    "Q_PCC/1/1/upper" = 0.0
+    "Q_line/1/1/lower" = 0.0
+    "Q_line/1/1/upper" = 0.0
+    "R5-D-building/building/1" = 0.0
+    "R5-D-delivery/PCC/1" = 80.0
+    "R5-D-terminal/building/1" = 0.0
+    "mismatch/1/1/lower" = 150.0
+    "v/1/1/lower" = 0.0
+    "v/1/1/upper" = 0.0
+    "v/2/1/lower" = 0.0
+    "v/2/1/upper" = 0.0
+    "τ_IN/1/1/lower" = 0.0
+    "τ_IN/1/1/upper" = 0.0
+    "τ_R/1/1/lower" = 0.0
+    "τ_R/1/1/upper" = 0.0
+    "τ_R/2/1/lower" = 0.0
+    "τ_R/2/1/upper" = 0.0
+    "τ_S/1/1/lower" = 0.0
+    "τ_S/1/1/upper" = 0.0
+    "τ_S/2/1/lower" = 0.0
+    "τ_S/2/1/upper" = 0.0
+    "τ_load_R/1/1/lower" = -0.0
+    "τ_load_R/1/1/upper" = 0.0
+    "τ_src/1/1/lower" = 0.0
+    "τ_src/1/1/upper" = -0.33599999999999997
+
+    [result.weighted_raw_scenario_duals.none]
+    "5-10-down/GT/1" = 0.0
+    "5-10-up/GT/1" = 0.0
+    "5-14/1/1" = 65.0
+    "5-14/2/1" = 65.0
+    "5-15/1/1" = 0.0
+    "5-15/2/1" = 0.0
+    "5-16/e12/1" = 0.0
+    "5-17/root/1" = 0.0
+    "5-18/source/1" = 65.0
+    "5-19/building/1" = 0.0
+    "5-20/1/1" = 0.0
+    "5-20/2/1" = 0.0
+    "5-21/1/1" = -0.27299999999999996
+    "5-21/2/1" = 0.0
+    "5-25-26-R/h12/1" = -0.27299999999999996
+    "5-25-26-S/h12/1" = 0.0
+    "5-3-minus/PCC/1" = 0.0
+    "5-3-plus/PCC/1" = 25.0
+    "5-4/window/0" = 0.0
+    "H_D/1/1/lower" = 0.0
+    "P_DER/1/1/lower" = 0.0
+    "P_DER/1/1/upper" = 0.0
+    "P_DER/2/1/lower" = 0.0
+    "P_DER/2/1/upper" = 0.0
+    "P_DH/1/1/lower" = 65.0
+    "P_DH/1/1/upper" = 0.0
+    "P_PCC/1/1/lower" = 0.0
+    "P_PCC/1/1/upper" = 0.0
+    "P_line/1/1/lower" = 0.0
+    "P_line/1/1/upper" = 0.0
+    "Q_DER/1/1/lower" = -0.0
+    "Q_DER/1/1/upper" = 0.0
+    "Q_DER/2/1/lower" = -0.0
+    "Q_DER/2/1/upper" = 0.0
+    "Q_PCC/1/1/lower" = 0.0
+    "Q_PCC/1/1/upper" = 0.0
+    "Q_line/1/1/lower" = 0.0
+    "Q_line/1/1/upper" = 0.0
+    "R5-D-building/building/1" = 0.0
+    "R5-D-delivery/PCC/1" = -65.0
+    "R5-D-terminal/building/1" = 0.0
+    "mismatch/1/1/lower" = 475.0
+    "v/1/1/lower" = 0.0
+    "v/1/1/upper" = 0.0
+    "v/2/1/lower" = 0.0
+    "v/2/1/upper" = 0.0
+    "τ_IN/1/1/lower" = 0.0
+    "τ_IN/1/1/upper" = 0.0
+    "τ_R/1/1/lower" = 0.0
+    "τ_R/1/1/upper" = 0.0
+    "τ_R/2/1/lower" = 0.0
+    "τ_R/2/1/upper" = 0.0
+    "τ_S/1/1/lower" = 0.0
+    "τ_S/1/1/upper" = 0.0
+    "τ_S/2/1/lower" = 0.0
+    "τ_S/2/1/upper" = 0.0
+    "τ_load_R/1/1/lower" = -0.0
+    "τ_load_R/1/1/upper" = 0.0
+    "τ_src/1/1/lower" = 0.27299999999999996
+    "τ_src/1/1/upper" = 0.0
+
+    [result.weighted_raw_scenario_duals.up]
+    "5-10-down/GT/1" = 0.0
+    "5-10-up/GT/1" = 0.0
+    "5-14/1/1" = 32.5
+    "5-14/2/1" = 32.5
+    "5-15/1/1" = 0.0
+    "5-15/2/1" = 0.0
+    "5-16/e12/1" = 0.0
+    "5-17/root/1" = 0.0
+    "5-18/source/1" = 32.5
+    "5-19/building/1" = 0.0
+    "5-20/1/1" = 0.0
+    "5-20/2/1" = 0.0
+    "5-21/1/1" = -0.13649999999999998
+    "5-21/2/1" = 0.0
+    "5-25-26-R/h12/1" = -0.13649999999999998
+    "5-25-26-S/h12/1" = 0.0
+    "5-3-minus/PCC/1" = 0.0
+    "5-3-plus/PCC/1" = 95.0
+    "5-4/window/0" = 0.0
+    "H_D/1/1/lower" = 0.0
+    "P_DER/1/1/lower" = 0.0
+    "P_DER/1/1/upper" = 0.0
+    "P_DER/2/1/lower" = 0.0
+    "P_DER/2/1/upper" = 0.0
+    "P_DH/1/1/lower" = 32.5
+    "P_DH/1/1/upper" = 0.0
+    "P_PCC/1/1/lower" = 82.5
+    "P_PCC/1/1/upper" = 0.0
+    "P_line/1/1/lower" = 0.0
+    "P_line/1/1/upper" = 0.0
+    "Q_DER/1/1/lower" = -0.0
+    "Q_DER/1/1/upper" = 0.0
+    "Q_DER/2/1/lower" = -0.0
+    "Q_DER/2/1/upper" = 0.0
+    "Q_PCC/1/1/lower" = 0.0
+    "Q_PCC/1/1/upper" = 0.0
+    "Q_line/1/1/lower" = 0.0
+    "Q_line/1/1/upper" = 0.0
+    "R5-D-building/building/1" = 0.0
+    "R5-D-delivery/PCC/1" = -115.0
+    "R5-D-terminal/building/1" = 0.0
+    "mismatch/1/1/lower" = 155.0
+    "v/1/1/lower" = 0.0
+    "v/1/1/upper" = 0.0
+    "v/2/1/lower" = 0.0
+    "v/2/1/upper" = 0.0
+    "τ_IN/1/1/lower" = 0.0
+    "τ_IN/1/1/upper" = 0.0
+    "τ_R/1/1/lower" = 0.0
+    "τ_R/1/1/upper" = 0.0
+    "τ_R/2/1/lower" = 0.0
+    "τ_R/2/1/upper" = 0.0
+    "τ_S/1/1/lower" = 0.0
+    "τ_S/1/1/upper" = 0.0
+    "τ_S/2/1/lower" = 0.0
+    "τ_S/2/1/upper" = 0.0
+    "τ_load_R/1/1/lower" = -0.0
+    "τ_load_R/1/1/upper" = 0.0
+    "τ_src/1/1/lower" = 0.13649999999999998
+    "τ_src/1/1/upper" = 0.0

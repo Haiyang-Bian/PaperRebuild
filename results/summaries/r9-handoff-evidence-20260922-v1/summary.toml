@@ -1,0 +1,21 @@
+[baseline]
+conflict_count = 0
+maximum_unavoidable_violation_K = 0.0
+necessary_condition_pass = true
+parent_status = "solver_optimal"
+
+[candidate]
+conflict_count = 8
+maximum_unavoidable_violation_K = 0.08848988586544237
+necessary_condition_pass = false
+parent_status = "infeasible_certified"
+
+[conflict_proof]
+fixed_outlet_K = 343.06151011413453
+gap_K = 0.08848988586544237
+inlet_independent = true
+lower_bound_K = 343.15
+original_solver_not_rerun = true
+pipe = 37
+scenario = 1
+substep = 3

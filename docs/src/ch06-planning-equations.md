@@ -1,0 +1,149 @@
+# R7有限故障规划：方程、符号与边界
+
+<!-- generated: r7-planning -->
+
+给定正流/固定正常电拓扑的有限故障安全规划；外层C&CG配全故障MILP审计，不是完整嵌套对偶算法。
+
+## 原式6-93
+
+~~~math
+\max_{\gamma^s\in\mathcal U}\min_{(r^s,z^s)\in\mathcal Y(x,\gamma^s)} f^{\mathsf T}r^s\leq L,\quad\forall s
+\tag{6-93}
+~~~
+
+PDF117：每个事件下的最坏故障，其最佳恢复损失仍不得超过门槛。无可行恢复时采用扩展值+∞，不能把缺少损失值填成零。
+
+## 原式6-100
+
+~~~math
+\min_x c^{\mathsf T}x
+\tag{6-100}
+~~~
+
+PDF118：目标只有正常费用；恢复块提供满足门槛的见证。灾后损失不是额外加入本目标的费用项。
+
+## 原式6-102
+
+~~~math
+f^{\mathsf T}r_\nu^s\leq L,\quad 1\leq\nu\leq l,\ \forall s
+\tag{6-102}
+~~~
+
+PDF118：有限已加入故障的失供阈值，每个故障有独立恢复变量。
+
+## 原式6-103
+
+~~~math
+Fx+H\gamma_\nu^{s*}+Kr_\nu^s+Jz_\nu^s\leq g,\quad1\leq\nu\leq l,\ \forall s
+\tag{6-103}
+~~~
+
+PDF118：所有恢复块必须链接本轮同一个正常决策x；不能绑定到上一轮常量计划。
+
+## R7-M1
+
+~~~math
+\min_{x\in\mathcal X_{\bar m}} C(x)\quad\text{s.t.}\quad\exists y_{s,\gamma}\in\mathcal Y_s(x,\gamma):\ell_s(y_{s,\gamma})\leq L_s,\quad (s,\gamma)\in\mathcal A_k
+\tag{R7-M1}
+~~~
+
+给定管流的采用域X_m中，每个已加入事件/故障有独立恢复见证。取全部故障为全量参考，空集合为经济初始主问题。暴露CHP启停、前步功率、电池E[t_s]、整管供回库存和正常管流，再链接同一正常变量。恢复块只提供存在性，不伪造最小失供界。
+
+原式：6-91、6-92、6-97、6-98、6-99、6-100、6-101、6-102、6-103、6-104；分类`conditional_domain_and_explicit_boundary_link`。
+
+实现：[`build_r7_planning`](@ref)。测试：`test/r7_planning.jl` / `R7-M1 shared normal variables and exact affine blocks`。
+
+## R7-M2
+
+~~~math
+C_0=20(1.6)+100(3.2-1.6)=192,\quad C_{\rm safe}\geq C_0+2\sum_\omega\pi_\omega(0.8-E_{0,\omega})=193.275
+\tag{R7-M2}
+~~~
+
+独立合成reserve-hand的解析下界，USD。4小时无损周期总热量固定CHP总电量1.6MWh，故PCC购电1.6MWh。断线时负荷节点由电池独立供0.8MWh，每种正常场景至少提前充至0.8，随后正常周期回到0.2/0.15。两个事件是不同可能灾害，同一正常计划可持有储备，不将补能算两次。达到该下界还须热、电和模式共同可行。
+
+原式：6-1、6-12、6-14、6-15、6-93；分类`project_synthetic_analytic_benchmark`。
+
+实现：[`solve_r7_planning`](@ref)。测试：`test/r7_planning.jl` / `R7-M2 analytical reserve cost and extensive reference`。
+
+## R7-M3
+
+~~~math
+\max_\gamma\underline q_s(x,\gamma)\leq W_s(x)\leq\max_\gamma\overline q_s(x,\gamma),\qquad W_s(x)=\max_\gamma\min_y\ell_s(y)
+\tag{R7-M3}
+~~~
+
+固定故障最小化的有效界向最坏故障传播。合格恢复原值给该故障上界；故障未尝试或无候选时其上界为+∞。单故障下界超过门槛即可认证反例；所有故障上界合格才认证事件。每次x改变，全部事件证书重新计算并绑定父ID/原值哈希。
+
+原式：6-93、6-96、6-105、6-106、6-107；分类`bound_direction_and_certificate_scope`。
+
+实现：[`validate_r7_planning`](@ref)。测试：`test/r7_planning.jl` / `R7-M3 event certificates reset and bound directions`。
+
+## R7-M4
+
+~~~math
+\mathcal Y_s(x,\gamma)=\varnothing\Rightarrow q_s(x,\gamma)=+\infty;\qquad\mathcal X_{\bar m}\cap\mathcal F(\mathcal A_k)=\varnothing\Rightarrow\mathcal X_{\bar m}\cap\mathcal F(\mathcal U)=\varnothing
+\tag{R7-M4}
+~~~
+
+已认证不可行恢复不是有限损失；已加入故障的主问题不可行可以排除全故障规划。求解错误、缺许可、限时无解仍是未决，不能用此蕴含关系。旧normal-hand的孤岛CHP冲突与热量容量证明继续保留。
+
+原式：6-95、6-97、6-102、6-103；分类`infeasible_recourse_and_master_implication`。
+
+实现：[`solve_r7_planning`](@ref)。测试：`test/r7_planning.jl` / `R7-M4 infeasible inherited CHP and failure evidence`。
+
+## R7-M5
+
+~~~math
+\underline C_k\leq C_{\rm robust}^*\leq C(\hat x),\quad\hat x\text{通过全部事件/故障验证}
+\tag{R7-M5}
+~~~
+
+部分故障主问题的有效费用下界可用于本条件安全规划；安全候选费用给上界。两者按既有A2核对。该下界不属于无灾害正常模型，不能放进正常子记录或混作MWh失供界。原值、界、来源与每轮证书一同封存重验。
+
+原式：6-100、6-101、6-102、6-103、6-104；分类`objective_scope_and_immutable_evidence`。
+
+实现：[`save_r7_planning`](@ref)。测试：`test/r7_planning.jl` / `R7-M5 immutable evidence and independent revalidation`。
+
+## 原文与采用解释
+
+### MP01
+
+原文：6-92将正常域写成紧凑MILP；原正常温度、水力、变流量输运含非线性。
+
+采用：仅X_m给定正管流、固定正常电拓扑时采用标量仿射/整数主问题；实际检查全部JuMP约束类型，不证明原完整正常域线性。
+
+状态：`conditional_domain_implemented_full_domain_open`。
+
+### MP02
+
+原文：PDF118在事件通过时置I_s=1，却随后以所有I_s=0作为终止条件。
+
+采用：沿已有Q06按同一x所有事件均通过才停；每轮重置标志，故障下界与可行上界分别记录。本有限故障版本把本轮发现的所有认证反例一起加入，属于项目批量加约束规则；原文描述按事件加入最坏故障，不宣称完全相同的迭代轨迹。
+
+状态：`documented_logic_correction`。
+
+### MP03
+
+原文：PDF119提出内层对偶重构与上下界迭代；字面符号/界更新及有限乘子范围尚需闭合。
+
+采用：本批先用有限故障完整MILP审计和全部恢复块参考验证外层，不设任意对偶Big-M、不把穷举称作者完整嵌套算法。恢复存在硬不可行时不能默认完全补救；强对偶及不可行射线路线另行推导。
+
+状态：`inner_dual_algorithm_open`。
+
+### MP04
+
+原文：原6-97至6-99讨论存在满足门槛的恢复解。
+
+采用：主问题恢复块不优化失供，只要求可行且不超门槛；保存witness_loss及明确目标类型。认证最坏损失另外运行固定故障最小化。
+
+状态：`existential_witness_implemented`。
+
+## 符号表
+
+| ID | 数学符号 | 含义 | 单位 | Julia | 维度 |
+|---|---|---|---|---|---|
+| R7-M-normal | ``x,\mathcal X_{\bar m}`` | 共享正常决策及给定管流的采用可行域 | 各变量按原单位 | `normal_variables / chp_variables` | device/node/pipe × time × scenario；启停跨场景共用 |
+| R7-M-fault | ``\gamma,s,\mathcal A_k`` | 内部断线向量、可能灾害事件、已加入故障约束集合 | binary/index/set | `fault / event / included` | line; scalar; pair vector |
+| R7-M-witness | ``y_{s,\gamma},\ell_s,L_s`` | 恢复可行性见证、期望失供和事件门槛 | 各控制原单位；MWh | `witnesses / witness_loss_MWh / loss_limit_MWh` | per event/fault; scalar |
+| R7-M-bounds | ``\underline q,\overline q,\underline C,C(\hat x)`` | 固定故障损失下上界、正常安全费用下上界 | MWh; USD | `lower_bound_MWh / upper_bound_MWh / lower_bound_USD / cost_USD` | scalar，目标口径不可混用 |

@@ -1,0 +1,11 @@
+group,pipe,side,scenario,segment,mass_start_kg,mass_end_kg,temperature_K
+thermal-steady,1,S,1,1,0.0,10000.0,343.15
+thermal-steady,1,R,1,1,0.0,10000.0,313.15
+hot_outlet,1,S,1,1,0.0,5000.0,333.15
+hot_outlet,1,S,1,2,5000.0,10000.0,353.15
+hot_outlet,1,R,1,1,0.0,10000.0,313.15
+cold_outlet,1,S,1,1,0.0,5000.0,353.15
+cold_outlet,1,S,1,2,5000.0,10000.0,333.15
+cold_outlet,1,R,1,1,0.0,10000.0,313.15
+recovery-hand,1,S,1,1,0.0,10000.0,343.15
+recovery-hand,1,R,1,1,0.0,10000.0,313.15

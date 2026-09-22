@@ -1,0 +1,14 @@
+schema = "r7-battery-study-v1"
+origin = "synthetic"
+parent = "results/summaries/r7-transport-20260920-v1"
+battery_rule = "per_period_exclusive_v1"
+optimized_record_count = 34
+reconstruction_count = 3
+budget_sec = 600.0
+substeps = 16
+main_rule = "Repeat the frozen 24 main positive-flow cases, changing only battery_rule; no changes to capacities, efficiencies, profiles, flows, faults or loss target"
+enumeration_rule = "For the original one-battery one-period Clarabel inputs, enumerate two modes for hand (one scenario), four for each reserve event (two scenarios); each complete enumeration shares 600 seconds; fix the original healthy topology"
+mode_order = "device input order, then time fastest, then scenario; 1 charge, 0 discharge; either permits idle"
+reconstruction_rule = "For the three original Clarabel candidates, remove equal charging/discharging only when both efficiencies are exactly one; preserve all other raw values; independently validate new explicit domain; no optimizer or inherited bound"
+counterexample_rule = "Separate analytic example, not original data: eta_ch=eta_dis=0.8, dt=1h, Pmax=1MW, initial=terminal=max energy=1MWh, net absorption=0.2MW; sum domain has charge 5/9, discharge 16/45; exclusive domain infeasible"
+claim_boundary = "same synthetic conditional-flow model; no free-flow optimization, detailed safety planning, or full physical certification; branch objective agreement without bounds is not an optimality certificate"

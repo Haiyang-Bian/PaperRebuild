@@ -1,0 +1,32 @@
+schema = "r3-study-v1"
+origin = "synthetic"
+description = "固定方向正流量、4时段；本批只验证可行性闭环，不比较作者外层算法速度。"
+budget_per_instance_sec = 600.0
+
+[[runs]]
+id = "single-fixed"
+case = "single-source"
+initialization = "case_fixed"
+[[runs]]
+id = "single-schpd"
+case = "single-source"
+initialization = "schpd"
+[[runs]]
+id = "two-schpd"
+case = "two-source"
+initialization = "schpd"
+[[runs]]
+id = "single-low-flow"
+case = "single-source"
+initialization = "low_flow"
+flow_kg_s = 0.5
+[[runs]]
+id = "single-impossible-heat"
+case = "single-source"
+initialization = "case_fixed"
+heat_demand_MW = 10.0
+[[runs]]
+id = "single-loose-electric"
+case = "single-source"
+initialization = "case_fixed"
+zero_grid_price = true

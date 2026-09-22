@@ -1,0 +1,140 @@
+[[pairs]]
+accounting_identity_pass = true
+all_actors_not_worse = true
+bargaining = "not_performed"
+both_cost_optimizations_complete = true
+case = "import_fixed"
+central_cost = 207.6896712880898
+central_run = "import_fixed--central_exact"
+central_status = "solver_optimal"
+eligible = true
+independent_cost = 208.89054197626123
+independent_run = "import_fixed--independent_exact"
+independent_stages_pass = true
+independent_status = "solver_optimal"
+input_sha256 = "99b92147e9b1b369bd8903e84a7edfea423a55b47320608dd7ed5ff72f640689"
+resource_saving = 1.2008706881714204
+saving_fraction = 0.00574880354471908
+scope = "static_heat_energy_model_with_original_electric_check"
+utility_gain_identity = -1.4210854715202004e-14
+
+    [[pairs.actors]]
+    actor = "DSO"
+    central_utility = 92.35657871191023
+    disagreement_utility = 91.15570802373881
+    utility_gain = 1.2008706881714204
+    [[pairs.actors]]
+    actor = "A"
+    central_utility = -82.24625000000003
+    disagreement_utility = -82.24625000000002
+    utility_gain = -1.4210854715202004e-14
+    [[pairs.actors]]
+    actor = "B"
+    central_utility = -217.80000000000007
+    disagreement_utility = -217.80000000000007
+    utility_gain = 0.0
+
+    [pairs.central_checks]
+    electric_original_pass = true
+    heat_pass = true
+    ledger_pass = true
+    model_pass = true
+
+    [pairs.independent_checks]
+    electric_original_pass = true
+    heat_pass = true
+    ledger_pass = true
+    model_pass = true
+[[pairs]]
+accounting_identity_pass = true
+all_actors_not_worse = false
+bargaining = "not_performed"
+both_cost_optimizations_complete = false
+case = "import_flexible"
+central_cost = 191.7927323567859
+central_run = "import_flexible--central_exact"
+central_status = "solver_optimal"
+eligible = true
+independent_cost = 199.69849319415337
+independent_run = "import_flexible--independent_exact"
+independent_stages_pass = true
+independent_status = "solver_optimal"
+input_sha256 = "fcdb954da900fd878194b0a3d72bf2f130ecf057615bd84ae16436d315b9d5ca"
+resource_saving = 7.905760837367467
+saving_fraction = 0.03958848517540505
+scope = "static_heat_energy_model_with_original_electric_check"
+utility_gain_identity = 0.0
+
+    [[pairs.actors]]
+    actor = "DSO"
+    central_utility = 110.43409419463137
+    disagreement_utility = 96.2324097325386
+    utility_gain = 14.201684462092771
+    [[pairs.actors]]
+    actor = "A"
+    central_utility = -82.02988473942841
+    disagreement_utility = -79.65090290221852
+    utility_gain = -2.378981837209892
+    [[pairs.actors]]
+    actor = "B"
+    central_utility = -220.19694181198884
+    disagreement_utility = -216.28000002447342
+    utility_gain = -3.9169417875154124
+
+    [pairs.central_checks]
+    electric_original_pass = true
+    heat_pass = true
+    ledger_pass = true
+    model_pass = true
+
+    [pairs.independent_checks]
+    electric_original_pass = true
+    heat_pass = true
+    ledger_pass = true
+    model_pass = true
+[[pairs]]
+bargaining = "not_performed"
+case = "open_fixed"
+central_run = "open_fixed--central_exact"
+central_status = "solver_optimal"
+eligible = false
+independent_run = "open_fixed--independent_exact"
+independent_stages_pass = true
+independent_status = "network_infeasible_certified"
+input_sha256 = "ba5e4cbe085086ea8847d397f01d77bf89e12bf2b398c74a0e3bc8a0dce79fd9"
+scope = "static_heat_energy_model_with_original_electric_check"
+
+    [pairs.central_checks]
+    electric_original_pass = true
+    heat_pass = true
+    ledger_pass = true
+    model_pass = true
+
+    [pairs.independent_checks]
+    electric_original_pass = false
+    heat_pass = false
+    ledger_pass = false
+    model_pass = false
+[[pairs]]
+bargaining = "not_performed"
+case = "open_flexible"
+central_run = "open_flexible--central_exact"
+central_status = "solver_optimal"
+eligible = false
+independent_run = "open_flexible--independent_exact"
+independent_stages_pass = true
+independent_status = "network_infeasible_certified"
+input_sha256 = "7aadd5364225052c196f45a433635d9c412e37ffa3cbf78b0ed1b1791c2231d5"
+scope = "static_heat_energy_model_with_original_electric_check"
+
+    [pairs.central_checks]
+    electric_original_pass = true
+    heat_pass = true
+    ledger_pass = true
+    model_pass = true
+
+    [pairs.independent_checks]
+    electric_original_pass = false
+    heat_pass = false
+    ledger_pass = false
+    model_pass = false

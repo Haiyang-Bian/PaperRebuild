@@ -1,0 +1,56 @@
+schema = "r9-reserve-evaluation-mapping-v1"
+page = "docs/src/ch07-reserve-evaluation.md"
+protocol = "configs/r9/reserve-evaluation.toml"
+parent = "configs/r9/reserve-study.toml"
+test = "test/r9_evaluation.jl"
+origin = "synthetic"
+original_input_complete = false
+kind = "project_out_of_sample_operation_predeclared_in_training_protocol"
+
+[[formula]]
+id = "R9-OS1"
+meaning = "锁定训练成交、舒适分支及全部来源；缺失候选不补造。"
+api = ["R9ReservePolicy", "r9_reserve_policy_from_training", "r9_reserve_evaluation_day"]
+[[formula]]
+id = "R9-OS2"
+meaning = "原RMS距离及确定性等距规则；选择代表分支。"
+api = ["r9_reserve_support_label"]
+[[formula]]
+id = "R9-OS3"
+meaning = "固定成交、价格和分支的完整未来连续费用补救及独立检查。"
+api = ["evaluate_r9_reserve_day", "validate_r9_reserve_day", "save_r9_reserve_day", "read_r9_reserve_day"]
+[[formula]]
+id = "R9-OS4"
+meaning = "完整日事件、未知保守上下界、费用缺失和币种显式报告。"
+api = ["summarize_r9_reserve_days"]
+
+[[symbol]]
+id = "R9-OS-x"
+latex = "x^\\star"
+meaning = "锁定的日前购电与上下备用"
+unit = "MW"
+julia = "policy.data.template.award"
+[[symbol]]
+id = "R9-OS-z"
+latex = "z_j^\\star"
+meaning = "训练代表的舒适温区放松标签，非实际事件"
+unit = "1"
+julia = "policy.data.support[j].label"
+[[symbol]]
+id = "R9-OS-xi"
+latex = "\\xi=(a,u)"
+meaning = "完整日PV比例和有符号调用"
+unit = "1"
+julia = "trajectory[1:2,t]"
+[[symbol]]
+id = "R9-OS-C"
+latex = "C"
+meaning = "完整日净运行费用"
+unit = "CNY/day"
+julia = "operating_net_cost"
+[[symbol]]
+id = "R9-OS-N"
+latex = "N"
+meaning = "包括未知在内的完整日数量"
+unit = "day count"
+julia = "summary.n"

@@ -1,0 +1,19 @@
+ * Supported objective: MOI.ScalarQuadraticFunction{Float64}
+ * Supported constraint: MOI.ScalarAffineFunction{Float64}-in-MOI.EqualTo{Float64}
+ * Supported constraint: MOI.VariableIndex-in-MOI.EqualTo{Float64}
+ * Supported constraint: MOI.VariableIndex-in-MOI.GreaterThan{Float64}
+ * Supported constraint: MOI.VariableIndex-in-MOI.LessThan{Float64}
+ * Unsupported constraint: MOI.VectorAffineFunction{Float64}-in-MOI.RotatedSecondOrderCone
+ |  bridged by:
+ |   MOIB.Constraint.RSOCtoSOCBridge{Float64, MOI.VectorAffineFunction{Float64}, MOI.VectorAffineFunction{Float64}}
+ |  may introduce:
+ |   * Unsupported constraint: MOI.VectorAffineFunction{Float64}-in-MOI.SecondOrderCone
+ |   |  bridged by:
+ |   |   MOIB.Constraint.VectorSlackBridge{Float64, MOI.VectorAffineFunction{Float64}, MOI.SecondOrderCone}
+ |   |  may introduce:
+ |   |   * Unsupported constraint: MOI.VectorAffineFunction{Float64}-in-MOI.Zeros
+ |   |   |  bridged by:
+ |   |   |   MOIB.Constraint.ScalarizeBridge{Float64, MOI.ScalarAffineFunction{Float64}, MOI.EqualTo{Float64}}
+ |   |   |  may introduce:
+ |   |   |   * Supported constraint: MOI.ScalarAffineFunction{Float64}-in-MOI.EqualTo{Float64}
+ |   |   * Supported variable: MOI.SecondOrderCone

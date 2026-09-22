@@ -1,0 +1,25 @@
+critical_after = []
+elapsed_sec = 0.03400015830993652
+iteration = 1
+new_cut_ids = []
+
+[cost_source_ids]
+
+[diagnostic_source_ids]
+
+[master]
+bound_scope = "restricted_comfort_domain"
+bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+critical = []
+cut_source_ids = []
+has_candidate = false
+model_type = "linear_MPEC_SOS1_Benders_master"
+model_types = ["AffExpr in MathOptInterface.EqualTo{Float64}", "AffExpr in MathOptInterface.GreaterThan{Float64}", "AffExpr in MathOptInterface.LessThan{Float64}", "VariableRef in MathOptInterface.GreaterThan{Float64}", "VariableRef in MathOptInterface.LessThan{Float64}", "VariableRef in MathOptInterface.ZeroOne", "Vector{VariableRef} in MathOptInterface.SOS1{Float64}"]
+objective_type = "market_payment_plus_recourse_epigraph"
+primal_status = "NO_SOLUTION"
+raw_status = "Model was proven to be unbounded. Important note: an unbounded status indicates the presence of an unbounded ray that allows the objective to improve without limit. It says nothing about whether the model has a feasible solution. If you require information on feasibility, you should set the objective to zero and reoptimize."
+scope = "restricted_comfort_domain"
+solver = "Gurobi"
+solver_version = "13.0.3"
+status = "DUAL_INFEASIBLE"
+termination = "DUAL_INFEASIBLE"

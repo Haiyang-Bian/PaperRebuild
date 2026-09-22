@@ -1,0 +1,26 @@
+R_initial_K = 313.15
+budget_sec = 600.0
+modes = ["same_dispatch", "curtail_heat"]
+origin = "synthetic"
+profile_masses_kg = [5000.0, 5000.0]
+schema = "r7-thermal-study-v1"
+substeps = [1, 4, 16]
+
+[analytic]
+basis = "0.25 h moves 20000/7 kg less than half pipe; cold outlet 333.15 K and return minimum 303.15 K limit delivery to 0.4 MW instead of 8/15 MW"
+cold_outlet_curtail_unserved_MWh = 0.03333333333333333
+cold_outlet_same_dispatch = "infeasible"
+hot_outlet_unserved_MWh = 0.0
+steady_unserved_MWh = 0.0
+
+[cases.thermal-front]
+case_sha256 = "bd9a518e549f8a8fd8dbcc656d707bf85de9f2dee7ca59b60685cc56f8ab26f0"
+file_sha256 = "bd9a518e549f8a8fd8dbcc656d707bf85de9f2dee7ca59b60685cc56f8ab26f0"
+
+[cases.thermal-steady]
+case_sha256 = "d345a51df72f0f55dccc51bb038be016cc441a7f42ff45a2cfcd3b35bbfa4ecb"
+file_sha256 = "d345a51df72f0f55dccc51bb038be016cc441a7f42ff45a2cfcd3b35bbfa4ecb"
+
+[initial_S_profiles_K]
+cold_outlet = [353.15, 333.15]
+hot_outlet = [333.15, 353.15]

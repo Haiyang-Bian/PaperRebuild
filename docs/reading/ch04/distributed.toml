@@ -1,0 +1,161 @@
+schema = "ch04-distributed-v1"
+source = "docs/摘要.pdf"
+source_sha256 = "20328e2480e773520c19c378e53365fc944c0bafcfca73071f5d8313d5ee7d91"
+read_pdf_pages = [68, 69]
+implemented_scope = "fixed_discrete_convex_target_coordination_and_bilateral_consensus"
+reference_131 = "https://people.ece.ubc.ca/vincentw/J/KLBW-TPWRS-2019.pdf"
+reference_131_version = "author-hosted accepted journal manuscript; front matter still contains publication placeholders"
+primary_admm = "https://web.stanford.edu/~boyd/papers/admm/"
+
+[[formula]]
+id = "ch04-060"
+number = 60
+pdf_page = 68
+meaning = "网络运营商目标协调子问题"
+latex = '\min C^{\mathrm{DHSO}}+\sum_n\{(\alpha_n^{PN})^\mathsf T(\widehat P_n^{net}-P_n^{net*})+(\beta_n^{PN})^\mathsf T\|\widehat P_n^{net}-P_n^{net*}\|_2^2\}+\text{对应热项}'
+status = "structure_adopted_sign_and_penalty_derived"
+api = "build_r4_distributed_block"
+[[formula]]
+id = "ch04-061"
+number = 61
+pdf_page = 68
+meaning = "运营商原网络约束"
+latex = '\text{式}(4\!-\!25)\text{--}(4\!-\!57)'
+status = "fixed_topology_socp_subset"
+api = "build_r4_distributed_block"
+[[formula]]
+id = "ch04-062"
+number = 62
+pdf_page = 68
+meaning = "聚合商目标协调子问题"
+latex = '\min C_i^{AG}+(\alpha_n^{PN})^\mathsf T(P_n^{net}-\widehat P_n^{net*})+(\beta_n^{PN})^\mathsf T\|P_n^{net}-\widehat P_n^{net*}\|_2^2+\text{对应热项}'
+status = "structure_adopted_opposite_multiplier_sign"
+api = "build_r4_distributed_block"
+[[formula]]
+id = "ch04-063"
+number = 63
+pdf_page = 68
+meaning = "聚合商设备和交易可行域"
+latex = '\text{式}(4\!-\!7)\text{--}(4\!-\!13),\ (4\!-\!16)\text{--}(4\!-\!18)'
+status = "adopted_fixed_battery_modes"
+api = "build_r4_distributed_block"
+[[formula]]
+id = "ch04-064"
+number = 64
+pdf_page = 68
+meaning = "电力罚乘子更新；原页电式中β上标写为HN"
+latex = '\alpha_n^{PN,(k+1)}=\alpha_n^{PN,(k)}+2(\beta_n^{HN,(k)})^2(\widehat P_n^{net*,(k)}-\widehat P_n^{net,(k)})'
+status = "original_ambiguity_preserved_consistent_residual_update_adopted"
+api = "solve_r4_distributed"
+[[formula]]
+id = "ch04-065"
+number = 65
+pdf_page = 68
+meaning = "热力罚乘子更新"
+latex = '\alpha_k^{HN,(k+1)}=\alpha_k^{HN,(k)}+2(\beta_k^{HN,(k)})^2(\widehat H_k^{net*,(k)}-\widehat H_k^{net,(k)})'
+status = "original_index_collision_preserved_consistent_update_adopted"
+api = "solve_r4_distributed"
+[[formula]]
+id = "ch04-066"
+number = 66
+pdf_page = 68
+meaning = "电罚系数递增"
+latex = '\beta_n^{PN,(k+1)}=(1+\zeta)\beta_n^{PN,(k)},\quad \zeta\in[1,2]'
+status = "explained_not_executed_fixed_rho_project_variant"
+api = "R4DistributedSpec"
+[[formula]]
+id = "ch04-067"
+number = 67
+pdf_page = 68
+meaning = "热罚系数递增"
+latex = '\beta_k^{HN,(k+1)}=(1+\zeta)\beta_k^{HN,(k)}'
+status = "explained_not_executed_fixed_rho_project_variant"
+api = "R4DistributedSpec"
+[[formula]]
+id = "ch04-068"
+number = 68
+pdf_page = 69
+meaning = "聚合商双边交易ADMM；末项原页范数未平方"
+latex = '\mathcal L_i=C_i^{AG}+\text{ATC项}+\sum_{j\ne i}\{(\lambda_{ij}^{PN})^\mathsf T(\widehat P_{ij}-P_{ij})+(\lambda_{ij}^{HN})^\mathsf T(\widehat H_{ij}-H_{ij})+\frac{\rho}{2}(\|P_{ij}-\widehat P_{ij}\|+\|H_{ij}-\widehat H_{ij}\|)\}'
+status = "squared_penalty_derived_from_reference_131"
+api = "solve_r4_distributed"
+[[formula]]
+id = "ch04-069"
+number = 69
+pdf_page = 69
+meaning = "反对称电合同辅助变量；原页乘子差未除ρ"
+latex = '\widehat P_{ij}^{(K+1)}=-\widehat P_{ji}^{(K+1)}=\frac{P_{ij}^{(K+1)}-P_{ji}^{(K+1)}}2+\frac{\lambda_{ji}^{PN,(K)}-\lambda_{ij}^{PN,(K)}}2'
+status = "scaled_dual_projection_derived"
+api = "solve_r4_distributed"
+[[formula]]
+id = "ch04-070"
+number = 70
+pdf_page = 69
+meaning = "反对称热合同辅助变量"
+latex = '\widehat H_{ij}^{(K+1)}=-\widehat H_{ji}^{(K+1)}=\frac{H_{ij}^{(K+1)}-H_{ji}^{(K+1)}}2+\frac{\lambda_{ji}^{HN,(K)}-\lambda_{ij}^{HN,(K)}}2'
+status = "scaled_dual_projection_derived"
+api = "solve_r4_distributed"
+
+[[symbol]]
+id = "r4-d-message"
+latex = 'b_i=(P_i^{net},Q_i^D,H_i^{src},H_i^D)'
+meaning = "聚合商边界消息；后两项相减为热净注入"
+unit = "MW/Mvar"
+julia = "message"
+source = "project R4-D1; extends thesis P/H exchange"
+[[symbol]]
+id = "r4-d-x"
+latex = 'x_i=D^{-1}b_i'
+meaning = "聚合商无量纲边界"
+unit = "1"
+julia = "x"
+source = "project input-frozen scales"
+[[symbol]]
+id = "r4-d-z"
+latex = 'z_i=D^{-1}\widehat b_i'
+meaning = "网络无量纲副本"
+unit = "1"
+julia = "z"
+source = "project R4-D2"
+[[symbol]]
+id = "r4-d-u"
+latex = 'u_i=\lambda_i/\rho'
+meaning = "无量纲目标下缩放乘子"
+unit = "1"
+julia = "u"
+source = "project R4-D3; not raw thesis lambda"
+[[symbol]]
+id = "r4-d-q"
+latex = 'q_{ij}'
+meaning = "对交易对手出售为正的合同；与支路潮流不同"
+unit = "MW"
+julia = "peer"
+source = "adopted R4-P1 sign"
+[[symbol]]
+id = "r4-d-rho"
+latex = '\rho,\rho_q'
+meaning = "外层和内层固定罚系数"
+unit = "1"
+julia = "rho, peer_rho"
+source = "project numerical policy; no beta growth"
+
+[[issue]]
+id = "R4-D-C01"
+topic = "同一拉格朗日的方向和系数"
+adopted = "统一r=x-z，AG线性项+λx、DSO线性项-λz，二次项ρ/2。原式β与β²及4-64的HN上标不直接执行。"
+[[issue]]
+id = "R4-D-C02"
+topic = "ADMM辅助量与乘子"
+adopted = "平方罚项导出反对称投影；未缩放λ对应差项须除ρ，u=λ/ρ后无需再除。原文步骤2.a.b把辅助量更新称为乘子更新，另补真正的u递推。"
+[[issue]]
+id = "R4-D-C03"
+topic = "不足的边界通信"
+adopted = "当前Q_D随可调P_D变化，热端口包络依赖H_src/H_D；增加这些边界量，不向DSO回传全部AG设备控制。程序保存全体结果用于离线独立审计，不宣称访问控制或密码学隐私。"
+[[issue]]
+id = "R4-D-C04"
+topic = "凸性和有限精度"
+adopted = "固定离散模式及SOCP；实际MOI类型核查。固定ρ及有限内层容差是项目约定；不继承整数/非凸全局收敛，也不以A4代替物理A1。"
+[[issue]]
+id = "R4-D-C05"
+topic = "福利与合同的不同作用"
+adopted = "SWM内部支付抵消，有限但足够宽零售通道使零P2P合同可嵌入所有物理计划；双边交易可能不唯一。AGNB另计零售与卖方一次费用，单独检验非零合同求解。"

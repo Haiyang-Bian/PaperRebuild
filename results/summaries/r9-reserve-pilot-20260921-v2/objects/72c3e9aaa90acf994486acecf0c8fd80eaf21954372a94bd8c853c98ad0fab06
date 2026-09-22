@@ -1,0 +1,70 @@
+schema = "r9-reserve-input-protocol-v1"
+id = "r9-74-44e38h-24h-v1"
+origin = "synthetic_replacements_with_thesis_topology_and_nameplates"
+source_section = "7.4"
+currency = "CNY"
+T = 24
+dt_h = 1.0
+budget_sec = 600.0
+electric_profile = [0.62,0.59,0.57,0.56,0.58,0.65,0.75,0.86,0.94,0.98,1.0,0.96,0.9,0.87,0.9,0.94,0.98,1.0,0.96,0.9,0.82,0.75,0.7,0.65]
+heat_profile = [0.8,0.8,0.78,0.76,0.8,0.88,0.96,1.0,0.96,0.88,0.82,0.8,0.78,0.76,0.78,0.84,0.92,0.98,0.94,0.88,0.84,0.82,0.8,0.8]
+pv_profile = [0.0,0.0,0.0,0.0,0.0,0.0,0.05,0.2,0.4,0.65,0.85,0.96,1.0,0.95,0.8,0.6,0.35,0.12,0.0,0.0,0.0,0.0,0.0,0.0]
+profile_provenance = "Explicit project curves shared numerically with the earlier missing-input protocol; no chapter7.2 PV expansion, chapter7.3 actor/load modifications, or optimized histories inherited."
+p2h_capacity_basis = "electric_input"
+chp_initial_rule = "steady_reference_heat_divided_by_heat_ratio; EB1_reference_zero"
+chp_ramp_fraction_per_hour = 1.0
+commitment_rule = "CHP_on_with_original_Pmin; continuous_chapter5_dispatch; startup_not_claimed"
+
+[electric]
+power_factor = 0.9
+base_MVA = 50.0
+root = 44
+voltage_min_pu = 0.95
+voltage_max_pu = 1.05
+voltage_ref_pu = 1.0
+pcc_max_MW = 60.0
+qcc_max_Mvar = 60.0
+x_over_r = 0.5
+path_voltage_drop_budget_pu = 0.02
+capacity_factor = 1.5
+transformer_rule = "ideal_nominal_transformers; single_per_unit_base; no_loss_or_capacity_certification"
+design_rule = "original_tree_absolute_load_and_all_connected_device_envelope"
+
+[heat]
+rho_kg_m3 = 1000.0
+cp_J_kgK = 4200.0
+length_m = 600.0
+velocity_m_s = 0.5
+reference_fraction = 0.8
+reference_delta_K = 40.0
+ambient_reference_K = 283.15
+source_reference_K = 363.15
+source15_reference_MW = 0.6
+insulation_W_mK = 0.03
+insulation_thickness_m = 0.1
+S_bounds_K = [343.15,373.15]
+R_bounds_K = [293.15,338.15]
+history_rule = "steady_author_fixed_flow_J; zero_local_P2H; declared_reference_load"
+terminal_rule = "free"
+
+[building]
+initial_K = 294.15
+comfort_K = [293.15,295.15]
+physical_domain_K = [291.15,297.15]
+time_constant_h = 6.0
+terminal_rule = "initial"
+allocation = "one_building_at_each_of_36_non_source_heat_nodes; synthetic_electric_mapping_uses_same_ID_except_table7_12"
+ambient_rule = "T_initial-(T_initial-T_ambient_reference)*heat_profile/reference_fraction"
+
+[market]
+role = "price_taker"
+energy_price_CNY_MWh = [240,220,210,200,210,250,300,360,380,400,380,350,300,280,300,350,390,400,380,340,300,270,250,240]
+up_price_CNY_MW_h = [24,22,21,20,21,25,30,36,38,40,38,35,30,28,30,35,39,40,38,34,30,27,25,24]
+down_price_CNY_MW_h = [24,25,27,30,34,38,40,39,35,30,28,30,35,38,40,38,36,30,25,21,20,21,22,24]
+price_source = "project arrays within stated ranges, not digitized author prices"
+reserve_time_unit = "CNY_per_MW_per_hour; explicit interpretation of inconsistent text/axis"
+transmission_CNY_MWh = 125.6
+tariff_rule = "add_to_day_ahead_and_realtime_energy_price_only; algebra_equals_tariff_times_actual_PCC"
+penalty_CNY_MWh = 2000.0
+delta = 0.1
+settlement_rule = "chapter5_capacity_denominator; all_schemes_share_delta; strict_delivery_ablation_must_be_separate"

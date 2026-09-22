@@ -1,0 +1,39 @@
+schema = "r9-resilience-currency-contract-v1"
+origin = "project_interface_and_synthetic_tests"
+human_page = "docs/src/ch07-resilience-currency.md"
+legacy_input_schema = "r7-normal-case-v1"
+explicit_input_schema = "r7-normal-case-v2"
+supported_currency = ["USD", "CNY"]
+exchange_rate_applied = false
+old_results_rewritten = false
+chapter_7_5_optimization_performed = false
+critical_load_objective_implemented_in_this_contract = false
+critical_load_followup = "docs/reading/ch07/resilience-load-service.toml"
+event_grid_conversion_implemented = false
+recovery_objective = "all_declared_electric_and_heat_unserved_energy_MWh"
+source_review = "docs/reading/ch07/resilience-review.toml"
+test_commands = ["scripts/test_r7_currency.jl", "scripts/test_r7_currency_planning.jl"]
+
+[[formula]]
+id = "R9-RC1"
+meaning = "Startup cost is per action; operating and external energy costs integrate hours and scenario probabilities."
+api = ["R7CHPSpec", "R7NormalCase", "validate_r7_chp", "validate_r7_normal"]
+implementation = ["src/components/r7_commitment.jl", "src/formulations/r7_normal.jl", "src/verification/r7_normal.jl"]
+test = "test/r7_currency.jl"
+status = "implemented_synthetic_verification"
+
+[[formula]]
+id = "R9-RC2"
+meaning = "Preserve beginning-of-event storage, preceding CHP state, pipe history and parent identity on the existing common time grid."
+api = ["r7_normal_event"]
+implementation = ["src/verification/r7_normal.jl", "src/core/r7_planning.jl"]
+test = "test/r7_currency.jl"
+status = "existing_physical_handoff_currency_extension"
+
+[[formula]]
+id = "R9-RC3"
+meaning = "Monetary normal cost plus explicit currency-per-MWh penalty times event worst expected unserved energy; evaluation remains MWh."
+api = ["r8_spec", "r8_energy_spec", "validate_r8_solution", "validate_r8_energy_solution"]
+implementation = ["src/formulations/r8_tradeoff.jl", "src/formulations/r8_energy_flow.jl", "src/verification/r8_tradeoff.jl", "src/verification/r8_energy_flow.jl"]
+test = "test/r7_currency_planning.jl"
+status = "implemented_synthetic_verification"

@@ -1,0 +1,318 @@
+[case]
+T = 1
+description = "Synthetic one-hour joint-clearing analytic case; no thesis input."
+dt_h = 1.0
+load_MW = [[50.0]]
+name = "hand_hour"
+nodes = 1
+origin = "synthetic"
+reserve_down_MW = [10.0]
+reserve_up_MW = [20.0]
+schema = "r5-market-case-v1"
+
+    [[case.generators]]
+    down_bid = [2.0]
+    down_max = 100.0
+    energy_bid = [20.0]
+    id = "G1"
+    node = 1
+    p_bid_max = 200.0
+    p_initial = 80.0
+    p_max = 200.0
+    p_min = 0.0
+    ramp_down_MW_h = 200.0
+    ramp_up_MW_h = 200.0
+    up_bid = [5.0]
+    up_max = 100.0
+
+    [[case.ies]]
+    down_bid = [3.0]
+    down_max = 0.0
+    energy_bid = [100.0]
+    id = "IES1"
+    node = 1
+    purchase_bid_max = 30.0
+    q_max = 100.0
+    q_min = 0.0
+    up_bid = [2.0]
+    up_max = 0.0
+
+    [case.network]
+    limit_MW = []
+    ptdf = []
+    slack_node = 1
+
+    [case.units]
+    energy = "MWh"
+    energy_price = "USD/MWh"
+    power = "MW"
+    ramp = "MW/h"
+    reserve_price = "USD/(MW*h)"
+    time = "h"
+
+[parent]
+budget_sec = 60.0
+case_sha256 = "955521c4ee8b3de52ec03bce12d5d6037e395d4e119296cd8277fec852bbd3a0"
+cost_optimization_complete = true
+created_utc = "2026-09-19T05:54:29.440"
+dual_status = "FEASIBLE_POINT"
+elapsed_sec = 0.006999969482421875
+fixed_load_utility_constant_omitted = true
+julia_version = "1.12.6"
+model_type = "continuous_LP"
+objective_type = "fixed_bid_clearing_cost_not_system_resource_cost"
+primal_status = "FEASIBLE_POINT"
+raw_status = "kHighsModelStatusOptimal"
+run_id = "r5-market-abf62929-07c8-4e51-aa98-c2b11228c5a4"
+schema = "r5-market-result-v1"
+solver = "HiGHS"
+solver_objective = -1280.0
+solver_objective_bound = -1280.0
+solver_version = "v1.15.1"
+status = "solver_optimal"
+termination = "OPTIMAL"
+version = "r5_market_clearing_checked_v1"
+
+    [parent.lower_bound_duals]
+    P_G = [[0.0]]
+    P_IES = [[0.0]]
+    R_G_down = [[0.0]]
+    R_G_up = [[0.0]]
+    R_IES_down = [[1.0]]
+    R_IES_up = [[0.0]]
+
+    [[parent.model_types]]
+    count = 3
+    function = "AffExpr"
+    set = "MathOptInterface.EqualTo{Float64}"
+    [[parent.model_types]]
+    count = 2
+    function = "AffExpr"
+    set = "MathOptInterface.GreaterThan{Float64}"
+    [[parent.model_types]]
+    count = 10
+    function = "AffExpr"
+    set = "MathOptInterface.LessThan{Float64}"
+    [[parent.model_types]]
+    count = 6
+    function = "VariableRef"
+    set = "MathOptInterface.GreaterThan{Float64}"
+
+    [parent.multipliers]
+    down = [2.0]
+    energy = [20.0]
+    g_cap_down = [[0.0]]
+    g_cap_up = [[0.0]]
+    gd_bid = [[0.0]]
+    gu_bid = [[0.0]]
+    i_cap_down = [[0.0]]
+    i_cap_up = [[0.0]]
+    id_bid = [[0.0]]
+    iu_bid = [[3.0]]
+    line_down = []
+    line_up = []
+    pg_bid = [[0.0]]
+    q_bid = [[80.0]]
+    ramp_down = [[0.0]]
+    ramp_up = [[0.0]]
+    up = [5.0]
+
+    [parent.raw_duals]
+    down = [-2.0]
+    energy = [-20.0]
+    g_cap_down = [[0.0]]
+    g_cap_up = [[-0.0]]
+    gd_bid = [[-0.0]]
+    gu_bid = [[-0.0]]
+    i_cap_down = [[-0.0]]
+    i_cap_up = [[0.0]]
+    id_bid = [[-0.0]]
+    iu_bid = [[-3.0]]
+    line_down = []
+    line_up = []
+    pg_bid = [[-0.0]]
+    q_bid = [[-80.0]]
+    ramp_down = [[-0.0]]
+    ramp_up = [[-0.0]]
+    up = [-5.0]
+
+    [parent.values]
+    P_G = [[80.0]]
+    P_IES = [[30.0]]
+    R_G_down = [[10.0]]
+    R_G_up = [[20.0]]
+    R_IES_down = [[0.0]]
+    R_IES_up = [[-0.0]]
+
+[range]
+budget_sec = 60.0
+case_sha256 = "955521c4ee8b3de52ec03bce12d5d6037e395d4e119296cd8277fec852bbd3a0"
+elapsed_sec = 1.3010001182556152
+parent_run_id = "r5-market-abf62929-07c8-4e51-aa98-c2b11228c5a4"
+payment_width_USD = 0.0
+primal_sha256 = "38ad0e81e3dfa6e75786fcec6f7e8795e45dd61e360aab39e2bf4d7831206b13"
+range_complete = true
+schema = "r5-market-selection-v1"
+scope = "fixed_all_primal_quantities"
+
+    [range.endpoints.maximum]
+    bound_source = "MOI.ObjectiveBound"
+    has_candidate = true
+    payment_USD = 600.0
+    primal_status = "FEASIBLE_POINT"
+    raw_status = "kHighsModelStatusOptimal"
+    solver = "HiGHS"
+    solver_objective = -600.0
+    solver_objective_bound = -600.0
+    solver_version = "v1.15.1"
+    status = "solver_optimal"
+    termination = "OPTIMAL"
+
+        [range.endpoints.maximum.market_witness]
+        budget_sec = 60.0
+        case_sha256 = "955521c4ee8b3de52ec03bce12d5d6037e395d4e119296cd8277fec852bbd3a0"
+        cost_optimization_complete = true
+        created_utc = "2026-09-19T05:54:29.440"
+        dual_status = "FEASIBLE_POINT"
+        elapsed_sec = 0.006999969482421875
+        fixed_load_utility_constant_omitted = true
+        julia_version = "1.12.6"
+        model_type = "continuous_LP"
+        multiplier_source = "optimized_dual_optimal_face"
+        objective_type = "fixed_bid_clearing_cost_not_system_resource_cost"
+        primal_status = "FEASIBLE_POINT"
+        raw_status = "kHighsModelStatusOptimal"
+        run_id = "r5-market-abf62929-07c8-4e51-aa98-c2b11228c5a4"
+        schema = "r5-market-result-v1"
+        solver = "HiGHS"
+        solver_objective = -1280.0
+        solver_objective_bound = -1280.0
+        solver_version = "v1.15.1"
+        status = "solver_optimal"
+        termination = "OPTIMAL"
+        version = "r5_market_clearing_checked_v1"
+
+            [[range.endpoints.maximum.market_witness.model_types]]
+            count = 3
+            function = "AffExpr"
+            set = "MathOptInterface.EqualTo{Float64}"
+            [[range.endpoints.maximum.market_witness.model_types]]
+            count = 2
+            function = "AffExpr"
+            set = "MathOptInterface.GreaterThan{Float64}"
+            [[range.endpoints.maximum.market_witness.model_types]]
+            count = 10
+            function = "AffExpr"
+            set = "MathOptInterface.LessThan{Float64}"
+            [[range.endpoints.maximum.market_witness.model_types]]
+            count = 6
+            function = "VariableRef"
+            set = "MathOptInterface.GreaterThan{Float64}"
+
+            [range.endpoints.maximum.market_witness.multipliers]
+            down = [2.0]
+            energy = [20.0]
+            g_cap_down = [[0.0]]
+            g_cap_up = [[-0.0]]
+            gd_bid = [[0.0]]
+            gu_bid = [[0.0]]
+            i_cap_down = [[0.0]]
+            i_cap_up = [[0.0]]
+            id_bid = [[0.0]]
+            iu_bid = [[3.0]]
+            line_down = []
+            line_up = []
+            pg_bid = [[0.0]]
+            q_bid = [[80.0]]
+            ramp_down = [[0.0]]
+            ramp_up = [[0.0]]
+            up = [5.0]
+
+            [range.endpoints.maximum.market_witness.values]
+            P_G = [[80.0]]
+            P_IES = [[30.0]]
+            R_G_down = [[10.0]]
+            R_G_up = [[20.0]]
+            R_IES_down = [[0.0]]
+            R_IES_up = [[-0.0]]
+
+    [range.endpoints.minimum]
+    bound_source = "MOI.ObjectiveBound"
+    has_candidate = true
+    payment_USD = 600.0
+    primal_status = "FEASIBLE_POINT"
+    raw_status = "kHighsModelStatusOptimal"
+    solver = "HiGHS"
+    solver_objective = 600.0
+    solver_objective_bound = 600.0
+    solver_version = "v1.15.1"
+    status = "solver_optimal"
+    termination = "OPTIMAL"
+
+        [range.endpoints.minimum.market_witness]
+        budget_sec = 60.0
+        case_sha256 = "955521c4ee8b3de52ec03bce12d5d6037e395d4e119296cd8277fec852bbd3a0"
+        cost_optimization_complete = true
+        created_utc = "2026-09-19T05:54:29.440"
+        dual_status = "FEASIBLE_POINT"
+        elapsed_sec = 0.006999969482421875
+        fixed_load_utility_constant_omitted = true
+        julia_version = "1.12.6"
+        model_type = "continuous_LP"
+        multiplier_source = "optimized_dual_optimal_face"
+        objective_type = "fixed_bid_clearing_cost_not_system_resource_cost"
+        primal_status = "FEASIBLE_POINT"
+        raw_status = "kHighsModelStatusOptimal"
+        run_id = "r5-market-abf62929-07c8-4e51-aa98-c2b11228c5a4"
+        schema = "r5-market-result-v1"
+        solver = "HiGHS"
+        solver_objective = -1280.0
+        solver_objective_bound = -1280.0
+        solver_version = "v1.15.1"
+        status = "solver_optimal"
+        termination = "OPTIMAL"
+        version = "r5_market_clearing_checked_v1"
+
+            [[range.endpoints.minimum.market_witness.model_types]]
+            count = 3
+            function = "AffExpr"
+            set = "MathOptInterface.EqualTo{Float64}"
+            [[range.endpoints.minimum.market_witness.model_types]]
+            count = 2
+            function = "AffExpr"
+            set = "MathOptInterface.GreaterThan{Float64}"
+            [[range.endpoints.minimum.market_witness.model_types]]
+            count = 10
+            function = "AffExpr"
+            set = "MathOptInterface.LessThan{Float64}"
+            [[range.endpoints.minimum.market_witness.model_types]]
+            count = 6
+            function = "VariableRef"
+            set = "MathOptInterface.GreaterThan{Float64}"
+
+            [range.endpoints.minimum.market_witness.multipliers]
+            down = [2.0]
+            energy = [20.0]
+            g_cap_down = [[-0.0]]
+            g_cap_up = [[0.0]]
+            gd_bid = [[0.0]]
+            gu_bid = [[0.0]]
+            i_cap_down = [[0.0]]
+            i_cap_up = [[0.0]]
+            id_bid = [[0.0]]
+            iu_bid = [[3.0]]
+            line_down = []
+            line_up = []
+            pg_bid = [[0.0]]
+            q_bid = [[80.0]]
+            ramp_down = [[0.0]]
+            ramp_up = [[0.0]]
+            up = [5.0]
+
+            [range.endpoints.minimum.market_witness.values]
+            P_G = [[80.0]]
+            P_IES = [[30.0]]
+            R_G_down = [[10.0]]
+            R_G_up = [[20.0]]
+            R_IES_down = [[0.0]]
+            R_IES_up = [[-0.0]]

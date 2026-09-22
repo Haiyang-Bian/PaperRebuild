@@ -1,0 +1,47 @@
+archive_reserve_sec = 60.0
+author_code_equivalence = false
+budget_sec = 600.0
+central_solution_injected = false
+comparison = "paired_same_input_and_discrete_domain; serial_simulation_no_privacy_or_speedup_claim"
+correction_of_manifest_sha256 = "78f1df14bb9b7d4018b8e484428eeefb3e21ea3f81a5a84d33c62dc411d02544"
+correction_reason = "closed heat tie requires heat_direction <= u_H = 0; original direction=1 contradicts this hard constraint"
+fixed_input_sha256 = "5f1ddce8f60ff26281cadd450d5755327d54ab9bb197012dbe9f0121e025cad8"
+fixed_mode_rule = "initial_topology; open_heat_positive_closed_heat_zero; storage_charge_at_or_below_price_midrange"
+initialization = "zero_messages_and_scaled_duals"
+joint_input_sha256 = "0ccd3fc8cbec9eff35715615750f1961896dcec0dc7fb10c5c0a522594969fd3"
+max_iterations = 1000
+origin = "synthetic"
+parent_manifest_sha256 = "2a312e0e3086047a13febf9608aa3ef5449220d185b721a5a96cd382d6daad50"
+rho = 1.0
+schema = "r9-distributed-study-protocol-v2"
+thermal_scope = "steady_energy_mass_envelopes_not_dynamic_thermal_physics"
+unchanged_integer_methods = "Retain the four original mixed-integer runs; this correction recomputes only the fixed-mode pair"
+
+[clarabel]
+max_threads = 1
+tol_feas = 1.0e-10
+tol_gap_abs = 1.0e-10
+tol_gap_rel = 1.0e-10
+verbose = false
+
+[gurobi]
+FeasibilityTol = 1.0e-8
+IntFeasTol = 1.0e-8
+MIPGap = 0.0001
+NonConvex = 2
+OptimalityTol = 1.0e-8
+Seed = 0
+Threads = 1
+
+[[methods]]
+case = "equipment-fixed"
+domain = "fixed_modes"
+id = "fixed-convex-central"
+method = "central"
+solver = "Clarabel"
+[[methods]]
+case = "equipment-fixed"
+domain = "fixed_modes"
+id = "fixed-convex-admm"
+method = "admm"
+solver = "Clarabel"

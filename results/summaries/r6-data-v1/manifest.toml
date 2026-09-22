@@ -1,0 +1,103 @@
+julia_version = "1.12.6"
+protocol_sha256 = "02c5987cab99c924ca494ffae7a30bf258e41e1fe213d32558862ed6d9ee5d3b"
+schema = "r6-frozen-data-v1"
+status = "input_frozen_no_method_results"
+
+[files]
+"representatives.toml" = "749b4cf85bc794e3c5f4acad3d92d8b8fd0926787c583b6fba89f6fb7a844037"
+"test-001.csv" = "05bc9738cad48b27f1864100169a20cc75c0b5f0b68f8a79277eb28579a7b737"
+"test-002.csv" = "01e5298eb862a0379180f42db4c8d7b66012723ebad752e8de43da1b7f1f360a"
+"test-003.csv" = "7914e035748a0b7dcf07034fc5a40027aeeb966e3427cf0c2521365c08b480da"
+"test-004.csv" = "e1816abe02b98f604a57425ff25ae2aa9da3616bc21743eda0f0892438f39f29"
+"test-005.csv" = "ac21d0b531f7947a31c80dbdb6af1b34a3f78334a734a6c6a22342e85dc978e7"
+"train-001.csv" = "0c5d6596a53ec0cef46fdbf715f64e5b3659e78c72470ef15acc5b5e246cbc9f"
+"train-002.csv" = "723865f407eeecce788781a6cdfabe5f6bf0a0081269d99a5b4cdc8b8cf7b7fc"
+"train-003.csv" = "b9252dd5664b9a9d2c0b73dc4b3ec7f12972a80afc5c98f09b4acb844cbf82ed"
+"train-004.csv" = "5661e91897abfce9b82264a52df3476c76745522d7f5bb25f9830c4da27c6d9d"
+"train-005.csv" = "fb7ab2fb172b69ac728f774eedf487ea8647c7307e581a21b52eae54ecc58fcb"
+"train-006.csv" = "e6a0be9e7c199981c5fe11f4a4e34f6b142022642e044fcbd4e4cc9b52e10168"
+"train-007.csv" = "8a2c64f769ab1a8802a222d60a2c8c355f55b9c2d633c55d08efaef73b00d594"
+"train-008.csv" = "81023da2c772795c3e514f0eea7c7b03089da292221bfbf8dd61a34dbadeff95"
+"train-009.csv" = "0b359fca21e0bb4e7880f6b8c018a4a81bc8e88784baad76e050b8e6badb77ba"
+"train-010.csv" = "1f22106f72dd73b8869d55d1417bf52501d7b5daca08117cdf6ddcfa5bd8b485"
+"validation-001.csv" = "69852334e95ffda26b589e80a014d44c6c487ed0aa7beb8a99cf05097005760f"
+"validation-002.csv" = "6663e5b49923c3721edac2e59d00fe30480b2ead4c14c0a17942844fc4684bc5"
+"validation-003.csv" = "2eb9462f0881c4ec5bd477ce9f026c292af4a80aa9d4ab21a4d724e738c22dc0"
+
+[groups.test]
+count = 1000
+files = ["test-001.csv", "test-002.csv", "test-003.csv", "test-004.csv", "test-005.csv"]
+sha256 = "89556b409990ab68eebc0297324681c07e777fdecb25b3ba75c4e5847a4bbf3f"
+
+[groups.train]
+count = 2000
+files = ["train-001.csv", "train-002.csv", "train-003.csv", "train-004.csv", "train-005.csv", "train-006.csv", "train-007.csv", "train-008.csv", "train-009.csv", "train-010.csv"]
+sha256 = "61f4ad3a320d1b79bcb1a68b22b3211010c234f3d1c9fb12238233c76b847b27"
+
+[groups.validation]
+count = 500
+files = ["validation-001.csv", "validation-002.csv", "validation-003.csv"]
+sha256 = "dbce3b57e5ad8883ccf471157a8a8b5d19422d09007ece37c97bf044deb47e15"
+
+[protocol]
+T = 24
+dt_h = 1.0
+methods = ["D", "SP", "RO", "DRO", "CCP", "DRJCC"]
+name = "r6_pv_call_daily_v1"
+origin = "synthetic"
+recourse_information = "complete_trajectory"
+sample_unit = "complete_day"
+schema = "r6-protocol-v1"
+
+    [protocol.clustering]
+    algorithm = "lloyd_farthest_first_observed_representative_v1"
+    count = 100
+    distance = "rms_pv_and_signed_call_half"
+    max_iterations = 200
+    tolerance = 1.0e-10
+
+    [protocol.generator]
+    activation_ar = 0.7
+    call_scale = 0.75
+    clear_sky_fraction = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.08, 0.25, 0.45, 0.65, 0.82, 0.95, 1.0, 0.92, 0.78, 0.58, 0.35, 0.12, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    cloud_daily_scale = 0.8
+    cloud_hourly_scale = 0.4
+    cloud_intercept = 1.4
+    version = "r6_correlated_pv_call_v1"
+    weather_ar = 0.8
+
+    [protocol.samples]
+    test = 1000
+    train = 2000
+    validation = 500
+
+    [protocol.seeds]
+    test = 2026091903
+    train = 2026091901
+    validation = 2026091902
+
+    [protocol.statistics]
+    bootstrap_replicates = 2000
+    bootstrap_seed = 2026091904
+    confidence = 0.95
+    epsilon = 0.05
+    primary_claim = "DRJCC_joint_comfort"
+    unknown_rule = "keep_denominator_upper_counts_all"
+
+[provenance]
+commit = "27fbc818116457615a17ab200ea2ce14bc0aad97"
+created_utc = "2026-09-19T10:20:23.514"
+rng = "Random.Xoshiro"
+working_tree_status = " M .vscode/settings.json"
+
+    [provenance.source_files]
+    "Manifest.toml" = "948f0f5c5a4bc8381a3d9ad413fb0f8e78ee1a3bad52606dea9b9b6f144e5450"
+    "Project.toml" = "313f8c54dfa9a7a276832e48cc8d7e3e9b63c29aab765bf7fa541f2fb68f40a9"
+    "configs/r6/protocol.toml" = "3c5cb95263f6d1499484d930e57d66c91459e28f73b9fef97b2790ae88645529"
+    "scripts/freeze_r6_data.jl" = "433022f2dc75b64ce336078b6bd963f871907f81f675e7f1613a34df754ca6bd"
+    "src/PaperRebuild.jl" = "eae70690674ebb26370f726b0932cad934ea52a278eb83db4c4989019e0ca2bc"
+    "src/algorithms/r6_data.jl" = "f2ed119e36dd8609d167823f30ab0257d3e9b191c04bfb18efbd0e76a8fd4a59"
+    "src/core/r5_market.jl" = "b66b34edafb602439fa8c93beb25fc20500b6a4106dee739a1795418cb265222"
+    "src/core/r6_protocol.jl" = "9ac99624a3f7e8f6f703ea621c26ca0c581c8161bebe3544ccb85f8439d1c288"
+    "src/reporting/r6_data.jl" = "0c7336645ead1ce9524e1bd01e33cda1e2f3dbd7848f8489b5ccde366ec394e4"
+    "src/verification/r6_statistics.jl" = "6cf3f7517713d72cef9f60899ca42de59b4ffcd6a839fd851fe835b2bdd406b0"

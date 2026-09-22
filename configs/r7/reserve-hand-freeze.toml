@@ -1,0 +1,11 @@
+derivation = "无损周期热量1.6MWh固定CHP总电量；电负荷3.2MWh，PCC总购电1.6MWh。费用=20*1.6+100*1.6=192。断线时负荷节点需电池0.8MWh；两事件是互斥可能事件，同一正常计划持有0.8MWh至第3小时。充放总吞吐加权至少2*(0.25*(0.8-0.2)+0.75*(0.8-0.15))=1.275，故安全费用下界193.275。还须数值验证热库存及网络共同可行以达到下界。"
+expected_battery_energy_at_events_MWh = 0.8
+frozen_before_optimization = true
+normal_cost_USD = 192.0
+origin = "synthetic"
+robust_cost_USD = 193.275
+schema = "r7-reserve-hand-freeze-v1"
+
+[files]
+"configs/r7/normal-reserve-hand.toml" = "ac0d554e1c8a8f4ab722d0fa9d001492c2b180cf94158fbf5daea571dcf328bd"
+"configs/r7/planning-reserve-hand.toml" = "3760624632487fd35b855cf084d0d80ca8bdeb3d669c57ea0b039eda409f0458"

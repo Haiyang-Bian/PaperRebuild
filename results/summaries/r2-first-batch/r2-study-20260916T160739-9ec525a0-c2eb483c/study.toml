@@ -1,0 +1,151 @@
+batch = "r2-study-20260916T160739-9ec525a0"
+budget_per_instance_sec = 60.0
+license_status = "available"
+origin = "synthetic"
+
+[[runs]]
+bound = 80.18286312845882
+class = "SOCP"
+directory = "results/runs/r2-20260916T160757-c3c146aa"
+elapsed_sec = 10.700000047683716
+model_pass = true
+name = "single-fixed-open"
+objective = 80.18286337620681
+original_physics_pass = false
+relative_gap = 3.0897872759773977e-9
+status = "solver_optimal"
+[[runs]]
+bound = 80.18285835670929
+class = "SOCP"
+directory = "results/runs/r2-20260916T160800-b4d60329"
+elapsed_sec = 1.318000078201294
+model_pass = true
+name = "single-fixed-gurobi"
+objective = 80.18286516041843
+original_physics_pass = false
+relative_gap = 8.485240739846287e-8
+status = "solver_optimal"
+[[runs]]
+bound = 76.84607740429385
+class = "nonconvex"
+directory = "results/runs/r2-20260916T160802-7a25c16a"
+elapsed_sec = 1.9200000762939453
+model_pass = true
+name = "single-wmm"
+objective = 76.84614049285459
+original_physics_pass = false
+relative_gap = 8.209724044932665e-7
+status = "solver_optimal"
+[[runs]]
+bound = 72.21918245297563
+class = "SOCP"
+directory = "results/runs/r2-20260916T160804-f27083ae"
+elapsed_sec = 1.5859999656677246
+model_pass = true
+name = "single-schpd"
+objective = 72.49939237495148
+original_physics_pass = false
+relative_gap = 0.003864996833720576
+status = "solver_optimal"
+[[runs]]
+bound = 177.3762169314059
+class = "nonconvex"
+directory = "results/runs/r2-20260916T160848-af0213ba"
+elapsed_sec = 43.519999980926514
+model_pass = true
+name = "two-wmm"
+objective = 177.37624799798556
+original_physics_pass = false
+relative_gap = 1.751450941292821e-7
+status = "solver_optimal"
+[[runs]]
+bound = 167.63854624174903
+class = "MISOCP"
+directory = "results/runs/r2-20260916T160848-8e386256"
+elapsed_sec = 0.11399984359741211
+model_pass = true
+name = "two-schpd"
+objective = 167.63870555812258
+original_physics_pass = false
+relative_gap = 9.503555460209191e-7
+status = "solver_optimal"
+[[runs]]
+bound = 176.0447585368951
+class = "SOCP"
+directory = "results/runs/r2-20260916T160850-598b7c98"
+elapsed_sec = 1.6390001773834229
+model_pass = true
+name = "two-fixed-enumeration"
+objective = 176.04475883018645
+original_physics_pass = false
+relative_gap = 1.6660044426554849e-9
+status = "solver_optimal"
+[[runs]]
+bound = 176.04475883138844
+class = "MISOCP"
+directory = "results/runs/r2-20260916T160850-5c892bb1"
+elapsed_sec = 0.021000146865844727
+model_pass = true
+name = "two-fixed-mip"
+objective = 176.044760065273
+original_physics_pass = false
+relative_gap = 7.0089253125211846e-9
+status = "solver_optimal"
+[[runs]]
+bound = 65.00835302537318
+class = "nonconvex"
+directory = "results/runs/r2-20260916T160851-90979250"
+elapsed_sec = 0.11899995803833008
+model_pass = true
+name = "ablation-heat-envelope"
+objective = 65.0083813408487
+original_physics_pass = false
+relative_gap = 4.355665367148284e-7
+status = "solver_optimal"
+[[runs]]
+bound = 76.84438916562199
+class = "nonconvex"
+directory = "results/runs/r2-20260916T160851-0a6dc6e7"
+elapsed_sec = 0.057000160217285156
+model_pass = true
+name = "ablation-reference-loss"
+objective = 76.84444459870737
+original_physics_pass = false
+relative_gap = 7.213675063732743e-7
+status = "solver_optimal"
+[[runs]]
+bound = 77.40480187387104
+class = "nonconvex"
+directory = "results/runs/r2-20260916T160851-615a0d88"
+elapsed_sec = 0.12400007247924805
+model_pass = true
+name = "ablation-temperature"
+objective = 77.40484828367063
+original_physics_pass = false
+relative_gap = 5.995722570812384e-7
+status = "solver_optimal"
+[[runs]]
+bound = 163.59674632900152
+class = "nonconvex"
+directory = "results/runs/r2-20260916T160858-7edf4937"
+elapsed_sec = 6.556999921798706
+model_pass = true
+name = "ablation-mixing"
+objective = 163.59681185807983
+original_physics_pass = false
+relative_gap = 4.005522941960921e-7
+status = "solver_optimal"
+[[runs]]
+directory = "results/runs/r2-20260916T160858-6662a693"
+elapsed_sec = 0.0019998550415039062
+model_pass = false
+name = "literal-wmm"
+original_physics_pass = false
+status = "blocked"
+[[runs]]
+directory = "results/runs/r2-20260916T160858-aeaba70b"
+elapsed_sec = 0.002000093460083008
+model_pass = false
+name = "literal-schpd"
+original_physics_pass = false
+status = "blocked"

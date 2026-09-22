@@ -1,0 +1,31 @@
+frozen_net_injection_MW = [0.0, -0.40806300488724256, 0.4089095220547672]
+input_sha256 = "a31cb0ad4684049b587f1358ff4921299dd148344353c871305e1d3e9b43e186"
+parent_flow_sha256 = "858561dcd7a43bcfa1381cd63a957418226af33b3b2d0b1c4ec89901faff69f7"
+scope = "single_period_fixed_device_outputs_electrical_only"
+t = 3
+
+[[runs]]
+P_pu = [5.0061908494384556e-8, -0.40807467629145383]
+Q_pu = [0.0403386268924585, 0.020333938305325348]
+ell_pu2 = [0.0023442932680846074, 0.16696915266267354]
+form = "socp"
+grid_MW = 5.0061908494384556e-8
+loss_MW = 0.0008465672296537907
+original_equality_residual = 0.0007170884485131251
+primal_max_violation = 5.969807981287545e-13
+termination = "OPTIMAL"
+v_pu2 = [1.0, 0.999838712976386, 1.0038429660915065]
+[[runs]]
+form = "physical_nonnegative_grid"
+termination = "INFEASIBLE"
+[[runs]]
+P_pu = [-3.5542501663488046e-6, -0.40807469525693607]
+Q_pu = [0.04033718516694803, 0.02033393071913717]
+ell_pu2 = [0.0016272239054291315, 0.16696535956623393]
+form = "physical_export_counterfactual"
+grid_MW = -3.5542501663488046e-6
+loss_MW = 0.0008429629173583152
+original_equality_residual = 1.3538560378529609e-7
+primal_max_violation = 1.3538560378529609e-7
+termination = "OPTIMAL"
+v_pu2 = [1.0, 0.9998387339934718, 1.003842987218592]

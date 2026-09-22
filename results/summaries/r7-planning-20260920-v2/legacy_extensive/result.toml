@@ -1,0 +1,80 @@
+author_nested_algorithm_verified = false
+budget_sec = 600.0
+candidate_accepted = false
+case_sha256 = "d40e913948d72bade5781f3789848afb48faa30893be72bccd47100e1c10784e"
+conditional_cost_complete = false
+elapsed_sec = 12.60099983215332
+full_preplan_optimality_verified = false
+julia_version = "1.12.6"
+method = "extensive"
+normal_domain = "prescribed_positive_fixed_electric_topology"
+objective_kind = "expected_normal_cost_USD"
+run_id = "r7-planning-41082456-aaab-47c0-9379-dfb528cd5297"
+schema = "r7-planning-result-v1"
+status = "infeasible_certified"
+
+[[iterations]]
+added_pairs = []
+audits = []
+
+    [iterations.master]
+    build_sec = 7.846999883651733
+    elapsed_sec = 8.230999946594238
+    lower_bound_USD = 0.0
+    model_class = "MILP"
+    primal_status = "NO_SOLUTION"
+    raw_status = "kHighsModelStatusInfeasible"
+    solver_name = "HiGHS"
+    status = "infeasible_certified"
+    termination_status = "INFEASIBLE"
+    witnesses = []
+
+        [[iterations.master.included]]
+        event = 1
+        fault = [0]
+        [[iterations.master.included]]
+        event = 1
+        fault = [1]
+
+[source_hashes_at_solve]
+"Manifest.toml" = "948f0f5c5a4bc8381a3d9ad413fb0f8e78ee1a3bad52606dea9b9b6f144e5450"
+"Project.toml" = "313f8c54dfa9a7a276832e48cc8d7e3e9b63c29aab765bf7fa541f2fb68f40a9"
+"src/PaperRebuild.jl" = "0ded4bc7aaf781687c64668f4eea830f8edeea82693f5ffb1484f16d86d01501"
+"src/algorithms/r7_normal.jl" = "1b33b7a85e59ff90f6e67d90e004fd27f6f068d1cc7ccb6e4a895069fc8bd32c"
+"src/algorithms/r7_planning.jl" = "89b3bdd1522361052bf34c6699eb34b281954fe7ace9b47f931b06fc3b22b8f2"
+"src/algorithms/r7_recovery.jl" = "9f3f45283b154e3cd6d17af2d8682790948526a7ea5d7cf0a0d739e80588e044"
+"src/components/r7_commitment.jl" = "e1a1341d9f9c723a2b90f7050a2625553bd00f500342d8380e30d280162222ab"
+"src/core/r7_commitment.jl" = "6f256c307ee685b090cc1c54590d52d936d022cd56e3158705e076a72897c130"
+"src/core/r7_normal.jl" = "2cc9d615dc8649b40557ca580a311700f40a2827a90753d518244aa85fe6d69c"
+"src/core/r7_planning.jl" = "d2b7174bcbd5a6a87cf6363187606a989c1ad6036a08d6edfc864ff907394114"
+"src/core/r7_recovery.jl" = "40ad22ac1c87a582eb7d4a1c32f29937c68e0bc687ca005f0541974b87b30dce"
+"src/formulations/r7_normal.jl" = "a6277961c0f379c9232f637b809fa6220a2bfca9673e319152791d42a44f2f68"
+"src/formulations/r7_planning.jl" = "0c97f7eb4a0108ea046fb2446b06a6d8f8dc764da31ff71073e847d4aaecfe54"
+"src/formulations/r7_recovery.jl" = "8f4a88c624d2980d54fded2c945cf90974fc89f16f5cebc2794936071d61509c"
+"src/networks/fixed_flow_heat.jl" = "620c069f6b3a520d32ee546ec048074f9cbaa3c785f8c2e31ec7fd7bf245a83b"
+"src/networks/r7_normal_transport.jl" = "23872aef95bf80b5d61ac41147c83dbc3eaa8dace5fe7a931f2ecc5656178b77"
+"src/networks/r7_pipe_state.jl" = "2d8b4b01dbcdfc276ac15bf40d715b1d23f3dc56271ef4b0736f6fae2403f8a8"
+"src/reporting/r7_normal.jl" = "d201a85e73e1dff2aeb6a7d561bcb3311b2fd055d4e3a344792a5733c608a5b4"
+"src/reporting/r7_planning.jl" = "9e72a0057cb54e0738bae0fb5a1c1ca2a4f0787d39429ec283412947d5d05bed"
+"src/reporting/r7_recovery.jl" = "f3617abd6cb02602bf8d2cf67784a78ffcd150daace84cbe23f4011a35212924"
+"src/verification/r7_commitment.jl" = "db12022c34a1e5ba8183e88131f4c85a79ef206a49277688d217f9fdb8ba7c72"
+"src/verification/r7_normal.jl" = "3c30d3186eba8f6a6faec2cfaf8c159b75df3e62a11bb8d3ad7a7bfc329da10c"
+"src/verification/r7_planning.jl" = "1e2bbb4d84361a232516cb73fa68e4489fa4ed3d521603c81acee85ac61eb5d7"
+"src/verification/r7_recovery.jl" = "916b3b525d2877013f9bbd4f47a77355ad1b6cc075194fc5fe8696d2deda1962"
+
+[validation]
+ac_grid_verified = false
+candidate_iteration = 0
+conditional_optimality_pass = false
+detailed_disaster_heat_verified = false
+lower_bound_USD = 0.0
+robust_model_pass = false
+
+    [[validation.iterations]]
+    audits = []
+    robust_model_pass = false
+
+        [validation.iterations.master]
+        included_pass = false
+        normal_pass = false
+        witness_checks = []

@@ -1,0 +1,33 @@
+schema = "r9-network-protocol-v1"
+id = "r9-73-network-access-and-topology-v1"
+origin = "synthetic_design_with_thesis_switch_locations"
+source_pdf_pages = [133,134]
+source_sha256 = "20328e2480e773520c19c378e53365fc944c0bafcfca73071f5d8313d5ee7d91"
+electric_ties = [[6,38],[18,27],[25,24],[19,33]]
+heat_ties = [[6,27],[32,16]]
+electric_base_switches = [[1,2],[1,7],[1,13],[1,39],[20,26],[20,28]]
+heat_base_switches = [[3,4],[9,29]]
+switch_source = "figure7-6 visible switch boxes; figure7-8 confirms heat sectionalizing points"
+tie_parameter_rule = "original_path_length_impedance_minimum_capacity_new_pipe_geometry"
+equipment_rule = "full_device_absolute_envelope_plus_maximum_flexible_demand"
+design_scope = "network_parameter_package; changes impedance, capacities and heat loss together"
+electrical_time_rule = "hourly_switches"
+thermal_time_rule = "one_valve_plan_per_day; hourly_physical_direction"
+dwell_steps = 2
+stable_history_steps = 1
+electric_max_actions = 2
+electric_action_CNY = 5.0
+heat_action_CNY = 5.0
+action_origin = "project_explicit_teaching_parameters_not_author_values"
+terminal_rule = "free_topology_no_periodic_restoration"
+comparison_rule = "freeze_inputs_before_solving; same_design_compares_topology; cross_design_is_combined_parameter_change"
+
+[design]
+capacity_factor = 1.5
+path_squared_voltage_drop_budget = 0.04
+x_over_r = 0.5
+minimum_design_MW = 0.01
+rho_kg_m3 = 1000.0
+velocity_m_s = 1.0
+insulation_W_mK = 0.03
+insulation_thickness_m = 0.1

@@ -1,0 +1,109 @@
+schema = "r9-scalability-study-protocol-v1"
+origin = "synthetic"
+input_package = "results/summaries/r9-scalability-inputs-20260922-v2"
+input_manifest_sha256 = "b2dc829364b90249c2764f9033aaae66273c40803e5e32ed4bee326f9c44ca24"
+counts = [8, 16, 32]
+budget_sec = 600.0
+archive_reserve_sec = 180.0
+max_iterations = 1000
+rho = 1.0
+objective_record = "separate"
+initialization = "zero_messages_and_scaled_duals"
+central_solution_injected = false
+author_input_equivalence = false
+author_algorithm_equivalence = false
+archive = "single_original_trajectory_plus_final_validation; shared_science_snapshot"
+timing = "fresh_serial_process; launcher_start_to_exit_including_load_JIT_verification_and_archive"
+hard_timeout = true
+comparison = "same_physics_split_ownership; not_AG0_payoff_or_parallel_speedup"
+legacy_runtime_comparable = false
+budget_reason = "Prior 8-AG full methods exceeded 600s; reserve 180s before any new formal result. No tolerance change."
+
+[clarabel]
+max_threads = 1
+tol_feas = 1.0e-10
+tol_gap_abs = 1.0e-10
+tol_gap_rel = 1.0e-10
+verbose = false
+
+[gurobi]
+FeasibilityTol = 1.0e-8
+IntFeasTol = 1.0e-8
+MIPGap = 0.0001
+NonConvex = 2
+OptimalityTol = 1.0e-8
+Seed = 0
+Threads = 1
+
+[[methods]]
+id = "ag8-fixed-central"
+aggregators = 8
+domain = "fixed_modes"
+method = "central"
+solver = "Clarabel"
+[[methods]]
+id = "ag8-fixed-admm"
+aggregators = 8
+domain = "fixed_modes"
+method = "admm"
+solver = "Clarabel"
+[[methods]]
+id = "ag8-mip-central"
+aggregators = 8
+domain = "mixed_integer"
+method = "central"
+solver = "Gurobi"
+[[methods]]
+id = "ag8-mip-admm"
+aggregators = 8
+domain = "mixed_integer"
+method = "admm"
+solver = "Gurobi"
+[[methods]]
+id = "ag16-fixed-central"
+aggregators = 16
+domain = "fixed_modes"
+method = "central"
+solver = "Clarabel"
+[[methods]]
+id = "ag16-fixed-admm"
+aggregators = 16
+domain = "fixed_modes"
+method = "admm"
+solver = "Clarabel"
+[[methods]]
+id = "ag16-mip-central"
+aggregators = 16
+domain = "mixed_integer"
+method = "central"
+solver = "Gurobi"
+[[methods]]
+id = "ag16-mip-admm"
+aggregators = 16
+domain = "mixed_integer"
+method = "admm"
+solver = "Gurobi"
+[[methods]]
+id = "ag32-fixed-central"
+aggregators = 32
+domain = "fixed_modes"
+method = "central"
+solver = "Clarabel"
+[[methods]]
+id = "ag32-fixed-admm"
+aggregators = 32
+domain = "fixed_modes"
+method = "admm"
+solver = "Clarabel"
+[[methods]]
+id = "ag32-mip-central"
+aggregators = 32
+domain = "mixed_integer"
+method = "central"
+solver = "Gurobi"
+[[methods]]
+id = "ag32-mip-admm"
+aggregators = 32
+domain = "mixed_integer"
+method = "admm"
+solver = "Gurobi"

@@ -1,0 +1,19 @@
+budget_sec = 600.0
+elapsed_sec = 14.757999897003174
+parent_case_sha256 = "a983f5e316d1415b0657a1833af1705b6b3d682fbf13f726c6317935c08c3101"
+parent_run_id = "fc1bdb39-44a2-4730-969a-97b4e339d967"
+schema = "r7-normal-event-runs-v1"
+scope = "conditional_preplan_given_fault_recovery_not_full_planning"
+
+[[records]]
+directory = "fault-001"
+fault = [0]
+model_pass = true
+run_id = "r7-recovery-a3d7e5a3-21c9-45be-a0af-bb7f162b924c"
+status = "solver_optimal"
+[[records]]
+directory = "fault-002"
+fault = [1]
+model_pass = false
+run_id = "r7-recovery-ade43d2e-9b16-4fdc-960c-7b29edc82244"
+status = "infeasible_certified"

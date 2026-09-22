@@ -1,0 +1,85 @@
+paper_match = "blocked"
+study = "r2-study-20260916T160739-9ec525a0"
+
+[[comparisons]]
+A2_pass = true
+H_port_max_abs_difference = 3.041153440186406e-11
+candidate = "single-fixed-gurobi"
+cost_difference = 1.7842116193378388e-6
+cost_relative_difference = 2.2251782291267982e-8
+reference = "single-fixed-open"
+same_model = true
+status = "compared"
+tau_R_mix_max_abs_difference = 0.0
+tau_S_mix_max_abs_difference = 7.151811587391421e-9
+[[comparisons]]
+A2_pass = true
+H_port_max_abs_difference = 1.0855047971602971e-9
+candidate = "two-fixed-mip"
+cost_difference = 1.2350865574717318e-6
+cost_relative_difference = 7.015753071428282e-9
+reference = "two-fixed-enumeration"
+same_model = true
+status = "compared"
+tau_R_mix_max_abs_difference = 5.684341886080802e-14
+tau_S_mix_max_abs_difference = 2.585464358162426e-7
+[[comparisons]]
+H_port_max_abs_difference = 0.022455904692134654
+candidate = "single-schpd"
+cost_difference = -4.346748117903104
+cost_relative_difference = 0.05656429965155217
+reference = "single-wmm"
+same_model = false
+status = "compared"
+tau_R_mix_max_abs_difference = 2.4778962683867007
+tau_S_mix_max_abs_difference = 10.246370586395244
+[[comparisons]]
+H_port_max_abs_difference = 0.09166388627525618
+candidate = "two-schpd"
+cost_difference = -9.737542439862978
+cost_relative_difference = 0.05489766837312719
+reference = "two-wmm"
+same_model = false
+status = "compared"
+tau_R_mix_max_abs_difference = 8.886359999939941
+tau_S_mix_max_abs_difference = 10.584115339704056
+[[comparisons]]
+H_port_max_abs_difference = 0.07775223006516371
+candidate = "ablation-heat-envelope"
+cost_difference = -11.837759152005887
+cost_relative_difference = 0.15404494065784086
+reference = "single-wmm"
+same_model = false
+status = "compared"
+tau_R_mix_max_abs_difference = 0.059655920861871437
+tau_S_mix_max_abs_difference = 9.363447266457683
+[[comparisons]]
+H_port_max_abs_difference = 0.000910321222648447
+candidate = "ablation-reference-loss"
+cost_difference = -0.0016958941472182687
+cost_relative_difference = 2.2068696441247543e-5
+reference = "single-wmm"
+same_model = false
+status = "compared"
+tau_R_mix_max_abs_difference = 0.016154547341329817
+tau_S_mix_max_abs_difference = 0.47803296980811183
+[[comparisons]]
+H_port_max_abs_difference = 0.011987449334731531
+candidate = "ablation-temperature"
+cost_difference = 0.5587077908160438
+cost_relative_difference = 0.0072704730157267215
+reference = "single-wmm"
+same_model = false
+status = "compared"
+tau_R_mix_max_abs_difference = 0.011288137317990277
+tau_S_mix_max_abs_difference = 2.4470847273943264
+[[comparisons]]
+H_port_max_abs_difference = 0.09803242947908875
+candidate = "ablation-mixing"
+cost_difference = -13.779436139905727
+cost_relative_difference = 0.0776847875374059
+reference = "two-wmm"
+same_model = false
+status = "compared"
+tau_R_mix_max_abs_difference = 0.04064845803162598
+tau_S_mix_max_abs_difference = 19.999999767194538

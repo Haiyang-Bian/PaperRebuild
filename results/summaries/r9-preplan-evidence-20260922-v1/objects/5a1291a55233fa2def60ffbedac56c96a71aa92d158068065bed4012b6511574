@@ -1,0 +1,22 @@
+case_sha256 = "bf765aa801b5606005d3027abacefdf5ab62f5e29e5425f12ad1e48329635ef7"
+currency = "CNY"
+evaluation_rule = "independent_recovery_does_not_change_preplan"
+event_rule = "sum_of_selected_event_worst_expected_loss"
+limits_MWh = [2.0]
+mode = "economic"
+normal_model = "unchanged_prescribed_plug_flow_reference_v1"
+normal_sha256 = "aa73ac37aeda4472bdf95cc4e1c7f50df783a790dd9feececa66529a00592db1"
+penalty_MWh = 10000.0
+schema = "r9-preplan-spec-v1"
+service_objective = "critical_electric_v1"
+version = "r9_prescribed_preplan_v1"
+
+[[pairs]]
+event = 1
+fault = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[[pairs]]
+event = 1
+fault = [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[[pairs]]
+event = 1
+fault = [1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]

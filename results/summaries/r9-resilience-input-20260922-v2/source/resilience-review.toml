@@ -1,0 +1,117 @@
+schema = "r9-resilience-source-review-v1"
+source = "docs/摘要.pdf"
+source_sha256 = "20328e2480e773520c19c378e53365fc944c0bafcfca73071f5d8313d5ee7d91"
+pdf_pages = [138,139,140,141,142,143]
+reviewed = "2026-09-21"
+method = "original PDF visual review; PDF139 and PDF142 additionally rendered at 300 dpi"
+origin = "author_source_review_not_optimization"
+original_input_complete = false
+optimization_performed = false
+prior_input_audit = "results/summaries/r9-inputs-20260920-v1"
+
+[[finding]]
+id = "R9-RS01"
+location = "table-7-16 / PDF139 / printed122"
+kind = "project_transcription_error_corrected"
+original_literal_CNY_kWh = 0.7713
+prior_project_CNY_MWh = 711.3
+adopted_CNY_MWh = 771.3
+meaning = "GT1燃机成本；乘1000完成元/kWh到元/MWh换算。原项目转录错误，不归咎于作者。"
+scope = "current resilience.gt only; existing frozen cases/results are preserved"
+status = "visual_source_and_unit_conversion_checked"
+
+[[finding]]
+id = "R9-RS02"
+location = "figure-7-12 / PDF139; figure-7-14 / PDF142"
+kind = "conflicting_critical_load_markers"
+nodes_figure_7_12 = [2,4,6,7,14,15,19,26,27,32,33,36]
+nodes_figure_7_14 = [2,4,6,7,15,17,18,19,26,27,31,32,36]
+aggregate_active_capacity_MW = 13.75
+meaning = "三角图例为重要负荷；第二图E33为发电圆形而非重要负荷三角。两图节点集合不同，逐节点负荷仍缺。"
+status = "both_transcribed_no_unique_author_set_selected"
+
+[[finding]]
+id = "R9-RS03"
+location = "figure-7-12 / PDF139; event1 text / PDF141; figure-7-14 / PDF142"
+kind = "fault_candidates_and_example_differ"
+vulnerable_edges_figure_7_12 = [[1,2],[13,14],[1,44],[20,44],[28,29]]
+event1_failed_edges = [[1,7],[1,44],[44,20]]
+meaning = "E1-E7在图7-12有开关而无红色易故障标记，事件1却含其故障。示例三条断线不定义最大故障数。"
+chapter6_dependency = "eventwise 6-50 and disconnection 6-51; chapter6 general fault-set conflict retained"
+status = "full_fault_universe_budget_and_grid_forming_sources_open"
+
+[[finding]]
+id = "R9-RS04"
+location = "PDF139-140; table-7-17"
+kind = "objective_and_scheme_labels_conflict"
+meaning = "4A沿用1C；4B首段称基于3A并惩罚失供，随后称不考虑经济效益。启停表标题4C而相邻文字4B。"
+status = "retain_literal_labels_do_not_inject_reported_commitment"
+
+[[finding]]
+id = "R9-RS05"
+location = "table-7-18 / PDF140; PDF141-143 figures7-14 to7-16"
+kind = "clock_and_unserved_energy_conflict"
+table_windows_h = [[10,14],[12,15],[16,19]]
+figure_7_16_windows_h = [[8,12],[12,16],[16,20]]
+event1_text_h = [10,14]
+figure_7_14_caption_h = [16,19]
+event1_second_iteration_table_MWh = 0.2593
+event1_prose_MWh = 0.358
+event1_peak_unserved_MW = 0.7689
+event1_peak_interval_h = [13.75,14.0]
+meaning = "小时调度图与15分钟恢复结果不能静默合成同一1h网格；采用明确半开窗口及边界状态后才可计算。"
+status = "clock_resolution_and_adopted_event_windows_must_be_frozen"
+
+[[finding]]
+id = "R9-RS06"
+location = "table-7-19 and text / PDF142"
+kind = "reported_cost_percentage_arithmetic"
+scheme = ["4A","4B","4C"]
+normal_cost_CNY = [405373.0,418616.0,409662.0]
+prose_increase_percent = [0.0,4.31,1.68]
+meaning = "按表7-19总费用与4A比较；现有audit_r9_sources计算百分比，原文值与重算值并存。4A分项差1元在显示舍入范围。"
+status = "arithmetic_not_project_optimization"
+
+[[finding]]
+id = "R9-RS07"
+location = "PDF143 / figure-7-16 discussion"
+kind = "ablation_semantics_not_acronym_guess"
+scheme_4C_HS = "no electric network reconfiguration"
+scheme_4C_NR = "no heating-network flexibility"
+meaning = "按原文定义记录；不交换缩写解释。光伏、电锅炉、CHP功率求和的利用率还需明确电热基准。"
+status = "ablation_text_checked_utilization_metric_open"
+
+[[finding]]
+id = "R9-RS08"
+location = "figure-7-12 / PDF139 / printed122"
+reviewed = "2026-09-22"
+kind = "visible_switch_set_for_resilience_input"
+base_switch_edges = [[1,2],[1,7],[1,13],[1,39],[20,23],[20,26],[20,28]]
+tie_switch_edges = [[6,38],[18,27],[25,24],[19,33]]
+meaning = "本次300 dpi局部复核确认E20-E23白框。第7.5节采用七基础加四联络开关；此前7.3六基础开关的冻结输入不改写。只允许白框是项目解释，原图没有标记不证明现实线路无开关。"
+status = "visual_location_checked_actuator_completeness_not_certified"
+
+[[migration]]
+id = "R9-RM01"
+current_contract = "Legacy R7/R8 v1 retains USD keys; new v2 explicitly declares USD/CNY and neutral monetary fields. Recovery quantities remain MWh."
+required_before_run = "Introduce an explicit currency-aware input/results version; preserve old USD inputs, hashes and readers. No implicit exchange rate or relabelled CNY values in USD fields."
+status = "implemented_currency_v2_verified"
+adopted_contract = "docs/reading/ch07/resilience-currency.toml"
+[[migration]]
+id = "R9-RM02"
+current_contract = "Legacy inputs integrate all electric and heat shedding; explicit load_service inputs integrate critical active electric shedding and separately retain ordinary and heat losses."
+required_before_run = "Keep normal total load and recovery critical/noncritical demand distinct. Freeze node allocation and electric/heat objective scope; report each separately. Do not call all-demand unserved energy the author's critical metric."
+status = "implemented_synthetic_verification_author_allocation_open"
+adopted_contract = "docs/reading/ch07/resilience-load-service.toml"
+[[migration]]
+id = "R9-RM03"
+current_contract = "R7 event_start and periods index the normal dt_h grid; normal state/history is inherited at event boundaries"
+required_before_run = "Explicitly choose clock windows and grid resolution before optimization. A quarter-hour recovery cannot reuse hourly ramp, heat coefficients or period-count limits without conversion and tests."
+status = "identified_not_implemented"
+[[migration]]
+id = "R9-RM04"
+current_contract = "R7 finite faults and R8 full formulation evaluate the declared fault universe; an incomplete subset gives no universal safety certificate"
+domain_boundary = "Legacy R7-R2 requires every node connected to an eligible root. The explicit partial_energization_v1 now separates switches from energized nodes, with hard CHP commitments and original shedding limits; scale inputs remain open."
+domain_contract = "docs/reading/ch07/resilience-energization.toml"
+required_before_run = "Declare vulnerability set, fault budget, external-grid loss and eligible island roots. Measure one bounded build/replay pilot before full-scale enumeration; preserve timeout and incomplete coverage."
+status = "domain_implemented_fault_inputs_open"

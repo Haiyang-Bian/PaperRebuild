@@ -1,0 +1,76 @@
+schema = "r9-pv-input-protocol-v1"
+id = "r9-72-44e38h-24h-v1"
+origin = "synthetic_missing_fields_with_thesis_topology_and_nameplates"
+source_section = "7.2"
+currency = "CNY"
+T = 24
+dt_h = 1.0
+budget_sec = 600.0
+heat_reference_fraction = 0.8
+heat_profile = [0.8,0.8,0.78,0.76,0.8,0.88,0.96,1.0,0.96,0.88,0.82,0.8,0.78,0.76,0.78,0.84,0.92,0.98,0.94,0.88,0.84,0.82,0.8,0.8]
+electric_profile = [0.62,0.59,0.57,0.56,0.58,0.65,0.75,0.86,0.94,0.98,1.0,0.96,0.9,0.87,0.9,0.94,0.98,1.0,0.96,0.9,0.82,0.75,0.7,0.65]
+pv_profile = [0.0,0.0,0.0,0.0,0.0,0.0,0.05,0.2,0.4,0.65,0.85,0.96,1.0,0.95,0.8,0.6,0.35,0.12,0.0,0.0,0.0,0.0,0.0,0.0]
+profile_source = "project synthetic explicit hourly arrays, not digitized author curves; frozen before optimization"
+history_rule = "periodic_CF_CT_reference_computed_without_optimization"
+terminal_rule = "repeat_all_WMM_inlet_memory_and_reference_flows"
+commitment_rule = "CHP_on_with_original_Pmin; equation_3_1_variable_cost_only; no_startup_claim"
+
+[electric]
+power_factor = 0.9
+base_MVA = 50.0
+equivalent_base_kV = 10.0
+grid_max_MW = 60.0
+v_min_pu = 0.95
+v_max_pu = 1.05
+path_squared_voltage_drop_budget = 0.04
+x_over_r = 0.5
+current_capacity_factor = 1.5
+node_allocation = "equal_apparent_load_at_original_nodes_1_to_43; root_44_zero"
+line_rule = "equal_per_depth_voltage_drop_budget_at_absolute_nameplate_envelope"
+transformer_rule = "ideal_nominal_ratio_lossless_unlimited_transformers_at_E44_220_110_and_E1_E20_110_10; referred_equivalent_network"
+
+[heat]
+rho_kg_m3 = 1000.0
+cp_J_kgK = 4200.0
+ambient_K = 283.15
+source_temperature_K = 363.15
+reference_delta_K = 40.0
+S_bounds_K = [343.15,373.15]
+R_bounds_K = [293.15,338.15]
+local_source_reference_heat_MW = 0.6
+length_m = 600.0
+design_velocity_m_s = 1.0
+flow_min_factor = 0.6
+flow_max_factor = 1.4
+insulation_conductivity_W_mK = 0.03
+insulation_thickness_m = 0.1
+darcy_friction_factor = 0.02
+pressure_margin_factor = 1.5
+pressure_margin_kPa = 100.0
+node_allocation = "equal_heat_at_36_nodes_other_than_sources_1_15"
+pipe_rule = "area_from_reference_flow_and_velocity; radial_insulation_without_surface_resistance; constant_Darcy_factor"
+
+[[provenance]]
+fields = "connectivity, original node IDs, source/device sites, nameplates, efficiencies, tariffs"
+origin = "thesis"
+source = "docs/reading/ch07/{topology,inputs}.toml; PDF127-129"
+[[provenance]]
+fields = "electric.active/reactive_load"
+origin = "project_conversion_and_allocation"
+source = "45.67 MVA from thesis; PF 0.9 and equal allocation synthetic; P=S*PF, Q=S*sqrt(1-PF^2)"
+[[provenance]]
+fields = "electric.impedance,current_bounds,transformers"
+origin = "synthetic_engineering_equivalent"
+source = "declared voltage-drop allocation and ideal transformers; not original line data"
+[[provenance]]
+fields = "heat.geometry,flow,friction,insulation,temperature,pressure"
+origin = "synthetic_engineering_reference"
+source = "explicit SI constants and pipe sizing; not inferred from drawing lengths"
+[[provenance]]
+fields = "profiles, node_load_allocation, initial_history, terminal"
+origin = "project_boundary"
+source = "hourly profiles above; periodic CF-CT thermal reference; all methods share frozen initial memory"
+[[provenance]]
+fields = "CHP.cost,EB.electric_capacity,PV1.capacity"
+origin = "source_conversion_and_declared_interpretation"
+source = "CNY/kWh*1000; EB Pmax=Hmax/eta; section7.2 PV1=6MW; no inferred startup cost"

@@ -1,0 +1,129 @@
+schema = "ch05-sample-out-audit-v1"
+source = "docs/摘要.pdf"
+source_sha256 = "20328e2480e773520c19c378e53365fc944c0bafcfca73071f5d8313d5ee7d91"
+pdf_pages = [98, 99, 100, 101, 102, 103, 104]
+printed_pages = [81, 82, 83, 84, 85, 86, 87]
+status = "source_audited_statistics_implemented_method_evaluation_pending"
+
+[[finding]]
+id = "R6-A01"
+location = "PDF98/印刷81，第5.6.1节"
+original = "某地区历史数据，k-means生成100个代表性可再生出力场景，1-epsilon=95%。"
+classification = "author_reported"
+adopted = "保留100代表场景目标；原历史样本、轨迹、权重与聚类规则未闭合，项目使用显式合成来源。"
+[[finding]]
+id = "R6-A02"
+location = "PDF101/印刷84，第5.6.3节"
+original = "Monte Carlo生成1000个场景分析样本外；同页SP解释又说对生成的1000个场景赋予概率。"
+classification = "unresolved_sampling_relationship"
+adopted = "不能据此判断1000训练/测试样本是否相同，也不能断言作者存在数据泄漏。项目明确分离2000训练、500验证、1000测试完整日。"
+[[finding]]
+id = "R6-A03"
+location = "PDF100–102/印刷83–85，第5.6.3节"
+original = "D、SP、RO、DRO、CCP、DRJCC六方案；D一处称只考虑日前而不考虑调用，另一处称采用平均情景。"
+classification = "model_detail_missing"
+adopted = "R6采用训练均值PV和零调用的D；SP/CCP采用同一100训练代表的经验分布，RO是该有限支持上的最坏情况，DRO/DRJCC用冻结RMS运输球。是项目可比基准，不声称原文未公开细节已唯一确定。"
+[[finding]]
+id = "R6-A04"
+location = "PDF100表5-5；PDF102图5-8、表5-6"
+original = "表5-5方案5总成本8467.02、日前5105.33、实时3361.21；图5-8和表5-6实时为3361.69。"
+classification = "confirmed_arithmetic_inconsistency"
+adopted = "8467.02-5105.33=3361.69。保留两个原值，项目独立核算总/日前/实时费用，不选择有利原值。"
+[[finding]]
+id = "R6-A05"
+location = "PDF102/印刷85，图5-8"
+original = "图注明确样本内/样本外表现比较为实时运行成本。"
+classification = "author_metric_scope"
+adopted = "F17同时报告日前、实时与总成本；不能将图5-8实时成本直接与项目总费用比较。"
+[[finding]]
+id = "R6-A06"
+location = "PDF100/印刷83，图5-6"
+original = "17:00–22:00的2MW下调需求用于演示响应；涉及CHP下压、EB和P2H增用电及室温变化。"
+classification = "author_stress_example"
+adopted = "持续单向调用另作压力测试；不把该人工压力情景混入独立同分布风险分母。"
+[[finding]]
+id = "R6-A07"
+location = "PDF98–104，本次完整相关页"
+original = "未获得随机种子、Monte Carlo分布/时序相关参数、明确训练验证划分、半径校准和风险置信区间。"
+classification = "missing_in_inspected_pages"
+adopted = "统计检验、合成分布与数据隔离是项目新增；不把名义机会约束95%当作已证明样本外95%。"
+[[finding]]
+id = "R6-A08"
+location = "PDF103–104/印刷86–87，表5-7/5-8"
+original = "100场景改进法1224.30s，基准9579.83s；扩大系统为PDN123-DHN32，250/500场景基准超过10000s。"
+classification = "author_reported_scale"
+adopted = "R6数据统计不替代规模性能验收；当前小系统不继承这些作者报告的速度优势。"
+
+[[equation]]
+id = "R6-S1"
+latex = '\mathcal D_{\rm tr}\cap\mathcal D_{\rm va}=\mathcal D_{\rm tr}\cap\mathcal D_{\rm te}=\mathcal D_{\rm va}\cap\mathcal D_{\rm te}=\varnothing,\quad T\Delta t=24\ {\rm h}'
+meaning = "相交按独立采样身份判断，不要求随机数值绝不重复。只用训练拟合、验证选参数；测试不得参与调参。"
+api = "R6Protocol"
+test = "R6-SPLIT"
+[[equation]]
+id = "R6-S2"
+latex = 'w_{d,t}=\rho_w w_{d,t-1}+\sqrt{1-\rho_w^2}\xi_{d,t},\quad p_{d,t}^{\rm PV}=\bar p_t\,\sigma(b+s_d z_d+s_w w_{d,t}),\quad a_{d,t}=\tanh(s_a u_{d,t})'
+meaning = "u采用独立同形式AR过程；日初w/u与日因子z为独立标准正态。sigma为logistic。全部参数为合成项目设定，p为额定容量比例，a正值上调、负值下调。"
+api = "r6_generate_trajectories"
+test = "R6-SPLIT"
+[[equation]]
+id = "R6-S3"
+latex = 'U_{k,n}=\begin{cases}1,&k=n,\\p:\ \sum_{j=0}^{k}{n\choose j}p^j(1-p)^{n-j}=\alpha,&k<n,\end{cases}\qquad L_{k,n}=1-U_{n-k,n},\quad\alpha=0.05'
+meaning = "两端各自是单侧95%Clopper–Pearson界；不是共同覆盖95%的双侧区间。与A5的Beta分位数定义等价。"
+api = "r6_binomial_bounds"
+test = "R6-CP"
+[[equation]]
+id = "R6-S4"
+latex = 'L=L_{k,n},\qquad U=U_{k+u,n},\qquad {\rm decision}=\begin{cases}{\rm supported},&U\le\epsilon,\\{\rm rejected},&L>\epsilon,\\{\rm inconclusive},&{\rm otherwise}.\end{cases}'
+meaning = "k已知联合违约，u未知；未知全留在n中。上界作最坏计数，不把求解失败当作成功。主要正式风险检验为DRJCC联合室温，其余为比较性结果。"
+api = "r6_risk_evidence"
+test = "R6-UNKNOWN"
+[[equation]]
+id = "R6-S5"
+latex = '\Delta C_d=C_d^A-C_d^B,\qquad \widehat{\Delta C}=\frac1n\sum_{d=1}^{n}\Delta C_d'
+meaning = "按同一完整轨迹ID配对，自助法重采样整条差值。缺失任一方法费用时保留缺失数量，不生成总体排名与区间。"
+api = "r6_paired_costs"
+test = "R6-PAIR"
+[[equation]]
+id = "R6-S6"
+latex = 'd(i,j)=\sqrt{\frac1{2T}\sum_t\left[(p_{i,t}^{\rm PV}-p_{j,t}^{\rm PV})^2+\left(\frac{a_{i,t}-a_{j,t}}2\right)^2\right]},\quad q_j=\frac{|\mathcal C_j|}{N_{\rm tr}}'
+meaning = "固定无量纲尺度的整轨迹RMS距离；Lloyd中心拟合后选簇内最近的原始观测轨迹。后一步是项目规则，不能冒称作者中心选法。"
+api = "r6_fit_representatives"
+test = "R6-CLUSTER"
+
+[[symbol]]
+id = "r6-day"
+latex = 'd,t'
+meaning = "独立日、日内时段索引"
+unit = "1"
+julia = "values[channel,t,i]"
+[[symbol]]
+id = "r6-pv"
+latex = 'p_{d,t}^{\rm PV}'
+meaning = "PV额定容量出力比例"
+unit = "1"
+julia = "values[1,t,i]"
+[[symbol]]
+id = "r6-call"
+latex = 'a_{d,t}'
+meaning = "正上调、负下调的备用调用比例"
+unit = "1"
+julia = "values[2,t,i]"
+[[symbol]]
+id = "r6-counts"
+latex = 'n,k,u'
+meaning = "完整轨迹总数、已知联合违约数、未知数"
+unit = "trajectory"
+julia = "n, violations, unknown"
+[[symbol]]
+id = "r6-bounds"
+latex = 'L,U,\epsilon'
+meaning = "违约概率单侧下界、上界及预声明风险上限"
+unit = "1"
+julia = "lower, upper, epsilon"
+[[symbol]]
+id = "r6-cost"
+latex = '\Delta C_d'
+meaning = "同一轨迹两方法总费用A减B"
+unit = "USD"
+julia = "delta"

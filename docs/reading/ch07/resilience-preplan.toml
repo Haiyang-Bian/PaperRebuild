@@ -1,0 +1,38 @@
+schema = "r9-prescribed-preplan-mapping-v1"
+page = "docs/src/ch07-resilience-preplan.md"
+source_ambiguity = "R9-RS04"
+source_ledger = "docs/reading/ch07/resilience-review.toml"
+parent_model = "docs/reading/ch06/planning.toml"
+normal_model_unchanged = true
+fault_subset_explicit = true
+original_input_complete = false
+test_commands = ["scripts/test_r9_preplan.jl", "scripts/check_r9_preplan.jl"]
+
+[[formula]]
+id = "R9-RP1"
+kind = "project_adopted_shared_decision"
+api = ["r9_preplan_spec", "build_r9_preplan", "validate_r9_preplan"]
+test = "test/r9_preplan.jl"
+meaning = "原正常流量/逐管参考不变，所选故障各有恢复决策；关键失供对时间和原场景概率积分。"
+[[formula]]
+id = "R9-RP2"
+kind = "project_objective_epigraph"
+api = ["build_r9_preplan", "solve_r9_preplan", "validate_r9_preplan"]
+test = "test/r9_preplan.jl"
+meaning = "同事件取故障最大失供，再跨事件求和；罚费和正常费用分开，不混用目标界。"
+[[formula]]
+id = "R9-RP3"
+kind = "project_threshold_and_carrier"
+api = ["build_r9_preplan", "validate_r9_preplan", "save_r9_preplan", "read_r9_preplan"]
+test = "test/r9_preplan.jl"
+meaning = "4C逐故障门槛见证；4B载体只改变策略允许失供上限，原正常物理输入和旧结果不改。"
+
+[[diagnostic]]
+id = "R9-RP4"
+kind = "project_adopted_domain_loss_lower_bound"
+script = "scripts/audit_r9_preplan_loss_floor.jl"
+validator = "scripts/r9_preplan_diagnostic_evidence.jl"
+evidence = "results/summaries/r9-preplan-diagnostics-20260922-v1"
+meaning = "去掉费用目标，只最小化所选三个故障的最坏关键失供；上下界属于MWh目标，正常费用不声称最优。"
+status = "solver_bound_and_independent_values_checked"
+full_physical_or_all_fault_worst_loss_claim = false

@@ -1,0 +1,45 @@
+budget_sec = 600.0
+central_solution_injected = false
+manifest_sha256 = "555d2920ee6319c1f7c0addaf632fd9cb4c4885dedc5994af13081f7fecb1675"
+method_budget_pass = true
+method_elapsed_sec = 40.161068900022656
+process_budget_pass = true
+process_elapsed_sec = 41.959126500063576
+raw_result_sha256 = "a332620857660f6f1c69bfdc213d6bf8ee9c0b1118fb86630259c7846172054a"
+record = "record"
+record_manifest_sha256 = "45cd684d55436ddba708c243fd296372070f845c6405a11eb5ffb4008785ae92"
+schema = "r9-distributed-study-receipt-v1"
+start_utc = "2026-09-22T02:52:30.455"
+status = "infeasible_certified"
+
+[entry]
+case = "equipment-fixed"
+domain = "fixed_modes"
+id = "fixed-convex-central"
+method = "central"
+solver = "Clarabel"
+
+[packages]
+Clarabel = "0.11.1"
+JuMP = "1.31.2"
+MathOptInterface = "1.53.0"
+
+[validation]
+adopted_physical_pass = false
+cost_optimization_complete = false
+electric_original_pass = false
+full_thermal_physics_certified = false
+heat_energy_mass_pass = false
+ledger_pass = false
+local_cost_optimization_complete = false
+local_plans_pass = true
+model_pass = false
+
+    [[validation.stage_checks]]
+    electric_original_pass = false
+    failed_row_count = 0
+    full_thermal_physics_certified = false
+    heat_energy_mass_pass = false
+    ledger_pass = false
+    model_pass = false
+    row_count = 0

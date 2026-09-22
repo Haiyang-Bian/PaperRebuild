@@ -1,0 +1,39 @@
+ * Supported objective: MOI.ScalarQuadraticFunction{Float64}
+ * Unsupported constraint: MOI.ScalarAffineFunction{Float64}-in-MOI.EqualTo{Float64}
+ |  bridged by:
+ |   MOIB.Constraint.VectorizeBridge{Float64, MOI.VectorAffineFunction{Float64}, MOI.Zeros, MOI.ScalarAffineFunction{Float64}}
+ |  may introduce:
+ |   * Supported constraint: MOI.VectorAffineFunction{Float64}-in-MOI.Zeros
+ * Unsupported constraint: MOI.ScalarAffineFunction{Float64}-in-MOI.LessThan{Float64}
+ |  bridged by:
+ |   MOIB.Constraint.LessToGreaterBridge{Float64, MOI.ScalarAffineFunction{Float64}, MOI.ScalarAffineFunction{Float64}}
+ |  may introduce:
+ |   * Unsupported constraint: MOI.ScalarAffineFunction{Float64}-in-MOI.GreaterThan{Float64}
+ |   |  bridged by:
+ |   |   MOIB.Constraint.VectorizeBridge{Float64, MOI.VectorAffineFunction{Float64}, MOI.Nonnegatives, MOI.ScalarAffineFunction{Float64}}
+ |   |  may introduce:
+ |   |   * Supported constraint: MOI.VectorAffineFunction{Float64}-in-MOI.Nonnegatives
+ * Unsupported variable: MOI.EqualTo{Float64}
+ |  bridged by:
+ |    MOIB.Variable.VectorizeBridge{Float64, MOI.Zeros}
+ |  may introduce:
+ |   * Supported variable: MOI.Zeros
+ * Unsupported variable: MOI.GreaterThan{Float64}
+ |  bridged by:
+ |    MOIB.Variable.VectorizeBridge{Float64, MOI.Nonnegatives}
+ |  may introduce:
+ |   * Supported variable: MOI.Nonnegatives
+ * Unsupported variable: MOI.LessThan{Float64}
+ |  bridged by:
+ |    MOIB.Variable.VectorizeBridge{Float64, MOI.Nonpositives}
+ |  may introduce:
+ |   * Unsupported variable: MOI.Nonpositives
+ |   |  bridged by:
+ |   |    MOIB.Variable.NonposToNonnegBridge{Float64}
+ |   |  may introduce:
+ |   |   * Supported variable: MOI.Nonnegatives
+ * Unsupported constraint: MOI.VectorAffineFunction{Float64}-in-MOI.RotatedSecondOrderCone
+ |  bridged by:
+ |   MOIB.Constraint.RSOCtoSOCBridge{Float64, MOI.VectorAffineFunction{Float64}, MOI.VectorAffineFunction{Float64}}
+ |  may introduce:
+ |   * Supported constraint: MOI.VectorAffineFunction{Float64}-in-MOI.SecondOrderCone

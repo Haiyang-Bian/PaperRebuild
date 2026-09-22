@@ -1,0 +1,545 @@
+base_derived_heat_capacity_MW = 9.0
+eb_electric_capacities_MW = [1.0869565217391304, 1.2903225806451613]
+four_mode_cost_reduction_percent = 2.170251761096953
+four_mode_utilization_gain_percentage_points = 3.4200000000000017
+optimization_performed = false
+origin = "author_source_audit_not_optimization"
+original_input_complete = false
+schema = "r9-input-audit-v1"
+source_pdf_sha256 = "20328e2480e773520c19c378e53365fc944c0bafcfca73071f5d8313d5ee7d91"
+tariff_CNY_MWh = [258.9, 258.9, 258.9, 258.9, 258.9, 606.8, 606.8, 606.8, 1034.7, 1034.7, 1034.7, 1034.7, 606.8, 606.8, 606.8, 606.8, 606.8, 1034.7, 1034.7, 1034.7, 1034.7, 258.9, 258.9, 258.9]
+
+[electric]
+connected = true
+cycles = 0
+edges = 43
+nodes = 44
+
+[[gates]]
+original_input_ready = false
+section = "7.2"
+
+    [[gates.gaps]]
+    id = "R9-D01"
+    impact = "graph alone is not a runnable electrical network"
+    missing = "逐线路电阻、电抗、容量；变压器阻抗/变比；节点电压边界"
+    scope = ["7.2", "7.3", "7.4", "7.5"]
+    [[gates.gaps]]
+    id = "R9-D02"
+    impact = "cannot certify author's hydraulic or transport feasibility"
+    missing = "逐管长度、直径、粗糙度/水压、保温；温度/流量边界及历史"
+    scope = ["7.2", "7.3", "7.4", "7.5"]
+    [[gates.gaps]]
+    id = "R9-D03"
+    impact = "45.67 MVA cannot silently become 45.67 MW"
+    missing = "24小时逐节点有功、无功、热需求、光伏可用出力与功率因数"
+    scope = ["7.2", "7.3", "7.4", "7.5"]
+    [[gates.gaps]]
+    id = "R9-D04"
+    impact = "mode fairness and end-state borrowing remain undefined for original inputs"
+    missing = "固定热源供温/管流参考及精确的日末热状态约束"
+    scope = ["7.2"]
+    [[gates.gaps]]
+    id = "R9-Q01"
+    impact = "retain both; no rescaling to hide discrepancy"
+    missing = "正文8.1 MW与表列基准设备合计9.0 MW供热能力的解释"
+    scope = ["7.2", "7.3", "7.4", "7.5"]
+[[gates]]
+original_input_ready = false
+section = "7.3"
+
+    [[gates.gaps]]
+    id = "R9-D01"
+    impact = "graph alone is not a runnable electrical network"
+    missing = "逐线路电阻、电抗、容量；变压器阻抗/变比；节点电压边界"
+    scope = ["7.2", "7.3", "7.4", "7.5"]
+    [[gates.gaps]]
+    id = "R9-D02"
+    impact = "cannot certify author's hydraulic or transport feasibility"
+    missing = "逐管长度、直径、粗糙度/水压、保温；温度/流量边界及历史"
+    scope = ["7.2", "7.3", "7.4", "7.5"]
+    [[gates.gaps]]
+    id = "R9-D03"
+    impact = "45.67 MVA cannot silently become 45.67 MW"
+    missing = "24小时逐节点有功、无功、热需求、光伏可用出力与功率因数"
+    scope = ["7.2", "7.3", "7.4", "7.5"]
+    [[gates.gaps]]
+    id = "R9-D05"
+    impact = "do not multiply table loads twice or invent omitted equipment"
+    missing = "表7-9是否已放大负荷；HP/EB身份；新增光伏和热储能参数；电池效率/初末状态；不满意度与结算规则"
+    scope = ["7.3"]
+    [[gates.gaps]]
+    id = "R9-Q01"
+    impact = "retain both; no rescaling to hide discrepancy"
+    missing = "正文8.1 MW与表列基准设备合计9.0 MW供热能力的解释"
+    scope = ["7.2", "7.3", "7.4", "7.5"]
+[[gates]]
+original_input_ready = false
+section = "7.4"
+
+    [[gates.gaps]]
+    id = "R9-D01"
+    impact = "graph alone is not a runnable electrical network"
+    missing = "逐线路电阻、电抗、容量；变压器阻抗/变比；节点电压边界"
+    scope = ["7.2", "7.3", "7.4", "7.5"]
+    [[gates.gaps]]
+    id = "R9-D02"
+    impact = "cannot certify author's hydraulic or transport feasibility"
+    missing = "逐管长度、直径、粗糙度/水压、保温；温度/流量边界及历史"
+    scope = ["7.2", "7.3", "7.4", "7.5"]
+    [[gates.gaps]]
+    id = "R9-D03"
+    impact = "45.67 MVA cannot silently become 45.67 MW"
+    missing = "24小时逐节点有功、无功、热需求、光伏可用出力与功率因数"
+    scope = ["7.2", "7.3", "7.4", "7.5"]
+    [[gates.gaps]]
+    id = "R9-D06"
+    impact = "price-taking migration cannot inherit strategic lower-level market or R6 dataset identity"
+    missing = "逐时价格及备用容量价的时间基准；P2H容量基准；训练/验证/测试样本、舒适度与热参数、模糊集标定"
+    scope = ["7.4"]
+    [[gates.gaps]]
+    id = "R9-Q01"
+    impact = "retain both; no rescaling to hide discrepancy"
+    missing = "正文8.1 MW与表列基准设备合计9.0 MW供热能力的解释"
+    scope = ["7.2", "7.3", "7.4", "7.5"]
+[[gates]]
+original_input_ready = false
+section = "7.5"
+
+    [[gates.gaps]]
+    id = "R9-D01"
+    impact = "graph alone is not a runnable electrical network"
+    missing = "逐线路电阻、电抗、容量；变压器阻抗/变比；节点电压边界"
+    scope = ["7.2", "7.3", "7.4", "7.5"]
+    [[gates.gaps]]
+    id = "R9-D02"
+    impact = "cannot certify author's hydraulic or transport feasibility"
+    missing = "逐管长度、直径、粗糙度/水压、保温；温度/流量边界及历史"
+    scope = ["7.2", "7.3", "7.4", "7.5"]
+    [[gates.gaps]]
+    id = "R9-D03"
+    impact = "45.67 MVA cannot silently become 45.67 MW"
+    missing = "24小时逐节点有功、无功、热需求、光伏可用出力与功率因数"
+    scope = ["7.2", "7.3", "7.4", "7.5"]
+    [[gates.gaps]]
+    id = "R9-D07"
+    impact = "aggregate 13.75 MW does not define every critical node or event"
+    missing = "关键负荷逐节点分配；精确故障集合/时轴；电源可用性与成网资格"
+    scope = ["7.5"]
+    [[gates.gaps]]
+    id = "R9-Q01"
+    impact = "retain both; no rescaling to hide discrepancy"
+    missing = "正文8.1 MW与表列基准设备合计9.0 MW供热能力的解释"
+    scope = ["7.2", "7.3", "7.4", "7.5"]
+    [[gates.gaps]]
+    id = "R9-Q02"
+    impact = "commitment rows are author targets, not an unambiguous initialization for either scheme"
+    missing = "表7-17标题写4C、所在文字讨论4B；4B罚项目标与纯失供描述不一致"
+    scope = ["7.5"]
+    [[gates.gaps]]
+    id = "R9-Q03"
+    impact = "four-hour horizon must be defined explicitly, not inferred by mixing inclusive and half-open labels"
+    missing = "事件时轴不一致；事件1失供表7-18为0.2593 MWh，PDF141文字为0.358 MWh"
+    scope = ["7.5"]
+
+[heat]
+connected = true
+cycles = 0
+edges = 37
+nodes = 38
+
+[[rows]]
+derived = 16.5
+difference = 0.0
+id = "R9-C01"
+label = "base electric capacity"
+meaning = "arithmetic"
+reported = 16.5
+rounding_tolerance = 0.05
+status = "consistent_with_printed_rounding"
+unit = "MW"
+[[rows]]
+derived = 8.0
+difference = 0.0
+id = "R9-C02"
+label = "base renewable capacity"
+meaning = "arithmetic"
+reported = 8.0
+rounding_tolerance = 0.05
+status = "consistent_with_printed_rounding"
+unit = "MW"
+[[rows]]
+derived = 9.0
+difference = 0.9000000000000004
+id = "R9-Q01"
+label = "H/P times CHP electricity plus rated EB heat"
+meaning = "arithmetic"
+reported = 8.1
+rounding_tolerance = 0.05
+status = "difference_requires_interpretation"
+unit = "MW"
+[[rows]]
+derived = 24.5
+difference = 0.0
+id = "R9-C03"
+label = "disaster electric capacity"
+meaning = "arithmetic"
+reported = 24.5
+rounding_tolerance = 0.05
+status = "consistent_with_printed_rounding"
+unit = "MW"
+[[rows]]
+derived = 8115.83
+difference = 0.010000000000218279
+id = "7-10-stage1-A1"
+label = "disagreement plus first payment"
+meaning = "arithmetic"
+reported = 8115.82
+rounding_tolerance = 0.015000000000000003
+status = "consistent_with_printed_rounding"
+unit = "CNY"
+[[rows]]
+derived = 8681.36
+difference = 0.0
+id = "7-10-stage2-A1"
+label = "first utility plus second payment"
+meaning = "arithmetic"
+reported = 8681.36
+rounding_tolerance = 0.015000000000000003
+status = "consistent_with_printed_rounding"
+unit = "CNY"
+[[rows]]
+derived = 9502.11
+difference = 0.0
+id = "7-10-stage1-A2"
+label = "disagreement plus first payment"
+meaning = "arithmetic"
+reported = 9502.11
+rounding_tolerance = 0.015000000000000003
+status = "consistent_with_printed_rounding"
+unit = "CNY"
+[[rows]]
+derived = 10295.79
+difference = 0.0
+id = "7-10-stage2-A2"
+label = "first utility plus second payment"
+meaning = "arithmetic"
+reported = 10295.79
+rounding_tolerance = 0.015000000000000003
+status = "consistent_with_printed_rounding"
+unit = "CNY"
+[[rows]]
+derived = 13576.0
+difference = 0.0
+id = "7-10-stage1-A3"
+label = "disagreement plus first payment"
+meaning = "arithmetic"
+reported = 13576.0
+rounding_tolerance = 0.015000000000000003
+status = "consistent_with_printed_rounding"
+unit = "CNY"
+[[rows]]
+derived = 14172.06
+difference = 0.0
+id = "7-10-stage2-A3"
+label = "first utility plus second payment"
+meaning = "arithmetic"
+reported = 14172.06
+rounding_tolerance = 0.015000000000000003
+status = "consistent_with_printed_rounding"
+unit = "CNY"
+[[rows]]
+derived = 8844.7
+difference = 0.0
+id = "7-10-stage1-A4"
+label = "disagreement plus first payment"
+meaning = "arithmetic"
+reported = 8844.7
+rounding_tolerance = 0.015000000000000003
+status = "consistent_with_printed_rounding"
+unit = "CNY"
+[[rows]]
+derived = 9398.990000000002
+difference = 1.8189894035458565e-12
+id = "7-10-stage2-A4"
+label = "first utility plus second payment"
+meaning = "arithmetic"
+reported = 9398.99
+rounding_tolerance = 0.015000000000000003
+status = "consistent_with_printed_rounding"
+unit = "CNY"
+[[rows]]
+derived = 8691.73
+difference = 0.0
+id = "7-10-stage1-A5"
+label = "disagreement plus first payment"
+meaning = "arithmetic"
+reported = 8691.73
+rounding_tolerance = 0.015000000000000003
+status = "consistent_with_printed_rounding"
+unit = "CNY"
+[[rows]]
+derived = 9199.43
+difference = 0.010000000000218279
+id = "7-10-stage2-A5"
+label = "first utility plus second payment"
+meaning = "arithmetic"
+reported = 9199.42
+rounding_tolerance = 0.015000000000000003
+status = "consistent_with_printed_rounding"
+unit = "CNY"
+[[rows]]
+derived = 8187.36
+difference = 0.0
+id = "7-10-stage1-A6"
+label = "disagreement plus first payment"
+meaning = "arithmetic"
+reported = 8187.36
+rounding_tolerance = 0.015000000000000003
+status = "consistent_with_printed_rounding"
+unit = "CNY"
+[[rows]]
+derived = 8704.699999999999
+difference = -1.8189894035458565e-12
+id = "7-10-stage2-A6"
+label = "first utility plus second payment"
+meaning = "arithmetic"
+reported = 8704.7
+rounding_tolerance = 0.015000000000000003
+status = "consistent_with_printed_rounding"
+unit = "CNY"
+[[rows]]
+derived = 7991.8099999999995
+difference = -9.094947017729282e-13
+id = "7-10-stage1-A7"
+label = "disagreement plus first payment"
+meaning = "arithmetic"
+reported = 7991.81
+rounding_tolerance = 0.015000000000000003
+status = "consistent_with_printed_rounding"
+unit = "CNY"
+[[rows]]
+derived = 8502.720000000001
+difference = 1.8189894035458565e-12
+id = "7-10-stage2-A7"
+label = "first utility plus second payment"
+meaning = "arithmetic"
+reported = 8502.72
+rounding_tolerance = 0.015000000000000003
+status = "consistent_with_printed_rounding"
+unit = "CNY"
+[[rows]]
+derived = 2533.5299999999997
+difference = -4.547473508864641e-13
+id = "7-10-stage1-A8"
+label = "disagreement plus first payment"
+meaning = "arithmetic"
+reported = 2533.53
+rounding_tolerance = 0.015000000000000003
+status = "consistent_with_printed_rounding"
+unit = "CNY"
+[[rows]]
+derived = 2753.6400000000003
+difference = 4.547473508864641e-13
+id = "7-10-stage2-A8"
+label = "first utility plus second payment"
+meaning = "arithmetic"
+reported = 2753.64
+rounding_tolerance = 0.015000000000000003
+status = "consistent_with_printed_rounding"
+unit = "CNY"
+[[rows]]
+derived = 53619.83
+difference = 0.0
+id = "7-10-sum-disagreement"
+label = "eight actor sum"
+meaning = "arithmetic"
+reported = 53619.83
+rounding_tolerance = 0.04500000000000001
+status = "consistent_with_printed_rounding"
+unit = "CNY"
+[[rows]]
+derived = 13823.239999999998
+difference = -1.8189894035458565e-12
+id = "7-10-sum-stage1_payment"
+label = "eight actor sum"
+meaning = "arithmetic"
+reported = 13823.24
+rounding_tolerance = 0.04500000000000001
+status = "consistent_with_printed_rounding"
+unit = "CNY"
+[[rows]]
+derived = 67443.06
+difference = 0.0
+id = "7-10-sum-stage1_utility"
+label = "eight actor sum"
+meaning = "arithmetic"
+reported = 67443.06
+rounding_tolerance = 0.04500000000000001
+status = "consistent_with_printed_rounding"
+unit = "CNY"
+[[rows]]
+derived = 4265.629999999999
+difference = -9.094947017729282e-13
+id = "7-10-sum-stage2_payment"
+label = "eight actor sum"
+meaning = "arithmetic"
+reported = 4265.63
+rounding_tolerance = 0.04500000000000001
+status = "consistent_with_printed_rounding"
+unit = "CNY"
+[[rows]]
+derived = 71708.68
+difference = -0.010000000009313226
+id = "7-10-sum-stage2_utility"
+label = "eight actor sum"
+meaning = "arithmetic"
+reported = 71708.69
+rounding_tolerance = 0.04500000000000001
+status = "consistent_with_printed_rounding"
+unit = "CNY"
+[[rows]]
+derived = 60164.92
+difference = 0.0
+id = "7-10-sum-sspa_utility"
+label = "eight actor sum"
+meaning = "arithmetic"
+reported = 60164.92
+rounding_tolerance = 0.04500000000000001
+status = "consistent_with_printed_rounding"
+unit = "CNY"
+[[rows]]
+derived = 137447.36
+difference = 0.0
+id = "7-10-system-stage1"
+label = "operator plus aggregator printed total"
+meaning = "arithmetic"
+reported = 137447.36
+rounding_tolerance = 0.015000000000000003
+status = "consistent_with_printed_rounding"
+unit = "CNY"
+[[rows]]
+derived = 145978.62
+difference = 0.0
+id = "7-10-system-stage2"
+label = "operator plus aggregator printed total"
+meaning = "arithmetic"
+reported = 145978.62
+rounding_tolerance = 0.015000000000000003
+status = "consistent_with_printed_rounding"
+unit = "CNY"
+[[rows]]
+derived = 145978.62
+difference = 0.0
+id = "7-10-system-sspa"
+label = "operator plus aggregator printed total"
+meaning = "arithmetic"
+reported = 145978.62
+rounding_tolerance = 0.015000000000000003
+status = "consistent_with_printed_rounding"
+unit = "CNY"
+[[rows]]
+derived = 132670.32
+difference = 0.0
+id = "7-11-2A"
+label = "operator plus aggregators"
+meaning = "arithmetic"
+reported = 132670.32
+rounding_tolerance = 0.015000000000000003
+status = "consistent_with_printed_rounding"
+unit = "CNY"
+[[rows]]
+derived = 137594.47
+difference = 0.0
+id = "7-11-2B"
+label = "operator plus aggregators"
+meaning = "arithmetic"
+reported = 137594.47
+rounding_tolerance = 0.015000000000000003
+status = "consistent_with_printed_rounding"
+unit = "CNY"
+[[rows]]
+derived = 145978.62
+difference = 0.0
+id = "7-11-2C"
+label = "operator plus aggregators"
+meaning = "arithmetic"
+reported = 145978.62
+rounding_tolerance = 0.015000000000000003
+status = "consistent_with_printed_rounding"
+unit = "CNY"
+[[rows]]
+derived = 67443.06
+difference = 394.4400000000023
+id = "7-10-vs-7-11"
+label = "printed first-cooperation aggregator totals"
+meaning = "cross_table_comparability_unresolved"
+reported = 67048.62
+rounding_tolerance = 0.010000000000000002
+status = "difference_requires_interpretation"
+unit = "CNY"
+[[rows]]
+derived = 405372.0
+difference = -1.0
+id = "7-19-cost-4A"
+label = "normal cost components"
+meaning = "arithmetic"
+reported = 405373.0
+rounding_tolerance = 2.0
+status = "consistent_with_printed_rounding"
+unit = "CNY"
+[[rows]]
+derived = 418616.0
+difference = 0.0
+id = "7-19-cost-4B"
+label = "normal cost components"
+meaning = "arithmetic"
+reported = 418616.0
+rounding_tolerance = 2.0
+status = "consistent_with_printed_rounding"
+unit = "CNY"
+[[rows]]
+derived = 3.2668677982993444
+difference = -1.0431322017006552
+id = "Q08-4B"
+label = "cost increase versus 4A"
+meaning = "arithmetic"
+reported = 4.31
+rounding_tolerance = 0.005000000000000001
+status = "difference_requires_interpretation"
+unit = "percent"
+[[rows]]
+derived = 409662.0
+difference = 0.0
+id = "7-19-cost-4C"
+label = "normal cost components"
+meaning = "arithmetic"
+reported = 409662.0
+rounding_tolerance = 2.0
+status = "consistent_with_printed_rounding"
+unit = "CNY"
+[[rows]]
+derived = 1.058037905829945
+difference = -0.621962094170055
+id = "Q08-4C"
+label = "cost increase versus 4A"
+meaning = "arithmetic"
+reported = 1.68
+rounding_tolerance = 0.005000000000000001
+status = "difference_requires_interpretation"
+unit = "percent"
+[[rows]]
+derived = 82.9112739017483
+difference = 0.0012739017483056614
+id = "Q08-unserved"
+label = "unserved reduction 4C versus 4A"
+meaning = "arithmetic"
+reported = 82.91
+rounding_tolerance = 0.005000000000000001
+status = "consistent_with_printed_rounding"
+unit = "percent"
+
+[source_hashes]
+"inputs.toml" = "34155cc8723c03b06ee738139ed7041a04d86aba29fd231639cfe89602e1a9b7"
+"reported-results.toml" = "3ed021a50df205621e95dbd748adeaf8f2e4795bd5dc335d13fcd8a571d16c16"
+"topology.toml" = "3c111b9582e4e5cd719150b88e73e014889426df048fa2f55f40a95bdb1ec71f"

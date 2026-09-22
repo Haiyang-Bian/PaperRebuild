@@ -1,0 +1,89 @@
+fixed = []
+schema = "r9-affine-rational-certificate-v1"
+scope = "exact binary coefficients of frozen original CF_VT model; not physical impossibility"
+
+[contradiction]
+coefficients_ieee754 = ["3ff0000000000000", "bff0000000000000"]
+derived_variable = 0
+model_equation_index = 4295
+rhs_ieee754 = "0000000000000000"
+variables = [7109, 8903]
+
+[[steps]]
+coefficients_ieee754 = ["3ff0000000000000"]
+derived_variable = 7142
+model_equation_index = 14957
+rhs_ieee754 = "4076aeeb5a36c058"
+variables = [7142]
+[[steps]]
+coefficients_ieee754 = ["3ff0000000000000"]
+derived_variable = 7143
+model_equation_index = 14959
+rhs_ieee754 = "4076a84a85e7a5cf"
+variables = [7143]
+[[steps]]
+coefficients_ieee754 = ["3ff0000000000000"]
+derived_variable = 7146
+model_equation_index = 14965
+rhs_ieee754 = "4076aeeb5a36c058"
+variables = [7146]
+[[steps]]
+coefficients_ieee754 = ["3ff0000000000000"]
+derived_variable = 7147
+model_equation_index = 14967
+rhs_ieee754 = "4076a946447a7ae0"
+variables = [7147]
+[[steps]]
+coefficients_ieee754 = ["3ff0000000000000", "bff0000000000000"]
+derived_variable = 8942
+model_equation_index = 4224
+rhs_ieee754 = "0000000000000000"
+variables = [7143, 8942]
+[[steps]]
+coefficients_ieee754 = ["3ff0000000000000", "bff0000000000000"]
+derived_variable = 8963
+model_equation_index = 4320
+rhs_ieee754 = "0000000000000000"
+variables = [7147, 8963]
+[[steps]]
+coefficients_ieee754 = ["bff0000000000000", "3ff0000000000000"]
+derived_variable = 8030
+model_equation_index = 6912
+rhs_ieee754 = "0000000000000000"
+variables = [8030, 8942]
+[[steps]]
+coefficients_ieee754 = ["bff0000000000000", "3ff0000000000000"]
+derived_variable = 8034
+model_equation_index = 7416
+rhs_ieee754 = "0000000000000000"
+variables = [8034, 8963]
+[[steps]]
+coefficients_ieee754 = ["3ff0000000000000", "bfefd576ae6e4942"]
+derived_variable = 19487
+model_equation_index = 10798
+rhs_ieee754 = "3ff7861748f57000"
+variables = [8030, 19487]
+[[steps]]
+coefficients_ieee754 = ["3ff0000000000000", "bfefdbc63d24221d"]
+derived_variable = 20255
+model_equation_index = 11182
+rhs_ieee754 = "3ff408a4bcbe0900"
+variables = [8034, 20255]
+[[steps]]
+coefficients_ieee754 = ["bfe466f119bc4670", "c00980ad602b580c", "400e9a69a69a69a8"]
+derived_variable = 7105
+model_equation_index = 10797
+rhs_ieee754 = "0000000000000000"
+variables = [7105, 7142, 19487]
+[[steps]]
+coefficients_ieee754 = ["bfe980ad602b580d", "c00fe0d8b8362e0e", "4013208208208209"]
+derived_variable = 7109
+model_equation_index = 11181
+rhs_ieee754 = "0000000000000000"
+variables = [7109, 7146, 20255]
+[[steps]]
+coefficients_ieee754 = ["3ff0000000000000", "bff0000000000000"]
+derived_variable = 8903
+model_equation_index = 4199
+rhs_ieee754 = "0000000000000000"
+variables = [7105, 8903]

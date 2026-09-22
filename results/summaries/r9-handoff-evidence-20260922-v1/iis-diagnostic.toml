@@ -1,0 +1,30 @@
+budget_pass = true
+conflict_row_count = 2
+conflict_status = "CONFLICT_FOUND"
+constraints = 203411
+elapsed_sec = 34.818000078201294
+parent_unchanged = true
+source_unchanged = true
+status = "INFEASIBLE"
+variables = 29617
+
+[[rows]]
+constant = 0.0
+expression = "out_S[37,3,1] == 343.06151011413453"
+formulas = ["R7-T1-transport"]
+reference = "MathOptInterface.ConstraintIndex{MathOptInterface.ScalarAffineFunction{Float64}, MathOptInterface.EqualTo{Float64}}(26289)"
+set = "MathOptInterface.EqualTo{Float64}(343.06151011413453)"
+
+    [[rows.terms]]
+    coefficient = 1.0
+    variable = "out_S[37,3,1]"
+[[rows]]
+constant = 0.0
+expression = "out_S[37,3,1] >= 343.15"
+formulas = ["R7-T-bound"]
+reference = "MathOptInterface.ConstraintIndex{MathOptInterface.ScalarAffineFunction{Float64}, MathOptInterface.GreaterThan{Float64}}(78881)"
+set = "MathOptInterface.GreaterThan{Float64}(343.15)"
+
+    [[rows.terms]]
+    coefficient = 1.0
+    variable = "out_S[37,3,1]"

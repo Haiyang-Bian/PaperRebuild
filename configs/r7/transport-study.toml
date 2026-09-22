@@ -1,0 +1,22 @@
+schema = "r7-transport-study-rule-v1"
+origin = "synthetic"
+version = "r7_transport_recovery_v1"
+groups = ["hand", "reserve_event_1", "reserve_event_2"]
+main_flows = ["parent", "reference"]
+faults = [[0], [1]]
+main_solvers = ["HiGHS", "Gurobi"]
+substeps = 16
+refinement_substeps = [1, 4]
+budget_sec = 600.0
+record_count = 37
+reference_flow_rule = "single source/load pair: maximum declared heat load divided by c*(S_reference-R_reference); keep original pipe/port limits; reject if outside"
+zero_flow_rule = "both faults in each original input; all pipe and port flows zero; no bypass, no temperature exemption"
+open_reference_rule = "Clarabel with healthy fixed electric topology, reference flow, same input and thermal substeps"
+refinement_rule = "hand parent/reference flow, healthy electric topology, HiGHS, one and four substeps in addition to sixteen"
+solver_rule = "HiGHS/Gurobi single thread and 1e-9 feasibility/gap targets; Gurobi DualReductions=0; Clarabel defaults; A1/A2 unchanged"
+state_rule = "preserve original spatial profiles, inherited uniform assumption, device and network data"
+model_difference = "replace double-tank/Taylor rows with substep-average detailed heat network; keep remaining equipment/electric/flow/temperature constraints"
+bound_scope = "fixed flow schedule only; no variable-flow lower bound or whole resilience certificate"
+hand_parent_healthy_expected_loss_MWh = 0.044444444444444446
+hand_reference_healthy_expected_loss_MWh = 0.0
+other_outcomes = "do not predeclare success; preserve thermal, capacity or solver failures"

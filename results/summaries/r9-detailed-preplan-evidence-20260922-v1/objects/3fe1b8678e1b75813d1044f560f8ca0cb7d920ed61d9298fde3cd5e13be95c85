@@ -1,0 +1,17 @@
+baseline_rule = "Old aggregate 4A/4B/4C, CHP1-pinned candidate and all negative results remain unchanged. No candidate is injected."
+budget_rule = "One process starts before imports. Primary, three independent detailed recoveries, verification and saving share 600 seconds. Missing stages remain unresolved."
+budget_sec = 600.0
+fault_ids = ["external_only", "single_1_2", "author_event1"]
+input_rule = "Reuse the exact frozen normal/planning data and selected faults; prescribed recovery flows equal the normal event-window flows for every allowed fault. No tuning after results."
+loss_limit_MWh = 2.0
+model_rule = "Keep the normal reference model; replace aggregate recovery blocks by R7 linked spatial history and substep/spatial temperature constraints. The domain change is explicit, not an algebraic correction."
+modes = ["penalty", "threshold"]
+origin = "synthetic_parameters_on_author_scale_topology"
+parent_input = "results/summaries/r9-preplan-input-20260922-v1"
+parent_manifest_sha256 = "79db356c697a60bfec6c25e0874f71e5f070397191a1e4ce400acb1fa2951933"
+penalty_CNY_MWh = 10000.0
+primary_deadline_sec = 360.0
+recovery_deadline_sec = 540.0
+recovery_max_sec = 60.0
+schema = "r9-detailed-preplan-study-v1"
+substeps = 4

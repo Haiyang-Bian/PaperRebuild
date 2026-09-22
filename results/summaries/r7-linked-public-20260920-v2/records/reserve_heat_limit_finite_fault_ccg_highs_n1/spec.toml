@@ -1,0 +1,69 @@
+node_rule = "substep_average_zero_node_volume"
+normal_domain = "prescribed_positive_fixed_electric_topology"
+planning_case_sha256 = "7f5613fa9a7ff18e17be4d1d1b8ab6579fac2d76f330d1ae47bf7ba0883349a0"
+recovery_flow_domain = "prescribed_per_event_fault"
+schema = "r7-linked-planning-spec-v1"
+state_rule = "shared_normal_spatial_state"
+substeps = 1
+version = "r7_state_linked_v1"
+
+[[flows]]
+event = 1
+fault = [0]
+
+    [flows.flow_schedule.m_load]
+    data = [0.0, 5.0]
+    shape = [2, 1]
+
+    [flows.flow_schedule.m_pipe]
+    data = [5.0]
+    shape = [1, 1]
+
+    [flows.flow_schedule.m_source]
+    data = [5.0, 0.0]
+    shape = [2, 1]
+[[flows]]
+event = 1
+fault = [1]
+
+    [flows.flow_schedule.m_load]
+    data = [0.0, 0.0]
+    shape = [2, 1]
+
+    [flows.flow_schedule.m_pipe]
+    data = [0.0]
+    shape = [1, 1]
+
+    [flows.flow_schedule.m_source]
+    data = [0.0, 0.0]
+    shape = [2, 1]
+[[flows]]
+event = 2
+fault = [0]
+
+    [flows.flow_schedule.m_load]
+    data = [0.0, 5.0]
+    shape = [2, 1]
+
+    [flows.flow_schedule.m_pipe]
+    data = [5.0]
+    shape = [1, 1]
+
+    [flows.flow_schedule.m_source]
+    data = [5.0, 0.0]
+    shape = [2, 1]
+[[flows]]
+event = 2
+fault = [1]
+
+    [flows.flow_schedule.m_load]
+    data = [0.0, 0.0]
+    shape = [2, 1]
+
+    [flows.flow_schedule.m_pipe]
+    data = [0.0]
+    shape = [1, 1]
+
+    [flows.flow_schedule.m_source]
+    data = [0.0, 0.0]
+    shape = [2, 1]

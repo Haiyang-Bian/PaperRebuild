@@ -1,0 +1,19 @@
+schema = "r4-tspa-study-v1"
+origin = "synthetic"
+parent_directory = "results/runs/r4/r4-baseline-20260918"
+cases = ["open_flexible", "open_fixed", "import_flexible", "import_fixed"]
+penalties = [100.0, 10000.0]
+electric = "exact"
+solver = "gurobi"
+weight_rule = "capacity_load_v1"
+budget_sec = 600.0
+elastic_scope = "nodal_balance_elastic_v1"
+reuse_trading_across_penalties = true
+disagreement_variants = ["penalty_excluded", "penalty_included"]
+interpretation = "First penalty run freezes trading; later penalties reuse exactly those controls. No network repair or refit of case data."
+
+[input_sha256]
+open_flexible = "7aadd5364225052c196f45a433635d9c412e37ffa3cbf78b0ed1b1791c2231d5"
+open_fixed = "ba5e4cbe085086ea8847d397f01d77bf89e12bf2b398c74a0e3bc8a0dce79fd9"
+import_flexible = "fcdb954da900fd878194b0a3d72bf2f130ecf057615bd84ae16436d315b9d5ca"
+import_fixed = "99b92147e9b1b369bd8903e84a7edfea423a55b47320608dd7ed5ff72f640689"

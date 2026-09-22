@@ -1,0 +1,37 @@
+batch_id = "r4-discrete-20260918"
+config_sha256 = "a72eb6d40be4d14794f7c0cbf11489c231fbddd00efc86cded9fd9035bb094f8"
+methods = 20
+mode_records = 128
+origin = "synthetic"
+script_sha256 = "dc62c60b610207b039e8e108a6693466cb2198bc1bfc237425d84ebdb6fede64"
+source_commit = "46dadf6c7e93d23a376205c363af861e5850f5d4"
+source_study_sha256 = "fb594ed36ade0f0c765122e3ec1d0780e15a76d3ede54147427c3b64640e9a5f"
+
+[frozen_rules]
+budget_sec = 600.0
+cases = ["open_flexible", "open_fixed", "import_flexible", "import_fixed"]
+discrete_solver = "clarabel"
+expected_patterns = 16
+gap_A2 = 0.0001
+inner_iterations = 100
+max_iterations = 1000
+methods = ["distributed", "central_enumeration", "central_misocp", "central_exact"]
+origin = "synthetic"
+pattern_order = "binary integer 0:15, first period is least significant bit"
+peer_rho = 1.0
+postprocessing = "explicit analytical w epigraph reconstruction; all physical and contract values unchanged"
+precision_budget_sec = 600.0
+precision_cases = ["open_flexible", "import_flexible"]
+precision_change = "only BarQCPConvTol from original default 1e-6 to 1e-9; no algorithm/tolerance change"
+precision_pattern = [1, 0, 1, 0]
+precision_profiles = ["original", "qcp_1e9"]
+reference_solver = "gurobi"
+relative_cost_A4 = 0.001
+rho = 1.0
+schema = "r4-discrete-study-v1"
+
+    [frozen_rules.input_sha256]
+    import_fixed = "99b92147e9b1b369bd8903e84a7edfea423a55b47320608dd7ed5ff72f640689"
+    import_flexible = "fcdb954da900fd878194b0a3d72bf2f130ecf057615bd84ae16436d315b9d5ca"
+    open_fixed = "ba5e4cbe085086ea8847d397f01d77bf89e12bf2b398c74a0e3bc8a0dce79fd9"
+    open_flexible = "7aadd5364225052c196f45a433635d9c412e37ffa3cbf78b0ed1b1791c2231d5"

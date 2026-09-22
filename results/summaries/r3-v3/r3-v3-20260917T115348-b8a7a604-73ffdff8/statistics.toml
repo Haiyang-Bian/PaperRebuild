@@ -1,0 +1,23 @@
+origin = "synthetic"
+paired_v2_comparison_sha256 = "e3893f208b009d9b64e09884ad902388836ef95881419eb5919361c822f62631"
+reoptimized = false
+runs = 30
+schema = "r3-v3-summary-v1"
+
+[ablation]
+count = 6
+local_stationarity_checked = 2
+outer_converged = 0
+physical_pass = 5
+
+[modes]
+count = 8
+local_stationarity_checked = 1
+outer_converged = 0
+physical_pass = 8
+
+[robustness]
+count = 16
+local_stationarity_checked = 3
+outer_converged = 1
+physical_pass = 15

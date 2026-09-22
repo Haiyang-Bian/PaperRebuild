@@ -1,0 +1,42 @@
+schema = "r3-v3-formulations-v1"
+kind = "project_supplement"
+threshold_source = "docs/src/reproduction-acceptance.md"
+author_equations = "保留3-58至3-66；这里的恢复与驻点条件不冒用原式编号"
+
+[[equations]]
+id = "R3-V3-1"
+meaning = "电网原支路等式及局部一阶展开；v为电压幅值平方，ell为电流幅值平方，P/Q为标幺支路功率"
+units = "标幺值；所有参与变量及平方关系沿用原模型单位"
+api = "build_r3_physical_step"
+source = "src/algorithms/r3_physical.jl"
+test_file = "test/r3_v3.jl"
+test = "R3 v3 physical tangent and evidence"
+evidence = "当前JuMP仿射表达式与原二次式，在三个递减步长上比较导数"
+
+[[equations]]
+id = "R3-V3-2"
+meaning = "归一化物理违反目标加0.01倍归一化步长平方；sigma为输入冻结尺度，D为跨度归一化，s正/负为双向弹性"
+units = "无量纲；独立报告运行费用"
+api = "build_r3_physical_step"
+source = "src/algorithms/r3_physical.jl"
+test_file = "test/r3_v3.jl"
+test = "R3 frozen boundary physical restoration"
+evidence = "恢复接受比、真实残差、硬约束见证及保存后篡改检查；恢复点不自动成为成功阶段"
+
+[[equations]]
+id = "R3-V3-3"
+meaning = "消去端口辅助热量后直接核验交付负荷，两个辅助关系的误差相加"
+units = "MW；仍用现有MW A1门槛"
+api = "validate_r3_solution"
+source = "src/verification/r3.jl"
+test_file = "test/r3_v3.jl"
+test = "R3 frozen boundary physical restoration"
+evidence = "冻结CT流量反例；v3_physical_review限定新检查，不重写历史v2"
+
+[[checks]]
+id = "R3-V3-stationarity"
+api = "solve_r3_projected_gradient"
+source = "src/algorithms/r3_v3.jl"
+test_file = "test/r3_v3.jl"
+scope = "当前光滑分段的松弛局部模型；不是原非凸调度或全局最优证明"
+evidence = "三次同流量重解、原始/KKT见证重算、目标离散及不活跃信赖域；正式结果另行登记"

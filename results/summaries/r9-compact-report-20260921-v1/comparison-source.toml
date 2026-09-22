@@ -1,0 +1,19 @@
+PV_statistic = "empirical_expected_actual_energy_not_worst_distribution"
+common_sha256 = "039ee2c45d94bab32fe27fbed70799ffa980c2f6766c704ed321e40ed34a22b2"
+comparison_scope = "same_original_cases_seed_method_and_budget; native_bounds_exact_zero_removal_cost_alias; log_observation_enabled; speedup_unproven_before_runs"
+new_evidence_sha256 = "ea18e8ffe4b57d51cd67cbfb2e9eaf26a7f4856f67f4e1d417e4f9001a0d4cfb"
+new_freeze_sha256 = "b3473ac124c64b7fef5789ef4638e3bf2a15ea11cfa0d30f5e0e2829acebe609"
+old_evidence_sha256 = "ae91cc59831d41d1d48e1e1cb028a225374bdb878655cd93a3329293f87e9dba"
+old_freeze_sha256 = "447a0c8f1acf34e6ed4cd82689c1c65412f7eaaf9f91c9eaebe96d75b24a3779"
+optimization_performed = false
+origin = "synthetic"
+run_ids = ["r9-seeded-d3eac88a-5515-4d55-b8d4-e5f2fb906806", "r9-seeded-444ca03d-1191-43fb-ba0b-48b1f9f7d660", "r9-seeded-b8e626a2-a330-4dfc-9770-ae1563498363", "r9-seeded-7454572f-af51-4851-ac39-72650ca3db93", "r9-seeded-32bcaddf-9727-41d9-99f2-de60e46bd6a3", "r9-seeded-d6a9efcd-6b53-4cc6-a781-e3375aa5d286"]
+schema = "r9-compact-comparison-v1"
+timings_scope = "recorded_stages_only; not a complete disjoint partition"
+
+[files]
+"commitments.csv" = "30d48b85488134a4fb6091ad09b4c76c3b01959e73e49d7560e203d999f60899"
+"report-source.jl" = "e7883d6f453fcec44cb9a560b7f8d8f7f35e8e4e8226871bf747061b85c1adf8"
+"residuals.csv" = "38b465636ef35e6fb225265dfb39eadfd742822df944f87df78b270f8490cac7"
+"summary.csv" = "fcf812aec2576579d0b3f95ad7bb2a24cd76866450692b62991a12e0e011667b"
+"timings.csv" = "90a95cb6ea3d889114606006f08d009534cf83790b50bf4bf8ff2d858eba6f3a"

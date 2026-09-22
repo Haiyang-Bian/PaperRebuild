@@ -1,0 +1,1856 @@
+parent_result_sha256 = "178796fd1a53ba4aea5901ece08d6bfe31dbc36e0041f18a0a876ce17ceff68a"
+raw_result_content_sha256 = "8016e1334bee882d2fb81c4b9a238db1c8b756c9f66b0d336ea47298b2951736"
+schema = "r5-benders-public-witness-v1"
+
+[case]
+epsilon = 0.0
+event = "any_building_time_comfort_violation"
+name = "quarter"
+objective = "worst_expected_net_cost"
+origin = "synthetic"
+schema = "r5-risk-case-v1"
+
+    [case.ambiguity]
+    distance = [[0.0, 1.0, 1.0], [1.0, 0.0, 1.0], [1.0, 1.0, 0.0]]
+    distance_provenance = "Euclidean distance between one-hot labels of the three frozen full-call regimes, divided by sqrt(2); synthetic categorical trajectory metric, not calibrated from thesis samples."
+    distance_unit = "normalized_trajectory"
+    radius = 0.0
+    support = "fixed_scenarios"
+
+    [case.commitment]
+    comfort = "hard_each_scenario"
+    name = "shared_hand"
+    objective = "expected_net_cost"
+    origin = "synthetic"
+    recourse_information = "complete_trajectory"
+    schema = "r5-commitment-case-v1"
+    uncertain_fields = ["realtime.alpha_down", "realtime.alpha_up"]
+
+        [case.commitment.bounds.P_DA_MW]
+        lower = [0.0]
+        upper = [1.0]
+
+        [case.commitment.bounds.R_down_MW]
+        lower = [0.0]
+        upper = [0.08]
+
+        [case.commitment.bounds.R_up_MW]
+        lower = [0.0]
+        upper = [0.08]
+
+        [case.commitment.day_ahead]
+        down_price = [100.0]
+        energy_price = [100.0]
+        up_price = [100.0]
+
+        [[case.commitment.scenarios]]
+        case_sha256 = "d39ca0ad367685e74249f83f59fc7853d0be975097cf7f5d83c7be7839dd4ea1"
+        id = "none"
+        probability = 0.5
+
+            [case.commitment.scenarios.case]
+            T = 1
+            ambient_K = [283.15]
+            dt_h = 0.25
+            name = "shared_none"
+            origin = "synthetic"
+            schema = "r5-dispatch-case-v1"
+
+                [case.commitment.scenarios.case.award]
+                P_DA_MW = [0.142]
+                R_down_MW = [0.0]
+                R_up_MW = [0.0]
+                down_price = [2.0]
+                energy_price = [100.0]
+                origin = "synthetic"
+                up_price = [5.0]
+
+                [[case.commitment.scenarios.case.buildings]]
+                COP_DH = 1.0
+                C_MWh_K = 0.01
+                G_MW_K = 0.0042
+                P_DH_max_MW = 0.0
+                R_max_K = 320.15
+                R_min_K = 320.15
+                T_initial_K = 293.15
+                T_max_K = 293.15
+                T_min_K = 293.15
+                electric_node = 2
+                heat_node = 2
+                id = "building"
+                m_kg_s = 1.0
+                terminal_rule = "initial"
+
+                [[case.commitment.scenarios.case.devices]]
+                cost_USD_MWh = 0.0
+                heat_ratio = 1.0
+                id = "EB"
+                kind = "EB"
+                node = 2
+                p_max_MW = 0.1
+                p_min_MW = 0.0
+                q_max_Mvar = 0.0
+                q_min_Mvar = 0.0
+                source_id = "source"
+                [[case.commitment.scenarios.case.devices]]
+                P_initial_MW = 0.05
+                cost_USD_MWh = 130.0
+                id = "GT"
+                kind = "GT"
+                node = 2
+                p_max_MW = 0.2
+                p_min_MW = 0.0
+                q_max_Mvar = 0.0
+                q_min_Mvar = 0.0
+                ramp_down_MW_h = 1.0
+                ramp_up_MW_h = 1.0
+
+                [case.commitment.scenarios.case.electric]
+                P_load_MW = [[0.0], [0.1]]
+                Q_load_Mvar = [[0.0], [0.02]]
+                S_base_MVA = 1.0
+                nodes = 2
+                pcc_max_MW = 1.0
+                pcc_min_MW = 0.0
+                qcc_max_Mvar = 1.0
+                qcc_min_Mvar = -1.0
+                root = 1
+                v_max_pu = 1.05
+                v_min_pu = 0.95
+                v_ref_pu = 1.0
+
+                    [[case.commitment.scenarios.case.electric.lines]]
+                    P_limit_MW = 1.0
+                    Q_limit_Mvar = 1.0
+                    from = 1
+                    id = "e12"
+                    r_pu = 0.01
+                    to = 2
+                    x_pu = 0.005
+
+                [case.commitment.scenarios.case.heat]
+                R_max_K = 343.15
+                R_min_K = 293.15
+                S_max_K = 353.15
+                S_min_K = 303.15
+                c_J_kgK = 4200.0
+                nodes = 2
+                terminal_rule = "free"
+
+                    [[case.commitment.scenarios.case.heat.pipes]]
+                    area_m2 = 0.01
+                    from = 1
+                    history_R_K = [320.15, 320.15, 320.15, 320.15]
+                    history_S_K = [330.15, 330.15, 330.15, 330.15]
+                    id = "h12"
+                    length_m = 360.0
+                    loss_W_mK = 0.0
+                    m_kg_s = 1.0
+                    rho_kg_m3 = 1000.0
+                    to = 2
+
+                    [[case.commitment.scenarios.case.heat.sources]]
+                    T_max_K = 330.15
+                    T_min_K = 330.15
+                    id = "source"
+                    m_kg_s = 1.0
+                    node = 1
+
+                [case.commitment.scenarios.case.realtime]
+                alpha_down = [0.0]
+                alpha_up = [0.0]
+                delta = 0.0
+                penalty_USD_MWh = 1000.0
+                price = [80.0]
+
+                [case.commitment.scenarios.case.units]
+                energy = "MWh"
+                energy_price = "USD/MWh"
+                flow = "kg/s"
+                heat_capacity = "MWh/K"
+                heat_transfer = "MW/K"
+                power = "MW"
+                reactive = "Mvar"
+                reserve_price = "USD/(MW*h)"
+                temperature = "K"
+                time = "h"
+        [[case.commitment.scenarios]]
+        case_sha256 = "2e3bfbf561fc8197540964227d6f6b3f5e8a95cb2fbba4f5371325ad3cb76383"
+        id = "up"
+        probability = 0.25
+
+            [case.commitment.scenarios.case]
+            T = 1
+            ambient_K = [283.15]
+            dt_h = 0.25
+            name = "shared_up"
+            origin = "synthetic"
+            schema = "r5-dispatch-case-v1"
+
+                [case.commitment.scenarios.case.award]
+                P_DA_MW = [0.142]
+                R_down_MW = [0.0]
+                R_up_MW = [0.0]
+                down_price = [2.0]
+                energy_price = [100.0]
+                origin = "synthetic"
+                up_price = [5.0]
+
+                [[case.commitment.scenarios.case.buildings]]
+                COP_DH = 1.0
+                C_MWh_K = 0.01
+                G_MW_K = 0.0042
+                P_DH_max_MW = 0.0
+                R_max_K = 320.15
+                R_min_K = 320.15
+                T_initial_K = 293.15
+                T_max_K = 293.15
+                T_min_K = 293.15
+                electric_node = 2
+                heat_node = 2
+                id = "building"
+                m_kg_s = 1.0
+                terminal_rule = "initial"
+
+                [[case.commitment.scenarios.case.devices]]
+                cost_USD_MWh = 0.0
+                heat_ratio = 1.0
+                id = "EB"
+                kind = "EB"
+                node = 2
+                p_max_MW = 0.1
+                p_min_MW = 0.0
+                q_max_Mvar = 0.0
+                q_min_Mvar = 0.0
+                source_id = "source"
+                [[case.commitment.scenarios.case.devices]]
+                P_initial_MW = 0.05
+                cost_USD_MWh = 130.0
+                id = "GT"
+                kind = "GT"
+                node = 2
+                p_max_MW = 0.2
+                p_min_MW = 0.0
+                q_max_Mvar = 0.0
+                q_min_Mvar = 0.0
+                ramp_down_MW_h = 1.0
+                ramp_up_MW_h = 1.0
+
+                [case.commitment.scenarios.case.electric]
+                P_load_MW = [[0.0], [0.1]]
+                Q_load_Mvar = [[0.0], [0.02]]
+                S_base_MVA = 1.0
+                nodes = 2
+                pcc_max_MW = 1.0
+                pcc_min_MW = 0.0
+                qcc_max_Mvar = 1.0
+                qcc_min_Mvar = -1.0
+                root = 1
+                v_max_pu = 1.05
+                v_min_pu = 0.95
+                v_ref_pu = 1.0
+
+                    [[case.commitment.scenarios.case.electric.lines]]
+                    P_limit_MW = 1.0
+                    Q_limit_Mvar = 1.0
+                    from = 1
+                    id = "e12"
+                    r_pu = 0.01
+                    to = 2
+                    x_pu = 0.005
+
+                [case.commitment.scenarios.case.heat]
+                R_max_K = 343.15
+                R_min_K = 293.15
+                S_max_K = 353.15
+                S_min_K = 303.15
+                c_J_kgK = 4200.0
+                nodes = 2
+                terminal_rule = "free"
+
+                    [[case.commitment.scenarios.case.heat.pipes]]
+                    area_m2 = 0.01
+                    from = 1
+                    history_R_K = [320.15, 320.15, 320.15, 320.15]
+                    history_S_K = [330.15, 330.15, 330.15, 330.15]
+                    id = "h12"
+                    length_m = 360.0
+                    loss_W_mK = 0.0
+                    m_kg_s = 1.0
+                    rho_kg_m3 = 1000.0
+                    to = 2
+
+                    [[case.commitment.scenarios.case.heat.sources]]
+                    T_max_K = 330.15
+                    T_min_K = 330.15
+                    id = "source"
+                    m_kg_s = 1.0
+                    node = 1
+
+                [case.commitment.scenarios.case.realtime]
+                alpha_down = [0.0]
+                alpha_up = [1.0]
+                delta = 0.0
+                penalty_USD_MWh = 1000.0
+                price = [80.0]
+
+                [case.commitment.scenarios.case.units]
+                energy = "MWh"
+                energy_price = "USD/MWh"
+                flow = "kg/s"
+                heat_capacity = "MWh/K"
+                heat_transfer = "MW/K"
+                power = "MW"
+                reactive = "Mvar"
+                reserve_price = "USD/(MW*h)"
+                temperature = "K"
+                time = "h"
+        [[case.commitment.scenarios]]
+        case_sha256 = "bf6d27a22d0621f58b0a6c4d48ea60a5c1a1f7dfe523c87149edf0807a42a593"
+        id = "down"
+        probability = 0.25
+
+            [case.commitment.scenarios.case]
+            T = 1
+            ambient_K = [283.15]
+            dt_h = 0.25
+            name = "shared_down"
+            origin = "synthetic"
+            schema = "r5-dispatch-case-v1"
+
+                [case.commitment.scenarios.case.award]
+                P_DA_MW = [0.142]
+                R_down_MW = [0.0]
+                R_up_MW = [0.0]
+                down_price = [2.0]
+                energy_price = [100.0]
+                origin = "synthetic"
+                up_price = [5.0]
+
+                [[case.commitment.scenarios.case.buildings]]
+                COP_DH = 1.0
+                C_MWh_K = 0.01
+                G_MW_K = 0.0042
+                P_DH_max_MW = 0.0
+                R_max_K = 320.15
+                R_min_K = 320.15
+                T_initial_K = 293.15
+                T_max_K = 293.15
+                T_min_K = 293.15
+                electric_node = 2
+                heat_node = 2
+                id = "building"
+                m_kg_s = 1.0
+                terminal_rule = "initial"
+
+                [[case.commitment.scenarios.case.devices]]
+                cost_USD_MWh = 0.0
+                heat_ratio = 1.0
+                id = "EB"
+                kind = "EB"
+                node = 2
+                p_max_MW = 0.1
+                p_min_MW = 0.0
+                q_max_Mvar = 0.0
+                q_min_Mvar = 0.0
+                source_id = "source"
+                [[case.commitment.scenarios.case.devices]]
+                P_initial_MW = 0.05
+                cost_USD_MWh = 130.0
+                id = "GT"
+                kind = "GT"
+                node = 2
+                p_max_MW = 0.2
+                p_min_MW = 0.0
+                q_max_Mvar = 0.0
+                q_min_Mvar = 0.0
+                ramp_down_MW_h = 1.0
+                ramp_up_MW_h = 1.0
+
+                [case.commitment.scenarios.case.electric]
+                P_load_MW = [[0.0], [0.1]]
+                Q_load_Mvar = [[0.0], [0.02]]
+                S_base_MVA = 1.0
+                nodes = 2
+                pcc_max_MW = 1.0
+                pcc_min_MW = 0.0
+                qcc_max_Mvar = 1.0
+                qcc_min_Mvar = -1.0
+                root = 1
+                v_max_pu = 1.05
+                v_min_pu = 0.95
+                v_ref_pu = 1.0
+
+                    [[case.commitment.scenarios.case.electric.lines]]
+                    P_limit_MW = 1.0
+                    Q_limit_Mvar = 1.0
+                    from = 1
+                    id = "e12"
+                    r_pu = 0.01
+                    to = 2
+                    x_pu = 0.005
+
+                [case.commitment.scenarios.case.heat]
+                R_max_K = 343.15
+                R_min_K = 293.15
+                S_max_K = 353.15
+                S_min_K = 303.15
+                c_J_kgK = 4200.0
+                nodes = 2
+                terminal_rule = "free"
+
+                    [[case.commitment.scenarios.case.heat.pipes]]
+                    area_m2 = 0.01
+                    from = 1
+                    history_R_K = [320.15, 320.15, 320.15, 320.15]
+                    history_S_K = [330.15, 330.15, 330.15, 330.15]
+                    id = "h12"
+                    length_m = 360.0
+                    loss_W_mK = 0.0
+                    m_kg_s = 1.0
+                    rho_kg_m3 = 1000.0
+                    to = 2
+
+                    [[case.commitment.scenarios.case.heat.sources]]
+                    T_max_K = 330.15
+                    T_min_K = 330.15
+                    id = "source"
+                    m_kg_s = 1.0
+                    node = 1
+
+                [case.commitment.scenarios.case.realtime]
+                alpha_down = [1.0]
+                alpha_up = [0.0]
+                delta = 0.0
+                penalty_USD_MWh = 1000.0
+                price = [80.0]
+
+                [case.commitment.scenarios.case.units]
+                energy = "MWh"
+                energy_price = "USD/MWh"
+                flow = "kg/s"
+                heat_capacity = "MWh/K"
+                heat_transfer = "MW/K"
+                power = "MW"
+                reactive = "Mvar"
+                reserve_price = "USD/(MW*h)"
+                temperature = "K"
+                time = "h"
+
+    [case.temperature_domain.building]
+    lower_K = 292.15
+    upper_K = 294.15
+
+[result]
+budget_overrun_sec = 0.0
+budget_sec = 600.0
+case_sha256 = "a9fa178ef996fa31b663ac51797e132c4942a8c231f02dcd62b1e67cb6d144c1"
+cost_optimization_complete = true
+created_utc = "2026-09-19T03:08:16.211"
+cut_order = ["r5-benders-sub-8cc930bc-819c-4661-b6b0-2038c58f65b7", "r5-benders-sub-d18c13f5-4eed-4261-b8e3-8531e57c89d1", "r5-benders-sub-4da4c73c-4656-4832-a094-ffd3a2b4e21b", "r5-benders-sub-fec462fc-fc2f-4de7-87e6-19bd3480a18f", "r5-benders-sub-7cddcdfd-8c6a-44c6-8682-0d2fb90e6185", "r5-benders-sub-cee4300d-a5b6-458d-9f76-60a5800a7961", "r5-benders-sub-9bc050f2-7609-4fac-92f2-3c9eadd2ce54"]
+elapsed_sec = 2.236999988555908
+julia_version = "1.12.6"
+objective_type = "worst_expected_IES_net_cost_fixed_prices"
+run_id = "r5-benders-e63ca6a3-7e57-4e7c-864e-9c52be900aa1"
+schema = "r5-benders-result-v1"
+selected_iteration = 3
+source_unchanged = true
+status = "full_domain_gap"
+version = "r5_benders_checked_v1"
+
+    [result.cuts.r5-benders-sub-4da4c73c-4656-4832-a094-ffd3a2b4e21b]
+    arithmetic = "rational_box"
+    branch = 0
+    case_sha256 = "a9fa178ef996fa31b663ac51797e132c4942a8c231f02dcd62b1e67cb6d144c1"
+    certificate_scope = "exact_rational_minorant_of_encoded_bounded_LP_outward_float_coefficients"
+    constant = 4.614999999999993
+    deactivation_M = 24.615000002649996
+    exact_coefficient_guard = "0//1"
+    exact_raw_constant = "332545796485037425//72057594037927936"
+    exact_sign_guard = "0//1"
+    exact_stationarity_guard = "62185299034452783//10141204801825835211973625643008"
+    guard = 6.897260540483785e-15
+    kind = "cost"
+    lower_cost = -20.00000000265
+    productive = true
+    raw_constant = 4.615
+    rounding_guard = 7.653166295140683e-16
+    scenario = 3
+    sign_guard = 0.0
+    source_run_id = "r5-benders-sub-4da4c73c-4656-4832-a094-ffd3a2b4e21b"
+    source_value = 3.614999999999993
+    stationarity_guard = 6.131943910969717e-15
+    units = "synthetic_USD"
+
+        [result.cuts.r5-benders-sub-4da4c73c-4656-4832-a094-ffd3a2b4e21b.exact_gradient]
+        "P_DA_MW/1" = "-65//2"
+        "R_down_MW/1" = "-25//2"
+        "R_up_MW/1" = "0//1"
+
+        [result.cuts.r5-benders-sub-4da4c73c-4656-4832-a094-ffd3a2b4e21b.gradient]
+        "P_DA_MW/1" = -32.5
+        "R_down_MW/1" = -12.5
+        "R_up_MW/1" = 0.0
+
+        [result.cuts.r5-benders-sub-4da4c73c-4656-4832-a094-ffd3a2b4e21b.stationarity_raw]
+        "H_D/1/1" = 0.0
+        "P_DER/1/1" = 0.0
+        "P_DER/2/1" = 0.0
+        "P_DH/1/1" = 0.0
+        "P_PCC/1/1" = 0.0
+        "P_line/1/1" = 0.0
+        "Q_DER/1/1" = 0.0
+        "Q_DER/2/1" = 0.0
+        "Q_PCC/1/1" = 0.0
+        "Q_line/1/1" = 0.0
+        "delivery/1/1" = 0.0
+        "mismatch/1/1" = 0.0
+        "v/1/1" = 0.0
+        "v/2/1" = 0.0
+        "τ_IN/1/1" = 0.0
+        "τ_R/1/1" = -9.107298248878237e-18
+        "τ_R/2/1" = 0.0
+        "τ_S/1/1" = 0.0
+        "τ_S/2/1" = 0.0
+        "τ_load_R/1/1" = 0.0
+        "τ_pipe_R/1/1" = 0.0
+        "τ_pipe_S/1/1" = 0.0
+        "τ_src/1/1" = 9.107298248878237e-18
+
+    [result.cuts.r5-benders-sub-7cddcdfd-8c6a-44c6-8682-0d2fb90e6185]
+    arithmetic = "rational_box"
+    branch = 0
+    case_sha256 = "a9fa178ef996fa31b663ac51797e132c4942a8c231f02dcd62b1e67cb6d144c1"
+    certificate_scope = "exact_rational_minorant_of_encoded_bounded_LP_outward_float_coefficients"
+    constant = -0.07100000000000015
+    deactivation_M = 0.4289999999999999
+    exact_coefficient_guard = "0//1"
+    exact_raw_constant = "-81857426827086137//1152921504606846976"
+    exact_sign_guard = "0//1"
+    exact_stationarity_guard = "43910096411222991//324518553658426726783156020576256"
+    guard = 1.448494102440634e-16
+    kind = "feasibility"
+    lower_cost = 0.0
+    productive = true
+    raw_constant = -0.07100000000000001
+    rounding_guard = 9.540978981175617e-18
+    scenario = 2
+    sign_guard = 0.0
+    source_run_id = "r5-benders-sub-7cddcdfd-8c6a-44c6-8682-0d2fb90e6185"
+    source_value = 0.2523076923484613
+    stationarity_guard = 1.3530843126288778e-16
+    units = "normalized_violation"
+
+        [result.cuts.r5-benders-sub-7cddcdfd-8c6a-44c6-8682-0d2fb90e6185.exact_gradient]
+        "P_DA_MW/1" = "1//2"
+        "R_down_MW/1" = "0//1"
+        "R_up_MW/1" = "-1//2"
+
+        [result.cuts.r5-benders-sub-7cddcdfd-8c6a-44c6-8682-0d2fb90e6185.gradient]
+        "P_DA_MW/1" = 0.5
+        "R_down_MW/1" = 0.0
+        "R_up_MW/1" = -0.5
+
+        [result.cuts.r5-benders-sub-7cddcdfd-8c6a-44c6-8682-0d2fb90e6185.stationarity_raw]
+        "H_D/1/1" = 0.0
+        "P_DER/1/1" = 0.0
+        "P_DER/2/1" = 0.0
+        "P_DH/1/1" = 0.0
+        "P_PCC/1/1" = 0.0
+        "P_line/1/1" = 0.0
+        "Q_DER/1/1" = 0.0
+        "Q_DER/2/1" = 0.0
+        "Q_PCC/1/1" = 0.0
+        "Q_line/1/1" = 0.0
+        "delivery/1/1" = 0.0
+        "elastic/5-10-down/GT/1/1" = 0.0
+        "elastic/5-10-up/GT/1/1" = 0.0
+        "elastic/5-14/1/1/1" = 0.0
+        "elastic/5-14/1/1/2" = 0.0
+        "elastic/5-14/2/1/1" = 0.0
+        "elastic/5-14/2/1/2" = 0.0
+        "elastic/5-15/1/1/1" = 0.0
+        "elastic/5-15/1/1/2" = 0.0
+        "elastic/5-15/2/1/1" = 0.0
+        "elastic/5-15/2/1/2" = 0.0
+        "elastic/5-16/e12/1/1" = 0.0
+        "elastic/5-16/e12/1/2" = 0.0
+        "elastic/5-17/root/1/1" = 0.0
+        "elastic/5-17/root/1/2" = 0.0
+        "elastic/5-18/source/1/1" = 0.0
+        "elastic/5-18/source/1/2" = 0.0
+        "elastic/5-19/building/1/1" = 0.0
+        "elastic/5-19/building/1/2" = 0.0
+        "elastic/5-20/1/1/1" = 0.0
+        "elastic/5-20/1/1/2" = 0.0
+        "elastic/5-20/2/1/1" = 0.0
+        "elastic/5-20/2/1/2" = 0.0
+        "elastic/5-21/1/1/1" = -2.168404344971009e-18
+        "elastic/5-21/1/1/2" = 2.168404344971009e-18
+        "elastic/5-21/2/1/1" = 0.0
+        "elastic/5-21/2/1/2" = 0.0
+        "elastic/5-25-26-R/h12/1/1" = -9.107298248878237e-18
+        "elastic/5-25-26-R/h12/1/2" = 9.107298248878237e-18
+        "elastic/5-25-26-S/h12/1/1" = 0.0
+        "elastic/5-25-26-S/h12/1/2" = 0.0
+        "elastic/5-3-minus/PCC/1/1" = 0.0
+        "elastic/5-3-plus/PCC/1/1" = 0.0
+        "elastic/5-4/window/0/1" = 0.0
+        "elastic/R5-D-building/building/1/1" = 0.0
+        "elastic/R5-D-building/building/1/2" = 0.0
+        "elastic/R5-D-delivery/PCC/1/1" = 0.0
+        "elastic/R5-D-delivery/PCC/1/2" = 0.0
+        "elastic/R5-D-terminal/building/1/1" = 0.0
+        "elastic/R5-D-terminal/building/1/2" = 0.0
+        "elastic/τ_IN/1/1/lower/1" = 0.0
+        "elastic/τ_IN/1/1/upper/1" = 0.0
+        "mismatch/1/1" = 0.0
+        "v/1/1" = 0.0
+        "v/2/1" = 0.0
+        "τ_IN/1/1" = 0.0
+        "τ_R/1/1" = 0.0
+        "τ_R/2/1" = 0.0
+        "τ_S/1/1" = 0.0
+        "τ_S/2/1" = 0.0
+        "τ_load_R/1/1" = 0.0
+        "τ_pipe_R/1/1" = 0.0
+        "τ_pipe_S/1/1" = 0.0
+        "τ_src/1/1" = 0.0
+
+    [result.cuts.r5-benders-sub-8cc930bc-819c-4661-b6b0-2038c58f65b7]
+    arithmetic = "rational_box"
+    branch = 0
+    case_sha256 = "a9fa178ef996fa31b663ac51797e132c4942a8c231f02dcd62b1e67cb6d144c1"
+    certificate_scope = "exact_rational_minorant_of_encoded_bounded_LP_outward_float_coefficients"
+    constant = 4.614999999999993
+    deactivation_M = 24.615000002649996
+    exact_coefficient_guard = "0//1"
+    exact_raw_constant = "332545796485037425//72057594037927936"
+    exact_sign_guard = "0//1"
+    exact_stationarity_guard = "62185299034452783//10141204801825835211973625643008"
+    guard = 6.897260540483785e-15
+    kind = "cost"
+    lower_cost = -20.00000000265
+    productive = true
+    raw_constant = 4.615
+    rounding_guard = 7.653166295140683e-16
+    scenario = 1
+    sign_guard = 0.0
+    source_run_id = "r5-benders-sub-8cc930bc-819c-4661-b6b0-2038c58f65b7"
+    source_value = 4.614999999999993
+    stationarity_guard = 6.131943910969717e-15
+    units = "synthetic_USD"
+
+        [result.cuts.r5-benders-sub-8cc930bc-819c-4661-b6b0-2038c58f65b7.exact_gradient]
+        "P_DA_MW/1" = "-65//2"
+        "R_down_MW/1" = "0//1"
+        "R_up_MW/1" = "0//1"
+
+        [result.cuts.r5-benders-sub-8cc930bc-819c-4661-b6b0-2038c58f65b7.gradient]
+        "P_DA_MW/1" = -32.5
+        "R_down_MW/1" = 0.0
+        "R_up_MW/1" = 0.0
+
+        [result.cuts.r5-benders-sub-8cc930bc-819c-4661-b6b0-2038c58f65b7.stationarity_raw]
+        "H_D/1/1" = 0.0
+        "P_DER/1/1" = 0.0
+        "P_DER/2/1" = 0.0
+        "P_DH/1/1" = 0.0
+        "P_PCC/1/1" = 0.0
+        "P_line/1/1" = 0.0
+        "Q_DER/1/1" = 0.0
+        "Q_DER/2/1" = 0.0
+        "Q_PCC/1/1" = 0.0
+        "Q_line/1/1" = 0.0
+        "delivery/1/1" = 0.0
+        "mismatch/1/1" = 0.0
+        "v/1/1" = 0.0
+        "v/2/1" = 0.0
+        "τ_IN/1/1" = 0.0
+        "τ_R/1/1" = -9.107298248878237e-18
+        "τ_R/2/1" = 0.0
+        "τ_S/1/1" = 0.0
+        "τ_S/2/1" = 0.0
+        "τ_load_R/1/1" = 0.0
+        "τ_pipe_R/1/1" = 0.0
+        "τ_pipe_S/1/1" = 0.0
+        "τ_src/1/1" = 9.107298248878237e-18
+
+    [result.cuts.r5-benders-sub-9bc050f2-7609-4fac-92f2-3c9eadd2ce54]
+    arithmetic = "rational_box"
+    branch = 0
+    case_sha256 = "a9fa178ef996fa31b663ac51797e132c4942a8c231f02dcd62b1e67cb6d144c1"
+    certificate_scope = "exact_rational_minorant_of_encoded_bounded_LP_outward_float_coefficients"
+    constant = 0.0
+    deactivation_M = 21.600000002650003
+    exact_coefficient_guard = "0//1"
+    exact_raw_constant = "0//1"
+    exact_sign_guard = "0//1"
+    exact_stationarity_guard = "0//1"
+    guard = 0.0
+    kind = "cost"
+    lower_cost = -20.00000000265
+    productive = true
+    raw_constant = 0.0
+    rounding_guard = 0.0
+    scenario = 3
+    sign_guard = 0.0
+    source_run_id = "r5-benders-sub-9bc050f2-7609-4fac-92f2-3c9eadd2ce54"
+    source_value = 1.2400000000000058
+    stationarity_guard = 0.0
+    units = "synthetic_USD"
+
+        [result.cuts.r5-benders-sub-9bc050f2-7609-4fac-92f2-3c9eadd2ce54.exact_gradient]
+        "P_DA_MW/1" = "0//1"
+        "R_down_MW/1" = "20//1"
+        "R_up_MW/1" = "0//1"
+
+        [result.cuts.r5-benders-sub-9bc050f2-7609-4fac-92f2-3c9eadd2ce54.gradient]
+        "P_DA_MW/1" = 0.0
+        "R_down_MW/1" = 20.0
+        "R_up_MW/1" = 0.0
+
+        [result.cuts.r5-benders-sub-9bc050f2-7609-4fac-92f2-3c9eadd2ce54.stationarity_raw]
+        "H_D/1/1" = 0.0
+        "P_DER/1/1" = 0.0
+        "P_DER/2/1" = 0.0
+        "P_DH/1/1" = 0.0
+        "P_PCC/1/1" = 0.0
+        "P_line/1/1" = 0.0
+        "Q_DER/1/1" = 0.0
+        "Q_DER/2/1" = 0.0
+        "Q_PCC/1/1" = 0.0
+        "Q_line/1/1" = 0.0
+        "delivery/1/1" = 0.0
+        "mismatch/1/1" = 0.0
+        "v/1/1" = 0.0
+        "v/2/1" = 0.0
+        "τ_IN/1/1" = 0.0
+        "τ_R/1/1" = 0.0
+        "τ_R/2/1" = 0.0
+        "τ_S/1/1" = 0.0
+        "τ_S/2/1" = 0.0
+        "τ_load_R/1/1" = 0.0
+        "τ_pipe_R/1/1" = 0.0
+        "τ_pipe_S/1/1" = 0.0
+        "τ_src/1/1" = 0.0
+
+    [result.cuts.r5-benders-sub-cee4300d-a5b6-458d-9f76-60a5800a7961]
+    arithmetic = "rational_box"
+    branch = 0
+    case_sha256 = "a9fa178ef996fa31b663ac51797e132c4942a8c231f02dcd62b1e67cb6d144c1"
+    certificate_scope = "exact_rational_minorant_of_encoded_bounded_LP_outward_float_coefficients"
+    constant = -0.07100000000000015
+    deactivation_M = 0.46899999999999986
+    exact_coefficient_guard = "0//1"
+    exact_raw_constant = "-81857426827086137//1152921504606846976"
+    exact_sign_guard = "0//1"
+    exact_stationarity_guard = "43910096411222991//324518553658426726783156020576256"
+    guard = 1.448494102440634e-16
+    kind = "feasibility"
+    lower_cost = 0.0
+    productive = true
+    raw_constant = -0.07100000000000001
+    rounding_guard = 9.540978981175617e-18
+    scenario = 3
+    sign_guard = 0.0
+    source_run_id = "r5-benders-sub-cee4300d-a5b6-458d-9f76-60a5800a7961"
+    source_value = 0.33230769234846125
+    stationarity_guard = 1.3530843126288778e-16
+    units = "normalized_violation"
+
+        [result.cuts.r5-benders-sub-cee4300d-a5b6-458d-9f76-60a5800a7961.exact_gradient]
+        "P_DA_MW/1" = "1//2"
+        "R_down_MW/1" = "1//2"
+        "R_up_MW/1" = "0//1"
+
+        [result.cuts.r5-benders-sub-cee4300d-a5b6-458d-9f76-60a5800a7961.gradient]
+        "P_DA_MW/1" = 0.5
+        "R_down_MW/1" = 0.5
+        "R_up_MW/1" = 0.0
+
+        [result.cuts.r5-benders-sub-cee4300d-a5b6-458d-9f76-60a5800a7961.stationarity_raw]
+        "H_D/1/1" = 0.0
+        "P_DER/1/1" = 0.0
+        "P_DER/2/1" = 0.0
+        "P_DH/1/1" = 0.0
+        "P_PCC/1/1" = 0.0
+        "P_line/1/1" = 0.0
+        "Q_DER/1/1" = 0.0
+        "Q_DER/2/1" = 0.0
+        "Q_PCC/1/1" = 0.0
+        "Q_line/1/1" = 0.0
+        "delivery/1/1" = 0.0
+        "elastic/5-10-down/GT/1/1" = 0.0
+        "elastic/5-10-up/GT/1/1" = 0.0
+        "elastic/5-14/1/1/1" = 0.0
+        "elastic/5-14/1/1/2" = 0.0
+        "elastic/5-14/2/1/1" = 0.0
+        "elastic/5-14/2/1/2" = 0.0
+        "elastic/5-15/1/1/1" = 0.0
+        "elastic/5-15/1/1/2" = 0.0
+        "elastic/5-15/2/1/1" = 0.0
+        "elastic/5-15/2/1/2" = 0.0
+        "elastic/5-16/e12/1/1" = 0.0
+        "elastic/5-16/e12/1/2" = 0.0
+        "elastic/5-17/root/1/1" = 0.0
+        "elastic/5-17/root/1/2" = 0.0
+        "elastic/5-18/source/1/1" = 0.0
+        "elastic/5-18/source/1/2" = 0.0
+        "elastic/5-19/building/1/1" = 0.0
+        "elastic/5-19/building/1/2" = 0.0
+        "elastic/5-20/1/1/1" = 0.0
+        "elastic/5-20/1/1/2" = 0.0
+        "elastic/5-20/2/1/1" = 0.0
+        "elastic/5-20/2/1/2" = 0.0
+        "elastic/5-21/1/1/1" = -2.168404344971009e-18
+        "elastic/5-21/1/1/2" = 2.168404344971009e-18
+        "elastic/5-21/2/1/1" = 0.0
+        "elastic/5-21/2/1/2" = 0.0
+        "elastic/5-25-26-R/h12/1/1" = -9.107298248878237e-18
+        "elastic/5-25-26-R/h12/1/2" = 9.107298248878237e-18
+        "elastic/5-25-26-S/h12/1/1" = 0.0
+        "elastic/5-25-26-S/h12/1/2" = 0.0
+        "elastic/5-3-minus/PCC/1/1" = 0.0
+        "elastic/5-3-plus/PCC/1/1" = 0.0
+        "elastic/5-4/window/0/1" = 0.0
+        "elastic/R5-D-building/building/1/1" = 0.0
+        "elastic/R5-D-building/building/1/2" = 0.0
+        "elastic/R5-D-delivery/PCC/1/1" = 0.0
+        "elastic/R5-D-delivery/PCC/1/2" = 0.0
+        "elastic/R5-D-terminal/building/1/1" = 0.0
+        "elastic/R5-D-terminal/building/1/2" = 0.0
+        "elastic/τ_IN/1/1/lower/1" = 0.0
+        "elastic/τ_IN/1/1/upper/1" = 0.0
+        "mismatch/1/1" = 0.0
+        "v/1/1" = 0.0
+        "v/2/1" = 0.0
+        "τ_IN/1/1" = 0.0
+        "τ_R/1/1" = 0.0
+        "τ_R/2/1" = 0.0
+        "τ_S/1/1" = 0.0
+        "τ_S/2/1" = 0.0
+        "τ_load_R/1/1" = 0.0
+        "τ_pipe_R/1/1" = 0.0
+        "τ_pipe_S/1/1" = 0.0
+        "τ_src/1/1" = 0.0
+
+    [result.cuts.r5-benders-sub-d18c13f5-4eed-4261-b8e3-8531e57c89d1]
+    arithmetic = "rational_box"
+    branch = 0
+    case_sha256 = "a9fa178ef996fa31b663ac51797e132c4942a8c231f02dcd62b1e67cb6d144c1"
+    certificate_scope = "exact_rational_minorant_of_encoded_bounded_LP_outward_float_coefficients"
+    constant = 4.614999999999993
+    deactivation_M = 25.615000002649996
+    exact_coefficient_guard = "0//1"
+    exact_raw_constant = "332545796485037425//72057594037927936"
+    exact_sign_guard = "0//1"
+    exact_stationarity_guard = "62185299034452783//10141204801825835211973625643008"
+    guard = 6.897260540483785e-15
+    kind = "cost"
+    lower_cost = -20.00000000265
+    productive = true
+    raw_constant = 4.615
+    rounding_guard = 7.653166295140683e-16
+    scenario = 2
+    sign_guard = 0.0
+    source_run_id = "r5-benders-sub-d18c13f5-4eed-4261-b8e3-8531e57c89d1"
+    source_value = 4.614999999999993
+    stationarity_guard = 6.131943910969717e-15
+    units = "synthetic_USD"
+
+        [result.cuts.r5-benders-sub-d18c13f5-4eed-4261-b8e3-8531e57c89d1.exact_gradient]
+        "P_DA_MW/1" = "-65//2"
+        "R_down_MW/1" = "0//1"
+        "R_up_MW/1" = "25//2"
+
+        [result.cuts.r5-benders-sub-d18c13f5-4eed-4261-b8e3-8531e57c89d1.gradient]
+        "P_DA_MW/1" = -32.5
+        "R_down_MW/1" = 0.0
+        "R_up_MW/1" = 12.5
+
+        [result.cuts.r5-benders-sub-d18c13f5-4eed-4261-b8e3-8531e57c89d1.stationarity_raw]
+        "H_D/1/1" = 0.0
+        "P_DER/1/1" = 0.0
+        "P_DER/2/1" = 0.0
+        "P_DH/1/1" = 0.0
+        "P_PCC/1/1" = 0.0
+        "P_line/1/1" = 0.0
+        "Q_DER/1/1" = 0.0
+        "Q_DER/2/1" = 0.0
+        "Q_PCC/1/1" = 0.0
+        "Q_line/1/1" = 0.0
+        "delivery/1/1" = 0.0
+        "mismatch/1/1" = 0.0
+        "v/1/1" = 0.0
+        "v/2/1" = 0.0
+        "τ_IN/1/1" = 0.0
+        "τ_R/1/1" = -9.107298248878237e-18
+        "τ_R/2/1" = 0.0
+        "τ_S/1/1" = 0.0
+        "τ_S/2/1" = 0.0
+        "τ_load_R/1/1" = 0.0
+        "τ_pipe_R/1/1" = 0.0
+        "τ_pipe_S/1/1" = 0.0
+        "τ_src/1/1" = 9.107298248878237e-18
+
+    [result.cuts.r5-benders-sub-fec462fc-fc2f-4de7-87e6-19bd3480a18f]
+    arithmetic = "rational_box"
+    branch = 0
+    case_sha256 = "a9fa178ef996fa31b663ac51797e132c4942a8c231f02dcd62b1e67cb6d144c1"
+    certificate_scope = "exact_rational_minorant_of_encoded_bounded_LP_outward_float_coefficients"
+    constant = -0.07100000000000015
+    deactivation_M = 0.4289999999999999
+    exact_coefficient_guard = "0//1"
+    exact_raw_constant = "-81857426827086137//1152921504606846976"
+    exact_sign_guard = "0//1"
+    exact_stationarity_guard = "43910096411222991//324518553658426726783156020576256"
+    guard = 1.448494102440634e-16
+    kind = "feasibility"
+    lower_cost = 0.0
+    productive = true
+    raw_constant = -0.07100000000000001
+    rounding_guard = 9.540978981175617e-18
+    scenario = 1
+    sign_guard = 0.0
+    source_run_id = "r5-benders-sub-fec462fc-fc2f-4de7-87e6-19bd3480a18f"
+    source_value = 0.2923076923484613
+    stationarity_guard = 1.3530843126288778e-16
+    units = "normalized_violation"
+
+        [result.cuts.r5-benders-sub-fec462fc-fc2f-4de7-87e6-19bd3480a18f.exact_gradient]
+        "P_DA_MW/1" = "1//2"
+        "R_down_MW/1" = "0//1"
+        "R_up_MW/1" = "0//1"
+
+        [result.cuts.r5-benders-sub-fec462fc-fc2f-4de7-87e6-19bd3480a18f.gradient]
+        "P_DA_MW/1" = 0.5
+        "R_down_MW/1" = 0.0
+        "R_up_MW/1" = 0.0
+
+        [result.cuts.r5-benders-sub-fec462fc-fc2f-4de7-87e6-19bd3480a18f.stationarity_raw]
+        "H_D/1/1" = 0.0
+        "P_DER/1/1" = 0.0
+        "P_DER/2/1" = 0.0
+        "P_DH/1/1" = 0.0
+        "P_PCC/1/1" = 0.0
+        "P_line/1/1" = 0.0
+        "Q_DER/1/1" = 0.0
+        "Q_DER/2/1" = 0.0
+        "Q_PCC/1/1" = 0.0
+        "Q_line/1/1" = 0.0
+        "delivery/1/1" = 0.0
+        "elastic/5-10-down/GT/1/1" = 0.0
+        "elastic/5-10-up/GT/1/1" = 0.0
+        "elastic/5-14/1/1/1" = 0.0
+        "elastic/5-14/1/1/2" = 0.0
+        "elastic/5-14/2/1/1" = 0.0
+        "elastic/5-14/2/1/2" = 0.0
+        "elastic/5-15/1/1/1" = 0.0
+        "elastic/5-15/1/1/2" = 0.0
+        "elastic/5-15/2/1/1" = 0.0
+        "elastic/5-15/2/1/2" = 0.0
+        "elastic/5-16/e12/1/1" = 0.0
+        "elastic/5-16/e12/1/2" = 0.0
+        "elastic/5-17/root/1/1" = 0.0
+        "elastic/5-17/root/1/2" = 0.0
+        "elastic/5-18/source/1/1" = 0.0
+        "elastic/5-18/source/1/2" = 0.0
+        "elastic/5-19/building/1/1" = 0.0
+        "elastic/5-19/building/1/2" = 0.0
+        "elastic/5-20/1/1/1" = 0.0
+        "elastic/5-20/1/1/2" = 0.0
+        "elastic/5-20/2/1/1" = 0.0
+        "elastic/5-20/2/1/2" = 0.0
+        "elastic/5-21/1/1/1" = -2.168404344971009e-18
+        "elastic/5-21/1/1/2" = 2.168404344971009e-18
+        "elastic/5-21/2/1/1" = 0.0
+        "elastic/5-21/2/1/2" = 0.0
+        "elastic/5-25-26-R/h12/1/1" = -9.107298248878237e-18
+        "elastic/5-25-26-R/h12/1/2" = 9.107298248878237e-18
+        "elastic/5-25-26-S/h12/1/1" = 0.0
+        "elastic/5-25-26-S/h12/1/2" = 0.0
+        "elastic/5-3-minus/PCC/1/1" = 0.0
+        "elastic/5-3-plus/PCC/1/1" = 0.0
+        "elastic/5-4/window/0/1" = 0.0
+        "elastic/R5-D-building/building/1/1" = 0.0
+        "elastic/R5-D-building/building/1/2" = 0.0
+        "elastic/R5-D-delivery/PCC/1/1" = 0.0
+        "elastic/R5-D-delivery/PCC/1/2" = 0.0
+        "elastic/R5-D-terminal/building/1/1" = 0.0
+        "elastic/R5-D-terminal/building/1/2" = 0.0
+        "elastic/τ_IN/1/1/lower/1" = 0.0
+        "elastic/τ_IN/1/1/upper/1" = 0.0
+        "mismatch/1/1" = 0.0
+        "v/1/1" = 0.0
+        "v/2/1" = 0.0
+        "τ_IN/1/1" = 0.0
+        "τ_R/1/1" = 0.0
+        "τ_R/2/1" = 0.0
+        "τ_S/1/1" = 0.0
+        "τ_S/2/1" = 0.0
+        "τ_load_R/1/1" = 0.0
+        "τ_pipe_R/1/1" = 0.0
+        "τ_pipe_S/1/1" = 0.0
+        "τ_src/1/1" = 0.0
+
+    [[result.iterations]]
+    critical_after = []
+    elapsed_sec = 0.4889998435974121
+    iteration = 1
+    new_cut_ids = ["r5-benders-sub-8cc930bc-819c-4661-b6b0-2038c58f65b7", "r5-benders-sub-d18c13f5-4eed-4261-b8e3-8531e57c89d1", "r5-benders-sub-4da4c73c-4656-4832-a094-ffd3a2b4e21b"]
+    unresolved_sources = []
+
+        [result.iterations.candidate]
+        z = [0.0, 0.0, 0.0]
+
+            [result.iterations.candidate.first_stage]
+            P_DA_MW = [0.0]
+            R_down_MW = [0.08]
+            R_up_MW = [0.0]
+
+            [result.iterations.candidate.oracles.actual]
+            budget_sec = 599.5420000553131
+            elapsed_sec = 0.004000186920166016
+            lambda = 0.3865933004709404
+            nu = [-8.906861301122584e-13, 1.8392450647314544e-12, 1.8392450647312586e-12]
+            quantity = "probability"
+            schema = "r5-transport-witness-v1"
+            status = "solver_optimal"
+            transport = [[0.5000000000017871, 2.845960916342151e-13, 2.845960916341612e-13], [-8.935348940322984e-13, 0.24999999999943082, 2.845960916341612e-13], [-8.935348940322593e-13, 2.845960916342151e-13, 0.24999999999943082]]
+
+                [result.iterations.candidate.oracles.actual.dual_solver]
+                bound_source = "MOI.DualObjectiveValue"
+                bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+                has_candidate = true
+                primal_status = "FEASIBLE_POINT"
+                raw_status = "SOLVED"
+                solver = "Clarabel"
+                solver_objective = 4.74279467309549e-13
+                solver_objective_bound = 0.0
+                solver_version = "0.11.1"
+                status = "solver_optimal"
+                termination = "OPTIMAL"
+
+                [result.iterations.candidate.oracles.actual.primal_solver]
+                bound_source = "MOI.DualObjectiveValue"
+                bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+                has_candidate = true
+                primal_status = "FEASIBLE_POINT"
+                raw_status = "SOLVED"
+                solver = "Clarabel"
+                solver_objective = -0.0
+                solver_objective_bound = 4.742773910863336e-13
+                solver_version = "0.11.1"
+                status = "solver_optimal"
+                termination = "OPTIMAL"
+
+                [result.iterations.candidate.oracles.actual.validation]
+                distance_used = -6.486854215278049e-13
+                dual_value = 4.74279467309549e-13
+                pass = true
+                primal_value = 0.0
+                status = "evaluated"
+                worst_weights = [0.5000000000023562, 0.2499999999988219, 0.2499999999988219]
+
+                    [[result.iterations.candidate.oracles.actual.validation.rows]]
+                    group = "transport"
+                    id = "mass"
+                    normalized = 1.1102230246251565e-8
+                    pass = true
+                    residual = 1.1102230246251565e-16
+                    tolerance = 1.0e-8
+                    unit = "1"
+                    [[result.iterations.candidate.oracles.actual.validation.rows]]
+                    group = "transport"
+                    id = "nonnegative"
+                    normalized = 8.935348940322984e-5
+                    pass = true
+                    residual = 8.935348940322984e-13
+                    tolerance = 1.0e-8
+                    unit = "1"
+                    [[result.iterations.candidate.oracles.actual.validation.rows]]
+                    group = "transport"
+                    id = "budget"
+                    normalized = 0.0
+                    pass = true
+                    residual = 0.0
+                    tolerance = 1.0e-8
+                    unit = "1"
+                    [[result.iterations.candidate.oracles.actual.validation.rows]]
+                    group = "transport"
+                    id = "dual-sign"
+                    normalized = 0.0
+                    pass = true
+                    residual = 0.0
+                    tolerance = 1.0e-8
+                    unit = "1"
+                    [[result.iterations.candidate.oracles.actual.validation.rows]]
+                    group = "transport"
+                    id = "dual-inequality"
+                    normalized = 8.906861301122584e-5
+                    pass = true
+                    residual = 8.906861301122584e-13
+                    tolerance = 1.0e-8
+                    unit = "1"
+                    [[result.iterations.candidate.oracles.actual.validation.rows]]
+                    group = "transport"
+                    id = "primal-dual-gap"
+                    normalized = 4.74279467309549e-5
+                    pass = true
+                    residual = 4.74279467309549e-13
+                    tolerance = 1.0e-8
+                    unit = "1"
+
+            [result.iterations.candidate.oracles.cost]
+            budget_sec = 599.5520000457764
+            elapsed_sec = 0.006000041961669922
+            lambda = 1.4546506392465879
+            nu = [4.615000000000663, 4.615000000001993, 3.6150000000001508]
+            quantity = "cost"
+            schema = "r5-transport-witness-v1"
+            status = "solver_optimal"
+            transport = [[0.5000000000306737, -1.0938318421200941e-11, 2.3664951847144365e-11], [-1.8524418373407202e-11, 0.2500000000256605, 2.36649518471497e-11], [-1.2149286743792715e-11, -1.472256204055083e-11, 0.24999999995267005]]
+
+                [result.iterations.candidate.oracles.cost.dual_solver]
+                bound_source = "MOI.DualObjectiveValue"
+                bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+                has_candidate = true
+                primal_status = "FEASIBLE_POINT"
+                raw_status = "SOLVED"
+                solver = "Clarabel"
+                solver_objective = 4.365000000000867
+                solver_objective_bound = 4.365000000009027
+                solver_version = "0.11.1"
+                status = "solver_optimal"
+                termination = "OPTIMAL"
+
+                [result.iterations.candidate.oracles.cost.primal_solver]
+                bound_source = "MOI.DualObjectiveValue"
+                bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+                has_candidate = true
+                primal_status = "FEASIBLE_POINT"
+                raw_status = "SOLVED"
+                solver = "Clarabel"
+                solver_objective = 4.3650000000742
+                solver_objective_bound = 4.365000000086553
+                solver_version = "0.11.1"
+                status = "solver_optimal"
+                termination = "OPTIMAL"
+
+                [result.iterations.candidate.oracles.cost.validation]
+                distance_used = -9.004681884657625e-12
+                dual_value = 4.365000000000867
+                pass = true
+                primal_value = 4.365000000074201
+                status = "evaluated"
+                worst_weights = [0.5000000000434003, 0.25000000003080103, 0.24999999992579822]
+
+                    [[result.iterations.candidate.oracles.cost.validation.rows]]
+                    group = "transport"
+                    id = "mass"
+                    normalized = 3.885780586188048e-8
+                    pass = true
+                    residual = 3.885780586188048e-16
+                    tolerance = 1.0e-8
+                    unit = "1"
+                    [[result.iterations.candidate.oracles.cost.validation.rows]]
+                    group = "transport"
+                    id = "nonnegative"
+                    normalized = 0.0018524418373407202
+                    pass = true
+                    residual = 1.8524418373407202e-11
+                    tolerance = 1.0e-8
+                    unit = "1"
+                    [[result.iterations.candidate.oracles.cost.validation.rows]]
+                    group = "transport"
+                    id = "budget"
+                    normalized = 0.0
+                    pass = true
+                    residual = 0.0
+                    tolerance = 1.0e-8
+                    unit = "1"
+                    [[result.iterations.candidate.oracles.cost.validation.rows]]
+                    group = "transport"
+                    id = "dual-sign"
+                    normalized = 0.0
+                    pass = true
+                    residual = 0.0
+                    tolerance = 1.0e-6
+                    unit = "1"
+                    [[result.iterations.candidate.oracles.cost.validation.rows]]
+                    group = "transport"
+                    id = "dual-inequality"
+                    normalized = 0.0
+                    pass = true
+                    residual = 0.0
+                    tolerance = 1.0e-6
+                    unit = "1"
+                    [[result.iterations.candidate.oracles.cost.validation.rows]]
+                    group = "transport"
+                    id = "primal-dual-gap"
+                    normalized = 1.680051032717838e-7
+                    pass = true
+                    residual = 1.680051032717838e-11
+                    tolerance = 0.0001
+                    unit = "1"
+
+            [result.iterations.candidate.oracles.risk]
+            budget_sec = 599.5460000038147
+            elapsed_sec = 0.003999948501586914
+            lambda = 0.3865933004709404
+            nu = [-8.906861301122584e-13, 1.8392450647314544e-12, 1.8392450647312586e-12]
+            quantity = "probability"
+            schema = "r5-transport-witness-v1"
+            status = "solver_optimal"
+            transport = [[0.5000000000017871, 2.845960916342151e-13, 2.845960916341612e-13], [-8.935348940322984e-13, 0.24999999999943082, 2.845960916341612e-13], [-8.935348940322593e-13, 2.845960916342151e-13, 0.24999999999943082]]
+
+                [result.iterations.candidate.oracles.risk.dual_solver]
+                bound_source = "MOI.DualObjectiveValue"
+                bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+                has_candidate = true
+                primal_status = "FEASIBLE_POINT"
+                raw_status = "SOLVED"
+                solver = "Clarabel"
+                solver_objective = 4.74279467309549e-13
+                solver_objective_bound = 0.0
+                solver_version = "0.11.1"
+                status = "solver_optimal"
+                termination = "OPTIMAL"
+
+                [result.iterations.candidate.oracles.risk.primal_solver]
+                bound_source = "MOI.DualObjectiveValue"
+                bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+                has_candidate = true
+                primal_status = "FEASIBLE_POINT"
+                raw_status = "SOLVED"
+                solver = "Clarabel"
+                solver_objective = -0.0
+                solver_objective_bound = 4.742773910863336e-13
+                solver_version = "0.11.1"
+                status = "solver_optimal"
+                termination = "OPTIMAL"
+
+                [result.iterations.candidate.oracles.risk.validation]
+                distance_used = -6.486854215278049e-13
+                dual_value = 4.74279467309549e-13
+                pass = true
+                primal_value = 0.0
+                status = "evaluated"
+                worst_weights = [0.5000000000023562, 0.2499999999988219, 0.2499999999988219]
+
+                    [[result.iterations.candidate.oracles.risk.validation.rows]]
+                    group = "transport"
+                    id = "mass"
+                    normalized = 1.1102230246251565e-8
+                    pass = true
+                    residual = 1.1102230246251565e-16
+                    tolerance = 1.0e-8
+                    unit = "1"
+                    [[result.iterations.candidate.oracles.risk.validation.rows]]
+                    group = "transport"
+                    id = "nonnegative"
+                    normalized = 8.935348940322984e-5
+                    pass = true
+                    residual = 8.935348940322984e-13
+                    tolerance = 1.0e-8
+                    unit = "1"
+                    [[result.iterations.candidate.oracles.risk.validation.rows]]
+                    group = "transport"
+                    id = "budget"
+                    normalized = 0.0
+                    pass = true
+                    residual = 0.0
+                    tolerance = 1.0e-8
+                    unit = "1"
+                    [[result.iterations.candidate.oracles.risk.validation.rows]]
+                    group = "transport"
+                    id = "dual-sign"
+                    normalized = 0.0
+                    pass = true
+                    residual = 0.0
+                    tolerance = 1.0e-8
+                    unit = "1"
+                    [[result.iterations.candidate.oracles.risk.validation.rows]]
+                    group = "transport"
+                    id = "dual-inequality"
+                    normalized = 8.906861301122584e-5
+                    pass = true
+                    residual = 8.906861301122584e-13
+                    tolerance = 1.0e-8
+                    unit = "1"
+                    [[result.iterations.candidate.oracles.risk.validation.rows]]
+                    group = "transport"
+                    id = "primal-dual-gap"
+                    normalized = 4.74279467309549e-5
+                    pass = true
+                    residual = 4.74279467309549e-13
+                    tolerance = 1.0e-8
+                    unit = "1"
+
+            [result.iterations.candidate.source_ids]
+            down = "r5-benders-sub-4da4c73c-4656-4832-a094-ffd3a2b4e21b"
+            none = "r5-benders-sub-8cc930bc-819c-4661-b6b0-2038c58f65b7"
+            up = "r5-benders-sub-d18c13f5-4eed-4261-b8e3-8531e57c89d1"
+
+        [result.iterations.cost_source_ids]
+        down = "r5-benders-sub-4da4c73c-4656-4832-a094-ffd3a2b4e21b"
+        none = "r5-benders-sub-8cc930bc-819c-4661-b6b0-2038c58f65b7"
+        up = "r5-benders-sub-d18c13f5-4eed-4261-b8e3-8531e57c89d1"
+
+        [result.iterations.diagnostic_source_ids]
+
+        [result.iterations.gap]
+        a2_pass = false
+        absolute = 24.365000002650866
+        relative = 1.1074999999870905
+        stopping_pass = false
+        valid = true
+
+        [result.iterations.master]
+        bound_source = "MOI.ObjectiveBound"
+        critical = []
+        cut_source_ids = []
+        has_candidate = true
+        model_type = "MILP"
+        model_types = ["AffExpr in MathOptInterface.GreaterThan{Float64}", "AffExpr in MathOptInterface.LessThan{Float64}", "VariableRef in MathOptInterface.GreaterThan{Float64}", "VariableRef in MathOptInterface.ZeroOne"]
+        primal_status = "FEASIBLE_POINT"
+        raw_status = "kHighsModelStatusOptimal"
+        scope = "full_risk_domain"
+        solver = "HiGHS"
+        solver_objective = -22.00000000265
+        solver_objective_bound = -22.00000000265
+        solver_version = "v1.15.1"
+        status = "solver_optimal"
+        termination = "OPTIMAL"
+        theta = [-20.00000000265, -20.00000000265, -20.00000000265]
+        z = [0.0, 0.0, 0.0]
+
+            [result.iterations.master.critical_values]
+
+            [result.iterations.master.embedded_duals.cost]
+            lambda = 0.0
+            nu = [-20.00000000265, -20.00000000265, -20.00000000265]
+
+            [result.iterations.master.embedded_duals.risk]
+            lambda = 0.0
+            nu = [0.0, 0.0, 0.0]
+
+            [result.iterations.master.first_stage]
+            P_DA_MW = [0.0]
+            R_down_MW = [0.08]
+            R_up_MW = [0.0]
+    [[result.iterations]]
+    critical_after = []
+    elapsed_sec = 0.28800010681152344
+    iteration = 2
+    new_cut_ids = ["r5-benders-sub-fec462fc-fc2f-4de7-87e6-19bd3480a18f", "r5-benders-sub-7cddcdfd-8c6a-44c6-8682-0d2fb90e6185", "r5-benders-sub-cee4300d-a5b6-458d-9f76-60a5800a7961"]
+    unresolved_sources = []
+
+        [result.iterations.cost_source_ids]
+        down = "r5-benders-sub-10787bd1-3b64-4fd1-b9ad-45e26792403c"
+        none = "r5-benders-sub-001af19e-4893-4c40-87ee-132eaa50ea86"
+        up = "r5-benders-sub-173d4fe8-a56f-411c-a7aa-ba25d4e5ecbb"
+
+        [result.iterations.diagnostic_source_ids]
+        down = "r5-benders-sub-cee4300d-a5b6-458d-9f76-60a5800a7961"
+        none = "r5-benders-sub-fec462fc-fc2f-4de7-87e6-19bd3480a18f"
+        up = "r5-benders-sub-7cddcdfd-8c6a-44c6-8682-0d2fb90e6185"
+
+        [result.iterations.gap]
+        a2_pass = false
+        absolute = 7.199615385227793
+        relative = 1.4891805886415634
+        stopping_pass = false
+        valid = true
+
+        [result.iterations.master]
+        bound_source = "MOI.ObjectiveBound"
+        critical = []
+        cut_source_ids = ["r5-benders-sub-8cc930bc-819c-4661-b6b0-2038c58f65b7", "r5-benders-sub-d18c13f5-4eed-4261-b8e3-8531e57c89d1", "r5-benders-sub-4da4c73c-4656-4832-a094-ffd3a2b4e21b"]
+        has_candidate = true
+        model_type = "MILP"
+        model_types = ["AffExpr in MathOptInterface.GreaterThan{Float64}", "AffExpr in MathOptInterface.LessThan{Float64}", "VariableRef in MathOptInterface.GreaterThan{Float64}", "VariableRef in MathOptInterface.ZeroOne"]
+        primal_status = "FEASIBLE_POINT"
+        raw_status = "kHighsModelStatusOptimal"
+        scope = "full_risk_domain"
+        solver = "HiGHS"
+        solver_objective = -4.834615385226926
+        solver_objective_bound = -4.834615385226926
+        solver_version = "v1.15.1"
+        status = "solver_optimal"
+        termination = "OPTIMAL"
+        theta = [-19.000000002649998, -18.000000002649998, -20.00000000265]
+        z = [0.0, 0.0, 0.0]
+
+            [result.iterations.master.critical_values]
+
+            [result.iterations.master.embedded_duals.cost]
+            lambda = 2.0000000000000036
+            nu = [-19.000000002649998, -18.000000002649998, -20.00000000265]
+
+            [result.iterations.master.embedded_duals.risk]
+            lambda = 0.0
+            nu = [0.0, 0.0, 0.0]
+
+            [result.iterations.master.first_stage]
+            P_DA_MW = [0.7266153846969229]
+            R_down_MW = [0.08]
+            R_up_MW = [0.08]
+    [[result.iterations]]
+    critical_after = []
+    elapsed_sec = 0.3859999179840088
+    iteration = 3
+    new_cut_ids = ["r5-benders-sub-9bc050f2-7609-4fac-92f2-3c9eadd2ce54"]
+    unresolved_sources = []
+
+        [result.iterations.candidate]
+        z = [0.0, 0.0, 0.0]
+
+            [result.iterations.candidate.first_stage]
+            P_DA_MW = [0.08]
+            R_down_MW = [0.06200000000000029]
+            R_up_MW = [0.08]
+
+            [result.iterations.candidate.oracles.actual]
+            budget_sec = 598.8729999065399
+            elapsed_sec = 0.004999876022338867
+            lambda = 0.3865933004709404
+            nu = [-8.906861301122584e-13, 1.8392450647314544e-12, 1.8392450647312586e-12]
+            quantity = "probability"
+            schema = "r5-transport-witness-v1"
+            status = "solver_optimal"
+            transport = [[0.5000000000017871, 2.845960916342151e-13, 2.845960916341612e-13], [-8.935348940322984e-13, 0.24999999999943082, 2.845960916341612e-13], [-8.935348940322593e-13, 2.845960916342151e-13, 0.24999999999943082]]
+
+                [result.iterations.candidate.oracles.actual.dual_solver]
+                bound_source = "MOI.DualObjectiveValue"
+                bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+                has_candidate = true
+                primal_status = "FEASIBLE_POINT"
+                raw_status = "SOLVED"
+                solver = "Clarabel"
+                solver_objective = 4.74279467309549e-13
+                solver_objective_bound = 0.0
+                solver_version = "0.11.1"
+                status = "solver_optimal"
+                termination = "OPTIMAL"
+
+                [result.iterations.candidate.oracles.actual.primal_solver]
+                bound_source = "MOI.DualObjectiveValue"
+                bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+                has_candidate = true
+                primal_status = "FEASIBLE_POINT"
+                raw_status = "SOLVED"
+                solver = "Clarabel"
+                solver_objective = -0.0
+                solver_objective_bound = 4.742773910863336e-13
+                solver_version = "0.11.1"
+                status = "solver_optimal"
+                termination = "OPTIMAL"
+
+                [result.iterations.candidate.oracles.actual.validation]
+                distance_used = -6.486854215278049e-13
+                dual_value = 4.74279467309549e-13
+                pass = true
+                primal_value = 0.0
+                status = "evaluated"
+                worst_weights = [0.5000000000023562, 0.2499999999988219, 0.2499999999988219]
+
+                    [[result.iterations.candidate.oracles.actual.validation.rows]]
+                    group = "transport"
+                    id = "mass"
+                    normalized = 1.1102230246251565e-8
+                    pass = true
+                    residual = 1.1102230246251565e-16
+                    tolerance = 1.0e-8
+                    unit = "1"
+                    [[result.iterations.candidate.oracles.actual.validation.rows]]
+                    group = "transport"
+                    id = "nonnegative"
+                    normalized = 8.935348940322984e-5
+                    pass = true
+                    residual = 8.935348940322984e-13
+                    tolerance = 1.0e-8
+                    unit = "1"
+                    [[result.iterations.candidate.oracles.actual.validation.rows]]
+                    group = "transport"
+                    id = "budget"
+                    normalized = 0.0
+                    pass = true
+                    residual = 0.0
+                    tolerance = 1.0e-8
+                    unit = "1"
+                    [[result.iterations.candidate.oracles.actual.validation.rows]]
+                    group = "transport"
+                    id = "dual-sign"
+                    normalized = 0.0
+                    pass = true
+                    residual = 0.0
+                    tolerance = 1.0e-8
+                    unit = "1"
+                    [[result.iterations.candidate.oracles.actual.validation.rows]]
+                    group = "transport"
+                    id = "dual-inequality"
+                    normalized = 8.906861301122584e-5
+                    pass = true
+                    residual = 8.906861301122584e-13
+                    tolerance = 1.0e-8
+                    unit = "1"
+                    [[result.iterations.candidate.oracles.actual.validation.rows]]
+                    group = "transport"
+                    id = "primal-dual-gap"
+                    normalized = 4.74279467309549e-5
+                    pass = true
+                    residual = 4.74279467309549e-13
+                    tolerance = 1.0e-8
+                    unit = "1"
+
+            [result.iterations.candidate.oracles.cost]
+            budget_sec = 598.8840000629425
+            elapsed_sec = 0.0070002079010009766
+            lambda = 2.205203678403885
+            nu = [2.0150000000008843, 3.0150000000031616, 1.240000000000035]
+            quantity = "cost"
+            schema = "r5-transport-witness-v1"
+            status = "solver_optimal"
+            transport = [[0.5000000000130345, -2.44501399686494e-11, 4.163094795451929e-12], [-1.7827946980228667e-12, 0.2500000000488488, 3.2806636553058545e-11], [-1.125189123647711e-11, -2.4399301809370194e-11, 0.24999999996303024]]
+
+                [result.iterations.candidate.oracles.cost.dual_solver]
+                bound_source = "MOI.DualObjectiveValue"
+                bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+                has_candidate = true
+                primal_status = "FEASIBLE_POINT"
+                raw_status = "SOLVED"
+                solver = "Clarabel"
+                solver_objective = 2.0712500000012413
+                solver_objective_bound = 2.071250000008263
+                solver_version = "0.11.1"
+                status = "solver_optimal"
+                termination = "OPTIMAL"
+
+                [result.iterations.candidate.oracles.cost.primal_solver]
+                bound_source = "MOI.DualObjectiveValue"
+                bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+                has_candidate = true
+                primal_status = "FEASIBLE_POINT"
+                raw_status = "SOLVED"
+                solver = "Clarabel"
+                solver_objective = 2.0712500001361547
+                solver_objective_bound = 2.0712500001238787
+                solver_version = "0.11.1"
+                status = "solver_optimal"
+                termination = "OPTIMAL"
+
+                [result.iterations.candidate.oracles.cost.validation]
+                distance_used = -2.49143963640091e-11
+                dual_value = 2.0712500000012413
+                pass = true
+                primal_value = 2.0712500001361547
+                status = "evaluated"
+                worst_weights = [0.4999999999927474, 0.25000000007987266, 0.24999999992737904]
+
+                    [[result.iterations.candidate.oracles.cost.validation.rows]]
+                    group = "transport"
+                    id = "mass"
+                    normalized = 6.38378239159465e-8
+                    pass = true
+                    residual = 6.38378239159465e-16
+                    tolerance = 1.0e-8
+                    unit = "1"
+                    [[result.iterations.candidate.oracles.cost.validation.rows]]
+                    group = "transport"
+                    id = "nonnegative"
+                    normalized = 0.0024450139968649398
+                    pass = true
+                    residual = 2.44501399686494e-11
+                    tolerance = 1.0e-8
+                    unit = "1"
+                    [[result.iterations.candidate.oracles.cost.validation.rows]]
+                    group = "transport"
+                    id = "budget"
+                    normalized = 0.0
+                    pass = true
+                    residual = 0.0
+                    tolerance = 1.0e-8
+                    unit = "1"
+                    [[result.iterations.candidate.oracles.cost.validation.rows]]
+                    group = "transport"
+                    id = "dual-sign"
+                    normalized = 0.0
+                    pass = true
+                    residual = 0.0
+                    tolerance = 1.0e-6
+                    unit = "1"
+                    [[result.iterations.candidate.oracles.cost.validation.rows]]
+                    group = "transport"
+                    id = "dual-inequality"
+                    normalized = 0.0
+                    pass = true
+                    residual = 0.0
+                    tolerance = 1.0e-6
+                    unit = "1"
+                    [[result.iterations.candidate.oracles.cost.validation.rows]]
+                    group = "transport"
+                    id = "primal-dual-gap"
+                    normalized = 6.513622873393396e-7
+                    pass = true
+                    residual = 6.513622873393396e-11
+                    tolerance = 0.0001
+                    unit = "1"
+
+            [result.iterations.candidate.oracles.risk]
+            budget_sec = 598.8769998550415
+            elapsed_sec = 0.003999948501586914
+            lambda = 0.3865933004709404
+            nu = [-8.906861301122584e-13, 1.8392450647314544e-12, 1.8392450647312586e-12]
+            quantity = "probability"
+            schema = "r5-transport-witness-v1"
+            status = "solver_optimal"
+            transport = [[0.5000000000017871, 2.845960916342151e-13, 2.845960916341612e-13], [-8.935348940322984e-13, 0.24999999999943082, 2.845960916341612e-13], [-8.935348940322593e-13, 2.845960916342151e-13, 0.24999999999943082]]
+
+                [result.iterations.candidate.oracles.risk.dual_solver]
+                bound_source = "MOI.DualObjectiveValue"
+                bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+                has_candidate = true
+                primal_status = "FEASIBLE_POINT"
+                raw_status = "SOLVED"
+                solver = "Clarabel"
+                solver_objective = 4.74279467309549e-13
+                solver_objective_bound = 0.0
+                solver_version = "0.11.1"
+                status = "solver_optimal"
+                termination = "OPTIMAL"
+
+                [result.iterations.candidate.oracles.risk.primal_solver]
+                bound_source = "MOI.DualObjectiveValue"
+                bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+                has_candidate = true
+                primal_status = "FEASIBLE_POINT"
+                raw_status = "SOLVED"
+                solver = "Clarabel"
+                solver_objective = -0.0
+                solver_objective_bound = 4.742773910863336e-13
+                solver_version = "0.11.1"
+                status = "solver_optimal"
+                termination = "OPTIMAL"
+
+                [result.iterations.candidate.oracles.risk.validation]
+                distance_used = -6.486854215278049e-13
+                dual_value = 4.74279467309549e-13
+                pass = true
+                primal_value = 0.0
+                status = "evaluated"
+                worst_weights = [0.5000000000023562, 0.2499999999988219, 0.2499999999988219]
+
+                    [[result.iterations.candidate.oracles.risk.validation.rows]]
+                    group = "transport"
+                    id = "mass"
+                    normalized = 1.1102230246251565e-8
+                    pass = true
+                    residual = 1.1102230246251565e-16
+                    tolerance = 1.0e-8
+                    unit = "1"
+                    [[result.iterations.candidate.oracles.risk.validation.rows]]
+                    group = "transport"
+                    id = "nonnegative"
+                    normalized = 8.935348940322984e-5
+                    pass = true
+                    residual = 8.935348940322984e-13
+                    tolerance = 1.0e-8
+                    unit = "1"
+                    [[result.iterations.candidate.oracles.risk.validation.rows]]
+                    group = "transport"
+                    id = "budget"
+                    normalized = 0.0
+                    pass = true
+                    residual = 0.0
+                    tolerance = 1.0e-8
+                    unit = "1"
+                    [[result.iterations.candidate.oracles.risk.validation.rows]]
+                    group = "transport"
+                    id = "dual-sign"
+                    normalized = 0.0
+                    pass = true
+                    residual = 0.0
+                    tolerance = 1.0e-8
+                    unit = "1"
+                    [[result.iterations.candidate.oracles.risk.validation.rows]]
+                    group = "transport"
+                    id = "dual-inequality"
+                    normalized = 8.906861301122584e-5
+                    pass = true
+                    residual = 8.906861301122584e-13
+                    tolerance = 1.0e-8
+                    unit = "1"
+                    [[result.iterations.candidate.oracles.risk.validation.rows]]
+                    group = "transport"
+                    id = "primal-dual-gap"
+                    normalized = 4.74279467309549e-5
+                    pass = true
+                    residual = 4.74279467309549e-13
+                    tolerance = 1.0e-8
+                    unit = "1"
+
+            [result.iterations.candidate.source_ids]
+            down = "r5-benders-sub-9bc050f2-7609-4fac-92f2-3c9eadd2ce54"
+            none = "r5-benders-sub-73baef76-2d6b-4747-8e5c-e2cb2d7371fa"
+            up = "r5-benders-sub-eec9fa10-e9cf-4279-a904-373ddea03413"
+
+        [result.iterations.cost_source_ids]
+        down = "r5-benders-sub-9bc050f2-7609-4fac-92f2-3c9eadd2ce54"
+        none = "r5-benders-sub-73baef76-2d6b-4747-8e5c-e2cb2d7371fa"
+        up = "r5-benders-sub-eec9fa10-e9cf-4279-a904-373ddea03413"
+
+        [result.iterations.diagnostic_source_ids]
+
+        [result.iterations.gap]
+        a2_pass = true
+        absolute = 1.2490009027033011e-12
+        relative = 1.2490009027033011e-12
+        stopping_pass = true
+        valid = true
+
+        [result.iterations.master]
+        bound_source = "MOI.ObjectiveBound"
+        critical = []
+        cut_source_ids = ["r5-benders-sub-8cc930bc-819c-4661-b6b0-2038c58f65b7", "r5-benders-sub-d18c13f5-4eed-4261-b8e3-8531e57c89d1", "r5-benders-sub-4da4c73c-4656-4832-a094-ffd3a2b4e21b", "r5-benders-sub-fec462fc-fc2f-4de7-87e6-19bd3480a18f", "r5-benders-sub-7cddcdfd-8c6a-44c6-8682-0d2fb90e6185", "r5-benders-sub-cee4300d-a5b6-458d-9f76-60a5800a7961"]
+        has_candidate = true
+        model_type = "MILP"
+        model_types = ["AffExpr in MathOptInterface.GreaterThan{Float64}", "AffExpr in MathOptInterface.LessThan{Float64}", "VariableRef in MathOptInterface.GreaterThan{Float64}", "VariableRef in MathOptInterface.ZeroOne"]
+        primal_status = "FEASIBLE_POINT"
+        raw_status = "kHighsModelStatusOptimal"
+        scope = "full_risk_domain"
+        solver = "HiGHS"
+        solver_objective = 0.5212499999999847
+        solver_objective_bound = 0.5212499999999849
+        solver_version = "v1.15.1"
+        status = "solver_optimal"
+        termination = "OPTIMAL"
+        theta = [2.014999999999993, 3.014999999999993, 1.2399999999999893]
+        z = [0.0, 0.0, 0.0]
+
+            [result.iterations.master.critical_values]
+
+            [result.iterations.master.embedded_duals.cost]
+            lambda = 1.7750000000000037
+            nu = [2.014999999999993, 3.014999999999993, 1.2399999999999893]
+
+            [result.iterations.master.embedded_duals.risk]
+            lambda = 0.0
+            nu = [0.0, 0.0, 0.0]
+
+            [result.iterations.master.first_stage]
+            P_DA_MW = [0.08]
+            R_down_MW = [0.06200000000000029]
+            R_up_MW = [0.08]
+
+    [result.source_hashes_at_return]
+    "Manifest.toml" = "6aa68b274431d56e5f78dfe516af70b7a6aefe8529cf58240d882de31c72bb75"
+    "Project.toml" = "b3f905bb91f92e68ff970eedc46e9ed854ca4e08ff124541d68e991818de4a92"
+    "src/algorithms/r5_benders.jl" = "212a004d95e367a3051326198dd0f082141bea927ab335b6c78a83b615d3c1bf"
+    "src/algorithms/r5_commitment.jl" = "5038f22f037bba90a7bb3e2afc79b900fdff2d91ebe0afbde8ff189acd0c04bb"
+    "src/algorithms/r5_dispatch.jl" = "fe48a6db69bf8bbb9b843b1ecc1695ced426a60860e39a586198e15cd77fca03"
+    "src/algorithms/r5_market.jl" = "a5a5bbc1b96743973ea81e79ec8af40e8f18328d00ca7fc14b540aaf9324154a"
+    "src/algorithms/r5_risk.jl" = "44824bcb0093e32b935b3d88b87d292cdf1add9d3afeac133db8e7064b4ae28f"
+    "src/core/r5_benders.jl" = "3522687413059a2eb40c27dbf7d70ec2e8735f63af7ceca71e920a66280308c3"
+    "src/core/r5_commitment.jl" = "5e4a30e71b12c56b8754482163182b93266de454a8b04fb41a5e2f86a98af812"
+    "src/core/r5_dispatch.jl" = "7308945636b363ab412716e0bcd059992a1760567d53d6991cd57739230a15af"
+    "src/core/r5_market.jl" = "b66b34edafb602439fa8c93beb25fc20500b6a4106dee739a1795418cb265222"
+    "src/core/r5_risk.jl" = "691219d10cda283b7c6e3cd19e2467b102c1564fc907427f773ad72627a635c8"
+    "src/formulations/r5_benders.jl" = "aee2c0998eab6aadd29b5a2ebd662b30ef24902ed4019a0f007e7424cb20d539"
+    "src/formulations/r5_commitment.jl" = "8d66f8987a6a2e053416d276080b50644d63b38763fa06625e27fa9899f246ae"
+    "src/formulations/r5_dispatch.jl" = "fef8db84d2be1544c622f8d9891fd4c47eb91dc2ff2e89817bec7a5996622d19"
+    "src/formulations/r5_dispatch_dual.jl" = "9685a38e919580a17abd0f8fee7c90fbdc7f8dd85080831ee36772c3d8d69bdf"
+    "src/formulations/r5_market.jl" = "85ba2ee6e8f84bef53db7949bf4fc425b57476bdaa49f22d9a816bf32bd01713"
+    "src/formulations/r5_risk.jl" = "7b68ae8d7bdd94e8a4d475403962c2e547eac0fb79304f2036da5fb724837f2c"
+    "src/networks/fixed_flow_heat.jl" = "620c069f6b3a520d32ee546ec048074f9cbaa3c785f8c2e31ec7fd7bf245a83b"
+    "src/reporting/r5_benders.jl" = "24dc9c7944e5f9f1dadc04108bf4f27af6baf6088ec6c4814bb639527a00e35a"
+    "src/reporting/r5_commitment.jl" = "7d5faa97dbc2724d33831b319af807381ea13aa763cfde5655a4d7ecea956f2a"
+    "src/reporting/r5_dispatch.jl" = "5d919f4e14dff618d7cc6467ccdcf5ea073b218b2799db0966eb877f4f5d92cb"
+    "src/reporting/r5_market.jl" = "164d47e5922903179225a17c8a681610ae7eb5312068a4f806d85010f16f0796"
+    "src/reporting/r5_risk.jl" = "973e9a81c86ff6b0268992be7c02b0cfeadc49dd04905bbe6a66fa37a827a377"
+    "src/verification/r5_benders.jl" = "4611e873233e4d682c044374cb0a2fa4c4870696b798c4d3fc043af710f33a5c"
+    "src/verification/r5_commitment.jl" = "71c04cdeb804ee48dbfd585e5376cdacd910cc5a507db8d9027b866690cde8ed"
+    "src/verification/r5_dispatch.jl" = "6ad9b1f74949e1345df473bfd778db6e419a57b2e2060cc065a7d5fbae1802f2"
+    "src/verification/r5_dispatch_duality.jl" = "5dbbcbae682b3c738c5506b36254466614d6ff80e835afe7619744c77c7fc96d"
+    "src/verification/r5_market.jl" = "47cf2899d6167974ec406d7b431d06bcd2ca3b16108bdbc67c8805e071e57009"
+    "src/verification/r5_risk.jl" = "a9389a9963ede5a33b8867a9cd8ae9e6a1b608e9995ff0fa62eeb0fed38c2433"
+    "tools/solvers/Manifest.toml" = "4c3bfa7a47e06095c1251dfb555ff155bc7e02241013547c294c2920cedb958e"
+    "tools/solvers/Project.toml" = "be07a40d34ee1e44e61d0e81fc1a71161cc9ba7ef20d57fc7fbe4e70f6e3ba8b"
+
+    [result.source_hashes_at_solve]
+    "Manifest.toml" = "6aa68b274431d56e5f78dfe516af70b7a6aefe8529cf58240d882de31c72bb75"
+    "Project.toml" = "b3f905bb91f92e68ff970eedc46e9ed854ca4e08ff124541d68e991818de4a92"
+    "src/algorithms/r5_benders.jl" = "212a004d95e367a3051326198dd0f082141bea927ab335b6c78a83b615d3c1bf"
+    "src/algorithms/r5_commitment.jl" = "5038f22f037bba90a7bb3e2afc79b900fdff2d91ebe0afbde8ff189acd0c04bb"
+    "src/algorithms/r5_dispatch.jl" = "fe48a6db69bf8bbb9b843b1ecc1695ced426a60860e39a586198e15cd77fca03"
+    "src/algorithms/r5_market.jl" = "a5a5bbc1b96743973ea81e79ec8af40e8f18328d00ca7fc14b540aaf9324154a"
+    "src/algorithms/r5_risk.jl" = "44824bcb0093e32b935b3d88b87d292cdf1add9d3afeac133db8e7064b4ae28f"
+    "src/core/r5_benders.jl" = "3522687413059a2eb40c27dbf7d70ec2e8735f63af7ceca71e920a66280308c3"
+    "src/core/r5_commitment.jl" = "5e4a30e71b12c56b8754482163182b93266de454a8b04fb41a5e2f86a98af812"
+    "src/core/r5_dispatch.jl" = "7308945636b363ab412716e0bcd059992a1760567d53d6991cd57739230a15af"
+    "src/core/r5_market.jl" = "b66b34edafb602439fa8c93beb25fc20500b6a4106dee739a1795418cb265222"
+    "src/core/r5_risk.jl" = "691219d10cda283b7c6e3cd19e2467b102c1564fc907427f773ad72627a635c8"
+    "src/formulations/r5_benders.jl" = "aee2c0998eab6aadd29b5a2ebd662b30ef24902ed4019a0f007e7424cb20d539"
+    "src/formulations/r5_commitment.jl" = "8d66f8987a6a2e053416d276080b50644d63b38763fa06625e27fa9899f246ae"
+    "src/formulations/r5_dispatch.jl" = "fef8db84d2be1544c622f8d9891fd4c47eb91dc2ff2e89817bec7a5996622d19"
+    "src/formulations/r5_dispatch_dual.jl" = "9685a38e919580a17abd0f8fee7c90fbdc7f8dd85080831ee36772c3d8d69bdf"
+    "src/formulations/r5_market.jl" = "85ba2ee6e8f84bef53db7949bf4fc425b57476bdaa49f22d9a816bf32bd01713"
+    "src/formulations/r5_risk.jl" = "7b68ae8d7bdd94e8a4d475403962c2e547eac0fb79304f2036da5fb724837f2c"
+    "src/networks/fixed_flow_heat.jl" = "620c069f6b3a520d32ee546ec048074f9cbaa3c785f8c2e31ec7fd7bf245a83b"
+    "src/reporting/r5_benders.jl" = "24dc9c7944e5f9f1dadc04108bf4f27af6baf6088ec6c4814bb639527a00e35a"
+    "src/reporting/r5_commitment.jl" = "7d5faa97dbc2724d33831b319af807381ea13aa763cfde5655a4d7ecea956f2a"
+    "src/reporting/r5_dispatch.jl" = "5d919f4e14dff618d7cc6467ccdcf5ea073b218b2799db0966eb877f4f5d92cb"
+    "src/reporting/r5_market.jl" = "164d47e5922903179225a17c8a681610ae7eb5312068a4f806d85010f16f0796"
+    "src/reporting/r5_risk.jl" = "973e9a81c86ff6b0268992be7c02b0cfeadc49dd04905bbe6a66fa37a827a377"
+    "src/verification/r5_benders.jl" = "4611e873233e4d682c044374cb0a2fa4c4870696b798c4d3fc043af710f33a5c"
+    "src/verification/r5_commitment.jl" = "71c04cdeb804ee48dbfd585e5376cdacd910cc5a507db8d9027b866690cde8ed"
+    "src/verification/r5_dispatch.jl" = "6ad9b1f74949e1345df473bfd778db6e419a57b2e2060cc065a7d5fbae1802f2"
+    "src/verification/r5_dispatch_duality.jl" = "5dbbcbae682b3c738c5506b36254466614d6ff80e835afe7619744c77c7fc96d"
+    "src/verification/r5_market.jl" = "47cf2899d6167974ec406d7b431d06bcd2ca3b16108bdbc67c8805e071e57009"
+    "src/verification/r5_risk.jl" = "a9389a9963ede5a33b8867a9cd8ae9e6a1b608e9995ff0fa62eeb0fed38c2433"
+    "tools/solvers/Manifest.toml" = "4c3bfa7a47e06095c1251dfb555ff155bc7e02241013547c294c2920cedb958e"
+    "tools/solvers/Project.toml" = "be07a40d34ee1e44e61d0e81fc1a71161cc9ba7ef20d57fc7fbe4e70f6e3ba8b"
+
+    [result.spec]
+    absolute_gap = 1.0e-7
+    critical_count = 1
+    cut_arithmetic = "rational_box"
+    diagnostic_scale = 1024.0
+    feasibility = "cuts"
+    max_iterations = 200
+    relative_gap = 1.0e-6
+
+[source_files_sha256]
+"subproblems/r5-benders-sub-001af19e-4893-4c40-87ee-132eaa50ea86.toml" = "f0d45e44143973e8668e34fcfa427622359f86c71e464866008ebe008f0a0d94"
+"subproblems/r5-benders-sub-10787bd1-3b64-4fd1-b9ad-45e26792403c.toml" = "fce2fc8a318a7e5d764c7241b98166d1423ef093cb88278d05af7f6683112526"
+"subproblems/r5-benders-sub-173d4fe8-a56f-411c-a7aa-ba25d4e5ecbb.toml" = "2c13ca72729fefb6f690e706a3db792cb69251db846d68896dd3fae22ef054a2"
+"subproblems/r5-benders-sub-4da4c73c-4656-4832-a094-ffd3a2b4e21b.toml" = "af3e27e4c1feb93deca8a435407cd71a20a1e4c7d78387d9dbbc5d8bda8fc8cb"
+"subproblems/r5-benders-sub-73baef76-2d6b-4747-8e5c-e2cb2d7371fa.toml" = "966584c2f76955acb75387008d4e42233dc04cb75af3282a5d4203bcb4bc5be6"
+"subproblems/r5-benders-sub-7cddcdfd-8c6a-44c6-8682-0d2fb90e6185.toml" = "4ac0de96b2742b6e832a5e054841c5a537162441ad0041ff5257b7f38a62d271"
+"subproblems/r5-benders-sub-8cc930bc-819c-4661-b6b0-2038c58f65b7.toml" = "ca636e7a180a30f49faf1bb8ed05dbdbabebdbd8e3e8164cfc2126535a6ed836"
+"subproblems/r5-benders-sub-9bc050f2-7609-4fac-92f2-3c9eadd2ce54.toml" = "a4da385bdc72ef6a17257162a86ca08cd0be88b1334ee1affd48e5da6e54a838"
+"subproblems/r5-benders-sub-cee4300d-a5b6-458d-9f76-60a5800a7961.toml" = "451345e091fee262988c838a8bb9dcf9b190e886534f4c002d0bf704b43a3a41"
+"subproblems/r5-benders-sub-d18c13f5-4eed-4261-b8e3-8531e57c89d1.toml" = "a8bf91810cb544b9a933d893828d92a530859614ecafd582259d8c8d739a3044"
+"subproblems/r5-benders-sub-eec9fa10-e9cf-4279-a904-373ddea03413.toml" = "6e231c92ca93703abfba2089996ded904405af194185ab503ffa2d03ae40e284"
+"subproblems/r5-benders-sub-fec462fc-fc2f-4de7-87e6-19bd3480a18f.toml" = "cf93cf2f85a07ad3fb6d58eb17472f1dd34101178e2d2b4fb3b9c96d95ba566d"
+
+[validation_sha256]
+"candidate/1" = "ef4dcb4e79b82cccae75529895ad7a079d477858369673f780e9d391079c92e9"
+"candidate/3" = "fe10b08bda484451596a1a1efda4f59fa6540940ec3462d843c03f2c876f15a3"
+"master/1" = "fa26036508c20836e6cf75128fde6eb5ae1a968adf14ff402ffbeb7f26b08a37"
+"master/2" = "8f55a7f34a80dacee157d489aec195ccc07a67397630b13375ac95210d72e3fd"
+"master/3" = "e1ff242ccffdb297cb5d3c105200c477f595a5dd9f366bb787886a44814527ba"
+r5-benders-sub-001af19e-4893-4c40-87ee-132eaa50ea86 = "976fd92c54d9b63289336bf82e34e0de417871699feccc2d321caeca180ee747"
+r5-benders-sub-10787bd1-3b64-4fd1-b9ad-45e26792403c = "976fd92c54d9b63289336bf82e34e0de417871699feccc2d321caeca180ee747"
+r5-benders-sub-173d4fe8-a56f-411c-a7aa-ba25d4e5ecbb = "976fd92c54d9b63289336bf82e34e0de417871699feccc2d321caeca180ee747"
+r5-benders-sub-4da4c73c-4656-4832-a094-ffd3a2b4e21b = "960611ecbbddf1c3ff1ba7ac472a0427dac55cdabb07f039bf4d7b6c502c8988"
+r5-benders-sub-73baef76-2d6b-4747-8e5c-e2cb2d7371fa = "ab59e59563ccc56e8a789de1e43f55cf8f62b8d159daaed37cdd9fd313fb258d"
+r5-benders-sub-7cddcdfd-8c6a-44c6-8682-0d2fb90e6185 = "4f40d6d59a3a4167168b806086d2827f879620fef18491c66dfa3ea79fe88cc1"
+r5-benders-sub-8cc930bc-819c-4661-b6b0-2038c58f65b7 = "b93b8d8321d52b3c43da078908a7f432b55cdd6c2a0b4180b651c4f8123b2afb"
+r5-benders-sub-9bc050f2-7609-4fac-92f2-3c9eadd2ce54 = "2ef75e1055b6e4e019ee7588ca1e91c6a9b9cc3ac12ff84ee06856250f847074"
+r5-benders-sub-cee4300d-a5b6-458d-9f76-60a5800a7961 = "7e0f5ebcf2c448f3fa0b514b7bda7409be7dbae0350d6dac2d69bf120a7c6c97"
+r5-benders-sub-d18c13f5-4eed-4261-b8e3-8531e57c89d1 = "b93b8d8321d52b3c43da078908a7f432b55cdd6c2a0b4180b651c4f8123b2afb"
+r5-benders-sub-eec9fa10-e9cf-4279-a904-373ddea03413 = "685ccd01f28837bd27ff6cdb8d5d5010513c845683f1c1f2d4f9a0f1eb34d0c5"
+r5-benders-sub-fec462fc-fc2f-4de7-87e6-19bd3480a18f = "46b4ee40494b9b741c445b1997018f0424d37fca98cd9e83603f802d385f4c01"
+result = "dc3ac8d5156911c93387c6ba9782433bde9d224e73296eaa18700ae9a2c89f5f"

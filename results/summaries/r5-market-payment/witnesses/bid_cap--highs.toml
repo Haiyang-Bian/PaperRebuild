@@ -1,0 +1,885 @@
+parent_result_sha256 = "f7aa9c249c7e1b27e00abc0f23915cc4a4009a935bcb8d0b63e9ed7dc561eff4"
+record_id = "bid_cap--highs"
+result_content_sha256 = "f7aa9c249c7e1b27e00abc0f23915cc4a4009a935bcb8d0b63e9ed7dc561eff4"
+schema = "r5-market-payment-witness-v1"
+
+[case]
+T = 1
+description = "Synthetic generator energy bid cap 40 MW below the 200 MW physical capacity."
+dt_h = 1.0
+ies = []
+load_MW = [[100.0]]
+name = "bid_cap"
+nodes = 1
+origin = "synthetic"
+reserve_down_MW = [0.0]
+reserve_up_MW = [0.0]
+schema = "r5-market-case-v1"
+
+    [[case.generators]]
+    down_bid = [2.0]
+    down_max = 100.0
+    energy_bid = [20.0]
+    id = "G1"
+    node = 1
+    p_bid_max = 40.0
+    p_initial = 30.0
+    p_max = 200.0
+    p_min = 0.0
+    ramp_down_MW_h = 20.0
+    ramp_up_MW_h = 20.0
+    up_bid = [5.0]
+    up_max = 100.0
+    [[case.generators]]
+    down_bid = [2.0]
+    down_max = 100.0
+    energy_bid = [50.0]
+    id = "G2"
+    node = 1
+    p_bid_max = 200.0
+    p_initial = 0.0
+    p_max = 200.0
+    p_min = 0.0
+    ramp_down_MW_h = 200.0
+    ramp_up_MW_h = 200.0
+    up_bid = [5.0]
+    up_max = 100.0
+
+    [case.network]
+    limit_MW = []
+    ptdf = []
+    slack_node = 1
+
+    [case.units]
+    energy = "MWh"
+    energy_price = "USD/MWh"
+    power = "MW"
+    ramp = "MW/h"
+    reserve_price = "USD/(MW*h)"
+    time = "h"
+
+[payment]
+affine_payment_USD = 0.0
+case_sha256 = "cab5fac023eeaea4998db0695f340033f6197a89b7ef3a11bbdaa06f601cff6b"
+direct_payment_USD = 0.0
+identity_pass = true
+identity_residual_USD = 0.0
+identity_tolerance_USD = 1.0e-6
+market_kkt_pass = true
+market_model_pass = true
+payment_by_IES_USD = []
+run_id = "r5-market-03d6646f-dfec-4313-aa36-f54f73572534"
+schema = "r5-market-payment-check-v1"
+scope = "all_IES_whole_horizon"
+status = "payment_identity_verified"
+unit = "USD"
+valid_for_reformulation = true
+
+    [payment.linear_terms_USD]
+    generator_bid_capacity = 1200.0
+    generator_capacity = 0.0
+    generator_down = 0.0
+    generator_energy = 3800.0
+    generator_up = 0.0
+    line_capacity = 0.0
+    ordinary_load_payment = -5000.0
+    ramp_capacity = 0.0
+    ramp_initial = 0.0
+    system_reserve_payment = -0.0
+
+[result]
+budget_sec = 60.0
+case_sha256 = "cab5fac023eeaea4998db0695f340033f6197a89b7ef3a11bbdaa06f601cff6b"
+cost_optimization_complete = true
+created_utc = "2026-09-18T21:29:51.788"
+dual_status = "FEASIBLE_POINT"
+elapsed_sec = 4.70199990272522
+fixed_load_utility_constant_omitted = true
+julia_version = "1.12.6"
+model_type = "continuous_LP"
+objective_type = "fixed_bid_clearing_cost_not_system_resource_cost"
+primal_status = "FEASIBLE_POINT"
+raw_status = "kHighsModelStatusOptimal"
+run_id = "r5-market-03d6646f-dfec-4313-aa36-f54f73572534"
+schema = "r5-market-result-v1"
+solver = "HiGHS"
+solver_objective = 3800.0
+solver_objective_bound = 3800.0
+solver_version = "v1.15.1"
+status = "solver_optimal"
+termination = "OPTIMAL"
+total_method_elapsed_sec = 8.624000072479248
+version = "r5_market_clearing_checked_v1"
+
+    [result.independent_dual]
+    dual_value_recomputed = 3800.0
+    objective = 3800.0
+    relative_gap = 0.0
+    status = "OPTIMAL"
+    verified = true
+
+        [result.independent_dual.multipliers]
+        down = [2.0]
+        energy = [50.0]
+        g_cap_down = [[0.0], [0.0]]
+        g_cap_up = [[0.0], [0.0]]
+        gd_bid = [[0.0], [0.0]]
+        gu_bid = [[0.0], [0.0]]
+        i_cap_down = []
+        i_cap_up = []
+        id_bid = []
+        iu_bid = []
+        line_down = []
+        line_up = []
+        pg_bid = [[30.0], [0.0]]
+        q_bid = []
+        ramp_down = [[0.0], [0.0]]
+        ramp_up = [[0.0], [0.0]]
+        up = [5.0]
+
+    [result.lower_bound_duals]
+    P_G = [[0.0], [0.0]]
+    P_IES = []
+    R_G_down = [[0.0], [0.0]]
+    R_G_up = [[0.0], [0.0]]
+    R_IES_down = []
+    R_IES_up = []
+
+    [[result.model_types]]
+    count = 3
+    function = "AffExpr"
+    set = "MathOptInterface.EqualTo{Float64}"
+    [[result.model_types]]
+    count = 2
+    function = "AffExpr"
+    set = "MathOptInterface.GreaterThan{Float64}"
+    [[result.model_types]]
+    count = 12
+    function = "AffExpr"
+    set = "MathOptInterface.LessThan{Float64}"
+    [[result.model_types]]
+    count = 6
+    function = "VariableRef"
+    set = "MathOptInterface.GreaterThan{Float64}"
+
+    [result.multipliers]
+    down = [2.0]
+    energy = [50.0]
+    g_cap_down = [[0.0], [0.0]]
+    g_cap_up = [[0.0], [0.0]]
+    gd_bid = [[0.0], [0.0]]
+    gu_bid = [[0.0], [0.0]]
+    i_cap_down = []
+    i_cap_up = []
+    id_bid = []
+    iu_bid = []
+    line_down = []
+    line_up = []
+    pg_bid = [[30.0], [0.0]]
+    q_bid = []
+    ramp_down = [[0.0], [0.0]]
+    ramp_up = [[0.0], [0.0]]
+    up = [5.0]
+
+    [result.raw_duals]
+    down = [-2.0]
+    energy = [-50.0]
+    g_cap_down = [[0.0], [0.0]]
+    g_cap_up = [[-0.0], [-0.0]]
+    gd_bid = [[-0.0], [-0.0]]
+    gu_bid = [[-0.0], [-0.0]]
+    i_cap_down = []
+    i_cap_up = []
+    id_bid = []
+    iu_bid = []
+    line_down = []
+    line_up = []
+    pg_bid = [[-30.0], [-0.0]]
+    q_bid = []
+    ramp_down = [[-0.0], [-0.0]]
+    ramp_up = [[-0.0], [-0.0]]
+    up = [-5.0]
+
+    [result.source_hashes_at_solve]
+    "Manifest.toml" = "6aa68b274431d56e5f78dfe516af70b7a6aefe8529cf58240d882de31c72bb75"
+    "Project.toml" = "b3f905bb91f92e68ff970eedc46e9ed854ca4e08ff124541d68e991818de4a92"
+    "src/algorithms/r5_market.jl" = "a5a5bbc1b96743973ea81e79ec8af40e8f18328d00ca7fc14b540aaf9324154a"
+    "src/core/r5_market.jl" = "b66b34edafb602439fa8c93beb25fc20500b6a4106dee739a1795418cb265222"
+    "src/formulations/r5_market.jl" = "85ba2ee6e8f84bef53db7949bf4fc425b57476bdaa49f22d9a816bf32bd01713"
+    "src/reporting/r5_market.jl" = "164d47e5922903179225a17c8a681610ae7eb5312068a4f806d85010f16f0796"
+    "src/verification/r5_market.jl" = "47cf2899d6167974ec406d7b431d06bcd2ca3b16108bdbc67c8805e071e57009"
+    "tools/solvers/Manifest.toml" = "4c3bfa7a47e06095c1251dfb555ff155bc7e02241013547c294c2920cedb958e"
+    "tools/solvers/Project.toml" = "be07a40d34ee1e44e61d0e81fc1a71161cc9ba7ef20d57fc7fbe4e70f6e3ba8b"
+
+    [result.validation]
+    LMP_USD_MWh = [[50.0]]
+    clearing_objective = 3800.0
+    dual_record_complete = true
+    dual_value = 3800.0
+    flow_MW = []
+    kkt_pass = true
+    model_pass = true
+    optimality_pass = true
+    power_scale_MW = 400.0
+    price_scale_USD_MWh = 50.0
+    relative_gap = 0.0
+    reserve_down_price = [2.0]
+    reserve_up_price = [5.0]
+    status = "primal_dual_evaluated"
+
+        [[result.validation.rows]]
+        entity = "energy"
+        id = "5-37"
+        pass = true
+        residual = 0.0
+        scope = "primal"
+        t = 1
+        tolerance = 0.000401
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "up"
+        id = "5-36"
+        pass = true
+        residual = 0.0
+        scope = "primal"
+        t = 1
+        tolerance = 0.000401
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "down"
+        id = "5-36"
+        pass = true
+        residual = 0.0
+        scope = "primal"
+        t = 1
+        tolerance = 0.000401
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "gu_bid1"
+        id = "R5-MK_bounds"
+        pass = true
+        residual = 0.0
+        scope = "primal"
+        t = 1
+        tolerance = 0.000401
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "gu_bid2"
+        id = "R5-MK_bounds"
+        pass = true
+        residual = 0.0
+        scope = "primal"
+        t = 1
+        tolerance = 0.000401
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "ramp_down1"
+        id = "R5-MK_bounds"
+        pass = true
+        residual = 0.0
+        scope = "primal"
+        t = 1
+        tolerance = 0.000401
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "ramp_down2"
+        id = "R5-MK_bounds"
+        pass = true
+        residual = 0.0
+        scope = "primal"
+        t = 1
+        tolerance = 0.000401
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "ramp_up1"
+        id = "R5-MK_bounds"
+        pass = true
+        residual = 0.0
+        scope = "primal"
+        t = 1
+        tolerance = 0.000401
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "ramp_up2"
+        id = "R5-MK_bounds"
+        pass = true
+        residual = 0.0
+        scope = "primal"
+        t = 1
+        tolerance = 0.000401
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "g_cap_down1"
+        id = "R5-MK_bounds"
+        pass = true
+        residual = 0.0
+        scope = "primal"
+        t = 1
+        tolerance = 0.000401
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "g_cap_down2"
+        id = "R5-MK_bounds"
+        pass = true
+        residual = 0.0
+        scope = "primal"
+        t = 1
+        tolerance = 0.000401
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "g_cap_up1"
+        id = "R5-MK_bounds"
+        pass = true
+        residual = 0.0
+        scope = "primal"
+        t = 1
+        tolerance = 0.000401
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "g_cap_up2"
+        id = "R5-MK_bounds"
+        pass = true
+        residual = 0.0
+        scope = "primal"
+        t = 1
+        tolerance = 0.000401
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "gd_bid1"
+        id = "R5-MK_bounds"
+        pass = true
+        residual = 0.0
+        scope = "primal"
+        t = 1
+        tolerance = 0.000401
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "gd_bid2"
+        id = "R5-MK_bounds"
+        pass = true
+        residual = 0.0
+        scope = "primal"
+        t = 1
+        tolerance = 0.000401
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "pg_bid1"
+        id = "R5-MK_bounds"
+        pass = true
+        residual = 0.0
+        scope = "primal"
+        t = 1
+        tolerance = 0.000401
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "pg_bid2"
+        id = "R5-MK_bounds"
+        pass = true
+        residual = 0.0
+        scope = "primal"
+        t = 1
+        tolerance = 0.000401
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "R_G_down1"
+        id = "R5-MK_nonnegative"
+        pass = true
+        residual = 0.0
+        scope = "primal"
+        t = 1
+        tolerance = 0.000401
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "R_G_down2"
+        id = "R5-MK_nonnegative"
+        pass = true
+        residual = 0.0
+        scope = "primal"
+        t = 1
+        tolerance = 0.000401
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "P_G1"
+        id = "R5-MK_nonnegative"
+        pass = true
+        residual = 0.0
+        scope = "primal"
+        t = 1
+        tolerance = 0.000401
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "P_G2"
+        id = "R5-MK_nonnegative"
+        pass = true
+        residual = 0.0
+        scope = "primal"
+        t = 1
+        tolerance = 0.000401
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "R_G_up1"
+        id = "R5-MK_nonnegative"
+        pass = true
+        residual = 0.0
+        scope = "primal"
+        t = 1
+        tolerance = 0.000401
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "R_G_up2"
+        id = "R5-MK_nonnegative"
+        pass = true
+        residual = 0.0
+        scope = "primal"
+        t = 1
+        tolerance = 0.000401
+        unit = "MW"
+        [[result.validation.rows]]
+        entity = "objective"
+        id = "5-34"
+        pass = true
+        residual = 0.0
+        scope = "cost"
+        t = 0
+        tolerance = 0.0038
+        unit = "USD"
+        [[result.validation.rows]]
+        entity = "gu_bid1"
+        id = "R5-MK_dual_sign"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "gu_bid1"
+        id = "R5-MK_complementarity"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "gu_bid2"
+        id = "R5-MK_dual_sign"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "gu_bid2"
+        id = "R5-MK_complementarity"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "ramp_down1"
+        id = "R5-MK_dual_sign"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "ramp_down1"
+        id = "R5-MK_complementarity"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "ramp_down2"
+        id = "R5-MK_dual_sign"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "ramp_down2"
+        id = "R5-MK_complementarity"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "ramp_up1"
+        id = "R5-MK_dual_sign"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "ramp_up1"
+        id = "R5-MK_complementarity"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "ramp_up2"
+        id = "R5-MK_dual_sign"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "ramp_up2"
+        id = "R5-MK_complementarity"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "g_cap_down1"
+        id = "R5-MK_dual_sign"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "g_cap_down1"
+        id = "R5-MK_complementarity"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "g_cap_down2"
+        id = "R5-MK_dual_sign"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "g_cap_down2"
+        id = "R5-MK_complementarity"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "g_cap_up1"
+        id = "R5-MK_dual_sign"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "g_cap_up1"
+        id = "R5-MK_complementarity"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "g_cap_up2"
+        id = "R5-MK_dual_sign"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "g_cap_up2"
+        id = "R5-MK_complementarity"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "gd_bid1"
+        id = "R5-MK_dual_sign"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "gd_bid1"
+        id = "R5-MK_complementarity"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "gd_bid2"
+        id = "R5-MK_dual_sign"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "gd_bid2"
+        id = "R5-MK_complementarity"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "pg_bid1"
+        id = "R5-MK_dual_sign"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "pg_bid1"
+        id = "R5-MK_complementarity"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "pg_bid2"
+        id = "R5-MK_dual_sign"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "pg_bid2"
+        id = "R5-MK_complementarity"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "R_G_down1"
+        id = "R5-MK_reduced_cost"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "R_G_down1"
+        id = "R5-MK_variable_complementarity"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "R_G_down1"
+        id = "R5-MK_stationarity"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "R_G_down2"
+        id = "R5-MK_reduced_cost"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "R_G_down2"
+        id = "R5-MK_variable_complementarity"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "R_G_down2"
+        id = "R5-MK_stationarity"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "P_G1"
+        id = "R5-MK_reduced_cost"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "P_G1"
+        id = "R5-MK_variable_complementarity"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "P_G1"
+        id = "R5-MK_stationarity"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "P_G2"
+        id = "R5-MK_reduced_cost"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "P_G2"
+        id = "R5-MK_variable_complementarity"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "P_G2"
+        id = "R5-MK_stationarity"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "R_G_up1"
+        id = "R5-MK_reduced_cost"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "R_G_up1"
+        id = "R5-MK_variable_complementarity"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "R_G_up1"
+        id = "R5-MK_stationarity"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "R_G_up2"
+        id = "R5-MK_reduced_cost"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "R_G_up2"
+        id = "R5-MK_variable_complementarity"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "R_G_up2"
+        id = "R5-MK_stationarity"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 1
+        tolerance = 1.0e-6
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "all"
+        id = "R5-MK_gap"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 0
+        tolerance = 0.0001
+        unit = "1"
+        [[result.validation.rows]]
+        entity = "all"
+        id = "R5-MK_MOI_conversion"
+        pass = true
+        residual = 0.0
+        scope = "dual"
+        t = 0
+        tolerance = 1.0e-12
+        unit = "1"
+
+    [result.values]
+    P_G = [[40.0], [60.0]]
+    P_IES = []
+    R_G_down = [[-0.0], [0.0]]
+    R_G_up = [[-0.0], [0.0]]
+    R_IES_down = []
+    R_IES_up = []

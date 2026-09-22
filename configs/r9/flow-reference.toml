@@ -1,0 +1,17 @@
+schema = "r9-flow-reference-protocol-v1"
+origin = "synthetic_replacement_inputs"
+input_parent = "results/summaries/r9-numerics-20260921-v2"
+input_sha256 = "d514c3c2e94f962feb65717da43920559b4bcbca8613d2abcef2e1ed292d51b0"
+modes = ["CF_CT", "CF_VT", "VF_CT", "VF_VT"]
+budget_sec = 600
+solver = "Gurobi local nonlinear barrier"
+solver_policy = "local"
+solver_presolve = 0
+physical = true
+representation = "drop_implied_cones"
+terminal = "literal_temperature_and_flow_memory"
+initialization = "frozen_CF_CT_original_electric_candidate_for_direct_reference_only"
+projected_gradient = false
+global_optimum_claim = false
+freeze_before_solving = true
+comparison = "same_input_four_modes_local_candidates; report failures and missing bounds"

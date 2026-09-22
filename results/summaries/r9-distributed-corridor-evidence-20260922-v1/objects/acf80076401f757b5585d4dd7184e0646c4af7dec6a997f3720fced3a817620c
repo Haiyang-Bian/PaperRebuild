@@ -1,0 +1,52 @@
+# 只按冻结顺序启动独立Julia进程；失败方法保留，其余独立方法继续。
+using TOML, SHA, Dates
+length(ARGS)==1 || error("usage: run_r9_distributed_batch.jl STUDY")
+study=abspath(only(ARGS))
+meta=TOML.parsefile(joinpath(study, "manifest.toml"))
+meta["schema"]=="r9-distributed-study-v1" || error("Study identity")
+batchfile=joinpath(study, "batch-receipt.toml")
+ispath(batchfile) && error("Do not overwrite a completed batch")
+launcher=joinpath(study, "launcher.jl")
+ispath(launcher) && error("Do not overwrite previous launcher evidence")
+cp(@__FILE__, launcher)
+rows=Dict{String,Any}[]
+for entry in meta["methods"]
+    id=entry["id"]
+    occursin(r"^[a-z][a-z0-9-]*$", id) || error("Invalid method identity")
+    logdir=joinpath(study, "logs")
+    mkpath(logdir)
+    logpath=joinpath(logdir, id*".log")
+    ispath(logpath) && error("Do not overwrite prior method log")
+    script=joinpath(study, "code/scripts/r9_distributed_study.jl")
+    project=entry["solver"]=="Clarabel" ? joinpath(study, "code") :
+            joinpath(study, "code/tools/solvers")
+    cmd=`$(Base.julia_cmd()) --startup-file=no --threads=1 --project=$project $script run $study $id`
+    start=time_ns()/1e9
+    started=string(now(UTC))
+    println("START ", id)
+    flush(stdout)
+    code=open(logpath, "w") do io
+        process=run(pipeline(ignorestatus(cmd), stdout = io, stderr = io))
+        process.exitcode
+    end
+    push!(
+        rows,
+        Dict(
+            "id"=>id,
+            "exit_code"=>code,
+            "started_utc"=>started,
+            "process_elapsed_sec"=>time_ns()/1e9-start,
+        ),
+    )
+    println("EXIT ", id, " ", code)
+    flush(stdout)
+end
+out=Dict(
+    "schema"=>"r9-distributed-batch-receipt-v1",
+    "manifest_sha256"=>bytes2hex(sha256(read(joinpath(study, "manifest.toml")))),
+    "launcher_sha256"=>bytes2hex(sha256(read(launcher))),
+    "methods"=>rows,
+)
+open(io->TOML.print(io, out; sorted = true), batchfile, "w")
+all(r->r["exit_code"]==0, rows) || error("Method failures retained; inspect all receipts")
+println("All ", length(rows), " frozen methods reached terminal process states.")

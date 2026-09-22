@@ -1,0 +1,18 @@
+acceptance = "unchanged A1, A2 relative gap and same-model cost difference <= 1e-4"
+budget_sec = 600.0
+cases = ["open", "import", "electric_bottleneck", "heat_bottleneck"]
+cost_rule = "resource+dissatisfaction+external+physical switching cost; internal payments cancel"
+direction_rule = "bidirectional heat arcs, one active direction per open physical pipe; daily valve"
+electric_models = ["socp", "exact"]
+oracle = "oracle"
+oracle_scope = "all 72 one-period tree/direction/battery choices; continuous SOCP per choice"
+origin = "synthetic"
+policies = ["fixed", "electric", "heat", "joint"]
+schema = "r4-reconfiguration-study-v1"
+
+[input_sha256]
+electric_bottleneck = "29325aa5fc3ec9f6866ffc43e81b71d7864c8ee90626ffd45be9beece58358f9"
+heat_bottleneck = "d3817ef08ce81ada0febc8ddd5324b716893c38ac36923ce4f3200fc0833ed9a"
+import = "ee4ea767dcf6fff220b530565a40fdc149dd16eaf739af660873c928f514793c"
+open = "b7be25d9045594fc881a592c926b67ab6d8208dad96785f49c8ffffcc0e8f823"
+oracle = "ee7709b9c72fbe6969f9750734cdf0f8133728a8e2e895d122070ed92806b676"

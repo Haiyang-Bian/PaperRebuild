@@ -1,0 +1,88 @@
+version = "r4_heat_compatibility_v1"
+scope = "Frozen controls/heat/topology, stationary supply-return mixing, frozen reference losses. No hydraulics/dynamics/exact temperature-dependent heat transfer."
+source_pages = [66, 67, 148, 149]
+reference_26 = "https://vbn.aau.dk/ws/portalfiles/portal/433818534/Exploiting_Power_to_Heat_Assets_in_District_Heating_Networks_to_Regulate_Electric_Power_Network.pdf"
+reference_status = "Bibliographic identity visually confirmed on thesis PDF149. Accepted-manuscript text retrieved; exact mapping to thesis 4-41--4-47 remains unverified. Screenshot retrieval failed; no claim of full visual audit of the accepted manuscript."
+
+[[equation]]
+id = "R4-HC1"
+latex = 'H_{ij}^{in}=c\,m_{ij}(S_i-R_{ij}^{out}),\qquad H_{ij}^{out}=c\,m_{ij}(S_{ij}^{out}-R_j)'
+meaning = "两根供回水管作为一对；入口与出口指相同空间截面，回水方向与供水相反。c=cp/10^6。"
+api = "build_r4_heat_reconstruction"
+test = "R4-HC1"
+[[equation]]
+id = "R4-HC2"
+latex = 'c\,m_{ij}(S_i-S_{ij}^{out})=\widehat L_{ij}^{S},\quad c\,m_{ij}(R_j-R_{ij}^{out})=\widehat L_{ij}^{R}'
+meaning = "分别冻结供回参考损耗；两式相加恢复父运行的总损耗，但不等于真实温度相关散热。"
+api = "build_r4_heat_reconstruction"
+test = "R4-HC2"
+[[equation]]
+id = "R4-HC3"
+latex = 'H_i^{src}=c\,m_i^{src}(S_i^{src}-R_i),\qquad H_i^{load}=c\,m_i^{load}(S_i-R_i^{load})'
+meaning = "本地源、荷端口与网络混合温度分开，不强迫热源出口和混合供温相同。"
+api = "validate_r4_heat_reconstruction"
+test = "R4-HC3"
+[[equation]]
+id = "R4-HC4"
+latex = '\begin{aligned}m_i^{src}S_i^{src}+\sum_{p\to i}m_p S_p^{out}&=(m_i^{load}+\sum_{i\to p}m_p)S_i,\\m_i^{load}R_i^{load}+\sum_{i\to p}m_p R_p^{out}&=(m_i^{src}+\sum_{p\to i}m_p)R_i.\end{aligned}'
+meaning = "分别检查供水和回水的加权混合；正入流时独立重算混合温度，A1为1e-4 K。"
+api = "validate_r4_heat_reconstruction"
+test = "R4-HC4"
+[[equation]]
+id = "R4-HC5"
+latex = 'm_i^{src}+\sum_{p\to i}m_p=m_i^{load}+\sum_{i\to p}m_p,\qquad 0\le m_p\le u_p\overline m_p'
+meaning = "质量守恒、方向与容量；所有设备/负荷/热交付和父费用冻结。"
+api = "reconstruct_r4_heat"
+test = "R4-HC5"
+
+[[symbol]]
+id = "hc_mass"
+latex = 'm_{ij},m_i^{src},m_i^{load}'
+julia = "m_pipe / m_source / m_load"
+meaning = "供回管对质量流与非负源荷端口流；管道或节点×时间"
+unit = "kg/s"
+[[symbol]]
+id = "hc_node_temperatures"
+latex = 'S_i,R_i'
+julia = "τ_S / τ_R"
+meaning = "节点混合供温、混合回温；节点×时间；ASCII别名S/R"
+unit = "K"
+[[symbol]]
+id = "hc_port_temperatures"
+latex = 'S_i^{src},R_i^{load}'
+julia = "τ_source / τ_load"
+meaning = "源出口与荷出口温度；节点×时间；ASCII别名source/load"
+unit = "K"
+[[symbol]]
+id = "hc_pipe_temperatures"
+latex = 'S_{ij}^{out},R_{ij}^{out}'
+julia = "τ_S_out / τ_R_out"
+meaning = "供水沿i到j的出口、回水沿j到i的出口；方向弧×时间"
+unit = "K"
+[[symbol]]
+id = "hc_frozen_losses"
+latex = '\widehat L_{ij}^{S},\widehat L_{ij}^{R}'
+julia = "Ls / Lr"
+meaning = "父输入参考温度、U和长度计算的冻结损耗；关闭管道为零"
+unit = "MW"
+
+[[issue]]
+id = "R4-HC-C01"
+statement = "父模型未把每管H与m、温度关联；20运行59处近零m正H。保存状态不相容不等于同控制不可重构。"
+decision = "新增独立核查，旧模型/原判定不改。"
+[[issue]]
+id = "R4-HC-C02"
+statement = "第4章指向文献[26]，原参考文献确为Khatibi等2021接受稿；尚未得到逐管方程等价证据。"
+decision = "本批HC方程作为守恒推导的项目核查，不冒称恢复了作者未公开实现。"
+[[issue]]
+id = "R4-HC-C03"
+statement = "父输入只有参考绝对温度和端口温差上下界，缺少完整节点/管道绝对温度带。"
+decision = "实验前冻结参考±10K和±20K两带；带内失败不推论全温区不可行。"
+[[issue]]
+id = "R4-HC-C04"
+statement = "固定损耗与真实温变散热不同；无压力、泵、时延及开关瞬态。"
+decision = "通过只认证声明的稳态热相容性，不称完整热物理成功。"
+[[issue]]
+id = "R4-HC-C05"
+statement = "父保存浮点数的守恒残差不为严格零；精确冻结所有等式可能造成数值矛盾。"
+decision = "匹配热交付/固定流量时用原A1的十分之一带宽，独立门槛仍为原A1；保存最大残差。"

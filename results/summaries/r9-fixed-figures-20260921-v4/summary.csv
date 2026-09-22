@@ -1,0 +1,5 @@
+run_id,terminal,solver,status,model_pass,physical_pass,terminal_pass,representation_pass,daily_energy_pass,kkt_collected,kkt_trusted,kkt_reported_trusted,kkt_complementarity,kkt_relative_gap,cost_CNY,bound_CNY,elapsed_sec,budget_pass
+literal_clarabel,literal,Clarabel,solver_optimal,true,true,true,true,true,true,false,false,0.03698979767910427,8.813706621953891e-10,492243.9811577122,492243.9807233919,31.874139400024433,true
+literal_gurobi,literal,Gurobi,solver_optimal,true,true,true,true,true,true,false,false,1.0,0.0029111930880533596,492244.001357025,490810.9840066433,28.959022599970922,true
+roundoff_band_clarabel,roundoff_band,Clarabel,solver_optimal,false,false,true,false,true,true,false,false,0.00019907968049599645,5.963242854811632e-10,492243.9856665918,492243.98537282244,8.631047800008673,true
+roundoff_band_gurobi,roundoff_band,Gurobi,solver_optimal,false,false,true,false,true,true,false,false,0.12821467358918484,0.00015647477517403315,492243.995557211,492166.97182559967,8.222611100005452,true

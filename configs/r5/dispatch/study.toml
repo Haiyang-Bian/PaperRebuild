@@ -1,0 +1,129 @@
+budget_sec = 60.0
+figure_records = ["four_period--highs", "capacity_denominator--highs", "market_no_call--highs", "market_up_10percent--highs", "market_up_full--highs"]
+origin = "synthetic"
+schema = "r5-dispatch-rules-v1"
+scope = "Given awards, one fully known trajectory. No bidding, risk or AC/hydraulic certification."
+version = "r5_dispatch_checked_v1"
+
+[input_sha256]
+capacity_denominator = "36b252a98c28523f19ee55a4c1db70d1fd7f2e12c73c7d42b2fd113050656bdc"
+down = "f78443a069339606fab46248daf5353def584e486f47d99f9035dc683228b19a"
+four_period = "1f0ec5035a9043999511d5a3d8fb2325e501e3de809deb7795fff398341da369"
+hand = "c22fb305ef114818a4533bef8555622976480271e67be86948ac5f99a9e67e16"
+local_heat = "5b10fa7400d7755cc0f305b5199ebf2d6cb998cfc7516bf7f521ce1c8bbce81f"
+market_no_call = "17db0e8a80427c3a37327f8b0f9a628ef20b400e2169d50557d4e53f76970f40"
+market_up_10percent = "9f944e77e43a9fdd2ce249db845d9a5258f6d84197324d4990b61f714091c506"
+market_up_full = "d13bb271fdbef681f2ab48e3c348e6b1fb2e80a7509c70bcc72fbc5e80aec0d4"
+quarter = "4a3b44533f9cc4d4687d4a1442bfa13ed61a9e3c6a81ec75aef2fd29acad1ccc"
+unavailable = "ad119edbb5c2ca5a471368f4c8bdc40380d8df15d7638aa2b2dc8b00514197cd"
+up = "4342f87c6b14a5fcc07471e32b3e31f061671520035df06269314d984f28d7c6"
+
+[market_parent]
+case_sha256 = "78eb4ce5f464b424ac84f96eda8af6716eed487e983459174987778e04cc7c5b"
+relative_directory = "results/runs/r5/r5-market-depot-20260919/two_bus--highs"
+result_sha256 = "4d96ed69f421c593054f0129b9e15eda1d446fc096f03ccd8a1d8f5d8a33e397"
+run_id = "r5-market-23857e7b-9507-44ea-baff-241a6968cc36"
+
+[[records]]
+case = "capacity_denominator"
+id = "capacity_denominator--highs"
+solver = "highs"
+[[records]]
+case = "capacity_denominator"
+id = "capacity_denominator--clarabel"
+solver = "clarabel"
+[[records]]
+case = "down"
+id = "down--highs"
+solver = "highs"
+[[records]]
+case = "down"
+id = "down--clarabel"
+solver = "clarabel"
+[[records]]
+case = "four_period"
+id = "four_period--highs"
+solver = "highs"
+[[records]]
+case = "four_period"
+id = "four_period--clarabel"
+solver = "clarabel"
+[[records]]
+case = "hand"
+id = "hand--highs"
+solver = "highs"
+[[records]]
+case = "hand"
+id = "hand--clarabel"
+solver = "clarabel"
+[[records]]
+case = "local_heat"
+id = "local_heat--highs"
+solver = "highs"
+[[records]]
+case = "local_heat"
+id = "local_heat--clarabel"
+solver = "clarabel"
+[[records]]
+case = "market_no_call"
+id = "market_no_call--highs"
+solver = "highs"
+[[records]]
+case = "market_no_call"
+id = "market_no_call--clarabel"
+solver = "clarabel"
+[[records]]
+case = "market_up_10percent"
+id = "market_up_10percent--highs"
+solver = "highs"
+[[records]]
+case = "market_up_10percent"
+id = "market_up_10percent--clarabel"
+solver = "clarabel"
+[[records]]
+case = "market_up_full"
+id = "market_up_full--highs"
+solver = "highs"
+[[records]]
+case = "market_up_full"
+id = "market_up_full--clarabel"
+solver = "clarabel"
+[[records]]
+case = "quarter"
+id = "quarter--highs"
+solver = "highs"
+[[records]]
+case = "quarter"
+id = "quarter--clarabel"
+solver = "clarabel"
+[[records]]
+case = "unavailable"
+id = "unavailable--highs"
+solver = "highs"
+[[records]]
+case = "unavailable"
+id = "unavailable--clarabel"
+solver = "clarabel"
+[[records]]
+case = "up"
+id = "up--highs"
+solver = "highs"
+[[records]]
+case = "up"
+id = "up--clarabel"
+solver = "clarabel"
+[[records]]
+case = "hand"
+id = "hand--gurobi"
+solver = "gurobi"
+[[records]]
+case = "four_period"
+id = "four_period--gurobi"
+solver = "gurobi"
+
+[settings]
+clarabel_tolerance = 1.0e-10
+gurobi_tolerance = 1.0e-9
+highs_tolerance = 1.0e-9
+seed = 23
+threads = 1

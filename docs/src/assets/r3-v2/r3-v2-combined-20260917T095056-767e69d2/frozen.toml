@@ -1,0 +1,225 @@
+[config]
+budget_sec = 600.0
+cases = ["single-source", "two-source"]
+description = "预先冻结旧16例原始初值、新两案例四模式及直接费用参考。尾段计入总费用，不按结果重选输入。"
+local_step_penalty = 0.01
+max_iterations = 200
+methods = ["pg", "reference"]
+modes = ["CF_CT", "CF_VT", "VF_CT", "VF_VT"]
+origin = "synthetic"
+prior_study = "results/runs/r3-pg-20260917T071031-7eafbab9/study.toml"
+radius_initial = 0.1
+radius_max = 0.2
+radius_min = 1.0e-6
+ratio_accept = 0.1
+ratio_expand = 0.75
+schema = "r3-v2-study-v1"
+
+[[entries]]
+case = "single-source"
+frozen_source_sha256 = "bd2a3c9fa12daa0aa83abecf8a01947ece96a4a7f552cd4fcbdfdfa34c0ac4b3"
+group = "robustness"
+id = "single-source-schpd"
+old_directory = "results/runs/r3-pg-20260917T071031-7eafbab9\\single-source-schpd"
+[[entries]]
+case = "single-source"
+frozen_source_sha256 = "edaaf2d43b65cb5d64d0052c6cbbdd0c4f43fd1157bd3ab9bce747a1ced1841e"
+group = "robustness"
+id = "single-source-case_fixed"
+old_directory = "results/runs/r3-pg-20260917T071031-7eafbab9\\single-source-case_fixed"
+[[entries]]
+case = "single-source"
+frozen_source_sha256 = "160d04b7ceb3bcffb3e39b83d640525d4e5371587fee79a19cb465794e48e58d"
+group = "robustness"
+id = "single-source-box25"
+old_directory = "results/runs/r3-pg-20260917T071031-7eafbab9\\single-source-box25"
+[[entries]]
+case = "single-source"
+frozen_source_sha256 = "40b65b0eb519a3cbf8d7af643a0df6eade27b689df1a8f65d04fd6ce2ec14c54"
+group = "robustness"
+id = "single-source-box50"
+old_directory = "results/runs/r3-pg-20260917T071031-7eafbab9\\single-source-box50"
+[[entries]]
+case = "single-source"
+frozen_source_sha256 = "03307ea7973e97f488158b2c19cc9356b3605d943f93af1b08116679f5e1081f"
+group = "robustness"
+id = "single-source-box75"
+old_directory = "results/runs/r3-pg-20260917T071031-7eafbab9\\single-source-box75"
+[[entries]]
+case = "two-source"
+frozen_source_sha256 = "efe24c6d5514b5e934fb0b30f898d3979faf3985a0bc799e4e8fbea25b617930"
+group = "robustness"
+id = "two-source-schpd"
+old_directory = "results/runs/r3-pg-20260917T071031-7eafbab9\\two-source-schpd"
+[[entries]]
+case = "two-source"
+frozen_source_sha256 = "b2ab9651ca9dea31ce512718b34ea07a36d00f385fbfda9b6397fc88d26b451c"
+group = "robustness"
+id = "two-source-case_fixed"
+old_directory = "results/runs/r3-pg-20260917T071031-7eafbab9\\two-source-case_fixed"
+[[entries]]
+case = "two-source"
+frozen_source_sha256 = "4c3c3e0dcfd22c6692f0899653f1efcfa70e69e85aa78700de0779eec794678c"
+group = "robustness"
+id = "two-source-box25"
+old_directory = "results/runs/r3-pg-20260917T071031-7eafbab9\\two-source-box25"
+[[entries]]
+case = "two-source"
+frozen_source_sha256 = "47cee35b7e40d159b24651fd59436368b6aebb37011f7c86e5b3b3206906227c"
+group = "robustness"
+id = "two-source-box50"
+old_directory = "results/runs/r3-pg-20260917T071031-7eafbab9\\two-source-box50"
+[[entries]]
+case = "two-source"
+frozen_source_sha256 = "39722489457f7cd71af125b10c2cae971b35542421229be2b123281c664fd425"
+group = "robustness"
+id = "two-source-box75"
+old_directory = "results/runs/r3-pg-20260917T071031-7eafbab9\\two-source-box75"
+[[entries]]
+case = "single-source"
+frozen_source_sha256 = "a40cb409c05613e825d3d91f646ce66ef51b9d55eddca0a30d1826f2260e7976"
+group = "robustness"
+id = "single-no-halfspace"
+old_directory = "results/runs/r3-pg-20260917T071031-7eafbab9\\single-no-halfspace"
+[[entries]]
+case = "two-source"
+frozen_source_sha256 = "0db43106bc735240642064564601ccb141485a5654669aa731c01239004e59e0"
+group = "robustness"
+id = "two-no-halfspace"
+old_directory = "results/runs/r3-pg-20260917T071031-7eafbab9\\two-no-halfspace"
+[[entries]]
+case = "single-source"
+frozen_source_sha256 = "c95d59e8c839562dadb0ef7b7b7f29d97003f234a8b0262d09308dba3a106316"
+group = "robustness"
+id = "single-low-flow"
+old_directory = "results/runs/r3-pg-20260917T071031-7eafbab9\\single-low-flow"
+[[entries]]
+case = "single-source"
+frozen_source_sha256 = "d056ec467286b080969280ad1506c035bbe676e187346098bb90ff0b455ba7a6"
+group = "robustness"
+id = "single-impossible-heat"
+old_directory = "results/runs/r3-pg-20260917T071031-7eafbab9\\single-impossible-heat"
+[[entries]]
+case = "single-source"
+frozen_source_sha256 = "0316bd4e344b686fdd3598952ed68827827f99ad1a88953dd68c0b90da86c4b0"
+group = "robustness"
+id = "single-loose-electric"
+old_directory = "results/runs/r3-pg-20260917T071031-7eafbab9\\single-loose-electric"
+[[entries]]
+case = "single-source"
+frozen_source_sha256 = "a30a977a8b256d83ebf4b0ca7b9a1d5d2c4e8cf5019981606d06ec4e85f621ce"
+group = "robustness"
+id = "single-delay-switch"
+old_directory = "results/runs/r3-pg-20260917T071031-7eafbab9\\single-delay-switch"
+[[entries]]
+case = "single-source"
+frozen_source_sha256 = "d2a159d9f47cb385dacec0e26f47963f78375536750972761477378280babd1f"
+group = "modes"
+id = "single-source-CF_CT-pg"
+method = "pg"
+mode = "CF_CT"
+[[entries]]
+case = "single-source"
+frozen_source_sha256 = "d2a159d9f47cb385dacec0e26f47963f78375536750972761477378280babd1f"
+group = "modes"
+id = "single-source-CF_CT-reference"
+method = "reference"
+mode = "CF_CT"
+[[entries]]
+case = "single-source"
+frozen_source_sha256 = "d2a159d9f47cb385dacec0e26f47963f78375536750972761477378280babd1f"
+group = "modes"
+id = "single-source-CF_VT-pg"
+method = "pg"
+mode = "CF_VT"
+[[entries]]
+case = "single-source"
+frozen_source_sha256 = "d2a159d9f47cb385dacec0e26f47963f78375536750972761477378280babd1f"
+group = "modes"
+id = "single-source-CF_VT-reference"
+method = "reference"
+mode = "CF_VT"
+[[entries]]
+case = "single-source"
+frozen_source_sha256 = "d2a159d9f47cb385dacec0e26f47963f78375536750972761477378280babd1f"
+group = "modes"
+id = "single-source-VF_CT-pg"
+method = "pg"
+mode = "VF_CT"
+[[entries]]
+case = "single-source"
+frozen_source_sha256 = "d2a159d9f47cb385dacec0e26f47963f78375536750972761477378280babd1f"
+group = "modes"
+id = "single-source-VF_CT-reference"
+method = "reference"
+mode = "VF_CT"
+[[entries]]
+case = "single-source"
+frozen_source_sha256 = "d2a159d9f47cb385dacec0e26f47963f78375536750972761477378280babd1f"
+group = "modes"
+id = "single-source-VF_VT-pg"
+method = "pg"
+mode = "VF_VT"
+[[entries]]
+case = "single-source"
+frozen_source_sha256 = "d2a159d9f47cb385dacec0e26f47963f78375536750972761477378280babd1f"
+group = "modes"
+id = "single-source-VF_VT-reference"
+method = "reference"
+mode = "VF_VT"
+[[entries]]
+case = "two-source"
+frozen_source_sha256 = "a31cb0ad4684049b587f1358ff4921299dd148344353c871305e1d3e9b43e186"
+group = "modes"
+id = "two-source-CF_CT-pg"
+method = "pg"
+mode = "CF_CT"
+[[entries]]
+case = "two-source"
+frozen_source_sha256 = "a31cb0ad4684049b587f1358ff4921299dd148344353c871305e1d3e9b43e186"
+group = "modes"
+id = "two-source-CF_CT-reference"
+method = "reference"
+mode = "CF_CT"
+[[entries]]
+case = "two-source"
+frozen_source_sha256 = "a31cb0ad4684049b587f1358ff4921299dd148344353c871305e1d3e9b43e186"
+group = "modes"
+id = "two-source-CF_VT-pg"
+method = "pg"
+mode = "CF_VT"
+[[entries]]
+case = "two-source"
+frozen_source_sha256 = "a31cb0ad4684049b587f1358ff4921299dd148344353c871305e1d3e9b43e186"
+group = "modes"
+id = "two-source-CF_VT-reference"
+method = "reference"
+mode = "CF_VT"
+[[entries]]
+case = "two-source"
+frozen_source_sha256 = "a31cb0ad4684049b587f1358ff4921299dd148344353c871305e1d3e9b43e186"
+group = "modes"
+id = "two-source-VF_CT-pg"
+method = "pg"
+mode = "VF_CT"
+[[entries]]
+case = "two-source"
+frozen_source_sha256 = "a31cb0ad4684049b587f1358ff4921299dd148344353c871305e1d3e9b43e186"
+group = "modes"
+id = "two-source-VF_CT-reference"
+method = "reference"
+mode = "VF_CT"
+[[entries]]
+case = "two-source"
+frozen_source_sha256 = "a31cb0ad4684049b587f1358ff4921299dd148344353c871305e1d3e9b43e186"
+group = "modes"
+id = "two-source-VF_VT-pg"
+method = "pg"
+mode = "VF_VT"
+[[entries]]
+case = "two-source"
+frozen_source_sha256 = "a31cb0ad4684049b587f1358ff4921299dd148344353c871305e1d3e9b43e186"
+group = "modes"
+id = "two-source-VF_VT-reference"
+method = "reference"
+mode = "VF_VT"

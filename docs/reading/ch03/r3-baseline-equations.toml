@@ -1,0 +1,39 @@
+schema = "r3-baseline-project-equations-v1"
+origin = "project_derivation"
+
+[[equation]]
+id = "R3-B1"
+document = "docs/src/ch03-r3-baseline.md"
+api = "build_r3_projection"
+test = "test/r3_baseline.jl"
+test_name = "R3 baseline geometry, evidence and compatibility"
+meaning = "物理kg/s与跨度归一化坐标的欧氏投影"
+author_relation = "式3-63/66结构；归一化几何是项目对照"
+
+[[equation]]
+id = "R3-B2"
+document = "docs/src/ch03-r3-baseline.md"
+api = "solve_r3_baseline"
+test = "test/r3_baseline.jl"
+test_name = "R3 baseline geometry, evidence and compatibility"
+meaning = "初始最大无量纲位移与Armijo真实子问题接受"
+author_relation = "数值规则为项目补充，非作者公开参数"
+
+[[equation]]
+id = "R3-B3"
+document = "docs/src/ch03-r3-baseline.md"
+api = "r3_stopping_evidence"
+test = "test/r3_baseline.jl"
+test_name = "R3 baseline geometry, evidence and compatibility"
+meaning = "相邻接受点费用绝对差；费用单位为合成案例currency"
+author_relation = "作者给出形式，三个epsilon为项目敏感性分析"
+
+[[equation]]
+id = "R3-B4"
+document = "docs/src/ch03-r3-baseline-results.md"
+api = "validate_r3_solution"
+test = "test/r3_boundary.jl"
+test_name = "R3 comparable boundaries and old operation hashes"
+meaning = "MW负荷、kg/s流量、J/(kg K)比热确定K回水温度"
+author_relation = "由已采用精确端口热功率关系消元；用于项目尾段解释"
+julia_mapping = "tau_S_port, tau_R_port, m_port, H_MW, cp_J_kgK"

@@ -1,0 +1,9 @@
+case,loss,fixed_run,joint_run,eligible,fixed_cost,joint_cost,candidate_saving,candidate_saving_percent,both_cost_complete,saving_bound_lower,saving_bound_upper
+electric_bottleneck,reference,electric_bottleneck--fixed--reference,electric_bottleneck--joint--reference,true,191.90140648501716,191.28769353297434,0.6137129520428175,0.31980638562476277,false,0.6125737075826123,0.615562739169917
+electric_bottleneck,exponential,electric_bottleneck--fixed--exponential,electric_bottleneck--joint--exponential,true,191.77608597174975,191.21884003630808,0.5572459354416708,0.2905711275824859,false,-0.011021823636610861,0.8997273994520469
+open,reference,open--fixed--reference,open--joint--reference,true,164.62895956028188,164.5339303570802,0.09502920320167618,0.057723260509873725,false,0.09491333628105281,0.09799888829397219
+open,exponential,open--fixed--exponential,open--joint--exponential,true,164.55188458660578,164.45666690919148,0.09521767741429699,0.057864835552328596,false,-0.0489500297715324,1.7988190853793924
+import,reference,import--fixed--reference,import--joint--reference,true,191.29619632763539,191.28769354321338,0.00850278442200647,0.004444826706038444,true,0.008448264314296239,0.00853189982271374
+import,exponential,import--fixed--exponential,import--joint--exponential,true,191.22734261284398,191.218840047429,0.008502565414971741,0.004446312592538562,false,-0.27288255156085484,0.3434244283281487
+heat_bottleneck,reference,heat_bottleneck--fixed--reference,heat_bottleneck--joint--reference,true,191.29619632763544,191.28769352390964,0.008502803725804142,0.004444836797089934,true,0.008444282957611904,0.00854730621065869
+heat_bottleneck,exponential,heat_bottleneck--fixed--exponential,heat_bottleneck--joint--exponential,true,191.22734271102377,191.2188399803863,0.008502730637474087,0.004446398991342532,false,-0.07484069266908477,0.3392149784866092

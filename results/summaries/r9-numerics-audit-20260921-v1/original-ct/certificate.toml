@@ -1,0 +1,86 @@
+schema = "r9-affine-rational-certificate-v1"
+scope = "exact binary coefficients of frozen original CF-CT model; not physical impossibility"
+
+[contradiction]
+coefficients_ieee754 = ["3ff0000000000000", "bfef87eb92263ade"]
+derived_variable = 0
+model_equation_index = 10606
+rhs_ieee754 = "40109a131006e600"
+variables = [8028, 19103]
+
+[[fixed]]
+value_ieee754 = "3fc490b9af72015e"
+variable = 17964
+
+[[steps]]
+coefficients_ieee754 = ["3ff0000000000000", "bf713404ea4a8c15"]
+derived_variable = 18048
+model_equation_index = 8760
+rhs_ieee754 = "0000000000000000"
+variables = [17964, 18048]
+[[steps]]
+coefficients_ieee754 = ["3ff0000000000000"]
+derived_variable = 9813
+model_equation_index = 14960
+rhs_ieee754 = "4076b26666666666"
+variables = [9813]
+[[steps]]
+coefficients_ieee754 = ["3ff0000000000000"]
+derived_variable = 7140
+model_equation_index = 15001
+rhs_ieee754 = "4076b26666666666"
+variables = [7140]
+[[steps]]
+coefficients_ieee754 = ["3ff0000000000000"]
+derived_variable = 12540
+model_equation_index = 15002
+rhs_ieee754 = "40741fa3353c5f99"
+variables = [12540]
+[[steps]]
+coefficients_ieee754 = ["3ff0000000000000", "bff0000000000000"]
+derived_variable = 14340
+model_equation_index = 5040
+rhs_ieee754 = "0000000000000000"
+variables = [12540, 14340]
+[[steps]]
+coefficients_ieee754 = ["3ff0000000000000", "bff0000000000000"]
+derived_variable = 8901
+model_equation_index = 6839
+rhs_ieee754 = "0000000000000000"
+variables = [8901, 9813]
+[[steps]]
+coefficients_ieee754 = ["3ff0000000000000", "bff0000000000000"]
+derived_variable = 15252
+model_equation_index = 7776
+rhs_ieee754 = "0000000000000000"
+variables = [14340, 15252]
+[[steps]]
+coefficients_ieee754 = ["bfee9a69a69a69a8", "3fee9a69a69a69a8", "3ff0000000000000"]
+derived_variable = 9852
+model_equation_index = 8759
+rhs_ieee754 = "0000000000000000"
+variables = [9852, 15252, 18048]
+[[steps]]
+coefficients_ieee754 = ["3ff0000000000000", "bff0000000000000"]
+derived_variable = 7103
+model_equation_index = 4151
+rhs_ieee754 = "0000000000000000"
+variables = [7103, 8901]
+[[steps]]
+coefficients_ieee754 = ["bff0000000000000", "3ff0000000000000"]
+derived_variable = 8940
+model_equation_index = 5952
+rhs_ieee754 = "0000000000000000"
+variables = [8940, 9852]
+[[steps]]
+coefficients_ieee754 = ["bff0000000000000", "3ff0000000000000"]
+derived_variable = 8028
+model_equation_index = 6864
+rhs_ieee754 = "0000000000000000"
+variables = [8028, 8940]
+[[steps]]
+coefficients_ieee754 = ["bfc466f119bc4670", "bfe980ad602b580c", "3fee9a69a69a69a8"]
+derived_variable = 19103
+model_equation_index = 10605
+rhs_ieee754 = "0000000000000000"
+variables = [7103, 7140, 19103]

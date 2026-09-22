@@ -1,0 +1,2522 @@
+parent_result_sha256 = "6e7dada8ee5a569d1b6b4e0c4a42c93074a3e0bd5aae186da4e1c28c2446d08f"
+
+[case]
+epsilon = 1.0
+event = "any_building_time_comfort_violation"
+name = "thermal_e100_r000"
+objective = "worst_expected_net_cost"
+origin = "synthetic"
+schema = "r5-risk-case-v1"
+
+    [case.ambiguity]
+    distance = [[0.0, 1.0, 1.0], [1.0, 0.0, 1.0], [1.0, 1.0, 0.0]]
+    distance_provenance = "Euclidean distance between one-hot labels of the three frozen full-call regimes, divided by sqrt(2); synthetic categorical trajectory metric, not calibrated from thesis samples."
+    distance_unit = "normalized_trajectory"
+    radius = 0.0
+    support = "fixed_scenarios"
+
+    [case.commitment]
+    comfort = "hard_each_scenario"
+    name = "risk_thermal_hand"
+    objective = "expected_net_cost"
+    origin = "synthetic"
+    recourse_information = "complete_trajectory"
+    schema = "r5-commitment-case-v1"
+    uncertain_fields = ["realtime.alpha_down", "realtime.alpha_up"]
+
+        [case.commitment.bounds.P_DA_MW]
+        lower = [0.0]
+        upper = [1.0]
+
+        [case.commitment.bounds.R_down_MW]
+        lower = [0.0]
+        upper = [0.08]
+
+        [case.commitment.bounds.R_up_MW]
+        lower = [0.0]
+        upper = [0.08]
+
+        [case.commitment.day_ahead]
+        down_price = [100.0]
+        energy_price = [100.0]
+        up_price = [100.0]
+
+        [[case.commitment.scenarios]]
+        case_sha256 = "1477561c30eded0196fa662f9e61b074d80d8662835eb7480bbed597f0165f2b"
+        id = "none"
+        probability = 0.5
+
+            [case.commitment.scenarios.case]
+            T = 1
+            ambient_K = [283.15]
+            dt_h = 1.0
+            name = "shared_none"
+            origin = "synthetic"
+            schema = "r5-dispatch-case-v1"
+
+                [case.commitment.scenarios.case.award]
+                P_DA_MW = [0.142]
+                R_down_MW = [0.0]
+                R_up_MW = [0.0]
+                down_price = [2.0]
+                energy_price = [100.0]
+                origin = "synthetic"
+                up_price = [5.0]
+
+                [[case.commitment.scenarios.case.buildings]]
+                COP_DH = 1.0
+                C_MWh_K = 0.01
+                G_MW_K = 0.0042
+                P_DH_max_MW = 0.0
+                R_max_K = 330.15
+                R_min_K = 303.15
+                T_initial_K = 293.15
+                T_max_K = 293.15
+                T_min_K = 293.15
+                electric_node = 2
+                heat_node = 2
+                id = "building"
+                m_kg_s = 1.0
+                terminal_rule = "free"
+
+                [[case.commitment.scenarios.case.devices]]
+                cost_USD_MWh = 0.0
+                heat_ratio = 1.0
+                id = "EB"
+                kind = "EB"
+                node = 2
+                p_max_MW = 0.1
+                p_min_MW = 0.0
+                q_max_Mvar = 0.0
+                q_min_Mvar = 0.0
+                source_id = "source"
+                [[case.commitment.scenarios.case.devices]]
+                P_initial_MW = 0.05
+                cost_USD_MWh = 130.0
+                id = "GT"
+                kind = "GT"
+                node = 2
+                p_max_MW = 0.2
+                p_min_MW = 0.0
+                q_max_Mvar = 0.0
+                q_min_Mvar = 0.0
+                ramp_down_MW_h = 1.0
+                ramp_up_MW_h = 1.0
+
+                [case.commitment.scenarios.case.electric]
+                P_load_MW = [[0.0], [0.1]]
+                Q_load_Mvar = [[0.0], [0.02]]
+                S_base_MVA = 1.0
+                nodes = 2
+                pcc_max_MW = 1.0
+                pcc_min_MW = 0.0
+                qcc_max_Mvar = 1.0
+                qcc_min_Mvar = -1.0
+                root = 1
+                v_max_pu = 1.05
+                v_min_pu = 0.95
+                v_ref_pu = 1.0
+
+                    [[case.commitment.scenarios.case.electric.lines]]
+                    P_limit_MW = 1.0
+                    Q_limit_Mvar = 1.0
+                    from = 1
+                    id = "e12"
+                    r_pu = 0.01
+                    to = 2
+                    x_pu = 0.005
+
+                [case.commitment.scenarios.case.heat]
+                R_max_K = 343.15
+                R_min_K = 293.15
+                S_max_K = 353.15
+                S_min_K = 303.15
+                c_J_kgK = 4200.0
+                nodes = 2
+                terminal_rule = "free"
+
+                    [[case.commitment.scenarios.case.heat.pipes]]
+                    area_m2 = 0.01
+                    from = 1
+                    history_R_K = [320.15]
+                    history_S_K = [330.15]
+                    id = "h12"
+                    length_m = 36.0
+                    loss_W_mK = 0.0
+                    m_kg_s = 1.0
+                    rho_kg_m3 = 1000.0
+                    to = 2
+
+                    [[case.commitment.scenarios.case.heat.sources]]
+                    T_max_K = 330.15
+                    T_min_K = 330.15
+                    id = "source"
+                    m_kg_s = 1.0
+                    node = 1
+
+                [case.commitment.scenarios.case.realtime]
+                alpha_down = [0.0]
+                alpha_up = [0.0]
+                delta = 0.0
+                penalty_USD_MWh = 1000.0
+                price = [80.0]
+
+                [case.commitment.scenarios.case.units]
+                energy = "MWh"
+                energy_price = "USD/MWh"
+                flow = "kg/s"
+                heat_capacity = "MWh/K"
+                heat_transfer = "MW/K"
+                power = "MW"
+                reactive = "Mvar"
+                reserve_price = "USD/(MW*h)"
+                temperature = "K"
+                time = "h"
+        [[case.commitment.scenarios]]
+        case_sha256 = "336d1adfae533d9d65cadf739f2c6c090d040cb14916e6b3601cc11ea067963b"
+        id = "up"
+        probability = 0.25
+
+            [case.commitment.scenarios.case]
+            T = 1
+            ambient_K = [283.15]
+            dt_h = 1.0
+            name = "shared_up"
+            origin = "synthetic"
+            schema = "r5-dispatch-case-v1"
+
+                [case.commitment.scenarios.case.award]
+                P_DA_MW = [0.142]
+                R_down_MW = [0.0]
+                R_up_MW = [0.0]
+                down_price = [2.0]
+                energy_price = [100.0]
+                origin = "synthetic"
+                up_price = [5.0]
+
+                [[case.commitment.scenarios.case.buildings]]
+                COP_DH = 1.0
+                C_MWh_K = 0.01
+                G_MW_K = 0.0042
+                P_DH_max_MW = 0.0
+                R_max_K = 330.15
+                R_min_K = 303.15
+                T_initial_K = 293.15
+                T_max_K = 293.15
+                T_min_K = 293.15
+                electric_node = 2
+                heat_node = 2
+                id = "building"
+                m_kg_s = 1.0
+                terminal_rule = "free"
+
+                [[case.commitment.scenarios.case.devices]]
+                cost_USD_MWh = 0.0
+                heat_ratio = 1.0
+                id = "EB"
+                kind = "EB"
+                node = 2
+                p_max_MW = 0.1
+                p_min_MW = 0.0
+                q_max_Mvar = 0.0
+                q_min_Mvar = 0.0
+                source_id = "source"
+                [[case.commitment.scenarios.case.devices]]
+                P_initial_MW = 0.05
+                cost_USD_MWh = 130.0
+                id = "GT"
+                kind = "GT"
+                node = 2
+                p_max_MW = 0.2
+                p_min_MW = 0.0
+                q_max_Mvar = 0.0
+                q_min_Mvar = 0.0
+                ramp_down_MW_h = 1.0
+                ramp_up_MW_h = 1.0
+
+                [case.commitment.scenarios.case.electric]
+                P_load_MW = [[0.0], [0.1]]
+                Q_load_Mvar = [[0.0], [0.02]]
+                S_base_MVA = 1.0
+                nodes = 2
+                pcc_max_MW = 1.0
+                pcc_min_MW = 0.0
+                qcc_max_Mvar = 1.0
+                qcc_min_Mvar = -1.0
+                root = 1
+                v_max_pu = 1.05
+                v_min_pu = 0.95
+                v_ref_pu = 1.0
+
+                    [[case.commitment.scenarios.case.electric.lines]]
+                    P_limit_MW = 1.0
+                    Q_limit_Mvar = 1.0
+                    from = 1
+                    id = "e12"
+                    r_pu = 0.01
+                    to = 2
+                    x_pu = 0.005
+
+                [case.commitment.scenarios.case.heat]
+                R_max_K = 343.15
+                R_min_K = 293.15
+                S_max_K = 353.15
+                S_min_K = 303.15
+                c_J_kgK = 4200.0
+                nodes = 2
+                terminal_rule = "free"
+
+                    [[case.commitment.scenarios.case.heat.pipes]]
+                    area_m2 = 0.01
+                    from = 1
+                    history_R_K = [320.15]
+                    history_S_K = [330.15]
+                    id = "h12"
+                    length_m = 36.0
+                    loss_W_mK = 0.0
+                    m_kg_s = 1.0
+                    rho_kg_m3 = 1000.0
+                    to = 2
+
+                    [[case.commitment.scenarios.case.heat.sources]]
+                    T_max_K = 330.15
+                    T_min_K = 330.15
+                    id = "source"
+                    m_kg_s = 1.0
+                    node = 1
+
+                [case.commitment.scenarios.case.realtime]
+                alpha_down = [0.0]
+                alpha_up = [1.0]
+                delta = 0.0
+                penalty_USD_MWh = 1000.0
+                price = [80.0]
+
+                [case.commitment.scenarios.case.units]
+                energy = "MWh"
+                energy_price = "USD/MWh"
+                flow = "kg/s"
+                heat_capacity = "MWh/K"
+                heat_transfer = "MW/K"
+                power = "MW"
+                reactive = "Mvar"
+                reserve_price = "USD/(MW*h)"
+                temperature = "K"
+                time = "h"
+        [[case.commitment.scenarios]]
+        case_sha256 = "1b7ab0c8a6a30608011b3bf2d4c75191b6e0b96aad26d6455e9150352ba9d231"
+        id = "down"
+        probability = 0.25
+
+            [case.commitment.scenarios.case]
+            T = 1
+            ambient_K = [283.15]
+            dt_h = 1.0
+            name = "shared_down"
+            origin = "synthetic"
+            schema = "r5-dispatch-case-v1"
+
+                [case.commitment.scenarios.case.award]
+                P_DA_MW = [0.142]
+                R_down_MW = [0.0]
+                R_up_MW = [0.0]
+                down_price = [2.0]
+                energy_price = [100.0]
+                origin = "synthetic"
+                up_price = [5.0]
+
+                [[case.commitment.scenarios.case.buildings]]
+                COP_DH = 1.0
+                C_MWh_K = 0.01
+                G_MW_K = 0.0042
+                P_DH_max_MW = 0.0
+                R_max_K = 330.15
+                R_min_K = 303.15
+                T_initial_K = 293.15
+                T_max_K = 293.15
+                T_min_K = 293.15
+                electric_node = 2
+                heat_node = 2
+                id = "building"
+                m_kg_s = 1.0
+                terminal_rule = "free"
+
+                [[case.commitment.scenarios.case.devices]]
+                cost_USD_MWh = 0.0
+                heat_ratio = 1.0
+                id = "EB"
+                kind = "EB"
+                node = 2
+                p_max_MW = 0.1
+                p_min_MW = 0.0
+                q_max_Mvar = 0.0
+                q_min_Mvar = 0.0
+                source_id = "source"
+                [[case.commitment.scenarios.case.devices]]
+                P_initial_MW = 0.05
+                cost_USD_MWh = 130.0
+                id = "GT"
+                kind = "GT"
+                node = 2
+                p_max_MW = 0.2
+                p_min_MW = 0.0
+                q_max_Mvar = 0.0
+                q_min_Mvar = 0.0
+                ramp_down_MW_h = 1.0
+                ramp_up_MW_h = 1.0
+
+                [case.commitment.scenarios.case.electric]
+                P_load_MW = [[0.0], [0.1]]
+                Q_load_Mvar = [[0.0], [0.02]]
+                S_base_MVA = 1.0
+                nodes = 2
+                pcc_max_MW = 1.0
+                pcc_min_MW = 0.0
+                qcc_max_Mvar = 1.0
+                qcc_min_Mvar = -1.0
+                root = 1
+                v_max_pu = 1.05
+                v_min_pu = 0.95
+                v_ref_pu = 1.0
+
+                    [[case.commitment.scenarios.case.electric.lines]]
+                    P_limit_MW = 1.0
+                    Q_limit_Mvar = 1.0
+                    from = 1
+                    id = "e12"
+                    r_pu = 0.01
+                    to = 2
+                    x_pu = 0.005
+
+                [case.commitment.scenarios.case.heat]
+                R_max_K = 343.15
+                R_min_K = 293.15
+                S_max_K = 353.15
+                S_min_K = 303.15
+                c_J_kgK = 4200.0
+                nodes = 2
+                terminal_rule = "free"
+
+                    [[case.commitment.scenarios.case.heat.pipes]]
+                    area_m2 = 0.01
+                    from = 1
+                    history_R_K = [320.15]
+                    history_S_K = [330.15]
+                    id = "h12"
+                    length_m = 36.0
+                    loss_W_mK = 0.0
+                    m_kg_s = 1.0
+                    rho_kg_m3 = 1000.0
+                    to = 2
+
+                    [[case.commitment.scenarios.case.heat.sources]]
+                    T_max_K = 330.15
+                    T_min_K = 330.15
+                    id = "source"
+                    m_kg_s = 1.0
+                    node = 1
+
+                [case.commitment.scenarios.case.realtime]
+                alpha_down = [1.0]
+                alpha_up = [0.0]
+                delta = 0.0
+                penalty_USD_MWh = 1000.0
+                price = [80.0]
+
+                [case.commitment.scenarios.case.units]
+                energy = "MWh"
+                energy_price = "USD/MWh"
+                flow = "kg/s"
+                heat_capacity = "MWh/K"
+                heat_transfer = "MW/K"
+                power = "MW"
+                reactive = "Mvar"
+                reserve_price = "USD/(MW*h)"
+                temperature = "K"
+                time = "h"
+
+    [case.temperature_domain.building]
+    lower_K = 292.15
+    upper_K = 294.15
+
+[result]
+bound_source = "minimum_certified_branch_bounds"
+bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+budget_sec = 60.0
+case_sha256 = "325503066e25e3a3d7db5a4c0e7e5320e06a9a1b9ffc44406e5c7692d05f9b12"
+cost_optimization_complete = true
+created_utc = "2026-09-19T00:53:59.716"
+elapsed_sec = 0.3840000629425049
+has_candidate = true
+julia_version = "1.12.6"
+method = "enumeration"
+model_type = "continuous_LP"
+model_types = ["AffExpr in MathOptInterface.EqualTo{Float64}", "AffExpr in MathOptInterface.GreaterThan{Float64}", "AffExpr in MathOptInterface.LessThan{Float64}", "VariableRef in MathOptInterface.GreaterThan{Float64}"]
+objective_type = "worst_expected_IES_net_cost_fixed_prices"
+primal_status = "FEASIBLE_POINT"
+raw_status = "SOLVED"
+run_id = "r5-risk-enum-f86afcc5-1af2-4b7b-9189-8354b2b5818b"
+schema = "r5-risk-result-v1"
+selected_branch_run_id = "r5-risk-eade19f3-d17a-4c43-923d-ed0dcb0088f8"
+solver = "Clarabel"
+solver_objective = -0.1834499999984701
+solver_objective_bound = -0.18345000001420644
+solver_version = "0.11.1"
+status = "enumeration_complete"
+termination = "OPTIMAL"
+version = "r5_finite_support_checked_v1"
+z = [1.0, 1.0, 1.0]
+
+    [[result.branches]]
+    bound_source = "MOI.DualObjectiveValue"
+    bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+    budget_sec = 60.0
+    case_sha256 = "325503066e25e3a3d7db5a4c0e7e5320e06a9a1b9ffc44406e5c7692d05f9b12"
+    cost_optimization_complete = true
+    created_utc = "2026-09-19T00:53:59.425"
+    has_candidate = true
+    julia_version = "1.12.6"
+    method = "direct"
+    model_type = "continuous_LP"
+    model_types = ["AffExpr in MathOptInterface.EqualTo{Float64}", "AffExpr in MathOptInterface.GreaterThan{Float64}", "AffExpr in MathOptInterface.LessThan{Float64}", "VariableRef in MathOptInterface.GreaterThan{Float64}"]
+    objective_type = "worst_expected_IES_net_cost_fixed_prices"
+    pattern = [0, 0, 0]
+    primal_status = "FEASIBLE_POINT"
+    raw_status = "SOLVED"
+    run_id = "r5-risk-bc970bbc-4ef7-43c1-a474-f0d2920ba8c7"
+    schema = "r5-risk-result-v1"
+    solver = "Clarabel"
+    solver_objective = 2.085000000002017
+    solver_objective_bound = 2.084999999903197
+    solver_version = "0.11.1"
+    status = "solver_optimal"
+    termination = "OPTIMAL"
+    version = "r5_finite_support_checked_v1"
+    z = [0.0, 0.0, 0.0]
+
+        [result.branches.embedded_duals.cost]
+        lambda = 25.97105664338211
+        nu = [8.060000000044344, 12.060000000028383, 4.9600000000280815]
+
+        [result.branches.embedded_duals.risk]
+        lambda = 2.4591184750732675
+        nu = [0.5338690761287983, 0.89608293824382, 0.89608293824382]
+
+        [result.branches.first_stage]
+        P_DA_MW = [0.07999999999966831]
+        R_down_MW = [0.06200000000034028]
+        R_up_MW = [0.07999999999967074]
+
+        [result.branches.oracles.actual]
+        budget_sec = 59.9689998626709
+        elapsed_sec = 0.003999948501586914
+        lambda = 0.3865933004709404
+        nu = [-8.906861301122584e-13, 1.8392450647314544e-12, 1.8392450647312586e-12]
+        quantity = "probability"
+        schema = "r5-transport-witness-v1"
+        status = "solver_optimal"
+        transport = [[0.5000000000017871, 2.845960916342151e-13, 2.845960916341612e-13], [-8.935348940322984e-13, 0.24999999999943082, 2.845960916341612e-13], [-8.935348940322593e-13, 2.845960916342151e-13, 0.24999999999943082]]
+
+            [result.branches.oracles.actual.dual_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 4.74279467309549e-13
+            solver_objective_bound = 0.0
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+            [result.branches.oracles.actual.primal_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = -0.0
+            solver_objective_bound = 4.742773910863336e-13
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+        [result.branches.oracles.cost]
+        budget_sec = 59.978999853134155
+        elapsed_sec = 0.004999876022338867
+        lambda = 8.09023890793002
+        nu = [8.060000000057135, 12.060000000087866, 4.960000000069982]
+        quantity = "cost"
+        schema = "r5-transport-witness-v1"
+        status = "solver_optimal"
+        transport = [[0.4999999999961456, -1.5904923369433989e-12, 9.643561440963374e-13], [5.048125662435193e-12, 0.2500000000032524, -1.490949902784523e-12], [-1.1937010540604497e-12, -1.662026460934386e-12, 0.2500000000005265]]
+
+            [result.branches.oracles.cost.dual_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 8.28500000006803
+            solver_objective_bound = 8.285000000266855
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+            [result.branches.oracles.cost.primal_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 8.285000000073252
+            solver_objective_bound = 8.28500000006803
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+        [result.branches.oracles.risk]
+        budget_sec = 59.973999977111816
+        elapsed_sec = 0.005000114440917969
+        lambda = 0.3865933004709404
+        nu = [-8.906861301122584e-13, 1.8392450647314544e-12, 1.8392450647312586e-12]
+        quantity = "probability"
+        schema = "r5-transport-witness-v1"
+        status = "solver_optimal"
+        transport = [[0.5000000000017871, 2.845960916342151e-13, 2.845960916341612e-13], [-8.935348940322984e-13, 0.24999999999943082, 2.845960916341612e-13], [-8.935348940322593e-13, 2.845960916342151e-13, 0.24999999999943082]]
+
+            [result.branches.oracles.risk.dual_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 4.74279467309549e-13
+            solver_objective_bound = 0.0
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+            [result.branches.oracles.risk.primal_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = -0.0
+            solver_objective_bound = 4.742773910863336e-13
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+        [result.branches.scenarios.down]
+        case_sha256 = "9a34fcbfa7280724425775a1d1f11365aa024c98ca3a7441edbd9ebe9229f6da"
+        run_id = "r5-risk-bc970bbc-4ef7-43c1-a474-f0d2920ba8c7/down"
+        schema = "r5-dispatch-result-v1"
+        solver_objective = -1.240000000007769
+        status = "embedded_risk_policy"
+        version = "r5_dispatch_checked_v1"
+
+            [result.branches.scenarios.down.values]
+            H_D = [[0.04199999999999869]]
+            P_DER = [[0.04199999999999894], [5.804251669310844e-16]]
+            P_DH = [[3.5309865893193165e-17]]
+            P_PCC = [[0.14199999999999857]]
+            P_line = [[0.14199999999999846]]
+            Q_DER = [[3.2823107012126593e-18], [3.2823107012126593e-18]]
+            Q_PCC = [[0.019999999999999997]]
+            Q_line = [[0.019999999999999997]]
+            delivery = [[-0.062000000000330305]]
+            mismatch = [[1.633408172333707e-18]]
+            v = [[1.0], [0.9984800000000001]]
+            "τ_IN" = [[293.15]]
+            "τ_R" = [[320.15000000000026], [320.15000000000026]]
+            "τ_S" = [[330.15], [330.15]]
+            "τ_load_R" = [[320.15000000000026]]
+            "τ_pipe_R" = [[320.15000000000026]]
+            "τ_pipe_S" = [[330.15]]
+            "τ_src" = [[330.15]]
+
+        [result.branches.scenarios.none]
+        case_sha256 = "d8a41908d5b6c445f6a860326d85eef6e7f356d5be9e505fac70226e6397fc72"
+        run_id = "r5-risk-bc970bbc-4ef7-43c1-a474-f0d2920ba8c7/none"
+        schema = "r5-dispatch-result-v1"
+        solver_objective = 1.8600000000087125
+        status = "embedded_risk_policy"
+        version = "r5_dispatch_checked_v1"
+
+            [result.branches.scenarios.none.values]
+            H_D = [[0.041999999999998906]]
+            P_DER = [[0.041999999999998996], [0.06200000000033062]]
+            P_DH = [[8.224746346570887e-18]]
+            P_PCC = [[0.07999999999966836]]
+            P_line = [[0.0799999999996684]]
+            Q_DER = [[3.824291179411767e-18], [3.824291179411767e-18]]
+            Q_PCC = [[0.019999999999999993]]
+            Q_line = [[0.019999999999999993]]
+            delivery = [[-4.692501049680934e-17]]
+            mismatch = [[4.747005636307902e-19]]
+            v = [[1.0], [0.9991000000000033]]
+            "τ_IN" = [[293.15]]
+            "τ_R" = [[320.1500000000002], [320.15000000000026]]
+            "τ_S" = [[330.15], [330.15]]
+            "τ_load_R" = [[320.15000000000026]]
+            "τ_pipe_R" = [[320.1500000000002]]
+            "τ_pipe_S" = [[330.15]]
+            "τ_src" = [[330.15]]
+
+        [result.branches.scenarios.up]
+        case_sha256 = "484346ee759137ec72cc905b4829226c5f02f9aa58655773818cc2a3aa9702ed"
+        run_id = "r5-risk-bc970bbc-4ef7-43c1-a474-f0d2920ba8c7/up"
+        schema = "r5-dispatch-result-v1"
+        solver_objective = 5.859999999991906
+        status = "embedded_risk_policy"
+        version = "r5_dispatch_checked_v1"
+
+            [result.branches.scenarios.up.values]
+            H_D = [[0.041999999999998976]]
+            P_DER = [[0.04199999999999883], [0.1419999999999949]]
+            P_DH = [[1.473423216127662e-17]]
+            P_PCC = [[3.966938899277454e-15]]
+            P_line = [[3.95747600847408e-15]]
+            Q_DER = [[4.153879139788736e-18], [4.153879139788736e-18]]
+            Q_PCC = [[0.019999999999999993]]
+            Q_line = [[0.019999999999999993]]
+            delivery = [[0.07999999999966441]]
+            mismatch = [[-6.2398831207237e-18]]
+            v = [[1.0], [0.9999]]
+            "τ_IN" = [[293.15]]
+            "τ_R" = [[320.15000000000026], [320.1500000000002]]
+            "τ_S" = [[330.15], [330.15]]
+            "τ_load_R" = [[320.1500000000002]]
+            "τ_pipe_R" = [[320.15000000000026]]
+            "τ_pipe_S" = [[330.15]]
+            "τ_src" = [[330.15]]
+    [[result.branches]]
+    bound_source = "MOI.DualObjectiveValue"
+    bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+    budget_sec = 59.95899987220764
+    case_sha256 = "325503066e25e3a3d7db5a4c0e7e5320e06a9a1b9ffc44406e5c7692d05f9b12"
+    cost_optimization_complete = true
+    created_utc = "2026-09-19T00:53:59.466"
+    has_candidate = true
+    julia_version = "1.12.6"
+    method = "direct"
+    model_type = "continuous_LP"
+    model_types = ["AffExpr in MathOptInterface.EqualTo{Float64}", "AffExpr in MathOptInterface.GreaterThan{Float64}", "AffExpr in MathOptInterface.LessThan{Float64}", "VariableRef in MathOptInterface.GreaterThan{Float64}"]
+    objective_type = "worst_expected_IES_net_cost_fixed_prices"
+    pattern = [1, 0, 0]
+    primal_status = "FEASIBLE_POINT"
+    raw_status = "SOLVED"
+    run_id = "r5-risk-73fbadc4-9a49-40ac-83ba-c4257ebb7a77"
+    schema = "r5-risk-result-v1"
+    solver = "Clarabel"
+    solver_objective = 1.2543000000003826
+    solver_objective_bound = 1.2542999999899918
+    solver_version = "0.11.1"
+    status = "solver_optimal"
+    termination = "OPTIMAL"
+    version = "r5_finite_support_checked_v1"
+    z = [1.0, 0.0, 0.0]
+
+        [result.branches.embedded_duals.cost]
+        lambda = 25.249987313135236
+        nu = [6.398600000002693, 12.060000000001436, 4.960000000001439]
+
+        [result.branches.embedded_duals.risk]
+        lambda = 2.770164095894534
+        nu = [1.1654458559689778, 0.5612730357835778, 0.5612730357835782]
+
+        [result.branches.first_stage]
+        P_DA_MW = [0.07999999999998254]
+        R_down_MW = [0.062000000000016806]
+        R_up_MW = [0.07999999999998256]
+
+        [result.branches.oracles.actual]
+        budget_sec = 59.924999952316284
+        elapsed_sec = 0.003999948501586914
+        lambda = 1.4819990228541555
+        nu = [1.0000000000031208, -6.847091809409711e-13, -6.84709180941015e-13]
+        quantity = "probability"
+        schema = "r5-transport-witness-v1"
+        status = "solver_optimal"
+        transport = [[0.5000000000013044, 5.718342347982689e-14, 5.718342347981813e-14], [-6.521659408359865e-13, 0.25000000000017836, -2.355072668876157e-13], [-6.521659408330114e-13, -2.3550726688764194e-13, 0.25000000000017836]]
+
+            [result.branches.oracles.actual.dual_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 0.5000000000012181
+            solver_objective_bound = 0.5000000000051364
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+            [result.branches.oracles.actual.primal_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 0.5000000000014189
+            solver_objective_bound = 0.5000000000012181
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+        [result.branches.oracles.cost]
+        budget_sec = 59.93599987030029
+        elapsed_sec = 0.004999876022338867
+        lambda = 7.963304700881424
+        nu = [6.398600000003978, 12.060000000009884, 4.96000000001681]
+        quantity = "cost"
+        schema = "r5-transport-witness-v1"
+        status = "solver_optimal"
+        transport = [[0.5000000000382219, -2.5374668390241853e-11, -5.450720482176664e-12], [-3.317240824228377e-11, 0.2500000000500351, 9.967607996749061e-11], [-5.04964423310735e-12, -2.466195317874634e-11, 0.24999999990577165]]
+
+            [result.branches.oracles.cost.dual_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 7.454300000008662
+            solver_objective_bound = 7.454300000039815
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+            [result.branches.oracles.cost.primal_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 7.454300000840301
+            solver_objective_bound = 7.454300000642391
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+        [result.branches.oracles.risk]
+        budget_sec = 59.930999994277954
+        elapsed_sec = 0.006000041961669922
+        lambda = 1.4819990228541555
+        nu = [1.0000000000031208, -6.847091809409711e-13, -6.84709180941015e-13]
+        quantity = "probability"
+        schema = "r5-transport-witness-v1"
+        status = "solver_optimal"
+        transport = [[0.5000000000013044, 5.718342347982689e-14, 5.718342347981813e-14], [-6.521659408359865e-13, 0.25000000000017836, -2.355072668876157e-13], [-6.521659408330114e-13, -2.3550726688764194e-13, 0.25000000000017836]]
+
+            [result.branches.oracles.risk.dual_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 0.5000000000012181
+            solver_objective_bound = 0.5000000000051364
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+            [result.branches.oracles.risk.primal_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 0.5000000000014189
+            solver_objective_bound = 0.5000000000012181
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+        [result.branches.scenarios.down]
+        case_sha256 = "3971c181c16af8d8d6d7a45d3b153ccedcc4afb940c705ddfb6c7147637586d1"
+        run_id = "r5-risk-73fbadc4-9a49-40ac-83ba-c4257ebb7a77/down"
+        schema = "r5-dispatch-result-v1"
+        solver_objective = -1.2400000000003653
+        status = "embedded_risk_policy"
+        version = "r5_dispatch_checked_v1"
+
+            [result.branches.scenarios.down.values]
+            H_D = [[0.041999999999998906]]
+            P_DER = [[0.04199999999999887], [1.352492603622526e-16]]
+            P_DH = [[9.773925891641254e-18]]
+            P_PCC = [[0.14199999999999877]]
+            P_line = [[0.14199999999999877]]
+            Q_DER = [[1.5010243444706563e-19], [1.5010243444706563e-19]]
+            Q_PCC = [[0.02]]
+            Q_line = [[0.02]]
+            delivery = [[-0.06200000000001624]]
+            mismatch = [[-8.40418331069032e-19]]
+            v = [[1.0], [0.9984800000000001]]
+            "τ_IN" = [[293.15]]
+            "τ_R" = [[320.15000000000026], [320.15000000000026]]
+            "τ_S" = [[330.15000000000003], [330.15000000000003]]
+            "τ_load_R" = [[320.15000000000026]]
+            "τ_pipe_R" = [[320.15000000000026]]
+            "τ_pipe_S" = [[330.15000000000003]]
+            "τ_src" = [[330.15000000000003]]
+
+        [result.branches.scenarios.none]
+        case_sha256 = "620f233de3fc8d03405afd196d17e4d0d8604008fc9b6c387d51c56baa2013d2"
+        run_id = "r5-risk-73fbadc4-9a49-40ac-83ba-c4257ebb7a77/none"
+        schema = "r5-dispatch-result-v1"
+        solver_objective = 0.1986000000008783
+        status = "embedded_risk_policy"
+        version = "r5_dispatch_checked_v1"
+
+            [result.branches.scenarios.none.values]
+            H_D = [[0.027800000000002625]]
+            P_DER = [[0.029220000000002255], [0.049220000000019686]]
+            P_DH = [[6.03519637988335e-18]]
+            P_PCC = [[0.07999999999998257]]
+            P_line = [[0.07999999999998259]]
+            Q_DER = [[1.6899134804640089e-19], [1.6899134804640089e-19]]
+            Q_PCC = [[0.020000000000000004]]
+            Q_line = [[0.020000000000000004]]
+            delivery = [[-3.1502207337273036e-17]]
+            mismatch = [[-1.9168246173886295e-18]]
+            v = [[1.0], [0.9991000000000001]]
+            "τ_IN" = [[292.15000000000026]]
+            "τ_R" = [[323.1928571428566], [323.53095238095176]]
+            "τ_S" = [[330.15000000000003], [330.15000000000003]]
+            "τ_load_R" = [[323.53095238095176]]
+            "τ_pipe_R" = [[323.1928571428566]]
+            "τ_pipe_S" = [[330.15000000000003]]
+            "τ_src" = [[330.15000000000003]]
+
+        [result.branches.scenarios.up]
+        case_sha256 = "028ab7ed444c971536d41ecbe619beeacf34cd146e881929054e2214d55e4ed9"
+        run_id = "r5-risk-73fbadc4-9a49-40ac-83ba-c4257ebb7a77/up"
+        schema = "r5-dispatch-result-v1"
+        solver_objective = 5.8599999999995465
+        status = "embedded_risk_policy"
+        version = "r5_dispatch_checked_v1"
+
+            [result.branches.scenarios.up.values]
+            H_D = [[0.041999999999998865]]
+            P_DER = [[0.04199999999999898], [0.1419999999999983]]
+            P_DH = [[7.149840623479781e-18]]
+            P_PCC = [[7.185148907062626e-16]]
+            P_line = [[7.139995553164051e-16]]
+            Q_DER = [[1.8187982322754412e-19], [1.8187982322754412e-19]]
+            Q_PCC = [[0.020000000000000004]]
+            Q_line = [[0.020000000000000004]]
+            delivery = [[0.07999999999998184]]
+            mismatch = [[-1.5493350314036108e-18]]
+            v = [[1.0], [0.9999000000000001]]
+            "τ_IN" = [[293.15]]
+            "τ_R" = [[320.15000000000026], [320.15000000000026]]
+            "τ_S" = [[330.15000000000003], [330.15000000000003]]
+            "τ_load_R" = [[320.15000000000026]]
+            "τ_pipe_R" = [[320.15000000000026]]
+            "τ_pipe_S" = [[330.15000000000003]]
+            "τ_src" = [[330.15000000000003]]
+    [[result.branches]]
+    bound_source = "MOI.DualObjectiveValue"
+    bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+    budget_sec = 59.91499996185303
+    case_sha256 = "325503066e25e3a3d7db5a4c0e7e5320e06a9a1b9ffc44406e5c7692d05f9b12"
+    cost_optimization_complete = true
+    created_utc = "2026-09-19T00:53:59.510"
+    has_candidate = true
+    julia_version = "1.12.6"
+    method = "direct"
+    model_type = "continuous_LP"
+    model_types = ["AffExpr in MathOptInterface.EqualTo{Float64}", "AffExpr in MathOptInterface.GreaterThan{Float64}", "AffExpr in MathOptInterface.LessThan{Float64}", "VariableRef in MathOptInterface.GreaterThan{Float64}"]
+    objective_type = "worst_expected_IES_net_cost_fixed_prices"
+    pattern = [0, 1, 0]
+    primal_status = "FEASIBLE_POINT"
+    raw_status = "SOLVED"
+    run_id = "r5-risk-3210ce00-a19c-4c7d-b6b3-41df6040d2cd"
+    schema = "r5-risk-result-v1"
+    solver = "Clarabel"
+    solver_objective = 1.669650000000484
+    solver_objective_bound = 1.6696499999929246
+    solver_version = "0.11.1"
+    status = "solver_optimal"
+    termination = "OPTIMAL"
+    version = "r5_finite_support_checked_v1"
+    z = [0.0, 1.0, 0.0]
+
+        [result.branches.embedded_duals.cost]
+        lambda = 25.629568780765975
+        nu = [8.059999999999762, 10.39859999999963, 4.95999999999893]
+
+        [result.branches.embedded_duals.risk]
+        lambda = 2.7416521369073292
+        nu = [0.41951974850790286, 1.5234099512577899, 0.7651136290834001]
+
+        [result.branches.first_stage]
+        P_DA_MW = [0.07999999999998536]
+        R_down_MW = [0.061999999999990396]
+        R_up_MW = [0.07999999999998535]
+
+        [result.branches.oracles.actual]
+        budget_sec = 59.88499999046326
+        elapsed_sec = 0.003999948501586914
+        lambda = 1.456934959811998
+        nu = [-9.118109258909878e-12, 1.0000000000630391, 3.8111696473519957e-11]
+        quantity = "probability"
+        schema = "r5-transport-witness-v1"
+        status = "solver_optimal"
+        transport = [[0.5000000000073932, -7.296358979130264e-12, -1.6696710135831347e-12], [-6.110718598012305e-12, 0.25000000001459266, 1.2868383443574747e-11], [-1.2824601484846393e-12, -7.296358979130264e-12, 0.2499999999888012]]
+
+            [result.branches.oracles.actual.dual_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 0.25000000002072864
+            solver_objective_bound = 0.2500000000509484
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+            [result.branches.oracles.actual.primal_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 0.2500000000213503
+            solver_objective_bound = 0.25000000002072864
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+        [result.branches.oracles.cost]
+        budget_sec = 59.894999980926514
+        elapsed_sec = 0.006000041961669922
+        lambda = 6.216862675877812
+        nu = [8.060000000012321, 10.398600000051049, 4.960000000002483]
+        quantity = "cost"
+        schema = "r5-transport-witness-v1"
+        status = "solver_optimal"
+        transport = [[0.49999999999858963, -1.4119556360742123e-12, 7.659194743743397e-13], [2.541780958866658e-12, 0.25000000000292216, 5.662718900963469e-14], [-1.1314613507205425e-12, -1.5103713331036283e-12, 0.24999999999917746]]
+
+            [result.branches.oracles.cost.dual_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 7.8696500000195435
+            solver_objective_bound = 7.869650000208027
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+            [result.branches.oracles.cost.primal_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 7.86965000002471
+            solver_objective_bound = 7.869650000019544
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+        [result.branches.oracles.risk]
+        budget_sec = 59.888999938964844
+        elapsed_sec = 0.003999948501586914
+        lambda = 1.456934959811998
+        nu = [-9.118109258909878e-12, 1.0000000000630391, 3.8111696473519957e-11]
+        quantity = "probability"
+        schema = "r5-transport-witness-v1"
+        status = "solver_optimal"
+        transport = [[0.5000000000073932, -7.296358979130264e-12, -1.6696710135831347e-12], [-6.110718598012305e-12, 0.25000000001459266, 1.2868383443574747e-11], [-1.2824601484846393e-12, -7.296358979130264e-12, 0.2499999999888012]]
+
+            [result.branches.oracles.risk.dual_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 0.25000000002072864
+            solver_objective_bound = 0.2500000000509484
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+            [result.branches.oracles.risk.primal_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 0.2500000000213503
+            solver_objective_bound = 0.25000000002072864
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+        [result.branches.scenarios.down]
+        case_sha256 = "32de6f25dd322b0d9f683cb552e6b5a306acd291907e794d2af11f6e4286aa76"
+        run_id = "r5-risk-3210ce00-a19c-4c7d-b6b3-41df6040d2cd/down"
+        schema = "r5-dispatch-result-v1"
+        solver_objective = -1.2400000000002525
+        status = "embedded_risk_policy"
+        version = "r5_dispatch_checked_v1"
+
+            [result.branches.scenarios.down.values]
+            H_D = [[0.04199999999997906]]
+            P_DER = [[0.041999999999966814], [1.8568884715706945e-16]]
+            P_DH = [[3.243074106984879e-15]]
+            P_PCC = [[0.1419999999999699]]
+            P_line = [[0.14199999999996987]]
+            Q_DER = [[7.463412196790965e-20], [7.463412196790965e-20]]
+            Q_PCC = [[0.02]]
+            Q_line = [[0.02]]
+            delivery = [[-0.06199999999998453]]
+            mismatch = [[-1.1449689518176844e-18]]
+            v = [[1.0], [0.9984800000000004]]
+            "τ_IN" = [[293.15]]
+            "τ_R" = [[320.1500000000078], [320.15000000000873]]
+            "τ_S" = [[330.15], [330.15]]
+            "τ_load_R" = [[320.15000000000873]]
+            "τ_pipe_R" = [[320.1500000000078]]
+            "τ_pipe_S" = [[330.15]]
+            "τ_src" = [[330.1499999999999]]
+
+        [result.branches.scenarios.none]
+        case_sha256 = "e4809b4e4b37457f4b887b144c56ac916396e063a73c370335cb5f33deac0efc"
+        run_id = "r5-risk-3210ce00-a19c-4c7d-b6b3-41df6040d2cd/none"
+        schema = "r5-dispatch-result-v1"
+        solver_objective = 1.860000000000607
+        status = "embedded_risk_policy"
+        version = "r5_dispatch_checked_v1"
+
+            [result.branches.scenarios.none.values]
+            H_D = [[0.04199999999998731]]
+            P_DER = [[0.0419999999999794], [0.06199999999999728]]
+            P_DH = [[3.2399907490424797e-15]]
+            P_PCC = [[0.0799999999999854]]
+            P_line = [[0.0799999999999854]]
+            Q_DER = [[8.048409828045745e-20], [8.048409828045745e-20]]
+            Q_PCC = [[0.02]]
+            Q_line = [[0.02]]
+            delivery = [[-3.299888588241042e-17]]
+            mismatch = [[-2.744628128264492e-18]]
+            v = [[1.0], [0.9991000000000001]]
+            "τ_IN" = [[293.15]]
+            "τ_R" = [[320.1500000000049], [320.15000000000543]]
+            "τ_S" = [[330.15], [330.15]]
+            "τ_load_R" = [[320.15000000000543]]
+            "τ_pipe_R" = [[320.1500000000049]]
+            "τ_pipe_S" = [[330.15]]
+            "τ_src" = [[330.1499999999999]]
+
+        [result.branches.scenarios.up]
+        case_sha256 = "ab1d9dbdfdf4f808aed72514740b28f71e59748c70597e3888a4378d20217184"
+        run_id = "r5-risk-3210ce00-a19c-4c7d-b6b3-41df6040d2cd/up"
+        schema = "r5-dispatch-result-v1"
+        solver_objective = 4.198600000000392
+        status = "embedded_risk_policy"
+        version = "r5_dispatch_checked_v1"
+
+            [result.branches.scenarios.up.values]
+            H_D = [[0.027799999999981437]]
+            P_DER = [[0.029219999999983638], [0.12921999999998615]]
+            P_DH = [[3.2751457418625577e-15]]
+            P_PCC = [[8.052090956432469e-16]]
+            P_line = [[7.693986248583676e-16]]
+            Q_DER = [[8.488667186362644e-20], [8.488667186362644e-20]]
+            Q_PCC = [[0.02]]
+            Q_line = [[0.02]]
+            delivery = [[0.0799999999999846]]
+            mismatch = [[-2.254574248259893e-18]]
+            v = [[1.0], [0.9999]]
+            "τ_IN" = [[292.15000000000003]]
+            "τ_R" = [[323.19285714286104], [323.53095238095665]]
+            "τ_S" = [[330.15], [330.15]]
+            "τ_load_R" = [[323.53095238095665]]
+            "τ_pipe_R" = [[323.19285714286104]]
+            "τ_pipe_S" = [[330.15]]
+            "τ_src" = [[330.1499999999999]]
+    [[result.branches]]
+    bound_source = "MOI.DualObjectiveValue"
+    bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+    budget_sec = 59.875
+    case_sha256 = "325503066e25e3a3d7db5a4c0e7e5320e06a9a1b9ffc44406e5c7692d05f9b12"
+    cost_optimization_complete = true
+    created_utc = "2026-09-19T00:53:59.550"
+    has_candidate = true
+    julia_version = "1.12.6"
+    method = "direct"
+    model_type = "continuous_LP"
+    model_types = ["AffExpr in MathOptInterface.EqualTo{Float64}", "AffExpr in MathOptInterface.GreaterThan{Float64}", "AffExpr in MathOptInterface.LessThan{Float64}", "VariableRef in MathOptInterface.GreaterThan{Float64}"]
+    objective_type = "worst_expected_IES_net_cost_fixed_prices"
+    pattern = [1, 1, 0]
+    primal_status = "FEASIBLE_POINT"
+    raw_status = "SOLVED"
+    run_id = "r5-risk-7450cefb-677f-4df6-9989-2b88d81ef7a7"
+    schema = "r5-risk-result-v1"
+    solver = "Clarabel"
+    solver_objective = 0.8389500000002491
+    solver_objective_bound = 0.8389499999887394
+    solver_version = "0.11.1"
+    status = "solver_optimal"
+    termination = "OPTIMAL"
+    version = "r5_finite_support_checked_v1"
+    z = [1.0, 1.0, 0.0]
+
+        [result.branches.embedded_duals.cost]
+        lambda = 25.773291162694868
+        nu = [6.398600000001234, 10.398600000000735, 4.960000000000685]
+
+        [result.branches.embedded_duals.risk]
+        lambda = 3.124547227478661
+        nu = [1.0983416826148251, 1.2511767537066565, 0.31759770335127824]
+
+        [result.branches.first_stage]
+        P_DA_MW = [0.0799999999999918]
+        R_down_MW = [0.06200000000000751]
+        R_up_MW = [0.07999999999999152]
+
+        [result.branches.oracles.actual]
+        budget_sec = 59.84599995613098
+        elapsed_sec = 0.005000114440917969
+        lambda = 1.4546377780740127
+        nu = [1.0000000000006615, 1.0000000000019902, 1.4921973321011514e-13]
+        quantity = "probability"
+        schema = "r5-transport-witness-v1"
+        status = "solver_optimal"
+        transport = [[0.5000000000306732, -1.0938167236763716e-11, 2.3664574888851964e-11], [-1.8524238206756455e-11, 0.2500000000256602, 2.36645748888513e-11], [-1.2149115781534981e-11, -1.4722385426958672e-11, 0.2499999999526708]]
+
+            [result.branches.oracles.actual.dual_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 0.7500000000008656
+            solver_objective_bound = 0.7500000000020306
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+            [result.branches.oracles.actual.primal_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 0.7500000000742002
+            solver_objective_bound = 0.7500000000865525
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+        [result.branches.oracles.cost]
+        budget_sec = 59.85599994659424
+        elapsed_sec = 0.006000041961669922
+        lambda = 6.217472274779795
+        nu = [6.398600000002509, 10.39860000001178, 4.9600000000167075]
+        quantity = "cost"
+        schema = "r5-transport-witness-v1"
+        status = "solver_optimal"
+        transport = [[0.4999999999984222, -5.478101865717583e-13, 2.251294768638845e-14], [1.7484006568043904e-12, 0.2500000000010751, -4.844430778594163e-13], [-1.7062721634983669e-13, -5.273300444234254e-13, 0.2500000000004619]]
+
+            [result.branches.oracles.cost.dual_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 7.038950000008376
+            solver_objective_bound = 7.038950000065283
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+            [result.branches.oracles.cost.primal_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 7.038950000010737
+            solver_objective_bound = 7.038950000008377
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+        [result.branches.oracles.risk]
+        budget_sec = 59.84999990463257
+        elapsed_sec = 0.003999948501586914
+        lambda = 1.4546377780740127
+        nu = [1.0000000000006615, 1.0000000000019902, 1.4921973321011514e-13]
+        quantity = "probability"
+        schema = "r5-transport-witness-v1"
+        status = "solver_optimal"
+        transport = [[0.5000000000306732, -1.0938167236763716e-11, 2.3664574888851964e-11], [-1.8524238206756455e-11, 0.2500000000256602, 2.36645748888513e-11], [-1.2149115781534981e-11, -1.4722385426958672e-11, 0.2499999999526708]]
+
+            [result.branches.oracles.risk.dual_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 0.7500000000008656
+            solver_objective_bound = 0.7500000000020306
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+            [result.branches.oracles.risk.primal_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 0.7500000000742002
+            solver_objective_bound = 0.7500000000865525
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+        [result.branches.scenarios.down]
+        case_sha256 = "cba3b0f564f63fe35f6c99171a01d848e248ef463c0acbbc4a27d80ce6e4b242"
+        run_id = "r5-risk-7450cefb-677f-4df6-9989-2b88d81ef7a7/down"
+        schema = "r5-dispatch-result-v1"
+        solver_objective = -1.2400000000001326
+        status = "embedded_risk_policy"
+        version = "r5_dispatch_checked_v1"
+
+            [result.branches.scenarios.down.values]
+            H_D = [[0.04199999999999896]]
+            P_DER = [[0.04199999999999907], [1.4800214433544252e-16]]
+            P_DH = [[2.3272435863362595e-18]]
+            P_PCC = [[0.14199999999999893]]
+            P_line = [[0.14199999999999893]]
+            Q_DER = [[6.270560308441219e-20], [6.270560308441219e-20]]
+            Q_PCC = [[0.019999999999999997]]
+            Q_line = [[0.019999999999999997]]
+            delivery = [[-0.06200000000000713]]
+            mismatch = [[-3.410423317919541e-19]]
+            v = [[1.0], [0.9984799999999999]]
+            "τ_IN" = [[293.1499999999999]]
+            "τ_R" = [[320.15000000000015], [320.15000000000015]]
+            "τ_S" = [[330.15], [330.15]]
+            "τ_load_R" = [[320.15000000000015]]
+            "τ_pipe_R" = [[320.15000000000015]]
+            "τ_pipe_S" = [[330.15]]
+            "τ_src" = [[330.15]]
+
+        [result.branches.scenarios.none]
+        case_sha256 = "db57e5f83ef86c21da5c65300161d1fadb15e42c4c57a0b8c9d2ea4a7ee9d9f5"
+        run_id = "r5-risk-7450cefb-677f-4df6-9989-2b88d81ef7a7/none"
+        schema = "r5-dispatch-result-v1"
+        solver_objective = 0.1986000000004342
+        status = "embedded_risk_policy"
+        version = "r5_dispatch_checked_v1"
+
+            [result.branches.scenarios.none.values]
+            H_D = [[0.027800000000000817]]
+            P_DER = [[0.029220000000000718], [0.049220000000008896]]
+            P_DH = [[1.4823410620579477e-18]]
+            P_PCC = [[0.07999999999999181]]
+            P_line = [[0.07999999999999181]]
+            Q_DER = [[6.58542223942762e-20], [6.58542223942762e-20]]
+            Q_PCC = [[0.019999999999999997]]
+            Q_line = [[0.019999999999999997]]
+            delivery = [[-1.2001114749349913e-17]]
+            mismatch = [[-4.953700465415119e-20]]
+            v = [[1.0], [0.9990999999999999]]
+            "τ_IN" = [[292.1500000000001]]
+            "τ_R" = [[323.1928571428569], [323.5309523809521]]
+            "τ_S" = [[330.15], [330.15]]
+            "τ_load_R" = [[323.5309523809521]]
+            "τ_pipe_R" = [[323.1928571428569]]
+            "τ_pipe_S" = [[330.15]]
+            "τ_src" = [[330.15]]
+
+        [result.branches.scenarios.up]
+        case_sha256 = "8bd7644b5d4aca414457d437722f2dfe28acb056b2c444c8479d189427a1d40f"
+        run_id = "r5-risk-7450cefb-677f-4df6-9989-2b88d81ef7a7/up"
+        schema = "r5-dispatch-result-v1"
+        solver_objective = 4.198599999999883
+        status = "embedded_risk_policy"
+        version = "r5_dispatch_checked_v1"
+
+            [result.branches.scenarios.up.values]
+            H_D = [[0.027799999999999832]]
+            P_DER = [[0.029219999999999816], [0.12921999999999928]]
+            P_DH = [[2.326591967232298e-18]]
+            P_PCC = [[5.278824894321408e-16]]
+            P_line = [[5.269677026075016e-16]]
+            Q_DER = [[6.837135487140116e-20], [6.837135487140116e-20]]
+            Q_PCC = [[0.019999999999999997]]
+            Q_line = [[0.019999999999999997]]
+            delivery = [[0.07999999999999127]]
+            mismatch = [[-5.254777564757262e-19]]
+            v = [[1.0], [0.9998999999999999]]
+            "τ_IN" = [[292.15]]
+            "τ_R" = [[323.1928571428572], [323.5309523809524]]
+            "τ_S" = [[330.15], [330.15]]
+            "τ_load_R" = [[323.5309523809524]]
+            "τ_pipe_R" = [[323.1928571428572]]
+            "τ_pipe_S" = [[330.15]]
+            "τ_src" = [[330.15]]
+    [[result.branches]]
+    bound_source = "MOI.DualObjectiveValue"
+    bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+    budget_sec = 59.83399987220764
+    case_sha256 = "325503066e25e3a3d7db5a4c0e7e5320e06a9a1b9ffc44406e5c7692d05f9b12"
+    cost_optimization_complete = true
+    created_utc = "2026-09-19T00:53:59.591"
+    has_candidate = true
+    julia_version = "1.12.6"
+    method = "direct"
+    model_type = "continuous_LP"
+    model_types = ["AffExpr in MathOptInterface.EqualTo{Float64}", "AffExpr in MathOptInterface.GreaterThan{Float64}", "AffExpr in MathOptInterface.LessThan{Float64}", "VariableRef in MathOptInterface.GreaterThan{Float64}"]
+    objective_type = "worst_expected_IES_net_cost_fixed_prices"
+    pattern = [0, 0, 1]
+    primal_status = "FEASIBLE_POINT"
+    raw_status = "SOLVED"
+    run_id = "r5-risk-89cef417-ff77-48d7-9e0b-dd9a47c0532e"
+    schema = "r5-risk-result-v1"
+    solver = "Clarabel"
+    solver_objective = 1.0626000000006612
+    solver_objective_bound = 1.0625999999792344
+    solver_version = "0.11.1"
+    status = "solver_optimal"
+    termination = "OPTIMAL"
+    version = "r5_finite_support_checked_v1"
+    z = [0.0, 0.0, 1.0]
+
+        [result.branches.embedded_duals.cost]
+        lambda = 25.907388588389566
+        nu = [8.060000000023582, 12.06000000001526, 5.982400000015]
+
+        [result.branches.embedded_duals.risk]
+        lambda = 2.692777408919949
+        nu = [0.4369416475012597, 0.7954837495451484, 1.5684852715445128]
+
+        [result.branches.first_stage]
+        P_DA_MW = [0.07999999999982269]
+        R_down_MW = [0.07478000000018546]
+        R_up_MW = [0.07999999999982417]
+
+        [result.branches.oracles.actual]
+        budget_sec = 59.8050000667572
+        elapsed_sec = 0.005000114440917969
+        lambda = 1.4569349546378132
+        nu = [-9.118110944113103e-12, 3.811169453010412e-11, 1.0000000000630394]
+        quantity = "probability"
+        schema = "r5-transport-witness-v1"
+        status = "solver_optimal"
+        transport = [[0.5000000000073933, -1.6696694518121168e-12, -7.296356354753776e-12], [-1.2824586481493258e-12, 0.24999999998880124, -7.296356354753915e-12], [-6.110717666821018e-12, 1.2868374616074743e-11, 0.2500000000145926]]
+
+            [result.branches.oracles.actual.dual_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 0.2500000000207287
+            solver_objective_bound = 0.2500000000509484
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+            [result.branches.oracles.actual.primal_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 0.25000000002135025
+            solver_objective_bound = 0.2500000000207286
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+        [result.branches.oracles.cost]
+        budget_sec = 59.81500005722046
+        elapsed_sec = 0.006000041961669922
+        lambda = 6.84167005385182
+        nu = [8.06000000002702, 12.060000000036554, 5.982400000044637]
+        quantity = "cost"
+        schema = "r5-transport-witness-v1"
+        status = "solver_optimal"
+        transport = [[0.49999999999786887, -9.182565219435078e-13, 2.8713356627994256e-13], [2.5515767689420395e-12, 0.25000000000182815, -3.9790089588109374e-13], [-4.2046701787266674e-13, -9.099801264930903e-13, 0.2500000000001107]]
+
+            [result.branches.oracles.cost.dual_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 8.540600000033809
+            solver_objective_bound = 8.540600000149741
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+            [result.branches.oracles.cost.primal_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 8.540600000037815
+            solver_objective_bound = 8.540600000033809
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+        [result.branches.oracles.risk]
+        budget_sec = 59.80900001525879
+        elapsed_sec = 0.003999948501586914
+        lambda = 1.4569349546378132
+        nu = [-9.118110944113103e-12, 3.811169453010412e-11, 1.0000000000630394]
+        quantity = "probability"
+        schema = "r5-transport-witness-v1"
+        status = "solver_optimal"
+        transport = [[0.5000000000073933, -1.6696694518121168e-12, -7.296356354753776e-12], [-1.2824586481493258e-12, 0.24999999998880124, -7.296356354753915e-12], [-6.110717666821018e-12, 1.2868374616074743e-11, 0.2500000000145926]]
+
+            [result.branches.oracles.risk.dual_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 0.2500000000207287
+            solver_objective_bound = 0.2500000000509484
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+            [result.branches.oracles.risk.primal_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 0.25000000002135025
+            solver_objective_bound = 0.2500000000207286
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+        [result.branches.scenarios.down]
+        case_sha256 = "7ab535024b8b10c25058475d04fef45eaaf9af9d68b53fdc5947269dbbc4675c"
+        run_id = "r5-risk-89cef417-ff77-48d7-9e0b-dd9a47c0532e/down"
+        schema = "r5-dispatch-result-v1"
+        solver_objective = -1.4956000000038543
+        status = "embedded_risk_policy"
+        version = "r5_dispatch_checked_v1"
+
+            [result.branches.scenarios.down.values]
+            H_D = [[0.056200000000014405]]
+            P_DER = [[0.05478000000000992], [8.794719076159043e-18]]
+            P_DH = [[-1.8640830361925044e-15]]
+            P_PCC = [[0.15478000000000813]]
+            P_line = [[0.1547800000000081]]
+            Q_DER = [[1.9755329216204796e-19], [1.9755329216204796e-19]]
+            Q_PCC = [[0.02]]
+            Q_line = [[0.02]]
+            delivery = [[-0.07478000000018548]]
+            mismatch = [[6.306154450960031e-19]]
+            v = [[1.0], [0.9983521999999999]]
+            "τ_IN" = [[294.1499999999998]]
+            "τ_R" = [[317.10714285714045], [316.7690476190449]]
+            "τ_S" = [[330.15], [330.15]]
+            "τ_load_R" = [[316.7690476190449]]
+            "τ_pipe_R" = [[317.10714285714045]]
+            "τ_pipe_S" = [[330.15]]
+            "τ_src" = [[330.15]]
+
+        [result.branches.scenarios.none]
+        case_sha256 = "e63c83c35395e54b96bc5252b1864b393da7d74a98aafa261de6aad5c7360c72"
+        run_id = "r5-risk-89cef417-ff77-48d7-9e0b-dd9a47c0532e/none"
+        schema = "r5-dispatch-result-v1"
+        solver_objective = 0.5820000000046051
+        status = "embedded_risk_policy"
+        version = "r5_dispatch_checked_v1"
+
+            [result.branches.scenarios.none.values]
+            H_D = [[0.042000000000000474]]
+            P_DER = [[0.042000000000003784], [0.06200000000017918]]
+            P_DH = [[-1.8800753099851545e-15]]
+            P_PCC = [[0.07999999999982271]]
+            P_line = [[0.07999999999982273]]
+            Q_DER = [[2.7142812956448175e-19], [2.7142812956448175e-19]]
+            Q_PCC = [[0.02]]
+            Q_line = [[0.02]]
+            delivery = [[-3.848418035895102e-17]]
+            mismatch = [[2.177772310674811e-18]]
+            v = [[1.0], [0.9991000000000019]]
+            "τ_IN" = [[293.1499999999999]]
+            "τ_R" = [[320.149999999999], [320.1499999999989]]
+            "τ_S" = [[330.15], [330.15]]
+            "τ_load_R" = [[320.1499999999989]]
+            "τ_pipe_R" = [[320.149999999999]]
+            "τ_pipe_S" = [[330.15]]
+            "τ_src" = [[330.15]]
+
+        [result.branches.scenarios.up]
+        case_sha256 = "ab4d0ccb66673719d7a0e515cca6b1985f501d7e76d2c3772ff90315b727b9cb"
+        run_id = "r5-risk-89cef417-ff77-48d7-9e0b-dd9a47c0532e/up"
+        schema = "r5-dispatch-result-v1"
+        solver_objective = 4.581999999996206
+        status = "embedded_risk_policy"
+        version = "r5_dispatch_checked_v1"
+
+            [result.branches.scenarios.up.values]
+            H_D = [[0.042000000000010036]]
+            P_DER = [[0.042000000000007254], [0.14200000000000582]]
+            P_DH = [[-1.878006992155443e-15]]
+            P_PCC = [[-4.661108706427975e-16]]
+            P_line = [[-4.701830201595879e-16]]
+            Q_DER = [[3.154221296921353e-19], [3.154221296921353e-19]]
+            Q_PCC = [[0.02]]
+            Q_line = [[0.02]]
+            delivery = [[0.07999999999982324]]
+            mismatch = [[1.0538464814166022e-18]]
+            v = [[1.0], [0.9998999999999999]]
+            "τ_IN" = [[293.1499999999999]]
+            "τ_R" = [[320.1499999999982], [320.149999999998]]
+            "τ_S" = [[330.15], [330.15]]
+            "τ_load_R" = [[320.149999999998]]
+            "τ_pipe_R" = [[320.1499999999982]]
+            "τ_pipe_S" = [[330.15]]
+            "τ_src" = [[330.15]]
+    [[result.branches]]
+    bound_source = "MOI.DualObjectiveValue"
+    bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+    budget_sec = 59.794999837875366
+    case_sha256 = "325503066e25e3a3d7db5a4c0e7e5320e06a9a1b9ffc44406e5c7692d05f9b12"
+    cost_optimization_complete = true
+    created_utc = "2026-09-19T00:53:59.630"
+    has_candidate = true
+    julia_version = "1.12.6"
+    method = "direct"
+    model_type = "continuous_LP"
+    model_types = ["AffExpr in MathOptInterface.EqualTo{Float64}", "AffExpr in MathOptInterface.GreaterThan{Float64}", "AffExpr in MathOptInterface.LessThan{Float64}", "VariableRef in MathOptInterface.GreaterThan{Float64}"]
+    objective_type = "worst_expected_IES_net_cost_fixed_prices"
+    pattern = [1, 0, 1]
+    primal_status = "FEASIBLE_POINT"
+    raw_status = "SOLVED"
+    run_id = "r5-risk-d0ed60aa-8e4c-40eb-92e8-3a5ed2ba1a4a"
+    schema = "r5-risk-result-v1"
+    solver = "Clarabel"
+    solver_objective = 0.23190000000044012
+    solver_objective_bound = 0.23189999999680622
+    solver_version = "0.11.1"
+    status = "solver_optimal"
+    termination = "OPTIMAL"
+    version = "r5_finite_support_checked_v1"
+    z = [1.0, 0.0, 1.0]
+
+        [result.branches.embedded_duals.cost]
+        lambda = 25.28781849986248
+        nu = [6.3986000000086936, 12.060000000005104, 5.982400000005118]
+
+        [result.branches.embedded_duals.risk]
+        lambda = 3.0098308724595877
+        nu = [1.0931397074031346, 0.319936339310643, 1.2472736252763217]
+
+        [result.branches.first_stage]
+        P_DA_MW = [0.07999999999993584]
+        R_down_MW = [0.07478000000006395]
+        R_up_MW = [0.07999999999993651]
+
+        [result.branches.oracles.actual]
+        budget_sec = 59.763999938964844
+        elapsed_sec = 0.003999948501586914
+        lambda = 1.4546386404353426
+        nu = [1.0000000000006615, 1.492380863030699e-13, 1.0000000000019904]
+        quantity = "probability"
+        schema = "r5-transport-witness-v1"
+        status = "solver_optimal"
+        transport = [[0.5000000000306732, 2.36645605806602e-11, -1.0938161491333669e-11], [-1.214910928551501e-11, 0.2499999999526708, -1.4722378705812364e-11], [-1.8524231333548883e-11, 2.36645605806602e-11, 0.2500000000256602]]
+
+            [result.branches.oracles.actual.dual_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 0.7500000000008656
+            solver_objective_bound = 0.7500000000020307
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+            [result.branches.oracles.actual.primal_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 0.7500000000742002
+            solver_objective_bound = 0.7500000000865527
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+        [result.branches.oracles.cost]
+        budget_sec = 59.7739999294281
+        elapsed_sec = 0.004999876022338867
+        lambda = 6.311851201930505
+        nu = [6.398600000017005, 12.060000000090433, 5.982400000253545]
+        quantity = "cost"
+        schema = "r5-transport-witness-v1"
+        status = "solver_optimal"
+        transport = [[0.5000000000000536, -4.9054742749230905e-12, 2.674850782643893e-12], [1.0279472221011e-12, 0.250000000009749, 5.4616743649085195e-12], [-1.0815642774725789e-12, -4.843733839477973e-12, 0.24999999999186304]]
+
+            [result.branches.oracles.cost.dual_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 7.709900000094496
+            solver_objective_bound = 7.709900000576332
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+            [result.branches.oracles.cost.primal_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 7.709900000104998
+            solver_objective_bound = 7.709900000094497
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+        [result.branches.oracles.risk]
+        budget_sec = 59.76900005340576
+        elapsed_sec = 0.005000114440917969
+        lambda = 1.4546386404353426
+        nu = [1.0000000000006615, 1.492380863030699e-13, 1.0000000000019904]
+        quantity = "probability"
+        schema = "r5-transport-witness-v1"
+        status = "solver_optimal"
+        transport = [[0.5000000000306732, 2.36645605806602e-11, -1.0938161491333669e-11], [-1.214910928551501e-11, 0.2499999999526708, -1.4722378705812364e-11], [-1.8524231333548883e-11, 2.36645605806602e-11, 0.2500000000256602]]
+
+            [result.branches.oracles.risk.dual_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 0.7500000000008656
+            solver_objective_bound = 0.7500000000020307
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+            [result.branches.oracles.risk.primal_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 0.7500000000742002
+            solver_objective_bound = 0.7500000000865527
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+        [result.branches.scenarios.down]
+        case_sha256 = "fb3fffe6f97a110f96ad9a690cf45781609780e5c3345725f78fc38b83ee5c29"
+        run_id = "r5-risk-d0ed60aa-8e4c-40eb-92e8-3a5ed2ba1a4a/down"
+        schema = "r5-dispatch-result-v1"
+        solver_objective = -1.4956000000014278
+        status = "embedded_risk_policy"
+        version = "r5_dispatch_checked_v1"
+
+            [result.branches.scenarios.down.values]
+            H_D = [[0.056199999999998654]]
+            P_DER = [[0.05477999999999867], [1.2965963332436456e-17]]
+            P_DH = [[6.8941811319887376e-18]]
+            P_PCC = [[0.15477999999999872]]
+            P_line = [[0.15477999999999867]]
+            Q_DER = [[2.2002791975804477e-19], [2.2002791975804477e-19]]
+            Q_PCC = [[0.02]]
+            Q_line = [[0.02]]
+            delivery = [[-0.0747800000000629]]
+            mismatch = [[2.5485352512576007e-19]]
+            v = [[1.0], [0.9983521999999999]]
+            "τ_IN" = [[294.1499999999999]]
+            "τ_R" = [[317.1071428571432], [316.76904761904797]]
+            "τ_S" = [[330.15], [330.15]]
+            "τ_load_R" = [[316.76904761904797]]
+            "τ_pipe_R" = [[317.1071428571432]]
+            "τ_pipe_S" = [[330.15]]
+            "τ_src" = [[330.15]]
+
+        [result.branches.scenarios.none]
+        case_sha256 = "c1eb108934313f02b1afa249437986e89f27eb875b7c4769323e5766859cd041"
+        run_id = "r5-risk-d0ed60aa-8e4c-40eb-92e8-3a5ed2ba1a4a/none"
+        schema = "r5-dispatch-result-v1"
+        solver_objective = -1.0793999999978823
+        status = "embedded_risk_policy"
+        version = "r5_dispatch_checked_v1"
+
+            [result.branches.scenarios.none.values]
+            H_D = [[0.02780000000000179]]
+            P_DER = [[0.029220000000001835], [0.04922000000006599]]
+            P_DH = [[8.266120551679753e-18]]
+            P_PCC = [[0.07999999999993587]]
+            P_line = [[0.07999999999993587]]
+            Q_DER = [[2.4946883941034577e-19], [2.4946883941034577e-19]]
+            Q_PCC = [[0.02]]
+            Q_line = [[0.02]]
+            delivery = [[-2.226346364520042e-17]]
+            mismatch = [[-8.573204730376487e-19]]
+            v = [[1.0], [0.9991000000000007]]
+            "τ_IN" = [[292.1500000000002]]
+            "τ_R" = [[323.19285714285667], [323.53095238095193]]
+            "τ_S" = [[330.15], [330.15]]
+            "τ_load_R" = [[323.53095238095193]]
+            "τ_pipe_R" = [[323.19285714285667]]
+            "τ_pipe_S" = [[330.15]]
+            "τ_src" = [[330.15]]
+
+        [result.branches.scenarios.up]
+        case_sha256 = "af580cb9d4efa78432d49bea41791552e6484349e4e44a944388bbdd82119592"
+        run_id = "r5-risk-d0ed60aa-8e4c-40eb-92e8-3a5ed2ba1a4a/up"
+        schema = "r5-dispatch-result-v1"
+        solver_objective = 4.581999999998483
+        status = "embedded_risk_policy"
+        version = "r5_dispatch_checked_v1"
+
+            [result.branches.scenarios.up.values]
+            H_D = [[0.04199999999999834]]
+            P_DER = [[0.041999999999998504], [0.14199999999999857]]
+            P_DH = [[8.089058487584344e-18]]
+            P_PCC = [[-6.258660274133969e-17]]
+            P_line = [[-6.477890914048903e-17]]
+            Q_DER = [[2.665613416915457e-19], [2.665613416915457e-19]]
+            Q_PCC = [[0.02]]
+            Q_line = [[0.02]]
+            delivery = [[0.07999999999993591]]
+            mismatch = [[-5.565964950564744e-19]]
+            v = [[1.0], [0.9999]]
+            "τ_IN" = [[293.1499999999999]]
+            "τ_R" = [[320.1500000000004], [320.1500000000004]]
+            "τ_S" = [[330.15], [330.15]]
+            "τ_load_R" = [[320.1500000000004]]
+            "τ_pipe_R" = [[320.1500000000004]]
+            "τ_pipe_S" = [[330.15]]
+            "τ_src" = [[330.15]]
+    [[result.branches]]
+    bound_source = "MOI.DualObjectiveValue"
+    bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+    budget_sec = 59.75399994850159
+    case_sha256 = "325503066e25e3a3d7db5a4c0e7e5320e06a9a1b9ffc44406e5c7692d05f9b12"
+    cost_optimization_complete = true
+    created_utc = "2026-09-19T00:53:59.671"
+    has_candidate = true
+    julia_version = "1.12.6"
+    method = "direct"
+    model_type = "continuous_LP"
+    model_types = ["AffExpr in MathOptInterface.EqualTo{Float64}", "AffExpr in MathOptInterface.GreaterThan{Float64}", "AffExpr in MathOptInterface.LessThan{Float64}", "VariableRef in MathOptInterface.GreaterThan{Float64}"]
+    objective_type = "worst_expected_IES_net_cost_fixed_prices"
+    pattern = [0, 1, 1]
+    primal_status = "FEASIBLE_POINT"
+    raw_status = "SOLVED"
+    run_id = "r5-risk-d398802f-defe-471f-b020-7d0f4f5d9243"
+    schema = "r5-risk-result-v1"
+    solver = "Clarabel"
+    solver_objective = 0.6472500000008442
+    solver_objective_bound = 0.6472499999814133
+    solver_version = "0.11.1"
+    status = "solver_optimal"
+    termination = "OPTIMAL"
+    version = "r5_finite_support_checked_v1"
+    z = [0.0, 1.0, 1.0]
+
+        [result.branches.embedded_duals.cost]
+        lambda = 25.670446232705913
+        nu = [8.060000000011376, 10.39860000000738, 5.982400000006801]
+
+        [result.branches.embedded_duals.risk]
+        lambda = 2.9313225808047103
+        nu = [0.3050720202520427, 1.4344051311301709, 1.4344051311301713]
+
+        [result.branches.first_stage]
+        P_DA_MW = [0.0799999999999144]
+        R_down_MW = [0.07478000000008367]
+        R_up_MW = [0.07999999999991464]
+
+        [result.branches.oracles.actual]
+        budget_sec = 59.72099995613098
+        elapsed_sec = 0.006000041961669922
+        lambda = 1.5718784275954534
+        nu = [1.1851468364271936e-12, 1.0000000000166631, 1.0000000000166631]
+        quantity = "probability"
+        schema = "r5-transport-witness-v1"
+        status = "solver_optimal"
+        transport = [[0.49999999999509087, -3.1738084940766183e-12, -3.1738084940841397e-12], [2.4545933577247504e-12, 0.25000000000427214, -1.0984268330691727e-12], [2.454593357724706e-12, -1.0984268330691283e-12, 0.2500000000042722]]
+
+            [result.branches.oracles.actual.dual_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 0.5000000000089241
+            solver_objective_bound = 0.5000000000390863
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+            [result.branches.oracles.actual.primal_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 0.5000000000112567
+            solver_objective_bound = 0.5000000000089242
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+        [result.branches.oracles.cost]
+        budget_sec = 59.73399996757507
+        elapsed_sec = 0.006999969482421875
+        lambda = 5.131445918277722
+        nu = [8.060000000016824, 10.398600000025903, 5.982400000008565]
+        quantity = "cost"
+        schema = "r5-transport-witness-v1"
+        status = "solver_optimal"
+        transport = [[0.49999999999864553, -7.081759653902045e-13, 1.6830147003579058e-13], [1.850729534861474e-12, 0.25000000000147543, -2.8635694082889235e-13], [-4.963611853293582e-13, -7.673630720763907e-13, 0.250000000000118]]
+
+            [result.branches.oracles.cost.dual_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 8.12525000001703
+            solver_objective_bound = 8.12525000011291
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+            [result.branches.oracles.cost.primal_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 8.125250000019436
+            solver_objective_bound = 8.125250000017028
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+        [result.branches.oracles.risk]
+        budget_sec = 59.72699999809265
+        elapsed_sec = 0.006000041961669922
+        lambda = 1.5718784275954534
+        nu = [1.1851468364271936e-12, 1.0000000000166631, 1.0000000000166631]
+        quantity = "probability"
+        schema = "r5-transport-witness-v1"
+        status = "solver_optimal"
+        transport = [[0.49999999999509087, -3.1738084940766183e-12, -3.1738084940841397e-12], [2.4545933577247504e-12, 0.25000000000427214, -1.0984268330691727e-12], [2.454593357724706e-12, -1.0984268330691283e-12, 0.2500000000042722]]
+
+            [result.branches.oracles.risk.dual_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 0.5000000000089241
+            solver_objective_bound = 0.5000000000390863
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+            [result.branches.oracles.risk.primal_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 0.5000000000112567
+            solver_objective_bound = 0.5000000000089242
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+        [result.branches.scenarios.down]
+        case_sha256 = "f85ddd804362ae7830f3f2cbd80b370b5e17664ef98971df6be61d498513e7b7"
+        run_id = "r5-risk-d398802f-defe-471f-b020-7d0f4f5d9243/down"
+        schema = "r5-dispatch-result-v1"
+        solver_objective = -1.4956000000018577
+        status = "embedded_risk_policy"
+        version = "r5_dispatch_checked_v1"
+
+            [result.branches.scenarios.down.values]
+            H_D = [[0.05619999999999525]]
+            P_DER = [[0.05477999999999568], [3.9007327636594046e-16]]
+            P_DH = [[1.3227802221777109e-17]]
+            P_PCC = [[0.15477999999999542]]
+            P_line = [[0.15477999999999534]]
+            Q_DER = [[1.9205717756629816e-19], [1.9205717756629816e-19]]
+            Q_PCC = [[0.02]]
+            Q_line = [[0.02]]
+            delivery = [[-0.07478000000008103]]
+            mismatch = [[-7.27782049122059e-19]]
+            v = [[1.0], [0.9983522]]
+            "τ_IN" = [[294.1499999999997]]
+            "τ_R" = [[317.10714285714386], [316.76904761904876]]
+            "τ_S" = [[330.1499999999999], [330.1499999999999]]
+            "τ_load_R" = [[316.76904761904876]]
+            "τ_pipe_R" = [[317.10714285714386]]
+            "τ_pipe_S" = [[330.1499999999999]]
+            "τ_src" = [[330.1499999999999]]
+
+        [result.branches.scenarios.none]
+        case_sha256 = "fbb356b63719173527607e08ea4ee3f358742a9736fff9597a147a0bb1c6b8de"
+        run_id = "r5-risk-d398802f-defe-471f-b020-7d0f4f5d9243/none"
+        schema = "r5-dispatch-result-v1"
+        solver_objective = 0.5820000000027168
+        status = "embedded_risk_policy"
+        version = "r5_dispatch_checked_v1"
+
+            [result.branches.scenarios.none.values]
+            H_D = [[0.041999999999999475]]
+            P_DER = [[0.04199999999999985], [0.06200000000008541]]
+            P_DH = [[1.120532720724587e-17]]
+            P_PCC = [[0.07999999999991446]]
+            P_line = [[0.07999999999991446]]
+            Q_DER = [[2.0997064783655242e-19], [2.0997064783655242e-19]]
+            Q_PCC = [[0.02]]
+            Q_line = [[0.02]]
+            delivery = [[-6.144466723720932e-17]]
+            mismatch = [[-2.1714881019617874e-18]]
+            v = [[1.0], [0.9991000000000008]]
+            "τ_IN" = [[293.1499999999999]]
+            "τ_R" = [[320.15000000000003], [320.15000000000003]]
+            "τ_S" = [[330.1499999999999], [330.1499999999999]]
+            "τ_load_R" = [[320.15000000000003]]
+            "τ_pipe_R" = [[320.15000000000003]]
+            "τ_pipe_S" = [[330.1499999999999]]
+            "τ_src" = [[330.1499999999999]]
+
+        [result.branches.scenarios.up]
+        case_sha256 = "cd7b351796a6c700d66114b4c59f6e64ffc841bb16b637f735c1af764317367b"
+        run_id = "r5-risk-d398802f-defe-471f-b020-7d0f4f5d9243/up"
+        schema = "r5-dispatch-result-v1"
+        solver_objective = 2.9205999999985686
+        status = "embedded_risk_policy"
+        version = "r5_dispatch_checked_v1"
+
+            [result.branches.scenarios.up.values]
+            H_D = [[0.027800000000001497]]
+            P_DER = [[0.02922000000000124], [0.1292200000000002]]
+            P_DH = [[1.692908824860558e-17]]
+            P_PCC = [[1.0909775501044462e-15]]
+            P_line = [[1.0870652309145255e-15]]
+            Q_DER = [[2.181822449317638e-19], [2.181822449317638e-19]]
+            Q_PCC = [[0.019999999999999997]]
+            Q_line = [[0.019999999999999997]]
+            delivery = [[0.07999999999991332]]
+            mismatch = [[-2.44477186482138e-18]]
+            v = [[1.0], [0.9998999999999999]]
+            "τ_IN" = [[292.15000000000015]]
+            "τ_R" = [[323.1928571428568], [323.53095238095204]]
+            "τ_S" = [[330.1499999999999], [330.1499999999999]]
+            "τ_load_R" = [[323.53095238095204]]
+            "τ_pipe_R" = [[323.1928571428568]]
+            "τ_pipe_S" = [[330.1499999999999]]
+            "τ_src" = [[330.1499999999999]]
+    [[result.branches]]
+    bound_source = "MOI.DualObjectiveValue"
+    bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+    budget_sec = 59.70899987220764
+    case_sha256 = "325503066e25e3a3d7db5a4c0e7e5320e06a9a1b9ffc44406e5c7692d05f9b12"
+    cost_optimization_complete = true
+    created_utc = "2026-09-19T00:53:59.716"
+    has_candidate = true
+    julia_version = "1.12.6"
+    method = "direct"
+    model_type = "continuous_LP"
+    model_types = ["AffExpr in MathOptInterface.EqualTo{Float64}", "AffExpr in MathOptInterface.GreaterThan{Float64}", "AffExpr in MathOptInterface.LessThan{Float64}", "VariableRef in MathOptInterface.GreaterThan{Float64}"]
+    objective_type = "worst_expected_IES_net_cost_fixed_prices"
+    pattern = [1, 1, 1]
+    primal_status = "FEASIBLE_POINT"
+    raw_status = "SOLVED"
+    run_id = "r5-risk-eade19f3-d17a-4c43-923d-ed0dcb0088f8"
+    schema = "r5-risk-result-v1"
+    solver = "Clarabel"
+    solver_objective = -0.1834499999984701
+    solver_objective_bound = -0.18345000001420644
+    solver_version = "0.11.1"
+    status = "solver_optimal"
+    termination = "OPTIMAL"
+    version = "r5_finite_support_checked_v1"
+    z = [1.0, 1.0, 1.0]
+
+        [result.branches.embedded_duals.cost]
+        lambda = 26.085472021767817
+        nu = [6.398600000013607, 10.398600000008292, 5.9824000000077495]
+
+        [result.branches.embedded_duals.risk]
+        lambda = 3.187388405594763
+        nu = [0.9999999999999992, 1.0000000000000016, 1.0000000000000016]
+
+        [result.branches.first_stage]
+        P_DA_MW = [0.07999999999990529]
+        R_down_MW = [0.07478000000009312]
+        R_up_MW = [0.07999999999990501]
+
+        [result.branches.oracles.actual]
+        budget_sec = 59.6800000667572
+        elapsed_sec = 0.005000114440917969
+        lambda = 0.3865930178017512
+        nu = [0.9999999999991092, 1.0000000000018392, 1.0000000000018392]
+        quantity = "probability"
+        schema = "r5-transport-witness-v1"
+        status = "solver_optimal"
+        transport = [[0.5000000000017871, 2.84601269249563e-13, 2.8460126924793627e-13], [-8.935511500212154e-13, 0.24999999999943073, 2.84601269249612e-13], [-8.935511500212742e-13, 2.84601269249563e-13, 0.2499999999994308]]
+
+            [result.branches.oracles.actual.dual_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 1.0000000000004743
+            solver_objective_bound = 1.0000000000126876
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+            [result.branches.oracles.actual.primal_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 1.0
+            solver_objective_bound = 1.0000000000004743
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+        [result.branches.oracles.cost]
+        budget_sec = 59.68899989128113
+        elapsed_sec = 0.004999876022338867
+        lambda = 4.791226961866296
+        nu = [6.398600000012959, 10.398600000011477, 5.982400000015931]
+        quantity = "cost"
+        schema = "r5-transport-witness-v1"
+        status = "solver_optimal"
+        transport = [[0.500000000010819, -2.0044444585348434e-11, -1.1947672802445996e-13], [-1.1692536201526748e-11, 0.2500000000395823, 3.461921515775472e-11], [8.736751520482009e-13, -1.9538275347172592e-11, 0.24999999996549882]]
+
+            [result.branches.oracles.cost.dual_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 7.294550000013332
+            solver_objective_bound = 7.2945500000325785
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+            [result.branches.oracles.cost.primal_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 7.294550000283219
+            solver_objective_bound = 7.29455000023769
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+        [result.branches.oracles.risk]
+        budget_sec = 59.68400001525879
+        elapsed_sec = 0.003999948501586914
+        lambda = 0.3865930178017512
+        nu = [0.9999999999991092, 1.0000000000018392, 1.0000000000018392]
+        quantity = "probability"
+        schema = "r5-transport-witness-v1"
+        status = "solver_optimal"
+        transport = [[0.5000000000017871, 2.84601269249563e-13, 2.8460126924793627e-13], [-8.935511500212154e-13, 0.24999999999943073, 2.84601269249612e-13], [-8.935511500212742e-13, 2.84601269249563e-13, 0.2499999999994308]]
+
+            [result.branches.oracles.risk.dual_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 1.0000000000004743
+            solver_objective_bound = 1.0000000000126876
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+            [result.branches.oracles.risk.primal_solver]
+            bound_source = "MOI.DualObjectiveValue"
+            bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+            has_candidate = true
+            primal_status = "FEASIBLE_POINT"
+            raw_status = "SOLVED"
+            solver = "Clarabel"
+            solver_objective = 1.0
+            solver_objective_bound = 1.0000000000004743
+            solver_version = "0.11.1"
+            status = "solver_optimal"
+            termination = "OPTIMAL"
+
+        [result.branches.scenarios.down]
+        case_sha256 = "0299afe5b27bd14256bf8821e3de19077102614441ccbab448ad62c7686e695b"
+        run_id = "r5-risk-eade19f3-d17a-4c43-923d-ed0dcb0088f8/down"
+        schema = "r5-dispatch-result-v1"
+        solver_objective = -1.495600000001871
+        status = "embedded_risk_policy"
+        version = "r5_dispatch_checked_v1"
+
+            [result.branches.scenarios.down.values]
+            H_D = [[0.05619999999999713]]
+            P_DER = [[0.05477999999999773], [5.189775066367889e-16]]
+            P_DH = [[-2.582829818962915e-16]]
+            P_PCC = [[0.15477999999999706]]
+            P_line = [[0.154779999999997]]
+            Q_DER = [[2.465738759814716e-19], [2.465738759814716e-19]]
+            Q_PCC = [[0.02]]
+            Q_line = [[0.02]]
+            delivery = [[-0.07478000000009183]]
+            mismatch = [[-3.555188822683535e-19]]
+            v = [[1.0], [0.9983522]]
+            "τ_IN" = [[294.1499999999997]]
+            "τ_R" = [[317.10714285714346], [316.76904761904825]]
+            "τ_S" = [[330.15], [330.15000000000003]]
+            "τ_load_R" = [[316.76904761904825]]
+            "τ_pipe_R" = [[317.10714285714346]]
+            "τ_pipe_S" = [[330.15000000000003]]
+            "τ_src" = [[330.15]]
+
+        [result.branches.scenarios.none]
+        case_sha256 = "72525f4bb30470b4ea39b49ecd7826291bfbadb8f93af845aeefc518aebd8e15"
+        run_id = "r5-risk-eade19f3-d17a-4c43-923d-ed0dcb0088f8/none"
+        schema = "r5-dispatch-result-v1"
+        solver_objective = -1.0793999999959816
+        status = "embedded_risk_policy"
+        version = "r5_dispatch_checked_v1"
+
+            [result.branches.scenarios.none.values]
+            H_D = [[0.02780000000000881]]
+            P_DER = [[0.029220000000007913], [0.0492200000001023]]
+            P_DH = [[-2.640001199955466e-16]]
+            P_PCC = [[0.07999999999990533]]
+            P_line = [[0.07999999999990533]]
+            Q_DER = [[2.649668210167365e-19], [2.649668210167365e-19]]
+            Q_PCC = [[0.019999999999999997]]
+            Q_line = [[0.019999999999999997]]
+            delivery = [[-4.198221631942431e-17]]
+            mismatch = [[1.01091264725829e-18]]
+            v = [[1.0], [0.9991000000000009]]
+            "τ_IN" = [[292.1500000000005]]
+            "τ_R" = [[323.19285714285525], [323.5309523809503]]
+            "τ_S" = [[330.15], [330.15000000000003]]
+            "τ_load_R" = [[323.5309523809503]]
+            "τ_pipe_R" = [[323.19285714285525]]
+            "τ_pipe_S" = [[330.15000000000003]]
+            "τ_src" = [[330.15]]
+
+        [result.branches.scenarios.up]
+        case_sha256 = "1afd108e5fd940f1eb39261ed6b04996638f265ae4568460de4fd776385640b9"
+        run_id = "r5-risk-eade19f3-d17a-4c43-923d-ed0dcb0088f8/up"
+        schema = "r5-dispatch-result-v1"
+        solver_objective = 2.920599999998517
+        status = "embedded_risk_policy"
+        version = "r5_dispatch_checked_v1"
+
+            [result.branches.scenarios.up.values]
+            H_D = [[0.027800000000002427]]
+            P_DER = [[0.02922000000000251], [0.12922000000000097]]
+            P_DH = [[-2.5966635064808903e-16]]
+            P_PCC = [[1.29066259134e-15]]
+            P_line = [[1.2873293320559753e-15]]
+            Q_DER = [[2.736083750064296e-19], [2.736083750064296e-19]]
+            Q_PCC = [[0.02]]
+            Q_line = [[0.02]]
+            delivery = [[0.07999999999990401]]
+            mismatch = [[-1.0805674013475583e-18]]
+            v = [[1.0], [0.9999]]
+            "τ_IN" = [[292.1500000000001]]
+            "τ_R" = [[323.19285714285655], [323.5309523809517]]
+            "τ_S" = [[330.15], [330.15000000000003]]
+            "τ_load_R" = [[323.5309523809517]]
+            "τ_pipe_R" = [[323.19285714285655]]
+            "τ_pipe_S" = [[330.15000000000003]]
+            "τ_src" = [[330.15]]
+
+    [result.embedded_duals.cost]
+    lambda = 26.085472021767817
+    nu = [6.398600000013607, 10.398600000008292, 5.9824000000077495]
+
+    [result.embedded_duals.risk]
+    lambda = 3.187388405594763
+    nu = [0.9999999999999992, 1.0000000000000016, 1.0000000000000016]
+
+    [result.first_stage]
+    P_DA_MW = [0.07999999999990529]
+    R_down_MW = [0.07478000000009312]
+    R_up_MW = [0.07999999999990501]
+
+    [result.oracles.actual]
+    budget_sec = 59.6800000667572
+    elapsed_sec = 0.005000114440917969
+    lambda = 0.3865930178017512
+    nu = [0.9999999999991092, 1.0000000000018392, 1.0000000000018392]
+    quantity = "probability"
+    schema = "r5-transport-witness-v1"
+    status = "solver_optimal"
+    transport = [[0.5000000000017871, 2.84601269249563e-13, 2.8460126924793627e-13], [-8.935511500212154e-13, 0.24999999999943073, 2.84601269249612e-13], [-8.935511500212742e-13, 2.84601269249563e-13, 0.2499999999994308]]
+
+        [result.oracles.actual.dual_solver]
+        bound_source = "MOI.DualObjectiveValue"
+        bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+        has_candidate = true
+        primal_status = "FEASIBLE_POINT"
+        raw_status = "SOLVED"
+        solver = "Clarabel"
+        solver_objective = 1.0000000000004743
+        solver_objective_bound = 1.0000000000126876
+        solver_version = "0.11.1"
+        status = "solver_optimal"
+        termination = "OPTIMAL"
+
+        [result.oracles.actual.primal_solver]
+        bound_source = "MOI.DualObjectiveValue"
+        bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+        has_candidate = true
+        primal_status = "FEASIBLE_POINT"
+        raw_status = "SOLVED"
+        solver = "Clarabel"
+        solver_objective = 1.0
+        solver_objective_bound = 1.0000000000004743
+        solver_version = "0.11.1"
+        status = "solver_optimal"
+        termination = "OPTIMAL"
+
+    [result.oracles.cost]
+    budget_sec = 59.68899989128113
+    elapsed_sec = 0.004999876022338867
+    lambda = 4.791226961866296
+    nu = [6.398600000012959, 10.398600000011477, 5.982400000015931]
+    quantity = "cost"
+    schema = "r5-transport-witness-v1"
+    status = "solver_optimal"
+    transport = [[0.500000000010819, -2.0044444585348434e-11, -1.1947672802445996e-13], [-1.1692536201526748e-11, 0.2500000000395823, 3.461921515775472e-11], [8.736751520482009e-13, -1.9538275347172592e-11, 0.24999999996549882]]
+
+        [result.oracles.cost.dual_solver]
+        bound_source = "MOI.DualObjectiveValue"
+        bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+        has_candidate = true
+        primal_status = "FEASIBLE_POINT"
+        raw_status = "SOLVED"
+        solver = "Clarabel"
+        solver_objective = 7.294550000013332
+        solver_objective_bound = 7.2945500000325785
+        solver_version = "0.11.1"
+        status = "solver_optimal"
+        termination = "OPTIMAL"
+
+        [result.oracles.cost.primal_solver]
+        bound_source = "MOI.DualObjectiveValue"
+        bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+        has_candidate = true
+        primal_status = "FEASIBLE_POINT"
+        raw_status = "SOLVED"
+        solver = "Clarabel"
+        solver_objective = 7.294550000283219
+        solver_objective_bound = 7.29455000023769
+        solver_version = "0.11.1"
+        status = "solver_optimal"
+        termination = "OPTIMAL"
+
+    [result.oracles.risk]
+    budget_sec = 59.68400001525879
+    elapsed_sec = 0.003999948501586914
+    lambda = 0.3865930178017512
+    nu = [0.9999999999991092, 1.0000000000018392, 1.0000000000018392]
+    quantity = "probability"
+    schema = "r5-transport-witness-v1"
+    status = "solver_optimal"
+    transport = [[0.5000000000017871, 2.84601269249563e-13, 2.8460126924793627e-13], [-8.935511500212154e-13, 0.24999999999943073, 2.84601269249612e-13], [-8.935511500212742e-13, 2.84601269249563e-13, 0.2499999999994308]]
+
+        [result.oracles.risk.dual_solver]
+        bound_source = "MOI.DualObjectiveValue"
+        bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+        has_candidate = true
+        primal_status = "FEASIBLE_POINT"
+        raw_status = "SOLVED"
+        solver = "Clarabel"
+        solver_objective = 1.0000000000004743
+        solver_objective_bound = 1.0000000000126876
+        solver_version = "0.11.1"
+        status = "solver_optimal"
+        termination = "OPTIMAL"
+
+        [result.oracles.risk.primal_solver]
+        bound_source = "MOI.DualObjectiveValue"
+        bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+        has_candidate = true
+        primal_status = "FEASIBLE_POINT"
+        raw_status = "SOLVED"
+        solver = "Clarabel"
+        solver_objective = 1.0
+        solver_objective_bound = 1.0000000000004743
+        solver_version = "0.11.1"
+        status = "solver_optimal"
+        termination = "OPTIMAL"
+
+    [result.scenarios.down]
+    case_sha256 = "0299afe5b27bd14256bf8821e3de19077102614441ccbab448ad62c7686e695b"
+    run_id = "r5-risk-eade19f3-d17a-4c43-923d-ed0dcb0088f8/down"
+    schema = "r5-dispatch-result-v1"
+    solver_objective = -1.495600000001871
+    status = "embedded_risk_policy"
+    version = "r5_dispatch_checked_v1"
+
+        [result.scenarios.down.values]
+        H_D = [[0.05619999999999713]]
+        P_DER = [[0.05477999999999773], [5.189775066367889e-16]]
+        P_DH = [[-2.582829818962915e-16]]
+        P_PCC = [[0.15477999999999706]]
+        P_line = [[0.154779999999997]]
+        Q_DER = [[2.465738759814716e-19], [2.465738759814716e-19]]
+        Q_PCC = [[0.02]]
+        Q_line = [[0.02]]
+        delivery = [[-0.07478000000009183]]
+        mismatch = [[-3.555188822683535e-19]]
+        v = [[1.0], [0.9983522]]
+        "τ_IN" = [[294.1499999999997]]
+        "τ_R" = [[317.10714285714346], [316.76904761904825]]
+        "τ_S" = [[330.15], [330.15000000000003]]
+        "τ_load_R" = [[316.76904761904825]]
+        "τ_pipe_R" = [[317.10714285714346]]
+        "τ_pipe_S" = [[330.15000000000003]]
+        "τ_src" = [[330.15]]
+
+    [result.scenarios.none]
+    case_sha256 = "72525f4bb30470b4ea39b49ecd7826291bfbadb8f93af845aeefc518aebd8e15"
+    run_id = "r5-risk-eade19f3-d17a-4c43-923d-ed0dcb0088f8/none"
+    schema = "r5-dispatch-result-v1"
+    solver_objective = -1.0793999999959816
+    status = "embedded_risk_policy"
+    version = "r5_dispatch_checked_v1"
+
+        [result.scenarios.none.values]
+        H_D = [[0.02780000000000881]]
+        P_DER = [[0.029220000000007913], [0.0492200000001023]]
+        P_DH = [[-2.640001199955466e-16]]
+        P_PCC = [[0.07999999999990533]]
+        P_line = [[0.07999999999990533]]
+        Q_DER = [[2.649668210167365e-19], [2.649668210167365e-19]]
+        Q_PCC = [[0.019999999999999997]]
+        Q_line = [[0.019999999999999997]]
+        delivery = [[-4.198221631942431e-17]]
+        mismatch = [[1.01091264725829e-18]]
+        v = [[1.0], [0.9991000000000009]]
+        "τ_IN" = [[292.1500000000005]]
+        "τ_R" = [[323.19285714285525], [323.5309523809503]]
+        "τ_S" = [[330.15], [330.15000000000003]]
+        "τ_load_R" = [[323.5309523809503]]
+        "τ_pipe_R" = [[323.19285714285525]]
+        "τ_pipe_S" = [[330.15000000000003]]
+        "τ_src" = [[330.15]]
+
+    [result.scenarios.up]
+    case_sha256 = "1afd108e5fd940f1eb39261ed6b04996638f265ae4568460de4fd776385640b9"
+    run_id = "r5-risk-eade19f3-d17a-4c43-923d-ed0dcb0088f8/up"
+    schema = "r5-dispatch-result-v1"
+    solver_objective = 2.920599999998517
+    status = "embedded_risk_policy"
+    version = "r5_dispatch_checked_v1"
+
+        [result.scenarios.up.values]
+        H_D = [[0.027800000000002427]]
+        P_DER = [[0.02922000000000251], [0.12922000000000097]]
+        P_DH = [[-2.5966635064808903e-16]]
+        P_PCC = [[1.29066259134e-15]]
+        P_line = [[1.2873293320559753e-15]]
+        Q_DER = [[2.736083750064296e-19], [2.736083750064296e-19]]
+        Q_PCC = [[0.02]]
+        Q_line = [[0.02]]
+        delivery = [[0.07999999999990401]]
+        mismatch = [[-1.0805674013475583e-18]]
+        v = [[1.0], [0.9999]]
+        "τ_IN" = [[292.1500000000001]]
+        "τ_R" = [[323.19285714285655], [323.5309523809517]]
+        "τ_S" = [[330.15], [330.15000000000003]]
+        "τ_load_R" = [[323.5309523809517]]
+        "τ_pipe_R" = [[323.19285714285655]]
+        "τ_pipe_S" = [[330.15000000000003]]
+        "τ_src" = [[330.15]]

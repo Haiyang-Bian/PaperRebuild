@@ -1,0 +1,107 @@
+schema = "r7-recovery-case-v1"
+name = "synthetic_r7_one_hour_inherited_state"
+origin = "synthetic"
+preplan_id = "synthetic-explicit-boundary-v1-not-optimized-normal-plan"
+periods = 1
+dt_h = 1.0
+event_start = 2
+probabilities = [1.0]
+renewable_factor = 0.5
+loss_limit_MWh = 0.55
+battery_rule = "paper_sum_bound"
+
+[units]
+power = "MW"
+reactive = "Mvar"
+energy = "MWh"
+time = "h"
+temperature = "K"
+flow = "kg/s"
+
+[electric]
+nodes = 2
+pcc_node = 1
+S_base_MVA = 1.0
+v_min_pu = 0.95
+v_ref_pu = 1.0
+v_max_pu = 1.05
+flow_domain = "forward_only"
+root_eligible = [1, 1]
+switch_budget = 1
+fault_budget = 1
+load_MW = [[0.0], [0.6]]
+tan_phi = [0.0, 0.0]
+shed_fraction_max = [1.0, 1.0]
+
+[[electric.lines]]
+from = 1
+to = 2
+base_closed = 1
+vulnerable = true
+r_pu = 0.01
+x_pu = 0.01
+P_max_MW = 2.0
+Q_max_Mvar = 1.0
+
+[heat]
+nodes = 2
+available = true
+c_J_kgK = 4200.0
+rho_kg_m3 = 1000.0
+S_min_K = 333.15
+S_max_K = 353.15
+R_min_K = 303.15
+R_max_K = 323.15
+S_reference_K = 343.15
+R_reference_K = 313.15
+reference_flow_kg_s = [5.0]
+ambient_K = [293.15]
+load_MW = [[0.0], [0.4]]
+shed_fraction_max = [1.0, 1.0]
+source_flow_max = [10.0, 0.0]
+load_flow_max = [0.0, 10.0]
+source_delta_min = [0.0, 0.0]
+source_delta_max = [80.0, 0.0]
+load_delta_min = [0.0, 0.0]
+load_delta_max = [0.0, 60.0]
+
+[[heat.pipes]]
+from = 1
+to = 2
+volume_S_m3 = 10.0
+volume_R_m3 = 10.0
+UA_S_W_K = 0.0
+UA_R_W_K = 0.0
+flow_max_kg_s = 10.0
+flow_change_max_kg_s = 5.0
+normal_flow_kg_s = [5.0]
+initial_S_K = [343.15]
+initial_R_K = [313.15]
+
+[[devices]]
+id = "CHP1"
+kind = "CHP"
+electric_node = 1
+heat_node = 1
+P_min_MW = 0.0
+P_max_MW = 0.8
+Q_min_Mvar = 0.0
+Q_max_Mvar = 0.5
+heat_ratio = 1.0
+commitment = [1]
+previous_commitment = 1
+previous_P_MW = [0.5]
+ramp_MW_h = 1.0
+startup_MW = 0.8
+shutdown_MW = 0.8
+
+[[devices]]
+id = "BES2"
+kind = "BES"
+electric_node = 2
+P_max_MW = 0.2
+E_min_MWh = 0.0
+E_max_MWh = 0.3
+initial_MWh = [0.2]
+eta_ch = 1.0
+eta_dis = 1.0

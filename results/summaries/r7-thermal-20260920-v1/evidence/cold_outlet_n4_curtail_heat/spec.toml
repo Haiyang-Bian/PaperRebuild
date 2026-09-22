@@ -1,0 +1,38 @@
+case_sha256 = "bd9a518e549f8a8fd8dbcc656d707bf85de9f2dee7ca59b60685cc56f8ab26f0"
+mode = "curtail_heat"
+parent_result_sha256 = "508a0ee3ab0033e76ab122c07c5861bf450f71de9904c6ad869b6570f5afece6"
+parent_run_id = "r7-recovery-63f240db-11d9-4e6b-90a3-7257239b42e2"
+profile_origin = "frozen analytic spatial front with equal inventory"
+schema = "r7-thermal-spec-v1"
+substeps = 4
+uniform_assumption = false
+version = "r7_thermal_reconstruction_v1"
+
+[[profiles]]
+pipe = 1
+scenario = 1
+side = "S"
+
+    [[profiles.segments]]
+    amplitude_K = 0.0
+    base_K = 353.15
+    from_left = true
+    mass_kg = 5000.0
+    rate_per_kg = 0.0
+    [[profiles.segments]]
+    amplitude_K = 0.0
+    base_K = 333.15
+    from_left = true
+    mass_kg = 5000.0
+    rate_per_kg = 0.0
+[[profiles]]
+pipe = 1
+scenario = 1
+side = "R"
+
+    [[profiles.segments]]
+    amplitude_K = 0.0
+    base_K = 313.15
+    from_left = true
+    mass_kg = 10000.0
+    rate_per_kg = 0.0

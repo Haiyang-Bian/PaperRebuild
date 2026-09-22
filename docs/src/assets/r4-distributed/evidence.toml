@@ -1,0 +1,624 @@
+[[records]]
+modes = [1, 0, 1, 0]
+reference_result_sha256 = "9834aba6c04d5fa0101b52f133548cba613da7f6685f53b9acdbaefaacfdec03"
+run_id = "open_flexible--p1--swm--clarabel"
+source_result_sha256 = "329b8cb8cff6fce35904993a10c57f152a0871c5f4e2827babb86efed0d5fa5f"
+
+    [records.options]
+    inner_iterations = 100
+    inner_tolerance = 1.0e-7
+    max_iterations = 1000
+    outer_tolerance = 0.0001
+    peer_rho = 1.0
+    rho = 1.0
+
+    [records.reference_validation]
+    electric_original_pass = true
+    heat_pass = true
+    ledger_pass = true
+    model_pass = true
+    operating_cost = 166.41546237678182
+    status = "evaluated"
+
+    [records.scales]
+    boundary = [0.55, 0.1, 0.30000000000000004, 0.275]
+    cost = 280.0
+    peer = [0.55, 0.30000000000000004]
+
+    [records.validation]
+    central_cost_comparison_performed = false
+    consensus_A4_pass = true
+    electric_original_pass = true
+    inner_iterations = 164
+    model_pass = true
+    operating_cost = 166.41617753178164
+    outer_iterations = 164
+    record_pass = true
+[[records]]
+modes = [1, 0, 1, 0]
+reference_result_sha256 = "8400ef234aef5ab3a64747b7c1cfc7587e16e49bd7c121a9a9216cbeafb9474b"
+run_id = "open_flexible--p1--agnb--clarabel"
+source_result_sha256 = "04845e59e84943b5f5b5838cf216890b52b4f50d75c210ef2ae2e89009692750"
+
+    [records.options]
+    inner_iterations = 100
+    inner_tolerance = 1.0e-7
+    max_iterations = 1000
+    outer_tolerance = 0.0001
+    peer_rho = 1.0
+    rho = 1.0
+
+    [records.reference_validation]
+    aggregator_cost = 261.75192082552394
+    model_pass = true
+    network_checked = false
+
+    [records.scales]
+    boundary = [0.55, 0.1, 0.30000000000000004, 0.275]
+    cost = 280.0
+    peer = [0.55, 0.30000000000000004]
+
+    [records.validation]
+    central_cost_comparison_performed = false
+    consensus_A4_pass = true
+    electric_original_pass = false
+    inner_iterations = 550
+    model_pass = true
+    operating_cost = 261.7522211856043
+    outer_iterations = 0
+    record_pass = true
+[[records]]
+modes = [0, 1, 0, 1]
+reference_result_sha256 = "4b01ef88647a27e54cb12c5f382724c2f8d0a8f8ec26c42cdaf1ba1f98d2e2d9"
+run_id = "open_flexible--p2--swm--clarabel"
+source_result_sha256 = "dc4b80d5ac395f7218b42303486194a049a7bb06f11916d9f9280d2fdfc0161c"
+
+    [records.options]
+    inner_iterations = 100
+    inner_tolerance = 1.0e-7
+    max_iterations = 1000
+    outer_tolerance = 0.0001
+    peer_rho = 1.0
+    rho = 1.0
+
+    [records.reference_validation]
+    electric_original_pass = true
+    heat_pass = true
+    ledger_pass = true
+    model_pass = true
+    operating_cost = 167.9174713559155
+    status = "evaluated"
+
+    [records.scales]
+    boundary = [0.55, 0.1, 0.30000000000000004, 0.275]
+    cost = 280.0
+    peer = [0.55, 0.30000000000000004]
+
+    [records.validation]
+    central_cost_comparison_performed = false
+    consensus_A4_pass = true
+    electric_original_pass = false
+    inner_iterations = 253
+    model_pass = true
+    operating_cost = 167.91838574604222
+    outer_iterations = 253
+    record_pass = true
+[[records]]
+modes = [0, 1, 0, 1]
+reference_result_sha256 = "d86673d16783fe95f96ab6b1fc76afb19c80a4c457f22fafa88ebdd97b40ace0"
+run_id = "open_flexible--p2--agnb--clarabel"
+source_result_sha256 = "1847cca06e47926682b8e962e6c677d1f273c7234a03c0331f80cf18e803285f"
+
+    [records.options]
+    inner_iterations = 100
+    inner_tolerance = 1.0e-7
+    max_iterations = 1000
+    outer_tolerance = 0.0001
+    peer_rho = 1.0
+    rho = 1.0
+
+    [records.reference_validation]
+    aggregator_cost = 267.2371500006109
+    model_pass = true
+    network_checked = false
+
+    [records.scales]
+    boundary = [0.55, 0.1, 0.30000000000000004, 0.275]
+    cost = 280.0
+    peer = [0.55, 0.30000000000000004]
+
+    [records.validation]
+    central_cost_comparison_performed = false
+    consensus_A4_pass = true
+    electric_original_pass = false
+    inner_iterations = 402
+    model_pass = true
+    operating_cost = 267.23739484177355
+    outer_iterations = 0
+    record_pass = true
+[[records]]
+modes = [1, 0, 1, 0]
+reference_result_sha256 = "412267c065239192bfdc1d1bd83efd5949bbf4d0a53151ace9a30a133ec0fd11"
+run_id = "open_fixed--p1--swm--clarabel"
+source_result_sha256 = "e657ef67667b4693fd4f8c9c89f2ee4ab7940b49a944cf10878133d81ad540b0"
+
+    [records.options]
+    inner_iterations = 100
+    inner_tolerance = 1.0e-7
+    max_iterations = 1000
+    outer_tolerance = 0.0001
+    peer_rho = 1.0
+    rho = 1.0
+
+    [records.reference_validation]
+    electric_original_pass = true
+    heat_pass = true
+    ledger_pass = true
+    model_pass = true
+    operating_cost = 180.93046795964213
+    status = "evaluated"
+
+    [records.scales]
+    boundary = [0.55, 0.1, 0.30000000000000004, 0.25]
+    cost = 280.0
+    peer = [0.55, 0.30000000000000004]
+
+    [records.validation]
+    central_cost_comparison_performed = false
+    consensus_A4_pass = true
+    electric_original_pass = true
+    inner_iterations = 204
+    model_pass = true
+    operating_cost = 180.93087202303184
+    outer_iterations = 204
+    record_pass = true
+[[records]]
+modes = [1, 0, 1, 0]
+reference_result_sha256 = "4a4e1c5072ea0a3710d374f25b41f74869f9ef6d5bb1c02812ccecf5d627ce4a"
+run_id = "open_fixed--p1--agnb--clarabel"
+source_result_sha256 = "9e7cd385ec9a72c6036525feec4130632cf1d7da0d4adb20b263dd4c20fc8b85"
+
+    [records.options]
+    inner_iterations = 100
+    inner_tolerance = 1.0e-7
+    max_iterations = 1000
+    outer_tolerance = 0.0001
+    peer_rho = 1.0
+    rho = 1.0
+
+    [records.reference_validation]
+    aggregator_cost = 267.98791666770785
+    model_pass = true
+    network_checked = false
+
+    [records.scales]
+    boundary = [0.55, 0.1, 0.30000000000000004, 0.25]
+    cost = 280.0
+    peer = [0.55, 0.30000000000000004]
+
+    [records.validation]
+    central_cost_comparison_performed = false
+    consensus_A4_pass = true
+    electric_original_pass = false
+    inner_iterations = 278
+    model_pass = true
+    operating_cost = 267.9882545389064
+    outer_iterations = 0
+    record_pass = true
+[[records]]
+modes = [0, 1, 0, 1]
+reference_result_sha256 = "d25d5de33154693e3335bc52d920c5a16f1c050e179ddaa8d1c86df46f094d1d"
+run_id = "open_fixed--p2--swm--clarabel"
+source_result_sha256 = "06cc70e2f44c1cbe531481d038eae6da8acb5b59d1f8204625cc0f909e969616"
+
+    [records.options]
+    inner_iterations = 100
+    inner_tolerance = 1.0e-7
+    max_iterations = 1000
+    outer_tolerance = 0.0001
+    peer_rho = 1.0
+    rho = 1.0
+
+    [records.reference_validation]
+    electric_original_pass = true
+    heat_pass = true
+    ledger_pass = true
+    model_pass = true
+    operating_cost = 182.59183118871377
+    status = "evaluated"
+
+    [records.scales]
+    boundary = [0.55, 0.1, 0.30000000000000004, 0.25]
+    cost = 280.0
+    peer = [0.55, 0.30000000000000004]
+
+    [records.validation]
+    central_cost_comparison_performed = false
+    consensus_A4_pass = true
+    electric_original_pass = true
+    inner_iterations = 255
+    model_pass = true
+    operating_cost = 182.5929921226155
+    outer_iterations = 255
+    record_pass = true
+[[records]]
+modes = [0, 1, 0, 1]
+reference_result_sha256 = "4a67c18be4ebdb3bd4fd3658452bf395fbc270963e4965590f220fbb66ccd401"
+run_id = "open_fixed--p2--agnb--clarabel"
+source_result_sha256 = "5272a0a8fb31f3436ccd252f9771892508739fb63ae219e3a3064fc5d0c11c95"
+
+    [records.options]
+    inner_iterations = 100
+    inner_tolerance = 1.0e-7
+    max_iterations = 1000
+    outer_tolerance = 0.0001
+    peer_rho = 1.0
+    rho = 1.0
+
+    [records.reference_validation]
+    aggregator_cost = 275.03666666874574
+    model_pass = true
+    network_checked = false
+
+    [records.scales]
+    boundary = [0.55, 0.1, 0.30000000000000004, 0.25]
+    cost = 280.0
+    peer = [0.55, 0.30000000000000004]
+
+    [records.validation]
+    central_cost_comparison_performed = false
+    consensus_A4_pass = true
+    electric_original_pass = false
+    inner_iterations = 512
+    model_pass = true
+    operating_cost = 275.03681469838284
+    outer_iterations = 0
+    record_pass = true
+[[records]]
+modes = [1, 0, 1, 0]
+reference_result_sha256 = "5997c79e908b17f870e9953a08223dc40855007dd433fce7ce6525c33634f40d"
+run_id = "import_flexible--p1--swm--clarabel"
+source_result_sha256 = "fb133f13d22050f9e0fed139bbd3b82feafa0ec1ae16671d5b309c42c7fc1429"
+
+    [records.options]
+    inner_iterations = 100
+    inner_tolerance = 1.0e-7
+    max_iterations = 1000
+    outer_tolerance = 0.0001
+    peer_rho = 1.0
+    rho = 1.0
+
+    [records.reference_validation]
+    electric_original_pass = true
+    heat_pass = true
+    ledger_pass = true
+    model_pass = true
+    operating_cost = 191.80010240445927
+    status = "evaluated"
+
+    [records.scales]
+    boundary = [0.55, 0.1, 0.30000000000000004, 0.275]
+    cost = 280.0
+    peer = [0.55, 0.30000000000000004]
+
+    [records.validation]
+    central_cost_comparison_performed = false
+    consensus_A4_pass = true
+    electric_original_pass = true
+    inner_iterations = 956
+    model_pass = true
+    operating_cost = 191.80101578919067
+    outer_iterations = 956
+    record_pass = true
+[[records]]
+modes = [1, 0, 1, 0]
+reference_result_sha256 = "e548a143a06f49ca63f4635e138c1c339fdcd45b473b333220f2584e585d328e"
+run_id = "import_flexible--p1--agnb--clarabel"
+source_result_sha256 = "634062023eb0bb4cfbd824b6e282dfcb65c5b6157be19c65f7b64d7759b9911f"
+
+    [records.options]
+    inner_iterations = 100
+    inner_tolerance = 1.0e-7
+    max_iterations = 1000
+    outer_tolerance = 0.0001
+    peer_rho = 1.0
+    rho = 1.0
+
+    [records.reference_validation]
+    aggregator_cost = 295.93090277905924
+    model_pass = true
+    network_checked = false
+
+    [records.scales]
+    boundary = [0.55, 0.1, 0.30000000000000004, 0.275]
+    cost = 280.0
+    peer = [0.55, 0.30000000000000004]
+
+    [records.validation]
+    central_cost_comparison_performed = false
+    consensus_A4_pass = true
+    electric_original_pass = false
+    inner_iterations = 960
+    model_pass = false
+    operating_cost = 295.93151145664905
+    outer_iterations = 0
+    record_pass = true
+[[records]]
+modes = [0, 1, 0, 1]
+reference_result_sha256 = "7f2b17dae8dd85ad58e9bb85407c0a0c956267038dfbf7379d342ffc7e26c468"
+run_id = "import_flexible--p2--swm--clarabel"
+source_result_sha256 = "f86f1c78816ca24b26f18b942be96e328ff72c949e292e7bcdb20e175c28b0ff"
+
+    [records.options]
+    inner_iterations = 100
+    inner_tolerance = 1.0e-7
+    max_iterations = 1000
+    outer_tolerance = 0.0001
+    peer_rho = 1.0
+    rho = 1.0
+
+    [records.reference_validation]
+    electric_original_pass = true
+    heat_pass = true
+    ledger_pass = true
+    model_pass = true
+    operating_cost = 197.65119921053093
+    status = "evaluated"
+
+    [records.scales]
+    boundary = [0.55, 0.1, 0.30000000000000004, 0.275]
+    cost = 280.0
+    peer = [0.55, 0.30000000000000004]
+
+    [records.validation]
+    central_cost_comparison_performed = false
+    consensus_A4_pass = true
+    electric_original_pass = true
+    inner_iterations = 345
+    model_pass = true
+    operating_cost = 197.65231306620205
+    outer_iterations = 345
+    record_pass = true
+[[records]]
+modes = [0, 1, 0, 1]
+reference_result_sha256 = "ea92271f98d191463b2cd7f8ddb4a64af7bef15336159c36bd91a56f7853006e"
+run_id = "import_flexible--p2--agnb--clarabel"
+source_result_sha256 = "b1580124be589c1a80859f569b84ea53544e08609d475546657e4b7d62702104"
+
+    [records.options]
+    inner_iterations = 100
+    inner_tolerance = 1.0e-7
+    max_iterations = 1000
+    outer_tolerance = 0.0001
+    peer_rho = 1.0
+    rho = 1.0
+
+    [records.reference_validation]
+    aggregator_cost = 311.7796527945079
+    model_pass = true
+    network_checked = false
+
+    [records.scales]
+    boundary = [0.55, 0.1, 0.30000000000000004, 0.275]
+    cost = 280.0
+    peer = [0.55, 0.30000000000000004]
+
+    [records.validation]
+    central_cost_comparison_performed = false
+    consensus_A4_pass = true
+    electric_original_pass = false
+    inner_iterations = 899
+    model_pass = false
+    operating_cost = 311.78035032517863
+    outer_iterations = 0
+    record_pass = true
+[[records]]
+modes = [1, 0, 1, 0]
+reference_result_sha256 = "0d81140f513de28eb2dde1859ac9f37cbc53074ec131bd1ca8d8482a58783b4c"
+run_id = "import_fixed--p1--swm--clarabel"
+source_result_sha256 = "429f00a395d5ba29622e739d2bab73b2cf87399fd6c72e2e4deb7e5515590003"
+
+    [records.options]
+    inner_iterations = 100
+    inner_tolerance = 1.0e-7
+    max_iterations = 1000
+    outer_tolerance = 0.0001
+    peer_rho = 1.0
+    rho = 1.0
+
+    [records.reference_validation]
+    electric_original_pass = true
+    heat_pass = true
+    ledger_pass = true
+    model_pass = true
+    operating_cost = 207.69996095420345
+    status = "evaluated"
+
+    [records.scales]
+    boundary = [0.55, 0.1, 0.30000000000000004, 0.25]
+    cost = 280.0
+    peer = [0.55, 0.30000000000000004]
+
+    [records.validation]
+    central_cost_comparison_performed = false
+    consensus_A4_pass = true
+    electric_original_pass = true
+    inner_iterations = 956
+    model_pass = true
+    operating_cost = 207.70040188940888
+    outer_iterations = 956
+    record_pass = true
+[[records]]
+modes = [1, 0, 1, 0]
+reference_result_sha256 = "a1403637b337c283df221fa8dcfadedffb588d7de11c8e79941edec0e38c4a20"
+run_id = "import_fixed--p1--agnb--clarabel"
+source_result_sha256 = "93a8a433aa6c1cda318006a99e67eea4a4ccfb2f9493d8934c9fa9e2b0a342fb"
+
+    [records.options]
+    inner_iterations = 100
+    inner_tolerance = 1.0e-7
+    max_iterations = 1000
+    outer_tolerance = 0.0001
+    peer_rho = 1.0
+    rho = 1.0
+
+    [records.reference_validation]
+    aggregator_cost = 300.04625000933424
+    model_pass = true
+    network_checked = false
+
+    [records.scales]
+    boundary = [0.55, 0.1, 0.30000000000000004, 0.25]
+    cost = 280.0
+    peer = [0.55, 0.30000000000000004]
+
+    [records.validation]
+    central_cost_comparison_performed = false
+    consensus_A4_pass = true
+    electric_original_pass = false
+    inner_iterations = 609
+    model_pass = true
+    operating_cost = 300.04673784287934
+    outer_iterations = 0
+    record_pass = true
+[[records]]
+modes = [0, 1, 0, 1]
+reference_result_sha256 = "bc9110a6cdb4425286aa55f6520b3a9f99cd9d72aee2591e52b58a1fd9f1f780"
+run_id = "import_fixed--p2--swm--clarabel"
+source_result_sha256 = "173f37d5df296d5e840604ed41babbe14f87ee4416ad8ed580dd55a447c74739"
+
+    [records.options]
+    inner_iterations = 100
+    inner_tolerance = 1.0e-7
+    max_iterations = 1000
+    outer_tolerance = 0.0001
+    peer_rho = 1.0
+    rho = 1.0
+
+    [records.reference_validation]
+    electric_original_pass = true
+    heat_pass = true
+    ledger_pass = true
+    model_pass = true
+    operating_cost = 213.14234332112736
+    status = "evaluated"
+
+    [records.scales]
+    boundary = [0.55, 0.1, 0.30000000000000004, 0.25]
+    cost = 280.0
+    peer = [0.55, 0.30000000000000004]
+
+    [records.validation]
+    central_cost_comparison_performed = false
+    consensus_A4_pass = true
+    electric_original_pass = true
+    inner_iterations = 356
+    model_pass = true
+    operating_cost = 213.14283121874604
+    outer_iterations = 356
+    record_pass = true
+[[records]]
+modes = [0, 1, 0, 1]
+reference_result_sha256 = "7dc7751348d22a3df1a4115e9ad9a9381bd6bcf879365e2674e9a709223fbb2a"
+run_id = "import_fixed--p2--agnb--clarabel"
+source_result_sha256 = "3c1c247f090897bbee3be9b6d0a061f24ee0d18a8dd3c5a3d81ff36573e69209"
+
+    [records.options]
+    inner_iterations = 100
+    inner_tolerance = 1.0e-7
+    max_iterations = 1000
+    outer_tolerance = 0.0001
+    peer_rho = 1.0
+    rho = 1.0
+
+    [records.reference_validation]
+    aggregator_cost = 315.8950000234004
+    model_pass = true
+    network_checked = false
+
+    [records.scales]
+    boundary = [0.55, 0.1, 0.30000000000000004, 0.25]
+    cost = 280.0
+    peer = [0.55, 0.30000000000000004]
+
+    [records.validation]
+    central_cost_comparison_performed = false
+    consensus_A4_pass = true
+    electric_original_pass = false
+    inner_iterations = 722
+    model_pass = true
+    operating_cost = 315.89527321092885
+    outer_iterations = 0
+    record_pass = true
+[[records]]
+modes = [1, 0, 1, 0]
+reference_result_sha256 = "a25944327d72a7b28ad6b363b9dadc6fa25ac5ffa318efb78552fe88ff282362"
+run_id = "open_flexible--p1--swm--gurobi"
+source_result_sha256 = "9071aae0db546a07305b639b9cf1a2aeac766827282738db18a8314fd6078895"
+
+    [records.options]
+    inner_iterations = 100
+    inner_tolerance = 1.0e-7
+    max_iterations = 1000
+    outer_tolerance = 0.0001
+    peer_rho = 1.0
+    rho = 1.0
+
+    [records.reference_validation]
+    electric_original_pass = false
+    heat_pass = true
+    ledger_pass = true
+    model_pass = true
+    operating_cost = 166.41552689953105
+    status = "evaluated"
+
+    [records.scales]
+    boundary = [0.55, 0.1, 0.30000000000000004, 0.275]
+    cost = 280.0
+    peer = [0.55, 0.30000000000000004]
+
+    [records.validation]
+    central_cost_comparison_performed = false
+    consensus_A4_pass = false
+    electric_original_pass = false
+    inner_iterations = 173
+    model_pass = false
+    operating_cost = 218.52774348704563
+    outer_iterations = 1
+    record_pass = true
+[[records]]
+modes = [1, 0, 1, 0]
+reference_result_sha256 = "c2a813ae7b310309106395b93d7bec3ff4575f73a0c5e524685381dcbd2ef882"
+run_id = "import_flexible--p1--swm--gurobi"
+source_result_sha256 = "1b15d307e241bd9603900e9c6bb0808ccc3290575bbf97bbc1fa3333b9c2bc84"
+
+    [records.options]
+    inner_iterations = 100
+    inner_tolerance = 1.0e-7
+    max_iterations = 1000
+    outer_tolerance = 0.0001
+    peer_rho = 1.0
+    rho = 1.0
+
+    [records.reference_validation]
+    electric_original_pass = false
+    heat_pass = true
+    ledger_pass = true
+    model_pass = true
+    operating_cost = 191.80011661312292
+    status = "evaluated"
+
+    [records.scales]
+    boundary = [0.55, 0.1, 0.30000000000000004, 0.275]
+    cost = 280.0
+    peer = [0.55, 0.30000000000000004]
+
+    [records.validation]
+    central_cost_comparison_performed = false
+    consensus_A4_pass = false
+    electric_original_pass = false
+    inner_iterations = 111
+    model_pass = false
+    operating_cost = 234.7505597344555
+    outer_iterations = 1
+    record_pass = true

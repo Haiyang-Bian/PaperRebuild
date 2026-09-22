@@ -1,4 +1,5 @@
 ﻿# No external testing framework; isolate all Git writes and fault injection under tmp/.
+param([switch]$Compact, [switch]$InventoryOnly)
 $ErrorActionPreference = 'Stop'
 [Console]::InputEncoding = [Text.UTF8Encoding]::new($false)
 [Console]::OutputEncoding = [Text.UTF8Encoding]::new($false)
@@ -34,10 +35,44 @@ function Event([string]$Name, [string]$Session = 'fixture-session', [string]$Tur
     return @{ hook_event_name = $Name; session_id = $Session; turn_id = $Turn; permission_mode = 'default'; stop_hook_active = $Active }
 }
 [IO.Directory]::CreateDirectory($fixture) | Out-Null
-foreach ($relative in @(Candidate-Paths $sourceRoot)) {
+if ($InventoryOnly) {
+    # 独立检查目录层级：根表格和嵌套证据同属一个批次，普通源码及公共样式仍展开。
+    Put 'docs/src/assets/test-batch/F04.csv' "value`n1`n"
+    Put 'docs/src/assets/test-batch/run/F05.csv' "value`n2`n"
+    Put 'results/summaries/test-batch/summary.csv' "value`n3`n"
+    Put 'results/summaries/test-batch/run/F04.csv' "value`n4`n"
+    Put 'docs/src/assets/custom.css' 'body {}'
+    Put 'src/example.jl' 'module Example end'
+    Git-Write @('init', '-q')
+    $index = Inventory-Text $fixture
+    Assert ($index.Contains('- `docs/src/assets/test-batch/`')) 'figure batch visible'
+    Assert ($index.Contains('- `results/summaries/test-batch/`')) 'evidence batch visible'
+    Assert ([regex]::Matches($index, 'test-batch/').Count -eq 2) 'each batch listed once'
+    Assert ($index -notmatch 'F04.csv|F05.csv|summary.csv|test-batch/run/') 'batch members summarized'
+    Assert ($index.Contains('src/example.jl')) 'ordinary source preserved'
+    Assert ($index.Contains('docs/src/assets/custom.css')) 'common stylesheet preserved'
+    Write-Output "Inventory tests passed: $script:Assertions assertions. Fixture retained under tmp/."
+    exit 0
+}
+$compactFiles = @('README.md', 'AGENTS.md', 'CONTRIBUTING.md', 'LICENSE', 'NOTICE.md',
+    '.gitignore', '.gitattributes', 'Project.toml', 'Manifest.toml', 'src/PaperRebuild.jl',
+    'test/runtests.jl', 'docs/make.jl', 'docs/Project.toml', 'docs/Manifest.toml',
+    'tools/Project.toml', 'tools/Manifest.toml', 'docs/agent/current-state.md',
+    'docs/agent/handbook.md', 'docs/src/quality.md', 'docs/src/generated-inventory.md', 'docs/reading/sources.json',
+    '.codex/hooks.json', '.codex/maintenance-policy.json', '.vscode/file-groups.json',
+    '.vscode/settings.json', '.vscode/tasks.json', '.vscode/extensions.json',
+    '.vscode/launch.json', '.github/workflows/ci.yml', 'scripts/maintenance-core.ps1',
+    'scripts/maintain.ps1')
+$fixturePaths = if ($Compact) { $compactFiles } else { @(Candidate-Paths $sourceRoot) }
+foreach ($relative in $fixturePaths) {
     $destination = Safe-Path $fixture $relative
     [IO.Directory]::CreateDirectory((Split-Path $destination -Parent)) | Out-Null
     [IO.File]::Copy((Safe-Path $sourceRoot $relative), $destination)
+}
+if ($Compact) {
+    # 用代表图源执行同一组状态/竞态断言，避免测试成本随历史研究数据增长。
+    Put 'docs/src/assets/test-batch/run/F04.csv' "value`n1`n"
+    Put 'results/summaries/test-batch/run/F04.csv' "value`n1`n"
 }
 Git-Write @('init', '-q')
 Git-Write @('config', 'user.name', 'Fixture')
@@ -48,10 +83,27 @@ Git-Write @('commit', '-qm', 'fixture baseline')
 Sync-Project $fixture
 Check-Project $fixture
 Assert $true 'clean clone checks without original documents'
+if ($Compact) {
+    $index = Inventory-Text $fixture
+    Assert ($index -match 'docs/src/assets/test-batch/') 'artifact batch directory visible'
+    Assert ($index -notmatch 'test-batch/run/F04.csv') 'repeated artifact members summarized'
+    Assert ($index -match 'src/PaperRebuild.jl') 'source entry preserved'
+}
 Assert (!(Test-Path -LiteralPath (Join-Path $fixture 'docs/摘要.pdf'))) 'original PDF absent'
 $snapshot = Snapshot $fixture
 Sync-Project $fixture
 Assert ((Snapshot $fixture) -eq $snapshot) 'Sync is idempotent'
+
+# Set membership must preserve the old -cin/-ceq comparison semantics, including
+# case differences, Chinese names, and canonically equivalent Unicode accents.
+$comparisonSamples = @('src/Heat.jl', 'src/heat.jl', 'src/热网.jl', 'src/É.jl', ('src/E' + [char]0x0301 + '.jl'))
+foreach ($left in $comparisonSamples) {
+    $lookup = [Collections.Generic.HashSet[string]]::new([StringComparer]::InvariantCulture)
+    [void]$lookup.Add($left)
+    foreach ($right in $comparisonSamples) {
+        Assert ($lookup.Contains($right) -eq ($right -cin @($left))) 'membership comparison matches PowerShell'
+    }
+}
 
 # Manual groups, unknown fields, aliases, ordering and folded state survive synchronization.
 $groupPath = Safe-Path $fixture '.vscode/file-groups.json'

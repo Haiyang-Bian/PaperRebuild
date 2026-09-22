@@ -1,0 +1,7 @@
+id,mode,solver,physical_model,status,model_pass,physical_pass,terminal_pass,cost_CNY,bound_CNY,gap,pv_available_MWh,pv_used_MWh,elapsed_sec,wall_budget_pass
+cf_ct_clarabel_socp,CF_CT,Clarabel,false,solver_optimal,true,true,true,504129.23397619696,504129.23394339485,6.506664119930552e-11,83.16,83.16000000021492,17.791383100033272,true
+cf_vt_clarabel_socp,CF_VT,Clarabel,false,solver_optimal,true,true,true,498774.2303959114,498774.2301232159,5.467310979055192e-10,83.16,83.16000000114948,6.449628899979871,true
+cf_ct_gurobi_socp,CF_CT,Gurobi,false,infeasible_certified,false,false,false,,,,83.16,,10.937767499999609,true
+cf_vt_gurobi_socp,CF_VT,Gurobi,false,infeasible_certified,false,false,false,,,,83.16,,4.775378199992701,true
+cf_ct_gurobi_original,CF_CT,Gurobi,true,infeasible_certified,false,false,false,,,,83.16,,4.935699000023305,true
+cf_vt_gurobi_original,CF_VT,Gurobi,true,infeasible_certified,false,false,false,,,,83.16,,4.514223299978767,true

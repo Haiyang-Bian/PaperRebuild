@@ -1,0 +1,550 @@
+schema = "ch03-formulas-v1"
+declared_equation_count = 69
+source = "docs/摘要.pdf"
+source_sha256 = "20328e2480e773520c19c378e53365fc944c0bafcfca73071f5d8313d5ee7d91"
+checked_pdf_pages = [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 58]
+note = "按PDF图像规范化转录，省略重复全称量词；不静默修正原式。原式与项目补全分别记录。实际源码/符号/测试由group继承，个别式的用途由role覆盖。"
+
+[groups.dispatch]
+source = "src/formulations/r2.jl"
+api = "build_r2_model"
+test = "R2 saved integration ch03-001:057"
+symbols = ["indices", "P_device", "H_device", "P_grid", "cost", "ratio", "bounds", "P_demand", "Q_demand"]
+assumptions = "合成案例采用常热电比/常COP、设备单位功率因数、显式购电边界；空GT集合允许。MW×h计费。"
+
+[groups.operation]
+source = "src/core/r3_operation.jl"
+api = "R3OperationSpec"
+test = "R3 four operation modes and local candidate"
+test_path = "test/r3_v2.jl"
+symbols = ["indices", "alg_m", "bounds", "mode_flow", "mode_temperature"]
+assumptions = "PDF58四模式原定义；项目冻结恒定参考流量，只固定热源供水端口温度。新输入使用有界负荷回水和共同恢复尾段。"
+
+[groups.algorithm]
+source = "src/formulations/r3.jl"
+api = "build_r3_subproblem"
+test = "R3 fixed schedule and reconstruction ch03-060"
+test_path = "test/r3.jl"
+symbols = ["alg_x", "alg_m", "alg_theta", "alg_s", "alg_lambda", "alg_mu", "alg_gamma"]
+assumptions = "PDF52–55算法抽象；固定流量SP与项目弹性诊断可运行。直接修正和核查版投影梯度分别记录，不将局部半空间当全局有效割。"
+[groups.gradient]
+source = "src/algorithms/r3_sensitivity.jl"
+api = "r3_value_sensitivity"
+test = "R3 dual signs and complete value sensitivity"
+test_path = "test/r3_pg.jl"
+symbols = ["alg_x", "alg_m", "alg_theta", "alg_lambda", "alg_mu"]
+assumptions = "采用式补足全部流量相关项；仅连续凸子问题可信对偶，WMM分段导数与有限差分对照。"
+[groups.projection]
+source = "src/algorithms/r3_projection.jl"
+api = "build_r3_projection"
+test = "R3 convex projection and outer trace"
+test_path = "test/r3_pg.jl"
+symbols = ["alg_x", "alg_m", "alg_gamma"]
+assumptions = "主问题采用凸外松弛域，辅助调度变量共同优化；项目使用流量跨度归一化距离，原式为未缩放距离。"
+[groups.pg]
+source = "src/algorithms/r3_pg.jl"
+api = "solve_r3_projected_gradient"
+test = "R3 convex projection and outer trace"
+test_path = "test/r3_pg.jl"
+symbols = ["alg_x", "alg_m", "alg_theta", "alg_s", "alg_lambda", "alg_mu", "alg_gamma"]
+assumptions = "r3_pg_checked_v1；尺度、回溯、单侧试探和停止条件为项目补全，不继承参考文献的全局收敛证明。"
+[groups.electric]
+source = "src/formulations/r2.jl"
+api = "build_r2_model"
+test = "R2 saved integration ch03-001:057"
+symbols = ["indices", "P_branch", "Q_branch", "v", "ell", "impedance", "P_device", "P_demand", "Q_demand", "P_net", "Q_net", "bounds"]
+assumptions = "固定有向径向树；根电压1pu；保留3-12锥松弛，原支路等式独立回代。"
+[groups.hydraulic]
+source = "src/formulations/r2.jl"
+api = "build_r2_model"
+test = "R2 saved integration ch03-001:057"
+symbols = ["indices", "H_net", "m_port", "m_pipe", "delta_tau", "tau_port", "cp", "Phi", "kappa", "mu", "bounds", "H_device", "H_demand"]
+assumptions = "首批管内严格正向；端口用正幅值和source/load角色补全原式方向；3-25仅回代，构建使用3-26。"
+[groups.wmm]
+source = "src/formulations/r2.jl"
+api = "build_r2_model"
+test = "R2 transport ch03-027:034"
+symbols = ["indices", "m_pipe", "alpha", "beta", "Td", "dt", "rho", "area", "length", "tau_pipe", "tau_star", "tau_ambient", "epsilon", "cp"]
+assumptions = "历史输入显式；逐段水质量恒定；原3-34保留转录，checked版采用负指数和beta从滞后1开始的版本。"
+[groups.mixing]
+source = "src/formulations/r2.jl"
+api = "build_r2_model"
+test = "R2 saved integration ch03-001:057"
+symbols = ["indices", "m_pipe", "m_port", "tau_pipe", "tau_mix", "tau_port", "bounds"]
+assumptions = "按实际供回水方向确定入流，热源注入供水、负荷注入回水；不能将负的净注入直接当混合权重。"
+[groups.simplified]
+source = "src/formulations/r2.jl"
+api = "build_r2_model"
+test = "R2 envelopes and literal counterexamples ch03-042:052"
+symbols = ["indices", "H_net", "m_port", "m_pipe", "delta_tau", "tau_port", "tau_pipe", "tau_bar", "E", "cp", "rho", "area", "length", "epsilon", "loss", "tau_ref", "tau_ambient", "dt", "bounds"]
+assumptions = "原式存在量纲/系数/双线性疑点；mc版采用单独记录的项目补全，不将其目标解释为原问题下界。"
+[groups.dominant]
+source = "src/formulations/r2.jl"
+api = "build_r2_model"
+test = "R2 saved integration ch03-001:057"
+symbols = ["indices", "m_pipe", "m_port", "m_max", "z", "bigM", "tau_pipe", "tau_mix", "tau_port"]
+assumptions = "最大入流温度替代质量加权温度；同值最大流量允许多个选择，枚举/二进制分别对照。M按流量与温度各自有限边界计算。"
+
+[[formula]]
+number = 1
+page = 46
+group = "dispatch"
+meaning = "运行成本目标"
+latex = '\min_{\Xi}\sum_t\left(\lambda_t^{Grid}P_t^{Grid}+\sum_g c_g^{PV}P_{g,t}^{PV}+\sum_g c_g^{CHP}P_{g,t}^{CHP}+\sum_g c_g^{GT}P_{g,t}^{GT}\right)'
+issue = "R2-C04"
+[[formula]]
+number = 2
+page = 47
+group = "dispatch"
+meaning = "CHP常热电比"
+latex = 'H_{g,t}^{CHP}=\eta_g^{CHP}P_{g,t}^{CHP}'
+[[formula]]
+number = 3
+page = 47
+group = "dispatch"
+meaning = "CHP电功率界"
+latex = '\underline P_g^{CHP}\le P_{g,t}^{CHP}\le\overline P_g^{CHP}'
+[[formula]]
+number = 4
+page = 47
+group = "dispatch"
+meaning = "CHP热功率界"
+latex = '\underline H_g^{CHP}\le H_{g,t}^{CHP}\le\overline H_g^{CHP}'
+role = "项目特例：热界由电界和固定热电比导出，非独立热界的一般实现"
+[[formula]]
+number = 5
+page = 47
+group = "dispatch"
+meaning = "燃气轮机电功率界"
+latex = '\underline P_g^{GT}\le P_{g,t}^{GT}\le\overline P_g^{GT}'
+[[formula]]
+number = 6
+page = 47
+group = "dispatch"
+meaning = "光伏可用出力上界"
+latex = '0\le P_{g,t}^{PV}\le\overline P_{g,t}^{PV}'
+[[formula]]
+number = 7
+page = 47
+group = "dispatch"
+meaning = "电热转换"
+latex = 'H_{g,t}^{EB}=P_{g,t}^{EB}COP_g^{EB}'
+[[formula]]
+number = 8
+page = 47
+group = "dispatch"
+meaning = "电热设备耗电界"
+latex = '0\le P_{g,t}^{EB}\le\overline P_g^{EB}'
+[[formula]]
+number = 9
+page = 47
+group = "electric"
+meaning = "节点有功平衡"
+latex = 'P_{n,t}^{net}=\sum_{b\in\Theta(n)}P_{nb,t}-(P_{mn,t}-r_{mn}\ell_{mn,t})'
+[[formula]]
+number = 10
+page = 47
+group = "electric"
+meaning = "节点无功平衡"
+latex = 'Q_{n,t}^{net}=\sum_{b\in\Theta(n)}Q_{nb,t}-(Q_{mn,t}-x_{mn}\ell_{mn,t})'
+[[formula]]
+number = 11
+page = 47
+group = "electric"
+meaning = "支路电压降"
+latex = 'v_{n,t}=v_{m,t}-2(r_{mn}P_{mn,t}+x_{mn}Q_{mn,t})+(r_{mn}^2+x_{mn}^2)\ell_{mn,t}'
+[[formula]]
+number = 12
+page = 47
+group = "electric"
+meaning = "原电流关系的二阶锥松弛"
+latex = '\left\|\begin{matrix}2P_{mn,t}\\2Q_{mn,t}\\\ell_{mn,t}-v_{m,t}\end{matrix}\right\|_2\le\ell_{mn,t}+v_{m,t}'
+role = "作者松弛；原等式独立回代"
+[[formula]]
+number = 13
+page = 48
+group = "electric"
+meaning = "电压平方界"
+latex = '\underline v_n\le v_{n,t}\le\overline v_n'
+[[formula]]
+number = 14
+page = 48
+group = "electric"
+meaning = "电流平方界"
+latex = '\underline\ell_{mn}\le\ell_{mn,t}\le\overline\ell_{mn}'
+[[formula]]
+number = 15
+page = 48
+group = "electric"
+meaning = "有功净注入组成"
+latex = 'P_{n,t}^{net}=\sum_gP_{g,t}^{GT}+\sum_gP_{g,t}^{CHP}+\sum_gP_{g,t}^{PV}-\sum_gP_{g,t}^{EB}-P_{n,t}^{D}'
+[[formula]]
+number = 16
+page = 48
+group = "electric"
+meaning = "无功净注入组成"
+latex = 'Q_{n,t}^{net}=\sum_gQ_{g,t}^{GT}+\sum_gQ_{g,t}^{CHP}-Q_{n,t}^{D}'
+role = "本批设备无功固定0，根节点提供无功；一般机组无功能力曲线未实现"
+[[formula]]
+number = 17
+page = 48
+group = "hydraulic"
+meaning = "节点换热功率"
+latex = 'H_{j,t}^{net}=c_wm_{j,t}\Delta\tau_{j,t}'
+issue = "R2-C01"
+[[formula]]
+number = 18
+page = 48
+group = "hydraulic"
+meaning = "供回水温差"
+latex = '\Delta\tau_{j,t}=\tau_{j,t}^{S}-\tau_{j,t}^{R}'
+[[formula]]
+number = 19
+page = 48
+group = "hydraulic"
+meaning = "热源注入"
+latex = 'H_{j,t}^{net}=\sum_gH_{g,t}^{CHP}+\sum_gH_{g,t}^{EB},\quad j\in\mathcal J^G'
+[[formula]]
+number = 20
+page = 48
+group = "hydraulic"
+meaning = "热负荷负注入"
+latex = 'H_{j,t}^{net}=-H_{j,t}^{D},\quad j\in\mathcal J^D'
+[[formula]]
+number = 21
+page = 48
+group = "hydraulic"
+meaning = "水流连续性"
+latex = 'm_{k,t}=\sum_{j:j\to k}m_{jk,t}-\sum_{l:k\to l}m_{kl,t}'
+issue = "R2-C01"
+[[formula]]
+number = 22
+page = 48
+group = "hydraulic"
+meaning = "水压降下界"
+latex = '\Phi_{j,t}^{S/R}-\Phi_{k,t}^{S/R}\ge\kappa_{ij,t}'
+issue = "R2-C01"
+role = "原式右端出现ij下标；项目按当前jk管段及供回方向解释"
+[[formula]]
+number = 23
+page = 48
+group = "hydraulic"
+meaning = "非负流量与压力损耗"
+latex = 'm_{jk,t}\ge0,\quad\kappa_{jk,t}\ge0'
+role = "本批为有正下界的子域，不支持原式允许的停流"
+[[formula]]
+number = 24
+page = 48
+group = "hydraulic"
+meaning = "供回水压排序及界"
+latex = '\underline\Phi_j\le\Phi_{j,t}^{R}\le\Phi_{j,t}^{S}\le\overline\Phi_j'
+[[formula]]
+number = 25
+page = 48
+group = "hydraulic"
+meaning = "摩擦压力损耗原等式"
+latex = '\kappa_{jk,t}=\mu_{jk}(m_{jk,t})^2'
+role = "只用于原关系回代；优化约束采用3-26"
+[[formula]]
+number = 26
+page = 48
+group = "hydraulic"
+meaning = "水压损耗锥松弛"
+latex = '\left\|\begin{matrix}2\sqrt{\mu_{jk}}m_{jk,t}\\\kappa_{jk,t}-1\end{matrix}\right\|_2\le\kappa_{jk,t}+1'
+role = "作者松弛；归一化压力用于A1"
+[[formula]]
+number = 27
+page = 49
+group = "wmm"
+meaning = "时段末管内质量覆盖"
+latex = '\sum_{\varsigma=0}^{T_d}\alpha_{jk,t,\varsigma}m_{jk,t-\varsigma}\Delta T=\rho_wA_{jk}L_{jk}'
+[[formula]]
+number = 28
+page = 49
+group = "wmm"
+meaning = "alpha连续填充互补"
+latex = '(1-\alpha_{jk,t,\varsigma})\alpha_{jk,t,\varsigma+1}=0,\quad\varsigma=0,\ldots,T_d-1'
+[[formula]]
+number = 29
+page = 49
+group = "wmm"
+meaning = "alpha权重界"
+latex = '0\le\alpha_{jk,t,\varsigma}\le1,\quad\varsigma=0,\ldots,T_d'
+[[formula]]
+number = 30
+page = 49
+group = "wmm"
+meaning = "时段初管内质量覆盖"
+latex = '\sum_{\varsigma=1}^{T_d}\beta_{jk,t,\varsigma}m_{jk,t-\varsigma}\Delta T=\rho_wA_{jk}L_{jk}'
+[[formula]]
+number = 31
+page = 49
+group = "wmm"
+meaning = "beta连续填充互补"
+latex = '(1-\beta_{jk,t,\varsigma})\beta_{jk,t,\varsigma+1}=0,\quad\varsigma=0,\ldots,T_d-1'
+[[formula]]
+number = 32
+page = 49
+group = "wmm"
+meaning = "beta当前项与边界"
+latex = '\beta_{jk,t,0}=1,\quad0\le\beta_{jk,t,\varsigma}\le1,\quad\varsigma=1,\ldots,T_d'
+[[formula]]
+number = 33
+page = 49
+group = "wmm"
+meaning = "无损出口质量加权温度"
+latex = 'm_{jk,t}\tau_{jk,t}^{S/R,out*}=\sum_{\varsigma=0}^{T_d}(\beta_{jk,t,\varsigma}-\alpha_{jk,t,\varsigma})m_{jk,t-\varsigma}\tau_{jk,t-\varsigma}^{S/R,in}'
+[[formula]]
+number = 34
+page = 49
+group = "wmm"
+meaning = "水质法热损耗"
+latex = '\tau_{jk,t}^{S,out}=\widehat\tau_t^{AM}+(\tau_{jk,t}^{S,out*}-\widehat\tau_t^{AM})^{\frac{\epsilon_{jk}\Delta T}{2c_w\rho_wA_{jk}}(\sum_{\varsigma=0}^{T_d}\beta_{jk,t,\varsigma}+\sum_{\varsigma=0}^{T_d}\alpha_{jk,t,\varsigma})}'
+role = "240dpi局部图核对：未印e或负号，温差括号直接作幂底；literal阻断，不将物理修正写进原式"
+issue = "R2-C02"
+[[formula]]
+number = 35
+page = 49
+group = "mixing"
+meaning = "供水混合温度"
+latex = '\tau_{k,t}^{S,mix}=\frac{\sum_{j:j\to k}m_{jk,t}\tau_{jk,t}^{S,out}+m_{k,t}\tau_{k,t}^{S}}{\sum_{j:j\to k}m_{jk,t}+m_{k,t}}'
+issue = "R2-C01"
+[[formula]]
+number = 36
+page = 49
+group = "mixing"
+meaning = "回水混合温度"
+latex = '\tau_{k,t}^{R,mix}=\frac{\sum_{l:l\to k}m_{lk,t}\tau_{lk,t}^{R,out}+m_{k,t}\tau_{k,t}^{R}}{\sum_{l:l\to k}m_{lk,t}+m_{k,t}}'
+issue = "R2-C01"
+[[formula]]
+number = 37
+page = 49
+group = "mixing"
+meaning = "热源回水连接"
+latex = '\tau_{k,t}^{R}=\tau_{k,t}^{R,mix},\quad k\in\mathcal J^S'
+[[formula]]
+number = 38
+page = 49
+group = "mixing"
+meaning = "热负荷供水连接"
+latex = '\tau_{k,t}^{S}=\tau_{k,t}^{S,mix},\quad k\in\mathcal J^D'
+[[formula]]
+number = 39
+page = 49
+group = "mixing"
+meaning = "供水管入口连接"
+latex = '\tau_{jk,t}^{S,in}=\tau_{j,t}^{S,mix}'
+[[formula]]
+number = 40
+page = 50
+group = "mixing"
+meaning = "回水管入口连接"
+latex = '\tau_{lk,t}^{R,in}=\tau_{l,t}^{R,mix}'
+[[formula]]
+number = 41
+page = 50
+group = "mixing"
+meaning = "全部供回水温度界"
+latex = '\underline\tau^S\le\tau^S\le\overline\tau^S,\quad\underline\tau^R\le\tau^R\le\overline\tau^R'
+[[formula]]
+number = 42
+page = 50
+group = "simplified"
+meaning = "热功率McCormick原式"
+latex = '\begin{aligned}H_{j,t}^{net}&\ge c_wm_{j,t}\underline{\Delta\tau}_j+\underline m_j(\Delta\tau_j-\underline{\Delta\tau}_j)\\H_{j,t}^{net}&\ge c_wm_{j,t}\overline{\Delta\tau}_j+\overline m_j(\Delta\tau_j-\overline{\Delta\tau}_j)\\H_{j,t}^{net}&\le c_wm_{j,t}\overline{\Delta\tau}_j+\underline m_j(\Delta\tau_j-\overline{\Delta\tau}_j)\\H_{j,t}^{net}&\le c_wm_{j,t}\underline{\Delta\tau}_j+\overline m_j(\Delta\tau_j-\underline{\Delta\tau}_j)\end{aligned}'
+issue = "R2-C03"
+[[formula]]
+number = 43
+page = 50
+group = "simplified"
+meaning = "节点温差和流量盒"
+latex = '\underline{\Delta\tau}_j\le\Delta\tau_j=\tau_{j,t}^S-\tau_{j,t}^R\le\overline{\Delta\tau}_j,\quad\underline m_j\le m_{j,t}\le\overline m_j'
+[[formula]]
+number = 44
+page = 50
+group = "simplified"
+meaning = "热网能量状态原式"
+latex = 'E_t^{DHN}=E_{t-1}^{DHN}+\sum_jH_{j,t}-\sum_{(j,k)}(H_{jk,t}^{S,loss}+H_{jk,t}^{S,loss})'
+issue = "R2-C04"
+[[formula]]
+number = 45
+page = 50
+group = "simplified"
+meaning = "热网能量界"
+latex = '0\le E_t^{DHN}\le\overline E^{DHN}'
+[[formula]]
+number = 46
+page = 51
+group = "simplified"
+meaning = "初始能量原式"
+latex = 'E_0^{DHN}=c_w\rho_w\sum_{(j,k)}\left\{2A_{jk}L_{jk}\left[\left(\frac{\tau_{jk,0}^{S,in}+\tau_{jk,0}^{S,out}}2-\underline\tau^S\right)+\left(\frac{\tau_{jk,0}^{R,in}+\tau_{jk,0}^{R,out}}2-\underline\tau^R\right)\right]\right\}'
+issue = "R2-C04"
+[[formula]]
+number = 47
+page = 51
+group = "simplified"
+meaning = "最大能量原式"
+latex = '\overline E^{DHN}=c_w\rho_w\sum_{(j,k)}\left\{A_{jk}L_{jk}(\overline\tau^S-\underline\tau^S)+(\overline\tau^R-\underline\tau^R)\right\}'
+issue = "R2-C04"
+[[formula]]
+number = 48
+page = 51
+group = "simplified"
+meaning = "供水稳态热损失推导式"
+latex = '\tau_{jk,t}^{S,out}=(\tau_{jk,t}^{S,in}-\widehat\tau_t^{AM})e^{-\epsilon_{jk}L_{jk}/(c_wm_{jk,t})}+\widehat\tau_t^{AM}'
+role = "推导背景，不与3-52动态式同时强加"
+[[formula]]
+number = 49
+page = 51
+group = "simplified"
+meaning = "回水稳态热损失推导式"
+latex = '\tau_{lk,t}^{R,out}=(\tau_{lk,t}^{R,in}-\widehat\tau_t^{AM})e^{-\epsilon_{lk}L_{lk}/(c_wm_{lk,t})}+\widehat\tau_t^{AM}'
+role = "推导背景，不作为第二套独立动态约束"
+[[formula]]
+number = 50
+page = 51
+group = "simplified"
+meaning = "参考供水温度下的定热损耗"
+latex = 'H_{jk,t}^{S,loss}=\epsilon_{jk}L_{jk}(\tau_{jk,t}^{S,in}-\widehat\tau_t^{AM})\approx\epsilon_{jk}L_{jk}(\widehat\tau^{S,ref}-\widehat\tau_t^{AM})=\overline\epsilon_{ij,t}^{S}'
+role = "作者近似；定损耗开关"
+[[formula]]
+number = 51
+page = 51
+group = "simplified"
+meaning = "参考回水温度下的定热损耗"
+latex = 'H_{lk,t}^{R,loss}=\epsilon_{lk}L_{lk}(\tau_{lk,t}^{R,in}-\widehat\tau_t^{AM})\approx\epsilon_{lk}L_{lk}(\widehat\tau^{R,ref}-\widehat\tau_t^{AM})=\overline\epsilon_{lk,t}^{R}'
+role = "作者近似；定损耗开关"
+[[formula]]
+number = 52
+page = 51
+group = "simplified"
+meaning = "温度有限差分原式"
+latex = '(\overline\tau_{jk,t}^{S/R}-\overline\tau_{jk,t-1}^{S/R})+\frac{m_{jk,t}}{\rho_wA_{jk}}\frac{\tau_{jk,t}^{S/R,out}-\tau_{jk,t}^{S/R,in}}{L_{jk}}+\frac{\epsilon_{jk}}{\rho_wA_{jk}L_{jk}}(\overline\tau_{jk,t}^{S/R}-\widehat\tau_t^{AM})=0'
+issue = "R2-C05;Q10"
+[[formula]]
+number = 53
+page = 52
+group = "dominant"
+meaning = "管道最大注入流选择"
+latex = 'm_{jk,t}\le\overline m_{k,t}^S\le m_{jk,t}+(1-z_{jk,t}^{in})\overline M'
+[[formula]]
+number = 54
+page = 52
+group = "dominant"
+meaning = "本地最大注入流选择"
+latex = 'm_{k,t}\le\overline m_{k,t}^S\le m_{k,t}+(1-z_{k,t})\overline M'
+[[formula]]
+number = 55
+page = 52
+group = "dominant"
+meaning = "唯一主导来源"
+latex = '\sum_{j:j\to k}z_{jk,t}^{in}+z_{k,t}=1'
+[[formula]]
+number = 56
+page = 52
+group = "dominant"
+meaning = "主导管道出口温度"
+latex = '\tau_{jk,t}^{S,out}+(z_{jk,t}^{in}-1)\overline M\le\tau_{k,t}^{S,mix}\le\tau_{jk,t}^{S,out}+(1-z_{jk,t}^{in})\overline M'
+[[formula]]
+number = 57
+page = 52
+group = "dominant"
+meaning = "主导本地端口温度"
+latex = '\tau_{k,t}^{S}+(z_{k,t}-1)\overline M\le\tau_{k,t}^{S,mix}\le\tau_{k,t}^{S}+(1-z_{k,t})\overline M'
+
+[[formula]]
+number = 58
+page = 52
+group = "algorithm"
+meaning = "WMM抽象优化问题"
+latex = '\min c(\mathbf x)\quad\mathrm{s.t.}\ f(\mathbf x,\mathbf m,\boldsymbol\theta)=0,\quad g_1(\mathbf x)=\mathbf a_1^\mathsf T\mathbf x+\mathbf b_1\le0,\quad g_2(\mathbf m)=\mathbf a_2^\mathsf T\mathbf m+\mathbf b_2\le0,\quad r(\mathbf m,\mathbf x)\le0'
+implementation = "documented"
+reason = "抽象表述已说明；原文f/g/r分类不能代替逐项模型核查，采用模型见R2/R3解释。"
+[[formula]]
+number = 59
+page = 53
+group = "algorithm"
+meaning = "含割平面的主问题"
+latex = '\min c(\mathbf x)\quad\mathrm{s.t.}\ g_1(\mathbf x)\le0,\ g_2(\mathbf m)\le0,\ r(\mathbf m,\mathbf x)\le0,\quad h(\mathbf m,\mathbf x^K)=(\mathbf c^K)^\mathsf T\mathbf x+\mathbf d^K\le0,\ K=1,\ldots,N_K'
+implementation = "documented"
+reason = "原式h标记含m，展开式却写x。已实现凸投影外松弛域；不实现未经证明的累计全局割主问题。"
+[[formula]]
+number = 60
+page = 53
+group = "algorithm"
+meaning = "固定流量和时延的子问题"
+latex = '\min c(\mathbf x)\quad\mathrm{s.t.}\ f(\mathbf x,\mathbf m^K,\boldsymbol\theta^K)=0,\quad g_1(\mathbf x)=\mathbf a_1^\mathsf T\mathbf x+\mathbf b_1\le0,\quad r(\mathbf m^K,\mathbf x)\le0'
+role = "固定流量下的已核查WMM特例；时延由流量和历史计算，保留电网及水力锥松弛"
+[[formula]]
+number = 61
+page = 54
+group = "gradient"
+meaning = "拉格朗日灵敏度与时延链式项"
+latex = '\left.\frac{\partial c(\mathbf x)}{\partial\mathbf m}\right|_{\mathbf m^K,\mathbf x^K,\boldsymbol\theta^K}=\frac{\partial L^{Opt}(\mathbf m^K,\mathbf x^K,\boldsymbol\theta^K)}{\partial\mathbf m}=(\boldsymbol\lambda^K)^\mathsf T\left\{\frac{\partial f}{\partial\mathbf m}+\frac{\partial f}{\partial\boldsymbol\theta}\frac{\partial\boldsymbol\theta}{\partial\mathbf m}\right\}'
+implementation = "implemented"
+role = "采用解释补全流量相关不等式、固定变量与数值热系数贡献；不是原式逐字实现"
+[[formula]]
+number = 62
+page = 54
+group = "pg"
+meaning = "成本分支梯度步"
+latex = '\mathbf m^{K+1,*}=\mathbf m^K-\gamma^K\frac{\partial L^{Opt}(\mathbf m^K,\mathbf x^K,\boldsymbol\theta^K)}{\partial\mathbf m}'
+implementation = "implemented"
+role = "归一化成本梯度及Armijo回溯为项目数值规则"
+[[formula]]
+number = 63
+page = 54
+group = "projection"
+meaning = "成本分支投影"
+latex = '\mathbf m^{K+1}=\arg\min_{\mathbf m}\left\{\|\mathbf m^{K+1,*}-\mathbf m\|_2^2:(\mathbf m,\mathbf x)\in D_{MP}\right\}'
+implementation = "implemented"
+role = "存在辅助调度变量的凸投影；距离尺度是项目约定"
+[[formula]]
+number = 64
+page = 54
+group = "algorithm"
+meaning = "原文可行性割"
+latex = '(\boldsymbol\lambda^K)^\mathsf T\left[\frac{\partial L^{Feasi}(\mathbf m^K,\mathbf x^K,\boldsymbol\theta^K)}{\partial\mathbf m}(\mathbf m-\mathbf m^K)\right]+(\boldsymbol\mu^K)^\mathsf T g_2(\mathbf x^K)\le0'
+implementation = "documented"
+reason = "原页g2(xK)和lambda重复乘法疑点保留；项目只用诊断值一阶局部试探半空间，经实际求解接受或丢弃，不作为全局有效割。"
+[[formula]]
+number = 65
+page = 54
+group = "pg"
+meaning = "可行性分支梯度步"
+latex = '\mathbf m^{K+1,*}=\mathbf m^K-\gamma^K\frac{\partial L^{Feasi}(\mathbf m^K,\mathbf x^K,\boldsymbol\theta^K)}{\partial\mathbf m}'
+implementation = "implemented"
+role = "冻结尺度的弹性诊断梯度；实际诊断目标下降才接受"
+[[formula]]
+number = 66
+page = 55
+group = "projection"
+meaning = "可行性分支投影"
+latex = '\mathbf m^{K+1}=\arg\min_{\mathbf m}\left\{\|\mathbf m^{K+1,*}-\mathbf m\|_2^2:(\mathbf m,\mathbf x)\in D_{MP}\right\}'
+implementation = "implemented"
+role = "可行性分支投影与单次局部半空间试探，不跨轮累积未证明的割"
+
+[[formula]]
+number = 67
+page = 58
+group = "operation"
+meaning = "CF-VT固定预设流量"
+latex = 'm_{jk,t}=\hat m_{jk,t},\quad(j,k)\in\mathcal C,\ t\in\mathcal T'
+implementation = "implemented"
+role = "采用预先冻结的恒定流量作为预设计划特例，原文前置优化另行说明"
+[[formula]]
+number = 68
+page = 58
+group = "operation"
+meaning = "VF-CT固定热源供水温度"
+latex = '\tau^S_{k,t}=\hat\tau^S_{k,t},\quad k\in\mathcal J^S,\ t\in\mathcal T'
+implementation = "implemented"
+role = "CT只固定热源供水端口，管道和负荷温度仍有动态"
+[[formula]]
+number = 69
+page = 58
+group = "operation"
+meaning = "CF-CT同时固定流量及热源供水温度"
+latex = '\begin{cases}m_{jk,t}=\hat m_{jk,t},\\ \tau^S_{k,t}=\hat\tau^S_{k,t}.\end{cases}'
+implementation = "implemented"
+role = "四模式共用物理边界与恢复尾段；更自由模式含受限模式可行解"

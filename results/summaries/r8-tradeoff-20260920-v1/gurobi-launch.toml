@@ -1,0 +1,8 @@
+command = "julia +1.12.6 --startup-file=no --project=tools/solvers scripts/run_r8_gurobi.jl FROZEN_BATCH"
+entry_sha256 = "850dd9fe03724b5d634a7b1d2bb8cdd3bac3edfd033f6601404a5edd8c462a66"
+reason = "Initial direct launch stopped before optimization: CSV is not a direct dependency of tools/solvers. Root project is appended to LOAD_PATH; all frozen science and inputs remain unchanged."
+root_manifest_sha256 = "948f0f5c5a4bc8381a3d9ad413fb0f8e78ee1a3bad52606dea9b9b6f144e5450"
+root_project_sha256 = "313f8c54dfa9a7a276832e48cc8d7e3e9b63c29aab765bf7fa541f2fb68f40a9"
+schema = "r8-environment-launch-v1"
+solver_manifest_sha256 = "22cb571f15112ccc21408903f229e25b49ee0d59333c14d251ab4b83a8abbf54"
+solver_project_sha256 = "be07a40d34ee1e44e61d0e81fc1a71161cc9ba7ef20d57fc7fbe4e70f6e3ba8b"

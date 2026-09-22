@@ -1,0 +1,124 @@
+schema = "ch05-input-transcription-v1"
+source = "docs/摘要.pdf"
+source_sha256 = "20328e2480e773520c19c378e53365fc944c0bafcfca73071f5d8313d5ee7d91"
+pdf_pages = [97, 98]
+printed_pages = [80, 81]
+origin = "thesis_table_transcription"
+status = "partial_input_not_runnable"
+electric_nodes = 15
+electric_lines = 14
+heat_nodes = 10
+market_nodes = 5
+electric_kV = 10.0
+peak_electric_load_MVA = 10.85
+pipe_total_km = 5.80
+supply_C = [70.0, 90.0]
+peak_heat_MW = 2.26
+claimed_total_heat_capacity_MW = 3.32
+claimed_total_generation_MW = 5.10
+claimed_PV_capacity_MW = 2.0
+scenario_count = 100
+scenario_generation = "k-means representative renewable output scenarios from local historical data; histories, seed and weights unavailable in the inspected pages"
+chance_confidence = 0.95
+author_solver = "MATLAB with Gurobi 10.0.1; 3.60GHz i7-7700, 8GB RAM"
+missing = ["Line r/x and ratings", "Pipe geometry/flow/history and temperature bounds", "Time series and 100 scenario weights/trajectories", "Building dynamics/initial conditions", "Reserve calls, bid bounds, market inputs and Wasserstein calibration"]
+ambiguities = ["Prose says two heat pumps while Table 5-3 labels two electric boilers; preserve table labels, do not add two extra devices.", "Peak electrical load is MVA, not MW. Power factor is not inferred.", "User P2H capacity column is kW without an explicit electric/thermal qualifier; confirm before model conversion."]
+
+[[device]]
+id = "PV1"
+kind = "PV"
+table = "5-1"
+electric_node = 10
+capacity_kW = 1000.0
+capacity_basis = "generation"
+cost_USD_kWh = 0.005
+[[device]]
+id = "PV2"
+kind = "PV"
+table = "5-1"
+electric_node = 13
+capacity_kW = 1000.0
+capacity_basis = "generation"
+cost_USD_kWh = 0.005
+[[device]]
+id = "CHP1"
+kind = "CHP"
+table = "5-2"
+electric_node = 3
+heat_node = 5
+heat_to_power = 0.80
+capacity_kW = 2000.0
+capacity_basis = "electrical; heat capacity cross-checked against chapter total"
+cost_USD_kWh = 0.098
+[[device]]
+id = "CHP2"
+kind = "CHP"
+table = "5-2"
+electric_node = 13
+heat_node = 1
+heat_to_power = 1.20
+capacity_kW = 600.0
+capacity_basis = "electrical; heat capacity cross-checked against chapter total"
+cost_USD_kWh = 0.083
+[[device]]
+id = "GT"
+kind = "GT"
+table = "5-2"
+electric_node = 12
+capacity_kW = 500.0
+capacity_basis = "generation"
+cost_USD_kWh = 0.068
+[[device]]
+id = "EB1"
+kind = "EB"
+table = "5-3"
+electric_node = 13
+heat_node = 1
+COP = 0.95
+capacity_kW = 500.0
+capacity_basis = "thermal explicitly stated in table"
+[[device]]
+id = "EB2"
+kind = "EB"
+table = "5-3"
+electric_node = 12
+heat_node = 2
+COP = 0.92
+capacity_kW = 500.0
+capacity_basis = "thermal explicitly stated in table"
+[[device]]
+id = "P2H1"
+kind = "P2H"
+table = "5-4"
+electric_node = 4
+heat_node = 3
+COP = 0.80
+capacity_kW = 300.0
+capacity_basis = "unspecified electrical or thermal; blocked conversion"
+[[device]]
+id = "P2H2"
+kind = "P2H"
+table = "5-4"
+electric_node = 6
+heat_node = 4
+COP = 0.80
+capacity_kW = 300.0
+capacity_basis = "unspecified electrical or thermal; blocked conversion"
+[[device]]
+id = "P2H3"
+kind = "P2H"
+table = "5-4"
+electric_node = 8
+heat_node = 6
+COP = 0.80
+capacity_kW = 300.0
+capacity_basis = "unspecified electrical or thermal; blocked conversion"
+[[device]]
+id = "P2H4"
+kind = "P2H"
+table = "5-4"
+electric_node = 14
+heat_node = 10
+COP = 0.80
+capacity_kW = 300.0
+capacity_basis = "unspecified electrical or thermal; blocked conversion"

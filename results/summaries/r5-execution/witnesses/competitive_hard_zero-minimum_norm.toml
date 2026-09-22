@@ -1,0 +1,1363 @@
+[record]
+case = "competitive_hard_zero"
+case_sha256 = "791191f19bedcd27e54b0615f892bdfc19051f9097afdbbf94dd0b3889b2bd4f"
+cost_complete = true
+delivery_pass = true
+delivery_status = "solver_optimal"
+elapsed_sec = 22.646999835968018
+id = "competitive_hard_zero-minimum_norm"
+mode = "minimum_norm"
+parent = "results/summaries/r5-strategic/witnesses/competitive_hard_zero-sos1.toml"
+parent_sha256 = "aca70d583cc2f50bb2f5a56bd0b380f2b76528c4d2cb71c06114b11e81987c44"
+selection_pass = true
+selection_status = "selection_solved"
+stages = ["selection", "delivery"]
+total_cost_USD = 12.835000012600695
+
+    [record.stage_sha256]
+    delivery = "d88f737b1b01511f9359feab36bf4ac93b8b5ed4a5adfd5dc4e4602967bc457d"
+    selection = "eb218d0a3bbaf649df08a12cdf87e53d7ec5eabbe6b713beadc8d5d9201e56c5"
+
+[stages.delivery]
+raw_result_sha256 = "d88f737b1b01511f9359feab36bf4ac93b8b5ed4a5adfd5dc4e4602967bc457d"
+
+    [stages.delivery.payload]
+    kind = "fixed_award_delivery"
+
+        [stages.delivery.payload.case]
+        leader_id = "IES"
+        name = "competitive_hard_zero"
+        origin = "synthetic"
+        quantity_rule = "fixed_offer_capacities"
+        schema = "r5-strategic-case-v1"
+        selection = "optimistic_primal_dual"
+
+            [stages.delivery.payload.case.bid_bounds.down_bid]
+            lower = [0.0]
+            upper = [200.0]
+
+            [stages.delivery.payload.case.bid_bounds.energy_bid]
+            lower = [0.0]
+            upper = [200.0]
+
+            [stages.delivery.payload.case.bid_bounds.up_bid]
+            lower = [0.0]
+            upper = [200.0]
+
+            [stages.delivery.payload.case.market]
+            T = 1
+            description = "One exogenous generator, common 100 USD prices, explicit abundant supply."
+            dt_h = 1.0
+            load_MW = [[1.0]]
+            name = "competitive_hard_zero"
+            nodes = 1
+            origin = "synthetic"
+            reserve_down_MW = [0.1]
+            reserve_up_MW = [0.1]
+            schema = "r5-market-case-v1"
+
+                [[stages.delivery.payload.case.market.generators]]
+                down_bid = [100.0]
+                down_max = 1.0
+                energy_bid = [100.0]
+                id = "G"
+                node = 1
+                p_bid_max = 5.0
+                p_initial = 1.0
+                p_max = 5.0
+                p_min = 0.0
+                ramp_down_MW_h = 20.0
+                ramp_up_MW_h = 20.0
+                up_bid = [100.0]
+                up_max = 1.0
+
+                [[stages.delivery.payload.case.market.ies]]
+                down_bid = [100.0]
+                down_max = 0.08
+                energy_bid = [100.0]
+                id = "IES"
+                node = 1
+                purchase_bid_max = 1.0
+                q_max = 1.0
+                q_min = 0.0
+                up_bid = [100.0]
+                up_max = 0.08
+
+                [stages.delivery.payload.case.market.network]
+                limit_MW = []
+                ptdf = []
+                slack_node = 1
+
+                [stages.delivery.payload.case.market.units]
+                energy = "MWh"
+                energy_price = "USD/MWh"
+                power = "MW"
+                ramp = "MW/h"
+                reserve_price = "USD/(MW*h)"
+                time = "h"
+
+            [stages.delivery.payload.case.provenance]
+            changes = "External one-node market and explicit zero embedded day-ahead prices; no physical trajectory or risk parameter changes."
+            parent_risk = "configs/r5/risk/hard_zero.toml"
+            parent_risk_sha256 = "1b4689d803cbf0f9db573c8d56b9b7490fb7b62c7af5080d42033e72671f4f2b"
+
+            [stages.delivery.payload.case.risk]
+            epsilon = 0.0
+            event = "any_building_time_comfort_violation"
+            name = "hard_zero"
+            objective = "worst_expected_net_cost"
+            origin = "synthetic"
+            schema = "r5-risk-case-v1"
+
+                [stages.delivery.payload.case.risk.ambiguity]
+                distance = [[0.0, 1.0, 1.0], [1.0, 0.0, 1.0], [1.0, 1.0, 0.0]]
+                distance_provenance = "Euclidean distance between one-hot labels of the three frozen full-call regimes, divided by sqrt(2); synthetic categorical trajectory metric, not calibrated from thesis samples."
+                distance_unit = "normalized_trajectory"
+                radius = 0.0
+                support = "fixed_scenarios"
+
+                [stages.delivery.payload.case.risk.commitment]
+                comfort = "hard_each_scenario"
+                name = "shared_hand"
+                objective = "expected_net_cost"
+                origin = "synthetic"
+                recourse_information = "complete_trajectory"
+                schema = "r5-commitment-case-v1"
+                uncertain_fields = ["realtime.alpha_down", "realtime.alpha_up"]
+
+                    [stages.delivery.payload.case.risk.commitment.bounds.P_DA_MW]
+                    lower = [0.0]
+                    upper = [1.0]
+
+                    [stages.delivery.payload.case.risk.commitment.bounds.R_down_MW]
+                    lower = [0.0]
+                    upper = [0.08]
+
+                    [stages.delivery.payload.case.risk.commitment.bounds.R_up_MW]
+                    lower = [0.0]
+                    upper = [0.08]
+
+                    [stages.delivery.payload.case.risk.commitment.day_ahead]
+                    down_price = [0.0]
+                    energy_price = [0.0]
+                    up_price = [0.0]
+
+                    [[stages.delivery.payload.case.risk.commitment.scenarios]]
+                    case_sha256 = "f0bf23617ebae0a71accc0192b82859288b88be6c0cf4d55f9a21fa50dd0ef95"
+                    id = "none"
+                    probability = 0.5
+
+                        [stages.delivery.payload.case.risk.commitment.scenarios.case]
+                        T = 1
+                        ambient_K = [283.15]
+                        dt_h = 1.0
+                        name = "shared_none"
+                        origin = "synthetic"
+                        schema = "r5-dispatch-case-v1"
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.award]
+                            P_DA_MW = [0.142]
+                            R_down_MW = [0.0]
+                            R_up_MW = [0.0]
+                            down_price = [2.0]
+                            energy_price = [100.0]
+                            origin = "synthetic"
+                            up_price = [5.0]
+
+                            [[stages.delivery.payload.case.risk.commitment.scenarios.case.buildings]]
+                            COP_DH = 1.0
+                            C_MWh_K = 0.01
+                            G_MW_K = 0.0042
+                            P_DH_max_MW = 0.0
+                            R_max_K = 320.15
+                            R_min_K = 320.15
+                            T_initial_K = 293.15
+                            T_max_K = 293.15
+                            T_min_K = 293.15
+                            electric_node = 2
+                            heat_node = 2
+                            id = "building"
+                            m_kg_s = 1.0
+                            terminal_rule = "initial"
+
+                            [[stages.delivery.payload.case.risk.commitment.scenarios.case.devices]]
+                            cost_USD_MWh = 0.0
+                            heat_ratio = 1.0
+                            id = "EB"
+                            kind = "EB"
+                            node = 2
+                            p_max_MW = 0.1
+                            p_min_MW = 0.0
+                            q_max_Mvar = 0.0
+                            q_min_Mvar = 0.0
+                            source_id = "source"
+                            [[stages.delivery.payload.case.risk.commitment.scenarios.case.devices]]
+                            P_initial_MW = 0.05
+                            cost_USD_MWh = 130.0
+                            id = "GT"
+                            kind = "GT"
+                            node = 2
+                            p_max_MW = 0.2
+                            p_min_MW = 0.0
+                            q_max_Mvar = 0.0
+                            q_min_Mvar = 0.0
+                            ramp_down_MW_h = 1.0
+                            ramp_up_MW_h = 1.0
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.electric]
+                            P_load_MW = [[0.0], [0.1]]
+                            Q_load_Mvar = [[0.0], [0.02]]
+                            S_base_MVA = 1.0
+                            nodes = 2
+                            pcc_max_MW = 1.0
+                            pcc_min_MW = 0.0
+                            qcc_max_Mvar = 1.0
+                            qcc_min_Mvar = -1.0
+                            root = 1
+                            v_max_pu = 1.05
+                            v_min_pu = 0.95
+                            v_ref_pu = 1.0
+
+                                [[stages.delivery.payload.case.risk.commitment.scenarios.case.electric.lines]]
+                                P_limit_MW = 1.0
+                                Q_limit_Mvar = 1.0
+                                from = 1
+                                id = "e12"
+                                r_pu = 0.01
+                                to = 2
+                                x_pu = 0.005
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.heat]
+                            R_max_K = 343.15
+                            R_min_K = 293.15
+                            S_max_K = 353.15
+                            S_min_K = 303.15
+                            c_J_kgK = 4200.0
+                            nodes = 2
+                            terminal_rule = "free"
+
+                                [[stages.delivery.payload.case.risk.commitment.scenarios.case.heat.pipes]]
+                                area_m2 = 0.01
+                                from = 1
+                                history_R_K = [320.15]
+                                history_S_K = [330.15]
+                                id = "h12"
+                                length_m = 360.0
+                                loss_W_mK = 0.0
+                                m_kg_s = 1.0
+                                rho_kg_m3 = 1000.0
+                                to = 2
+
+                                [[stages.delivery.payload.case.risk.commitment.scenarios.case.heat.sources]]
+                                T_max_K = 330.15
+                                T_min_K = 330.15
+                                id = "source"
+                                m_kg_s = 1.0
+                                node = 1
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.realtime]
+                            alpha_down = [0.0]
+                            alpha_up = [0.0]
+                            delta = 0.0
+                            penalty_USD_MWh = 1000.0
+                            price = [80.0]
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.units]
+                            energy = "MWh"
+                            energy_price = "USD/MWh"
+                            flow = "kg/s"
+                            heat_capacity = "MWh/K"
+                            heat_transfer = "MW/K"
+                            power = "MW"
+                            reactive = "Mvar"
+                            reserve_price = "USD/(MW*h)"
+                            temperature = "K"
+                            time = "h"
+                    [[stages.delivery.payload.case.risk.commitment.scenarios]]
+                    case_sha256 = "d21f3f7cd019c63d1194e1d4fed126e9fb2ead0bb4b10694ceeeb8712835e33c"
+                    id = "up"
+                    probability = 0.25
+
+                        [stages.delivery.payload.case.risk.commitment.scenarios.case]
+                        T = 1
+                        ambient_K = [283.15]
+                        dt_h = 1.0
+                        name = "shared_up"
+                        origin = "synthetic"
+                        schema = "r5-dispatch-case-v1"
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.award]
+                            P_DA_MW = [0.142]
+                            R_down_MW = [0.0]
+                            R_up_MW = [0.0]
+                            down_price = [2.0]
+                            energy_price = [100.0]
+                            origin = "synthetic"
+                            up_price = [5.0]
+
+                            [[stages.delivery.payload.case.risk.commitment.scenarios.case.buildings]]
+                            COP_DH = 1.0
+                            C_MWh_K = 0.01
+                            G_MW_K = 0.0042
+                            P_DH_max_MW = 0.0
+                            R_max_K = 320.15
+                            R_min_K = 320.15
+                            T_initial_K = 293.15
+                            T_max_K = 293.15
+                            T_min_K = 293.15
+                            electric_node = 2
+                            heat_node = 2
+                            id = "building"
+                            m_kg_s = 1.0
+                            terminal_rule = "initial"
+
+                            [[stages.delivery.payload.case.risk.commitment.scenarios.case.devices]]
+                            cost_USD_MWh = 0.0
+                            heat_ratio = 1.0
+                            id = "EB"
+                            kind = "EB"
+                            node = 2
+                            p_max_MW = 0.1
+                            p_min_MW = 0.0
+                            q_max_Mvar = 0.0
+                            q_min_Mvar = 0.0
+                            source_id = "source"
+                            [[stages.delivery.payload.case.risk.commitment.scenarios.case.devices]]
+                            P_initial_MW = 0.05
+                            cost_USD_MWh = 130.0
+                            id = "GT"
+                            kind = "GT"
+                            node = 2
+                            p_max_MW = 0.2
+                            p_min_MW = 0.0
+                            q_max_Mvar = 0.0
+                            q_min_Mvar = 0.0
+                            ramp_down_MW_h = 1.0
+                            ramp_up_MW_h = 1.0
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.electric]
+                            P_load_MW = [[0.0], [0.1]]
+                            Q_load_Mvar = [[0.0], [0.02]]
+                            S_base_MVA = 1.0
+                            nodes = 2
+                            pcc_max_MW = 1.0
+                            pcc_min_MW = 0.0
+                            qcc_max_Mvar = 1.0
+                            qcc_min_Mvar = -1.0
+                            root = 1
+                            v_max_pu = 1.05
+                            v_min_pu = 0.95
+                            v_ref_pu = 1.0
+
+                                [[stages.delivery.payload.case.risk.commitment.scenarios.case.electric.lines]]
+                                P_limit_MW = 1.0
+                                Q_limit_Mvar = 1.0
+                                from = 1
+                                id = "e12"
+                                r_pu = 0.01
+                                to = 2
+                                x_pu = 0.005
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.heat]
+                            R_max_K = 343.15
+                            R_min_K = 293.15
+                            S_max_K = 353.15
+                            S_min_K = 303.15
+                            c_J_kgK = 4200.0
+                            nodes = 2
+                            terminal_rule = "free"
+
+                                [[stages.delivery.payload.case.risk.commitment.scenarios.case.heat.pipes]]
+                                area_m2 = 0.01
+                                from = 1
+                                history_R_K = [320.15]
+                                history_S_K = [330.15]
+                                id = "h12"
+                                length_m = 360.0
+                                loss_W_mK = 0.0
+                                m_kg_s = 1.0
+                                rho_kg_m3 = 1000.0
+                                to = 2
+
+                                [[stages.delivery.payload.case.risk.commitment.scenarios.case.heat.sources]]
+                                T_max_K = 330.15
+                                T_min_K = 330.15
+                                id = "source"
+                                m_kg_s = 1.0
+                                node = 1
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.realtime]
+                            alpha_down = [0.0]
+                            alpha_up = [1.0]
+                            delta = 0.0
+                            penalty_USD_MWh = 1000.0
+                            price = [80.0]
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.units]
+                            energy = "MWh"
+                            energy_price = "USD/MWh"
+                            flow = "kg/s"
+                            heat_capacity = "MWh/K"
+                            heat_transfer = "MW/K"
+                            power = "MW"
+                            reactive = "Mvar"
+                            reserve_price = "USD/(MW*h)"
+                            temperature = "K"
+                            time = "h"
+                    [[stages.delivery.payload.case.risk.commitment.scenarios]]
+                    case_sha256 = "acfbf28c98e5312deac9e269ec5b40b9d3437f1de0ea8657cd59468217e5b71a"
+                    id = "down"
+                    probability = 0.25
+
+                        [stages.delivery.payload.case.risk.commitment.scenarios.case]
+                        T = 1
+                        ambient_K = [283.15]
+                        dt_h = 1.0
+                        name = "shared_down"
+                        origin = "synthetic"
+                        schema = "r5-dispatch-case-v1"
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.award]
+                            P_DA_MW = [0.142]
+                            R_down_MW = [0.0]
+                            R_up_MW = [0.0]
+                            down_price = [2.0]
+                            energy_price = [100.0]
+                            origin = "synthetic"
+                            up_price = [5.0]
+
+                            [[stages.delivery.payload.case.risk.commitment.scenarios.case.buildings]]
+                            COP_DH = 1.0
+                            C_MWh_K = 0.01
+                            G_MW_K = 0.0042
+                            P_DH_max_MW = 0.0
+                            R_max_K = 320.15
+                            R_min_K = 320.15
+                            T_initial_K = 293.15
+                            T_max_K = 293.15
+                            T_min_K = 293.15
+                            electric_node = 2
+                            heat_node = 2
+                            id = "building"
+                            m_kg_s = 1.0
+                            terminal_rule = "initial"
+
+                            [[stages.delivery.payload.case.risk.commitment.scenarios.case.devices]]
+                            cost_USD_MWh = 0.0
+                            heat_ratio = 1.0
+                            id = "EB"
+                            kind = "EB"
+                            node = 2
+                            p_max_MW = 0.1
+                            p_min_MW = 0.0
+                            q_max_Mvar = 0.0
+                            q_min_Mvar = 0.0
+                            source_id = "source"
+                            [[stages.delivery.payload.case.risk.commitment.scenarios.case.devices]]
+                            P_initial_MW = 0.05
+                            cost_USD_MWh = 130.0
+                            id = "GT"
+                            kind = "GT"
+                            node = 2
+                            p_max_MW = 0.2
+                            p_min_MW = 0.0
+                            q_max_Mvar = 0.0
+                            q_min_Mvar = 0.0
+                            ramp_down_MW_h = 1.0
+                            ramp_up_MW_h = 1.0
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.electric]
+                            P_load_MW = [[0.0], [0.1]]
+                            Q_load_Mvar = [[0.0], [0.02]]
+                            S_base_MVA = 1.0
+                            nodes = 2
+                            pcc_max_MW = 1.0
+                            pcc_min_MW = 0.0
+                            qcc_max_Mvar = 1.0
+                            qcc_min_Mvar = -1.0
+                            root = 1
+                            v_max_pu = 1.05
+                            v_min_pu = 0.95
+                            v_ref_pu = 1.0
+
+                                [[stages.delivery.payload.case.risk.commitment.scenarios.case.electric.lines]]
+                                P_limit_MW = 1.0
+                                Q_limit_Mvar = 1.0
+                                from = 1
+                                id = "e12"
+                                r_pu = 0.01
+                                to = 2
+                                x_pu = 0.005
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.heat]
+                            R_max_K = 343.15
+                            R_min_K = 293.15
+                            S_max_K = 353.15
+                            S_min_K = 303.15
+                            c_J_kgK = 4200.0
+                            nodes = 2
+                            terminal_rule = "free"
+
+                                [[stages.delivery.payload.case.risk.commitment.scenarios.case.heat.pipes]]
+                                area_m2 = 0.01
+                                from = 1
+                                history_R_K = [320.15]
+                                history_S_K = [330.15]
+                                id = "h12"
+                                length_m = 360.0
+                                loss_W_mK = 0.0
+                                m_kg_s = 1.0
+                                rho_kg_m3 = 1000.0
+                                to = 2
+
+                                [[stages.delivery.payload.case.risk.commitment.scenarios.case.heat.sources]]
+                                T_max_K = 330.15
+                                T_min_K = 330.15
+                                id = "source"
+                                m_kg_s = 1.0
+                                node = 1
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.realtime]
+                            alpha_down = [1.0]
+                            alpha_up = [0.0]
+                            delta = 0.0
+                            penalty_USD_MWh = 1000.0
+                            price = [80.0]
+
+                            [stages.delivery.payload.case.risk.commitment.scenarios.case.units]
+                            energy = "MWh"
+                            energy_price = "USD/MWh"
+                            flow = "kg/s"
+                            heat_capacity = "MWh/K"
+                            heat_transfer = "MW/K"
+                            power = "MW"
+                            reactive = "Mvar"
+                            reserve_price = "USD/(MW*h)"
+                            temperature = "K"
+                            time = "h"
+
+                [stages.delivery.payload.case.risk.temperature_domain.building]
+                lower_K = 292.15
+                upper_K = 294.15
+
+        [stages.delivery.payload.market]
+        case_sha256 = "23e6538cc2a6cf33aaf4c5a5f8db1030a3cfffceb56914c74d4ac1ac8d0f6153"
+        multiplier_source = "optimized_minimum_norm_dual_face"
+        run_id = "r5-execution-56f49468-4ce0-4c00-bc24-6c3fb990c8d3/market"
+        schema = "r5-market-result-v1"
+        solver_objective = 120.0
+        status = "unique_minimum_norm_market_selection"
+        version = "r5_market_clearing_checked_v1"
+
+            [stages.delivery.payload.market.multipliers]
+            down = [99.9999999999991]
+            energy = [100.00000000000001]
+            g_cap_down = [[-4.718600398814846e-14]]
+            g_cap_up = [[-1.612671772508859e-14]]
+            gd_bid = [[-5.213722245777979e-14]]
+            gu_bid = [[-4.640509282258887e-14]]
+            i_cap_down = [[2.77998560234668e-14]]
+            i_cap_up = [[3.22400195350134e-14]]
+            id_bid = [[1.4158353131432326e-12]]
+            iu_bid = [[1.4276098633316266e-12]]
+            line_down = []
+            line_up = []
+            pg_bid = [[-7.991673908232474e-15]]
+            q_bid = [[-6.269150274217966e-15]]
+            ramp_down = [[-4.9498292237436715e-15]]
+            ramp_up = [[-6.019178940058859e-15]]
+            up = [99.99999999999913]
+
+            [stages.delivery.payload.market.values]
+            P_G = [[1.0000000000031661]]
+            P_IES = [[3.1663020583991426e-12]]
+            R_G_down = [[0.05000000009535075]]
+            R_G_up = [[0.09999999999850051]]
+            R_IES_down = [[0.04999999990464919]]
+            R_IES_up = [[1.499414103855187e-12]]
+
+        [stages.delivery.payload.market_case]
+        T = 1
+        description = "One exogenous generator, common 100 USD prices, explicit abundant supply."
+        dt_h = 1.0
+        load_MW = [[1.0]]
+        name = "competitive_hard_zero"
+        nodes = 1
+        origin = "synthetic"
+        reserve_down_MW = [0.1]
+        reserve_up_MW = [0.1]
+        schema = "r5-market-case-v1"
+
+            [[stages.delivery.payload.market_case.generators]]
+            down_bid = [100.0]
+            down_max = 1.0
+            energy_bid = [100.0]
+            id = "G"
+            node = 1
+            p_bid_max = 5.0
+            p_initial = 1.0
+            p_max = 5.0
+            p_min = 0.0
+            ramp_down_MW_h = 20.0
+            ramp_up_MW_h = 20.0
+            up_bid = [100.0]
+            up_max = 1.0
+
+            [[stages.delivery.payload.market_case.ies]]
+            down_bid = [100.0]
+            down_max = 0.08
+            energy_bid = [100.0]
+            id = "IES"
+            node = 1
+            purchase_bid_max = 1.0
+            q_max = 1.0
+            q_min = 0.0
+            up_bid = [100.0]
+            up_max = 0.08
+
+            [stages.delivery.payload.market_case.network]
+            limit_MW = []
+            ptdf = []
+            slack_node = 1
+
+            [stages.delivery.payload.market_case.units]
+            energy = "MWh"
+            energy_price = "USD/MWh"
+            power = "MW"
+            ramp = "MW/h"
+            reserve_price = "USD/(MW*h)"
+            time = "h"
+
+    [stages.delivery.result]
+    budget_sec = 577.7420001029968
+    case_sha256 = "791191f19bedcd27e54b0615f892bdfc19051f9097afdbbf94dd0b3889b2bd4f"
+    created_utc = "2026-09-19T07:17:17.739"
+    elapsed_sec = 0.06800007820129395
+    kind = "fixed_award_delivery"
+    market_case_sha256 = "23e6538cc2a6cf33aaf4c5a5f8db1030a3cfffceb56914c74d4ac1ac8d0f6153"
+    market_witness_sha256 = "367150f1814dcd4abdc81e7cf3271abf66fa979534aff7342a9a822fffb469f5"
+    run_id = "r5-delivery-674a74c2-6412-4067-8ce4-9b01d496d93c"
+    schema = "r5-execution-result-v1"
+    status = "solver_optimal"
+    version = "r5_execution_delivery_v1"
+
+        [stages.delivery.result.awards]
+        P_DA_MW = [3.1663020583991426e-12]
+        R_down_MW = [0.04999999990464919]
+        R_up_MW = [1.499414103855187e-12]
+
+        [stages.delivery.result.risk]
+        bound_source = "MOI.ObjectiveBound"
+        case_sha256 = "5e7c972b9b0d6aef834420f864d3f4998314f83f6f4769efa65338f87b978ed1"
+        commitment_source = "fixed_executed_market_awards"
+        has_candidate = true
+        method = "fixed_executed_awards"
+        primal_status = "FEASIBLE_POINT"
+        raw_status = "kHighsModelStatusOptimal"
+        run_id = "r5-delivery-674a74c2-6412-4067-8ce4-9b01d496d93c/risk"
+        schema = "r5-risk-result-v1"
+        solver = "HiGHS"
+        solver_objective = 17.835000001058997
+        solver_objective_bound = 17.835000001058994
+        solver_version = "v1.15.1"
+        status = "solver_optimal"
+        termination = "OPTIMAL"
+        version = "r5_finite_support_checked_v1"
+        z = [0.0, 0.0, 0.0]
+
+            [stages.delivery.result.risk.embedded_duals.cost]
+            lambda = 2.499999995644078
+            nu = [18.460000000000004, 18.45999999988005, 15.960000004355926]
+
+            [stages.delivery.result.risk.embedded_duals.risk]
+            lambda = 0.0
+            nu = [0.0, 0.0, 0.0]
+
+            [stages.delivery.result.risk.first_stage]
+            P_DA_MW = [3.1663020583991426e-12]
+            R_down_MW = [0.04999999990464919]
+            R_up_MW = [1.499414103855187e-12]
+
+            [stages.delivery.result.risk.oracles.actual]
+            budget_sec = 577.699000120163
+            elapsed_sec = 0.005000114440917969
+            lambda = 0.0
+            nu = [-0.0, -0.0, -0.0]
+            quantity = "probability"
+            schema = "r5-transport-witness-v1"
+            status = "solver_optimal"
+            transport = [[0.5, 0.0, 0.0], [0.0, 0.25, 0.0], [0.0, 0.0, 0.25]]
+
+                [stages.delivery.result.risk.oracles.actual.dual_solver]
+                bound_source = "MOI.ObjectiveBound"
+                has_candidate = true
+                primal_status = "FEASIBLE_POINT"
+                raw_status = "kHighsModelStatusOptimal"
+                solver = "HiGHS"
+                solver_objective = 0.0
+                solver_objective_bound = 0.0
+                solver_version = "v1.15.1"
+                status = "solver_optimal"
+                termination = "OPTIMAL"
+
+                [stages.delivery.result.risk.oracles.actual.primal_solver]
+                bound_source = "MOI.ObjectiveBound"
+                has_candidate = true
+                primal_status = "FEASIBLE_POINT"
+                raw_status = "kHighsModelStatusOptimal"
+                solver = "HiGHS"
+                solver_objective = 0.0
+                solver_objective_bound = 0.0
+                solver_version = "v1.15.1"
+                status = "solver_optimal"
+                termination = "OPTIMAL"
+
+            [stages.delivery.result.risk.oracles.cost]
+            budget_sec = 577.7139999866486
+            elapsed_sec = 0.006999969482421875
+            lambda = 2.499999998557076
+            nu = [18.460000002913002, 18.460000001413587, 15.960000004355926]
+            quantity = "cost"
+            schema = "r5-transport-witness-v1"
+            status = "solver_optimal"
+            transport = [[0.5, 0.0, -0.0], [0.0, 0.25, 0.0], [0.0, 0.0, 0.25]]
+
+                [stages.delivery.result.risk.oracles.cost.dual_solver]
+                bound_source = "MOI.ObjectiveBound"
+                has_candidate = true
+                primal_status = "FEASIBLE_POINT"
+                raw_status = "kHighsModelStatusOptimal"
+                solver = "HiGHS"
+                solver_objective = 17.83500000289888
+                solver_objective_bound = 17.83500000289888
+                solver_version = "v1.15.1"
+                status = "solver_optimal"
+                termination = "OPTIMAL"
+
+                [stages.delivery.result.risk.oracles.cost.primal_solver]
+                bound_source = "MOI.ObjectiveBound"
+                has_candidate = true
+                primal_status = "FEASIBLE_POINT"
+                raw_status = "kHighsModelStatusOptimal"
+                solver = "HiGHS"
+                solver_objective = 17.83500000289888
+                solver_objective_bound = 17.83500000289888
+                solver_version = "v1.15.1"
+                status = "solver_optimal"
+                termination = "OPTIMAL"
+
+            [stages.delivery.result.risk.oracles.risk]
+            budget_sec = 577.7070000171661
+            elapsed_sec = 0.007999897003173828
+            lambda = 0.0
+            nu = [-0.0, -0.0, -0.0]
+            quantity = "probability"
+            schema = "r5-transport-witness-v1"
+            status = "solver_optimal"
+            transport = [[0.5, 0.0, 0.0], [0.0, 0.25, 0.0], [0.0, 0.0, 0.25]]
+
+                [stages.delivery.result.risk.oracles.risk.dual_solver]
+                bound_source = "MOI.ObjectiveBound"
+                has_candidate = true
+                primal_status = "FEASIBLE_POINT"
+                raw_status = "kHighsModelStatusOptimal"
+                solver = "HiGHS"
+                solver_objective = 0.0
+                solver_objective_bound = 0.0
+                solver_version = "v1.15.1"
+                status = "solver_optimal"
+                termination = "OPTIMAL"
+
+                [stages.delivery.result.risk.oracles.risk.primal_solver]
+                bound_source = "MOI.ObjectiveBound"
+                has_candidate = true
+                primal_status = "FEASIBLE_POINT"
+                raw_status = "kHighsModelStatusOptimal"
+                solver = "HiGHS"
+                solver_objective = 0.0
+                solver_objective_bound = 0.0
+                solver_version = "v1.15.1"
+                status = "solver_optimal"
+                termination = "OPTIMAL"
+
+            [stages.delivery.result.risk.scenarios.down]
+            case_sha256 = "3aba06b9b61316ab0ce7bb4e37619e777a09ad19ef2828a7b127a2ddf70212bb"
+            run_id = "r5-delivery-674a74c2-6412-4067-8ce4-9b01d496d93c/risk/down"
+            schema = "r5-dispatch-result-v1"
+            solver_objective = 15.960000004355926
+            status = "embedded_strategic_policy"
+            version = "r5_dispatch_checked_v1"
+
+                [stages.delivery.result.risk.scenarios.down.values]
+                H_D = [[0.041999999999999885]]
+                P_DER = [[0.04200000000000004], [0.09200000009218455]]
+                P_DH = [[0.0]]
+                P_PCC = [[0.04999999990781549]]
+                P_line = [[0.04999999990781549]]
+                Q_DER = [[0.0], [0.0]]
+                Q_PCC = [[0.02]]
+                Q_line = [[0.02]]
+                delivery = [[-0.04999999990464919]]
+                mismatch = [[0.0]]
+                v = [[1.0], [0.9994000000009219]]
+                "τ_IN" = [[293.15]]
+                "τ_R" = [[320.15], [320.15]]
+                "τ_S" = [[330.15], [330.15]]
+                "τ_load_R" = [[320.15]]
+                "τ_pipe_R" = [[320.15]]
+                "τ_pipe_S" = [[330.15]]
+                "τ_src" = [[330.15]]
+
+            [stages.delivery.result.risk.scenarios.none]
+            case_sha256 = "3fb5e1d38fdcd0295c9377b48dbd9593033f3661ed1a26a587d222730533768c"
+            run_id = "r5-delivery-674a74c2-6412-4067-8ce4-9b01d496d93c/risk/none"
+            schema = "r5-dispatch-result-v1"
+            solver_objective = 18.460000000000004
+            status = "embedded_strategic_policy"
+            version = "r5_dispatch_checked_v1"
+
+                [stages.delivery.result.risk.scenarios.none.values]
+                H_D = [[0.041999999999999885]]
+                P_DER = [[0.04200000000000004], [0.14200000000000004]]
+                P_DH = [[0.0]]
+                P_PCC = [[0.0]]
+                P_line = [[0.0]]
+                Q_DER = [[0.0], [0.0]]
+                Q_PCC = [[0.02]]
+                Q_line = [[0.02]]
+                delivery = [[0.0]]
+                mismatch = [[0.0]]
+                v = [[1.0], [0.9999]]
+                "τ_IN" = [[293.15]]
+                "τ_R" = [[320.15], [320.15]]
+                "τ_S" = [[330.15], [330.15]]
+                "τ_load_R" = [[320.15]]
+                "τ_pipe_R" = [[320.15]]
+                "τ_pipe_S" = [[330.15]]
+                "τ_src" = [[330.15]]
+
+            [stages.delivery.result.risk.scenarios.up]
+            case_sha256 = "1a5077973e2ebd12410ae97bae8e38b9ac10f701a983fa9ef7aaa327015a5135"
+            run_id = "r5-delivery-674a74c2-6412-4067-8ce4-9b01d496d93c/risk/up"
+            schema = "r5-dispatch-result-v1"
+            solver_objective = 18.45999999988005
+            status = "embedded_strategic_policy"
+            version = "r5_dispatch_checked_v1"
+
+                [stages.delivery.result.risk.scenarios.up.values]
+                H_D = [[0.041999999999999885]]
+                P_DER = [[0.04200000000000004], [0.14200000000000004]]
+                P_DH = [[0.0]]
+                P_PCC = [[0.0]]
+                P_line = [[0.0]]
+                Q_DER = [[0.0], [0.0]]
+                Q_PCC = [[0.02]]
+                Q_line = [[0.02]]
+                delivery = [[1.499414103855187e-12]]
+                mismatch = [[0.0]]
+                v = [[1.0], [0.9999]]
+                "τ_IN" = [[293.15]]
+                "τ_R" = [[320.15], [320.15]]
+                "τ_S" = [[330.15], [330.15]]
+                "τ_load_R" = [[320.15]]
+                "τ_pipe_R" = [[320.15]]
+                "τ_pipe_S" = [[330.15]]
+                "τ_src" = [[330.15]]
+
+[stages.selection]
+raw_result_sha256 = "eb218d0a3bbaf649df08a12cdf87e53d7ec5eabbe6b713beadc8d5d9201e56c5"
+
+    [stages.selection.payload]
+    kind = "market_execution"
+
+        [stages.selection.payload.case]
+        T = 1
+        description = "One exogenous generator, common 100 USD prices, explicit abundant supply."
+        dt_h = 1.0
+        load_MW = [[1.0]]
+        name = "competitive_hard_zero"
+        nodes = 1
+        origin = "synthetic"
+        reserve_down_MW = [0.1]
+        reserve_up_MW = [0.1]
+        schema = "r5-market-case-v1"
+
+            [[stages.selection.payload.case.generators]]
+            down_bid = [100.0]
+            down_max = 1.0
+            energy_bid = [100.0]
+            id = "G"
+            node = 1
+            p_bid_max = 5.0
+            p_initial = 1.0
+            p_max = 5.0
+            p_min = 0.0
+            ramp_down_MW_h = 20.0
+            ramp_up_MW_h = 20.0
+            up_bid = [100.0]
+            up_max = 1.0
+
+            [[stages.selection.payload.case.ies]]
+            down_bid = [100.0]
+            down_max = 0.08
+            energy_bid = [100.0]
+            id = "IES"
+            node = 1
+            purchase_bid_max = 1.0
+            q_max = 1.0
+            q_min = 0.0
+            up_bid = [100.0]
+            up_max = 0.08
+
+            [stages.selection.payload.case.network]
+            limit_MW = []
+            ptdf = []
+            slack_node = 1
+
+            [stages.selection.payload.case.units]
+            energy = "MWh"
+            energy_price = "USD/MWh"
+            power = "MW"
+            ramp = "MW/h"
+            reserve_price = "USD/(MW*h)"
+            time = "h"
+
+    [stages.selection.result]
+    budget_sec = 180.0
+    case_sha256 = "23e6538cc2a6cf33aaf4c5a5f8db1030a3cfffceb56914c74d4ac1ac8d0f6153"
+    created_utc = "2026-09-19T07:16:56.441"
+    elapsed_sec = 20.75600004196167
+    kind = "market_execution"
+    run_id = "r5-execution-56f49468-4ce0-4c00-bc24-6c3fb990c8d3"
+    schema = "r5-execution-result-v1"
+    status = "selection_solved"
+    version = "r5_execution_min_norm_v1"
+
+        [stages.selection.result.dual]
+        bound_source = "MOI.DualObjectiveValue"
+        bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+        has_candidate = true
+        primal_status = "FEASIBLE_POINT"
+        raw_status = "SOLVED"
+        solver = "Clarabel"
+        solver_objective = 1.4999999999999827
+        solver_objective_bound = 1.4999999999851896
+        solver_version = "0.11.1"
+        status = "solver_optimal"
+        termination = "OPTIMAL"
+
+            [stages.selection.result.dual.witness]
+            multiplier_source = "MOI_raw_selector_QP_duals_not_market_prices"
+            raw_duals = [1.1074788984771875, 1.65550131367004, 0.06718413310385535, 0.06897689610273908, 0.5580224151928525, 0.033563756743937564, 0.031770993745053835, 3.814709045612172, 1.586524417567338, 0.5244586584489519, 0.5176854895393923, 0.5494564832844091, 3.8818931787159903, 1.0402947653734063, 1.0385020023745224, 0.05503455513431164, 0.056827318133195366, 21.601555554351105, 22.697600384736724]
+            solver_objective = 1.4999999999999827
+            x = [100.00000000000001, 99.99999999999913, 99.9999999999991, -1.612671772508859e-14, -4.718600398814846e-14, 3.22400195350134e-14, 2.77998560234668e-14, -6.269150274217966e-15, -7.991673908232474e-15, -4.640509282258887e-14, -5.213722245777979e-14, 1.4276098633316266e-12, 1.4158353131432326e-12, -6.019178940058859e-15, -4.9498292237436715e-15]
+
+                [stages.selection.result.dual.witness.system]
+                h = [0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001]
+                names = ["π[1]", "σ_up[1]", "σ_down[1]", "g_cap_up[1,1]", "g_cap_down[1,1]", "i_cap_up[1,1]", "i_cap_down[1,1]", "q_bid[1,1]", "pg_bid[1,1]", "gu_bid[1,1]", "gd_bid[1,1]", "iu_bid[1,1]", "id_bid[1,1]", "ramp_up[1,1]", "ramp_down[1,1]"]
+
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [1.0, 0.1, 0.1, -5.0, 0.0, 0.0, -1.0, -1.0, -5.0, -1.0, -1.0, -0.08, -0.08, -21.0, -19.0]
+                    constant = -120.0
+                    equality = true
+                    id = "row/1"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [1.0, 0.0, 0.0, -1.0, 1.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, -1.0, 1.0]
+                    constant = -100.0
+                    equality = false
+                    id = "row/2"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 1.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -100.0
+                    equality = false
+                    id = "row/3"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 1.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -100.0
+                    equality = false
+                    id = "row/4"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [-1.0, 0.0, 0.0, 0.0, 0.0, 1.0, -1.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = 100.0
+                    equality = false
+                    id = "row/5"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 1.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0]
+                    constant = -100.0
+                    equality = false
+                    id = "row/6"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0]
+                    constant = -100.0
+                    equality = false
+                    id = "row/7"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/8"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/9"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/10"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/11"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/12"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/13"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/14"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/15"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/16"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/17"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/18"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.dual.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/19"
+                    moi_to_multiplier = 1.0
+
+        [stages.selection.result.market]
+        case_sha256 = "23e6538cc2a6cf33aaf4c5a5f8db1030a3cfffceb56914c74d4ac1ac8d0f6153"
+        multiplier_source = "optimized_minimum_norm_dual_face"
+        run_id = "r5-execution-56f49468-4ce0-4c00-bc24-6c3fb990c8d3/market"
+        schema = "r5-market-result-v1"
+        solver_objective = 120.0
+        status = "unique_minimum_norm_market_selection"
+        version = "r5_market_clearing_checked_v1"
+
+            [stages.selection.result.market.multipliers]
+            down = [99.9999999999991]
+            energy = [100.00000000000001]
+            g_cap_down = [[-4.718600398814846e-14]]
+            g_cap_up = [[-1.612671772508859e-14]]
+            gd_bid = [[-5.213722245777979e-14]]
+            gu_bid = [[-4.640509282258887e-14]]
+            i_cap_down = [[2.77998560234668e-14]]
+            i_cap_up = [[3.22400195350134e-14]]
+            id_bid = [[1.4158353131432326e-12]]
+            iu_bid = [[1.4276098633316266e-12]]
+            line_down = []
+            line_up = []
+            pg_bid = [[-7.991673908232474e-15]]
+            q_bid = [[-6.269150274217966e-15]]
+            ramp_down = [[-4.9498292237436715e-15]]
+            ramp_up = [[-6.019178940058859e-15]]
+            up = [99.99999999999913]
+
+            [stages.selection.result.market.values]
+            P_G = [[1.0000000000031661]]
+            P_IES = [[3.1663020583991426e-12]]
+            R_G_down = [[0.05000000009535075]]
+            R_G_up = [[0.09999999999850051]]
+            R_IES_down = [[0.04999999990464919]]
+            R_IES_up = [[1.499414103855187e-12]]
+
+        [stages.selection.result.primal]
+        bound_source = "MOI.DualObjectiveValue"
+        bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed because:\n\nClarabel.MOIwrapper.Optimizer{Float64} does not support getting the attribute MathOptInterface.ObjectiveBound().\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+        has_candidate = true
+        primal_status = "FEASIBLE_POINT"
+        raw_status = "SOLVED"
+        solver = "Clarabel"
+        solver_objective = 0.5075000000030163
+        solver_objective_bound = 0.5074999999800507
+        solver_version = "0.11.1"
+        status = "solver_optimal"
+        termination = "OPTIMAL"
+
+            [stages.selection.result.primal.witness]
+            multiplier_source = "MOI_raw_selector_QP_duals_not_market_prices"
+            raw_duals = [-0.7118713260316426, 0.188128673981361, 0.2381286739336841, 0.0028812867397005762, 9.203107041262151e-13, 0.7197636870033239, -2.4594439017295293e-13, -1.2990802965787644e-12, -1.0523302106595822e-12, -2.386371692460666e-13, -1.063579058106629e-12, -9.312031194665392e-13, -1.3686981204370464e-11, -1.41652753790173e-10, -4.859146292499518e-14, -4.8607970983205896e-14, 1.029433795686823e-12, 1.0888916385059813e-11, 6.057800932277404e-11, 0.28023631300389323, 0.619763687029588, 1.1028700815207873e-11]
+            solver_objective = 0.5075000000030163
+            x = [1.0000000000031661, 0.09999999999850051, 0.05000000009535075, 3.1663020583991426e-12, 1.499414103855187e-12, 0.04999999990464919]
+
+                [stages.selection.result.primal.witness.system]
+                h = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+                names = ["P_G[1,1]", "R_G_up[1,1]", "R_G_down[1,1]", "P_IES[1,1]", "R_IES_up[1,1]", "R_IES_down[1,1]"]
+
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [-1.0, 0.0, 0.0, 1.0, 0.0, 0.0]
+                    constant = 1.0
+                    equality = true
+                    id = "row/1"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, -1.0, 0.0, 0.0, -1.0, 0.0]
+                    constant = 0.1
+                    equality = true
+                    id = "row/2"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, -1.0, 0.0, 0.0, -1.0]
+                    constant = 0.1
+                    equality = true
+                    id = "row/3"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [100.0, 100.0, 100.0, -100.0, 100.0, 100.0]
+                    constant = -120.0
+                    equality = true
+                    id = "row/4"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [-1.0, 0.0, 1.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/5"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, -1.0, 1.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/6"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [1.0, 1.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -5.0
+                    equality = false
+                    id = "row/7"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 1.0, 0.0, 1.0]
+                    constant = -1.0
+                    equality = false
+                    id = "row/8"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 1.0, 0.0, 0.0]
+                    constant = -1.0
+                    equality = false
+                    id = "row/9"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [1.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -5.0
+                    equality = false
+                    id = "row/10"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 1.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -1.0
+                    equality = false
+                    id = "row/11"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 1.0, 0.0, 0.0, 0.0]
+                    constant = -1.0
+                    equality = false
+                    id = "row/12"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 1.0, 0.0]
+                    constant = -0.08
+                    equality = false
+                    id = "row/13"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, 1.0]
+                    constant = -0.08
+                    equality = false
+                    id = "row/14"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [1.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -21.0
+                    equality = false
+                    id = "row/15"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [-1.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -19.0
+                    equality = false
+                    id = "row/16"
+                    moi_to_multiplier = -1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [-1.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/17"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, -1.0, 0.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/18"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, -1.0, 0.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/19"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, -1.0, 0.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/20"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, -1.0, 0.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/21"
+                    moi_to_multiplier = 1.0
+                    [[stages.selection.result.primal.witness.system.rows]]
+                    a = [0.0, 0.0, 0.0, 0.0, 0.0, -1.0]
+                    constant = -0.0
+                    equality = false
+                    id = "row/22"
+                    moi_to_multiplier = 1.0
+
+        [stages.selection.result.primary]
+        budget_sec = 36.0
+        case_sha256 = "23e6538cc2a6cf33aaf4c5a5f8db1030a3cfffceb56914c74d4ac1ac8d0f6153"
+        cost_optimization_complete = true
+        created_utc = "2026-09-19T07:16:56.446"
+        dual_status = "FEASIBLE_POINT"
+        elapsed_sec = 3.9189999103546143
+        fixed_load_utility_constant_omitted = true
+        julia_version = "1.12.6"
+        model_type = "continuous_LP"
+        objective_type = "fixed_bid_clearing_cost_not_system_resource_cost"
+        primal_status = "FEASIBLE_POINT"
+        raw_status = "kHighsModelStatusOptimal"
+        run_id = "r5-market-a4ea29a1-da87-4f99-8999-e88e4d61b177"
+        schema = "r5-market-result-v1"
+        solver = "HiGHS"
+        solver_objective = 120.0
+        solver_objective_bound = 120.0
+        solver_version = "v1.15.1"
+        status = "solver_optimal"
+        termination = "OPTIMAL"
+        version = "r5_market_clearing_checked_v1"
+
+            [stages.selection.result.primary.lower_bound_duals]
+            P_G = [[0.0]]
+            P_IES = [[0.0]]
+            R_G_down = [[0.0]]
+            R_G_up = [[0.0]]
+            R_IES_down = [[0.0]]
+            R_IES_up = [[0.0]]
+
+            [[stages.selection.result.primary.model_types]]
+            count = 3
+            function = "AffExpr"
+            set = "MathOptInterface.EqualTo{Float64}"
+            [[stages.selection.result.primary.model_types]]
+            count = 2
+            function = "AffExpr"
+            set = "MathOptInterface.GreaterThan{Float64}"
+            [[stages.selection.result.primary.model_types]]
+            count = 10
+            function = "AffExpr"
+            set = "MathOptInterface.LessThan{Float64}"
+            [[stages.selection.result.primary.model_types]]
+            count = 6
+            function = "VariableRef"
+            set = "MathOptInterface.GreaterThan{Float64}"
+
+            [stages.selection.result.primary.multipliers]
+            down = [100.0]
+            energy = [100.0]
+            g_cap_down = [[0.0]]
+            g_cap_up = [[0.0]]
+            gd_bid = [[0.0]]
+            gu_bid = [[0.0]]
+            i_cap_down = [[0.0]]
+            i_cap_up = [[0.0]]
+            id_bid = [[0.0]]
+            iu_bid = [[0.0]]
+            line_down = []
+            line_up = []
+            pg_bid = [[0.0]]
+            q_bid = [[0.0]]
+            ramp_down = [[0.0]]
+            ramp_up = [[0.0]]
+            up = [100.0]
+
+            [stages.selection.result.primary.raw_duals]
+            down = [-100.0]
+            energy = [-100.0]
+            g_cap_down = [[0.0]]
+            g_cap_up = [[-0.0]]
+            gd_bid = [[-0.0]]
+            gu_bid = [[-0.0]]
+            i_cap_down = [[-0.0]]
+            i_cap_up = [[0.0]]
+            id_bid = [[-0.0]]
+            iu_bid = [[-0.0]]
+            line_down = []
+            line_up = []
+            pg_bid = [[-0.0]]
+            q_bid = [[-0.0]]
+            ramp_down = [[-0.0]]
+            ramp_up = [[-0.0]]
+            up = [-100.0]
+
+            [stages.selection.result.primary.values]
+            P_G = [[1.0]]
+            P_IES = [[0.0]]
+            R_G_down = [[0.1]]
+            R_G_up = [[0.1]]
+            R_IES_down = [[0.0]]
+            R_IES_up = [[0.0]]
+
+        [stages.selection.result.spec]
+        price_scale_USD_MWh = 100.0
+        quantity_scale_MW = 1.0
+        version = "r5_execution_min_norm_v1"

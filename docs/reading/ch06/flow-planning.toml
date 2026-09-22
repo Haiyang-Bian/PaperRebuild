@@ -1,0 +1,63 @@
+schema = "r7-flow-planning-audit-v1"
+version = "r7_shared_continuous_flow_v1"
+source = "docs/摘要.pdf"
+source_sha256 = "20328e2480e773520c19c378e53365fc944c0bafcfca73071f5d8313d5ee7d91"
+pdf_pages = [114,117]
+scope = "共同正常空间状态、连续正向正常管流与连续非负恢复管流；零散热、固定正常电拓扑、子步平均节点"
+original_entry = "docs/reading/ch06/linked-planning.toml"
+original_ids = ["6-70","6-71","6-72"]
+source_note = "原初态及流量变化三式只在linked-planning.toml保留一份逐式定义。PDF117的6-93及6-97至99用各允许故障存在门槛内恢复的等价结构；本项目详细非凸输运不继承原紧凑MILP/LP对偶保证。"
+
+[[equation]]
+id = "R7-J1"
+latex = '0<\underline m^{\mathrm N}\le m^{\mathrm N}\le\overline m^{\mathrm N},\quad 0\le\underline m^{\mathrm D}\le m^{\mathrm D}\le\overline m^{\mathrm D},\quad |m^{\mathrm D}_{p,t,s,\gamma}-m^{\mathrm N}_{p,t}|\le\Delta\overline m_p'
+meaning = "正常活动端口保持正流，恢复允许停流；节点端口分别非负。每个流量矩阵不含新能源场景维度；不同故障可分别决策，但灾前计划共同。最后一项回接原6-72中的本轮正常变量，不再读取旧参考常数。"
+api = "r7_flow_planning_spec"
+test_file = "test/r7_flow_planning.jl"
+test = "R7-J1/J4 failures remain explicit"
+
+[[equation]]
+id = "R7-J2"
+latex = '\min_{x,m^{\mathrm N}} C(x)\quad\mathrm{s.t.}\quad\forall(s,\gamma)\in\mathcal A:\exists (y_{s,\gamma},m^{\mathrm D}_{s,\gamma})\in\mathcal Y(x,m^{\mathrm N},\gamma),\quad \ell_s(y_{s,\gamma})\le L_s'
+meaning = "原6-93/97至99的有限故障存在性结构，热块改用项目无损详细输运。正常成本是唯一目标，各恢复见证不必最小化失供；它们不能带失供最优界。全部流量固定退化到LP/MILP，至少一个流量自由通常为非凸MIQCP，按实际MOI类型报告。"
+api = "build_r7_flow_planning"
+test_file = "test/r7_flow_planning.jl"
+test = "R7-J2 fixed degeneration and all fault inheritance"
+
+[[equation]]
+id = "R7-J3"
+latex = '\boldsymbol q_{p,s,\gamma}=\left(\frac{3600\Delta t\,m^{\mathrm N}_{p,1:t_s-1}}{M_p},\frac{3600\delta t\,m^{\mathrm D}_{p,s,\gamma}}{M_p}\right),\quad \xi_{p,s,\omega}=\mathcal T(\xi_{p,1,\omega},\boldsymbol q^{\mathrm N},\boldsymbol\tau^{\mathrm N}_{\mathrm{in},\omega})'
+meaning = "沿用R7-F2/F3的质量区间交集，在同一初始空间段上拼接正常前缀与恢复后缀；δt=Δt/substeps。没有自由事件初温。q=0时出口平均温度不可观测，但库存仍守恒且重启继承原水团。源荷热功率为0乘温差，因此闲置温度不生成热量；有正流时仍检查源荷温差及混合。"
+api = "add_r7_mass_transport!"
+test_file = "test/r7_flow_planning.jl"
+test = "R7-J1/J3 zero flow retains spatial memory"
+
+[[equation]]
+id = "R7-J4"
+latex = '\mathrm{Accept}=V_{\mathrm N}\land\bigwedge_{(s,\gamma)\in\mathcal A}\left(V_{s,\gamma}^{\mathrm{inherit}}\land V_{s,\gamma}^{\mathrm{replay}}\land[\ell_s\le L_s]\right)'
+meaning = "从保存的正常流量/入口温度独立裁切水团得到每个事件的空间状态，再检查恢复边界、设备、线性电网、质量/热量、温度、库存和失供。停流出口仅不作观测误差判定，其声明温区仍检查；不裁剪负原值，不放宽A1。费用认证只属于声明的联合域。"
+api = "validate_r7_flow_planning"
+test_file = "test/r7_flow_planning.jl"
+test = "R7-J2 fixed degeneration and all fault inheritance"
+
+[[symbol]]
+id = "R7J-flow"
+latex = 'm^{\mathrm N},m^{\mathrm D}_{s,\gamma}'
+meaning = "共同正常流量与逐事件/故障恢复流量，N/D为项目语义标签"
+unit = "kg/s"
+julia = "normal.flow_values / witnesses.values.m_pipe,m_source,m_load"
+shape = "pipe/node × time；事件/故障单独保存；无新能源场景轴"
+[[symbol]]
+id = "R7J-prefix"
+latex = '\xi_{p,s,\omega},\boldsymbol q_{p,s,\gamma}'
+meaning = "同一正常历史确定的事件空间状态与拼接质量序列"
+unit = "kg,K; q无量纲"
+julia = "r7_joint_event_values.profiles / cumulative"
+shape = "pipe × side × scenario × segment；q为normal prefix + event substeps"
+[[symbol]]
+id = "R7J-witness"
+latex = 'y_{s,\gamma},\ell_s,L_s'
+meaning = "恢复存在性见证、概率加权电热失供及门槛"
+unit = "见证按各变量单位；失供为MWh"
+julia = "witnesses / witness_loss_MWh / loss_limit_MWh"
+shape = "one record per allowed event and fault"

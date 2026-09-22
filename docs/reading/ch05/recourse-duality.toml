@@ -1,0 +1,82 @@
+schema = "ch05-recourse-duality-v1"
+version = "r5-dispatch-kkt-v1"
+scope = "Fixed-award deterministic LP and fixed-comfort subgradient; prerequisite for original 5-88/5-90, not an implementation of Benders."
+convention_source = "https://jump.dev/MathOptInterface.jl/stable/background/duality/"
+original_equations = ["5-1", "5-2", "5-3", "5-4", "5-88", "5-90"]
+kkt_tolerance = 1e-6
+gap_tolerance = 1e-4
+finite_difference_tolerance = 1e-3
+finite_difference_steps = [0.001, 0.0001, 0.00001]
+
+[[equation]]
+id = "R5-DK1"
+latex = '''\min_w c^\mathsf{T}w+c_0(x),\quad A_=w=b_=(x),\ A_+w\ge b_+(x),\ A_-w\le b_-(x).'''
+meaning = "独立按物理关联重建系数，全部变量界作为独立行；x为给定日前成交。"
+api = "build_r5_dispatch_dual"
+test = "R5 recourse independent coefficient inventory"
+
+[[equation]]
+id = "R5-DK2"
+latex = '''\max_y c_0(x)+b(x)^\mathsf{T}y,\quad A^\mathsf{T}y=c,\quad y_+\ge0,\ y_-\le0,\ y_=\ \mathrm{free}.'''
+meaning = "MOI原始乘子不换符号；固定变量仍保留上下界两项。"
+api = "validate_r5_dispatch_duals"
+test = "R5 recourse KKT and independent dual"
+
+[[equation]]
+id = "R5-DK3"
+latex = '''g_x=\nabla_x c_0(x)+[\nabla_x b(x)]^\mathsf{T}y^*.'''
+meaning = "连续LP的固定分支次梯度；非光滑点只给支撑方向，不强求唯一导数。"
+api = "r5_dispatch_sensitivity"
+test = "R5 recourse sensitivity analytic and finite differences"
+
+[[equation]]
+id = "R5-DK4"
+latex = '''g^{DA}_t=y^D_t,\quad g^{up}_t=\alpha^{up}_t(y^+_t-y^-_t)+\delta\Delta t y^B,\quad g^{down}_t=-\alpha^{down}_t(y^+_t-y^-_t)+\delta\Delta t y^B.'''
+meaning = "扣除日前常数的补救费用对三个成交量的次梯度，保持其他输入与舒适分支不变。"
+api = "r5_dispatch_sensitivity"
+test = "R5 recourse sensitivity analytic and finite differences"
+
+[[equation]]
+id = "R5-DK5"
+latex = '''(g^{DA},g^{up},g^{down})=(100-130,-5+0.4(130-80),-2-0.2(130-80))=(-30,15,-12).'''
+meaning = "合成光滑解析例的一小时总费用梯度，非作者参数。"
+api = "r5_dispatch_sensitivity"
+test = "R5 recourse sensitivity analytic and finite differences"
+
+[[symbol]]
+id = "R5-DK-x"
+latex = '''x=(P^{DA},R^{up},R^{down})'''
+meaning = "给定的日前购能和上下备用，非本批优化变量"
+unit = "MW"
+julia = "P_DA_MW; R_up_MW; R_down_MW"
+[[symbol]]
+id = "R5-DK-w"
+latex = '''w'''
+meaning = "IES物理调度和误差上图变量按稳定ID排列"
+unit = "MW/Mvar/K/pu，逐变量保留"
+julia = "r5_dispatch_dual_system.cost keys"
+[[symbol]]
+id = "R5-DK-y"
+latex = '''y_+,y_-,y_='''
+meaning = "原始MOI乘子，符号由行方向决定"
+unit = "USD/(对应行单位)"
+julia = "raw_constraint_duals; raw_bound_duals"
+[[symbol]]
+id = "R5-DK-g"
+latex = '''g_x'''
+meaning = "包含或扣除固定日前费用的LP次梯度"
+unit = "USD/MW（已含dt）"
+julia = "gradient"
+
+[[issue]]
+id = "R5-DK-C01"
+adopted = "KKT按独立输入尺度检查，原始乘子不裁剪不调整。数值认证不等于精确算术证明。"
+[[issue]]
+id = "R5-DK-C02"
+adopted = "备用参数同时进入误差双行与5-4右端；灵敏度不得遗漏容量预算贡献。"
+[[issue]]
+id = "R5-DK-C03"
+adopted = "固定日前常数可能掩盖相对差，同时验收总目标与扣除常数后补救目标的原对偶差。"
+[[issue]]
+id = "R5-DK-C04"
+adopted = "当前硬舒适分支没有z开关；未来改变舒适分支、价格或物理输入时不能直接复用该次梯度。"

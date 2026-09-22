@@ -1,0 +1,30 @@
+case_sha256 = "ac0d554e1c8a8f4ab722d0fa9d001492c2b180cf94158fbf5daea571dcf328bd"
+flow_unit = "kg/s"
+scenario_rule = "shared_flows"
+schema = "r7-normal-flow-spec-v1"
+thermal_rule = "exact_mass_overlap_zero_UA"
+version = "r7_continuous_positive_lossless_v1"
+
+[load_max]
+data = [0.0, 5.0, 0.0, 5.0, 0.0, 5.0, 0.0, 5.0]
+shape = [2, 4]
+
+[load_min]
+data = [0.0, 5.0, 0.0, 5.0, 0.0, 5.0, 0.0, 5.0]
+shape = [2, 4]
+
+[pipe_max]
+data = [5.0, 5.0, 5.0, 5.0]
+shape = [1, 4]
+
+[pipe_min]
+data = [5.0, 5.0, 5.0, 5.0]
+shape = [1, 4]
+
+[source_max]
+data = [5.0, 0.0, 5.0, 0.0, 5.0, 0.0, 5.0, 0.0]
+shape = [2, 4]
+
+[source_min]
+data = [5.0, 0.0, 5.0, 0.0, 5.0, 0.0, 5.0, 0.0]
+shape = [2, 4]

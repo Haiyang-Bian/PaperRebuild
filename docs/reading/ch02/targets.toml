@@ -1,0 +1,52 @@
+schema = "r1-targets-v1"
+scope = "chapter 2 explanation plus verified special cases"
+threshold_authority = "docs/src/reproduction-acceptance.md#A1"
+power_absolute_MW = 1e-6
+energy_absolute_MWh = 1e-6
+relative_fixed_scale = 1e-6
+temperature_K = 1e-4
+normalized = 1e-6
+integer = 1e-6
+solver_objective_relative = 1e-4
+
+[[target]]
+id = "D01"
+requirement = "76 个编号公式和其引用符号都有原页、状态、单位、映射；未实现不得生成虚假链接"
+command = "julia +1.12.6 --project=. scripts/check_ch02.jl"
+stop = "任何公式遗漏、源标记缺失、测试失联"
+
+[[target]]
+id = "D02"
+requirement = "Documenter 严格构建、API文档和手算 doctest"
+command = "julia +1.12.6 --project=docs docs/make.jl"
+stop = "文档构建告警、死链接、doctest不符"
+
+[[target]]
+id = "M01"
+requirement = "设备手算、能量单位、储能边界、显式保留原式反例"
+tests = "R1-devices ch02-001:019 ch02-072:076"
+stop = "未澄清原式被静默改写"
+
+[[target]]
+id = "M02"
+requirement = "热混合、整步/半步/短管延迟、稳态热损耗、历史不足拒绝"
+tests = "R1-pipe ch02-042 ch02-047:054"
+stop = "权重不归一、温度历史补零、非整延迟被取整"
+
+[[target]]
+id = "M03"
+requirement = "HiGHS与Clarabel解析参考；四状态枚举；不可行及预算停止；保存重读与篡改检测"
+tests = "R1-analytic HiGHS storage and Clarabel branch; R1-input and integration ch02-022:028"
+stop = "无解取值、未完枚举宣称最优、松弛和原等式状态混写"
+
+[[target]]
+id = "M04"
+requirement = "本地 Gurobi MISOCP 与开放求解器同模型目标对照；分别报告原式残差"
+command = "julia +1.12.6 --project=tools/solvers scripts/check_r1_gurobi.jl <run>"
+stop = "目标不符或原等式残差超阈；保留原运行，禁止扩大阈值掩盖"
+
+[[target]]
+id = "F01-F04"
+requirement = "拓扑、设备可行域、热响应/建筑/储能、残差，带单位、run ID、图源和配置"
+command = "julia +1.12.6 --project=docs scripts/plot_r1.jl <run>"
+stop = "无解却绘制解、重绘偷偷重求解、合成数据冒充原始数据"

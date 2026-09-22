@@ -1,0 +1,50 @@
+T = 1
+description = "Same synthetic powers and per-hour prices; duration 0.25 h."
+dt_h = 0.25
+load_MW = [[50.0]]
+name = "hand_quarter"
+nodes = 1
+origin = "synthetic"
+reserve_down_MW = [10.0]
+reserve_up_MW = [20.0]
+schema = "r5-market-case-v1"
+
+[[generators]]
+down_bid = [2.0]
+down_max = 100.0
+energy_bid = [20.0]
+id = "G1"
+node = 1
+p_bid_max = 200.0
+p_initial = 80.0
+p_max = 200.0
+p_min = 0.0
+ramp_down_MW_h = 200.0
+ramp_up_MW_h = 200.0
+up_bid = [5.0]
+up_max = 100.0
+
+[[ies]]
+down_bid = [3.0]
+down_max = 0.0
+energy_bid = [100.0]
+id = "IES1"
+node = 1
+purchase_bid_max = 30.0
+q_max = 100.0
+q_min = 0.0
+up_bid = [2.0]
+up_max = 0.0
+
+[network]
+limit_MW = []
+ptdf = []
+slack_node = 1
+
+[units]
+energy = "MWh"
+energy_price = "USD/MWh"
+power = "MW"
+ramp = "MW/h"
+reserve_price = "USD/(MW*h)"
+time = "h"

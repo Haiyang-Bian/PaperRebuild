@@ -1,0 +1,41 @@
+schema = "r9-trading-study-protocol-v1"
+id = "r9-73-trading-four-methods-v1"
+origin = "synthetic"
+input_protocol = "configs/r9/trading-protocol.toml"
+expected_input_sha256 = "73595793a7b47b3e39e4b4aa97a323ac35989887802b54ed113f36fa01dc4d1d"
+budget_sec = 600.0
+local_budget_sec = 60.0
+validation_reserve_fraction = 0.1
+clock_rule = "one_monotonic_deadline_from_first_script_statement; imports_build_and_local_network_solves_count"
+integer_rule = "all_storage_and_heat_direction_choices_free"
+initialization_rule = "solver_default; no_cross_method_candidate_or_reference_injection"
+thermal_scope = "steady_energy_mass_envelope; not_temperature_mixing_or_hydraulic_certificate"
+fees_rule = "post_dispatch_teaching_settlement; internal_cash_cancels"
+comparison_rule = "same_input; require_independent_and_central_original_relations_and_budget_for_candidate_cost_difference"
+optimality_rule = "reported_same_model_solver_bound_only; A2_1e_4; no_PG_or_distributed_claim"
+
+[gurobi]
+Threads = 1
+Seed = 0
+NonConvex = 2
+MIPGap = 0.0001
+FeasibilityTol = 0.00000001
+OptimalityTol = 0.00000001
+IntFeasTol = 0.00000001
+
+[[methods]]
+id = "independent-socp"
+operation = "independent"
+electric = "socp"
+[[methods]]
+id = "independent-exact"
+operation = "independent"
+electric = "exact"
+[[methods]]
+id = "central-socp"
+operation = "central"
+electric = "socp"
+[[methods]]
+id = "central-exact"
+operation = "central"
+electric = "exact"

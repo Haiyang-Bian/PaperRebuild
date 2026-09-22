@@ -1,0 +1,17 @@
+id,case,initialization,physical_pass,outer_status,outer_converged,iterations,accepted,first_feasible_cost,final_cost,elapsed_sec,initial_flow_sha256
+single-source-schpd,single-source,schpd,true,untrusted_sensitivity,false,17,16,80.98155518474674,78.33546385619212,30.562112400017213,606a2ee87c1656b559b9e3e2170ddbb74c60a5032772579cf78b7dfd8b66d430
+single-source-case_fixed,single-source,case_fixed,true,untrusted_sensitivity,false,10,9,80.18286341908787,78.13787851759247,1.1233266000053845,0e9d4da1748a1b374c3e0d4c00c39ec2f393b09e735f5f49bf0043ee92c5d91d
+single-source-box25,single-source,box25,true,line_search_stalled,false,13,12,81.24535242579154,80.28254845691377,2.9886321000230964,5fbbba218aae467564086808709eabc99d8659f81babb5cf159059c08b004a0c
+single-source-box50,single-source,box50,true,untrusted_sensitivity,false,10,9,80.18286364359955,78.1378781115549,1.1004371999879368,f11eeb5bc03af3b1702dee53a3283553cf2c0385bb1005a5ccadfa030e051c19
+single-source-box75,single-source,box75,true,untrusted_sensitivity,false,19,18,81.43663415179648,80.32923654815337,1.9732988000032492,28f835e12879d244f6cd6ba177792943bf6a5c6f8a59c172aa5cadf8f1fba02d
+two-source-schpd,two-source,schpd,true,line_search_stalled,false,5,4,182.98760537864405,181.040640552009,0.9057863999914844,4fa9df0f03d5e576a005a793c75398a92afce5e11364ed52914b2a86be10427c
+two-source-case_fixed,two-source,case_fixed,true,untrusted_sensitivity,false,18,17,181.63539796104027,180.1302686881154,3.0175912999839056,bb1eec4ae015180a027e8af6e6cf0979150a04aa18c836f2875334ff869f9bf7
+two-source-box25,two-source,box25,true,line_search_stalled,false,8,7,184.14025938671958,183.18845429221952,2.387087100010831,f6841d1ad487eb4eaadb58e5d347cc04008261d07cdc8c6df105948c7874e4e8
+two-source-box50,two-source,box50,true,untrusted_sensitivity,false,23,22,181.6353979901378,180.0163435666185,4.039635699999053,caf1b83c30d4087e2e638dc545e2ef52fe39c74920ad777098e55ec0133dd896
+two-source-box75,two-source,box75,true,untrusted_sensitivity,false,11,10,187.11094547090866,185.7265002114475,1.849576300010085,f327ba50caa05ea61fa6e71a1bee5c554634ba7a9db4da2c15a601c3ace32950
+single-no-halfspace,single-source,schpd,true,untrusted_sensitivity,false,7,6,80.29874783275116,80.23141811798737,1.095784300006926,606a2ee87c1656b559b9e3e2170ddbb74c60a5032772579cf78b7dfd8b66d430
+two-no-halfspace,two-source,schpd,true,line_search_stalled,false,4,3,180.60844536002574,180.49199043617568,0.6727221999899484,4fa9df0f03d5e576a005a793c75398a92afce5e11364ed52914b2a86be10427c
+single-low-flow,single-source,low_flow,true,line_search_stalled,false,12,11,81.13210991123299,80.86090892881776,2.360311099997489,9eee20ea2c8d5ffe9332771f1c9728a055cbd7c2b6abf066aa323f80e4e4a0fe
+single-impossible-heat,single-source,case_fixed,false,line_search_stalled,false,25,24,,,2.4719677999964915,0e9d4da1748a1b374c3e0d4c00c39ec2f393b09e735f5f49bf0043ee92c5d91d
+single-loose-electric,single-source,case_fixed,true,smooth_numeric_stop,true,4,3,-9.235949399561394e-12,0.0,0.5007761000015307,0e9d4da1748a1b374c3e0d4c00c39ec2f393b09e735f5f49bf0043ee92c5d91d
+single-delay-switch,single-source,case_fixed,false,line_search_stalled,false,7,6,,,1.6481125999998767,0e9d4da1748a1b374c3e0d4c00c39ec2f393b09e735f5f49bf0043ee92c5d91d

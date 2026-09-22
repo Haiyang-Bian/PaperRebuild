@@ -1,0 +1,45 @@
+origin = "synthetic"
+parent_batch_id = "r5-market-depot-20260919"
+parent_source_commit = "c22b423e9afe7c05308a4890edafd930f2f44155"
+parent_study_sha256 = "c2229563b707798e89f0347f6062647a74ba6a15c7091f5c6f2b262209326597"
+records = 18
+schema = "r5-market-payment-report-v1"
+scope = "Whole-horizon payment identity on the original fixed-bid clearing records; no strategic bid optimization or price uniqueness claim."
+solver_reexecuted = false
+valid = 16
+
+[producer_sha256]
+"audit_r5_market_payment.jl" = "10294b87f20f5735a6434649cf02342f52f4d370535a561f5950b6ec3fc6903f"
+"r5_market_payment_tables.jl" = "e0f609d4321c253e902a41b50bb8b84378bdc70078ed770cb2d6359bbbe083fe"
+
+[source_sha256]
+"Manifest.toml" = "6aa68b274431d56e5f78dfe516af70b7a6aefe8529cf58240d882de31c72bb75"
+"Project.toml" = "b3f905bb91f92e68ff970eedc46e9ed854ca4e08ff124541d68e991818de4a92"
+"src/algorithms/r5_market.jl" = "a5a5bbc1b96743973ea81e79ec8af40e8f18328d00ca7fc14b540aaf9324154a"
+"src/core/r5_market.jl" = "b66b34edafb602439fa8c93beb25fc20500b6a4106dee739a1795418cb265222"
+"src/formulations/r5_market.jl" = "85ba2ee6e8f84bef53db7949bf4fc425b57476bdaa49f22d9a816bf32bd01713"
+"src/reporting/r5_market.jl" = "164d47e5922903179225a17c8a681610ae7eb5312068a4f806d85010f16f0796"
+"src/verification/r5_market.jl" = "47cf2899d6167974ec406d7b431d06bcd2ca3b16108bdbc67c8805e071e57009"
+"src/verification/r5_market_payment.jl" = "fdcefbd1530785534bcab392753ea5b62da033fce24a223278e4b2ff33fe32e1"
+"tools/solvers/Manifest.toml" = "4c3bfa7a47e06095c1251dfb555ff155bc7e02241013547c294c2920cedb958e"
+"tools/solvers/Project.toml" = "be07a40d34ee1e44e61d0e81fc1a71161cc9ba7ef20d57fc7fbe4e70f6e3ba8b"
+
+[witness_sha256]
+"bid_cap--clarabel.toml" = "2f4ced845640080adf37fdc3d3f27b2e31f18a5599e75830fe87506ddb61f0b9"
+"bid_cap--highs.toml" = "f5d420a295094e6027ad242d6b953870e1e1bd2aea8e2e541ce4dd7c38283b65"
+"capacity_infeasible--clarabel.toml" = "b1a115cd80c47cb73641f14e3f6b62ade20c54e4159605d78702bfddada298d7"
+"capacity_infeasible--highs.toml" = "394bc3d7125b89b6a62526b0698736cd72c145652edb7b150e835b36bbfc1229"
+"hand_hour--clarabel.toml" = "017bd8b8f89a0cd9e12e2681b083c06d9be95da099f815a8bf0005cbe29cff11"
+"hand_hour--gurobi.toml" = "eac856dd329ec935ae7549e189e257e64d9746f93e386642eec34a6d19964a93"
+"hand_hour--highs.toml" = "f45129295bb3f153fe92e9a2d2c5e4e2abcf399877c6828936577540d115f6a0"
+"hand_quarter--clarabel.toml" = "bda118199ae036b0574ad1838b900221a6ef82f292ad0f64b3019d6f2346eb9b"
+"hand_quarter--highs.toml" = "612749ecc7fa185385914c064689a93d9443686a3b20c3ba4de41edf92cb41c0"
+"no_ies--clarabel.toml" = "320cd3694545663336041fa6b1f0d7f6d1ed85d9c39cde2ba3729ce9916d0547"
+"no_ies--highs.toml" = "e55660ca8cabdde9de1e29f319c3aae0e69dce377c641f8ac2c1cf16e35e05f0"
+"ramp_memory--clarabel.toml" = "8596428ed29ad78a6d2ad25a5d44ff20d95b04b9f377f8138ada70be46b691ad"
+"ramp_memory--highs.toml" = "b01c21b7a5ec53329cabe1b2f8ec98b29065182039e2ea741961494d5265eea8"
+"two_bus--clarabel.toml" = "cb987b135d4672ba9ea2c8ebaac7baec529430a73552d29b909a6f520577ceb6"
+"two_bus--gurobi.toml" = "8c304b52b371c00cdcae2e98223706ae98354aff69d6725ec6427a8a721d4608"
+"two_bus--highs.toml" = "6c610521c3506e2480ca7d06e7c79613aaa310c761002197eda64c07fa1129be"
+"wide_line--clarabel.toml" = "7a1bf385772684052a596ec3d6caeb6cfa5bff92c096d0d509cf9a83964d908e"
+"wide_line--highs.toml" = "c93b91dc926558882f4a615d05e4dcf6aca0d650729780258bab9d143b06714f"

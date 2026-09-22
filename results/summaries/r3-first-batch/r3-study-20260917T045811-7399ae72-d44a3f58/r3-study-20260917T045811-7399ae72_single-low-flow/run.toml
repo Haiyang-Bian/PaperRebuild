@@ -1,0 +1,583 @@
+budget_sec = 600.0
+cost_optimization_complete = true
+elapsed_sec = 0.22624170000199229
+final_stage = 4
+initial_flow = [[0.5, 0.5, 0.5, 0.5]]
+initial_flow_sha256 = "9eee20ea2c8d5ffe9332771f1c9728a055cbd7c2b6abf066aa323f80e4e4a0fe"
+input_sha256 = "1edcf60d35079ba126c253525d622dc104b7c8b503d71c153fb76e7a0aef8f4d"
+origin = "synthetic"
+schema = "r3-run-v1"
+solver_setup_status = "available"
+status = "feasible_cost_optimized"
+
+[source_hashes_at_solve]
+"src/PaperRebuild.jl" = "3561d9d9f0bb1266931e74d7d1723d4c09837f77baad260311d16b96637fbdcd"
+"src/components/devices.jl" = "01a86d8bb7bbbf0ad27f79acb099427ec18543a0a4b1b916f411f2e1a4053e2d"
+"src/core/case.jl" = "dd5de1049fc740706fa9005f48b60d75e088bc68faa9f6092b9b310e7aaed624"
+"src/core/r2_case.jl" = "11026416169278767a8900e84e5fb65f80113e405a4046a44f6b92dc983498d5"
+"src/core/r3.jl" = "1a29d3ac34ebf6936b9055b737167e59cf746cc6b5fb1055b8f73db2ebd26f15"
+"src/formulations/r1.jl" = "e952963689b39d28dc490066e55c7e5ca2689cd0ce78982a5397b09713466655"
+"src/formulations/r2.jl" = "fa07fdd8c81b2f5ff9b01ca0fdb89cd603d59d6e63433f100610c283ac1a3ecc"
+"src/formulations/r3.jl" = "f13d58bf6d8eada99e5f43145ca423ddf730c8d26b08c7080e43ecf8383b453f"
+"src/networks/fixed_flow_heat.jl" = "620c069f6b3a520d32ee546ec048074f9cbaa3c785f8c2e31ec7fd7bf245a83b"
+"src/networks/water_mass.jl" = "ef76594a25d5a310f8265137e733d811c8dbefcf0aea0b3ff8be5ed7b05bceef"
+"src/reporting/r2_runs.jl" = "c0174b63fb559bd87b66604e80018ab5b4a055a4dfe7c0257884ed1955ea1971"
+"src/reporting/r3_runs.jl" = "cd760094c3ee8d3fb2b4d0cba75247c59ddc07a289f1a925fbfc256f757e7214"
+"src/reporting/runs.jl" = "7cb0ad0bf0bc5ea77af73e08a8261982510ce869caef95e26b7d51730a43b635"
+"src/verification/r1.jl" = "c81ba065cd5e6e38e37cc385d89b81e0915c26b10edb2dd0321fd91633c202d3"
+"src/verification/r2.jl" = "37aa836106f5ad456f43d6d82e637b0cb0e10488978743b4143a37ad5843114f"
+"src/verification/r3.jl" = "73279f8d5760367ac5fe581cc638fa59e0763611a13ddf6f4ee47e2bdcd9b60d"
+
+[[stages]]
+JuMP_version = "1.31.2"
+budget_sec = 60.0
+build_sec = 0.0035050000005867332
+case_origin = "synthetic"
+class = "SOCP"
+elapsed_sec = 0.009808900009375066
+elastic_rows = []
+fixed_flows = true
+flow_schedule = [[0.5, 0.5, 0.5, 0.5]]
+flow_sha256 = "9eee20ea2c8d5ffe9332771f1c9728a055cbd7c2b6abf066aa323f80e4e4a0fe"
+input_sha256 = "1edcf60d35079ba126c253525d622dc104b7c8b503d71c153fb76e7a0aef8f4d"
+model_pass = false
+objective_kind = "operating_cost"
+physics_pass = false
+primal = "INFEASIBLE_POINT"
+seed = 0
+solver = "Clarabel"
+solver_version = "0.11.1"
+stage = "fixed_dispatch"
+status = "infeasible_certified"
+termination = "INFEASIBLE"
+threads = 1
+variant = "r3_sp_checked_v1"
+
+    [stages.source_hashes_at_solve]
+    "src/PaperRebuild.jl" = "3561d9d9f0bb1266931e74d7d1723d4c09837f77baad260311d16b96637fbdcd"
+    "src/components/devices.jl" = "01a86d8bb7bbbf0ad27f79acb099427ec18543a0a4b1b916f411f2e1a4053e2d"
+    "src/core/case.jl" = "dd5de1049fc740706fa9005f48b60d75e088bc68faa9f6092b9b310e7aaed624"
+    "src/core/r2_case.jl" = "11026416169278767a8900e84e5fb65f80113e405a4046a44f6b92dc983498d5"
+    "src/core/r3.jl" = "1a29d3ac34ebf6936b9055b737167e59cf746cc6b5fb1055b8f73db2ebd26f15"
+    "src/formulations/r1.jl" = "e952963689b39d28dc490066e55c7e5ca2689cd0ce78982a5397b09713466655"
+    "src/formulations/r2.jl" = "fa07fdd8c81b2f5ff9b01ca0fdb89cd603d59d6e63433f100610c283ac1a3ecc"
+    "src/formulations/r3.jl" = "f13d58bf6d8eada99e5f43145ca423ddf730c8d26b08c7080e43ecf8383b453f"
+    "src/networks/fixed_flow_heat.jl" = "620c069f6b3a520d32ee546ec048074f9cbaa3c785f8c2e31ec7fd7bf245a83b"
+    "src/networks/water_mass.jl" = "ef76594a25d5a310f8265137e733d811c8dbefcf0aea0b3ff8be5ed7b05bceef"
+    "src/reporting/r2_runs.jl" = "c0174b63fb559bd87b66604e80018ab5b4a055a4dfe7c0257884ed1955ea1971"
+    "src/reporting/r3_runs.jl" = "cd760094c3ee8d3fb2b4d0cba75247c59ddc07a289f1a925fbfc256f757e7214"
+    "src/reporting/runs.jl" = "7cb0ad0bf0bc5ea77af73e08a8261982510ce869caef95e26b7d51730a43b635"
+    "src/verification/r1.jl" = "c81ba065cd5e6e38e37cc385d89b81e0915c26b10edb2dd0321fd91633c202d3"
+    "src/verification/r2.jl" = "37aa836106f5ad456f43d6d82e637b0cb0e10488978743b4143a37ad5843114f"
+    "src/verification/r3.jl" = "73279f8d5760367ac5fe581cc638fa59e0763611a13ddf6f4ee47e2bdcd9b60d"
+
+    [stages.spec]
+    dynamics = "wmm"
+    dynamics_product = "exact"
+    formulation = "wmm_checked_v1"
+    heat_balance = "exact"
+    loss = "wmm"
+    mixing = "exact"
+[[stages]]
+JuMP_version = "1.31.2"
+bound_objective_kind = "normalized_slack"
+budget_sec = 60.0
+build_sec = 0.003912700020009652
+case_origin = "synthetic"
+class = "SOCP"
+elapsed_sec = 0.010994600015692413
+fixed_flows = true
+flow_schedule = [[0.5, 0.5, 0.5, 0.5]]
+flow_sha256 = "9eee20ea2c8d5ffe9332771f1c9728a055cbd7c2b6abf066aa323f80e4e4a0fe"
+input_sha256 = "1edcf60d35079ba126c253525d622dc104b7c8b503d71c153fb76e7a0aef8f4d"
+model_pass = true
+objective = 176.03175584319817
+objective_kind = "normalized_slack"
+operating_cost = 176.03175584319817
+physics_pass = false
+primal = "FEASIBLE_POINT"
+seed = 0
+solver = "Clarabel"
+solver_bound = 0.25010519880594234
+solver_objective = 0.2501051989147439
+solver_relative_gap = 1.0880157885750918e-10
+solver_version = "0.11.1"
+stage = "diagnostic"
+status = "solver_optimal"
+termination = "OPTIMAL"
+threads = 1
+variant = "r3_sp_elastic_v1"
+
+    [[stages.elastic_rows]]
+    entity = "1"
+    equation = "3-17"
+    scale = 1.0
+    t = 1
+    unit = "MW"
+    [[stages.elastic_rows]]
+    entity = "1"
+    equation = "3-17"
+    scale = 1.0
+    t = 2
+    unit = "MW"
+    [[stages.elastic_rows]]
+    entity = "1"
+    equation = "3-17"
+    scale = 1.0
+    t = 3
+    unit = "MW"
+    [[stages.elastic_rows]]
+    entity = "1"
+    equation = "3-17"
+    scale = 1.0
+    t = 4
+    unit = "MW"
+    [[stages.elastic_rows]]
+    entity = "2"
+    equation = "3-17"
+    scale = 1.0
+    t = 1
+    unit = "MW"
+    [[stages.elastic_rows]]
+    entity = "2"
+    equation = "3-17"
+    scale = 1.0
+    t = 2
+    unit = "MW"
+    [[stages.elastic_rows]]
+    entity = "2"
+    equation = "3-17"
+    scale = 1.0
+    t = 3
+    unit = "MW"
+    [[stages.elastic_rows]]
+    entity = "2"
+    equation = "3-17"
+    scale = 1.0
+    t = 4
+    unit = "MW"
+    [[stages.elastic_rows]]
+    entity = "S1"
+    equation = "3-35"
+    scale = 20.0
+    t = 1
+    unit = "K"
+    [[stages.elastic_rows]]
+    entity = "S1"
+    equation = "3-35"
+    scale = 20.0
+    t = 2
+    unit = "K"
+    [[stages.elastic_rows]]
+    entity = "S1"
+    equation = "3-35"
+    scale = 20.0
+    t = 3
+    unit = "K"
+    [[stages.elastic_rows]]
+    entity = "S1"
+    equation = "3-35"
+    scale = 20.0
+    t = 4
+    unit = "K"
+    [[stages.elastic_rows]]
+    entity = "S2"
+    equation = "3-35"
+    scale = 20.0
+    t = 1
+    unit = "K"
+    [[stages.elastic_rows]]
+    entity = "S2"
+    equation = "3-35"
+    scale = 20.0
+    t = 2
+    unit = "K"
+    [[stages.elastic_rows]]
+    entity = "S2"
+    equation = "3-35"
+    scale = 20.0
+    t = 3
+    unit = "K"
+    [[stages.elastic_rows]]
+    entity = "S2"
+    equation = "3-35"
+    scale = 20.0
+    t = 4
+    unit = "K"
+    [[stages.elastic_rows]]
+    entity = "R1"
+    equation = "3-36"
+    scale = 20.0
+    t = 1
+    unit = "K"
+    [[stages.elastic_rows]]
+    entity = "R1"
+    equation = "3-36"
+    scale = 20.0
+    t = 2
+    unit = "K"
+    [[stages.elastic_rows]]
+    entity = "R1"
+    equation = "3-36"
+    scale = 20.0
+    t = 3
+    unit = "K"
+    [[stages.elastic_rows]]
+    entity = "R1"
+    equation = "3-36"
+    scale = 20.0
+    t = 4
+    unit = "K"
+    [[stages.elastic_rows]]
+    entity = "R2"
+    equation = "3-36"
+    scale = 20.0
+    t = 1
+    unit = "K"
+    [[stages.elastic_rows]]
+    entity = "R2"
+    equation = "3-36"
+    scale = 20.0
+    t = 2
+    unit = "K"
+    [[stages.elastic_rows]]
+    entity = "R2"
+    equation = "3-36"
+    scale = 20.0
+    t = 3
+    unit = "K"
+    [[stages.elastic_rows]]
+    entity = "R2"
+    equation = "3-36"
+    scale = 20.0
+    t = 4
+    unit = "K"
+    [[stages.elastic_rows]]
+    entity = "S1"
+    equation = "3-33"
+    scale = 20.0
+    t = 1
+    unit = "K"
+    [[stages.elastic_rows]]
+    entity = "S1"
+    equation = "3-34"
+    scale = 20.0
+    t = 1
+    unit = "K"
+    [[stages.elastic_rows]]
+    entity = "R1"
+    equation = "3-33"
+    scale = 20.0
+    t = 1
+    unit = "K"
+    [[stages.elastic_rows]]
+    entity = "R1"
+    equation = "3-34"
+    scale = 20.0
+    t = 1
+    unit = "K"
+    [[stages.elastic_rows]]
+    entity = "S1"
+    equation = "3-33"
+    scale = 20.0
+    t = 2
+    unit = "K"
+    [[stages.elastic_rows]]
+    entity = "S1"
+    equation = "3-34"
+    scale = 20.0
+    t = 2
+    unit = "K"
+    [[stages.elastic_rows]]
+    entity = "R1"
+    equation = "3-33"
+    scale = 20.0
+    t = 2
+    unit = "K"
+    [[stages.elastic_rows]]
+    entity = "R1"
+    equation = "3-34"
+    scale = 20.0
+    t = 2
+    unit = "K"
+    [[stages.elastic_rows]]
+    entity = "S1"
+    equation = "3-33"
+    scale = 20.0
+    t = 3
+    unit = "K"
+    [[stages.elastic_rows]]
+    entity = "S1"
+    equation = "3-34"
+    scale = 20.0
+    t = 3
+    unit = "K"
+    [[stages.elastic_rows]]
+    entity = "R1"
+    equation = "3-33"
+    scale = 20.0
+    t = 3
+    unit = "K"
+    [[stages.elastic_rows]]
+    entity = "R1"
+    equation = "3-34"
+    scale = 20.0
+    t = 3
+    unit = "K"
+    [[stages.elastic_rows]]
+    entity = "S1"
+    equation = "3-33"
+    scale = 20.0
+    t = 4
+    unit = "K"
+    [[stages.elastic_rows]]
+    entity = "S1"
+    equation = "3-34"
+    scale = 20.0
+    t = 4
+    unit = "K"
+    [[stages.elastic_rows]]
+    entity = "R1"
+    equation = "3-33"
+    scale = 20.0
+    t = 4
+    unit = "K"
+    [[stages.elastic_rows]]
+    entity = "R1"
+    equation = "3-34"
+    scale = 20.0
+    t = 4
+    unit = "K"
+
+    [stages.source_hashes_at_solve]
+    "src/PaperRebuild.jl" = "3561d9d9f0bb1266931e74d7d1723d4c09837f77baad260311d16b96637fbdcd"
+    "src/components/devices.jl" = "01a86d8bb7bbbf0ad27f79acb099427ec18543a0a4b1b916f411f2e1a4053e2d"
+    "src/core/case.jl" = "dd5de1049fc740706fa9005f48b60d75e088bc68faa9f6092b9b310e7aaed624"
+    "src/core/r2_case.jl" = "11026416169278767a8900e84e5fb65f80113e405a4046a44f6b92dc983498d5"
+    "src/core/r3.jl" = "1a29d3ac34ebf6936b9055b737167e59cf746cc6b5fb1055b8f73db2ebd26f15"
+    "src/formulations/r1.jl" = "e952963689b39d28dc490066e55c7e5ca2689cd0ce78982a5397b09713466655"
+    "src/formulations/r2.jl" = "fa07fdd8c81b2f5ff9b01ca0fdb89cd603d59d6e63433f100610c283ac1a3ecc"
+    "src/formulations/r3.jl" = "f13d58bf6d8eada99e5f43145ca423ddf730c8d26b08c7080e43ecf8383b453f"
+    "src/networks/fixed_flow_heat.jl" = "620c069f6b3a520d32ee546ec048074f9cbaa3c785f8c2e31ec7fd7bf245a83b"
+    "src/networks/water_mass.jl" = "ef76594a25d5a310f8265137e733d811c8dbefcf0aea0b3ff8be5ed7b05bceef"
+    "src/reporting/r2_runs.jl" = "c0174b63fb559bd87b66604e80018ab5b4a055a4dfe7c0257884ed1955ea1971"
+    "src/reporting/r3_runs.jl" = "cd760094c3ee8d3fb2b4d0cba75247c59ddc07a289f1a925fbfc256f757e7214"
+    "src/reporting/runs.jl" = "7cb0ad0bf0bc5ea77af73e08a8261982510ce869caef95e26b7d51730a43b635"
+    "src/verification/r1.jl" = "c81ba065cd5e6e38e37cc385d89b81e0915c26b10edb2dd0321fd91633c202d3"
+    "src/verification/r2.jl" = "37aa836106f5ad456f43d6d82e637b0cb0e10488978743b4143a37ad5843114f"
+    "src/verification/r3.jl" = "73279f8d5760367ac5fe581cc638fa59e0763611a13ddf6f4ee47e2bdcd9b60d"
+
+    [stages.spec]
+    dynamics = "wmm"
+    dynamics_product = "exact"
+    formulation = "wmm_checked_v1"
+    heat_balance = "exact"
+    loss = "wmm"
+    mixing = "exact"
+
+    [stages.values]
+    H_device = [[0.04351384490447759, 0.04294838406520085, 0.042569307424654784, 0.03691050596638215], [0.06202269849517725, 0.06276547961924576, 0.0631445562598224, 0.052816465011781236], [0.0, 0.0, 0.0, 0.0]]
+    H_port = [[0.10553654339965486, 0.10571386368444666, 0.10571386368447723, 0.08972697097816343], [0.15, 0.16, 0.17, 0.16]]
+    P_branch = [[0.24860939702839113, 0.23732865490952593, 0.23200292171427295, 0.2384565543135735]]
+    P_device = [[0.029009229936318385, 0.02863225604346722, 0.028379538283103183, 0.024607003977588075], [0.06528705104755499, 0.06606892591499552, 0.06646795395770778, 0.05559627895976969], [2.4205558398215896e-14, 0.012446421839593255, 0.018427250927984043, 0.0048703386418217825]]
+    P_grid = [0.24860939702839072, 0.2373286549095255, 0.23200292171427225, 0.23845655431357332]
+    Phi_R = [[379.56808525918643, 379.56808525918643, 379.56808525918643, 379.56808525918643], [486.26118154910887, 486.26118154910887, 486.26118154910887, 486.26118154910887]]
+    Phi_S = [[617.0753419611946, 617.0753419611946, 617.0753419611946, 617.0753419611946], [510.39191719632396, 510.39191719632396, 510.39191719632396, 510.39191719632396]]
+    Q_branch = [[0.024932630366871322, 0.02493536275103647, 0.024936702787060838, 0.02493504718928552]]
+    Q_grid = [0.024932630366871322, 0.024935362751036916, 0.024936702787061282, 0.02493504718928552]
+    alpha_1 = [[1.0, 0.0, 0.0], [1.0, 0.0, 0.0], [1.0, 0.0, 0.0], [1.0, 0.0, 0.0]]
+    beta_1 = [[1.0, 0.5, 0.0], [1.0, 1.0, 0.0], [1.0, 1.0, 0.0], [1.0, 1.0, 0.0]]
+    elastic_negative = [-2.496140131889894e-13, -2.496099804453677e-13, -2.4946199756759324e-13, -2.4484988385800853e-13, -4.689184885657166e-13, -4.43943196911496e-13, -4.2583377239540583e-13, -4.4394560824103553e-13, 1.4946921965005172e-13, 1.4946687106108548e-13, 1.4954441343984006e-13, 1.5086882525028446e-13, 1.3623969230068764e-13, 1.2955032606003885e-13, 1.2966434050561968e-13, 1.2952228446282033e-13, 1.6536663211032585e-13, 1.690505502094737e-13, 1.6910026474955166e-13, 1.689487558300736e-13, 1.7788889641200575e-13, 1.7791776372197077e-13, 1.7762024831329883e-13, 1.675850730562111e-13, 1.1853509050147202e-13, 1.671456687049464e-13, 9.189756778356603e-14, 1.5283349736648015e-13, 8.46072664116164e-14, 1.3998900490712468e-13, 9.539527672239915e-14, 1.5320049114534482e-13, 8.449974046903404e-14, 1.3996723488953043e-13, 9.542194378399382e-14, 1.5323180370066906e-13, 8.456025198296434e-14, 1.3994808966636187e-13, 9.513653575044667e-14, 1.5298788707665044e-13]
+    elastic_positive = [-4.799391010405353e-13, -4.858523014782199e-13, -4.911950356914577e-13, -4.698069920928263e-13, 0.06760963020337486, 0.057498522902325926, 0.06749852290237991, 0.05749852290232632, 1.0863680876960163e-13, 1.087178155508041e-13, 1.0868699602555253e-13, 1.0409837085997237e-13, 1.6934789574524804e-13, 1.5755842550487498e-13, 1.5730057228690434e-13, 1.5762527693449662e-13, 1.46948488708856e-13, 1.4593083220363695e-13, 1.4591424653561955e-13, 1.463507314529818e-13, 1.612726334514942e-13, 1.6124487185035754e-13, 1.6152170044320167e-13, 1.6758507305693376e-13, 1.0406610901505941e-13, 1.7450668289616473e-13, 1.0540734205704892e-13, 1.9584253909574508e-13, 1.069411277610093e-13, 1.6984344749568612e-13, 9.821547813163909e-14, 1.9261542013051824e-13, 1.0718509943866544e-13, 1.7010874188665907e-13, 9.819173406391289e-14, 1.9258585622461493e-13, 1.070108439272886e-13, 1.6992686647573577e-13, 9.853738699041081e-14, 1.9300189179620189e-13]
+    ell = [[2.466315183435598, 2.467681375518016, 2.4683513935302943, 2.4675235946425973]]
+    kappa_R = [[95.51246213739309, 95.51246213739309, 95.51246213739309, 95.51246213739309]]
+    kappa_S = [[95.50391721201761, 95.50391721201761, 95.50391721201761, 95.50391721201761]]
+    m_pipe = [[0.5, 0.5, 0.5, 0.5]]
+    m_port = [[0.5, 0.5, 0.5, 0.5], [0.5, 0.5, 0.5, 0.5]]
+    tau_R_in = [[312.99999999999966, 312.99999999999966, 312.99999999999966, 313.0]]
+    tau_R_mix = [[312.7445031422476, 312.66006491137415, 312.66006491137415, 312.6600649113742], [312.99999999999966, 312.99999999999966, 312.99999999999966, 313.0]]
+    tau_R_out = [[312.74450314224794, 312.6600649113746, 312.6600649113746, 312.66006491137466]]
+    tau_R_port = [[312.7445031422476, 312.66006491137415, 312.66006491137415, 312.6600649113742], [313.0, 313.0, 313.0, 313.0]]
+    tau_R_star = [[313.0000000000003, 312.9999999999997, 312.9999999999997, 312.9999999999998]]
+    tau_S_in = [[362.999999999335, 362.9999999993176, 362.99999999933476, 355.3871939487011]]
+    tau_S_mix = [[362.999999999335, 362.9999999993176, 362.99999999933476, 355.3871939487011], [352.2335094267411, 361.8102271891572, 361.8102271891401, 361.810227189157]]
+    tau_S_out = [[352.2335094267404, 361.81022718915665, 361.8102271891396, 361.8102271891564]]
+    tau_S_port = [[362.9999999993358, 362.9999999993184, 362.99999999933556, 355.387193948702], [352.2335094267411, 361.8102271891572, 361.8102271891401, 361.810227189157]]
+    tau_S_star = [[352.9999999999997, 362.9999999993354, 362.99999999931805, 362.9999999993352]]
+    v = [[1.0, 1.0, 1.0, 1.0], [0.9974856986485683, 0.9975985347597907, 0.9976518061621215, 0.9975872524523518]]
+    z_mix = []
+[[stages]]
+JuMP_version = "1.31.2"
+bound_objective_kind = "flow_distance"
+budget_sec = 300.0
+build_sec = 0.003601899981731549
+case_origin = "synthetic"
+class = "nonconvex"
+elapsed_sec = 0.18895379998139106
+elastic_rows = []
+fixed_flows = false
+flow_sha256 = "9eee20ea2c8d5ffe9332771f1c9728a055cbd7c2b6abf066aa323f80e4e4a0fe"
+initial_flow = [[0.5, 0.5, 0.5, 0.5]]
+input_sha256 = "1edcf60d35079ba126c253525d622dc104b7c8b503d71c153fb76e7a0aef8f4d"
+model_pass = true
+objective = 215.7932627152254
+objective_kind = "flow_distance"
+operating_cost = 215.7932627152254
+physics_pass = true
+primal = "FEASIBLE_POINT"
+raw_solver_bound = 1.1930298202379452
+seed = 0
+solver = "Gurobi"
+solver_bound = 1.1930298202379452
+solver_objective = 1.193030413476639
+solver_relative_gap = 4.97253621553417e-7
+solver_version = "13.0.3"
+stage = "direct_repair"
+status = "solver_optimal"
+termination = "OPTIMAL"
+threads = 1
+variant = "r3_direct_repair_v1"
+
+    [stages.source_hashes_at_solve]
+    "src/PaperRebuild.jl" = "3561d9d9f0bb1266931e74d7d1723d4c09837f77baad260311d16b96637fbdcd"
+    "src/components/devices.jl" = "01a86d8bb7bbbf0ad27f79acb099427ec18543a0a4b1b916f411f2e1a4053e2d"
+    "src/core/case.jl" = "dd5de1049fc740706fa9005f48b60d75e088bc68faa9f6092b9b310e7aaed624"
+    "src/core/r2_case.jl" = "11026416169278767a8900e84e5fb65f80113e405a4046a44f6b92dc983498d5"
+    "src/core/r3.jl" = "1a29d3ac34ebf6936b9055b737167e59cf746cc6b5fb1055b8f73db2ebd26f15"
+    "src/formulations/r1.jl" = "e952963689b39d28dc490066e55c7e5ca2689cd0ce78982a5397b09713466655"
+    "src/formulations/r2.jl" = "fa07fdd8c81b2f5ff9b01ca0fdb89cd603d59d6e63433f100610c283ac1a3ecc"
+    "src/formulations/r3.jl" = "f13d58bf6d8eada99e5f43145ca423ddf730c8d26b08c7080e43ecf8383b453f"
+    "src/networks/fixed_flow_heat.jl" = "620c069f6b3a520d32ee546ec048074f9cbaa3c785f8c2e31ec7fd7bf245a83b"
+    "src/networks/water_mass.jl" = "ef76594a25d5a310f8265137e733d811c8dbefcf0aea0b3ff8be5ed7b05bceef"
+    "src/reporting/r2_runs.jl" = "c0174b63fb559bd87b66604e80018ab5b4a055a4dfe7c0257884ed1955ea1971"
+    "src/reporting/r3_runs.jl" = "cd760094c3ee8d3fb2b4d0cba75247c59ddc07a289f1a925fbfc256f757e7214"
+    "src/reporting/runs.jl" = "7cb0ad0bf0bc5ea77af73e08a8261982510ce869caef95e26b7d51730a43b635"
+    "src/verification/r1.jl" = "c81ba065cd5e6e38e37cc385d89b81e0915c26b10edb2dd0321fd91633c202d3"
+    "src/verification/r2.jl" = "37aa836106f5ad456f43d6d82e637b0cb0e10488978743b4143a37ad5843114f"
+    "src/verification/r3.jl" = "73279f8d5760367ac5fe581cc638fa59e0763611a13ddf6f4ee47e2bdcd9b60d"
+
+    [stages.spec]
+    dynamics = "wmm"
+    dynamics_product = "exact"
+    formulation = "wmm_checked_v1"
+    heat_balance = "exact"
+    loss = "wmm"
+    mixing = "exact"
+
+    [stages.values]
+    H_device = [[0.04712934036507274, 0.03897421296304725, 0.040553504919172284, 0.04142328712364189], [0.12661369789784946, 0.1241492112093604, 0.13276987810074348, 0.12170456418997336], [0.0, 0.0, 0.0, 0.0]]
+    H_port = [[0.1737430382629222, 0.1631234241724076, 0.17332338301991576, 0.16312785131361526], [0.15, 0.16, 0.17, 0.16]]
+    P_branch = [[0.30231703131807325, 0.2914819084934356, 0.29183637779632954, 0.296073467795172]]
+    P_device = [[0.03141956024338183, 0.0259828086420315, 0.027035669946114855, 0.027615524749094594], [0.13327757673457838, 0.13068338022037937, 0.13975776642183524, 0.12811006756839302], [0.0, 0.013645505892997617, 0.02131359541302874, 0.004861407897542029]]
+    P_grid = [0.30231703131807325, 0.2914819084934356, 0.29183637779632954, 0.296073467795172]
+    Phi_R = [[0.0, 0.0, 0.0, 0.0], [999.6603180579668, 999.7008697492927, 999.6622955519745, 999.700857056241]]
+    Phi_S = [[1000.0, 1000.0, 1000.0, 1000.0], [999.6603180579668, 999.7008697492927, 999.6622955519745, 999.700857056241]]
+    Q_branch = [[0.02018360593075067, 0.02017073712323413, 0.02017115069345515, 0.02017613314936623]]
+    Q_grid = [0.02018360593075067, 0.02017073712323413, 0.02017115069345515, 0.02017613314936623]
+    alpha_1 = [[0.6066228660848321, 0.0, 0.0], [0.6464349651167934, 0.0, 0.0], [0.608396372627215, 0.0, 0.0], [0.6464212504034343, 0.0, 0.0]]
+    beta_1 = [[1.0, 0.5, 0.0], [1.0, 0.6066228660893007, 0.0], [1.0, 0.6464349651167929, 0.0], [1.0, 0.6083963726272154, 0.0]]
+    ell = [[0.09180296537533494, 0.08536856161706487, 0.08557534672757472, 0.08806657468311418]]
+    flow_deviation = [0.32423533293976814, 0.27347301272548674, 0.3218326447951362, 0.2734894230162479]
+    kappa_R = [[0.3396819420331652, 0.29913025070732047, 0.3377044480254842, 0.299142943759004]]
+    kappa_S = [[0.3396819420331652, 0.29913025070732047, 0.3377044480254842, 0.299142943759004]]
+    m_pipe = [[0.8242353329397681, 0.7734730127254867, 0.8218326447951362, 0.7734894230162479]]
+    m_port = [[0.8242353329397681, 0.7734730127254867, 0.8218326447951362, 0.7734894230162479], [0.8242353329397681, 0.7734730127254867, 0.8218326447951362, 0.7734894230162479]]
+    tau_R_in = [[313.0, 313.0, 313.0, 313.0]]
+    tau_R_mix = [[312.8111901029014, 312.78633955339444, 312.78603875628914, 312.7860411376852], [313.0, 313.0, 313.0, 313.0]]
+    tau_R_out = [[312.8111901029014, 312.78633955339444, 312.78603875628914, 312.7860411376852]]
+    tau_R_port = [[312.8111901029014, 312.78633955339444, 312.78603875628914, 312.7860411376852], [313.0, 313.0, 313.0, 313.0]]
+    tau_R_star = [[313.0000000013987, 313.00000000382846, 312.9999999859823, 313.0000000420363]]
+    tau_S_in = [[362.99999954771914, 362.99999908416777, 362.9999994804777, 362.9999981004347]]
+    tau_S_mix = [[362.99999954771914, 362.99999908416777, 362.9999994804777, 362.9999981004347], [356.3302047206649, 362.25218781842295, 362.2511349269656, 362.2511428878813]]
+    tau_S_out = [[356.3302047206649, 362.25218781842295, 362.2511349269656, 362.2511428878813]]
+    tau_S_port = [[362.99999954771914, 362.99999908416777, 362.9999994804777, 362.9999981004347], [356.3302047206649, 362.25218781842295, 362.2511349269656, 362.2511428878813]]
+    tau_S_star = [[356.9337711628128, 362.9999993882637, 362.9999992231053, 362.99999904128]]
+    v = [[1.0, 1.0, 1.0, 1.0], [0.9968987575490921, 0.9970069736548595, 0.997003433304318, 0.9969611147201166]]
+    z_mix = []
+[[stages]]
+JuMP_version = "1.31.2"
+bound_objective_kind = "operating_cost"
+budget_sec = 599.7869331999973
+build_sec = 0.0037589000130537897
+case_origin = "synthetic"
+class = "nonconvex"
+elapsed_sec = 0.012612699996680021
+elastic_rows = []
+fixed_flows = true
+flow_schedule = [[0.8242353329397681, 0.7734730127254867, 0.8218326447951362, 0.7734894230162479]]
+flow_sha256 = "d244eaa20b85e1d1ccc1c624c01a83115601996c6fac564209d03d10d0421087"
+input_sha256 = "1edcf60d35079ba126c253525d622dc104b7c8b503d71c153fb76e7a0aef8f4d"
+model_pass = true
+objective = 80.97096062998244
+objective_kind = "operating_cost"
+operating_cost = 80.97096062998244
+physics_pass = true
+primal = "FEASIBLE_POINT"
+raw_solver_bound = 80.97096062998243
+seed = 0
+solver = "Gurobi"
+solver_bound = 80.97096062998243
+solver_objective = 80.97096062998244
+solver_relative_gap = 1.755055714374212e-16
+solver_version = "13.0.3"
+stage = "repaired_dispatch"
+status = "solver_optimal"
+termination = "OPTIMAL"
+threads = 1
+variant = "r3_fixed_physical_v1"
+
+    [stages.source_hashes_at_solve]
+    "src/PaperRebuild.jl" = "3561d9d9f0bb1266931e74d7d1723d4c09837f77baad260311d16b96637fbdcd"
+    "src/components/devices.jl" = "01a86d8bb7bbbf0ad27f79acb099427ec18543a0a4b1b916f411f2e1a4053e2d"
+    "src/core/case.jl" = "dd5de1049fc740706fa9005f48b60d75e088bc68faa9f6092b9b310e7aaed624"
+    "src/core/r2_case.jl" = "11026416169278767a8900e84e5fb65f80113e405a4046a44f6b92dc983498d5"
+    "src/core/r3.jl" = "1a29d3ac34ebf6936b9055b737167e59cf746cc6b5fb1055b8f73db2ebd26f15"
+    "src/formulations/r1.jl" = "e952963689b39d28dc490066e55c7e5ca2689cd0ce78982a5397b09713466655"
+    "src/formulations/r2.jl" = "fa07fdd8c81b2f5ff9b01ca0fdb89cd603d59d6e63433f100610c283ac1a3ecc"
+    "src/formulations/r3.jl" = "f13d58bf6d8eada99e5f43145ca423ddf730c8d26b08c7080e43ecf8383b453f"
+    "src/networks/fixed_flow_heat.jl" = "620c069f6b3a520d32ee546ec048074f9cbaa3c785f8c2e31ec7fd7bf245a83b"
+    "src/networks/water_mass.jl" = "ef76594a25d5a310f8265137e733d811c8dbefcf0aea0b3ff8be5ed7b05bceef"
+    "src/reporting/r2_runs.jl" = "c0174b63fb559bd87b66604e80018ab5b4a055a4dfe7c0257884ed1955ea1971"
+    "src/reporting/r3_runs.jl" = "cd760094c3ee8d3fb2b4d0cba75247c59ddc07a289f1a925fbfc256f757e7214"
+    "src/reporting/runs.jl" = "7cb0ad0bf0bc5ea77af73e08a8261982510ce869caef95e26b7d51730a43b635"
+    "src/verification/r1.jl" = "c81ba065cd5e6e38e37cc385d89b81e0915c26b10edb2dd0321fd91633c202d3"
+    "src/verification/r2.jl" = "37aa836106f5ad456f43d6d82e637b0cb0e10488978743b4143a37ad5843114f"
+    "src/verification/r3.jl" = "73279f8d5760367ac5fe581cc638fa59e0763611a13ddf6f4ee47e2bdcd9b60d"
+
+    [stages.spec]
+    dynamics = "wmm"
+    dynamics_product = "exact"
+    formulation = "wmm_checked_v1"
+    heat_balance = "exact"
+    loss = "wmm"
+    mixing = "exact"
+
+    [stages.values]
+    H_device = [[0.17374303981039077, 0.1631234242009736, 0.1733233828018914, 0.16312786059389872], [-1.5283672868959819e-9, 0.0, 0.0, -8.404428557262645e-9], [0.0, 0.0, 0.0, 0.0]]
+    H_port = [[0.17374303828202348, 0.16312342420097356, 0.17332338280189147, 0.16312785218947018], [0.15, 0.16, 0.17, 0.16]]
+    P_branch = [[0.08420876369007459, 0.061271823375398826, 0.03445901523615067, 0.08128312163673895]]
+    P_device = [[0.11582869320692718, 0.10874894946731573, 0.11554892186792762, 0.10875190706259916], [-1.608807670416823e-9, 0.0, 0.0, -8.84676690238173e-9], [0.0, 0.030000000000000013, 0.05, 0.009999999984432585]]
+    P_grid = [0.08420876369007459, 0.061271823375398826, 0.03445901523615067, 0.08128312163673895]
+    Phi_R = [[0.0, 0.0, 0.0, 0.0], [0.33968194203305224, 0.2991302507072073, 0.33770444802539523, 0.2991429437588713]]
+    Phi_S = [[1000.0, 1000.0, 1000.0, 1000.0], [999.660318057967, 999.7008697492928, 999.6622955519746, 999.7008570562411]]
+    Q_branch = [[0.020014983418188456, 0.020008309137085817, 0.020003173753583618, 0.020014015002179395]]
+    Q_grid = [0.020014983418188456, 0.020008309137085817, 0.020003173753583618, 0.020014015002179395]
+    alpha_1 = [[0.6066228660893115, 0.0, 0.0], [0.6464349651168179, 0.0, 0.0], [0.6083963726272256, 0.0, 0.0], [0.6464212504034422, 0.0, 0.0]]
+    beta_1 = [[1.0, 0.5, 0.0], [1.0, 0.6066228660893115, 0.0], [1.0, 0.6464349651168179, 0.0], [1.0, 0.6083963726272256, 0.0]]
+    ell = [[0.007491715446763428, 0.004154568542908202, 0.001587550689106608, 0.0070075066633662675]]
+    kappa_R = [[0.33968194203305224, 0.2991302507072073, 0.33770444802539523, 0.2991429437588713]]
+    kappa_S = [[0.33968194203305224, 0.2991302507072073, 0.33770444802539523, 0.2991429437588713]]
+    m_pipe = [[0.8242353329397681, 0.7734730127254867, 0.8218326447951362, 0.7734894230162479]]
+    m_port = [[0.8242353329397681, 0.7734730127254867, 0.8218326447951362, 0.7734894230162479], [0.8242353329397681, 0.7734730127254867, 0.8218326447951362, 0.7734894230162479]]
+    tau_R_in = [[313.0, 313.0, 313.0, 313.0]]
+    tau_R_mix = [[312.8111901015151, 312.7863395496068, 312.7860387701569, 312.7860410960986], [313.0, 313.0, 313.0, 313.0]]
+    tau_R_out = [[312.8111901015151, 312.7863395496068, 312.7860387701569, 312.7860410960986]]
+    tau_R_port = [[312.8111901015151, 312.7863395496068, 312.7860387701569, 312.7860410960986], [313.0, 313.0, 313.0, 313.0]]
+    tau_R_star = [[313.0, 313.0, 313.0, 313.0]]
+    tau_S_in = [[362.9999995518514, 362.9999990891746, 362.9999994311811, 362.99999832845333]]
+    tau_S_mix = [[362.9999995518514, 362.9999990891746, 362.9999994311811, 362.99999832845333], [356.3302047206651, 362.2521878184242, 362.25113492696585, 362.2511428878813]]
+    tau_S_out = [[356.3302047206651, 362.2521878184242, 362.25113492696585, 362.2511428878813]]
+    tau_S_port = [[362.9999995518514, 362.9999990891746, 362.9999994311811, 362.99999832845333], [356.3302047206651, 362.2521878184242, 362.25113492696585, 362.2511428878813]]
+    tau_S_star = [[356.9337711628155, 362.999999388265, 362.9999992231056, 362.99999904128]]
+    v = [[1.0, 1.0, 1.0, 1.0], [0.9990780696891745, 0.9993073690121854, 0.9995754431915941, 0.9991073159413172]]
+    z_mix = []

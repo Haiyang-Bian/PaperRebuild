@@ -1,0 +1,18 @@
+schema = "r8-tradeoff-study-v1"
+origin = "synthetic"
+record_count = 34
+budget_sec = 600.0
+UA_W_K = 10.0
+penalty_USD_MWh = 500.0
+legacy_thresholds_MWh = [0.0,0.2,0.4,0.6,0.8,1.0,1.2]
+tie_thresholds_MWh = [0.0,0.2,0.4,0.6]
+resource_threshold_MWh = 0.4
+resource_variants = ["no_battery","no_net_heat_charge","no_reconfiguration"]
+flow_variants = ["fixed","joint_continuous"]
+event_rule = "two alternative one-hour PCC-outage windows at hours 2 and 3; worst internal fault, renewable-weighted loss"
+battery_rule = "per_period_exclusive_v1"
+case_rule = "legacy uses normal-reserve-hand; tie_three splits 0.8MW load equally to nodes2/3, adds protected normally-open1-3 tie, GT2 0.4MW at140USD/MWh, EB1 0.2MW at0.95 and2USD/MWh; same heat pipe/state, aggregate loads, CHP, prices and event windows"
+fixed_flow_rule = "normal5kg/s; legacy faulted pipe recovery0 otherwise5; tie_three recovery5 in all faults; variable domain normal[0.05,10], recovery[0,10]"
+resource_rule = "one declared resource per variant; battery removal includes its sole grid-forming eligibility at node3, so is not a pure energy-capacity effect; no_net_heat_charge restricts normal per-pipe inventory<=initial and is not author steady-energy ablation"
+freeze_note = "Protocol follows development tests and precedes all 34 formal optimizations; no capacities changed based on cost benefits."
+bound_scope = "adopted detailed model, not exact PDE or thesis-scale certification"

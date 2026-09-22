@@ -1,0 +1,35 @@
+bargaining = false
+budget_sec = 600.0
+distributed_algorithm = false
+initial_primal_injection = false
+manifest_sha256 = "2a312e0e3086047a13febf9608aa3ef5449220d185b721a5a96cd382d6daad50"
+method_budget_pass = true
+method_elapsed_sec = 25.530808899959084
+origin = "synthetic"
+process_budget_pass = true
+process_elapsed_sec = 27.317453099996783
+raw_result_sha256 = "a48df80599d07f8197864b1e5e11de2d1cb98a89d33e02bb2482e6dddf5bb315"
+record = "record"
+record_manifest_sha256 = "f6690c2c0f097858d4f8682aff58efec7a4a885ab0592cd94bde8026b165e039"
+schema = "r9-network-receipt-v1"
+start_utc = "2026-09-21T02:36:03.403"
+status = "infeasible_certified"
+uses_projected_gradient = false
+
+[entry]
+case = "legacy-joint"
+design = "legacy"
+electric = "exact"
+id = "legacy-joint-central-exact"
+input_sha256 = "7fe38e5c973033551f4e1ec9d15cfe81be0e4b80e2c1e5e4448c5dc22ade26c1"
+operation = "central"
+policy = "joint"
+
+[solver_options]
+FeasibilityTol = 1.0e-8
+IntFeasTol = 1.0e-8
+MIPGap = 0.0001
+NonConvex = 2
+OptimalityTol = 1.0e-8
+Seed = 0
+Threads = 1

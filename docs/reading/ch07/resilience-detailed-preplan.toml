@@ -1,0 +1,55 @@
+schema = "r9-detailed-preplan-mapping-v1"
+page = "docs/src/ch07-resilience-detailed.md"
+parent = "docs/reading/ch07/resilience-preplan.toml"
+state_model = "docs/reading/ch06/linked-planning.toml"
+normal_model_unchanged = true
+recovery_model_changed_explicitly = true
+original_input_complete = false
+test_commands = ["scripts/test_r9_detailed_preplan.jl", "scripts/check_r9_detailed_preplan.jl"]
+
+[[formula]]
+id = "R9-DP1"
+kind = "project_shared_detailed_recovery"
+api = ["r9_detailed_preplan_spec", "build_r9_detailed_preplan"]
+test = "test/r9_detailed_preplan.jl"
+meaning = "正常完整入口历史决定事件前空间状态；每个故障独立恢复，但共享灾前承诺、出力、储能和热历史。"
+[[formula]]
+id = "R9-DP2"
+kind = "project_detailed_objective"
+api = ["build_r9_detailed_preplan", "solve_r9_detailed_preplan"]
+test = "test/r9_detailed_preplan.jl"
+meaning = "沿原经济、事件最大失供罚费、逐故障门槛口径，替换为详细恢复可行域。"
+[[formula]]
+id = "R9-DP3"
+kind = "project_independent_replay"
+api = ["validate_r9_detailed_preplan", "save_r9_detailed_preplan", "read_r9_detailed_preplan"]
+test = "test/r9_detailed_preplan.jl"
+meaning = "独立从同一正常原值回放恢复，费用、罚费、见证存在性和独立失供优化分开。"
+[[formula]]
+id = "R9-DH1"
+kind = "project_temperature_necessary_condition"
+api = ["r9_handoff_temperature_check"]
+test = "test/r9_detailed_preplan.jl"
+meaning = "入口温度上下界夹住任何合法入口，若最有利的点态状态仍违反温区则给定初态/流量不相容；通过不证明调度可行。"
+
+[[symbol]]
+id = "R9-DP-x"
+latex = "x"
+meaning = "共同灾前设备承诺、出力和节点入口温度轨迹"
+unit = "components retain MW, MWh, K and dimensionless commitment"
+julia = "normal_variables / chp_variables"
+origin = "project_scope_alias_for_existing_R7_variables"
+[[symbol]]
+id = "R9-DP-theta"
+latex = "\\theta_s(x)"
+meaning = "由正常历史决定的事件s之前完整管道空间温度"
+unit = "K with mass coordinate kg"
+julia = "r7_linked_event(...).evidence[initial_pipe_profiles]"
+origin = "R7-L1 adopted spatial history"
+[[symbol]]
+id = "R9-DP-zeta"
+latex = "\\zeta_s"
+meaning = "本次子集内事件s的最坏期望关键失供上图量"
+unit = "MWh"
+julia = "ζ[s]"
+origin = "R9-RP2 reused objective convention"

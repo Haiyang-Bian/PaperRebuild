@@ -12,7 +12,43 @@ __pycache__/
 /results/runs/*
 !/results/runs/README.md
 
+# R3 v2 complete residual plot sources are committed as verified CSV.gz.
+/results/summaries/r3-v2/*/*/F04-source.csv
+/results/summaries/r3-v3/*/*/F04-source.csv
+
+# Local failed R7 report/render wrappers; verified v2 retains the same scientific raw values.
+/results/summaries/r7-normal-20260920-v1/
+/results/summaries/r7-normal-figures-20260920-v1/
+/results/summaries/r7-planning-20260920-v1/
+/results/summaries/r7-planning-figures-20260920-v1/
+/results/summaries/r7-inner-figures-20260920-v1/
+/results/summaries/r7-inner-figures-20260920-v2/
+
+# Original R7 transport audit exceeds the single-file limit; byte-identical CSV parts are public.
+/results/summaries/r7-transport-audit-20260920-v1/
+/results/summaries/r7-battery-20260920-v1/
+/results/summaries/r7-linked-20260920-v2/
+/results/summaries/r7-linked-figures-20260920-v2/
+# First F30 layout retained locally; v2 changes only the layout.
+/results/summaries/r7-lossy-flow-figures-20260920-v1/
+# First F31 layout retained locally; v2 uses common cost axes and unclipped labels.
+/results/summaries/r8-tradeoff-figures-20260920-v1/
+# Second F31 kept locally; v3 explicitly records the 2x raster scale and actual PNG dimensions.
+/results/summaries/r8-tradeoff-figures-20260920-v2/
+# First F52 layout retained locally; v2 removes invented tick labels on missing trajectories.
+/results/summaries/r9-distributed-figures-20260922-v1/
+
 # Rebuildable environments, output, and per-session state.
+# R9 launch/replay failures retained locally; later batch preserves the identical scientific input.
+/results/summaries/r9-pv-batch-20260920-v1/
+/results/summaries/r9-pv-batch-20260920-v2/
+/results/summaries/r9-pv-batch-20260920-v3/
+# First report retained locally: host path in metadata; portable v2 replays the same raw values.
+/results/summaries/r9-pv-report-20260920-v1/
+/results/summaries/r9-pv-figures-20260920-v1/
+/docs/src/assets/r9-pv-20260920-v1/
+# First R9 probe archive wrapper lacked the legacy default-policy field; original probes unchanged.
+/results/summaries/r9-flow-diagnostics-20260921-v1/
 /docs/build/
 /.julia/
 /.venv/
@@ -31,3 +67,26 @@ Thumbs.db
 *.key
 *.pfx
 *.code-workspace
+
+# Failed first archival attempt is retained locally; scientific runs were not repeated.
+/results/summaries/r9-flow-reference-20260921-v1/
+# First fixed-flow summary used physical instead of physics for the residual scope.
+# Retain locally; v2 rebuilds the same saved values without optimization.
+/results/summaries/r9-fixed-20260921-v1/
+# v2 retained full validation but omitted temperature rows in a plot aggregation.
+/results/summaries/r9-fixed-20260921-v2/
+/results/summaries/r9-fixed-figures-20260921-v1/
+# Figure v2 included its own still-empty metadata file in its hash list; data unchanged.
+/results/summaries/r9-fixed-figures-20260921-v2/
+# Complete v3 preserved locally; v4 only shards byte-identical raw records to satisfy 5 MiB.
+/results/summaries/r9-fixed-20260921-v3/
+/results/summaries/r9-fixed-figures-20260921-v3/
+# First beginner carrier retained locally; v2 only corrects Julia 1.12 binding-age access.
+/results/summaries/r10-beginner-20260922-v1/
+# Unsplit nominal probe is retained locally; v2 preserves identical bytes in 4MiB objects.
+/results/summaries/r9-reserve-nominal-20260921-v1/
+# v2 keeps the same raw evidence; v3 fixes a Julia 1.12 frozen-binding replay warning.
+/results/summaries/r9-reserve-nominal-20260921-v2/
+# Pilot carrier v1 was generated while its read-only audit helper was extended.
+# Keep local original witnesses; v2 reconstructs tables without scientific reruns.
+/results/summaries/r9-reserve-pilot-20260921-v1/

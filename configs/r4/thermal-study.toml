@@ -1,0 +1,102 @@
+acceptance = "Unchanged A1 and A2; temperature 1e-4K; failures/timeouts retained."
+budget_sec = 600.0
+bypass = "absent"
+comparison = "Reference versus exponential changes only running-pipe heat loss. Both add idle/temperature/mixing relative to the parent model; the legacy comparison is a combined model change."
+cost_scope = "Resource, discomfort, grid and switching; no pump cost or idle restart energy."
+electric = "exact"
+flow_floor = 0.0001
+idle_rule = "decoupled_steady_no_transport"
+initialization = "No parent incumbent or reference temperature solution injected."
+origin = "synthetic"
+parent_batch = "r4-network-20260919"
+pressure_pumps_dynamics = false
+return_K = [303.15, 323.15]
+schema = "r4-thermal-study-v1"
+supply_K = [343.15, 363.15]
+
+[input_sha256]
+electric_bottleneck = "29325aa5fc3ec9f6866ffc43e81b71d7864c8ee90626ffd45be9beece58358f9"
+heat_bottleneck = "d3817ef08ce81ada0febc8ddd5324b716893c38ac36923ce4f3200fc0833ed9a"
+import = "ee4ea767dcf6fff220b530565a40fdc149dd16eaf739af660873c928f514793c"
+open = "b7be25d9045594fc881a592c926b67ab6d8208dad96785f49c8ffffcc0e8f823"
+
+[[records]]
+case = "open"
+id = "open--fixed--reference"
+loss = "reference"
+policy = "fixed"
+[[records]]
+case = "open"
+id = "open--fixed--exponential"
+loss = "exponential"
+policy = "fixed"
+[[records]]
+case = "open"
+id = "open--joint--reference"
+loss = "reference"
+policy = "joint"
+[[records]]
+case = "open"
+id = "open--joint--exponential"
+loss = "exponential"
+policy = "joint"
+[[records]]
+case = "import"
+id = "import--fixed--reference"
+loss = "reference"
+policy = "fixed"
+[[records]]
+case = "import"
+id = "import--fixed--exponential"
+loss = "exponential"
+policy = "fixed"
+[[records]]
+case = "import"
+id = "import--joint--reference"
+loss = "reference"
+policy = "joint"
+[[records]]
+case = "import"
+id = "import--joint--exponential"
+loss = "exponential"
+policy = "joint"
+[[records]]
+case = "electric_bottleneck"
+id = "electric_bottleneck--fixed--reference"
+loss = "reference"
+policy = "fixed"
+[[records]]
+case = "electric_bottleneck"
+id = "electric_bottleneck--fixed--exponential"
+loss = "exponential"
+policy = "fixed"
+[[records]]
+case = "electric_bottleneck"
+id = "electric_bottleneck--joint--reference"
+loss = "reference"
+policy = "joint"
+[[records]]
+case = "electric_bottleneck"
+id = "electric_bottleneck--joint--exponential"
+loss = "exponential"
+policy = "joint"
+[[records]]
+case = "heat_bottleneck"
+id = "heat_bottleneck--fixed--reference"
+loss = "reference"
+policy = "fixed"
+[[records]]
+case = "heat_bottleneck"
+id = "heat_bottleneck--fixed--exponential"
+loss = "exponential"
+policy = "fixed"
+[[records]]
+case = "heat_bottleneck"
+id = "heat_bottleneck--joint--reference"
+loss = "reference"
+policy = "joint"
+[[records]]
+case = "heat_bottleneck"
+id = "heat_bottleneck--joint--exponential"
+loss = "exponential"
+policy = "joint"

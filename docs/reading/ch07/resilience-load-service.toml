@@ -1,0 +1,51 @@
+schema = "r9-resilience-load-service-contract-v1"
+origin = "project_adoption_and_synthetic_verification"
+source = "docs/摘要.pdf"
+source_sha256 = "20328e2480e773520c19c378e53365fc944c0bafcfca73071f5d8313d5ee7d91"
+pdf_pages = [112,139]
+source_review = "docs/reading/ch07/resilience-review.toml"
+human_page = "docs/src/ch07-critical-load.md"
+service_schema = "r7-critical-load-service-v1"
+service_objective = "critical_electric_v1"
+legacy_objective = "total_electric_and_heat_v1"
+ordinary_and_heat_physical_demands_preserved = true
+ordinary_and_heat_secondary_optimization = false
+power_factor_rule = "same_node_tan_phi"
+old_results_rewritten = false
+event_grid_conversion_implemented = false
+chapter_7_5_scale_optimization_performed = false
+author_unique_node_allocation_recovered = false
+test_commands = ["scripts/test_r7_critical_service.jl", "scripts/check_r9_critical_service.jl"]
+
+[allocation_preflight]
+protocol = "configs/r9/pv-protocol.toml"
+condition = "Interpret 13.75 MW as simultaneous critical demand at the shared synthetic load peak."
+meaning = "Legacy uniform node demand cannot contain this critical demand on either transcribed node set; this is a project substitution conflict, not proof of a thesis error."
+node_counts = [12,13]
+available_total_peak_MW = [11.47060465116279,12.426488372093023]
+target_MW = 13.75
+optimization_performed = false
+
+[[formula]]
+id = "R9-RL1"
+meaning = "Explicit critical and ordinary active-load shedding sum to original total; both bounded by own demand while original total bound remains."
+api = ["with_r7_critical_load", "build_r7_recovery", "validate_r7_recovery"]
+implementation = ["src/core/r7_recovery.jl", "src/formulations/r7_recovery.jl", "src/verification/r7_recovery.jl"]
+test = "test/r7_critical_service.jl"
+status = "implemented_synthetic_verification"
+
+[[formula]]
+id = "R9-RL2"
+meaning = "Integrate probability-weighted critical active shedding in hours; retain ordinary, total electric and heat losses separately."
+api = ["solve_r7_recovery", "validate_r7_recovery", "build_r7_recourse_dual"]
+implementation = ["src/formulations/r7_recovery.jl", "src/verification/r7_recovery.jl", "src/core/r7_adversary.jl"]
+test = "test/r7_critical_service.jl"
+status = "implemented_synthetic_verification"
+
+[[formula]]
+id = "R9-RL3"
+meaning = "Slice critical demand on original event grid; planning thresholds, penalties and worst-fault evaluation share declared critical scope."
+api = ["r7_normal_event", "solve_r7_planning", "r8_spec", "r8_energy_spec", "validate_r8_solution", "validate_r8_energy_solution"]
+implementation = ["src/core/r7_planning.jl", "src/verification/r7_normal.jl", "src/core/r8_tradeoff.jl", "src/core/r8_energy_flow.jl"]
+test = "test/r7_critical_service.jl"
+status = "implemented_synthetic_verification"

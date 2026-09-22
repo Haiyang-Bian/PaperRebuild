@@ -1,0 +1,144 @@
+parent_result_sha256 = "7be86ced3446703760ca8d7c7402b16c93b96a5ed37ec815c0718ebf444d23a0"
+record_id = "capacity_infeasible--highs"
+result_content_sha256 = "7be86ced3446703760ca8d7c7402b16c93b96a5ed37ec815c0718ebf444d23a0"
+schema = "r5-market-payment-witness-v1"
+
+[case]
+T = 4
+description = "Synthetic infeasibility: add 1000 MW ordinary load at bus 2 in each period."
+dt_h = 1.0
+load_MW = [[20.0, 20.0, 20.0, 20.0], [1040.0, 1060.0, 1080.0, 1050.0]]
+name = "capacity_infeasible"
+nodes = 2
+origin = "synthetic"
+reserve_down_MW = [10.0, 10.0, 10.0, 10.0]
+reserve_up_MW = [15.0, 15.0, 15.0, 15.0]
+schema = "r5-market-case-v1"
+
+    [[case.generators]]
+    down_bid = [1.0, 1.0, 1.0, 1.0]
+    down_max = 30.0
+    energy_bid = [20.0, 20.0, 20.0, 20.0]
+    id = "G1"
+    node = 1
+    p_bid_max = 100.0
+    p_initial = 50.0
+    p_max = 100.0
+    p_min = 0.0
+    ramp_down_MW_h = 20.0
+    ramp_up_MW_h = 20.0
+    up_bid = [5.0, 5.0, 5.0, 5.0]
+    up_max = 30.0
+    [[case.generators]]
+    down_bid = [2.0, 2.0, 2.0, 2.0]
+    down_max = 30.0
+    energy_bid = [50.0, 50.0, 50.0, 50.0]
+    id = "G2"
+    node = 2
+    p_bid_max = 80.0
+    p_initial = 20.0
+    p_max = 80.0
+    p_min = 0.0
+    ramp_down_MW_h = 40.0
+    ramp_up_MW_h = 40.0
+    up_bid = [7.0, 7.0, 7.0, 7.0]
+    up_max = 30.0
+
+    [[case.ies]]
+    down_bid = [3.0, 3.0, 3.0, 3.0]
+    down_max = 20.0
+    energy_bid = [200.0, 200.0, 200.0, 200.0]
+    id = "IES1"
+    node = 2
+    purchase_bid_max = 30.0
+    q_max = 40.0
+    q_min = 0.0
+    up_bid = [2.0, 2.0, 2.0, 2.0]
+    up_max = 20.0
+
+    [case.network]
+    limit_MW = [70.0]
+    ptdf = [[0.0, -1.0]]
+    slack_node = 1
+
+    [case.units]
+    energy = "MWh"
+    energy_price = "USD/MWh"
+    power = "MW"
+    ramp = "MW/h"
+    reserve_price = "USD/(MW*h)"
+    time = "h"
+
+[payment]
+case_sha256 = "c4dcfadcb5cef69aa614de78f012f2724ad84e3f471ae21a046af7ecaa82a94f"
+identity_pass = false
+market_kkt_pass = false
+market_model_pass = false
+run_id = "r5-market-166ea1a6-85f1-4c17-b49c-86f76197928b"
+schema = "r5-market-payment-check-v1"
+scope = "all_IES_whole_horizon"
+status = "missing_candidate_or_multipliers"
+unit = "USD"
+valid_for_reformulation = false
+
+[result]
+budget_sec = 60.0
+case_sha256 = "c4dcfadcb5cef69aa614de78f012f2724ad84e3f471ae21a046af7ecaa82a94f"
+cost_optimization_complete = false
+created_utc = "2026-09-18T21:30:04.890"
+dual_status = "INFEASIBILITY_CERTIFICATE"
+elapsed_sec = 0.21599984169006348
+fixed_load_utility_constant_omitted = true
+julia_version = "1.12.6"
+model_type = "continuous_LP"
+objective_type = "fixed_bid_clearing_cost_not_system_resource_cost"
+primal_status = "NO_SOLUTION"
+raw_status = "kHighsModelStatusInfeasible"
+run_id = "r5-market-166ea1a6-85f1-4c17-b49c-86f76197928b"
+schema = "r5-market-result-v1"
+solver = "HiGHS"
+solver_objective_bound = 0.0
+solver_version = "v1.15.1"
+status = "solver_infeasible"
+termination = "INFEASIBLE"
+total_method_elapsed_sec = 0.21700000762939453
+version = "r5_market_clearing_checked_v1"
+
+    [result.independent_dual]
+    status = "not_attempted_without_primal"
+    verified = false
+
+    [[result.model_types]]
+    count = 12
+    function = "AffExpr"
+    set = "MathOptInterface.EqualTo{Float64}"
+    [[result.model_types]]
+    count = 12
+    function = "AffExpr"
+    set = "MathOptInterface.GreaterThan{Float64}"
+    [[result.model_types]]
+    count = 72
+    function = "AffExpr"
+    set = "MathOptInterface.LessThan{Float64}"
+    [[result.model_types]]
+    count = 36
+    function = "VariableRef"
+    set = "MathOptInterface.GreaterThan{Float64}"
+
+    [result.source_hashes_at_solve]
+    "Manifest.toml" = "6aa68b274431d56e5f78dfe516af70b7a6aefe8529cf58240d882de31c72bb75"
+    "Project.toml" = "b3f905bb91f92e68ff970eedc46e9ed854ca4e08ff124541d68e991818de4a92"
+    "src/algorithms/r5_market.jl" = "a5a5bbc1b96743973ea81e79ec8af40e8f18328d00ca7fc14b540aaf9324154a"
+    "src/core/r5_market.jl" = "b66b34edafb602439fa8c93beb25fc20500b6a4106dee739a1795418cb265222"
+    "src/formulations/r5_market.jl" = "85ba2ee6e8f84bef53db7949bf4fc425b57476bdaa49f22d9a816bf32bd01713"
+    "src/reporting/r5_market.jl" = "164d47e5922903179225a17c8a681610ae7eb5312068a4f806d85010f16f0796"
+    "src/verification/r5_market.jl" = "47cf2899d6167974ec406d7b431d06bcd2ca3b16108bdbc67c8805e071e57009"
+    "tools/solvers/Manifest.toml" = "4c3bfa7a47e06095c1251dfb555ff155bc7e02241013547c294c2920cedb958e"
+    "tools/solvers/Project.toml" = "be07a40d34ee1e44e61d0e81fc1a71161cc9ba7ef20d57fc7fbe4e70f6e3ba8b"
+
+    [result.validation]
+    kkt_pass = false
+    model_pass = false
+    optimality_pass = false
+    rows = []
+    status = "no_candidate"

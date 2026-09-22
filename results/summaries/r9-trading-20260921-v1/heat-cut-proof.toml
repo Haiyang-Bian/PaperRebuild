@@ -1,0 +1,94 @@
+complete_thermal_certification = false
+crossing_pipes = [9]
+deficit_MW = 0.08011921641428904
+input_sha256 = "73595793a7b47b3e39e4b4aa97a323ac35989887802b54ed113f36fa01dc4d1d"
+internal_loss_MW = 0.32833170403333584
+internal_pipes = [1, 2, 3, 4, 5, 6, 7, 8, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37]
+maximum_import_MW = 0.17000000000000012
+maximum_supply_MW = 9.130379154285714
+meaning = "necessary_coupled_capacity_only"
+minimum_demand_MW = 9.052166666666668
+nodes = [1, 2, 3, 4, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38]
+positive_deficit = true
+schema = "r9-trading-heat-cut-v1"
+t = 8
+
+[[devices]]
+admissible_heat_upper_MW = 4.800000000000001
+device = "CHP1"
+index = 1
+nameplate_heat_MW = 4.800000000000001
+
+    [devices.exact_heat_upper]
+    denominator = "281474976710656"
+    numerator = "1351079888211149"
+[[devices]]
+admissible_heat_upper_MW = 1.2
+device = "CHP2"
+index = 2
+nameplate_heat_MW = 1.2
+
+    [devices.exact_heat_upper]
+    denominator = "4503599627370496"
+    numerator = "5404319552844595"
+[[devices]]
+admissible_heat_upper_MW = 1.0
+device = "EB1"
+electric_budget_MW = 20.848238211180124
+electric_edge = 43
+electric_node = 33
+index = 3
+nameplate_heat_MW = 1.0
+
+    [devices.exact_electric_budget]
+    denominator = "11529215046068470"
+    numerator = "240363821668357489"
+
+    [devices.exact_heat_upper]
+    denominator = "1"
+    numerator = "1"
+[[devices]]
+admissible_heat_upper_MW = 1.2
+device = "EB2"
+electric_budget_MW = 7.493143870967742
+electric_edge = 32
+electric_node = 22
+index = 4
+nameplate_heat_MW = 1.2
+
+    [devices.exact_electric_budget]
+    denominator = "10384593717069655473233774772224"
+    numerator = "77813254763550614068650787662739"
+
+    [devices.exact_heat_upper]
+    denominator = "4503599627370496"
+    numerator = "5404319552844595"
+[[devices]]
+admissible_heat_upper_MW = 0.43037915428571427
+device = "EB4"
+electric_budget_MW = 0.4678034285714286
+electric_edge = 37
+electric_node = 37
+index = 6
+nameplate_heat_MW = 1.0
+
+    [devices.exact_electric_budget]
+    denominator = "11529215046068470"
+    numerator = "5393406327288131"
+
+    [devices.exact_heat_upper]
+    denominator = "103845937170696554732337747722240"
+    numerator = "44693126615531805922948505728403"
+[[devices]]
+admissible_heat_upper_MW = 0.5
+device = "HS2"
+index = 13
+nameplate_heat_MW = 0.5
+
+    [devices.exact_heat_upper]
+    denominator = "2"
+    numerator = "1"
+
+[exact_deficit]
+denominator = "3323069989462289751434807927111680"
+numerator = "266241763645558379222469629814079"

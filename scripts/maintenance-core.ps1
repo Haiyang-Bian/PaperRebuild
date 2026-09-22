@@ -165,11 +165,21 @@ function Desired-Groups([string]$Root, $Document) {
             $groups.Add($group)
         } else { $group = $existing[0] }
         $wanted = @($paths | Where-Object { $_ -cmatch $definition.pattern })
+        # Match PowerShell's case-sensitive invariant-culture string comparison.
+        # A set avoids rescanning every historical evidence file for each member.
+        $wantedPaths = [Collections.Generic.HashSet[string]]::new([StringComparer]::InvariantCulture)
+        foreach ($path in $wanted) { [void]$wantedPaths.Add($path) }
+        $memberPaths = [Collections.Generic.HashSet[string]]::new([StringComparer]::InvariantCulture)
         $members = [Collections.Generic.List[object]]::new()
         # Keep aliases, ordering and unknown metadata for surviving members.
-        foreach ($file in @($group.files)) { if ($file.path -cin $wanted) { $members.Add($file) } }
+        foreach ($file in @($group.files)) {
+            if ($wantedPaths.Contains($file.path)) {
+                $members.Add($file)
+                [void]$memberPaths.Add($file.path)
+            }
+        }
         foreach ($path in $wanted) {
-            if (@($members | Where-Object { $_.path -ceq $path }).Count -eq 0) {
+            if ($memberPaths.Add($path)) {
                 $members.Add([ordered]@{ path = $path; name = ($path.Split('/')[-1]); isDirectory = $false })
             }
         }
@@ -185,8 +195,22 @@ function Inventory-Text([string]$Root) {
     $lines.Add('')
     $lines.Add('由 `scripts/maintain.ps1 -Action Sync` 生成；仅列入版本控制候选文件，不表示科研完成。')
     $lines.Add('')
+    $assets = [Collections.Generic.SortedSet[string]]::new([StringComparer]::Ordinal)
     foreach ($path in @(Candidate-Paths $Root)) {
+        # 人类入口按完整批次汇总图源与证据，包含批次根文件；CodeGroup仍维护每个真实文件。
+        if ($path -match '^((?:docs/src/assets|results/summaries)/[^/]+)/') {
+            [void]$assets.Add($Matches[1])
+            continue
+        }
         if ($path -ne 'docs/src/generated-inventory.md') { $lines.Add('- `' + $path + '`') }
+    }
+    if ($assets.Count -gt 0) {
+        $lines.Add('')
+        $lines.Add('## 图表与结果批次')
+        $lines.Add('')
+        $lines.Add('批次内图源和逐式残差见对应结果页、哈希清单及 CodeGroup 文件分组；此处只列目录，避免重复展开全部图源。')
+        $lines.Add('')
+        foreach ($directory in $assets) { $lines.Add('- `' + $directory + '/`') }
     }
     return ($lines -join "`n") + "`n"
 }
@@ -262,7 +286,7 @@ function Handle-Hook([string]$Root, $Event) {
         $receipt = '.codex/.local/maintenance/startup-' + (Text-Hash $Event.session_id) + '.json'
         $record = @{ session_id = $Event.session_id; event = $name; source = $Event['source']; observed_utc = [DateTime]::UtcNow.ToString('o'); script_sha256 = (File-Hash (Safe-Path $Root 'scripts/maintenance-core.ps1')) }
         Save-State $Root $receipt $record (File-Hash (Safe-Path $Root $receipt))
-        return @{ hookSpecificOutput = @{ hookEventName = $name; additionalContext = 'PaperRebuild: read AGENTS.md and docs/agent/current-state.md; follow docs/agent/handbook.md. Julia 1.12.6. Thesis models are not yet implemented.' } }
+        return @{ hookSpecificOutput = @{ hookEventName = $name; additionalContext = 'PaperRebuild: read AGENTS.md and docs/agent/current-state.md; follow docs/agent/handbook.md. Julia 1.12.6. Read current-state.md for implemented scope; distinguish synthetic method validation from thesis-scale reproduction.' } }
     }
     if ($name -notin @('UserPromptSubmit', 'Stop')) { throw "Unsupported event: $name" }
     if (!$Event.session_id -or !$Event.turn_id) { throw 'session_id and turn_id are required; no baseline fabricated.' }

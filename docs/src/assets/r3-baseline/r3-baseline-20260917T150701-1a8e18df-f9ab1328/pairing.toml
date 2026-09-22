@@ -1,0 +1,106 @@
+study_sha256 = "5a04a8bd2ae4868367bc6e8dde5dc12d893cc5ad4f9d318947c39bb7ad79d0bf"
+
+[[groups]]
+factor = "geometry"
+ids = ["single-source-schpd-physical", "single-source-schpd-normalized"]
+pass = true
+[[groups]]
+factor = "geometry"
+ids = ["single-source-case_fixed-physical", "single-source-case_fixed-normalized"]
+pass = true
+[[groups]]
+factor = "geometry"
+ids = ["single-source-box25-physical", "single-source-box25-normalized"]
+pass = true
+[[groups]]
+factor = "geometry"
+ids = ["single-source-box50-physical", "single-source-box50-normalized"]
+pass = true
+[[groups]]
+factor = "geometry"
+ids = ["single-source-box75-physical", "single-source-box75-normalized"]
+pass = true
+[[groups]]
+factor = "geometry"
+ids = ["single-source-legacy_tail-physical", "single-source-legacy_tail-normalized"]
+pass = true
+[[groups]]
+factor = "geometry"
+ids = ["single-source-bounded_return_tail-physical", "single-source-bounded_return_tail-normalized"]
+pass = true
+[[groups]]
+factor = "geometry"
+ids = ["single-source-core_only-physical", "single-source-core_only-normalized"]
+pass = true
+[[groups]]
+factor = "initialization"
+ids = ["single-source-schpd-physical", "single-source-case_fixed-physical", "single-source-box25-physical", "single-source-box50-physical", "single-source-box75-physical"]
+pass = true
+[[groups]]
+factor = "boundary"
+ids = ["single-source-legacy_tail-physical", "single-source-bounded_return_tail-physical", "single-source-core_only-physical"]
+pass = true
+[[groups]]
+factor = "initialization"
+ids = ["single-source-schpd-normalized", "single-source-case_fixed-normalized", "single-source-box25-normalized", "single-source-box50-normalized", "single-source-box75-normalized"]
+pass = true
+[[groups]]
+factor = "boundary"
+ids = ["single-source-legacy_tail-normalized", "single-source-bounded_return_tail-normalized", "single-source-core_only-normalized"]
+pass = true
+[[groups]]
+factor = "step"
+ids = ["single-source-schpd-physical", "single-source-schpd-step001", "single-source-schpd-step100"]
+pass = true
+[[groups]]
+factor = "geometry"
+ids = ["two-source-schpd-physical", "two-source-schpd-normalized"]
+pass = true
+[[groups]]
+factor = "geometry"
+ids = ["two-source-case_fixed-physical", "two-source-case_fixed-normalized"]
+pass = true
+[[groups]]
+factor = "geometry"
+ids = ["two-source-box25-physical", "two-source-box25-normalized"]
+pass = true
+[[groups]]
+factor = "geometry"
+ids = ["two-source-box50-physical", "two-source-box50-normalized"]
+pass = true
+[[groups]]
+factor = "geometry"
+ids = ["two-source-box75-physical", "two-source-box75-normalized"]
+pass = true
+[[groups]]
+factor = "geometry"
+ids = ["two-source-legacy_tail-physical", "two-source-legacy_tail-normalized"]
+pass = true
+[[groups]]
+factor = "geometry"
+ids = ["two-source-bounded_return_tail-physical", "two-source-bounded_return_tail-normalized"]
+pass = true
+[[groups]]
+factor = "geometry"
+ids = ["two-source-core_only-physical", "two-source-core_only-normalized"]
+pass = true
+[[groups]]
+factor = "initialization"
+ids = ["two-source-schpd-physical", "two-source-case_fixed-physical", "two-source-box25-physical", "two-source-box50-physical", "two-source-box75-physical"]
+pass = true
+[[groups]]
+factor = "boundary"
+ids = ["two-source-legacy_tail-physical", "two-source-bounded_return_tail-physical", "two-source-core_only-physical"]
+pass = true
+[[groups]]
+factor = "initialization"
+ids = ["two-source-schpd-normalized", "two-source-case_fixed-normalized", "two-source-box25-normalized", "two-source-box50-normalized", "two-source-box75-normalized"]
+pass = true
+[[groups]]
+factor = "boundary"
+ids = ["two-source-legacy_tail-normalized", "two-source-bounded_return_tail-normalized", "two-source-core_only-normalized"]
+pass = true
+[[groups]]
+factor = "step"
+ids = ["two-source-schpd-physical", "two-source-schpd-step001", "two-source-schpd-step100"]
+pass = true

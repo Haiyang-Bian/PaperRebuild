@@ -14,6 +14,30 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  tests:
+    name: Tests (${{ matrix.os }}, ${{ matrix.stage }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        stage: [r1_r4, r5_r6, r7_r8, r9_physics, r9_markets]
+    runs-on: ${{ matrix.os }}
+    env:
+      JULIA_NUM_THREADS: '1'
+      JULIA_PKG_PRECOMPILE_AUTO: '0'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: julia-actions/setup-julia@v2
+        with:
+          version: '1.12.6'
+      - uses: julia-actions/cache@v2
+      - name: Prepare test dependencies with matching compiler flags
+        timeout-minutes: 10
+        run: julia --startup-file=no --threads=1 --check-bounds=yes --depwarn=yes --warn-overwrite=yes --project=. scripts/precompile_tests.jl
+      - name: Julia tests with complete stage coverage
+        timeout-minutes: 10
+        run: julia --startup-file=no --project=. scripts/test.jl ${{ matrix.stage }}
+
   check:
     name: Check (${{ matrix.os }})
     strategy:
@@ -26,26 +50,159 @@ jobs:
       JULIA_PKG_PRECOMPILE_AUTO: '0'
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: julia-actions/setup-julia@v2
         with:
           version: '1.12.6'
       - uses: julia-actions/cache@v2
       - name: Restore environments
         run: julia --startup-file=no --project=. scripts/bootstrap.jl
-      - name: Julia tests
-        run: julia --startup-file=no --project=. scripts/test.jl
+      - name: Complete test-stage partition
+        run: julia --startup-file=no --project=. scripts/check_test_stages.jl
+      - name: Chapter 2 source and symbol mapping
+        run: julia --startup-file=no --project=. scripts/check_ch02.jl
+      - name: Chapter 3 source and symbol mapping
+        run: julia --startup-file=no --project=. scripts/check_ch03.jl
+      - name: Chapter 4 source and symbol mapping
+        run: julia --startup-file=no --project=. scripts/check_ch04.jl
+      - name: R5 shared commitment frozen inputs and mapping
+        run: julia --startup-file=no --project=. scripts/check_r5_commitment.jl
+      - name: R5 finite-support risk frozen inputs and mapping
+        run: julia --startup-file=no --project=. scripts/check_r5_risk.jl
+      - name: R5 shared commitment immutable evidence
+        run: julia --startup-file=no --project=. scripts/check_historical_evidence.jl r5-commitment
+      - name: R5 finite-support risk immutable evidence
+        run: julia --startup-file=no --project=. scripts/check_historical_evidence.jl r5-risk
+      - name: R5 strategic frozen inputs and mapping
+        run: julia --startup-file=no --project=. scripts/check_r5_strategic.jl
+      - name: R5 strategic immutable evidence
+        run: julia --startup-file=no --project=. scripts/check_historical_evidence.jl r5-strategic
+      - name: R5 strategic Benders mapping
+        run: julia --startup-file=no --project=. scripts/check_r5_strategic_benders.jl
+      - name: R5 strategic Benders frozen design
+        run: julia --startup-file=no --project=. scripts/check_historical_evidence.jl r5-strategic-benders study
+      - name: R5 strategic Benders immutable evidence
+        run: julia --startup-file=no --project=. scripts/check_historical_evidence.jl r5-strategic-benders
+      - name: R4 immutable evidence
+        run: julia --startup-file=no --project=. scripts/check_r4_artifacts.jl
+      - name: R3 baseline frozen design and mapping
+        run: julia --startup-file=no --project=. scripts/check_r3_baseline.jl
+      - name: Restore data tools
+        run: julia --startup-file=no --project=tools/data scripts/bootstrap_data.jl
+      - name: Data parser tests (offline fixtures)
+        run: julia --startup-file=no --project=tools/data test/ch03_data.jl
+      - name: R6 source and statistical mapping
+        run: julia --startup-file=no --project=. scripts/check_r6.jl
+      - name: R6 freeze CLI
+        run: julia --startup-file=no --project=. scripts/test_r6_freeze_cli.jl
+      - name: R6 daily model construction and entry points
+        run: julia --startup-file=no --project=. scripts/test_r6_workflow.jl
+      - name: R6 frozen independent daily inputs
+        run: julia --startup-file=no --project=. scripts/check_r6_data.jl results/summaries/r6-data-v1
+      - name: R6 six-method development evidence and tamper rejection
+        run: julia --startup-file=no --project=. scripts/r6_pilot_replay.jl check results/summaries/r6-pilot-replay-v2
+      - name: R6 public statistics, frozen stress replay and tamper checks
+        run: julia --startup-file=no --project=. scripts/test_r6_public_report.jl results/summaries/r6-public-20260920-v1
+      - name: R6 scientific figure sources and hashes
+        run: julia --startup-file=no --project=. scripts/check_r6_figures.jl results/summaries/r6-public-20260920-v1 results/summaries/r6-figures-20260920-v2
       - name: Julia format
         run: julia --startup-file=no --project=tools scripts/format.jl
+      # R7恢复专项已进入runtests；这里核对独立公式/实际约束覆盖。
+      - name: R7 inherited-state recovery mapping
+        run: julia --startup-file=no --project=. scripts/check_r7_recovery.jl
+      - name: R7 normal CHP and boundary mapping
+        run: julia --startup-file=no --project=. scripts/check_r7_commitment.jl
+      - name: R7 pipe state and thermal inventory mapping
+        run: julia --startup-file=no --project=. scripts/check_r7_pipe_state.jl
+      - name: R7 conditional normal dispatch and event mapping
+        run: julia --startup-file=no --project=. scripts/check_r7_normal.jl
+      - name: R7 continuous positive normal flow mapping
+        run: julia --startup-file=no --project=. scripts/check_r7_normal_flow.jl
+      - name: R7 source-frozen continuous flow evidence
+        run: julia --startup-file=no --project=. scripts/check_r7_normal_flow_results.jl results/summaries/r7-normal-flow-20260920-v1
+      - name: R7 shared normal and recovery flow mapping
+        run: julia --startup-file=no --project=. scripts/check_r7_flow_planning.jl
+      - name: R7 lossy mass-coordinate mapping
+        run: julia --startup-file=no --project=. scripts/check_r7_lossy_flow.jl
+      - name: R7 lossy exclusive-battery frozen evidence
+        run: julia --startup-file=no --project=. scripts/check_r7_lossy_flow_results.jl results/summaries/r7-lossy-flow-20260920-v1 results/summaries/r7-flow-planning-20260920-v2
+      - name: R9 original input and migration mapping
+        run: julia --startup-file=no --project=. scripts/check_r9_inputs.jl
+      - name: R9 explicit partial energization mapping
+        run: julia --startup-file=no --project=. scripts/check_r9_energization.jl
+      - name: R9 fixed-flow mapping
+        run: julia --startup-file=no --project=. scripts/check_r9_fixed.jl
+      - name: R9 distributed resource mapping
+        run: julia --startup-file=no --project=. scripts/check_r9_distributed.jl
+      - name: R9 fixed-flow original values and independent KKT
+        run: julia --startup-file=no --project=. scripts/r9_fixed_evidence.jl check results/summaries/r9-fixed-20260921-v4
+      - name: R9 source audit replay and tamper checks
+        run: julia --startup-file=no --project=. scripts/test_r9_report.jl
+      - name: R9 frozen original-input evidence
+        run: julia --startup-file=no --project=. scripts/audit_r9_inputs.jl check results/summaries/r9-inputs-20260920-v1
+      - name: R9 source connectivity figure
+        run: julia --startup-file=no --project=. scripts/check_r9_figures.jl results/summaries/r9-inputs-20260920-v1 results/summaries/r9-input-figures-20260920-v1 docs/src/assets/r9-inputs-20260920-v1/F33-r9-topology.png
+      - name: R8 objective and symbol mapping
+        run: julia --startup-file=no --project=. scripts/check_r8.jl
+      - name: R8 steady energy-flow mapping
+        run: julia --startup-file=no --project=. scripts/check_r8_energy.jl
+      - name: R8 analytic multi-hour heat witness
+        run: julia --startup-file=no --project=. scripts/test_r8_energy_cases.jl
+      - name: R8 frozen energy comparison protocol
+        run: julia --startup-file=no --project=. scripts/test_r8_energy_study.jl
+      - name: R8 energy raw evidence and independent trajectories
+        run: julia --startup-file=no --project=. scripts/check_r8_energy_results.jl results/summaries/r8-energy-20260920-v1 results/summaries/r8-tradeoff-20260920-v1 results/summaries/r8-energy-audit-20260920-v2
+      - name: R8 original free-domain embedding witnesses
+        run: julia --startup-file=no --project=. scripts/r8_embedding_evidence.jl check results/summaries/r8-tradeoff-20260920-v1 results/summaries/r8-embedding-20260920-v1
+      - name: R8 energy figure provenance
+        run: julia --startup-file=no --project=. scripts/check_r8_energy_figures.jl results/summaries/r8-energy-20260920-v1 results/summaries/r8-energy-audit-20260920-v2 results/summaries/r8-energy-figures-20260920-v2 docs/src/assets/r8-energy-20260920-v1/F32-r8-energy.png
+      - name: R8 frozen protocol tests
+        run: julia --startup-file=no --project=. scripts/test_r8_study.jl
+      - name: R8 normal heat boundary certificate
+        run: julia --startup-file=no --project=. scripts/test_r8_heat_boundary.jl
+      - name: R8 frozen values and comparison audit
+        run: julia --startup-file=no --project=. scripts/check_r8_results.jl results/summaries/r8-tradeoff-20260920-v1 results/summaries/r8-tradeoff-audit-20260920-v1
+      - name: R8 tradeoff figure provenance
+        run: julia --startup-file=no --project=. scripts/check_r8_figures.jl results/summaries/r8-tradeoff-20260920-v1 results/summaries/r8-tradeoff-audit-20260920-v1 results/summaries/r8-tradeoff-figures-20260920-v3 docs/src/assets/r8-tradeoff-20260920-v1/F31-r8-tradeoff.png
+      - name: R7 lossy normal energy and cost attribution
+        run: julia --startup-file=no --project=. scripts/check_r7_lossy_flow_audit.jl results/summaries/r7-lossy-flow-20260920-v1 results/summaries/r7-lossy-flow-audit-20260920-v1
+      - name: R7 lossy figure provenance
+        run: julia --startup-file=no --project=. scripts/check_r7_lossy_flow_figures.jl results/summaries/r7-lossy-flow-20260920-v1 results/summaries/r7-lossy-flow-audit-20260920-v1 results/summaries/r7-lossy-flow-figures-20260920-v2 docs/src/assets/r7-lossy-flow-20260920-v1/F30-lossy-flow.png
+      - name: R7 shared flow frozen planning evidence
+        run: julia --startup-file=no --project=. scripts/check_r7_flow_planning_results.jl results/summaries/r7-flow-planning-20260920-v2
+      - name: R7 shared flow figure provenance
+        run: julia --startup-file=no --project=. scripts/check_r7_flow_planning_figures.jl results/summaries/r7-flow-planning-20260920-v2 results/summaries/r7-flow-planning-figures-20260920-v3 docs/src/assets/r7-flow-planning-20260920-v2/F29-shared-flow.png
+      - name: R7 analytic normal cost bound and embedded witness
+        run: julia --startup-file=no --project=. scripts/check_r7_normal_flow_audit.jl results/summaries/r7-normal-flow-20260920-v1 results/summaries/r7-normal-flow-audit-20260920-v1
+      - name: R7 equivalent network energy formulation probe
+        run: julia --startup-file=no --project=. scripts/check_r7_flow_balance_probe.jl results/summaries/r7-flow-balance-probe-20260920-v1
+      - name: R7 continuous normal flow figure provenance
+        run: julia --startup-file=no --project=. scripts/check_r7_normal_flow_figures.jl results/summaries/r7-normal-flow-20260920-v1 results/summaries/r7-normal-flow-figures-20260920-v2 docs/src/assets/r7-normal-flow-20260920-v1/F28-normal-flow.png
+      - name: R7 finite-fault planning and frozen analytic inputs
+        run: julia --startup-file=no --project=. scripts/check_r7_planning.jl
+      - name: R7 immutable finite-fault planning evidence
+        run: julia --startup-file=no --project=. scripts/r7_planning_evidence.jl check results/summaries/r7-planning-20260920-v2
+      - name: R7 planning figure provenance
+        run: julia --startup-file=no --project=. scripts/check_r7_planning_figures.jl results/summaries/r7-planning-20260920-v2 results/summaries/r7-planning-figures-20260920-v2 docs/src/assets/r7-planning-20260920-v2/F21-finite-planning.png
+      - name: R7 normal event CLI and state tamper checks
+        run: julia --startup-file=no --project=. scripts/test_r7_normal_cli.jl
+      - name: R7 saved normal and inherited-event evidence
+        run: julia --startup-file=no --depwarn=error --project=. scripts/test_r7_normal_evidence.jl results/summaries/r7-normal-20260920-v2
+      - name: R7 normal and event figure sources
+        run: julia --startup-file=no --project=. scripts/check_r7_normal_figures.jl results/summaries/r7-normal-20260920-v2 results/summaries/r7-normal-figures-20260920-v2 docs/src/assets/r7-normal-20260920-v2/F20-normal-event.png
+      - name: R7 frozen analytic audit mapping
+        run: julia --startup-file=no --project=. scripts/check_ch06.jl
       - name: Project checks
         shell: pwsh
         run: ./scripts/maintain.ps1 -Action Check
       - name: Maintenance fixtures (PowerShell 7)
         shell: pwsh
-        run: ./test/maintenance.tests.ps1
+        run: ./test/maintenance.tests.ps1 -Compact
       - name: Maintenance fixtures (Windows PowerShell 5.1)
         if: runner.os == 'Windows'
         shell: powershell
-        run: ./test/maintenance.tests.ps1
+        run: ./test/maintenance.tests.ps1 -Compact
       - name: Environments and tracked files unchanged
         shell: pwsh
         run: |
@@ -54,7 +211,7 @@ jobs:
 
   docs:
     name: Build documentation
-    needs: check
+    needs: [check, tests]
     runs-on: ubuntu-latest
     env:
       JULIA_NUM_THREADS: '1'

@@ -1,6 +1,88 @@
 * text=auto eol=lf
+results/summaries/r9-heldout-input-20260922-v2/** -text
+results/summaries/r9-heldout-report-20260922-v1/** -text whitespace=cr-at-eol
+# Preserve the copied statistical protocol byte for byte, including its final blank line.
+results/summaries/r9-heldout-report-20260922-v1/statistics-source.toml -text whitespace=cr-at-eol,-blank-at-eof
+docs/src/assets/r9-heldout-v1/** -text whitespace=cr-at-eol
 *.pdf binary
 *.docx binary
 *.png binary
 *.jpg binary
 *.zip binary
+# These immutable chunks reassemble one exact input; an EOF blank can be a split boundary.
+results/summaries/r7-battery-public-20260920-v1/input-parts/*.part -text whitespace=-blank-at-eof
+results/summaries/r7-linked-public-20260920-v2/parts/**/*.part -text whitespace=-blank-at-eof
+# Frozen solver-log copies retain their hashed native line endings; no checkout conversion.
+results/summaries/r9-flow-diagnostics-20260921-v2/runs/*/solver-local.log -text whitespace=cr-at-eol,-blank-at-eof
+# Content-addressed evidence preserves the exact original bytes, including native logs.
+results/summaries/r9-flow-reference-20260921-v2/objects/* -text whitespace=cr-at-eol,-blank-at-eof
+# Immutable object chunks may split UTF-8 and lines; preserve bytes and do not merge them as text.
+results/summaries/r9-fixed-20260921-v4/objects/* binary
+results/summaries/r9-trading-20260921-v1/objects/* binary
+results/summaries/r9-network-20260921-v1/objects/* binary
+# Immutable nominal probe objects preserve exact bytes, including split UTF-8 sequences.
+results/summaries/r9-reserve-nominal-20260921-v3/** -text whitespace=cr-at-eol
+results/summaries/r9-reserve-nominal-20260921-v3/objects/* binary
+# Frozen risk-study sources and numerical witnesses retain their exact bytes.
+results/summaries/r9-reserve-data-20260921-v1/** -text whitespace=cr-at-eol,-blank-at-eof
+results/summaries/r9-reserve-data-20260921-v2/** -text whitespace=cr-at-eol,-blank-at-eof
+results/summaries/r9-reserve-pilot-20260921-v2/** -text whitespace=cr-at-eol
+results/summaries/r9-reserve-pilot-20260921-v2/objects/* binary
+results/summaries/r9-reserve-full-20260921-v1/** -text whitespace=cr-at-eol
+results/summaries/r9-reserve-full-20260921-v1/objects/* binary
+# Common-witness freezes and evidence preserve original arrays and native source bytes.
+results/summaries/r9-common-input-20260921-v1/** -text whitespace=cr-at-eol,-blank-at-eof
+results/summaries/r9-common-input-20260921-v2/** -text whitespace=cr-at-eol,-blank-at-eof
+results/summaries/r9-common-evidence-20260921-v1/** -text whitespace=cr-at-eol
+results/summaries/r9-common-start-20260921-v1/** -text whitespace=cr-at-eol
+results/summaries/r9-common-figures-20260921-v1/** -text whitespace=cr-at-eol
+# Explicit seeded-study protocols and saved original solver values are immutable.
+results/summaries/r9-seeded-input-20260921-v1/** -text whitespace=cr-at-eol,-blank-at-eof
+results/summaries/r9-seeded-evidence-20260921-v1/** -text whitespace=cr-at-eol
+results/summaries/r9-seeded-structure-20260921-v1/** -text whitespace=cr-at-eol
+results/summaries/r9-seeded-figures-20260921-v1/** -text whitespace=cr-at-eol
+results/summaries/r9-seeded-figures-20260921-v2/** -text whitespace=cr-at-eol
+# Equivalent-representation protocol retains its original frozen source bytes.
+results/summaries/r9-compact-input-20260921-v1/** -text whitespace=cr-at-eol,-blank-at-eof
+# Original compact candidates and paired figure inputs are kept byte-for-byte.
+results/summaries/r9-compact-evidence-20260921-v1/** -text whitespace=cr-at-eol
+results/summaries/r9-compact-report-20260921-v1/** -text whitespace=cr-at-eol
+results/summaries/r9-compact-figures-20260921-v1/** -text whitespace=cr-at-eol
+results/summaries/r9-compact-figures-20260921-v2/** -text whitespace=cr-at-eol
+# Resilience pilot inputs, original witnesses and figure tables retain their hashed bytes.
+results/summaries/r9-resilience-input-20260922-v*/** -text whitespace=cr-at-eol,-blank-at-eof
+results/summaries/r9-resilience-evidence-20260922-v*/** -text whitespace=cr-at-eol,-blank-at-eof
+results/summaries/r9-resilience-evidence-20260922-v*/objects/* binary
+results/summaries/r9-resilience-figures-20260922-v*/** -text whitespace=cr-at-eol
+docs/src/assets/r9-resilience-pilot-v2/** -text whitespace=cr-at-eol
+# Shared preplan inputs, original diagnostics and chart tables retain exact hashed bytes.
+results/summaries/r9-preplan-input-20260922-v*/** -text whitespace=cr-at-eol,-blank-at-eof
+results/summaries/r9-preplan-evidence-20260922-v*/** -text whitespace=cr-at-eol,-blank-at-eof
+results/summaries/r9-preplan-evidence-20260922-v*/objects/* binary
+results/summaries/r9-preplan-diagnostics-20260922-v*/** -text whitespace=cr-at-eol,-blank-at-eof
+results/summaries/r9-preplan-diagnostics-20260922-v*/objects/* binary
+results/summaries/r9-preplan-figures-20260922-v*/** -text whitespace=cr-at-eol
+docs/src/assets/r9-preplan-v*/** -text whitespace=cr-at-eol
+results/summaries/r9-preplan-faults-20260922-v*/** -text whitespace=cr-at-eol,-blank-at-eof
+results/summaries/r9-preplan-faults-20260922-v*/objects/* binary
+# Detailed preplanning and handoff evidence retain original source and solver bytes.
+results/summaries/r9-handoff-evidence-20260922-v*/** -text whitespace=cr-at-eol,-blank-at-eof
+results/summaries/r9-handoff-evidence-20260922-v*/objects/* binary
+results/summaries/r9-detailed-preplan-input-20260922-v*/** -text whitespace=cr-at-eol,-blank-at-eof
+results/summaries/r9-detailed-preplan-evidence-20260922-v*/** -text whitespace=cr-at-eol,-blank-at-eof
+results/summaries/r9-detailed-preplan-evidence-20260922-v*/objects/* binary
+docs/src/assets/r9-handoff-v*/** -text whitespace=cr-at-eol,-blank-at-eof
+# Electric regional-cut certificates and figure sources retain exact frozen bytes.
+results/summaries/r9-electric-cut-evidence-20260922-v*/** -text whitespace=cr-at-eol,-blank-at-eof
+results/summaries/r9-electric-cut-evidence-20260922-v*/objects/* binary
+docs/src/assets/r9-electric-cut-v*/** -text whitespace=cr-at-eol,-blank-at-eof
+# Distributed study/diagnostic snapshots preserve exact hashed source and solver bytes.
+results/summaries/r9-distributed-*/** -text whitespace=cr-at-eol,-blank-at-eof
+results/summaries/r9-distributed-*/objects/* binary
+docs/src/assets/r9-distributed-*/** -text whitespace=cr-at-eol,-blank-at-eof
+# Preserve the four bounded numerical probes and their replay coefficients byte-for-byte.
+results/summaries/r9-bound-diagnostic-*/** -text whitespace=cr-at-eol,-blank-at-eof
+# The clean-checkout beginner example retains exact source, environment and result bytes.
+results/summaries/r10-beginner-*/** -text whitespace=cr-at-eol,-blank-at-eof
+# Count-one scalability controls retain the parent input's exact original bytes.
+results/summaries/r9-scalability-inputs-*/** -text whitespace=cr-at-eol,-blank-at-eof

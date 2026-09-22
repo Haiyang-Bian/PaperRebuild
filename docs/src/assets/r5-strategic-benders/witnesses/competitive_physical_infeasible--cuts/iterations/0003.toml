@@ -1,0 +1,25 @@
+critical_after = []
+elapsed_sec = 0.20199990272521973
+iteration = 3
+new_cut_ids = []
+
+[cost_source_ids]
+
+[diagnostic_source_ids]
+
+[master]
+bound_scope = "full_optimistic_MPEC"
+bound_unavailable = """MathOptInterface.GetAttributeNotAllowed{MathOptInterface.ObjectiveBound}:\n\n## Cause\n\nGetting attribute MathOptInterface.ObjectiveBound() cannot be performed\n\n## Fixing this error\n\nThis error occurs when we cannot query the attribute from the solver.\nNo other information is available. Check the solver log for details.\n"""
+critical = []
+cut_source_ids = ["r5-benders-sub-461632d1-3a6e-4e1d-bcc4-f789909f3168", "r5-benders-sub-3a003432-68ba-4ac2-b8c5-c5874e1f6446", "r5-benders-sub-f2f3d57d-1166-44fc-9f84-0a8faceb363c", "r5-benders-sub-e64b58ca-0155-41d5-a1ec-cf6c17dc3e40", "r5-benders-sub-8fae6841-38ec-444b-a015-6fc7346cde93", "r5-benders-sub-6c48e2e1-65f9-4b04-b8ed-cf655abf545e"]
+has_candidate = false
+model_type = "linear_MPEC_SOS1_Benders_master"
+model_types = ["AffExpr in MathOptInterface.EqualTo{Float64}", "AffExpr in MathOptInterface.GreaterThan{Float64}", "AffExpr in MathOptInterface.LessThan{Float64}", "VariableRef in MathOptInterface.GreaterThan{Float64}", "VariableRef in MathOptInterface.LessThan{Float64}", "VariableRef in MathOptInterface.ZeroOne", "Vector{VariableRef} in MathOptInterface.SOS1{Float64}"]
+objective_type = "market_payment_plus_recourse_epigraph"
+primal_status = "NO_SOLUTION"
+raw_status = "Model was proven to be infeasible."
+scope = "full_risk_domain"
+solver = "Gurobi"
+solver_version = "13.0.3"
+status = "solver_infeasible"
+termination = "INFEASIBLE"

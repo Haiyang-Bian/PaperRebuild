@@ -1,0 +1,97 @@
+schema = "r9-flow-adoption-v1"
+model = "r9_short_pipe_literal_v1"
+source = "第3章核查版WMM 3-27至3-34；第7章冻结替代输入"
+input_sha256 = "d514c3c2e94f962feb65717da43920559b4bcbca8613d2abcef2e1ed292d51b0"
+original_input_reproduction = false
+terminal_interpretation = "literal"
+scope = "whole declared positive-flow box; one-step WMM segment only"
+test_file = "test/r9_flow.jl"
+test = "R9-V1:V4 full flow box, derivatives and terminal memory"
+optimization_status = "formal_direct_reference_3_of_4_pass; CF_VT_literal_no_candidate; PG_not_migrated"
+
+[[equations]]
+id = "R9-V1"
+meaning = "当本步与前步质量覆盖均大于管存量时，解析消去alpha、beta；完整盒先行核验"
+status = "derived_from_checked_WMM"
+api = "r9_transport_coefficients"
+[[equations]]
+id = "R9-V2"
+meaning = "保留本步与前步入口温度的连续流量热输运；不取整时延"
+status = "derived_from_checked_WMM"
+api = "build_r9_flow_model"
+[[equations]]
+id = "R9-V3"
+meaning = "损耗衰减对本步和前步流量的依赖及解析导数"
+status = "derived_from_checked_WMM"
+api = "r9_transport_coefficients"
+[[equations]]
+id = "R9-V4"
+meaning = "同时恢复入口温度与管流记忆；只认证采用WMM离散状态"
+status = "project_periodic_boundary"
+api = "r9_flow_terminal_rows"
+
+[[equations]]
+id = "R9-V5"
+meaning = "管道净热量=输运损耗+入口温度记忆变化；不把离散代理当连续管内库存"
+status = "derived_single_step_WMM_identity"
+api = "r9_heat_memory_balance"
+test_file = "test/r9_heat_memory.jl"
+test = "R9-V5 independent WMM memory energy identity"
+
+[[symbols]]
+id = "r9.pipe_mass"
+latex = 'M_p=\rho A_pL_p'
+meaning = "管内水质量"
+unit = "kg"
+code = "mass_kg"
+[[symbols]]
+id = "r9.mass_per_step"
+latex = 'q_p=M_p/\Delta t_s'
+meaning = "管内质量与时间步的比值，须小于本步与前步流量"
+unit = "kg/s"
+code = "q"
+[[symbols]]
+id = "r9.loss_constant"
+latex = 'C_p=\epsilon_pL_p/(2c_p)'
+meaning = "单步WMM损耗指数的质量流量系数"
+unit = "kg/s"
+code = "C"
+[[symbols]]
+id = "r9.inverse_relative"
+latex = 'u_{p,t}=m_p^{ref}/m_{p,t}'
+meaning = "无量纲相对倒数流量，仅作为精确等式辅助量"
+unit = "1"
+code = "r9_inverse_relative"
+[[symbols]]
+id = "r9.attenuation"
+latex = 'a_{p,t}'
+meaning = "相对于环境温差的衰减系数"
+unit = "1"
+code = "attenuation"
+
+[[symbols]]
+id = "r9.net_heat"
+latex = 'Q_p^{\mathrm{net}}'
+meaning = "单方向管道全时域入口减出口净热量"
+unit = "MWh"
+code = "net_MWh"
+[[symbols]]
+id = "r9.attenuation_heat"
+latex = 'Q_p^{\mathrm{loss}}'
+meaning = "独立回放中间温度减实际出口温度的损耗项；须另外检查输运方程"
+unit = "MWh"
+code = "attenuation_MWh"
+[[symbols]]
+id = "r9.memory_energy"
+latex = '\Delta E_p^{\mathrm{mem}}'
+meaning = "入口温度末初差对应的单步WMM记忆能量变化，不是连续温度场库存"
+unit = "MWh"
+code = "memory_change_MWh"
+
+[[diagnostics]]
+id = "R9-D1"
+meaning = "保留原等式与非负边界时删除被蕴含锥；另界定sqrt系数舍入"
+implementation = "scripts/r9_flow_probe.jl"
+test_file = "scripts/test_r9_gurobi_start.jl"
+test = "R9 implied physical cones and their retained sign conditions"
+status = "earlier_five_probes_failed; later_presolve_off_reference_has_verified_candidates"

@@ -1,0 +1,276 @@
+# 预算和状态与建模分开；各阶段不重置总截止时间，也不改用其他模型。
+function r9_trading_science_hashes()
+    hashes=r2_science_hashes()
+    root=normpath(joinpath(@__DIR__, "..", ".."))
+    for rel in (
+        "Project.toml",
+        "Manifest.toml",
+        "tools/solvers/Project.toml",
+        "tools/solvers/Manifest.toml",
+    )
+        hashes[rel]=bytes2hex(sha256(read(joinpath(root, rel))))
+    end
+    hashes
+end
+
+function r9_trading_checked_stage(c, r)
+    try
+        return validate_r9_trading_solution(c, r)
+    catch err
+        err isa InterruptException && rethrow()
+        # 非有限原值/字段错误仍保留原解，不能删除后冒称求解器没有候选。
+        return Dict{String,Any}(
+            "model_pass"=>false,
+            "electric_original_pass"=>false,
+            "heat_energy_mass_pass"=>false,
+            "ledger_pass"=>false,
+            "full_thermal_physics_certified"=>false,
+            "rows"=>Dict{String,Any}[],
+            "validation_error_type"=>string(typeof(err)),
+            "validation_error"=>replace(
+                sprint(showerror, err),
+                r"[A-Za-z]:[\\/][^\s\n]*"=>"[local path]",
+            ),
+        )
+    end
+end
+
+function r9_trading_stage(
+    c,
+    optimizer,
+    deadline;
+    operation,
+    stage = :central,
+    actor = 0,
+    frozen = nothing,
+    modes = nothing,
+)
+    start=r3_clock()
+    r=Dict{String,Any}(
+        "input_sha256"=>c.sha256,
+        "stage"=>string(stage),
+        "actor"=>actor,
+        "operation"=>string(operation.operation),
+        "electric"=>string(operation.electric),
+        "objective_kind"=>stage==:local ? "local_resource_plus_retail" : "system_resource_cost",
+        "termination"=>"TIME_LIMIT",
+        "primal"=>"NO_SOLUTION",
+        "solver"=>"not_started",
+        "cost_optimization_complete"=>false,
+    )
+    r["allocated_budget_sec"]=max(0.0, deadline-start)
+    if modes!==nothing
+        r["fixed_modes"]=Dict(string(k)=>[collect(row) for row in eachrow(v)] for (k, v) in modes)
+    end
+    if frozen!==nothing
+        r["frozen_plans"]=[
+            Dict(k=>deepcopy(x[k]) for k in ("actor", "stage", "input_sha256", "values")) for
+            x in frozen
+        ]
+    end
+    if start<deadline
+        try
+            b=build_r9_trading_model(
+                c;
+                optimizer,
+                electric = operation.electric,
+                stage,
+                actor,
+                frozen,
+                modes,
+            )
+            r["model_class"]=b.model_class
+            r["model_types"]=b.model_types
+            r["num_variables"]=num_variables(b.model)
+            r["num_binary_variables"]=count(is_binary, all_variables(b.model))
+            r["build_sec"]=r3_clock()-start
+            remaining=deadline-r3_clock()
+            if remaining>0
+                set_silent(b.model)
+                set_time_limit_sec(b.model, remaining)
+                optimize!(b.model)
+                r["termination"]=string(termination_status(b.model))
+                r["primal"]=string(primal_status(b.model))
+                if has_values(b.model) &&
+                   primal_status(b.model) in (MOI.FEASIBLE_POINT, MOI.NEARLY_FEASIBLE_POINT)
+                    r["values"]=Dict(k=>r2_extract(x) for (k, x) in b.variables)
+                    r["solver_objective"]=objective_value(b.model)
+                end
+                for (key, reader) in (("solver", solver_name), ("raw_status", raw_status))
+                    try
+                        r[key]=reader(b.model)
+                    catch err
+                        err isa InterruptException && rethrow()
+                        r[key*"_error_type"]=string(typeof(err))
+                    end
+                end
+                # 读取可选属性失败不能覆盖已经保存的原始候选。
+                try
+                    bound=objective_bound(b.model)
+                    if r["solver"]!="not_started" && r2_valid_bound(bound, r["solver"])
+                        r["objective_bound"]=bound
+                        r["bound_kind"]="solver_objective_bound"
+                    end
+                catch err
+                    err isa InterruptException && rethrow()
+                    r["bound_error_type"]=string(typeof(err))
+                end
+                if !haskey(r, "objective_bound")
+                    try
+                        if dual_status(b.model)==MOI.FEASIBLE_POINT
+                            bound=dual_objective_value(b.model)
+                            if r["solver"]!="not_started" && r2_valid_bound(bound, r["solver"])
+                                r["objective_bound"]=bound
+                                r["bound_kind"]="solver_dual_objective"
+                            end
+                        end
+                    catch err
+                        err isa InterruptException && rethrow()
+                        r["dual_bound_error_type"]=string(typeof(err))
+                    end
+                end
+            end
+        catch err
+            err isa InterruptException && rethrow()
+            message=sprint(showerror, err)
+            r["termination"]=occursin(r"(?i)license|licence", message) ? "LICENSE_MISSING" :
+                             occursin(r"(?i)unsupported|not support|no optimizer", message) ?
+                             "UNSUPPORTED" : "OTHER_ERROR"
+            r["error_type"]=string(typeof(err))
+            r["error_summary"]=replace(message, r"[A-Za-z]:[\\/][^\s\n]*"=>"[local path]")
+        end
+    end
+    r["solve_elapsed_sec"]=r3_clock()-start
+    r["budget_exhausted_at_return"]=r["solve_elapsed_sec"]>=r["allocated_budget_sec"]
+    r["status"]=r["termination"]=="LICENSE_MISSING" ? "license_missing" :
+                r2_status([r], 1, haskey(r, "values"), r["budget_exhausted_at_return"])
+    r["validation"]=r9_trading_checked_stage(c, r)
+    if haskey(r, "values") && haskey(r, "objective_bound") && isfinite(r["solver_objective"])
+        denominator=max(1.0, abs(r["solver_objective"]))
+        r["bound_upper_excess"]=max(0.0, r["objective_bound"]-r["solver_objective"])/denominator
+        r["relative_gap"]=max(0.0, r["solver_objective"]-r["objective_bound"])/denominator
+        r["cost_optimization_complete"]=r["status"]=="solver_optimal" &&
+                                        r["validation"]["model_pass"] &&
+                                        r["bound_upper_excess"]<=1e-4 &&
+                                        r["relative_gap"]<=1e-4
+    end
+    r["elapsed_sec"]=r3_clock()-start
+    r["stage_deadline_overrun_sec"]=max(0.0, r3_clock()-deadline)
+    r
+end
+
+"""
+    r9_trading_deadlines(start, budget_sec, deadline)
+
+计算同一单调时钟下的截止时间与可用秒数。跨浮点数指数边界时，加减绝对时间可能
+把60秒还原为略大于60秒；可用预算始终限制在调用者声明范围内，不放宽验证门槛。
+"""
+function r9_trading_deadlines(start, budget_sec, deadline)
+    finish=deadline===nothing ? start+budget_sec : min(start+budget_sec, deadline)
+    available=clamp(finish-start, 0.0, Float64(budget_sec))
+    solve_deadline=finish-min(60.0, 0.1available)
+    return (; finish, available, solve_deadline)
+end
+
+"""
+    solve_r9_trading_case(case; optimizer, operation=:central, electric=:socp,
+        budget_sec=600, deadline=nothing, modes=nothing)
+
+第7.3节固定拓扑基准的共享预算求解；输入/输出功率MW、能量MWh、费用CNY。
+独立运营按主体ID顺序分别求零售计划，再冻结其控制进行网络调度，不能暗改计划。
+每个局部阶段至多60秒，全部建模/重解/校核共享总截止时间，预留10%（至多60秒）验证。
+可用deadline传入外层更早的截止时间，把调用/JIT计入同一预算。0预算记录未执行，不建立模型。
+不自动换求解器/电网版本；保留有解时限、无解时限、许可、数值失败与不可行。
+SOCP、原电网等式、稳态热包络、费用界与账本分别验收；不表示TSPA或完整热物理通过。
+"""
+function solve_r9_trading_case(
+    c::R9TradingCase;
+    optimizer,
+    operation = :central,
+    electric = :socp,
+    budget_sec = 600.0,
+    deadline = nothing,
+    modes = nothing,
+)
+    operation in (:central, :independent) && electric in (:socp, :exact) ||
+        error("交易运行方式错误")
+    isfinite(budget_sec) && 0<=budget_sec<=600 || error("预算须在0至600秒")
+    deadline===nothing || isfinite(deadline) || error("截止时间须有限")
+    start=r3_clock()
+    (; finish, available, solve_deadline)=r9_trading_deadlines(start, budget_sec, deadline)
+    hashes=r9_trading_science_hashes()
+    spec=(; operation, electric)
+    stages=Dict{String,Any}[]
+    primary=0
+    if operation==:independent
+        order=sort(collect(2:length(c.data["actors"])); by = i->c.data["actors"][i]["id"])
+        for i in order
+            local_deadline=min(solve_deadline, r3_clock()+60.0)
+            stage=r9_trading_stage(
+                c,
+                optimizer,
+                local_deadline;
+                operation = spec,
+                stage = :local,
+                actor = i,
+                modes,
+            )
+            push!(stages, stage)
+            stage["validation"]["model_pass"] || break
+        end
+        if length(stages)==length(order) && all(s["validation"]["model_pass"] for s in stages)
+            network=r9_trading_stage(
+                c,
+                optimizer,
+                solve_deadline;
+                operation = spec,
+                stage = :network,
+                frozen = stages,
+                modes,
+            )
+            push!(stages, network)
+            primary=length(stages)
+        end
+    else
+        push!(stages, r9_trading_stage(c, optimizer, solve_deadline; operation = spec, modes))
+        primary=1
+    end
+    result=Dict{String,Any}(
+        "schema"=>"r9-trading-run-v1",
+        "model_version"=>r9_trading_version(c),
+        "origin"=>"synthetic",
+        "input_sha256"=>c.sha256,
+        "operation"=>string(operation),
+        "electric"=>string(electric),
+        "stages"=>stages,
+        "primary_stage_index"=>primary,
+        "mode_rule"=>modes===nothing ? "free_integer" : "explicit_fixed_integer_choices",
+        "status"=>primary==0 ? "local_stage_failed" : stages[primary]["status"],
+        "budget_sec"=>Float64(budget_sec),
+        "available_budget_sec"=>available,
+        "deadline_expired_at_start"=>finish<start,
+        "source_hashes_at_solve"=>hashes,
+        "source_unchanged"=>hashes==r9_trading_science_hashes(),
+        "julia_version"=>string(VERSION),
+        "created_utc"=>string(now(UTC)),
+        "uses_projected_gradient"=>false,
+        "distributed_algorithm"=>false,
+        "bargaining"=>false,
+        "full_thermal_physics_certified"=>false,
+    )
+    primary==0 && (result["failed_stage_status"]=last(stages)["status"])
+    operation==:independent &&
+        result["status"]=="infeasible_certified" &&
+        (result["status"]="network_infeasible_certified")
+    result["validation"]=validate_r9_trading_run(c, result)
+    if primary>0 && stages[primary]["validation"]["model_pass"]
+        result["system_cost_CNY"]=stages[primary]["validation"]["system_cost_CNY"]
+        result["ledger"]=r9_trading_ledger(c, stages[primary]["values"]; p2p = operation==:central)
+    end
+    result["cost_optimization_complete"]=result["validation"]["model_pass"] &&
+                                         all(s["cost_optimization_complete"] for s in stages)
+    result["elapsed_sec"]=r3_clock()-start
+    result["wall_budget_pass"]=!result["deadline_expired_at_start"] &&
+                               result["elapsed_sec"]<=available+0.1
+    result
+end

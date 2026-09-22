@@ -1,0 +1,14 @@
+batch_id = "r5-market-20260919"
+fixed_display_records = ["two_bus--highs", "ramp_memory--highs"]
+origin = "synthetic"
+scope = "F14 first part: fixed bids and reserve capacity awards; no realized reserve delivery, physical recourse or IES profit."
+script_sha256 = "5224a7365e40fee35784dd152f0687fbc90ccd2d4ea2d04bef7793d0a8380fdd"
+solver_reexecuted = false
+source_run_ids = ["r5-market-4f705f6e-cab6-4d26-88cc-505a6c6e62cf", "r5-market-969443fd-36ea-455c-afef-fcbc857e5c93", "r5-market-f3bc159e-8013-436f-a2e4-cfb998b2f520", "r5-market-61b62378-7de1-40f5-8830-5ba4e6a1910a", "r5-market-f049293e-0369-4ae9-a6c5-412ce0ab7d76", "r5-market-aeada9dc-e494-4f08-8b53-0230b1a3f3a7", "r5-market-c918a4a1-cfc1-4ced-8c41-d7bd56290ca0", "r5-market-e2e01c23-e7b8-4d3c-87ec-badb61585842", "r5-market-3146d5d9-37a4-4dd6-9258-6b3b81a79e68", "r5-market-6d1265bf-900d-4c63-9fe7-37f087d3e8c0", "r5-market-cb9f42da-b552-4060-9f0f-ebff0d0e3b41", "r5-market-657dfd59-01e9-42c9-bf77-5d0cecce47b7", "r5-market-cf91283e-e1af-4463-841b-36bba1f862d5", "r5-market-f60961de-0b27-402f-88e7-aad523f05cfa", "r5-market-e3d61cbb-da31-49f3-915d-290caebba9d2", "r5-market-1c555c9b-0c27-454e-a405-574d95c35316", "r5-market-4c50e94f-fb24-4e1f-8c66-30fae0dec484", "r5-market-584b190a-cb59-41eb-9247-48f8e09b3361"]
+
+[sources]
+"comparison.csv" = "89bb75e08f0c4781b54758a0932afec2463e3329e2a5ade76195217506a156ad"
+"dispatch.csv" = "eeee4437ef986787e1261e81284596c1debb5fc3ae3f622257259c5bb9449e3e"
+"objective-components.csv" = "43cc2da6c61f79acd34958f99a2106d1bd504d5d64c5e7663fd5bbca66622a3c"
+"prices.csv" = "18ebe0f6f44741cf8c2b797aac4058fc73a6de8f3fe6a3d27996d176be976a02"
+"residuals.csv" = "226a2fd669f29a2ef470358db41bb46600206b6cb20d61a7bfd8388e23f2c635"

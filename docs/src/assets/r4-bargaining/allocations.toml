@@ -1,0 +1,664 @@
+[[records]]
+actors = ["DSO", "A", "B"]
+case = "import_flexible"
+incremental_compensation = [-10.248804043409052, 4.59433240152714, 5.654471641881884]
+input_sha256 = "fcdb954da900fd878194b0a3d72bf2f130ecf057615bd84ae16436d315b9d5ca"
+method = "single_stage_fixed_dispatch_nash"
+origin = "synthetic"
+parent_central = "import_flexible--central_exact"
+parent_independent = "import_flexible--independent_exact"
+physical_values_sha256 = "0b71edc098c0aa534fc298743923e65691ea063ff29ada8176fec17545b3fd2a"
+previous_internal_net_cash = [204.12146318861141, -71.04822557512261, -133.07323761348877]
+previous_utility = [110.43409419463137, -82.02988473942841, -220.19694181198884]
+schema = "r4-coordination-allocation-v1"
+scope = "adopted_static_heat_model; unrestricted_transfer; not_coalition_core"
+
+    [records.allocation]
+    disagreement_utility = [96.2324097325386, -79.65090290221852, -216.28000002447342]
+    gain = [3.952880418683719, 2.2153505643172493, 1.73752985436647]
+    log_nash = 1.0315328316552819
+    model = "r4_nash_checked_v1"
+    prepayment_utility = [-93.68736899398004, -10.981659164305789, -87.12370419850008]
+    schema = "r4-nash-allocation-v1"
+    status = "allocated"
+    surplus = 7.905760837367438
+    total_transfer = [193.87265914520236, -66.45389317359547, -127.41876597160689]
+    transfer_convention = "positive_receipt_total_internal_payment"
+    transfer_domain = "unrestricted_budget_balanced"
+    unit = "USD_synthetic"
+    utility_after = [100.18529015122232, -77.43555233790127, -214.54247017010698]
+    weight_fractions = [0.5, 0.2802197802197802, 0.21978021978021978]
+    weights = [1.8199999999999998, 1.02, 0.7999999999999999]
+
+    [records.parent_evidence]
+    accounting_identity_pass = true
+    all_actors_not_worse = false
+    bargaining = "not_performed"
+    both_cost_optimizations_complete = false
+    central_cost = 191.7927323567859
+    central_status = "solver_optimal"
+    eligible = true
+    independent_cost = 199.69849319415337
+    independent_stages_pass = true
+    independent_status = "solver_optimal"
+    input_sha256 = "fcdb954da900fd878194b0a3d72bf2f130ecf057615bd84ae16436d315b9d5ca"
+    resource_saving = 7.905760837367467
+    saving_fraction = 0.03958848517540505
+    scope = "static_heat_energy_model_with_original_electric_check"
+    utility_gain_identity = 0.0
+
+        [[records.parent_evidence.actors]]
+        actor = "DSO"
+        central_utility = 110.43409419463137
+        disagreement_utility = 96.2324097325386
+        utility_gain = 14.201684462092771
+        [[records.parent_evidence.actors]]
+        actor = "A"
+        central_utility = -82.02988473942841
+        disagreement_utility = -79.65090290221852
+        utility_gain = -2.378981837209892
+        [[records.parent_evidence.actors]]
+        actor = "B"
+        central_utility = -220.19694181198884
+        disagreement_utility = -216.28000002447342
+        utility_gain = -3.9169417875154124
+
+        [records.parent_evidence.central_checks]
+        electric_original_pass = true
+        heat_pass = true
+        ledger_pass = true
+        model_pass = true
+
+        [records.parent_evidence.independent_checks]
+        electric_original_pass = true
+        heat_pass = true
+        ledger_pass = true
+        model_pass = true
+
+    [records.parent_result_sha256]
+    central = "75fe0b483d8b804758173e6eae8271a28227c8daf8ec78a3eada4ac08ca6f955"
+    independent = "dfc0323890ad4ab4301f9b32326e84879c2fbdb92341ae1346c8b7785481e02c"
+
+    [records.validation]
+    allocation_pass = true
+    record_pass = true
+    strict_improvement = true
+
+        [[records.validation.rows]]
+        equation = "R4-N1-surplus"
+        pass = true
+        residual = 0.0
+        tolerance = 0.0002162800000244734
+        [[records.validation.rows]]
+        equation = "R4-N1-weights"
+        pass = true
+        residual = 0.0
+        tolerance = 1.0e-6
+        [[records.validation.rows]]
+        equation = "R4-N1-status"
+        pass = true
+        residual = 0.0
+        tolerance = 0.0
+        [[records.validation.rows]]
+        equation = "4-73-budget"
+        pass = true
+        residual = 0.0
+        tolerance = 0.0002162800000244734
+        [[records.validation.rows]]
+        equation = "4-72-individual-rationality"
+        pass = true
+        residual = 0.0
+        tolerance = 0.0002162800000244734
+        [[records.validation.rows]]
+        equation = "R4-N1-gain-identity"
+        pass = true
+        residual = 2.842170943040401e-14
+        tolerance = 0.0002162800000244734
+        [[records.validation.rows]]
+        equation = "R4-N1-gain-record"
+        pass = true
+        residual = 2.708944180085382e-14
+        tolerance = 0.0002162800000244734
+        [[records.validation.rows]]
+        equation = "R4-N1-utility-record"
+        pass = true
+        residual = 0.0
+        tolerance = 0.0002162800000244734
+        [[records.validation.rows]]
+        equation = "4-80-positive-gain"
+        pass = true
+        residual = 0.0
+        tolerance = 0.0
+        [[records.validation.rows]]
+        equation = "4-80-weighted-stationarity"
+        pass = true
+        residual = 3.4416913763379853e-15
+        tolerance = 1.0e-6
+        [[records.validation.rows]]
+        equation = "4-78-objective"
+        pass = true
+        residual = 3.552713678800501e-15
+        tolerance = 1.0315328316552782e-6
+
+    [records.weights_evidence]
+    actors = ["DSO", "A", "B"]
+    interpretation = "project_mapping_of_thesis_capacity_plus_peak_load"
+    rule = "capacity_load_v1"
+    weights = [1.8199999999999998, 1.02, 0.7999999999999999]
+
+        [[records.weights_evidence.components]]
+        CHP_electric_MW = 0.0
+        EB_input_MW = 0.0
+        HP_input_MW = 0.1
+        PV_MW = 0.45
+        actor = "A"
+        battery_power_MW = 0.1
+        peak_electric_load_MW = 0.25
+        peak_heat_load_MW = 0.12
+        [[records.weights_evidence.components]]
+        CHP_electric_MW = 0.15
+        EB_input_MW = 0.1
+        HP_input_MW = 0.0
+        PV_MW = 0.0
+        actor = "B"
+        battery_power_MW = 0.0
+        peak_electric_load_MW = 0.3
+        peak_heat_load_MW = 0.25
+[[records]]
+actors = ["DSO", "A", "B"]
+case = "import_flexible"
+incremental_compensation = [-11.566430849636959, 5.014235449665705, 6.552195399971225]
+input_sha256 = "fcdb954da900fd878194b0a3d72bf2f130ecf057615bd84ae16436d315b9d5ca"
+method = "single_stage_fixed_dispatch_nash"
+origin = "synthetic"
+parent_central = "import_flexible--central_exact"
+parent_independent = "import_flexible--independent_exact"
+physical_values_sha256 = "0b71edc098c0aa534fc298743923e65691ea063ff29ada8176fec17545b3fd2a"
+previous_internal_net_cash = [204.12146318861141, -71.04822557512261, -133.07323761348877]
+previous_utility = [110.43409419463137, -82.02988473942841, -220.19694181198884]
+schema = "r4-coordination-allocation-v1"
+scope = "adopted_static_heat_model; unrestricted_transfer; not_coalition_core"
+
+    [records.allocation]
+    disagreement_utility = [96.2324097325386, -79.65090290221852, -216.28000002447342]
+    gain = [2.635253612455813, 2.635253612455813, 2.635253612455813]
+    log_nash = 0.9689794249731356
+    model = "r4_nash_checked_v1"
+    prepayment_utility = [-93.68736899398004, -10.981659164305789, -87.12370419850008]
+    schema = "r4-nash-allocation-v1"
+    status = "allocated"
+    surplus = 7.905760837367438
+    total_transfer = [192.55503233897446, -66.03399012545691, -126.52104221351755]
+    transfer_convention = "positive_receipt_total_internal_payment"
+    transfer_domain = "unrestricted_budget_balanced"
+    unit = "USD_synthetic"
+    utility_after = [98.86766334499441, -77.0156492897627, -213.64474641201764]
+    weight_fractions = [0.3333333333333333, 0.3333333333333333, 0.3333333333333333]
+    weights = [1.0, 1.0, 1.0]
+
+    [records.parent_evidence]
+    accounting_identity_pass = true
+    all_actors_not_worse = false
+    bargaining = "not_performed"
+    both_cost_optimizations_complete = false
+    central_cost = 191.7927323567859
+    central_status = "solver_optimal"
+    eligible = true
+    independent_cost = 199.69849319415337
+    independent_stages_pass = true
+    independent_status = "solver_optimal"
+    input_sha256 = "fcdb954da900fd878194b0a3d72bf2f130ecf057615bd84ae16436d315b9d5ca"
+    resource_saving = 7.905760837367467
+    saving_fraction = 0.03958848517540505
+    scope = "static_heat_energy_model_with_original_electric_check"
+    utility_gain_identity = 0.0
+
+        [[records.parent_evidence.actors]]
+        actor = "DSO"
+        central_utility = 110.43409419463137
+        disagreement_utility = 96.2324097325386
+        utility_gain = 14.201684462092771
+        [[records.parent_evidence.actors]]
+        actor = "A"
+        central_utility = -82.02988473942841
+        disagreement_utility = -79.65090290221852
+        utility_gain = -2.378981837209892
+        [[records.parent_evidence.actors]]
+        actor = "B"
+        central_utility = -220.19694181198884
+        disagreement_utility = -216.28000002447342
+        utility_gain = -3.9169417875154124
+
+        [records.parent_evidence.central_checks]
+        electric_original_pass = true
+        heat_pass = true
+        ledger_pass = true
+        model_pass = true
+
+        [records.parent_evidence.independent_checks]
+        electric_original_pass = true
+        heat_pass = true
+        ledger_pass = true
+        model_pass = true
+
+    [records.parent_result_sha256]
+    central = "75fe0b483d8b804758173e6eae8271a28227c8daf8ec78a3eada4ac08ca6f955"
+    independent = "dfc0323890ad4ab4301f9b32326e84879c2fbdb92341ae1346c8b7785481e02c"
+
+    [records.validation]
+    allocation_pass = true
+    record_pass = true
+    strict_improvement = true
+
+        [[records.validation.rows]]
+        equation = "R4-N1-surplus"
+        pass = true
+        residual = 0.0
+        tolerance = 0.0002162800000244734
+        [[records.validation.rows]]
+        equation = "R4-N1-weights"
+        pass = true
+        residual = 0.0
+        tolerance = 1.0e-6
+        [[records.validation.rows]]
+        equation = "R4-N1-status"
+        pass = true
+        residual = 0.0
+        tolerance = 0.0
+        [[records.validation.rows]]
+        equation = "4-73-budget"
+        pass = true
+        residual = 0.0
+        tolerance = 0.0002162800000244734
+        [[records.validation.rows]]
+        equation = "4-72-individual-rationality"
+        pass = true
+        residual = 0.0
+        tolerance = 0.0002162800000244734
+        [[records.validation.rows]]
+        equation = "R4-N1-gain-identity"
+        pass = true
+        residual = 2.842170943040401e-14
+        tolerance = 0.0002162800000244734
+        [[records.validation.rows]]
+        equation = "R4-N1-gain-record"
+        pass = true
+        residual = 2.842170943040401e-14
+        tolerance = 0.0002162800000244734
+        [[records.validation.rows]]
+        equation = "R4-N1-utility-record"
+        pass = true
+        residual = 0.0
+        tolerance = 0.0002162800000244734
+        [[records.validation.rows]]
+        equation = "4-80-positive-gain"
+        pass = true
+        residual = 0.0
+        tolerance = 0.0
+        [[records.validation.rows]]
+        equation = "4-80-weighted-stationarity"
+        pass = true
+        residual = 3.552713678800501e-15
+        tolerance = 1.0e-6
+        [[records.validation.rows]]
+        equation = "4-78-objective"
+        pass = true
+        residual = 3.552713678800501e-15
+        tolerance = 1.0e-6
+
+    [records.weights_evidence]
+    actors = ["DSO", "A", "B"]
+    interpretation = "project_mapping_of_thesis_capacity_plus_peak_load"
+    rule = "equal_v1"
+    weights = [1.0, 1.0, 1.0]
+
+        [[records.weights_evidence.components]]
+        CHP_electric_MW = 0.0
+        EB_input_MW = 0.0
+        HP_input_MW = 0.1
+        PV_MW = 0.45
+        actor = "A"
+        battery_power_MW = 0.1
+        peak_electric_load_MW = 0.25
+        peak_heat_load_MW = 0.12
+        [[records.weights_evidence.components]]
+        CHP_electric_MW = 0.15
+        EB_input_MW = 0.1
+        HP_input_MW = 0.0
+        PV_MW = 0.0
+        actor = "B"
+        battery_power_MW = 0.0
+        peak_electric_load_MW = 0.3
+        peak_heat_load_MW = 0.25
+[[records]]
+actors = ["DSO", "A", "B"]
+case = "import_fixed"
+incremental_compensation = [-0.600435344085696, 0.33650772031179343, 0.2639276237739381]
+input_sha256 = "99b92147e9b1b369bd8903e84a7edfea423a55b47320608dd7ed5ff72f640689"
+method = "single_stage_fixed_dispatch_nash"
+origin = "synthetic"
+parent_central = "import_fixed--central_exact"
+parent_independent = "import_fixed--independent_exact"
+physical_values_sha256 = "f5420b1de65aaf8661147c351eaf31b38fb7136a266f7955ea2e6b4ea1263135"
+previous_internal_net_cash = [172.08333333333331, -61.28333333333334, -110.80000000000001]
+previous_utility = [92.35657871191023, -82.24625000000003, -217.80000000000007]
+schema = "r4-coordination-allocation-v1"
+scope = "adopted_static_heat_model; unrestricted_transfer; not_coalition_core"
+
+    [records.allocation]
+    disagreement_utility = [91.15570802373881, -82.24625000000002, -217.80000000000007]
+    gain = [0.6004353440857315, 0.3365077203117836, 0.2639276237739479]
+    log_nash = -0.8530120148169659
+    model = "r4_nash_checked_v1"
+    prepayment_utility = [-79.72675462142308, -20.962916666666686, -107.00000000000004]
+    schema = "r4-nash-allocation-v1"
+    status = "allocated"
+    surplus = 1.200870688171463
+    total_transfer = [171.48289798924762, -60.946825613021545, -110.53607237622607]
+    transfer_convention = "positive_receipt_total_internal_payment"
+    transfer_domain = "unrestricted_budget_balanced"
+    unit = "USD_synthetic"
+    utility_after = [91.75614336782454, -81.90974227968823, -217.53607237622612]
+    weight_fractions = [0.5, 0.2802197802197802, 0.21978021978021978]
+    weights = [1.8199999999999998, 1.02, 0.7999999999999999]
+
+    [records.parent_evidence]
+    accounting_identity_pass = true
+    all_actors_not_worse = true
+    bargaining = "not_performed"
+    both_cost_optimizations_complete = true
+    central_cost = 207.6896712880898
+    central_status = "solver_optimal"
+    eligible = true
+    independent_cost = 208.89054197626123
+    independent_stages_pass = true
+    independent_status = "solver_optimal"
+    input_sha256 = "99b92147e9b1b369bd8903e84a7edfea423a55b47320608dd7ed5ff72f640689"
+    resource_saving = 1.2008706881714204
+    saving_fraction = 0.00574880354471908
+    scope = "static_heat_energy_model_with_original_electric_check"
+    utility_gain_identity = -1.4210854715202004e-14
+
+        [[records.parent_evidence.actors]]
+        actor = "DSO"
+        central_utility = 92.35657871191023
+        disagreement_utility = 91.15570802373881
+        utility_gain = 1.2008706881714204
+        [[records.parent_evidence.actors]]
+        actor = "A"
+        central_utility = -82.24625000000003
+        disagreement_utility = -82.24625000000002
+        utility_gain = -1.4210854715202004e-14
+        [[records.parent_evidence.actors]]
+        actor = "B"
+        central_utility = -217.80000000000007
+        disagreement_utility = -217.80000000000007
+        utility_gain = 0.0
+
+        [records.parent_evidence.central_checks]
+        electric_original_pass = true
+        heat_pass = true
+        ledger_pass = true
+        model_pass = true
+
+        [records.parent_evidence.independent_checks]
+        electric_original_pass = true
+        heat_pass = true
+        ledger_pass = true
+        model_pass = true
+
+    [records.parent_result_sha256]
+    central = "fa425cf0e3379c5f4d3ab8b009c1f646d3bebdd89d80ec9cbb5b9a4525e0b352"
+    independent = "22801d6ec3c8e9d3b85c0c5b5a546308776c0a8e805b403de43c0a1346001f88"
+
+    [records.validation]
+    allocation_pass = true
+    record_pass = true
+    strict_improvement = true
+
+        [[records.validation.rows]]
+        equation = "R4-N1-surplus"
+        pass = true
+        residual = 1.4210854715202004e-14
+        tolerance = 0.00021780000000000006
+        [[records.validation.rows]]
+        equation = "R4-N1-weights"
+        pass = true
+        residual = 0.0
+        tolerance = 1.0e-6
+        [[records.validation.rows]]
+        equation = "R4-N1-status"
+        pass = true
+        residual = 0.0
+        tolerance = 0.0
+        [[records.validation.rows]]
+        equation = "4-73-budget"
+        pass = true
+        residual = 0.0
+        tolerance = 0.00021780000000000006
+        [[records.validation.rows]]
+        equation = "4-72-individual-rationality"
+        pass = true
+        residual = 0.0
+        tolerance = 0.00021780000000000006
+        [[records.validation.rows]]
+        equation = "R4-N1-gain-identity"
+        pass = true
+        residual = 1.4210854715202004e-14
+        tolerance = 0.00021780000000000006
+        [[records.validation.rows]]
+        equation = "R4-N1-gain-record"
+        pass = true
+        residual = 7.105427357601002e-15
+        tolerance = 0.00021780000000000006
+        [[records.validation.rows]]
+        equation = "R4-N1-utility-record"
+        pass = true
+        residual = 0.0
+        tolerance = 0.00021780000000000006
+        [[records.validation.rows]]
+        equation = "4-80-positive-gain"
+        pass = true
+        residual = 0.0
+        tolerance = 0.0
+        [[records.validation.rows]]
+        equation = "4-80-weighted-stationarity"
+        pass = true
+        residual = 6.2450045135165055e-15
+        tolerance = 1.0e-6
+        [[records.validation.rows]]
+        equation = "4-78-objective"
+        pass = true
+        residual = 1.1102230246251565e-16
+        tolerance = 1.0e-6
+
+    [records.weights_evidence]
+    actors = ["DSO", "A", "B"]
+    interpretation = "project_mapping_of_thesis_capacity_plus_peak_load"
+    rule = "capacity_load_v1"
+    weights = [1.8199999999999998, 1.02, 0.7999999999999999]
+
+        [[records.weights_evidence.components]]
+        CHP_electric_MW = 0.0
+        EB_input_MW = 0.0
+        HP_input_MW = 0.1
+        PV_MW = 0.45
+        actor = "A"
+        battery_power_MW = 0.1
+        peak_electric_load_MW = 0.25
+        peak_heat_load_MW = 0.12
+        [[records.weights_evidence.components]]
+        CHP_electric_MW = 0.15
+        EB_input_MW = 0.1
+        HP_input_MW = 0.0
+        PV_MW = 0.0
+        actor = "B"
+        battery_power_MW = 0.0
+        peak_electric_load_MW = 0.3
+        peak_heat_load_MW = 0.25
+[[records]]
+actors = ["DSO", "A", "B"]
+case = "import_fixed"
+incremental_compensation = [-0.800580458780928, 0.4002902293904924, 0.4002902293904782]
+input_sha256 = "99b92147e9b1b369bd8903e84a7edfea423a55b47320608dd7ed5ff72f640689"
+method = "single_stage_fixed_dispatch_nash"
+origin = "synthetic"
+parent_central = "import_fixed--central_exact"
+parent_independent = "import_fixed--independent_exact"
+physical_values_sha256 = "f5420b1de65aaf8661147c351eaf31b38fb7136a266f7955ea2e6b4ea1263135"
+previous_internal_net_cash = [172.08333333333331, -61.28333333333334, -110.80000000000001]
+previous_utility = [92.35657871191023, -82.24625000000003, -217.80000000000007]
+schema = "r4-coordination-allocation-v1"
+scope = "adopted_static_heat_model; unrestricted_transfer; not_coalition_core"
+
+    [records.allocation]
+    disagreement_utility = [91.15570802373881, -82.24625000000002, -217.80000000000007]
+    gain = [0.40029022939048764, 0.40029022939048764, 0.40029022939048764]
+    log_nash = -0.9155654214991121
+    model = "r4_nash_checked_v1"
+    prepayment_utility = [-79.72675462142308, -20.962916666666686, -107.00000000000004]
+    schema = "r4-nash-allocation-v1"
+    status = "allocated"
+    surplus = 1.200870688171463
+    total_transfer = [171.2827528745524, -60.883043103942846, -110.39970977060953]
+    transfer_convention = "positive_receipt_total_internal_payment"
+    transfer_domain = "unrestricted_budget_balanced"
+    unit = "USD_synthetic"
+    utility_after = [91.5559982531293, -81.84595977060954, -217.39970977060958]
+    weight_fractions = [0.3333333333333333, 0.3333333333333333, 0.3333333333333333]
+    weights = [1.0, 1.0, 1.0]
+
+    [records.parent_evidence]
+    accounting_identity_pass = true
+    all_actors_not_worse = true
+    bargaining = "not_performed"
+    both_cost_optimizations_complete = true
+    central_cost = 207.6896712880898
+    central_status = "solver_optimal"
+    eligible = true
+    independent_cost = 208.89054197626123
+    independent_stages_pass = true
+    independent_status = "solver_optimal"
+    input_sha256 = "99b92147e9b1b369bd8903e84a7edfea423a55b47320608dd7ed5ff72f640689"
+    resource_saving = 1.2008706881714204
+    saving_fraction = 0.00574880354471908
+    scope = "static_heat_energy_model_with_original_electric_check"
+    utility_gain_identity = -1.4210854715202004e-14
+
+        [[records.parent_evidence.actors]]
+        actor = "DSO"
+        central_utility = 92.35657871191023
+        disagreement_utility = 91.15570802373881
+        utility_gain = 1.2008706881714204
+        [[records.parent_evidence.actors]]
+        actor = "A"
+        central_utility = -82.24625000000003
+        disagreement_utility = -82.24625000000002
+        utility_gain = -1.4210854715202004e-14
+        [[records.parent_evidence.actors]]
+        actor = "B"
+        central_utility = -217.80000000000007
+        disagreement_utility = -217.80000000000007
+        utility_gain = 0.0
+
+        [records.parent_evidence.central_checks]
+        electric_original_pass = true
+        heat_pass = true
+        ledger_pass = true
+        model_pass = true
+
+        [records.parent_evidence.independent_checks]
+        electric_original_pass = true
+        heat_pass = true
+        ledger_pass = true
+        model_pass = true
+
+    [records.parent_result_sha256]
+    central = "fa425cf0e3379c5f4d3ab8b009c1f646d3bebdd89d80ec9cbb5b9a4525e0b352"
+    independent = "22801d6ec3c8e9d3b85c0c5b5a546308776c0a8e805b403de43c0a1346001f88"
+
+    [records.validation]
+    allocation_pass = true
+    record_pass = true
+    strict_improvement = true
+
+        [[records.validation.rows]]
+        equation = "R4-N1-surplus"
+        pass = true
+        residual = 1.4210854715202004e-14
+        tolerance = 0.00021780000000000006
+        [[records.validation.rows]]
+        equation = "R4-N1-weights"
+        pass = true
+        residual = 0.0
+        tolerance = 1.0e-6
+        [[records.validation.rows]]
+        equation = "R4-N1-status"
+        pass = true
+        residual = 0.0
+        tolerance = 0.0
+        [[records.validation.rows]]
+        equation = "4-73-budget"
+        pass = true
+        residual = 1.4210854715202004e-14
+        tolerance = 0.00021780000000000006
+        [[records.validation.rows]]
+        equation = "4-72-individual-rationality"
+        pass = true
+        residual = 0.0
+        tolerance = 0.00021780000000000006
+        [[records.validation.rows]]
+        equation = "R4-N1-gain-identity"
+        pass = true
+        residual = 1.4210854715202004e-14
+        tolerance = 0.00021780000000000006
+        [[records.validation.rows]]
+        equation = "R4-N1-gain-record"
+        pass = true
+        residual = 9.43689570931383e-15
+        tolerance = 0.00021780000000000006
+        [[records.validation.rows]]
+        equation = "R4-N1-utility-record"
+        pass = true
+        residual = 0.0
+        tolerance = 0.00021780000000000006
+        [[records.validation.rows]]
+        equation = "4-80-positive-gain"
+        pass = true
+        residual = 0.0
+        tolerance = 0.0
+        [[records.validation.rows]]
+        equation = "4-80-weighted-stationarity"
+        pass = true
+        residual = 7.882583474838611e-15
+        tolerance = 1.0e-6
+        [[records.validation.rows]]
+        equation = "4-78-objective"
+        pass = true
+        residual = 1.1102230246251565e-16
+        tolerance = 1.0e-6
+
+    [records.weights_evidence]
+    actors = ["DSO", "A", "B"]
+    interpretation = "project_mapping_of_thesis_capacity_plus_peak_load"
+    rule = "equal_v1"
+    weights = [1.0, 1.0, 1.0]
+
+        [[records.weights_evidence.components]]
+        CHP_electric_MW = 0.0
+        EB_input_MW = 0.0
+        HP_input_MW = 0.1
+        PV_MW = 0.45
+        actor = "A"
+        battery_power_MW = 0.1
+        peak_electric_load_MW = 0.25
+        peak_heat_load_MW = 0.12
+        [[records.weights_evidence.components]]
+        CHP_electric_MW = 0.15
+        EB_input_MW = 0.1
+        HP_input_MW = 0.0
+        PV_MW = 0.0
+        actor = "B"
+        battery_power_MW = 0.0
+        peak_electric_load_MW = 0.3
+        peak_heat_load_MW = 0.25

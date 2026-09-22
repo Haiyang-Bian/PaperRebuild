@@ -1,0 +1,107 @@
+battery_rule = "paper_sum_bound"
+dt_h = 1.0
+event_start = 2
+loss_limit_MWh = 0.55
+name = "synthetic_r7_one_hour_inherited_state"
+origin = "synthetic"
+periods = 1
+preplan_id = "synthetic-explicit-boundary-v1-not-optimized-normal-plan"
+probabilities = [1.0]
+recovery_model = "r7_recovery_port_checked_v1"
+renewable_factor = 0.5
+schema = "r7-recovery-case-v1"
+
+[[devices]]
+P_max_MW = 0.8
+P_min_MW = 0.0
+Q_max_Mvar = 0.5
+Q_min_Mvar = 0.0
+commitment = [1]
+electric_node = 1
+heat_node = 1
+heat_ratio = 1.0
+id = "CHP1"
+kind = "CHP"
+previous_P_MW = [0.5]
+previous_commitment = 1
+ramp_MW_h = 1.0
+shutdown_MW = 0.8
+startup_MW = 0.8
+[[devices]]
+E_max_MWh = 0.3
+E_min_MWh = 0.0
+P_max_MW = 0.2
+electric_node = 2
+eta_ch = 1.0
+eta_dis = 1.0
+id = "BES2"
+initial_MWh = [0.2]
+kind = "BES"
+
+[electric]
+S_base_MVA = 1.0
+fault_budget = 1
+flow_domain = "forward_only"
+load_MW = [[0.0], [0.6]]
+nodes = 2
+pcc_node = 1
+root_eligible = [1, 1]
+shed_fraction_max = [1.0, 1.0]
+switch_budget = 1
+tan_phi = [0.0, 0.0]
+v_max_pu = 1.05
+v_min_pu = 0.95
+v_ref_pu = 1.0
+
+    [[electric.lines]]
+    P_max_MW = 2.0
+    Q_max_Mvar = 1.0
+    base_closed = 1
+    from = 1
+    r_pu = 0.01
+    to = 2
+    vulnerable = true
+    x_pu = 0.01
+
+[heat]
+R_max_K = 323.15
+R_min_K = 303.15
+R_reference_K = 313.15
+S_max_K = 353.15
+S_min_K = 333.15
+S_reference_K = 343.15
+ambient_K = [293.15]
+available = true
+c_J_kgK = 4200.0
+load_MW = [[0.0], [0.4]]
+load_delta_max = [0.0, 60.0]
+load_delta_min = [0.0, 0.0]
+load_flow_max = [0.0, 10.0]
+nodes = 2
+reference_flow_kg_s = [5.0]
+rho_kg_m3 = 1000.0
+shed_fraction_max = [1.0, 1.0]
+source_delta_max = [80.0, 0.0]
+source_delta_min = [0.0, 0.0]
+source_flow_max = [10.0, 0.0]
+
+    [[heat.pipes]]
+    UA_R_W_K = 0.0
+    UA_S_W_K = 0.0
+    flow_change_max_kg_s = 5.0
+    flow_max_kg_s = 10.0
+    from = 1
+    initial_R_K = [313.15]
+    initial_S_K = [343.15]
+    normal_flow_kg_s = [5.0]
+    to = 2
+    volume_R_m3 = 10.0
+    volume_S_m3 = 10.0
+
+[units]
+energy = "MWh"
+flow = "kg/s"
+power = "MW"
+reactive = "Mvar"
+temperature = "K"
+time = "h"

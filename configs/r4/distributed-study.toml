@@ -1,0 +1,30 @@
+schema = "r4-distributed-study-v1"
+origin = "synthetic"
+algorithm = "r4_atc_admm_checked_v1"
+cases = ["open_flexible", "open_fixed", "import_flexible", "import_fixed"]
+patterns = [[1, 0, 1, 0], [0, 1, 0, 1]]
+purposes = ["swm", "agnb"]
+rho = 1.0
+peer_rho = 1.0
+max_iterations = 1000
+inner_iterations = 100
+budget_sec = 600.0
+primary_solver = "clarabel"
+cross_solver = "gurobi"
+cross_cases = ["open_flexible", "import_flexible"]
+cross_pattern = 1
+cross_purpose = "swm"
+initialization = "zero boundary, zero peer, zero scaled multipliers; no reference solution access"
+reference = "independent centralized same case, battery pattern, objective and SOCP; separate 600 seconds"
+expected_distributed_runs = 18
+expected_central_references = 18
+cost_relative_tolerance = 0.001
+reference_gap_tolerance = 0.0001
+outer_primal_dual_tolerance = 0.0001
+inner_primal_dual_tolerance = 0.0000001
+
+[input_sha256]
+open_flexible = "7aadd5364225052c196f45a433635d9c412e37ffa3cbf78b0ed1b1791c2231d5"
+open_fixed = "ba5e4cbe085086ea8847d397f01d77bf89e12bf2b398c74a0e3bc8a0dce79fd9"
+import_flexible = "fcdb954da900fd878194b0a3d72bf2f130ecf057615bd84ae16436d315b9d5ca"
+import_fixed = "99b92147e9b1b369bd8903e84a7edfea423a55b47320608dd7ed5ff72f640689"

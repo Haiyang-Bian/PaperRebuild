@@ -1,0 +1,64 @@
+schema = "r9-migration-route-v1"
+status = "partial_72_duals_open_73_central_network_verified_disagreement_open"
+scope = "Preserve chapter-7 source connectivity and scenario-specific modifications; freeze separately labelled replacements for missing fields before optimization."
+source_input_status = "partial_original_input_not_runnable"
+ref157_doi = "10.1016/j.apenergy.2021.117224"
+ref157_primary_url = "https://www.sciencedirect.com/science/article/pii/S0306261921006474"
+ref157_access = "publisher search record located; direct full text returned 403; no original parameter supplement acquired"
+ref157_absence_claim = false
+
+[[route]]
+section = "7.2"
+name = "PV absorption and four operation modes"
+reuse = "R2Case, fixed-flow subproblem, R3OperationSpec and independent WMM replay"
+required_change = "44 electrical / 38 thermal nodes; 24 h; PV at E22 becomes 6 MW; currency CNY; explicit source temperatures, flows, initial and terminal states"
+must_not_inherit = "7.3 load factor, R3 synthetic recovery tail, or unrecorded transformer equivalence"
+known_interface_gap = "第3章目标(3-1)不含启停项，表7-2却列启动费。先确认7.2实际费用口径和初始开机状态；不能仅凭设备表引入二元变量、改变连续梯度子问题。若另研究启停，须命名独立版本。"
+acceptance = "Capacity and units; fixed-mode feasible witness; original grid residuals and thermal replay; common initial/terminal assumptions; separate feasible cost and solver bound."
+stage = "fixed_modes_anchored_A2; literal_CF_CT_VF_CT_VF_VT_direct_candidates_pass_A1_energy; explicit_fixed_flow_literal_candidates_pass; all_four_fixed_flow_KKT_fail; PG_outstanding"
+
+[[route]]
+section = "7.3"
+name = "Aggregator trading and network coordination"
+reuse = "R4 theory, network/accounting utilities and validation pattern; separate scale adapter required, not direct R4Case loading"
+required_change = "Eight aggregators and explicitly replaced resources; separate base/non-aggregated loads; added four electric and two heat ties"
+must_not_inherit = "7.2 PV enlargement, teaching settlement prices, or automatic second multiplication of table-7-9 loads"
+known_interface_gap = "R9TradingCase now separates eight aggregators, equipment and distinct electric/heat nodes. Sixteen frozen network methods include four accepted centralized candidates under replacement equipment sizing; saved independent plans exceed DSO heat capacity. Distributed coordination and bargaining still need scale migration; a feasible or explicitly penalized counterfactual disagreement rule must be distinguished. Complete thermal physics and author-input equivalence remain open."
+acceptance = "Feasible disagreement points; network checks; internal transfers cancel; coalition and allocation claims kept separate; larger-system iteration and timing evidence."
+stage = "central_scale_and_network_results_frozen; independent_disagreement_and_distributed_bargaining_open"
+
+[[route]]
+section = "7.4"
+name = "Price-taking reserve and risk"
+reuse = "R5 internal dispatch/risk interfaces and R6 frozen statistical protocol"
+required_change = "External energy/reserve prices and transmission tariff; 100 representative scenarios; epsilon 0.05; new P2H equipment and sample split"
+must_not_inherit = "Strategic market-clearing KKT, previous synthetic dataset identity or a capacity-price time unit chosen without declaration"
+known_interface_gap = "CNY v2, independent 2000/500/1000 days, 100 training representatives and three common strict-delivery risk schemes are frozen. Original unseeded 100-support timeouts are preserved. Explicit seeded 3B/3C runs return independently verified candidates, but neither improves the common zero-reserve witness and their effective gaps are 32.95%; seeded 3A still returns no candidate. Held-out dispatch remains unperformed. Linear grid, free terminal pipe state and complete-trajectory recourse are bounded project assumptions."
+acceptance = "Day-ahead versus delivered reserves; power/energy units; held-out violation counts and confidence interval; actual recourse feasibility."
+stage = "original_100_support_timeouts_preserved; common_witness_validated; seeded_3A_no_candidate_3B_3C_verified_zero_reserve_incumbents_gap_32.95_percent; heldout_pending"
+
+[[route]]
+section = "7.5"
+name = "Critical-load resilience"
+reuse = "R7 inherited-state planning and R8 economic/penalty/threshold comparisons"
+required_change = "Independent disaster CHP configuration and startup costs; GT; 0.4 renewable factor; 13.75 MW critical load; 10000 CNY/MWh penalty; 2 MWh threshold"
+must_not_inherit = "Chapter-6 500 USD/MWh penalty, four-hour window inferred from mixed captions or ablation inferred from HS/NR abbreviations"
+known_interface_gap = "Allocate critical load; freeze clock grid, faults, initial commitments and grid-forming eligibility; source generation differs from 7.3."
+acceptance = "Same normal decision inherited by all events; independent worst-event replay; unserved energy versus cost bound; explicit thermal control domain and failure states."
+stage = "after_common_input_freeze"
+
+[[replacement_rule]]
+id = "R9-R01"
+rule = "Keep 44/38 source connectivity and original node labels. A root reindexing must preserve an explicit original-to-internal map."
+[[replacement_rule]]
+id = "R9-R02"
+rule = "Use separately frozen public donor or synthetic impedances, capacities, pipe geometry and hourly profiles. Record per-field origin and conversion, not only one overall synthetic label."
+[[replacement_rule]]
+id = "R9-R03"
+rule = "The high-voltage feeders and distribution substation sites are not one voltage bus model. Declare voltage bases and transformer representation, or mark an explicit equivalent-network approximation."
+[[replacement_rule]]
+id = "R9-R04"
+rule = "Freeze physically checked steady history and terminal rule before comparing modes. Do not infer loads or efficiencies by fitting reported costs or renewable utilization."
+[[replacement_rule]]
+id = "R9-R05"
+rule = "Common input construction precedes optimization. Negative runs stay in the frozen batch; numerical and same-input original reproduction remain distinct."

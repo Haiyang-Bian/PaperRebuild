@@ -1,0 +1,116 @@
+adopted_physics = "linear_electric_fixed_flow_heat_building_dynamics"
+created_utc = "2026-09-22T00:12:26.891"
+currency = "CNY"
+distinct_operations = 1
+freeze_sha256 = "d8fc1d0e0be4791d28b58199ac7ac4a8913113473408d8c3bea3005508567593"
+nonzero_reserve_service_certified = false
+optimization_performed = false
+origin = "synthetic"
+original_ac_power_flow_certified = false
+raw_numeric_replay_performed = true
+raw_records_required_for_independent_numeric_replay = true
+reporter_sha256 = "e863fe46c6a8e65ff8c3c50e1c6b2d75d8272712ddb1843df378327d1e2ee7d4"
+schema = "r9-heldout-report-v2"
+scope = "frozen_complete_future_operation_not_online_control_or_original_author_inputs"
+statistics_source_sha256 = "6142568e35d6fc3d649e0d42749f27b088334f4ff2a3d098f4d906f5a166c058"
+
+[operations.3B]
+all_costs_complete = true
+all_days_executed = true
+complete_cost_days = 1000
+currency = "CNY"
+formal_test_complete = true
+ids_sha256 = "81f1f3acce6d71f884462a34861a286467e01c6f521b3eaa629d58de2ed47eb5"
+mean_operating_net_cost = 385248.4127760057
+missing_cost_days = 0
+n = 1000
+observed_mean_operating_net_cost = 385248.4127760057
+saved_day_records = 1000
+schema = "r9-reserve-days-summary-v1"
+scope = "frozen_synthetic_distribution_complete_future_recourse"
+
+    [operations.3B.mean_cost_interval]
+    confidence = 0.95
+    currency = "CNY"
+    is_optimality_bound = false
+    lower_CNY = 385163.8701838362
+    mean_CNY = 385248.4127760057
+    method = "whole_day_percentile_bootstrap"
+    n = 1000
+    replicates = 2000
+    seed = 2026092104
+    status = "complete"
+    upper_CNY = 385337.9256963346
+
+    [operations.3B.observed_cost_quantiles]
+    q05 = 383728.1237637503
+    q50 = 384890.5815701769
+    q95 = 387949.5093475432
+
+    [operations.3B.risk]
+    conservative_violation_fraction = 0.0
+    epsilon = 0.05
+    known_violation_fraction = 0.0
+    lower = 0.0
+    n = 1000
+    one_sided_confidence = 0.95
+    passed = 1000
+    sample_unit = "complete_trajectory"
+    status = "supported"
+    unknown = 0
+    upper = 0.002991249545095295
+    violations = 0
+
+[slots.3A]
+out_of_sample_status = "training_candidate_unavailable"
+risk_estimate_defined = false
+scheme = "3A"
+status = "training_candidate_unavailable"
+test_operation_defined = false
+training_case_sha256 = "8ef3645de2a1c7100b89ef17703f2af8856122a6b95ade26996129e842eb6bbf"
+training_cost_optimization_complete = false
+training_result_sha256 = "11dc248f656c4b382cccddfc1c68695b7074fc3eb4dc9b52e9d4e86e05c9eb9e"
+training_run_id = "r9-seeded-444ca03d-1191-43fb-ba0b-48b1f9f7d660"
+training_status = "time_limit_no_incumbent"
+
+[slots.3B]
+compute_owner = "3B"
+operation_sha256 = "d4f41263b6c176e50f66ca6e9b53cf4d3ad2391631139c076d03aec27ec569ff"
+performs_unique_day_computation = true
+policy_file = "policy-3B.toml"
+policy_sha256 = "db5cdcd117454f1739e8fb86e4e9963d11ee4f8fa6506650277825519ea5bf9f"
+scheme = "3B"
+status = "locked_verified_training_candidate"
+summary_owner = "3B"
+test_operation_defined = true
+training_case_sha256 = "9c80589a4a0bcb89bffbc708fe6f0891dc1e41534c8264608596609775301d90"
+training_cost_optimization_complete = false
+training_result_sha256 = "ddddbffc30f89ac575292cfddd03790eb04bac175b30d10d66cf6bafc5687638"
+training_run_id = "r9-seeded-7454572f-af51-4851-ac39-72650ca3db93"
+training_status = "time_limit_with_incumbent"
+
+[slots.3C]
+compute_owner = "3B"
+operation_sha256 = "d4f41263b6c176e50f66ca6e9b53cf4d3ad2391631139c076d03aec27ec569ff"
+performs_unique_day_computation = false
+policy_file = "policy-3C.toml"
+policy_sha256 = "56898bc16ce22cd571ca9245f5454860f2b175d563943f25e5f1acf47dcf9e52"
+scheme = "3C"
+status = "locked_verified_training_candidate"
+summary_owner = "3B"
+test_operation_defined = true
+training_case_sha256 = "ce95fa0748bbfde08f4e3e65e418fe0a3a722c7964c290730b9b611f91135883"
+training_cost_optimization_complete = false
+training_result_sha256 = "b67507c55f367469de5b6b907dbbaf15b7a05d64b5bf48fc8d81fe225e9677b4"
+training_run_id = "r9-seeded-d6a9efcd-6b53-4cc6-a781-e3375aa5d286"
+training_status = "time_limit_with_incumbent"
+
+[timing]
+batch_count = 2
+batch_elapsed_sec = 2760.6503339000046
+batch_setup_sec = 14.244760599918664
+day_budget_overruns = 0
+independent_replay_time_included = false
+recorded_day_evaluation_sec = 1451.5380008220673
+recorded_new_days = 1000
+training_time_included = false
