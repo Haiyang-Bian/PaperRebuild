@@ -253,6 +253,7 @@
 - `docs/agent/tasks/2026-09-21-r9-trading-model.md`
 - `docs/agent/tasks/2026-09-21-r9-trading-runs.md`
 - `docs/agent/tasks/2026-09-21-r9-trading-study.md`
+- `docs/agent/tasks/2026-09-22-r10-public-beginner.md`
 - `docs/agent/tasks/2026-09-22-r9-block-bounds.md`
 - `docs/agent/tasks/2026-09-22-r9-detailed-preplan.md`
 - `docs/agent/tasks/2026-09-22-r9-distributed-scale.md`
@@ -515,6 +516,7 @@
 - `docs/src/ch07-trading-generated.md`
 - `docs/src/ch07-trading-results.md`
 - `docs/src/ch07-trading.md`
+- `docs/src/first-run.md`
 - `docs/src/index.md`
 - `docs/src/julia-design.md`
 - `docs/src/quality.md`
@@ -532,6 +534,7 @@
 - `docs/src/reading.md`
 - `docs/src/reproduction-acceptance.md`
 - `docs/src/reproduction-coverage.md`
+- `docs/src/reproduction-evidence-audit.md`
 - `docs/src/reproduction-findings.md`
 - `docs/src/reproduction-plan.md`
 - `docs/src/structure.md`
@@ -874,6 +877,7 @@
 - `scripts/publish_r3_v3_report.jl`
 - `scripts/publish_r4_assets.jl`
 - `scripts/publish_r9_distributed.jl`
+- `scripts/r10_beginner_evidence.jl`
 - `scripts/r1_task.jl`
 - `scripts/r2_setup.jl`
 - `scripts/r2_task.jl`
@@ -1091,6 +1095,8 @@
 - `scripts/summarize_r5_strategic_benders.jl`
 - `scripts/test.jl`
 - `scripts/test_ch06_audit.jl`
+- `scripts/test_r1.jl`
+- `scripts/test_r10_beginner.jl`
 - `scripts/test_r3.jl`
 - `scripts/test_r3_baseline.jl`
 - `scripts/test_r3_boundary.jl`
@@ -1465,6 +1471,7 @@
 - `test/fixtures/r9_trading.jl`
 - `test/maintenance.tests.ps1`
 - `test/r1.jl`
+- `test/r1_entry.jl`
 - `test/r2.jl`
 - `test/r3.jl`
 - `test/r3_audit.jl`
@@ -1636,6 +1643,7 @@
 - `results/summaries/ch05-probability/`
 - `results/summaries/ch06-audit-v1/`
 - `results/summaries/r1-first-batch/`
+- `results/summaries/r10-beginner-20260922-v2/`
 - `results/summaries/r2-first-batch/`
 - `results/summaries/r3-baseline/`
 - `results/summaries/r3-first-batch/`

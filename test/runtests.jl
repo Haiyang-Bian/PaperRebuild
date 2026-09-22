@@ -14,6 +14,7 @@ PAPERREBUILD_TEST_STAGE in
 
 if PAPERREBUILD_TEST_STAGE in ("all", "r1_r4")
     include("r1.jl")
+    include("r1_entry.jl")
     include("r2.jl")
     include("r3.jl")
     include("r3_pg.jl")

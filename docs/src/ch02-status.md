@@ -12,12 +12,15 @@ R0 只完成这组原页的核读和可实施边界划分；全论文 R0 与全�
 
 ## 从零走一次闭环
 
+完整的初学者路线及冻结结果重验见[第一个可复核案例](first-run.md)。
+本页下方组件表与2026-09-16数值是R1特例的历史范围；后续章节扩展见[全文完成清单](reproduction-coverage.md)。
+
 在 VS Code 打开项目根目录，终端使用项目 Julia 版本。运行命令也有 `PaperRebuild: R1 ...` 任务入口。
 
 ```sh
 julia +1.12.6 --startup-file=no --project=. scripts/bootstrap.jl
 julia +1.12.6 --startup-file=no --project=. scripts/check_ch02.jl
-julia +1.12.6 --startup-file=no --project=. scripts/test.jl
+julia +1.12.6 --startup-file=no --project=. scripts/test_r1.jl
 julia +1.12.6 --startup-file=no --project=. scripts/run_r1.jl
 ```
 
@@ -81,7 +84,8 @@ Gurobi 默认容差运行 `r1-20260916T055237-75fa9f65`：求解器最优、松�
 这是求解精度差异的局部证据，不是 SOCP 在所有算例精确的证明。
 
 权威运行与失败摘要在工作区 `results/summaries/r1-first-batch/comparison.toml`，
-对应子目录包含配置、元数据、解、残差、图源；本批未提交，远程站点暂不含这些改动。
+对应子目录包含已纳入本地版本控制的配置、元数据、解、残差和图源。
+本页不将本地提交或构建等同于远程站点已更新。
 
 ## 本批科学图
 

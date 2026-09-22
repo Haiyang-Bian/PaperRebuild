@@ -82,3 +82,5 @@ results/summaries/r9-distributed-*/objects/* binary
 docs/src/assets/r9-distributed-*/** -text whitespace=cr-at-eol,-blank-at-eof
 # Preserve the four bounded numerical probes and their replay coefficients byte-for-byte.
 results/summaries/r9-bound-diagnostic-*/** -text whitespace=cr-at-eol,-blank-at-eof
+# The clean-checkout beginner example retains exact source, environment and result bytes.
+results/summaries/r10-beginner-*/** -text whitespace=cr-at-eol,-blank-at-eof

@@ -1,0 +1,89 @@
+schema = "r1-micro-v1"
+origin = "synthetic"
+description = "公开教学合成数据；不是论文参数或结论。HS 单位效率；z 按原文整个窗口固定。"
+
+[units]
+power = "MW"
+energy = "MWh"
+mass_flow = "kg/s"
+temperature = "K"
+time = "h"
+
+[time]
+T = 4
+dt_h = 0.25
+
+[electric]
+nodes = [1, 2]
+root = 1
+from = 1
+to = 2
+S_base_MVA = 1.0
+V_base_kV = 10.0
+r_pu = 0.01
+x_pu = 0.01
+V_min_pu = 0.95
+V_max_pu = 1.05
+l_max_pu = 4.0
+
+[heat]
+nodes = [1, 2]
+supply_from = 1
+return_from = 2
+m = 2.0
+rho_w = 1000.0
+A = 0.02
+L = 90.0
+c_w = 4.2
+epsilon_W_mK = 0.2
+tau_AM = 283.15
+tau_min = 293.15
+tau_max = 363.15
+history_S = [323.15]
+history_R = [303.15]
+
+[devices]
+eta_G = 0.4
+eta_loss = 0.1
+P_CHP_min = 0.0
+P_CHP_max = 0.3
+H_CHP_min = 0.0
+H_CHP_max = 0.4
+P_EB_max = 0.2
+COP_EB = 0.95
+P_HP_max = 0.15
+COP_HP = 3.0
+BS_power_max = 0.1
+E_BS_max = 0.2
+E_BS_initial = 0.1
+eta_BS_ch = 0.95
+eta_BS_dis = 0.95
+HS_power_max = 0.1
+E_HS_max = 0.2
+E_HS_initial = 0.1
+eta_HS_ch = 1.0
+eta_HS_dis = 1.0
+eta_HS_loss = 0.99
+storage_reference_dt_h = 0.25
+storage_mode_scope = "horizon"
+
+[building]
+tau_initial = 294.15
+tau_min = 293.15
+tau_max = 297.15
+eta_H = 10.0
+U = 0.1
+reference_dt_h = 0.25
+eta_DH = 1.0
+P_DH_max = 0.02
+
+[demand]
+P_D = [0.30, 0.35, 0.32, 0.28]
+Q_D = [0.06, 0.07, 0.06, 0.05]
+P_PV_available = [0.04, 0.08, 0.06, 0.02]
+P_WT_available = [0.0, 0.0, 0.0, 0.0]
+tau_AM = [283.15, 283.15, 283.15, 283.15]
+
+[cost]
+grid_per_MWh = [90.0, 140.0, 110.0, 80.0]
+CHP_per_MWh = 100.0

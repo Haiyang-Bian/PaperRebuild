@@ -102,6 +102,8 @@ makedocs(;
     ),
     pages = [
         "开始" => "index.md",
+        "第一个可复核案例" => "first-run.md",
+        "原计划与证据对照" => "reproduction-evidence-audit.md",
         "工具链" => "toolchain.md",
         "目录规范" => "structure.md",
         "工作流程" => "workflow.md",

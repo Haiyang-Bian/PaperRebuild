@@ -4,20 +4,18 @@
 主要智能体为 Codex，IDE 为 VS Code，文件视图使用 CodeGroup。
 
 **当前进度以[当前状态](docs/agent/current-state.md)和[全文覆盖清单](docs/src/reproduction-coverage.md)为准。**
-最新研究入口为[第7.4节原模型带初值对照](docs/src/ch07-seeded-risk.md)：44电节点/38热节点、
-24小时、100个合成情景。原[共同调度](docs/src/ch07-common-witness.md)提供396812.219543CNY/日可行上界。
-新三项同模型运行均在600秒内：3A仍超时无候选，3B/3C返回并独立验证候选，但费用与初值相同、
-有效间隙32.95%，没有备用经济收益或最优性证据。上下备用在数值零内，未开展本批样本外评价。
-[等价表示对照](docs/src/ch07-compact-risk.md)现已运行：建模约从51–57秒降至31–32秒，
-但3A仍无候选，3B/C费用不变、间隙仍约32.93%；不能把建模改善当成优化完成。
-第7.5节原页复核另纠正GT转录并保留关键负荷/故障/时轴冲突，按独立输入继续。
-[币种与状态继承准备](docs/src/ch07-resilience-currency.md)为R7/R8新增显式CNY接口；
-这是费用核算与兼容性工作，尚未完成第7.5节关键负荷保供实验。
-[关键负荷接口](docs/src/ch07-critical-load.md)现已显式拆分关键/普通电失供并单列热失供，
-179项解析和计算链专项、完整R7–R9回归通过；工程收尾见当前状态，不代表规模保供完成。
-[部分节点停电域](docs/src/ch07-energization.md)进一步区分机械开关与实际带电，
-141项解析/继承专项通过；保留原全节点域、CHP爬坡反例和各自验证范围。
-历史[流量/终端结果](docs/src/ch07-flow-results.md)和[交易/重构结果](docs/src/ch07-network-results.md)保留各自边界。
+先读[跨章结论](docs/src/reproduction-findings.md)和[原计划—证据对照](docs/src/reproduction-evidence-audit.md)。
+第7.3节[44/38节点分布对照](docs/src/ch07-distributed.md)已有三个集中合格候选，
+分布方法仍无合格联合调度；配置热量矛盾、数值状态和迭代残差分别保留。
+第7.4节[锁定候选的1000新日](docs/src/ch07-reserve-evaluation.md)已完成独立回放，
+零舒适违约、零未知，但备用调用近零，不能据此证明有效备用收益。
+第7.5节[区域容量证书](docs/src/ch07-resilience-electric-cut.md)给出当前替代输入至少6.045880 MWh失供，
+排除该故障下的2 MWh目标；它不是作者输入或全部故障的最坏值。
+
+新[第一个可复核案例](docs/src/first-run.md)提供手算、Julia求解、原值验证和F01–F04重绘，
+并附只用Julia标准库即可独立重算的冻结R1结果。
+隔离克隆已完成这条入口的预检，仍复用现有包缓存，不能称全新机器或全文验收。
+F07规模性能、F13主体扩展性、完整控制域及原输入缺口继续开放，原验收门槛不变。
 
 此前[R8稳态能流与跨时段机制](docs/src/ch06-r8-energy-results.md)、
 [R7有损共同状态规划](docs/src/ch06-lossy-flow.md)和[R6样本外统计](docs/src/r6-test-results.md)的正负结果均已保留。
@@ -56,6 +54,7 @@ R3阶段归档，保留算法限制和历史判定。前批18项分布运行与1
 ## 入口
 
 - [在线手册](https://haiyang-bian.github.io/PaperRebuild/)
+- [第一个可复核案例](docs/src/first-run.md)、[原计划与证据对照](docs/src/reproduction-evidence-audit.md)
 - [本地工具链说明](docs/src/toolchain.md)
 - [论文阅读导航](docs/src/reading.md)
 - [论文主线与研究边界](docs/src/thesis-overview.md)、[审读证据与问题台账](docs/src/thesis-audit.md)
@@ -92,7 +91,7 @@ R3阶段归档，保留算法限制和历史判定。前批18项分布运行与1
 ```powershell
 juliaup add 1.12.6
 julia +1.12.6 --startup-file=no --project=. scripts/bootstrap.jl
-julia +1.12.6 --startup-file=no --project=. scripts/test.jl
+julia +1.12.6 --startup-file=no --project=. scripts/test_r1.jl
 pwsh -NoProfile -File scripts/maintain.ps1 -Action Check
 julia +1.12.6 --startup-file=no --project=docs scripts/preview.jl
 ```
@@ -100,6 +99,7 @@ julia +1.12.6 --startup-file=no --project=docs scripts/preview.jl
 默认预览地址为 <http://127.0.0.1:8000>；端口占用时以终端显示的地址为准，按 Ctrl+C 停止。
 `juliaup add` 安装指定版本，不改变全局默认版本。安装依赖需要网络。
 VS Code 的“任务：运行任务”提供同等入口。
+上述测试为入门R1范围；完整隔离回归仍用`scripts/test.jl`，见[质量规范](docs/src/quality.md)。
 
 ## 本地文献
 
