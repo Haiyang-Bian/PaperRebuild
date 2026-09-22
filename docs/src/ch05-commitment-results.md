@@ -94,7 +94,7 @@ F04分别显示物理/费用、条件KKT和共同KKT。对数坐标中零值显�
 公开小型见证内嵌全部输入和必要原值；检查不依赖忽略的results/runs目录，不重新求解。
 
 ~~~powershell
-julia +1.12.6 --startup-file=no --project=. scripts/check_r5_commitment_artifacts.jl results/summaries/r5-commitment
+julia +1.12.6 --startup-file=no --project=. scripts/check_historical_evidence.jl r5-commitment
 ~~~
 
 新生成报告与重绘须使用新目录，完整命令及API见[共同承诺教程](ch05-commitment.md)。

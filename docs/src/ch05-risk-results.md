@@ -129,7 +129,7 @@
 公开小型见证含输入、原值、运输原对偶证书和枚举分支。独立重读不依赖本机原运行目录，不重新求解：
 
 ~~~powershell
-julia +1.12.6 --startup-file=no --project=. scripts/check_r5_risk_artifacts.jl results/summaries/r5-risk
+julia +1.12.6 --startup-file=no --project=. scripts/check_historical_evidence.jl r5-risk
 ~~~
 
 完整运行的`code/replay.jl`使用冻结科学源码核验同一存档。重新实验、报告及绘图须使用新目录，

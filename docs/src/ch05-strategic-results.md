@@ -150,7 +150,7 @@ IES需电0.142 MW，外部供给报价20/100，IES自发电成本130。
 
 ~~~powershell
 julia +1.12.6 --startup-file=no --project=. scripts/check_r5_strategic.jl
-julia +1.12.6 --startup-file=no --project=. scripts/check_r5_strategic_artifacts.jl results/summaries/r5-strategic
+julia +1.12.6 --startup-file=no --project=. scripts/check_historical_evidence.jl r5-strategic
 ~~~
 
 检查器从公开见证重新计算数值与表格，不重新优化。

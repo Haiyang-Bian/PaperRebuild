@@ -84,8 +84,8 @@ F16显示真实外层迭代、已验证策略上界和所属模型域的下界�
 完整原值、乘子、割、哈希及独立参考可脱离本地原始运行目录重新验算。
 
 ~~~powershell
-julia +1.12.6 --startup-file=no --project=. scripts/test_r5_strategic_benders_study.jl
-julia +1.12.6 --startup-file=no --project=. scripts/check_r5_strategic_benders_artifacts.jl results/summaries/r5-strategic-benders
+julia +1.12.6 --startup-file=no --project=. scripts/check_historical_evidence.jl r5-strategic-benders study
+julia +1.12.6 --startup-file=no --project=. scripts/check_historical_evidence.jl r5-strategic-benders
 julia +1.12.6 --startup-file=no --project=. scripts/summarize_r5_strategic_benders.jl results/summaries/r5-strategic-benders
 ~~~
 

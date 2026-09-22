@@ -613,6 +613,7 @@
 - `scripts/check_ch05_inputs.jl`
 - `scripts/check_ch05_probability.jl`
 - `scripts/check_ch06.jl`
+- `scripts/check_historical_evidence.jl`
 - `scripts/check_r1_gurobi.jl`
 - `scripts/check_r1_portability.jl`
 - `scripts/check_r2_build.jl`
@@ -872,6 +873,7 @@
 - `scripts/plot_r9_resilience.jl`
 - `scripts/plot_r9_seeded.jl`
 - `scripts/plot_r9_trading.jl`
+- `scripts/precompile_tests.jl`
 - `scripts/prepare_r1_summary.jl`
 - `scripts/preview.jl`
 - `scripts/probe_r4_discrete.jl`
@@ -1488,6 +1490,7 @@
 - `test/ch03_data.jl`
 - `test/ch06_audit.jl`
 - `test/fixtures/r9_trading.jl`
+- `test/historical_evidence.jl`
 - `test/maintenance.tests.ps1`
 - `test/r1.jl`
 - `test/r1_entry.jl`

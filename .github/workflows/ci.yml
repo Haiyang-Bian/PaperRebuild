@@ -31,6 +31,9 @@ jobs:
         with:
           version: '1.12.6'
       - uses: julia-actions/cache@v2
+      - name: Prepare test dependencies with matching compiler flags
+        timeout-minutes: 10
+        run: julia --startup-file=no --threads=1 --check-bounds=yes --depwarn=yes --warn-overwrite=yes --project=. scripts/precompile_tests.jl
       - name: Julia tests with complete stage coverage
         timeout-minutes: 10
         run: julia --startup-file=no --project=. scripts/test.jl ${{ matrix.stage }}
@@ -47,6 +50,8 @@ jobs:
       JULIA_PKG_PRECOMPILE_AUTO: '0'
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: julia-actions/setup-julia@v2
         with:
           version: '1.12.6'
@@ -66,19 +71,19 @@ jobs:
       - name: R5 finite-support risk frozen inputs and mapping
         run: julia --startup-file=no --project=. scripts/check_r5_risk.jl
       - name: R5 shared commitment immutable evidence
-        run: julia --startup-file=no --project=. scripts/check_r5_commitment_artifacts.jl results/summaries/r5-commitment
+        run: julia --startup-file=no --project=. scripts/check_historical_evidence.jl r5-commitment
       - name: R5 finite-support risk immutable evidence
-        run: julia --startup-file=no --project=. scripts/check_r5_risk_artifacts.jl results/summaries/r5-risk
+        run: julia --startup-file=no --project=. scripts/check_historical_evidence.jl r5-risk
       - name: R5 strategic frozen inputs and mapping
         run: julia --startup-file=no --project=. scripts/check_r5_strategic.jl
       - name: R5 strategic immutable evidence
-        run: julia --startup-file=no --project=. scripts/check_r5_strategic_artifacts.jl results/summaries/r5-strategic
+        run: julia --startup-file=no --project=. scripts/check_historical_evidence.jl r5-strategic
       - name: R5 strategic Benders mapping
         run: julia --startup-file=no --project=. scripts/check_r5_strategic_benders.jl
       - name: R5 strategic Benders frozen design
-        run: julia --startup-file=no --project=. scripts/test_r5_strategic_benders_study.jl
+        run: julia --startup-file=no --project=. scripts/check_historical_evidence.jl r5-strategic-benders study
       - name: R5 strategic Benders immutable evidence
-        run: julia --startup-file=no --project=. scripts/check_r5_strategic_benders_artifacts.jl results/summaries/r5-strategic-benders
+        run: julia --startup-file=no --project=. scripts/check_historical_evidence.jl r5-strategic-benders
       - name: R4 immutable evidence
         run: julia --startup-file=no --project=. scripts/check_r4_artifacts.jl
       - name: R3 baseline frozen design and mapping

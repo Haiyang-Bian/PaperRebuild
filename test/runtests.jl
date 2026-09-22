@@ -1,6 +1,9 @@
 using Test
 using PaperRebuild
 
+# 各CI分组在干净克隆中独立执行，不能依赖先前分组创建的本地临时目录。
+mkpath(joinpath(@__DIR__, "..", "tmp"))
+
 @testset "Package scaffold (not thesis validation)" begin
     @test PaperRebuild.hello("Julia") == "Hello, Julia"
     @test PaperRebuild.domath(2) == 7
@@ -13,6 +16,7 @@ PAPERREBUILD_TEST_STAGE in
     error("Unknown test stage")
 
 if PAPERREBUILD_TEST_STAGE in ("all", "r1_r4")
+    include("historical_evidence.jl")
     include("r1.jl")
     include("r1_entry.jl")
     include("r2.jl")
