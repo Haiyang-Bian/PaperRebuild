@@ -51,6 +51,7 @@ function r9_distributed_cli(args)
         modes,
         spec,
         budget_sec = rules["budget_sec"],
+        objective_record = Symbol(get(rules, "objective_record", "reported")),
     )
     r["execution"]=Dict(
         "rules_text"=>rule_text,

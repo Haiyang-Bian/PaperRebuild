@@ -1,0 +1,500 @@
+# R9-N1:N4：仅用于已冻结的固定正流树；原R2/R3建模与历史结果不改。
+function r9_reduced_row!(model, cs, checks, id, x, sense, rhs; unit = "K", entity = "input", t = 0)
+    if x isa Number || (x isa AffExpr && all(iszero(a) for (a, _) in linear_terms(x)))
+        a = x isa Number ? Float64(x) : constant(x)
+        residual = sense == :eq ? abs(a-rhs) : sense == :le ? max(0, a-rhs) : max(0, rhs-a)
+        # 常数行仍属于模型：先检查并保留。此舍入门槛小于既有A1，不放入求解器反复消元。
+        tol = 1e-10*max(1, abs(rhs))
+        push!(
+            checks,
+            (;
+                equation = id,
+                entity = string(entity),
+                t,
+                value = a,
+                rhs,
+                sense = string(sense),
+                unit,
+                residual,
+                tolerance = tol,
+                pass = residual <= tol,
+            ),
+        )
+        residual <= tol || throw(ArgumentError("固定模式常数关系不相容：$id ($residual $unit)"))
+        return
+    end
+    cr =
+        sense == :eq ? @constraint(model, x == rhs) :
+        sense == :le ? @constraint(model, x <= rhs) : @constraint(model, x >= rhs)
+    r2_add!(cs, id, cr)
+end
+
+function r9_affine_transport(c, flow, inlet, p, side, centre)
+    d, pipe = c.data, c.data["heat"]["pipes"][p]
+    T, dt = d["T"], 3600d["dt_h"]
+    mass = d["heat"]["rho_kg_m3"]*pipe["area_m2"]*pipe["length_m"]
+    lag = ceil(Int, mass/(dt*pipe["flow_min"]))+1
+    star, outlet = Vector{AffExpr}(undef, T), Vector{AffExpr}(undef, T)
+    alpha, beta = zeros(T, lag+1), zeros(T, lag+1)
+    for t in 1:T
+        fs = [t-s > 0 ? flow[p, t-s] : pipe["flow_history"][end+t-s] for s in 0:lag]
+        w = water_mass_weights(fs, mass, dt)
+        alpha[t, :], beta[t, :] = w.α, w.β
+        # 先除以当前流量，再使用相对温度。历史仍来自冻结输入。
+        weights = (w.β .- w.α) .* fs ./ fs[1]
+        star[t] = AffExpr(centre*(sum(weights)-1))
+        for s in 0:lag
+            theta = t-s > 0 ? inlet[t-s] : pipe[side*"_history_K"][end+t-s]-centre
+            star[t] += weights[s+1]*theta
+        end
+        a = exp(
+            -pipe["epsilon_W_mK"]*dt/(
+                2d["heat"]["cp_J_kgK"]*d["heat"]["rho_kg_m3"]*pipe["area_m2"]
+            )*(sum(w.α)+sum(w.β[2:end])),
+        )
+        outlet[t] = a*star[t]+(1-a)*(d["ambient_K"][t]-centre)
+    end
+    return (; star, outlet, alpha, beta)
+end
+
+# 二进制浮点系数转为精确有理数。只作秩认证，不按大小丢弃系数或选择有利的秩阈值。
+function r9_exact_nullspace(A)
+    R = Rational{BigInt}.(A)
+    row = 1
+    pivots = Int[]
+    for col in axes(R, 2)
+        candidate = findfirst(i -> R[i, col] != 0, row:size(R, 1))
+        isnothing(candidate) && continue
+        selected = row + candidate - 1
+        R[row, :], R[selected, :] = copy(R[selected, :]), copy(R[row, :])
+        R[row, :] ./= R[row, col]
+        push!(pivots, col)
+        for i in (row+1):size(R, 1)
+            factor = R[i, col]
+            factor == 0 || (R[i, :] .-= factor .* R[row, :])
+        end
+        row += 1
+        row > size(R, 1) && break
+    end
+    free = setdiff(collect(axes(A, 2)), pivots)
+    N = zeros(Rational{BigInt}, size(A, 2), length(free))
+    for (j, col) in enumerate(free)
+        N[col, j] = 1
+    end
+    for i in reverse(eachindex(pivots)), j in eachindex(free)
+        col = pivots[i]
+        N[col, j] = -sum(R[i, k]*N[k, j] for k in (col+1):size(A, 2); init = Rational{BigInt}(0))
+    end
+    all(
+        sum(Rational{BigInt}(A[i, k])*N[k, j] for k in axes(A, 2)) == 0 for
+        i in axes(A, 1), j in eachindex(free)
+    ) || error("精确零空间认证失败")
+    # 512位两次正交化保留完整有理数零空间；转换回Float64后另验正交性和终端误差界。
+    U = setprecision(BigFloat, 512) do
+        Q = zeros(BigFloat, size(N))
+        for j in axes(N, 2)
+            q = BigFloat.(N[:, j])
+            for _ in 1:2, k in 1:(j-1)
+                q .-= sum(Q[:, k] .* q) .* Q[:, k]
+            end
+            magnitude = sqrt(sum(abs2, q))
+            magnitude > 0 || error("零空间正交化退化")
+            Q[:, j] = q ./ magnitude
+        end
+        Float64.(Q)
+    end
+    gram_error = maximum(
+        sum(abs(sum(U[:, i] .* U[:, j]) - (i == j ? 1.0 : 0.0)) for j in axes(U, 2)) for
+        i in axes(U, 2);
+        init = 0.0,
+    )
+    gram_error < 1e-10 || error("零空间Float64表示缺少正交性")
+    return (; U, rank = length(pivots), free, gram_error)
+end
+
+function r9_anchor_terminal(c, b, mode)
+    model, h, T = b.model, c.data["heat"], c.data["T"]
+    coordinates = [(j, t) for (j, n) in enumerate(h["nodes"]) if n["role"] == "source" for t in 1:T]
+    refs = get(b.constraints, "R9-P6", Any[])
+    sources =
+        mode == :CF_VT ?
+        [
+            only(x for (_, x) in linear_terms(b.variables["tau_S_port"][j, t])) for
+            (j, t) in coordinates
+        ] : VariableRef[]
+    A = [coefficient(constraint_object(cr).func, x) for cr in refs, x in sources]
+    reference = h["S_reference_K"] - b.temperature_centre_K
+    shifts = [
+        value(_ -> reference, constraint_object(cr).func) - constraint_object(cr).set.value for
+        cr in refs
+    ]
+    maximum(abs, shifts; init = 0.0) <= 1e-10 ||
+        throw(ArgumentError("参考锚定超过1e-10 K舍入修正界"))
+    basis = r9_exact_nullspace(A)
+    U = basis.U
+    span = maximum(abs.(h["S_bounds_K"] .- h["S_reference_K"]))
+    radius = sqrt(length(sources))*span/sqrt(1-basis.gram_error)*(1+1e-12)
+    # 用原始二进制系数精确计算A*Float64(U)，据y的共同范数上界给出逐行最坏终端误差。
+    error_bound = maximum(
+        Float64(
+            sum(
+                abs(sum(Rational{BigInt}(A[i, k])*Rational{BigInt}(U[k, j]) for k in axes(A, 2))) for j in axes(U, 2);
+                init = Rational{BigInt}(0),
+            ),
+        )*radius for i in axes(A, 1);
+        init = 0.0,
+    )
+    error_bound <= 1e-10 || throw(ArgumentError("零空间转换误差超过1e-10 K"))
+    y = @variable(model, [1:size(U, 2)], lower_bound=-radius, upper_bound=radius)
+    replacement = Dict(
+        sources[i] => reference + sum(U[i, j]*y[j] for j in axes(U, 2); init = AffExpr(0.0)) for
+        i in eachindex(sources)
+    )
+    substitute(x::Number) = x
+    substitute(x::VariableRef) = get(replacement, x, x)
+    substitute(x::AffExpr) =
+        constant(x) + sum(a*substitute(v) for (a, v) in linear_terms(x); init = AffExpr(0.0))
+    for cr in refs
+        delete(model, cr)
+    end
+    delete!(b.constraints, "R9-P6")
+    for constraints in values(b.constraints), i in eachindex(constraints)
+        cr = constraints[i]
+        obj = constraint_object(cr)
+        obj.func isa AffExpr || continue
+        any(haskey(replacement, x) for (_, x) in linear_terms(obj.func)) || continue
+        expression = substitute(obj.func)
+        constraints[i] = @constraint(model, expression in obj.set)
+        delete(model, cr)
+    end
+    variables = Dict(k => map(substitute, array) for (k, array) in b.variables)
+    variables["r9_terminal_coordinates"] = y
+    # 旧源温变量的显式边界也迁移到完整零空间，不能因删除变量而遗漏物理界。
+    for x in sources
+        r2_add!(
+            b.constraints,
+            "R9-N6-source-bound",
+            @constraint(model, replacement[x] >= lower_bound(x))
+        )
+        r2_add!(
+            b.constraints,
+            "R9-N6-source-bound",
+            @constraint(model, replacement[x] <= upper_bound(x))
+        )
+    end
+    delete(model, sources)
+    certificate = Dict{String,Any}(
+        "method"=>"reference_anchored",
+        "rank_exact_binary"=>basis.rank,
+        "source_coordinates"=>mode == :CF_VT ? [collect(x) for x in coordinates] : Vector{Int}[],
+        "free_source_count"=>size(U, 2),
+        "anchor_shifts_K"=>shifts,
+        "anchor_shift_limit_K"=>1e-10,
+        "basis_gram_error"=>basis.gram_error,
+        "basis_error_bound_K"=>error_bound,
+        "basis_coordinate_bound_K"=>radius,
+        "basis"=>[collect(row) for row in eachrow(U)],
+        "terminal_matrix"=>[collect(row) for row in eachrow(A)],
+    )
+    return merge(
+        b,
+        (;
+            variables,
+            terminal_certificate = certificate,
+            variant = replace(b.variant, "forward"=>"reference_anchored"),
+            class = r2_model_class(model),
+        ),
+    )
+end
+
+"""
+    build_r9_reduced_model(case; mode=:CF_CT, physical=false, optimizer=nothing, terminal=:literal)
+
+R9固定流量的前向仿射表示，保留原设备及电网块。源供温为独立热变量；
+输运、混合、负荷回温和热功率沿树代入，计算以相对温度进行，输出仍为K、MW和kg/s。
+固定正流下水压以κ=μm²和树路径压降构造可行见证，不改变费用或设备控制。
+常数关系在建模前检查并保存；浮点常数残差不冒称数学上严格为零。
+返回原验证器所需全部数值表达式、公式映射和constant_checks。不求解、不写文件。
+默认只支持本批CF模式；显式flow_schedule可给出VF模式的管道×时段固定流量子问题。
+新增路径保留原输入及历史，独立检查末端流量，不把参考源温重新锚定到任意新流量。
+未提供投影梯度或参数对偶接口。
+terminal=:rank_checked_rhs按当前固定流量的全部终端方程认证完整仿射空间；仅允许不超过1e-10 K的
+显式数值表示误差，不用参考调度构造特解，有意义的不相容流量会被拒绝（R9-F1—F2）。
+该选项仅作敏感性诊断：微小右端变化仍可能显著改变源温，不作为默认或PG表示。
+terminal=:roundoff_band显式保留全部源温坐标，将每条终端等式改为±2^-34 K区间；
+这是项目数值解释而非严格等价代数，仍须通过原A1及独立周期检查（R9-F3）。
+terminal=:reference_anchored显式采用参考轨迹锚定的终端解释：逐行锚定改动必须不超过1e-10 K，
+再以精确有理数认证完整零空间，使用512位正交化及有界Float64转换，不丢弃小奇异值或自由度。
+它修正舍入后的终端常数，不冒称与字面矩阵完全相同；原A1和终端输出仍须独立检查。
+"""
+function build_r9_reduced_model(
+    c::R2Case;
+    mode = :CF_CT,
+    physical = false,
+    optimizer = nothing,
+    terminal = :literal,
+    flow_schedule = nothing,
+)
+    mode in (:CF_CT, :CF_VT, :VF_CT, :VF_VT) || throw(ArgumentError("未知前向运行模式"))
+    mode in (:VF_CT, :VF_VT) &&
+        isnothing(flow_schedule) &&
+        throw(ArgumentError("VF前向子问题必须显式给定流量，不能悄悄使用参考流量"))
+    terminal in (:literal, :reference_anchored, :rank_checked_rhs, :roundoff_band) ||
+        throw(ArgumentError("未知终端数值解释"))
+    terminal == :roundoff_band && return r9_band_fixed_terminal(
+        build_r9_reduced_model(c; mode, physical, optimizer, flow_schedule, terminal = :literal),
+    )
+    terminal == :rank_checked_rhs && return r9_parameterize_fixed_terminal(
+        c,
+        build_r9_reduced_model(c; mode, physical, optimizer, flow_schedule, terminal = :literal),
+        mode,
+    )
+    terminal == :reference_anchored &&
+        (!isnothing(flow_schedule) || mode in (:VF_CT, :VF_VT)) &&
+        throw(ArgumentError("旧参考锚定不适用于显式流量子问题"))
+    terminal == :reference_anchored && return r9_anchor_terminal(
+        c,
+        build_r9_reduced_model(c; mode, physical, optimizer, terminal = :literal),
+        mode,
+    )
+    audit_r9_pv_input(c).pass || throw(ArgumentError("R9输入未通过"))
+    # 复用经过回归的设备/电网块；热块单独替换，不改变旧入口的默认行为。
+    b =
+        isnothing(flow_schedule) ? build_r9_pv_model(c; mode, physical) :
+        build_r9_flow_model(c; mode, physical, flow_schedule)
+    model, d = b.model, c.data
+    h, T = d["heat"], d["T"]
+    keepkeys = ("P_device", "H_device", "P_grid", "Q_grid", "P_branch", "Q_branch", "v", "ell")
+    v = Dict{String,Any}(key => b.variables[key] for key in keepkeys)
+    keepvars = Set(x for a in values(v) for x in a)
+    keepids = Set(("3-2", "3-7", "3-9", "3-10", "3-11", "3-12", "R3-electric-equality"))
+    cs = Dict{String,Vector{Any}}()
+    for (id, refs) in b.constraints
+        if id in keepids
+            cs[id] = refs
+        else
+            for cr in refs
+                delete(model, cr)
+            end
+        end
+    end
+    delete(model, [x for x in all_variables(model) if x ∉ keepvars])
+    checks = NamedTuple[]
+    K, E = length(h["nodes"]), length(h["pipes"])
+    order, _ = r9_tree_order(K, [[p["from"], p["to"]] for p in h["pipes"]], 1)
+    m = r2_flow_matrix(c, flow_schedule)
+    port = r2_fixed_port_flows(d, m)
+    all(port[j, t] > 0 for j in 1:K, t in 1:T if h["nodes"][j]["role"] != "transit") ||
+        error("正端口流量必须显式提供")
+    centre = (h["R_bounds_K"][1]+h["S_bounds_K"][2])/2
+    theta = Dict{String,Matrix{AffExpr}}()
+    for side in ("S", "R")
+        for (suffix, n) in (("mix", K), ("port", K), ("in", E), ("out", E), ("star", E))
+            theta[side*"_"*suffix] = [AffExpr(0.0) for _ in 1:n, _ in 1:T]
+        end
+    end
+    for (j, node) in enumerate(h["nodes"]), t in 1:T
+        node["role"] == "source" || continue
+        theta["S_port"][j, t] =
+            mode in (:CF_CT, :VF_CT) ? AffExpr(h["S_reference_K"]-centre) :
+            @variable(
+                model,
+                lower_bound = h["S_bounds_K"][1]-centre,
+                upper_bound = h["S_bounds_K"][2]-centre
+            )
+    end
+    for side in ("S", "R"), j in (side == "S" ? order : reverse(order))
+        role = h["nodes"][j]["role"]
+        if side == "R" && role == "load"
+            for t in 1:T
+                theta["R_port"][j, t] =
+                    theta["S_mix"][j, t]-h["nodes"][j]["H_MW"][t]/(h["cp_J_kgK"]/1e6*port[j, t])
+            end
+        end
+        edges, local_in = r2_inflows(d, side, j)
+        for t in 1:T
+            total = sum(m[p, t] for p in edges; init = 0.0)+(local_in ? port[j, t] : 0.0)
+            total > 0 || error("混合入流为零")
+            fractions = [m[p, t]/total for p in edges]
+            local_in && push!(fractions, port[j, t]/total)
+            # 保留浮点比值和不恰好为1时的坐标平移常数，禁止静默归一化权重。
+            mix = AffExpr(centre*(sum(fractions)-1))
+            for p in edges
+                mix += (m[p, t]/total)*theta[side*"_out"][p, t]
+            end
+            local_in && (mix += (port[j, t]/total)*theta[side*"_port"][j, t])
+            theta[side*"_mix"][j, t] = mix
+            if (side == "S" && role != "source") || (side == "R" && role != "load")
+                theta[side*"_port"][j, t] = mix
+            end
+        end
+        outgoing = findall(p -> p[side == "S" ? "from" : "to"] == j, h["pipes"])
+        for p in outgoing
+            theta[side*"_in"][p, :] = theta[side*"_mix"][j, :]
+            tr = r9_affine_transport(c, m, theta[side*"_in"][p, :], p, side, centre)
+            theta[side*"_star"][p, :], theta[side*"_out"][p, :] = tr.star, tr.outlet
+            v["alpha_"*string(p)], v["beta_"*string(p)] = tr.alpha, tr.beta
+        end
+    end
+    for key in sort(collect(keys(theta)))
+        array = theta[key]
+        side = first(split(key, "_"))
+        lo, hi = h[side*"_bounds_K"]
+        for j in axes(array, 1), t in axes(array, 2)
+            x = array[j, t]
+            r9_reduced_row!(
+                model,
+                cs,
+                checks,
+                "R9-N2-temperature",
+                x,
+                :ge,
+                lo-centre;
+                entity = key*string(j),
+                t,
+            )
+            r9_reduced_row!(
+                model,
+                cs,
+                checks,
+                "R9-N2-temperature",
+                x,
+                :le,
+                hi-centre;
+                entity = key*string(j),
+                t,
+            )
+        end
+        v["tau_"*key] = array .+ centre
+    end
+    H = Matrix{AffExpr}(undef, K, T)
+    for j in 1:K, t in 1:T
+        role = h["nodes"][j]["role"]
+        H[j, t] =
+            role == "transit" ? AffExpr(0.0) :
+            h["cp_J_kgK"]/1e6*port[j, t]*(theta["S_port"][j, t]-theta["R_port"][j, t])
+        r9_reduced_row!(
+            model,
+            cs,
+            checks,
+            "R9-N1-heat",
+            H[j, t],
+            :ge,
+            0.0;
+            unit = "MW",
+            entity = j,
+            t,
+        )
+        if role == "source"
+            r2_add!(
+                cs,
+                "3-19",
+                @constraint(
+                    model,
+                    H[j, t] == sum(
+                        v["H_device"][g, t] for
+                        g in eachindex(d["devices"]) if d["devices"][g]["heat_node"] == j;
+                        init = 0.0,
+                    )
+                )
+            )
+        else
+            r9_reduced_row!(
+                model,
+                cs,
+                checks,
+                "R9-N1-load",
+                H[j, t],
+                :eq,
+                h["nodes"][j]["H_MW"][t];
+                unit = "MW",
+                entity = j,
+                t,
+            )
+        end
+    end
+    v["H_port"], v["m_pipe"], v["m_port"], v["z_mix"] = H, m, port, Float64[]
+    path_drop = zeros(K, T)
+    kappa = [p["mu_kPa_s2_kg2"]*m[i, t]^2 for (i, p) in enumerate(h["pipes"]), t in 1:T]
+    for j in order[2:end]
+        p = only(i for (i, pipe) in enumerate(h["pipes"]) if pipe["to"] == j)
+        path_drop[j, :] = path_drop[h["pipes"][p]["from"], :] .+ kappa[p, :]
+    end
+    for t in 1:T
+        r9_reduced_row!(
+            model,
+            cs,
+            checks,
+            "R9-N3-pressure",
+            2maximum(path_drop[:, t]),
+            :le,
+            h["pressure_max_kPa"];
+            unit = "kPa",
+            t,
+        )
+    end
+    v["Phi_S"], v["Phi_R"] = h["pressure_max_kPa"] .- path_drop, path_drop
+    v["kappa_S"], v["kappa_R"] = copy(kappa), copy(kappa)
+    terminal_rows = NamedTuple[]
+    for (p, pipe) in enumerate(h["pipes"])
+        if !isnothing(flow_schedule)
+            r9_reduced_row!(
+                model,
+                cs,
+                checks,
+                "R9-V4-flow-memory",
+                m[p, T],
+                :eq,
+                last(pipe["flow_history"]);
+                unit = "kg/s",
+                entity = p,
+                t = T,
+            )
+        end
+        L = ceil(
+            Int,
+            h["rho_kg_m3"]*pipe["area_m2"]*pipe["length_m"]/(3600d["dt_h"]*pipe["flow_min"]),
+        )
+        for t in (T-L+1):T, side in ("S", "R")
+            push!(
+                terminal_rows,
+                (;
+                    expression = theta[side*"_in"][p, t],
+                    rhs = pipe[side*"_history_K"][end+t-T]-centre,
+                    entity = side*string(p),
+                    t,
+                ),
+            )
+        end
+    end
+    terminal_certificate = Dict{String,Any}("method" => string(terminal))
+    for row in terminal_rows
+        r9_reduced_row!(
+            model,
+            cs,
+            checks,
+            "R9-P6",
+            row.expression,
+            :eq,
+            row.rhs;
+            entity = row.entity,
+            t = row.t,
+        )
+    end
+    isnothing(optimizer) || set_optimizer(model, optimizer)
+    return merge(
+        b,
+        (;
+            variables = v,
+            constraints = cs,
+            constant_checks = checks,
+            terminal_certificate,
+            temperature_centre_K = centre,
+            class = r2_model_class(model),
+            variant = (
+                !isnothing(flow_schedule) ? "r9_fixed_flow_forward_" :
+                terminal == :literal ? "r9_forward_" : "r9_reference_anchored_"
+            )*(physical ? "original_grid_v1" : "socp_v1"),
+        ),
+    )
+end

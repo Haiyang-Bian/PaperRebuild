@@ -1,0 +1,32 @@
+actor = 4
+input_sha256 = "5f1ddce8f60ff26281cadd450d5755327d54ab9bb197012dbe9f0121e025cad8"
+julia_version = "1.12.6"
+jump_reported = 14.398767689011876
+model_class = "SOCP"
+native_BarIterCount = 12
+native_BoundVio = 0.0
+native_ConstrVio = 1.3695284906134475e-9
+native_ObjBound = 14.395255221835054
+native_ObjVal = 14.398767689011876
+native_evaluated = 14.398767537896175
+native_objective_type = "MathOptInterface.ScalarQuadraticFunction{Float64}"
+native_reported = 14.398767689011876
+native_variables = 2893
+original_evaluated = 14.398767537896175
+original_variables = 2749
+reported_minus_evaluated = 1.5111570128567564e-7
+schema = "r9-objective-return-probe-v1"
+solver_version = "13.0.3"
+stable_evaluated = 14.398767537896175
+termination = "OPTIMAL"
+unavailable_ComplVio = "ErrorException"
+unavailable_DualVio = "ErrorException"
+
+[solver_options]
+FeasibilityTol = 1.0e-8
+IntFeasTol = 1.0e-8
+MIPGap = 0.0001
+NonConvex = 2
+OptimalityTol = 1.0e-8
+Seed = 0
+Threads = 1

@@ -17,6 +17,12 @@
 mip_v1仅为整数启发式。零消息起步，集中解仅可用于数学嵌入测试，不得进入正式初始化。
 各块共用600秒；A4、合并A1、原电网及费用证书分别保存。不能平均消息或相加增广块界制造物理/最优性通过。
 完整原控制存档和冻结源码重读用于研究审计，不宣称隐私部署。解析测试不替代44/38节点正式对照。
+首轮固定模式含关闭管方向冲突，修正后又有第8时段区域热量不足的独立证书；不能当原整数域不可行。
+后续走廊协议是事后诊断修订，原输入不变、集中解不注入；连续集中可行不保证分布子块状态通过。
+objective_record默认reported保持旧v1；显式separate使用v2分别记录报告标量与原变量目标。
+记录可重算不等于报告一致；1e-9门槛不变，solver_objective_reports_pass的false不得隐去。
+完整子块精度未认证；LOCALLY_SOLVED/ALMOST_OPTIMAL不升级为OPTIMAL，旧失败及缺失轨迹不重判。
+原证据用r9_distributed_evidence.jl重读；热量/目标诊断用r9_distributed_diagnostics.jl与专项篡改测试。
 
 第 2 章工作先读 [模型详解与 C01–C12 疑点](../src/ch02-models.md)、[符号规则](../src/ch02-naming.md)。
 公式/符号权威数据在 `docs/reading/ch02/`，改动后用 Julia `scripts/check_ch02.jl --sync` 更新生成页。

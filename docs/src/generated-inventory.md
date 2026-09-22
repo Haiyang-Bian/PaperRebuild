@@ -153,6 +153,9 @@
 - `configs/r8/tradeoff-study.toml`
 - `configs/r9/compact-study.toml`
 - `configs/r9/detailed-preplan-study.toml`
+- `configs/r9/distributed-corridor-study.toml`
+- `configs/r9/distributed-fixed-correction.toml`
+- `configs/r9/distributed-study.toml`
 - `configs/r9/electric-cut-study.toml`
 - `configs/r9/flow-reference.toml`
 - `configs/r9/network-protocol.toml`
@@ -251,6 +254,7 @@
 - `docs/agent/tasks/2026-09-21-r9-trading-runs.md`
 - `docs/agent/tasks/2026-09-21-r9-trading-study.md`
 - `docs/agent/tasks/2026-09-22-r9-detailed-preplan.md`
+- `docs/agent/tasks/2026-09-22-r9-distributed-scale.md`
 - `docs/agent/tasks/2026-09-22-r9-distributed.md`
 - `docs/agent/tasks/2026-09-22-r9-electric-cut.md`
 - `docs/agent/tasks/2026-09-22-r9-heldout-results.md`
@@ -690,6 +694,7 @@
 - `scripts/check_r9_detailed_artifacts.jl`
 - `scripts/check_r9_detailed_preplan.jl`
 - `scripts/check_r9_distributed.jl`
+- `scripts/check_r9_distributed_artifacts.jl`
 - `scripts/check_r9_electric_cut.jl`
 - `scripts/check_r9_electric_cut_artifacts.jl`
 - `scripts/check_r9_energization.jl`
@@ -724,6 +729,7 @@
 - `scripts/check_r9_trading_delivery.jl`
 - `scripts/check_r9_trading_runs.jl`
 - `scripts/check_solvers.jl`
+- `scripts/check_test_stages.jl`
 - `scripts/collect_ch03_data.jl`
 - `scripts/compare_r1_runs.jl`
 - `scripts/compare_r3_baseline.jl`
@@ -836,6 +842,7 @@
 - `scripts/plot_r8_tradeoff.jl`
 - `scripts/plot_r9_common_witness.jl`
 - `scripts/plot_r9_compact.jl`
+- `scripts/plot_r9_distributed.jl`
 - `scripts/plot_r9_electric_cut.jl`
 - `scripts/plot_r9_evaluation.jl`
 - `scripts/plot_r9_fixed.jl`
@@ -865,6 +872,7 @@
 - `scripts/publish_r3_v3_audit_addendum.jl`
 - `scripts/publish_r3_v3_report.jl`
 - `scripts/publish_r4_assets.jl`
+- `scripts/publish_r9_distributed.jl`
 - `scripts/r1_task.jl`
 - `scripts/r2_setup.jl`
 - `scripts/r2_task.jl`
@@ -958,6 +966,9 @@
 - `scripts/r9_detailed_preplan_evidence.jl`
 - `scripts/r9_detailed_preplan_study.jl`
 - `scripts/r9_distributed.jl`
+- `scripts/r9_distributed_diagnostics.jl`
+- `scripts/r9_distributed_evidence.jl`
+- `scripts/r9_distributed_study.jl`
 - `scripts/r9_docs.jl`
 - `scripts/r9_electric_cut_evidence.jl`
 - `scripts/r9_fixed_evidence.jl`
@@ -1042,6 +1053,7 @@
 - `scripts/run_r8_energy_gurobi.jl`
 - `scripts/run_r8_gurobi.jl`
 - `scripts/run_r9_detailed_preplan.jl`
+- `scripts/run_r9_distributed_batch.jl`
 - `scripts/run_r9_gurobi.jl`
 - `scripts/run_r9_network_batch.jl`
 - `scripts/run_r9_numerics_gurobi.jl`
@@ -1166,6 +1178,8 @@
 - `scripts/test_r9_compact_risk.jl`
 - `scripts/test_r9_detailed_preplan.jl`
 - `scripts/test_r9_distributed.jl`
+- `scripts/test_r9_distributed_diagnostics.jl`
+- `scripts/test_r9_distributed_study.jl`
 - `scripts/test_r9_electric_cut.jl`
 - `scripts/test_r9_evaluation.jl`
 - `scripts/test_r9_fixed.jl`
@@ -1519,6 +1533,7 @@
 - `test/r9_compact_risk.jl`
 - `test/r9_detailed_preplan.jl`
 - `test/r9_distributed.jl`
+- `test/r9_distributed_study.jl`
 - `test/r9_electric_cut.jl`
 - `test/r9_evaluation.jl`
 - `test/r9_fixed.jl`
@@ -1596,6 +1611,7 @@
 - `docs/src/assets/r8-tradeoff-20260920-v1/`
 - `docs/src/assets/r9-common-20260921-v1/`
 - `docs/src/assets/r9-compact-20260921-v2/`
+- `docs/src/assets/r9-distributed-corridor-v1/`
 - `docs/src/assets/r9-electric-cut-v1/`
 - `docs/src/assets/r9-fixed/`
 - `docs/src/assets/r9-flow/`
@@ -1699,6 +1715,12 @@
 - `results/summaries/r9-compact-report-20260921-v1/`
 - `results/summaries/r9-detailed-preplan-evidence-20260922-v1/`
 - `results/summaries/r9-detailed-preplan-input-20260922-v1/`
+- `results/summaries/r9-distributed-correction-evidence-20260922-v1/`
+- `results/summaries/r9-distributed-corridor-evidence-20260922-v1/`
+- `results/summaries/r9-distributed-corridor-figures-20260922-v1/`
+- `results/summaries/r9-distributed-diagnostics-20260922-v1/`
+- `results/summaries/r9-distributed-evidence-20260922-v1/`
+- `results/summaries/r9-distributed-figures-20260922-v2/`
 - `results/summaries/r9-electric-cut-evidence-20260922-v1/`
 - `results/summaries/r9-fixed-20260921-v4/`
 - `results/summaries/r9-fixed-figures-20260921-v4/`

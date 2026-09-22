@@ -20,7 +20,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest]
-        stage: [r1_r4, r5_r6, r7_r9]
+        stage: [r1_r4, r5_r6, r7_r8, r9_physics, r9_markets]
     runs-on: ${{ matrix.os }}
     env:
       JULIA_NUM_THREADS: '1'
@@ -53,6 +53,8 @@ jobs:
       - uses: julia-actions/cache@v2
       - name: Restore environments
         run: julia --startup-file=no --project=. scripts/bootstrap.jl
+      - name: Complete test-stage partition
+        run: julia --startup-file=no --project=. scripts/check_test_stages.jl
       - name: Chapter 2 source and symbol mapping
         run: julia --startup-file=no --project=. scripts/check_ch02.jl
       - name: Chapter 3 source and symbol mapping

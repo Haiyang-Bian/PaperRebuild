@@ -1,5 +1,12 @@
 {
   "inputs": [
+    {"id":"r9DistributedEvidence","type":"promptString","description":"冻结分布证据包；只读重验","default":"results/summaries/r9-distributed-corridor-evidence-20260922-v1"},
+    {"id":"r9DistributedDiagnostics","type":"promptString","description":"热量反例及目标标量诊断包；只读重验","default":"results/summaries/r9-distributed-diagnostics-20260922-v1"},
+    {"id":"r9DistributedFigures","type":"promptString","description":"F52/F53新目录；不覆盖已有图","default":"results/runs/new-r9-distributed-figures"},
+    {"id":"r9DistributedSavedFigures","type":"promptString","description":"已有F52/F53目录；只读检查","default":"results/summaries/r9-distributed-corridor-figures-20260922-v1"},
+    {"id":"r9DistributedStudy","type":"promptString","description":"规模分布目录；freeze默认事后走廊修订协议，必须为新路径","default":"results/runs/r9-distributed-corridor-20260922-v1"},
+    {"id":"r9DistributedParent","type":"promptString","description":"原网络冻结批次目录","default":"results/runs/r9-network-20260921-v1"},
+    {"id":"r9DistributedMethod","type":"pickString","description":"运行一个已冻结方法；不可覆盖已运行ID","options":["fixed-convex-central","fixed-convex-admm","fixed-mip-central","fixed-mip-admm","joint-mip-central","joint-mip-admm"]},
     {"id":"r9DistributedInput","type":"promptString","description":"分布协调输入TOML；须为已冻结输入","default":""},
     {"id":"r9DistributedRules","type":"promptString","description":"分布算法/模式/求解器规则TOML；运行前确定","default":""},
     {"id":"r9DistributedDirectory","type":"promptString","description":"新分布运行的父目录","default":"results/runs/r9-distributed"},
@@ -236,6 +243,16 @@
     }
   ],
   "tasks": [
+    {"label":"PaperRebuild: Test-stage coverage","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_test_stages.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 distributed evidence check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_distributed_evidence.jl","check","${input:r9DistributedEvidence}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 distributed diagnostic witness check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_distributed_diagnostics.jl","${input:r9DistributedDiagnostics}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 distributed scientific figures","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=docs","scripts/plot_r9_distributed.jl","${input:r9DistributedEvidence}","${input:r9DistributedFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 distributed figure source check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_distributed_artifacts.jl","${input:r9DistributedEvidence}","${input:r9DistributedSavedFigures}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 distributed study rules tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_distributed_study.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 distributed study freeze","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_distributed_study.jl","freeze","${input:r9DistributedParent}","${input:r9DistributedStudy}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 distributed study check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_distributed_study.jl","check","${input:r9DistributedStudy}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 distributed frozen method (Clarabel)","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","${input:r9DistributedStudy}/code/scripts/r9_distributed_study.jl","run","${input:r9DistributedStudy}","${input:r9DistributedMethod}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 distributed frozen method (Gurobi)","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","${input:r9DistributedStudy}/code/scripts/r9_distributed_study.jl","run","${input:r9DistributedStudy}","${input:r9DistributedMethod}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 distributed run (Clarabel)","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_distributed.jl","run","${input:r9DistributedInput}","${input:r9DistributedRules}","${input:r9DistributedDirectory}","${input:r9DistributedId}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 distributed run (Gurobi)","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=tools/solvers","scripts/r9_distributed.jl","run","${input:r9DistributedInput}","${input:r9DistributedRules}","${input:r9DistributedDirectory}","${input:r9DistributedId}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 distributed saved-run check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_distributed.jl","check","${input:r9DistributedRun}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},

@@ -1,0 +1,46 @@
+budget_sec = 600.0
+central_solution_injected = false
+manifest_sha256 = "1623bf96b2637084aca0501cbcf5d3b1f6cf366d0fc38d1ef9789f92a8670aea"
+method_budget_pass = true
+method_elapsed_sec = 35.86590179998893
+process_budget_pass = true
+process_elapsed_sec = 36.78594410000369
+raw_before_validation_sha256 = "474d01d030fb46c7e7da7126c59ea9918f0b9f8fbfd4c589c1f8a37c6565fada"
+raw_result_sha256 = "021d5d48cba07e0af4ccb61a4aeada1c2281082e3d62e626f57a2379855ff35f"
+record = "record"
+record_manifest_sha256 = "408122ea8fb07d39919d64550285b1ea243db7014d628876dc89ad4fdf96924f"
+schema = "r9-distributed-study-receipt-v1"
+start_utc = "2026-09-22T03:28:59.916"
+status = "solver_failure"
+
+[entry]
+case = "equipment-fixed"
+domain = "fixed_modes"
+id = "fixed-convex-admm"
+method = "admm"
+solver = "Clarabel"
+
+[packages]
+Clarabel = "0.11.1"
+JuMP = "1.31.2"
+MathOptInterface = "1.53.0"
+
+[validation]
+best_model_cost_CNY = nan
+best_model_found = false
+best_physical_cost_CNY = nan
+best_physical_found = false
+consensus_A4_pass = false
+cost_optimization_complete = false
+full_thermal_physics_certified = false
+iterations = 0
+last_cost_CNY = nan
+last_electric_original_pass = false
+last_model_pass = false
+max_solver_objective_report_relative_error = 0.0
+mixed_integer_heuristic = false
+record_pass = true
+solver_objective_report_mismatch_count = 0
+solver_objective_reports_checked = 0
+solver_objective_reports_pass = false
+subproblem_accuracy_certified = false

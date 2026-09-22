@@ -1,0 +1,49 @@
+budget_sec = 600.0
+central_solution_injected = false
+manifest_sha256 = "78f1df14bb9b7d4018b8e484428eeefb3e21ea3f81a5a84d33c62dc411d02544"
+method_budget_pass = true
+method_elapsed_sec = 31.766337200067937
+process_budget_pass = true
+process_elapsed_sec = 34.329377399990335
+raw_result_sha256 = "6b379197492819238939f51932333b12abccdabbf4b0e320f6ff1218b3157243"
+record = "record"
+record_manifest_sha256 = "f97c6ca27fb441852a3f8181b0ae70ef1ecf577dff58e16f5f3b3f4dd9eb3b36"
+schema = "r9-distributed-study-receipt-v1"
+start_utc = "2026-09-22T02:31:38.103"
+status = "solver_optimal"
+
+[entry]
+case = "equipment-fixed"
+domain = "mixed_integer"
+id = "fixed-mip-central"
+method = "central"
+solver = "Gurobi"
+
+[packages]
+Clarabel = "0.11.1"
+Gurobi = "1.9.3"
+Gurobi_jll = "13.0.3"
+JuMP = "1.31.2"
+MathOptInterface = "1.53.0"
+
+[validation]
+adopted_physical_pass = true
+cost_optimization_complete = true
+electric_original_pass = true
+full_thermal_physics_certified = false
+heat_energy_mass_pass = true
+ledger_pass = true
+local_cost_optimization_complete = false
+local_plans_pass = true
+model_pass = true
+
+    [[validation.stage_checks]]
+    electric_original_pass = true
+    failed_row_count = 0
+    full_thermal_physics_certified = false
+    heat_energy_mass_pass = true
+    ledger_pass = true
+    model_pass = true
+    recomputed_objective_CNY = 654505.2527173078
+    row_count = 42972
+    system_cost_CNY = 654505.2527173078

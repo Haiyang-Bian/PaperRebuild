@@ -8,7 +8,8 @@ using PaperRebuild
 end
 
 const PAPERREBUILD_TEST_STAGE = isempty(ARGS) ? "all" : popfirst!(ARGS)
-PAPERREBUILD_TEST_STAGE in ("all", "r1_r4", "r5_r6", "r7_r9") && isempty(ARGS) ||
+PAPERREBUILD_TEST_STAGE in
+("all", "r1_r4", "r5_r6", "r7_r9", "r7_r8", "r9_physics", "r9_markets") && isempty(ARGS) ||
     error("Unknown test stage")
 
 if PAPERREBUILD_TEST_STAGE in ("all", "r1_r4")
@@ -60,7 +61,7 @@ if PAPERREBUILD_TEST_STAGE in ("all", "r5_r6")
     include("r6_continuation.jl")
 end
 
-if PAPERREBUILD_TEST_STAGE in ("all", "r7_r9")
+if PAPERREBUILD_TEST_STAGE in ("all", "r7_r9", "r7_r8")
     include("ch06_audit.jl")
     include("r7_recovery.jl")
     include("r7_commitment.jl")
@@ -85,21 +86,34 @@ if PAPERREBUILD_TEST_STAGE in ("all", "r7_r9")
     include("r7_critical_service.jl")
     include("r7_energization.jl")
     include("r7_switch_control.jl")
+end
+
+if PAPERREBUILD_TEST_STAGE in ("all", "r7_r9", "r9_physics")
     include("r9_resilience.jl")
     include("r9_preplan.jl")
     include("r9_detailed_preplan.jl")
     include("r9_electric_cut.jl")
+end
+
+if PAPERREBUILD_TEST_STAGE in ("all", "r7_r9", "r9_markets")
     include("r9_evaluation.jl")
+end
+
+if PAPERREBUILD_TEST_STAGE in ("all", "r7_r9", "r9_physics")
     include("r9_sources.jl")
     include("r9_pv.jl")
     include("r9_reduced.jl")
     include("r9_flow.jl")
     include("r9_heat_memory.jl")
     include("r9_fixed.jl")
+end
+
+if PAPERREBUILD_TEST_STAGE in ("all", "r7_r9", "r9_markets")
     include("r9_trading.jl")
     include("r9_trading_runs.jl")
     include("r9_network.jl")
     include("r9_distributed.jl")
+    include("r9_distributed_study.jl")
     include("r9_reserve.jl")
     include("r9_risk.jl")
     include(joinpath(@__DIR__, "..", "scripts", "test_r9_reserve_support.jl"))

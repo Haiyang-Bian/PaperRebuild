@@ -38,7 +38,22 @@ end
     @test_throws ErrorException R9DistributedSpec(; algorithm = :unregistered)
     for c in (r9_trading_fixture(; store = true), r9d_eight_fixture())
         modes=r9d_modes(c)
-        r=solve_r9_distributed(c; optimizer = r9d_optimizer(), modes, budget_sec = 60)
+        observed=Ref{Any}(nothing)
+        observer=x->begin
+            observed[]=deepcopy(x)
+            x["status"]="observer_must_not_mutate_solver_result"
+            empty!(x["trace"])
+        end
+        r=solve_r9_distributed(
+            c;
+            optimizer = r9d_optimizer(),
+            modes,
+            budget_sec = 60,
+            on_raw_result = observer,
+        )
+        @test observed[]!==nothing && !haskey(observed[], "validation")
+        @test observed[]["trace"]==r["trace"]
+        @test observed[]["status"]==r["status"]
         @test r["status"]=="consensus_converged"
         @test r["validation"]["record_pass"] && r["validation"]["consensus_A4_pass"]
         @test r["validation"]["best_model_found"] && !r["cost_optimization_complete"]
@@ -196,6 +211,70 @@ function r9d_solve!(model)
     set_optimizer_attribute(model, "tol_gap_rel", 1e-10)
     optimize!(model)
     @test termination_status(model)==MOI.OPTIMAL
+end
+
+@testset "R9-DC4 R9-DC5 reported scalar versus saved primal objective" begin
+    c=r9_trading_fixture()
+    modes=r9d_modes(c)
+    @test_throws ErrorException solve_r9_distributed(
+        c;
+        optimizer = r9d_optimizer(),
+        modes,
+        objective_record = :unknown,
+    )
+    r=solve_r9_distributed(
+        c;
+        optimizer = r9d_optimizer(),
+        modes,
+        objective_record = :separate,
+        budget_sec = 60,
+    )
+    @test r["schema"]=="r9-distributed-run-v2" && r["objective_record"]=="separate"
+    @test r["status"]=="consensus_converged" && r["validation"]["last_model_pass"]
+    @test r["validation"]["solver_objective_reports_pass"]
+    @test !r["validation"]["subproblem_accuracy_certified"]
+    @test r["validation"]["solver_objective_reports_checked"]==3length(r["trace"])
+    # 模拟求解器标量的有限误差：原控制和数学目标保持；旧门槛继续报告false。
+    discrepancy=deepcopy(r)
+    b=discrepancy["trace"][1]["agents"][1]
+    b["augmented_objective"]+=1e-6
+    b["solver_objective_report_error"]=b["augmented_objective"]-b["augmented_objective_at_primal"]
+    b["solver_objective_report_pass"]=false
+    if haskey(b, "augmented_bound")
+        raw, bound=b["augmented_objective"], b["augmented_bound"]
+        b["augmented_relative_gap"]=max(0.0, raw-bound)/max(1.0, abs(raw))
+        b["augmented_bound_excess"]=max(0.0, bound-raw)/max(1.0, abs(raw))
+    end
+    audited=validate_r9_distributed(c, discrepancy)
+    @test audited["record_pass"] && audited["consensus_A4_pass"]
+    @test !audited["solver_objective_reports_pass"]
+    @test audited["solver_objective_report_mismatch_count"]==1
+    @test !audited["subproblem_accuracy_certified"]
+    @test audited["best_model_cost_CNY"]==r["validation"]["best_model_cost_CNY"]
+    @test b["augmented_objective"]!=b["augmented_objective_at_primal"]
+    falsepass=deepcopy(discrepancy)
+    falsepass["trace"][1]["agents"][1]["solver_objective_report_pass"]=true
+    @test_throws ErrorException validate_r9_distributed(c, falsepass)
+    for key in
+        ("augmented_objective_at_primal", "solver_objective_report_error", "augmented_objective")
+        bad=deepcopy(r)
+        bad["trace"][1]["agents"][1][key]+=0.01
+        @test_throws ErrorException validate_r9_distributed(c, bad)
+    end
+    # 旧版本继续执行原严格检查，不用新解释重判旧结果。
+    legacy=deepcopy(r)
+    legacy["schema"]="r9-distributed-run-v1"
+    oldcheck=validate_r9_distributed(c, legacy)
+    @test !haskey(oldcheck, "solver_objective_reports_pass")
+    discrepancy["schema"]="r9-distributed-run-v1"
+    @test_throws ErrorException validate_r9_distributed(c, discrepancy)
+    mktempdir() do folder
+        path=save_r9_distributed_run(c, r; directory = folder, run_id = "objective-separation")
+        @test isequal(read_r9_distributed_run(path; frozen = false).validation, r["validation"])
+        moved=joinpath(folder, "moved")
+        cp(path, moved)
+        @test isequal(read_r9_distributed_run(moved).validation, r["validation"])
+    end
 end
 
 function r9d_snapshot(c, b)
