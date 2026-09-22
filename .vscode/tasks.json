@@ -1,5 +1,6 @@
 {
   "inputs": [
+    {"id":"r9ScalabilityPrepared","type":"promptString","description":"主体拆分输入的新目录，不覆盖已有目录、不运行优化","default":"results/runs/r9-scalability-inputs-new"},
     {"id":"r9DistributedEvidence","type":"promptString","description":"冻结分布证据包；只读重验","default":"results/summaries/r9-distributed-corridor-evidence-20260922-v1"},
     {"id":"r9DistributedDiagnostics","type":"promptString","description":"热量反例及目标标量诊断包；只读重验","default":"results/summaries/r9-distributed-diagnostics-20260922-v1"},
     {"id":"r9DistributedFigures","type":"promptString","description":"F52/F53新目录；不覆盖已有图","default":"results/runs/new-r9-distributed-figures"},
@@ -243,6 +244,11 @@
     }
   ],
   "tasks": [
+    {"label":"PaperRebuild: R9 scalability prepare inputs","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_scalability_inputs.jl","prepare","results/summaries/r9-scalability-inputs-20260922-v2/parent.toml","${input:r9ScalabilityPrepared}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 scalability math tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_scalability.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 scalability mapping check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_scalability.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 scalability prepared input check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_scalability_inputs.jl","check","results/summaries/r9-scalability-inputs-20260922-v2"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: R9 scalability prepared input tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_scalability_inputs.jl","results/summaries/r9-scalability-inputs-20260922-v2"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R10 beginner frozen replay","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--depwarn=error","scripts/r10_beginner_evidence.jl","check","results/summaries/r10-beginner-20260922-v2"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R10 beginner replay tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--depwarn=error","scripts/test_r10_beginner.jl","results/summaries/r10-beginner-20260922-v2"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: Test-stage coverage","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_test_stages.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},

@@ -382,6 +382,9 @@ include("algorithms/r9_distributed.jl")
 include("reporting/r9_distributed.jl")
 export R9DistributedSpec, solve_r9_distributed, validate_r9_distributed
 export save_r9_distributed_run, read_r9_distributed_run
+include("core/r9_scalability.jl")
+include("verification/r9_scalability.jl")
+export r9_split_aggregators, r9_split_values, audit_r9_aggregator_split, r9_split_cost_identity
 export solve_r9_trading_case, validate_r9_trading_run, save_r9_trading_run
 export read_r9_trading_run, compare_r9_trading_runs
 include("verification/r9_trading_capacity.jl")

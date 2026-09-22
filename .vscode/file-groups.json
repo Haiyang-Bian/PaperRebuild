@@ -11915,6 +11915,16 @@
           "path": "docs/src/reproduction-evidence-audit.md",
           "name": "reproduction-evidence-audit.md",
           "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch04-scalability-symbols.md",
+          "name": "ch04-scalability-symbols.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/src/ch04-scalability.md",
+          "name": "ch04-scalability.md",
+          "isDirectory": false
         }
       ],
       "order": 1,
@@ -12385,6 +12395,11 @@
         {
           "path": "docs/agent/tasks/2026-09-22-r10-public-beginner.md",
           "name": "2026-09-22-r10-public-beginner.md",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/agent/tasks/2026-09-22-r9-scalability-inputs.md",
+          "name": "2026-09-22-r9-scalability-inputs.md",
           "isDirectory": false
         }
       ],
@@ -13607,6 +13622,16 @@
           "path": "src/verification/r9_distributed.jl",
           "name": "r9_distributed.jl",
           "isDirectory": false
+        },
+        {
+          "path": "src/core/r9_scalability.jl",
+          "name": "r9_scalability.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "src/verification/r9_scalability.jl",
+          "name": "r9_scalability.jl",
+          "isDirectory": false
         }
       ],
       "order": 3,
@@ -14358,6 +14383,11 @@
           "path": "configs/r9/distributed-study.toml",
           "name": "distributed-study.toml",
           "isDirectory": false
+        },
+        {
+          "path": "configs/r9/scalability-inputs.toml",
+          "name": "scalability-inputs.toml",
+          "isDirectory": false
         }
       ],
       "order": 4,
@@ -14838,6 +14868,11 @@
         {
           "path": "docs/reading/ch07/distributed.toml",
           "name": "distributed.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "docs/reading/ch04/scalability.toml",
+          "name": "scalability.toml",
           "isDirectory": false
         }
       ],
@@ -98660,6 +98695,71 @@
           "path": "results/summaries/r10-beginner-20260922-v2/src/verification/r1.jl",
           "name": "r1.jl",
           "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-scalability-inputs-20260922-v2/ag16-audit.toml",
+          "name": "ag16-audit.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-scalability-inputs-20260922-v2/ag16-mapping.toml",
+          "name": "ag16-mapping.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-scalability-inputs-20260922-v2/ag16.toml",
+          "name": "ag16.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-scalability-inputs-20260922-v2/ag32-audit.toml",
+          "name": "ag32-audit.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-scalability-inputs-20260922-v2/ag32-mapping.toml",
+          "name": "ag32-mapping.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-scalability-inputs-20260922-v2/ag32.toml",
+          "name": "ag32.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-scalability-inputs-20260922-v2/ag8-audit.toml",
+          "name": "ag8-audit.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-scalability-inputs-20260922-v2/ag8-mapping.toml",
+          "name": "ag8-mapping.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-scalability-inputs-20260922-v2/ag8.toml",
+          "name": "ag8.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-scalability-inputs-20260922-v2/fixed-modes.toml",
+          "name": "fixed-modes.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-scalability-inputs-20260922-v2/manifest.toml",
+          "name": "manifest.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-scalability-inputs-20260922-v2/parent.toml",
+          "name": "parent.toml",
+          "isDirectory": false
+        },
+        {
+          "path": "results/summaries/r9-scalability-inputs-20260922-v2/protocol.toml",
+          "name": "protocol.toml",
+          "isDirectory": false
         }
       ],
       "order": 6,
@@ -99150,6 +99250,11 @@
         {
           "path": "test/r1_entry.jl",
           "name": "r1_entry.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "test/r9_scalability.jl",
+          "name": "r9_scalability.jl",
           "isDirectory": false
         }
       ],
@@ -102656,6 +102761,26 @@
         {
           "path": "scripts/test_r10_beginner.jl",
           "name": "test_r10_beginner.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/check_r9_scalability.jl",
+          "name": "check_r9_scalability.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/r9_scalability_inputs.jl",
+          "name": "r9_scalability_inputs.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/test_r9_scalability.jl",
+          "name": "test_r9_scalability.jl",
+          "isDirectory": false
+        },
+        {
+          "path": "scripts/test_r9_scalability_inputs.jl",
+          "name": "test_r9_scalability_inputs.jl",
           "isDirectory": false
         }
       ],

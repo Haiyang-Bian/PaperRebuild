@@ -167,6 +167,8 @@ makedocs(;
             "循环与温度相关散热" => "ch04-thermal.md",
             "稳态热网采用式与符号" => "ch04-thermal-equations.md",
             "稳态循环与费用证据" => "ch04-thermal-results.md",
+            "主体数量对照与等价性" => "ch04-scalability.md",
+            "主体拆分符号表" => "ch04-scalability-symbols.md",
         ],
         "API 索引与说明" => "api.md",
         "第5章 市场与风险核查" => [
