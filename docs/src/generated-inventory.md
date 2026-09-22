@@ -268,6 +268,7 @@
 - `docs/agent/tasks/2026-09-22-r9-resilience-pilot.md`
 - `docs/agent/tasks/2026-09-22-r9-scalability-inputs.md`
 - `docs/agent/tasks/2026-09-22-r9-scalability-study.md`
+- `docs/agent/tasks/2026-09-22-research-integration.md`
 - `docs/make.jl`
 - `docs/reading/README.md`
 - `docs/reading/ch02/README.md`
@@ -544,6 +545,7 @@
 - `docs/src/reproduction-evidence-audit.md`
 - `docs/src/reproduction-findings.md`
 - `docs/src/reproduction-plan.md`
+- `docs/src/research-next-steps.md`
 - `docs/src/structure.md`
 - `docs/src/templates.md`
 - `docs/src/thesis-audit.md`
