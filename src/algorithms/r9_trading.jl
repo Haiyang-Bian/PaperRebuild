@@ -160,6 +160,19 @@ function r9_trading_stage(
 end
 
 """
+    r9_trading_deadlines(start, budget_sec, deadline)
+
+计算同一单调时钟下的截止时间与可用秒数。跨浮点数指数边界时，加减绝对时间可能
+把60秒还原为略大于60秒；可用预算始终限制在调用者声明范围内，不放宽验证门槛。
+"""
+function r9_trading_deadlines(start, budget_sec, deadline)
+    finish=deadline===nothing ? start+budget_sec : min(start+budget_sec, deadline)
+    available=clamp(finish-start, 0.0, Float64(budget_sec))
+    solve_deadline=finish-min(60.0, 0.1available)
+    return (; finish, available, solve_deadline)
+end
+
+"""
     solve_r9_trading_case(case; optimizer, operation=:central, electric=:socp,
         budget_sec=600, deadline=nothing, modes=nothing)
 
@@ -184,9 +197,7 @@ function solve_r9_trading_case(
     isfinite(budget_sec) && 0<=budget_sec<=600 || error("预算须在0至600秒")
     deadline===nothing || isfinite(deadline) || error("截止时间须有限")
     start=r3_clock()
-    finish=deadline===nothing ? start+budget_sec : min(start+budget_sec, deadline)
-    available=max(0.0, finish-start)
-    solve_deadline=finish-min(60.0, 0.1available)
+    (; finish, available, solve_deadline)=r9_trading_deadlines(start, budget_sec, deadline)
     hashes=r9_trading_science_hashes()
     spec=(; operation, electric)
     stages=Dict{String,Any}[]

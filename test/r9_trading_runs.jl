@@ -18,6 +18,26 @@ function r9_test_rehash(path, relative)
     write(file, PaperRebuild.r4_text(meta))
 end
 
+@testset "R9 trading absolute clock rounding cannot enlarge budget" begin
+    # Linux新启动运行器的单调时钟可能跨2^k秒边界；固定反例不依赖宿主启动时长。
+    start=prevfloat(1024.0)
+    @test (start+60.0)-start>60.0
+    for clock in (start, 1024.0, nextfloat(1024.0), prevfloat(2048.0))
+        limits=PaperRebuild.r9_trading_deadlines(clock, 60.0, nothing)
+        @test limits.available==60.0
+        @test limits.solve_deadline==limits.finish-6.0
+    end
+    earlier=PaperRebuild.r9_trading_deadlines(1000.0, 60.0, 1030.0)
+    @test earlier.available==30.0 && earlier.finish==1030.0
+    @test earlier.solve_deadline==1027.0
+    fractional=PaperRebuild.r9_trading_deadlines(1000.0, 0.1, nothing)
+    @test fractional.available==0.1
+    expired=PaperRebuild.r9_trading_deadlines(start, 60.0, start-1.0)
+    @test expired.available==0.0 && expired.finish<start
+    zero=PaperRebuild.r9_trading_deadlines(start, 0.0, nothing)
+    @test zero.available==0.0 && zero.finish==start
+end
+
 @testset "R9 trading shared budget and raw stage states" begin
     c=r9_trading_fixture()
     modes=r9_run_modes(c)
