@@ -32,6 +32,33 @@ function r9d_optimizer()
     )
 end
 
+@testset "R9-DC4 shared absolute deadline does not renew after loading" begin
+    c=r9_trading_fixture()
+    called=Ref(false)
+    factory=()->(called[] = true; Clarabel.Optimizer())
+    r=solve_r9_distributed(
+        c;
+        optimizer = factory,
+        modes = r9d_modes(c),
+        budget_sec = 60,
+        deadline = PaperRebuild.r3_clock()-1,
+        objective_record = :separate,
+    )
+    @test !called[] && r["built_block_count"]==0
+    @test r["status"]=="time_limit" && r["loop_budget_sec"]==0
+    @test r["validation"]["record_pass"] && isempty(r["trace"])
+    @test r["budget_sec"]==60
+    bad=deepcopy(r)
+    bad["loop_budget_sec"]=61
+    @test_throws ErrorException validate_r9_distributed(c, bad)
+    @test_throws ErrorException solve_r9_distributed(
+        c;
+        optimizer = factory,
+        modes = r9d_modes(c),
+        deadline = NaN,
+    )
+end
+
 @testset "R9-DC4 R9-DC5 zero-start consensus, replay and cost" begin
     @test_throws ErrorException R9DistributedSpec(; rho = 0)
     @test_throws ErrorException R9DistributedSpec(; max_iterations = 0)

@@ -10,6 +10,10 @@ source_printed_page = 65
 source_section = "4.5.4"
 original_input_complete = false
 formal_scalability_experiments_complete = false
+formal_protocol = "configs/r9/scalability-study.toml"
+formal_runner = "scripts/r9_scalability_study.jl"
+formal_launcher = "scripts/run_r9_scalability_batch.jl"
+formal_test = "test/r9_scalability_study.jl"
 source_note = "PDF79–82逐页核读。表4-9未说明扩容时负荷、设备和网络如何变化；ADMM轮数的跨外层汇总口径未闭合。"
 
 [[author_table_4_9]]

@@ -87,6 +87,13 @@ function validate_r9_distributed(c::R9TradingCase, r)
     all(x->isfinite(x)&&x>=0, (r["elapsed_sec"], r["budget_sec"])) && 0<r["budget_sec"]<=600 ||
         error("预算记录错误")
     r["budget_overrun"]==(r["elapsed_sec"]>r["budget_sec"]) || error("预算超出被隐藏")
+    if haskey(r, "loop_budget_sec")
+        isfinite(r["loop_budget_sec"]) && 0<=r["loop_budget_sec"]<=r["budget_sec"] ||
+            error("外部截止时间的剩余预算错误")
+        r["loop_budget_sec"]==0 &&
+            get(r, "built_block_count", -1)!=0 &&
+            error("截止已过仍构建分布块")
+    end
     function same(a, b, label)
         size(a)==size(b) &&
         all(isfinite, a) &&

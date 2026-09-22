@@ -87,7 +87,7 @@ function r9_distributed_solve_block!(b, deadline; objective_record = :reported)
 end
 
 """
-    solve_r9_distributed(case; optimizer, modes=nothing, spec=R9DistributedSpec(), budget_sec=600, on_raw_result=nothing, objective_record=:reported)
+    solve_r9_distributed(case; optimizer, modes=nothing, spec=R9DistributedSpec(), budget_sec=600, deadline=nothing, on_raw_result=nothing, objective_record=:reported)
 
 R9-DC4/DC5：从零消息执行各聚合商→运营商→缩放乘子更新，串行模拟多主体协调。
 共享最多600秒，包括建模、全部块求解与逐轮独立合并检查；不调用集中参考或物理修正。
@@ -99,6 +99,8 @@ on_raw_result可在最终独立核验前接收原始结果的深副本，用于�
 objective_record=:reported保持v1旧核对；显式:separate使用v2记录，分别保留求解器报告目标、
 原变量数学目标与同一1e-9门槛的报告一致性。报告不一致仍标为失败，不冒充子问题精确最优性。
 它不改变更新式、子块状态要求、A1/A4或控制量；记录可重算、报告一致与调度可行分别评价。
+可选deadline为本机r3_clock的绝对截止时间，用于让装载/JIT/建模共用外部预算；不传时旧行为保持。
+loop_budget_sec记录调用时真正剩余的外层时间，最终核验/保存仍由调用者的完整墙钟预算单独检查。
 """
 function solve_r9_distributed(
     c::R9TradingCase;
@@ -106,14 +108,17 @@ function solve_r9_distributed(
     modes = nothing,
     spec = R9DistributedSpec(),
     budget_sec = 600.0,
+    deadline = nothing,
     on_raw_result = nothing,
     objective_record = :reported,
 )
     objective_record in (:reported, :separate) || error("未知目标记录语义")
     isfinite(budget_sec) && 0<budget_sec<=600 || error("完整分布运行预算须在(0,600]秒")
+    deadline===nothing || (deadline isa Real && isfinite(deadline)) || error("截止时间须有限")
     selected=r9_distributed_modes(c, modes, spec)
     start=r3_clock()
-    deadline=start+budget_sec
+    shared_deadline=deadline!==nothing
+    deadline=shared_deadline ? min(start+budget_sec, Float64(deadline)) : start+budget_sec
     hashes=r9_trading_science_hashes()
     box=r9_boundary_contract(c)
     C=r9_distributed_cost_scale(c)
@@ -143,6 +148,7 @@ function solve_r9_distributed(
         r["objective_record"]="separate"
         r["subproblem_accuracy_certified"]=false
     end
+    shared_deadline && (r["loop_budget_sec"]=max(0.0, deadline-start))
     selected===nothing || (r["fixed_modes"]=Dict(k=>r2_extract(v) for (k, v) in selected))
     z=zeros(size(box.lower))
     u=zeros(size(z))

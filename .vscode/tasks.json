@@ -1,5 +1,7 @@
 {
   "inputs": [
+    {"id":"r9ScalabilityStudy","type":"promptString","description":"12方法规模对照目录；冻结须新路径，运行用已冻结目录","default":"results/runs/r9-scalability-study-20260922-v1"},
+    {"id":"r9ScalabilityMethod","type":"pickString","description":"只读重验已有方法；完整轨迹缺失不伪造轮数","options":["ag8-fixed-central","ag8-fixed-admm","ag8-mip-central","ag8-mip-admm","ag16-fixed-central","ag16-fixed-admm","ag16-mip-central","ag16-mip-admm","ag32-fixed-central","ag32-fixed-admm","ag32-mip-central","ag32-mip-admm"]},
     {"id":"r9ScalabilityPrepared","type":"promptString","description":"主体拆分输入的新目录，不覆盖已有目录、不运行优化","default":"results/runs/r9-scalability-inputs-new"},
     {"id":"r9DistributedEvidence","type":"promptString","description":"冻结分布证据包；只读重验","default":"results/summaries/r9-distributed-corridor-evidence-20260922-v1"},
     {"id":"r9DistributedDiagnostics","type":"promptString","description":"热量反例及目标标量诊断包；只读重验","default":"results/summaries/r9-distributed-diagnostics-20260922-v1"},
@@ -244,6 +246,11 @@
     }
   ],
   "tasks": [
+    {"label":"PaperRebuild: F13 scalability study tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_scalability_study.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: F13 scalability study freeze","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_scalability_study.jl","freeze","${input:r9ScalabilityStudy}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: F13 scalability frozen study check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_scalability_study.jl","check","${input:r9ScalabilityStudy}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: F13 scalability serial batch","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--threads=1","--project=.","${input:r9ScalabilityStudy}/code/scripts/run_r9_scalability_batch.jl","${input:r9ScalabilityStudy}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
+    {"label":"PaperRebuild: F13 scalability saved method replay","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_scalability_study.jl","replay","${input:r9ScalabilityStudy}","${input:r9ScalabilityMethod}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 scalability prepare inputs","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/r9_scalability_inputs.jl","prepare","results/summaries/r9-scalability-inputs-20260922-v2/parent.toml","${input:r9ScalabilityPrepared}"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 scalability math tests","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/test_r9_scalability.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
     {"label":"PaperRebuild: R9 scalability mapping check","type":"process","command":"julia","args":["+1.12.6","--startup-file=no","--project=.","scripts/check_r9_scalability.jl"],"options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},

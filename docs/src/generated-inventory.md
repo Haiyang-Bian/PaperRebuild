@@ -168,6 +168,7 @@
 - `configs/r9/reserve-trajectories.toml`
 - `configs/r9/resilience-protocol.toml`
 - `configs/r9/scalability-inputs.toml`
+- `configs/r9/scalability-study.toml`
 - `configs/r9/seeded-study.toml`
 - `configs/r9/trading-protocol.toml`
 - `configs/r9/trading-study.toml`
@@ -266,6 +267,7 @@
 - `docs/agent/tasks/2026-09-22-r9-reserve-evaluation.md`
 - `docs/agent/tasks/2026-09-22-r9-resilience-pilot.md`
 - `docs/agent/tasks/2026-09-22-r9-scalability-inputs.md`
+- `docs/agent/tasks/2026-09-22-r9-scalability-study.md`
 - `docs/make.jl`
 - `docs/reading/README.md`
 - `docs/reading/ch02/README.md`
@@ -1014,6 +1016,7 @@
 - `scripts/r9_resilience_study.jl`
 - `scripts/r9_risk_docs.jl`
 - `scripts/r9_scalability_inputs.jl`
+- `scripts/r9_scalability_study.jl`
 - `scripts/r9_seeded_study.jl`
 - `scripts/r9_source_report.jl`
 - `scripts/r9_trading_evidence.jl`
@@ -1072,6 +1075,7 @@
 - `scripts/run_r9_numerics_gurobi.jl`
 - `scripts/run_r9_reserve_batch.jl`
 - `scripts/run_r9_resilience_batch.jl`
+- `scripts/run_r9_scalability_batch.jl`
 - `scripts/run_r9_seeded_batch.jl`
 - `scripts/seal_r9_common_witness.jl`
 - `scripts/seal_r9_reserve_probe.jl`
@@ -1218,7 +1222,9 @@
 - `scripts/test_r9_risk.jl`
 - `scripts/test_r9_risk_native_start.jl`
 - `scripts/test_r9_scalability.jl`
+- `scripts/test_r9_scalability_freeze.jl`
 - `scripts/test_r9_scalability_inputs.jl`
+- `scripts/test_r9_scalability_study.jl`
 - `scripts/test_r9_seeded_evidence.jl`
 - `scripts/test_r9_seeded_native.jl`
 - `scripts/test_r9_seeded_risk.jl`
@@ -1569,6 +1575,7 @@
 - `test/r9_risk.jl`
 - `test/r9_risk_evidence.jl`
 - `test/r9_scalability.jl`
+- `test/r9_scalability_study.jl`
 - `test/r9_seeded_risk.jl`
 - `test/r9_sources.jl`
 - `test/r9_trading.jl`
